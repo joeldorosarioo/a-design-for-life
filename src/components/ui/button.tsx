@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-/** Only Secondary is needed by this foundation. */
+/** Closed Figma actions: Primary for content CTAs, Secondary for the shared shell. */
 export const buttonVariants = cva('ui-button', {
-  variants: { variant: { secondary: 'ui-button-secondary' } },
+  variants: { variant: { primary: 'ui-button-primary', secondary: 'ui-button-secondary' } },
   defaultVariants: { variant: 'secondary' },
 });
 
