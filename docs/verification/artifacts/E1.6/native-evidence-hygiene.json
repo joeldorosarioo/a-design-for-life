@@ -1,0 +1,726 @@
+{
+  "scope": "E1.6 native pipeline/resume evidence. Failed runs preserved, including test/setup mismatches. Unredacted originals remain ignored under .work. No source or outcome is rewritten.",
+  "files": [
+    {
+      "source": ".work/e1.6-before-native-e2e-typecheck.txt",
+      "destination": "e1.6-before-native-e2e-typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-common-processing-green.txt",
+      "destination": "e1.6-common-processing-green.txt",
+      "originalSHA256": "2f98197b21be35487552cb4ca187fdd84360f408dc6f095a34ea29817264388f",
+      "exportedSHA256": "2f98197b21be35487552cb4ca187fdd84360f408dc6f095a34ea29817264388f",
+      "originalBytes": 191,
+      "exportedBytes": 191,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-common-validation-red.txt",
+      "destination": "e1.6-common-validation-red.txt",
+      "originalSHA256": "13a4b448b402bbb3f87d4ad695f984d24692c3267eec2bdc91fc61ba6432bf2e",
+      "exportedSHA256": "13a4b448b402bbb3f87d4ad695f984d24692c3267eec2bdc91fc61ba6432bf2e",
+      "originalBytes": 10738,
+      "exportedBytes": 10738,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-create-media-migration.txt",
+      "destination": "e1.6-create-media-migration.txt",
+      "originalSHA256": "8c9875b992506c393e157bf25614ad866f69f7b402c2aa4d48ae1bc0789c6058",
+      "exportedSHA256": "8c9875b992506c393e157bf25614ad866f69f7b402c2aa4d48ae1bc0789c6058",
+      "originalBytes": 547,
+      "exportedBytes": 547,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-current-typecheck.txt",
+      "destination": "e1.6-current-typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-delivery-usage-red.txt",
+      "destination": "e1.6-delivery-usage-red.txt",
+      "originalSHA256": "4e1cfdfc7fdf5d64fb474e6b333864a61e49375fbd99e7f66f2d9a6855a03801",
+      "exportedSHA256": "4e1cfdfc7fdf5d64fb474e6b333864a61e49375fbd99e7f66f2d9a6855a03801",
+      "originalBytes": 5191,
+      "exportedBytes": 5191,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-e2e-format.txt",
+      "destination": "e1.6-e2e-format.txt",
+      "originalSHA256": "c99120d7bf8d799232a82fadbd3873fb14772f91b6b9f74dd6f3407a1a721f6f",
+      "exportedSHA256": "c99120d7bf8d799232a82fadbd3873fb14772f91b6b9f74dd6f3407a1a721f6f",
+      "originalBytes": 131,
+      "exportedBytes": 131,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-generate-types-common.txt",
+      "destination": "e1.6-generate-types-common.txt",
+      "originalSHA256": "242781befe71b3e3753886dba7a65051a30b4b24e2bdcd652b6538ac70f6c8e3",
+      "exportedSHA256": "242781befe71b3e3753886dba7a65051a30b4b24e2bdcd652b6538ac70f6c8e3",
+      "originalBytes": 264,
+      "exportedBytes": 264,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-media-cas-mime-red.txt",
+      "destination": "e1.6-media-cas-mime-red.txt",
+      "originalSHA256": "5bf45eae46213d2c261ef0a6a54ed520e3beda852ff4e5119236e7409dca449a",
+      "exportedSHA256": "3aa62a1922ce6afc532da45339d58ecf0769e8aa220f85aceda5ec789bd04737",
+      "originalBytes": 14538,
+      "exportedBytes": 14538,
+      "redactions": [
+        {
+          "name": "ephemeral synthetic editorial lease",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": ".work/e1.6-native-delivery-green-attempt.txt",
+      "destination": "e1.6-native-delivery-green-attempt.txt",
+      "originalSHA256": "cbae987df9625a94339758574ba96df865f7bf25a38044b0d728b23259c3bba8",
+      "exportedSHA256": "cbae987df9625a94339758574ba96df865f7bf25a38044b0d728b23259c3bba8",
+      "originalBytes": 2854,
+      "exportedBytes": 2854,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-failure-red.txt",
+      "destination": "e1.6-native-failure-red.txt",
+      "originalSHA256": "1b2e01f515907fc5fcde50c573fe3b26f60723f20a8055d3d840b5a6b4a4eaf1",
+      "exportedSHA256": "1b2e01f515907fc5fcde50c573fe3b26f60723f20a8055d3d840b5a6b4a4eaf1",
+      "originalBytes": 4362,
+      "exportedBytes": 4362,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-format.txt",
+      "destination": "e1.6-native-format.txt",
+      "originalSHA256": "5bc6a2695d90abeb8acd53ec81f1917398e81c8b63eca9111d26708bfbf6abe5",
+      "exportedSHA256": "5bc6a2695d90abeb8acd53ec81f1917398e81c8b63eca9111d26708bfbf6abe5",
+      "originalBytes": 2729,
+      "exportedBytes": 2729,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-intake-green-attempt.txt",
+      "destination": "e1.6-native-intake-green-attempt.txt",
+      "originalSHA256": "67a0f4baca87172b5a02b0a72c4880970e050c84a653578ac492702f3e2586b1",
+      "exportedSHA256": "67a0f4baca87172b5a02b0a72c4880970e050c84a653578ac492702f3e2586b1",
+      "originalBytes": 2851,
+      "exportedBytes": 2851,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-intake-red.txt",
+      "destination": "e1.6-native-intake-red.txt",
+      "originalSHA256": "ea8eb0a385f72f7f1175b9b61b41bcc9d26ede98176d738691bce31032f836b5",
+      "exportedSHA256": "ea8eb0a385f72f7f1175b9b61b41bcc9d26ede98176d738691bce31032f836b5",
+      "originalBytes": 7435,
+      "exportedBytes": 7435,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-production-e2e-attempt.txt",
+      "destination": "e1.6-native-production-e2e-attempt.txt",
+      "originalSHA256": "6505666d3c5d65fdafecc3ec169b2e2fdbce90e3e67c6838e567fcb07abcd816",
+      "exportedSHA256": "6505666d3c5d65fdafecc3ec169b2e2fdbce90e3e67c6838e567fcb07abcd816",
+      "originalBytes": 1736,
+      "exportedBytes": 1736,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-production-e2e.txt",
+      "destination": "e1.6-native-production-e2e.txt",
+      "originalSHA256": "fccfbef2c4d65a23df9c7e550ee1a0215118ea4b91a7ff032e77294b2b63ff55",
+      "exportedSHA256": "fccfbef2c4d65a23df9c7e550ee1a0215118ea4b91a7ff032e77294b2b63ff55",
+      "originalBytes": 7449,
+      "exportedBytes": 7449,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-race-typecheck.txt",
+      "destination": "e1.6-native-race-typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-second-format.txt",
+      "destination": "e1.6-native-second-format.txt",
+      "originalSHA256": "78df82f3e954c34a2c297107ba2509e3e6b7641a6fef1052875dd0957fd7749c",
+      "exportedSHA256": "78df82f3e954c34a2c297107ba2509e3e6b7641a6fef1052875dd0957fd7749c",
+      "originalBytes": 228,
+      "exportedBytes": 228,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-thumbnail-red.txt",
+      "destination": "e1.6-native-thumbnail-red.txt",
+      "originalSHA256": "f4db5f001315840e106819212779489752299fc12e8ac5981a1fc8811b61cfd8",
+      "exportedSHA256": "f4db5f001315840e106819212779489752299fc12e8ac5981a1fc8811b61cfd8",
+      "originalBytes": 7535,
+      "exportedBytes": 7535,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-native-typecheck-attempt.txt",
+      "destination": "e1.6-native-typecheck-attempt.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-processing-red.txt",
+      "destination": "e1.6-processing-red.txt",
+      "originalSHA256": "c438ade4f5165a0107298aa3a160d34c78079632f485b4660c59ebdeb582e5de",
+      "exportedSHA256": "c438ade4f5165a0107298aa3a160d34c78079632f485b4660c59ebdeb582e5de",
+      "originalBytes": 2402,
+      "exportedBytes": 2402,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-animated-http-format.txt",
+      "destination": "e1.6-resume-animated-http-format.txt",
+      "originalSHA256": "2c8c4eae6aa3d2fd07208e23b2a81afd99bff254a8d5b24010219b9c9308f13a",
+      "exportedSHA256": "2c8c4eae6aa3d2fd07208e23b2a81afd99bff254a8d5b24010219b9c9308f13a",
+      "originalBytes": 68,
+      "exportedBytes": 68,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-approved-http-format.txt",
+      "destination": "e1.6-resume-approved-http-format.txt",
+      "originalSHA256": "8af68e94dc45f2c830fd4774a601d99de5786702becbb9e8811fc4b21c2540c8",
+      "exportedSHA256": "8af68e94dc45f2c830fd4774a601d99de5786702becbb9e8811fc4b21c2540c8",
+      "originalBytes": 68,
+      "exportedBytes": 68,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-approved-production-e2e.txt",
+      "destination": "e1.6-resume-approved-production-e2e.txt",
+      "originalSHA256": "d350b389d33e8fe467c3ff4b73d6dbb90af4b75dc1f99c0690eae656612c6c08",
+      "exportedSHA256": "d350b389d33e8fe467c3ff4b73d6dbb90af4b75dc1f99c0690eae656612c6c08",
+      "originalBytes": 20221,
+      "exportedBytes": 20221,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-approved-production-head-green.txt",
+      "destination": "e1.6-resume-approved-production-head-green.txt",
+      "originalSHA256": "a7b0cb1179b20df4f2f73d2f246b8074ac44e5114cc2121ce189ce8f975574bc",
+      "exportedSHA256": "a7b0cb1179b20df4f2f73d2f246b8074ac44e5114cc2121ce189ce8f975574bc",
+      "originalBytes": 21634,
+      "exportedBytes": 21634,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-approved-typecheck.txt",
+      "destination": "e1.6-resume-approved-typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-architecture-format.txt",
+      "destination": "e1.6-resume-architecture-format.txt",
+      "originalSHA256": "f39cba60c71f6a3b83f2a8ba5bfc38423cfcdfb0a8e71c749f0f7fdd739d04a0",
+      "exportedSHA256": "f39cba60c71f6a3b83f2a8ba5bfc38423cfcdfb0a8e71c749f0f7fdd739d04a0",
+      "originalBytes": 43,
+      "exportedBytes": 43,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-e2e-current.txt",
+      "destination": "e1.6-resume-e2e-current.txt",
+      "originalSHA256": "be32545d1bf04561aa76b78df3c7cbe06e2904f0c6b94d284554ea5219a4e7d8",
+      "exportedSHA256": "be32545d1bf04561aa76b78df3c7cbe06e2904f0c6b94d284554ea5219a4e7d8",
+      "originalBytes": 134156,
+      "exportedBytes": 134156,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-final-doc-check.txt",
+      "destination": "e1.6-resume-final-doc-check.txt",
+      "originalSHA256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSHA256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "originalBytes": 68,
+      "exportedBytes": 68,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-final-media-production-e2e.txt",
+      "destination": "e1.6-resume-final-media-production-e2e.txt",
+      "originalSHA256": "004f28f18079084f00d3467ce3d946b40953947a9375337ece51a55f2acde273",
+      "exportedSHA256": "004f28f18079084f00d3467ce3d946b40953947a9375337ece51a55f2acde273",
+      "originalBytes": 20136,
+      "exportedBytes": 20136,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-final-report-format.txt",
+      "destination": "e1.6-resume-final-report-format.txt",
+      "originalSHA256": "bfd8447777086638363c4ccc79d4c7c9c63a6a6d4228ac8badb53f0cd6fb4e00",
+      "exportedSHA256": "bfd8447777086638363c4ccc79d4c7c9c63a6a6d4228ac8badb53f0cd6fb4e00",
+      "originalBytes": 87,
+      "exportedBytes": 87,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-final-report-qualifier-format.txt",
+      "destination": "e1.6-resume-final-report-qualifier-format.txt",
+      "originalSHA256": "739179bfbafa23d98d28a1b6e9b2f00b0167207baf759b6f98ad1f17366662e1",
+      "exportedSHA256": "739179bfbafa23d98d28a1b6e9b2f00b0167207baf759b6f98ad1f17366662e1",
+      "originalBytes": 44,
+      "exportedBytes": 44,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-focused-lint.txt",
+      "destination": "e1.6-resume-focused-lint.txt",
+      "originalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0,
+      "exportedBytes": 0,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-format-all-owned.txt",
+      "destination": "e1.6-resume-format-all-owned.txt",
+      "originalSHA256": "44b587b5f1e66fad3e0a4285cd75c7b526c558f2db114f7c30996d4dc1042bc6",
+      "exportedSHA256": "44b587b5f1e66fad3e0a4285cd75c7b526c558f2db114f7c30996d4dc1042bc6",
+      "originalBytes": 3001,
+      "exportedBytes": 3001,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-format.txt",
+      "destination": "e1.6-resume-format.txt",
+      "originalSHA256": "8dc669ea3a295a41df5718c0d3c8ecaaecfa1c698303d7e26b1628b13fd25f71",
+      "exportedSHA256": "8dc669ea3a295a41df5718c0d3c8ecaaecfa1c698303d7e26b1628b13fd25f71",
+      "originalBytes": 242,
+      "exportedBytes": 242,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-http-fault-format.txt",
+      "destination": "e1.6-resume-http-fault-format.txt",
+      "originalSHA256": "5ae5e094e255c7b4f457d8287418289133569d501a8448e3adcad99819f419b5",
+      "exportedSHA256": "5ae5e094e255c7b4f457d8287418289133569d501a8448e3adcad99819f419b5",
+      "originalBytes": 67,
+      "exportedBytes": 67,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-http-fault-lint.txt",
+      "destination": "e1.6-resume-http-fault-lint.txt",
+      "originalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0,
+      "exportedBytes": 0,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-integration-green-attempt.txt",
+      "destination": "e1.6-resume-integration-green-attempt.txt",
+      "originalSHA256": "79736b843aaf303c4b32f68b9a2bbafdd76c327ee710638aa5db84b55d83ba25",
+      "exportedSHA256": "79736b843aaf303c4b32f68b9a2bbafdd76c327ee710638aa5db84b55d83ba25",
+      "originalBytes": 9890,
+      "exportedBytes": 9890,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-integration-green.txt",
+      "destination": "e1.6-resume-integration-green.txt",
+      "originalSHA256": "8da28903fcf586690ddf9da48625d40a32537d7889af4e830f06dc38ee8716d3",
+      "exportedSHA256": "8da28903fcf586690ddf9da48625d40a32537d7889af4e830f06dc38ee8716d3",
+      "originalBytes": 2853,
+      "exportedBytes": 2853,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-map-format.txt",
+      "destination": "e1.6-resume-map-format.txt",
+      "originalSHA256": "8d994aae293b02c9a6b70eba9f963059a8e273cfeb132c4cccf34e72b2446c0d",
+      "exportedSHA256": "8d994aae293b02c9a6b70eba9f963059a8e273cfeb132c4cccf34e72b2446c0d",
+      "originalBytes": 73,
+      "exportedBytes": 73,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-mime-red.txt",
+      "destination": "e1.6-resume-mime-red.txt",
+      "originalSHA256": "2d6c0c6a89afe8681b2b0ccbbca30939b9c97af2151e45c5689f13766a22bd62",
+      "exportedSHA256": "20b0d122b111e2e321dd67162f9745519590c2f019c39ec0734e4994ea2d810b",
+      "originalBytes": 7149,
+      "exportedBytes": 7149,
+      "redactions": [
+        {
+          "name": "ephemeral synthetic editorial lease",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": ".work/e1.6-resume-native-head-characterization-format.txt",
+      "destination": "e1.6-resume-native-head-characterization-format.txt",
+      "originalSHA256": "d4d7041a9e173ccc40c35bf671176efbb6a4ec444cb1ddaee84cd0945bfe6681",
+      "exportedSHA256": "d4d7041a9e173ccc40c35bf671176efbb6a4ec444cb1ddaee84cd0945bfe6681",
+      "originalBytes": 126,
+      "exportedBytes": 126,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-native-head-format.txt",
+      "destination": "e1.6-resume-native-head-format.txt",
+      "originalSHA256": "233f4ca5cfd1607d358804d320eff43438c2bdd3dc9178b614322493adaf4b70",
+      "exportedSHA256": "233f4ca5cfd1607d358804d320eff43438c2bdd3dc9178b614322493adaf4b70",
+      "originalBytes": 130,
+      "exportedBytes": 130,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-native-head-typecheck.txt",
+      "destination": "e1.6-resume-native-head-typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-native-resource-run.txt",
+      "destination": "e1.6-resume-native-resource-run.txt",
+      "originalSHA256": "2514226e478524db1ca5ef8be9ba069c7ab3651c438b4e1a682c9902588a4990",
+      "exportedSHA256": "2514226e478524db1ca5ef8be9ba069c7ab3651c438b4e1a682c9902588a4990",
+      "originalBytes": 3017,
+      "exportedBytes": 3017,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-pdf-runtime-format.txt",
+      "destination": "e1.6-resume-pdf-runtime-format.txt",
+      "originalSHA256": "811fa9b4f7584a09a5171738262e6f337c1929b1c57c7be52fd62acc0c965f1b",
+      "exportedSHA256": "811fa9b4f7584a09a5171738262e6f337c1929b1c57c7be52fd62acc0c965f1b",
+      "originalBytes": 33,
+      "exportedBytes": 33,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-policy-report-format.txt",
+      "destination": "e1.6-resume-policy-report-format.txt",
+      "originalSHA256": "498ac8be0fb6ff4ae9042b865efe14c5eb87f9f53438b0c7f82776339dce5708",
+      "exportedSHA256": "498ac8be0fb6ff4ae9042b865efe14c5eb87f9f53438b0c7f82776339dce5708",
+      "originalBytes": 44,
+      "exportedBytes": 44,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-pre-http-lint.txt",
+      "destination": "e1.6-resume-pre-http-lint.txt",
+      "originalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0,
+      "exportedBytes": 0,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-production-e2e-after-runtime.txt",
+      "destination": "e1.6-resume-production-e2e-after-runtime.txt",
+      "originalSHA256": "047442b83560636615b23cdc0c9a57c6247212dd7823b7bfb948d08a1e954507",
+      "exportedSHA256": "047442b83560636615b23cdc0c9a57c6247212dd7823b7bfb948d08a1e954507",
+      "originalBytes": 4667,
+      "exportedBytes": 4667,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-production-e2e-native-parser.txt",
+      "destination": "e1.6-resume-production-e2e-native-parser.txt",
+      "originalSHA256": "6964a2230e7a25a64761a4f6868e80bd48bad08648ef178fd8d2aa5ab466a1b2",
+      "exportedSHA256": "6964a2230e7a25a64761a4f6868e80bd48bad08648ef178fd8d2aa5ab466a1b2",
+      "originalBytes": 8422,
+      "exportedBytes": 8422,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-production-e2e.txt",
+      "destination": "e1.6-resume-production-e2e.txt",
+      "originalSHA256": "67006401a034e4a211cd4a079febc41417922ebf56e89c2f4bec2a8d0a1dba34",
+      "exportedSHA256": "67006401a034e4a211cd4a079febc41417922ebf56e89c2f4bec2a8d0a1dba34",
+      "originalBytes": 10416,
+      "exportedBytes": 10416,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-removal-fix-format.txt",
+      "destination": "e1.6-resume-removal-fix-format.txt",
+      "originalSHA256": "8112486028feb19a803f60e697571540089c3fb1dc7038a45d337b7dfdfdb4bf",
+      "exportedSHA256": "8112486028feb19a803f60e697571540089c3fb1dc7038a45d337b7dfdfdb4bf",
+      "originalBytes": 73,
+      "exportedBytes": 73,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-removal-format.txt",
+      "destination": "e1.6-resume-removal-format.txt",
+      "originalSHA256": "bddb1d54b1ebd92e156921419f6c4c0f373902f528b0d08e01231058d4442335",
+      "exportedSHA256": "bddb1d54b1ebd92e156921419f6c4c0f373902f528b0d08e01231058d4442335",
+      "originalBytes": 78,
+      "exportedBytes": 78,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-report-format.txt",
+      "destination": "e1.6-resume-report-format.txt",
+      "originalSHA256": "393b1fbe01e5bfc541904dd88600fd0741146383c4d7b1fe9f7506b2f21d56ed",
+      "exportedSHA256": "393b1fbe01e5bfc541904dd88600fd0741146383c4d7b1fe9f7506b2f21d56ed",
+      "originalBytes": 33,
+      "exportedBytes": 33,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-runtime-root-fix-format.txt",
+      "destination": "e1.6-resume-runtime-root-fix-format.txt",
+      "originalSHA256": "4fe5c38578190ce8886d7678865406d5221a4180ca6852a6bfbb148d5d1d5c6b",
+      "exportedSHA256": "4fe5c38578190ce8886d7678865406d5221a4180ca6852a6bfbb148d5d1d5c6b",
+      "originalBytes": 57,
+      "exportedBytes": 57,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-runtime-root-format.txt",
+      "destination": "e1.6-resume-runtime-root-format.txt",
+      "originalSHA256": "b17815a9ed3ed817f71106d2a2d61e5ffa15547a1ab561ed9b7377d18eec1678",
+      "exportedSHA256": "b17815a9ed3ed817f71106d2a2d61e5ffa15547a1ab561ed9b7377d18eec1678",
+      "originalBytes": 140,
+      "exportedBytes": 140,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-runtime-root-green.txt",
+      "destination": "e1.6-resume-runtime-root-green.txt",
+      "originalSHA256": "fa8863d6de48b470bab172db24307dbe5a23469946fe52d28d381ae3f9b3f75d",
+      "exportedSHA256": "fa8863d6de48b470bab172db24307dbe5a23469946fe52d28d381ae3f9b3f75d",
+      "originalBytes": 201,
+      "exportedBytes": 201,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-runtime-root-red.txt",
+      "destination": "e1.6-resume-runtime-root-red.txt",
+      "originalSHA256": "30a57e331471f9f15b687d02c302bedbd44ad1e592953363b3c918959c4f27be",
+      "exportedSHA256": "30a57e331471f9f15b687d02c302bedbd44ad1e592953363b3c918959c4f27be",
+      "originalBytes": 2918,
+      "exportedBytes": 2918,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-runtime-typecheck.txt",
+      "destination": "e1.6-resume-runtime-typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "exportedBytes": 16,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-storage-env-fix-format.txt",
+      "destination": "e1.6-resume-storage-env-fix-format.txt",
+      "originalSHA256": "b781a754d15a5f43739258cca2639e142d5da0300a0052d4e0599eb751679b42",
+      "exportedSHA256": "b781a754d15a5f43739258cca2639e142d5da0300a0052d4e0599eb751679b42",
+      "originalBytes": 31,
+      "exportedBytes": 31,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-storage-env-format.txt",
+      "destination": "e1.6-resume-storage-env-format.txt",
+      "originalSHA256": "2072681d317b38853d7ce5af58b884b1412fd2d42a3cabecc3f741170d83c585",
+      "exportedSHA256": "2072681d317b38853d7ce5af58b884b1412fd2d42a3cabecc3f741170d83c585",
+      "originalBytes": 36,
+      "exportedBytes": 36,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-storage-env-green.txt",
+      "destination": "e1.6-resume-storage-env-green.txt",
+      "originalSHA256": "b6a26fdcbbba51dc4eb746529834dbc2bf329593df9c12d59eea19843dce1759",
+      "exportedSHA256": "b6a26fdcbbba51dc4eb746529834dbc2bf329593df9c12d59eea19843dce1759",
+      "originalBytes": 201,
+      "exportedBytes": 201,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-storage-env-red.txt",
+      "destination": "e1.6-resume-storage-env-red.txt",
+      "originalSHA256": "c7c76564a270a819e7cbbd7097e1b4322a86c963325a100483b8a8aebeeea91c",
+      "exportedSHA256": "c7c76564a270a819e7cbbd7097e1b4322a86c963325a100483b8a8aebeeea91c",
+      "originalBytes": 1129,
+      "exportedBytes": 1129,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-trashed-reference-red.txt",
+      "destination": "e1.6-resume-trashed-reference-red.txt",
+      "originalSHA256": "3e5bb435e1ea9de5b1ec58ccc667c75a635e4195e5f0be08f526cad597296de2",
+      "exportedSHA256": "3e5bb435e1ea9de5b1ec58ccc667c75a635e4195e5f0be08f526cad597296de2",
+      "originalBytes": 4513,
+      "exportedBytes": 4513,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-ui-clean-format.txt",
+      "destination": "e1.6-resume-ui-clean-format.txt",
+      "originalSHA256": "32f9674cab9301ff01d9f6fc173e4c977c6d971eb23709226bc8afaab2ba89c5",
+      "exportedSHA256": "32f9674cab9301ff01d9f6fc173e4c977c6d971eb23709226bc8afaab2ba89c5",
+      "originalBytes": 67,
+      "exportedBytes": 67,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-ui-setup-format.txt",
+      "destination": "e1.6-resume-ui-setup-format.txt",
+      "originalSHA256": "3616c6163f76d44f76abf0077c4ac344d6437ea257a8d64caf8da17329ffd6a5",
+      "exportedSHA256": "3616c6163f76d44f76abf0077c4ac344d6437ea257a8d64caf8da17329ffd6a5",
+      "originalBytes": 79,
+      "exportedBytes": 79,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-usage-green.txt",
+      "destination": "e1.6-resume-usage-green.txt",
+      "originalSHA256": "1a000452d3a12dec628886950251e1a00fa6dec115fd4e1301c86839def64cab",
+      "exportedSHA256": "1a000452d3a12dec628886950251e1a00fa6dec115fd4e1301c86839def64cab",
+      "originalBytes": 2853,
+      "exportedBytes": 2853,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-verify-current.txt",
+      "destination": "e1.6-resume-verify-current.txt",
+      "originalSHA256": "f86d2b84fca7e022bd84970a96096d8d5cd86c8a457ddc0c09919bcc253d01c3",
+      "exportedSHA256": "f86d2b84fca7e022bd84970a96096d8d5cd86c8a457ddc0c09919bcc253d01c3",
+      "originalBytes": 36650,
+      "exportedBytes": 36650,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-verify-final.txt",
+      "destination": "e1.6-resume-verify-final.txt",
+      "originalSHA256": "cc49c5fd2a46047fc7a1d1fb1506babc27e0c1d36c9907891aa8db06b00e0a4c",
+      "exportedSHA256": "cc49c5fd2a46047fc7a1d1fb1506babc27e0c1d36c9907891aa8db06b00e0a4c",
+      "originalBytes": 36976,
+      "exportedBytes": 36976,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-worker-inspection-unit.txt",
+      "destination": "e1.6-resume-worker-inspection-unit.txt",
+      "originalSHA256": "b462d829cd24320669597f3fa645f5e13113518d7e698d198d3828c0afe10ef7",
+      "exportedSHA256": "b462d829cd24320669597f3fa645f5e13113518d7e698d198d3828c0afe10ef7",
+      "originalBytes": 189,
+      "exportedBytes": 189,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-resume-worker-resolution-format.txt",
+      "destination": "e1.6-resume-worker-resolution-format.txt",
+      "originalSHA256": "07fdd8f4e908d20f969a5e9abf7bf2dd920dbc7cb0e4d7b9044fcefabffe72b6",
+      "exportedSHA256": "07fdd8f4e908d20f969a5e9abf7bf2dd920dbc7cb0e4d7b9044fcefabffe72b6",
+      "originalBytes": 99,
+      "exportedBytes": 99,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-usage-green.txt",
+      "destination": "e1.6-usage-green.txt",
+      "originalSHA256": "309a359dbb9f696b04fd2daff581dadef3b6165b78faab65cb0698de00aec9af",
+      "exportedSHA256": "309a359dbb9f696b04fd2daff581dadef3b6165b78faab65cb0698de00aec9af",
+      "originalBytes": 199,
+      "exportedBytes": 199,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-usage-red.txt",
+      "destination": "e1.6-usage-red.txt",
+      "originalSHA256": "756401027dd17b71b1d64ff82ed52f4029ab0361a6e5d49b0ea5191d1bce93ec",
+      "exportedSHA256": "756401027dd17b71b1d64ff82ed52f4029ab0361a6e5d49b0ea5191d1bce93ec",
+      "originalBytes": 7262,
+      "exportedBytes": 7262,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-usage-response-typecheck.txt",
+      "destination": "e1.6-usage-response-typecheck.txt",
+      "originalSHA256": "1ddfacf330c42c4bc0d3e94d997cf32fc8d139a3f00ff579a43b6123988336cd",
+      "exportedSHA256": "1ddfacf330c42c4bc0d3e94d997cf32fc8d139a3f00ff579a43b6123988336cd",
+      "originalBytes": 2178,
+      "exportedBytes": 2178,
+      "redactions": []
+    },
+    {
+      "source": ".work/media-memory-probe/noise-near10mb.png.native-local.result.json",
+      "destination": "noise-near10mb.png.native-local.result.json",
+      "originalSHA256": "2fc736647551c608463dcb778b1197a2bd608095e23b2755d9b680190cab8186",
+      "exportedSHA256": "2fc736647551c608463dcb778b1197a2bd608095e23b2755d9b680190cab8186",
+      "originalBytes": 4317,
+      "exportedBytes": 4317,
+      "redactions": []
+    },
+    {
+      "source": ".work/media-memory-probe/noise-near10mb.jpg.native-local.result.json",
+      "destination": "noise-near10mb.jpg.native-local.result.json",
+      "originalSHA256": "d9f6db8fe0a379c16b5a579040a0a05200dcb338228091a957cad827610dabbe",
+      "exportedSHA256": "d9f6db8fe0a379c16b5a579040a0a05200dcb338228091a957cad827610dabbe",
+      "originalBytes": 4315,
+      "exportedBytes": 4315,
+      "redactions": []
+    },
+    {
+      "source": ".work/media-memory-probe/compressible-12mp.png.native-local.result.json",
+      "destination": "compressible-12mp.png.native-local.result.json",
+      "originalSHA256": "c358151d606a5996337f351987554aa32471a3f7bb309a56acd5e9a01afb36b5",
+      "exportedSHA256": "c358151d606a5996337f351987554aa32471a3f7bb309a56acd5e9a01afb36b5",
+      "originalBytes": 4319,
+      "exportedBytes": 4319,
+      "redactions": []
+    },
+    {
+      "source": ".work/media-memory-probe/measure-native-local.ts",
+      "destination": "native-resource-consumer.ts.txt",
+      "originalSHA256": "c115c56f14c5e2ac0a0d527724af6a2f1ee7c078fc7abd302f00c20ce4f2a443",
+      "exportedSHA256": "c115c56f14c5e2ac0a0d527724af6a2f1ee7c078fc7abd302f00c20ce4f2a443",
+      "originalBytes": 8812,
+      "exportedBytes": 8812,
+      "redactions": []
+    },
+    {
+      "source": ".work/media-memory-probe/run-native-local.mjs",
+      "destination": "native-resource-supervisor.mjs.txt",
+      "originalSHA256": "f4f460aba13f4c50ede3e5561eccec80057a7222c0b4bd88efbed88e6a178072",
+      "exportedSHA256": "f4f460aba13f4c50ede3e5561eccec80057a7222c0b4bd88efbed88e6a178072",
+      "originalBytes": 1604,
+      "exportedBytes": 1604,
+      "redactions": []
+    }
+  ]
+}

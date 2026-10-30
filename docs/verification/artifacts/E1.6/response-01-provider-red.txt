@@ -1,0 +1,31 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/media-response.test.ts (2 tests | 2 failed) 6ms
+   × returns a safe uncached 503 when media preparation fails for GET 5ms
+   × returns a safe uncached 503 when media preparation fails for HEAD 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when media preparation fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when media preparation fails for HEAD
+Error: Synthetic internal storage path and diagnostic must stay private
+ ❯ src/features/media-library/server/media-response.test.ts:25:11
+     23| it.each(['GET', 'HEAD'])('returns a safe uncached 503 when media prepa…
+     24|   installPayloadProvider(async () => {
+     25|     throw new Error('Synthetic internal storage path and diagnostic mu…
+       |           ^
+     26|   });
+     27|   const response = await serveMedia(
+ ❯ runtimePayload src/helpers/payload/runtime.ts:15:10
+ ❯ serveMedia src/features/media-library/server/media-response.ts:34:25
+ ❯ src/features/media-library/server/media-response.test.ts:27:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  08:14:43
+   Duration  5.21s (setup 83%, import 16%, transform 1%)
+

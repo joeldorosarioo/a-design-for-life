@@ -1,27 +1,27 @@
 import 'server-only';
-import { createRequire } from 'node:module';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
 import { Worker } from 'node:worker_threads';
 import { pdfInspectionSchema, type PdfInspection } from '../contracts/pdf-inspection.schema';
 import { checkPdfStreams } from './check-pdf-streams';
 
-const require = createRequire(import.meta.url);
 // A dedicated Node worker owns the parser and all decoded page resources. Embedded
 // actions remain document data: no viewer, scripting manager or action evaluation.
 const workerSource = `
 const { parentPort, workerData } = require('node:worker_threads');
+const { pathToFileURL } = require('node:url');
+const path = require('node:path');
 (async () => {
   let task;
   let result;
   try {
-    const { getDocument } = await import(workerData.parser);
+    const resources = path.dirname(require.resolve('pdfjs-dist/package.json'));
+    const parser = pathToFileURL(require.resolve('pdfjs-dist/legacy/build/pdf.mjs')).href;
+    const { getDocument } = await import(parser);
     task = getDocument({ data: workerData.bytes, password: '', stopAtErrors: true,
       enableXfa: false, disableFontFace: true, useSystemFonts: false,
       useWorkerFetch: false, verbosity: 0,
-      cMapUrl: workerData.resources + '/cmaps/',
-      standardFontDataUrl: workerData.resources + '/standard_fonts/',
-      wasmUrl: workerData.resources + '/wasm/' });
+      cMapUrl: resources + '/cmaps/',
+      standardFontDataUrl: resources + '/standard_fonts/',
+      wasmUrl: resources + '/wasm/' });
     try {
       const pdf = await task.promise;
       for (let number = 1; number <= pdf.numPages; number++) {
@@ -40,16 +40,12 @@ const { parentPort, workerData } = require('node:worker_threads');
 
 async function inspectPdfPages(bytes: Uint8Array, signal?: AbortSignal): Promise<PdfInspection> {
   if (signal?.aborted) return { kind: 'cancelled' };
-  const parserPath = require.resolve('pdfjs-dist/legacy/build/pdf.mjs');
-  const resources = path.dirname(require.resolve('pdfjs-dist/package.json'));
   const captured = Uint8Array.from(bytes);
   return new Promise((resolve) => {
     const worker = new Worker(workerSource, {
       eval: true,
       workerData: {
         bytes: captured,
-        parser: pathToFileURL(parserPath).href,
-        resources,
       },
       transferList: [captured.buffer],
     });

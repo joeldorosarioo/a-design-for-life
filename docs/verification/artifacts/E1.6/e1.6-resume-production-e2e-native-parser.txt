@@ -1,0 +1,140 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/features/media-library/server/media-delivery.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[08:21:15] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (90ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[08:21:16] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[08:21:16] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (4ms)[39m
+[08:21:16] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1185ms
+  Running TypeScript ...
+  Finished TypeScript in 3.6s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/2) ...
+✓ Generating static pages using 9 workers (2/2) in 376ms
+Turbopack build encountered 1 warning:
+./src/features/media-library/server
+Warning: Package pdfjs-dist can't be external
+The request pdfjs-dist/legacy/build/pdf.mjs matches serverExternalPackages (or the default list).
+The package seems invalid. require() resolves to a EcmaScript module, which would result in an error in Node.js.
+
+
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+└ ƒ /preview-media/[id]/[variant]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 156ms
+✓ Running next.config.ts took 44ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 3 tests using 1 worker
+
+(node:22684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[08:21:29] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:21:29] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:21:29] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:21:29] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+Media upload unavailable { correlationId: '8aa7c0cf-d28e-4f25-be4b-5fe6de9c18f0' }
+[08:21:29] [31mERROR[39m: [36mO processamento do arquivo está temporariamente indisponível. Tente novamente.[39m
+    err: {
+      "type": "",
+      "message": "O processamento do arquivo está temporariamente indisponível. Tente novamente.",
+      "stack":
+          APIError: O processamento do arquivo está temporariamente indisponível. Tente novamente.
+              at k (E:\a-design-for-life\.next\server\chunks\_0i7p216s8lfpz._.js:396:66481)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async eo (E:\a-design-for-life\.next\server\chunks\_0i7p216s8lfpz._.js:114:240578)
+              at async nB (E:\a-design-for-life\.next\server\chunks\_0i7p216s8lfpz._.js:114:149261)
+              at async t$ (E:\a-design-for-life\.next\server\chunks\_0i7p216s8lfpz._.js:114:283744)
+              at async includes.u.handler (E:\a-design-for-life\.next\server\chunks\_0i7p216s8lfpz._.js:114:255892)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33376)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+  x  1 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:32:1 › native production multipart decodes four static formats and PDF, then protects every byte path (668ms)
+(node:30152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:101:1 › approved public original and derivative revoke immediately after withdrawal including HEAD and conditionals (341ms)
+  ok 3 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:164:1 › native media UI creates an immutable asset and shows its private thumbnail after reload (1.6s)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:32:1 › native production multipart decodes four static formats and PDF, then protects every byte path 
+
+    Error: pdf
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 503
+
+      54 |         },
+      55 |       });
+    > 56 |       expect(created.status(), format).toBe(201);
+         |                                        ^
+      57 |       const body = await created.json();
+      58 |       const doc = body.doc as Media;
+      59 |       expect(doc.filesize).toBe(bytes.length);
+        at E:\a-design-for-life\src\features\media-library\server\media-delivery.e2e.test.ts:56:40
+
+    Error Context: test-results\features-media-library-ser-55221-en-protects-every-byte-path-chromium\error-context.md
+
+    Error Context: test-results\features-media-library-ser-55221-en-protects-every-byte-path-chromium\error-context.md
+
+  1 failed
+    [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:32:1 › native production multipart decodes four static formats and PDF, then protects every byte path 
+  2 passed (23.5s)
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,269 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/process-image.test.ts (2 tests | 2 failed) 32ms
+   × creates unique useful widths through2560 preserving aspect ratio 28ms
+   × does not upscale or generate repeated copies for a small oriented source 3ms
+ ❯ |unit| src/features/media-library/server/validate-upload.test.ts (9 tests | 8 failed) 105ms
+   × fully decodes genuine static jpeg and uses its actual type 10ms
+   × fully decodes genuine static png and uses its actual type 2ms
+   × fully decodes genuine static webp and uses its actual type 2ms
+   × fully decodes genuine static avif and uses its actual type 12ms
+   × accounts for EXIF orientation before deriving consumption dimensions 8ms
+   × accepts actual PDF bytes and rejects fabricated and corrupt-stream PDFs 1ms
+   × keeps opening-password policy explicitly pending while accepting empty-password encryption 66ms
+   × keeps animated WebP temporarily unavailable without flattening or imposing a permanent format ban 2ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > creates unique useful widths through2560 preserving aspect ratio
+Error: Genuine image control must validate
+ ❯ image src/features/media-library/server/process-image.test.ts:11:49
+      9|  const bytes=await source.toBuffer();
+     10|  const valid=await validateUpload({bytes,name:'synthetic.jpg',declared…
+     11|  if(!valid.ok||valid.value.kind!=='image')throw new Error('Genuine ima…
+       |                                                 ^
+     12|  return valid.value;
+     13| }
+ ❯ src/features/media-library/server/process-image.test.ts:15:36
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > does not upscale or generate repeated copies for a small oriented source
+Error: Genuine image control must validate
+ ❯ image src/features/media-library/server/process-image.test.ts:11:49
+      9|  const bytes=await source.toBuffer();
+     10|  const valid=await validateUpload({bytes,name:'synthetic.jpg',declared…
+     11|  if(!valid.ok||valid.value.kind!=='image')throw new Error('Genuine ima…
+       |                                                 ^
+     12|  return valid.value;
+     13| }
+ ❯ src/features/media-library/server/process-image.test.ts:20:36
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > fully decodes genuine static jpeg and uses its actual type
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "byteLength": 298,
+-     "height": 60,
+-     "kind": "image",
+-     "type": "image/jpeg",
+-     "width": 80,
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:10:17
+      8|  const bytes=await sharp({create:{width:80,height:60,channels:3,backgr…
+      9|  const result=await validateUpload(file(bytes),options);
+     10|  expect(result).toMatchObject({ok:true,value:{kind:'image',type:`image…
+       |                 ^
+     11| });
+     12| it('accounts for EXIF orientation before deriving consumption dimensio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > fully decodes genuine static png and uses its actual type
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "byteLength": 248,
+-     "height": 60,
+-     "kind": "image",
+-     "type": "image/png",
+-     "width": 80,
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:10:17
+      8|  const bytes=await sharp({create:{width:80,height:60,channels:3,backgr…
+      9|  const result=await validateUpload(file(bytes),options);
+     10|  expect(result).toMatchObject({ok:true,value:{kind:'image',type:`image…
+       |                 ^
+     11| });
+     12| it('accounts for EXIF orientation before deriving consumption dimensio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > fully decodes genuine static webp and uses its actual type
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "byteLength": 82,
+-     "height": 60,
+-     "kind": "image",
+-     "type": "image/webp",
+-     "width": 80,
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:10:17
+      8|  const bytes=await sharp({create:{width:80,height:60,channels:3,backgr…
+      9|  const result=await validateUpload(file(bytes),options);
+     10|  expect(result).toMatchObject({ok:true,value:{kind:'image',type:`image…
+       |                 ^
+     11| });
+     12| it('accounts for EXIF orientation before deriving consumption dimensio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > fully decodes genuine static avif and uses its actual type
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "byteLength": 289,
+-     "height": 60,
+-     "kind": "image",
+-     "type": "image/avif",
+-     "width": 80,
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:10:17
+      8|  const bytes=await sharp({create:{width:80,height:60,channels:3,backgr…
+      9|  const result=await validateUpload(file(bytes),options);
+     10|  expect(result).toMatchObject({ok:true,value:{kind:'image',type:`image…
+       |                 ^
+     11| });
+     12| it('accounts for EXIF orientation before deriving consumption dimensio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > accounts for EXIF orientation before deriving consumption dimensions
+AssertionError: expected { ok: false, error: { …(2) } } to match object { Object (ok, value) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "height": 80,
+-     "width": 60,
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:14:52
+     12| it('accounts for EXIF orientation before deriving consumption dimensio…
+     13|  const bytes=await sharp({create:{width:80,height:60,channels:3,backgr…
+     14|  expect(await validateUpload(file(bytes),options)).toMatchObject({ok:t…
+       |                                                    ^
+     15| });
+     16| it('rejects damaged pixels even when metadata can read image dimension…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > accepts actual PDF bytes and rejects fabricated and corrupt-stream PDFs
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "kind": "pdf",
+-     "pages": 3,
+-     "type": "application/pdf",
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:23:65
+     21| });
+     22| it('accepts actual PDF bytes and rejects fabricated and corrupt-stream…
+     23|  expect(await validateUpload(file(pdfUploadFixture()),options)).toMatc…
+       |                                                                 ^
+     24|  expect(await validateUpload(file(pdfUploadFixture({brokenStream:true}…
+     25|  expect(await validateUpload(file(new TextEncoder().encode('%PDF-1.7\n…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > keeps opening-password policy explicitly pending while accepting empty-password encryption
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: true, value: { kind: 'pdf' } }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "kind": "pdf",
+-   },
++   "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:28:82
+     26| });
+     27| it('keeps opening-password policy explicitly pending while accepting e…
+     28|  expect(await validateUpload(file(await encryptedPdfUploadFixture(''))…
+       |                                                                                  ^
+     29|  expect(await validateUpload(file(await encryptedPdfUploadFixture('syn…
+     30| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/validate-upload.test.ts > keeps animated WebP temporarily unavailable without flattening or imposing a permanent format ban
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: false, …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": {
+-     "code": "policy-pending",
++     "code": "invalid-input",
+    },
+    "ok": false,
+  }
+
+ ❯ src/features/media-library/server/validate-upload.test.ts:35:52
+     33|  const bytes=await sharp(raw,{raw:{width:2,height:4,channels:3,pageHei…
+     34|  expect(await sharp(bytes,{animated:true}).metadata()).toMatchObject({…
+     35|  expect(await validateUpload(file(bytes),options)).toMatchObject({ok:f…
+       |                                                    ^
+     36| });
+     37|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  10 failed | 1 passed (11)
+   Start at  06:29:23
+   Duration  585ms (setup 54%, import 20%, tests 17%, transform 8%, worker 1%)
+

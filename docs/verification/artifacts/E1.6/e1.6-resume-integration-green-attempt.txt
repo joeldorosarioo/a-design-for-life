@@ -1,0 +1,137 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[08:12:45] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (38ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (85ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[08:12:45] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[08:12:45] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[08:12:45] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/server/resolve-media-access.integration.test.ts (4 tests | 2 failed) 720ms
+   × publishing PT grants only its approved media, shares an asset with private EN, and protects trash/delete 112ms
+   × preserves the old published asset during draft edits and replaces only its owner publication 83ms
+ ❯ |integration| src/features/media-library/server/media-usage-races.integration.test.ts (3 tests | 3 failed) 452ms
+   × publication holding the actual Media row makes concurrent trash lose without exposing a deleted asset 101ms
+   × trash holding the actual Media row makes publication roll back and preserves recoverable bytes 61ms
+   × rolls back written Media usages with the native editorial transaction when publication fails later 59ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > publication holding the actual Media row makes concurrent trash lose without exposing a deleted asset
+APIError: Choose the correct image or PDF for this field.
+ ❯ trackMediaUsage src/features/media-library/server/track-media-usage.ts:54:15
+     52|       const expected = references.get(id);
+     53|       if (expected && [...expected].some((kind) => manifest.kind !== k…
+     54|         throw new APIError('Choose the correct image or PDF for this f…
+       |               ^
+     55|       const uses = mediaUsageSchema.array().parse(current.usages ?? []…
+     56|       const change: MediaUsageChange = {
+ ❯ change src/features/cases/content/hooks/case-media-usage.ts:8:2
+ ❯ synchronizeCaseMedia src/features/cases/content/hooks/case-media-usage.ts:17:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/media-library/server/media-usage-races.integration.test.ts:61:19
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > trash holding the actual Media row makes publication roll back and preserves recoverable bytes
+APIError: Choose the correct image or PDF for this field.
+ ❯ trackMediaUsage src/features/media-library/server/track-media-usage.ts:54:15
+     52|       const expected = references.get(id);
+     53|       if (expected && [...expected].some((kind) => manifest.kind !== k…
+     54|         throw new APIError('Choose the correct image or PDF for this f…
+       |               ^
+     55|       const uses = mediaUsageSchema.array().parse(current.usages ?? []…
+     56|       const change: MediaUsageChange = {
+ ❯ change src/features/cases/content/hooks/case-media-usage.ts:8:2
+ ❯ synchronizeCaseMedia src/features/cases/content/hooks/case-media-usage.ts:17:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/media-library/server/media-usage-races.integration.test.ts:111:19
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > rolls back written Media usages with the native editorial transaction when publication fails later
+APIError: Choose the correct image or PDF for this field.
+ ❯ trackMediaUsage src/features/media-library/server/track-media-usage.ts:54:15
+     52|       const expected = references.get(id);
+     53|       if (expected && [...expected].some((kind) => manifest.kind !== k…
+     54|         throw new APIError('Choose the correct image or PDF for this f…
+       |               ^
+     55|       const uses = mediaUsageSchema.array().parse(current.usages ?? []…
+     56|       const change: MediaUsageChange = {
+ ❯ change src/features/cases/content/hooks/case-media-usage.ts:8:2
+ ❯ synchronizeCaseMedia src/features/cases/content/hooks/case-media-usage.ts:17:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/media-library/server/media-usage-races.integration.test.ts:178:19
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  |integration| src/features/media-library/server/resolve-media-access.integration.test.ts > publishing PT grants only its approved media, shares an asset with private EN, and protects trash/delete
+APIError: Choose the correct image or PDF for this field.
+ ❯ trackMediaUsage src/features/media-library/server/track-media-usage.ts:54:15
+     52|       const expected = references.get(id);
+     53|       if (expected && [...expected].some((kind) => manifest.kind !== k…
+     54|         throw new APIError('Choose the correct image or PDF for this f…
+       |               ^
+     55|       const uses = mediaUsageSchema.array().parse(current.usages ?? []…
+     56|       const change: MediaUsageChange = {
+ ❯ change src/features/cases/content/hooks/case-media-usage.ts:8:2
+ ❯ synchronizeCaseMedia src/features/cases/content/hooks/case-media-usage.ts:14:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/media-library/server/resolve-media-access.integration.test.ts:49:14
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  |integration| src/features/media-library/server/resolve-media-access.integration.test.ts > preserves the old published asset during draft edits and replaces only its owner publication
+APIError: Choose the correct image or PDF for this field.
+ ❯ trackMediaUsage src/features/media-library/server/track-media-usage.ts:54:15
+     52|       const expected = references.get(id);
+     53|       if (expected && [...expected].some((kind) => manifest.kind !== k…
+     54|         throw new APIError('Choose the correct image or PDF for this f…
+       |               ^
+     55|       const uses = mediaUsageSchema.array().parse(current.usages ?? []…
+     56|       const change: MediaUsageChange = {
+ ❯ change src/features/cases/content/hooks/case-media-usage.ts:8:2
+ ❯ synchronizeCaseMedia src/features/cases/content/hooks/case-media-usage.ts:14:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/media-library/server/resolve-media-access.integration.test.ts:112:14
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  5 failed | 13 passed (18)
+   Start at  08:12:40
+   Duration  13.15s (import 69%, tests 26%, setup 3%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

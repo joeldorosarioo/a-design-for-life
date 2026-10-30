@@ -14,7 +14,7 @@ import {
 } from '@payloadcms/richtext-lexical';
 import { installPayloadProvider } from './helpers/payload/runtime';
 import { getPayload, buildConfig } from 'payload';
-import sharp from 'sharp';
+import { installMediaRuntime } from './features/media-library/server/media-runtime';
 import { readServerEnv } from './config/server-env';
 import { usersCollection } from './helpers/payload/users.collection';
 import { editorialEmailAdapter } from './helpers/payload/editorial-email';
@@ -33,6 +33,20 @@ loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const Users = usersCollection(env.SITE_ORIGIN);
+installMediaRuntime({
+  root:
+    env.MEDIA_STORAGE_ROOT ??
+    path.resolve(
+      '.work/private-media',
+      env.MEDIA_BUCKET,
+      new URL(env.DATABASE_URI).pathname.slice(1),
+    ),
+  checkerBinary:
+    env.MEDIA_CHECKER_BINARY ??
+    path.resolve(
+      ` .toolchain/qpdf-12.4.2-${process.platform}-${process.arch}/bin/${process.platform === 'win32' ? 'qpdf.exe' : 'qpdf'}`.trim(),
+    ),
+});
 
 const config = buildConfig({
   secret: env.PAYLOAD_SECRET,
@@ -85,7 +99,7 @@ const config = buildConfig({
       FixedToolbarFeature(),
     ],
   }),
-  sharp,
+  upload: { limits: { fileSize: 10_000_000 }, abortOnLimit: true },
   cors: [env.SITE_ORIGIN],
   csrf: [env.SITE_ORIGIN],
   graphQL: { disable: true },

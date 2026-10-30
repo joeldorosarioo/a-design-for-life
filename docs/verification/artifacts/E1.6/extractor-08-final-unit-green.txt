@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/cases/content/hooks/extract-case-media.test.ts src/features/professional-profile/content/extract-profile-media.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  2 passed (2)
+      Tests  48 passed (48)
+   Start at  06:46:38
+   Duration  482ms (setup 61%, import 26%, transform 9%, tests 2%, worker 1%)
+

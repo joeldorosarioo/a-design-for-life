@@ -1,4 +1,5 @@
 import 'server-only';
+import path from 'node:path';
 import { z } from 'zod';
 
 const serverEnvSchema = z
@@ -31,6 +32,8 @@ const serverEnvSchema = z
       { message: 'SITE_ORIGIN deve ser uma origem HTTP(S) sem caminho ou credenciais' },
     ),
     MEDIA_BUCKET: z.string().min(1),
+    MEDIA_STORAGE_ROOT: z.string().min(1).optional(),
+    MEDIA_CHECKER_BINARY: z.string().min(1).optional(),
   })
   .superRefine((env, context) => {
     if (env.NODE_ENV !== 'test' && env.APP_ENV !== 'test') return;
@@ -43,6 +46,25 @@ const serverEnvSchema = z
     }
     if (URL.canParse(env.DATABASE_URI)) {
       const database = new URL(env.DATABASE_URI);
+      if (env.MEDIA_STORAGE_ROOT) {
+        const expected = path.resolve(
+          '.work/private-media',
+          env.MEDIA_BUCKET,
+          database.pathname.slice(1),
+        );
+        const selected = path.resolve(env.MEDIA_STORAGE_ROOT);
+        const same =
+          process.platform === 'win32'
+            ? selected.toLowerCase() === expected.toLowerCase()
+            : selected === expected;
+        if (!path.isAbsolute(env.MEDIA_STORAGE_ROOT) || !same)
+          context.addIssue({
+            code: 'custom',
+            path: ['MEDIA_STORAGE_ROOT'],
+            message: 'Testes exigem armazenamento privado no namespace isolado de bucket e banco',
+          });
+      }
+
       if (
         !['localhost', '127.0.0.1', '[::1]'].includes(database.hostname) ||
         !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname)

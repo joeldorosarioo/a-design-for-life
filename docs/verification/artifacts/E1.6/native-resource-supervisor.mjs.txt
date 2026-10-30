@@ -1,0 +1,25 @@
+import { spawnSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
+import path from 'node:path';
+import setupDatabase from '../../testing/setup/integration-global.ts';
+process.env.NODE_ENV = 'test';
+process.env.TEST_MEDIA_BUCKET = 'adfl-test-native-resource';
+const teardown = setupDatabase();
+let failed = false;
+try {
+  for (const name of ['noise-near10mb.png', 'noise-near10mb.jpg', 'compressible-12mp.png']) {
+    const child = spawnSync(process.execPath, ['--conditions=react-server', './node_modules/payload/bin.js', 'run', '.work/media-memory-probe/measure-native-local.ts', name], {
+      env: process.env, windowsHide: true, encoding: 'utf8', maxBuffer: 1024 * 1024,
+    });
+    const prefix=path.join('.work/media-memory-probe', name + '.native-local');
+    writeFileSync(prefix + '.stdout.txt', child.stdout ?? '');
+    writeFileSync(prefix + '.stderr.txt', child.stderr ?? '');
+    let report;
+    try { report=JSON.parse((child.stdout ?? '').trim().split(/\r?\n/).at(-1)); } catch { report={outcome:'failed', stage:'consumer-output'}; }
+    const outcome={exitCode:child.status, signal:child.signal, ...report};
+    writeFileSync(prefix + '.result.json', JSON.stringify(outcome,null,2)+'\n');
+    console.info(JSON.stringify({input:name, exitCode:child.status, outcome:report.outcome, stage:report.stage, nativeUploadMs:report.timingMs?.nativeUploadMs, maxRSSKiB:report.cumulativeProcessUsageAfterNativeUpload?.maxRSS}));
+    if(child.error || child.status !== 0 || report.outcome !== 'measured')failed=true;
+  }
+} finally { teardown(); }
+if(failed)process.exitCode=1;

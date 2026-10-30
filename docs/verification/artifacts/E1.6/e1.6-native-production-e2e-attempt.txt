@@ -1,0 +1,18 @@
+Error: This module cannot be imported from a Client Component module. It should only be used from a Server Component.
+    at Object.<anonymous> (E:\a-design-for-life\node_modules\.pnpm\server-only@0.0.1\node_modules\server-only\index.js:1:7)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object.<anonymous> (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at loadCJSModuleWithModuleLoad (node:internal/modules/esm/translators:372:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:244:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at node:internal/modules/esm/loader:647:26
+    at requireOrImport (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\common\index.js:1096:12)
+    at loadUserConfig (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\common\index.js:1283:46)
+    at loadConfig (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\common\index.js:1290:22)
+    at Object.loadConfigFromFile (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\common\index.js:1508:10)
+    at runTests (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js:44:18)
+    at _Command.<anonymous> (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\program.js:55:7)

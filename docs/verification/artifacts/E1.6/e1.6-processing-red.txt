@@ -1,0 +1,79 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/process-image.test.ts (2 tests | 2 failed) 89ms
+   × creates unique useful widths through2560 preserving aspect ratio 74ms
+   × does not upscale or generate repeated copies for a small oriented source 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > creates unique useful widths through2560 preserving aspect ratio
+AssertionError: expected [] to deeply equal [ [ 342, 171 ], [ 640, 320 ], …(3) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     342,
+-     171,
+-   ],
+-   [
+-     640,
+-     320,
+-   ],
+-   [
+-     960,
+-     480,
+-   ],
+-   [
+-     1280,
+-     640,
+-   ],
+-   [
+-     2560,
+-     1280,
+-   ],
+- ]
++ []
+
+ ❯ src/features/media-library/server/process-image.test.ts:16:57
+     14| it('creates unique useful widths through2560 preserving aspect ratio',…
+     15|  const variants=await processImage(await image(3000,1500));
+     16|  expect(variants.map(({width,height})=>[width,height])).toEqual([[342,…
+       |                                                         ^
+     17|  for(const variant of variants)expect(await sharp(variant.bytes).metad…
+     18| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > does not upscale or generate repeated copies for a small oriented source
+AssertionError: expected [] to deeply equal [ [ 60, 80 ] ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     60,
+-     80,
+-   ],
+- ]
++ []
+
+ ❯ src/features/media-library/server/process-image.test.ts:21:57
+     19| it('does not upscale or generate repeated copies for a small oriented …
+     20|  const variants=await processImage(await image(80,60,6));
+     21|  expect(variants.map(({width,height})=>[width,height])).toEqual([[60,8…
+       |                                                         ^
+     22|  expect(await sharp(variants[0].bytes).metadata()).toMatchObject({widt…
+     23| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 9 passed (11)
+   Start at  06:30:03
+   Duration  1.61s (tests 61%, setup 21%, import 14%, transform 3%)
+

@@ -1,0 +1,79 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/media-response.test.ts (10 tests | 7 failed) 12ms
+   × returns a safe uncached 503 when media preparation fails for GET 5ms
+   × returns a safe uncached 503 when media preparation fails for HEAD 0ms
+   × returns a safe uncached 503 when preview authentication fails for GET 1ms
+   × returns a safe uncached 503 when preview authentication fails for HEAD 0ms
+   × returns a safe uncached 503 when native request preparation fails 0ms
+   × returns a safe uncached 503 when native filename lookup fails for GET 0ms
+   × returns a safe uncached 503 when native filename lookup fails for HEAD 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when media preparation fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when media preparation fails for HEAD
+Error: Synthetic internal storage path and diagnostic must stay private
+ ❯ src/features/media-library/server/media-response.test.ts:27:11
+     25| it.each(['GET', 'HEAD'])('returns a safe uncached 503 when media prepa…
+     26|   installPayloadProvider(async () => {
+     27|     throw new Error('Synthetic internal storage path and diagnostic mu…
+       |           ^
+     28|   });
+     29|   const response = await serveMedia(
+ ❯ runtimePayload src/helpers/payload/runtime.ts:15:10
+ ❯ serveMedia src/features/media-library/server/media-response.ts:34:25
+ ❯ src/features/media-library/server/media-response.test.ts:29:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when preview authentication fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when preview authentication fails for HEAD
+Error: Synthetic private auth diagnostic
+ ❯ src/features/media-library/server/media-response.test.ts:39:51
+     37|   const payload = new payloadModule.BasePayload();
+     38|   Object.assign(payload, { config: { serverURL: origin } });
+     39|   vi.spyOn(payload, 'auth').mockRejectedValueOnce(new Error('Synthetic…
+       |                                                   ^
+     40|   installPayloadProvider(async () => payload);
+     41|   await expectUnavailable(await serveMedia(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when native request preparation fails
+TypeError: Cannot spy on export "createLocalReq". Module namespace is not configurable in ESM. See: https://vitest.dev/guide/mocking/modules#mocking-a-module
+ ❯ src/features/media-library/server/media-response.test.ts:49:6
+     47| it('returns a safe uncached 503 when native request preparation fails'…
+     48|   installPayloadProvider(async () => new payloadModule.BasePayload());
+     49|   vi.spyOn(payloadModule, 'createLocalReq').mockRejectedValueOnce(new …
+       |      ^
+     50|   await expectUnavailable(await serveMedia(
+     51|     { mediaId, variant: 'original', preview: false },
+
+Caused by: TypeError: Cannot redefine property: createLocalReq
+ ❯ src/features/media-library/server/media-response.test.ts:49:6
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when native filename lookup fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when native filename lookup fails for HEAD
+Error: Synthetic private lookup diagnostic
+ ❯ Object.findOne src/features/media-library/server/media-response.test.ts:62:51
+     60|     method,
+     61|     user: { collection: 'users' },
+     62|     payload: { db: { findOne: async () => { throw new Error('Synthetic…
+       |                                                   ^
+     63|   } as unknown as PayloadRequest;
+     64|   await expectUnavailable(await nativeMediaFile(req, 'synthetic.png'));
+ ❯ nativeMediaFile src/features/media-library/server/media-response.ts:54:36
+ ❯ src/features/media-library/server/media-response.test.ts:64:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 3 passed (10)
+   Start at  08:16:01
+   Duration  1.23s (import 77%, setup 18%, transform 3%, tests 1%)
+

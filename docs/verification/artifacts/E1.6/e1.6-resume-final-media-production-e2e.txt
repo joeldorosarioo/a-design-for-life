@@ -1,0 +1,317 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/features/media-library/server/media-delivery.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[08:38:29] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (92ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[08:38:29] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[08:38:29] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[08:38:29] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1149ms
+  Running TypeScript ...
+  Finished TypeScript in 3.7s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/2) ...
+✓ Generating static pages using 9 workers (2/2) in 381ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+└ ƒ /preview-media/[id]/[variant]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 158ms
+✓ Running next.config.ts took 45ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 6 tests using 1 worker
+
+(node:16704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[08:38:42] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:38:42] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:38:42] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:38:43] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[08:38:43] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  ok 1 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:42:1 › native production multipart decodes four static formats and PDF, then protects every byte path (914ms)
+  ok 2 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:111:1 › approved public original and derivative revoke immediately after withdrawal including HEAD and conditionals (324ms)
+  ok 3 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:174:1 › native media UI creates an immutable asset and shows its private thumbnail after reload (1.6s)
+Media delivery unavailable { correlationId: '2a39116f-61f5-4cef-a58a-b8fd71f23eaa' }
+Media delivery unavailable { correlationId: '0f475530-8093-4cad-9fe6-b3e091742de3' }
+Media delivery unavailable { correlationId: '9504c401-4e41-4618-bb19-ffe5fb950787' }
+Media delivery unavailable { correlationId: '018a5fb8-2653-477a-a445-7e25138e215a' }
+Media delivery unavailable { correlationId: '66ee1997-069c-465b-9cc7-aeb5cac26dd4' }
+Media delivery unavailable { correlationId: '2f1ba2c6-9cf0-44b6-bdf3-bf90facec2a6' }
+Media delivery unavailable { correlationId: '7f87991f-c24b-439f-8f95-f4568b75dfeb' }
+Media delivery unavailable { correlationId: '17a625cb-3a50-44e5-a6bd-15af967af86c' }
+Media delivery unavailable { correlationId: '8cea2213-57fe-4676-9783-b539475d9581' }
+Media delivery unavailable { correlationId: '08f1aa73-144f-4efc-acf7-8aa28eaab56a' }
+Media delivery unavailable { correlationId: '8e074826-286a-44b7-9d3b-ea43d4fe42dc' }
+Media delivery unavailable { correlationId: 'f19f892c-c1d8-43a8-bd2f-87bca2e40d0b' }
+Media delivery unavailable { correlationId: 'd412d1a8-686c-4743-9b55-06a6b18ac8e9' }
+Media delivery unavailable { correlationId: 'e0f5b614-9563-4a11-9d6c-4619605bc0d3' }
+E1.6 real storage and Media relation failure: owned GET/HEAD and native GET200→503→200; native HEAD unsupported404/no-store throughout
+  ok 4 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:211:1 › real private object and PostgreSQL read failures stay503 and recover across media byte paths (446ms)
+[08:38:45] [31mERROR[39m: [36mUse JPEG, PNG, WebP, AVIF ou PDF. SVG não é permitido.[39m
+    err: {
+      "type": "",
+      "message": "Use JPEG, PNG, WebP, AVIF ou PDF. SVG não é permitido.",
+      "stack":
+          APIError: Use JPEG, PNG, WebP, AVIF ou PDF. SVG não é permitido.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mO PDF não pôde ser validado. Verifique o arquivo.[39m
+    err: {
+      "type": "",
+      "message": "O PDF não pôde ser validado. Verifique o arquivo.",
+      "stack":
+          APIError: O PDF não pôde ser validado. Verifique o arquivo.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mA imagem está incompleta, danificada ou não pôde ser decodificada com segurança.[39m
+    err: {
+      "type": "",
+      "message": "A imagem está incompleta, danificada ou não pôde ser decodificada com segurança.",
+      "stack":
+          APIError: A imagem está incompleta, danificada ou não pôde ser decodificada com segurança.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33376)
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mAPNG não é permitido. Use PNG estático ou WebP animado.[39m
+    err: {
+      "type": "",
+      "message": "APNG não é permitido. Use PNG estático ou WebP animado.",
+      "stack":
+          APIError: APNG não é permitido. Use PNG estático ou WebP animado.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mAPNG não é permitido. Use PNG estático ou WebP animado.[39m
+    err: {
+      "type": "",
+      "message": "APNG não é permitido. Use PNG estático ou WebP animado.",
+      "stack":
+          APIError: APNG não é permitido. Use PNG estático ou WebP animado.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mAVIF animado não é permitido. Use AVIF estático ou WebP animado.[39m
+    err: {
+      "type": "",
+      "message": "AVIF animado não é permitido. Use AVIF estático ou WebP animado.",
+      "stack":
+          APIError: AVIF animado não é permitido. Use AVIF estático ou WebP animado.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mPDF com senha de abertura não é permitido. Envie um PDF que abra sem senha.[39m
+    err: {
+      "type": "",
+      "message": "PDF com senha de abertura não é permitido. Envie um PDF que abra sem senha.",
+      "stack":
+          APIError: PDF com senha de abertura não é permitido. Envie um PDF que abra sem senha.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mFile size limit has been reached[39m
+    err: {
+      "type": "",
+      "message": "File size limit has been reached",
+      "stack":
+          APIError: File size limit has been reached
+              at E.<anonymous> (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:249215)
+              at E.emit (node:events:514:28)
+              at n.exports.H [as _cb] (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:98:34184)
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:178:13952
+              at n.exports.push (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:178:14180)
+              at n.exports._write (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:99:183)
+              at writeOrBuffer (node:internal/streams/writable:574:12)
+              at _write (node:internal/streams/writable:503:10)
+              at Writable.write (node:internal/streams/writable:512:10)
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:250921
+      "data": {
+        "size": 10000000
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 413,
+      "name": "APIError"
+    }
+[08:38:46] [31mERROR[39m: [36mO arquivo excede 5.000.000 bytes.[39m
+    err: {
+      "type": "",
+      "message": "O arquivo excede 5.000.000 bytes.",
+      "stack":
+          APIError: O arquivo excede 5.000.000 bytes.
+              at E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:66064
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.run (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:383:4699)
+              at async C (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:352:65880)
+              at async ee (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:240422)
+              at async ny (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:149236)
+              at async tR (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:283542)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_095c_jzo8rvel._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+      "data": {
+        "code": "invalid-input"
+      },
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+  ok 5 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:358:1 › native HTTP applies approved animation/password policy and rejects disguised, corrupt, and oversized uploads (870ms)
+  ok 6 [chromium] › src\features\media-library\server\media-delivery.e2e.test.ts:454:1 › native animated WebP keeps every frame, timing, loop and responsive dimensions in private and approved delivery (297ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+  6 passed (23.2s)

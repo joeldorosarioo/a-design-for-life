@@ -15,3 +15,9 @@ export const mediaUsageChangeSchema = mediaUsageOwnerSchema.extend({
   referenced: z.boolean(),
 });
 export type MediaUsageChange = z.infer<typeof mediaUsageChangeSchema>;
+export const mediaUsageCommandSchema = mediaUsageOwnerSchema.extend({
+  revision: z.uuid(),
+  state: z.enum(['draft', 'pending', 'confirmed']),
+  references: z.array(z.object({ mediaId: z.uuid(), kind: z.enum(['image', 'pdf']) })),
+});
+export type MediaUsageCommand = z.infer<typeof mediaUsageCommandSchema>;

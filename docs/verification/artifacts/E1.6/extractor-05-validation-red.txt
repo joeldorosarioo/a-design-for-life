@@ -1,0 +1,204 @@
+$ vitest run --project unit src/features/cases/content/hooks/extract-case-media.test.ts src/features/professional-profile/content/extract-profile-media.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/content/hooks/extract-case-media.test.ts (25 tests | 21 failed) 13ms
+   × rejects a malformed nonempty case relationship "not-a-uuid" at its approved path 4ms
+   × rejects a malformed nonempty case relationship " ba53e178-456a-437b-a2c1-771ce6b6b0af " at its approved path 0ms
+   × rejects a malformed nonempty case relationship 0 at its approved path 0ms
+   × rejects a malformed nonempty case relationship 12 at its approved path 0ms
+   × rejects a malformed nonempty case relationship false at its approved path 0ms
+   × rejects a malformed nonempty case relationship [] at its approved path 0ms
+   × rejects a malformed nonempty case relationship {} at its approved path 0ms
+   × rejects a malformed nonempty case relationship {"id":null} at its approved path 0ms
+   × rejects a malformed nonempty case relationship {"id":"not-a-uuid"} at its approved path 0ms
+   × rejects a malformed nonempty case relationship {"id":12} at its approved path 0ms
+   × reports the failing nested case relationship in {"seo":{"image":{"media":"invalid"}}} 0ms
+   × reports the failing nested case relationship in {"sections":[{"blocks":[{"blockType":"image","image":{"media":"invalid"}}]}]} 0ms
+   × reports the failing nested case relationship in {"sections":[{"blocks":[{"blockType":"image-pair","first":{"media":"invalid"}}]}]} 0ms
+   × reports the failing nested case relationship in {"sections":[{"blocks":[{"blockType":"image-pair","second":{"media":"invalid"}}]}]} 0ms
+   × does not silently ignore a malformed approved case container {"cover":"ba53e178-456a-437b-a2c1-771ce6b6b0af"} 0ms
+   × does not silently ignore a malformed approved case container {"seo":[]} 0ms
+   × does not silently ignore a malformed approved case container {"sections":1} 0ms
+   × does not silently ignore a malformed approved case container {"sections":"not-an-array"} 0ms
+   × does not silently ignore a malformed approved case container {"sections":[{"blocks":1}]} 0ms
+   × does not silently ignore a malformed approved case container {"sections":[{"blocks":{}}]} 0ms
+   × does not silently ignore a malformed approved case container {"sections":[{"blocks":[{"blockType":"image","image":0}]}]} 0ms
+ ❯ |unit| src/features/professional-profile/content/extract-profile-media.test.ts (23 tests | 19 failed) 13ms
+   × rejects a malformed nonempty PDF relationship "not-a-uuid" at resume 5ms
+   × rejects a malformed nonempty PDF relationship " ba53e178-456a-437b-a2c1-771ce6b6b0af " at resume 1ms
+   × rejects a malformed nonempty PDF relationship 0 at resume 0ms
+   × rejects a malformed nonempty PDF relationship false at resume 0ms
+   × rejects a malformed nonempty PDF relationship [] at resume 0ms
+   × rejects a malformed nonempty PDF relationship {} at resume 0ms
+   × rejects a malformed nonempty PDF relationship {"id":null} at resume 0ms
+   × rejects a malformed nonempty PDF relationship {"id":"not-a-uuid"} at resume 0ms
+   × rejects a malformed nonempty PDF relationship {"id":12} at resume 0ms
+   × reports the failing image relationship in the profile {"home":{"portrait":{"media":"invalid"}}} 0ms
+   × reports the failing image relationship in the profile {"about":{"portrait":{"media":"invalid"}}} 0ms
+   × reports the failing image relationship in the profile {"about":{"deskPhotograph":{"media":"invalid"}}} 0ms
+   × reports the failing image relationship in the profile {"about":{"architecturePhotograph":{"media":"invalid"}}} 0ms
+   × reports the failing image relationship in the profile {"seo":{"image":{"media":"invalid"}}} 0ms
+   × does not silently ignore a malformed approved profile container {"home":0} 0ms
+   × does not silently ignore a malformed approved profile container {"home":{"portrait":"ba53e178-456a-437b-a2c1-771ce6b6b0af"}} 0ms
+   × does not silently ignore a malformed approved profile container {"about":[]} 0ms
+   × does not silently ignore a malformed approved profile container {"about":{"deskPhotograph":0}} 0ms
+   × does not silently ignore a malformed approved profile container {"seo":"invalid"} 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 40 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship "not-a-uuid" at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship " ba53e178-456a-437b-a2c1-771ce6b6b0af " at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship 0 at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship false at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship [] at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship {} at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship {"id":null} at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship {"id":"not-a-uuid"} at resume
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > rejects a malformed nonempty PDF relationship {"id":12} at resume
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/professional-profile/content/extract-profile-media.test.ts:88:49
+     86|   { id: 12 },
+     87| ])('rejects a malformed nonempty PDF relationship %j at resume', (resu…
+     88|   expect(() => extractProfileMedia({ resume })).toThrow(/resume/);
+       |                                                 ^
+     89| });
+     90|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/40]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > reports the failing image relationship in the profile {"home":{"portrait":{"media":"invalid"}}}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > reports the failing image relationship in the profile {"about":{"portrait":{"media":"invalid"}}}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > reports the failing image relationship in the profile {"about":{"deskPhotograph":{"media":"invalid"}}}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > reports the failing image relationship in the profile {"about":{"architecturePhotograph":{"media":"invalid"}}}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > reports the failing image relationship in the profile {"seo":{"image":{"media":"invalid"}}}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/professional-profile/content/extract-profile-media.test.ts:101:47
+     99|   [{ seo: { image: { media: 'invalid' } } }, /seo\.image\.media/],
+    100| ])('reports the failing image relationship in the profile %j', (docume…
+    101|   expect(() => extractProfileMedia(document)).toThrow(path);
+       |                                               ^
+    102| });
+    103|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/40]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > does not silently ignore a malformed approved profile container {"home":0}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > does not silently ignore a malformed approved profile container {"home":{"portrait":"ba53e178-456a-437b-a2c1-771ce6b6b0af"}}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > does not silently ignore a malformed approved profile container {"about":[]}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > does not silently ignore a malformed approved profile container {"about":{"deskPhotograph":0}}
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > does not silently ignore a malformed approved profile container {"seo":"invalid"}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/professional-profile/content/extract-profile-media.test.ts:111:47
+    109|   [{ seo: 'invalid' }, /seo/],
+    110| ])('does not silently ignore a malformed approved profile container %j…
+    111|   expect(() => extractProfileMedia(document)).toThrow(path);
+       |                                               ^
+    112| });
+    113|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/40]⎯
+
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship "not-a-uuid" at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship " ba53e178-456a-437b-a2c1-771ce6b6b0af " at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship 0 at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship 12 at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship false at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship [] at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship {} at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship {"id":null} at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship {"id":"not-a-uuid"} at its approved path
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > rejects a malformed nonempty case relationship {"id":12} at its approved path
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/cases/content/hooks/extract-case-media.test.ts:113:56
+    111|   { id: 12 },
+    112| ])('rejects a malformed nonempty case relationship %j at its approved …
+    113|   expect(() => extractCaseMedia({ cover: { media } })).toThrow(/cover\…
+       |                                                        ^
+    114| });
+    115|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/40]⎯
+
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > reports the failing nested case relationship in {"seo":{"image":{"media":"invalid"}}}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > reports the failing nested case relationship in {"sections":[{"blocks":[{"blockType":"image","image":{"media":"invalid"}}]}]}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > reports the failing nested case relationship in {"sections":[{"blocks":[{"blockType":"image-pair","first":{"media":"invalid"}}]}]}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > reports the failing nested case relationship in {"sections":[{"blocks":[{"blockType":"image-pair","second":{"media":"invalid"}}]}]}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/cases/content/hooks/extract-case-media.test.ts:131:44
+    129|   ],
+    130| ])('reports the failing nested case relationship in %j', (document, pa…
+    131|   expect(() => extractCaseMedia(document)).toThrow(path);
+       |                                            ^
+    132| });
+    133|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/40]⎯
+
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"cover":"ba53e178-456a-437b-a2c1-771ce6b6b0af"}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"seo":[]}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"sections":1}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"sections":"not-an-array"}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"sections":[{"blocks":1}]}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"sections":[{"blocks":{}}]}
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > does not silently ignore a malformed approved case container {"sections":[{"blocks":[{"blockType":"image","image":0}]}]}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/cases/content/hooks/extract-case-media.test.ts:143:44
+    141|   [{ sections: [{ blocks: [{ blockType: 'image', image: 0 }] }] }, /im…
+    142| ])('does not silently ignore a malformed approved case container %j', …
+    143|   expect(() => extractCaseMedia(document)).toThrow(path);
+       |                                            ^
+    144| });
+    145|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/40]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  40 failed | 8 passed (48)
+   Start at  06:45:15
+   Duration  582ms (setup 79%, transform 10%, tests 5%, import 5%, worker 2%)
+
+[ELIFECYCLE] Command failed with exit code 1.

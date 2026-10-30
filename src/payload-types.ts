@@ -286,13 +286,37 @@ export interface CaseContent {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Arquivos são imutáveis. Para trocar uma imagem ou PDF, envie uma nova mídia.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: string;
+  label?: string | null;
+  manifest?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  usages?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  guardRevision?: string | null;
+  state?: ('ready' | 'deleted') | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -972,8 +996,14 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  label?: T;
+  manifest?: T;
+  usages?: T;
+  guardRevision?: T;
+  state?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;

@@ -1,3 +1,4 @@
+import { synchronizeCaseMedia, retainDeletedCaseMedia } from '../hooks/case-media-usage';
 import { synchronizeCaseRoutes, protectContentRouteDeletion } from '../hooks/case-routes';
 import { protectEditorialCollection } from '@/helpers/payload/editorial-revision';
 import { validateCasePublication } from '../hooks/validate-publication';
@@ -36,8 +37,8 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
   indexes: [{ fields: ['case', 'locale'], unique: true }],
 
   hooks: {
-    afterChange: [synchronizeCaseRoutes],
-    beforeDelete: [protectContentRouteDeletion],
+    afterChange: [synchronizeCaseRoutes, synchronizeCaseMedia],
+    beforeDelete: [protectContentRouteDeletion, retainDeletedCaseMedia],
     beforeOperation: [validatedWrite(caseInputSchema)],
     beforeChange: [
       validateCasePublication,
