@@ -1,0 +1,412 @@
+$ vitest run --project integration src/helpers/payload/publication-validation.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[02:23:37] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[02:23:37] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (92ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[02:23:37] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[02:23:37] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[02:23:37] [32mINFO[39m: [36mDone.[39m
+[02:23:39] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/helpers/payload/publication-validation.integration.test.ts (6 tests | 4 failed) 825ms
+   × native update with draft:true cannot publish an incomplete case; ordinary draft saving remains allowed 105ms
+   × invalid effective publication with draft:true preserves the previous public case, draft, head and versions 169ms
+   × draft:true cannot bypass required fields when explicitly publishing site-navigation 57ms
+   × draft:true cannot bypass required fields when explicitly publishing professional-profiles 89ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/publication-validation.integration.test.ts > native update with draft:true cannot publish an incomplete case; ordinary draft saving remains allowed
+AssertionError: promise resolved "{ case: { …(8) }, locale: 'pt', …(17) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "case": {
++     "createdAt": "2026-10-30T05:23:39.746Z",
++     "editorialRevision": "587cd03a-7ecf-407f-bd96-0226d791a254",
++     "featured": false,
++     "id": "2010958d-f584-42a6-ab04-d812c0dce202",
++     "internalTitle": "Synthetic effective publication",
++     "leaseToken": "38412f96-8da6-4285-8bcd-ee2d9a5073b5",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T05:23:39.746Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": null,
++     "caption": null,
++     "decorative": false,
++     "media": null,
++   },
++   "createdAt": "2026-10-30T05:23:39.756Z",
++   "editorialRevision": "93e37ea4-fbe6-436e-8792-1ba22632ff31",
++   "eyebrow": null,
++   "id": "5eadfc26-b086-4b82-942e-f42474e924eb",
++   "introduction": null,
++   "leaseToken": "3d6a6139-d848-4f47-bd11-2379244dd82b",
++   "locale": "pt",
++   "role": null,
++   "scope": null,
++   "sections": [],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": null,
++   "summary": null,
++   "title": null,
++   "updatedAt": "2026-10-30T05:23:39.814Z",
+  }
+
+ ❯ src/helpers/payload/publication-validation.integration.test.ts:72:4
+     70|       overrideAccess: false,
+     71|     }),
+     72|   ).rejects.toMatchObject({
+       |    ^
+     73|     status: 400,
+     74|     data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |integration| src/helpers/payload/publication-validation.integration.test.ts > invalid effective publication with draft:true preserves the previous public case, draft, head and versions
+AssertionError: promise resolved "{ case: { …(8) }, locale: 'pt', …(17) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "case": {
++     "createdAt": "2026-10-30T05:23:39.851Z",
++     "editorialRevision": "c13b3e3c-1a2f-44f8-92d4-2ac8212ef4f7",
++     "featured": false,
++     "id": "b22d47c5-64de-4605-9e1d-39897701c683",
++     "internalTitle": "Synthetic effective publication",
++     "leaseToken": "382d7ec5-016a-4e5b-a0f2-6bfac8264482",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T05:23:39.851Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": "Synthetic cover",
++     "caption": null,
++     "decorative": false,
++     "media": "390c8a3c-155d-44a9-b753-ed48cc1c9ce6",
++   },
++   "createdAt": "2026-10-30T05:23:39.869Z",
++   "editorialRevision": "b1b83564-22d6-47d7-80d8-69899c0eabfc",
++   "eyebrow": null,
++   "id": "c4bc5669-ed68-4b67-9b00-a8ae682db103",
++   "introduction": null,
++   "leaseToken": "ccbac1ea-ad07-4854-93ef-10c1c3bfc3d6",
++   "locale": "pt",
++   "role": "Synthetic role",
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": {
++             "root": {
++               "children": [
++                 {
++                   "children": [
++                     {
++                       "detail": 0,
++                       "format": 0,
++                       "mode": "normal",
++                       "style": "",
++                       "text": "Synthetic narrative",
++                       "type": "text",
++                       "version": 1,
++                     },
++                   ],
++                   "direction": null,
++                   "format": "",
++                   "indent": 0,
++                   "type": "paragraph",
++                   "version": 1,
++                 },
++               ],
++               "direction": null,
++               "format": "",
++               "indent": 0,
++               "type": "root",
++               "version": 1,
++             },
++           },
++           "id": "6ae429dbe4a29f9f6c95c474",
++           "readingKey": "14dd4155-051a-4f74-bd64-106fd677e8ee",
++         },
++       ],
++       "heading": "Synthetic section",
++       "id": "6ae429dbe4a29f9f6c95c475",
++       "readingKey": "9e720ed8-d836-48b9-aa4b-5079be821a80",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": "synthetic-case",
++   "summary": "",
++   "title": "Private incomplete case",
++   "updatedAt": "2026-10-30T05:23:39.983Z",
+  }
+
+ ❯ src/helpers/payload/publication-validation.integration.test.ts:145:4
+    143|       overrideAccess: false,
+    144|     }),
+    145|   ).rejects.toMatchObject({
+       |    ^
+    146|     status: 400,
+    147|     data: { errors: expect.arrayContaining([expect.objectContaining({ …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |integration| src/helpers/payload/publication-validation.integration.test.ts > draft:true cannot bypass required fields when explicitly publishing site-navigation
+AssertionError: promise resolved "{ locale: 'pt', …(10) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "controls": {
++     "casesLabel": null,
++     "closeMenuLabel": null,
++     "contentsLabel": null,
++     "homeLabel": null,
++     "languageLabel": null,
++     "newTabLabel": null,
++     "nextSectionLabel": null,
++     "openMenuLabel": null,
++     "previousSectionLabel": null,
++     "roleLabel": null,
++     "scopeLabel": null,
++   },
++   "createdAt": "2026-10-30T05:23:40.021Z",
++   "editorialRevision": "0de950b9-fe3a-4066-8f70-ed5f97af6370",
++   "footer": {
++     "copyright": null,
++     "description": null,
++     "emailLabel": null,
++     "eyebrow": null,
++     "linkedinLabel": null,
++     "resumeLabel": null,
++     "title": null,
++   },
++   "header": {
++     "aboutLabel": null,
++     "brandLabel": null,
++     "contactLabel": null,
++     "projectsLabel": null,
++     "resumeLabel": null,
++   },
++   "id": "f7592fc1-0659-4c57-8e74-7ab7efc9599c",
++   "leaseToken": "32ee5955-45de-4065-88f1-58f2c0469f8c",
++   "locale": "pt",
++   "messages": {
++     "caseUnavailableDescription": null,
++     "caseUnavailableTitle": null,
++     "emptyCasesDescription": null,
++     "emptyCasesTitle": null,
++     "notFoundDescription": null,
++     "notFoundTitle": null,
++     "retryLabel": null,
++     "temporaryFailureDescription": null,
++     "temporaryFailureTitle": null,
++     "translationUnavailable": null,
++   },
++   "updatedAt": "2026-10-30T05:23:40.056Z",
+  }
+
+ ❯ src/helpers/payload/publication-validation.integration.test.ts:207:6
+    205|         overrideAccess: false,
+    206|       }),
+    207|     ).rejects.toMatchObject({
+       |      ^
+    208|       status: 400,
+    209|       data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |integration| src/helpers/payload/publication-validation.integration.test.ts > draft:true cannot bypass required fields when explicitly publishing professional-profiles
+AssertionError: promise resolved "{ locale: 'pt', …(16) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "about": {
++     "approach": null,
++     "approachHeading": null,
++     "architecturePhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "closing": null,
++     "closingHeading": null,
++     "description": null,
++     "deskPhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "editorialEmphasis": null,
++     "eyebrow": null,
++     "inMotion": null,
++     "inMotionHeading": null,
++     "introduction": null,
++     "introductionHeading": null,
++     "journey": null,
++     "journeyHeading": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++   },
++   "approach": {
++     "description": null,
++     "eyebrow": null,
++     "methods": [],
++     "title": null,
++   },
++   "contacts": {
++     "email": null,
++     "linkedin": null,
++   },
++   "createdAt": "2026-10-30T05:23:40.079Z",
++   "editorialRevision": "1da7307f-cc35-44e5-82d6-7b90cbe48d17",
++   "home": {
++     "description": null,
++     "eyebrow": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++     "titleEmphasis": null,
++   },
++   "homeAbout": {
++     "aboutLabel": null,
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++     "trajectory": [],
++   },
++   "homeProjects": {
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++   },
++   "id": "f36ab3d1-c64b-48ad-84b6-937bf5ad2fcd",
++   "identity": {
++     "name": null,
++     "role": null,
++   },
++   "leaseToken": "b657bd71-2089-4487-9888-6acd63c80d69",
++   "listing": {
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++   },
++   "locale": "pt",
++   "resume": null,
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "listingDescription": null,
++     "listingTitle": null,
++   },
++   "updatedAt": "2026-10-30T05:23:40.134Z",
+  }
+
+ ❯ src/helpers/payload/publication-validation.integration.test.ts:207:6
+    205|         overrideAccess: false,
+    206|       }),
+    207|     ).rejects.toMatchObject({
+       |      ^
+    208|       status: 400,
+    209|       data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 2 passed (6)
+   Start at  02:23:32
+   Duration  7.64s (import 63%, tests 31%, transform 3%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

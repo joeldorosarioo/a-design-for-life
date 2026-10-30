@@ -18,6 +18,8 @@ As features possuem as validações de publicação e as operações `publishCas
 
 A validação informa caminhos específicos. Cases exigem título, resumo, papel, slug válido, capa e pelo menos um bloco; os usos de imagens exigem classificação/alternativa adequada, e links tipados exigem completar o destino ativo. Navegação exige os textos fixos de header, footer, controles e mensagens. Perfil exige textos dos grupos fixos, contatos, imagens editoriais, currículo e ao menos um item de trajetória/método. Ênfases opcionais, legendas e SEO com derivação permitida não se tornam campos obrigatórios arbitrários. Validação de bytes, promoção de mídias e reservas de rotas pertencem às próximas tarefas.
 
+Na atualizacao nativa do Payload 3.92.1, `draft:true` nao garante que a operacao sera privada: um `_status:'published'` explicito faz `isSavingDraft` ser falso e publica. A guarda valida o status efetivo recebido em `beforeChange`, sem usar a query/flag draft como isencao. Na criacao, o proprio Payload normaliza essa combinacao para draft. Os testes caracterizam ambas as entradas e preservam a intencao nativa de publicar dados validos explicitamente, alem de permitir rascunhos incompletos com status draft.
+
 ## Revisão vinculada ao conteúdo
 
 `editorialRevision` na tabela principal é a cabeça autoritativa, inclusive quando o conteúdo novo existe apenas numa versão draft. `contentRevision` é o marcador do conteúdo selecionado, gravado junto de cada documento/versão. A leitura autenticada entrega como revisão observada o marcador desse snapshot, nunca uma cabeça consultada depois de selecionar conteúdo antigo. O marcador interno é removido da resposta. Leituras anônimas removem todos os campos técnicos; DTOs públicos também não os incluem.

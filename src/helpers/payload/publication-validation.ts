@@ -1,5 +1,4 @@
 import 'server-only';
-import { isDraftOperation } from './editorial-revision';
 import {
   ValidationError,
   type CollectionBeforeChangeHook,
@@ -23,7 +22,7 @@ export function publicationGuard(
   validate: (data: Record<string, unknown>) => PublicationErrors,
 ): CollectionBeforeChangeHook {
   return ({ data, originalDoc, req, collection }) => {
-    if (data._status !== 'published' || isDraftOperation(req)) return data;
+    if (data._status !== 'published') return data;
     const errors = validate({ ...originalDoc, ...data });
     if (errors.length) throw new ValidationError({ collection: collection.slug, req, errors });
     return data;

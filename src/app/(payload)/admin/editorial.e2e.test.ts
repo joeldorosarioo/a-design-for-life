@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 import {
   createEditorialPayloadFixture,
   clearStructuralFixture,
@@ -25,6 +25,47 @@ async function login(page: Page, email: string, pwd = password) {
   await page.getByLabel(/^Password/).fill(pwd);
   await page.getByRole('button', { name: /^Login$/ }).click();
   await expect(page).toHaveURL(/\/admin$/);
+}
+async function assertInvalidEffectivePublication(
+  request: APIRequestContext,
+  anonymous: APIRequestContext,
+  collection: 'case-content' | 'site-navigation' | 'professional-profiles',
+  id: string,
+  invalidData: Record<string, unknown>,
+  publicSnapshot: Record<string, unknown>,
+) {
+  const req = await observedRequest(collection, id, await fixture.request());
+  const before = await editorialHead(collection, id, await fixture.request());
+  const versionsBefore = await fixture.payload.findVersions({
+    collection,
+    where: { parent: { equals: id } },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  const response = await request.patch(`/api/${collection}/${id}?draft=true`, {
+    headers: {
+      Origin: process.env.SITE_ORIGIN!,
+      'x-editorial-revision': req.headers.get('x-editorial-revision')!,
+      'x-editorial-lease': req.headers.get('x-editorial-lease')!,
+    },
+    data: { ...invalidData, _status: 'published' },
+  });
+  const publicDoc = await (await anonymous.get(`/api/${collection}/${id}?depth=0`)).json();
+  expect(publicDoc).toMatchObject(publicSnapshot);
+  expect(response.status()).toBe(400);
+  expect((await editorialHead(collection, id, await fixture.request())).editorialRevision).toBe(
+    before.editorialRevision,
+  );
+  expect(
+    (
+      await fixture.payload.findVersions({
+        collection,
+        where: { parent: { equals: id } },
+        req: await fixture.request(),
+        overrideAccess: false,
+      })
+    ).totalDocs,
+  ).toBe(versionsBefore.totalDocs);
 }
 test('two real native editors: owner saves, other reads, distinct documents save and exit releases', async ({
   browser,
@@ -219,6 +260,22 @@ test('anonymous HTTP sees only each independently published locale/group and pro
     });
     expect(published.ok()).toBe(true);
   }
+  await assertInvalidEffectivePublication(
+    request,
+    anonymous,
+    'professional-profiles',
+    profiles[0].id,
+    { identity: { name: '' } },
+    { identity: { name: 'Synthetic name' } },
+  );
+  await assertInvalidEffectivePublication(
+    request,
+    anonymous,
+    'site-navigation',
+    navigation[0].id,
+    { header: { brandLabel: '' } },
+    { header: { brandLabel: 'Synthetic brandLabel' } },
+  );
   expect(await (await anonymous.get('/api/site-navigation/published/pt')).json()).toMatchObject({
     ok: true,
     value: { locale: 'pt' },
@@ -356,6 +413,14 @@ test('anonymous HTTP sees only each independently published locale/group and pro
     await anonymous.get(`/api/case-content?where[case][equals]=${shared.id}&depth=0`)
   ).json();
   expect(publicCases.docs.map((doc: { locale: string }) => doc.locale)).toEqual(['pt']);
+  await assertInvalidEffectivePublication(
+    request,
+    anonymous,
+    'case-content',
+    pt.id,
+    { summary: '' },
+    { title: 'Synthetic title', summary: 'Synthetic summary' },
+  );
   await anonymous.dispose();
 });
 
