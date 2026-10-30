@@ -19,7 +19,7 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] E1.7 Contas, prévias e recuperação nativa — revisões e CI atual aprovados.
 - [x] E1.8 Coordenação e demonstração dos contratos — revisões e CI do código exato aprovadas.
 - [x] Pacote A1 verificado e preparado para entrega; dossiê A1.md e artefatos rastreados.
-- [ ] A1 aprovada pelo usuário — não iniciar etapa 2 antes disso.
+- [x] A1 aprovada explicitamente pelo usuário em 30/10/2026; E2.1–E2.6 autorizadas.
 
 ## Fontes preservadas
 
@@ -135,3 +135,7 @@ Task E1.8: fix round1/5 (4 addressed, 0 open — I1/I2/I3/R-MEDIA; a78b2dd..a719
 Task E1.8: minor (deferred): I4 attempts não conta falhas revertidas; diagnóstico incompleto, sem uso decisório observado. Task E1.8: minor (deferred): I5 warnings lint/pg/reporter mantidos, sem supressão. Timeout Windows5000ms observado; execução integral sem alteração passou eCI atual passou; sem garantia de ausência de recorrência.
 
 A1 permanece NÃO aprovada. A entrega documental/ZIP não inicia etapa2. Etapas2–4, serviços reais e lançamento não foram autorizados por este marco.
+
+## Atualização de autorização — A1 aprovada, etapa 2 autorizada
+
+Em 30/10/2026 o usuário aprovou A1 e autorizou somente E2.1–E2.6. Manter develop e commits coerentes em inglês, seguindo Conventional Commits. Estimativa inicial de 18–28 horas informada antes da implementação; atualizar diante de bloqueio concreto. Progresso da etapa 2 em execucao-etapa-2.md. Registros anteriores de A1 pendente são históricos. A2/A3/A4 não concedidas; parar antes da etapa 3. O pacote A1 já entregue permanece imutável em outputs.
