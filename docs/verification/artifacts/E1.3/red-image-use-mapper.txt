@@ -1,0 +1,40 @@
+$ vitest run --project unit src/features/media-library/server/map-image-use.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/map-image-use.test.ts (2 tests | 1 failed) 6ms
+   × leva descrição/legenda do uso sem URL nem metadata do asset compartilhado 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/map-image-use.test.ts > leva descrição/legenda do uso sem URL nem metadata do asset compartilhado
+AssertionError: expected undefined to deeply equal { …(4) }
+
+- Expected:
+{
+  "alt": "Synthetic PT description",
+  "caption": "Synthetic PT caption",
+  "decorative": false,
+  "mediaId": "3a7f8848-b305-47dd-8781-368c8ee21e3a",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/media-library/server/map-image-use.test.ts:7:13
+      5|  const pt = mapImageUse({ media, alt: 'Synthetic PT description', capt…
+      6|  const en = mapImageUse({ media, alt: 'Synthetic EN description', deco…
+      7|  expect(pt).toEqual({ mediaId: media.id, alt: 'Synthetic PT descriptio…
+       |             ^
+      8|  expect(en).toMatchObject({ mediaId: media.id, alt: 'Synthetic EN desc…
+      9|  expect(JSON.stringify([pt, en])).not.toContain('private.example');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  00:04:28
+   Duration  397ms (setup 76%, transform 12%, import 8%, tests 2%, worker 2%)
+
+[ELIFECYCLE] Command failed with exit code 1.

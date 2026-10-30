@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/cases/contracts/contextual-link.schema.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  23:56:19
+   Duration  438ms (setup 62%, import 25%, transform 9%, tests 3%, worker 1%)
+

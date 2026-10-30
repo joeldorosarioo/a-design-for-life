@@ -1,0 +1,55 @@
+$ vitest run --project integration src/features/cases/content/collections/case-content.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:57:19] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:57:19] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:57:19] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:57:19] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (46ms)[39m
+[23:57:19] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:57:19] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (102ms)[39m
+[23:57:19] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:57:19] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[23:57:19] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[23:57:19] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[23:57:19] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[23:57:19] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (4ms)[39m
+[23:57:19] [32mINFO[39m: [36mDone.[39m
+[23:57:21] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/case-content.integration.test.ts (5 tests | 1 failed) 391ms
+   × gera correspondências estáveis que sobrevivem a título, reordenação e tradução explícita 28ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/case-content.integration.test.ts > gera correspondências estáveis que sobrevivem a título, reordenação e tradução explícita
+AssertionError: expected null to deeply equal StringMatching /^[0-9a-f-]{36}$/
+
+- Expected:
+StringMatching /^[0-9a-f-]{36}$/
+
++ Received:
+null
+
+ ❯ src/features/cases/content/collections/case-content.integration.test.ts:118:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  23:57:15
+   Duration  7.23s (import 77%, tests 17%, setup 3%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

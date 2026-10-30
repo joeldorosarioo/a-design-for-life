@@ -1,0 +1,74 @@
+$ vitest run --project unit src/features/site-navigation/server/map-navigation.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/server/map-navigation.test.ts (3 tests | 2 failed) 15ms
+   × deriva quatro finalidades/ordem fixas e contatos/currículo somente do Perfil publicado 12ms
+   × mantém About em inglês e Sobre em português conforme rotas aprovadas 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/site-navigation/server/map-navigation.test.ts > deriva quatro finalidades/ordem fixas e contatos/currículo somente do Perfil publicado
+AssertionError: expected { locale: 'pt', brand: { …(2) }, …(5) } to match object { locale: 'pt', …(2) }
+(7 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -12,11 +12,11 @@
+        "label": "Synthetic projects",
+        "purpose": "projects",
+      },
+      {
+        "destination": {
+-         "href": "/pt/sobre",
++         "href": "/pt/about",
+          "kind": "page",
+        },
+        "label": "Synthetic about",
+        "purpose": "about",
+      },
+
+ ❯ src/features/site-navigation/server/map-navigation.test.ts:9:14
+      7| it('deriva quatro finalidades/ordem fixas e contatos/currículo somente…
+      8|  const dto = mapNavigation(navigation, profile);
+      9|  expect(dto).toMatchObject({ locale: 'pt', items: [
+       |              ^
+     10|   { purpose: 'projects', label: 'Synthetic projects', destination: { k…
+     11|   { purpose: 'about', label: 'Synthetic about', destination: { kind: '…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/map-navigation.test.ts > mantém About em inglês e Sobre em português conforme rotas aprovadas
+AssertionError: expected { locale: 'pt', brand: { …(2) }, …(5) } to match object { items: [ {}, { …(1) }, {}, {} ] }
+(14 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,11 +1,11 @@
+  {
+    "items": [
+      {},
+      {
+        "destination": {
+-         "href": "/pt/sobre",
++         "href": "/pt/about",
+        },
+      },
+      {},
+      {},
+    ],
+
+ ❯ src/features/site-navigation/server/map-navigation.test.ts:26:45
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  00:15:18
+   Duration  467ms (setup 60%, import 25%, transform 9%, tests 5%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

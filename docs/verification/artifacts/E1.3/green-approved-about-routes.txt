@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/site-navigation/server/map-navigation.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  00:16:35
+   Duration  463ms (setup 56%, import 26%, transform 14%, tests 2%, worker 1%)
+

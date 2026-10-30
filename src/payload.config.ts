@@ -9,7 +9,6 @@ import {
   ItalicFeature,
   OrderedListFeature,
   UnorderedListFeature,
-  LinkFeature,
   FixedToolbarFeature,
 } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
@@ -21,6 +20,8 @@ import { CaseContent } from './features/cases/content/collections/case-content';
 import { CaseRoutes } from './features/cases/content/collections/case-routes';
 import { SiteNavigation } from './features/site-navigation/content/collections/site-navigation';
 import { ProfessionalProfiles } from './features/professional-profile/content/collections/professional-profiles';
+import { contextualLinkFeature } from './features/cases/content/editor/contextual-link-feature';
+import { caseEditorialError } from './features/cases/server/translate-case-conflict';
 import { Media } from './features/media-library/content/collections/media';
 
 loadEnv({ quiet: true });
@@ -29,6 +30,7 @@ const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 export default buildConfig({
   secret: env.PAYLOAD_SECRET,
+  hooks: { afterError: [caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
     user: Users.slug,
@@ -49,7 +51,7 @@ export default buildConfig({
       ItalicFeature(),
       OrderedListFeature(),
       UnorderedListFeature(),
-      LinkFeature({ enabledCollections: [] }),
+      contextualLinkFeature,
       FixedToolbarFeature(),
     ],
   }),

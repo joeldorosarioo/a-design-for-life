@@ -1,0 +1,3 @@
+$ node --conditions=react-server ./node_modules/payload/bin.js generate:types
+[00:00:33] [32mINFO[39m: [36mCompiling TS types for Collections and Globals...[39m
+[00:00:34] [32mINFO[39m: [36mTypes written to E:\a-design-for-life\src\payload-types.ts[39m

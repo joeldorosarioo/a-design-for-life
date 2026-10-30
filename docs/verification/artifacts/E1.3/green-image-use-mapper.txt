@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/media-library/server/map-image-use.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  00:08:32
+   Duration  456ms (setup 58%, import 26%, transform 13%, tests 2%, worker 1%)
+

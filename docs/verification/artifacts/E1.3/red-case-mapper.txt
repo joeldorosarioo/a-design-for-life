@@ -1,0 +1,65 @@
+$ vitest run --project unit src/features/cases/server/map-case-detail.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/server/map-case-detail.test.ts (2 tests | 1 failed) 7ms
+   × usa o título traduzido, deriva sumário e preserva três apresentações sem dados administrativos 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-detail.test.ts > usa o título traduzido, deriva sumário e preserva três apresentações sem dados administrativos
+AssertionError: expected undefined to match object { …(5) }
+
+- Expected:
+{
+  "caseId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
+  "contents": [
+    {
+      "anchor": "section-e7fda410-76ba-466a-910f-01662e4a840c",
+      "label": "Synthetic first",
+      "readingKey": "e7fda410-76ba-466a-910f-01662e4a840c",
+    },
+    {
+      "anchor": "section-2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
+      "label": "Synthetic second",
+      "readingKey": "2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
+    },
+  ],
+  "path": "/pt/cases/synthetic-slug",
+  "sections": [
+    {
+      "blocks": [
+        {
+          "type": "text",
+        },
+      ],
+      "readingKey": "e7fda410-76ba-466a-910f-01662e4a840c",
+    },
+    {
+      "blocks": [
+        {
+          "presentation": "comparison",
+          "type": "image-pair",
+        },
+      ],
+      "readingKey": "2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
+    },
+  ],
+  "title": "Synthetic localized title",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/cases/server/map-case-detail.test.ts:18:14
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  00:09:15
+   Duration  401ms (setup 75%, transform 13%, import 8%, tests 3%, worker 2%)
+
+[ELIFECYCLE] Command failed with exit code 1.

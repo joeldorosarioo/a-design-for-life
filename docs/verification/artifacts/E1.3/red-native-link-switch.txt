@@ -1,0 +1,33 @@
+$ vitest run --project unit src/features/cases/contracts/contextual-link-switch.schema.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/contracts/contextual-link-switch.schema.test.ts (1 test | 1 failed) 6ms
+   × a troca de destino ignora valores inativos nativos sem torná-los autoridade 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/contracts/contextual-link-switch.schema.test.ts > a troca de destino ignora valores inativos nativos sem torná-los autoridade
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "url",
+      "case"
+    ],
+    "path": [],
+    "message": "Unrecognized keys: \"url\", \"case\""
+  }
+]
+ ❯ src/features/cases/contracts/contextual-link-switch.schema.test.ts:4:36
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  00:21:44
+   Duration  437ms (setup 64%, import 26%, transform 7%, tests 2%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

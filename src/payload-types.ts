@@ -173,6 +173,7 @@ export interface CaseContent {
   id: string;
   case: string | Case;
   locale: 'pt' | 'en';
+  eyebrow?: string | null;
   title?: string | null;
   summary?: string | null;
   introduction?: string | null;
@@ -328,6 +329,31 @@ export interface SiteNavigation {
     resumeLabel?: string | null;
     copyright?: string | null;
   };
+  controls?: {
+    homeLabel?: string | null;
+    casesLabel?: string | null;
+    contentsLabel?: string | null;
+    previousSectionLabel?: string | null;
+    nextSectionLabel?: string | null;
+    openMenuLabel?: string | null;
+    closeMenuLabel?: string | null;
+    languageLabel?: string | null;
+    newTabLabel?: string | null;
+    roleLabel?: string | null;
+    scopeLabel?: string | null;
+  };
+  messages?: {
+    translationUnavailable?: string | null;
+    emptyCasesTitle?: string | null;
+    emptyCasesDescription?: string | null;
+    caseUnavailableTitle?: string | null;
+    caseUnavailableDescription?: string | null;
+    temporaryFailureTitle?: string | null;
+    temporaryFailureDescription?: string | null;
+    retryLabel?: string | null;
+    notFoundTitle?: string | null;
+    notFoundDescription?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -355,6 +381,16 @@ export interface ProfessionalProfile {
       caption?: string | null;
     };
     projectsLabel?: string | null;
+  };
+  homeProjects?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    description?: string | null;
+  };
+  listing?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    description?: string | null;
   };
   homeAbout?: {
     eyebrow?: string | null;
@@ -427,6 +463,8 @@ export interface ProfessionalProfile {
   seo?: {
     homeTitle?: string | null;
     homeDescription?: string | null;
+    listingTitle?: string | null;
+    listingDescription?: string | null;
     aboutTitle?: string | null;
     aboutDescription?: string | null;
     image?: {
@@ -575,6 +613,7 @@ export interface CasesSelect<T extends boolean = true> {
 export interface CaseContentSelect<T extends boolean = true> {
   case?: T;
   locale?: T;
+  eyebrow?: T;
   title?: T;
   summary?: T;
   introduction?: T;
@@ -708,6 +747,35 @@ export interface SiteNavigationSelect<T extends boolean = true> {
         resumeLabel?: T;
         copyright?: T;
       };
+  controls?:
+    | T
+    | {
+        homeLabel?: T;
+        casesLabel?: T;
+        contentsLabel?: T;
+        previousSectionLabel?: T;
+        nextSectionLabel?: T;
+        openMenuLabel?: T;
+        closeMenuLabel?: T;
+        languageLabel?: T;
+        newTabLabel?: T;
+        roleLabel?: T;
+        scopeLabel?: T;
+      };
+  messages?:
+    | T
+    | {
+        translationUnavailable?: T;
+        emptyCasesTitle?: T;
+        emptyCasesDescription?: T;
+        caseUnavailableTitle?: T;
+        caseUnavailableDescription?: T;
+        temporaryFailureTitle?: T;
+        temporaryFailureDescription?: T;
+        retryLabel?: T;
+        notFoundTitle?: T;
+        notFoundDescription?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -740,6 +808,20 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
               caption?: T;
             };
         projectsLabel?: T;
+      };
+  homeProjects?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+      };
+  listing?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
       };
   homeAbout?:
     | T
@@ -828,6 +910,8 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
     | {
         homeTitle?: T;
         homeDescription?: T;
+        listingTitle?: T;
+        listingDescription?: T;
         aboutTitle?: T;
         aboutDescription?: T;
         image?:

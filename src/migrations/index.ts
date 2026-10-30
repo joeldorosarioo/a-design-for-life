@@ -1,6 +1,9 @@
 import * as migration_20261030_003022_initial_base from './20261030_003022_initial_base';
 import * as migration_20261030_020021_editorial_models from './20261030_020021_editorial_models';
 import * as migration_20261030_020521_structural_uniqueness from './20261030_020521_structural_uniqueness';
+import * as migration_20261030_024431_case_locale_uniqueness from './20261030_024431_case_locale_uniqueness';
+import * as migration_20261030_024640_route_locale_slug_uniqueness from './20261030_024640_route_locale_slug_uniqueness';
+import * as migration_20261030_030036_global_editorial_copy from './20261030_030036_global_editorial_copy';
 
 export const migrations = [
   {
@@ -17,5 +20,20 @@ export const migrations = [
     up: migration_20261030_020521_structural_uniqueness.up,
     down: migration_20261030_020521_structural_uniqueness.down,
     name: '20261030_020521_structural_uniqueness',
+  },
+  {
+    up: migration_20261030_024431_case_locale_uniqueness.up,
+    down: migration_20261030_024431_case_locale_uniqueness.down,
+    name: '20261030_024431_case_locale_uniqueness',
+  },
+  {
+    up: migration_20261030_024640_route_locale_slug_uniqueness.up,
+    down: migration_20261030_024640_route_locale_slug_uniqueness.down,
+    name: '20261030_024640_route_locale_slug_uniqueness',
+  },
+  {
+    up: migration_20261030_030036_global_editorial_copy.up,
+    down: migration_20261030_030036_global_editorial_copy.down,
+    name: '20261030_030036_global_editorial_copy',
   },
 ];

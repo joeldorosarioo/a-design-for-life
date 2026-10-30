@@ -1,5 +1,8 @@
 import 'server-only';
 import { APIError, type CollectionConfig } from 'payload';
+import { profileInputSchema } from '../../contracts/profile.schema';
+import { requiredIdentity, validatedWrite } from '@/helpers/payload/validate-input';
+import { structuralIdentitySchema } from '../../contracts/identity.schema';
 import { immutableFields } from '@/helpers/payload/immutable-fields';
 import { imageUseField } from '@/features/media-library/server';
 
@@ -10,7 +13,11 @@ export const ProfessionalProfiles: CollectionConfig = {
   admin: { useAsTitle: 'locale', defaultColumns: ['locale', '_status'] },
   versions: { drafts: true },
   hooks: {
-    beforeChange: [immutableFields({ locale: 'Idioma não pode ser alterado.' })],
+    beforeOperation: [validatedWrite(profileInputSchema)],
+    beforeChange: [
+      requiredIdentity(structuralIdentitySchema),
+      immutableFields({ locale: 'Idioma não pode ser alterado.' }),
+    ],
     beforeDelete: [
       () => {
         throw new APIError('Documento estrutural não pode ser excluído.', 403);
@@ -18,8 +25,11 @@ export const ProfessionalProfiles: CollectionConfig = {
     ],
   },
   access: {
-    create: ({ req }) => Boolean(req.user),
-    read: ({ req }) => (req.user ? true : { _status: { equals: 'published' } }),
+    create: ({ req }) => Boolean(req.user) || req.context.trustedStructuralProvisioning === true,
+    read: ({ req }) =>
+      req.user || req.context.trustedStructuralProvisioning === true
+        ? true
+        : { _status: { equals: 'published' } },
     readVersions: ({ req }) => Boolean(req.user),
     update: ({ req }) => Boolean(req.user),
     delete: () => false,
@@ -53,6 +63,26 @@ export const ProfessionalProfiles: CollectionConfig = {
         { name: 'description', label: 'Descrição', type: 'textarea' },
         imageUseField('portrait', 'Retrato'),
         { name: 'projectsLabel', label: 'Rótulo da ação para projetos', type: 'text' },
+      ],
+    },
+    {
+      name: 'homeProjects',
+      label: 'Projetos na Home',
+      type: 'group',
+      fields: [
+        { name: 'eyebrow', label: 'Identificação editorial', type: 'text' },
+        { name: 'title', label: 'Título', type: 'text' },
+        { name: 'description', label: 'Descrição', type: 'textarea' },
+      ],
+    },
+    {
+      name: 'listing',
+      label: 'Listagem de cases',
+      type: 'group',
+      fields: [
+        { name: 'eyebrow', label: 'Identificação editorial', type: 'text' },
+        { name: 'title', label: 'Título', type: 'text' },
+        { name: 'description', label: 'Descrição', type: 'textarea' },
       ],
     },
     {
@@ -139,6 +169,8 @@ export const ProfessionalProfiles: CollectionConfig = {
       fields: [
         { name: 'homeTitle', label: 'Título de busca da Home', type: 'text' },
         { name: 'homeDescription', label: 'Descrição de busca da Home', type: 'textarea' },
+        { name: 'listingTitle', label: 'Título de busca da listagem', type: 'text' },
+        { name: 'listingDescription', label: 'Descrição de busca da listagem', type: 'textarea' },
         { name: 'aboutTitle', label: 'Título de busca de Sobre', type: 'text' },
         { name: 'aboutDescription', label: 'Descrição de busca de Sobre', type: 'textarea' },
         imageUseField('image', 'Imagem de compartilhamento'),

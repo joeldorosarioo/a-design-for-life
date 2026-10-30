@@ -73,3 +73,7 @@ Ajuste posterior do usuário: os commits não precisam ser tão pequenos; devem 
 ## Relato de progresso solicitado pelo usuário
 
 Informar a porcentagem da etapa atual em toda atualização. Critério: tarefas concluídas divididas pelo total da etapa, sem contar uma tarefa em andamento como pronta. Estado neste registro: etapa 1 em 25% (E1.1/E1.2 concluídas, 2 de 8; E1.3 em andamento). A consolidação dos commits por responsabilidade e os novos marcos equivalentes estão em history-correction.md. develop e Conventional Commits em inglês continuam obrigatórios.
+
+## E1.3 — snapshot encaminhado para revisão
+
+Etapa 1 permanece em 25% (E1.1/E1.2,2/8). O snapshot E1.3 acrescenta os índices compostos e provas de corrida real, contratos de entrada/DTOs e mapeadores mínimos, proteção de identidade/chaves de leitura e CLI explícito de provisionamento pós-migração sem conta fictícia. pnpm verify passou com107 testes/build;2 jornadas Playwright passaram em3101; caracterização adicional de reload nativo e checks finais estão em E1.3.md. O item E1.3 segue desmarcado até o gate/revisão independente do coordenador. Nenhuma tarefa seguinte ou A1 foi declarada concluída.

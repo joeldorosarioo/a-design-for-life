@@ -1,0 +1,119 @@
+.github/workflows/checks.yml 17ms (unchanged)
+.prettierrc.json 12ms (unchanged)
+AGENTS.md 23ms (unchanged)
+compose.local.yaml 5ms (unchanged)
+dependency-cruiser.config.cjs 8ms (unchanged)
+docs/architecture/fronteiras.md 21ms (unchanged)
+docs/architecture/modelo-editorial.md 7ms (unchanged)
+docs/decisions/001-stack-validada.md 11ms (unchanged)
+docs/runbooks/ambiente-local.md 8ms (unchanged)
+docs/verification/E1.1-security-research.md 50ms (unchanged)
+docs/verification/E1.1.md 33ms (unchanged)
+docs/verification/E1.2.md 17ms (unchanged)
+docs/verification/E1.3.md 7ms (unchanged)
+docs/verification/execucao-etapa-1.md 9ms (unchanged)
+docs/verification/history-correction.md 7ms (unchanged)
+eslint.config.mjs 14ms (unchanged)
+next.config.ts 22ms (unchanged)
+package.json 1ms
+playwright.config.ts 5ms (unchanged)
+pnpm-workspace.yaml 1ms (unchanged)
+README.md 2ms (unchanged)
+src/app/(payload)/admin/[[...segments]]/not-found.tsx 8ms (unchanged)
+src/app/(payload)/admin/[[...segments]]/page.tsx 3ms (unchanged)
+src/app/(payload)/admin/admin.e2e.test.ts 4ms (unchanged)
+src/app/(payload)/api/[...slug]/route.ts 3ms (unchanged)
+src/app/(payload)/layout.tsx 5ms (unchanged)
+src/config/architecture.test.ts 31ms (unchanged)
+src/config/architecture.ts 16ms (unchanged)
+src/config/provision-structural-bootstrap.integration.test.ts 8ms
+src/config/provision-structural-cli.integration.test.ts 8ms
+src/config/provision-structural-documents.cli.ts 2ms
+src/config/provision-structural-documents.integration.test.ts 8ms (unchanged)
+src/config/provision-structural-documents.ts 5ms (unchanged)
+src/config/public-runtime.test.ts 2ms (unchanged)
+src/config/public-runtime.ts 1ms (unchanged)
+src/config/server-env.test.ts 4ms (unchanged)
+src/config/server-env.ts 5ms (unchanged)
+src/features/cases/content/blocks/case-blocks.ts 2ms (unchanged)
+src/features/cases/content/collections/case-content.integration.test.ts 18ms
+src/features/cases/content/collections/case-content.ts 6ms
+src/features/cases/content/collections/case-routes.integration.test.ts 5ms
+src/features/cases/content/collections/case-routes.ts 2ms
+src/features/cases/content/collections/cases.ts 2ms (unchanged)
+src/features/cases/content/editor/contextual-link-feature.integration.test.ts 9ms
+src/features/cases/content/editor/contextual-link-feature.ts 3ms
+src/features/cases/content/hooks/stable-reading-keys.ts 5ms
+src/features/cases/contracts/case-dto.schema.ts 3ms
+src/features/cases/contracts/case-identity.schema.ts 1ms
+src/features/cases/contracts/case.schema.ts 4ms
+src/features/cases/contracts/contextual-link-switch.schema.test.ts 2ms
+src/features/cases/contracts/contextual-link.schema.test.ts 2ms
+src/features/cases/contracts/contextual-link.schema.ts 5ms
+src/features/cases/contracts/editorial-conflict.schema.ts 2ms
+src/features/cases/contracts/rich-text.schema.test.ts 3ms
+src/features/cases/contracts/rich-text.schema.ts 9ms
+src/features/cases/index.ts 1ms
+src/features/cases/server.ts 1ms
+src/features/cases/server/map-case-detail.test.ts 3ms
+src/features/cases/server/map-case-detail.ts 5ms
+src/features/cases/server/translate-case-conflict.ts 2ms
+src/features/media-library/content/collections/media.integration.test.ts 2ms (unchanged)
+src/features/media-library/content/collections/media.ts 2ms (unchanged)
+src/features/media-library/content/fields/image-use-fields.ts 1ms (unchanged)
+src/features/media-library/contracts/image-use-dto.schema.ts 1ms
+src/features/media-library/contracts/image-use.schema.ts 1ms
+src/features/media-library/index.ts 1ms
+src/features/media-library/server.ts 1ms
+src/features/media-library/server/map-image-use.test.ts 3ms
+src/features/media-library/server/map-image-use.ts 3ms
+src/features/professional-profile/content/collections/professional-profiles.integration.test.ts 7ms
+src/features/professional-profile/content/collections/professional-profiles.ts 10ms
+src/features/professional-profile/contracts/identity.schema.ts 1ms
+src/features/professional-profile/contracts/profile-dto.schema.ts 2ms
+src/features/professional-profile/contracts/profile.schema.ts 8ms
+src/features/professional-profile/index.ts 1ms
+src/features/professional-profile/server.ts 1ms
+src/features/professional-profile/server/ensure-profile-drafts.ts 2ms (unchanged)
+src/features/professional-profile/server/map-profile.test.ts 2ms
+src/features/professional-profile/server/map-profile.ts 2ms
+src/features/site-navigation/content/collections/site-navigation.integration.test.ts 6ms
+src/features/site-navigation/content/collections/site-navigation.ts 4ms
+src/features/site-navigation/contracts/identity.schema.ts 1ms
+src/features/site-navigation/contracts/navigation-dto.schema.ts 3ms
+src/features/site-navigation/contracts/navigation.schema.ts 2ms
+src/features/site-navigation/index.ts 0ms
+src/features/site-navigation/server.ts 0ms
+src/features/site-navigation/server/ensure-navigation-drafts.ts 1ms (unchanged)
+src/features/site-navigation/server/map-navigation.test.ts 3ms
+src/features/site-navigation/server/map-navigation.ts 2ms
+src/helpers/i18n/locale.schema.ts 1ms
+src/helpers/payload/immutable-fields.ts 2ms (unchanged)
+src/helpers/payload/input-metadata.schema.ts 1ms
+src/helpers/payload/users.collection.integration.test.ts 1ms (unchanged)
+src/helpers/payload/users.collection.ts 2ms (unchanged)
+src/helpers/payload/validate-input.ts 3ms
+src/migrations/20261030_003022_initial_base.json 9ms (unchanged)
+src/migrations/20261030_003022_initial_base.ts 2ms (unchanged)
+src/migrations/20261030_020021_editorial_models.json 46ms (unchanged)
+src/migrations/20261030_020021_editorial_models.ts 2ms (unchanged)
+src/migrations/20261030_020521_structural_uniqueness.json 40ms (unchanged)
+src/migrations/20261030_020521_structural_uniqueness.ts 2ms (unchanged)
+src/migrations/20261030_024431_case_locale_uniqueness.json 48ms (unchanged)
+src/migrations/20261030_024431_case_locale_uniqueness.ts 2ms
+src/migrations/20261030_024640_route_locale_slug_uniqueness.json 47ms (unchanged)
+src/migrations/20261030_024640_route_locale_slug_uniqueness.ts 1ms
+src/migrations/20261030_030036_global_editorial_copy.json 38ms (unchanged)
+src/migrations/20261030_030036_global_editorial_copy.ts 1ms
+src/migrations/index.ts 1ms
+src/payload.config.ts 2ms
+testing/fixtures/content.ts 1ms (unchanged)
+testing/fixtures/editorial-payload.ts 2ms (unchanged)
+testing/setup/integration-global.ts 2ms (unchanged)
+testing/setup/integration.ts 0ms (unchanged)
+testing/setup/playwright.ts 4ms (unchanged)
+testing/setup/server-only.ts 0ms (unchanged)
+testing/setup/test-environment.ts 1ms (unchanged)
+testing/setup/vitest.ts 0ms (unchanged)
+tsconfig.json 1ms (unchanged)
+vitest.config.ts 2ms (unchanged)
