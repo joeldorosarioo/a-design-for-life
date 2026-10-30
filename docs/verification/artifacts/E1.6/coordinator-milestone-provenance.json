@@ -1,0 +1,71 @@
+{
+  "target": "0fa495864cfefcf3489856d66444b81fdf1f730e",
+  "date": "2026-10-30",
+  "timezone": "America/Sao_Paulo",
+  "stage1Percent": 87.5,
+  "completedTasks": [
+    "E1.1",
+    "E1.2",
+    "E1.3",
+    "E1.4",
+    "E1.5",
+    "E1.6",
+    "E1.7"
+  ],
+  "remainingTasks": [
+    "E1.8"
+  ],
+  "sourceHashesMatched": 49,
+  "candidateArtifactsMatched": 175,
+  "verification": {
+    "ciRun": 41055328780,
+    "ciJob": 124061294601,
+    "runner": "ubuntu-24.04",
+    "tests": 350,
+    "files": 49,
+    "e2e": 22,
+    "conclusion": "success"
+  },
+  "reviews": {
+    "initialSpecFindings": 0,
+    "initialQualityImportant": 1,
+    "fixRound": 1,
+    "finalFinding": "P2 addressed",
+    "newFindings": 0
+  },
+  "copies": [
+    {
+      "source": "stage1-briefs/E1.6-review1-quality-0fa4958.md",
+      "file": "review1-quality-0fa4958.md",
+      "bytes": 7714,
+      "sha256": "27e8d7dfdcf25257aac037ef37da53cfe8bd31c16ead45a71f72b15214d10ac8",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-ci-0fa4958-status.json",
+      "file": "github-ci-final.json",
+      "bytes": 3200,
+      "sha256": "9c880937a00e82febe180917f7ed858cc7fefe0ce332b9ea6652419d2f55ae81",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-job-124061294601.txt",
+      "file": "github-job-final.txt",
+      "bytes": 350254,
+      "sha256": "5c3cf55f80a876ab16e3b7d2b4d4b1d56e563d491403aede057bd4c1217eff21",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "file": "github-promotion-final.json",
+      "bytes": 387,
+      "sha256": "8acbb2e848e23b9f8dce78eef14f27739aa74cfa4495c0a8c435cb2dd0c89c47",
+      "transformation": "coordinator observation of executed push and subsequent ls-remote"
+    }
+  ],
+  "sensitivePatternScan": {
+    "jwt": false,
+    "githubCredential": false,
+    "resetUrl": false
+  },
+  "scope": "Task6 complete; task8 and A1 pending. Candidate artifact-index stays sealed at target; this manifest covers coordinator additions. No application source changed."
+}
