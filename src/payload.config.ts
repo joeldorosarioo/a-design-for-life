@@ -16,6 +16,7 @@ import sharp from 'sharp';
 import { readServerEnv } from './config/server-env';
 import { Users } from './helpers/payload/users.collection';
 import { Cases } from './features/cases/content/collections/cases';
+import { protectCaseIdentitySchema } from './features/cases/content/schema/protect-case-identity';
 import { CaseContent } from './features/cases/content/collections/case-content';
 import { CaseRoutes } from './features/cases/content/collections/case-routes';
 import { SiteNavigation } from './features/site-navigation/content/collections/site-navigation';
@@ -38,6 +39,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: { connectionString: env.DATABASE_URI },
+    beforeSchemaInit: [protectCaseIdentitySchema],
     idType: 'uuid',
     migrationDir: path.resolve(sourceDirectory, 'migrations'),
     push: false,

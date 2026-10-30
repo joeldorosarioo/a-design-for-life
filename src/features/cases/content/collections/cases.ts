@@ -1,5 +1,6 @@
 import 'server-only';
 import type { CollectionConfig } from 'payload';
+import { protectCaseDeletion } from '../hooks/protect-case-deletion';
 
 export const Cases: CollectionConfig = {
   slug: 'cases',
@@ -8,6 +9,7 @@ export const Cases: CollectionConfig = {
     useAsTitle: 'internalTitle',
     defaultColumns: ['internalTitle', 'sortOrder', 'featured'],
   },
+  hooks: { beforeDelete: [protectCaseDeletion] },
   access: {
     create: ({ req }) => Boolean(req.user),
     read: ({ req }) => Boolean(req.user),

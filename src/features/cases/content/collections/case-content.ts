@@ -12,6 +12,7 @@ import type { CollectionConfig } from 'payload';
 import { imageUseField } from '@/features/media-library/server';
 
 import { stableReadingKeys } from '../hooks/stable-reading-keys';
+import { rejectSameOriginExternalLinks } from '../hooks/reject-same-origin-external-links';
 import { caseBlocks } from '../blocks/case-blocks';
 
 export const CaseContent: CollectionConfig = {
@@ -28,6 +29,7 @@ export const CaseContent: CollectionConfig = {
   hooks: {
     beforeOperation: [validatedWrite(caseInputSchema)],
     beforeChange: [
+      rejectSameOriginExternalLinks,
       stableReadingKeys,
       requiredIdentity(caseIdentitySchema),
       immutableFields({

@@ -4,6 +4,7 @@ import * as migration_20261030_020521_structural_uniqueness from './20261030_020
 import * as migration_20261030_024431_case_locale_uniqueness from './20261030_024431_case_locale_uniqueness';
 import * as migration_20261030_024640_route_locale_slug_uniqueness from './20261030_024640_route_locale_slug_uniqueness';
 import * as migration_20261030_030036_global_editorial_copy from './20261030_030036_global_editorial_copy';
+import * as migration_20261030_035306_protect_case_identity_references from './20261030_035306_protect_case_identity_references';
 
 export const migrations = [
   {
@@ -35,5 +36,10 @@ export const migrations = [
     up: migration_20261030_030036_global_editorial_copy.up,
     down: migration_20261030_030036_global_editorial_copy.down,
     name: '20261030_030036_global_editorial_copy',
+  },
+  {
+    up: migration_20261030_035306_protect_case_identity_references.up,
+    down: migration_20261030_035306_protect_case_identity_references.down,
+    name: '20261030_035306_protect_case_identity_references',
   },
 ];

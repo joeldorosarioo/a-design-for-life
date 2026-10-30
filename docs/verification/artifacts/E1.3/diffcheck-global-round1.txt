@@ -1,0 +1,1291 @@
+docs/verification/artifacts/E1.3/format-check-round1-final.txt:1: trailing whitespace.
++$ prettier --check .
+docs/verification/artifacts/E1.3/format-check-round1-final.txt:2: trailing whitespace.
++Checking formatting...
+docs/verification/artifacts/E1.3/format-check-round1-final.txt:3: trailing whitespace.
++All matched files use Prettier code style!
+docs/verification/artifacts/E1.3/format-check-round1-first.txt:1: trailing whitespace.
++$ prettier --check .
+docs/verification/artifacts/E1.3/format-check-round1-first.txt:2: trailing whitespace.
++Checking formatting...
+docs/verification/artifacts/E1.3/format-check-round1-first.txt:3: trailing whitespace.
++All matched files use Prettier code style!
+docs/verification/artifacts/E1.3/format-round1-source.txt:1: trailing whitespace.
++src/features/cases/content/blocks/case-blocks.ts 36ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:2: trailing whitespace.
++src/features/cases/content/collections/case-content.integration.test.ts 44ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:3: trailing whitespace.
++src/features/cases/content/collections/case-content.ts 12ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:4: trailing whitespace.
++src/features/cases/content/collections/case-routes.integration.test.ts 9ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:5: trailing whitespace.
++src/features/cases/content/collections/case-routes.ts 3ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:6: trailing whitespace.
++src/features/cases/content/collections/cases.integration.test.ts 18ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:7: trailing whitespace.
++src/features/cases/content/collections/cases.ts 2ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:8: trailing whitespace.
++src/features/cases/content/editor/contextual-link-feature.integration.test.ts 23ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:9: trailing whitespace.
++src/features/cases/content/editor/contextual-link-feature.ts 4ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:10: trailing whitespace.
++src/features/cases/content/hooks/protect-case-deletion.ts 3ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:11: trailing whitespace.
++src/features/cases/content/hooks/reject-same-origin-external-links.ts 5ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:12: trailing whitespace.
++src/features/cases/content/hooks/stable-reading-keys.ts 4ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:13: trailing whitespace.
++src/features/cases/content/schema/protect-case-identity.ts 2ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:14: trailing whitespace.
++src/features/cases/contracts/case-dto.schema.ts 5ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:15: trailing whitespace.
++src/features/cases/contracts/case-identity.schema.ts 1ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:16: trailing whitespace.
++src/features/cases/contracts/case.schema.ts 4ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:17: trailing whitespace.
++src/features/cases/contracts/contextual-link-switch.schema.test.ts 1ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:18: trailing whitespace.
++src/features/cases/contracts/contextual-link.schema.test.ts 2ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:19: trailing whitespace.
++src/features/cases/contracts/contextual-link.schema.ts 5ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:20: trailing whitespace.
++src/features/cases/contracts/editorial-conflict.schema.ts 1ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:21: trailing whitespace.
++src/features/cases/contracts/rich-text.schema.test.ts 4ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:22: trailing whitespace.
++src/features/cases/contracts/rich-text.schema.ts 8ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:23: trailing whitespace.
++src/features/cases/index.ts 1ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:24: trailing whitespace.
++src/features/cases/server.ts 1ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:25: trailing whitespace.
++src/features/cases/server/map-case-detail.test.ts 4ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:26: trailing whitespace.
++src/features/cases/server/map-case-detail.ts 5ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:27: trailing whitespace.
++src/features/cases/server/translate-case-conflict.ts 2ms (unchanged)
+docs/verification/artifacts/E1.3/format-round1-source.txt:28: trailing whitespace.
++src/payload.config.ts 3ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:29: trailing whitespace.
++src/migrations/index.ts 2ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:30: trailing whitespace.
++src/migrations/20261030_035306_protect_case_identity_references.ts 2ms
+docs/verification/artifacts/E1.3/format-round1-source.txt:31: trailing whitespace.
++testing/fixtures/check-editorial-roundtrip.ts 3ms (unchanged)
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:1: trailing whitespace.
++$ vitest run --project integration src/features/cases/content/collections/cases.integration.test.ts src/features/cases/content/editor/contextual-link-feature.integration.test.ts
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:5: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:6: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:7: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:8: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:9: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:10: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:11: trailing whitespace.
++[00:53:23] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:12: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:13: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:14: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:15: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:16: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (86ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:17: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:18: trailing whitespace.
++[00:53:23] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:19: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:20: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:21: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:22: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:23: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:24: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:25: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:26: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:27: trailing whitespace.
++[00:53:24] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:28: trailing whitespace.
++[00:53:26] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:29: trailing whitespace.
++[00:53:28] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:30: trailing whitespace.
++
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:31: trailing whitespace.
++ Test Files  2 passed (2)
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:32: trailing whitespace.
++      Tests  15 passed (15)
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:33: trailing whitespace.
++   Start at  00:53:19
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:34: trailing whitespace.
++   Duration  9.73s (import 74%, tests 20%, setup 3%, transform 2%)
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:35: trailing whitespace.
++
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:36: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:37: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:38: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:39: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.3/green-case-reference-and-origin-guards-first.txt:40: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:1: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:2: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:3: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:4: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:5: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:6: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:7: trailing whitespace.
++Verified own postgres-test: loopback55433, adfl_test_base, tmpfs; only this fixture receives rollback.
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:8: trailing whitespace.
++[00:55:02] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:9: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:10: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:11: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:12: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:13: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (94ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:14: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:15: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:16: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:17: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:18: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:19: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:20: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:21: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:22: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:23: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:24: trailing whitespace.
++[00:55:02] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:25: trailing whitespace.
++[00:55:04] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:26: trailing whitespace.
++[00:55:04] [32mINFO[39m: [36mStructural drafts provisioned: navigation and profile, pt/en.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:27: trailing whitespace.
++[00:55:07] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:28: trailing whitespace.
++Roundtrip fixture verified: exactly four private structural drafts and zero human accounts.
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:29: trailing whitespace.
++[00:55:09] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:30: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:31: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mRolling back batch 1 consisting of 7 migration(s).[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:32: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_035306_protect_case_identity_references[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:33: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_035306_protect_case_identity_references (8ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:34: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:35: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_030036_global_editorial_copy (9ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:36: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:37: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:38: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:39: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_024431_case_locale_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:40: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:41: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_020521_structural_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:42: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:43: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_020021_editorial_models (59ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:44: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrating down: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:45: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mMigrated down:  20261030_003022_initial_base (14ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:46: trailing whitespace.
++[00:55:09] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:47: trailing whitespace.
++[00:55:11] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:48: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:49: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:50: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (38ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:51: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:52: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (84ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:53: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:54: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:55: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:56: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:57: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:58: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:59: trailing whitespace.
++[00:55:11] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:60: trailing whitespace.
++[00:55:12] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:61: trailing whitespace.
++[00:55:12] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:62: trailing whitespace.
++[00:55:12] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:63: trailing whitespace.
++[00:55:12] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:64: trailing whitespace.
++[00:55:14] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:65: trailing whitespace.
++[00:55:14] [32mINFO[39m: [36mStructural drafts provisioned: navigation and profile, pt/en.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:66: trailing whitespace.
++[00:55:16] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:67: trailing whitespace.
++Roundtrip fixture verified: exactly four private structural drafts and zero human accounts.
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:68: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:69: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:70: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:71: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.3/green-native-round1-full-migration-roundtrip.txt:72: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.3/inspect-case-reference-schema.txt:1: trailing whitespace.
++$ node --conditions=react-server ./node_modules/payload/bin.js run .work/inspect-case-schema.ts
+docs/verification/artifacts/E1.3/inspect-case-reference-schema.txt:2: trailing whitespace.
++[00:48:26] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/inspect-case-reference-schema.txt:3: trailing whitespace.
++{"name":"case_content","columns":[["case",{"name":"case_id","type":"uuid","reference":{"name":"id","onDelete":"set null","table":"cases"}}]],"foreignKeys":{}}
+docs/verification/artifacts/E1.3/inspect-case-reference-schema.txt:4: trailing whitespace.
++{"name":"_case_content_v","columns":[["version_case",{"name":"version_case_id","type":"uuid","reference":{"name":"id","onDelete":"set null","table":"cases"}}]],"foreignKeys":{}}
+docs/verification/artifacts/E1.3/inspect-case-reference-schema.txt:5: trailing whitespace.
++{"name":"case_routes","columns":[["case",{"name":"case_id","type":"uuid","reference":{"name":"id","onDelete":"set null","table":"cases"},"notNull":true}]],"foreignKeys":{}}
+docs/verification/artifacts/E1.3/lint-round1-final.txt:1: trailing whitespace.
++$ eslint .
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:1: trailing whitespace.
++src/migrations/20261030_024431_case_locale_uniqueness.json 84ms (unchanged)
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:2: trailing whitespace.
++src/migrations/20261030_024640_route_locale_slug_uniqueness.json 57ms (unchanged)
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:3: trailing whitespace.
++src/migrations/20261030_030036_global_editorial_copy.json 51ms (unchanged)
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:4: trailing whitespace.
++src/migrations/20261030_035306_protect_case_identity_references.json 40ms
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:5: trailing whitespace.
++src/migrations/20261030_024431_case_locale_uniqueness.json: identical complete parsed JSON; SHA256=081a77860fa4b7b9f973fc39059c9df9150e4b4eb9433f36b319c1982335ef80
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:6: trailing whitespace.
++src/migrations/20261030_024640_route_locale_slug_uniqueness.json: identical complete parsed JSON; SHA256=01ed208afe072163012be2d74054b75c9ab4de23350925499fb052de67ceea48
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:7: trailing whitespace.
++src/migrations/20261030_030036_global_editorial_copy.json: identical complete parsed JSON; SHA256=28e86aaf5003d9cd7e39c7278e1d62b323497e6a2d57dfc5e1559f11b0084771
+docs/verification/artifacts/E1.3/migration-format-semantic-round1.txt:8: trailing whitespace.
++src/migrations/20261030_035306_protect_case_identity_references.json: identical complete parsed JSON; SHA256=67437b1f229d31cd0b6b336ef5e54ee48d010bc90dabce15c6fc369c2a5fb4d6
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:1: trailing whitespace.
++$ node --conditions=react-server ./node_modules/payload/bin.js migrate:create protect_case_identity_references
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:2: trailing whitespace.
++[00:53:06] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:3: trailing whitespace.
++[00:53:06] [32mINFO[39m: [36mStarting migration: generating UP statements...[39m
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:4: trailing whitespace.
++[00:53:06] [32mINFO[39m: [36mMigration UP complete. Generating DOWN statements...[39m
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:5: trailing whitespace.
++[00:53:06] [32mINFO[39m: [36mMigration DOWN statements generation complete.[39m
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:6: trailing whitespace.
++[00:53:06] [32mINFO[39m: [36mMigration created at E:\a-design-for-life\src\migrations/20261030_035306_protect_case_identity_references.ts[39m
+docs/verification/artifacts/E1.3/migration-protect-case-identity.txt:7: trailing whitespace.
++[00:53:06] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:1: trailing whitespace.
++$ vitest run --project integration src/features/cases/content/collections/cases.integration.test.ts
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:5: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:6: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:7: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:8: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:9: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:10: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:11: trailing whitespace.
++[00:48:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:12: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:13: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:14: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:15: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:16: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (102ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:17: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:18: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:19: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:20: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:21: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:22: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:23: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:24: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:25: trailing whitespace.
++[00:48:31] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:26: trailing whitespace.
++[00:48:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:27: trailing whitespace.
++stdout | src/features/cases/content/collections/cases.integration.test.ts > a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:28: trailing whitespace.
++Observed actual PostgreSQL FK lock wait: delete from "cases"
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:29: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:30: trailing whitespace.
++ ❯ |integration| src/features/cases/content/collections/cases.integration.test.ts (5 tests | 3 failed) 443ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:31: trailing whitespace.
++   × rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=false 51ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:32: trailing whitespace.
++   × rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=true 26ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:33: trailing whitespace.
++   × a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida 72ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:35: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:36: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:37: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=false
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:38: trailing whitespace.
++AssertionError: promise resolved "{ …(6) }" instead of rejecting
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:40: trailing whitespace.
++- Expected
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:41: trailing whitespace.
+++ Received
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:42: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:43: trailing whitespace.
++- Error {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:44: trailing whitespace.
++-   "message": "rejected promise",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:45: trailing whitespace.
+++ {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:46: trailing whitespace.
+++   "createdAt": "2026-10-30T03:48:33.892Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:47: trailing whitespace.
+++   "featured": false,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:48: trailing whitespace.
+++   "id": "07a50231-2882-4434-8b24-f114440f02a1",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:49: trailing whitespace.
+++   "internalTitle": "Synthetic referenced identity",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:50: trailing whitespace.
+++   "sortOrder": 0,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:51: trailing whitespace.
+++   "updatedAt": "2026-10-30T03:48:33.892Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:52: trailing whitespace.
++  }
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:53: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:54: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:13:124
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:55: trailing whitespace.
++     11|  const versions = await fixture.payload.findVersions({ collection: 'ca…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:56: trailing whitespace.
++     12|  expect(versions.totalDocs).toBeGreaterThan(0);
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:57: trailing whitespace.
++     13|  await expect(fixture.payload.delete({ collection: 'cases', id: parent…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:58: trailing whitespace.
++       |                                                                                                                            ^
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:59: trailing whitespace.
++     14|  expect(await fixture.payload.findByID({ collection: 'cases', id: pare…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:60: trailing whitespace.
++     15|  expect(await fixture.payload.findByID({ collection: 'case-content', i…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:61: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:62: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:63: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:64: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=true
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:65: trailing whitespace.
++AssertionError: promise resolved "{ …(6) }" instead of rejecting
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:66: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:67: trailing whitespace.
++- Expected
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:68: trailing whitespace.
+++ Received
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:69: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:70: trailing whitespace.
++- Error {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:71: trailing whitespace.
++-   "message": "rejected promise",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:72: trailing whitespace.
+++ {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:73: trailing whitespace.
+++   "createdAt": "2026-10-30T03:48:33.942Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:74: trailing whitespace.
+++   "featured": false,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:75: trailing whitespace.
+++   "id": "94c03d26-6c4f-4e08-a07e-7c3aafa1db43",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:76: trailing whitespace.
+++   "internalTitle": "Synthetic referenced identity",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:77: trailing whitespace.
+++   "sortOrder": 0,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:78: trailing whitespace.
+++   "updatedAt": "2026-10-30T03:48:33.942Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:79: trailing whitespace.
++  }
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:80: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:81: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:13:124
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:82: trailing whitespace.
++     11|  const versions = await fixture.payload.findVersions({ collection: 'ca…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:83: trailing whitespace.
++     12|  expect(versions.totalDocs).toBeGreaterThan(0);
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:84: trailing whitespace.
++     13|  await expect(fixture.payload.delete({ collection: 'cases', id: parent…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:85: trailing whitespace.
++       |                                                                                                                            ^
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:86: trailing whitespace.
++     14|  expect(await fixture.payload.findByID({ collection: 'cases', id: pare…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:87: trailing whitespace.
++     15|  expect(await fixture.payload.findByID({ collection: 'case-content', i…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:88: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:89: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:90: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:91: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:92: trailing whitespace.
++AssertionError: expected 'fulfilled' to be 'rejected' // Object.is equality
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:93: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:94: trailing whitespace.
++Expected: "rejected"
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:95: trailing whitespace.
++Received: "fulfilled"
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:96: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:97: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:46:33
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:98: trailing whitespace.
++     44|   await waitForBlockedQuery('delete from "cases"');
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:99: trailing whitespace.
++     45|   await fixture.payload.db.commitTransaction(transactionID); committed…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:100: trailing whitespace.
++     46|   expect((await result).status).toBe('rejected');
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:101: trailing whitespace.
++       |                                 ^
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:102: trailing whitespace.
++     47|   expect(await fixture.payload.findByID({ collection: 'case-content', …
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:103: trailing whitespace.
++     48|   expect(await fixture.payload.findByID({ collection: 'cases', id: par…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:104: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:105: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:106: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:107: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:108: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:109: trailing whitespace.
++      Tests  3 failed | 2 passed (5)
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:110: trailing whitespace.
++   Start at  00:48:27
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:111: trailing whitespace.
++   Duration  7.11s (import 74%, tests 19%, setup 4%, transform 3%)
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:112: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:113: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:114: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:115: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:116: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:117: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion-race.txt:118: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:1: trailing whitespace.
++$ vitest run --project integration src/features/cases/content/collections/cases.integration.test.ts
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:5: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:6: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:7: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:8: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:9: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:10: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:11: trailing whitespace.
++[00:47:58] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:12: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:13: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:14: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (44ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:15: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:16: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (102ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:17: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:18: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:19: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:20: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:21: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:22: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:23: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:24: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:25: trailing whitespace.
++[00:47:58] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:26: trailing whitespace.
++[00:48:00] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:27: trailing whitespace.
++ ❯ |integration| src/features/cases/content/collections/cases.integration.test.ts (5 tests | 4 failed) 366ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:28: trailing whitespace.
++   × rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=false 53ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:29: trailing whitespace.
++   × rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=true 28ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:30: trailing whitespace.
++   × a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida 15ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:31: trailing whitespace.
++   × DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã quando exclusão vence 10ms
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:32: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:33: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:35: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=false
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:36: trailing whitespace.
++AssertionError: promise resolved "{ …(6) }" instead of rejecting
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:37: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:38: trailing whitespace.
++- Expected
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:39: trailing whitespace.
+++ Received
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:40: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:41: trailing whitespace.
++- Error {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:42: trailing whitespace.
++-   "message": "rejected promise",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:43: trailing whitespace.
+++ {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:44: trailing whitespace.
+++   "createdAt": "2026-10-30T03:48:00.650Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:45: trailing whitespace.
+++   "featured": false,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:46: trailing whitespace.
+++   "id": "ea425d22-2dc7-45cf-982d-cdfe73ba1512",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:47: trailing whitespace.
+++   "internalTitle": "Synthetic referenced identity",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:48: trailing whitespace.
+++   "sortOrder": 0,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:49: trailing whitespace.
+++   "updatedAt": "2026-10-30T03:48:00.650Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:50: trailing whitespace.
++  }
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:51: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:52: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:13:124
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:53: trailing whitespace.
++     11|  const versions = await fixture.payload.findVersions({ collection: 'ca…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:54: trailing whitespace.
++     12|  expect(versions.totalDocs).toBeGreaterThan(0);
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:55: trailing whitespace.
++     13|  await expect(fixture.payload.delete({ collection: 'cases', id: parent…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:56: trailing whitespace.
++       |                                                                                                                            ^
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:57: trailing whitespace.
++     14|  expect(await fixture.payload.findByID({ collection: 'cases', id: pare…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:58: trailing whitespace.
++     15|  expect(await fixture.payload.findByID({ collection: 'case-content', i…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:59: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:60: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:61: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:62: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=true
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:63: trailing whitespace.
++AssertionError: promise resolved "{ …(6) }" instead of rejecting
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:64: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:65: trailing whitespace.
++- Expected
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:66: trailing whitespace.
+++ Received
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:67: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:68: trailing whitespace.
++- Error {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:69: trailing whitespace.
++-   "message": "rejected promise",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:70: trailing whitespace.
+++ {
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:71: trailing whitespace.
+++   "createdAt": "2026-10-30T03:48:00.702Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:72: trailing whitespace.
+++   "featured": false,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:73: trailing whitespace.
+++   "id": "f9fd8230-7165-4bc9-be71-271afaf6e8c4",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:74: trailing whitespace.
+++   "internalTitle": "Synthetic referenced identity",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:75: trailing whitespace.
+++   "sortOrder": 0,
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:76: trailing whitespace.
+++   "updatedAt": "2026-10-30T03:48:00.702Z",
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:77: trailing whitespace.
++  }
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:78: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:79: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:13:124
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:80: trailing whitespace.
++     11|  const versions = await fixture.payload.findVersions({ collection: 'ca…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:81: trailing whitespace.
++     12|  expect(versions.totalDocs).toBeGreaterThan(0);
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:82: trailing whitespace.
++     13|  await expect(fixture.payload.delete({ collection: 'cases', id: parent…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:83: trailing whitespace.
++       |                                                                                                                            ^
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:84: trailing whitespace.
++     14|  expect(await fixture.payload.findByID({ collection: 'cases', id: pare…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:85: trailing whitespace.
++     15|  expect(await fixture.payload.findByID({ collection: 'case-content', i…
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:86: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:87: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:88: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:89: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:90: trailing whitespace.
++TypeError: Cannot read properties of undefined (reading 'execute')
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:91: trailing whitespace.
++ ❯ execute node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/postgres/execute.ts:11:24
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:92: trailing whitespace.
++ ❯ waitForBlockedQuery src/features/cases/content/collections/cases.integration.test.ts:27:43
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:93: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:94: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:44:9
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:95: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:96: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:97: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:98: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã quando exclusão vence
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:99: trailing whitespace.
++TypeError: Cannot read properties of undefined (reading 'execute')
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:100: trailing whitespace.
++ ❯ execute node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/postgres/execute.ts:11:24
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:101: trailing whitespace.
++ ❯ waitForBlockedQuery src/features/cases/content/collections/cases.integration.test.ts:27:43
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:102: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:103: trailing whitespace.
++ ❯ src/features/cases/content/collections/cases.integration.test.ts:62:9
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:104: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:105: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:106: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:107: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:108: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:109: trailing whitespace.
++      Tests  4 failed | 1 passed (5)
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:110: trailing whitespace.
++   Start at  00:47:53
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:111: trailing whitespace.
++   Duration  7.11s (import 77%, tests 16%, setup 3%, transform 3%)
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:112: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:113: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:114: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:115: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:116: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:117: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.3/red-referenced-case-deletion.txt:118: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:1: trailing whitespace.
++$ vitest run --project integration src/features/cases/content/editor/contextual-link-feature.integration.test.ts
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:5: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:6: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:7: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:8: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:9: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:10: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:11: trailing whitespace.
++[00:49:41] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:12: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:13: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:14: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (48ms)[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:15: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:16: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (112ms)[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:17: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:18: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (9ms)[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:19: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:20: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:21: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:22: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:23: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:24: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:25: trailing whitespace.
++[00:49:41] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:26: trailing whitespace.
++[00:49:43] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:27: trailing whitespace.
++ ❯ |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts (10 tests | 1 failed) 508ms
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:28: trailing whitespace.
++   × rejeita URL absoluta da própria origem no destino externo com caminho de campo específico 25ms
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:29: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:30: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:31: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:32: trailing whitespace.
++ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > rejeita URL absoluta da própria origem no destino externo com caminho de campo específico
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:33: trailing whitespace.
++AssertionError: promise resolved "{ …(17) }" instead of rejecting
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:35: trailing whitespace.
++- Expected
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:36: trailing whitespace.
+++ Received
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:37: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:38: trailing whitespace.
++- Error {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:39: trailing whitespace.
++-   "message": "rejected promise",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:40: trailing whitespace.
+++ {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:41: trailing whitespace.
+++   "_status": "draft",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:42: trailing whitespace.
+++   "case": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:43: trailing whitespace.
+++     "createdAt": "2026-10-30T03:49:44.374Z",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:44: trailing whitespace.
+++     "featured": false,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:45: trailing whitespace.
+++     "id": "b25ecbe2-cdb0-4e33-a326-36fb419e1f5b",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:46: trailing whitespace.
+++     "internalTitle": "Synthetic same-origin link",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:47: trailing whitespace.
+++     "sortOrder": 0,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:48: trailing whitespace.
+++     "updatedAt": "2026-10-30T03:49:44.374Z",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:49: trailing whitespace.
+++   },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:50: trailing whitespace.
+++   "contextNote": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:51: trailing whitespace.
+++   "cover": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:52: trailing whitespace.
+++     "alt": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:53: trailing whitespace.
+++     "caption": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:54: trailing whitespace.
+++     "decorative": false,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:55: trailing whitespace.
+++     "media": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:56: trailing whitespace.
+++   },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:57: trailing whitespace.
+++   "createdAt": "2026-10-30T03:49:44.378Z",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:58: trailing whitespace.
+++   "eyebrow": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:59: trailing whitespace.
+++   "id": "8ebde833-d200-4611-b38e-5de87e3d9d2e",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:60: trailing whitespace.
+++   "introduction": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:61: trailing whitespace.
+++   "locale": "pt",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:62: trailing whitespace.
+++   "role": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:63: trailing whitespace.
+++   "scope": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:64: trailing whitespace.
+++   "sections": [
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:65: trailing whitespace.
+++     {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:66: trailing whitespace.
+++       "blocks": [
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:67: trailing whitespace.
+++         {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:68: trailing whitespace.
+++           "blockName": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:69: trailing whitespace.
+++           "blockType": "text",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:70: trailing whitespace.
+++           "content": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:71: trailing whitespace.
+++             "root": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:72: trailing whitespace.
+++               "children": [
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:73: trailing whitespace.
+++                 {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:74: trailing whitespace.
+++                   "children": [
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:75: trailing whitespace.
+++                     {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:76: trailing whitespace.
+++                       "children": [
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:77: trailing whitespace.
+++                         {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:78: trailing whitespace.
+++                           "detail": 0,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:79: trailing whitespace.
+++                           "format": 0,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:80: trailing whitespace.
+++                           "mode": "normal",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:81: trailing whitespace.
+++                           "style": "",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:82: trailing whitespace.
+++                           "text": "Synthetic free internal URL",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:83: trailing whitespace.
+++                           "type": "text",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:84: trailing whitespace.
+++                           "version": 1,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:85: trailing whitespace.
+++                         },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:86: trailing whitespace.
+++                       ],
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:87: trailing whitespace.
+++                       "direction": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:88: trailing whitespace.
+++                       "fields": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:89: trailing whitespace.
+++                         "destination": "external",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:90: trailing whitespace.
+++                         "linkType": "custom",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:91: trailing whitespace.
+++                         "newTab": false,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:92: trailing whitespace.
+++                         "url": "http://127.0.0.1:3100/pt/about",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:93: trailing whitespace.
+++                       },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:94: trailing whitespace.
+++                       "format": "",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:95: trailing whitespace.
+++                       "indent": 0,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:96: trailing whitespace.
+++                       "type": "link",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:97: trailing whitespace.
+++                       "version": 3,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:98: trailing whitespace.
+++                     },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:99: trailing whitespace.
+++                   ],
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:100: trailing whitespace.
+++                   "direction": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:101: trailing whitespace.
+++                   "format": "",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:102: trailing whitespace.
+++                   "indent": 0,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:103: trailing whitespace.
+++                   "type": "paragraph",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:104: trailing whitespace.
+++                   "version": 1,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:105: trailing whitespace.
+++                 },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:106: trailing whitespace.
+++               ],
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:107: trailing whitespace.
+++               "direction": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:108: trailing whitespace.
+++               "format": "",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:109: trailing whitespace.
+++               "indent": 0,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:110: trailing whitespace.
+++               "type": "root",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:111: trailing whitespace.
+++               "version": 1,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:112: trailing whitespace.
+++             },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:113: trailing whitespace.
+++           },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:114: trailing whitespace.
+++           "id": "6ae413d84e9f862f28f96cb4",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:115: trailing whitespace.
+++           "readingKey": "ce2b1b6f-0c11-460b-8a63-be235a421874",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:116: trailing whitespace.
+++         },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:117: trailing whitespace.
+++       ],
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:118: trailing whitespace.
+++       "heading": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:119: trailing whitespace.
+++       "id": "6ae413d84e9f862f28f96cb5",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:120: trailing whitespace.
+++       "readingKey": "9a911419-952f-4721-adf6-9a24b69daaff",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:121: trailing whitespace.
+++     },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:122: trailing whitespace.
+++   ],
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:123: trailing whitespace.
+++   "seo": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:124: trailing whitespace.
+++     "description": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:125: trailing whitespace.
+++     "image": {
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:126: trailing whitespace.
+++       "alt": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:127: trailing whitespace.
+++       "caption": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:128: trailing whitespace.
+++       "decorative": false,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:129: trailing whitespace.
+++       "media": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:130: trailing whitespace.
+++     },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:131: trailing whitespace.
+++     "title": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:132: trailing whitespace.
+++   },
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:133: trailing whitespace.
+++   "slug": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:134: trailing whitespace.
+++   "summary": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:135: trailing whitespace.
+++   "title": null,
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:136: trailing whitespace.
+++   "updatedAt": "2026-10-30T03:49:44.378Z",
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:137: trailing whitespace.
++  }
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:138: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:139: trailing whitespace.
++ ❯ src/features/cases/content/editor/contextual-link-feature.integration.test.ts:300:243
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:140: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:141: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:142: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:143: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:144: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:145: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:146: trailing whitespace.
++      Tests  1 failed | 9 passed (10)
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:147: trailing whitespace.
++   Start at  00:49:37
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:148: trailing whitespace.
++   Duration  7.23s (import 72%, tests 21%, transform 3%, setup 3%)
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:149: trailing whitespace.
++
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:150: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:151: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:152: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:153: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:154: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.3/red-same-origin-external-link.txt:155: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.3/root-verify-final.txt:1: trailing whitespace.
++$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+docs/verification/artifacts/E1.3/root-verify-final.txt:2: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.3/root-verify-final.txt:3: trailing whitespace.
++$ eslint .
+docs/verification/artifacts/E1.3/root-verify-final.txt:4: trailing whitespace.
++$ prettier --check .
+docs/verification/artifacts/E1.3/root-verify-final.txt:5: trailing whitespace.
++Checking formatting...
+docs/verification/artifacts/E1.3/root-verify-final.txt:6: trailing whitespace.
++All matched files use Prettier code style!
+docs/verification/artifacts/E1.3/root-verify-final.txt:7: trailing whitespace.
++$ vitest run
+docs/verification/artifacts/E1.3/root-verify-final.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:9: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.3/root-verify-final.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:11: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.3/root-verify-final.txt:12: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.3/root-verify-final.txt:13: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.3/root-verify-final.txt:14: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.3/root-verify-final.txt:15: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.3/root-verify-final.txt:16: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.3/root-verify-final.txt:17: trailing whitespace.
++[00:42:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:18: trailing whitespace.
++[00:42:33] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:19: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:20: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:21: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:22: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (99ms)[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:23: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:24: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:25: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:26: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:27: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:28: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:29: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:30: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (11ms)[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:31: trailing whitespace.
++[00:42:34] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:32: trailing whitespace.
++[00:42:54] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:33: trailing whitespace.
++[00:43:03] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:34: trailing whitespace.
++[00:43:06] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:35: trailing whitespace.
++[00:43:08] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:36: trailing whitespace.
++[00:43:11] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:37: trailing whitespace.
++[00:43:13] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:38: trailing whitespace.
++[00:43:15] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:39: trailing whitespace.
++[00:43:18] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:40: trailing whitespace.
++[00:43:20] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:41: trailing whitespace.
++[00:43:22] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/root-verify-final.txt:42: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:43: trailing whitespace.
++ Test Files  20 passed (20)
+docs/verification/artifacts/E1.3/root-verify-final.txt:44: trailing whitespace.
++      Tests  108 passed (108)
+docs/verification/artifacts/E1.3/root-verify-final.txt:45: trailing whitespace.
++   Start at  00:42:29
+docs/verification/artifacts/E1.3/root-verify-final.txt:46: trailing whitespace.
++   Duration  53.49s (tests 54%, import 37%, setup 8%, transform 1%)
+docs/verification/artifacts/E1.3/root-verify-final.txt:47: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:48: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.3/root-verify-final.txt:49: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.3/root-verify-final.txt:50: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.3/root-verify-final.txt:51: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.3/root-verify-final.txt:52: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.3/root-verify-final.txt:53: trailing whitespace.
++$ next build
+docs/verification/artifacts/E1.3/root-verify-final.txt:54: trailing whitespace.
++▲ Next.js 16.4.3 (Turbopack)
+docs/verification/artifacts/E1.3/root-verify-final.txt:55: trailing whitespace.
++- Environments: .env
+docs/verification/artifacts/E1.3/root-verify-final.txt:56: trailing whitespace.
++✓ Running next.config.ts took 47ms
+docs/verification/artifacts/E1.3/root-verify-final.txt:57: trailing whitespace.
++- Experiments (use with caution):
+docs/verification/artifacts/E1.3/root-verify-final.txt:58: trailing whitespace.
++  ⨯ turbopackServerFastRefresh
+docs/verification/artifacts/E1.3/root-verify-final.txt:59: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:60: trailing whitespace.
++  Creating an optimized production build ...
+docs/verification/artifacts/E1.3/root-verify-final.txt:61: trailing whitespace.
++✓ Compiled successfully in 2.5s
+docs/verification/artifacts/E1.3/root-verify-final.txt:62: trailing whitespace.
++  Running TypeScript ...
+docs/verification/artifacts/E1.3/root-verify-final.txt:63: trailing whitespace.
++  Finished TypeScript in 5.3s ...
+docs/verification/artifacts/E1.3/root-verify-final.txt:64: trailing whitespace.
++  Collecting page data using 5 workers ...
+docs/verification/artifacts/E1.3/root-verify-final.txt:65: trailing whitespace.
++  Generating static pages using 5 workers (0/2) ...
+docs/verification/artifacts/E1.3/root-verify-final.txt:66: trailing whitespace.
++✓ Generating static pages using 5 workers (2/2) in 441ms
+docs/verification/artifacts/E1.3/root-verify-final.txt:67: trailing whitespace.
++  Finalizing page optimization ...
+docs/verification/artifacts/E1.3/root-verify-final.txt:68: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:69: trailing whitespace.
++Route (app)
+docs/verification/artifacts/E1.3/root-verify-final.txt:70: trailing whitespace.
++┌ ○ /_not-found
+docs/verification/artifacts/E1.3/root-verify-final.txt:71: trailing whitespace.
++├ ƒ /admin/[[...segments]]
+docs/verification/artifacts/E1.3/root-verify-final.txt:72: trailing whitespace.
++└ ƒ /api/[...slug]
+docs/verification/artifacts/E1.3/root-verify-final.txt:73: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:74: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:75: trailing whitespace.
++○  (Static)   prerendered as static content
+docs/verification/artifacts/E1.3/root-verify-final.txt:76: trailing whitespace.
++ƒ  (Dynamic)  server-rendered on demand
+docs/verification/artifacts/E1.3/root-verify-final.txt:77: trailing whitespace.
++
+docs/verification/artifacts/E1.3/root-verify-final.txt:77: new blank line at EOF.
+docs/verification/artifacts/E1.3/typecheck-round1-final.txt:1: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.3/typecheck-round1-first.txt:1: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.3/verify-case-identity-schema-no-drift.txt:1: trailing whitespace.
++$ node --conditions=react-server ./node_modules/payload/bin.js migrate:create verify_case_identity_schema --skip-empty
+docs/verification/artifacts/E1.3/verify-case-identity-schema-no-drift.txt:2: trailing whitespace.
++[00:54:56] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.3/verify-case-identity-schema-no-drift.txt:3: trailing whitespace.
++[00:54:56] [32mINFO[39m: [36mStarting migration: generating UP statements...[39m
+docs/verification/artifacts/E1.3/verify-case-identity-schema-no-drift.txt:4: trailing whitespace.
++[00:54:56] [32mINFO[39m: [36mMigration UP complete. Generating DOWN statements...[39m
+docs/verification/artifacts/E1.3/verify-case-identity-schema-no-drift.txt:5: trailing whitespace.
++[00:54:56] [32mINFO[39m: [36mMigration DOWN statements generation complete.[39m

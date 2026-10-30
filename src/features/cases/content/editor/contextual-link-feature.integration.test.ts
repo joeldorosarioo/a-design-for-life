@@ -290,3 +290,65 @@ it('recarrega link external→page sem URL inativa persistida e rejeita protocol
     }),
   ).rejects.toMatchObject({ status: 400 });
 });
+
+it('rejeita URL absoluta da própria origem no destino externo com caminho de campo específico', async () => {
+  const shared = await fixture.payload.create({
+    collection: 'cases',
+    data: { internalTitle: 'Synthetic same-origin link' },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  const url = new URL('/pt/about', fixture.payload.config.serverURL).href;
+  const text = {
+    type: 'text',
+    version: 1,
+    text: 'Synthetic free internal URL',
+    detail: 0,
+    mode: 'normal',
+    format: 0,
+    style: '',
+  };
+  const link = {
+    type: 'link',
+    version: 3,
+    format: '',
+    indent: 0,
+    direction: null,
+    fields: { linkType: 'custom', destination: 'external', newTab: false, url },
+    children: [text],
+  };
+  const content = {
+    root: {
+      type: 'root',
+      version: 1,
+      format: '',
+      indent: 0,
+      direction: null,
+      children: [
+        { type: 'paragraph', version: 1, format: '', indent: 0, direction: null, children: [link] },
+      ],
+    },
+  };
+  await expect(
+    fixture.payload.create({
+      collection: 'case-content',
+      data: {
+        case: shared.id,
+        locale: 'pt',
+        sections: [{ blocks: [{ blockType: 'text', content }] }],
+      } as never,
+      draft: true,
+      req: await fixture.request(),
+      overrideAccess: true,
+    }),
+  ).rejects.toMatchObject({
+    status: 400,
+    data: {
+      errors: [
+        expect.objectContaining({
+          path: 'sections.0.blocks.0.content.root.children.0.children.0.fields.url',
+        }),
+      ],
+    },
+  });
+});

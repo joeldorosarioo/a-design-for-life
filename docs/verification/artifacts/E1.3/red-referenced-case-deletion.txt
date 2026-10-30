@@ -1,0 +1,118 @@
+$ vitest run --project integration src/features/cases/content/collections/cases.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[00:47:58] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:47:58] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (44ms)[39m
+[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (102ms)[39m
+[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[00:47:58] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:47:58] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+[00:47:58] [32mINFO[39m: [36mDone.[39m
+[00:48:00] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/cases.integration.test.ts (5 tests | 4 failed) 366ms
+   × rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=false 53ms
+   × rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=true 28ms
+   × a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida 15ms
+   × DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã quando exclusão vence 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=false
+AssertionError: promise resolved "{ …(6) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "createdAt": "2026-10-30T03:48:00.650Z",
++   "featured": false,
++   "id": "ea425d22-2dc7-45cf-982d-cdfe73ba1512",
++   "internalTitle": "Synthetic referenced identity",
++   "sortOrder": 0,
++   "updatedAt": "2026-10-30T03:48:00.650Z",
+  }
+
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:13:124
+     11|  const versions = await fixture.payload.findVersions({ collection: 'ca…
+     12|  expect(versions.totalDocs).toBeGreaterThan(0);
+     13|  await expect(fixture.payload.delete({ collection: 'cases', id: parent…
+       |                                                                                                                            ^
+     14|  expect(await fixture.payload.findByID({ collection: 'cases', id: pare…
+     15|  expect(await fixture.payload.findByID({ collection: 'case-content', i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > rejeita exclusão da identidade referenciada e preserva tradução/versões, overrideAccess=true
+AssertionError: promise resolved "{ …(6) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "createdAt": "2026-10-30T03:48:00.702Z",
++   "featured": false,
++   "id": "f9fd8230-7165-4bc9-be71-271afaf6e8c4",
++   "internalTitle": "Synthetic referenced identity",
++   "sortOrder": 0,
++   "updatedAt": "2026-10-30T03:48:00.702Z",
+  }
+
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:13:124
+     11|  const versions = await fixture.payload.findVersions({ collection: 'ca…
+     12|  expect(versions.totalDocs).toBeGreaterThan(0);
+     13|  await expect(fixture.payload.delete({ collection: 'cases', id: parent…
+       |                                                                                                                            ^
+     14|  expect(await fixture.payload.findByID({ collection: 'cases', id: pare…
+     15|  expect(await fixture.payload.findByID({ collection: 'case-content', i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > a tradução não confirmada bloqueia DELETE no banco e preserva identidade quando vence a corrida
+TypeError: Cannot read properties of undefined (reading 'execute')
+ ❯ execute node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/postgres/execute.ts:11:24
+ ❯ waitForBlockedQuery src/features/cases/content/collections/cases.integration.test.ts:27:43
+
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:44:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã quando exclusão vence
+TypeError: Cannot read properties of undefined (reading 'execute')
+ ❯ execute node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/postgres/execute.ts:11:24
+ ❯ waitForBlockedQuery src/features/cases/content/collections/cases.integration.test.ts:27:43
+
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:62:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 1 passed (5)
+   Start at  00:47:53
+   Duration  7.11s (import 77%, tests 16%, setup 3%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

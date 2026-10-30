@@ -50,3 +50,11 @@ Sem conta humana inicial, o CLI usa req.context.trustedStructuralProvisioning, c
 ## Limites preservados
 
 E1.4 completa publicação/restore/revisões/leases e completude editorial; E1.5 completa slugs/reservas/resolução; E1.6 implementa upload/variantes/privacidade; E1.7 conclui contas/prévias/recuperação. Media read=false protege a API normal; overrideAccess pode ler metadata internamente, mas não libera gravação/processamento/entrega. A decisão pendente sobre imagens animadas não impôs restrição adicional. Riscos herdados de E1.1 e BLOCK-GITHUB-BRANCH-PROTECTION seguem registrados. Evidências e comandos em docs/verification/E1.3.md.
+
+## Integridade adicional da revisão E1.3
+
+O beforeDelete de cases agora rejeita referência visível por traduções, histórico ou rotas com erro editorial409. As referências físicas case_content.case_id, _case_content_v.version_case_id e case_routes.case_id usam ON DELETE RESTRICT, configuradas na feature pelo hook oficial beforeSchemaInit e geradas em20261030_035306_protect_case_identity_references. Essa restrição protege também a criação da tradução concorrente à exclusão do pai; o precheck sozinho não decide a corrida. Cases vazios continuam excluíveis. Não foi necessário alterar o mapper para aceitar uma identidade órfã.
+
+Links externos ativos da própria origem configurada também são rejeitados no servidor, com caminho específico do campo; endereços internos devem usar os destinos tipados. A comparação usa req.payload.config.serverURL e não depende de ambiente secreto nos schemas compartilhados. Os formatos externos HTTP(S)/mailto e o preenchimento incompleto de drafts permanecem disponíveis.
+
+A ordem das seis remoções de FKs externas no down de editorial_models foi corrigida antes dos DROP TABLE. O up histórico e os snapshots foram preservados. O roundtrip oficial das sete migrações, com quatro drafts sintéticos e zero contas, foi provado somente no postgres-test tmpfs55433, com guard de isolamento. Ver E1.3-rollback.md e a rodada1 em E1.3.md; re-review/gate final ainda pendentes.

@@ -1,0 +1,155 @@
+$ vitest run --project integration src/features/cases/content/editor/contextual-link-feature.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[00:49:41] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:49:41] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (48ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (112ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (9ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[00:49:41] [32mINFO[39m: [36mDone.[39m
+[00:49:43] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts (10 tests | 1 failed) 508ms
+   × rejeita URL absoluta da própria origem no destino externo com caminho de campo específico 25ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > rejeita URL absoluta da própria origem no destino externo com caminho de campo específico
+AssertionError: promise resolved "{ …(17) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "case": {
++     "createdAt": "2026-10-30T03:49:44.374Z",
++     "featured": false,
++     "id": "b25ecbe2-cdb0-4e33-a326-36fb419e1f5b",
++     "internalTitle": "Synthetic same-origin link",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T03:49:44.374Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": null,
++     "caption": null,
++     "decorative": false,
++     "media": null,
++   },
++   "createdAt": "2026-10-30T03:49:44.378Z",
++   "eyebrow": null,
++   "id": "8ebde833-d200-4611-b38e-5de87e3d9d2e",
++   "introduction": null,
++   "locale": "pt",
++   "role": null,
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": {
++             "root": {
++               "children": [
++                 {
++                   "children": [
++                     {
++                       "children": [
++                         {
++                           "detail": 0,
++                           "format": 0,
++                           "mode": "normal",
++                           "style": "",
++                           "text": "Synthetic free internal URL",
++                           "type": "text",
++                           "version": 1,
++                         },
++                       ],
++                       "direction": null,
++                       "fields": {
++                         "destination": "external",
++                         "linkType": "custom",
++                         "newTab": false,
++                         "url": "http://127.0.0.1:3100/pt/about",
++                       },
++                       "format": "",
++                       "indent": 0,
++                       "type": "link",
++                       "version": 3,
++                     },
++                   ],
++                   "direction": null,
++                   "format": "",
++                   "indent": 0,
++                   "type": "paragraph",
++                   "version": 1,
++                 },
++               ],
++               "direction": null,
++               "format": "",
++               "indent": 0,
++               "type": "root",
++               "version": 1,
++             },
++           },
++           "id": "6ae413d84e9f862f28f96cb4",
++           "readingKey": "ce2b1b6f-0c11-460b-8a63-be235a421874",
++         },
++       ],
++       "heading": null,
++       "id": "6ae413d84e9f862f28f96cb5",
++       "readingKey": "9a911419-952f-4721-adf6-9a24b69daaff",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": null,
++   "summary": null,
++   "title": null,
++   "updatedAt": "2026-10-30T03:49:44.378Z",
+  }
+
+ ❯ src/features/cases/content/editor/contextual-link-feature.integration.test.ts:300:243
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 9 passed (10)
+   Start at  00:49:37
+   Duration  7.23s (import 72%, tests 21%, transform 3%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

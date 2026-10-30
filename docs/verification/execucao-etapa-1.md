@@ -77,3 +77,7 @@ Informar a porcentagem da etapa atual em toda atualização. Critério: tarefas 
 ## E1.3 — snapshot encaminhado para revisão
 
 Etapa 1 permanece em 25% (E1.1/E1.2,2/8). O snapshot E1.3 acrescenta os índices compostos e provas de corrida real, contratos de entrada/DTOs e mapeadores mínimos, proteção de identidade/chaves de leitura e CLI explícito de provisionamento pós-migração sem conta fictícia. pnpm verify passou com107 testes/build;2 jornadas Playwright passaram em3101; caracterização adicional de reload nativo e checks finais estão em E1.3.md. O item E1.3 segue desmarcado até o gate/revisão independente do coordenador. Nenhuma tarefa seguinte ou A1 foi declarada concluída.
+
+## E1.3 — correções da primeira revisão preparadas
+
+Etapa1 permanece em25% (2/8), E1.3 desmarcada até re-review. A revisão independente de f1e6063 e o gate de108 testes foram preservados. A primeira rodada corrige exclusão órfã de identidade (guard editorial + três FKs RESTRICT geradas, incluindo versões/rotas), a ordem das FKs no rollback nativo (dca8c50) e URL interna absoluta indevidamente tratada como externa. Quinze testes focados passaram; o roundtrip das sete migrações e o provisionamento dos quatro drafts foram provados em tmpfs isolado. Tipagem/lint/formatação passaram. O coordenador fará o gate completo e a revisão dos fixes antes de concluir a tarefa; detalhes em E1.3.md e E1.3-rollback.md.
