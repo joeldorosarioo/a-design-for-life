@@ -16,7 +16,7 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] E1.4 Rascunho, publicação, restauração e concorrência — revisão e CI atual aprovados.
 - [x] E1.5 Slugs, reservas e resolução pública — revisões e CI atual aprovados.
 - [ ] E1.6 Upload, processamento e privacidade.
-- [ ] E1.7 Contas, prévias e recuperação nativa.
+- [x] E1.7 Contas, prévias e recuperação nativa — revisões e CI atual aprovados.
 - [ ] E1.8 Coordenação e demonstração dos contratos.
 - [ ] Pacote A1 verificado e entregue.
 - [ ] A1 aprovada pelo usuário — não iniciar etapa 2 antes disso.
@@ -107,3 +107,11 @@ Em 30/10/2026, E1.1–E1.5 concluídas: cinco de oito tarefas, 62,5%. E1.7 está
 Commit de código e evidências e38226528017eebb609c23fda0d936c989f7d899: revisões de especificação e qualidade PASS, sem achados acionáveis. O CI independente atual em ubuntu-24.04 passou pnpm verify com 33 arquivos/184 testes, checks e build, seguido de dez jornadas Playwright reais. Run41017050616/job123935646634; Node24.22.2, pnpm12.10.1 e PostgreSQL17.11 isolado. Logs completos e metadados seguros em artifacts/E1.5/github-*. O mesmo SHA avançou normalmente para develop protegida, sem force ou implantação.
 
 Ver E1.5.md, E1.5-spec-review.md, E1.5-quality-review.md e ../architecture/rotas-e-reservas.md. Permanecem os riscos de dependências e os limites nomeados PUBLIC-HTTP-CONTRACT-ONLY, PUBLICATION-COORDINATION-E1.8, ORIGIN-RELATION-FAILURE-ONLY e MEDIA-METADATA-FIXTURE-ONLY. A correção de ordem de locks foi provada por deadlock PostgreSQL40P01 antes e corrida transacional válida depois; as regressões da E1.4 também passaram.
+
+## E1.7 concluída — 75% da etapa 1
+
+Em 30/10/2026, seis de oito tarefas concluídas: E1.1–E1.5 e E1.7. E1.6 continua em execução e não foi contabilizada; E1.8 depende de mídia e acesso verificados. As decisões de animação e senha de abertura PDF continuam pendentes, sem exclusões permanentes por suposição. A1 permanece pendente; não iniciar etapa 2.
+
+Código e8e97d72ff9d88f3fb7c4dc6ac58f01da6903232: revisões SPEC/qualidade PASS, sem achados acionáveis; CI independente atual run41033031988/job123987096667 em ubuntu-24.04 success, 235 testes/40 arquivos, checks/build e 16 jornadas Playwright. QPDF12.4.2 Linux x64 instalado/executado com sucesso pela suíte. O mesmo SHA foi promovido para develop por fast-forward normal protegido, sem force ou implantação. Evidências em E1.7.md, revisões e artifacts/E1.7/github-*.
+
+Contas/prévias/reset permanecem nativos. O teste real de dois resets simultâneos inicialmente aceitava ambos; guard transacional agora permite somente um, preservando senha vencedora, rollback, expiração e sessões. Origin, casing nativo, abuso e captura limitada têm regressões. Limites locais explícitos: orçamento por endpoint/processo, sem IP confiável/estado distribuído, captura local temporária e provedor real E3.1. A integração completa de bytes privados pertence à E1.6; os riscos de dependências anteriores permanecem documentados.
