@@ -11,7 +11,7 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] Criar raiz `E:\a-design-for-life`, sem pasta duplicada, na branch `feat/etapa-1-cms`.
 - [x] Copiar quatro referências a docs/specs e conferir SHA256.
 - [x] E1.1 Base executável e ambiente de testes — concluída; evidências e riscos em E1.1.md.
-- [ ] E1.2 Limites arquiteturais e configuração por ambiente.
+- [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída localmente; proteção remota bloqueada por acesso, ver E1.2.md.
 - [ ] E1.3 Modelos editoriais e provisionamento idempotente.
 - [ ] E1.4 Rascunho, publicação, restauração e concorrência.
 - [ ] E1.5 Slugs, reservas e resolução pública.
@@ -55,3 +55,11 @@ As tarefas acrescentam comandos, códigos de saída, RED/GREEN e limitações em
 Ver [E1.1](E1.1.md), [combinação validada](../decisions/001-stack-validada.md) e [pesquisa de segurança](E1.1-security-research.md). Verificação atual: 16 testes Vitest, 2 jornadas Playwright, tipagem, lint, formatação e build offline; o coordenador repetiu os checks e a jornada em porta alternativa 3101 com sucesso.
 
 Riscos mantidos por nome: SEC-DOMPURIFY-VENDOR, SEC-HAPPY-DOM, SEC-DEEPMERGE, SEC-ESBUILD-TOOLING, AUDIT-GRAPHQL-SCALARS-DISCREPANCY e TOOLING-ESLINT9. Transporte capturado de e-mail/recuperação pertence a E1.7; regras de arquitetura/CI pertencem a E1.2. A1 permanece pendente. Não houve contratação, recurso externo ou implantação pública.
+
+## Pendência futura identificada durante E1.2
+
+O chat principal abriu consulta sobre formatos animados de imagem para E1.6. Ainda sem decisão registrada neste ponto; E1.2 não impõe restrição a imagens nem altera os formatos aprovados. E1.3–E1.5 seguem independentes desse ponto.
+
+## E1.2 concluída — escopo e ressalvas
+
+Fronteiras de features/rotas públicas, ciclos inclusive type-only, infraestrutura genérica, runtime cliente/servidor e DTO público protegidos por testes de grafo e consumidores reais. Ver E1.2.md e docs/architecture/fronteiras.md. Verificação independente atual do coordenador: pnpm verify exit0, 49 testes em4 arquivos, checks e build. Jornadas do painel/API:2 E2E em3101, com limpeza real. Nenhuma dependência foi alterada e o verify não duplica arquitetura. BLOCK-GITHUB-BRANCH-PROTECTION permanece: workflow preparado, sem remote/executar GitHub/proteção remota. A1 e tarefas seguintes permanecem pendentes; esta tarefa não inicia E1.3.
