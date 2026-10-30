@@ -1,0 +1,18 @@
+$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+$ tsc --noEmit
+$ eslint .
+
+E:\a-design-for-life\src\migrations\20261030_093430_private_media_manifests.ts
+   3:32  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+   3:41  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+  15:34  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+  15:43  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
+$ prettier --check .
+Checking formatting...
+[warn] docs/verification/E2.1.md
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

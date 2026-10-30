@@ -1,0 +1,141 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/motion/presets.test.ts (10 tests | 10 failed) 13ms
+   ❯ interaction motion policy (10)
+     × removes toast displacement when reduced motion is active 7ms
+     × keeps button content readable at the server boundary 2ms
+     × keeps menu content readable at the server boundary 1ms
+     × keeps toast content readable at the server boundary 0ms
+     × removes every button transform and limits reduced fades 0ms
+     × removes every menu transform and limits reduced fades 0ms
+     × removes every toast transform and limits reduced fades 0ms
+     × provides button feedback without hiding its label 0ms
+     × lets a dismissed menu leave without moving layout 0ms
+     × lets a dismissed toast leave without moving layout 0ms
+ ❯ |unit| src/components/ui/button.test.tsx (1 test | 1 failed) 141ms
+   × does not submit its surrounding form unless explicitly requested 140ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/components/ui/button.test.tsx > does not submit its surrounding form unless explicitly requested
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/components/ui/button.test.tsx:21:23
+     19|   );
+     20|   await user.click(screen.getByRole('button', { name: 'Open projects' …
+     21|   expect(submissions).toBe(0);
+       |                       ^
+     22|   await user.click(screen.getByRole('button', { name: 'Send' }));
+     23|   expect(submissions).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > removes toast displacement when reduced motion is active
+AssertionError: expected 8 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 8
+
+ ❯ src/helpers/motion/presets.test.ts:10:33
+      8|   it('removes toast displacement when reduced motion is active', () =>…
+      9|     const animation = resolveInteractionMotion({ kind: 'toast', reduce…
+     10|     expect(animation.initial.y).toBe(0);
+       |                                 ^
+     11|     expect(animation.animate.y).toBe(0);
+     12|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > keeps button content readable at the server boundary
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > keeps menu content readable at the server boundary
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > keeps toast content readable at the server boundary
+AssertionError: expected { y: 8, opacity: 1 } to deeply equal { y: +0, opacity: 1 }
+
+- Expected
++ Received
+
+  {
+    "opacity": 1,
+-   "y": 0,
++   "y": 8,
+  }
+
+ ❯ src/helpers/motion/presets.test.ts:17:31
+     15|   it.each(kinds)('keeps %s content readable at the server boundary', (…
+     16|     const animation = resolveInteractionMotion({ kind, reducedMotion: …
+     17|     expect(animation.initial).toEqual({ y: 0, opacity: 1 });
+       |                               ^
+     18|     expect(animation.animate).toEqual({ y: 0, opacity: 1 });
+     19|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > removes every button transform and limits reduced fades
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > removes every menu transform and limits reduced fades
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > removes every toast transform and limits reduced fades
+AssertionError: expected 8 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 8
+
+ ❯ src/helpers/motion/presets.test.ts:31:24
+     29|       animation.whileTap,
+     30|     ]) {
+     31|       expect(target.y).toBe(0);
+       |                        ^
+     32|       expect(Object.keys(target).sort()).toEqual(['opacity', 'y']);
+     33|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > provides button feedback without hiding its label
+AssertionError: expected 8 to be less than 0
+ ❯ src/helpers/motion/presets.test.ts:41:36
+     39|   it('provides button feedback without hiding its label', () => {
+     40|     const animation = resolveInteractionMotion({ kind: 'button', reduc…
+     41|     expect(animation.whileHover.y).toBeLessThan(0);
+       |                                    ^
+     42|     expect(animation.whileTap.y).toBe(0);
+     43|     expect(animation.whileHover.opacity).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > lets a dismissed menu leave without moving layout
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > lets a dismissed toast leave without moving layout
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/helpers/motion/presets.test.ts:50:36
+     48|     const animation = resolveInteractionMotion({ kind, reducedMotion: …
+     49|     expect(animation.exit.y).toBeGreaterThan(0);
+     50|     expect(animation.exit.opacity).toBe(0);
+       |                                    ^
+     51|     expect(Object.keys(animation.exit).sort()).toEqual(['opacity', 'y'…
+     52|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  11 failed (11)
+   Start at  14:38:35
+   Duration  1.46s (environment 53%, setup 28%, tests 9%, import 7%, transform 2%, worker 1%)
+

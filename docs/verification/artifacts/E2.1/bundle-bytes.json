@@ -1,0 +1,26 @@
+{
+  "baseline": [
+    {
+      "file": ".work/E2.1/browser/baseline/baseline.js",
+      "bytes": 225064,
+      "gzipBytes": 69884
+    }
+  ],
+  "specimen": [
+    {
+      "file": ".work/E2.1/browser/specimen/specimen.js",
+      "bytes": 222281,
+      "gzipBytes": 69676
+    },
+    {
+      "file": ".work/E2.1/browser/specimen/load-features-NOMBIFOF.js",
+      "bytes": 83,
+      "gzipBytes": 98
+    },
+    {
+      "file": ".work/E2.1/browser/specimen/chunk-PVV4VDYR.js",
+      "bytes": 89493,
+      "gzipBytes": 32490
+    }
+  ]
+}

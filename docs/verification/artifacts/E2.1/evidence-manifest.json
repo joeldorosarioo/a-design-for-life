@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-30",
+  "base": "4f72388",
+  "records": [
+    {
+      "original": ".work/E2.1/red-presets.txt",
+      "originalSHA256": "fd3ea276578c43b385f357e1476b51909accf50ae7e1716bb7bc3c74f8c84a8d",
+      "exported": "docs/verification/artifacts/E2.1/red-presets.txt",
+      "exportedSHA256": "fd3ea276578c43b385f357e1476b51909accf50ae7e1716bb7bc3c74f8c84a8d",
+      "bytes": 1119,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/red-behaviors-assertions.txt",
+      "originalSHA256": "682db3132992f77a8dc03563215e4a5cfe284eea41be3d3cdb7e6f2cb9c07ff2",
+      "exported": "docs/verification/artifacts/E2.1/red-behaviors-assertions.txt",
+      "exportedSHA256": "682db3132992f77a8dc03563215e4a5cfe284eea41be3d3cdb7e6f2cb9c07ff2",
+      "bytes": 5986,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/green-behaviors.txt",
+      "originalSHA256": "f3bdbb27b64eefe3e3295b7d50449cd5751bdae2da2779a72c00aec0e317d4cd",
+      "exported": "docs/verification/artifacts/E2.1/green-behaviors.txt",
+      "exportedSHA256": "f3bdbb27b64eefe3e3295b7d50449cd5751bdae2da2779a72c00aec0e317d4cd",
+      "bytes": 219,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/frozen-install-final.txt",
+      "originalSHA256": "b41e95069aa24727e9e976c072333577f693c82dcf64feae93d4e75066b814e5",
+      "exported": "docs/verification/artifacts/E2.1/frozen-install-final.txt",
+      "exportedSHA256": "b41e95069aa24727e9e976c072333577f693c82dcf64feae93d4e75066b814e5",
+      "bytes": 147,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/typecheck.txt",
+      "originalSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exported": "docs/verification/artifacts/E2.1/typecheck.txt",
+      "exportedSHA256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "bytes": 16,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/specimen.tsx",
+      "originalSHA256": "1a53e2545908f8c34d78aff891d33a89e413ea2114c1363fc80e117a058fe913",
+      "exported": "docs/verification/artifacts/E2.1/specimen.tsx.txt",
+      "exportedSHA256": "1a53e2545908f8c34d78aff891d33a89e413ea2114c1363fc80e117a058fe913",
+      "bytes": 1239,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/baseline.tsx",
+      "originalSHA256": "5f82ad61e0324334bea9910f517cf76aa209fa6bb88c70cdf1a14e577238e990",
+      "exported": "docs/verification/artifacts/E2.1/baseline.tsx.txt",
+      "exportedSHA256": "5f82ad61e0324334bea9910f517cf76aa209fa6bb88c70cdf1a14e577238e990",
+      "bytes": 448,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/inspect.tsx",
+      "originalSHA256": "224828ea8d92b45e672b97123c464e274fa9641dbad894cd47d1aa7cc74f157f",
+      "exported": "docs/verification/artifacts/E2.1/inspect.tsx.txt",
+      "exportedSHA256": "224828ea8d92b45e672b97123c464e274fa9641dbad894cd47d1aa7cc74f157f",
+      "bytes": 5412,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/browser/bundle-bytes.json",
+      "originalSHA256": "d548f2e11911f3bf7329e7a1ded7b2af9841f620885623ee962f7cd2e64d66c2",
+      "exported": "docs/verification/artifacts/E2.1/bundle-bytes.json",
+      "exportedSHA256": "d548f2e11911f3bf7329e7a1ded7b2af9841f620885623ee962f7cd2e64d66c2",
+      "bytes": 526,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/browser/browser-results.json",
+      "originalSHA256": "f983807bab96154f27ad113dd89763f63e4e4279d87cd366b373e7724c77a4c2",
+      "exported": "docs/verification/artifacts/E2.1/browser-results.json",
+      "exportedSHA256": "f983807bab96154f27ad113dd89763f63e4e4279d87cd366b373e7724c77a4c2",
+      "bytes": 5322,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/browser/index.html",
+      "originalSHA256": "1a1e771e1a7e944316c571d018ebf89ad1d9132aff3eaccca3d8a85a35082bb9",
+      "exported": "docs/verification/artifacts/E2.1/ssr.html.txt",
+      "exportedSHA256": "1a1e771e1a7e944316c571d018ebf89ad1d9132aff3eaccca3d8a85a35082bb9",
+      "bytes": 674,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/browser/specimen-390-no-preference.png",
+      "originalSHA256": "cf8efdd215a33ff519fcca89f5b7e8df13d043922f7cdb09434e2015c171a84f",
+      "exported": "docs/verification/artifacts/E2.1/specimen-390.png",
+      "exportedSHA256": "cf8efdd215a33ff519fcca89f5b7e8df13d043922f7cdb09434e2015c171a84f",
+      "bytes": 12664,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/browser/specimen-1440-no-preference.png",
+      "originalSHA256": "8729f1461d8fbda2bfa23e29e353186ff0053375ac7864f8be8bf50bc210ff8c",
+      "exported": "docs/verification/artifacts/E2.1/specimen-1440.png",
+      "exportedSHA256": "8729f1461d8fbda2bfa23e29e353186ff0053375ac7864f8be8bf50bc210ff8c",
+      "bytes": 15243,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": "C:/Users/joeld/Documents/Codex/2026-10-29/quero-iniciar-a-implementa-o-do/work/stage2-reference/button-reference.json",
+      "originalSHA256": "2ed1b5843e1bf0b61da72d4e4ddee856f15e2c5cd9ad6b0164b0594403c094a0",
+      "exported": "docs/verification/artifacts/E2.1/button-reference.json",
+      "exportedSHA256": "2ed1b5843e1bf0b61da72d4e4ddee856f15e2c5cd9ad6b0164b0594403c094a0",
+      "bytes": 2957,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": "C:/Users/joeld/Documents/Codex/2026-10-29/quero-iniciar-a-implementa-o-do/work/stage2-reference/assets-manifest.json",
+      "originalSHA256": "acac1cddbb89aa0dca6182b9127c7535f1cc17431ec530ac7bf30555b6dc4e22",
+      "exported": "docs/verification/artifacts/E2.1/reference-assets.json",
+      "exportedSHA256": "80079f588d3f63c88e20ffcd734875f225bc4969189c5baada7bcfe05e39f223",
+      "bytes": 4142,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": "C:/Users/joeld/Documents/Codex/2026-10-29/quero-iniciar-a-implementa-o-do/work/stage2-reference/README.md",
+      "originalSHA256": "62e9bb0ee1a9f6ec1b45d3fa97c2220ec0c58ef3f13d413efcbe3d095bd43a8e",
+      "exported": "docs/verification/artifacts/E2.1/reference-summary.md.txt",
+      "exportedSHA256": "62e9bb0ee1a9f6ec1b45d3fa97c2220ec0c58ef3f13d413efcbe3d095bd43a8e",
+      "bytes": 16429,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/browser/specimen-meta.json",
+      "originalSHA256": "6b9a1b287680bf0f383bdb1a6306977c94a791cee7d813d4865eaff83c04dd02",
+      "exported": "docs/verification/artifacts/E2.1/bundle-imports.json",
+      "exportedSHA256": "24a95b7d369e12774792e82c7ed904b63954bf81fb7827386bf14db8b49b40d9",
+      "bytes": 42677,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/verify.txt",
+      "originalSHA256": "b05751b588c6ca990eb93f6657fe1f2cb4ab4c7d71ada4e14e0561e2718ea912",
+      "exported": "docs/verification/artifacts/E2.1/verify-first.txt",
+      "exportedSHA256": "4d1f408f0af5231a6d5dc7f54b4e9b5e1bcb2cd2e427d3bebbf2619b7d2a69d5",
+      "bytes": 43408,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/verify-repeat.txt",
+      "originalSHA256": "b6d6196dbecfa96d4b8b7dbe9077d502a7cb863f69f1acf10af8ec730c9b8190",
+      "exported": "docs/verification/artifacts/E2.1/verify-repeat.txt",
+      "exportedSHA256": "3a25ef900487bcce3d6dd656d2defd208fccd105178f259795740a3158faa5a0",
+      "bytes": 43039,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/native-smoke.txt",
+      "originalSHA256": "7a5a3cabfb259b7342e3244f867900933f9050a1b0b02e98b089650c4a13e868",
+      "exported": "docs/verification/artifacts/E2.1/native-smoke-first.txt",
+      "exportedSHA256": "2a15114c1662c344b06db9298021f7cf8245203fc449ab25e62c08da400acb34",
+      "bytes": 3741,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/native-smoke-repeat.txt",
+      "originalSHA256": "1462edc90330f322c1442c717c30a9fb26c586ba35fc85f623a94c2a259e3382",
+      "exported": "docs/verification/artifacts/E2.1/native-smoke-repeat.txt",
+      "exportedSHA256": "ebe6f946bb33b7f0d3697c731dbbbdb4b398a55da56ed9417e69157ce915d0e4",
+      "bytes": 4069,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/frozen-install.txt",
+      "originalSHA256": "854907230296a498ceba05a2f0725e90ac78bc6f0fe5813a98a57a0cc4d6b5b3",
+      "exported": "docs/verification/artifacts/E2.1/frozen-rejection.txt",
+      "exportedSHA256": "854907230296a498ceba05a2f0725e90ac78bc6f0fe5813a98a57a0cc4d6b5b3",
+      "bytes": 1217,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/install-eligible.txt",
+      "originalSHA256": "a8f837ab61e089547802d8f81d1e8e96707a1997ab98f9363b5695e11e35a041",
+      "exported": "docs/verification/artifacts/E2.1/install-eligible.txt",
+      "exportedSHA256": "a8f837ab61e089547802d8f81d1e8e96707a1997ab98f9363b5695e11e35a041",
+      "bytes": 952,
+      "transformation": "Curated/normalized as described in evidence README"
+    },
+    {
+      "original": ".work/E2.1/barrel-bundle-bytes.json",
+      "originalSHA256": "6a073bfc9a31ebd1393aad3c1a4d2e1a995c4e0d7b85cd2d04574a1df224dee3",
+      "exported": "docs/verification/artifacts/E2.1/barrel-bundle-bytes.json",
+      "exportedSHA256": "6a073bfc9a31ebd1393aad3c1a4d2e1a995c4e0d7b85cd2d04574a1df224dee3",
+      "bytes": 333,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/next-client-imports.json",
+      "originalSHA256": "caa405c63113ccac3f0fe761ec5938e5811f2229274bd52cd8a47796527b62a2",
+      "exported": "docs/verification/artifacts/E2.1/next-client-imports.json",
+      "exportedSHA256": "caa405c63113ccac3f0fe761ec5938e5811f2229274bd52cd8a47796527b62a2",
+      "bytes": 1577,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/services-after.txt",
+      "originalSHA256": "bf366cbd9a4155c4c0f01692691155c90d4bafee2d8a6a868b3b49d8c866fd07",
+      "exported": "docs/verification/artifacts/E2.1/services-after.txt",
+      "exportedSHA256": "bf366cbd9a4155c4c0f01692691155c90d4bafee2d8a6a868b3b49d8c866fd07",
+      "bytes": 41,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/measure-barrel.mjs",
+      "originalSHA256": "6f62014de018e7b26993e3690e95b60d616209e785514f0287a93b7e0836ec0a",
+      "exported": "docs/verification/artifacts/E2.1/measure-barrel.mjs.txt",
+      "exportedSHA256": "6f62014de018e7b26993e3690e95b60d616209e785514f0287a93b7e0836ec0a",
+      "bytes": 1253,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/source-snapshot.mjs",
+      "originalSHA256": "f2ca28855ff4dab06afa1ee6a95a4f7a422d41e4af01e90e8576cc5e4cb12add",
+      "exported": "docs/verification/artifacts/E2.1/source-snapshot.mjs.txt",
+      "exportedSHA256": "f2ca28855ff4dab06afa1ee6a95a4f7a422d41e4af01e90e8576cc5e4cb12add",
+      "bytes": 1188,
+      "transformation": "Exact byte copy"
+    },
+    {
+      "original": ".work/E2.1/final-audit.json",
+      "originalSHA256": "e00a2659ba6f410133c7468eb06ec6cba6487adee49fb57f217e3b3e0efa6f8d",
+      "exported": "docs/verification/artifacts/E2.1/final-audit.json",
+      "exportedSHA256": "e00a2659ba6f410133c7468eb06ec6cba6487adee49fb57f217e3b3e0efa6f8d",
+      "bytes": 647,
+      "transformation": "Exact byte copy; post-verification boundary metadata"
+    },
+    {
+      "original": ".work/E2.1/post-verify-changes.json",
+      "originalSHA256": "27bad636a42a107bab7fe7cbb8c347d33b8390a0ab628dd226b86ec358ab2017",
+      "exported": "docs/verification/artifacts/E2.1/post-verify-changes.json",
+      "exportedSHA256": "27bad636a42a107bab7fe7cbb8c347d33b8390a0ab628dd226b86ec358ab2017",
+      "bytes": 4026,
+      "transformation": "Exact byte copy; post-verification boundary metadata"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "fileKey": "PXUcVZFdLuOzHQZkD5PU4b",
+  "pageId": "123:179",
+  "sourceSession": "5f969ac3-5939-4ac4-ab26-91d41435f7e0",
+  "allOriginalAssetsExported": false,
+  "assets": [
+    {
+      "file": "assets/case-pt-desktop-cover-123-854.png",
+      "sourceFile": "ef086.png",
+      "nodes": [
+        "123:854"
+      ],
+      "format": "png",
+      "bytes": 15462,
+      "sha256": "3ce79b803d523ce325552f41a10f2f3bf3697308d87db4db37cc21309005a3eb",
+      "intrinsic": {
+        "width": 1600,
+        "height": 900,
+        "aspectRatio": "16:9"
+      },
+      "slot": {
+        "width": 1280,
+        "height": 480,
+        "aspectRatio": "8:3",
+        "objectFit": "contain",
+        "background": "#A3122F",
+        "radius": 12
+      },
+      "usage": "Case PT desktop cover. Cross-frame reuse requires further verification.",
+      "verification": "Downloaded exact context-provided asset; visually viewed. Raw uploaded original not proven.",
+      "sourceContext": "official-case-pt-desktop-context.txt",
+      "downloadDate": "2026-10-30",
+      "permanentRuntimeUrl": false,
+      "editorialStatus": "private-reference-only"
+    },
+    {
+      "file": "assets/language-br-flag-125-1888.svg",
+      "sourceFile": "595d6.svg",
+      "nodes": [
+        "I123:839;125:1888;128:9326"
+      ],
+      "format": "svg",
+      "bytes": 2326,
+      "sha256": "b011836f5dfb27eaff14c541cc801fe97bcdbd6532d3cbae0263301cd5cb08e6",
+      "intrinsic": {
+        "width": 46,
+        "height": 32,
+        "aspectRatio": "23:16"
+      },
+      "slot": {
+        "width": 32,
+        "height": 32,
+        "assetOffsetLeft": -7,
+        "interactionTarget": 48
+      },
+      "usage": "BR current-language flag clipped inside circular control.",
+      "verification": "Nonempty exact download; SVG root dimensions inspected.",
+      "sourceContext": "official-case-pt-desktop-context.txt",
+      "downloadDate": "2026-10-30",
+      "permanentRuntimeUrl": false,
+      "editorialStatus": "private-reference-only"
+    },
+    {
+      "file": "assets/divider-1.svg",
+      "sourceFile": "c62bc.svg",
+      "nodes": [
+        "123:880"
+      ],
+      "format": "svg",
+      "bytes": 235,
+      "sha256": "da6e2d6de73caa54dc65e0f8eaa1b11e298a5e4ee28cec459260c230a8f71e22",
+      "intrinsic": {
+        "width": 768,
+        "height": 1,
+        "aspectRatio": "768:1"
+      },
+      "usage": "Case PT challenge divider, context wrapper h0 with top inset -1.",
+      "verification": "Nonempty exact download; SVG root dimensions inspected.",
+      "sourceContext": "official-case-pt-desktop-context.txt",
+      "downloadDate": "2026-10-30",
+      "permanentRuntimeUrl": false,
+      "editorialStatus": "private-reference-only"
+    },
+    {
+      "file": "assets/divider-2.svg",
+      "sourceFile": "6d1fb.svg",
+      "nodes": [
+        "123:930",
+        "123:935",
+        "123:940"
+      ],
+      "format": "svg",
+      "bytes": 247,
+      "sha256": "580f0465b61f3a8fe6b0050ae3258c17ad25d31b9939fd7f4bb9eea7b3d640b7",
+      "intrinsic": {
+        "width": 261.333,
+        "height": 1,
+        "aspectRatio": "261.333:1"
+      },
+      "usage": "Three learning-card dividers in Case PT desktop.",
+      "verification": "Nonempty exact download; SVG root dimensions inspected.",
+      "sourceContext": "official-case-pt-desktop-context.txt",
+      "downloadDate": "2026-10-30",
+      "permanentRuntimeUrl": false,
+      "editorialStatus": "private-reference-only"
+    },
+    {
+      "file": "assets/divider-3.svg",
+      "sourceFile": "7d009.svg",
+      "nodes": [
+        "I123:944;123:539"
+      ],
+      "format": "svg",
+      "bytes": 238,
+      "sha256": "f6c8eb8342df979e9a30e98df38bdc3cd4ae752a498a5fa9722e66a3677eb88c",
+      "intrinsic": {
+        "width": 1280,
+        "height": 1,
+        "aspectRatio": "1280:1"
+      },
+      "usage": "Case PT desktop footer divider.",
+      "verification": "Nonempty exact download; SVG root dimensions inspected.",
+      "sourceContext": "official-case-pt-desktop-context.txt",
+      "downloadDate": "2026-10-30",
+      "permanentRuntimeUrl": false,
+      "editorialStatus": "private-reference-only"
+    }
+  ]
+}

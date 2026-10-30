@@ -1,0 +1,36 @@
+{
+  "records": [
+    {
+      "source": "E:\\a-design-for-life\\.work\\E2-current-verify-format-failure.txt",
+      "output": "verify-format-failure.txt",
+      "bytes": 851,
+      "originalSHA256": "c81aee3da35ef60269698eae6045043cdce26cffdde9022e66a2cfdf54971835",
+      "exportedSHA256": "c81aee3da35ef60269698eae6045043cdce26cffdde9022e66a2cfdf54971835",
+      "transformation": "ANSI and credential/email/query-token redaction only; raw original retained privately"
+    },
+    {
+      "source": "E:\\a-design-for-life\\.work\\E2-current-verify-final.txt",
+      "output": "verify-final.txt",
+      "bytes": 43036,
+      "originalSHA256": "e2f62fb6a024e45701646e8e709479aa6d112d4f0c8ddea8469b30e764369bc9",
+      "exportedSHA256": "9567fd03333d3d2514c063745dd42a94890b2fa534808dde1ba7676361406cc0",
+      "transformation": "ANSI and credential/email/query-token redaction only; raw original retained privately"
+    },
+    {
+      "source": "C:\\Users\\joeld\\Documents\\Codex\\2026-10-29\\quero-iniciar-a-implementa-o-do\\work\\stage2-briefs\\E2-foundation-core-review.md",
+      "output": "foundation-core-review.md.txt",
+      "bytes": 8124,
+      "originalSHA256": "e1dd1171e5388fe5ffea7e4453573fef6f7009a7b171d8cd9a5e39fc5d6a785d",
+      "exportedSHA256": "e1dd1171e5388fe5ffea7e4453573fef6f7009a7b171d8cd9a5e39fc5d6a785d",
+      "transformation": "ANSI and credential/email/query-token redaction only; raw original retained privately"
+    },
+    {
+      "source": "C:\\Users\\joeld\\Documents\\Codex\\2026-10-29\\quero-iniciar-a-implementa-o-do\\work\\stage2-briefs\\E2-presentation-contract-review.md",
+      "output": "presentation-contract-review.md.txt",
+      "bytes": 4141,
+      "originalSHA256": "2e6b2a2968a4d21d4b09990f98036cbd6d1f08708f283a29b64e2061595105c9",
+      "exportedSHA256": "2e6b2a2968a4d21d4b09990f98036cbd6d1f08708f283a29b64e2061595105c9",
+      "transformation": "ANSI and credential/email/query-token redaction only; raw original retained privately"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/motion/presets.test.ts (1 test | 1 failed) 7ms
+   ❯ interaction motion policy (1)
+     × removes toast displacement when reduced motion is active 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/motion/presets.test.ts > interaction motion policy > removes toast displacement when reduced motion is active
+AssertionError: expected 8 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 8
+
+ ❯ src/helpers/motion/presets.test.ts:8:33
+      6|   it('removes toast displacement when reduced motion is active', () =>…
+      7|     const animation = resolveInteractionMotion({ kind: 'toast', reduce…
+      8|     expect(animation.initial.y).toBe(0);
+       |                                 ^
+      9|     expect(animation.animate.y).toBe(0);
+     10|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  14:37:45
+   Duration  4.87s (setup 98%, worker 1%, transform 1%)
+

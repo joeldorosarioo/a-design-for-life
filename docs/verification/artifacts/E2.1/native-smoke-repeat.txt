@@ -1,0 +1,80 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test admin.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[14:55:51] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[14:55:51] INFO: Migrating: 20261030_003022_initial_base
+[14:55:51] INFO: Migrated:  20261030_003022_initial_base (46ms)
+[14:55:51] INFO: Migrating: 20261030_020021_editorial_models
+[14:55:51] INFO: Migrated:  20261030_020021_editorial_models (86ms)
+[14:55:51] INFO: Migrating: 20261030_020521_structural_uniqueness
+[14:55:51] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[14:55:51] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[14:55:51] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[14:55:51] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[14:55:51] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[14:55:51] INFO: Migrating: 20261030_030036_global_editorial_copy
+[14:55:51] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[14:55:51] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[14:55:51] INFO: Migrated:  20261030_035306_protect_case_identity_references (7ms)
+[14:55:51] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[14:55:51] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[14:55:51] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[14:55:51] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[14:55:51] INFO: Migrating: 20261030_093430_private_media_manifests
+[14:55:51] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[14:55:51] INFO: Migrating: 20261030_124550_publication_coordination
+[14:55:51] INFO: Migrated:  20261030_124550_publication_coordination (34ms)
+[14:55:51] INFO: Done.
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1286ms
+  Running TypeScript ...
+  Finished TypeScript in 3.8s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/2) ...
+✓ Generating static pages using 9 workers (2/2) in 381ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+└ ƒ /preview-media/[id]/[variant]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+✓ Ready in 155ms
+✓ Running next.config.ts took 44ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 2 tests using 1 worker
+
+(node:4200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (1.2s)
+[14:56:02] INFO: You are not allowed to perform this action.
+  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (33ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+  2 passed (16.9s)

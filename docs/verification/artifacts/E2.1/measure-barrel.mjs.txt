@@ -1,0 +1,9 @@
+import { build } from 'esbuild';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
+const contents = readFileSync('.work/E2.1/specimen.tsx', 'utf8').replace("import { useReducedMotion } from 'motion/react';\nimport * as m from 'motion/react-m';", "import { m, useReducedMotion } from 'motion/react';");
+const result = await build({ entryPoints: ['.work/E2.1/specimen.tsx'], outdir: '.work/E2.1/browser-barrel', bundle: true, splitting: true, format: 'esm', minify: true, jsx: 'automatic', define: { 'process.env.NODE_ENV': '"production"' }, metafile: true, plugins: [{ name: 'barrel-comparison', setup(build) { build.onLoad({ filter: /specimen\.tsx$/ }, args => ({ contents, loader: 'tsx', resolveDir: args.path.replace(/[\\/][^\\/]*$/, '') })); } }] });
+const measurements = Object.keys(result.metafile.outputs).map(path => { const file = readFileSync(path); return { file: path.replaceAll('\\', '/'), bytes: file.length, gzipBytes: gzipSync(file).length }; });
+writeFileSync('.work/E2.1/barrel-bundle-bytes.json', JSON.stringify(measurements, null, 2) + '\n');
+writeFileSync('.work/E2.1/barrel-meta.json', JSON.stringify(result.metafile, null, 2) + '\n');
+console.log(JSON.stringify(measurements, null, 2));

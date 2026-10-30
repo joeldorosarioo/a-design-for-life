@@ -1,0 +1,60 @@
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { gzipSync } from 'node:zlib';
+import { createServer } from 'node:http';
+import { resolve, join, sep } from 'node:path';
+import { build } from 'esbuild';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import tailwind from '@tailwindcss/postcss';
+import { chromium } from '@playwright/test';
+import { App } from './specimen';
+const require = createRequire(import.meta.url);
+const postcss = require(require.resolve('postcss', { paths: [resolve('node_modules/@tailwindcss/postcss')] }));
+const dir = resolve('.work/E2.1/browser');
+mkdirSync(dir, { recursive: true });
+const css = await postcss([tailwind()]).process(readFileSync('src/stylesheets/globals.css', 'utf8'), { from: resolve('src/stylesheets/globals.css'), to: join(dir, 'styles.css') });
+writeFileSync(join(dir, 'styles.css'), css.css);
+const measures = {};
+for (const name of ['baseline', 'specimen']) {
+  const result = await build({ entryPoints: [`.work/E2.1/${name}.tsx`], outdir: join(dir, name), bundle: true, splitting: true, format: 'esm', minify: true, jsx: 'automatic', define: { 'process.env.NODE_ENV': '"production"' }, metafile: true, write: true });
+  writeFileSync(join(dir, `${name}-meta.json`), JSON.stringify(result.metafile, null, 2));
+  measures[name] = Object.keys(result.metafile.outputs).map(path => { const bytes = readFileSync(path); return { file: path.replaceAll('\\', '/'), bytes: bytes.length, gzipBytes: gzipSync(bytes).length }; });
+}
+const html = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/styles.css"></head><body><div id="root">${renderToString(<App />)}</div><script type="module" src="/specimen/specimen.js"></script></body></html>`;
+writeFileSync(join(dir, 'index.html'), html);
+process.env.PLAYWRIGHT_BROWSERS_PATH = resolve('.work/playwright-browsers');
+const server = createServer((request, response) => { const path = request.url === '/' ? 'index.html' : (request.url ?? '').slice(1); const file = resolve(dir, path); if (!file.startsWith(dir + sep)) { response.writeHead(403).end(); return; } try { response.setHeader('Content-Type', path.endsWith('.css') ? 'text/css' : path.endsWith('.js') ? 'text/javascript' : 'text/html'); response.end(readFileSync(file)); } catch { response.writeHead(404).end(); } });
+await new Promise<void>(done => server.listen(3102, '127.0.0.1', done));
+const browser = await chromium.launch({ headless: true });
+const results = [];
+try {
+  for (const reducedMotion of ['no-preference', 'reduce'] as const) {
+    for (const width of [390, 768, 1440]) {
+      const context = await browser.newContext({ viewport: { width, height: 700 }, reducedMotion });
+      const page = await context.newPage();
+      const errors: string[] = [];
+      page.on('pageerror', error => errors.push(String(error)));
+      const requests: string[] = [];
+      page.on('requestfinished', request => { if (request.url().endsWith('.js')) requests.push(request.url()); });
+      await page.goto('http://127.0.0.1:3102/');
+      await page.getByRole('button', { name: 'Motion feedback' }).waitFor();
+      await page.waitForTimeout(200);
+      await page.keyboard.press('Tab');
+      const computed = await page.getByRole('button', { name: 'Open projects' }).evaluate(element => { const css = getComputedStyle(element); const box = element.getBoundingClientRect(); return { focused: document.activeElement === element, focusColor: css.outlineColor, focusWidth: css.outlineWidth, background: css.backgroundColor, color: css.color, font: css.fontFamily, size: css.fontSize, lineHeight: css.lineHeight, padding: css.padding, radius: css.borderRadius, x: box.x, width: box.width, height: box.height, containerWidth: element.parentElement!.getBoundingClientRect().width, overflow: document.documentElement.scrollWidth > innerWidth }; });
+      const target = page.getByRole('button', { name: 'Motion feedback' });
+      await target.hover();
+      await page.waitForTimeout(300);
+      const feedback = await target.evaluate(element => ({ transform: getComputedStyle(element).transform, opacity: getComputedStyle(element).opacity }));
+      const hydrationErrors = await page.evaluate(() => (window as unknown as { hydrationErrors: string[] }).hydrationErrors);
+      if (!computed.focused || computed.focusWidth !== '2px' || computed.overflow || computed.color !== 'rgb(163, 18, 47)' || errors.length || hydrationErrors.length || (reducedMotion === 'reduce' && feedback.transform !== 'none')) throw new Error(JSON.stringify({ reducedMotion, width, computed, errors, hydrationErrors, feedback }));
+      if (reducedMotion === 'no-preference' && !feedback.transform.includes('-4')) throw new Error('Feedback transform missing');
+      await page.screenshot({ path: join(dir, `specimen-${width}-${reducedMotion}.png`) });
+      results.push({ reducedMotion, width, computed, feedback, errors, hydrationErrors, scripts: requests });
+      await context.close();
+    }
+  }
+} finally { await browser.close(); server.close(); }
+writeFileSync(join(dir, 'bundle-bytes.json'), JSON.stringify(measures, null, 2));
+writeFileSync(join(dir, 'browser-results.json'), JSON.stringify(results, null, 2));
+console.log(JSON.stringify({ measures, results }, null, 2));

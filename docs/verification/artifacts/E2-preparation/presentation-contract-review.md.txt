@@ -1,0 +1,25 @@
+# E2.2 presentation contracts — independent read-only review
+
+Etapa 2: 0% (0/6 tarefas concluídas). Revisão delimitada do incremento de contratos públicos de Perfil e resolução de Navegação; não é aceite integral de E2.2.
+
+## Achados
+
+### [P2 — corrigido e fechado] Criar arrays novos para cada default de perfil legado
+
+Arquivo: `E:/a-design-for-life/src/features/professional-profile/contracts/profile-dto.schema.ts:70` e `:75`.
+
+Os defaults de `homeAbout` e `approach` passam objetos constantes com arrays aninhados para `.default(...)`. A versão instalada do Zod aplica somente `util.shallowClone(defaultValue)` (`node_modules/zod/v4/classic/schemas.js:1282–1288`); o clone de objeto usa spread (`v4/core/util.js:255–259`) e o parser devolve esse default sem percorrer o schema interno (`v4/core/schemas.js:2166–2175`). Assim, dois parses de snapshots legados sem esses grupos recebem a mesma referência de `trajectory`/`methods`. Um consumidor que acrescente um item ao primeiro DTO contamina o default de leituras posteriores. O resultado deixa de representar os arrays vazios do snapshot confirmado e pode inserir conteúdo que não veio daquela geração.
+
+Correção mínima: usar funções em ambos os defaults, criando os arrays no corpo de cada função. Acrescentar regressão que faça dois parses legados, altere os arrays do primeiro e comprove que o segundo permanece vazio. Este comportamento foi confirmado por leitura da implementação instalada, sem executar teste; o coordenador foi informado e ficou responsável pelo RED/GREEN e pela edição.
+
+Re-review: relidos os arquivos efetivos após a correção. Os dois defaults agora usam funções com arrays novos; os dois testes novos fazem um parse legado, inserem um item no array resultante e exigem array vazio no parse seguinte. Lido o log `.work/E2.2-profile-default-isolation-red.txt`: as duas regressões falharam pelo vazamento esperado (2 falhas, 9 passes). Lido `.work/E2.2-profile-navigation-refactor.txt`: 78/78 testes passaram em sete arquivos. São execuções do coordenador verificadas pelos registros, não testes executados por esta revisão. O P2 está fechado, sem novo achado no fix.
+
+Não foram encontrados outros achados acionáveis de contrato, omissão de dados, validação de contatos, exposição administrativa/URLs privadas ou fronteiras entre features no escopo inspecionado.
+
+## Limites e prontidão de commit
+
+- Inspeção somente leitura de arquivos atuais, sem Git, testes, build, serviços ou alterações em `E:`. A lista de mudanças foi fornecida pelo coordenador; não houve comparação independente com HEAD.
+- Lidos AGENTS.md, autorização/progresso da etapa 2, brief aprovado E2.2, spec principal, contrato CMS e fronteiras arquiteturais, além de schemas/mapeadores/testes adjacentes e consumidores de publicação confirmada/mídia.
+- A revisão cobriu `profile-contacts.schema.ts`, `profile-dto.schema.ts` e teste, `profile.schema.ts`, export público de Perfil, `map-profile.ts` e teste; `resolved-navigation-dto.schema.ts`, `resolve-navigation.ts` e teste, exports de Navegação, `map-navigation.test.ts` e fixtures literais. Foram rastreados `get-published-profile`, `get-published-navigation`, `profile-publication`, validação de publicação, extração de referências e mapeamento público de imagem.
+- Nenhum teste foi executado por esta revisão. O coordenador relatou testes focados de Perfil e Navegação verdes e lint focado; ainda faltava gate integral atual ao iniciar a revisão. Esses resultados não são reapresentados como execução independente.
+- A correção acima foi aprovada na re-review; não restam achados acionáveis nesta revisão delimitada. O gate integral atual continua pendente sob responsabilidade do coordenador antes do commit. Esta revisão não comprova UI, composição de rotas, teclado/menu, footer acessível, abertura de PDF no navegador, equivalência visual, E2E PT/EN nem conclusão E2.2. A composição futura da página ainda deve fornecer Perfil e Navegação da mesma raiz confirmada, sem recorrer ao Native para preencher snapshots antigos.
