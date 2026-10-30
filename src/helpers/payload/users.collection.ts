@@ -1,3 +1,4 @@
+import 'server-only';
 import { Forbidden, type CollectionConfig } from 'payload';
 
 // Initial auth collection needed by the native admin; E1.7 completes account flows.

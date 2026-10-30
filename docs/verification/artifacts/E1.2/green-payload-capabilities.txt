@@ -1,0 +1,10 @@
+$ vitest run --project architecture -t 'rejeita capacidade'
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed | 22 skipped (26)
+   Start at  22:43:29
+   Duration  3.58s (tests 88%, import 10%, transform 2%)
+

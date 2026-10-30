@@ -1,0 +1,64 @@
+$ vitest run --project architecture
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (4 tests | 2 failed) 2883ms
+   ❯ fronteiras do grafo real (4)
+     × rejeita helpers/log.ts dependendo de feature por ponte 726ms
+     × rejeita components/ui/button.ts dependendo de feature por ponte 720ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita helpers/log.ts dependendo de feature por ponte
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/helpers/log.ts",
+  "rule": "generic-does-not-reach-features",
+  "to": "src/features/cases/index.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:64:44
+     62|       'src/features/cases/index.ts': 'export const title = "synthetic"…
+     63|     });
+     64|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+     65|       rule: 'generic-does-not-reach-features',
+     66|       from: `src/${entry}`,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita components/ui/button.ts dependendo de feature por ponte
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/components/ui/button.ts",
+  "rule": "generic-does-not-reach-features",
+  "to": "src/features/cases/index.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:64:44
+     62|       'src/features/cases/index.ts': 'export const title = "synthetic"…
+     63|     });
+     64|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+     65|       rule: 'generic-does-not-reach-features',
+     66|       from: `src/${entry}`,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  22:12:48
+   Duration  3.07s (tests 98%, import 1%, transform 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

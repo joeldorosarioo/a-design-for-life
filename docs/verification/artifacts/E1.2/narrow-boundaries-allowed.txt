@@ -1,0 +1,10 @@
+$ vitest run --project architecture -t 'permite tipos|classifica os componentes|permite entradas públicas'
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed | 25 skipped (28)
+   Start at  22:43:58
+   Duration  2.65s (tests 84%, import 14%, transform 3%)
+

@@ -1,0 +1,40 @@
+$ vitest run --project architecture
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (2 tests | 1 failed) 1426ms
+   ❯ fronteiras do grafo real (2)
+     × rejeita dependência circular dentro da mesma feature 711ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita dependência circular dentro da mesma feature
+AssertionError: expected [] to deep equally contain { rule: 'no-cycles', …(2) }
+
+- Expected:
+{
+  "from": "src/features/cases/index.ts",
+  "rule": "no-cycles",
+  "to": "src/features/cases/content/value.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:53:44
+     51|       'src/features/cases/content/value.ts': "import '../index'; expor…
+     52|     });
+     53|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+     54|       rule: 'no-cycles',
+     55|       from: 'src/features/cases/index.ts',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  22:11:36
+   Duration  1.61s (tests 97%, import 1%, transform 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,40 @@
+$ vitest run --project architecture
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (7 tests | 1 failed) 5095ms
+   ❯ fronteiras do grafo real (7)
+     × rejeita index.ts compartilhável que reexporta operação de servidor 721ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita index.ts compartilhável que reexporta operação de servidor
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/index.ts",
+  "rule": "shared-entry-cannot-reach-server",
+  "to": "src/features/cases/server/query.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:100:44
+     98|       'src/features/cases/server/query.ts': "import 'server-only'; exp…
+     99|     });
+    100|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+    101|       rule: 'shared-entry-cannot-reach-server',
+    102|       from: 'src/features/cases/index.ts',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  22:16:14
+   Duration  5.49s (tests 95%, import 4%, transform 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

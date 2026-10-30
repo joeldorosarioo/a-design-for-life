@@ -1,0 +1,40 @@
+$ vitest run --project architecture
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (1 test | 1 failed) 3530ms
+   ❯ fronteiras do grafo real (1)
+     × rejeita import interno de outra feature, por caminho relativo 3528ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita import interno de outra feature, por caminho relativo
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/index.ts",
+  "rule": "feature-public-entry-only",
+  "to": "src/features/site-navigation/content/private.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:41:44
+     39|       'src/features/site-navigation/content/private.ts': 'export const…
+     40|     });
+     41|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+     42|       rule: 'feature-public-entry-only',
+     43|       from: 'src/features/cases/index.ts',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  22:10:33
+   Duration  3.73s (tests 98%, transform 1%, import 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
