@@ -68,6 +68,12 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    cases: Case;
+    'case-content': CaseContent;
+    'case-routes': CaseRoute;
+    'site-navigation': SiteNavigation;
+    'professional-profiles': ProfessionalProfile;
+    media: Media;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,6 +82,12 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    cases: CasesSelect<false> | CasesSelect<true>;
+    'case-content': CaseContentSelect<false> | CaseContentSelect<true>;
+    'case-routes': CaseRoutesSelect<false> | CaseRoutesSelect<true>;
+    'site-navigation': SiteNavigationSelect<false> | SiteNavigationSelect<true>;
+    'professional-profiles': ProfessionalProfilesSelect<false> | ProfessionalProfilesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -143,6 +155,293 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cases".
+ */
+export interface Case {
+  id: string;
+  internalTitle: string;
+  sortOrder?: number | null;
+  featured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-content".
+ */
+export interface CaseContent {
+  id: string;
+  case: string | Case;
+  locale: 'pt' | 'en';
+  title?: string | null;
+  summary?: string | null;
+  introduction?: string | null;
+  slug?: string | null;
+  cover?: {
+    media?: (string | null) | Media;
+    decorative?: boolean | null;
+    alt?: string | null;
+    caption?: string | null;
+  };
+  role?: string | null;
+  scope?: string | null;
+  contextNote?: string | null;
+  sections?:
+    | {
+        readingKey?: string | null;
+        heading?: string | null;
+        blocks?:
+          | (
+              | {
+                  /**
+                   * Identidade estável do trecho; compartilhar entre traduções equivalentes.
+                   */
+                  readingKey?: string | null;
+                  content?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'text';
+                }
+              | {
+                  /**
+                   * Identidade estável do trecho; compartilhar entre traduções equivalentes.
+                   */
+                  readingKey?: string | null;
+                  image?: {
+                    media?: (string | null) | Media;
+                    decorative?: boolean | null;
+                    alt?: string | null;
+                    caption?: string | null;
+                  };
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'image';
+                }
+              | {
+                  /**
+                   * Identidade estável do trecho; compartilhar entre traduções equivalentes.
+                   */
+                  readingKey?: string | null;
+                  presentation?: ('pair' | 'comparison') | null;
+                  first?: {
+                    media?: (string | null) | Media;
+                    decorative?: boolean | null;
+                    alt?: string | null;
+                    caption?: string | null;
+                  };
+                  second?: {
+                    media?: (string | null) | Media;
+                    decorative?: boolean | null;
+                    alt?: string | null;
+                    caption?: string | null;
+                  };
+                  firstLabel?: string | null;
+                  secondLabel?: string | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'image-pair';
+                }
+            )[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    image?: {
+      media?: (string | null) | Media;
+      decorative?: boolean | null;
+      alt?: string | null;
+      caption?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-routes".
+ */
+export interface CaseRoute {
+  id: string;
+  locale: 'pt' | 'en';
+  slug: string;
+  case: string | Case;
+  content: string | CaseContent;
+  everPublished: boolean;
+  state: 'draft' | 'current' | 'historical';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-navigation".
+ */
+export interface SiteNavigation {
+  id: string;
+  locale: 'pt' | 'en';
+  header?: {
+    brandLabel?: string | null;
+    projectsLabel?: string | null;
+    aboutLabel?: string | null;
+    resumeLabel?: string | null;
+    contactLabel?: string | null;
+  };
+  footer?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    description?: string | null;
+    emailLabel?: string | null;
+    linkedinLabel?: string | null;
+    resumeLabel?: string | null;
+    copyright?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "professional-profiles".
+ */
+export interface ProfessionalProfile {
+  id: string;
+  locale: 'pt' | 'en';
+  identity?: {
+    name?: string | null;
+    role?: string | null;
+  };
+  home?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    titleEmphasis?: string | null;
+    description?: string | null;
+    portrait?: {
+      media?: (string | null) | Media;
+      decorative?: boolean | null;
+      alt?: string | null;
+      caption?: string | null;
+    };
+    projectsLabel?: string | null;
+  };
+  homeAbout?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    description?: string | null;
+    trajectory?:
+      | {
+          readingKey?: string | null;
+          period?: string | null;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    aboutLabel?: string | null;
+  };
+  approach?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    description?: string | null;
+    methods?:
+      | {
+          readingKey?: string | null;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  about?: {
+    eyebrow?: string | null;
+    title?: string | null;
+    description?: string | null;
+    introductionHeading?: string | null;
+    introduction?: string | null;
+    portrait?: {
+      media?: (string | null) | Media;
+      decorative?: boolean | null;
+      alt?: string | null;
+      caption?: string | null;
+    };
+    journeyHeading?: string | null;
+    journey?: string | null;
+    deskPhotograph?: {
+      media?: (string | null) | Media;
+      decorative?: boolean | null;
+      alt?: string | null;
+      caption?: string | null;
+    };
+    editorialEmphasis?: string | null;
+    approachHeading?: string | null;
+    approach?: string | null;
+    architecturePhotograph?: {
+      media?: (string | null) | Media;
+      decorative?: boolean | null;
+      alt?: string | null;
+      caption?: string | null;
+    };
+    inMotionHeading?: string | null;
+    inMotion?: string | null;
+    closingHeading?: string | null;
+    closing?: string | null;
+    projectsLabel?: string | null;
+  };
+  contacts?: {
+    email?: string | null;
+    linkedin?: string | null;
+  };
+  resume?: (string | null) | Media;
+  seo?: {
+    homeTitle?: string | null;
+    homeDescription?: string | null;
+    aboutTitle?: string | null;
+    aboutDescription?: string | null;
+    image?: {
+      media?: (string | null) | Media;
+      decorative?: boolean | null;
+      alt?: string | null;
+      caption?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -164,10 +463,35 @@ export interface PayloadKv {
  */
 export interface PayloadLockedDocument {
   id: string;
-  document?: {
-    relationTo: 'users';
-    value: string | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'cases';
+        value: string | Case;
+      } | null)
+    | ({
+        relationTo: 'case-content';
+        value: string | CaseContent;
+      } | null)
+    | ({
+        relationTo: 'case-routes';
+        value: string | CaseRoute;
+      } | null)
+    | ({
+        relationTo: 'site-navigation';
+        value: string | SiteNavigation;
+      } | null)
+    | ({
+        relationTo: 'professional-profiles';
+        value: string | ProfessionalProfile;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -232,6 +556,307 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cases_select".
+ */
+export interface CasesSelect<T extends boolean = true> {
+  internalTitle?: T;
+  sortOrder?: T;
+  featured?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-content_select".
+ */
+export interface CaseContentSelect<T extends boolean = true> {
+  case?: T;
+  locale?: T;
+  title?: T;
+  summary?: T;
+  introduction?: T;
+  slug?: T;
+  cover?:
+    | T
+    | {
+        media?: T;
+        decorative?: T;
+        alt?: T;
+        caption?: T;
+      };
+  role?: T;
+  scope?: T;
+  contextNote?: T;
+  sections?:
+    | T
+    | {
+        readingKey?: T;
+        heading?: T;
+        blocks?:
+          | T
+          | {
+              text?:
+                | T
+                | {
+                    readingKey?: T;
+                    content?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              image?:
+                | T
+                | {
+                    readingKey?: T;
+                    image?:
+                      | T
+                      | {
+                          media?: T;
+                          decorative?: T;
+                          alt?: T;
+                          caption?: T;
+                        };
+                    id?: T;
+                    blockName?: T;
+                  };
+              'image-pair'?:
+                | T
+                | {
+                    readingKey?: T;
+                    presentation?: T;
+                    first?:
+                      | T
+                      | {
+                          media?: T;
+                          decorative?: T;
+                          alt?: T;
+                          caption?: T;
+                        };
+                    second?:
+                      | T
+                      | {
+                          media?: T;
+                          decorative?: T;
+                          alt?: T;
+                          caption?: T;
+                        };
+                    firstLabel?: T;
+                    secondLabel?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+            };
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?:
+          | T
+          | {
+              media?: T;
+              decorative?: T;
+              alt?: T;
+              caption?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-routes_select".
+ */
+export interface CaseRoutesSelect<T extends boolean = true> {
+  locale?: T;
+  slug?: T;
+  case?: T;
+  content?: T;
+  everPublished?: T;
+  state?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-navigation_select".
+ */
+export interface SiteNavigationSelect<T extends boolean = true> {
+  locale?: T;
+  header?:
+    | T
+    | {
+        brandLabel?: T;
+        projectsLabel?: T;
+        aboutLabel?: T;
+        resumeLabel?: T;
+        contactLabel?: T;
+      };
+  footer?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        emailLabel?: T;
+        linkedinLabel?: T;
+        resumeLabel?: T;
+        copyright?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "professional-profiles_select".
+ */
+export interface ProfessionalProfilesSelect<T extends boolean = true> {
+  locale?: T;
+  identity?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+      };
+  home?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        titleEmphasis?: T;
+        description?: T;
+        portrait?:
+          | T
+          | {
+              media?: T;
+              decorative?: T;
+              alt?: T;
+              caption?: T;
+            };
+        projectsLabel?: T;
+      };
+  homeAbout?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        trajectory?:
+          | T
+          | {
+              readingKey?: T;
+              period?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        aboutLabel?: T;
+      };
+  approach?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        methods?:
+          | T
+          | {
+              readingKey?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  about?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        introductionHeading?: T;
+        introduction?: T;
+        portrait?:
+          | T
+          | {
+              media?: T;
+              decorative?: T;
+              alt?: T;
+              caption?: T;
+            };
+        journeyHeading?: T;
+        journey?: T;
+        deskPhotograph?:
+          | T
+          | {
+              media?: T;
+              decorative?: T;
+              alt?: T;
+              caption?: T;
+            };
+        editorialEmphasis?: T;
+        approachHeading?: T;
+        approach?: T;
+        architecturePhotograph?:
+          | T
+          | {
+              media?: T;
+              decorative?: T;
+              alt?: T;
+              caption?: T;
+            };
+        inMotionHeading?: T;
+        inMotion?: T;
+        closingHeading?: T;
+        closing?: T;
+        projectsLabel?: T;
+      };
+  contacts?:
+    | T
+    | {
+        email?: T;
+        linkedin?: T;
+      };
+  resume?: T;
+  seo?:
+    | T
+    | {
+        homeTitle?: T;
+        homeDescription?: T;
+        aboutTitle?: T;
+        aboutDescription?: T;
+        image?:
+          | T
+          | {
+              media?: T;
+              decorative?: T;
+              alt?: T;
+              caption?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

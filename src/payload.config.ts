@@ -2,11 +2,26 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config as loadEnv } from 'dotenv';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import {
+  lexicalEditor,
+  ParagraphFeature,
+  BoldFeature,
+  ItalicFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
+  LinkFeature,
+  FixedToolbarFeature,
+} from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { readServerEnv } from './config/server-env';
 import { Users } from './helpers/payload/users.collection';
+import { Cases } from './features/cases/content/collections/cases';
+import { CaseContent } from './features/cases/content/collections/case-content';
+import { CaseRoutes } from './features/cases/content/collections/case-routes';
+import { SiteNavigation } from './features/site-navigation/content/collections/site-navigation';
+import { ProfessionalProfiles } from './features/professional-profile/content/collections/professional-profiles';
+import { Media } from './features/media-library/content/collections/media';
 
 loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
@@ -26,8 +41,18 @@ export default buildConfig({
     push: false,
     disableCreateDatabase: true,
   }),
-  collections: [Users],
-  editor: lexicalEditor(),
+  collections: [Users, Cases, CaseContent, CaseRoutes, SiteNavigation, ProfessionalProfiles, Media],
+  editor: lexicalEditor({
+    features: () => [
+      ParagraphFeature(),
+      BoldFeature(),
+      ItalicFeature(),
+      OrderedListFeature(),
+      UnorderedListFeature(),
+      LinkFeature({ enabledCollections: [] }),
+      FixedToolbarFeature(),
+    ],
+  }),
   sharp,
   cors: [env.SITE_ORIGIN],
   csrf: [env.SITE_ORIGIN],
