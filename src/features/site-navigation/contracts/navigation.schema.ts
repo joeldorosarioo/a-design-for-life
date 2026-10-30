@@ -34,6 +34,7 @@ const controlsSchema = z.strictObject({
 });
 const messagesSchema = z.strictObject({
   translationUnavailable: text,
+  readingPositionAdjusted: text,
   emptyCasesTitle: text,
   emptyCasesDescription: text,
   caseUnavailableTitle: text,

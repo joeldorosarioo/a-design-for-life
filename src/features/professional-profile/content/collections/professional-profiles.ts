@@ -4,6 +4,7 @@ import { getPublishedProfile } from '../../server/get-published-profile';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { isDraftOperation, protectEditorialCollection } from '@/helpers/payload/editorial-revision';
 import { validateProfilePublication } from '../validate-publication';
+import { stableProfileReadingKeys } from '../stable-profile-reading-keys';
 import 'server-only';
 import { APIError, type CollectionConfig } from 'payload';
 import { profileInputSchema } from '../../contracts/profile.schema';
@@ -71,6 +72,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
         }
         return data;
       },
+      stableProfileReadingKeys,
       validateProfilePublication,
       requiredIdentity(structuralIdentitySchema),
       immutableFields({ locale: 'Idioma não pode ser alterado.' }),

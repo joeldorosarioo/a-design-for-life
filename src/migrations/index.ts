@@ -10,6 +10,7 @@ import * as migration_20261030_042607_editorial_snapshot_revision from './202610
 import * as migration_20261030_093430_private_media_manifests from './20261030_093430_private_media_manifests';
 import * as migration_20261030_124550_publication_coordination from './20261030_124550_publication_coordination';
 import * as migration_20261030_190345_e2_editorial_presentation_fields from './20261030_190345_e2_editorial_presentation_fields';
+import * as migration_20261030_201024_e2_reading_position_adjusted from './20261030_201024_e2_reading_position_adjusted';
 
 export const migrations = [
   {
@@ -71,5 +72,10 @@ export const migrations = [
     up: migration_20261030_190345_e2_editorial_presentation_fields.up,
     down: migration_20261030_190345_e2_editorial_presentation_fields.down,
     name: '20261030_190345_e2_editorial_presentation_fields',
+  },
+  {
+    up: migration_20261030_201024_e2_reading_position_adjusted.up,
+    down: migration_20261030_201024_e2_reading_position_adjusted.down,
+    name: '20261030_201024_e2_reading_position_adjusted',
   },
 ];

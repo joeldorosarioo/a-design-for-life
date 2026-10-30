@@ -147,6 +147,7 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
       type: 'group',
       fields: [
         { name: 'translationUnavailable', type: 'text' },
+        { name: 'readingPositionAdjusted', type: 'text' },
         { name: 'emptyCasesTitle', type: 'text' },
         { name: 'emptyCasesDescription', type: 'text' },
         { name: 'caseUnavailableTitle', type: 'text' },
