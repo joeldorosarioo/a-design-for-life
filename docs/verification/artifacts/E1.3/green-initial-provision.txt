@@ -1,0 +1,29 @@
+$ vitest run --project integration src/config/provision-structural-documents.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:01:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:01:33] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:01:33] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:01:33] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[23:01:33] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:01:33] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (85ms)[39m
+[23:01:33] [32mINFO[39m: [36mDone.[39m
+[23:01:35] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  23:01:28
+   Duration  6.82s (import 79%, tests 14%, setup 3%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
