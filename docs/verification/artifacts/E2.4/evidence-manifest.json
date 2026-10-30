@@ -1,0 +1,42 @@
+[
+  {
+    "source": ".work/E2.4-core-red.log",
+    "output": "docs/verification/artifacts/E2.4/E2.4-core-red.log",
+    "bytes": 4834,
+    "originalSHA256": "d14d6146319b8adf632cf231a39a78042cc6976ee08685fe6382fed7d55166ed",
+    "exportedSHA256": "d14d6146319b8adf632cf231a39a78042cc6976ee08685fe6382fed7d55166ed",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.4-core-green.log",
+    "output": "docs/verification/artifacts/E2.4/E2.4-core-green.log",
+    "bytes": 201,
+    "originalSHA256": "574e3241d9436bf6a6e6aca8d6ef51e2f01d6c1ff6b409cb9fea5c48f557e8d3",
+    "exportedSHA256": "574e3241d9436bf6a6e6aca8d6ef51e2f01d6c1ff6b409cb9fea5c48f557e8d3",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.4-cookie-red.log",
+    "output": "docs/verification/artifacts/E2.4/E2.4-cookie-red.log",
+    "bytes": 10099,
+    "originalSHA256": "b90ebdabedccd772fda343b7faee513fbd923cb9d12344457558d337db585e7e",
+    "exportedSHA256": "b90ebdabedccd772fda343b7faee513fbd923cb9d12344457558d337db585e7e",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.4-cookie-green.log",
+    "output": "docs/verification/artifacts/E2.4/E2.4-cookie-green.log",
+    "bytes": 201,
+    "originalSHA256": "308ce354cc482c4ebad0fcbafa40fb776285729563c532d00cb3e89bc095154e",
+    "exportedSHA256": "308ce354cc482c4ebad0fcbafa40fb776285729563c532d00cb3e89bc095154e",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.4-core-green-final.log",
+    "output": "docs/verification/artifacts/E2.4/E2.4-core-green-final.log",
+    "bytes": 201,
+    "originalSHA256": "bee8f37ae51e4aa4e5effb2b6f8a4f79dca2598646d5dd1a256d7466eb865b79",
+    "exportedSHA256": "bee8f37ae51e4aa4e5effb2b6f8a4f79dca2598646d5dd1a256d7466eb865b79",
+    "transformation": "none; synthetic unit/architecture output only"
+  }
+]

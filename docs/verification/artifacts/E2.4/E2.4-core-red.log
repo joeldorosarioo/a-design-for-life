@@ -1,0 +1,82 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/i18n/negotiate-locale.test.ts (32 tests | 14 failed) 13ms
+   ❯ negotiateLocale (32)
+     × resolves "pt" to pt 5ms
+     × resolves "pt-BR" to pt 1ms
+     × resolves "pt-PT" to pt 0ms
+     × resolves "PT-br" to pt 0ms
+     × resolves "fr-FR,pt-BR;q=0.8,en;q=0.6" to pt 0ms
+     × resolves "en;q=0.5,pt-BR;q=0.9" to pt 0ms
+     × resolves "en;q=0.5,pt-BR" to pt 0ms
+     × resolves "en;q=0,pt;q=0.2" to pt 0ms
+     × resolves "pt;q=0.001,en;q=0" to pt 0ms
+     × resolves "pt;q=1.000,en;q=0.999" to pt 0ms
+     × resolves "pt;q=0.8,en;q=0.8" to pt 0ms
+     × resolves "  pt-BR ; q=0.9 , en-US ; q=0.1  " to pt 0ms
+     × resolves "pt;q=0.1,pt-BR;q=0.9,en;q=0.5" to pt 0ms
+     × resolves ",invalid;q=broken,,pt-BR;q=0.9" to pt 0ms
+ ❯ |unit| src/features/language-switcher/server/resolve-entry-locale.test.ts (10 tests | 4 failed) 8ms
+   ❯ resolveEntryLocale (10)
+     × resolves {"savedLocale":"pt","acceptLanguage":"en-US,en;q=0.9"} to pt 5ms
+     × resolves {"savedLocale":null,"acceptLanguage":"en;q=0.5,pt-BR;q=0.9"} to pt 0ms
+     × resolves {"savedLocale":"","acceptLanguage":"pt-BR"} to pt 0ms
+     × resolves {"savedLocale":"pt","acceptLanguage":null} to pt 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt-BR" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt-PT" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "PT-br" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "fr-FR,pt-BR;q=0.8,en;q=0.6" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "en;q=0.5,pt-BR;q=0.9" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "en;q=0.5,pt-BR" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "en;q=0,pt;q=0.2" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt;q=0.001,en;q=0" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt;q=1.000,en;q=0.999" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt;q=0.8,en;q=0.8" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "  pt-BR ; q=0.9 , en-US ; q=0.1  " to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves "pt;q=0.1,pt-BR;q=0.9,en;q=0.5" to pt
+ FAIL  |unit| src/helpers/i18n/negotiate-locale.test.ts > negotiateLocale > resolves ",invalid;q=broken,,pt-BR;q=0.9" to pt
+AssertionError: expected 'en' to be 'pt' // Object.is equality
+
+Expected: "pt"
+Received: "en"
+
+ ❯ src/helpers/i18n/negotiate-locale.test.ts:40:45
+     38|     [',invalid;q=broken,,pt-BR;q=0.9', 'pt'],
+     39|   ] as const)('resolves %j to %s', (acceptLanguage, expected) => {
+     40|     expect(negotiateLocale(acceptLanguage)).toBe(expected);
+       |                                             ^
+     41|   });
+     42| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/resolve-entry-locale.test.ts > resolveEntryLocale > resolves {"savedLocale":"pt","acceptLanguage":"en-US,en;q=0.9"} to pt
+ FAIL  |unit| src/features/language-switcher/server/resolve-entry-locale.test.ts > resolveEntryLocale > resolves {"savedLocale":null,"acceptLanguage":"en;q=0.5,pt-BR;q=0.9"} to pt
+ FAIL  |unit| src/features/language-switcher/server/resolve-entry-locale.test.ts > resolveEntryLocale > resolves {"savedLocale":"","acceptLanguage":"pt-BR"} to pt
+ FAIL  |unit| src/features/language-switcher/server/resolve-entry-locale.test.ts > resolveEntryLocale > resolves {"savedLocale":"pt","acceptLanguage":null} to pt
+AssertionError: expected 'en' to be 'pt' // Object.is equality
+
+Expected: "pt"
+Received: "en"
+
+ ❯ src/features/language-switcher/server/resolve-entry-locale.test.ts:18:39
+     16|     [{ savedLocale: 'pt', acceptLanguage: null }, 'pt'],
+     17|   ] as const)('resolves %j to %s', (input, expected) => {
+     18|     expect(resolveEntryLocale(input)).toBe(expected);
+       |                                       ^
+     19|   });
+     20| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  18 failed | 24 passed (42)
+   Start at  14:41:13
+   Duration  494ms (setup 75%, transform 10%, import 9%, tests 4%, worker 2%)
+
