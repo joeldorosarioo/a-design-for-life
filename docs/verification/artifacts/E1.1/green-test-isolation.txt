@@ -1,0 +1,10 @@
+$ vitest run --project unit src/config/server-env.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  21:28:13
+   Duration  442ms (setup 63%, import 25%, transform 8%, tests 3%, worker 1%)
+

@@ -1,0 +1,35 @@
+$ vitest run --project unit src/config/server-env.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (13 tests | 1 failed) 12ms
+   × protege recursos no build de produção local usado pelo Playwright 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > protege recursos no build de produção local usado pelo Playwright
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:48:145
+     46| });
+     47| it('protege recursos no build de produção local usado pelo Playwright'…
+     48|   expect(() => readServerEnv({ ...validInput, NODE_ENV: 'production', …
+       |                                                                                                                                                 ^
+     49|   expect(readServerEnv({ ...validInput, NODE_ENV: 'production' }).APP_…
+     50| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  21:30:09
+   Duration  453ms (setup 62%, import 25%, transform 7%, tests 4%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

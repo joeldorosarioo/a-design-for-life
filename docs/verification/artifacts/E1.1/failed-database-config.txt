@@ -1,0 +1,36 @@
+$ vitest run --project unit src/config/server-env.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (5 tests | 1 failed) 10ms
+   ❯ readServerEnv (5)
+     × recusa conexão que não é PostgreSQL:  4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: 
+AssertionError: expected [Function] to throw error matching /DATABASE_URI/ but got 'Invalid URL'
+
+- Expected:
+/DATABASE_URI/
+
++ Received:
+"Invalid URL"
+
+ ❯ src/config/server-env.test.ts:24:76
+     22|   // A malformed/missing connection would otherwise reach the database…
+     23|   it.each([undefined, '', 'https://database.example.com/adfl'])('recus…
+     24|     expect(() => readServerEnv({ ...validInput, DATABASE_URI: database…
+       |                                                                            ^
+     25|   });
+     26|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  21:27:13
+   Duration  442ms (setup 63%, import 25%, transform 7%, tests 3%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

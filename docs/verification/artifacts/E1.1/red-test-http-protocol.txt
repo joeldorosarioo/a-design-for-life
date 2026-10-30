@@ -1,0 +1,36 @@
+$ vitest run --project unit src/config/server-env.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (15 tests | 1 failed) 13ms
+   ❯ isolamento do ambiente de testes (9)
+     × recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://127.0.0.1:3100"} 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://127.0.0.1:3100"}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:49:65
+     47|     [{ SITE_ORIGIN: 'https://127.0.0.1:3100' }, /SITE_ORIGIN/],
+     48|   ])('recusa recurso de teste não isolado: %j', (override, field) => {
+     49|     expect(() => readServerEnv({ ...validInput, ...override })).toThro…
+       |                                                                 ^
+     50|   });
+     51|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 passed (15)
+   Start at  21:49:22
+   Duration  453ms (setup 62%, import 25%, transform 8%, tests 4%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
