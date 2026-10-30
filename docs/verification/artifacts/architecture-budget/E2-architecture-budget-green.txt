@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita import interno de outra feature, por caminho relativo 919ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita dependência circular dentro da mesma feature 728ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita helpers/log.ts dependendo de feature por ponte 713ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita components/ui/button.ts dependendo de feature por ponte 729ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente transitivo a server-only sem depender do nome do arquivo 774ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita entrada server.ts sem marcador server-only 708ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita index.ts compartilhável que reexporta operação de servidor 717ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente para server/query.ts mesmo sem marcador 694ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente para content/collection.ts mesmo sem marcador 714ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > também rejeita arquivo privado entre features usando alias 705ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > permite entradas públicas, imports internos próprios e composição do Payload 756ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > permite import só de tipo e não confunde texto com diretiva cliente 711ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > o grafo atual da aplicação respeita as mesmas regras 1239ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita import relativo privado entre features 1620ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita feature em src/helpers/log.ts 18ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita feature em src/components/ui/button.ts 21ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint permite a relação aprovada em src/features/cases/components/card.ts: import '../contracts/card'; 13ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint permite a relação aprovada em src/features/cases/components/card.ts: export * from '@/features/site-navigation'; 18ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint permite a relação aprovada em src/features/cases/server/query.ts: import '@/features/site-navigation/server'; 16ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint permite a relação aprovada em src/payload.config.ts: import '@/features/cases/content/collection'; 16ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita ciclo só de tipos sem confundir isso com runtime cliente 717ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita rota pública importando consulta privada de feature 740ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade components/reader.tsx → payload 732ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade components/reader.tsx → @payloadcms/db-postgres 710ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade index.ts → payload 724ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade index.ts → @payloadcms/db-postgres 802ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > permite tipos Payload em cliente e index sem criar dependência runtime 768ms
+ ✓ |architecture| src/config/architecture.test.ts > fronteiras do grafo real > não classifica os componentes clientes nativos do Payload como banco 729ms
+
+ Test Files  1 passed (1)
+      Tests  28 passed (28)
+   Start at  15:06:46
+   Duration  18.32s (tests 98%, import 2%)
+
