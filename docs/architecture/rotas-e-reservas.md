@@ -1,6 +1,6 @@
 # Rotas e reservas por idioma
 
-Etapa 1 em 50% (E1.1–E1.4 concluídas); E1.5 em implementação/revisão. Fonte: P03/P17 da spec e “Registro de endereços” do contrato CMS. Este documento descreve o domínio e a superfície HTTP mínima da etapa 1; não é o layout público da etapa 2.
+Etapa 1 em 62,5% (E1.1–E1.5 concluídas); E1.5 verificada e revisada. Fonte: P03/P17 da spec e “Registro de endereços” do contrato CMS. Este documento descreve o domínio e a superfície HTTP mínima da etapa 1; não é o layout público da etapa 2.
 
 ## Formação e escolha explícita
 
