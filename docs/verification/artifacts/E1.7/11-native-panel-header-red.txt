@@ -1,0 +1,1465 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/helpers/payload/preview.e2e.test.ts src/helpers/payload/password-reset.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[04:16:54] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[04:16:54] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[04:16:54] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[04:16:54] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[04:16:54] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (93ms)[39m
+[04:16:54] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[04:16:54] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[04:16:54] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[04:16:54] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[04:16:54] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[04:16:55] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[04:16:55] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[04:16:55] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[04:16:55] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[04:16:55] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[04:16:55] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[04:16:55] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[04:16:55] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[04:16:55] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[04:16:55] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.8s
+  Running TypeScript ...
+  Finished TypeScript in 4.6s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/2) ...
+✓ Generating static pages using 7 workers (2/2) in 385ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+└ ƒ /preview
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 153ms
+✓ Running next.config.ts took 44ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 5 tests using 1 worker
+
+(node:19400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › src\helpers\payload\password-reset.e2e.test.ts:23:1 › native admin security headers preserve the real login form and its resources (952ms)
+(node:24688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › src\helpers\payload\password-reset.e2e.test.ts:35:1 › real native forgot and reset forms use captured delivery and the native session cookie (30.0s)
+(node:34368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [chromium] › src\helpers\payload\preview.e2e.test.ts:10:1 › anonymous preview is rejected without exposing a draft or redirecting (34ms)
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[04:17:49] [31mERROR[39m: [36mToken is either invalid or has expired.[39m
+    err: {
+      "type": "",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at ez (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:27180)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async ex (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:268881)
+              at async includes.i.handler (E:\a-design-for-life\.next\server\chunks\_1l8wo4t6lgn9a._.js:114:255710)
+              at async B (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:16634)
+              at async E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:24952
+              at async h (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:33074)
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async Y (E:\a-design-for-life\.next\server\chunks\_1uh8wb5b7bdd6._.js:1:28547)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+  ok 4 [chromium] › src\helpers\payload\preview.e2e.test.ts:23:1 › malformed reset requests consume the outer transport abuse budget (338ms)
+  x  5 [chromium] › src\helpers\payload\preview.e2e.test.ts:61:1 › native session follows a safe private redirect and can see only the requested draft locale (108ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\helpers\payload\password-reset.e2e.test.ts:23:1 › native admin security headers preserve the real login form and its resources 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "nosniff"
+    Received: undefined
+
+      27 |   expect(response?.status()).toBe(200);
+      28 |   await expect(page.getByRole('textbox', { name: /^Email/ })).toBeVisible();
+    > 29 |   expect(response?.headers()['x-content-type-options']).toBe('nosniff');
+         |                                                         ^
+      30 |   expect(response?.headers()['referrer-policy']).toBe('no-referrer');
+      31 |   expect(response?.headers()['x-frame-options']).toBe('DENY');
+      32 |   expect(response?.headers()['x-robots-tag']).toContain('noindex');
+        at E:\a-design-for-life\src\helpers\payload\password-reset.e2e.test.ts:29:57
+
+    Error Context: test-results\helpers-payload-password-r-f7dfc-ogin-form-and-its-resources-chromium\error-context.md
+
+    Error Context: test-results\helpers-payload-password-r-f7dfc-ogin-form-and-its-resources-chromium\error-context.md
+
+  2) [chromium] › src\helpers\payload\password-reset.e2e.test.ts:35:1 › real native forgot and reset forms use captured delivery and the native session cookie 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: Native reset form journey failed; secret-bearing browser details omitted.
+
+      68 |     expect(nativeCookie?.sameSite === 'Lax').toBe(true);
+      69 |   } catch {
+    > 70 |     throw new Error('Native reset form journey failed; secret-bearing browser details omitted.');
+         |           ^
+      71 |   }
+      72 | });
+      73 |
+        at E:\a-design-for-life\src\helpers\payload\password-reset.e2e.test.ts:70:11
+
+    Error Context: test-results\helpers-payload-password-r-ec452-d-the-native-session-cookie-chromium\error-context.md
+
+    Error Context: test-results\helpers-payload-password-r-ec452-d-the-native-session-cookie-chromium\error-context.md
+
+  3) [chromium] › src\helpers\payload\preview.e2e.test.ts:61:1 › native session follows a safe private redirect and can see only the requested draft locale 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 307
+    Received: 403
+
+      75 |     { maxRedirects: 0 },
+      76 |   );
+    > 77 |   expect(entry.status()).toBe(307);
+         |                          ^
+      78 |   expect(entry.headers()['cache-control']).toContain('no-store');
+      79 |   const location = entry.headers()['location'];
+      80 |   expect(new URL(location, process.env.SITE_ORIGIN).pathname).toBe('/preview');
+        at E:\a-design-for-life\src\helpers\payload\preview.e2e.test.ts:77:26
+
+    Error Context: test-results\helpers-payload-preview.e2-aaa1d--the-requested-draft-locale-chromium\error-context.md
+
+    Error Context: test-results\helpers-payload-preview.e2-aaa1d--the-requested-draft-locale-chromium\error-context.md
+
+  3 failed
+    [chromium] › src\helpers\payload\password-reset.e2e.test.ts:23:1 › native admin security headers preserve the real login form and its resources 
+    [chromium] › src\helpers\payload\password-reset.e2e.test.ts:35:1 › real native forgot and reset forms use captured delivery and the native session cookie 
+    [chromium] › src\helpers\payload\preview.e2e.test.ts:61:1 › native session follows a safe private redirect and can see only the requested draft locale 
+  2 passed (1.0m)
+[ELIFECYCLE] Command failed with exit code 1.

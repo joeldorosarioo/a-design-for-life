@@ -16,7 +16,9 @@ import { installPayloadProvider } from './helpers/payload/runtime';
 import { getPayload, buildConfig } from 'payload';
 import sharp from 'sharp';
 import { readServerEnv } from './config/server-env';
-import { Users } from './helpers/payload/users.collection';
+import { usersCollection } from './helpers/payload/users.collection';
+import { editorialEmailAdapter } from './helpers/payload/editorial-email';
+import { nativePreviewURL } from './helpers/payload/preview-session';
 import { Cases } from './features/cases/content/collections/cases';
 import { protectCaseIdentitySchema } from './features/cases/content/schema/protect-case-identity';
 import { CaseContent } from './features/cases/content/collections/case-content';
@@ -30,9 +32,11 @@ import { Media } from './features/media-library/content/collections/media';
 loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
+const Users = usersCollection(env.SITE_ORIGIN);
 
 const config = buildConfig({
   secret: env.PAYLOAD_SECRET,
+  email: editorialEmailAdapter(env.APP_ENV, env.DATABASE_URI),
   hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
@@ -47,7 +51,29 @@ const config = buildConfig({
     push: false,
     disableCreateDatabase: true,
   }),
-  collections: [Users, Cases, CaseContent, CaseRoutes, SiteNavigation, ProfessionalProfiles, Media],
+  collections: [
+    Users,
+    Cases,
+    CaseContent,
+    CaseRoutes,
+    SiteNavigation,
+    ProfessionalProfiles,
+    Media,
+  ].map((collection) =>
+    ['case-content', 'site-navigation', 'professional-profiles'].includes(collection.slug)
+      ? {
+          ...collection,
+          admin: {
+            ...collection.admin,
+            preview: (document: Record<string, unknown>) =>
+              nativePreviewURL(
+                collection.slug as 'case-content' | 'site-navigation' | 'professional-profiles',
+                document,
+              ),
+          },
+        }
+      : collection,
+  ),
   editor: lexicalEditor({
     features: () => [
       ParagraphFeature(),

@@ -1,0 +1,5 @@
+$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+$ tsc --noEmit
+src/helpers/payload/users.collection.integration.test.ts(83,10): error TS18048: 'login.user' is possibly 'undefined'.
+[ELIFECYCLE] Command failed with exit code 2.
+[ELIFECYCLE] Command failed with exit code 2.
