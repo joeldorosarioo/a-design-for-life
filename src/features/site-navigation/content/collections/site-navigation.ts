@@ -1,3 +1,4 @@
+import { publishedReadResponse } from '@/helpers/payload/published-read-response';
 import { getPublishedNavigation } from '../../server/get-published-navigation';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { isDraftOperation, protectEditorialCollection } from '@/helpers/payload/editorial-revision';
@@ -35,7 +36,11 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
             { status: 404 },
           );
         const result = await getPublishedNavigation(parsed.data);
-        return Response.json(result, { status: result.ok ? 200 : 404 });
+        return publishedReadResponse(
+          result,
+          { collection: 'site-navigation', where: { locale: { equals: parsed.data } } },
+          req,
+        );
       },
     },
   ],

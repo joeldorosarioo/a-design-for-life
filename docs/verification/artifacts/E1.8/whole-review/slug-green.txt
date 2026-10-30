@@ -1,0 +1,10 @@
+Sanitized whole-review fix evidence; original retained unchanged.
+Command: $ vitest run --project unit src/features/cases/helpers/suggest-slug.test.ts src/features/cases/components/slug-suggestion.test.tsx
+Observed exit code: 0
+Classification: STRUCTURAL_GREEN
+Observation: Three tests in two files passed after moving suggestSlug and adjacent test to helpers and updating component/server imports. No invented import-failure TDD RED.
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  12:53:41
+   Duration  12.42s (environment 72%, setup 26%, import 1%, tests 1%)

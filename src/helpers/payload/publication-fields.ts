@@ -65,7 +65,17 @@ export function publicationFields(
       ...collection.hooks,
       beforeOperation: [
         requireLegacyBootstrap,
-        ({ args, operation }) => {
+        ({ args, operation, req, overrideAccess }) => {
+          // Anonymous reads must filter the current head, never a historical
+          // version marker (including versions persisted before this guard).
+          if (
+            operation === 'read' &&
+            !req.user &&
+            !overrideAccess &&
+            req.context.trustedStructuralProvisioning !== true &&
+            'draft' in args
+          )
+            args.draft = false;
           // Native forms return hidden projection metadata. It is never editorial
           // input and must not reach the strict feature schema or authoritative head.
           if ((operation === 'create' || operation === 'update') && 'data' in args && args.data) {
@@ -95,7 +105,10 @@ export function publicationFields(
               })) as Record<string, unknown> | null)
             : null;
           data.latestPublicationIntent = head?.latestPublicationIntent ?? null;
-          data.publicConfirmed = head?.publicConfirmed ?? false;
+          // A new publication is not confirmed yet, including the Native version
+          // saved before afterChange enqueues its intent. Private writes retain
+          // the canonical head grant; their draft versions remain access-filtered.
+          data.publicConfirmed = privateWrites.get(req) ? (head?.publicConfirmed ?? false) : false;
           return data;
         },
       ],

@@ -512,6 +512,116 @@
       "classification": "STATIC_GREEN",
       "observation": "Focused ESLint passed for the five production files and the new boundary integration test.",
       "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-red.txt",
+      "artifact": "whole-review/native-red.txt",
+      "originalSHA256": "58E3E5DEB47D98ADB933269AC6A0A2EB4DAA1871D03B37DD34D4EFE0722A17A2",
+      "exportedSHA256": "A135720ABD59D0662669E3466B7AA6508F55685A6BC6A654F3EB086C75F8D901",
+      "exitCode": 1,
+      "classification": "MIXED_SETUP_FAILURE",
+      "observation": "W2 four real physical root failures returned404 without no-store instead of503. W1 stopped at reversed wrapper arguments; excluded from W1 proof.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-red2.txt",
+      "artifact": "whole-review/native-red2.txt",
+      "originalSHA256": "CF0EA337BFAAE0CBBEE1561908744CA28F8ED67BDFCDA6E0B2737C9159CF9265",
+      "exportedSHA256": "80C2C77AD05B2A6515FD683D14893FF6E24082C05F8FB00D2CAF545072034355",
+      "exitCode": 1,
+      "classification": "RED_W2_PARTIAL_W1",
+      "observation": "W2 valid RED: missing/corrupt/EISDIR/missing-profile-dependency root returned404 instead of503 in both Native endpoints, with no-store absent. W1 anonymous leak observed, but its authenticated control lacked the required Origin header; final red3 supersedes W1 proof.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-green.txt",
+      "artifact": "whole-review/native-green.txt",
+      "originalSHA256": "64E202D25C1AFF8A49C38F7FDC555EC9CD94A1323CB23E79AAFBB9072719C07C",
+      "exportedSHA256": "9843EC45FCE39D43FD294EC3ACEEC972A610D33B92ACD975E284FDABB4DADFAA",
+      "exitCode": 1,
+      "classification": "AUTH_FIXTURE_FAILURE",
+      "observation": "W2 four tests passed after production fix. Three W1 tests stopped at authenticated GET expected200/actual404 because cookie requests lacked Origin; not a new production RED.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-red3.txt",
+      "artifact": "whole-review/native-red3.txt",
+      "originalSHA256": "479D9AE65A537128B310625ABB1BF64011C700366E81138FA833D2639DE1F7BB",
+      "exportedSHA256": "D81AC11DAB2CC181AE6C5503D7356382A771FCB1E749E40ABF11DD417F50F14A",
+      "exitCode": 1,
+      "classification": "RED_W1",
+      "observation": "Valid W1 RED with correct Native authenticated cookie+Origin control: three collection tests failed on anonymous list docs/totalDocs and by-ID200+pending marker instead of404/no marker. The same behavior was observed with a legacy true version marker persisted through the official adapter. W2 four tests passed.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-green2.txt",
+      "artifact": "whole-review/native-green2.txt",
+      "originalSHA256": "5FC09A8E5C6235C30DE3A906CD1A4818F1BE21CE7FC6D08B80B7C3A18344A34D",
+      "exportedSHA256": "5D70C69D47ACFA14C748445C68088FB1580F05413C29ADB12453225AC4A2A244",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "Seven real Native/PostgreSQL/FS tests passed: three W1 republication and persisted-legacy-marker cases, four W2 physical root failures plus EN absent/private404 and recovery200.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-slug-green.txt",
+      "artifact": "whole-review/slug-green.txt",
+      "originalSHA256": "7D33A33248D5522DD40E1E2E205918F7383A3C37D7A24CB28EF00E15E1F94669",
+      "exportedSHA256": "F1837828DE9BB8B2B1BDDF6E5EC1A32CCC65B285C8F9AE2CB27404BFC1B3E0EA",
+      "exitCode": 0,
+      "classification": "STRUCTURAL_GREEN",
+      "observation": "Three tests in two files passed after moving suggestSlug and adjacent test to helpers and updating component/server imports. No invented import-failure TDD RED.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-focused-green.txt",
+      "artifact": "whole-review/focused-green.txt",
+      "originalSHA256": "55A1C9393D07E56E0DE9473E399381450794F750A7FE5C331EADFDFA3BB29409",
+      "exportedSHA256": "BA4BDDD7F714AC722F2E2E1D361200E9E5BE2E86AB71C3184552ADD46997A6D7",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "53 tests in6files passed, covering W1/W2 plus I1/I2/I3/R-MEDIA/R1/R2/D1, Local receipts and held-generation route regressions.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-typecheck.txt",
+      "artifact": "whole-review/typecheck.txt",
+      "originalSHA256": "5A3973F79ED9BECD5F23C4FEFF467513814DE7EA381D75A4D2E339AA8B8EDCA9",
+      "exportedSHA256": "BBA1EF1E8CC2F1A361ED11976BA144D23F6E1AC112FE41D7AA40EDAF557FDC87",
+      "exitCode": 0,
+      "classification": "STATIC_GREEN",
+      "observation": "pnpm typecheck passed.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-verify.txt",
+      "artifact": "whole-review/verify.txt",
+      "originalSHA256": "E520EA53E7327245FC998E2D5682F5210CB190B11AB9DBF8B53AFE97C6F16479",
+      "exportedSHA256": "B865D738087422E31D7FC6143990FF6E3E9C9C23646433AD58C1A2023CB5E70B",
+      "exitCode": 1,
+      "classification": "RUNNER_TIMEOUT",
+      "observation": "461 passed,1 failed,1 skipped. Only the first architecture graph fixture exceeded the existing5000ms test timeout (6750ms); no graph assertion failed. No timeout, rule or source was changed before repeating the full gate. Not a production TDD RED.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-verify2.txt",
+      "artifact": "whole-review/verify2.txt",
+      "originalSHA256": "1978836F9DBDA12FB6DD78D0F38B56C170DB78CA1FBCF7A89CCCDA01CA83CD11",
+      "exportedSHA256": "A3AB9C86A83B2B6C0E51947A951DCF845B4152535FB38BB40016ABBD392A9FB8",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "Unmodified pnpm verify repeat passed462tests/74files plus1 Linux-only Windows skip, typecheck/lint/format/architecture and Next production build. Historical four lint warnings and pg concurrent-query deprecation remain.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-e2e.txt",
+      "artifact": "whole-review/e2e.txt",
+      "originalSHA256": "136BC73B8F9A2163143E1EA6E336994A26C624DF40FBBE4EB9EF76BA01EA59DE",
+      "exportedSHA256": "062446BBF69BC92C12E8022119A783E8A0F6DD8A38CBF104EF970BC17B698D75",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "pnpm test:e2e passed25 actual production Next/CMS journeys. No UI behavior change;27tracked historical PNGs restored exactly.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
     }
   ]
 }

@@ -63,3 +63,9 @@ A perda da segunda autenticação nunca devolve o sucesso Native indiferenciado.
 Sem cobertura do assunto na raiz, uma rota comprovadamente pública pela classificação SQL significa503, não404. A mesma regra vale para mídia com uso SQL confirmed sem cobertura do proprietário. O banco apenas classifica indisponibilidade; não fornece corpo nem concede bytes. A presença de um proprietário com lista pública de mídia vazia confirma revogação, inclusive durante ACK pendente. Gerações anteriores explicitamente capturadas continuam coerentes para assuntos que cobrem.
 
 O contador técnico `attempts` ainda não registra todas as tentativas falhas quando sua transação reverte (minor I4). Não o use como auditoria completa de retries; a operação pendente persistida e seu diagnóstico continuam a base de recuperação. I5 mantém os avisos já documentados de lint/pg/reporter, sem supressão.
+
+### Seleção Native e transporte estrutural após revisão ampla
+
+O acesso anônimo Native decide pelo head atual: draft=true é normalizado antes da consulta, para impedir que uma versão histórica com marcador herdado autorize um alvo pendente. Antes de salvar uma nova versão publicada, seu marcador já é false; só o ACK confirma o head. Editores autenticados continuam lendo drafts e versões, e o Local explicitamente confiável conserva sua seleção. Não há migração que reescreva versões antigas para obter essa garantia.
+
+Perfil/Navegação publicados traduzem falta de cobertura em503/no-store. SQL não fornece o DTO: uma contagem técnica de intenções por locale serve somente para provar ausência/never-public404 quando o origin está saudável. Uma intenção pendente pode ter atravessado a troca FS sem ACK, portanto sua presença conserva503 se não há geração utilizável. A falta de prova de ausência nunca vira404; o corpus e os grants continuam exclusivos da raiz confirmada.

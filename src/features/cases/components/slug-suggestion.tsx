@@ -1,6 +1,6 @@
 'use client';
 import { Button, useField, useFormFields } from '@payloadcms/ui';
-import { suggestSlug } from '../lib/suggest-slug';
+import { suggestSlug } from '../helpers/suggest-slug';
 import { deriveCaseTitle } from '../helpers/derive-case-title';
 export function SlugSuggestion({ readOnly }: { readOnly?: boolean }) {
   const title = useFormFields(([fields]) =>

@@ -1,0 +1,10 @@
+Sanitized whole-review fix evidence; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-native-boundaries.integration.test.ts
+Observed exit code: 0
+Classification: GREEN
+Observation: Seven real Native/PostgreSQL/FS tests passed: three W1 republication and persisted-legacy-marker cases, four W2 physical root failures plus EN absent/private404 and recovery200.
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  12:54:31
+   Duration  12.37s (tests 69%, import 27%, transform 3%, setup 1%)

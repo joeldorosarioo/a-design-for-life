@@ -1,0 +1,10 @@
+Sanitized whole-review fix evidence; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-native-boundaries.integration.test.ts src/config/publication-failure-boundaries.integration.test.ts src/config/publication-updates.integration.test.ts src/config/publication-command-receipts.integration.test.ts src/helpers/payload/transaction-settlement.integration.test.ts src/features/cases/content/collections/route-lifecycle.integration.test.ts
+Observed exit code: 0
+Classification: GREEN
+Observation: 53 tests in6files passed, covering W1/W2 plus I1/I2/I3/R-MEDIA/R1/R2/D1, Local receipts and held-generation route regressions.
+
+ Test Files  6 passed (6)
+      Tests  53 passed (53)
+   Start at  12:55:49
+   Duration  39.19s (tests 65%, import 32%, setup 1%, transform 1%)
