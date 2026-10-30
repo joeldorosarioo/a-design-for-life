@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/inspect-pdf.test.ts (5 tests | 1 failed) 892ms
+   × examines page streams, not only page count 135ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > examines page streams, not only page count
+AssertionError: expected { kind: 'valid', pages: 3 } to deeply equal { kind: 'invalid' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "invalid",
++   "kind": "valid",
++   "pages": 3,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:40:62
+     38| });
+     39| it('examines page streams, not only page count', async () => {
+     40|   expect(await inspectPdf(document({ brokenStream: true }))).toEqual({…
+       |                                                              ^
+     41| });
+     42| it('honors request cancellation before starting a parser', async () =>…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  04:15:17
+   Duration  1.32s (tests 75%, setup 16%, import 7%, transform 2%)
+

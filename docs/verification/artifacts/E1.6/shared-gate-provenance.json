@@ -1,0 +1,22 @@
+{
+  "scope": "Shared E1.6 foundations plus E1.7 before the later case-alias correction; not an isolated partial-commit or native-media-intake proof",
+  "executedBy": "E1.7 worker",
+  "readBy": [
+    "root coordinator",
+    "E1.6 worker"
+  ],
+  "verify": {
+    "path": "docs/verification/artifacts/E1.7/24-verify.txt",
+    "sha256": "3B628B8F81C4D1E976A7792F5858AED6B7BD5013EA79A5869D9FFAEBC1415205",
+    "tests": 235,
+    "files": 40,
+    "build": "Next 16.4.3 Turbopack completed"
+  },
+  "e2e": {
+    "path": "docs/verification/artifacts/E1.7/25-e2e.txt",
+    "sha256": "909ACCE7EF79BF1DF0CA678C863E6EEDCD9F8BA680BE12868DFEC9C75DFA0D4F",
+    "passed": 16
+  },
+  "repeatedDuringCommitWindow": false,
+  "e1_6Complete": false
+}

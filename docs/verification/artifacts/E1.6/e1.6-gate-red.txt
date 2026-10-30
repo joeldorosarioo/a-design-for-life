@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/processing-gate.test.ts (2 tests | 1 failed) 7ms
+   × runs one complete job at a time and admits only one waiting job 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/processing-gate.test.ts > runs one complete job at a time and admits only one waiting job
+AssertionError: expected 'third' to be an instance of ProcessingBusy
+ ❯ src/features/media-library/server/processing-gate.test.ts:22:23
+     20|   release.resolve();
+     21|   expect(await Promise.all([first, second])).toEqual(['first', 'second…
+     22|   expect(await third).toBeInstanceOf(ProcessingBusy);
+       |                       ^
+     23|   expect(beforeRelease).toEqual(['first:start']);
+     24|   expect(events).toEqual(['first:start', 'first:end', 'second:start', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 4 passed (5)
+   Start at  04:12:37
+   Duration  394ms (setup 77%, transform 9%, import 7%, tests 5%, worker 2%)
+

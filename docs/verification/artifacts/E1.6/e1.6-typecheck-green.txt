@@ -1,0 +1,6 @@
+$ tsc --noEmit
+src/helpers/payload/password-reset.integration.test.ts(210,10): error TS18047: 'internal' is possibly 'null'.
+src/helpers/payload/password-reset.integration.test.ts(210,19): error TS2339: Property 'loginAttempts' does not exist on type 'TypeWithID'.
+src/helpers/payload/password-reset.integration.test.ts(211,19): error TS18047: 'internal' is possibly 'null'.
+src/helpers/payload/password-reset.integration.test.ts(211,28): error TS2339: Property 'lockUntil' does not exist on type 'TypeWithID'.
+[ELIFECYCLE] Command failed with exit code 2.
