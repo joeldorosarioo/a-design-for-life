@@ -1,0 +1,11 @@
+{
+  "scope": "E1.5 only; Stage 1 remains 50%, independent acceptance pending",
+  "versions": {"node": "24.22.2", "pnpm": "12.10.1", "payload": "3.92.1", "next": "16.4.3", "react": "19.3.1", "postgres": "17.11"},
+  "verify": {"command": "pnpm verify", "exitCode": 0, "tests": 184, "filesAtRun": 32, "log": "verify-final.txt"},
+  "e2e": {"command": "TEST_SITE_ORIGIN=http://127.0.0.1:3101 pnpm test:e2e", "exitCode": 0, "journeys": 10, "coldFirstHTTPStatus": 404, "log": "e2e-final.txt"},
+  "postGateChanges": "Suggestion test relocated beside pure implementation, docs/evidence only; focused 13 tests/2 files and typecheck exit0. Current expected suite: 184 tests/33 files.",
+  "schema": {"migrationsApplied": 9, "newMigrationRequired": false, "generatedTypesSHA256": "3D5DDDE930685A31FCE7652E8753CF208E6B9DDD7B306CAA507FEADD27A1A325"},
+  "evidenceHygiene": "evidence-hygiene.json; raw synthetic diagnostic originals retained only in ignored .work",
+  "regressionScreenshots": {"freshCopies": 4, "directory": "editorial-regressions", "historicalE14Restored": true},
+  "limits": ["PUBLIC-HTTP-CONTRACT-ONLY", "PUBLICATION-COORDINATION-E1.8", "ORIGIN-RELATION-FAILURE-ONLY", "NATIVE-CRITICAL-CH", "MEDIA-METADATA-FIXTURE-ONLY"]
+}

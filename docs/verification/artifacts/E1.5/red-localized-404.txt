@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/server/case-route-response.test.ts (5 tests | 1 failed) 11ms
+   × localizes a404 from request locale without distinguishing private reservations 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.test.ts > localizes a404 from request locale without distinguishing private reservations
+AssertionError: expected '<!doctype html><html lang="pt"><head>…' to contain '<html lang="en">'
+
+Expected: "<html lang="en">"
+Received: "<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Not found</title><meta name="robots" content="noindex, nofollow"></head><body><main><h1>Not found</h1><nav aria-label="Continue navegando"><a href="/pt/cases">Projetos</a> <a href="/pt#contact">Contato</a></nav></main></body></html>"
+
+ ❯ src/features/cases/server/case-route-response.test.ts:36:33
+     34| it('localizes a404 from request locale without distinguishing private …
+     35|   const response = renderCaseRouteResponse({ status: 404 }, 'en');
+     36|   expect(await response.text()).toContain('<html lang="en">');
+       |                                 ^
+     37| });
+     38|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  03:35:07
+   Duration  1.22s (import 77%, setup 18%, transform 3%, tests 1%)
+

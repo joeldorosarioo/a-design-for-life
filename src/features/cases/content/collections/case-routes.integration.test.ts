@@ -30,23 +30,21 @@ it('o registro físico rejeita duas reservas concorrentes de cases diferentes pa
     }),
   );
   const slug = `synthetic-${randomUUID()}`;
-  // Privileged Local API seeds only the private route registry in an isolated test database.
+  // The official adapter seeds only this isolated physical-index fixture, bypassing application hooks.
   const results = await Promise.allSettled(
     candidates.map(async (candidate) =>
-      fixture.payload.create({
+      fixture.payload.db.create({
         collection: 'case-routes',
         data: { ...candidate, locale: 'pt', slug, everPublished: false, state: 'draft' },
-        overrideAccess: true,
         req: await fixture.request(),
       }),
     ),
   );
   expect(results.filter((result) => result.status === 'fulfilled')).toHaveLength(1);
   expect(results.filter((result) => result.status === 'rejected')).toHaveLength(1);
-  const english = await fixture.payload.create({
+  const english = await fixture.payload.db.create({
     collection: 'case-routes',
     data: { ...candidates[0], locale: 'en', slug, everPublished: false, state: 'draft' },
-    overrideAccess: true,
     req: await fixture.request(),
   });
   expect(english.locale).toBe('en');

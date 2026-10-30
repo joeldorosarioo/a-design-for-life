@@ -1,0 +1,9 @@
+{
+  "redactedEvidenceCopies": [
+    "green-transaction-lock-order.txt",
+    "red-resolution-restore.txt",
+    "red-route-lifecycle.txt"
+  ],
+  "originals": "ignored .work/e1.5-raw-diagnostic-evidence",
+  "reason": "Avoid publishing generated fixture lease values in default assertion/SQL parameter diffs."
+}

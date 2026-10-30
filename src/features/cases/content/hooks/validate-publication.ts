@@ -1,3 +1,4 @@
+import { slugSchema, SLUG_MESSAGE } from '../../contracts/slug.schema';
 import 'server-only';
 import {
   publicationGuard,
@@ -40,10 +41,10 @@ export const validateCasePublication = publicationGuard((raw) => {
   for (const field of ['title', 'summary', 'role'] as const)
     requireText(errors, data[field], field);
   requireText(errors, data.slug, 'slug');
-  if ((data.slug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.slug)) || (data.slug?.length ?? 0) > 80)
+  if (data.slug && !slugSchema.safeParse(data.slug).success)
     errors.push({
       path: 'slug',
-      message: 'Use letras minúsculas, números e hífens, até 80 caracteres.',
+      message: SLUG_MESSAGE,
     });
   requireImage(errors, data.cover, 'cover');
   if (!(data.sections ?? []).some((section) => section.blocks?.length))

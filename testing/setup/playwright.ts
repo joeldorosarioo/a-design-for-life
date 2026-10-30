@@ -49,13 +49,26 @@ export default async function setup() {
     const deadline = Date.now() + 30_000;
     while (true) {
       if (server.exitCode !== null) throw new Error(`Servidor local encerrou: ${server.exitCode}`);
+      let response: Response | undefined;
       try {
-        const response = await fetch(`${env.SITE_ORIGIN}/admin/login`, {
-          signal: AbortSignal.timeout(1_000),
+        // This is the first HTTP request of the fresh production process, before
+        // any admin route can install a factory in its own server module graph.
+        response = await fetch(`${env.SITE_ORIGIN}/pt/cases/e1-5-cold-start-probe`, {
+          signal: AbortSignal.timeout(5_000),
         });
-        if (response.ok) break;
       } catch {
         /* Server startup has not completed. */
+      }
+      if (response) {
+        console.info(
+          'Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe',
+          response.status,
+        );
+        if (response.status !== 404)
+          throw new Error(
+            `Cold public route must resolve unknown content as 404, received ${response.status}`,
+          );
+        break;
       }
       if (Date.now() >= deadline) throw new Error('Painel local não ficou pronto em 30 segundos');
       await new Promise((resolve) => setTimeout(resolve, 200));

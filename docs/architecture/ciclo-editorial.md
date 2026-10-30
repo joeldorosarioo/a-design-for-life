@@ -1,6 +1,6 @@
 # Ciclo editorial e concorrência
 
-Escopo de E1.4. Etapa 1 em 37,5% (3/8); E1.4 depende do gate independente do coordenador. A1 e E1.5–E1.8 permanecem pendentes.
+Escopo consolidado de E1.4, com ordem transacional e composição complementadas por E1.5. Etapa 1 em 50% (4/8); E1.5 permanece em revisão/gate independente. A1 e E1.6–E1.8 permanecem pendentes.
 
 ## Responsabilidades e transições
 
@@ -16,7 +16,7 @@ As features possuem as validações de publicação e as operações `publishCas
 | Recuperar versão histórica            | CAS + nova versão draft, com identidade imutável              | Publicado anterior permanece; publicar exige outro ato                |
 | Excluir documento permitido           | Revisão + lease + hooks nativos + exclusão na mesma transação | Respeita as restrições da feature; estruturais continuam inexcluíveis |
 
-A validação informa caminhos específicos. Cases exigem título, resumo, papel, slug válido, capa e pelo menos um bloco; os usos de imagens exigem classificação/alternativa adequada, e links tipados exigem completar o destino ativo. Navegação exige os textos fixos de header, footer, controles e mensagens. Perfil exige textos dos grupos fixos, contatos, imagens editoriais, currículo e ao menos um item de trajetória/método. Ênfases opcionais, legendas e SEO com derivação permitida não se tornam campos obrigatórios arbitrários. Validação de bytes, promoção de mídias e reservas de rotas pertencem às próximas tarefas.
+A validação informa caminhos específicos. Cases exigem título, resumo, papel, slug válido, capa e pelo menos um bloco; os usos de imagens exigem classificação/alternativa adequada, e links tipados exigem completar o destino ativo. Navegação exige os textos fixos de header, footer, controles e mensagens. Perfil exige textos dos grupos fixos, contatos, imagens editoriais, currículo e ao menos um item de trajetória/método. Ênfases opcionais, legendas e SEO com derivação permitida não se tornam campos obrigatórios arbitrários. Validação de bytes e promoção de mídias pertencem às próximas tarefas. As reservas integradas à transação editorial estão descritas em [rotas e reservas](rotas-e-reservas.md), no escopo E1.5 ainda em revisão.
 
 Na atualizacao nativa do Payload 3.92.1, `draft:true` nao garante que a operacao sera privada: um `_status:'published'` explicito faz `isSavingDraft` ser falso e publica. A guarda valida o status efetivo recebido em `beforeChange`, sem usar a query/flag draft como isencao. Na criacao, o proprio Payload normaliza essa combinacao para draft. Os testes caracterizam ambas as entradas e preservam a intencao nativa de publicar dados validos explicitamente, alem de permitir rascunhos incompletos com status draft.
 
@@ -28,7 +28,7 @@ Um bloco de texto publicado exige ao menos uma folha textual significativa, incl
 
 O CAS usa exclusivamente `req.payload.db.updateOne({options:{atomic:true},where,data,req})` do adaptador oficial e campos escalares principais. A condição inclui ID, revisão esperada, dono, token e prazo do lease. Depois da aquisição, os dados da operação recebem a revisão nova e seu marcador. Conteúdo, versão, cabeça e espelho de lock participam da mesma transação. Mutações sem `req.transactionID`, inclusive Local API com `disableTransaction:true`, são recusadas. Falhas de validação revertem também a cabeça. UUIDs são opacos: não oferecem ordenação de eventos para a futura coordenação E1.8.
 
-Payload mescla dados persistidos antes de `beforeChange`; portanto o token enviado pelo cliente é capturado em `beforeOperation`, antes dessa mesclagem. O corpo observado prevalece sobre um header contraditório. Os comandos de publicação não obtêm um lease novo ao ler o draft: exigem `x-editorial-lease` recebido pelo chamador. As operações de atualização nativas podem transportar os valores no corpo; unpublish/delete/restore usam headers.
+Payload mescla dados persistidos antes de `beforeChange`. Em E1.5, a revisão e o lease observados são validados e o CAS de update ocorre em `beforeOperation`, antes de o native remover o espelho de lock. Uma confirmação privada ligada a collection/id/transação é consumida uma vez em `beforeChange`; leituras não a apagam. A revisão observada no corpo prevalece sobre um header contraditório; o lease usa o header explícito quando presente, ou o corpo do formulário nativo. Delete reivindica a cabeça antes dos hooks da feature. Restore conserva seu caminho protegido e não executa a remoção nativa antecipada do mirror. Essa ordem corrige as duas inversões reais reproduzidas por E1.5, sem retry que esconda conflito. Os comandos de publicação não obtêm um lease novo ao ler o draft: exigem `x-editorial-lease` recebido pelo chamador. As operações de atualização nativas podem transportar os valores no corpo; unpublish/delete/restore usam headers.
 
 ## Lease e painel nativo
 
@@ -54,7 +54,7 @@ As migrações acrescentam apenas colunas técnicas e fazem backfill técnico do
 
 `getPublishedNavigation(locale)` e `getPublishedProfile(locale)` usam idioma explícito, `_status=published`, `draft:false`, `overrideAccess:false`, `depth:0` e retornam DTOs mínimos. Navegação compõe contatos/currículo do Perfil publicado, conservando a dependência já definida pelo mapper E1.3; publicar Navegação não publica Perfil. As rotas públicas de consulta de cada collection exercitam essas funções sem req autenticado.
 
-A composição `payload.config.ts` instala explicitamente o provider assíncrono em `helpers/payload/runtime.ts`, cujo módulo não importa config/features. Entradas futuras do portfólio devem importar a composição uma vez antes de consultar as features. As rotas REST atuais já importam o config; o teste HTTP usa esse bootstrap real. Operações que recebem req usam `req.payload` e participam da transação do chamador.
+A composição `payload.config.ts` instala explicitamente o factory assíncrono em `helpers/payload/runtime.ts`, cujo módulo não importa config/features. Em E1.5, `instrumentation.register` carrega a composição no processo Node antes das entradas públicas. Somente o factory fica em Symbol.for/globalThis, pois os grafos independentes do Turbopack não compartilham uma variável local de módulo; não há conteúdo, usuário ou cache público global. Composição/HMR pode substituir o factory. O primeiro HTTP do processo novo é público e deve resolver o endereço desconhecido como 404 antes de abrir o admin. As rotas REST também compõem o config. Operações que recebem req usam `req.payload` e participam da transação do chamador.
 
 ## Limites nomeados
 
@@ -62,4 +62,4 @@ A composição `payload.config.ts` instala explicitamente o provider assíncrono
 - `LEASE-UNLOAD-BEST-EFFORT`: navegação nativa libera o lease nas jornadas; fechamento/queda de conexão pode abortar o keepalive. A expiração autoritativa em 300s permanece como fallback. Teardown do navegador pode registrar ECONNRESET sem alterar conteúdo.
 - `MEDIA-METADATA-FIXTURE-ONLY`: provas E1.4 usam metadados sintéticos pelo adaptador oficial, exclusivamente no banco isolado. Não provam upload, formatos reais, processamento, entrega nem promoção pública. O stub de mídia continua recusando CUD inclusive com override; E1.6/E1.8 devem provar bytes reais.
 - `PUBLICATION-COORDINATION-E1.8`: receipts confirmam a gravação editorial local. Invalidação/propagação pública persistente, falhas parciais e retry ainda não estão implementados.
-- Reservas de slug E1.5, mídia E1.6, contas/prévias E1.7, coordenação E1.8 e A1 não foram declaradas concluídas.
+- Reservas de slug E1.5 permanecem em revisão independente; mídia E1.6, contas/prévias E1.7, coordenação E1.8 e A1 não foram declaradas concluídas.

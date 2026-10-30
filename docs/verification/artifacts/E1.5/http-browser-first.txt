@@ -1,0 +1,157 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/features/cases/server/resolve-case-route.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[03:21:36] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:21:36] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (94ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (9ms)[39m
+[03:21:36] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:21:36] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[03:21:36] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.2s
+  Running TypeScript ...
+  Finished TypeScript in 5.8s ...
+  Collecting page data using 6 workers ...
+  Generating static pages using 6 workers (0/2) ...
+✓ Generating static pages using 6 workers (2/2) in 377ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+└ ƒ /api/[...slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 159ms
+✓ Running next.config.ts took 43ms
+[03:21:54] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Running 4 tests using 1 worker
+
+(node:26132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[03:21:59] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+Case route origin unavailable { correlationId: '49e6fc67-74ef-49b7-9c00-0d4a1b0bb6dc' }
+Case route origin unavailable { correlationId: '49ca4e12-db0b-4a65-863c-13161f307bbc' }
+  x  1 [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:64:1 › real HTTP statuses, private404 equivalence, native REST conflict/guards and conditional error requests (141ms)
+(node:39972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[03:22:02] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+Case route origin unavailable { correlationId: '3c944329-1154-4346-8243-93a0f11e84c6' }
+Case route origin unavailable { correlationId: '623dd9f4-3537-49ae-bc7c-5e7b7728eebf' }
+  x  2 [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:189:1 › one real browser can reverse a previous permanent redirect by reusing owned history without a cached loop (5.4s)
+(node:34792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[03:22:10] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+  ok 3 [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:227:1 › native Payload suggestion is explicit and title edits preserve manual slug (4.5s)
+Case route origin unavailable { correlationId: '40a4f5e6-1b89-48a7-9b03-c072d714f790' }
+Case route origin unavailable { correlationId: '8186d735-0bb3-4507-acfa-26ba3bb2abb2' }
+E1.5 real PostgreSQL relation-unavailable fault: 200 -> 503 GET/HEAD -> 200
+  ok 4 [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:258:1 › a real PostgreSQL origin query failure returns503 and recovers, never masquerading as404 (168ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:64:1 › real HTTP statuses, private404 equivalence, native REST conflict/guards and conditional error requests 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 404
+    Received: 503
+
+      70 |   const unknown = await request.get(`/pt/cases/${slug()}`, { maxRedirects: 0 });
+      71 |   const privateResponse = await request.get(`/pt/cases/${a}`, { maxRedirects: 0 });
+    > 72 |   expect(privateResponse.status()).toBe(404);
+         |                                    ^
+      73 |   expect(unknown.status()).toBe(404);
+      74 |   expect(await privateResponse.text()).toBe(await unknown.text());
+      75 |   for (const header of ['content-type', 'cache-control', 'x-robots-tag', 'location', 'etag'])
+        at E:\a-design-for-life\src\features\cases\server\resolve-case-route.e2e.test.ts:72:36
+
+    Error Context: test-results\features-cases-server-reso-4fb58--conditional-error-requests-chromium\error-context.md
+
+    Error Context: test-results\features-cases-server-reso-4fb58--conditional-error-requests-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\features-cases-server-reso-4fb58--conditional-error-requests-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\features-cases-server-reso-4fb58--conditional-error-requests-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:189:1 › one real browser can reverse a previous permanent redirect by reusing owned history without a cached loop 
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /\/pt\/cases\/http-a977c21c-1636-4eb6-a98c-17a27aa59e4b$/
+    Received string:  "http://127.0.0.1:3101/pt/cases/http-940800b3-720d-4e6e-b915-ad01c8d1c3d7"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        14 × locator resolved to <html lang="pt">…</html>
+           - unexpected value "http://127.0.0.1:3101/pt/cases/http-940800b3-720d-4e6e-b915-ad01c8d1c3d7"
+
+
+      201 |   });
+      202 |   await page.goto(`/pt/cases/${a}`);
+    > 203 |   await expect(page).toHaveURL(new RegExp(`/pt/cases/${b}$`));
+          |                      ^
+      204 |   await expect(page.getByRole('heading', { name: 'Real public route title' })).toBeVisible();
+      205 |   expect(documents).toEqual([
+      206 |     { status: 308, path: `/pt/cases/${a}` },
+        at E:\a-design-for-life\src\features\cases\server\resolve-case-route.e2e.test.ts:203:22
+
+    Error Context: test-results\features-cases-server-reso-11c37-story-without-a-cached-loop-chromium\error-context.md
+
+    Error Context: test-results\features-cases-server-reso-11c37-story-without-a-cached-loop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\features-cases-server-reso-11c37-story-without-a-cached-loop-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\features-cases-server-reso-11c37-story-without-a-cached-loop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:64:1 › real HTTP statuses, private404 equivalence, native REST conflict/guards and conditional error requests 
+    [chromium] › src\features\cases\server\resolve-case-route.e2e.test.ts:189:1 › one real browser can reverse a previous permanent redirect by reusing owned history without a cached loop 
+  2 passed (44.0s)
+[ELIFECYCLE] Command failed with exit code 1.

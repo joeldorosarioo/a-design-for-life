@@ -1,0 +1,93 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/server/case-route-response.test.ts (4 tests | 4 failed) 25ms
+   × emits permanent redirects with no storage so reusing own history cannot retain A to B 22ms
+   × preserves 410 with localized safe HTML, links and no indexing 1ms
+   × preserves 503 with localized safe HTML, links and no indexing 0ms
+   × escapes public editorial text at the HTML boundary 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.test.ts > emits permanent redirects with no storage so reusing own history cannot retain A to B
+AssertionError: expected 404 to be 308 // Object.is equality
+
+- Expected
++ Received
+
+- 308
++ 404
+
+ ❯ src/features/cases/server/case-route-response.test.ts:5:27
+      3| it('emits permanent redirects with no storage so reusing own history c…
+      4|   const response = renderCaseRouteResponse({ status: 308, location: '/…
+      5|   expect(response.status).toBe(308);
+       |                           ^
+      6|   expect(response.headers.get('location')).toBe('/pt/cases/current');
+      7|   expect(response.headers.get('cache-control')).toContain('no-store');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.test.ts > preserves 410 with localized safe HTML, links and no indexing
+AssertionError: expected 404 to be 410 // Object.is equality
+
+- Expected
++ Received
+
+- 410
++ 404
+
+ ❯ src/features/cases/server/case-route-response.test.ts:11:27
+      9| it.each([410, 503] as const)('preserves %s with localized safe HTML, l…
+     10|   const response = renderCaseRouteResponse({ status, locale: 'pt' });
+     11|   expect(response.status).toBe(status);
+       |                           ^
+     12|   const html = await response.text();
+     13|   expect(html).toContain('Case indisponível');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.test.ts > preserves 503 with localized safe HTML, links and no indexing
+AssertionError: expected 404 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 404
+
+ ❯ src/features/cases/server/case-route-response.test.ts:11:27
+      9| it.each([410, 503] as const)('preserves %s with localized safe HTML, l…
+     10|   const response = renderCaseRouteResponse({ status, locale: 'pt' });
+     11|   expect(response.status).toBe(status);
+       |                           ^
+     12|   const html = await response.text();
+     13|   expect(html).toContain('Case indisponível');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.test.ts > escapes public editorial text at the HTML boundary
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ src/features/cases/server/case-route-response.test.ts:23:27
+     21| it('escapes public editorial text at the HTML boundary', async () => {
+     22|   const response = renderCaseRouteResponse({ status: 200, locale: 'en'…
+     23|   expect(response.status).toBe(200);
+       |                           ^
+     24|   expect(await response.text()).toContain('&lt;script&gt;alert(1)&lt;/…
+     25| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  03:18:27
+   Duration  405ms (setup 73%, tests 9%, transform 9%, import 8%, worker 2%)
+

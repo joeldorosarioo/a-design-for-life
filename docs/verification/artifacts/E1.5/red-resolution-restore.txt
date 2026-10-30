@@ -1,0 +1,165 @@
+Evidence copy: synthetic ephemeral fixture lease identifiers redacted; original retained only in ignored .work/e1.5-raw-diagnostic-evidence. No environment values were printed.
+
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[03:14:56] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:14:56] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (90ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (9ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[03:14:56] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:14:56] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[03:14:56] [32mINFO[39m: [36mDone.[39m
+[03:14:59] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts (10 tests | 6 failed) 11956ms
+   × explicit reservation command verifies identity and caller revision/lease, without inventing suffixes 77ms
+   × resolves current, private, unknown, direct history after repeated changes and withdrawn per locale 94ms
+   × restore conflict rolls back and own historical restore never changes the public URL before publication 161ms
+   × private deletion releases reservations and published deletion preserves ownership for withdrawal 274ms
+   × a real publication commit between registry and content reads stays coherent: old-current 5144ms
+   × a real publication commit between registry and content reads stays coherent: new-private 5149ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > explicit reservation command verifies identity and caller revision/lease, without inventing suffixes
+AssertionError: expected { ok: false, error: { …(2) } } to deeply equal { ok: true, …(1) }
+
+- Expected
++ Received
+
+  {
+-   "ok": true,
+-   "value": {
+-     "slug": "route-1a181b85-9a17-4fa6-b8c9-2ee0599e88d0",
++   "error": {
++     "code": "unavailable",
++     "message": "Not implemented",
+    },
++   "ok": false,
+  }
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:80:113
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > resolves current, private, unknown, direct history after repeated changes and withdrawn per locale
+AssertionError: expected { status: 404 } to match object { status: 200, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "case": {
+-     "id": {
+-       "createdAt": "2026-10-30T06:15:00.194Z",
+-       "editorialRevision": "d8fc9958-0ab5-4694-875f-2c0635819314",
+-       "featured": false,
+-       "id": "120fd276-4e6b-4ac9-a73e-ab0e37da6922",
+-       "internalTitle": "Synthetic route owner",
+-       "leaseToken": "[redacted-synthetic-lease]",
+-       "sortOrder": 0,
+-       "updatedAt": "2026-10-30T06:15:00.194Z",
+-     },
+-     "title": "Synthetic title",
+-   },
+-   "slug": "route-2a8eeef9-2b48-4420-8686-1b0c09982f74",
+-   "status": 200,
++   "status": 404,
+  }
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:96:60
+     94|   expect(await resolveCaseRoute('pt', slug(), fixture.payload)).toEqua…
+     95|   await publish(doc.id, a);
+     96|   expect(await resolveCaseRoute('pt', a, fixture.payload)).toMatchObje…
+       |                                                            ^
+     97|   await save(doc.id, { slug: b, title: 'Private new title', _status: '…
+     98|   expect(await resolveCaseRoute('pt', a, fixture.payload)).toMatchObje…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > restore conflict rolls back and own historical restore never changes the public URL before publication
+AssertionError: expected { ok: false, error: { …(2) } } to match object { ok: false, …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": {
+-     "code": "slug-conflict",
++     "code": "unavailable",
+    },
+    "ok": false,
+  }
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:121:141
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > private deletion releases reservations and published deletion preserves ownership for withdrawal
+AssertionError: expected { status: 404 } to match object { status: 410 }
+
+- Expected
++ Received
+
+  {
+-   "status": 410,
++   "status": 404,
+  }
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:145:66
+    143|   expect((await routes(publicDoc.id))[0]).toMatchObject({ slug: curren…
+    144|   await save(publicDoc.id, { _status: 'draft' }, false);
+    145|   expect(await resolveCaseRoute('pt', current, fixture.payload)).toMat…
+       |                                                                  ^
+    146| });
+    147| it.each(['old-current', 'new-private'] as const)('a real publication c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > a real publication commit between registry and content reads stays coherent: old-current
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > a real publication commit between registry and content reads stays coherent: new-private
+Error: Registry read did not reach real hook barrier
+ ❯ Timeout._onTimeout src/features/cases/content/collections/route-lifecycle.integration.test.ts:165:90
+    163|   try {
+    164|     const resolving = resolveCaseRoute('pt', query, fixture.payload);
+    165|     await Promise.race([registryRead, new Promise((_, reject) => setTi…
+       |                                                                                          ^
+    166|     await publish(doc.id, b);
+    167|     release();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 4 passed (10)
+   Start at  03:14:52
+   Duration  18.80s (tests 86%, import 13%, transform 1%, setup 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

@@ -1,3 +1,4 @@
+import { synchronizeCaseRoutes, protectContentRouteDeletion } from '../hooks/case-routes';
 import { protectEditorialCollection } from '@/helpers/payload/editorial-revision';
 import { validateCasePublication } from '../hooks/validate-publication';
 import 'server-only';
@@ -35,6 +36,8 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
   indexes: [{ fields: ['case', 'locale'], unique: true }],
 
   hooks: {
+    afterChange: [synchronizeCaseRoutes],
+    beforeDelete: [protectContentRouteDeletion],
     beforeOperation: [validatedWrite(caseInputSchema)],
     beforeChange: [
       validateCasePublication,
@@ -96,7 +99,14 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
 
     { name: 'introduction', label: 'Introdução da abertura', type: 'textarea' },
 
-    { name: 'slug', label: 'Slug', type: 'text' },
+    {
+      name: 'slug',
+      label: 'Slug',
+      type: 'text',
+      admin: {
+        components: { afterInput: ['/features/cases/components/slug-suggestion#SlugSuggestion'] },
+      },
+    },
 
     imageUseField('cover', 'Capa'),
 
