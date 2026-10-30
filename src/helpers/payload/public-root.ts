@@ -4,7 +4,7 @@ import { mkdir, open, readFile, realpath, rename, unlink } from 'node:fs/promise
 import path from 'node:path';
 import { z } from 'zod';
 import { withPublicationWriter } from './publication-writer';
-const rootSchema = z.strictObject({
+export const publicRootSchema = z.strictObject({
   generation: z.uuid(),
   subjects: z.record(
     z.string(),
@@ -15,10 +15,10 @@ const rootSchema = z.strictObject({
     }),
   ),
 });
-export type PublicRoot = z.infer<typeof rootSchema>;
+export type PublicRoot = z.infer<typeof publicRootSchema>;
 export async function readPublicRoot(directory: string): Promise<PublicRoot | null> {
   try {
-    return rootSchema.parse(
+    return publicRootSchema.parse(
       JSON.parse(await readFile(path.join(directory, 'current.json'), 'utf8')),
     );
   } catch (error) {
@@ -40,7 +40,7 @@ export async function withPublicRootWriter<T>(
       try {
         return await operation(root, async (next) => {
           if (!active) throw new Error('Publication writer closed.');
-          const serialized = JSON.stringify(rootSchema.parse(next));
+          const serialized = JSON.stringify(publicRootSchema.parse(next));
           const temporary = path.join(canonical, `${randomUUID()}.tmp`);
           try {
             const file = await open(temporary, 'wx', 0o600);
