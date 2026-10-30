@@ -6,6 +6,13 @@ import {
   type PublicationErrors,
 } from '@/helpers/payload/publication-validation';
 import type { CaseContent } from '@/payload-types';
+function hasTextContent(value: unknown): boolean {
+  if (Array.isArray(value)) return value.some(hasTextContent);
+  if (!value || typeof value !== 'object') return false;
+  const node = value as Record<string, unknown>;
+  if (node.type === 'text') return typeof node.text === 'string' && node.text.trim().length > 0;
+  return hasTextContent(node.children);
+}
 function links(value: unknown, path: string, errors: PublicationErrors) {
   if (!value || typeof value !== 'object') return;
   if (Array.isArray(value)) {
@@ -50,7 +57,7 @@ export const validateCasePublication = publicationGuard((raw) => {
         requireImage(errors, block.second, `${path}.second`);
       }
       if (block.blockType === 'text') {
-        if (!block.content?.root.children?.length)
+        if (!hasTextContent(block.content?.root))
           errors.push({ path: `${path}.content`, message: 'Preencha o texto antes de publicar.' });
         links(block.content, `${path}.content`, errors);
       }

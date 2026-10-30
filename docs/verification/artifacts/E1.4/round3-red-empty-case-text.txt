@@ -1,0 +1,252 @@
+$ vitest run --project integration src/features/cases/content/hooks/validate-publication.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[02:39:42] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[02:39:42] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[02:39:42] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[02:39:42] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[02:39:42] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (94ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[02:39:43] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[02:39:43] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[02:39:43] [32mINFO[39m: [36mDone.[39m
+[02:39:45] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/hooks/validate-publication.integration.test.ts (4 tests | 2 failed) 435ms
+   × rejects publishing a case containing only an empty normal paragraph while drafts stay editable 86ms
+   × rejects publishing a case containing only an whitespace-only text leaf while drafts stay editable 42ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/hooks/validate-publication.integration.test.ts > rejects publishing a case containing only an empty normal paragraph while drafts stay editable
+AssertionError: promise resolved "{ …(19) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "case": {
++     "createdAt": "2026-10-30T05:39:45.301Z",
++     "editorialRevision": "d15e26f5-160e-4a16-a00b-1f5b15d202c5",
++     "featured": false,
++     "id": "abf2cda2-763e-45a9-a51e-b9e7d59ca22f",
++     "internalTitle": "Synthetic case text characterization",
++     "leaseToken": "72e62668-2fa3-48e4-8996-6442348b629f",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T05:39:45.301Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": "Synthetic cover",
++     "caption": null,
++     "decorative": false,
++     "media": "a7257df3-baba-4104-b62a-05e4ee4763a1",
++   },
++   "createdAt": "2026-10-30T05:39:45.339Z",
++   "editorialRevision": "99611247-ddd4-49e3-a299-a497285aefd0",
++   "eyebrow": null,
++   "id": "d23e8ecf-d6bc-4da0-aade-eec3da1be63f",
++   "introduction": null,
++   "leaseToken": "34591688-945a-46c6-93e8-0cf36bab6145",
++   "locale": "pt",
++   "role": "Synthetic role",
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": {
++             "root": {
++               "children": [
++                 {
++                   "children": [],
++                   "direction": null,
++                   "format": "",
++                   "indent": 0,
++                   "type": "paragraph",
++                   "version": 1,
++                 },
++               ],
++               "direction": null,
++               "format": "",
++               "indent": 0,
++               "type": "root",
++               "version": 1,
++             },
++           },
++           "id": "6ae42da1b556ac88e4eaee33",
++           "readingKey": "6825010c-7070-4d48-ab65-f5038d18e789",
++         },
++       ],
++       "heading": null,
++       "id": "6ae42da1b556ac88e4eaee34",
++       "readingKey": "0a9dd0ca-a865-43a3-9d5a-580db89dbab8",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": "synthetic-case",
++   "summary": "Synthetic summary",
++   "title": "Synthetic title",
++   "updatedAt": "2026-10-30T05:39:45.339Z",
+  }
+
+ ❯ src/features/cases/content/hooks/validate-publication.integration.test.ts:59:6
+     57|         overrideAccess: false,
+     58|       }),
+     59|     ).rejects.toMatchObject({
+       |      ^
+     60|       status: 400,
+     61|       data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/features/cases/content/hooks/validate-publication.integration.test.ts > rejects publishing a case containing only an whitespace-only text leaf while drafts stay editable
+AssertionError: promise resolved "{ …(19) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "case": {
++     "createdAt": "2026-10-30T05:39:45.385Z",
++     "editorialRevision": "aecf0130-4f4d-4020-9b9d-d8d40bcb783e",
++     "featured": false,
++     "id": "828708df-d4e4-46b6-9615-3339ae73da1c",
++     "internalTitle": "Synthetic case text characterization",
++     "leaseToken": "3302c680-a537-4218-885b-645a5d7a9034",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T05:39:45.385Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": "Synthetic cover",
++     "caption": null,
++     "decorative": false,
++     "media": "bb775907-f56c-4076-bf1b-967a3998a75f",
++   },
++   "createdAt": "2026-10-30T05:39:45.397Z",
++   "editorialRevision": "6c00f821-9c61-4920-8044-6c6b0e9cb511",
++   "eyebrow": null,
++   "id": "090c53aa-2677-4508-8762-d91afeb0bebb",
++   "introduction": null,
++   "leaseToken": "dfe9bd5c-24a0-4dcf-8a8a-de55ef952432",
++   "locale": "pt",
++   "role": "Synthetic role",
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": {
++             "root": {
++               "children": [
++                 {
++                   "children": [
++                     {
++                       "detail": 0,
++                       "format": 0,
++                       "mode": "normal",
++                       "style": "",
++                       "text": "   ",
++                       "type": "text",
++                       "version": 1,
++                     },
++                   ],
++                   "direction": null,
++                   "format": "",
++                   "indent": 0,
++                   "type": "paragraph",
++                   "version": 1,
++                 },
++               ],
++               "direction": null,
++               "format": "",
++               "indent": 0,
++               "type": "root",
++               "version": 1,
++             },
++           },
++           "id": "6ae42da1b556ac88e4eaee35",
++           "readingKey": "2df6eca1-e6bd-4f51-8d82-99bcf7ef975c",
++         },
++       ],
++       "heading": null,
++       "id": "6ae42da1b556ac88e4eaee36",
++       "readingKey": "ec849ec5-6226-4f48-84e8-37a16d8b582a",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": "synthetic-case",
++   "summary": "Synthetic summary",
++   "title": "Synthetic title",
++   "updatedAt": "2026-10-30T05:39:45.397Z",
+  }
+
+ ❯ src/features/cases/content/hooks/validate-publication.integration.test.ts:59:6
+     57|         overrideAccess: false,
+     58|       }),
+     59|     ).rejects.toMatchObject({
+       |      ^
+     60|       status: 400,
+     61|       data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  02:39:38
+   Duration  7.14s (import 74%, tests 19%, transform 4%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.
