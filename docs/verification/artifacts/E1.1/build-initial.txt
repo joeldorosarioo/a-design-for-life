@@ -1,0 +1,37 @@
+$ next build
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 134ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 error:
+./src/payload.config.ts:18:41
+Error: Module not found: Can't resolve './'
+  16 |   admin: {
+  17 |     user: Users.slug,
+> 18 |     importMap: { baseDir: fileURLToPath(new URL('./', import.meta.url)) },
+     |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  19 |   },
+  20 |   db: postgresAdapter({
+  21 |     pool: { connectionString: env.DATABASE_URI },
+
+
+
+Import traces:
+  App Route:
+    ./src/payload.config.ts
+    ./src/app/(payload)/api/[...slug]/route.ts
+
+  Server Component:
+    ./src/payload.config.ts
+    ./src/app/(payload)/admin/[[...segments]]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[ELIFECYCLE] Command failed with exit code 1.

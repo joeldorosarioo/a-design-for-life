@@ -1,0 +1,57 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[21:57:12] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[21:57:12] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[21:57:12] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[21:57:12] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[21:57:12] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1681ms
+  Running TypeScript ...
+  Finished TypeScript in 2.9s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/2) ...
+✓ Generating static pages using 5 workers (2/2) in 381ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /admin/[[...segments]]
+└ ƒ /api/[...slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 160ms
+✓ Running next.config.ts took 43ms
+[21:57:19] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Running 2 tests using 1 worker
+
+(node:35368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (639ms)
+[21:57:21] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (32ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+  2 passed (14.5s)

@@ -1,0 +1,368 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test
+[WebServer] $ next build
+[WebServer] (node:29200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:4476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:30908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:17612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:15928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ next start --hostname 127.0.0.1 --port 3100
+[WebServer] (node:2264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }
+[WebServer] ⨯ unhandledRejection: undefined
+[WebServer] ⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:55433
+[WebServer]     at Object.k [as connect] (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:1:1717)
+[WebServer]     at async by.init (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:8407)
+[WebServer]     at async bB (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:175:13040)
+[WebServer]     at async (E:\a-design-for-life\.next\server\chunks\ssr\_123-lyp6-zxgz._.js:81:5772) {
+[WebServer]   payloadInitError: true,
+[WebServer]   digest: '839366904'
+[WebServer] }

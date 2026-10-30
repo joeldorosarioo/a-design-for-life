@@ -1,0 +1,69 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[21:50:23] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[21:50:23] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[21:50:23] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[21:50:23] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[21:50:23] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.4s
+  Running TypeScript ...
+testing/setup/playwright.ts(21,5): error TS2769: No overload matches this call.
+  Overload 1 of 8, '(command: string, args: readonly string[], options: SpawnSyncOptionsWithStringEncoding): SpawnSyncReturns<string>', gave the following error.
+    Type '{ NODE_ENV: string; APP_ENV: "test" | "production" | "local" | "staging"; PAYLOAD_SECRET: string; DATABASE_URI: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to type 'ProcessEnv'.
+      Types of property 'NODE_ENV' are incompatible.
+        Type 'string' is not assignable to type '"development" | "test" | "production"'.
+  Overload 2 of 8, '(command: string, args: readonly string[], options: SpawnSyncOptionsWithBufferEncoding): SpawnSyncReturns<NonSharedBuffer>', gave the following error.
+    Type '{ NODE_ENV: string; APP_ENV: "test" | "production" | "local" | "staging"; PAYLOAD_SECRET: string; DATABASE_URI: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to type 'ProcessEnv'.
+      Types of property 'NODE_ENV' are incompatible.
+        Type 'string' is not assignable to type '"development" | "test" | "production"'.
+  Overload 3 of 8, '(command: string, args?: readonly string[] | undefined, options?: SpawnSyncOptions | undefined): SpawnSyncReturns<string | NonSharedBuffer>', gave the following error.
+    Type '{ NODE_ENV: string; APP_ENV: "test" | "production" | "local" | "staging"; PAYLOAD_SECRET: string; DATABASE_URI: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to type 'ProcessEnv'.
+      Types of property 'NODE_ENV' are incompatible.
+        Type 'string' is not assignable to type '"development" | "test" | "production"'.
+testing/setup/playwright.ts(34,7): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type '{ NODE_ENV: string; APP_ENV: "test" | "production" | "local" | "staging"; PAYLOAD_SECRET: string; DATABASE_URI: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to type 'ProcessEnv'.
+      Types of property 'NODE_ENV' are incompatible.
+        Type 'string' is not assignable to type '"development" | "test" | "production"'.
+testing/setup/playwright.ts(40,16): error TS2339: Property 'exitCode' does not exist on type 'never'.
+  The intersection 'ChildProcessWithoutNullStreams & ChildProcessByStdio<Writable, Readable, Readable> & ... 7 more ... & ChildProcess' was reduced to 'never' because property 'stdin' has conflicting types in some constituents.
+testing/setup/playwright.ts(40,45): error TS2339: Property 'killed' does not exist on type 'never'.
+  The intersection 'ChildProcessWithoutNullStreams & ChildProcessByStdio<Writable, Readable, Readable> & ... 7 more ... & ChildProcess' was reduced to 'never' because property 'stdin' has conflicting types in some constituents.
+testing/setup/playwright.ts(40,60): error TS2339: Property 'kill' does not exist on type 'never'.
+  The intersection 'ChildProcessWithoutNullStreams & ChildProcessByStdio<Writable, Readable, Readable> & ... 7 more ... & ChildProcess' was reduced to 'never' because property 'stdin' has conflicting types in some constituents.
+testing/setup/playwright.ts(47,18): error TS2339: Property 'exitCode' does not exist on type 'never'.
+  The intersection 'ChildProcessWithoutNullStreams & ChildProcessByStdio<Writable, Readable, Readable> & ... 7 more ... & ChildProcess' was reduced to 'never' because property 'stdin' has conflicting types in some constituents.
+testing/setup/playwright.ts(47,88): error TS2339: Property 'exitCode' does not exist on type 'never'.
+  The intersection 'ChildProcessWithoutNullStreams & ChildProcessByStdio<Writable, Readable, Readable> & ... 7 more ... & ChildProcess' was reduced to 'never' because property 'stdin' has conflicting types in some constituents.
+Failed to type check.
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+Error: Build local falhou: 1
+
+   at ..\testing\setup\playwright.ts:26
+
+  24 |   if (build.error || build.status !== 0) {
+  25 |     stopDatabase();
+> 26 |     throw build.error ?? new Error(`Build local falhou: ${build.status}`);
+     |                          ^
+  27 |   }
+  28 |
+  29 |   const server = spawn(
+    at setup (E:\a-design-for-life\testing\setup\playwright.ts:26:26)
+
+[ELIFECYCLE] Command failed with exit code 1.
