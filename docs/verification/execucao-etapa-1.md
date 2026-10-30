@@ -67,3 +67,5 @@ Fronteiras de features/rotas públicas, ciclos inclusive type-only, infraestrutu
 ## Convenção de Git atualizada pelo usuário
 
 Usar `develop`, mensagens em inglês seguindo Conventional Commits e commits pequenos por responsabilidade. E1.1/E1.2 foram reorganizadas sem alterar suas árvores nem o trabalho em andamento. Correspondência dos marcos e provas em [history-correction.md](history-correction.md). Não usar os títulos de commit em português do plano histórico para os próximos commits.
+
+Ajuste posterior do usuário: os commits não precisam ser tão pequenos; devem ser coerentes. Priorizar unidades funcionais completas com testes, contratos e migrações relacionados, mantendo inglês, Conventional Commits e develop. Não fragmentar artificialmente por arquivo ou contagem de linhas.
