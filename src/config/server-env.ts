@@ -31,6 +31,25 @@ const serverEnvSchema = z
       },
       { message: 'SITE_ORIGIN deve ser uma origem HTTP(S) sem caminho ou credenciais' },
     ),
+    INTERNAL_HTTP_ORIGIN: z
+      .url()
+      .refine(
+        (value) => {
+          const url = new URL(value);
+          return (
+            /^http:\/\/(?:127\.0\.0\.1|\[::1\])(?::\d+)?\/?$/.test(value) &&
+            url.protocol === 'http:' &&
+            ['127.0.0.1', '[::1]'].includes(url.hostname) &&
+            url.pathname === '/' &&
+            !url.username &&
+            !url.password &&
+            !url.search &&
+            !url.hash
+          );
+        },
+        { message: 'INTERNAL_HTTP_ORIGIN deve usar HTTP de loopback literal sem dados extras' },
+      )
+      .optional(),
     MEDIA_BUCKET: z.string().min(1),
     MEDIA_STORAGE_ROOT: z.string().min(1).optional(),
     MEDIA_CHECKER_BINARY: z.string().min(1).optional(),
@@ -100,4 +119,14 @@ export type ServerEnv = z.infer<typeof serverEnvSchema>;
 
 export function readServerEnv(input: NodeJS.ProcessEnv): ServerEnv {
   return serverEnvSchema.parse(input);
+}
+
+export function resolveInternalHttpOrigin(env: ServerEnv): string | null {
+  if (env.INTERNAL_HTTP_ORIGIN) return new URL(env.INTERNAL_HTTP_ORIGIN).origin;
+  if (env.APP_ENV !== 'local' && env.APP_ENV !== 'test') return null;
+  const site = new URL(env.SITE_ORIGIN);
+  if (site.protocol !== 'http:' || !['localhost', '127.0.0.1', '[::1]'].includes(site.hostname))
+    return null;
+  if (site.hostname === 'localhost') site.hostname = '127.0.0.1';
+  return site.origin;
 }

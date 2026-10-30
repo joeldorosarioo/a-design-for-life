@@ -1,5 +1,6 @@
 import '@payload-config';
 import { authorizePreview } from '@/helpers/payload/preview-session';
+import { buildPrivatePreviewPath } from '@/helpers/payload/private-preview-path';
 export const dynamic = 'force-dynamic';
 const headers = {
   'Cache-Control': 'private, no-store, max-age=0',
@@ -32,7 +33,15 @@ export async function GET(request: Request): Promise<Response> {
       },
     );
   }
-  const { collection, id, locale, document, returnTo, payload } = authorization.value;
+  const { collection, id, locale, document, returnTo, payload, page } = authorization.value;
+  if (page) {
+    const destination = new URL(
+      buildPrivatePreviewPath({ collection, id, locale, page }),
+      payload.config.serverURL,
+    );
+    if (returnTo) destination.searchParams.set('returnTo', returnTo);
+    return new Response(null, { status: 307, headers: { ...headers, Location: destination.href } });
+  }
   if (!new URL(request.url).searchParams.has('view')) {
     const query = new URLSearchParams({ collection, id, locale, view: '1' });
     if (returnTo) query.set('returnTo', returnTo);
