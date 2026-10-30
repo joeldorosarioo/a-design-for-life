@@ -1,8 +1,8 @@
-import type { ResolvedNavigationDTO } from '../contracts/resolved-navigation-dto.schema';
+import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { buttonVariants } from '@/components/ui/button';
 import styles from '../stylesheets/navigation.module.css';
 
-export function SiteFooter({ navigation }: { navigation: ResolvedNavigationDTO }) {
+export function SiteFooter({ navigation }: { navigation: NavigationPresentation }) {
   const { footer, contacts, brand, controls } = navigation;
   return (
     <footer className={styles.footer}>
@@ -12,6 +12,7 @@ export function SiteFooter({ navigation }: { navigation: ResolvedNavigationDTO }
         {footer.description && <p className={styles.footerDescription}>{footer.description}</p>}
         <ul
           id="contact"
+          data-reading-key="site-contact"
           tabIndex={-1}
           aria-label={navigation.items[3].label}
           className={styles.contactList}

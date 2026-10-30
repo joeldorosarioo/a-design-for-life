@@ -1,15 +1,15 @@
 'use client';
 
-import type { ResolvedNavigationDTO } from '../contracts/resolved-navigation-dto.schema';
+import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import styles from '../stylesheets/navigation.module.css';
 
 export type MobileMenuProps = {
-  items: ResolvedNavigationDTO['items'];
+  items: NavigationPresentation['items'];
   controls: Pick<
-    ResolvedNavigationDTO['controls'],
+    NavigationPresentation['controls'],
     'openMenuLabel' | 'closeMenuLabel' | 'newTabLabel'
   >;
   navigationLabel: string;
