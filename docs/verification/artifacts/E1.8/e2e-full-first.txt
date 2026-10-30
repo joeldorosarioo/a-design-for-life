@@ -1,0 +1,10 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-e2e-full-first.txt
+Original SHA256: E8C9FCBBE29658E44941781B839A2E76BE21F9DBE8C1F9B5B40B2103D6DF5A3C
+Observed command exit code: 1
+Classification: INCOMPLETE_GATE
+Behavior/limit: 18passed7failed; previous Local publication fixtures require explicit confirmation and origin-failure expectations require confirmed-root semantics. Not finalgate.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+7 failed
+18 passed (1.4m)

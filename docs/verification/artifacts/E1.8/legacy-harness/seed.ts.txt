@@ -1,0 +1,80 @@
+// Prepared for the MAIN lifecycle owner. This file has NOT been executed by its author.
+import guardModule from './guard.cjs';
+import assert from 'node:assert/strict';
+import { createHash, randomUUID } from 'node:crypto';
+import { existsSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const { fingerprint } = guardModule.guard();
+if (existsSync(fileURLToPath(new URL('./expected.json', import.meta.url)))) throw new Error('Seed evidence already exists; preserve this fixture and choose a new isolated harness run.');
+const { createEditorialPayloadFixture } = await import('./source/testing/fixtures/editorial-payload');
+const { casePublicationFixture, mediaMetadataFixture, observedRequest } = await import('./source/testing/fixtures/editorial-lifecycle');
+const fixture = await createEditorialPayloadFixture('e18-legacy-upgrade');
+const { payload } = fixture;
+const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+const keys = (doc: any) => doc.sections.map((section: any) => [section.readingKey, section.blocks.map((block: any) => block.readingKey)]);
+try {
+  // Real PostgreSQL information_schema, executed ONLY by main after old Native migrations.
+  const physical = await payload.db.pool.query("SELECT table_name,column_name FROM information_schema.columns WHERE table_schema='public'");
+  const oldPhysical = physical.rows.filter((row: any) => row.table_name === 'publication_updates' || ['title_emphasis','latest_publication_intent','public_confirmed','version_title_emphasis','version_latest_publication_intent'].includes(row.column_name));
+  assert.deepEqual(oldPhysical, [], 'New physical schema/outbox must be absent before seed.');
+  const version = await payload.db.pool.query('SELECT version() AS version');
+  assert.match(version.rows[0].version, /^PostgreSQL 17\.11 /);
+  const shared = await payload.create({ collection: 'cases', data: { internalTitle: 'Legacy Native upgrade fixture', sortOrder: 7, featured: true }, req: await fixture.request(), overrideAccess: false });
+  const uploaded = await mediaMetadataFixture(payload, 'image'); // Existing helper performs REAL Native upload+processing.
+  const media = await payload.db.findOne({collection:'media',where:{id:{equals:uploaded.id}}}) as any;
+  assert.equal(media.state, 'ready');
+  const base = casePublicationFixture(media.id);
+  const routePrefix = `legacy-${randomUUID()}`;
+  const slugA = `${routePrefix}-a`; const slugB = `${routePrefix}-b`; const slugC = `${routePrefix}-c`;
+  base.slug = slugA;
+  const ptDraft = await payload.create({ collection: 'case-content', data: { case: shared.id, locale: 'pt', ...base, title: 'Legado PT histórico' }, draft: true, req: await fixture.request(), overrideAccess: false });
+  const pt1 = await payload.update({ collection: 'case-content', id: ptDraft.id, data: { ...base, title: 'Legado PT histórico', _status: 'published' }, req: await observedRequest('case-content', ptDraft.id, await fixture.request()), overrideAccess: false });
+  const pt2 = await payload.update({ collection: 'case-content', id: ptDraft.id, data: { slug: slugB, title: 'Legado PT público atual', summary: 'Resumo público anterior ao upgrade', _status: 'published' }, req: await observedRequest('case-content', ptDraft.id, await fixture.request()), overrideAccess: false });
+  const enData = casePublicationFixture(media.id);
+  enData.sections.forEach((section: any, index: number) => { section.readingKey = pt1.sections![index].readingKey; section.blocks.forEach((block: any, j: number) => { block.readingKey = pt1.sections![index].blocks![j].readingKey; }); });
+  const enDraft = await payload.create({ collection: 'case-content', data: { case: shared.id, locale: 'en', ...enData }, draft: true, req: await fixture.request(), overrideAccess: false });
+  const en = await payload.update({ collection: 'case-content', id: enDraft.id, data: { ...enData, title: 'Legacy EN public unchanged', _status: 'published' }, req: await observedRequest('case-content', enDraft.id, await fixture.request()), overrideAccess: false });
+  const privateDraft = await payload.update({ collection: 'case-content', id: ptDraft.id, data: { slug: slugC, title: 'PRIVATE LATER DRAFT MUST STAY PRIVATE', _status: 'draft' }, draft: true, req: await observedRequest('case-content', ptDraft.id, await fixture.request()), overrideAccess: false });
+  // Separate genuine media controls: different Native IDs AND different bytes/SHA.
+  const { default: sharp } = await import('sharp');
+  async function distinctNativeImage(background: string) {
+    const bytes = await sharp({ create: { width: 19, height: 17, channels: 3, background } }).png().toBuffer();
+    const uploaded = await payload.create({ collection: 'media', data: {}, file: { data: bytes, size: bytes.length, name: `legacy-${randomUUID()}.png`, mimetype: 'image/png' }, req: await fixture.request(), overrideAccess: false });
+    const raw = await payload.db.findOne({ collection: 'media', where: { id: { equals: uploaded.id } } }) as any;
+    assert.equal(raw.state, 'ready'); return raw;
+  }
+  const withdrawnMedia = await distinctNativeImage('#b12d31');
+  const neverMedia = await distinctNativeImage('#6743a1');
+  assert.notEqual(withdrawnMedia.id, media.id);
+  assert.notEqual(withdrawnMedia.manifest.original.object.sha256, media.manifest.original.object.sha256);
+  assert.notEqual(neverMedia.manifest.original.object.sha256, withdrawnMedia.manifest.original.object.sha256);
+  const withdrawnCase = await payload.create({ collection: 'cases', data: { internalTitle: 'Legacy withdrawn control' }, req: await fixture.request(), overrideAccess: false });
+  const withdrawnData = { ...casePublicationFixture(withdrawnMedia.id), slug: `${routePrefix}-withdrawn`, title: 'Legacy formerly public withdrawn case' };
+  const withdrawnDraft = await payload.create({ collection: 'case-content', data: { case: withdrawnCase.id, locale: 'pt', ...withdrawnData }, draft: true, req: await fixture.request(), overrideAccess: false });
+  await payload.update({ collection: 'case-content', id: withdrawnDraft.id, data: { ...withdrawnData, _status: 'published' }, req: await observedRequest('case-content', withdrawnDraft.id, await fixture.request()), overrideAccess: false });
+  const withdrawn = await payload.update({ collection: 'case-content', id: withdrawnDraft.id, data: { _status: 'draft' }, req: await observedRequest('case-content', withdrawnDraft.id, await fixture.request()), overrideAccess: false });
+  assert.equal(withdrawn._status, 'draft');
+  const neverCase = await payload.create({ collection: 'cases', data: { internalTitle: 'Legacy private never-public control' }, req: await fixture.request(), overrideAccess: false });
+  const neverData = { ...casePublicationFixture(neverMedia.id), slug: `${routePrefix}-never-public` };
+  const never = await payload.create({ collection: 'case-content', data: { case: neverCase.id, locale: 'pt', ...neverData }, draft: true, req: await fixture.request(), overrideAccess: false });
+  const allRoutes = await payload.find({ collection: 'case-routes', pagination: false, limit: 0, depth: 0, req: await fixture.request(), overrideAccess: true });
+  const ownRoutes = allRoutes.docs.filter((route: any) => [ptDraft.id, withdrawn.id, never.id].includes(typeof route.content === 'object' ? route.content.id : route.content));
+  const bySlug = (slug: string) => ownRoutes.find((route: any) => route.slug === slug);
+  assert.equal(bySlug(slugA)?.everPublished, true); assert.equal(bySlug(slugB)?.everPublished, true);
+  assert.equal(bySlug(slugC)?.everPublished, false); assert.equal(bySlug(withdrawnData.slug)?.everPublished, true);
+  assert.equal(bySlug(neverData.slug)?.everPublished, false);
+  const withdrawnVersions = await payload.findVersions({ collection: 'case-content', where: { parent: { equals: withdrawn.id } }, pagination: false, limit: 0, depth: 0, req: await fixture.request(), overrideAccess: false });
+  const { resolveMediaAccess: oldMediaAccess } = await import('./source/src/features/media-library/server/resolve-media-access');
+  assert.equal((await oldMediaAccess({ mediaId: media.id, variant: 'original', preview: false }, await fixture.request())).ok, true);
+  assert.deepEqual(await oldMediaAccess({ mediaId: withdrawnMedia.id, variant: 'original', preview: false }, await fixture.request()), { ok: false, status: 404 });
+  assert.deepEqual(await oldMediaAccess({ mediaId: neverMedia.id, variant: 'original', preview: false }, await fixture.request()), { ok: false, status: 404 });
+  const canonical = await payload.findByID({ collection: 'case-content', id: ptDraft.id, draft: false, req: await fixture.request(), overrideAccess: false, depth: 0 });
+  assert.equal(canonical.title, pt2.title);
+  const versions = await payload.findVersions({ collection: 'case-content', where: { parent: { equals: ptDraft.id } }, pagination: false, limit: 0, depth: 0, req: await fixture.request(), overrideAccess: false });
+  const historical = versions.docs.find((item: any) => item.version._status === 'published' && item.version.title === pt1.title);
+  assert.ok(historical, 'A real older published Native version must exist.');
+  assert.ok(versions.docs.filter((item: any) => item.version._status === 'published').length >= 2);
+  const evidence = { routes: { slugA, slugB, slugC }, withdrawn: { id: withdrawn.id, caseId: withdrawnCase.id, slug: withdrawnData.slug, revision: withdrawn.editorialRevision, publicTitle: withdrawnData.title, mediaId: withdrawnMedia.id, mediaOriginalHash: withdrawnMedia.manifest.original.object.sha256, versionIds: withdrawnVersions.docs.map((item: any) => item.id) }, neverPublic: { id: never.id, caseId: neverCase.id, slug: neverData.slug, mediaId: neverMedia.id, mediaOriginalHash: neverMedia.manifest.original.object.sha256 }, baseline: '0fa495864cfefcf3489856d66444b81fdf1f730e', fingerprint, oldPhysicalAbsent: true, editorId: fixture.user.id, caseId: shared.id, mediaId: media.id, mediaOriginalHash: media.manifest!.original.object.sha256, pt: { id: ptDraft.id, slug: canonical.slug, title: canonical.title, summary: canonical.summary, revision: canonical.editorialRevision, keysHash: hash(keys(canonical)) }, en: { id: en.id, slug: en.slug, title: en.title, revision: en.editorialRevision, keysHash: hash(keys(en)) }, privateRevision: privateDraft.editorialRevision, restoreVersionId: historical.id, restoreTitle: pt1.title, versionIds: versions.docs.map((item: any) => item.id) };
+  writeFileSync(fileURLToPath(new URL('./expected.json', import.meta.url)), JSON.stringify(evidence, null, 2), { flag: 'wx', mode: 0o600 });
+  console.log(JSON.stringify({ stage: 'OLD_NATIVE_SEED', oldPhysicalAbsent: true, caseId: shared.id, mediaId: media.id, publicPT: evidence.pt, publicEN: evidence.en, versionIds: evidence.versionIds, mediaOriginalHash: evidence.mediaOriginalHash }));
+} finally { await payload.destroy(); }

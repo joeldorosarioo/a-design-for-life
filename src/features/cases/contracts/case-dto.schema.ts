@@ -2,10 +2,18 @@ import { z } from 'zod';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { imageUseDTOSchema } from '@/features/media-library';
 import { richTextSchema } from './rich-text.schema';
+import { caseSectionPresentationSchema } from './case.schema';
 const text = z.string().nullable();
 const readingKey = z.uuid();
 const block = z.discriminatedUnion('type', [
-  z.object({ type: z.literal('text'), readingKey, content: richTextSchema.nullable() }),
+  z.object({
+    type: z.literal('text'),
+    readingKey,
+    eyebrow: text,
+    heading: text,
+    note: text,
+    content: richTextSchema.nullable(),
+  }),
   z.object({ type: z.literal('image'), readingKey, image: imageUseDTOSchema.nullable() }),
   z.object({
     type: z.literal('image-pair'),
@@ -22,6 +30,7 @@ export const caseDetailDTOSchema = z.object({
   locale: localeSchema,
   eyebrow: text,
   title: text,
+  titleParts: z.object({ normal: text, emphasis: text }),
   summary: text,
   introduction: text,
   path: z.string(),
@@ -29,7 +38,17 @@ export const caseDetailDTOSchema = z.object({
   role: text,
   scope: text,
   contextNote: text,
-  sections: z.array(z.object({ readingKey, heading: text, blocks: z.array(block) })),
+  sections: z.array(
+    z.object({
+      readingKey,
+      presentation: caseSectionPresentationSchema,
+      eyebrow: text,
+      heading: text,
+      description: text,
+      note: text,
+      blocks: z.array(block),
+    }),
+  ),
   contents: z.array(z.object({ readingKey, label: text, anchor: z.string() })),
   seo: z.object({ title: text, description: text, image: imageUseDTOSchema.nullable() }),
 });

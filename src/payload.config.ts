@@ -1,3 +1,15 @@
+import { withConfirmedTransactions } from './helpers/payload/transaction-settlement';
+import { publicRootDirectory } from './helpers/payload/public-root-directory';
+import { installPublicationProvider } from './helpers/payload/publication-runtime';
+import { portfolioPublicationCoordinator } from './config/publication';
+import {
+  casePublicationAdapter,
+  caseOrderPublicationAdapter,
+} from './features/cases/server/case-publication';
+import { profilePublicationAdapter } from './features/professional-profile/server/profile-publication';
+import { navigationPublicationAdapter } from './features/site-navigation/server/navigation-publication';
+import { PublicationUpdates } from './helpers/payload/publication-updates.collection';
+import { publicationFields } from './helpers/payload/publication-fields';
 import { editorialError } from './helpers/payload/editorial-revision';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,6 +45,8 @@ loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const Users = usersCollection(env.SITE_ORIGIN);
+const publicationDirectory = publicRootDirectory(env);
+installPublicationProvider(() => portfolioPublicationCoordinator(publicationDirectory));
 installMediaRuntime({
   root:
     env.MEDIA_STORAGE_ROOT ??
@@ -57,22 +71,25 @@ const config = buildConfig({
     user: Users.slug,
     importMap: { baseDir: sourceDirectory },
   },
-  db: postgresAdapter({
-    pool: { connectionString: env.DATABASE_URI },
-    beforeSchemaInit: [protectCaseIdentitySchema],
-    idType: 'uuid',
-    migrationDir: path.resolve(sourceDirectory, 'migrations'),
-    push: false,
-    disableCreateDatabase: true,
-  }),
+  db: withConfirmedTransactions(
+    postgresAdapter({
+      pool: { connectionString: env.DATABASE_URI },
+      beforeSchemaInit: [protectCaseIdentitySchema],
+      idType: 'uuid',
+      migrationDir: path.resolve(sourceDirectory, 'migrations'),
+      push: false,
+      disableCreateDatabase: true,
+    }),
+  ),
   collections: [
     Users,
-    Cases,
-    CaseContent,
+    publicationFields(Cases, caseOrderPublicationAdapter),
+    publicationFields(CaseContent, casePublicationAdapter),
     CaseRoutes,
-    SiteNavigation,
-    ProfessionalProfiles,
+    publicationFields(SiteNavigation, navigationPublicationAdapter),
+    publicationFields(ProfessionalProfiles, profilePublicationAdapter),
     Media,
+    PublicationUpdates,
   ].map((collection) =>
     ['case-content', 'site-navigation', 'professional-profiles'].includes(collection.slug)
       ? {

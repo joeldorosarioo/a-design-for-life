@@ -1,6 +1,5 @@
 import 'server-only';
 import type { CollectionAfterChangeHook } from 'payload';
-import { isDraftOperation } from '@/helpers/payload/editorial-revision';
 import { trackMediaUsage } from '@/features/media-library/server';
 import { extractProfileMedia } from './extract-profile-media';
 export const synchronizeProfileMedia: CollectionAfterChangeHook = async ({ doc, data, req }) => {
@@ -34,21 +33,13 @@ export const synchronizeProfileMedia: CollectionAfterChangeHook = async ({ doc, 
   if (published?.editorialRevision === revision) {
     await trackMediaUsage(
       [
-        { ...owner, state: 'confirmed', references: extractProfileMedia(published) },
+        { ...owner, state: 'pending', references: extractProfileMedia(published) },
         { ...owner, state: 'draft', references: [] },
       ],
       req,
     );
   } else {
-    await trackMediaUsage(
-      [
-        { ...owner, state: 'draft', references },
-        ...(!isDraftOperation(req) && !published
-          ? [{ ...owner, state: 'confirmed' as const, references: [] }]
-          : []),
-      ],
-      req,
-    );
+    await trackMediaUsage([{ ...owner, state: 'draft', references }], req);
   }
   return doc;
 };

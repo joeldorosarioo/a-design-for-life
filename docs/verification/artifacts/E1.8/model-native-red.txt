@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-model-native-red.txt
+Original SHA256: C81DD443C6DA47A6D19834AE9EA720B0986169FAC7517809001D4D4D8CA6CE0F
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Real Native persistence omitted new title/section/text metadata before field registration.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed (1)
+Start at  09:44:44
+Duration  7.09s (import 77%, tests 14%, transform 5%, setup 3%)

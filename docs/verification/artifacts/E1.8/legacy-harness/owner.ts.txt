@@ -1,0 +1,14 @@
+import {configureTestEnvironment} from '../testing/setup/test-environment';
+import {publicRootDirectory} from '../src/helpers/payload/public-root-directory';
+import {rmSync} from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+const env=configureTestEnvironment();const action=process.argv[2];
+const run=(command:string,args:string[])=>{const result=spawnSync(command,args,{stdio:'inherit',windowsHide:true,env:{...process.env,LOCAL_POSTGRES_PASSWORD:'synthetic-unused-local-service-placeholder'}});if(result.status!==0)throw new Error(`Owned legacy phase failed: ${action}`);};
+if(action==='start'){
+  const directory=publicRootDirectory(env);const expected=path.resolve('.work/publication')+path.sep;
+  if(env.APP_ENV!=='test'||new URL(env.DATABASE_URI).port!=='55433'||!directory.startsWith(expected))throw new Error('Unsafe legacy fixture namespace');
+  rmSync(directory,{recursive:true,force:true});
+  run('docker',['compose','-f','compose.local.yaml','up','-d','--wait','postgres-test']);
+}else if(action==='stop')run('docker',['compose','-f','compose.local.yaml','rm','--stop','--force','postgres-test']);
+else run(process.execPath,['.work/e1.8-legacy-routes-green-0fa4958-20261030/run.cjs',action!]);

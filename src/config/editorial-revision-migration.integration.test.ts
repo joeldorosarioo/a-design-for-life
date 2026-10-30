@@ -1,3 +1,6 @@
+import { confirmTestPublication } from '../../testing/fixtures/confirmed-publication';
+import { readPublicRoot } from '@/helpers/payload/public-root';
+import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createEditorialPayloadFixture } from '../../testing/fixtures/editorial-payload';
 import {
@@ -34,6 +37,9 @@ it('native migration roundtrip backfills independent head/content markers for pr
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(doc, await fixture.request());
+  const confirmedBefore = await readPublicRoot(runtimePublication().directory);
+  expect(confirmedBefore?.subjects[`case-content/${doc.id}`]).toBeDefined();
   await fixture.payload.update({
     collection: 'case-content',
     id: doc.id,
@@ -85,6 +91,7 @@ it('native migration roundtrip backfills independent head/content markers for pr
     overrideAccess: false,
   });
   expect(updated.title).toBe('Migrated editor can save');
+  expect(await readPublicRoot(runtimePublication().directory)).toEqual(confirmedBefore);
   expect(
     (
       await fixture.payload.findByID({

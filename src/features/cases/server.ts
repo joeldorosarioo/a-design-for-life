@@ -8,3 +8,10 @@ export { suggestSlug } from './server/suggest-slug';
 export { reserveCaseRoute } from './server/reserve-case-route';
 export { resolveCaseRoute } from './server/resolve-case-route';
 export { caseRouteResponse } from './server/case-route-response';
+export { getPublishedCase } from './server/get-published-case';
+export {
+  getPublishedCases,
+  getPublishedCaseRoutes,
+  publishedCaseRouteSchema,
+} from './server/get-published-cases';
+export { getFeaturedCases } from './server/get-featured-cases';

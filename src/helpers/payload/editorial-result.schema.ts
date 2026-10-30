@@ -1,3 +1,4 @@
+import { publicReceiptSchema } from './publication-receipt.schema';
 import { z } from 'zod';
 export const editorialFailureSchema = z.object({
   code: z.enum(['invalid-input', 'stale-revision', 'locked', 'forbidden', 'unavailable']),
@@ -8,11 +9,10 @@ export type EditorialFailure = z.infer<typeof editorialFailureSchema>;
 export type Result<T> = { ok: true; value: T } | { ok: false; error: EditorialFailure };
 export const editorialCommandSchema = z.object({ contentId: z.uuid(), expectedRevision: z.uuid() });
 export const restoreCommandSchema = editorialCommandSchema.extend({ versionId: z.uuid() });
-export const publicationReceiptSchema = z.object({
+export const publicationReceiptSchema = publicReceiptSchema.extend({
   contentId: z.uuid(),
   locale: z.enum(['pt', 'en']),
   revision: z.uuid(),
-  status: z.literal('published'),
 });
 export type PublicationReceipt = z.infer<typeof publicationReceiptSchema>;
 

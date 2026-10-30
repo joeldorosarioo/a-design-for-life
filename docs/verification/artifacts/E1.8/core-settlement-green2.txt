@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-core-settlement-green2.txt
+Original SHA256: 51D8998F4A45B0B6A838D782E3AD16788D241C8E8919F2D2ED2E5D6D87EB9739
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: 19 Native tests across3files including public transaction/pin failures, restart/SQL outage and draft settlement.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  3 passed (3)
+Tests  19 passed (19)
+Start at  11:05:46
+Duration  25.55s (tests 71%, import 26%, transform 1%, setup 1%)

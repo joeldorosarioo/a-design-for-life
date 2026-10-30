@@ -1,0 +1,7 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-legacy-routes-green-bootstrap.txt
+Original SHA256: 9EE433008876CECEE121C78BD2D0C6C76990D8558E43F3BB57ADE803CD29188E
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Standard persisted bootstrap confirms captured legacy intentions.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.

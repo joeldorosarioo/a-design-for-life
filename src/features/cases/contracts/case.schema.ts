@@ -9,7 +9,14 @@ const text = z.string().nullish();
 const row = { id: z.string().nullish(), readingKey: z.uuid().nullish() };
 const block = { ...row, blockName: text };
 export const caseBlockInputSchema = z.discriminatedUnion('blockType', [
-  z.strictObject({ ...block, blockType: z.literal('text'), content: richTextSchema.nullish() }),
+  z.strictObject({
+    ...block,
+    blockType: z.literal('text'),
+    eyebrow: text,
+    heading: text,
+    note: text,
+    content: richTextSchema.nullish(),
+  }),
   z.strictObject({ ...block, blockType: z.literal('image'), image: imageUseInputSchema.nullish() }),
   z.strictObject({
     ...block,
@@ -21,9 +28,19 @@ export const caseBlockInputSchema = z.discriminatedUnion('blockType', [
     secondLabel: text,
   }),
 ]);
+export const caseSectionPresentationSchema = z.enum([
+  'narrative',
+  'process',
+  'comparison',
+  'learnings',
+]);
 export const caseSectionInputSchema = z.strictObject({
   ...row,
+  presentation: caseSectionPresentationSchema.nullish(),
+  eyebrow: text,
   heading: text,
+  description: text,
+  note: text,
   blocks: nativeArray(caseBlockInputSchema).nullish(),
 });
 export const caseInputSchema = z.strictObject({
@@ -32,6 +49,7 @@ export const caseInputSchema = z.strictObject({
   locale: localeSchema.optional(),
   eyebrow: text,
   title: text,
+  titleEmphasis: text,
   summary: text,
   introduction: text,
   slug: draftSlugSchema,

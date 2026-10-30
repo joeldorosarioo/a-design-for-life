@@ -1,3 +1,8 @@
+import { confirmTestPublication } from '../../../../../testing/fixtures/confirmed-publication';
+import { readPublicRoot } from '@/helpers/payload/public-root';
+import { runtimePublication } from '@/helpers/payload/publication-runtime';
+import { getPublishedCase } from '../../server/get-published-case';
+import { getPublishedCaseRoutes } from '../../server/get-published-cases';
 import { randomUUID } from 'node:crypto';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
@@ -58,13 +63,15 @@ async function routes(id: string) {
     })
   ).docs;
 }
-async function publish(id: string, value: string, asDraft = false) {
+async function publish(id: string, value: string, asDraft = false, title = 'Synthetic title') {
   const media = await mediaMetadataFixture(fixture.payload);
-  return save(
+  const saved = await save(
     id,
-    { ...casePublicationFixture(media.id), slug: value, _status: 'published' },
+    { ...casePublicationFixture(media.id), title, slug: value, _status: 'published' },
     asDraft,
   );
+  await confirmTestPublication(saved, await fixture.request());
+  return saved;
 }
 it('reserves supplied draft slugs and leaves title changes and missing slugs alone', async () => {
   const first = slug();
@@ -187,7 +194,10 @@ it('releases only never-public old drafts; publishes history, reuses its own his
       })
     ).slug,
   ).toBe(c);
-  await save(doc.id, { _status: 'published' }, false);
+  await confirmTestPublication(
+    await save(doc.id, { _status: 'published' }, false),
+    await fixture.request(),
+  );
   expect(await routes(doc.id)).toEqual(
     expect.arrayContaining([
       expect.objectContaining({ slug: b, state: 'current' }),
@@ -294,7 +304,10 @@ it('resolves current, private, unknown, direct history after repeated changes an
     });
   const english = await draft(a, 'en', doc.case as string);
   await publish(english.id, a);
-  await save(doc.id, { _status: 'draft' }, false);
+  await confirmTestPublication(
+    await save(doc.id, { _status: 'draft' }, false),
+    await fixture.request(),
+  );
   for (const value of [a, b, c])
     expect(await resolveCaseRoute('pt', value, fixture.payload)).toMatchObject({ status: 410 });
   expect(await resolveCaseRoute('en', a, fixture.payload)).toMatchObject({ status: 200, slug: a });
@@ -392,56 +405,107 @@ it('private deletion releases reservations and published deletion preserves owne
     }),
   ).rejects.toMatchObject({ status: 409 });
   expect((await routes(publicDoc.id))[0]).toMatchObject({ slug: current, everPublished: true });
-  await save(publicDoc.id, { _status: 'draft' }, false);
+  await confirmTestPublication(
+    await save(publicDoc.id, { _status: 'draft' }, false),
+    await fixture.request(),
+  );
   expect(await resolveCaseRoute('pt', current, fixture.payload)).toMatchObject({ status: 410 });
 });
 it.each(['old-current', 'new-private'] as const)(
-  'a real publication commit between registry and content reads stays coherent: %s',
+  'a real publication between the first root read and completion preserves one generation: %s',
   async (interleaving) => {
     const a = slug(),
       b = slug();
     const doc = await draft(a);
-    await publish(doc.id, a);
-    await save(doc.id, { slug: b, _status: 'draft' });
-    let release!: () => void;
-    let read!: () => void;
+    await publish(doc.id, a, false, 'Confirmed first body');
+    await save(doc.id, { slug: b, title: 'Private next body', _status: 'draft' });
+    const directory = runtimePublication().directory;
+    const rootBefore = await readPublicRoot(directory);
+    expect(rootBefore).not.toBeNull();
+    if (!rootBefore) throw new Error('Expected an actual confirmed root.');
+    const query = interleaving === 'old-current' ? a : b;
+    let release!: () => void, read!: () => void;
     const held = new Promise<void>((resolve) => {
       release = resolve;
     });
-    const registryRead = new Promise<void>((resolve) => {
+    const snapshotRead = new Promise<void>((resolve) => {
       read = resolve;
     });
-    const query = interleaving === 'old-current' ? a : b;
-    const hooks = fixture.payload.collections['case-routes'].config.hooks.afterRead;
-    const gate: (typeof hooks)[number] = async ({ doc, req }) => {
-      if (!req.user && doc.slug === query) {
-        read();
-        await held;
-      }
-      return doc;
-    };
-    hooks.push(gate);
+    let completed = false;
+    // The requestor pauses after a real FS read. Every projection below receives
+    // that same immutable generation; no getter or publication result is mocked.
+    const resolving = (async () => {
+      const root = await readPublicRoot(directory);
+      if (!root) throw new Error('Expected a root at the first request read.');
+      read();
+      await held;
+      const resolution = await resolveCaseRoute('pt', query, fixture.payload, root);
+      const body = await getPublishedCase('pt', a, root);
+      const routes = await getPublishedCaseRoutes('pt', root);
+      completed = true;
+      return { generation: root.generation, resolution, body, routes };
+    })();
     try {
-      const resolving = resolveCaseRoute('pt', query, fixture.payload);
       await Promise.race([
-        registryRead,
+        snapshotRead,
         new Promise((_, reject) =>
           setTimeout(
-            () => reject(new Error('Registry read did not reach real hook barrier')),
+            () => reject(new Error('Actual FS snapshot did not reach request barrier')),
             5000,
           ),
         ),
       ]);
-      await publish(doc.id, b);
+      expect(completed).toBe(false);
+      await publish(doc.id, b, false, 'Confirmed second body');
+      const rootAfter = await readPublicRoot(directory);
+      if (!rootAfter) throw new Error('Expected the new actual confirmed root.');
+      expect(rootAfter.generation).not.toBe(rootBefore.generation);
+      expect(completed).toBe(false);
+      // The new generation is already public while the old request is held.
+      expect(await resolveCaseRoute('pt', a, fixture.payload, rootAfter)).toMatchObject({
+        status: 308,
+        location: `/pt/cases/${b}`,
+      });
+      expect(await resolveCaseRoute('pt', b, fixture.payload, rootAfter)).toMatchObject({
+        status: 200,
+        slug: b,
+        case: { title: 'Confirmed second body' },
+      });
+      expect(await getPublishedCase('pt', b, rootAfter)).toMatchObject({
+        ok: true,
+        value: { title: 'Confirmed second body', path: `/pt/cases/${b}` },
+      });
+      expect(await getPublishedCaseRoutes('pt', rootAfter)).toMatchObject({
+        ok: true,
+        value: expect.arrayContaining([
+          expect.objectContaining({
+            caseId: doc.case,
+            path: `/pt/cases/${b}`,
+            history: [`/pt/cases/${a}`],
+          }),
+        ]),
+      });
       release();
-      expect(await resolving).toMatchObject(
+      const pinned = await resolving;
+      expect(pinned.generation).toBe(rootBefore.generation);
+      expect(pinned.resolution).toMatchObject(
         interleaving === 'old-current'
-          ? { status: 308, location: `/pt/cases/${b}` }
-          : { status: 200, slug: b },
+          ? { status: 200, slug: a, case: { title: 'Confirmed first body' } }
+          : { status: 404 },
       );
+      expect(pinned.body).toMatchObject({
+        ok: true,
+        value: { title: 'Confirmed first body', path: `/pt/cases/${a}` },
+      });
+      expect(pinned.routes).toMatchObject({
+        ok: true,
+        value: expect.arrayContaining([
+          expect.objectContaining({ caseId: doc.case, path: `/pt/cases/${a}`, history: [] }),
+        ]),
+      });
     } finally {
       release();
-      hooks.splice(hooks.indexOf(gate), 1);
+      await resolving;
     }
   },
 );

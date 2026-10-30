@@ -1,0 +1,7 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-legacy-routes-green-verify.txt
+Original SHA256: 60C45DBA7F4D3D9EE0E076E0C75374655C77895427F0E6510E6F0E2DF20A4FD1
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: A308B/B200/C404/withdraw410/never404; private media revoked, original public SHA retained; restore onlydraft keeps root.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.

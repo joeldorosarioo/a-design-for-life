@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-root-green.txt
+Original SHA256: A9212E0AAA037F3222B25544F8540F472DC6C469ABD7461F2B295586DC4F291C
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Atomic persisted root behavior after implementation.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  2 passed (2)
+Tests  5 passed (5)
+Start at  09:43:21
+Duration  476ms (setup 57%, tests 23%, import 14%, transform 6%, worker 1%)

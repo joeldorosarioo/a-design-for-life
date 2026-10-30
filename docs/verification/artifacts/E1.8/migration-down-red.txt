@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-migration-down-red.txt
+Original SHA256: 3B1A566E9402F57669F455838957E24ABD539EBF5FDE35A6597F1024FB9CF3F3
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: PostgreSQL42704: generated down tried to drop FK after DROP TABLE CASCADE removed it.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed (1)
+Start at  11:26:32
+Duration  7.37s (import 78%, tests 11%, transform 7%, setup 3%)

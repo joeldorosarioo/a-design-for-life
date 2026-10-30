@@ -107,6 +107,15 @@ export function EditorialUnpublishAction() {
               return;
             }
             const json = await response.json();
+            if (json.publicationReceipt?.state === 'update-pending') {
+              toast.warning(
+                json.message ?? 'Alterações salvas. Atualização pública pendente; tente novamente.',
+              );
+            } else if (json.publicationReceipt?.state === 'superseded') {
+              toast.info(
+                json.message ?? 'Esta tentativa foi substituída por uma atualização mais recente.',
+              );
+            }
             await reset(json.doc);
             setData(json.doc);
             setHasPublishedDoc(false);

@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-native-transport-commit-red.txt
+Original SHA256: 46269330893508C4790D5EF8BE7A9DDBCC9F889A5F57AED6873F6435D18566A6
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Valid real-auth Native COMMIT-loss response returned201, expected503.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed | 11 skipped (12)
+Start at  10:21:22
+Duration  7.29s (import 72%, tests 19%, transform 5%, setup 3%)

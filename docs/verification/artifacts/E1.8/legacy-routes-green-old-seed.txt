@@ -1,0 +1,7 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-legacy-routes-green-old-seed.txt
+Original SHA256: 65D13C1DC9781447F8D2643C00A180AC23A4891A95951E1310BA68DE845263EE
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Old Native created public A/B, privateC, withdrawn and never-public controls with real media.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.

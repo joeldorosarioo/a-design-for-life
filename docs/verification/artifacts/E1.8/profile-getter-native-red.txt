@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-profile-getter-native-red.txt
+Original SHA256: 9648F09B4E2AD8FB662193C1EF1856CAD0D7D6D2ABCB1F3A031FDD6429F4FD62
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Profile getter ignored explicit confirmed generation and returned unavailable after a newer Native target.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed (1)
+Start at  10:17:26
+Duration  7.63s (import 65%, tests 27%, transform 5%, setup 3%)

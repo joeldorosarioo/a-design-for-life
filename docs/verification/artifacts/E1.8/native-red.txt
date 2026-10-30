@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-native-red.txt
+Original SHA256: 4EB3EAB78293AF9EF6761B277D9C60219A1599F0F68C881CE44E584E384AE411
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Anonymous Native query exposed1 pending target, expected0.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed (1)
+Start at  09:44:25
+Duration  7.27s (import 75%, tests 16%, transform 5%, setup 4%)

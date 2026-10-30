@@ -1,0 +1,7 @@
+const { spawnSync } = require('node:child_process');
+const path = require('node:path');
+const root = path.resolve(__dirname, '../..');
+const source = path.join(__dirname, 'source');
+const code = `import assert from 'node:assert/strict'; import {fileURLToPath} from 'node:url'; import path from 'node:path'; const root=process.env.LEGACY_STATIC_ROOT; const config=fileURLToPath(import.meta.resolve('@payload-config')); const schema=fileURLToPath(import.meta.resolve('@/config/server-env')); assert.equal(config,path.join(root,'src/payload.config.ts')); assert.equal(schema,path.join(root,'src/config/server-env.ts')); console.log(JSON.stringify({kind:'TSX_RESOLVE_ONLY_NO_APP_EVALUATION',config,schema}));`;
+const result = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '-e', code], { cwd: root, windowsHide: true, env: { ...process.env, TSX_TSCONFIG_PATH: path.join(source, 'tsconfig.json'), LEGACY_STATIC_ROOT: source }, stdio: 'inherit' });
+process.exit(result.status ?? 1);

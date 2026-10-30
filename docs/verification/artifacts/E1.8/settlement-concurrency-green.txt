@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-settlement-concurrency-green.txt
+Original SHA256: C9B44C204B067E1A4647BBE81E17E7995BD8E77820F667F33F80D0185B3C5B6E
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Independent external transactions: A COMMIT rejects, B commits, C rolls back; no outcome cross-contamination.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  3 passed (3)
+Start at  11:01:08
+Duration  8.58s (import 54%, tests 39%, transform 4%, setup 2%)

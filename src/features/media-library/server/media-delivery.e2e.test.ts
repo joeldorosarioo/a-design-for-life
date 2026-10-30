@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { createHash } from 'node:crypto';
 import {
   apngUploadFixture,
@@ -143,6 +144,7 @@ test('approved public original and derivative revoke immediately after withdrawa
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(content, await fixture.request());
   const anonymous = await playwright.request.newContext({ baseURL: process.env.SITE_ORIGIN });
   try {
     for (const variant of ['original', 'w80']) {
@@ -150,13 +152,14 @@ test('approved public original and derivative revoke immediately after withdrawa
       expect(response.status()).toBe(200);
       expect(response.headers()['cache-control']).toContain('no-store');
     }
-    await fixture.payload.update({
+    const withdrawn = await fixture.payload.update({
       collection: 'case-content',
       id: content.id,
       data: { _status: 'draft' },
       req: await observedRequest('case-content', content.id, await fixture.request()),
       overrideAccess: false,
     });
+    await confirmTestPublication(withdrawn, await fixture.request());
     for (const variant of ['original', 'w80'])
       for (const method of ['GET', 'HEAD'] as const) {
         const response = await anonymous.fetch(`/media/${media.id}/${variant}`, {
@@ -208,7 +211,7 @@ test('native media UI creates an immutable asset and shows its private thumbnail
   });
 });
 
-test('real private object and PostgreSQL read failures stay503 and recover across media byte paths', async ({
+test('real storage loss stays503 while SQL loss preserves confirmed public bytes and returns503 for private or uncached paths', async ({
   request,
   playwright,
 }) => {
@@ -232,7 +235,7 @@ test('real private object and PostgreSQL read failures stay503 and recover acros
     req: await fixture.request(),
     overrideAccess: false,
   });
-  await fixture.payload.create({
+  const approved = await fixture.payload.create({
     collection: 'case-content',
     data: {
       case: shared.id,
@@ -243,6 +246,7 @@ test('real private object and PostgreSQL read failures stay503 and recover acros
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(approved, await fixture.request());
   const anonymous = await playwright.request.newContext({ baseURL: process.env.SITE_ORIGIN });
   try {
     const paths = [
@@ -326,12 +330,35 @@ test('real private object and PostgreSQL read failures stay503 and recover acros
       expect(head.headers()['cache-control']).toContain('no-store');
       expect((await head.body()).length).toBe(0);
     }
+    const unknownMedia = crypto.randomUUID();
+    const unknownPublic = ['original', 'w80'].map((variant) => ({
+      client: anonymous,
+      url: `/media/${unknownMedia}/${variant}`,
+    }));
+    for (const entry of unknownPublic)
+      expect((await entry.client.get(entry.url)).status()).toBe(404);
     await fixture.payload.db.execute({
       db: fixture.payload.db.drizzle,
       sql: sql`ALTER TABLE "media" RENAME TO "e1_6_unavailable_media"`,
     });
     try {
-      await assertUnavailable(paths);
+      await assertUnavailable([
+        ...paths.filter((entry) => !entry.url.startsWith('/media/')),
+        ...unknownPublic,
+      ]);
+      for (const entry of paths.filter((entry) => entry.url.startsWith('/media/'))) {
+        for (const method of ['GET', 'HEAD'] as const) {
+          const response = await entry.client.fetch(entry.url, {
+            method,
+            headers: { 'If-None-Match': '*', Range: 'bytes=0-10' },
+          });
+          expect(response.status(), entry.url).toBe(200);
+          expect(response.headers()['cache-control']).toContain('no-store');
+          expect(await response.body()).toEqual(
+            method === 'HEAD' ? Buffer.alloc(0) : baseline.get(entry.url),
+          );
+        }
+      }
     } finally {
       await fixture.payload.db.execute({
         db: fixture.payload.db.drizzle,
@@ -347,8 +374,10 @@ test('real private object and PostgreSQL read failures stay503 and recover acros
       expect(head.headers()['cache-control']).toContain('no-store');
       expect((await head.body()).length).toBe(0);
     }
+    for (const entry of unknownPublic)
+      expect((await entry.client.get(entry.url)).status()).toBe(404);
     console.info(
-      'E1.6 real storage and Media relation failure: owned GET/HEAD and native GET200→503→200; native HEAD unsupported404/no-store throughout',
+      'Storage missing503; SQL outage preserves confirmed public bytes200, private503, unknown public404→503→404; native HEAD remains404/no-store',
     );
   } finally {
     await anonymous.dispose();
@@ -507,7 +536,7 @@ test('native animated WebP keeps every frame, timing, loop and responsive dimens
       req: await fixture.request(),
       overrideAccess: false,
     });
-    await fixture.payload.create({
+    const approved = await fixture.payload.create({
       collection: 'case-content',
       data: {
         case: shared.id,
@@ -518,6 +547,7 @@ test('native animated WebP keeps every frame, timing, loop and responsive dimens
       req: await fixture.request(),
       overrideAccess: false,
     });
+    await confirmTestPublication(approved, await fixture.request());
     for (const variant of ['original', 'w342', 'w370']) {
       const response = await anonymous.get(`/media/${media.id}/${variant}`);
       expect(response.status()).toBe(200);

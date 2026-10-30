@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-verify-current4.txt
+Original SHA256: 7718A6AEA70BA81D757F45159DBEA0CB183C56325DA50F7700241832F06FA94B
+Observed command exit code: 1
+Classification: INCOMPLETE_GATE
+Behavior/limit: Typecheck/lint/format passed;440tests passed,2 old DTO.slug expectations failed,1 Linux-only skip onWindows. Later focused22 fixed expectations passed; not finalgate.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed | 70 passed (71)
+Tests  2 failed | 440 passed | 1 skipped (443)
+Start at  11:29:42
+Duration  148.57s (tests 38%, import 29%, environment 19%, setup 13%, transform 1%)

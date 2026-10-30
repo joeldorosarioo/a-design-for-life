@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-migration-down-green.txt
+Original SHA256: 65185EA9FE1433785E6207C5AA718B4FB1CCD3D4BFFBAB05DD78AF7851B9E77C
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Real transaction reverses and reapplies publication migration after FK drop reordered.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  1 passed (1)
+Start at  11:26:50
+Duration  7.54s (import 79%, tests 12%, transform 6%, setup 3%)

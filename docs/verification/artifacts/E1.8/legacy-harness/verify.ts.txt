@@ -1,0 +1,118 @@
+// Prepared for MAIN execution; no initializer runs before the strict guard.
+import guardModule from './guard.cjs';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const { fingerprint } = guardModule.guard();
+const expected = JSON.parse(readFileSync(fileURLToPath(new URL('./expected.json', import.meta.url)), 'utf8'));
+assert.equal(fingerprint, expected.fingerprint, 'Old/current CWD, bucket, origin, database and storage namespace must match.');
+const mode = process.argv[2];
+assert.ok(mode === 'captured' || mode === 'verify');
+if (existsSync(fileURLToPath(new URL(mode === 'captured' ? './captured.json' : './verified.json', import.meta.url)))) throw new Error('Evidence exists; do not repeat a completed phase or overwrite artifacts.');
+const { createLocalReq, getPayload } = await import('payload');
+const { default: config } = await import('@payload-config');
+const payload = await getPayload({ config, disableOnInit: true });
+const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+const keys = (doc: any) => doc.sections.map((section: any) => [section.readingKey, section.blocks.map((block: any) => block.readingKey)]);
+try {
+  const user = await payload.findByID({ collection: 'users', id: expected.editorId, overrideAccess: true, depth: 0 });
+  const req = await createLocalReq({ user: { ...user, collection: 'users' } }, payload);
+  const get = (id: string, draft = false) => payload.findByID({ collection: 'case-content', id, draft, req, overrideAccess: false, depth: 0 });
+  const pt = await get(expected.pt.id); const en = await get(expected.en.id);
+  assert.equal(pt.title, expected.pt.title); assert.equal(en.title, expected.en.title);
+  assert.equal(hash(keys(pt)), expected.pt.keysHash); assert.equal(hash(keys(en)), expected.en.keysHash);
+  assert.equal((await get(expected.pt.id, true)).editorialRevision, expected.privateRevision);
+  const versions = await payload.findVersions({ collection: 'case-content', where: { parent: { equals: expected.pt.id } }, pagination: false, limit: 0, req, overrideAccess: false, depth: 0 });
+  for (const id of expected.versionIds) assert.ok(versions.docs.some((item) => item.id === id), 'Upgrade must preserve every old version ID.');
+  const outbox = await payload.db.find({ collection: 'publication-updates', where: { subjectId: { in: [expected.caseId, expected.pt.id, expected.en.id] } }, pagination: false, limit: 0, req });
+  assert.equal(outbox.docs.length, 3, 'Exactly shared order plus two public locale intentions should be captured.');
+  for (const locale of ['pt', 'en'] as const) {
+    const prior = expected[locale];
+    const operation: any = outbox.docs.find((item: any) => item.subjectId === prior.id);
+    assert.ok(operation); assert.ok(operation.dependencies.includes('legacy-bootstrap'));
+    assert.equal(operation.targetRevision, prior.revision);
+    assert.notEqual(operation.targetRevision, expected.privateRevision);
+    assert.equal(operation.target.detail.title, prior.title);
+    assert.equal(operation.state, mode === 'captured' ? 'update-pending' : 'public');
+  }
+  if (mode === 'captured') {
+    const result = { stage: 'UPGRADE_CAPTURE', canonicalBodiesPreserved: true, historicalIdsPreserved: true, privateDraftNotCaptured: true, operationIds: outbox.docs.map((item: any) => item.operationId) };
+    writeFileSync(fileURLToPath(new URL('./captured.json', import.meta.url)), JSON.stringify(result, null, 2), { flag: 'wx', mode: 0o600 });
+    console.log(JSON.stringify(result));
+  } else {
+    const { getPublishedCase } = await import('@/features/cases/server/get-published-case');
+    const { resolveMediaAccess } = await import('@/features/media-library/server/resolve-media-access');
+    const { observedRequest } = await import('../../testing/fixtures/editorial-lifecycle');
+    const { restoreCaseDraft } = await import('@/features/cases/server/restore-case-draft');
+    const { readPublicRoot } = await import('@/helpers/payload/public-root');
+    const { runtimePublication } = await import('@/helpers/payload/publication-runtime');
+    const { resolveCaseRoute } = await import('@/features/cases/server/resolve-case-route');
+    const { renderCaseRouteResponse } = await import('@/features/cases/server/case-route-response');
+    async function routeProof() {
+      const a = await resolveCaseRoute('pt', expected.routes.slugA, payload);
+      const b = await resolveCaseRoute('pt', expected.routes.slugB, payload);
+      const c = await resolveCaseRoute('pt', expected.routes.slugC, payload);
+      const withdrawn = await resolveCaseRoute('pt', expected.withdrawn.slug, payload);
+      const never = await resolveCaseRoute('pt', expected.neverPublic.slug, payload);
+      assert.deepEqual(a, { status: 308, location: `/pt/cases/${expected.routes.slugB}` });
+      assert.equal(b.status, 200); if (b.status === 200) assert.equal(b.case.title, expected.pt.title);
+      assert.deepEqual(c, { status: 404 });
+      assert.deepEqual(withdrawn, { status: 410, locale: 'pt' });
+      assert.deepEqual(never, { status: 404 });
+      const rendered = renderCaseRouteResponse(a, 'pt');
+      assert.equal(rendered.status, 308); assert.equal(rendered.headers.get('Location'), `/pt/cases/${expected.routes.slugB}`);
+      assert.equal(rendered.headers.get('Cache-Control'), 'no-store, max-age=0');
+      return { a, b, c, withdrawn, never };
+    }
+    const routesBefore = await routeProof();
+    const withdrawnAccess = await resolveMediaAccess({ mediaId: expected.withdrawn.mediaId, variant: 'original', preview: false });
+    const neverAccess = await resolveMediaAccess({ mediaId: expected.neverPublic.mediaId, variant: 'original', preview: false });
+    assert.deepEqual(withdrawnAccess, { ok: false, status: 404 });
+    assert.deepEqual(neverAccess, { ok: false, status: 404 });
+    assert.notEqual(expected.withdrawn.mediaOriginalHash, expected.mediaOriginalHash);
+    const withdrawalVersions = await payload.findVersions({ collection: 'case-content', where: { parent: { equals: expected.withdrawn.id } }, pagination: false, limit: 0, depth: 0, req, overrideAccess: false });
+    for (const id of expected.withdrawn.versionIds) assert.ok(withdrawalVersions.docs.some((item) => item.id === id));
+    const controlled = await payload.db.find({ collection: 'publication-updates', where: { subjectId: { in: [expected.withdrawn.id, expected.neverPublic.id] } }, pagination: false, limit: 0, req });
+    const tombstone: any = controlled.docs.find((item: any) => item.subjectId === expected.withdrawn.id);
+    assert.ok(tombstone, 'Bootstrap must capture the real old withdrawal intent.');
+    assert.equal(tombstone.state, 'public'); assert.equal(tombstone.target.detail, null); assert.equal(tombstone.target.slug, null);
+    assert.deepEqual(tombstone.target.media, []); assert.ok(tombstone.target.slugs.includes(expected.withdrawn.slug));
+    assert.equal(controlled.docs.some((item: any) => item.subjectId === expected.neverPublic.id), false, 'Never-public content gets no publication intent.');
+    const publicPT = await getPublishedCase('pt', expected.pt.slug); const publicEN = await getPublishedCase('en', expected.en.slug);
+    assert.ok(publicPT.ok); assert.ok(publicEN.ok);
+    assert.equal(publicPT.value.title, expected.pt.title); assert.equal(publicEN.value.title, expected.en.title);
+    assert.deepEqual(publicPT.value.titleParts, { normal: expected.pt.title, emphasis: null });
+    assert.equal(publicPT.value.sections[0].presentation, 'narrative');
+    for (const field of ['eyebrow', 'description', 'note'] as const) assert.equal(publicPT.value.sections[0][field], null);
+    const media = await resolveMediaAccess({ mediaId: expected.mediaId, variant: 'original', preview: false });
+    assert.ok(media.ok);
+    assert.equal(createHash('sha256').update(media.value.bytes).digest('hex'), expected.mediaOriginalHash);
+    const rootBefore = await readPublicRoot(runtimePublication().directory);
+    const publicHistory = async () => (await payload.find({ collection: 'case-routes', where: { and: [{ content: { equals: expected.pt.id } }, { everPublished: { equals: true } }] }, pagination: false, limit: 0, depth: 0, req, overrideAccess: true })).docs.map((route: any) => ({ id: route.id, slug: route.slug, state: route.state, everPublished: route.everPublished })).sort((a, b) => a.slug.localeCompare(b.slug));
+    const historyBefore = await publicHistory();
+    const restored = await restoreCaseDraft({ contentId: expected.pt.id, versionId: expected.restoreVersionId, expectedRevision: (await observedRequest('case-content', expected.pt.id, req)).headers.get('x-editorial-revision')! }, req);
+    assert.ok(restored.ok);
+    const draft = await get(expected.pt.id, true);
+    assert.equal(draft._status, 'draft'); assert.equal(draft.title, expected.restoreTitle);
+    assert.equal(draft.titleEmphasis ?? null, null);
+    assert.equal(draft.sections?.[0].presentation ?? 'narrative', 'narrative');
+    for (const field of ['eyebrow', 'description', 'note'] as const) assert.equal(draft.sections?.[0][field] ?? null, null);
+    assert.equal(hash(keys(draft)), expected.pt.keysHash);
+    assert.equal((await get(expected.pt.id)).title, expected.pt.title);
+    assert.equal((await get(expected.en.id)).title, expected.en.title);
+    assert.deepEqual(await getPublishedCase('pt', expected.pt.slug), publicPT);
+    assert.deepEqual(await getPublishedCase('en', expected.en.slug), publicEN);
+    assert.equal((await readPublicRoot(runtimePublication().directory))?.generation, rootBefore?.generation);
+    assert.deepEqual(await routeProof(), routesBefore, 'Restoring old slug A as draft cannot change public routes.');
+    assert.deepEqual(await publicHistory(), historyBefore, 'Public slug history remains unchanged by draft restore.');
+    assert.deepEqual(await readPublicRoot(runtimePublication().directory), rootBefore, 'Draft restore must not change public snapshots or grants.');
+    assert.deepEqual(await resolveMediaAccess({ mediaId: expected.withdrawn.mediaId, variant: 'original', preview: false }), withdrawnAccess);
+    assert.deepEqual(await resolveMediaAccess({ mediaId: expected.neverPublic.mediaId, variant: 'original', preview: false }), neverAccess);
+    const publicMediaAfter = await resolveMediaAccess({ mediaId: expected.mediaId, variant: 'original', preview: false });
+    assert.ok(publicMediaAfter.ok); assert.equal(createHash('sha256').update(publicMediaAfter.value.bytes).digest('hex'), expected.mediaOriginalHash);
+    const result = { stage: 'BOOTSTRAP_AND_RESTORE', routeChecks: routesBefore, withdrawnMediaRevoked: true, neverPublicMediaPrivate: true, publicHistoryAndGrantsUnchangedByRestore: true, publicPT: publicPT.value.title, publicEN: publicEN.value.title, historicalIdsPreserved: expected.versionIds, restoredVersionId: expected.restoreVersionId, restoredAsDraftOnly: true, nullMetadataFallback: true, publicGenerationUnchangedByRestore: true, originalMediaHash: expected.mediaOriginalHash };
+    writeFileSync(fileURLToPath(new URL('./verified.json', import.meta.url)), JSON.stringify(result, null, 2), { flag: 'wx', mode: 0o600 });
+    console.log(JSON.stringify(result));
+  }
+} finally { await payload.destroy(); }

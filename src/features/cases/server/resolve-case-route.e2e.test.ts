@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { sql } from '@payloadcms/db-postgres';
 import { expect, test } from '@playwright/test';
 import { createEditorialPayloadFixture } from '../../../../testing/fixtures/editorial-payload';
@@ -50,7 +51,7 @@ async function save(id: string, data: Record<string, unknown>, asDraft = true) {
 }
 async function publish(id: string, value: string) {
   const media = await mediaMetadataFixture(fixture.payload);
-  await save(
+  const saved = await save(
     id,
     {
       ...casePublicationFixture(media.id),
@@ -60,6 +61,7 @@ async function publish(id: string, value: string) {
     },
     false,
   );
+  await confirmTestPublication(saved, await fixture.request());
 }
 test('real HTTP statuses, private404 equivalence, native REST conflict/guards and conditional error requests', async ({
   request,
@@ -97,7 +99,10 @@ test('real HTTP statuses, private404 equivalence, native REST conflict/guards an
   expect(await headHistory.body()).toHaveLength(0);
   const english = await draft(a, 'en', doc.case as string);
   await publish(english.id, a);
-  await save(doc.id, { _status: 'draft' }, false);
+  await confirmTestPublication(
+    await save(doc.id, { _status: 'draft' }, false),
+    await fixture.request(),
+  );
   for (const value of [a, b]) {
     const gone = await request.get(`/pt/cases/${value}`, {
       headers: {
@@ -309,13 +314,17 @@ test('native Payload suggestion is explicit and title edits preserve manual slug
     fullPage: true,
   });
 });
-test('a real PostgreSQL origin query failure returns503 and recovers, never masquerading as404', async ({
+test('confirmed routes survive a real PostgreSQL outage while unknown routes return503 and recover', async ({
   request,
 }) => {
   const value = slug();
   const doc = await draft(value);
   await publish(doc.id, value);
-  expect((await request.get(`/pt/cases/${value}`)).status()).toBe(200);
+  const known = await request.get(`/pt/cases/${value}`);
+  expect(known.status()).toBe(200);
+  const confirmedBody = await known.text();
+  const unknown = slug();
+  expect((await request.get(`/pt/cases/${unknown}`)).status()).toBe(404);
   if (
     process.env.APP_ENV !== 'test' ||
     !new URL(process.env.DATABASE_URI!).pathname.startsWith('/adfl_test_')
@@ -326,7 +335,16 @@ test('a real PostgreSQL origin query failure returns503 and recovers, never masq
     sql: sql`ALTER TABLE "case_routes" RENAME TO "e1_5_unavailable_case_routes"`,
   });
   try {
-    const unavailable = await request.get(`/pt/cases/${value}`, {
+    for (const method of ['GET', 'HEAD'] as const) {
+      const confirmed = await request.fetch(`/pt/cases/${value}`, {
+        method,
+        headers: { 'If-None-Match': '*', 'If-Modified-Since': 'Thu, 01 Jan 2099 00:00:00 GMT' },
+      });
+      expect(confirmed.status()).toBe(200);
+      expect(confirmed.headers()['cache-control']).toContain('no-store');
+      expect(await confirmed.text()).toBe(method === 'HEAD' ? '' : confirmedBody);
+    }
+    const unavailable = await request.get(`/pt/cases/${unknown}`, {
       headers: { 'If-None-Match': '*', 'If-Modified-Since': 'Thu, 01 Jan 2099 00:00:00 GMT' },
     });
     expect(unavailable.status()).toBe(503);
@@ -335,7 +353,7 @@ test('a real PostgreSQL origin query failure returns503 and recovers, never masq
     expect(unavailable.headers()['x-robots-tag']).toBe('noindex, nofollow');
     expect(await unavailable.text()).toContain('Case indisponível');
     expect(await unavailable.text()).not.toContain('case_routes');
-    expect((await request.head(`/pt/cases/${value}`)).status()).toBe(503);
+    expect((await request.head(`/pt/cases/${unknown}`)).status()).toBe(503);
   } finally {
     await fixture.payload.db.execute({
       db: fixture.payload.db.drizzle,
@@ -343,5 +361,6 @@ test('a real PostgreSQL origin query failure returns503 and recovers, never masq
     });
   }
   expect((await request.get(`/pt/cases/${value}`)).status()).toBe(200);
-  console.info('E1.5 real PostgreSQL relation-unavailable fault: 200 -> 503 GET/HEAD -> 200');
+  expect((await request.get(`/pt/cases/${unknown}`)).status()).toBe(404);
+  console.info('Confirmed route GET/HEAD200 during real origin outage; unknown404 -> 503 -> 404');
 });

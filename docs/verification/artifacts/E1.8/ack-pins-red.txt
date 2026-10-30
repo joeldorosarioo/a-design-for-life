@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-ack-pins-red.txt
+Original SHA256: A719E74DE985657DDCC7630928D24753809A32E9DBE67C78225088DC7F7A9D5D
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Pending media pins were retired without explicit confirmed-root reconciliation.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed | 6 passed (7)
+Start at  10:02:07
+Duration  428ms (setup 61%, import 25%, transform 8%, tests 4%, worker 1%)

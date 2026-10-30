@@ -14,7 +14,13 @@ export const caseBlocks: Block[] = [
   {
     slug: 'text',
     labels: { singular: 'Texto formatado', plural: 'Textos formatados' },
-    fields: [readingKey, { name: 'content', label: 'Conteúdo', type: 'richText' }],
+    fields: [
+      readingKey,
+      { name: 'eyebrow', label: 'Identificação do texto', type: 'text' },
+      { name: 'heading', label: 'Título do texto', type: 'text' },
+      { name: 'note', label: 'Nota do texto', type: 'textarea' },
+      { name: 'content', label: 'Conteúdo', type: 'richText' },
+    ],
   },
   {
     slug: 'image',

@@ -1,0 +1,9 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-e2e-candidate.txt
+Original SHA256: 8FCD59C662349FB303BFCF4ED1B2D10C0376F8B951AB0E81E83A51F8F9035088
+Observed command exit code: 0
+Classification: LOCAL_GATE_GREEN
+Behavior/limit: pnpm test:e2e --reporter=list:25PASS, actualNextproduction/CMS2editors/restoration/retry/withdrawal/FigmaDraft/storageSQLfaults.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+25 passed (1.2m)

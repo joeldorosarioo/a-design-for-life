@@ -18,7 +18,7 @@ function unavailableMediaResponse() {
 
 export async function mediaResponse(
   input: { mediaId: string; variant: string; preview: boolean },
-  req: PayloadRequest,
+  req?: PayloadRequest,
   head = false,
 ) {
   const result = await resolveMediaAccess(input, req);
@@ -41,6 +41,7 @@ export async function serveMedia(
   request: Request,
 ) {
   try {
+    if (!input.preview) return await mediaResponse(input, undefined, request.method === 'HEAD');
     const payload = await runtimePayload();
     let user: PayloadRequest['user'] = null;
     if (input.preview) {

@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import type { Media } from '@/payload-types';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createLocalReq } from 'payload';
@@ -57,6 +58,7 @@ it('publishing PT grants only its approved media, shares an asset with private E
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(pt, await fixture.request());
   await fixture.payload.create({
     collection: 'case-content',
     data: {
@@ -90,13 +92,14 @@ it('publishing PT grants only its approved media, shares an asset with private E
       overrideAccess: true,
     }),
   ).rejects.toMatchObject({ status: 409 });
-  await fixture.payload.update({
+  const withdrawn = await fixture.payload.update({
     collection: 'case-content',
     id: pt.id,
     data: { _status: 'draft' },
     req: await observedRequest('case-content', pt.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(withdrawn, await fixture.request());
   expect(await delivery(approved.id)).toEqual({ ok: false, status: 404 });
   expect(await delivery(approved.id, false, 'w16')).toEqual({ ok: false, status: 404 });
 });
@@ -120,6 +123,7 @@ it('preserves the old published asset during draft edits and replaces only its o
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(pt, await fixture.request());
   await fixture.payload.update({
     collection: 'case-content',
     id: pt.id,
@@ -130,13 +134,14 @@ it('preserves the old published asset during draft edits and replaces only its o
   });
   expect((await delivery(old.id)).ok).toBe(true);
   expect(await delivery(next.id)).toEqual({ ok: false, status: 404 });
-  await fixture.payload.update({
+  const replaced = await fixture.payload.update({
     collection: 'case-content',
     id: pt.id,
     data: { cover: { media: next.id, alt: 'Synthetic new' }, _status: 'published' },
     req: await observedRequest('case-content', pt.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(replaced, await fixture.request());
   expect(await delivery(old.id)).toEqual({ ok: false, status: 404 });
   expect((await delivery(next.id)).ok).toBe(true);
   const retained = (await fixture.payload.db.findOne({

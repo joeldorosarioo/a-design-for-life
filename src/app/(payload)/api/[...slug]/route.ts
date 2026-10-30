@@ -1,3 +1,4 @@
+import { confirmNativePublication } from '@/helpers/payload/publication-transport';
 // Maintained application facade around native Payload REST transports.
 import config from '@payload-config';
 import {
@@ -41,7 +42,7 @@ export const POST: ReturnType<typeof REST_POST> = async (request, args) => {
     }
   }
   const response = await nativePost(request, args);
-  if (!isEditorialAuthTransport(slug)) return response;
+  if (!isEditorialAuthTransport(slug)) return confirmNativePublication(response, request);
   const headers = new Headers(response.headers);
   headers.set('Cache-Control', 'no-store, max-age=0');
   headers.set('X-Robots-Tag', 'noindex, nofollow');
@@ -69,7 +70,7 @@ export const PATCH: ReturnType<typeof REST_PATCH> = async (request, args) => {
       { errors: [{ code: 'locked', message: 'An active editing lease cannot be taken over.' }] },
       { status: 409 },
     );
-  return nativePatch(request, args);
+  return confirmNativePublication(await nativePatch(request, args), request);
 };
 const nativePut = REST_PUT(config);
 export const PUT: ReturnType<typeof REST_PUT> = async (request, args) => {
@@ -79,6 +80,6 @@ export const PUT: ReturnType<typeof REST_PUT> = async (request, args) => {
       { errors: [{ code: 'locked', message: 'Use the document editing lease.' }] },
       { status: 409 },
     );
-  return nativePut(request, args);
+  return confirmNativePublication(await nativePut(request, args), request);
 };
 export const OPTIONS = REST_OPTIONS(config);

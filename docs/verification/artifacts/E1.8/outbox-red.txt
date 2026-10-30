@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-outbox-red.txt
+Original SHA256: 233407C52B312B6915B4CBE46B2DFC81654E4F1B21961702082FC8E75DEFEC04
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Expected one persisted publication operation after Native commit; observed zero.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed (1)
+Start at  09:47:08
+Duration  7.15s (import 75%, tests 16%, transform 5%, setup 3%)

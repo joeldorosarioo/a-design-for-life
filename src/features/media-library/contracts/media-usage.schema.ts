@@ -13,11 +13,13 @@ export const mediaUsageChangeSchema = mediaUsageOwnerSchema.extend({
   revision: z.uuid(),
   state: z.enum(['draft', 'pending', 'confirmed']),
   referenced: z.boolean(),
+  reconcilePending: z.boolean().optional(),
 });
 export type MediaUsageChange = z.infer<typeof mediaUsageChangeSchema>;
 export const mediaUsageCommandSchema = mediaUsageOwnerSchema.extend({
   revision: z.uuid(),
   state: z.enum(['draft', 'pending', 'confirmed']),
+  reconcilePending: z.boolean().optional(),
   references: z.array(z.object({ mediaId: z.uuid(), kind: z.enum(['image', 'pdf']) })),
 });
 export type MediaUsageCommand = z.infer<typeof mediaUsageCommandSchema>;

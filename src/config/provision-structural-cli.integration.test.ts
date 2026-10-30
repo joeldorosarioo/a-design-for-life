@@ -48,7 +48,8 @@ it('o consumidor CLI nativo repete sem alterar drafts nem criar contas', async (
       }),
     );
   const before = await snapshot();
-  expect(cli().status).toBe(0);
+  const second = cli();
+  expect({ status: second.status, stderr: second.stderr }).toMatchObject({ status: 0 });
   expect(await snapshot()).toEqual(before);
   expect((await fixture.payload.find({ collection: 'users' })).totalDocs).toBe(usersBefore);
 });

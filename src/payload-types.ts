@@ -74,6 +74,7 @@ export interface Config {
     'site-navigation': SiteNavigation;
     'professional-profiles': ProfessionalProfile;
     media: Media;
+    'publication-updates': PublicationUpdate;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     'site-navigation': SiteNavigationSelect<false> | SiteNavigationSelect<true>;
     'professional-profiles': ProfessionalProfilesSelect<false> | ProfessionalProfilesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'publication-updates': PublicationUpdatesSelect<false> | PublicationUpdatesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -167,6 +169,8 @@ export interface Case {
   leaseToken?: string | null;
   leaseOwner?: string | null;
   leaseExpiresAt?: string | null;
+  latestPublicationIntent?: string | null;
+  publicConfirmed?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -180,6 +184,10 @@ export interface CaseContent {
   locale: 'pt' | 'en';
   eyebrow?: string | null;
   title?: string | null;
+  /**
+   * Sufixo opcional do título. O título completo é derivado das duas partes.
+   */
+  titleEmphasis?: string | null;
   summary?: string | null;
   introduction?: string | null;
   slug?: string | null;
@@ -196,6 +204,13 @@ export interface CaseContent {
     | {
         readingKey?: string | null;
         heading?: string | null;
+        /**
+         * Composição predefinida. Comparação exige dois blocos de texto ao publicar.
+         */
+        presentation?: ('narrative' | 'process' | 'comparison' | 'learnings') | null;
+        eyebrow?: string | null;
+        description?: string | null;
+        note?: string | null;
         blocks?:
           | (
               | {
@@ -203,6 +218,9 @@ export interface CaseContent {
                    * Identidade estável do trecho; compartilhar entre traduções equivalentes.
                    */
                   readingKey?: string | null;
+                  eyebrow?: string | null;
+                  heading?: string | null;
+                  note?: string | null;
                   content?: {
                     root: {
                       type: string;
@@ -281,6 +299,8 @@ export interface CaseContent {
   leaseToken?: string | null;
   leaseOwner?: string | null;
   leaseExpiresAt?: string | null;
+  latestPublicationIntent?: string | null;
+  publicConfirmed?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -393,6 +413,8 @@ export interface SiteNavigation {
   leaseToken?: string | null;
   leaseOwner?: string | null;
   leaseExpiresAt?: string | null;
+  latestPublicationIntent?: string | null;
+  publicConfirmed?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -518,9 +540,45 @@ export interface ProfessionalProfile {
   leaseToken?: string | null;
   leaseOwner?: string | null;
   leaseExpiresAt?: string | null;
+  latestPublicationIntent?: string | null;
+  publicConfirmed?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publication-updates".
+ */
+export interface PublicationUpdate {
+  id: string;
+  operationId: string;
+  subjectCollection: 'cases' | 'case-content' | 'professional-profiles' | 'site-navigation';
+  subjectId: string;
+  targetRevision: string;
+  dependencies:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  target:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  state: 'update-pending' | 'public' | 'superseded';
+  attempts: number;
+  diagnostic?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -573,6 +631,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'publication-updates';
+        value: string | PublicationUpdate;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -652,6 +714,8 @@ export interface CasesSelect<T extends boolean = true> {
   leaseToken?: T;
   leaseOwner?: T;
   leaseExpiresAt?: T;
+  latestPublicationIntent?: T;
+  publicConfirmed?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -664,6 +728,7 @@ export interface CaseContentSelect<T extends boolean = true> {
   locale?: T;
   eyebrow?: T;
   title?: T;
+  titleEmphasis?: T;
   summary?: T;
   introduction?: T;
   slug?: T;
@@ -683,6 +748,10 @@ export interface CaseContentSelect<T extends boolean = true> {
     | {
         readingKey?: T;
         heading?: T;
+        presentation?: T;
+        eyebrow?: T;
+        description?: T;
+        note?: T;
         blocks?:
           | T
           | {
@@ -690,6 +759,9 @@ export interface CaseContentSelect<T extends boolean = true> {
                 | T
                 | {
                     readingKey?: T;
+                    eyebrow?: T;
+                    heading?: T;
+                    note?: T;
                     content?: T;
                     id?: T;
                     blockName?: T;
@@ -757,6 +829,8 @@ export interface CaseContentSelect<T extends boolean = true> {
   leaseToken?: T;
   leaseOwner?: T;
   leaseExpiresAt?: T;
+  latestPublicationIntent?: T;
+  publicConfirmed?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -835,6 +909,8 @@ export interface SiteNavigationSelect<T extends boolean = true> {
   leaseToken?: T;
   leaseOwner?: T;
   leaseExpiresAt?: T;
+  latestPublicationIntent?: T;
+  publicConfirmed?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -987,6 +1063,8 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
   leaseToken?: T;
   leaseOwner?: T;
   leaseExpiresAt?: T;
+  latestPublicationIntent?: T;
+  publicConfirmed?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -1011,6 +1089,23 @@ export interface MediaSelect<T extends boolean = true> {
   filesize?: T;
   width?: T;
   height?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publication-updates_select".
+ */
+export interface PublicationUpdatesSelect<T extends boolean = true> {
+  operationId?: T;
+  subjectCollection?: T;
+  subjectId?: T;
+  targetRevision?: T;
+  dependencies?: T;
+  target?: T;
+  state?: T;
+  attempts?: T;
+  diagnostic?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

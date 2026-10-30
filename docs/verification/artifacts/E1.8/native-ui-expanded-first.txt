@@ -1,0 +1,7 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-native-ui-expanded-first.txt
+Original SHA256: E65AE7DAC53A5C75719C490C2DB9DCFA1F90F145DA9766A93FAA3B6965A9103A
+Observed command exit code: 1
+Classification: TYPECHECK_FAILURE
+Behavior/limit: Build stopped on fixture CaseInput nullablecover TypeScript mismatch; not a behavioral RED.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.

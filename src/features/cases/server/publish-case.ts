@@ -1,3 +1,4 @@
+import { confirmPublicationWrite } from '@/helpers/payload/confirm-publication-write';
 import 'server-only';
 import type { PayloadRequest } from 'payload';
 import {
@@ -22,6 +23,8 @@ export async function publishCase(
       overrideAccess: false,
       req,
     });
+    delete draft.latestPublicationIntent;
+    delete draft.publicConfirmed;
     const saved = await req.payload.update({
       collection: 'case-content',
       id: command.contentId,
@@ -40,7 +43,7 @@ export async function publishCase(
       contentId: saved.id,
       locale: saved.locale,
       revision: saved.editorialRevision,
-      status: 'published',
+      ...(await confirmPublicationWrite(saved, req)),
     });
   });
 }
