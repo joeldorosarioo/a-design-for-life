@@ -1,0 +1,322 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/server/resolve-navigation.test.ts (35 tests | 35 failed) 21ms
+   ❯ resolveNavigation (35)
+     × resolves exactly four pt destinations from published contracts 8ms
+     × resolves exactly four en destinations from published contracts 2ms
+     × rejects a requested locale different from the navigation locale 1ms
+     × rejects a profile from another locale 0ms
+     × rejects a brand path belonging to another locale 0ms
+     × rejects a projects path belonging to another locale 0ms
+     × rejects a about path belonging to another locale 0ms
+     × rejects an obsolete resume reference instead of choosing one silently 0ms
+     × rejects a missing resume null 0ms
+     × rejects a missing resume "" 0ms
+     × rejects obsolete email in navigation 0ms
+     × rejects obsolete linkedin in navigation 0ms
+     × rejects an unsafe or absent email value null 0ms
+     × rejects an unsafe or absent email value "" 0ms
+     × rejects an unsafe or absent email value "javascript:alert(1)" 0ms
+     × rejects an unsafe or absent email value "person@example.invalid\r\nBcc:other@example.invalid" 0ms
+     × rejects an unsafe or absent linkedin value null 0ms
+     × rejects an unsafe or absent linkedin value "" 0ms
+     × rejects an unsafe or absent linkedin value "javascript:alert(1)" 0ms
+     × rejects an unsafe or absent linkedin value "<a href=\"https://linkedin.com\">x</a>" 0ms
+     × rejects an unsafe or absent linkedin value "http://linkedin.com/in/synthetic" 0ms
+     × rejects an unsafe or absent linkedin value "https://user:password@linkedin.com/in/synthetic" 0ms
+     × rejects an unsafe or absent linkedin value "https://linkedin.com.evil.example/in/synthetic" 0ms
+     × rejects a missing header label null 0ms
+     × rejects a missing header label "" 0ms
+     × rejects a missing header label "   " 0ms
+     × rejects a missing brand label 0ms
+     × rejects absent accessible control newTabLabel 0ms
+     × rejects absent accessible control openMenuLabel 0ms
+     × rejects absent accessible control closeMenuLabel 0ms
+     × rejects absent accessible control languageLabel 0ms
+     × rejects absent footer link label emailLabel 0ms
+     × rejects absent footer link label linkedinLabel 0ms
+     × rejects absent footer link label resumeLabel 0ms
+     × accepts frozen inputs without mutating them 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 35 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > resolves exactly four pt destinations from published contracts
+AssertionError: expected { locale: 'pt', brand: { …(2) }, …(5) } to deeply equal { locale: 'pt', brand: { …(2) }, …(5) }
+
+- Expected
++ Received
+
+@@ -39,20 +39,20 @@
+        "label": "Sobre",
+        "purpose": "about",
+      },
+      {
+        "destination": {
+-         "href": "/media/00000000-0000-4000-8000-000000000001/original",
+          "kind": "resume",
++         "mediaId": "00000000-0000-4000-8000-000000000001",
+          "newTab": true,
+        },
+        "label": "Currículo",
+        "purpose": "resume",
+      },
+      {
+        "destination": {
+-         "href": "#contact",
++         "anchor": "#contact",
+          "kind": "contact",
+        },
+        "label": "Contato",
+        "purpose": "contact",
+      },
+
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:68:46
+     66|     ['en', navigationEnFixture],
+     67|   ] as const)('resolves exactly four %s destinations from published co…
+     68|     expect(resolveNavigation(input(locale))).toEqual(expected);
+       |                                              ^
+     69|   });
+     70|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > resolves exactly four en destinations from published contracts
+AssertionError: expected { locale: 'en', brand: { …(2) }, …(5) } to deeply equal { locale: 'en', brand: { …(2) }, …(5) }
+
+- Expected
++ Received
+
+@@ -39,20 +39,20 @@
+        "label": "About",
+        "purpose": "about",
+      },
+      {
+        "destination": {
+-         "href": "/media/00000000-0000-4000-8000-000000000002/original",
+          "kind": "resume",
++         "mediaId": "00000000-0000-4000-8000-000000000002",
+          "newTab": true,
+        },
+        "label": "Resume",
+        "purpose": "resume",
+      },
+      {
+        "destination": {
+-         "href": "#contact",
++         "anchor": "#contact",
+          "kind": "contact",
+        },
+        "label": "Contact",
+        "purpose": "contact",
+      },
+
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:68:46
+     66|     ['en', navigationEnFixture],
+     67|   ] as const)('resolves exactly four %s destinations from published co…
+     68|     expect(resolveNavigation(input(locale))).toEqual(expected);
+       |                                              ^
+     69|   });
+     70|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a requested locale different from the navigation locale
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:73:66
+     71|   it('rejects a requested locale different from the navigation locale'…
+     72|     const source = input();
+     73|     expect(() => resolveNavigation({ ...source, locale: 'en' })).toThr…
+       |                                                                  ^
+     74|   });
+     75|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a profile from another locale
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:78:74
+     76|   it('rejects a profile from another locale', () => {
+     77|     const source = input();
+     78|     expect(() => resolveNavigation({ ...source, profile: profiles.en }…
+       |                                                                          ^
+     79|   });
+     80|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a brand path belonging to another locale
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a projects path belonging to another locale
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a about path belonging to another locale
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:86:45
+     84|     if (part === 'projects') source.navigation.items[0].destination.hr…
+     85|     if (part === 'about') source.navigation.items[1].destination.href …
+     86|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+     87|   });
+     88|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an obsolete resume reference instead of choosing one silently
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:92:45
+     90|     const source = input();
+     91|     source.navigation.items[2].destination.mediaId = '00000000-0000-40…
+     92|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+     93|   });
+     94|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a missing resume null
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a missing resume ""
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:98:45
+     96|     const source = input();
+     97|     source.profile.resumeId = resumeId;
+     98|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+     99|   });
+    100|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects obsolete email in navigation
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects obsolete linkedin in navigation
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:104:45
+    102|     const source = input();
+    103|     source.navigation.contacts[field] = field === 'email' ? 'old@examp…
+    104|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+    105|   });
+    106|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent email value null
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent email value ""
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent email value "javascript:alert(1)"
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent email value "person@example.invalid\r\nBcc:other@example.invalid"
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value null
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value ""
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value "javascript:alert(1)"
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value "<a href=\"https://linkedin.com\">x</a>"
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value "http://linkedin.com/in/synthetic"
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value "https://user:password@linkedin.com/in/synthetic"
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects an unsafe or absent linkedin value "https://linkedin.com.evil.example/in/synthetic"
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:119:45
+    117|     source.profile.contacts[field] = value;
+    118|     source.navigation.contacts[field] = value;
+    119|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+    120|   });
+    121|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a missing header label null
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a missing header label ""
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a missing header label "   "
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:125:45
+    123|     const source = input();
+    124|     source.navigation.items[0].label = label;
+    125|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+    126|   });
+    127|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects a missing brand label
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:131:45
+    129|     const source = input();
+    130|     source.navigation.brand.label = null;
+    131|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+    132|   });
+    133|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent accessible control newTabLabel
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent accessible control openMenuLabel
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent accessible control closeMenuLabel
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent accessible control languageLabel
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:137:45
+    135|     const source = input();
+    136|     source.navigation.controls![field] = null;
+    137|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+    138|   });
+    139|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent footer link label emailLabel
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent footer link label linkedinLabel
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > rejects absent footer link label resumeLabel
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:143:45
+    141|     const source = input();
+    142|     source.navigation.footer![field] = null;
+    143|     expect(() => resolveNavigation(source)).toThrow();
+       |                                             ^
+    144|   });
+    145|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/35]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/resolve-navigation.test.ts > resolveNavigation > accepts frozen inputs without mutating them
+AssertionError: expected { locale: 'pt', brand: { …(2) }, …(5) } to deeply equal { locale: 'pt', brand: { …(2) }, …(5) }
+
+- Expected
++ Received
+
+@@ -39,20 +39,20 @@
+        "label": "Sobre",
+        "purpose": "about",
+      },
+      {
+        "destination": {
+-         "href": "/media/00000000-0000-4000-8000-000000000001/original",
+          "kind": "resume",
++         "mediaId": "00000000-0000-4000-8000-000000000001",
+          "newTab": true,
+        },
+        "label": "Currículo",
+        "purpose": "resume",
+      },
+      {
+        "destination": {
+-         "href": "#contact",
++         "anchor": "#contact",
+          "kind": "contact",
+        },
+        "label": "Contato",
+        "purpose": "contact",
+      },
+
+ ❯ src/features/site-navigation/server/resolve-navigation.test.ts:154:39
+    152|     Object.freeze(source.navigation);
+    153|     Object.freeze(source);
+    154|     expect(resolveNavigation(source)).toEqual(navigationPtFixture);
+       |                                       ^
+    155|     expect(source).toEqual(before);
+    156|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/35]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  35 failed (35)
+   Start at  15:01:20
+   Duration  696ms (setup 54%, import 28%, transform 11%, tests 6%, worker 1%)
+

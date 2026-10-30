@@ -1,0 +1,58 @@
+[
+  {
+    "source": ".work/E2.2-profile-red.txt",
+    "output": "docs/verification/artifacts/E2.2/E2.2-profile-red.txt",
+    "bytes": 10278,
+    "originalSHA256": "9a00052809a1173ff5f4d8bbc9d6ca6275e7ce772fec8c9e734df79e72f78eb3",
+    "exportedSHA256": "9a00052809a1173ff5f4d8bbc9d6ca6275e7ce772fec8c9e734df79e72f78eb3",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.2-profile-green.txt",
+    "output": "docs/verification/artifacts/E2.2/E2.2-profile-green.txt",
+    "bytes": 201,
+    "originalSHA256": "cf0dc73fe2aeae4583f2476d5b78d355f171debc5cce78a3172f1a60fc0df9bc",
+    "exportedSHA256": "cf0dc73fe2aeae4583f2476d5b78d355f171debc5cce78a3172f1a60fc0df9bc",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.2-profile-refactor.txt",
+    "output": "docs/verification/artifacts/E2.2/E2.2-profile-refactor.txt",
+    "bytes": 201,
+    "originalSHA256": "b806a8f8271351afc3c71981e37c53ee4cfe845c44b0afe6d757be0d96f02aa7",
+    "exportedSHA256": "b806a8f8271351afc3c71981e37c53ee4cfe845c44b0afe6d757be0d96f02aa7",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.2-profile-default-isolation-red.txt",
+    "output": "docs/verification/artifacts/E2.2/E2.2-profile-default-isolation-red.txt",
+    "bytes": 2247,
+    "originalSHA256": "8f3c6cdf1623430df9fd4907cda2367c5745f89ac13d4adc329be7f5414644eb",
+    "exportedSHA256": "8f3c6cdf1623430df9fd4907cda2367c5745f89ac13d4adc329be7f5414644eb",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.2-profile-navigation-refactor.txt",
+    "output": "docs/verification/artifacts/E2.2/E2.2-profile-navigation-refactor.txt",
+    "bytes": 201,
+    "originalSHA256": "644b7e8c1577a2dec2f12a08bf339e514c2fc95e7162d4ef7baea4d8fc670dfa",
+    "exportedSHA256": "644b7e8c1577a2dec2f12a08bf339e514c2fc95e7162d4ef7baea4d8fc670dfa",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.2-navigation-red.log",
+    "output": "docs/verification/artifacts/E2.2/E2.2-navigation-red.log",
+    "bytes": 16925,
+    "originalSHA256": "397516808d558727d5c02203fd08d5b861b73e1455a5d5fd65c9e1f27e177f07",
+    "exportedSHA256": "397516808d558727d5c02203fd08d5b861b73e1455a5d5fd65c9e1f27e177f07",
+    "transformation": "none; synthetic unit/architecture output only"
+  },
+  {
+    "source": ".work/E2.2-navigation-green-final.log",
+    "output": "docs/verification/artifacts/E2.2/E2.2-navigation-green-final.log",
+    "bytes": 201,
+    "originalSHA256": "13544afe5e39175c5cdae89f75e0890248dea5d9e47f30475b6711b8cb7dfbfc",
+    "exportedSHA256": "13544afe5e39175c5cdae89f75e0890248dea5d9e47f30475b6711b8cb7dfbfc",
+    "transformation": "none; synthetic unit/architecture output only"
+  }
+]

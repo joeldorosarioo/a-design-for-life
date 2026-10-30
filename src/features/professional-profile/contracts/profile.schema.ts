@@ -1,3 +1,4 @@
+import { profileContactsSchema } from './profile-contacts.schema';
 import { nativeArray } from '@/helpers/payload/native-array.schema';
 import { z } from 'zod';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
@@ -5,16 +6,6 @@ import { inputMetadata } from '@/helpers/payload/input-metadata.schema';
 import { imageUseInputSchema } from '@/features/media-library';
 const text = z.string().nullish();
 const row = { id: z.string().nullish(), readingKey: z.uuid().nullish() };
-const linkedin = z.url().refine((value) => {
-  if (!URL.canParse(value)) return false;
-  const url = new URL(value);
-  return (
-    url.protocol === 'https:' &&
-    ['linkedin.com', 'www.linkedin.com'].includes(url.hostname) &&
-    !url.username &&
-    !url.password
-  );
-}, 'Informe um endereço HTTPS do LinkedIn.');
 export const profileInputSchema = z.strictObject({
   ...inputMetadata,
   locale: localeSchema.optional(),
@@ -72,12 +63,7 @@ export const profileInputSchema = z.strictObject({
       projectsLabel: text,
     })
     .nullish(),
-  contacts: z
-    .strictObject({
-      email: z.union([z.literal(''), z.email()]).nullish(),
-      linkedin: z.union([z.literal(''), linkedin]).nullish(),
-    })
-    .nullish(),
+  contacts: profileContactsSchema.partial().nullish(),
   resume: z.uuid().nullish(),
   seo: z
     .strictObject({
