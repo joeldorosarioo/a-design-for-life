@@ -1,6 +1,6 @@
 # E2.1 — mapeamento da referência Figma
 
-Etapa 2 em 0% (0/6); fundação em revisão. Fonte normativa: [inventário aprovado](../specs/2026-10-29-portfolio-inventario-figma.md), arquivo `PXUcVZFdLuOzHQZkD5PU4b`, página `03 · Layout proposto` (`123:179`). Nenhuma página alternativa redefine o visual.
+Etapa 2 em 16,7% (1/6); fundação E2.1 concluída. Fonte normativa: [inventário aprovado](../specs/2026-10-29-portfolio-inventario-figma.md), arquivo `PXUcVZFdLuOzHQZkD5PU4b`, página `03 · Layout proposto` (`123:179`). Nenhuma página alternativa redefine o visual.
 
 ## Tokens e aliases
 
@@ -35,6 +35,14 @@ Não existiam `src/components/ui`, tokens públicos ou primitivas reutilizáveis
 
 A pesquisa de referência preservou `work/stage2-reference/README.md`, `official-case-pt-desktop-context.txt` e `assets-manifest.json` no workspace do chat, com origem/node, dimensões, bytes e hashes. A consulta oficial nova foi recusada pela quota Starter; não houve upgrade nem API interna. O contexto oficial anterior do casePT foi reutilizado e os18frames do inventário foram vistos pela interface normal. Renders do editor e screenshots de páginas são referência visual, nunca assets de implementação.
 
-Lacunas concretas, registradas **antes de qualquer uso afetado**: retrato original e crops; fotos originais de mesa/arquitetura; capa do projeto02; bandeiraEN/variantes vetoriais; exportação de todos os originais e vínculos internos dos componentes. A capa PNG disponível foi devolvida pelo contexto oficial, sem prova de ser o upload bruto original. Cinco ativos exatos do contexto anterior foram preservados pela pesquisa; nenhum foi incorporado à aplicação ou enviado ao CMS nesta fundação. O manifesto de referência permite continuar a conferência sem apresentar uma lacuna como concluída.
+Lacunas do levantamento inicial, registradas **antes de qualquer uso afetado** e atualizadas pela conferência final abaixo: retrato original e crops; fotos originais de mesa/arquitetura; capa do projeto02; bandeiraEN/variantes vetoriais; exportação de todos os originais e vínculos internos dos componentes. A capa PNG disponível foi devolvida pelo contexto oficial, sem prova de ser o upload bruto original. Cinco ativos exatos do contexto anterior foram preservados pela pesquisa; nenhum foi incorporado à aplicação ou enviado ao CMS nesta fundação. O manifesto de referência permite continuar a conferência sem apresentar uma lacuna como concluída.
 
 A implementação E2.1 usa somente tokens e Button comprovados; não depende desses ativos. O aceite de exportação integral e comparação de telas permanece pendente para o gate coordenado. SVG aprovado de código segue regra separada de upload: uploadSVG no CMS permanece permanentemente proibido. PDFs e conteúdo demonstrativo não se tornam públicos.
+
+## Atualização — originais conferidos
+
+Em30/10/2026 o usuário autorizou coleta pelo editor normal com evidências, substituindo somente a exclusividade do método MCP bloqueado pela quota. File→Save local copy permitiu recuperar5originais reais (retrato,duas capas,mesa,arquitetura), verificados byte a byte no arquivo privado.fig. [Manifesto canônico](../verification/artifacts/E2.1/reference-final/canonical-assets.json) e [verificação independente](../verification/artifacts/E2.1/reference-final/verified.json). Os5SVGs exatos de código estão em public/figma, sem redesenho ou upload ao CMS. Fotos e canvas privado não foram copiados para public ou Git.
+
+A instrução posterior determina fonte única, dimensionamento/recorte por CSS e otimização por next/image. Cópias de imagens processadas, duplicadas e extrações não canônicas foram consolidadas; uma capturaPNG por frame permanece somente como referência. Originais não foram convertidos, recortados ou ampliados. Capa detalhe usa contain sobre700; fotos/retrato usamcover conforme os slots documentados. O retrato original375×813 contém barraspretas; a composição usa o recorte CSS, sem criar outro arquivo.
+
+A conferência das primitivas necessárias e dos originais fecha a parte de referência da E2.1. Comparação integral das páginas, variantes ainda não consumidas e metadados específicos de Home/Sobre continuam nas jornadas E2.2/E2.3/E2.6. A stack aprovada é sistemaSans/SegoeUI e Georgia; nenhuma fonte externa ou fallback alternativo foi introduzido.

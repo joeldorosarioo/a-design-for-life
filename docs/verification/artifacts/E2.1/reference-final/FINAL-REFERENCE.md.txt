@@ -1,0 +1,70 @@
+# Referência final de pesquisa E2 — 30/10/2026
+
+Há **cinco originais canônicos, cinco vetores exatos e oito baselines de página** disponíveis para a implementação. Isso não comprova aceite visual de E2.6/A2, publicação de conteúdo final ou autorização da Etapa3.
+
+## Regras atuais
+
+O usuário aprovou explicitamente “Seguir pelo editor normal com evidências” depois que as chamadas oficiais get_design_context e download_assets foram bloqueadas pelo limite Starter. Essa instrução substitui somente a exclusividade do método MCP da skill; fidelidade, origem, proporção e proibição de screenshot como asset de código continuam obrigatórias.
+
+A instrução posterior do usuário exige **uma única versão por imagem**. O redimensionamento/crop será feito por CSS; a otimização, por Next.js Image. Não baixar ou criar versões alternativas dos cinco originais. O arquivo privado.fig e as12entradas de imagens que ele contém foram preservados para consolidação do coordenador; apenas cinco são canônicos. Oito JPEGs duplicados de baseline foram removidos por caminhos próprios verificados. Um cropPNG de retrato produzido antes da restrição está explicitamente excluído do manifesto canônico.
+
+## Artefatos e proveniência
+
+- `canonical-assets.json`: seleção atual de **5 imagens originais +5 vetores**; SHA256, origem, dimensões e nós conhecidos. É a fonte de seleção para o próximo proprietário.
+- `original-file/portfolio-reference.fig`: download normal File→Save local copy, privado,8621591bytes; SHA256 `2906e8c0b598cd497e70c7c2a5e323b784d943c231fceb744b90e59f83be148b`. Não copiar o canvas inteiro para Git público nem publicá-lo.
+- `original-file/archive-entries.json`:16entradas ZIP verificadas antes da extração. Apenas caminhos exatos `images/[hex40]` foram extraídos. Não houve execução nem decodificação de canvas.fig.
+- `original-file/original-images.json`:12imagens extraídas byte a byte, sem conversão/resampling; tipo real, dimensões, SHA256/SHA1. Todas foram abertas visualmente. Cinco têm ligação com slots aprovados; sete são thumbnails, material alternativo ou imagem branca, sem autorização de uso público por inferência.
+- `image-fill-map.json`: oito ligações verificadas pela árvore/painel normais do Figma, hash do fill, slot desktop/mobile, FIT/FILL e matriz identidade. CSS cover/contain é a tradução do modo; centro é inferência a conferir na comparação renderizada.
+- `baselines/manifest.json`:8PNGs completos de Home/Sobre, PT/EN, desktop/mobile, obtidos por Copy as PNG normal. Um PNG por frame, escala2× já produzida. **Somente referência; jamais asset de código.** Não há mais os JPEGs duplicados do editor.
+- `frames.json`:18frames, IDs e dimensões conferidos na UI; os10frames que não estão em baselines foram vistos inline, sem export adicional após a nova restrição.
+- `button-reference.json` e `mobile-shell-reference.json`: medidas e estados reais para a fundação e shell.
+- `normal-export-restoration.json`: prova do export SVG EN, mudança temporária autorizada de metadados e restauração.
+
+O observador de eventos de download do browser retornou timeout tanto para.fig quanto paraSVG, mas os downloads reais foram encontrados em Downloads e verificados pelo conteúdo. O arquivo.fig é ZIP real. O SVG EN chegou em umZIP.tmp com uma única entrada hierárquica; não era um SVG direto. Não interpretar timeout do observador como falha real do download quando a evidência em disco comprova o arquivo.
+
+## Cinco imagens canônicas
+
+| Uso | Hash Figma / arquivo em original-file/images | Dimensões | Tipo |
+|---|---|---|---|
+| Retrato | `7868c4d4ac147ed192a2be9a0bdc3fd16e1f4c60.jpg` |375×813|JPEG|
+| Capa01 | `de7c4ff2f231684adf7fa8a0c0f6467ea6e4f0f2.png` |1600×900|PNG|
+| Capa02 | `9bd7dea2d013c9c73dad6b0e4a035e47d53b3f74.png` |1600×900|PNG|
+| Mesa | `1ba7b7bbe3461148aee8486c6a523dc99d405775.png` |1536×1024|PNG|
+| Arquitetura | `7495950c4aa27e1805fd6d5341bb12701b9c2df9.png` |1086×1448|PNG|
+
+O retrato tem barras pretas no próprio original armazenado pelo Figma; não remover por edição. Os dois hashes de retrato375×813 existentes no.fig são bytes distintos e não são substitutos automáticos: o fill aprovado inspecionado usa `7868…`. A capa01 do contexto MCP anterior é byte-idêntica à entrada original do.fig; escolher somente o caminho canônico do manifesto.
+
+## Slots confirmados
+
+| Nó | Uso | Slot | Modo |
+|---|---|---|---|
+|125:2064|Retrato componente desktop|480×528|FILL|
+|125:2075|Retrato componente mobile|342×384|FILL|
+|138:13862|Mesa Sobre EN desktop|1280×720|FILL|
+|138:13921|Mesa Sobre EN mobile|342×192,38|FILL|
+|138:13868|Arquitetura Sobre EN desktop|480×640|FILL|
+|138:13927|Arquitetura Sobre EN mobile|342×456|FILL|
+|123:377|Capa02 card desktop|624×352|FILL|
+|123:854|Capa01 detalhe PT desktop|1280×480|FIT, sobre fundo700|
+
+Todos os fills acima apresentaram matriz identidade, rotação0 e scale1 nos metadados acessíveis. Não trocar FIT por FILL no detalhe. Não transformar as alturas do conteúdo de exemplo em alturas fixas das páginas.
+
+## Vetores e restauração
+
+BR46×32 e três divisores foram baixados pelos URLs do contexto oficial anterior, exatos e sem redesenho. EN circular32×32 é export SVG normal do nó128:9416,6852bytes, SHA256 `1815c1028d88f55051b6056b133aaf67a6ecf4034d69c15e36d33dbc6a2bf64a`. A configuração de exportação inicial estava vazia; foi adicionado um export temporário, escolhidoSVG e usado o botão normal. Depois foi removida a única linha temporária. Conferência final: sem Export file type, Add export settings presente e dimensões32×32 preservadas. Houve escrita temporária de metadados, restaurada; não houve redesign.
+
+Somente o root/dimensões dos SVGs foram inspecionados; paths não foram extraídos, editados, inlined ou redesenhados. Respeitar as dimensões intrínsecas no uso. A bandeiraBR46×32 é cortada em32×32 com offset esquerdo−7, dentro do alvo48×48. EN já é o frame circular32×32; seu invólucroLocale/action128:9415 mede48×48/radius24. Arrows dos botões são texto na referência, não há necessidade de inventar um SVG equivalente.
+
+## Mobile: dados úteis para o shell
+
+Header123:321:390×156Hug, padding24, gap vertical16, fundo branco. LinhaLinks125:2056:342×44, gap24, padding0. O grupo marca/idioma125:1970 não teve todos os filhos reextraídos. O desenho antigo de três links em segunda linha é superado pelo contrato final de Projetos/Sobre/Currículo/Contato e menu móvel acessível.
+
+Footer123:543:390×518Hug, paddingX24/Y48, gap32, fundo900. Título123:545: Georgia36/40, branco; descrição123:546: sansRegular18/28,100; botãoSecondary208×50 no exemplar. Divisor123:549:342×0, strokeCenter1px,900,100% — mesma cor do fundo. Não substituir por100 por inferência. Footer meta123:550 e eyebrow123:544 não tiveram todos os filhos reextraídos; essa lacuna é pequena e nomeada para continuação, sem afirmar a tipografia por suposição.
+
+## Limites de aceite e próximo proprietário
+
+Continuam pendentes a comparação do app renderizado, keyboard/foco/contraste, larguras intermediárias/zoom e evidência A2. Metadados de todos os14componentes não foram reextraídos: o catálogo e tokens documentados continuam como base e as lacunas específicas permanecem identificadas. Não afirmar equivalência pixel a pixel somente por disponibilizar fontes e baselines.
+
+As variantes internas de Button e seus IDs estão em button-reference.json. Secondary Default/Hover medem50px; Focus do exemplar mede48px, com ring2/offset2 documentados. Preservar geometria estável ao focar na implementação e verificar a adaptação. A anotação antiga “ring-violet-700” é legada; focus/ring Cherry700 aprovado prevalece. Literal CSS completo da stack não estava exposto na UI; o contrato aprovado continua sistemaSans/SegoeUI e serifGeorgia, sem fonte externa.
+
+Os textos ilustrativos e arquivos de referência continuam privados/rascunho até revisão. Manter develop no repositórioE:, commits coerentes em inglês/Conventional Commits e parada A2 antes deEtapa3 conforme coordenação. Esta pesquisa não fez alterações no aplicativo, DB, build, Git ou E:.

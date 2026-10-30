@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-30",
+  "source": "Normal authenticated Figma UI, measured linked values and typography style buttons",
+  "header": {
+    "catalog": "123:332",
+    "desktopVariant": "123:312",
+    "mobileVariant": "123:321",
+    "mobile": {
+      "width": 390,
+      "height": 156,
+      "heightBehavior": "Hug; reference content, not fixed runtime height",
+      "paddingX": 24,
+      "paddingY": 24,
+      "gapY": 16,
+      "background": "#FFFFFF",
+      "links": {
+        "node": "125:2056",
+        "width": 342,
+        "height": 44,
+        "gapX": 24,
+        "padding": 0
+      },
+      "brandAndLanguageGroup": {
+        "node": "125:1970",
+        "internalGeometryNotFullyReinspected": true
+      }
+    },
+    "approvedFunctionalOverride": "Projects/About/Resume/Contact in fixed order, with functional accessible mobile menu; old three-link second line does not override approved requirement."
+  },
+  "footer": {
+    "catalog": "123:553",
+    "desktopVariant": "123:533",
+    "mobileVariant": "123:543",
+    "mobile": {
+      "width": 390,
+      "height": 518,
+      "heightBehavior": "Hug; reference content, not fixed runtime height",
+      "paddingX": 24,
+      "paddingY": 48,
+      "gapY": 32,
+      "background": "#4E0B1C",
+      "eyebrow": {
+        "node": "123:544",
+        "typographyNotReinspected": true
+      },
+      "heading": {
+        "node": "123:545",
+        "linkedStyle": "Consolidado/heading-4xl/serif",
+        "fontFamily": "Georgia",
+        "weight": 400,
+        "fontSize": 36,
+        "lineHeight": 40,
+        "color": "#FFFFFF"
+      },
+      "description": {
+        "node": "123:546",
+        "linkedStyle": "Consolidado/text-lg/regular",
+        "fontFamily": "Segoe UI/system sans",
+        "weight": 400,
+        "fontSize": 18,
+        "lineHeight": 28,
+        "color": "#FFC9D4"
+      },
+      "button": {
+        "variant": "Secondary Default",
+        "referenceWidth": 208,
+        "referenceHeight": 50
+      },
+      "divider": {
+        "node": "123:549",
+        "width": 342,
+        "height": 0,
+        "strokeWidth": 1,
+        "strokeAlign": "Center",
+        "color": "#4E0B1C",
+        "opacity": 1,
+        "note": "Same as inverse background in the reference; do not infer100 instead."
+      },
+      "meta": {
+        "node": "123:550",
+        "notFullyReinspected": true
+      }
+    }
+  },
+  "typographyContract": "System sans stack represented by Segoe UI and serif stack with Georgia. Literal CSS fallback stack string was not recoverable from UI; no external font substitution."
+}

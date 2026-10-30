@@ -1,12 +1,12 @@
 # Execução autorizada — etapa 2
 
-**Etapa 2: 0% (0/6 tarefas concluídas). E2.1 em andamento.**
+**Etapa 2: 16,7% (1/6 tarefas concluídas). E2.1 concluída; E2.2 em andamento.**
 
 A1 aprovada explicitamente em 30/10/2026. Autorizadas somente E2.1–E2.6 na raiz E:\a-design-for-life, branch develop. Commits em inglês, Conventional Commits, por mudança coerente. Estimativa inicial: **18–28 horas de trabalho**, incluindo implementação, testes, comparação com o Figma e correções; atualizar diante de bloqueio concreto.
 
 ## Acompanhamento
 
-- [ ] E2.1 Tokens, primitivas e fundação de movimento.
+- [x] E2.1 Tokens, primitivas e fundação de movimento — código, originais e evidências conferidos.
 - [ ] E2.2 Header, footer, Home e Sobre.
 - [ ] E2.3 Listagem, detalhe e apresentações editoriais.
 - [ ] E2.4 Resolução inicial e cookie funcional de idioma.
@@ -44,3 +44,9 @@ Pré-requisitos E2.2 de contratos/links e core E2.4 têm testes focados e revis�
 Em30/10/2026, pnpm verify terminou exit0: **584 testes aprovados,1 skip específico do Windows,81 arquivos**, tipagem, lint sem erros (4warnings herdados), formato e buildNext16.4.3 aprovados. PostgreSQL real isolado55433/tmpfs removido pelo runner; PostgreSQL5432 de outro projeto preservado. Primeiro gate interrompeu antes dos testes/build por formatação de E2.1.md; a tentativa falha foi preservada, o documento formatado e o comando integral repetido. Não se conta essa falha de formato como RED comportamental.
 
 [Fontes cobertas](artifacts/E2-preparation/source-snapshot.json), [logs e revisões](artifacts/E2-preparation/evidence-manifest.json). O snapshot identifica o estado combinado, sem atribuir essa cobertura a modificações posteriores. Warnings pg/client.query e mensagens esperadas dos testes de COMMIT/autorização permanecem no log. O checkCI exato e25jornadasE2E continuam necessários antes da promoção remota. Nenhuma tarefa E2 está concluída por esse gate isolado.
+
+## Fechamento E2.1
+
+Em 30/10/2026 a E2.1 foi concluída com o código da fundação verificado, cinco originais canônicos e cinco vetores conferidos, proveniência e slots documentados. Verificação focada atual: 11/11 testes; fixture SSR/hidratação/redução: seis cenários. O CI do código preparado 84ce799e51dd6af905c53f1861398990956e9021 aprovou 585 testes sem skips e 25 jornadas E2E em Ubuntu 24.04, run41106018907/job124235943055; promoção normal protegida para develop concluída. Essa cobertura não é atribuída a alterações posteriores em andamento.
+
+Última orientação do usuário: uma única versão original por imagem, dimensões/recorte por CSS e otimização via next/image. Nove cópias processadas/duplicadas/extrações não canônicas foram removidas da pesquisa; o arquivo.fig original e os cinco originais escolhidos foram preservados. Capturas de página são evidência, uma por frame. A configuração segura do otimizador e as páginas continuam em implementação E2.2/E2.3; A2 não está concluída.
