@@ -12,7 +12,7 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] Copiar quatro referências a docs/specs e conferir SHA256.
 - [x] E1.1 Base executável e ambiente de testes — concluída; evidências e riscos em E1.1.md.
 - [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída localmente; proteção remota bloqueada por acesso, ver E1.2.md.
-- [ ] E1.3 Modelos editoriais e provisionamento idempotente.
+- [x] E1.3 Modelos editoriais e provisionamento idempotente — concluída após revisão e gate independente.
 - [ ] E1.4 Rascunho, publicação, restauração e concorrência.
 - [ ] E1.5 Slugs, reservas e resolução pública.
 - [ ] E1.6 Upload, processamento e privacidade.
@@ -81,3 +81,13 @@ Etapa 1 permanece em 25% (E1.1/E1.2,2/8). O snapshot E1.3 acrescenta os índices
 ## E1.3 — correções da primeira revisão preparadas
 
 Etapa1 permanece em25% (2/8), E1.3 desmarcada até re-review. A revisão independente de f1e6063 e o gate de108 testes foram preservados. A primeira rodada corrige exclusão órfã de identidade (guard editorial + três FKs RESTRICT geradas, incluindo versões/rotas), a ordem das FKs no rollback nativo (dca8c50) e URL interna absoluta indevidamente tratada como externa. Quinze testes focados passaram; o roundtrip das sete migrações e o provisionamento dos quatro drafts foram provados em tmpfs isolado. Tipagem/lint/formatação passaram. O coordenador fará o gate completo e a revisão dos fixes antes de concluir a tarefa; detalhes em E1.3.md e E1.3-rollback.md.
+
+## E1.3 concluída — 37,5% da etapa 1
+
+Em 30/10/2026, E1.1–E1.3 concluídas: 3 de 8 tarefas, 37,5%. Os registros anteriores de 25% descrevem seus checkpoints históricos. E1.4 é a próxima tarefa e A1 continua pendente.
+
+Snapshot de código 27f0b98: gate independente pnpm verify exit0, 21 arquivos/114 testes, tipagem, lint, formatação e build. Payload/PostgreSQL reais isolados; sete migrações aplicadas; postgres-test removido após a execução. Log em artifacts/E1.3/root-verify-after-review.txt. A re-review E1.3-round1-review.md aprovou S1 (identidade referenciada), Q1 (rollback) e S2 (destino interno tipado), sem novos achados acionáveis. Detalhes em E1.3.md e E1.3-rollback.md.
+
+Playwright 2/2 foi executado no snapshot f1e6063 antes das três correções de servidor; não foi repetido após 27f0b98. O gate atual cobre a suíte completa e build; essa distinção é mantida, sem representar a execução anterior como atual. As jornadas editoriais serão ampliadas em E1.4 e o gate integrado será repetido para A1.
+
+Permanecem os riscos de dependências documentados em E1.1 e BLOCK-GITHUB-BRANCH-PROTECTION. A consulta sobre imagens animadas segue sem resposta e não impôs restrição aos modelos. Nenhuma tarefa posterior foi contabilizada como pronta.
