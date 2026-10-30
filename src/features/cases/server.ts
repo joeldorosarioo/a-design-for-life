@@ -15,3 +15,5 @@ export {
   publishedCaseRouteSchema,
 } from './server/get-published-cases';
 export { getFeaturedCases } from './server/get-featured-cases';
+
+export { resolveContextualLink } from './server/resolve-contextual-link';
