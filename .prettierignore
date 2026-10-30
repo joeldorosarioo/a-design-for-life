@@ -1,0 +1,10 @@
+node_modules
+.next
+.toolchain
+.work
+pnpm-lock.yaml
+docs/specs
+src/payload-types.ts
+src/app/(payload)/admin/importMap.js
+next-env.d.ts
+docs/verification/artifacts/
