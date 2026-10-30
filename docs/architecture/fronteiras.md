@@ -6,11 +6,12 @@ Referência: spec §§6–7 e plano E1.2. Implementação em 29/10/2026, America
 
 | Origem                                   | Destino permitido                                                                    |
 | ---------------------------------------- | ------------------------------------------------------------------------------------ |
-| Rota pública em app                      | Interfaces públicas index.ts/server.ts para compor features; rota fina               |
+| Rota pública em app                      | Interfaces públicas index.ts/ui.ts/server.ts para compor features; rota fina         |
 | payload.config.ts e config de composição | Definições das collections das features, sem obrigar import de barrel de consultas   |
-| Uma feature                              | Seus próprios arquivos internos; index.ts ou server.ts de outra feature              |
+| Uma feature                              | Seus próprios arquivos internos; index.ts, ui.ts ou server.ts de outra feature       |
 | helpers e componentes genéricos          | Capacidades técnicas/genéricas; nenhuma dependência direta ou transitiva de features |
-| index.ts da feature                      | Contratos e componentes compartilháveis; nenhum caminho runtime a servidor           |
+| index.ts da feature                      | Contratos, tipos e funções puras; nenhum caminho runtime a apresentação ou servidor  |
+| ui.ts da feature                         | Componentes de apresentação; nenhum caminho runtime a servidor                       |
 | server.ts da feature                     | Operações exclusivas do servidor, com import direto de server-only                   |
 | Módulo com diretiva use client           | Apenas dependências que não alcancem servidor no grafo runtime                       |
 
@@ -60,3 +61,13 @@ Actions ficam fixadas por SHA completo: checkout v7.0.1, setup-node v7.1.0 e pnp
 - [Regras locais do ESLint](https://eslint.org/docs/latest/extend/custom-rules) e [API Node](https://eslint.org/docs/latest/integrate/nodejs-api).
 - [setup-node](https://github.com/actions/setup-node), [pnpm/action-setup](https://github.com/pnpm/action-setup) e [instalação pnpm imutável](https://pnpm.io/cli/install).
 - [Segurança das Actions](https://docs.github.com/en/actions/reference/security/secure-use), [falhas de workflow](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) e [proteção de branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
+
+## Atualização E2 — entradas públicas de apresentação
+
+Etapa 2: 16,7% (1/6). Componentes com CSS possuem entrada pública ui.ts; index.ts permanece compatível com o processo Native do Payload, sem carregar apresentação. server.ts continua exclusivo do servidor e exige marcador. A separação evita que importar um contrato durante migrações carregue CSS/JSX de componentes. Não se permite acessar arquivos privados de outra feature.
+
+ESLint e o grafo admitem ui.ts; o analisador aplica a essa entrada as mesmas restrições transitivas contra operações de servidor/Payload que aplica a index.ts. O index de contratos também não pode alcançar componentes/stylesheets em runtime. Imports exclusivamente de tipo continuam permitidos, sem relaxar ciclos ou a separação servidor/cliente.
+
+TDD: seis novas provas de grafo/ESLint falharam por asserções com as regras antigas. Após a alteração, pnpm exec vitest run --project architecture --reporter=verbose terminou exit0,34/34, incluindo os28cenários anteriores e o grafo real. [RED/GREEN](../verification/artifacts/E2-public-ui-entry/). O filtro da execução RED selecionou só as seis novas provas; nenhum teste permanente foi desativado.
+
+O bloqueio GitHub descrito na seção histórica acima foi resolvido em E1.2. O remoto adotado é joeldorosarioo/a-design-for-life, develop protegida com check estrito type-lint-test-architecture-build, admins incluídos, sem force-push/delete. O código preparado84ce799 teve CI585 testes/25 E2E aprovados e foi promovido normalmente. Novas alterações exigem seus próprios gates.

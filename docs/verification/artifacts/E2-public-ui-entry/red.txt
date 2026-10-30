@@ -1,0 +1,150 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (34 tests | 6 failed | 28 skipped) 7046ms
+   × permits a public ui.ts presentation entry from pages and other features 2753ms
+   × rejects ui.ts transitively reaching a server operation 702ms
+   × rejects ui.ts runtime capability payload 682ms
+   × rejects ui.ts runtime capability @payloadcms/db-postgres 699ms
+   × keeps the contract entry independent of presentation modules required by Native CLI 683ms
+   × ESLint permits another feature public ui.ts entry 1525ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > permits a public ui.ts presentation entry from pages and other features
+AssertionError: expected [ { …(3) }, { …(3) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "from": "src/features/cases/components/page.ts",
++     "rule": "feature-public-entry-only",
++     "to": "src/features/professional-profile/ui.ts",
++   },
++   {
++     "from": "src/app/(portfolio)/[locale]/page.ts",
++     "rule": "portfolio-public-entry-only",
++     "to": "src/features/professional-profile/ui.ts",
++   },
++ ]
+
+ ❯ src/config/architecture.test.ts:279:42
+    277|     'src/app/(portfolio)/[locale]/page.ts': "import '@/features/profes…
+    278|   });
+    279|   expect(analyzeArchitecture(directory)).toEqual([]);
+       |                                          ^
+    280| });
+    281|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > rejects ui.ts transitively reaching a server operation
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/ui.ts",
+  "rule": "shared-entry-cannot-reach-server",
+  "to": "src/features/cases/server/query.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:287:42
+    285|     'src/features/cases/server/query.ts': "import 'server-only'; expor…
+    286|   });
+    287|   expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                          ^
+    288|     rule: 'shared-entry-cannot-reach-server', from: 'src/features/case…
+    289|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > rejects ui.ts runtime capability payload
+ FAIL  |architecture| src/config/architecture.test.ts > rejects ui.ts runtime capability @payloadcms/db-postgres
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/ui.ts",
+  "rule": "shared-entry-cannot-reach-server",
+  "to": "src/features/cases/ui.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:294:42
+    292| it.each(['payload', '@payloadcms/db-postgres'])('rejects ui.ts runtime…
+    293|   const directory = graphFixture({ 'src/features/cases/ui.ts': `export…
+    294|   expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                          ^
+    295|     rule: 'shared-entry-cannot-reach-server', from: 'src/features/case…
+    296|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > keeps the contract entry independent of presentation modules required by Native CLI
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/index.ts",
+  "rule": "contract-entry-cannot-reach-presentation",
+  "to": "src/features/cases/components/card.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:304:42
+    302|     'src/features/cases/components/card.ts': 'export function Card() {…
+    303|   });
+    304|   expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                          ^
+    305|     rule: 'contract-entry-cannot-reach-presentation', from: 'src/featu…
+    306|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > ESLint permits another feature public ui.ts entry
+AssertionError: expected [ { …(9) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "column": 8,
++     "endColumn": 44,
++     "endLine": 1,
++     "line": 1,
++     "message": "Importe outra feature somente por index.ts ou server.ts.",
++     "messageId": "privateFeature",
++     "nodeType": "Literal",
++     "ruleId": "architecture/import-boundaries",
++     "severity": 2,
++   },
++ ]
+
+ ❯ src/config/architecture.test.ts:312:98
+    310|   const eslint = new ESLint({ cwd: path.resolve('.') });
+    311|   const [result] = await eslint.lintText("import '@/features/professio…
+    312|   expect(result.messages.filter(message => message.ruleId === 'archite…
+       |                                                                                                  ^
+    313| });
+    314|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 28 skipped (34)
+   Start at  16:07:37
+   Duration  7.61s (tests 94%, import 5%, transform 1%)
+

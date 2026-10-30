@@ -12,3 +12,6 @@ docs/verification/artifacts/
 playwright-report
 test-results
 coverage
+
+# Preserve exact designer-exported vector bytes; provenance is verified by SHA256.
+public/figma/*.svg
