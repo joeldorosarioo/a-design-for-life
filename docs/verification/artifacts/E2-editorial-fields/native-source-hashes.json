@@ -1,0 +1,18 @@
+[
+  {
+    "relative": "updateOne.js",
+    "sha256": "8FC1267E20C63C6841F54856FD8A32DD2E74F59C2567C122022D5A84F3F62372"
+  },
+  {
+    "relative": "upsertRow/index.js",
+    "sha256": "C61E24FC8C37C0A530122924E300A045A6904D9FF68A254F0CB712521C4744B0"
+  },
+  {
+    "relative": "find/traverseFields.js",
+    "sha256": "70591E75A1851E270ADED099259C09E3CE614BDE132E65FCA7C2630DD5909DAF"
+  },
+  {
+    "relative": "transform/write/traverseFields.js",
+    "sha256": "E1E458303D4CB43ACBA8C4869FA5E14A35569241B356E1E36D85B21126E1EC59"
+  }
+]

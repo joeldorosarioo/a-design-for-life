@@ -1,0 +1,227 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/contracts/navigation.schema.test.ts (1 test | 1 failed) 8ms
+   × accepts the case card action label as optional draft text 7ms
+ ❯ |unit| src/features/site-navigation/server/map-navigation.test.ts (7 tests | 1 failed) 13ms
+   × preserves the editable case card action label in the public projection 4ms
+ ❯ |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts (12 tests | 1 failed) 22ms
+   × reads older confirmed method rows with explicit null keywords 7ms
+ ❯ |unit| src/features/professional-profile/contracts/profile.schema.test.ts (1 test | 1 failed) 9ms
+   × accepts optional plain method keywords without opening presentation fields 8ms
+ ❯ |unit| src/features/professional-profile/server/map-profile.test.ts (5 tests | 2 failed) 20ms
+   × preserves published Home and About groups, row order and public image uses 10ms
+   × maps absent legacy method keywords to null 1ms
+ ❯ |unit| src/features/cases/server/map-case-detail.test.ts (9 tests | 2 failed) 17ms
+   × preserves the existing editorial eyebrow in the case card projection 6ms
+   × reads legacy confirmed cards without inventing an editorial eyebrow 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-detail.test.ts > preserves the existing editorial eyebrow in the case card projection
+AssertionError: expected { …(6) } to match object { Object (eyebrow) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "eyebrow": "Synthetic editorial category",
++   "caseId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
++   "cover": null,
++   "locale": "pt",
++   "path": "/pt/cases/synthetic-slug",
++   "summary": "Synthetic summary",
++   "title": "Synthetic localized title",
+  }
+
+ ❯ src/features/cases/server/map-case-detail.test.ts:116:108
+    114|
+    115| it('preserves the existing editorial eyebrow in the case card projecti…
+    116|   expect(caseCardDTOSchema.parse(mapCaseDetail({ ...document, eyebrow:…
+       |                                                                                                            ^
+    117| });
+    118|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-detail.test.ts > reads legacy confirmed cards without inventing an editorial eyebrow
+AssertionError: expected { …(6) } to match object { eyebrow: null }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "eyebrow": null,
++   "caseId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
++   "cover": null,
++   "locale": "pt",
++   "path": "/pt/cases/legacy",
++   "summary": null,
++   "title": "Legacy",
+  }
+
+ ❯ src/features/cases/server/map-case-detail.test.ts:120:142
+    118|
+    119| it('reads legacy confirmed cards without inventing an editorial eyebro…
+    120|   expect(caseCardDTOSchema.parse({ caseId: sharedID, locale: 'pt', tit…
+       |                                                                                                                                              ^
+    121| });
+    122|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > reads older confirmed method rows with explicit null keywords
+AssertionError: expected [ { readingKey: null, …(2) } ] to deeply equal [ { readingKey: null, …(3) } ]
+
+- Expected
++ Received
+
+  [
+    {
+      "description": "Legacy body",
+-     "keywords": null,
+      "readingKey": null,
+      "title": "Legacy method",
+    },
+  ]
+
+ ❯ src/features/professional-profile/contracts/profile-dto.schema.test.ts:77:213
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile.schema.test.ts > accepts optional plain method keywords without opening presentation fields
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "keywords"
+    ],
+    "path": [
+      "approach",
+      "methods",
+      0
+    ],
+    "message": "Unrecognized key: \"keywords\""
+  }
+]
+ ❯ src/features/professional-profile/contracts/profile.schema.test.ts:5:29
+      3|
+      4| it('accepts optional plain method keywords without opening presentatio…
+      5|   expect(profileInputSchema.parse({ approach: { methods: [{ keywords: …
+       |                             ^
+      6|     approach: { methods: [{ keywords: 'Research · flows · testing' }] …
+      7|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > preserves published Home and About groups, row order and public image uses
+AssertionError: expected { locale: 'pt', …(10) } to match object { home: { portrait: { …(4) } }, …(5) }
+(15 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -25,11 +25,10 @@
+    },
+    "approach": {
+      "methods": [
+        {
+          "description": "Method body",
+-         "keywords": "Research · flows · testing",
+          "readingKey": "10000000-0000-4000-8000-000000000002",
+          "title": "Synthetic method",
+        },
+      ],
+    },
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:138:15
+    136|     caption: 'Synthetic caption',
+    137|   };
+    138|   expect(dto).toMatchObject({
+       |               ^
+    139|     home: { portrait: publicImage },
+    140|     homeProjects: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > maps absent legacy method keywords to null
+AssertionError: expected [ { readingKey: null, …(2) } ] to deeply equal [ { readingKey: null, …(3) } ]
+
+- Expected
++ Received
+
+  [
+    {
+      "description": "Body",
+-     "keywords": null,
+      "readingKey": null,
+      "title": "Legacy",
+    },
+  ]
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:188:124
+    186|
+    187| it('maps absent legacy method keywords to null', () => {
+    188|   expect(mapProfile({ ...document, approach: { methods: [{ title: 'Leg…
+       |                                                                                                                            ^
+    189|     { readingKey: null, title: 'Legacy', description: 'Body', keywords…
+    190|   ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  |unit| src/features/site-navigation/contracts/navigation.schema.test.ts > accepts the case card action label as optional draft text
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "caseLinkLabel"
+    ],
+    "path": [
+      "controls"
+    ],
+    "message": "Unrecognized key: \"caseLinkLabel\""
+  }
+]
+ ❯ src/features/site-navigation/contracts/navigation.schema.test.ts:5:32
+      3|
+      4| it('accepts the case card action label as optional draft text', () => {
+      5|   expect(navigationInputSchema.parse({ controls: { caseLinkLabel: 'Exp…
+       |                                ^
+      6|   for (const value of [undefined, null, '']) expect(navigationInputSch…
+      7|   expect(navigationInputSchema.safeParse({ controls: { caseLinkLabel: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/map-navigation.test.ts > preserves the editable case card action label in the public projection
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "caseLinkLabel"
+    ],
+    "path": [
+      "controls"
+    ],
+    "message": "Unrecognized key: \"caseLinkLabel\""
+  }
+]
+ ❯ mapNavigation src/features/site-navigation/server/map-navigation.ts:11:30
+      9|   if (document._status !== 'published' || !profile || document.locale …
+     10|   const locale = document.locale;
+     11|   return navigationDTOSchema.parse({
+       |                              ^
+     12|     locale,
+     13|     brand: { label: document.header?.brandLabel ?? null, href: `/${loc…
+ ❯ src/features/site-navigation/server/map-navigation.test.ts:84:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  6 failed (6)
+      Tests  8 failed | 27 passed (35)
+   Start at  15:56:21
+   Duration  1.54s (import 52%, setup 37%, transform 8%, tests 2%, worker 1%)
+

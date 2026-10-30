@@ -50,6 +50,14 @@ it('reads older confirmed snapshots without fetching new editorial values', () =
   });
 });
 
+it('reads legacy confirmed About sections with explicit null editorial eyebrows', () => {
+  expect(profileDTOSchema.parse(profile).about).toMatchObject({
+    journeyEyebrow: null,
+    approachEyebrow: null,
+    inMotionEyebrow: null,
+  });
+});
+
 it('isolates absent trajectory defaults between legacy snapshot reads', () => {
   const first = profileDTOSchema.parse(profile);
   first.homeAbout.trajectory.push({
@@ -68,7 +76,24 @@ it('isolates absent method defaults between legacy snapshot reads', () => {
     readingKey: null,
     title: 'Synthetic method',
     description: 'Synthetic body',
+    keywords: null,
   });
 
   expect(profileDTOSchema.parse(profile).approach.methods).toEqual([]);
+});
+
+it('reads older confirmed method rows with explicit null keywords', () => {
+  expect(
+    profileDTOSchema.parse({
+      ...profile,
+      approach: {
+        eyebrow: null,
+        title: null,
+        description: null,
+        methods: [{ readingKey: null, title: 'Legacy method', description: 'Legacy body' }],
+      },
+    }).approach.methods,
+  ).toEqual([
+    { readingKey: null, title: 'Legacy method', description: 'Legacy body', keywords: null },
+  ]);
 });

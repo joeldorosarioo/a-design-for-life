@@ -127,6 +127,7 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
       label: 'Rótulos dos controles fixos',
       type: 'group',
       fields: [
+        { name: 'caseLinkLabel', label: 'Rótulo da ação para abrir um card de case', type: 'text' },
         { name: 'homeLabel', type: 'text' },
         { name: 'casesLabel', type: 'text' },
         { name: 'contentsLabel', type: 'text' },

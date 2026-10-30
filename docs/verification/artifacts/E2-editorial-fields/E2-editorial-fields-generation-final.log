@@ -1,0 +1,6 @@
+$ node --conditions=react-server ./node_modules/payload/bin.js migrate:create e2_editorial_presentation_fields
+[16:03:45] [32mINFO[39m: [36mStarting migration: generating UP statements...[39m
+[16:03:45] [32mINFO[39m: [36mMigration UP complete. Generating DOWN statements...[39m
+[16:03:45] [32mINFO[39m: [36mMigration DOWN statements generation complete.[39m
+[16:03:45] [32mINFO[39m: [36mMigration created at E:\a-design-for-life\src\migrations/20261030_190345_e2_editorial_presentation_fields.ts[39m
+[16:03:45] [32mINFO[39m: [36mDone.[39m

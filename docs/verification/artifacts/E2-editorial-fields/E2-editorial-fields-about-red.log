@@ -1,0 +1,157 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/contracts/profile.schema.test.ts (2 tests | 1 failed) 16ms
+   × accepts optional plain editorial eyebrows for the existing About sections 6ms
+ ❯ |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts (13 tests | 1 failed) 27ms
+   × reads legacy confirmed About sections with explicit null editorial eyebrows 11ms
+ ❯ |unit| src/features/professional-profile/server/map-profile.test.ts (5 tests | 2 failed) 23ms
+   × preserves published Home and About groups, row order and public image uses 11ms
+   × represents missing presentation values explicitly without inventing professional content 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > reads legacy confirmed About sections with explicit null editorial eyebrows
+AssertionError: expected { eyebrow: null, title: null, …(16) } to match object { journeyEyebrow: null, …(2) }
+(18 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "approachEyebrow": null,
+-   "inMotionEyebrow": null,
+-   "journeyEyebrow": null,
++   "approach": null,
++   "approachHeading": null,
++   "architecturePhotograph": null,
++   "closing": null,
++   "closingHeading": null,
++   "description": null,
++   "deskPhotograph": null,
++   "editorialEmphasis": null,
++   "eyebrow": null,
++   "inMotion": null,
++   "inMotionHeading": null,
++   "introduction": null,
++   "introductionHeading": null,
++   "journey": null,
++   "journeyHeading": null,
++   "portrait": null,
++   "projectsLabel": null,
++   "title": null,
+  }
+
+ ❯ src/features/professional-profile/contracts/profile-dto.schema.test.ts:54:49
+     52|
+     53| it('reads legacy confirmed About sections with explicit null editorial…
+     54|   expect(profileDTOSchema.parse(profile).about).toMatchObject({ journe…
+       |                                                 ^
+     55| });
+     56|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile.schema.test.ts > accepts optional plain editorial eyebrows for the existing About sections
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "journeyEyebrow",
+      "approachEyebrow",
+      "inMotionEyebrow"
+    ],
+    "path": [
+      "about"
+    ],
+    "message": "Unrecognized keys: \"journeyEyebrow\", \"approachEyebrow\", \"inMotionEyebrow\""
+  }
+]
+ ❯ src/features/professional-profile/contracts/profile.schema.test.ts:24:29
+     22| it('accepts optional plain editorial eyebrows for the existing About s…
+     23|   const about = { journeyEyebrow: 'Synthetic journey eyebrow', approac…
+     24|   expect(profileInputSchema.parse({ about })).toEqual({ about });
+       |                             ^
+     25|   expect(profileInputSchema.safeParse({ about: { journeyEyebrow: ['Syn…
+     26| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > preserves published Home and About groups, row order and public image uses
+AssertionError: expected { locale: 'pt', …(10) } to match object { home: { portrait: { …(4) } }, …(5) }
+(23 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,7 @@
+  {
+    "about": {
+-     "approachEyebrow": "Synthetic approach eyebrow",
+      "architecturePhotograph": {
+        "alt": "Synthetic portrait",
+        "caption": "Synthetic caption",
+        "decorative": false,
+        "mediaId": "10000000-0000-4000-8000-000000000001",
+@@ -14,12 +13,10 @@
+        "decorative": false,
+        "mediaId": "10000000-0000-4000-8000-000000000001",
+      },
+      "editorialEmphasis": "Editorial pause",
+      "inMotion": "In motion body",
+-     "inMotionEyebrow": "Synthetic motion eyebrow",
+-     "journeyEyebrow": "Synthetic journey eyebrow",
+      "portrait": {
+        "alt": "Synthetic portrait",
+        "caption": "Synthetic caption",
+        "decorative": false,
+        "mediaId": "10000000-0000-4000-8000-000000000001",
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:141:15
+    139|     caption: 'Synthetic caption',
+    140|   };
+    141|   expect(dto).toMatchObject({
+       |               ^
+    142|     home: { portrait: publicImage },
+    143|     homeProjects: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > represents missing presentation values explicitly without inventing professional content
+AssertionError: expected { locale: 'pt', …(10) } to match object { home: { portrait: null }, …(5) }
+(25 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,13 +1,10 @@
+  {
+    "about": {
+-     "approachEyebrow": null,
+      "architecturePhotograph": null,
+      "deskPhotograph": null,
+-     "inMotionEyebrow": null,
+      "introduction": null,
+-     "journeyEyebrow": null,
+      "portrait": null,
+      "title": null,
+    },
+    "approach": {
+      "description": null,
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:209:15
+    207| it('represents missing presentation values explicitly without inventin…
+    208|   const dto = mapProfile(document);
+    209|   expect(dto).toMatchObject({
+       |               ^
+    210|     home: { portrait: null },
+    211|     homeProjects: { eyebrow: null, title: null, description: null },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  4 failed | 16 passed (20)
+   Start at  16:01:23
+   Duration  17.05s (import 71%, setup 26%, transform 3%)
+

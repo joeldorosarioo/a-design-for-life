@@ -1,0 +1,14 @@
+              table_name              |           column_name            | is_nullable 
+--------------------------------------+----------------------------------+-------------
+ _profiles_v                          | version_about_approach_eyebrow   | YES
+ _profiles_v                          | version_about_in_motion_eyebrow  | YES
+ _profiles_v                          | version_about_journey_eyebrow    | YES
+ _profiles_v_version_approach_methods | keywords                         | YES
+ _site_navigation_v                   | version_controls_case_link_label | YES
+ profiles                             | about_approach_eyebrow           | YES
+ profiles                             | about_in_motion_eyebrow          | YES
+ profiles                             | about_journey_eyebrow            | YES
+ profiles_approach_methods            | keywords                         | YES
+ site_navigation                      | controls_case_link_label         | YES
+(10 rows)
+

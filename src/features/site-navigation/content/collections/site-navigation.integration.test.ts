@@ -1,4 +1,7 @@
-import { observedRequest } from '../../../../../testing/fixtures/editorial-lifecycle';
+import {
+  observedRequest,
+  navigationFixture,
+} from '../../../../../testing/fixtures/editorial-lifecycle';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import {
@@ -186,4 +189,80 @@ it('rejeita finalidade, URL livre ou currículo duplicado no header em vez de ig
       }),
     ).rejects.toMatchObject({ status: 400 });
   }
+});
+
+it('persists the case action label in draft versions without changing the other locale', async () => {
+  const navigation = await fixture.payload.find({
+    collection: 'site-navigation',
+    draft: true,
+    overrideAccess: false,
+    req: await fixture.request(),
+  });
+  const pt = navigation.docs.find((doc) => doc.locale === 'pt')!;
+  const en = navigation.docs.find((doc) => doc.locale === 'en')!;
+  await fixture.payload.update({
+    collection: 'site-navigation',
+    id: pt.id,
+    draft: true,
+    data: { controls: { caseLinkLabel: 'Explorar case sintético' } },
+    overrideAccess: false,
+    req: await observedRequest('site-navigation', pt.id, await fixture.request()),
+  });
+  expect(
+    (
+      await fixture.payload.findByID({
+        collection: 'site-navigation',
+        id: pt.id,
+        draft: true,
+        overrideAccess: false,
+        req: await fixture.request(),
+      })
+    ).controls?.caseLinkLabel,
+  ).toBe('Explorar case sintético');
+  const versions = await fixture.payload.findVersions({
+    collection: 'site-navigation',
+    where: { parent: { equals: pt.id } },
+    sort: '-createdAt',
+    overrideAccess: false,
+    req: await fixture.request(),
+  });
+  expect(versions.docs[0].version.controls?.caseLinkLabel).toBe('Explorar case sintético');
+  expect(
+    (
+      await fixture.payload.findByID({
+        collection: 'site-navigation',
+        id: en.id,
+        draft: true,
+        overrideAccess: false,
+        req: await fixture.request(),
+      })
+    ).controls?.caseLinkLabel ?? null,
+  ).toBeNull();
+});
+
+it('requires a reviewed case card action label for a new navigation publication', async () => {
+  const pt = (
+    await fixture.payload.find({
+      collection: 'site-navigation',
+      where: { locale: { equals: 'pt' } },
+      draft: true,
+      overrideAccess: false,
+      req: await fixture.request(),
+    })
+  ).docs[0];
+  const data = navigationFixture();
+  delete (data.controls as Record<string, unknown>).caseLinkLabel;
+  await expect(
+    fixture.payload.update({
+      collection: 'site-navigation',
+      id: pt.id,
+      data: { ...data, _status: 'published' },
+      overrideAccess: false,
+      req: await observedRequest('site-navigation', pt.id, await fixture.request()),
+    }),
+  ).rejects.toMatchObject({
+    data: {
+      errors: expect.arrayContaining([expect.objectContaining({ path: 'controls.caseLinkLabel' })]),
+    },
+  });
 });

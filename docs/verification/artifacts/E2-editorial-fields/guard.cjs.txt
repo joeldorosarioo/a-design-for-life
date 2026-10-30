@@ -1,0 +1,19 @@
+const path = require('node:path');
+const { createHash } = require('node:crypto');
+const ROOT = path.resolve(__dirname, '../..');
+function guard() {
+  const e = process.env;
+  if (process.cwd().toLowerCase() !== ROOT.toLowerCase()) throw new Error('Run from the established project root.');
+  if (process.version !== 'v24.22.2') throw new Error('Use the pinned portable Node v24.22.2.');
+  if (e.APP_ENV !== 'test' || e.NODE_ENV !== 'test') throw new Error('APP_ENV and NODE_ENV must be test before initialization.');
+  let db; try { db = new URL(e.DATABASE_URI); } catch { throw new Error('A preconfigured isolated DATABASE_URI is required.'); }
+  if (!['postgres:', 'postgresql:'].includes(db.protocol) || !['127.0.0.1', 'localhost', '[::1]'].includes(db.hostname) || db.port !== '55433' || !/^\/adfl_test_[a-z0-9_]+$/.test(db.pathname)) throw new Error('Only the existing isolated 55433/adfl_test_* fixture is allowed.');
+  if (!/^adfl-test-[a-z0-9-]+$/.test(e.MEDIA_BUCKET || '') || (e.PAYLOAD_SECRET || '').length < 32) throw new Error('Configure the existing synthetic test secret and test bucket.');
+  const origin = new URL(e.SITE_ORIGIN || '');
+  if (origin.protocol !== 'http:' || !['127.0.0.1', 'localhost', '[::1]'].includes(origin.hostname) || origin.username || origin.password || origin.pathname !== '/' || origin.search || origin.hash) throw new Error('Use the existing HTTP loopback test origin.');
+  const store = path.resolve(ROOT, '.work/private-media', e.MEDIA_BUCKET, db.pathname.slice(1));
+  if (e.MEDIA_STORAGE_ROOT && path.resolve(e.MEDIA_STORAGE_ROOT).toLowerCase() !== store.toLowerCase()) throw new Error('MEDIA_STORAGE_ROOT must match the established bucket/database namespace.');
+  const fingerprint = createHash('sha256').update(JSON.stringify([ROOT, e.APP_ENV, e.NODE_ENV, db.pathname, e.SITE_ORIGIN, e.MEDIA_BUCKET, store])).digest('hex');
+  return { fingerprint, ROOT, store };
+}
+module.exports = { guard, ROOT };

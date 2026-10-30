@@ -1,0 +1,438 @@
+[16:08:54] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[16:08:54] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[16:08:54] [31mERROR[39m: [36mError running migration 20261030_124550_publication_coordination [
+  {
+    "code": "invalid_union",
+    "errors": [
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [],
+          "message": "Invalid input: expected string, received object"
+        }
+      ],
+      [
+        {
+          "expected": "number",
+          "code": "invalid_type",
+          "path": [],
+          "message": "Invalid input: expected number, received object"
+        }
+      ],
+      [
+        {
+          "expected": "boolean",
+          "code": "invalid_type",
+          "path": [],
+          "message": "Invalid input: expected boolean, received object"
+        }
+      ],
+      [
+        {
+          "expected": "null",
+          "code": "invalid_type",
+          "path": [],
+          "message": "Invalid input: expected null, received object"
+        }
+      ],
+      [
+        {
+          "expected": "array",
+          "code": "invalid_type",
+          "path": [],
+          "message": "Invalid input: expected array, received object"
+        }
+      ],
+      [
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected string, received object"
+              }
+            ],
+            [
+              {
+                "expected": "number",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected number, received object"
+              }
+            ],
+            [
+              {
+                "expected": "boolean",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected boolean, received object"
+              }
+            ],
+            [
+              {
+                "expected": "null",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected null, received object"
+              }
+            ],
+            [
+              {
+                "expected": "array",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected array, received object"
+              }
+            ],
+            [
+              {
+                "code": "invalid_union",
+                "errors": [
+                  [
+                    {
+                      "expected": "string",
+                      "code": "invalid_type",
+                      "path": [],
+                      "message": "Invalid input: expected string, received object"
+                    }
+                  ],
+                  [
+                    {
+                      "expected": "number",
+                      "code": "invalid_type",
+                      "path": [],
+                      "message": "Invalid input: expected number, received object"
+                    }
+                  ],
+                  [
+                    {
+                      "expected": "boolean",
+                      "code": "invalid_type",
+                      "path": [],
+                      "message": "Invalid input: expected boolean, received object"
+                    }
+                  ],
+                  [
+                    {
+                      "expected": "null",
+                      "code": "invalid_type",
+                      "path": [],
+                      "message": "Invalid input: expected null, received object"
+                    }
+                  ],
+                  [
+                    {
+                      "expected": "array",
+                      "code": "invalid_type",
+                      "path": [],
+                      "message": "Invalid input: expected array, received object"
+                    }
+                  ],
+                  [
+                    {
+                      "code": "invalid_union",
+                      "errors": [
+                        [
+                          {
+                            "expected": "string",
+                            "code": "invalid_type",
+                            "path": [],
+                            "message": "Invalid input: expected string, received undefined"
+                          }
+                        ],
+                        [
+                          {
+                            "expected": "number",
+                            "code": "invalid_type",
+                            "path": [],
+                            "message": "Invalid input: expected number, received undefined"
+                          }
+                        ],
+                        [
+                          {
+                            "expected": "boolean",
+                            "code": "invalid_type",
+                            "path": [],
+                            "message": "Invalid input: expected boolean, received undefined"
+                          }
+                        ],
+                        [
+                          {
+                            "expected": "null",
+                            "code": "invalid_type",
+                            "path": [],
+                            "message": "Invalid input: expected null, received undefined"
+                          }
+                        ],
+                        [
+                          {
+                            "expected": "array",
+                            "code": "invalid_type",
+                            "path": [],
+                            "message": "Invalid input: expected array, received undefined"
+                          }
+                        ],
+                        [
+                          {
+                            "expected": "record",
+                            "code": "invalid_type",
+                            "path": [],
+                            "message": "Invalid input: expected record, received undefined"
+                          }
+                        ]
+                      ],
+                      "path": [
+                        "caseLinkLabel"
+                      ],
+                      "message": "Invalid input"
+                    }
+                  ]
+                ],
+                "path": [
+                  "controls"
+                ],
+                "message": "Invalid input"
+              }
+            ]
+          ],
+          "path": [
+            "navigation"
+          ],
+          "message": "Invalid input"
+        }
+      ]
+    ],
+    "path": [],
+    "message": "Invalid input"
+  }
+].[39m
+    err: {
+      "type": "ZodError",
+      "message": "[\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [\n      [\n        {\n          \"expected\": \"string\",\n          \"code\": \"invalid_type\",\n          \"path\": [],\n          \"message\": \"Invalid input: expected string, received object\"\n        }\n      ],\n      [\n        {\n          \"expected\": \"number\",\n          \"code\": \"invalid_type\",\n          \"path\": [],\n          \"message\": \"Invalid input: expected number, received object\"\n        }\n      ],\n      [\n        {\n          \"expected\": \"boolean\",\n          \"code\": \"invalid_type\",\n          \"path\": [],\n          \"message\": \"Invalid input: expected boolean, received object\"\n        }\n      ],\n      [\n        {\n          \"expected\": \"null\",\n          \"code\": \"invalid_type\",\n          \"path\": [],\n          \"message\": \"Invalid input: expected null, received object\"\n        }\n      ],\n      [\n        {\n          \"expected\": \"array\",\n          \"code\": \"invalid_type\",\n          \"path\": [],\n          \"message\": \"Invalid input: expected array, received object\"\n        }\n      ],\n      [\n        {\n          \"code\": \"invalid_union\",\n          \"errors\": [\n            [\n              {\n                \"expected\": \"string\",\n                \"code\": \"invalid_type\",\n                \"path\": [],\n                \"message\": \"Invalid input: expected string, received object\"\n              }\n            ],\n            [\n              {\n                \"expected\": \"number\",\n                \"code\": \"invalid_type\",\n                \"path\": [],\n                \"message\": \"Invalid input: expected number, received object\"\n              }\n            ],\n            [\n              {\n                \"expected\": \"boolean\",\n                \"code\": \"invalid_type\",\n                \"path\": [],\n                \"message\": \"Invalid input: expected boolean, received object\"\n              }\n            ],\n            [\n              {\n                \"expected\": \"null\",\n                \"code\": \"invalid_type\",\n                \"path\": [],\n                \"message\": \"Invalid input: expected null, received object\"\n              }\n            ],\n            [\n              {\n                \"expected\": \"array\",\n                \"code\": \"invalid_type\",\n                \"path\": [],\n                \"message\": \"Invalid input: expected array, received object\"\n              }\n            ],\n            [\n              {\n                \"code\": \"invalid_union\",\n                \"errors\": [\n                  [\n                    {\n                      \"expected\": \"string\",\n                      \"code\": \"invalid_type\",\n                      \"path\": [],\n                      \"message\": \"Invalid input: expected string, received object\"\n                    }\n                  ],\n                  [\n                    {\n                      \"expected\": \"number\",\n                      \"code\": \"invalid_type\",\n                      \"path\": [],\n                      \"message\": \"Invalid input: expected number, received object\"\n                    }\n                  ],\n                  [\n                    {\n                      \"expected\": \"boolean\",\n                      \"code\": \"invalid_type\",\n                      \"path\": [],\n                      \"message\": \"Invalid input: expected boolean, received object\"\n                    }\n                  ],\n                  [\n                    {\n                      \"expected\": \"null\",\n                      \"code\": \"invalid_type\",\n                      \"path\": [],\n                      \"message\": \"Invalid input: expected null, received object\"\n                    }\n                  ],\n                  [\n                    {\n                      \"expected\": \"array\",\n                      \"code\": \"invalid_type\",\n                      \"path\": [],\n                      \"message\": \"Invalid input: expected array, received object\"\n                    }\n                  ],\n                  [\n                    {\n                      \"code\": \"invalid_union\",\n                      \"errors\": [\n                        [\n                          {\n                            \"expected\": \"string\",\n                            \"code\": \"invalid_type\",\n                            \"path\": [],\n                            \"message\": \"Invalid input: expected string, received undefined\"\n                          }\n                        ],\n                        [\n                          {\n                            \"expected\": \"number\",\n                            \"code\": \"invalid_type\",\n                            \"path\": [],\n                            \"message\": \"Invalid input: expected number, received undefined\"\n                          }\n                        ],\n                        [\n                          {\n                            \"expected\": \"boolean\",\n                            \"code\": \"invalid_type\",\n                            \"path\": [],\n                            \"message\": \"Invalid input: expected boolean, received undefined\"\n                          }\n                        ],\n                        [\n                          {\n                            \"expected\": \"null\",\n                            \"code\": \"invalid_type\",\n                            \"path\": [],\n                            \"message\": \"Invalid input: expected null, received undefined\"\n                          }\n                        ],\n                        [\n                          {\n                            \"expected\": \"array\",\n                            \"code\": \"invalid_type\",\n                            \"path\": [],\n                            \"message\": \"Invalid input: expected array, received undefined\"\n                          }\n                        ],\n                        [\n                          {\n                            \"expected\": \"record\",\n                            \"code\": \"invalid_type\",\n                            \"path\": [],\n                            \"message\": \"Invalid input: expected record, received undefined\"\n                          }\n                        ]\n                      ],\n                      \"path\": [\n                        \"caseLinkLabel\"\n                      ],\n                      \"message\": \"Invalid input\"\n                    }\n                  ]\n                ],\n                \"path\": [\n                  \"controls\"\n                ],\n                \"message\": \"Invalid input\"\n              }\n            ]\n          ],\n          \"path\": [\n            \"navigation\"\n          ],\n          \"message\": \"Invalid input\"\n        }\n      ]\n    ],\n    \"path\": [],\n    \"message\": \"Invalid input\"\n  }\n]",
+      "stack":
+          ZodError: [
+            {
+              "code": "invalid_union",
+              "errors": [
+                [
+                  {
+                    "expected": "string",
+                    "code": "invalid_type",
+                    "path": [],
+                    "message": "Invalid input: expected string, received object"
+                  }
+                ],
+                [
+                  {
+                    "expected": "number",
+                    "code": "invalid_type",
+                    "path": [],
+                    "message": "Invalid input: expected number, received object"
+                  }
+                ],
+                [
+                  {
+                    "expected": "boolean",
+                    "code": "invalid_type",
+                    "path": [],
+                    "message": "Invalid input: expected boolean, received object"
+                  }
+                ],
+                [
+                  {
+                    "expected": "null",
+                    "code": "invalid_type",
+                    "path": [],
+                    "message": "Invalid input: expected null, received object"
+                  }
+                ],
+                [
+                  {
+                    "expected": "array",
+                    "code": "invalid_type",
+                    "path": [],
+                    "message": "Invalid input: expected array, received object"
+                  }
+                ],
+                [
+                  {
+                    "code": "invalid_union",
+                    "errors": [
+                      [
+                        {
+                          "expected": "string",
+                          "code": "invalid_type",
+                          "path": [],
+                          "message": "Invalid input: expected string, received object"
+                        }
+                      ],
+                      [
+                        {
+                          "expected": "number",
+                          "code": "invalid_type",
+                          "path": [],
+                          "message": "Invalid input: expected number, received object"
+                        }
+                      ],
+                      [
+                        {
+                          "expected": "boolean",
+                          "code": "invalid_type",
+                          "path": [],
+                          "message": "Invalid input: expected boolean, received object"
+                        }
+                      ],
+                      [
+                        {
+                          "expected": "null",
+                          "code": "invalid_type",
+                          "path": [],
+                          "message": "Invalid input: expected null, received object"
+                        }
+                      ],
+                      [
+                        {
+                          "expected": "array",
+                          "code": "invalid_type",
+                          "path": [],
+                          "message": "Invalid input: expected array, received object"
+                        }
+                      ],
+                      [
+                        {
+                          "code": "invalid_union",
+                          "errors": [
+                            [
+                              {
+                                "expected": "string",
+                                "code": "invalid_type",
+                                "path": [],
+                                "message": "Invalid input: expected string, received object"
+                              }
+                            ],
+                            [
+                              {
+                                "expected": "number",
+                                "code": "invalid_type",
+                                "path": [],
+                                "message": "Invalid input: expected number, received object"
+                              }
+                            ],
+                            [
+                              {
+                                "expected": "boolean",
+                                "code": "invalid_type",
+                                "path": [],
+                                "message": "Invalid input: expected boolean, received object"
+                              }
+                            ],
+                            [
+                              {
+                                "expected": "null",
+                                "code": "invalid_type",
+                                "path": [],
+                                "message": "Invalid input: expected null, received object"
+                              }
+                            ],
+                            [
+                              {
+                                "expected": "array",
+                                "code": "invalid_type",
+                                "path": [],
+                                "message": "Invalid input: expected array, received object"
+                              }
+                            ],
+                            [
+                              {
+                                "code": "invalid_union",
+                                "errors": [
+                                  [
+                                    {
+                                      "expected": "string",
+                                      "code": "invalid_type",
+                                      "path": [],
+                                      "message": "Invalid input: expected string, received undefined"
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "expected": "number",
+                                      "code": "invalid_type",
+                                      "path": [],
+                                      "message": "Invalid input: expected number, received undefined"
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "expected": "boolean",
+                                      "code": "invalid_type",
+                                      "path": [],
+                                      "message": "Invalid input: expected boolean, received undefined"
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "expected": "null",
+                                      "code": "invalid_type",
+                                      "path": [],
+                                      "message": "Invalid input: expected null, received undefined"
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "expected": "array",
+                                      "code": "invalid_type",
+                                      "path": [],
+                                      "message": "Invalid input: expected array, received undefined"
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "expected": "record",
+                                      "code": "invalid_type",
+                                      "path": [],
+                                      "message": "Invalid input: expected record, received undefined"
+                                    }
+                                  ]
+                                ],
+                                "path": [
+                                  "caseLinkLabel"
+                                ],
+                                "message": "Invalid input"
+                              }
+                            ]
+                          ],
+                          "path": [
+                            "controls"
+                          ],
+                          "message": "Invalid input"
+                        }
+                      ]
+                    ],
+                    "path": [
+                      "navigation"
+                    ],
+                    "message": "Invalid input"
+                  }
+                ]
+              ],
+              "path": [],
+              "message": "Invalid input"
+            }
+          ]
+              at Object.prepare (E:\a-design-for-life\src\features\site-navigation\server\navigation-publication.ts:20:23)
+              at captureLegacyPublications (E:\a-design-for-life\src\config\capture-legacy-publications.ts:204:27)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.up (E:\a-design-for-life\src\migrations\20261030_124550_publication_coordination.ts:69:3)
+              at async runMigrationFile (E:\a-design-for-life\node_modules\.pnpm\@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726\node_modules\@payloadcms\drizzle\src\migrate.ts:99:5)
+              at async Object.migrate (E:\a-design-for-life\node_modules\.pnpm\@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726\node_modules\@payloadcms\drizzle\src\migrate.ts:86:5)
+              at async migrate (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\bin\migrate.ts:97:7)
+              at async runBinScript (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:127:9)
+              at async bin (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:61:29)
+              at async start (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/bin.js:30:7)
+      "name": "ZodError"
+    }

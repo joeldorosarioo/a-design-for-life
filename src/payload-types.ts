@@ -384,6 +384,7 @@ export interface SiteNavigation {
     copyright?: string | null;
   };
   controls?: {
+    caseLinkLabel?: string | null;
     homeLabel?: string | null;
     casesLabel?: string | null;
     contentsLabel?: string | null;
@@ -477,6 +478,7 @@ export interface ProfessionalProfile {
           readingKey?: string | null;
           title?: string | null;
           description?: string | null;
+          keywords?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -494,6 +496,7 @@ export interface ProfessionalProfile {
       caption?: string | null;
     };
     journeyHeading?: string | null;
+    journeyEyebrow?: string | null;
     journey?: string | null;
     deskPhotograph?: {
       media?: (string | null) | Media;
@@ -503,6 +506,7 @@ export interface ProfessionalProfile {
     };
     editorialEmphasis?: string | null;
     approachHeading?: string | null;
+    approachEyebrow?: string | null;
     approach?: string | null;
     architecturePhotograph?: {
       media?: (string | null) | Media;
@@ -511,6 +515,7 @@ export interface ProfessionalProfile {
       caption?: string | null;
     };
     inMotionHeading?: string | null;
+    inMotionEyebrow?: string | null;
     inMotion?: string | null;
     closingHeading?: string | null;
     closing?: string | null;
@@ -878,6 +883,7 @@ export interface SiteNavigationSelect<T extends boolean = true> {
   controls?:
     | T
     | {
+        caseLinkLabel?: T;
         homeLabel?: T;
         casesLabel?: T;
         contentsLabel?: T;
@@ -987,6 +993,7 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
               readingKey?: T;
               title?: T;
               description?: T;
+              keywords?: T;
               id?: T;
             };
       };
@@ -1007,6 +1014,7 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
               caption?: T;
             };
         journeyHeading?: T;
+        journeyEyebrow?: T;
         journey?: T;
         deskPhotograph?:
           | T
@@ -1018,6 +1026,7 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
             };
         editorialEmphasis?: T;
         approachHeading?: T;
+        approachEyebrow?: T;
         approach?: T;
         architecturePhotograph?:
           | T
@@ -1028,6 +1037,7 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
               caption?: T;
             };
         inMotionHeading?: T;
+        inMotionEyebrow?: T;
         inMotion?: T;
         closingHeading?: T;
         closing?: T;

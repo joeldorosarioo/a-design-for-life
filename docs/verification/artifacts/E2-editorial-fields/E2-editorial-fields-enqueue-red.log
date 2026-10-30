@@ -1,0 +1,56 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Running 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+node:internal/modules/esm/get_format:243
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".css" for E:\a-design-for-life\src\features\professional-profile\stylesheets\profile-image.module.css
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:243:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:283:36)
+    at defaultLoadSync (node:internal/modules/esm/load:161:16)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:806:12)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at load (file:///E:/a-design-for-life/node_modules/.pnpm/tsx@4.23.15/node_modules/tsx/dist/register-nyXW-TH3.mjs:2:5820)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at loadWithHooks (node:internal/modules/customization_hooks:374:18)
+    at #loadSync (node:internal/modules/esm/loader:829:16)
+    at ModuleLoader.load (node:internal/modules/esm/loader:787:26) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v24.22.2
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+No test files found, exiting with code 1
+
+filter: src/helpers/payload/publication-enqueue.integration.test.ts
+projects: integration
+
+|integration| 
+
+include: src/**/*.integration.test.ts
+exclude:  **/node_modules/**, **/.git/**
+
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+TypeError: code.charCodeAt is not a function
+    at extractInlineSourceMap (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/module-runner.js:366:57)
+    at EvaluatedModules.getModuleSourceMapById (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/module-runner.js:355:19)
+    at getRunnerSourceMap (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/module-runner.js:952:31)
+    at mapSourcePosition (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/module-runner.js:991:18)
+    at wrapCallSite (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/module-runner.js:1075:17)
+    at Error.prepareStackTrace (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/module-runner.js:1102:78)
+    at prepareStackTraceCallback (node:internal/errors:146:29)
+    at parseErrorStacktrace (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/source-map.DdKI5IHB.js:1736:21)
+    at Object.parseErrorStacktrace (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/index.1TqnEahn.js:3285:11)
+    at printErrorInner (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/index.1TqnEahn.js:3312:25)
+
+
+

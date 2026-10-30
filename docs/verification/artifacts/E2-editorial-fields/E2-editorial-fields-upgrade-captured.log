@@ -1,0 +1,41 @@
+Error running script: E:\a-design-for-life\.work\e2-editorial-fields-upgrade-0fa4958-20261030\verify.ts
+AssertionError [ERR_ASSERTION]: Canonical professional-profiles.home must survive upgrade
++ actual - expected
+
+  {
+    description: 'Synthetic description',
+    eyebrow: 'Synthetic eyebrow',
+    portrait: {
+      alt: 'Synthetic portrait',
+      caption: null,
+      decorative: false,
++     media: '0cdbac9f-e728-40e6-8a79-c533cc9cc955'
+-     media: {
+-       createdAt: '2026-10-30T19:05:55.562Z',
+-       deletedAt: null,
+-       filename: 'fc9f4403-2e2c-4c95-8ab8-8ac65550465a.png',
+-       filesize: 102,
+-       height: 16,
+-       id: '0cdbac9f-e728-40e6-8a79-c533cc9cc955',
+-       label: null,
+-       mimeType: 'image/png',
+-       thumbnailURL: '/preview-media/0cdbac9f-e728-40e6-8a79-c533cc9cc955/w16',
+-       updatedAt: '2026-10-30T19:05:55.562Z',
+-       url: '/preview-media/0cdbac9f-e728-40e6-8a79-c533cc9cc955/original',
+-       width: 16
+-     }
+    },
+    projectsLabel: 'Synthetic projectsLabel',
+    title: 'Synthetic title',
+    titleEmphasis: 'Synthetic titleEmphasis'
+  }
+
+    at <anonymous> (E:\a-design-for-life\.work\e2-editorial-fields-upgrade-0fa4958-20261030\verify.ts:21:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [Object],
+  expected: [Object],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}

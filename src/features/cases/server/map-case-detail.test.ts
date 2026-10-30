@@ -112,6 +112,27 @@ it('deriva título completo e mantém as duas partes editoriais para cards e SEO
   });
 });
 
+it('preserves the existing editorial eyebrow in the case card projection', () => {
+  expect(
+    caseCardDTOSchema.parse(
+      mapCaseDetail({ ...document, eyebrow: 'Synthetic editorial category' }),
+    ),
+  ).toMatchObject({ eyebrow: 'Synthetic editorial category' });
+});
+
+it('reads legacy confirmed cards without inventing an editorial eyebrow', () => {
+  expect(
+    caseCardDTOSchema.parse({
+      caseId: sharedID,
+      locale: 'pt',
+      title: 'Legacy',
+      summary: null,
+      path: '/pt/cases/legacy',
+      cover: null,
+    }),
+  ).toMatchObject({ eyebrow: null });
+});
+
 it('preserva identificação, manchete e notas, e deriva sumário das seções reais após reordenação', () => {
   const comparison = {
     readingKey: secondKey,

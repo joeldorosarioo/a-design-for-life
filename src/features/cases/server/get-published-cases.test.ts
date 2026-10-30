@@ -60,6 +60,7 @@ it('filtra idioma e aplica ordem manual confirmada, preservando o contrato míni
     expect(Object.keys(result.value[0]).sort()).toEqual([
       'caseId',
       'cover',
+      'eyebrow',
       'locale',
       'path',
       'summary',
