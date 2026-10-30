@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-30T21:02:25.475Z",
+  "updatedAt": "2026-10-30T22:29:56.237Z",
   "stage": 2,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 16,
+  "completedItems": 17,
   "totalItems": 30,
-  "percentage": 53.3,
+  "percentage": 56.7,
   "closedTasks": ["E2.1"],
   "totalTasks": 6,
   "approval": "A2 pending; stage3 not authorized",
@@ -98,7 +98,7 @@
       "id": "E2.3.5",
       "done": false,
       "summary": "Gate e comparações de listagem/detalhes PT/EN e segundo EN",
-      "evidence": "Faltam comparação renderizada e referências ainda inacessíveis pelo editor."
+      "evidence": "Todos os18frames e textos de referência estão disponíveis, com origem e hashes. Faltam comparação renderizada e gate atual."
     },
     {
       "id": "E2.4.1",
@@ -122,7 +122,7 @@
       "id": "E2.4.4",
       "done": false,
       "summary": "Jornada completa de escolha na UI, visitas, renovação e expiração",
-      "evidence": "Oito jornadas de transporte/cookie passaram; clique real da UI e integração atual ainda aguardam GREEN."
+      "evidence": "Oito jornadas de transporte/cookie passaram; primeiro clique real Home PT→EN passou com204 e prazo de180dias. A matriz completa de UI, visitas, renovação e expiração ainda precisa de regressão agregada atual."
     },
     {
       "id": "E2.4.5",
@@ -138,9 +138,9 @@
     },
     {
       "id": "E2.5.2",
-      "done": false,
+      "done": true,
       "summary": "Captura/restauração exata após imagens/fontes",
-      "evidence": "Controlador tem testes focados; primeiro GREEN real e timeout/layout ainda pendentes."
+      "evidence": "Primeiro GREEN real: pnpm test:e2e reading-position.e2e.test.ts not-found.e2e.test.ts, exit0, 3/3, BuildID2jd7ygNItui2m5VNuJ4XF. Home PT/EN manteve a mesma chave em ±2px; 14/14 testes focados de remount/layout, timeout explícito e transferência temporária por Document. Matriz de outras páginas, mídia lenta e histórico permanece em E2.5.4/E2.5.5."
     },
     {
       "id": "E2.5.3",
@@ -176,13 +176,13 @@
       "id": "E2.6.3",
       "done": false,
       "summary": "Comparação visual completa e larguras intermediárias",
-      "evidence": "Oito baselines disponíveis; preview visual e comparações completas pendentes."
+      "evidence": "Todos os18baselines disponíveis. Prévia visual privada e comparação renderizada completa ainda pendentes."
     },
     {
       "id": "E2.6.4",
       "done": false,
       "summary": "Jornadas públicas/privadas, gate e diagnóstico de desempenho",
-      "evidence": "Backend de preview Native7/7; UI privada e gate atual pendentes."
+      "evidence": "Prévia visual autenticada no build de produção local:8/8HTTP (HTML semJSPT/EN nasquatro páginas,HEAD,Flight/prefetch,mídia/PDF privados,negações e revogação). Fonte474arquivos+78exports em artifacts/E2-private-preview. Faltam gate integral atual,jornadas públicas ampliadas e diagnóstico de desempenho."
     },
     {
       "id": "E2.6.5",
@@ -190,5 +190,14 @@
       "summary": "Pacote A2 demonstrável entregue com modelos privados",
       "evidence": "Entrega A2 ainda não produzida; etapa3 depende da aprovação posterior."
     }
+  ],
+  "recalculatedAt": "2026-10-30T22:29:56.311Z",
+  "notes": [
+    "Último gate integral pnpm verify:exit1,970pass1fail2skip/124arquivos. O teste de lista privada pressupunha banco vazio; RED de isolamento reproduzido e GREEN9/9 na mesma ordem. Após ajuste apenas de tipagem no seletor, getter7/7+Proxy1/1 passaram; repetir o par com o arquivo legado correto ainda pendente. Gate integral após as novas fontes permanece aberto.",
+    "Prévia privada:20/20unit e50/50Native (o50 inclui o39 anterior). Frame17/17+46regressões; Proxy35/35unit e1/1Native. Tipagem completa exit0 após trocar toSorted por cópia+sort, preservando a libTypeScript aprovada.",
+    "HTTP privado atual exit0,8/8,BuildIDHqSsC4h2NmoWBbjHU3mLo,Node24.22.2/Next16.4.3/Payload3.92.1/PostgreSQL17.11isolado55433. Falhas anteriores de filtro sem testes,fixture sem retrato e protocolo de prefetch estão preservadas e separadas do RED404 original. Serviços encerrados e snapshot de474fontes/78exports registrado antes da próxima janela.",
+    "Todos os18frames e textos necessários estão disponíveis com origem e hashes. O loader visual Native ainda não foi executado; não há comparação renderizada completa, conteúdo demonstrativo publicado ou aprovação A2.",
+    "Primeira troca real HomePT→EN passou em±2px; Nativeclassificação e14units de remount/layout passaram. Nova matriz de leitura e contato está na janela isolada de navegador; itens correspondentes só mudam após os resultados.",
+    "Campos específicos de título/identificação do card dependem da resposta à lacuna apresentada ao usuário. Sumário continua derivado de seções; nenhuma lista manual ou artigo profissional foi inventado."
   ]
 }
