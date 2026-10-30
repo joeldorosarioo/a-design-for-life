@@ -1,0 +1,324 @@
+$ vitest run --project integration src/features/professional-profile/content/validate-publication.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[02:11:14] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[02:11:14] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[02:11:14] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[02:11:14] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[02:11:14] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (91ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[02:11:15] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[02:11:15] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[02:11:15] [32mINFO[39m: [36mDone.[39m
+[02:11:17] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/professional-profile/content/validate-publication.integration.test.ts (3 tests | 2 failed) 658ms
+   × rejects publishing profile SEO informative image without alt while preserving its public document, draft and head 211ms
+   × rejects publishing profile SEO decorative image with nonempty alt while preserving its public document, draft and head 164ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/professional-profile/content/validate-publication.integration.test.ts > rejects publishing profile SEO informative image without alt while preserving its public document, draft and head
+AssertionError: promise resolved "{ locale: 'pt', …(16) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "about": {
++     "approach": "Synthetic approach",
++     "approachHeading": "Synthetic approachHeading",
++     "architecturePhotograph": {
++       "alt": "Synthetic architecturePhotograph",
++       "caption": null,
++       "decorative": false,
++       "media": "951e9404-8d8f-4450-99bc-cfe0f0ad2f68",
++     },
++     "closing": "Synthetic closing",
++     "closingHeading": "Synthetic closingHeading",
++     "description": "Synthetic description",
++     "deskPhotograph": {
++       "alt": "Synthetic deskPhotograph",
++       "caption": null,
++       "decorative": false,
++       "media": "951e9404-8d8f-4450-99bc-cfe0f0ad2f68",
++     },
++     "editorialEmphasis": "Synthetic editorialEmphasis",
++     "eyebrow": "Synthetic eyebrow",
++     "inMotion": "Synthetic inMotion",
++     "inMotionHeading": "Synthetic inMotionHeading",
++     "introduction": "Synthetic introduction",
++     "introductionHeading": "Synthetic introductionHeading",
++     "journey": "Synthetic journey",
++     "journeyHeading": "Synthetic journeyHeading",
++     "portrait": {
++       "alt": "Synthetic portrait",
++       "caption": null,
++       "decorative": false,
++       "media": "951e9404-8d8f-4450-99bc-cfe0f0ad2f68",
++     },
++     "projectsLabel": "Synthetic projectsLabel",
++     "title": "Synthetic title",
++   },
++   "approach": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "methods": [
++       {
++         "description": "Synthetic description",
++         "id": "6ae426f53997b999d81dfa62",
++         "readingKey": null,
++         "title": "Synthetic method",
++       },
++     ],
++     "title": "Synthetic title",
++   },
++   "contacts": {
++     "email": "synthetic@example.invalid",
++     "linkedin": "https://www.linkedin.com/in/synthetic",
++   },
++   "createdAt": "2026-10-30T05:11:17.386Z",
++   "editorialRevision": "80e30aac-a42e-4e86-90b7-11bf17c24327",
++   "home": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "portrait": {
++       "alt": "Synthetic portrait",
++       "caption": null,
++       "decorative": false,
++       "media": "951e9404-8d8f-4450-99bc-cfe0f0ad2f68",
++     },
++     "projectsLabel": "Synthetic projectsLabel",
++     "title": "Synthetic title",
++     "titleEmphasis": "Synthetic titleEmphasis",
++   },
++   "homeAbout": {
++     "aboutLabel": "Synthetic aboutLabel",
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "title": "Synthetic title",
++     "trajectory": [
++       {
++         "description": "Synthetic description",
++         "id": "6ae426f53997b999d81dfa61",
++         "period": "Synthetic period",
++         "readingKey": null,
++         "title": "Synthetic trajectory",
++       },
++     ],
++   },
++   "homeProjects": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "title": "Synthetic title",
++   },
++   "id": "35d14942-9f72-499b-b5eb-c799b0da6913",
++   "identity": {
++     "name": "Private draft profile",
++     "role": "Synthetic role",
++   },
++   "leaseToken": "39dae627-691b-40a9-a2ae-9e42db9910c7",
++   "listing": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "title": "Synthetic title",
++   },
++   "locale": "pt",
++   "resume": "06102e31-b02e-4dbf-9758-e220d1780adf",
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": "",
++       "caption": null,
++       "decorative": false,
++       "media": "951e9404-8d8f-4450-99bc-cfe0f0ad2f68",
++     },
++     "listingDescription": null,
++     "listingTitle": null,
++   },
++   "updatedAt": "2026-10-30T05:11:17.529Z",
+  }
+
+ ❯ src/features/professional-profile/content/validate-publication.integration.test.ts:84:6
+     82|         overrideAccess: false,
+     83|       }),
+     84|     ).rejects.toMatchObject({
+       |      ^
+     85|       status: 400,
+     86|       data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/features/professional-profile/content/validate-publication.integration.test.ts > rejects publishing profile SEO decorative image with nonempty alt while preserving its public document, draft and head
+AssertionError: promise resolved "{ locale: 'pt', …(16) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "published",
++   "about": {
++     "approach": "Synthetic approach",
++     "approachHeading": "Synthetic approachHeading",
++     "architecturePhotograph": {
++       "alt": "Synthetic architecturePhotograph",
++       "caption": null,
++       "decorative": false,
++       "media": "1156f592-81c6-4050-92a9-7c4f071fd969",
++     },
++     "closing": "Synthetic closing",
++     "closingHeading": "Synthetic closingHeading",
++     "description": "Synthetic description",
++     "deskPhotograph": {
++       "alt": "Synthetic deskPhotograph",
++       "caption": null,
++       "decorative": false,
++       "media": "1156f592-81c6-4050-92a9-7c4f071fd969",
++     },
++     "editorialEmphasis": "Synthetic editorialEmphasis",
++     "eyebrow": "Synthetic eyebrow",
++     "inMotion": "Synthetic inMotion",
++     "inMotionHeading": "Synthetic inMotionHeading",
++     "introduction": "Synthetic introduction",
++     "introductionHeading": "Synthetic introductionHeading",
++     "journey": "Synthetic journey",
++     "journeyHeading": "Synthetic journeyHeading",
++     "portrait": {
++       "alt": "Synthetic portrait",
++       "caption": null,
++       "decorative": false,
++       "media": "1156f592-81c6-4050-92a9-7c4f071fd969",
++     },
++     "projectsLabel": "Synthetic projectsLabel",
++     "title": "Synthetic title",
++   },
++   "approach": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "methods": [
++       {
++         "description": "Synthetic description",
++         "id": "6ae426f53997b999d81dfa64",
++         "readingKey": null,
++         "title": "Synthetic method",
++       },
++     ],
++     "title": "Synthetic title",
++   },
++   "contacts": {
++     "email": "synthetic@example.invalid",
++     "linkedin": "https://www.linkedin.com/in/synthetic",
++   },
++   "createdAt": "2026-10-30T05:11:17.584Z",
++   "editorialRevision": "0f6039f7-3bf4-410c-8a97-589b5b324243",
++   "home": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "portrait": {
++       "alt": "Synthetic portrait",
++       "caption": null,
++       "decorative": false,
++       "media": "1156f592-81c6-4050-92a9-7c4f071fd969",
++     },
++     "projectsLabel": "Synthetic projectsLabel",
++     "title": "Synthetic title",
++     "titleEmphasis": "Synthetic titleEmphasis",
++   },
++   "homeAbout": {
++     "aboutLabel": "Synthetic aboutLabel",
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "title": "Synthetic title",
++     "trajectory": [
++       {
++         "description": "Synthetic description",
++         "id": "6ae426f53997b999d81dfa63",
++         "period": "Synthetic period",
++         "readingKey": null,
++         "title": "Synthetic trajectory",
++       },
++     ],
++   },
++   "homeProjects": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "title": "Synthetic title",
++   },
++   "id": "d06d9ae8-368b-42e2-a7e0-6020d577ad04",
++   "identity": {
++     "name": "Private draft profile",
++     "role": "Synthetic role",
++   },
++   "leaseToken": "9d04e146-20f3-4642-9a86-0b878ea3c8fa",
++   "listing": {
++     "description": "Synthetic description",
++     "eyebrow": "Synthetic eyebrow",
++     "title": "Synthetic title",
++   },
++   "locale": "pt",
++   "resume": "79cad0bc-9bc4-4bf7-9d35-5a0e0e36775e",
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": "Invalid decorative alt",
++       "caption": null,
++       "decorative": true,
++       "media": "1156f592-81c6-4050-92a9-7c4f071fd969",
++     },
++     "listingDescription": null,
++     "listingTitle": null,
++   },
++   "updatedAt": "2026-10-30T05:11:17.703Z",
+  }
+
+ ❯ src/features/professional-profile/content/validate-publication.integration.test.ts:84:6
+     82|         overrideAccess: false,
+     83|       }),
+     84|     ).rejects.toMatchObject({
+       |      ^
+     85|       status: 400,
+     86|       data: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  02:11:10
+   Duration  7.42s (import 67%, tests 26%, transform 4%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

@@ -66,5 +66,7 @@ export const validateProfilePublication = publicationGuard((data) => {
           requireText(errors, row[field], `${group}.${key}.${index}.${field}`);
       });
   }
+  const seo = data.seo as { image?: { media?: unknown } | null } | null | undefined;
+  if (seo?.image?.media) requireImage(errors, seo.image, 'seo.image');
   return errors;
 });
