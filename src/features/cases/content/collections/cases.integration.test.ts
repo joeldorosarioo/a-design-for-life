@@ -1,3 +1,4 @@
+import { observedRequest } from '../../../../../testing/fixtures/editorial-lifecycle';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { sql } from '@payloadcms/db-postgres';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
@@ -8,11 +9,11 @@ beforeAll(async () => {
 afterAll(async () => {
   await fixture?.payload.destroy();
 });
-const createCase = () =>
+const createCase = async () =>
   fixture.payload.create({
     collection: 'cases',
     data: { internalTitle: 'Synthetic referenced identity' },
-    req: undefined,
+    req: await fixture.request(),
     overrideAccess: true,
   });
 it.each([false, true])(
@@ -37,7 +38,7 @@ it.each([false, true])(
       fixture.payload.delete({
         collection: 'cases',
         id: parent.id,
-        req: await fixture.request(),
+        req: await observedRequest('cases', String(parent.id), await fixture.request()),
         overrideAccess,
       }),
     ).rejects.toMatchObject({ status: 409 });
@@ -80,7 +81,7 @@ it('permite excluir identidade vazia sem ampliar a política de exclusão', asyn
     fixture.payload.delete({
       collection: 'cases',
       id: parent.id,
-      req: await fixture.request(),
+      req: await observedRequest('cases', String(parent.id), await fixture.request()),
       overrideAccess: false,
     }),
   ).resolves.toMatchObject({ id: parent.id });
@@ -126,7 +127,7 @@ it('a tradução não confirmada bloqueia DELETE no banco e preserva identidade 
     const deletion = fixture.payload.delete({
       collection: 'cases',
       id: parent.id,
-      req: await fixture.request(),
+      req: await observedRequest('cases', String(parent.id), await fixture.request()),
       overrideAccess: true,
     });
     const result = deletion.then(
@@ -172,7 +173,7 @@ it('DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã
     await fixture.payload.delete({
       collection: 'cases',
       id: parent.id,
-      req,
+      req: await observedRequest('cases', String(parent.id), req),
       overrideAccess: false,
     });
     const creation = fixture.payload.create({

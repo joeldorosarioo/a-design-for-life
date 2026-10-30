@@ -1,0 +1,108 @@
+$ vitest run --project integration
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:19:59] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:19:59] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:19:59] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (46ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (92ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[01:20:00] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:20:00] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[01:20:00] [32mINFO[39m: [36mDone.[39m
+[01:20:02] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:04] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/config/provision-structural-cli.integration.test.ts (2 tests | 1 failed) 4939ms
+   × o consumidor CLI nativo repete sem alterar drafts nem criar contas 2504ms
+[01:20:11] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:14] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:17] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:19] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:22] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:24] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:27] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:29] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/config/provision-structural-bootstrap.integration.test.ts (1 test | 1 failed) 271ms
+   × provisiona sem conta humana somente os quatro drafts pelo contexto interno restrito 22ms
+[01:20:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:34] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:20:36] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/provision-structural-bootstrap.integration.test.ts > provisiona sem conta humana somente os quatro drafts pelo contexto interno restrito
+AssertionError: promise rejected "Forbidden: You are not allowed to perform… { …(4) }" instead of resolving
+ ❯ src/config/provision-structural-bootstrap.integration.test.ts:19:62
+     17|   const request = () =>
+     18|     createLocalReq({ context: { trustedStructuralProvisioning: true } …
+     19|   await expect(provisionStructuralDocuments(await request())).resolves…
+       |                                                              ^
+     20|   const before = [];
+     21|   for (const collection of ['site-navigation', 'professional-profiles'…
+
+Caused by: Forbidden: You are not allowed to perform this action.
+ ❯ editorialHead src/helpers/payload/editorial-revision.ts:22:22
+ ❯ syncNativeLock src/helpers/payload/editorial-revision.ts:30:19
+ ❯ hooks.afterChange src/helpers/payload/editorial-revision.ts:158:65
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:390:32
+ ❯ ensureNavigationDrafts src/features/site-navigation/server/ensure-navigation-drafts.ts:15:5
+ ❯ ensureBoth src/config/provision-structural-documents.ts:27:3
+ ❯ provisionStructuralDocuments src/config/provision-structural-documents.ts:43:7
+ ❯ src/config/provision-structural-bootstrap.integration.test.ts:19:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { data: null, isOperational: true, isPublic: true, status: 403 }
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/config/provision-structural-cli.integration.test.ts > o consumidor CLI nativo repete sem alterar drafts nem criar contas
+AssertionError: expected { status: 1, …(1) } to match object { status: +0 }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "status": 0,
++   "status": 1,
+  }
+
+ ❯ src/config/provision-structural-cli.integration.test.ts:30:58
+     28|   const usersBefore = (await fixture.payload.find({ collection: 'users…
+     29|   const first = cli();
+     30|   expect({ status: first.status, stderr: first.stderr }).toMatchObject…
+       |                                                          ^
+     31|   const snapshot = async () =>
+     32|     Promise.all(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 11 passed (13)
+      Tests  2 failed | 48 passed (50)
+   Start at  01:19:55
+   Duration  40.87s (import 64%, tests 32%, setup 3%, transform 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

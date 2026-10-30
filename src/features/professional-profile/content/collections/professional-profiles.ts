@@ -1,3 +1,7 @@
+import { getPublishedProfile } from '../../server/get-published-profile';
+import { localeSchema } from '@/helpers/i18n/locale.schema';
+import { isDraftOperation, protectEditorialCollection } from '@/helpers/payload/editorial-revision';
+import { validateProfilePublication } from '../validate-publication';
 import 'server-only';
 import { APIError, type CollectionConfig } from 'payload';
 import { profileInputSchema } from '../../contracts/profile.schema';
@@ -5,16 +9,62 @@ import { requiredIdentity, validatedWrite } from '@/helpers/payload/validate-inp
 import { structuralIdentitySchema } from '../../contracts/identity.schema';
 import { immutableFields } from '@/helpers/payload/immutable-fields';
 import { imageUseField } from '@/features/media-library/server';
-
-export const ProfessionalProfiles: CollectionConfig = {
+export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection({
   slug: 'professional-profiles',
   dbName: 'profiles',
   labels: { singular: 'Perfil profissional', plural: 'Perfil profissional' },
-  admin: { useAsTitle: 'locale', defaultColumns: ['locale', '_status'] },
+  admin: {
+    components: {
+      edit: { UnpublishButton: '/helpers/payload/editorial-actions#NoUnpublishAction' },
+    },
+    useAsTitle: 'locale',
+    defaultColumns: ['locale', '_status'],
+  },
+  custom: { editorialBootstrap: true },
   versions: { drafts: true },
+  endpoints: [
+    {
+      path: '/published/:locale',
+      method: 'get',
+      handler: async (req) => {
+        const parsed = localeSchema.safeParse(req.routeParams?.locale);
+        if (!parsed.success)
+          return Response.json(
+            {
+              ok: false,
+              error: { code: 'unavailable', message: 'Published content unavailable.' },
+            },
+            { status: 404 },
+          );
+        const result = await getPublishedProfile(parsed.data);
+        return Response.json(result, { status: result.ok ? 200 : 404 });
+      },
+    },
+  ],
   hooks: {
     beforeOperation: [validatedWrite(profileInputSchema)],
     beforeChange: [
+      async ({ data, originalDoc, req, collection }) => {
+        if (
+          data._status === 'draft' &&
+          !isDraftOperation(req) &&
+          !req.context.isRestoringVersion &&
+          originalDoc?.id
+        ) {
+          const current = await req.payload.db.findOne({
+            collection: collection.slug,
+            req,
+            where: { id: { equals: originalDoc.id } },
+          });
+          if ((current as { _status?: string } | null)?._status === 'published')
+            throw new APIError(
+              'Publicado: este documento estrutural não pode ser retirado de publicação.',
+              400,
+            );
+        }
+        return data;
+      },
+      validateProfilePublication,
       requiredIdentity(structuralIdentitySchema),
       immutableFields({ locale: 'Idioma não pode ser alterado.' }),
     ],
@@ -177,4 +227,4 @@ export const ProfessionalProfiles: CollectionConfig = {
       ],
     },
   ],
-};
+});

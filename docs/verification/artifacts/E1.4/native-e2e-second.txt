@@ -1,0 +1,140 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/app
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:22:23] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:22:23] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (87ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[01:22:24] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:22:24] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[01:22:24] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.0s
+  Running TypeScript ...
+  Finished TypeScript in 5.1s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/2) ...
+✓ Generating static pages using 5 workers (2/2) in 377ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /admin/[[...segments]]
+└ ƒ /api/[...slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 155ms
+✓ Running next.config.ts took 42ms
+[01:22:36] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Running 4 tests using 1 worker
+
+(node:38988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (596ms)
+[01:22:40] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (26ms)
+[01:22:42] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+[01:22:47] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  x  3 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:16:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases (4.6s)
+(node:42632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[01:22:49] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+[01:22:50] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  x  4 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:52:1 › anonymous HTTP sees only each independently published locale/group and protected native restore stays draft (306ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:16:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 409
+    Received: 403
+
+      36 |  const token=await owner.locator('[data-editorial-lease]').getAttribute('data-editorial-lease');
+      37 |  const stale=await owner.request.patch(`/api/cases/${doc.id}?overrideLock=true`,{data:{internalTitle:'Stale rejected',editorialRevision:oldRevision,leaseToken:token}});
+    > 38 |  expect(stale.status()).toBe(409);expect(await stale.json()).toMatchObject({errors:[expect.objectContaining({code:'stale-revision'})]});
+         |                         ^
+      39 |  const steal=await reader.request.patch(`/api/cases/${doc.id}?overrideLock=true`,{data:{internalTitle:'Reader steal',editorialRevision:oldRevision,leaseToken:token}});
+      40 |  expect(steal.ok()).toBe(false);
+      41 |  await reader.goto(`/admin/collections/cases/${other.id}`);
+        at E:\a-design-for-life\src\app\(payload)\admin\editorial.e2e.test.ts:38:25
+
+    Error Context: test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\error-context.md
+
+    Error Context: test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:52:1 › anonymous HTTP sees only each independently published locale/group and protected native restore stays draft 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      60 |  for(const [collection,doc,data] of [['professional-profiles',profiles[0],profilePublicationFixture(image.id,pdf.id)],['site-navigation',navigation[0],navigationFixture()]] as const){
+      61 |   const req=await observedRequest(collection,doc.id,await fixture.request());
+    > 62 |   const published=await request.patch(`/api/${collection}/${doc.id}`,{headers:{'x-editorial-revision':req.headers.get('x-editorial-revision')!,'x-editorial-lease':req.headers.get('x-editorial-lease')!},data:{...data,_status:'published'}});expect(published.ok()).toBe(true);
+         |                                                                                                                                                                                                                                                                       ^
+      63 |  }
+      64 |  expect(await (await anonymous.get('/api/site-navigation/published/pt')).json()).toMatchObject({ok:true,value:{locale:'pt'}});
+      65 |  expect((await anonymous.get('/api/site-navigation/published/en')).status()).toBe(404);
+        at E:\a-design-for-life\src\app\(payload)\admin\editorial.e2e.test.ts:62:263
+
+    Error Context: test-results\app-(payload)-admin-editor-689a6--native-restore-stays-draft-chromium\error-context.md
+
+    Error Context: test-results\app-(payload)-admin-editor-689a6--native-restore-stays-draft-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\app-(payload)-admin-editor-689a6--native-restore-stays-draft-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\app-(payload)-admin-editor-689a6--native-restore-stays-draft-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:16:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases 
+    [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:52:1 › anonymous HTTP sees only each independently published locale/group and protected native restore stays draft 
+  2 passed (31.8s)
+[ELIFECYCLE] Command failed with exit code 1.

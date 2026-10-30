@@ -1,5 +1,7 @@
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
+import { EDITORIAL_RENDER_REVISION } from '@/helpers/payload/editorial-revision';
+import { handleServerFunctions } from '@payloadcms/next/layouts';
+import { openEditorialDocument } from '@/helpers/payload/editorial-native';
+// Maintained application facade around the public native Payload RootPage.
 import type { Metadata } from 'next';
 
 import config from '@payload-config';
@@ -18,7 +20,29 @@ type Args = {
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   generatePageMetadata({ config, params, searchParams });
 
-const Page = ({ params, searchParams }: Args) =>
-  RootPage({ config, params, searchParams, importMap });
+const Page = async ({ params, searchParams }: Args) => {
+  const { segments = [] } = await params;
+  let observedSearchParams = searchParams;
+  if (segments[0] === 'collections' && segments[2] && segments[2] !== 'create') {
+    const opened = await handleServerFunctions({
+      config,
+      importMap,
+      name: 'editorial-open',
+      args: { collectionSlug: segments[1], id: segments[2] },
+      serverFunctions: { 'editorial-open': openEditorialDocument },
+    });
+    if (
+      opened &&
+      typeof opened === 'object' &&
+      'revision' in opened &&
+      typeof opened.revision === 'string'
+    )
+      observedSearchParams = Promise.resolve({
+        ...(await searchParams),
+        [EDITORIAL_RENDER_REVISION]: opened.revision,
+      });
+  }
+  return RootPage({ config, params, searchParams: observedSearchParams, importMap });
+};
 
 export default Page;

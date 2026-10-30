@@ -1,3 +1,4 @@
+import { nativeArray } from '@/helpers/payload/native-array.schema';
 import { z } from 'zod';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { inputMetadata } from '@/helpers/payload/input-metadata.schema';
@@ -22,7 +23,7 @@ export const caseBlockInputSchema = z.discriminatedUnion('blockType', [
 export const caseSectionInputSchema = z.strictObject({
   ...row,
   heading: text,
-  blocks: z.array(caseBlockInputSchema).nullish(),
+  blocks: nativeArray(caseBlockInputSchema).nullish(),
 });
 export const caseInputSchema = z.strictObject({
   ...inputMetadata,
@@ -37,7 +38,7 @@ export const caseInputSchema = z.strictObject({
   role: text,
   scope: text,
   contextNote: text,
-  sections: z.array(caseSectionInputSchema).nullish(),
+  sections: nativeArray(caseSectionInputSchema).nullish(),
   seo: z
     .strictObject({ title: text, description: text, image: imageUseInputSchema.nullish() })
     .nullish(),

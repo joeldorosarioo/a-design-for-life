@@ -1,0 +1,90 @@
+$ vitest run --project integration src/helpers/payload/editorial-revision.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:23:44] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:23:44] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:23:44] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:23:44] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (44ms)[39m
+[01:23:44] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (90ms)[39m
+[01:23:45] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (10ms)[39m
+[01:23:45] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[01:23:45] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[01:23:45] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+[01:23:45] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[01:23:45] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:23:45] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[01:23:45] [32mINFO[39m: [36mDone.[39m
+[01:23:47] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/helpers/payload/editorial-revision.integration.test.ts (8 tests | 2 failed) 30577ms
+   × a Local write with disableTransaction cannot advance the revision before validation failure 24ms
+   × a commit between content selection and technical head read never attaches a fresh revision to old content 30006ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/editorial-revision.integration.test.ts > a Local write with disableTransaction cannot advance the revision before validation failure
+AssertionError: expected 'a83171b4-82db-447e-a6d7-418417441b76' to be '3f8b0731-cecf-4ec4-8192-0faba06eb074' // Object.is equality
+
+Expected: "3f8b0731-cecf-4ec4-8192-0faba06eb074"
+Received: "a83171b4-82db-447e-a6d7-418417441b76"
+
+ ❯ src/helpers/payload/editorial-revision.integration.test.ts:65:90
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/helpers/payload/editorial-revision.integration.test.ts > a commit between content selection and technical head read never attaches a fresh revision to old content
+Error: Test timed out in 30000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/helpers/payload/editorial-revision.integration.test.ts:67:1
+     65|  expect((await editorialHead('cases',doc.id,await fixture.request())).…
+     66| });
+     67| it('a commit between content selection and technical head read never a…
+       | ^
+     68|  const doc=await metadata();const req=await fixture.request();req.cont…
+     69|  const actualFind=fixture.payload.db.findOne;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of undefined (reading 'testReadBarrier')
+ ❯ Object.fixture.payload.db.findOne src/helpers/payload/editorial-revision.integration.test.ts:73:43
+ ❯ findByIDOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/findByID.js:152:46
+ ❯ process.processTicksAndRejections node:internal/process/task_queues:104:5
+
+This error originated in "src/helpers/payload/editorial-revision.integration.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "a commit between content selection and technical head read never attaches a fresh revision to old content". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 6 passed (8)
+     Errors  1 error
+   Start at  01:23:40
+   Duration  37.45s (tests 94%, import 6%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

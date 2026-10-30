@@ -58,5 +58,14 @@ export default defineConfig([
     plugins: { architecture: { rules: { 'import-boundaries': importBoundaries } } },
     rules: { 'architecture/import-boundaries': 'error' },
   },
-  globalIgnores(['.next/**', '.toolchain/**', '.work/**', 'src/payload-types.ts', 'next-env.d.ts']),
+  globalIgnores([
+    '.next/**',
+    '.toolchain/**',
+    '.work/**',
+    'playwright-report/**',
+    'test-results/**',
+    'coverage/**',
+    'src/payload-types.ts',
+    'next-env.d.ts',
+  ]),
 ]);

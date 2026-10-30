@@ -1,3 +1,4 @@
+import { observedRequest } from '../../../../../testing/fixtures/editorial-lifecycle';
 import { createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
 import { afterAll, beforeAll, expect, it } from 'vitest';
@@ -237,7 +238,7 @@ it('recarrega link external→page sem URL inativa persistida e rejeita protocol
     id: created.id,
     data: { sections: [{ blocks: [{ blockType: 'text', content: contentFor(page) }] }] } as never,
     draft: true,
-    req: await fixture.request(),
+    req: await observedRequest('case-content', String(created.id), await fixture.request()),
     overrideAccess: false,
   });
   const reloaded = await fixture.payload.findByID({
@@ -285,7 +286,7 @@ it('recarrega link external→page sem URL inativa persistida e rejeita protocol
         ],
       } as never,
       draft: true,
-      req: await fixture.request(),
+      req: await observedRequest('case-content', String(created.id), await fixture.request()),
       overrideAccess: false,
     }),
   ).rejects.toMatchObject({ status: 400 });

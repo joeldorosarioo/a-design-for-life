@@ -1,3 +1,4 @@
+import { nativeArray } from '@/helpers/payload/native-array.schema';
 import { z } from 'zod';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { inputMetadata } from '@/helpers/payload/input-metadata.schema';
@@ -35,9 +36,9 @@ export const profileInputSchema = z.strictObject({
       eyebrow: text,
       title: text,
       description: text,
-      trajectory: z
-        .array(z.strictObject({ ...row, period: text, title: text, description: text }))
-        .nullish(),
+      trajectory: nativeArray(
+        z.strictObject({ ...row, period: text, title: text, description: text }),
+      ).nullish(),
       aboutLabel: text,
     })
     .nullish(),
@@ -46,7 +47,7 @@ export const profileInputSchema = z.strictObject({
       eyebrow: text,
       title: text,
       description: text,
-      methods: z.array(z.strictObject({ ...row, title: text, description: text })).nullish(),
+      methods: nativeArray(z.strictObject({ ...row, title: text, description: text })).nullish(),
     })
     .nullish(),
   about: z

@@ -1,0 +1,6 @@
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+warning: in the working copy of '.prettierignore', CRLF will be replaced by LF the next time Git touches it

@@ -1,0 +1,81 @@
+$ vitest run --project integration src/features/cases/content/collections/editorial-lifecycle.integration.test.ts src/features/cases/content/collections/cases.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:18:47] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:18:47] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (89ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[01:18:47] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:18:47] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[01:18:47] [32mINFO[39m: [36mDone.[39m
+[01:18:49] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:18:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/cases.integration.test.ts (5 tests | 2 failed) 575ms
+   × permite excluir identidade vazia sem ampliar a política de exclusão 39ms
+   × DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã quando exclusão vence 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > permite excluir identidade vazia sem ampliar a política de exclusão
+AssertionError: promise rejected "APIError: Document unavailable. { …(4) }" instead of resolving
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:87:4
+     85|       overrideAccess: false,
+     86|     }),
+     87|   ).resolves.toMatchObject({ id: parent.id });
+       |    ^
+     88|   await expect(
+     89|     fixture.payload.findByID({
+
+Caused by: APIError: Document unavailable.
+ ❯ editorialHead src/helpers/payload/editorial-revision.ts:25:18
+ ❯ hooks.afterRead src/helpers/payload/editorial-revision.ts:162:14
+ ❯ deleteByIDOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/deleteByID.js:180:26
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:80:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { data: null, isOperational: true, isPublic: true, status: 404 }
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/cases.integration.test.ts > DELETE não confirmado bloqueia INSERT e a tradução perde sem ficar órfã quando exclusão vence
+APIError: This document changed. Refresh before saving your changes.
+ ❯ claimRevision src/helpers/payload/editorial-revision.ts:72:74
+
+ ❯ hooks.beforeDelete src/helpers/payload/editorial-revision.ts:157:60
+ ❯ deleteByIDOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/deleteByID.ts:122:9
+ ❯ src/features/cases/content/collections/cases.integration.test.ts:173:5
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 7 passed (9)
+   Start at  01:18:42
+   Duration  10.31s (import 64%, tests 31%, setup 3%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

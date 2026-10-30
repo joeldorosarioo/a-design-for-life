@@ -1,3 +1,4 @@
+import { observedRequest } from '../../../../../testing/fixtures/editorial-lifecycle';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { caseEditorialError, translateCaseConflict } from '../../server/translate-case-conflict';
@@ -122,7 +123,7 @@ it('rejeita mudança de case ou idioma sem depender de colisão', async () => {
         data: data as never,
         draft: true,
         overrideAccess: true,
-        req: await fixture.request(),
+        req: await observedRequest('case-content', String(content.id), await fixture.request()),
       }),
     ).rejects.toMatchObject({ status: 400 });
   }
@@ -223,7 +224,7 @@ it('gera correspondências estáveis que sobrevivem a título, reordenação e t
     },
     draft: true,
     overrideAccess: false,
-    req: await fixture.request(),
+    req: await observedRequest('case-content', String(content.id), await fixture.request()),
   });
   expect(changed.sections!.map((section) => section.readingKey)).toEqual([
     second.readingKey,
@@ -275,7 +276,7 @@ it('bloqueia substituir chave de leitura de linha existente', async () => {
       data: { sections: [{ ...section, readingKey: 'd42b29dc-2e53-46b1-ac74-04161d94cadb' }] },
       draft: true,
       overrideAccess: true,
-      req: await fixture.request(),
+      req: await observedRequest('case-content', String(current.id), await fixture.request()),
     }),
   ).rejects.toMatchObject({ status: 400 });
 });

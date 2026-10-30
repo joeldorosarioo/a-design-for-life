@@ -1,5 +1,6 @@
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
+import './editorial-admin.css';
+import { editorialFormState, openEditorialDocument } from '@/helpers/payload/editorial-native';
+// Maintained application facade around native Payload server functions.
 import config from '@payload-config';
 import '@payloadcms/next/css';
 import type { ServerFunctionClient } from 'payload';
@@ -18,6 +19,18 @@ const serverFunction: ServerFunctionClient = async function (args) {
     ...args,
     config,
     importMap,
+    serverFunctions: {
+      'form-state': editorialFormState,
+      'render-document': async (nativeArgs) => {
+        await openEditorialDocument({ ...nativeArgs, id: nativeArgs.docID });
+        return handleServerFunctions({
+          name: 'render-document',
+          args: { ...args.args },
+          config,
+          importMap,
+        });
+      },
+    },
   });
 };
 

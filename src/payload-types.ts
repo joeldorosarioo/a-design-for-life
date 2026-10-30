@@ -162,6 +162,11 @@ export interface Case {
   internalTitle: string;
   sortOrder?: number | null;
   featured?: boolean | null;
+  editorialRevision?: string | null;
+  contentRevision?: string | null;
+  leaseToken?: string | null;
+  leaseOwner?: string | null;
+  leaseExpiresAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -271,6 +276,11 @@ export interface CaseContent {
       caption?: string | null;
     };
   };
+  editorialRevision?: string | null;
+  contentRevision?: string | null;
+  leaseToken?: string | null;
+  leaseOwner?: string | null;
+  leaseExpiresAt?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -354,6 +364,11 @@ export interface SiteNavigation {
     notFoundTitle?: string | null;
     notFoundDescription?: string | null;
   };
+  editorialRevision?: string | null;
+  contentRevision?: string | null;
+  leaseToken?: string | null;
+  leaseOwner?: string | null;
+  leaseExpiresAt?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -474,6 +489,11 @@ export interface ProfessionalProfile {
       caption?: string | null;
     };
   };
+  editorialRevision?: string | null;
+  contentRevision?: string | null;
+  leaseToken?: string | null;
+  leaseOwner?: string | null;
+  leaseExpiresAt?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -603,6 +623,11 @@ export interface CasesSelect<T extends boolean = true> {
   internalTitle?: T;
   sortOrder?: T;
   featured?: T;
+  editorialRevision?: T;
+  contentRevision?: T;
+  leaseToken?: T;
+  leaseOwner?: T;
+  leaseExpiresAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -703,6 +728,11 @@ export interface CaseContentSelect<T extends boolean = true> {
               caption?: T;
             };
       };
+  editorialRevision?: T;
+  contentRevision?: T;
+  leaseToken?: T;
+  leaseOwner?: T;
+  leaseExpiresAt?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -776,6 +806,11 @@ export interface SiteNavigationSelect<T extends boolean = true> {
         notFoundTitle?: T;
         notFoundDescription?: T;
       };
+  editorialRevision?: T;
+  contentRevision?: T;
+  leaseToken?: T;
+  leaseOwner?: T;
+  leaseExpiresAt?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -923,6 +958,11 @@ export interface ProfessionalProfilesSelect<T extends boolean = true> {
               caption?: T;
             };
       };
+  editorialRevision?: T;
+  contentRevision?: T;
+  leaseToken?: T;
+  leaseOwner?: T;
+  leaseExpiresAt?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

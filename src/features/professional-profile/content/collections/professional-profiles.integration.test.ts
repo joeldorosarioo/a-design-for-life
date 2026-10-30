@@ -1,3 +1,4 @@
+import { observedRequest } from '../../../../../testing/fixtures/editorial-lifecycle';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import {
@@ -53,7 +54,11 @@ describe('identidade estrutural: professional-profiles', () => {
 
         id: docs.docs[0].id,
 
-        req: await fixture.request(),
+        req: await observedRequest(
+          'professional-profiles',
+          String(docs.docs[0].id),
+          await fixture.request(),
+        ),
 
         overrideAccess: true,
       }),
@@ -109,7 +114,11 @@ describe('identidade estrutural: professional-profiles', () => {
 
         draft: true,
 
-        req: await fixture.request(),
+        req: await observedRequest(
+          'professional-profiles',
+          String(docs.docs[0].id),
+          await fixture.request(),
+        ),
 
         overrideAccess: true,
       }),
@@ -167,7 +176,11 @@ it.each([
       data: data as never,
       draft: true,
       overrideAccess: true,
-      req: await fixture.request(),
+      req: await observedRequest(
+        'professional-profiles',
+        String(current.docs[0].id),
+        await fixture.request(),
+      ),
     }),
   ).rejects.toMatchObject({ status: 400 });
 });
