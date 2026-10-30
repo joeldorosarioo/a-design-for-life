@@ -1,0 +1,194 @@
+{
+  "updatedAt": "2026-10-30T21:02:25.475Z",
+  "stage": 2,
+  "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
+  "completedItems": 16,
+  "totalItems": 30,
+  "percentage": 53.3,
+  "closedTasks": ["E2.1"],
+  "totalTasks": 6,
+  "approval": "A2 pending; stage3 not authorized",
+  "remainingEstimate": "12–18 hours of work, updated after user asked for remaining time; not a guaranteed delivery time.",
+  "criteria": [
+    {
+      "id": "E2.1.1",
+      "done": true,
+      "summary": "Referências, skills, originais e proveniência conferidos",
+      "evidence": "E2.1.md; artifacts/E2.1/reference-final/verified.json"
+    },
+    {
+      "id": "E2.1.2",
+      "done": true,
+      "summary": "Tokens e escalas da referência centralizados",
+      "evidence": "E2.1.md; ../architecture/mapeamento-figma.md"
+    },
+    {
+      "id": "E2.1.3",
+      "done": true,
+      "summary": "Reutilização/primitivas e teste inicial da política de movimento",
+      "evidence": "E2.1.md; artifacts/E2.1/evidence-manifest.json"
+    },
+    {
+      "id": "E2.1.4",
+      "done": true,
+      "summary": "RED/GREEN de movimento reduzido e conteúdo SSR legível",
+      "evidence": "E2.1.md; artifacts/E2.1/foundation-final-focused.txt"
+    },
+    {
+      "id": "E2.1.5",
+      "done": true,
+      "summary": "Gate da fundação, bundle e usos de contraste registrados",
+      "evidence": "E2.1.md; artifacts/E2-preparation/evidence-manifest.json"
+    },
+    {
+      "id": "E2.2.1",
+      "done": true,
+      "summary": "Destinos/rótulos fixos e contatos tipados com RED/GREEN",
+      "evidence": "E2.2.md; artifacts/E2.2/evidence-manifest.json"
+    },
+    {
+      "id": "E2.2.2",
+      "done": false,
+      "summary": "Menu, foco e contato sem encobrimento pelo header",
+      "evidence": "Menu anterior passou em HTTP; offsets do header sticky recém-aprovado aguardam regressão real."
+    },
+    {
+      "id": "E2.2.3",
+      "done": true,
+      "summary": "Home e Sobre compostas pelos grupos estruturados do Perfil",
+      "evidence": "artifacts/E2-ui-transport-preparation/home-about-green.txt; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt"
+    },
+    {
+      "id": "E2.2.4",
+      "done": true,
+      "summary": "Currículos PT/EN em nova aba e destaques privados filtrados",
+      "evidence": "artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt"
+    },
+    {
+      "id": "E2.2.5",
+      "done": false,
+      "summary": "Gate integral e comparação visual Home/Sobre",
+      "evidence": "Comparação renderizada Figma e gate após as últimas mudanças ainda abertos."
+    },
+    {
+      "id": "E2.3.1",
+      "done": true,
+      "summary": "Ordem/destaques por idioma, contagem e falha sem lista vazia",
+      "evidence": "artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt; artifacts/E2-preparation/evidence-manifest.json"
+    },
+    {
+      "id": "E2.3.2",
+      "done": true,
+      "summary": "Texto permitido, dupla imagem em ordem e sumário derivado",
+      "evidence": "artifacts/E2-public-pages-integration/E2-cases-unit-final-authoritative.log; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt"
+    },
+    {
+      "id": "E2.3.3",
+      "done": true,
+      "summary": "Comparação tipada, dimensões/sizes e prioridade de imagens",
+      "evidence": "artifacts/E2-public-pages-integration/E2-cases-ui-report.md; artifacts/E2-public-pages-integration/E2-public-image-http-green.txt"
+    },
+    {
+      "id": "E2.3.4",
+      "done": false,
+      "summary": "Todos os estados públicos com apresentação editorial aprovada",
+      "evidence": "Negativos de detalhe preservam renderer A1; apresentação editorial/contato na página ainda precisa do acabamento A2."
+    },
+    {
+      "id": "E2.3.5",
+      "done": false,
+      "summary": "Gate e comparações de listagem/detalhes PT/EN e segundo EN",
+      "evidence": "Faltam comparação renderizada e referências ainda inacessíveis pelo editor."
+    },
+    {
+      "id": "E2.4.1",
+      "done": true,
+      "summary": "Negociação/prioridade/pesos/variantes com RED/GREEN",
+      "evidence": "E2.4.md; artifacts/E2.4/evidence-manifest.json"
+    },
+    {
+      "id": "E2.4.2",
+      "done": true,
+      "summary": "Entrada307 privada e URLs explícitas sem negociação",
+      "evidence": "artifacts/E2-ui-transport-preparation/e2e-final.txt; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt"
+    },
+    {
+      "id": "E2.4.3",
+      "done": true,
+      "summary": "Cookie funcional com prazo/atributos e gravação manual",
+      "evidence": "artifacts/E2-ui-transport-preparation/language-http-green.txt; artifacts/E2-ui-transport-preparation/e2e-final.txt"
+    },
+    {
+      "id": "E2.4.4",
+      "done": false,
+      "summary": "Jornada completa de escolha na UI, visitas, renovação e expiração",
+      "evidence": "Oito jornadas de transporte/cookie passaram; clique real da UI e integração atual ainda aguardam GREEN."
+    },
+    {
+      "id": "E2.4.5",
+      "done": false,
+      "summary": "Gate integral atual da resolução de idioma",
+      "evidence": "Gate combinado posterior à UI pendente."
+    },
+    {
+      "id": "E2.5.1",
+      "done": true,
+      "summary": "Primeiro E2E escrito e RED comportamental observado",
+      "evidence": "artifacts/E2-public-pages-integration/E2-reading-position-first-red.txt; RED: páginas200, controle English ausente. Esta caixa conclui a preparação TDD, não o comportamento final."
+    },
+    {
+      "id": "E2.5.2",
+      "done": false,
+      "summary": "Captura/restauração exata após imagens/fontes",
+      "evidence": "Controlador tem testes focados; primeiro GREEN real e timeout/layout ainda pendentes."
+    },
+    {
+      "id": "E2.5.3",
+      "done": true,
+      "summary": "Chaves estáveis de seções/blocos/Perfil e lacunas resolvidas",
+      "evidence": "artifacts/E2-public-pages-integration/E2-reading-prerequisites-implementation.md; decisão do usuário registrada na execução."
+    },
+    {
+      "id": "E2.5.4",
+      "done": false,
+      "summary": "Tradução ausente, avisos, cancelamento e histórico",
+      "evidence": "Classificação Native passou; jornadas completas de UI ainda pendentes."
+    },
+    {
+      "id": "E2.5.5",
+      "done": false,
+      "summary": "Matriz das quatro páginas, viewport, mídia lenta e gate",
+      "evidence": "Primeira jornada real em integração; matriz completa ainda não executada."
+    },
+    {
+      "id": "E2.6.1",
+      "done": false,
+      "summary": "Metadados, sitemap/alternates e exclusões verificados",
+      "evidence": "Gerador46/46; sitemap/robots e provas HTTP completas pendentes."
+    },
+    {
+      "id": "E2.6.2",
+      "done": false,
+      "summary": "Acessibilidade automatizada e inspeção manual completa",
+      "evidence": "Menu/links têm provas; faltam leitor de tela, zoom e auditoria integrada."
+    },
+    {
+      "id": "E2.6.3",
+      "done": false,
+      "summary": "Comparação visual completa e larguras intermediárias",
+      "evidence": "Oito baselines disponíveis; preview visual e comparações completas pendentes."
+    },
+    {
+      "id": "E2.6.4",
+      "done": false,
+      "summary": "Jornadas públicas/privadas, gate e diagnóstico de desempenho",
+      "evidence": "Backend de preview Native7/7; UI privada e gate atual pendentes."
+    },
+    {
+      "id": "E2.6.5",
+      "done": false,
+      "summary": "Pacote A2 demonstrável entregue com modelos privados",
+      "evidence": "Entrega A2 ainda não produzida; etapa3 depende da aprovação posterior."
+    }
+  ]
+}
