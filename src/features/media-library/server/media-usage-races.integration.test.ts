@@ -1,10 +1,15 @@
 import { afterAll, beforeAll, expect, it, vi } from 'vitest';
 import { createLocalReq } from 'payload';
+import { sql } from '@payloadcms/db-postgres';
 import type { Media } from '@/payload-types';
-import { createEditorialPayloadFixture } from '../../../../testing/fixtures/editorial-payload';
+import {
+  clearStructuralFixture,
+  createEditorialPayloadFixture,
+} from '../../../../testing/fixtures/editorial-payload';
 import {
   mediaMetadataFixture,
   casePublicationFixture,
+  profilePublicationFixture,
   observedRequest,
 } from '../../../../testing/fixtures/editorial-lifecycle';
 import { resolveMediaAccess } from './resolve-media-access';
@@ -245,3 +250,162 @@ it('allows a draft to remove a trashed prior reference while retaining its recov
   expect((await publicMedia(replacement.id)).ok).toBe(true);
   expect(await publicMedia(previous.id)).toEqual({ ok: false, status: 404 });
 });
+
+// Every barrier forwards the actual adapter call. PostgreSQL owns the row locks;
+// the observer waits for a completed write or a real server-reported lock wait.
+async function crossSwapDraft(kind: 'case' | 'profile', mediaId: string, locale: 'pt' | 'en') {
+  if (kind === 'case') {
+    const content = await draft(mediaId, locale);
+    return { collection: 'case-content' as const, id: content.id, pdfId: null };
+  }
+  const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');
+  const profile = await fixture.payload.create({
+    collection: 'professional-profiles',
+    data: { locale, ...profilePublicationFixture(mediaId, pdf.id), _status: 'draft' },
+    draft: true,
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  return { collection: 'professional-profiles' as const, id: profile.id, pdfId: pdf.id };
+}
+async function publishCrossSwap(
+  owner: Awaited<ReturnType<typeof crossSwapDraft>>,
+  mediaId: string,
+) {
+  const req = await observedRequest(owner.collection, owner.id, await fixture.request());
+  if (owner.collection === 'case-content') {
+    return fixture.payload.update({
+      collection: owner.collection,
+      id: owner.id,
+      data: { cover: { media: mediaId, alt: 'Synthetic swapped cover' }, _status: 'published' },
+      req,
+      overrideAccess: false,
+    });
+  }
+  return fixture.payload.update({
+    collection: owner.collection,
+    id: owner.id,
+    data: { ...profilePublicationFixture(mediaId, owner.pdfId!), _status: 'published' },
+    req,
+    overrideAccess: false,
+  });
+}
+function publicationOutcome(operation: ReturnType<typeof publishCrossSwap>) {
+  return operation.then(
+    (doc) => ({ status: 'fulfilled', publication: doc._status }),
+    (error: unknown) => {
+      // Export only the PostgreSQL code, never the native request/lease or SQL parameters.
+      let cause = error as { code?: string; cause?: unknown } | undefined;
+      while (cause?.cause && !cause.code) cause = cause.cause as typeof cause;
+      return { status: 'rejected', databaseCode: cause?.code ?? 'unknown' };
+    },
+  );
+}
+it.each([
+  ['case', 'case'],
+  ['profile', 'profile'],
+  ['case', 'profile'],
+] as const)(
+  'publishes concurrent %s/%s drafts swapping media without a PostgreSQL lock cycle',
+  async (firstKind, secondKind) => {
+    if (firstKind === 'profile' || secondKind === 'profile')
+      await clearStructuralFixture(fixture.payload);
+    const x = await mediaMetadataFixture(fixture.payload);
+    const y = await mediaMetadataFixture(fixture.payload);
+    const first = await crossSwapDraft(firstKind, x.id, 'pt');
+    const second = await crossSwapDraft(secondKind, y.id, 'en');
+    const held = barrier(),
+      release = barrier(),
+      secondAttempt = barrier();
+    let firstStopped = false,
+      secondStopped = false,
+      secondAcquired = false;
+    const update = fixture.payload.db.updateOne.bind(fixture.payload.db);
+    const spy = vi.spyOn(fixture.payload.db, 'updateOne').mockImplementation(async (args) => {
+      if (args.collection !== 'media' || !('usages' in args.data)) return update(args);
+      const uses = args.data.usages as { documentId: string }[];
+      const targets = JSON.stringify(args.where);
+      const isTarget = targets.includes(x.id) || targets.includes(y.id);
+      if (isTarget && uses.some((use) => use.documentId === first.id) && !firstStopped) {
+        firstStopped = true;
+        const saved = await update(args);
+        held.resolve();
+        await release.promise;
+        return saved;
+      }
+      if (isTarget && uses.some((use) => use.documentId === second.id) && !secondStopped) {
+        secondStopped = true;
+        secondAttempt.resolve();
+        const saved = await update(args);
+        secondAcquired = true;
+        await release.promise;
+        return saved;
+      }
+      return update(args);
+    });
+    const publications: ReturnType<typeof publicationOutcome>[] = [];
+    try {
+      publications.push(publicationOutcome(publishCrossSwap(first, y.id)));
+      await held.promise;
+      publications.push(publicationOutcome(publishCrossSwap(second, x.id)));
+      await secondAttempt.promise;
+      const deadline = Date.now() + 5000;
+      let blocked = false;
+      while (!secondAcquired && !blocked && Date.now() < deadline) {
+        const result = await fixture.payload.db.execute({
+          db: fixture.payload.db.drizzle,
+          sql: sql`SELECT EXISTS (SELECT 1 FROM pg_stat_activity WHERE datname = current_database() AND wait_event_type = 'Lock' AND query LIKE 'update "media"%') AS blocked`,
+        });
+        blocked = result.rows[0]?.blocked === true;
+        if (!secondAcquired && !blocked) await new Promise((resolve) => setTimeout(resolve, 10));
+      }
+      expect(secondAcquired || blocked).toBe(true);
+      console.info('Actual PostgreSQL cross-swap barrier:', {
+        firstKind,
+        secondKind,
+        secondAcquired,
+        blocked,
+      });
+      release.resolve();
+      const results = await Promise.all(publications);
+      console.info('Actual PostgreSQL cross-swap outcomes:', results);
+      expect(results).toEqual([
+        { status: 'fulfilled', publication: 'published' },
+        { status: 'fulfilled', publication: 'published' },
+      ]);
+      for (const [owner, newId, oldId] of [
+        [first, y.id, x.id],
+        [second, x.id, y.id],
+      ] as const) {
+        const current = (await fixture.payload.db.findOne({
+          collection: 'media',
+          where: { id: { equals: newId } },
+          req: await fixture.request(),
+        })) as Media;
+        const previous = (await fixture.payload.db.findOne({
+          collection: 'media',
+          where: { id: { equals: oldId } },
+          req: await fixture.request(),
+        })) as Media;
+        expect(current.usages).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({ documentId: owner.id, state: 'confirmed' }),
+          ]),
+        );
+        expect(previous.usages).not.toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              documentId: owner.id,
+              state: expect.stringMatching(/^(draft|confirmed)$/),
+            }),
+          ]),
+        );
+        expect((await publicMedia(newId)).ok).toBe(true);
+      }
+    } finally {
+      release.resolve();
+      await Promise.all(publications);
+      spy.mockRestore();
+    }
+  },
+);

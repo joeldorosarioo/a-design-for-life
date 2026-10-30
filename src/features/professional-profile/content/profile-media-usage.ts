@@ -33,14 +33,22 @@ export const synchronizeProfileMedia: CollectionAfterChangeHook = async ({ doc, 
   ).docs[0];
   if (published?.editorialRevision === revision) {
     await trackMediaUsage(
-      { ...owner, state: 'confirmed', references: extractProfileMedia(published) },
+      [
+        { ...owner, state: 'confirmed', references: extractProfileMedia(published) },
+        { ...owner, state: 'draft', references: [] },
+      ],
       req,
     );
-    await trackMediaUsage({ ...owner, state: 'draft', references: [] }, req);
   } else {
-    await trackMediaUsage({ ...owner, state: 'draft', references }, req);
-    if (!isDraftOperation(req) && !published)
-      await trackMediaUsage({ ...owner, state: 'confirmed', references: [] }, req);
+    await trackMediaUsage(
+      [
+        { ...owner, state: 'draft', references },
+        ...(!isDraftOperation(req) && !published
+          ? [{ ...owner, state: 'confirmed' as const, references: [] }]
+          : []),
+      ],
+      req,
+    );
   }
   return doc;
 };

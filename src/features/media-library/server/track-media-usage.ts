@@ -5,39 +5,47 @@ import type { Media } from '@/payload-types';
 import {
   mediaUsageCommandSchema,
   mediaUsageSchema,
-  type MediaUsageChange,
   type MediaUsageCommand,
 } from '../contracts/media-usage.schema';
 import { mediaManifestSchema } from '../contracts/media-manifest.schema';
 import { changeMediaUsage } from './change-media-usage';
 
-export async function trackMediaUsage(input: MediaUsageCommand, req: PayloadRequest) {
+// An editorial operation submits all state transitions together. Acquiring only
+// one transition's rows first can invert the later cleanup's lock order.
+export async function trackMediaUsage(input: MediaUsageCommand[], req: PayloadRequest) {
   if (!req.user || req.user.collection !== 'users') throw new Forbidden(req.t);
   if (!req.transactionID)
     throw new APIError('Media usages require the editorial transaction.', 400);
-  const command = mediaUsageCommandSchema.parse(input);
+  const commands = mediaUsageCommandSchema.array().min(1).parse(input);
+  const plans = commands.map((command) => {
+    const references = new Map<string, Set<'image' | 'pdf'>>();
+    for (const reference of command.references) {
+      const kinds = references.get(reference.mediaId) ?? new Set<'image' | 'pdf'>();
+      kinds.add(reference.kind);
+      references.set(reference.mediaId, kinds);
+    }
+    return { command, references };
+  });
   // Query only Media's explicit technical reference schema, never arbitrary editorial JSON.
   const all = await req.payload.db.find({ collection: 'media', req, pagination: false, limit: 0 });
-  const references = new Map<string, Set<'image' | 'pdf'>>();
-  for (const reference of command.references) {
-    const kinds = references.get(reference.mediaId) ?? new Set<'image' | 'pdf'>();
-    kinds.add(reference.kind);
-    references.set(reference.mediaId, kinds);
-  }
-  const ids = new Set(references.keys());
+  const ids = new Set(plans.flatMap(({ references }) => [...references.keys()]));
   for (const media of all.docs as Media[]) {
     const uses = mediaUsageSchema.array().parse(media.usages ?? []);
     if (
-      uses.some(
-        (use) =>
-          use.collection === command.collection &&
-          use.documentId === command.documentId &&
-          use.locale === command.locale &&
-          use.state === command.state,
+      uses.some((use) =>
+        commands.some(
+          (command) =>
+            use.collection === command.collection &&
+            use.documentId === command.documentId &&
+            use.locale === command.locale &&
+            use.state === command.state,
+        ),
       )
     )
       ids.add(media.id);
   }
+  // One global order covers new references AND cleanup of every prior state.
+  // Each row receives all transitions in one CAS inside the native transaction.
   for (const id of [...ids].sort()) {
     let saved = false;
     for (let attempt = 0; attempt < 4 && !saved; attempt++) {
@@ -46,25 +54,27 @@ export async function trackMediaUsage(input: MediaUsageCommand, req: PayloadRequ
         req,
         where: { id: { equals: id } },
       })) as Media | null;
-      const referenced = references.has(id);
+      const expected = plans.flatMap(({ references }) => [...(references.get(id) ?? [])]);
+      const referenced = expected.length > 0;
       if (!current || (referenced && (current.deletedAt || current.state !== 'ready')))
         throw new APIError(
           'A referenced media asset is unavailable. Restore it or choose another file.',
           400,
         );
       const manifest = mediaManifestSchema.parse(current.manifest);
-      const expected = references.get(id);
-      if (expected && [...expected].some((kind) => manifest.kind !== kind))
+      if (expected.some((kind) => manifest.kind !== kind))
         throw new APIError('Choose the correct image or PDF for this field.', 400);
-      const uses = mediaUsageSchema.array().parse(current.usages ?? []);
-      const change: MediaUsageChange = {
-        collection: command.collection,
-        documentId: command.documentId,
-        locale: command.locale,
-        revision: command.revision,
-        state: command.state,
-        referenced,
-      };
+      let usages = mediaUsageSchema.array().parse(current.usages ?? []);
+      for (const { command, references } of plans) {
+        usages = changeMediaUsage(usages, {
+          collection: command.collection,
+          documentId: command.documentId,
+          locale: command.locale,
+          revision: command.revision,
+          state: command.state,
+          referenced: references.has(id),
+        });
+      }
       const updated = await req.payload.db.updateOne({
         collection: 'media',
         req,
@@ -77,7 +87,7 @@ export async function trackMediaUsage(input: MediaUsageCommand, req: PayloadRequ
             ...(referenced ? [{ deletedAt: { exists: false } }] : []),
           ],
         },
-        data: { usages: changeMediaUsage(uses, change), guardRevision: randomUUID() },
+        data: { usages, guardRevision: randomUUID() },
       });
       saved = Boolean(updated);
     }

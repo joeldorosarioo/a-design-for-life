@@ -1,0 +1,51 @@
+{
+  "target": "833bcd54e56e6a562614f470c253177ab04df5e5",
+  "runId": 41052946281,
+  "jobId": 124053248944,
+  "conclusion": "success",
+  "tests": 347,
+  "files": 49,
+  "e2e": 22,
+  "runner": "ubuntu-24.04",
+  "gate": "NOT PROMOTED: quality P2 cross-publication lock inversion remains open; follow-up fix required",
+  "review": {
+    "specFindings": 0,
+    "qualityImportantFindings": 1,
+    "qualityFinding": "Media locks sorted per phase, not globally across publication phases"
+  },
+  "sensitivePatternScan": {
+    "jwt": false,
+    "githubCredential": false,
+    "resetUrl": false
+  },
+  "copies": [
+    {
+      "source": "stage1-briefs/E1.6-spec-review-833bcd5.md",
+      "file": "review-spec-833bcd5.md",
+      "bytes": 12085,
+      "sha256": "26a14c919f871e477d16c26ca28c1656e0a31663c86c6609ee1a584b79286cf5",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/E1.6-quality-review-833bcd5.md",
+      "file": "review-quality-833bcd5.md",
+      "bytes": 12839,
+      "sha256": "1be0b347de9a68eeef9b43e12f7b440b27146b7d4ac8e8a28f870efab2691441",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-ci-833bcd5-status.json",
+      "file": "github-ci-833bcd5.json",
+      "bytes": 3200,
+      "sha256": "7dcdadc7ff80f86d15926dc355f17aaae482bb315356cc6cdaf69316428ad9ca",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-job-124053248944.txt",
+      "file": "github-job-833bcd5.txt",
+      "bytes": 347540,
+      "sha256": "7c257265a193d21841daaf7395d90325f8cdf6936dd730065ac9c4fcacc99560",
+      "transformation": "none; byte-identical"
+    }
+  ]
+}

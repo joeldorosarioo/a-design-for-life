@@ -1,0 +1,41 @@
+{
+  "scope": "Review round 1: actual PostgreSQL deadlock RED, focused GREEN and fresh full gates. Originals remain ignored under .work. Outcomes never rewritten.",
+  "files": [
+    {
+      "source": ".work/e1.6-review1-lock-order-red.txt",
+      "destination": "e1.6-review1-lock-order-red.txt",
+      "originalSHA256": "72919110f4cea7270cef4dd5c9d1702e0889840c9f73c7f5904f8641a389e2be",
+      "exportedSHA256": "72919110f4cea7270cef4dd5c9d1702e0889840c9f73c7f5904f8641a389e2be",
+      "originalBytes": 7819,
+      "exportedBytes": 7819,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-review1-lock-order-green.txt",
+      "destination": "e1.6-review1-lock-order-green.txt",
+      "originalSHA256": "d6b4b2c8f57ac4f27c813e407e241bcf0c5d75eaf6d40371fcfbb5dbd4a9b032",
+      "exportedSHA256": "d6b4b2c8f57ac4f27c813e407e241bcf0c5d75eaf6d40371fcfbb5dbd4a9b032",
+      "originalBytes": 2958,
+      "exportedBytes": 2958,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-review1-verify-current.txt",
+      "destination": "e1.6-review1-verify-current.txt",
+      "originalSHA256": "18aedd818f8b179fb325421dc4ae1f26b292374caeb7afa079dd842cc89c713d",
+      "exportedSHA256": "18aedd818f8b179fb325421dc4ae1f26b292374caeb7afa079dd842cc89c713d",
+      "originalBytes": 36649,
+      "exportedBytes": 36649,
+      "redactions": []
+    },
+    {
+      "source": ".work/e1.6-review1-e2e-current.txt",
+      "destination": "e1.6-review1-e2e-current.txt",
+      "originalSHA256": "2dae8cd04d20b82d0aebdda9aa122e57e89e7c7137753adf409cb9a1cb9db4f1",
+      "exportedSHA256": "2dae8cd04d20b82d0aebdda9aa122e57e89e7c7137753adf409cb9a1cb9db4f1",
+      "originalBytes": 133340,
+      "exportedBytes": 133340,
+      "redactions": []
+    }
+  ]
+}

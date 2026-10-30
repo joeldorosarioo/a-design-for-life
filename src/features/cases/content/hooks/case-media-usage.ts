@@ -1,34 +1,17 @@
 import 'server-only';
-import type {
-  CollectionAfterChangeHook,
-  CollectionBeforeDeleteHook,
-  PayloadRequest,
-} from 'payload';
+import type { CollectionAfterChangeHook, CollectionBeforeDeleteHook } from 'payload';
 import { APIError } from 'payload';
 import { isDraftOperation } from '@/helpers/payload/editorial-revision';
 import { trackMediaUsage } from '@/features/media-library/server';
 import { extractCaseMedia } from './extract-case-media';
-async function change(
-  doc: Record<string, unknown>,
-  revision: string,
-  state: 'draft' | 'confirmed',
-  references: ReturnType<typeof extractCaseMedia>,
-  req: PayloadRequest,
-) {
-  await trackMediaUsage(
-    {
-      collection: 'case-content',
-      documentId: String(doc.id),
-      locale: doc.locale as 'pt' | 'en',
-      revision,
-      state,
-      references,
-    },
-    req,
-  );
-}
 export const synchronizeCaseMedia: CollectionAfterChangeHook = async ({ doc, data, req }) => {
   const revision = String(data.contentRevision ?? doc.editorialRevision);
+  const owner = {
+    collection: 'case-content' as const,
+    documentId: String(doc.id),
+    locale: doc.locale as 'pt' | 'en',
+    revision,
+  };
   const published = (
     await req.payload.find({
       collection: 'case-content',
@@ -47,11 +30,23 @@ export const synchronizeCaseMedia: CollectionAfterChangeHook = async ({ doc, dat
     })
   ).docs[0];
   if (published?.editorialRevision === revision) {
-    await change(doc, revision, 'confirmed', extractCaseMedia(published), req);
-    await change(doc, revision, 'draft', [], req);
+    await trackMediaUsage(
+      [
+        { ...owner, state: 'confirmed', references: extractCaseMedia(published) },
+        { ...owner, state: 'draft', references: [] },
+      ],
+      req,
+    );
   } else {
-    await change(doc, revision, 'draft', extractCaseMedia(doc), req);
-    if (!isDraftOperation(req) && !published) await change(doc, revision, 'confirmed', [], req);
+    await trackMediaUsage(
+      [
+        { ...owner, state: 'draft', references: extractCaseMedia(doc) },
+        ...(!isDraftOperation(req) && !published
+          ? [{ ...owner, state: 'confirmed' as const, references: [] }]
+          : []),
+      ],
+      req,
+    );
   }
   return doc;
 };
@@ -62,5 +57,17 @@ export const retainDeletedCaseMedia: CollectionBeforeDeleteHook = async ({ id, r
     req,
   })) as Record<string, unknown> | null;
   if (!doc) throw new APIError('Content unavailable.', 404);
-  await change(doc, String(doc.editorialRevision), 'draft', [], req);
+  await trackMediaUsage(
+    [
+      {
+        collection: 'case-content',
+        documentId: String(doc.id),
+        locale: doc.locale as 'pt' | 'en',
+        revision: String(doc.editorialRevision),
+        state: 'draft',
+        references: [],
+      },
+    ],
+    req,
+  );
 };

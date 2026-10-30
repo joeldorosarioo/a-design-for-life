@@ -1,5 +1,5 @@
 {
-  "scope": "Byte-preserving artifact index; historical/failure/current status is identified in E1.6.md, not inferred from filenames. Index omits its own hash.",
+  "scope": "Byte-preserving artifact index; historical/failure/current status is identified in E1.6.md, not inferred from filenames. Index omits its own hash. Includes preserved 833bcd5 reviews/CI and review-round1 current proof.",
   "artifacts": [
     {
       "path": "compressible-12mp.png.native-local.result.json",
@@ -472,6 +472,36 @@
       "sha256": "07fdd8f4e908d20f969a5e9abf7bf2dd920dbc7cb0e4d7b9044fcefabffe72b6"
     },
     {
+      "path": "e1.6-review1-doc-check.txt",
+      "bytes": 68,
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "path": "e1.6-review1-doc-format.txt",
+      "bytes": 75,
+      "sha256": "b5ab7aa3e3e91d2cdd913efbdd3f537510ecbf4810309129a92f6132382dbb37"
+    },
+    {
+      "path": "e1.6-review1-e2e-current.txt",
+      "bytes": 133340,
+      "sha256": "2dae8cd04d20b82d0aebdda9aa122e57e89e7c7137753adf409cb9a1cb9db4f1"
+    },
+    {
+      "path": "e1.6-review1-lock-order-green.txt",
+      "bytes": 2958,
+      "sha256": "d6b4b2c8f57ac4f27c813e407e241bcf0c5d75eaf6d40371fcfbb5dbd4a9b032"
+    },
+    {
+      "path": "e1.6-review1-lock-order-red.txt",
+      "bytes": 7819,
+      "sha256": "72919110f4cea7270cef4dd5c9d1702e0889840c9f73c7f5904f8641a389e2be"
+    },
+    {
+      "path": "e1.6-review1-verify-current.txt",
+      "bytes": 36649,
+      "sha256": "18aedd818f8b179fb325421dc4ae1f26b292374caeb7afa079dd842cc89c713d"
+    },
+    {
       "path": "e1.6-storage-red.txt",
       "bytes": 3197,
       "sha256": "d7436998675554297a3ff199f7de2b4b4101a1853e618d867bc11fe30a2bcfa9"
@@ -605,6 +635,21 @@
       "path": "extractor-11-focused-typecheck.txt",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "github-833bcd5-provenance.json",
+      "bytes": 1655,
+      "sha256": "4b18cbaf6889fe331874c89ab8313b72aa5f4417578a40cbd0f72327d485c930"
+    },
+    {
+      "path": "github-ci-833bcd5.json",
+      "bytes": 3200,
+      "sha256": "7dcdadc7ff80f86d15926dc355f17aaae482bb315356cc6cdaf69316428ad9ca"
+    },
+    {
+      "path": "github-job-833bcd5.txt",
+      "bytes": 347540,
+      "sha256": "7c257265a193d21841daaf7395d90325f8cdf6936dd730065ac9c4fcacc99560"
     },
     {
       "path": "native-evidence-hygiene.json",
@@ -760,6 +805,66 @@
       "path": "response-evidence.json",
       "bytes": 5474,
       "sha256": "35c426c1f0f74b6b576c2643b893ffef870cd72e0470b0480ef9bc86a76dc56f"
+    },
+    {
+      "path": "review-quality-833bcd5.md",
+      "bytes": 12839,
+      "sha256": "1be0b347de9a68eeef9b43e12f7b440b27146b7d4ac8e8a28f870efab2691441"
+    },
+    {
+      "path": "review-spec-833bcd5.md",
+      "bytes": 12085,
+      "sha256": "26a14c919f871e477d16c26ca28c1656e0a31663c86c6609ee1a584b79286cf5"
+    },
+    {
+      "path": "review1-captures/E1.4/native-owner.png",
+      "bytes": 23611,
+      "sha256": "46833d966074e8089ec1977592ab69eb2d44877311c1d1446e3b7030fff16ca2"
+    },
+    {
+      "path": "review1-captures/E1.4/native-reader.png",
+      "bytes": 22837,
+      "sha256": "de59894694dc51907533ff2cc3e731c3767d39887f1fce1356e72737016bcd72"
+    },
+    {
+      "path": "review1-captures/E1.4/native-stale-conflict.png",
+      "bytes": 32339,
+      "sha256": "a6fa53c86b6068268c879445f4bf65802cda6e5d260362e8b7eede60f920db6a"
+    },
+    {
+      "path": "review1-captures/E1.4/native-version-diff.png",
+      "bytes": 142025,
+      "sha256": "41b5ee088b6bf1a4fd6d8eb4b56ca25bc45b5be6559de0a5d1f252affe5e1437"
+    },
+    {
+      "path": "review1-captures/E1.5/native-slug-suggestion.png",
+      "bytes": 76499,
+      "sha256": "9cad3b812d8189b633e71f24c40d72791442fc1cff626ecc15a66be3524b1a5e"
+    },
+    {
+      "path": "review1-captures/E1.6/native-media-ui.png",
+      "bytes": 33660,
+      "sha256": "dfb49d349c81a337cbf6281ef8a89d93f2164f3bc8ffdfc32d93d890ad77ae76"
+    },
+    {
+      "path": "review1-evidence-hygiene.json",
+      "bytes": 1750,
+      "sha256": "9afd1a088afd7f14175be8645285571a0263b16f65499355fc7c36af817abf29"
+    },
+    {
+      "path": "review1-image-provenance.json",
+      "bytes": 6984,
+      "sha256": "9385c3456f3c42f96152d0f487f32ab6f86a5ffc9b523cbc9e6f582d0495b828"
+    },
+    {
+      "path": "review1-owned-paths.json",
+      "bytes": 2223,
+      "sha256": "282e76b93f210165dce4e062bf66d7a416da27af7c047cdcebc84d6ac56c44ae"
+    },
+    {
+      "path": "review1-source-provenance.json",
+      "bytes": 12375,
+      "sha256": "811c0782c6dffd76a155b2f02a87e5a7818d6925f2f5831e83ce370a449d7898"
     },
     {
       "path": "shared-gate-provenance.json",
