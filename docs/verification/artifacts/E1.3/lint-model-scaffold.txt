@@ -1,0 +1,16 @@
+$ eslint .
+
+E:\a-design-for-life\src\migrations\20261030_020021_editorial_models.ts
+    3:32  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+    3:41  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+  587:34  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+  587:43  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+
+E:\a-design-for-life\src\migrations\20261030_020521_structural_uniqueness.ts
+   3:32  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+   3:41  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+  11:34  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+  11:43  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+
+✖ 8 problems (0 errors, 8 warnings)
+

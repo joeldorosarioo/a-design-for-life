@@ -8,7 +8,7 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 
 - [x] Ler os quatro documentos integralmente, na ordem definida.
 - [x] Inspecionar destino, ancestrais Git e instruções locais. Destino novo; E:\AGENTS.md ausente; E:\ não é repositório.
-- [x] Criar raiz `E:\a-design-for-life`, sem pasta duplicada, na branch `feat/etapa-1-cms`.
+- [x] Criar raiz `E:\a-design-for-life`, sem pasta duplicada, com branch atual `develop` (histórico corrigido por solicitação do usuário).
 - [x] Copiar quatro referências a docs/specs e conferir SHA256.
 - [x] E1.1 Base executável e ambiente de testes — concluída; evidências e riscos em E1.1.md.
 - [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída localmente; proteção remota bloqueada por acesso, ver E1.2.md.
@@ -63,3 +63,7 @@ O chat principal abriu consulta sobre formatos animados de imagem para E1.6. Ain
 ## E1.2 concluída — escopo e ressalvas
 
 Fronteiras de features/rotas públicas, ciclos inclusive type-only, infraestrutura genérica, runtime cliente/servidor e DTO público protegidos por testes de grafo e consumidores reais. Ver E1.2.md e docs/architecture/fronteiras.md. Verificação independente atual do coordenador: pnpm verify exit0, 49 testes em4 arquivos, checks e build. Jornadas do painel/API:2 E2E em3101, com limpeza real. Nenhuma dependência foi alterada e o verify não duplica arquitetura. BLOCK-GITHUB-BRANCH-PROTECTION permanece: workflow preparado, sem remote/executar GitHub/proteção remota. A1 e tarefas seguintes permanecem pendentes; esta tarefa não inicia E1.3.
+
+## Convenção de Git atualizada pelo usuário
+
+Usar `develop`, mensagens em inglês seguindo Conventional Commits e commits pequenos por responsabilidade. E1.1/E1.2 foram reorganizadas sem alterar suas árvores nem o trabalho em andamento. Correspondência dos marcos e provas em [history-correction.md](history-correction.md). Não usar os títulos de commit em português do plano histórico para os próximos commits.
