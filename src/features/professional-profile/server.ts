@@ -5,3 +5,4 @@ export { mapProfile } from './server/map-profile';
 export { publishProfile } from './server/publish-profile';
 export { restoreProfileDraft } from './server/restore-profile-draft';
 export { getPublishedProfile } from './server/get-published-profile';
+export { getPreviewProfile } from './server/get-preview-profile';
