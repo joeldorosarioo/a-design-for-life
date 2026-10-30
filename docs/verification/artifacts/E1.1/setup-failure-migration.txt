@@ -1,0 +1,45 @@
+$ vitest run --project integration src/helpers/payload/users.collection.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[21:31:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+No test files found, exiting with code 1
+
+filter: src/helpers/payload/users.collection.integration.test.ts
+projects: integration
+
+|integration| 
+
+include: src/**/*.integration.test.ts
+exclude:  **/node_modules/**, **/.git/**
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+TypeError: code.charCodeAt is not a function
+ ❯ extractInlineSourceMap node_modules/.pnpm/vite@8.3.5_@types+node@24.1_4172854c0bf2d8af0839af2347877dc8/node_modules/vite/dist/node/module-runner.js:366:57
+ ❯ EvaluatedModules.getModuleSourceMapById node_modules/.pnpm/vite@8.3.5_@types+node@24.1_4172854c0bf2d8af0839af2347877dc8/node_modules/vite/dist/node/module-runner.js:355:19
+ ❯ getRunnerSourceMap node_modules/.pnpm/vite@8.3.5_@types+node@24.1_4172854c0bf2d8af0839af2347877dc8/node_modules/vite/dist/node/module-runner.js:952:31
+ ❯ mapSourcePosition node_modules/.pnpm/vite@8.3.5_@types+node@24.1_4172854c0bf2d8af0839af2347877dc8/node_modules/vite/dist/node/module-runner.js:991:18
+ ❯ wrapCallSite node_modules/.pnpm/vite@8.3.5_@types+node@24.1_4172854c0bf2d8af0839af2347877dc8/node_modules/vite/dist/node/module-runner.js:1075:17
+ ❯ Error.prepareStackTrace node_modules/.pnpm/vite@8.3.5_@types+node@24.1_4172854c0bf2d8af0839af2347877dc8/node_modules/vite/dist/node/module-runner.js:1102:78
+ ❯ prepareStackTraceCallback node:internal/errors:146:29
+ ❯ decorateErrorStack node:internal/util:229:29
+ ❯ #asyncInstantiate node:internal/modules/esm/module_job:458:7
+ ❯ process.processTicksAndRejections node:internal/process/task_queues:104:5
+
+
+
+
+[21:31:33] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[ELIFECYCLE] Command failed with exit code 1.
