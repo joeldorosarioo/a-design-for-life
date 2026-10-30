@@ -607,6 +607,17 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
   ALTER TABLE "_profiles_v_version_approach_methods" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "_profiles_v" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "media" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_cases_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_content_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_routes_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_site_navigation_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_professional_profiles_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_media_fk";
   DROP TABLE "cases" CASCADE;
   DROP TABLE "case_content_blocks_text" CASCADE;
   DROP TABLE "case_content_blocks_image" CASCADE;
@@ -628,17 +639,7 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
   DROP TABLE "_profiles_v_version_approach_methods" CASCADE;
   DROP TABLE "_profiles_v" CASCADE;
   DROP TABLE "media" CASCADE;
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_cases_fk";
 
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_content_fk";
-
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_routes_fk";
-
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_site_navigation_fk";
-
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_professional_profiles_fk";
-
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_media_fk";
 
   DROP INDEX "payload_locked_documents_rels_cases_id_idx";
   DROP INDEX "payload_locked_documents_rels_case_content_id_idx";

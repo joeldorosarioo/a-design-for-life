@@ -1,0 +1,248 @@
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+{
+  "port": [
+    {
+      "HostIp": "127.0.0.1",
+      "HostPort": "55433"
+    }
+  ],
+  "tmpfs": {
+    "/var/lib/postgresql/data": ""
+  },
+  "mounts": [],
+  "testDatabase": true
+}
+Verified: own postgres-test, loopback55433, adfl_test_base, tmpfs. Only this fixture receives rollback.
+[00:51:20] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:51:20] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:51:20] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:51:20] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[00:51:20] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:51:20] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (100ms)[39m
+[00:51:20] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:51:20] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[00:51:20] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:51:20] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[00:51:20] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:51:20] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[00:51:20] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:51:20] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[00:51:20] [32mINFO[39m: [36mDone.[39m
+[00:51:23] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:51:23] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:51:23] [32mINFO[39m: [36mRolling back batch 1 consisting of 6 migration(s).[39m
+[00:51:23] [32mINFO[39m: [36mMigrating down: 20261030_030036_global_editorial_copy[39m
+[00:51:23] [32mINFO[39m: [36mMigrated down:  20261030_030036_global_editorial_copy (16ms)[39m
+[00:51:23] [32mINFO[39m: [36mMigrating down: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:51:23] [32mINFO[39m: [36mMigrated down:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[00:51:23] [32mINFO[39m: [36mMigrating down: 20261030_024431_case_locale_uniqueness[39m
+[00:51:23] [32mINFO[39m: [36mMigrated down:  20261030_024431_case_locale_uniqueness (2ms)[39m
+[00:51:23] [32mINFO[39m: [36mMigrating down: 20261030_020521_structural_uniqueness[39m
+[00:51:23] [32mINFO[39m: [36mMigrated down:  20261030_020521_structural_uniqueness (2ms)[39m
+[00:51:23] [32mINFO[39m: [36mMigrating down: 20261030_020021_editorial_models[39m
+[00:51:23] [31mERROR[39m: [36mError migrating down 20261030_020021_editorial_models. Rolling back. Failed query: 
+   ALTER TABLE "cases" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "case_content_blocks_text" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "case_content_blocks_image" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "case_content_blocks_image_pair" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "case_content_sections" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "case_content" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_case_content_v_blocks_text" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_case_content_v_blocks_image" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_case_content_v_blocks_image_pair" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_case_content_v_version_sections" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_case_content_v" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "case_routes" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "site_navigation" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_site_navigation_v" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "profiles_home_about_trajectory" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "profiles_approach_methods" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "profiles" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_profiles_v_version_home_about_trajectory" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_profiles_v_version_approach_methods" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "_profiles_v" DISABLE ROW LEVEL SECURITY;
+  ALTER TABLE "media" DISABLE ROW LEVEL SECURITY;
+  DROP TABLE "cases" CASCADE;
+  DROP TABLE "case_content_blocks_text" CASCADE;
+  DROP TABLE "case_content_blocks_image" CASCADE;
+  DROP TABLE "case_content_blocks_image_pair" CASCADE;
+  DROP TABLE "case_content_sections" CASCADE;
+  DROP TABLE "case_content" CASCADE;
+  DROP TABLE "_case_content_v_blocks_text" CASCADE;
+  DROP TABLE "_case_content_v_blocks_image" CASCADE;
+  DROP TABLE "_case_content_v_blocks_image_pair" CASCADE;
+  DROP TABLE "_case_content_v_version_sections" CASCADE;
+  DROP TABLE "_case_content_v" CASCADE;
+  DROP TABLE "case_routes" CASCADE;
+  DROP TABLE "site_navigation" CASCADE;
+  DROP TABLE "_site_navigation_v" CASCADE;
+  DROP TABLE "profiles_home_about_trajectory" CASCADE;
+  DROP TABLE "profiles_approach_methods" CASCADE;
+  DROP TABLE "profiles" CASCADE;
+  DROP TABLE "_profiles_v_version_home_about_trajectory" CASCADE;
+  DROP TABLE "_profiles_v_version_approach_methods" CASCADE;
+  DROP TABLE "_profiles_v" CASCADE;
+  DROP TABLE "media" CASCADE;
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_cases_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_content_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_routes_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_site_navigation_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_professional_profiles_fk";
+
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_media_fk";
+
+  DROP INDEX "payload_locked_documents_rels_cases_id_idx";
+  DROP INDEX "payload_locked_documents_rels_case_content_id_idx";
+  DROP INDEX "payload_locked_documents_rels_case_routes_id_idx";
+  DROP INDEX "payload_locked_documents_rels_site_navigation_id_idx";
+  DROP INDEX "payload_locked_documents_rels_profiles_id_idx";
+  DROP INDEX "payload_locked_documents_rels_media_id_idx";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "cases_id";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "case_content_id";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "case_routes_id";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "site_navigation_id";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "profiles_id";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "media_id";
+  DROP TYPE "public"."enum_case_content_blocks_image_pair_presentation";
+  DROP TYPE "public"."enum_case_content_locale";
+  DROP TYPE "public"."enum_case_content_status";
+  DROP TYPE "public"."enum__case_content_v_blocks_image_pair_presentation";
+  DROP TYPE "public"."enum__case_content_v_version_locale";
+  DROP TYPE "public"."enum__case_content_v_version_status";
+  DROP TYPE "public"."enum_case_routes_locale";
+  DROP TYPE "public"."enum_case_routes_state";
+  DROP TYPE "public"."enum_site_navigation_locale";
+  DROP TYPE "public"."enum_site_navigation_status";
+  DROP TYPE "public"."enum__site_navigation_v_version_locale";
+  DROP TYPE "public"."enum__site_navigation_v_version_status";
+  DROP TYPE "public"."enum_profiles_locale";
+  DROP TYPE "public"."enum_profiles_status";
+  DROP TYPE "public"."enum__profiles_v_version_locale";
+  DROP TYPE "public"."enum__profiles_v_version_status";
+params: .[39m
+    err: {
+      "type": "DrizzleQueryError",
+      "message": "Failed query: \n   ALTER TABLE \"cases\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_blocks_text\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_blocks_image\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_blocks_image_pair\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_sections\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_blocks_text\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_blocks_image\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_blocks_image_pair\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_version_sections\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_routes\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"site_navigation\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_site_navigation_v\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"profiles_home_about_trajectory\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"profiles_approach_methods\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"profiles\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_profiles_v_version_home_about_trajectory\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_profiles_v_version_approach_methods\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_profiles_v\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"media\" DISABLE ROW LEVEL SECURITY;\n  DROP TABLE \"cases\" CASCADE;\n  DROP TABLE \"case_content_blocks_text\" CASCADE;\n  DROP TABLE \"case_content_blocks_image\" CASCADE;\n  DROP TABLE \"case_content_blocks_image_pair\" CASCADE;\n  DROP TABLE \"case_content_sections\" CASCADE;\n  DROP TABLE \"case_content\" CASCADE;\n  DROP TABLE \"_case_content_v_blocks_text\" CASCADE;\n  DROP TABLE \"_case_content_v_blocks_image\" CASCADE;\n  DROP TABLE \"_case_content_v_blocks_image_pair\" CASCADE;\n  DROP TABLE \"_case_content_v_version_sections\" CASCADE;\n  DROP TABLE \"_case_content_v\" CASCADE;\n  DROP TABLE \"case_routes\" CASCADE;\n  DROP TABLE \"site_navigation\" CASCADE;\n  DROP TABLE \"_site_navigation_v\" CASCADE;\n  DROP TABLE \"profiles_home_about_trajectory\" CASCADE;\n  DROP TABLE \"profiles_approach_methods\" CASCADE;\n  DROP TABLE \"profiles\" CASCADE;\n  DROP TABLE \"_profiles_v_version_home_about_trajectory\" CASCADE;\n  DROP TABLE \"_profiles_v_version_approach_methods\" CASCADE;\n  DROP TABLE \"_profiles_v\" CASCADE;\n  DROP TABLE \"media\" CASCADE;\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_cases_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_case_content_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_case_routes_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_site_navigation_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_professional_profiles_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_media_fk\";\n\n  DROP INDEX \"payload_locked_documents_rels_cases_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_case_content_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_case_routes_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_site_navigation_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_profiles_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_media_id_idx\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"cases_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"case_content_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"case_routes_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"site_navigation_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"profiles_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"media_id\";\n  DROP TYPE \"public\".\"enum_case_content_blocks_image_pair_presentation\";\n  DROP TYPE \"public\".\"enum_case_content_locale\";\n  DROP TYPE \"public\".\"enum_case_content_status\";\n  DROP TYPE \"public\".\"enum__case_content_v_blocks_image_pair_presentation\";\n  DROP TYPE \"public\".\"enum__case_content_v_version_locale\";\n  DROP TYPE \"public\".\"enum__case_content_v_version_status\";\n  DROP TYPE \"public\".\"enum_case_routes_locale\";\n  DROP TYPE \"public\".\"enum_case_routes_state\";\n  DROP TYPE \"public\".\"enum_site_navigation_locale\";\n  DROP TYPE \"public\".\"enum_site_navigation_status\";\n  DROP TYPE \"public\".\"enum__site_navigation_v_version_locale\";\n  DROP TYPE \"public\".\"enum__site_navigation_v_version_status\";\n  DROP TYPE \"public\".\"enum_profiles_locale\";\n  DROP TYPE \"public\".\"enum_profiles_status\";\n  DROP TYPE \"public\".\"enum__profiles_v_version_locale\";\n  DROP TYPE \"public\".\"enum__profiles_v_version_status\";\nparams: : constraint \"payload_locked_documents_rels_cases_fk\" of relation \"payload_locked_documents_rels\" does not exist",
+      "stack":
+          Error: Failed query: 
+             ALTER TABLE "cases" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "case_content_blocks_text" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "case_content_blocks_image" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "case_content_blocks_image_pair" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "case_content_sections" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "case_content" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_case_content_v_blocks_text" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_case_content_v_blocks_image" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_case_content_v_blocks_image_pair" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_case_content_v_version_sections" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_case_content_v" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "case_routes" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "site_navigation" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_site_navigation_v" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "profiles_home_about_trajectory" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "profiles_approach_methods" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "profiles" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_profiles_v_version_home_about_trajectory" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_profiles_v_version_approach_methods" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "_profiles_v" DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE "media" DISABLE ROW LEVEL SECURITY;
+            DROP TABLE "cases" CASCADE;
+            DROP TABLE "case_content_blocks_text" CASCADE;
+            DROP TABLE "case_content_blocks_image" CASCADE;
+            DROP TABLE "case_content_blocks_image_pair" CASCADE;
+            DROP TABLE "case_content_sections" CASCADE;
+            DROP TABLE "case_content" CASCADE;
+            DROP TABLE "_case_content_v_blocks_text" CASCADE;
+            DROP TABLE "_case_content_v_blocks_image" CASCADE;
+            DROP TABLE "_case_content_v_blocks_image_pair" CASCADE;
+            DROP TABLE "_case_content_v_version_sections" CASCADE;
+            DROP TABLE "_case_content_v" CASCADE;
+            DROP TABLE "case_routes" CASCADE;
+            DROP TABLE "site_navigation" CASCADE;
+            DROP TABLE "_site_navigation_v" CASCADE;
+            DROP TABLE "profiles_home_about_trajectory" CASCADE;
+            DROP TABLE "profiles_approach_methods" CASCADE;
+            DROP TABLE "profiles" CASCADE;
+            DROP TABLE "_profiles_v_version_home_about_trajectory" CASCADE;
+            DROP TABLE "_profiles_v_version_approach_methods" CASCADE;
+            DROP TABLE "_profiles_v" CASCADE;
+            DROP TABLE "media" CASCADE;
+            ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_cases_fk";
+          
+            ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_content_fk";
+          
+            ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_case_routes_fk";
+          
+            ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_site_navigation_fk";
+          
+            ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_professional_profiles_fk";
+          
+            ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_media_fk";
+          
+            DROP INDEX "payload_locked_documents_rels_cases_id_idx";
+            DROP INDEX "payload_locked_documents_rels_case_content_id_idx";
+            DROP INDEX "payload_locked_documents_rels_case_routes_id_idx";
+            DROP INDEX "payload_locked_documents_rels_site_navigation_id_idx";
+            DROP INDEX "payload_locked_documents_rels_profiles_id_idx";
+            DROP INDEX "payload_locked_documents_rels_media_id_idx";
+            ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "cases_id";
+            ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "case_content_id";
+            ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "case_routes_id";
+            ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "site_navigation_id";
+            ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "profiles_id";
+            ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "media_id";
+            DROP TYPE "public"."enum_case_content_blocks_image_pair_presentation";
+            DROP TYPE "public"."enum_case_content_locale";
+            DROP TYPE "public"."enum_case_content_status";
+            DROP TYPE "public"."enum__case_content_v_blocks_image_pair_presentation";
+            DROP TYPE "public"."enum__case_content_v_version_locale";
+            DROP TYPE "public"."enum__case_content_v_version_status";
+            DROP TYPE "public"."enum_case_routes_locale";
+            DROP TYPE "public"."enum_case_routes_state";
+            DROP TYPE "public"."enum_site_navigation_locale";
+            DROP TYPE "public"."enum_site_navigation_status";
+            DROP TYPE "public"."enum__site_navigation_v_version_locale";
+            DROP TYPE "public"."enum__site_navigation_v_version_status";
+            DROP TYPE "public"."enum_profiles_locale";
+            DROP TYPE "public"."enum_profiles_status";
+            DROP TYPE "public"."enum__profiles_v_version_locale";
+            DROP TYPE "public"."enum__profiles_v_version_status";
+          params: 
+              at NodePgPreparedQuery.queryWithCache (E:\a-design-for-life\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Object.down (E:\a-design-for-life\src\migrations\20261030_020021_editorial_models.ts:588:3)
+              at async Object.migrateDown (E:\a-design-for-life\node_modules\.pnpm\@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726\node_modules\@payloadcms\drizzle\src\migrateDown.ts:48:7)
+              at async migrate (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\bin\migrate.ts:114:7)
+              at async runBinScript (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:127:9)
+              at async bin (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:61:29)
+              at async start (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/bin.js:30:7)
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/bin.js:33:5
+          caused by: error: constraint "payload_locked_documents_rels_cases_fk" of relation "payload_locked_documents_rels" does not exist
+              at E:\a-design-for-life\node_modules\.pnpm\pg@8.20.0\node_modules\pg\lib\client.js:631:17
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (E:\a-design-for-life\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:149:14)
+              at async NodePgPreparedQuery.queryWithCache (E:\a-design-for-life\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async Object.down (E:\a-design-for-life\src\migrations\20261030_020021_editorial_models.ts:588:3)
+              at async Object.migrateDown (E:\a-design-for-life\node_modules\.pnpm\@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726\node_modules\@payloadcms\drizzle\src\migrateDown.ts:48:7)
+              at async migrate (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\bin\migrate.ts:114:7)
+              at async runBinScript (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:127:9)
+              at async bin (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:61:29)
+              at async start (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/bin.js:30:7)
+      "query": "\n   ALTER TABLE \"cases\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_blocks_text\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_blocks_image\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_blocks_image_pair\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content_sections\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_content\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_blocks_text\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_blocks_image\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_blocks_image_pair\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v_version_sections\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_case_content_v\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"case_routes\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"site_navigation\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_site_navigation_v\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"profiles_home_about_trajectory\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"profiles_approach_methods\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"profiles\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_profiles_v_version_home_about_trajectory\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_profiles_v_version_approach_methods\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"_profiles_v\" DISABLE ROW LEVEL SECURITY;\n  ALTER TABLE \"media\" DISABLE ROW LEVEL SECURITY;\n  DROP TABLE \"cases\" CASCADE;\n  DROP TABLE \"case_content_blocks_text\" CASCADE;\n  DROP TABLE \"case_content_blocks_image\" CASCADE;\n  DROP TABLE \"case_content_blocks_image_pair\" CASCADE;\n  DROP TABLE \"case_content_sections\" CASCADE;\n  DROP TABLE \"case_content\" CASCADE;\n  DROP TABLE \"_case_content_v_blocks_text\" CASCADE;\n  DROP TABLE \"_case_content_v_blocks_image\" CASCADE;\n  DROP TABLE \"_case_content_v_blocks_image_pair\" CASCADE;\n  DROP TABLE \"_case_content_v_version_sections\" CASCADE;\n  DROP TABLE \"_case_content_v\" CASCADE;\n  DROP TABLE \"case_routes\" CASCADE;\n  DROP TABLE \"site_navigation\" CASCADE;\n  DROP TABLE \"_site_navigation_v\" CASCADE;\n  DROP TABLE \"profiles_home_about_trajectory\" CASCADE;\n  DROP TABLE \"profiles_approach_methods\" CASCADE;\n  DROP TABLE \"profiles\" CASCADE;\n  DROP TABLE \"_profiles_v_version_home_about_trajectory\" CASCADE;\n  DROP TABLE \"_profiles_v_version_approach_methods\" CASCADE;\n  DROP TABLE \"_profiles_v\" CASCADE;\n  DROP TABLE \"media\" CASCADE;\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_cases_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_case_content_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_case_routes_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_site_navigation_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_professional_profiles_fk\";\n\n  ALTER TABLE \"payload_locked_documents_rels\" DROP CONSTRAINT \"payload_locked_documents_rels_media_fk\";\n\n  DROP INDEX \"payload_locked_documents_rels_cases_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_case_content_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_case_routes_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_site_navigation_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_profiles_id_idx\";\n  DROP INDEX \"payload_locked_documents_rels_media_id_idx\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"cases_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"case_content_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"case_routes_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"site_navigation_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"profiles_id\";\n  ALTER TABLE \"payload_locked_documents_rels\" DROP COLUMN \"media_id\";\n  DROP TYPE \"public\".\"enum_case_content_blocks_image_pair_presentation\";\n  DROP TYPE \"public\".\"enum_case_content_locale\";\n  DROP TYPE \"public\".\"enum_case_content_status\";\n  DROP TYPE \"public\".\"enum__case_content_v_blocks_image_pair_presentation\";\n  DROP TYPE \"public\".\"enum__case_content_v_version_locale\";\n  DROP TYPE \"public\".\"enum__case_content_v_version_status\";\n  DROP TYPE \"public\".\"enum_case_routes_locale\";\n  DROP TYPE \"public\".\"enum_case_routes_state\";\n  DROP TYPE \"public\".\"enum_site_navigation_locale\";\n  DROP TYPE \"public\".\"enum_site_navigation_status\";\n  DROP TYPE \"public\".\"enum__site_navigation_v_version_locale\";\n  DROP TYPE \"public\".\"enum__site_navigation_v_version_status\";\n  DROP TYPE \"public\".\"enum_profiles_locale\";\n  DROP TYPE \"public\".\"enum_profiles_status\";\n  DROP TYPE \"public\".\"enum__profiles_v_version_locale\";\n  DROP TYPE \"public\".\"enum__profiles_v_version_status\";",
+      "params": []
+    }
+Native down exit: 1
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

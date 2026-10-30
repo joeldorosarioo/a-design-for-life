@@ -1,0 +1,1 @@
+Up migration is byte-identical; all down SQL statements preserved exactly after trimming boundaries; only external-FK drop ordering changed.

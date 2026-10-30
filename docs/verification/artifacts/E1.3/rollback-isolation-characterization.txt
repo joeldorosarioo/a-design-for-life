@@ -1,0 +1,29 @@
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+{
+  "port": [
+    {
+      "HostIp": "127.0.0.1",
+      "HostPort": "55433"
+    }
+  ],
+  "tmpfs": {
+    "/var/lib/postgresql/data": ""
+  },
+  "mounts": [],
+  "testDatabase": true
+}
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+Exception: E:\a-design-for-life\.work\migration-roundtrip.ps1:19
+Line |
+  19 |  … GRES_DB=adfl_test_base') { throw 'Isolation guard refused rollback' }
+     |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Isolation guard refused rollback
