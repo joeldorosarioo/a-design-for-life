@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts src/config/publication-updates.integration.test.ts src/config/publication-command-receipts.integration.test.ts src/helpers/payload/transaction-settlement.integration.test.ts src/features/cases/content/collections/route-lifecycle.integration.test.ts
+Observed exit code: 0
+Classification: GREEN
+Observation: 46 tests in5files passed:10 new boundary tests, R1/R2 actual failure protections, D1 actual COMMIT settlement, Local command receipts and15 route lifecycle regressions.
+
+ Test Files  5 passed (5)
+      Tests  46 passed (46)
+   Start at  12:13:12
+   Duration  31.81s (tests 64%, import 33%, setup 1%, transform 1%)

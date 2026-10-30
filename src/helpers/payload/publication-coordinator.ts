@@ -28,12 +28,19 @@ export function createPublicationCoordinator(options: PublicationCoordinatorOpti
       if (!req.user || req.user.collection !== 'users') throw new Forbidden(req.t);
       // Never inherit the caller's transaction. Only independently visible,
       // committed outbox rows can reach the filesystem writer.
-      const fresh = await createLocalReq({ user: req.user }, req.payload);
-      const operation = (await req.payload.db.findOne({
-        collection: 'publication-updates',
-        where: { operationId: { equals: operationId } },
-        req: fresh,
-      })) as PublicationUpdate | null;
+      let fresh: PayloadRequest;
+      let operation: PublicationUpdate | null;
+      try {
+        fresh = await createLocalReq({ user: req.user }, req.payload);
+        operation = (await req.payload.db.findOne({
+          collection: 'publication-updates',
+          where: { operationId: { equals: operationId } },
+          req: fresh,
+        })) as PublicationUpdate | null;
+      } catch {
+        // No independently observed committed target: do not invent a receipt.
+        return null;
+      }
       if (!operation) return null;
       const pending: PublicReceipt = {
         operationId,

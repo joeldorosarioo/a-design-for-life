@@ -18,7 +18,8 @@ export async function resolveCaseRoute(
   if (!slugSchema.safeParse(slug).success) return { status: 404 };
   try {
     const root = generation ?? (await readPublicRoot(runtimePublication().directory));
-    const document = confirmedCases(root).find(
+    const subjects = confirmedCases(root);
+    const document = subjects.find(
       (value) => value.locale === language && value.slugs.includes(slug),
     );
     if (document) {
@@ -40,7 +41,7 @@ export async function resolveCaseRoute(
     // An independent healthy origin can prove absence. Failure is not a 404.
     const cms = payload ?? (await runtimePayload());
     const req = await createLocalReq({}, cms);
-    await cms.find({
+    const classification = await cms.find({
       collection: 'case-routes',
       where: { and: [{ locale: { equals: language } }, { slug: { equals: slug } }] },
       limit: 1,
@@ -48,6 +49,12 @@ export async function resolveCaseRoute(
       overrideAccess: true,
       req,
     });
+    const route = classification.docs[0];
+    const contentId = typeof route?.content === 'string' ? route.content : route?.content?.id;
+    // A pinned older generation can authoritatively exclude a newer route for
+    // a subject it covers. A missing subject cannot negate known public history.
+    if (route?.everPublished && !subjects.some((subject) => subject.contentId === contentId))
+      return { status: 503, locale: language };
     return { status: 404 };
   } catch {
     console.error('Case route origin unavailable', { correlationId: randomUUID() });

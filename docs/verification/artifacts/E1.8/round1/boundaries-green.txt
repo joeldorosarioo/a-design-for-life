@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts src/features/cases/content/collections/route-lifecycle.integration.test.ts
+Observed exit code: 0
+Classification: GREEN
+Observation: 21 tests in2files passed: initial six boundary cases and15 existing route lifecycle tests, including held-request generation consistency.
+
+ Test Files  2 passed (2)
+      Tests  21 passed (21)
+   Start at  12:07:57
+   Duration  17.07s (tests 68%, import 29%, transform 2%, setup 1%)

@@ -1,0 +1,5 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ tsc --noEmit
+Observed exit code: 0
+Classification: STATIC_GREEN
+Observation: pnpm typecheck passed after test wrapper generic typing was corrected.

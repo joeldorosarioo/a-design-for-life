@@ -92,38 +92,41 @@ export async function retryPublicationUpdate(
       ok: false,
       error: { code: 'forbidden', message: 'Editorial authentication required.' },
     };
-  const fresh = await createLocalReq({ user: req.user }, req.payload);
-  const coordinator = runtimePublication();
-  const operation = (await req.payload.db.findOne({
-    collection: 'publication-updates',
-    where: { operationId: { equals: operationId } },
-    req: fresh,
-  })) as PublicationUpdate | null;
-  if (!operation)
-    return {
-      ok: false,
-      error: { code: 'unavailable', message: 'Committed publication operation unavailable.' },
-    };
-  // Initial ordering is a distinct approved shared-case intent. Confirming it
-  // never publishes any translation or reads an unpublished content body.
-  if (operation.subjectCollection === 'case-content') {
-    const target = operation.target as { caseId?: string };
-    const root = await readPublicRoot(coordinator.directory);
-    if (target.caseId && !root?.subjects[`cases/${target.caseId}`]) {
-      const shared = (await req.payload.db.findOne({
-        collection: 'cases',
-        where: { id: { equals: target.caseId } },
-        req: fresh,
-      })) as Case | null;
-      if (shared?.latestPublicationIntent)
-        await coordinator.retry(String(shared.latestPublicationIntent), fresh);
+  let pending: PublicReceipt | undefined;
+  const unavailable = (): Result<PublicReceipt> => ({
+    ok: false,
+    error: { code: 'unavailable', message: 'Committed publication operation unavailable.' },
+  });
+  try {
+    const fresh = await createLocalReq({ user: req.user }, req.payload);
+    const operation = (await req.payload.db.findOne({
+      collection: 'publication-updates',
+      where: { operationId: { equals: operationId } },
+      req: fresh,
+    })) as PublicationUpdate | null;
+    if (!operation) return unavailable();
+    // Only this independent read proves that an immutable intent committed.
+    // Later dependency/root/second-read failures retain its recoverable receipt.
+    pending = { operationId, targetRevision: operation.targetRevision, state: 'update-pending' };
+    const coordinator = runtimePublication();
+    // Initial ordering is a distinct approved shared-case intent. Confirming it
+    // never publishes any translation or reads an unpublished content body.
+    if (operation.subjectCollection === 'case-content') {
+      const target = operation.target as { caseId?: string };
+      const root = await readPublicRoot(coordinator.directory);
+      if (target.caseId && !root?.subjects[`cases/${target.caseId}`]) {
+        const shared = (await req.payload.db.findOne({
+          collection: 'cases',
+          where: { id: { equals: target.caseId } },
+          req: fresh,
+        })) as Case | null;
+        if (shared?.latestPublicationIntent)
+          await coordinator.retry(String(shared.latestPublicationIntent), fresh);
+      }
     }
+    const receipt = await coordinator.retry(operationId, fresh);
+    return { ok: true, value: receipt ?? pending };
+  } catch {
+    return pending ? { ok: true, value: pending } : unavailable();
   }
-  const receipt = await coordinator.retry(operationId, fresh);
-  return receipt
-    ? { ok: true, value: receipt }
-    : {
-        ok: false,
-        error: { code: 'unavailable', message: 'Committed publication operation unavailable.' },
-      };
 }

@@ -55,3 +55,11 @@ A prova de upgrade usa fonte anterior exata 0fa495864cfefcf3489856d66444b81fdf1f
 ## Limites de evidência
 
 Há testes PostgreSQL, armazenamento, processos e falhas reais. A prova de reinício/PG indisponível usa um servidor HTTP mínimo em processo novo que chama as funções de produção; não é um reinício completo do servidor Next. Separadamente, os E2E usam build Next de produção e CMS Native real. Os estados finais e comandos estão em [E1.8](../verification/E1.8.md); A1 continua pendente em [A1](../verification/A1.md).
+
+## Limites de resposta e cobertura após revisão
+
+A perda da segunda autenticação nunca devolve o sucesso Native indiferenciado. A confirmação responde503 explícito, exige nova sessão e consulta antes de repetir a gravação, sem promover sem usuário. Falhas antes da primeira prova independente de intenção não sustentam alegação de save/public. Uma intenção já lida fora da transação editorial sustenta um recibo `update-pending` mesmo quando uma leitura posterior de dependência, raiz ou coordenador falha. As interfaces públicas contêm essas falhas e não expõem mensagens SQL/FS.
+
+Sem cobertura do assunto na raiz, uma rota comprovadamente pública pela classificação SQL significa503, não404. A mesma regra vale para mídia com uso SQL confirmed sem cobertura do proprietário. O banco apenas classifica indisponibilidade; não fornece corpo nem concede bytes. A presença de um proprietário com lista pública de mídia vazia confirma revogação, inclusive durante ACK pendente. Gerações anteriores explicitamente capturadas continuam coerentes para assuntos que cobrem.
+
+O contador técnico `attempts` ainda não registra todas as tentativas falhas quando sua transação reverte (minor I4). Não o use como auditoria completa de retries; a operação pendente persistida e seu diagnóstico continuam a base de recuperação. I5 mantém os avisos já documentados de lint/pg/reporter, sem supressão.

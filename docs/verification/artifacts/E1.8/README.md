@@ -9,3 +9,5 @@ The [legacy harness](legacy-harness/README.md) exports exact scripts as non-exec
 Native PNGs are actual CMS captures with synthetic content. They demonstrate persisted pending state, public confirmation, an obsolete retry, pending withdrawal and an illustrative Figma draft. They are not stage2 page designs or responsive layout acceptance. Screenshot hashes are recorded after the final E2E run, so historical paths from E1.4/E1.5/E1.6 are restored from verified originals rather than silently replaced.
 
 The fresh final verify/E2E extracts and immutable source/CI/review manifests will complete this index after their respective gates. LinuxSIGSTOP cannot be approved by a Windows skip.
+
+Round1 exports under `round1/` cover I1/I2/I3 and R-MEDIA, valid real Native/SQL/FS REDs, 46/5 focused GREEN, final verify455/73+1Windows skip and25E2E. Setup/typecheck failures and the intermediate454/1/1 fixture-cleanup failure are separate classifications. Prior evidence/hashes and all27tracked PNGs remain unchanged. The a78b2dd Linux CI passed but was not promoted; fixes require a new exact-SHA CI and scoped re-review. I4attempt accounting and I5warnings remain minor deferred.

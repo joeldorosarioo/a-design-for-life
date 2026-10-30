@@ -1,3 +1,4 @@
+import type { PublicReceipt } from './publication-receipt.schema';
 import type { PublicationUpdate } from '@/payload-types';
 import 'server-only';
 import { createLocalReq, type CollectionSlug, type Endpoint, type PayloadRequest } from 'payload';
@@ -80,36 +81,37 @@ export async function confirmNativePublication(
   const json = await response.clone().json();
   const document = json.doc;
   if (!document?.latestPublicationIntent || !document.editorialRevision) return response;
-  const payload = await runtimePayload();
-  const user = (await payload.auth({ headers: request.headers })).user;
-  if (!user) return response;
-  const req = await createLocalReq({ user, req: { headers: request.headers } }, payload);
-  const operation = (await payload.db.findOne({
-    collection: 'publication-updates',
-    where: { operationId: { equals: document.latestPublicationIntent } },
-    req,
-  })) as PublicationUpdate | null;
-  if (!operation)
-    return Response.json(
-      {
-        errors: [
-          {
-            message:
-              'Não foi possível confirmar a gravação. Recarregue o documento antes de tentar novamente.',
-          },
-        ],
-      },
-      { status: 503, headers },
-    );
-  if (operation.targetRevision !== document.editorialRevision) return response;
-  const result = await retryPublicationUpdate(operation.operationId, req);
-  const receipt = result.ok
-    ? result.value
-    : {
-        operationId: operation.operationId,
-        targetRevision: operation.targetRevision,
-        state: 'update-pending',
-      };
+  const unavailable = (
+    message = 'Não foi possível confirmar a gravação. Recarregue o documento antes de tentar novamente.',
+  ) => Response.json({ errors: [{ message }] }, { status: 503, headers });
+  let receipt: PublicReceipt | undefined;
+  try {
+    const payload = await runtimePayload();
+    const user = (await payload.auth({ headers: request.headers })).user;
+    if (!user)
+      return unavailable(
+        'Sessão encerrada. A atualização pública não foi confirmada; entre novamente e consulte o documento antes de repetir a gravação.',
+      );
+    const req = await createLocalReq({ user, req: { headers: request.headers } }, payload);
+    const operation = (await payload.db.findOne({
+      collection: 'publication-updates',
+      where: { operationId: { equals: document.latestPublicationIntent } },
+      req,
+    })) as PublicationUpdate | null;
+    if (!operation) return unavailable();
+    if (operation.targetRevision !== document.editorialRevision) return response;
+    receipt = {
+      operationId: operation.operationId,
+      targetRevision: operation.targetRevision,
+      state: 'update-pending',
+    };
+    const result = await retryPublicationUpdate(operation.operationId, req);
+    if (result.ok) receipt = result.value;
+  } catch {
+    // A proven committed intent can safely be retried. Without that proof,
+    // neither the Native envelope nor an exception establishes durable success.
+    if (!receipt) return unavailable();
+  }
   const nextHeaders = new Headers(response.headers);
   nextHeaders.delete('Content-Length');
   nextHeaders.set('Cache-Control', 'private, no-store');

@@ -1,3 +1,5 @@
+import type { Media } from '../../src/payload-types';
+import { mediaUsageSchema } from '../../src/features/media-library/contracts/media-usage.schema';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
@@ -51,6 +53,24 @@ export async function clearStructuralFixture(payload: Payload) {
     await payload.db.deleteVersions({ collection: 'professional-profiles', where: {} });
     await payload.db.deleteMany({ collection: 'site-navigation', where: {} });
     await payload.db.deleteMany({ collection: 'professional-profiles', where: {} });
+    // Retire only the deleted structural owners' test usages as well. Leaving a
+    // confirmed SQL usage without its owner/root would correctly mean503 now.
+    const media = await payload.db.find({ collection: 'media', pagination: false, limit: 0 });
+    for (const item of (media.docs as Media[]).sort((a, b) => a.id.localeCompare(b.id))) {
+      const usages = mediaUsageSchema.array().parse(item.usages ?? []);
+      const removed = (usage: (typeof usages)[number]) =>
+        usage.collection === 'professional-profiles' || usage.collection === 'site-navigation';
+      if (!usages.some((usage) => removed(usage) && usage.state !== 'retained')) continue;
+      await payload.db.updateOne({
+        collection: 'media',
+        where: { id: { equals: item.id } },
+        options: { atomic: true },
+        data: {
+          usages: usages.map((usage) => (removed(usage) ? { ...usage, state: 'retained' } : usage)),
+          guardRevision: randomUUID(),
+        },
+      });
+    }
     if (!root) return;
     const subjects = Object.fromEntries(
       Object.entries(root.subjects).filter(

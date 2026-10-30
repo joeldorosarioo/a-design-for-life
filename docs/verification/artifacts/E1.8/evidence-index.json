@@ -382,6 +382,136 @@
       "exportedSHA256": "5970173C8DA7B5DE1D6A1239DB1B4A5EEA610DC9D5FA81281D2411867679BCB8",
       "originalSHA256": "E8C9FCBBE29658E44941781B839A2E76BE21F9DBE8C1F9B5B40B2103D6DF5A3C",
       "source": ".work/e1.8-e2e-full-first.txt"
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-red3.txt",
+      "artifact": "round1/boundaries-red3.txt",
+      "originalSHA256": "A2271478D0A676B6ACF6F30FBFF47AF58F520925B77576A285958A0E00573BEA",
+      "exportedSHA256": "1CEE439AFA3D426310FC29D6A231E2C4ED3C94664FFD39977E7D74BE8A4911F2",
+      "exitCode": 1,
+      "classification": "RED",
+      "observation": "Six real behavioral failures: revoked Native session returned201 instead of503; SQL first reads rejected rather than safe fulfilled results; dependency SQL error escaped; both Native and Local FS failures rejected instead of preserving proven pending; missing/incomplete roots returned404 for known public routes instead of503.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-green.txt",
+      "artifact": "round1/boundaries-green.txt",
+      "originalSHA256": "2DFE246AF1CE561BE6BDE4C49D326EC927D81BC98C5B19653007FBF98C5CD5EB",
+      "exportedSHA256": "B71F993ACE314DEAB1FC595164F8536DA426AF6843AD895EC65B60A908D338F5",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "21 tests in2files passed: initial six boundary cases and15 existing route lifecycle tests, including held-request generation consistency.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-media-red2.txt",
+      "artifact": "round1/media-red2.txt",
+      "originalSHA256": "66E6856B9D9E98935704F1F9E1A96177626DB294ECD76053310A5DCF014A6134",
+      "exportedSHA256": "F99D5FF8490B3D1A11D97B75190D37FEF6A56105D9DFCFEFC424F8F1D66B657F",
+      "exitCode": 1,
+      "classification": "RED",
+      "observation": "Two real media boundary failures: SQL confirmed usages were asserted, but absent/incomplete root coverage returned404 instead of503. Eight other tests passed. Covered withdrawal with failed SQL ACK remains404.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-focused-green.txt",
+      "artifact": "round1/focused-green.txt",
+      "originalSHA256": "CD748043E1C9F950328FF9864A0DFCB961A4F56B590871835C7F7D1E74BF5C46",
+      "exportedSHA256": "D503B805C5383F13176879513C6B80208975CA66FF00E313B69390BAB4BDFE92",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "46 tests in5files passed:10 new boundary tests, R1/R2 actual failure protections, D1 actual COMMIT settlement, Local command receipts and15 route lifecycle regressions.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-verify3.txt",
+      "artifact": "round1/verify3.txt",
+      "originalSHA256": "F524ADCEB62A89303C0D9722960755506403710309477DD7AF416B15E0173866",
+      "exportedSHA256": "D74FB923DB85A6CDDA6B7C182579790E4011431CD06F1618B470EB266F81D9F5",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "pnpm verify passed:455 tests in73files plus1 Linux-only Windows skip; typecheck, lint, format, architecture and production Next build passed. Four historical lint warnings and pg concurrent client.query deprecation remain.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-e2e.txt",
+      "artifact": "round1/e2e.txt",
+      "originalSHA256": "3F76723FE8D96992392C4C59451CDADC25E3D459CA85EE09D4EF2438309132A1",
+      "exportedSHA256": "A29125864DBFD6F9F2B70F501EDE0363A20B9C8866DF17BE485AD617799185CB",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "pnpm test:e2e passed25 actual production Next/Native CMS journeys. Earlier tracked PNGs restored byte-for-byte; no UI changes in this fix round.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-verify2.txt",
+      "artifact": "round1/verify2.txt",
+      "originalSHA256": "0F090731345929584111182CC2BEE69337D763289B6432AB004AEAD81E8D6B42",
+      "exportedSHA256": "AABD8D521D9D9FFA3055EFE6F88B7200998F20661E1168DFFC5EEC441680F731",
+      "exitCode": 1,
+      "classification": "FIXTURE_FAILURE",
+      "observation": "454 passed,1 failed,1 skipped. clearStructuralFixture left confirmed structural media usages after deleting their owner/root; correct503 exposed inconsistent test cleanup. Test support now retires only removed structural usages;404 cleanup assertion unchanged. Not a production TDD RED.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-verify.txt",
+      "artifact": "round1/verify.txt",
+      "originalSHA256": "69E2F26DFD88A1193711EB808C6482FAE4BCB2F37E56A824F4F16463ADABC0C2",
+      "exportedSHA256": "1B8419CBE2212C06917B323BB24BC3CF6A1E36B221F55DBD43C8ED03E0273547",
+      "exitCode": 2,
+      "classification": "TYPECHECK_FAILURE",
+      "observation": "First verify stopped at generic passthrough test wrapper typing. No functional gate or behavioral RED claimed.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-red.txt",
+      "artifact": "round1/boundaries-red.txt",
+      "originalSHA256": "4AD48B2D375973A73F5311911746DF058B1964D9FB4FA25AED7E954E367693C7",
+      "exportedSHA256": "D86C50AF584C4AB0AD4FD078CC569B4C07006ACA3CEDC890748E3301AF6E85E3",
+      "exitCode": 1,
+      "classification": "MIXED_SETUP_FAILURE",
+      "observation": "Initial six-case attempt included an incorrect directory cleanup that contaminated later cases. Not used as proof for affected FS/route behaviors; valid red3 supersedes it.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-red2.txt",
+      "artifact": "round1/boundaries-red2.txt",
+      "originalSHA256": "0BC04E5BAA355F307A971275F154920CA9A0D36649DB871C67EDA3E64D87482B",
+      "exportedSHA256": "EB7C71906783ADC9EB56AA25E9C731A0B8CE32BDCE01256D8FC4402D7F9FED42",
+      "exitCode": 1,
+      "classification": "PARTIAL_RED",
+      "observation": "Six-case rerun corrected directory cleanup, but the first rejected Native promise preempted the Local assertion. Final red3 observes both via allSettled.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-media-red.txt",
+      "artifact": "round1/media-red.txt",
+      "originalSHA256": "AEE7431D53D4CE1E07311DC9E2FB78032B67F64EB35B54E0AF4B25E6BD571509",
+      "exportedSHA256": "5BED483DB304CB7F8F010C55526D7BB487A9BE164276BA75A6C0D577EC9A10D2",
+      "exitCode": 1,
+      "classification": "SETUP_FAILURE",
+      "observation": "Eight passed and two failed in test setup: PostgreSQL DDL did not support the supplied bind parameter. Not a R-MEDIA behavioral RED; media-red2 supersedes it.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-typecheck2.txt",
+      "artifact": "round1/typecheck2.txt",
+      "originalSHA256": "5A3973F79ED9BECD5F23C4FEFF467513814DE7EA381D75A4D2E339AA8B8EDCA9",
+      "exportedSHA256": "8D9A51D964DEE3808A529F8865DEA0215F4F6BA050F251D599F49934C2503CDD",
+      "exitCode": 0,
+      "classification": "STATIC_GREEN",
+      "observation": "pnpm typecheck passed after test wrapper generic typing was corrected.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-lint.txt",
+      "artifact": "round1/lint.txt",
+      "originalSHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "exportedSHA256": "E7B5BB840D9AFA8B7FFFFFD2766FE5BBE2409F50DC65967F481A26B2FA2B0FC9",
+      "exitCode": 0,
+      "classification": "STATIC_GREEN",
+      "observation": "Focused ESLint passed for the five production files and the new boundary integration test.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
     }
   ]
 }

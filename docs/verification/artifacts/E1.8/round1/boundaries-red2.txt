@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: PARTIAL_RED
+Observation: Six-case rerun corrected directory cleanup, but the first rejected Native promise preempted the Local assertion. Final red3 observes both via allSettled.
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  12:05:30
+   Duration  9.60s (tests 56%, import 39%, transform 4%, setup 2%)

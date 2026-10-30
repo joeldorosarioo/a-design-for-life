@@ -1,3 +1,4 @@
+import { mediaUsageSchema } from '../contracts/media-usage.schema';
 import 'server-only';
 import { createLocalReq, type PayloadRequest } from 'payload';
 import type { Media } from '@/payload-types';
@@ -35,16 +36,30 @@ export async function resolveMediaAccess(
       const root = await readPublicRoot(runtimePublication().directory);
       manifest = confirmedMedia(root).find((media) => media.id === input.mediaId)?.manifest;
       if (!manifest) {
-        // A live origin proves that an ungranted ID is private/absent. Without
-        // coverage and without the origin, no negative result is fabricated.
+        // SQL can classify missing coverage, but can never grant public bytes.
         const payload = req?.payload ?? (await runtimePayload());
         const fresh = await createLocalReq({}, payload);
-        await payload.db.findOne({
+        const current = (await payload.db.findOne({
           collection: 'media',
           req: fresh,
           where: { id: { equals: input.mediaId } },
-        });
-        return { ok: false, status: 404 };
+        })) as Media | null;
+        const missingPublicCoverage = mediaUsageSchema
+          .array()
+          .parse(current?.usages ?? [])
+          .some((usage) => {
+            if (usage.state !== 'confirmed') return false;
+            const covered = root?.subjects[`${usage.collection}/${usage.documentId}`]?.value;
+            // A covered empty media list is a confirmed revocation, even if its
+            // SQL ACK failed and the previous confirmed usage still remains.
+            return (
+              !covered ||
+              typeof covered !== 'object' ||
+              Array.isArray(covered) ||
+              !('media' in covered)
+            );
+          });
+        return { ok: false, status: missingPublicCoverage ? 503 : 404 };
       }
     }
     const rendition =
