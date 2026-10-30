@@ -1,6 +1,5 @@
-import { mediaUsageSchema } from '../contracts/media-usage.schema';
 import 'server-only';
-import { createLocalReq, type PayloadRequest } from 'payload';
+import type { PayloadRequest } from 'payload';
 import type { Media } from '@/payload-types';
 import { randomUUID } from 'node:crypto';
 import {
@@ -13,7 +12,7 @@ import { mediaRuntime } from './media-runtime';
 import { confirmedMedia } from './public-media';
 import { readPublicRoot } from '@/helpers/payload/public-root';
 import { runtimePublication } from '@/helpers/payload/publication-runtime';
-import { runtimePayload } from '@/helpers/payload/runtime';
+import { classifyMissingPublicMedia } from './classify-missing-public-media';
 export async function resolveMediaAccess(
   input: MediaAccessInput,
   req?: PayloadRequest,
@@ -36,30 +35,7 @@ export async function resolveMediaAccess(
       const root = await readPublicRoot(runtimePublication().directory);
       manifest = confirmedMedia(root).find((media) => media.id === input.mediaId)?.manifest;
       if (!manifest) {
-        // SQL can classify missing coverage, but can never grant public bytes.
-        const payload = req?.payload ?? (await runtimePayload());
-        const fresh = await createLocalReq({}, payload);
-        const current = (await payload.db.findOne({
-          collection: 'media',
-          req: fresh,
-          where: { id: { equals: input.mediaId } },
-        })) as Media | null;
-        const missingPublicCoverage = mediaUsageSchema
-          .array()
-          .parse(current?.usages ?? [])
-          .some((usage) => {
-            if (usage.state !== 'confirmed') return false;
-            const covered = root?.subjects[`${usage.collection}/${usage.documentId}`]?.value;
-            // A covered empty media list is a confirmed revocation, even if its
-            // SQL ACK failed and the previous confirmed usage still remains.
-            return (
-              !covered ||
-              typeof covered !== 'object' ||
-              Array.isArray(covered) ||
-              !('media' in covered)
-            );
-          });
-        return { ok: false, status: missingPublicCoverage ? 503 : 404 };
+        return { ok: false, status: await classifyMissingPublicMedia(input.mediaId, root, req) };
       }
     }
     const rendition =
