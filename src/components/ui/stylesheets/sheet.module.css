@@ -1,0 +1,23 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--color-cherry-cola-950) 50%, transparent);
+}
+
+.content {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  z-index: 51;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: min(100%, 24rem);
+  max-height: 100dvh;
+  overflow-y: auto;
+  border-inline-start: 1px solid var(--border-default);
+  padding: var(--space-6);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
