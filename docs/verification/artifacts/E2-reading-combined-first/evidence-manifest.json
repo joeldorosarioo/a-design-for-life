@@ -1,0 +1,74 @@
+{
+  "capturedAt": "2026-10-30T22:38:30.729Z",
+  "result": {
+    "node": "24.22.2",
+    "exitCode": 1,
+    "command": "pnpm test:e2e reading-position.e2e.test.ts reading-position-expanded.e2e.test.ts public-pages.e2e.test.ts page.e2e.test.ts not-found.e2e.test.ts public-image.e2e.test.ts",
+    "sourceManifest": "AA37ED5D1C79B97BC92DC7CC6A246601AACDC65F4BAC81B1461AD279A414B3F1",
+    "buildId": "wHP23HxlKeU8wa4bCtwv5",
+    "recordedAt": "2026-10-30T22:35:22.0718069Z",
+    "startedAt": "2026-10-30T22:34:04.1512578Z"
+  },
+  "passed": 62,
+  "failed": 1,
+  "counts": {
+    "matrix": 8,
+    "equivalence": 9,
+    "lifecycle": 6,
+    "resource": 3,
+    "anchors": 2,
+    "contact": 16
+  },
+  "cookie": 8,
+  "files": [
+    {
+      "file": "E2-reading-matrix-first.txt",
+      "originalSha256": "86b686749fba8a984ed2c278ae92ebe26916d03461e79fbb733bf1db4cf5ac88",
+      "exportedSha256": "c78516dcc4058fdc1e81f0c5c314560843bf7bb1285b255c3c3940d23ae9cd00",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-matrix-first-result.json",
+      "originalSha256": "fe7e5b232598463995d6d0c961da17135d5e5c41c61e3bde9e1049897b330097",
+      "exportedSha256": "fe7e5b232598463995d6d0c961da17135d5e5c41c61e3bde9e1049897b330097",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-edges-first.txt",
+      "originalSha256": "bfeb4ea2c23e2e431100f1424b378da1b1a69a2833c65b0e283e8216b0acfb60",
+      "exportedSha256": "9dfbf7e2351eafa8fff7e9cb1b3c32cc88fdf9824c515b928a2a35b6094112ba",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-edges-first-result.json",
+      "originalSha256": "a2a5be8fd66d79cebb65e8a9b6c2f104a25034321ee860cf85b22d6b38b3ba18",
+      "exportedSha256": "a2a5be8fd66d79cebb65e8a9b6c2f104a25034321ee860cf85b22d6b38b3ba18",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-edges-observation-repeat.txt",
+      "originalSha256": "c2a2ab1ed5ec18195a45df9b96c09852f459d8a65fdbf73024e1cceeedca11eb",
+      "exportedSha256": "cae2ab76fcce8911ca7fea7175aa92e9ecbec669b6280ec890c3e6d74d316de3",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-edges-observation-repeat-result.json",
+      "originalSha256": "c6657d8d901d9a7b6fa8c1f66f784fb749b753353f7fa7a79b5187df17e1e2da",
+      "exportedSha256": "c6657d8d901d9a7b6fa8c1f66f784fb749b753353f7fa7a79b5187df17e1e2da",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-public-combined.txt",
+      "originalSha256": "792e9723acc2cb9ca8bc3aba077f87e3a52a95f4b24395b16fce0bf147278b2a",
+      "exportedSha256": "af69c6ad75cc41837cda530571139f592c49b1c24759c83abc7fe1bb4997f58e",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    },
+    {
+      "file": "E2-reading-public-combined-result.json",
+      "originalSha256": "a48d164e1f9479168dce91c2b16d7058940d13239c33099a5e269406047db3af",
+      "exportedSha256": "a48d164e1f9479168dce91c2b16d7058940d13239c33099a5e269406047db3af",
+      "transformation": "ANSI removed; credentials/JWT,DB URLs and emails redacted when present."
+    }
+  ],
+  "limitation": "Only wholly satisfied checklist criteria are credited. This combined run FAILED its user-scroll-during-pending-image precondition; no full reading matrix/global gate/A2 completion is claimed."
+}

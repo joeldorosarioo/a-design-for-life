@@ -1,0 +1,200 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test reading-position.e2e.test.ts reading-position-expanded.e2e.test.ts public-pages.e2e.test.ts page.e2e.test.ts not-found.e2e.test.ts public-image.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[19:34:09] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[19:34:09] INFO: Migrating: 20261030_003022_initial_base
+[19:34:09] INFO: Migrated:  20261030_003022_initial_base (42ms)
+[19:34:09] INFO: Migrating: 20261030_020021_editorial_models
+[19:34:09] INFO: Migrated:  20261030_020021_editorial_models (95ms)
+[19:34:09] INFO: Migrating: 20261030_020521_structural_uniqueness
+[19:34:09] INFO: Migrated:  20261030_020521_structural_uniqueness (5ms)
+[19:34:09] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[19:34:09] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[19:34:09] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[19:34:09] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[19:34:09] INFO: Migrating: 20261030_030036_global_editorial_copy
+[19:34:09] INFO: Migrated:  20261030_030036_global_editorial_copy (6ms)
+[19:34:09] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[19:34:09] INFO: Migrated:  20261030_035306_protect_case_identity_references (6ms)
+[19:34:09] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[19:34:09] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (5ms)
+[19:34:09] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[19:34:09] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (6ms)
+[19:34:09] INFO: Migrating: 20261030_093430_private_media_manifests
+[19:34:09] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[19:34:09] INFO: Migrating: 20261030_124550_publication_coordination
+[19:34:09] INFO: Migrated:  20261030_124550_publication_coordination (34ms)
+[19:34:09] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[19:34:09] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[19:34:09] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[19:34:09] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[19:34:09] INFO: Done.
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 35ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1846ms
+  Running TypeScript ...
+  Finished TypeScript in 3.7s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 143ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+└ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+✓ Ready in 158ms
+✓ Running next.config.ts took 43ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 63 tests using 1 worker
+
+(node:39768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › src\app\(portfolio)\[locale]\not-found.e2e.test.ts:20:3 › pt: unknown one-segment and deep pages retain localized 404 for HTML, HEAD and Flight (274ms)
+  ok  2 [chromium] › src\app\(portfolio)\[locale]\not-found.e2e.test.ts:20:3 › en: unknown one-segment and deep pages retain localized 404 for HTML, HEAD and Flight (117ms)
+(node:39768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [chromium] › src\app\(portfolio)\[locale]\public-pages.e2e.test.ts:57:3 › pt: published Home, About, listing and case are complete in SSR without JavaScript (1.3s)
+  ok  4 [chromium] › src\app\(portfolio)\[locale]\public-pages.e2e.test.ts:137:3 › pt: listing count/order and Home highlights use only published current-locale translations (352ms)
+  ok  5 [chromium] › src\app\(portfolio)\[locale]\public-pages.e2e.test.ts:200:3 › pt: mobile keyboard opens/closes the menu and Contact returns focus to this page footer (454ms)
+  ok  6 [chromium] › src\app\(portfolio)\[locale]\public-pages.e2e.test.ts:57:3 › en: published Home, About, listing and case are complete in SSR without JavaScript (921ms)
+  ok  7 [chromium] › src\app\(portfolio)\[locale]\public-pages.e2e.test.ts:137:3 › en: listing count/order and Home highlights use only published current-locale translations (497ms)
+  ok  8 [chromium] › src\app\(portfolio)\[locale]\public-pages.e2e.test.ts:200:3 › en: mobile keyboard opens/closes the menu and Contact returns focus to this page footer (445ms)
+  ok  9 [chromium] › src\app\(portfolio)\page.e2e.test.ts:18:3 › language entry and manual preference over production HTTP › negotiates each root request privately without creating a cookie (52ms)
+  ok 10 [chromium] › src\app\(portfolio)\page.e2e.test.ts:45:3 › language entry and manual preference over production HTTP › ignores external redirect hints and forwarded hosts (10ms)
+  ok 11 [chromium] › src\app\(portfolio)\page.e2e.test.ts:62:3 › language entry and manual preference over production HTTP › saves manually, preserves the deadline during visits, and renews on another choice (41ms)
+  ok 12 [chromium] › src\app\(portfolio)\page.e2e.test.ts:113:5 › language entry and manual preference over production HTTP › resumes the browser preference after a cookie is expired (16ms)
+  ok 13 [chromium] › src\app\(portfolio)\page.e2e.test.ts:113:5 › language entry and manual preference over production HTTP › resumes the browser preference after a cookie is removed (16ms)
+  ok 14 [chromium] › src\app\(portfolio)\page.e2e.test.ts:138:3 › language entry and manual preference over production HTTP › does not negotiate or renew on explicit locale paths (55ms)
+  ok 15 [chromium] › src\app\(portfolio)\page.e2e.test.ts:157:3 › language entry and manual preference over production HTTP › keeps the crossed About paths as real 404 responses (25ms)
+  ok 16 [chromium] › src\app\(portfolio)\page.e2e.test.ts:166:3 › language entry and manual preference over production HTTP › rejects invalid or foreign manual requests without changing a cookie (25ms)
+  ok 17 [chromium] › src\config\public-image.e2e.test.ts:19:1 › optimizes one original through Next, rechecks cache hits and denies every byte after withdrawal (333ms)
+  ok 18 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix desktop home: shared identity survives both language directions (834ms)
+  ok 19 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix desktop about: shared identity survives both language directions (789ms)
+  ok 20 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix desktop list: shared identity survives both language directions (794ms)
+  ok 21 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix desktop detail: shared identity survives both language directions (792ms)
+  ok 22 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix mobile home: shared identity survives both language directions (811ms)
+  ok 23 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix mobile about: shared identity survives both language directions (797ms)
+  ok 24 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix mobile list: shared identity survives both language directions (788ms)
+  ok 25 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:78:5 › @matrix mobile detail: shared identity survives both language directions (761ms)
+  ok 26 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:145:3 › @equivalence pt→en: entire missing case opens the target list and does not replay its notice (734ms)
+  ok 27 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:181:3 › @equivalence pt→en: missing block uses only its explicit ancestor and target-locale partial notice (787ms)
+  ok 28 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:219:3 › @equivalence pt→en: absent section has no shared ancestor and uses the same page top (784ms)
+  ok 29 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:250:3 › @equivalence pt→en: missing list card stays on the translated list and uses its explicit list ancestor (568ms)
+  ok 30 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:145:3 › @equivalence en→pt: entire missing case opens the target list and does not replay its notice (668ms)
+  ok 31 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:181:3 › @equivalence en→pt: missing block uses only its explicit ancestor and target-locale partial notice (803ms)
+  ok 32 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:219:3 › @equivalence en→pt: absent section has no shared ancestor and uses the same page top (752ms)
+  ok 33 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:250:3 › @equivalence en→pt: missing list card stays on the translated list and uses its explicit list ancestor (531ms)
+  ok 34 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:264:1 › @equivalence missing featured card uses the Home projects ancestor rather than an unrelated card (564ms)
+  ok 35 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:277:1 › @lifecycle Back and Forward retain native reading positions without another manual preference (691ms)
+  ok 36 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:303:1 › @lifecycle direct entry and refresh do not invent a missing-translation notice or renew preference (317ms)
+  ok 37 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:336:1 › @lifecycle keyboard language choice does not focus the reading text or toast and keeps Tab usable (554ms)
+  ok 38 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:357:1 › @lifecycle rapid real double click produces one POST and one language navigation (542ms)
+  ok 39 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:383:1 › @lifecycle browser Back cancels a pending preference before its delayed response can navigate (724ms)
+  ok 40 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:420:1 › @lifecycle user scroll during delayed Flight cancels restoration without claiming to cancel the accepted navigation (710ms)
+  ok 41 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:449:1 › @resource actual delayed Next image completes before exact reading restoration is certified (497ms)
+  x  42 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:478:1 › @resource user scroll while the destination image is pending prevents later observer corrections (5.5s)
+(node:3204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 43 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:521:3 › @resource real FontFace loading delays completion until actual font settlement (896ms)
+  ok 44 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:521:3 › @resource real FontFace deadline reports failure and late loading cannot resume correction (9.0s)
+  ok 45 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:592:3 › @anchors desktop: native contact and case TOC targets stay below the measured sticky Header (625ms)
+  ok 46 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:592:3 › @anchors mobile: native contact and case TOC targets stay below the measured sticky Header (638ms)
+  ok 47 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt home: current-page contact is below the Header and mobile dialog restores contact focus (422ms)
+  ok 48 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt about: current-page contact is below the Header and mobile dialog restores contact focus (354ms)
+  ok 49 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt list: current-page contact is below the Header and mobile dialog restores contact focus (387ms)
+  ok 50 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt detail: current-page contact is below the Header and mobile dialog restores contact focus (392ms)
+  ok 51 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en home: current-page contact is below the Header and mobile dialog restores contact focus (395ms)
+  ok 52 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en about: current-page contact is below the Header and mobile dialog restores contact focus (359ms)
+  ok 53 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en list: current-page contact is below the Header and mobile dialog restores contact focus (379ms)
+  ok 54 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en detail: current-page contact is below the Header and mobile dialog restores contact focus (393ms)
+  ok 55 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt home: current-page contact is below the Header and mobile dialog restores contact focus (437ms)
+  ok 56 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt about: current-page contact is below the Header and mobile dialog restores contact focus (407ms)
+  ok 57 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt list: current-page contact is below the Header and mobile dialog restores contact focus (414ms)
+  ok 58 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt detail: current-page contact is below the Header and mobile dialog restores contact focus (424ms)
+  ok 59 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en home: current-page contact is below the Header and mobile dialog restores contact focus (427ms)
+  ok 60 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en about: current-page contact is below the Header and mobile dialog restores contact focus (409ms)
+  ok 61 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en list: current-page contact is below the Header and mobile dialog restores contact focus (466ms)
+  ok 62 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en detail: current-page contact is below the Header and mobile dialog restores contact focus (438ms)
+  ok 63 [chromium] › src\features\language-switcher\components\reading-position.e2e.test.ts:22:1 › keeps the visible Home section at the same viewport position when switching PT to EN (771ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:478:1 › @resource user scroll while the destination image is pending prevents later observer corrections 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator:  getByRole('button', { name: 'Português', exact: true })
+    Expected: disabled
+    Received: enabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Português', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Português', exact: true })
+        14 × locator resolved to <button lang="pt" type="button" aria-busy="false" aria-label="Português" data-language-toggle="true" title="Synthetic languageLabel: Português" class="ui-button ui-button-secondary _6wQrEa_toggle">…</button>
+           - unexpected value "enabled"
+
+
+      492 |     expect((await gate.held).status).toBe(200);
+      493 |     await expect.poll(() => new URL(page.url()).pathname).toBe('/en/about');
+    > 494 |     await expect(languageButton(page, 'en')).toBeDisabled();
+          |                                              ^
+      495 |     const oldY = await page.evaluate(() => scrollY);
+      496 |     await page.mouse.move(700, 400);
+      497 |     await page.mouse.wheel(0, 240);
+        at E:\a-design-for-life\src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:494:46
+
+    Error Context: test-results\features-language-switcher-68eb7--later-observer-corrections-chromium\error-context.md
+
+    Error Context: test-results\features-language-switcher-68eb7--later-observer-corrections-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\features-language-switcher-68eb7--later-observer-corrections-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\features-language-switcher-68eb7--later-observer-corrections-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:478:1 › @resource user scroll while the destination image is pending prevents later observer corrections 
+  62 passed (1.3m)
+[ELIFECYCLE] Command failed with exit code 1.

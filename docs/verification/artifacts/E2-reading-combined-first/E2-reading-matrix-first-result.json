@@ -1,0 +1,8 @@
+{
+  "exitCode": 0,
+  "node": "24.22.2",
+  "recordedAt": "2026-10-30T22:28:51.5754201Z",
+  "buildId": "KjOegcPKAPF3K9dhPbDan",
+  "startedAt": "2026-10-30T22:28:17.6633909Z",
+  "command": "pnpm test:e2e reading-position-expanded.e2e.test.ts --grep '@matrix' --max-failures=1"
+}

@@ -1,0 +1,116 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test reading-position-expanded.e2e.test.ts --grep '@lifecycle browser Back|@lifecycle user scroll|@resource|@anchors|@contact' --max-failures=1
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[19:32:29] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[19:32:29] INFO: Migrating: 20261030_003022_initial_base
+[19:32:29] INFO: Migrated:  20261030_003022_initial_base (43ms)
+[19:32:29] INFO: Migrating: 20261030_020021_editorial_models
+[19:32:29] INFO: Migrated:  20261030_020021_editorial_models (102ms)
+[19:32:29] INFO: Migrating: 20261030_020521_structural_uniqueness
+[19:32:29] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[19:32:29] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[19:32:29] INFO: Migrated:  20261030_024431_case_locale_uniqueness (5ms)
+[19:32:29] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[19:32:29] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (3ms)
+[19:32:29] INFO: Migrating: 20261030_030036_global_editorial_copy
+[19:32:29] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[19:32:29] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[19:32:29] INFO: Migrated:  20261030_035306_protect_case_identity_references (10ms)
+[19:32:29] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[19:32:29] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (7ms)
+[19:32:29] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[19:32:29] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[19:32:29] INFO: Migrating: 20261030_093430_private_media_manifests
+[19:32:29] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[19:32:29] INFO: Migrating: 20261030_124550_publication_coordination
+[19:32:29] INFO: Migrated:  20261030_124550_publication_coordination (42ms)
+[19:32:29] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[19:32:29] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[19:32:29] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[19:32:29] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[19:32:29] INFO: Done.
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.5s
+  Running TypeScript ...
+  Finished TypeScript in 4.1s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 134ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+└ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+✓ Ready in 156ms
+✓ Running next.config.ts took 44ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 24 tests using 1 worker
+
+(node:20684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:20684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:383:1 › @lifecycle browser Back cancels a pending preference before its delayed response can navigate (1.0s)
+  ok  2 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:420:1 › @lifecycle user scroll during delayed Flight cancels restoration without claiming to cancel the accepted navigation (705ms)
+  ok  3 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:449:1 › @resource actual delayed Next image completes before exact reading restoration is certified (496ms)
+  ok  4 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:478:1 › @resource user scroll while the destination image is pending prevents later observer corrections (623ms)
+  ok  5 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:521:3 › @resource real FontFace loading delays completion until actual font settlement (710ms)
+  ok  6 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:521:3 › @resource real FontFace deadline reports failure and late loading cannot resume correction (8.9s)
+  ok  7 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:592:3 › @anchors desktop: native contact and case TOC targets stay below the measured sticky Header (627ms)
+  ok  8 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:592:3 › @anchors mobile: native contact and case TOC targets stay below the measured sticky Header (602ms)
+  ok  9 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt home: current-page contact is below the Header and mobile dialog restores contact focus (375ms)
+  ok 10 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt about: current-page contact is below the Header and mobile dialog restores contact focus (330ms)
+  ok 11 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt list: current-page contact is below the Header and mobile dialog restores contact focus (337ms)
+  ok 12 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop pt detail: current-page contact is below the Header and mobile dialog restores contact focus (358ms)
+  ok 13 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en home: current-page contact is below the Header and mobile dialog restores contact focus (347ms)
+  ok 14 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en about: current-page contact is below the Header and mobile dialog restores contact focus (321ms)
+  ok 15 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en list: current-page contact is below the Header and mobile dialog restores contact focus (326ms)
+  ok 16 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact desktop en detail: current-page contact is below the Header and mobile dialog restores contact focus (349ms)
+  ok 17 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt home: current-page contact is below the Header and mobile dialog restores contact focus (414ms)
+  ok 18 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt about: current-page contact is below the Header and mobile dialog restores contact focus (393ms)
+  ok 19 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt list: current-page contact is below the Header and mobile dialog restores contact focus (377ms)
+  ok 20 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile pt detail: current-page contact is below the Header and mobile dialog restores contact focus (394ms)
+  ok 21 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en home: current-page contact is below the Header and mobile dialog restores contact focus (394ms)
+  ok 22 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en about: current-page contact is below the Header and mobile dialog restores contact focus (408ms)
+  ok 23 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en list: current-page contact is below the Header and mobile dialog restores contact focus (377ms)
+  ok 24 [chromium] › src\features\language-switcher\components\reading-position-expanded.e2e.test.ts:669:7 › @contact mobile en detail: current-page contact is below the Header and mobile dialog restores contact focus (394ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+  24 passed (46.3s)
