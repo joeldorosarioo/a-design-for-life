@@ -1,0 +1,93 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/language-switcher/components/private-language-link.test.tsx (5 tests | 4 failed) 98ms
+   × links to the private counterpart without submitting a public language preference 87ms
+   × refuses a non-counterpart destination /en/about 3ms
+   × refuses a non-counterpart destination https://outside.invalid 1ms
+   × refuses a non-counterpart destination /preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000001/about 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/language-switcher/components/private-language-link.test.tsx > links to the private counterpart without submitting a public language preference
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "English"
+
+Here are the accessible roles:
+
+  button:
+
+  Name "English":
+  <button
+    aria-label="English"
+    class="ui-button ui-button-secondary _toggle_0e5514"
+    disabled=""
+    title="Idioma: English"
+    type="button"
+  />
+
+  --------------------------------------------------
+  presentation:
+
+  Name "":
+  <img
+    alt=""
+    height="32"
+    src="/figma/language-en.svg"
+    width="32"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <button
+      aria-label="English"
+      class="ui-button ui-button-secondary _toggle_0e5514"
+      disabled=""
+      title="Idioma: English"
+      type="button"
+    >
+      <img
+        alt=""
+        height="32"
+        src="/figma/language-en.svg"
+        width="32"
+      />
+    </button>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/language-switcher/components/private-language-link.test.tsx:11:17
+      9|   const href = `/preview-ui/en/professional-profiles/${id}/about`;
+     10|   const { container } = render(<PrivateLanguageLink locale="pt" href={…
+     11|   expect(screen.getByRole('link', { name: 'English' })).toHaveAttribut…
+       |                 ^
+     12|   expect(screen.getByRole('link', { name: 'English' })).toHaveAttribut…
+     13|   expect(container.querySelector('form')).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/language-switcher/components/private-language-link.test.tsx > refuses a non-counterpart destination /en/about
+ FAIL  |unit| src/features/language-switcher/components/private-language-link.test.tsx > refuses a non-counterpart destination https://outside.invalid
+ FAIL  |unit| src/features/language-switcher/components/private-language-link.test.tsx > refuses a non-counterpart destination /preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000001/about
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/language-switcher/components/private-language-link.test.tsx:22:96
+     20| });
+     21| it.each(['/en/about', 'https://outside.invalid', `/preview-ui/pt/profe…
+     22|   expect(() => render(<PrivateLanguageLink locale="pt" href={href} lan…
+       |                                                                                                ^
+     23| });
+     24|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 1 passed (5)
+   Start at  20:17:40
+   Duration  1.26s (environment 66%, setup 17%, tests 9%, import 5%, transform 3%)
+

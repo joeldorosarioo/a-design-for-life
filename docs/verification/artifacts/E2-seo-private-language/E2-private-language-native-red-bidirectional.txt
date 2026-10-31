@@ -1,0 +1,185 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[20:29:08] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[20:29:08] INFO: Migrating: 20261030_003022_initial_base
+[20:29:08] INFO: Migrated:  20261030_003022_initial_base (44ms)
+[20:29:08] INFO: Migrating: 20261030_020021_editorial_models
+[20:29:08] INFO: Migrated:  20261030_020021_editorial_models (88ms)
+[20:29:08] INFO: Migrating: 20261030_020521_structural_uniqueness
+[20:29:08] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[20:29:08] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[20:29:08] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[20:29:08] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[20:29:08] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[20:29:08] INFO: Migrating: 20261030_030036_global_editorial_copy
+[20:29:08] INFO: Migrated:  20261030_030036_global_editorial_copy (6ms)
+[20:29:08] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[20:29:08] INFO: Migrated:  20261030_035306_protect_case_identity_references (6ms)
+[20:29:08] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[20:29:08] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (5ms)
+[20:29:08] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[20:29:08] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (6ms)
+[20:29:08] INFO: Migrating: 20261030_093430_private_media_manifests
+[20:29:08] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[20:29:08] INFO: Migrating: 20261030_124550_publication_coordination
+[20:29:08] INFO: Migrated:  20261030_124550_publication_coordination (34ms)
+[20:29:08] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[20:29:08] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[20:29:08] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[20:29:08] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[20:29:08] INFO: Done.
+ ❯ |integration| src/config/resolve-private-language-target.integration.test.ts (9 tests | 7 failed) 879ms
+   × uses the authorized counterpart profile ID for the private home page 5ms
+   × uses the authorized counterpart profile ID for the private about page 1ms
+   × uses the authorized counterpart profile ID for the private cases page 0ms
+   × keeps a navigation preview scoped to the counterpart Native navigation document 0ms
+   × matches a draft case by permanent identity and never derives or requires a public slug 0ms
+   × resolves the reverse EN to PT direction for profile, navigation and permanent case identity 0ms
+   × reauthenticates rather than retaining a target after session revocation 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > uses the authorized counterpart profile ID for the private home page
+AssertionError: expected null to be '/preview-ui/en/professional-profiles/…' // Object.is equality
+
+- Expected:
+"/preview-ui/en/professional-profiles/cbadde21-cb52-4010-bb0c-3d9891da6dd4/home"
+
++ Received:
+null
+
+ ❯ src/config/resolve-private-language-target.integration.test.ts:126:7
+    124|         options(),
+    125|       ),
+    126|     ).toBe(`/preview-ui/en/professional-profiles/${ids.en.profile}/${p…
+       |       ^
+    127|   },
+    128| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > uses the authorized counterpart profile ID for the private about page
+AssertionError: expected null to be '/preview-ui/en/professional-profiles/…' // Object.is equality
+
+- Expected:
+"/preview-ui/en/professional-profiles/cbadde21-cb52-4010-bb0c-3d9891da6dd4/about"
+
++ Received:
+null
+
+ ❯ src/config/resolve-private-language-target.integration.test.ts:126:7
+    124|         options(),
+    125|       ),
+    126|     ).toBe(`/preview-ui/en/professional-profiles/${ids.en.profile}/${p…
+       |       ^
+    127|   },
+    128| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > uses the authorized counterpart profile ID for the private cases page
+AssertionError: expected null to be '/preview-ui/en/professional-profiles/…' // Object.is equality
+
+- Expected:
+"/preview-ui/en/professional-profiles/cbadde21-cb52-4010-bb0c-3d9891da6dd4/cases"
+
++ Received:
+null
+
+ ❯ src/config/resolve-private-language-target.integration.test.ts:126:7
+    124|         options(),
+    125|       ),
+    126|     ).toBe(`/preview-ui/en/professional-profiles/${ids.en.profile}/${p…
+       |       ^
+    127|   },
+    128| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > keeps a navigation preview scoped to the counterpart Native navigation document
+AssertionError: expected null to be '/preview-ui/en/site-navigation/150c94…' // Object.is equality
+
+- Expected:
+"/preview-ui/en/site-navigation/150c9456-ccdf-4f53-8384-a88b5c7d73e5/home"
+
++ Received:
+null
+
+ ❯ src/config/resolve-private-language-target.integration.test.ts:132:5
+    130|   expect(
+    131|     await resolvePrivateLanguageTarget(incoming('site-navigation', ids…
+    132|   ).toBe(`/preview-ui/en/site-navigation/${ids.en.navigation}/home`);
+       |     ^
+    133| });
+    134| it('matches a draft case by permanent identity and never derives or re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > matches a draft case by permanent identity and never derives or requires a public slug
+AssertionError: expected null to be '/preview-ui/en/case-content/93d3d851-…' // Object.is equality
+
+- Expected:
+"/preview-ui/en/case-content/93d3d851-b736-4840-9aff-4d5dc9713555/case"
+
++ Received:
+null
+
+ ❯ src/config/resolve-private-language-target.integration.test.ts:137:5
+    135|   expect(
+    136|     await resolvePrivateLanguageTarget(incoming('case-content', ids.pt…
+    137|   ).toBe(`/preview-ui/en/case-content/${ids.en.content}/case`);
+       |     ^
+    138|   expect(await readPublicRoot(runtimePublication().directory)).toEqual…
+    139| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > resolves the reverse EN to PT direction for profile, navigation and permanent case identity
+AssertionError: expected null to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+
+- Expected:
+"/preview-ui/pt/professional-profiles/325c0f45-f20c-4d66-b19e-768e4e80ddd0/about"
+
++ Received:
+null
+
+ ❯ src/config/resolve-private-language-target.integration.test.ts:156:68
+    154|     const base = incoming(collection, sourceId, page);
+    155|     const request = new Request(base.url.replace('/preview-ui/pt/', '/…
+    156|     expect(await resolvePrivateLanguageTarget(request, options())).toB…
+       |                                                                    ^
+    157|   }
+    158| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  |integration| src/config/resolve-private-language-target.integration.test.ts > reauthenticates rather than retaining a target after session revocation
+AssertionError: expected null not to be null
+ ❯ src/config/resolve-private-language-target.integration.test.ts:172:70
+    170| it('reauthenticates rather than retaining a target after session revoc…
+    171|   const request = incoming();
+    172|   expect(await resolvePrivateLanguageTarget(request, options())).not.t…
+       |                                                                      ^
+    173|   await fixture.payload.db.updateOne({
+    174|     collection: 'users',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 2 passed (9)
+   Start at  20:29:03
+   Duration  7.74s (import 61%, tests 32%, transform 5%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

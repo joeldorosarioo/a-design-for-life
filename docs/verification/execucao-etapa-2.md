@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 2
 
-**Etapa 2: 56,7% do checklist (17/30 itens); 1/6 tarefas inteiramente encerradas. A2 pendente.**
+**Etapa 2: 76,7% do checklist (23/30 itens); 3/6 tarefas inteiramente encerradas. A2 pendente.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 
@@ -11,8 +11,8 @@ A1 aprovada explicitamente em 30/10/2026. Autorizadas somente E2.1–E2.6 na rai
 - [x] E2.1 Tokens, primitivas e fundação de movimento — código, originais e evidências conferidos.
 - [ ] E2.2 Header, footer, Home e Sobre.
 - [ ] E2.3 Listagem, detalhe e apresentações editoriais.
-- [ ] E2.4 Resolução inicial e cookie funcional de idioma.
-- [ ] E2.5 Troca de idioma preservando a leitura.
+- [x] E2.4 Resolução inicial e cookie funcional de idioma.
+- [x] E2.5 Troca de idioma preservando a leitura.
 - [ ] E2.6 SEO, acessibilidade, responsividade e aceite visual.
 - [ ] Pacote A2 verificado e entregue.
 - [ ] A2 aprovada pelo usuário — não iniciar etapa 3 antes disso.
