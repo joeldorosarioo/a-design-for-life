@@ -66,6 +66,8 @@ Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader
 
 Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2.
 
+Pausa explícita solicitada pelo usuário após concluir cardTitle/cardEyebrow editáveis comfallback (c3b4860):38unit+6Native,tipos/lint/formato0; coordenador44unit+2CSS atuais. Nenhuma nova caixa completa; visual/gate/a11y/performance/A2 seguem abertos. Retomada registrada em retomada-etapa-2.md.
+
 Estimativa: 12–18 hours of work, updated after user asked for remaining time; not a guaranteed delivery time.
 
 A2 pendente; etapa3 depende da aprovação explícita do usuário.

@@ -88,3 +88,7 @@ Em 30/10/2026, produção local Next16.4.3/Node24.22.2/PG17.11 tmpfs55433: `pnpm
 ## Acompanhamento refinado após a observação do usuário
 
 O usuário apontou que16,7% permaneceu estático apesar dos avanços. O acompanhamento passa a usar16/30itens verificados (53,3%), com1/6tarefas encerradas informado separadamente. O escopo, os critérios finais, as evidências exigidas e a parada A2 permanecem os mesmos. Estimativa de trabalho restante informada ao usuário:12–18horas. Os registros históricos e logs não foram reescritos para sugerir progresso ou sucesso anterior.
+
+## Pausa solicitada após o item dos cards
+
+O usuário aprovou os campos opcionais/editáveis cardTitle/cardEyebrow e reforçou a edição editorial via CMS. Implementados com fallback do detalhe, migração aditiva e projeção confirmada/legada validada. RED/GREEN e38unit+6Native,tipos/lint/formato0; commitc3b4860. Verificação final do coordenador:44unit+2CSS,exit0. Nenhum fullverify/HTTP/build novo foi atribuído a esse commit. A pedido explícito, execução pausada após esse item; não iniciar outro trabalho nesta sessão. [Retomada e serviços/checkpoint](retomada-etapa-2.md).
