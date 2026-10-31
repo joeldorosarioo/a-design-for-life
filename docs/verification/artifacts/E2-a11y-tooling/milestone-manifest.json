@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-31T01:16:25.251Z",
+  "scope": "Pinned audit devDependencies installed; actual private axe27 analyses returned0 violations,36 incomplete. C-private full reports remain private. No manual/screen-reader/performance/WCAG acceptance.",
+  "environment": {
+    "node": "24.22.2",
+    "next": "16.4.3",
+    "payload": "3.92.1"
+  },
+  "sources": [
+    {
+      "path": "package.json",
+      "sha256": "afa8e6de7e9fd081518ce1ba11989d90d4f0fa9c840e32bd5e2a0368e6454927"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "a41e6e5f8c4b8150eca8f6ea381d6038e02da83c8199e9bd64106a7cf22d621f"
+    }
+  ],
+  "exports": [
+    {
+      "file": "dependency-install.log",
+      "originalSha256": "473bc6ac53910095e97c6421a483eb52332c4c7b0d8165b1bbf63ef3b4c72404",
+      "exportedSha256": "473bc6ac53910095e97c6421a483eb52332c4c7b0d8165b1bbf63ef3b4c72404",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "dependency-install-result.json",
+      "originalSha256": "61e14718ebd843308de17d2b527022ac0b80e58bfc9a2ced012a8786aff684bf",
+      "exportedSha256": "61e14718ebd843308de17d2b527022ac0b80e58bfc9a2ced012a8786aff684bf",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "dependency-install-verification.json",
+      "originalSha256": "c94c56f1b47d536c086ed47ec89f4f8d5bc5fe23e6296916ed46ffb0eb49cfcd",
+      "exportedSha256": "c94c56f1b47d536c086ed47ec89f4f8d5bc5fe23e6296916ed46ffb0eb49cfcd",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "readiness.json",
+      "originalSha256": "b072291202d1e4c169f248f8886ebbabba7ef74052b317f6d18cb7f70994689e",
+      "exportedSha256": "b072291202d1e4c169f248f8886ebbabba7ef74052b317f6d18cb7f70994689e",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    }
+  ]
+}

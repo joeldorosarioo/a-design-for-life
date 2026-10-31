@@ -1,0 +1,43 @@
+{
+  "Scripts": {
+    "dev": "node scripts/emit-case-state-css.mjs && next dev --hostname 127.0.0.1",
+    "build": "node scripts/emit-case-state-css.mjs && next build",
+    "start": "next start --hostname 127.0.0.1",
+    "payload": "node --conditions=react-server ./node_modules/payload/bin.js",
+    "provision:structural": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/provision-structural-documents.cli.ts",
+    "bootstrap:publications": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/bootstrap-publications.cli.ts",
+    "generate:types": "node --conditions=react-server ./node_modules/payload/bin.js generate:types",
+    "generate:importmap": "node --conditions=react-server ./node_modules/payload/bin.js generate:importmap",
+    "migrate:create": "node --conditions=react-server ./node_modules/payload/bin.js migrate:create",
+    "migrate": "node --conditions=react-server ./node_modules/payload/bin.js migrate",
+    "setup:media-checker": "node testing/setup/install-qpdf.mjs",
+    "test": "vitest run",
+    "test:unit": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "test:e2e": "node --conditions=react-server ./node_modules/@playwright/test/cli.js test",
+    "test:architecture": "vitest run --project architecture",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm test:case-state-css && pnpm build",
+    "test:case-state-css": "node --test scripts/emit-case-state-css.test.mjs"
+  },
+  "PackageHash": "AFA8E6DE7E9FD081518CE1BA11989D90D4F0FA9C840E32BD5E2A0368E6454927",
+  "Postcss": "8.5.32",
+  "OnlyTwoDevDepsChanged": true,
+  "LockHash": "A41E6E5F8C4B8150ECA8F6EA381D6038E02DA83C8199E9BD64106A7CF22D621F",
+  "Overrides": null,
+  "InstallResult": {
+    "startedAt": "2026-10-31T00:20:19.0948596Z",
+    "command": "pnpm add -D --save-exact --ignore-scripts @axe-core/playwright@4.14.0 lighthouse@13.6.0",
+    "recordedAt": "2026-10-31T00:20:37.1084582Z",
+    "exitCode": 0,
+    "pnpm": "12.10.1",
+    "node": "24.22.2"
+  },
+  "Added": {
+    "@axe-core/playwright": "4.14.0",
+    "lighthouse": "13.6.0"
+  }
+}

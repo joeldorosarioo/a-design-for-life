@@ -1,0 +1,23 @@
+? Verifying lockfile against supply-chain policies (972 entries)...
+[WARN] deprecated eslint@9.39.5. 10.13.0 is not deprecated.
+Progress: resolved 0, reused 148, downloaded 1, added 0
+Progress: resolved 0, reused 485, downloaded 5, added 0
+Progress: resolved 0, reused 574, downloaded 43, added 0
+Progress: resolved 0, reused 582, downloaded 64, added 0
+[WARN] 2 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5
+Progress: resolved 0, reused 588, downloaded 64, added 0
+Progress: resolved 0, reused 593, downloaded 64, added 0
+Progress: resolved 0, reused 595, downloaded 64, added 0
+Progress: resolved 0, reused 598, downloaded 64, added 0
+Progress: resolved 21, reused 604, downloaded 66, added 13
+Progress: resolved 73, reused 605, downloaded 89, added 69
+✓ Lockfile passes supply-chain policies (972 entries in 14.4s)
+Packages: +98 -9
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-------
+Progress: resolved 98, reused 605, downloaded 89, added 98, done
+
+devDependencies:
++ @axe-core/playwright 4.14.0
++ lighthouse 13.6.0
+
+Done in 17.9s using pnpm v12.10.1
