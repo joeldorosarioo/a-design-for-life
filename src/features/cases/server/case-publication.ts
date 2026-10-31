@@ -8,8 +8,8 @@ import type { CaseContent } from '@/payload-types';
 import type { PublicationAdapter } from '@/helpers/payload/publication-updates';
 import type { PublicRoot } from '@/helpers/payload/public-root';
 import { z } from 'zod';
-import { caseDetailDTOSchema } from '../contracts/case-dto.schema';
-import { mapCaseDetail } from './map-case-detail';
+import { caseDetailDTOSchema, caseCardDTOSchema } from '../contracts/case-dto.schema';
+import { mapCaseDetail, mapCaseCardPresentation } from './map-case-detail';
 export const casePublicSnapshotSchema = z.object({
   media: publicMediaSnapshotSchema.array().default([]),
   kind: z.literal('case'),
@@ -18,6 +18,8 @@ export const casePublicSnapshotSchema = z.object({
   locale: z.enum(['pt', 'en']),
   slug: z.string().nullable(),
   detail: caseDetailDTOSchema.nullable(),
+  // Earlier confirmed generations have only detail; absence retains that projection.
+  card: caseCardDTOSchema.nullable().optional(),
   slugs: z.string().array().default([]),
 });
 export function confirmedCases(root: PublicRoot | null) {
@@ -91,6 +93,7 @@ export const casePublicationAdapter: PublicationAdapter = {
   },
   async prepare(document, published, req) {
     const doc = document as unknown as CaseContent;
+    const detail = published ? mapCaseDetail(doc)! : null;
     return {
       value: {
         media: published ? await capturePublicMedia(extractCaseMedia(doc), req) : [],
@@ -99,7 +102,8 @@ export const casePublicationAdapter: PublicationAdapter = {
         caseId: typeof doc.case === 'object' ? doc.case.id : doc.case,
         locale: doc.locale,
         slug: published ? doc.slug! : null,
-        detail: published ? mapCaseDetail(doc)! : null,
+        detail,
+        card: detail ? mapCaseCardPresentation(doc, detail.path) : null,
       },
       dependencies: [
         `case:${doc.id}`,

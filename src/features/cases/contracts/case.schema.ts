@@ -50,6 +50,8 @@ export const caseInputSchema = z.strictObject({
   eyebrow: text,
   title: text,
   titleEmphasis: text,
+  cardTitle: text,
+  cardEyebrow: text,
   summary: text,
   introduction: text,
   slug: draftSlugSchema,

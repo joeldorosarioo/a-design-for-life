@@ -188,6 +188,14 @@ export interface CaseContent {
    * Sufixo opcional do título. O título completo é derivado das duas partes.
    */
   titleEmphasis?: string | null;
+  /**
+   * Se vazio, o card usa o título completo do estudo.
+   */
+  cardTitle?: string | null;
+  /**
+   * Se vazio, o card usa a identificação editorial do estudo.
+   */
+  cardEyebrow?: string | null;
   summary?: string | null;
   introduction?: string | null;
   slug?: string | null;
@@ -735,6 +743,8 @@ export interface CaseContentSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
   titleEmphasis?: T;
+  cardTitle?: T;
+  cardEyebrow?: T;
   summary?: T;
   introduction?: T;
   slug?: T;

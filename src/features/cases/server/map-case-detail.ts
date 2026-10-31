@@ -10,7 +10,16 @@ import {
 import { deriveCaseTitle } from '../helpers/derive-case-title';
 type CaseCardPresentationSource = Pick<
   CaseContent,
-  'id' | 'case' | 'locale' | 'eyebrow' | 'title' | 'titleEmphasis' | 'summary' | 'cover'
+  | 'id'
+  | 'case'
+  | 'locale'
+  | 'eyebrow'
+  | 'title'
+  | 'titleEmphasis'
+  | 'cardTitle'
+  | 'cardEyebrow'
+  | 'summary'
+  | 'cover'
 >;
 type CasePresentationSource = CaseCardPresentationSource &
   Pick<CaseContent, 'introduction' | 'role' | 'scope' | 'contextNote' | 'sections' | 'seo'>;
@@ -21,8 +30,10 @@ export function mapCaseCardPresentation(
   return caseCardDTOSchema.parse({
     caseId: typeof document.case === 'object' ? document.case.id : document.case,
     locale: document.locale,
-    eyebrow: document.eyebrow ?? null,
-    title: deriveCaseTitle(document.title, document.titleEmphasis),
+    eyebrow: document.cardEyebrow?.trim() ? document.cardEyebrow : (document.eyebrow ?? null),
+    title: document.cardTitle?.trim()
+      ? document.cardTitle
+      : deriveCaseTitle(document.title, document.titleEmphasis),
     summary: document.summary ?? null,
     path,
     cover: mapImageUse(document.cover) ?? null,

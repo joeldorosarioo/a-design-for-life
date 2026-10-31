@@ -1,0 +1,64 @@
+{
+  "sourceFiles": [
+    {
+      "sha256": "934ED84D94D4AF9A12F9BAA3D237B74F7FBC512419A52FB4138A7F4DB6B3C783",
+      "path": "src/features/cases/contracts/case.schema.ts"
+    },
+    {
+      "sha256": "51499E77688DD26DE786BE62A1B747FFFC0BC2C194925C687F4F71ECC5CA3CD5",
+      "path": "src/features/cases/content/collections/case-content.ts"
+    },
+    {
+      "sha256": "487DC4CDE5D7E2C2EA63A0CE534174EFBA6DF33AC034EA8CC47DF674F7407BA6",
+      "path": "src/features/cases/server/map-case-detail.ts"
+    },
+    {
+      "sha256": "6A9BFF906BC3DB4BCEF2E1EBF415CA302E0FFC9375969C9F637807A1CC73B0FC",
+      "path": "src/features/cases/server/get-preview-cases.ts"
+    },
+    {
+      "sha256": "BE7F6CA8C99114F5908EBA9F9762BC68C341982BBDB44EEC283CC8CDEB3080C2",
+      "path": "src/features/cases/server/case-publication.ts"
+    },
+    {
+      "sha256": "745CE6F58BDC999CCA2B31FE3BD088D70937168A6A2FE153F818ABA95F2136BE",
+      "path": "src/features/cases/server/get-published-cases.ts"
+    },
+    {
+      "sha256": "12472AAA257997E3A7157293AC43B1889BD0315651CBA18D7B7603688EE10B60",
+      "path": "src/features/cases/server/get-featured-cases.ts"
+    },
+    {
+      "sha256": "7D11D16821FCF7B4BBC32D6B6F3395C2F0B9B4C7EFEAF358BCB77E8438E396AB",
+      "path": "src/features/cases/server/map-case-card-copy.test.ts"
+    },
+    {
+      "sha256": "E97188D317D54DCA7953FFDB38E17AF7169F74018F1A70A602B4F62D2556E275",
+      "path": "src/features/cases/server/card-copy.integration.test.ts"
+    },
+    {
+      "sha256": "90EFC729515D1FC59A5C816E2720F60D8C8CC2560A4665C4BB2590544B6CA7FA",
+      "path": "src/migrations/20261031_011109_e2_case_card_copy.ts"
+    },
+    {
+      "sha256": "FAEF8F0F53D6A67CF1986A43211816C4EA0D34CB9F00F4AA5BEEF76EE9CB6A51",
+      "path": "src/migrations/index.ts"
+    },
+    {
+      "sha256": "B21C49C2EEB53EC79D16CAEACA00FC8139D402A16E452C507EDB1F96BCE84484",
+      "path": "src/migrations/20261031_011109_e2_case_card_copy.json"
+    },
+    {
+      "sha256": "ABE24394E475F8A331E4632F8E0747B80A1C8E0131F44BE9049F37C5768ECFC3",
+      "path": "src/payload-types.ts"
+    }
+  ],
+  "node": "v24.22.2",
+  "recordedAt": "2026-10-31T01:13:24.5312413Z",
+  "checks": {
+    "unit": 0,
+    "lint": 0,
+    "format": 0,
+    "types": 0
+  }
+}

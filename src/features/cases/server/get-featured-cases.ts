@@ -17,7 +17,7 @@ export async function getFeaturedCases(
         .filter(
           (item) => item.locale === language && item.detail && orders.get(item.caseId)!.featured,
         )
-        .map((item) => caseCardDTOSchema.parse(item.detail)),
+        .map((item) => caseCardDTOSchema.parse(item.card ?? item.detail)),
     };
   } catch {
     return {

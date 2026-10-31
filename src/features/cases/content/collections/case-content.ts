@@ -100,6 +100,18 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
     { name: 'eyebrow', label: 'Identificação editorial do estudo', type: 'text' },
     { name: 'title', label: 'Título público', type: 'text' },
     ...casePresentationFields(),
+    {
+      name: 'cardTitle',
+      label: 'Título do card (opcional)',
+      type: 'text',
+      admin: { description: 'Se vazio, o card usa o título completo do estudo.' },
+    },
+    {
+      name: 'cardEyebrow',
+      label: 'Identificação editorial do card (opcional)',
+      type: 'text',
+      admin: { description: 'Se vazio, o card usa a identificação editorial do estudo.' },
+    },
 
     { name: 'summary', label: 'Resumo', type: 'textarea' },
 

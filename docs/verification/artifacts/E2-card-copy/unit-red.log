@@ -1,0 +1,169 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/server/map-case-card-copy.test.ts (13 tests | 8 failed) 25ms
+   × uses independently edited card copy without changing the detail or SEO 10ms
+   × resolves each optional field independently and preserves authored copy 1ms
+   × accepts plain optional Native fields in the strict input contract 3ms
+   × reads the confirmed card projection for listing and highlights, retaining detail SEO 4ms
+   × rejects a confirmed card with mismatched caseId instead of linking another body 1ms
+   × rejects a confirmed card with mismatched locale instead of linking another body 1ms
+   × rejects a confirmed card with mismatched path instead of linking another body 1ms
+   × rejects a malformed provided projection instead of silently reverting to the detail 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > uses independently edited card copy without changing the detail or SEO
+AssertionError: expected { …(7) } to match object { title: 'Card title', …(1) }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "eyebrow": "Card eyebrow",
+-   "title": "Card title",
++   "eyebrow": "Detail eyebrow",
++   "title": "Detail title detail emphasis",
+  }
+
+ ❯ src/features/cases/server/map-case-card-copy.test.ts:19:49
+     17| it('uses independently edited card copy without changing the detail or…
+     18|   const edited = { ...document, cardTitle: 'Card title', cardEyebrow: …
+     19|   expect(mapCaseCardPresentation(edited, path)).toMatchObject({ title:…
+       |                                                 ^
+     20|   expect(mapCaseDetail(edited)).toMatchObject({ title: 'Detail title d…
+     21| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > resolves each optional field independently and preserves authored copy
+AssertionError: expected { …(7) } to match object { …(2) }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "eyebrow": "Detail eyebrow",
+-   "title": "  Authored card title
+- second line  ",
++   "title": "Detail title detail emphasis",
+  }
+
+ ❯ src/features/cases/server/map-case-card-copy.test.ts:30:49
+     28| it('resolves each optional field independently and preserves authored …
+     29|   const edited = { ...document, cardTitle: '  Authored card title\nsec…
+     30|   expect(mapCaseCardPresentation(edited, path)).toMatchObject({ title:…
+       |                                                 ^
+     31| });
+     32|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > accepts plain optional Native fields in the strict input contract
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/cases/server/map-case-card-copy.test.ts:34:92
+     32|
+     33| it('accepts plain optional Native fields in the strict input contract'…
+     34|   expect(caseInputSchema.safeParse({ cardTitle: 'Card', cardEyebrow: '…
+       |                                                                                            ^
+     35|   expect(caseInputSchema.safeParse({ cardTitle: null, cardEyebrow: nul…
+     36|   for (const bad of [23, {}, []]) expect(caseInputSchema.safeParse({ c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > reads the confirmed card projection for listing and highlights, retaining detail SEO
+AssertionError: expected { ok: true, value: [ { …(7) } ] } to match object { ok: true, value: [ { …(2) } ] }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": [
+      {
+-       "eyebrow": "Confirmed card eyebrow",
+-       "title": "Confirmed card title",
++       "eyebrow": "Detail eyebrow",
++       "title": "Detail title detail emphasis",
+      },
+    ],
+  }
+
+ ❯ src/features/cases/server/map-case-card-copy.test.ts:52:100
+     50|   const card = { ...mapCaseCardPresentation(document, path), title: 'C…
+     51|   const captured = root(card);
+     52|   for (const getter of [getPublishedCases, getFeaturedCases]) expect(a…
+       |                                                                                                    ^
+     53|   expect(await getPublishedCaseRoutes('pt', captured)).toMatchObject({…
+     54| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a confirmed card with mismatched caseId instead of linking another body
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a confirmed card with mismatched locale instead of linking another body
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a confirmed card with mismatched path instead of linking another body
+AssertionError: expected { ok: true, value: [ { …(7) } ] } to match object { ok: false, …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "unavailable",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ src/features/cases/server/map-case-card-copy.test.ts:62:102
+     60| it.each(['caseId', 'locale', 'path'] as const)('rejects a confirmed ca…
+     61|   const card = { ...mapCaseCardPresentation(document, path), [key]: ke…
+     62|   for (const getter of [getPublishedCases, getFeaturedCases]) expect(a…
+       |                                                                                                      ^
+     63| });
+     64|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a malformed provided projection instead of silently reverting to the detail
+AssertionError: expected { ok: true, value: [ { …(7) } ] } to match object { ok: false, …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "unavailable",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ src/features/cases/server/map-case-card-copy.test.ts:66:110
+     64|
+     65| it('rejects a malformed provided projection instead of silently revert…
+     66|   for (const getter of [getPublishedCases, getFeaturedCases]) expect(a…
+       |                                                                                                              ^
+     67| });
+     68|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 5 passed (13)
+   Start at  22:06:57
+   Duration  15.32s (import 82%, setup 15%, transform 2%)
+
