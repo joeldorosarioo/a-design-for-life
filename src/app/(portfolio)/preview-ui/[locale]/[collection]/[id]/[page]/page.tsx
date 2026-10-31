@@ -3,6 +3,7 @@ import { readPrivatePageRequest } from '@/config/private-page-request';
 import { resolvePreviewContextualLink } from '@/features/cases/server';
 import { PublicPageView } from '@/app/(portfolio)/_components/public-page-view';
 import { parsePrivatePreviewPath } from '@/helpers/payload/private-preview-path';
+import { PrivateLanguageLink } from '@/features/language-switcher/ui';
 
 type PageProps = {
   params: Promise<{ locale: string; collection: string; id: string; page: string }>;
@@ -29,6 +30,13 @@ export default async function PrivatePreviewPage({ params, searchParams }: PageP
       detail={model.detail}
       targets={model.targets}
       navigationOverride={model.navigation}
+      languageControl={
+        <PrivateLanguageLink
+          locale={model.locale}
+          href={model.languageHref}
+          languageLabel={model.navigation.controls.languageLabel}
+        />
+      }
       resolveLink={(link) => resolvePreviewContextualLink(link, model.routeContext)}
       mediaMode="preview"
     />

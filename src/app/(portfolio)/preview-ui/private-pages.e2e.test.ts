@@ -175,6 +175,9 @@ for (const locale of ['pt', 'en'] as const) {
           privateTitle(locale, kind),
         );
         await expect(page.locator('html')).toHaveAttribute('lang', locale);
+        await expect(
+          page.getByRole('link', { name: locale === 'pt' ? 'English' : 'Português', exact: true }),
+        ).toHaveAttribute('href', pathFor(locale === 'pt' ? 'en' : 'pt', kind));
         const links = page.locator('a[href]');
         const publicHrefs = await links.evaluateAll((elements) =>
           elements
@@ -313,6 +316,38 @@ test('reads a newly saved draft on the same URL without mutating its confirmed p
   expect(await next.text()).toContain('PRIVATE NEWLY SAVED HOME HTTP');
   expectPrivate(next.headers());
   expect(await readPublicRoot(runtimePublication().directory)).toEqual(rootBefore);
+});
+
+test('chooses the counterpart private document and keeps the public preference cookie untouched', async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    baseURL: origin(),
+    viewport: { width: 1440, height: 900 },
+    extraHTTPHeaders: { origin: origin() },
+  });
+  try {
+    await login(context.request);
+    const page = await context.newPage();
+    expect((await page.goto(pathFor('pt', 'about')))?.status()).toBe(200);
+    const language = page.getByRole('link', { name: 'English', exact: true });
+    await expect(language).toHaveAttribute('href', pathFor('en', 'about'));
+    await language.click();
+    await expect(page).toHaveURL(new URL(pathFor('en', 'about'), origin()).href);
+    await expect(page.getByRole('main').getByRole('heading', { level: 1 })).toHaveText(
+      privateTitle('en', 'about'),
+    );
+    await expect(page.getByRole('link', { name: 'Português', exact: true })).toHaveAttribute(
+      'href',
+      pathFor('pt', 'about'),
+    );
+    expect((await context.cookies()).some((cookie) => cookie.name === 'portfolio_locale')).toBe(
+      false,
+    );
+    expect(await readPublicRoot(runtimePublication().directory)).toEqual(rootBefore);
+  } finally {
+    await context.close();
+  }
 });
 
 test('revokes the same session for document, HEAD, Flight and original draft media', async ({
