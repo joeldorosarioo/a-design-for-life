@@ -1,0 +1,209 @@
+{
+  "capturedAt": "2026-10-31T01:16:25.184Z",
+  "scope": "Unit6/6 and real Native4/4; technical visual intake then succeeded with second apply idempotent, five canonical originals and two technical PDFs; no public Root/intents. Current aggregate gate remains pending.",
+  "environment": {
+    "node": "24.22.2",
+    "next": "16.4.3",
+    "payload": "3.92.1"
+  },
+  "sources": [
+    {
+      "path": "src/helpers/payload/validate-input.ts",
+      "sha256": "0d79a3890b73b965ea9ca3dcf01cd881b3ffb6bd1289456a86871f4b24134a9c"
+    },
+    {
+      "path": "src/helpers/payload/encode-native-group-clears.ts",
+      "sha256": "1c04b681cd0a1463923a970ab323b6c307876fd93105afaabc1733bee1db68ae"
+    },
+    {
+      "path": "src/helpers/payload/encode-native-group-clears.test.ts",
+      "sha256": "9584b8305841e7759ae7cbbba3baf76f773bc50abcda10989b8b24b9474a6409"
+    },
+    {
+      "path": "src/helpers/payload/encode-native-group-clears.integration.test.ts",
+      "sha256": "24e118d05b8bcdf4f05e560a481f4c62482729949ae1781281f48ed7e64ef40d"
+    }
+  ],
+  "exports": [
+    {
+      "file": "report.md",
+      "originalSha256": "de884c8fb0299f963ff2dfc909f4e093f1e0161d182c59c25bf8300ef5a9632f",
+      "exportedSha256": "de884c8fb0299f963ff2dfc909f4e093f1e0161d182c59c25bf8300ef5a9632f",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-checks-result.json",
+      "originalSha256": "5a402c6e21a2aac700c1b80cb9258b6eae1fed7c897011f27e1355b707e2dde3",
+      "exportedSha256": "5a402c6e21a2aac700c1b80cb9258b6eae1fed7c897011f27e1355b707e2dde3",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-focused-final-result.json",
+      "originalSha256": "5065a92fc2e1a8e88cf93593ee4647e5c9b71575e7b5f6709e6954b1d93a4a5e",
+      "exportedSha256": "5065a92fc2e1a8e88cf93593ee4647e5c9b71575e7b5f6709e6954b1d93a4a5e",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-format-final.txt",
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-format-repeat.txt",
+      "originalSha256": "fb52b7aeb1f2683d41f92d5ffc371a9644e86c2cc1be601eed7bb17556f6e59e",
+      "exportedSha256": "fb52b7aeb1f2683d41f92d5ffc371a9644e86c2cc1be601eed7bb17556f6e59e",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-format.txt",
+      "originalSha256": "e18c48acf7e4879627385bf7d7189f29ae9e54901653f2f062a0a300e032ddd2",
+      "exportedSha256": "e18c48acf7e4879627385bf7d7189f29ae9e54901653f2f062a0a300e032ddd2",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-green-result.json",
+      "originalSha256": "1d88bee3832f11205a3a7fe8f9d22f6196ad2ef64599b713d2134b63ea0cb2ed",
+      "exportedSha256": "1d88bee3832f11205a3a7fe8f9d22f6196ad2ef64599b713d2134b63ea0cb2ed",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-lint-final.txt",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-lint.txt",
+      "originalSha256": "b5d986a520af63116de110e697aeeab311a1116c4543a6a50c142559b28ad198",
+      "exportedSha256": "b5d986a520af63116de110e697aeeab311a1116c4543a6a50c142559b28ad198",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-migrate.txt",
+      "originalSha256": "b74ad656df49aae453b24291e7d094352ef6076bd9d7cb36a9ac2314e325fa35",
+      "exportedSha256": "40a5b995049fdf7678982e5e4a30cfa7333b6b94a2e3afa4303938c4b05f4433",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-native-green.txt",
+      "originalSha256": "5cbb85c82bbff3abf44be578942a2c2e06142947f33fdc51e821682093fd6471",
+      "exportedSha256": "5cbb85c82bbff3abf44be578942a2c2e06142947f33fdc51e821682093fd6471",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-native-red.txt",
+      "originalSha256": "fe4007769e7502e3a6010e11aed03e0686db7204a2e0a8d31779e7fbf669a420",
+      "exportedSha256": "fe4007769e7502e3a6010e11aed03e0686db7204a2e0a8d31779e7fbf669a420",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-red-result.json",
+      "originalSha256": "9d84468f2630b42d08a0ed7e6eb0cff5a18bf2ee7528e1e9785a11c9843dcea2",
+      "exportedSha256": "9d84468f2630b42d08a0ed7e6eb0cff5a18bf2ee7528e1e9785a11c9843dcea2",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-setup-result.json",
+      "originalSha256": "be79009c99e50db5e4a1246937855004ae97f300da78445d3e667e0bbe7922cb",
+      "exportedSha256": "be79009c99e50db5e4a1246937855004ae97f300da78445d3e667e0bbe7922cb",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-typecheck-final-result.json",
+      "originalSha256": "cd92e0126a29b722d9f853a4ec5709ac65ccb94983b1784780f6a8b039966086",
+      "exportedSha256": "cd92e0126a29b722d9f853a4ec5709ac65ccb94983b1784780f6a8b039966086",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-typecheck-final.txt",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-typecheck.txt",
+      "originalSha256": "5765c1a0c6457c93e5e8d6e1f433fcc7ed6bb8052ad8ff143780e086ee7233bb",
+      "exportedSha256": "5765c1a0c6457c93e5e8d6e1f433fcc7ed6bb8052ad8ff143780e086ee7233bb",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-unit-final.txt",
+      "originalSha256": "88d7637c65c35d0a596659b486b750ba7a7d1b503bd6e6325112848e36b8b696",
+      "exportedSha256": "88d7637c65c35d0a596659b486b750ba7a7d1b503bd6e6325112848e36b8b696",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-unit-green-result.json",
+      "originalSha256": "d8dddf43afc9935dfa43016c4282b4c69e8190ba442329a0ff0219bd049c12b5",
+      "exportedSha256": "d8dddf43afc9935dfa43016c4282b4c69e8190ba442329a0ff0219bd049c12b5",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-unit-green.txt",
+      "originalSha256": "7500351f451bd28bc26decf7b0f407143996ec3ed5d657e11c4d5ec2883784c9",
+      "exportedSha256": "7500351f451bd28bc26decf7b0f407143996ec3ed5d657e11c4d5ec2883784c9",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-unit-red-result.json",
+      "originalSha256": "40524493317d6e4ba37a9a4f32910cfad9c404ae8ce61889fbd122efb9b4611f",
+      "exportedSha256": "40524493317d6e4ba37a9a4f32910cfad9c404ae8ce61889fbd122efb9b4611f",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-native-null-group-unit-red.txt",
+      "originalSha256": "461da88153135c7f43f5de72c244dd41b49ab592212aa4a3aa14868feca71e14",
+      "exportedSha256": "461da88153135c7f43f5de72c244dd41b49ab592212aa4a3aa14868feca71e14",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-after-group-fix-result.json",
+      "originalSha256": "9e1c8fef32afaf472ec17a6b309d6d8854f53b3ff236e04236ace2d390c4ca8c",
+      "exportedSha256": "9e1c8fef32afaf472ec17a6b309d6d8854f53b3ff236e04236ace2d390c4ca8c",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-after-group-fix.txt",
+      "originalSha256": "3687d520e312c5553ecef92ffb4fa759b2adefef9b39334525b56fc75fc6fd9d",
+      "exportedSha256": "3687d520e312c5553ecef92ffb4fa759b2adefef9b39334525b56fc75fc6fd9d",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-diagnosis-result.json",
+      "originalSha256": "2a6221c92ef04d0a4fc9cfaae6dc9cba05c529e4193155f65990b08dfa3de914",
+      "exportedSha256": "2a6221c92ef04d0a4fc9cfaae6dc9cba05c529e4193155f65990b08dfa3de914",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-diagnosis.txt",
+      "originalSha256": "fa54d85a52596d4991e5cca2328d3204b5b9d78f70a09d2826f82a884565f94a",
+      "exportedSha256": "fa54d85a52596d4991e5cca2328d3204b5b9d78f70a09d2826f82a884565f94a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-first-result.json",
+      "originalSha256": "74e26bda43c589a5c11435c084193564ad917f0252b47b5c14ab7c9eb6650191",
+      "exportedSha256": "74e26bda43c589a5c11435c084193564ad917f0252b47b5c14ab7c9eb6650191",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-first.txt",
+      "originalSha256": "fa54d85a52596d4991e5cca2328d3204b5b9d78f70a09d2826f82a884565f94a",
+      "exportedSha256": "fa54d85a52596d4991e5cca2328d3204b5b9d78f70a09d2826f82a884565f94a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-stack-diagnosis-result.json",
+      "originalSha256": "c53dd41dca53fe5405e3ebc7c1bdf7d300bc19b7aaea3d1da63258b0860f0a21",
+      "exportedSha256": "c53dd41dca53fe5405e3ebc7c1bdf7d300bc19b7aaea3d1da63258b0860f0a21",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "E2-visual-native-bootstrap-stack-diagnosis.txt",
+      "originalSha256": "fa54d85a52596d4991e5cca2328d3204b5b9d78f70a09d2826f82a884565f94a",
+      "exportedSha256": "fa54d85a52596d4991e5cca2328d3204b5b9d78f70a09d2826f82a884565f94a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    }
+  ]
+}

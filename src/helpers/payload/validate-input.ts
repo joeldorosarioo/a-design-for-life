@@ -1,4 +1,5 @@
 import 'server-only';
+import { encodeNativeGroupClears } from './encode-native-group-clears';
 import {
   ValidationError,
   type CollectionBeforeChangeHook,
@@ -36,7 +37,10 @@ export function validatedWrite(
 ): CollectionBeforeOperationHook {
   return ({ args, operation, collection, req }) => {
     if ((operation === 'create' || operation === 'update') && 'data' in args)
-      args.data = validateInput(schema, args.data, collection.slug, req);
+      args.data = encodeNativeGroupClears(
+        validateInput(schema, args.data, collection.slug, req),
+        collection.fields,
+      );
     return args;
   };
 }

@@ -1,0 +1,41 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ src/helpers/payload/encode-native-group-clears.integration.test.ts (4 tests | 2 failed) 746ms
+   × creates accepted null named groups through real Native validation 35ms
+   × clears a populated group without retaining media or replacing unrelated sibling data 180ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/helpers/payload/encode-native-group-clears.integration.test.ts > creates accepted null named groups through real Native validation
+TypeError: Cannot read properties of null (reading 'name')
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:27
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:70:7
+ ❯ forEach node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:68:10
+ ❯ traverseFields node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:506:13
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:70:7
+ ❯ forEach node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:68:10
+ ❯ traverseFields node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:44:9
+ ❯ beforeValidate node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:266:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/helpers/payload/encode-native-group-clears.integration.test.ts > clears a populated group without retaining media or replacing unrelated sibling data
+TypeError: Cannot read properties of null (reading 'media')
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:164:22
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:70:7
+ ❯ forEach node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:68:10
+ ❯ traverseFields node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:506:13
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:70:7
+ ❯ forEach node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:68:10
+ ❯ traverseFields node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:506:13
+ ❯ promise node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:70:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  21:32:36
+   Duration  4.11s (import 67%, tests 19%, transform 11%, setup 3%)
+

@@ -1,0 +1,140 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/payload/encode-native-group-clears.test.ts (6 tests | 4 failed) 11ms
+   ❯ Native named-group clear encoding (6)
+     × encodes an explicit null group into complete declared clear leaves 7ms
+     × encodes only the nested group explicitly cleared, preserving partial input 1ms
+     × visits groups inside declared array rows and each selected block type 1ms
+     × visits unnamed presentation containers without inventing a wrapper value 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/encode-native-group-clears.test.ts > Native named-group clear encoding > encodes an explicit null group into complete declared clear leaves
+AssertionError: expected { seo: null } to deeply equal { seo: { title: null, …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "seo": {
+-     "blocks": [],
+-     "image": {
+-       "alt": null,
+-       "decorative": false,
+-       "media": null,
+-     },
+-     "rows": [],
+-     "title": null,
+-   },
++   "seo": null,
+  }
+
+ ❯ src/helpers/payload/encode-native-group-clears.test.ts:19:60
+     17| describe('Native named-group clear encoding', () => {
+     18|   it('encodes an explicit null group into complete declared clear leav…
+     19|     expect(encodeNativeGroupClears({ seo: null }, fields)).toEqual({ s…
+       |                                                            ^
+     20|       title: null, image: { media: null, decorative: false, alt: null …
+     21|     }});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/helpers/payload/encode-native-group-clears.test.ts > Native named-group clear encoding > encodes only the nested group explicitly cleared, preserving partial input
+AssertionError: expected { seo: { image: null } } to deeply equal { seo: { image: { …(3) } } }
+
+- Expected
++ Received
+
+  {
+    "seo": {
+-     "image": {
+-       "alt": null,
+-       "decorative": false,
+-       "media": null,
+-     },
++     "image": null,
+    },
+  }
+
+ ❯ src/helpers/payload/encode-native-group-clears.test.ts:24:71
+     22|   });
+     23|   it('encodes only the nested group explicitly cleared, preserving par…
+     24|     expect(encodeNativeGroupClears({ seo: { image: null } }, fields)).…
+       |                                                                       ^
+     25|       image: { media: null, decorative: false, alt: null },
+     26|     }});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/helpers/payload/encode-native-group-clears.test.ts > Native named-group clear encoding > visits groups inside declared array rows and each selected block type
+AssertionError: expected { rows: [ { image: null } ], …(1) } to deeply equal { rows: [ { image: { …(3) } } ], …(1) }
+
+- Expected
++ Received
+
+  {
+    "rows": [
+      {
+-       "image": {
+-         "alt": null,
+-         "decorative": false,
+-         "media": null,
+-       },
++       "image": null,
+      },
+    ],
+    "sections": [
+      {
+        "blockType": "picture",
+-       "image": {
+-         "alt": null,
+-         "decorative": false,
+-         "media": null,
+-       },
++       "image": null,
+      },
+    ],
+  }
+
+ ❯ src/helpers/payload/encode-native-group-clears.test.ts:39:125
+     37|     ];
+     38|     const image = { media: null, decorative: false, alt: null };
+     39|     expect(encodeNativeGroupClears({ rows: [{ image: null }], sections…
+       |                                                                                                                             ^
+     40|   });
+     41|   it('visits unnamed presentation containers without inventing a wrapp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |unit| src/helpers/payload/encode-native-group-clears.test.ts > Native named-group clear encoding > visits unnamed presentation containers without inventing a wrapper value
+AssertionError: expected { image: null } to deeply equal { image: { media: null, …(2) } }
+
+- Expected
++ Received
+
+  {
+-   "image": {
+-     "alt": null,
+-     "decorative": false,
+-     "media": null,
+-   },
++   "image": null,
+  }
+
+ ❯ src/helpers/payload/encode-native-group-clears.test.ts:43:62
+     41|   it('visits unnamed presentation containers without inventing a wrapp…
+     42|     const layout: Field[] = [{ type: 'row', fields: [{ name: 'image', …
+     43|     expect(encodeNativeGroupClears({ image: null }, layout)).toEqual({…
+       |                                                              ^
+     44|   });
+     45|   it('never mutates the caller data or field configuration', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 2 passed (6)
+   Start at  21:31:42
+   Duration  4.23s (setup 98%, transform 1%, worker 1%)
+
