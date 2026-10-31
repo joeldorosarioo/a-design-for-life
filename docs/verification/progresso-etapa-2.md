@@ -1,6 +1,6 @@
 # Progresso verificável — etapa 2
 
-**76,7%: 23/30 itens; 3/6 tarefas inteiramente encerradas. A2 pendente.**
+**80,0%: 24/30 itens; 3/6 tarefas inteiramente encerradas. A2 pendente.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
@@ -10,7 +10,7 @@ A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso 
 | ------ | ----- | ------------ |
 | E2.1   | 5/5   | Encerrada    |
 | E2.2   | 4/5   | Em andamento |
-| E2.3   | 3/5   | Em andamento |
+| E2.3   | 4/5   | Em andamento |
 | E2.4   | 5/5   | Encerrada    |
 | E2.5   | 5/5   | Encerrada    |
 | E2.6   | 1/5   | Em andamento |
@@ -30,7 +30,7 @@ A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso 
 - [x] **E2.3.1** Ordem/destaques por idioma, contagem e falha sem lista vazia. Evidência/pendência: artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt; artifacts/E2-preparation/evidence-manifest.json
 - [x] **E2.3.2** Texto permitido, dupla imagem em ordem e sumário derivado. Evidência/pendência: artifacts/E2-public-pages-integration/E2-cases-unit-final-authoritative.log; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt
 - [x] **E2.3.3** Comparação tipada, dimensões/sizes e prioridade de imagens. Evidência/pendência: artifacts/E2-public-pages-integration/E2-cases-ui-report.md; artifacts/E2-public-pages-integration/E2-public-image-http-green.txt
-- [ ] **E2.3.4** Todos os estados públicos com apresentação editorial aprovada. Evidência/pendência: Negativos de detalhe preservam renderer A1; apresentação editorial/contato na página ainda precisa do acabamento A2.
+- [x] **E2.3.4** Todos os estados públicos com apresentação editorial aprovada. Evidência/pendência: artifacts/E2-negative-editorial/evidence-manifest.json;5/5HTTP exit0:404 desconhecido/privado indistinguíveis em PT/EN,HEAD/condicionais/RSC,retiradaPT410 mantendoEN200,cobertura Native ausente503/Retry60,CSS200,contatos/PDF e header sticky1440/390/texto200%. Mesma raiz capturada; fallback A1 sem estrutura preservado. Gate agregado e aceite visual seguem nas caixas próprias.
 - [ ] **E2.3.5** Gate e comparações de listagem/detalhes PT/EN e segundo EN. Evidência/pendência: Todos os18frames e textos de referência estão disponíveis, com origem e hashes. Faltam comparação renderizada e gate atual.
 - [x] **E2.4.1** Negociação/prioridade/pesos/variantes com RED/GREEN. Evidência/pendência: E2.4.md; artifacts/E2.4/evidence-manifest.json
 - [x] **E2.4.2** Entrada307 privada e URLs explícitas sem negociação. Evidência/pendência: artifacts/E2-ui-transport-preparation/e2e-final.txt; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt
@@ -63,6 +63,8 @@ Todos os18frames/textos e5originais estão disponíveis, privados. Loader visual
 Novas mudanças posteriores a esta captura exigem as regressões afetadas antes da entrega final. Etapa3 continua sem autorização.
 
 Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado.
+
+Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2.
 
 Estimativa: 12–18 hours of work, updated after user asked for remaining time; not a guaranteed delivery time.
 

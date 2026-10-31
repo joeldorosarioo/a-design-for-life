@@ -71,6 +71,7 @@ export async function proxy(request: NextRequest): Promise<Response> {
           ? { status: 404 }
           : { status: decision.status, locale: decision.caseStateLocale },
         decision.caseStateLocale,
+        decision.caseStatePresentation,
       );
       return request.method === 'HEAD'
         ? new Response(null, { status: response.status, headers: response.headers })

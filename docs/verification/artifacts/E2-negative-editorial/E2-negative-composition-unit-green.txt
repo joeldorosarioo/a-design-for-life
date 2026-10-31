@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/proxy.test.ts (39 tests | 1 failed) 183ms
+   × renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected '<!doctype html><html lang="pt"><head>…' to contain 'EDITORIAL503'
+
+Expected: "EDITORIAL503"
+Received: "<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Case indisponível</title><meta name="robots" content="noindex, nofollow"></head><body><main><h1>Case indisponível</h1><nav aria-label="Continue navegando"><a href="/pt/cases">Projetos</a> <a href="/pt#contact">Contato</a></nav></main></body></html>"
+
+ ❯ src/proxy.test.ts:490:41
+    490|     );
+    491|     const head = await proxy(
+    492|       request(`/pt/cases/${slug}`, {
+       |    ^
+    493|         method: 'HEAD',
+    494|         headers: { 'if-none-match': '*', 'if-modified-since': 'Thu, 01…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 106 passed (107)
+   Start at  21:09:29
+   Duration  11.96s (environment 58%, import 28%, setup 7%, transform 4%, tests 4%)
+

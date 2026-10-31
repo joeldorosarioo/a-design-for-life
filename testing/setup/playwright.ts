@@ -6,6 +6,20 @@ import { configureTestEnvironment } from './test-environment';
 
 export default async function setup() {
   const env = configureTestEnvironment();
+  const productionEnv = {
+    ...process.env,
+    ...env,
+    NODE_ENV: 'production',
+  } satisfies NodeJS.ProcessEnv;
+  // This setup invokes Next directly, bypassing package build scripts. Compile
+  // the stable stylesheet before allocating PostgreSQL or any HTTP listener.
+  const stylesheet = spawnSync(process.execPath, ['scripts/emit-case-state-css.mjs'], {
+    stdio: 'inherit',
+    env: productionEnv,
+    windowsHide: true,
+  });
+  if (stylesheet.error || stylesheet.status !== 0)
+    throw stylesheet.error ?? new Error(`CSS de estado falhou: ${stylesheet.status}`);
   const origin = new URL(env.SITE_ORIGIN);
   const port = Number(origin.port || 80);
   const hostname = origin.hostname === '[::1]' ? '::1' : origin.hostname;
@@ -15,11 +29,6 @@ export default async function setup() {
   await new Promise<void>((resolve) => probe.close(() => resolve()));
 
   const stopDatabase = setupDatabase();
-  const productionEnv = {
-    ...process.env,
-    ...env,
-    NODE_ENV: 'production',
-  } satisfies NodeJS.ProcessEnv;
   const build = spawnSync(process.execPath, ['./node_modules/next/dist/bin/next', 'build'], {
     stdio: 'inherit',
     env: productionEnv,

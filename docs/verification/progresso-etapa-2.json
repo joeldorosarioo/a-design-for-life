@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-30T23:55:54.423Z",
+  "updatedAt": "2026-10-31T00:17:52.054Z",
   "stage": 2,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 23,
+  "completedItems": 24,
   "totalItems": 30,
-  "percentage": 76.7,
+  "percentage": 80,
   "closedTasks": ["E2.1", "E2.4", "E2.5"],
   "totalTasks": 6,
   "approval": "A2 pending; stage3 not authorized",
@@ -90,9 +90,9 @@
     },
     {
       "id": "E2.3.4",
-      "done": false,
+      "done": true,
       "summary": "Todos os estados públicos com apresentação editorial aprovada",
-      "evidence": "Negativos de detalhe preservam renderer A1; apresentação editorial/contato na página ainda precisa do acabamento A2."
+      "evidence": "artifacts/E2-negative-editorial/evidence-manifest.json;5/5HTTP exit0:404 desconhecido/privado indistinguíveis em PT/EN,HEAD/condicionais/RSC,retiradaPT410 mantendoEN200,cobertura Native ausente503/Retry60,CSS200,contatos/PDF e header sticky1440/390/texto200%. Mesma raiz capturada; fallback A1 sem estrutura preservado. Gate agregado e aceite visual seguem nas caixas próprias."
     },
     {
       "id": "E2.3.5",
@@ -191,7 +191,7 @@
       "evidence": "Entrega A2 ainda não produzida; etapa3 depende da aprovação posterior."
     }
   ],
-  "recalculatedAt": "2026-10-31T00:12:33.260Z",
+  "recalculatedAt": "2026-10-31T00:22:57.817Z",
   "notes": [
     "Gate integral atual exit0:1048testes passaram,2Windows skips,131arquivos; tipos,lint(0erros/4avisos herdados),formato e build passaram. Banco isolado limpo. Falhas históricas de instalação,fixtures,formato e assertions continuam preservadas nos respectivos artefatos.",
     "Lote público atual63/63exit0,BuildIDeW1hAx7oCWrO98E-xBAyT;446hashes conferidos antes da captura do gate. A falha real de decode prematuro foi reproduzida em2REDunits, corrigida e comprovada no navegador com imagens/fontes reais e cancelamento; diagnóstico temporário removido.",
@@ -199,6 +199,7 @@
     "E2.4 eE2.5 encerradas no escopo funcional e gate atual. A2 ainda depende de fidelidade visual,SEO completo,a11y/manual,desempenho inicial e pacote demonstrável privado. Dois testes de plataformaWindows precisam de execuçãoLinuxCI atual; regressão antigaA1browser eCI ainda pendentes.",
     "Todos os18frames/textos e5originais estão disponíveis, privados. Loader visual Native ainda não executado. Campos específicos do card dependem da resposta do usuário; nenhum campo novo ou texto profissional foi publicado.",
     "Novas mudanças posteriores a esta captura exigem as regressões afetadas antes da entrega final. Etapa3 continua sem autorização.",
-    "Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado."
+    "Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado.",
+    "Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2."
   ]
 }

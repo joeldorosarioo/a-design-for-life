@@ -1,6 +1,11 @@
 import 'server-only';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import type { RouteResolution } from '../contracts/route-resolution.schema';
+import {
+  caseStatePresentationSchema,
+  type CaseStatePresentation,
+} from '../contracts/case-state-presentation.schema';
+import { renderCaseStateDocument } from './render-case-state-document';
 import { resolveCaseRoute } from './resolve-case-route';
 function escapeHTML(value: string) {
   return value.replace(
@@ -12,6 +17,7 @@ function escapeHTML(value: string) {
 export function renderCaseRouteResponse(
   resolution: RouteResolution,
   requestedLocale: 'pt' | 'en' = 'pt',
+  presentation?: CaseStatePresentation | null,
 ): Response {
   // A permanent redirect may later be reversed by explicitly reusing owned
   // history. No browser/shared cache may keep a previously emitted A -> B.
@@ -41,6 +47,14 @@ export function renderCaseRouteResponse(
     resolution.status === 200 ? '' : '<meta name="robots" content="noindex, nofollow">';
   if (resolution.status !== 200) headers.set('X-Robots-Tag', 'noindex, nofollow');
   if (resolution.status === 503) headers.set('Retry-After', '60');
+  if (resolution.status !== 200 && presentation) {
+    const parsed = caseStatePresentationSchema.safeParse(presentation);
+    if (parsed.success && parsed.data.locale === locale && parsed.data.status === resolution.status)
+      return new Response(renderCaseStateDocument(parsed.data), {
+        status: resolution.status,
+        headers,
+      });
+  }
   const html = `<!doctype html><html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHTML(title)}</title>${robots}</head><body><main><h1>${escapeHTML(title)}</h1>${summary}<nav aria-label="${english ? 'Continue browsing' : 'Continue navegando'}"><a href="/${locale}/cases">${english ? 'Projects' : 'Projetos'}</a> <a href="/${locale}#contact">${english ? 'Contact' : 'Contato'}</a></nav></main></body></html>`;
   return new Response(html, { status: resolution.status, headers });
 }

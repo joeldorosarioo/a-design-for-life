@@ -1,0 +1,59 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ↓ |unit| src/proxy.test.ts > passes a signed404 through Next.next while replacing forged incoming context
+ ↓ |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt
+ ↓ |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en
+ ↓ |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt/unknown
+ ↓ |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en/unknown
+ ↓ |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt/unknown/deep
+ ↓ |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en/unknown/deep
+ ↓ |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /admin
+ ↓ |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /api/cases
+ ↓ |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /fr/unknown
+ ↓ |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /unknown
+ ↓ |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /preview
+ ↓ |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /media/a/original
+ ↓ |unit| src/proxy.test.ts > passes unknown GET /pt/unknown to the Page as a locale-bound no-store404
+ ↓ |unit| src/proxy.test.ts > passes unknown HEAD /pt/unknown/deep to the Page as a locale-bound no-store404
+ ↓ |unit| src/proxy.test.ts > passes unknown GET /en/unknown to the Page as a locale-bound no-store404
+ ↓ |unit| src/proxy.test.ts > passes unknown HEAD /en/unknown/deep to the Page as a locale-bound no-store404
+ ↓ |unit| src/proxy.test.ts > passes safe503 to the Page when no healthy Native origin can classify missing coverage
+ ↓ |unit| src/proxy.test.ts > leaves an excluded API path outside the public render transport
+ ↓ |unit| src/proxy.test.ts > denies unsupported HTML methods without emitting a render token
+ ↓ |unit| src/proxy.test.ts > fails closed without a token if server configuration cannot authenticate context
+ ↓ |unit| src/proxy.test.ts > returns the image helper refusal directly instead of entering the optimizer
+ ↓ |unit| src/proxy.test.ts > passes only a valid signed and root-authorized inner image request to Next
+ ↓ |unit| src/proxy.test.ts > does not strip image authentication and turn a forged inner request into an outer fetch
+ ↓ |unit| src/proxy.test.ts > preserves the final external no-store wrapper from the image helper using a synthetic HTTP origin
+ ↓ |unit| src/proxy.test.ts > requires an explicit trusted internal origin in production regardless of Host/forwarded headers
+ ↓ |unit| src/proxy.test.ts > returns a direct safe case404 without a render token and strips the HEAD body
+ ↓ |unit| src/proxy.test.ts > returns a direct safe case410 without a render token and strips the HEAD body
+ ↓ |unit| src/proxy.test.ts > returns a direct safe case503 without a render token and strips the HEAD body
+ ↓ |unit| src/proxy.test.ts > keeps negative case HTML and classification headers independent of the visited slug
+ ↓ |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui
+ ↓ |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/invalid
+ ↓ |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/pt/case-content/11111111-1111-4111-8111-111111111111/case
+ ↓ |unit| src/proxy.test.ts > does not claim neighboring paths as a private preview surface
+ ↓ |unit| src/proxy.test.ts > fails closed before Next when private authentication is unavailable and ignores forged public authority
+ ↓ |unit| src/proxy.test.ts > renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity
+ ↓ |unit| src/proxy.test.ts > renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity
+ × |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity 32ms
+   → Invariant: AsyncLocalStorage accessed in runtime where it is not available
+ ↓ |unit| src/proxy.test.ts > makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity
+Error: Invariant: AsyncLocalStorage accessed in runtime where it is not available
+ ❯ Object.<anonymous> node_modules/.pnpm/next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155/node_modules/next/src/server/app-render/async-local-storage.ts:3:50
+ ❯ Object.<anonymous> node_modules/.pnpm/next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155/node_modules/next/dist/server/app-render/work-async-storage-instance.js:11:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 38 skipped (39)
+   Start at  21:12:32
+   Duration  1.59s (import 75%, setup 14%, transform 8%, tests 2%)
+

@@ -9,3 +9,6 @@ coverage/
 playwright-report/
 test-results/
 *.tsbuildinfo
+
+# Generated from canonical tokens before Next build/dev.
+/public/_portfolio/case-state.css
