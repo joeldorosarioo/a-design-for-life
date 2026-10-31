@@ -78,6 +78,7 @@
   text-decoration: none;
 }
 .case-state-main {
+  scroll-margin-block-start: calc(50svh + var(--space-8));
   display: grid;
   gap: var(--space-6);
   padding-block: var(--space-20);

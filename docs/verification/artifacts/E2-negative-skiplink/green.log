@@ -1,0 +1,15 @@
+
+Running 4 tests using 1 worker
+
+(node:10172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"width":1440,"textScale":100,"headerBottom":93,"headingTop":173,"headingBottom":221,"viewportHeight":900}
+  ok 1 src\features\cases\server\case-state-document.e2e.test.ts:63:5 › 1440px/100%: keyboard skip focuses main and keeps its heading below the sticky header (126ms)
+{"width":1440,"textScale":200,"headerBottom":185,"headingTop":345,"headingBottom":441,"viewportHeight":900}
+  ok 2 src\features\cases\server\case-state-document.e2e.test.ts:63:5 › 1440px/200%: keyboard skip focuses main and keeps its heading below the sticky header (128ms)
+{"width":390,"textScale":100,"headerBottom":133,"headingTop":213,"headingBottom":249,"viewportHeight":900}
+  ok 3 src\features\cases\server\case-state-document.e2e.test.ts:63:5 › 390px/100%: keyboard skip focuses main and keeps its heading below the sticky header (101ms)
+{"width":390,"textScale":200,"headerBottom":385,"headingTop":545,"headingBottom":689,"viewportHeight":900}
+  ok 4 src\features\cases\server\case-state-document.e2e.test.ts:63:5 › 390px/200%: keyboard skip focuses main and keeps its heading below the sticky header (111ms)
+
+  4 passed (2.9s)

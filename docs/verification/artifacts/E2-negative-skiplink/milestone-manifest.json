@@ -1,0 +1,81 @@
+{
+  "capturedAt": "2026-10-31T01:16:25.216Z",
+  "scope": "Real browser keyboard and geometry RED4 -> GREEN4 against actual renderer/compiled CSS; no Native/Next build in focused run. Full regression remains pending.",
+  "environment": {
+    "node": "24.22.2",
+    "next": "16.4.3",
+    "payload": "3.92.1"
+  },
+  "sources": [
+    {
+      "path": "src/features/cases/server/case-state-document.e2e.test.ts",
+      "sha256": "9a38d2ff65a85098b65f46fb8b34039c83584a85a449c226bf48044f5e68c41b"
+    },
+    {
+      "path": "src/features/cases/stylesheets/case-state-document.css",
+      "sha256": "b9393ab9c699732ce3ec01e4e279cb6844a63f681ed229cf7eee91ea3326b128"
+    }
+  ],
+  "exports": [
+    {
+      "file": "emit.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "evidence.json",
+      "originalSha256": "f7023e81cc53771c5f481bbc895457f03507c36a78571db38f6a3e2d031c6d28",
+      "exportedSha256": "f7023e81cc53771c5f481bbc895457f03507c36a78571db38f6a3e2d031c6d28",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "format-check.log",
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "format.log",
+      "originalSha256": "916d209868d64b8be4c7d934f187d00748c10651829c616a5a645845a8971df3",
+      "exportedSha256": "916d209868d64b8be4c7d934f187d00748c10651829c616a5a645845a8971df3",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "green.log",
+      "originalSha256": "3b916f71c282bd1c36cfa76475a3a4a29cb9123d5fc59da3fbfc50423b3c1317",
+      "exportedSha256": "3b916f71c282bd1c36cfa76475a3a4a29cb9123d5fc59da3fbfc50423b3c1317",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "lint.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "red.log",
+      "originalSha256": "d6d1b6e8f2a284089a1432de54925a3b8df697addd1e8d5ef980bfa071aa4da7",
+      "exportedSha256": "d6d1b6e8f2a284089a1432de54925a3b8df697addd1e8d5ef980bfa071aa4da7",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "report.md",
+      "originalSha256": "45d91c1ae959db1b3761970cacb3a636c8dec80eb6badd36fc38fd994634de68",
+      "exportedSha256": "45d91c1ae959db1b3761970cacb3a636c8dec80eb6badd36fc38fd994634de68",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "tsconfig.focused.json",
+      "originalSha256": "90fddbe2ca56cd5de2dd888ca633403b7f5db0c101cfdb87390ffd8e0ee41bc5",
+      "exportedSha256": "90fddbe2ca56cd5de2dd888ca633403b7f5db0c101cfdb87390ffd8e0ee41bc5",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "types.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    }
+  ]
+}
