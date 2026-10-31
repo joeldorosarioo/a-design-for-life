@@ -1,0 +1,207 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[19:06:08] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[19:06:08] INFO: Migrating: 20261030_003022_initial_base
+[19:06:08] INFO: Migrated:  20261030_003022_initial_base (49ms)
+[19:06:08] INFO: Migrating: 20261030_020021_editorial_models
+[19:06:08] INFO: Migrated:  20261030_020021_editorial_models (85ms)
+[19:06:08] INFO: Migrating: 20261030_020521_structural_uniqueness
+[19:06:08] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[19:06:08] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[19:06:08] INFO: Migrated:  20261030_024431_case_locale_uniqueness (4ms)
+[19:06:08] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[19:06:08] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[19:06:08] INFO: Migrating: 20261030_030036_global_editorial_copy
+[19:06:08] INFO: Migrated:  20261030_030036_global_editorial_copy (8ms)
+[19:06:08] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[19:06:08] INFO: Migrated:  20261030_035306_protect_case_identity_references (8ms)
+[19:06:08] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[19:06:08] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[19:06:08] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[19:06:08] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[19:06:08] INFO: Migrating: 20261030_093430_private_media_manifests
+[19:06:08] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[19:06:08] INFO: Migrating: 20261030_124550_publication_coordination
+[19:06:08] INFO: Migrated:  20261030_124550_publication_coordination (36ms)
+[19:06:08] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[19:06:08] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (2ms)
+[19:06:08] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[19:06:08] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (1ms)
+[19:06:08] INFO: Done.
+ ✓ |integration| src/config/read-private-page-model.integration.test.ts > has a real independently authorized Native primary source before composing its model 11ms
+ × |integration| src/config/read-private-page-model.integration.test.ts > composes an authorized home profile draft with only private targets 5ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > composes an authorized about profile draft with only private targets 1ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > composes an authorized cases profile draft with only private targets 0ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > keeps an authorized navigation primary ID as its real structural target scope 0ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > composes a slugless private case with the unique real same-locale structural source ID 1ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > independently rejects anonymous access and a selected document from another locale 1ms
+   → expected 503 to be 401 // Object.is equality
+ ✓ |integration| src/config/read-private-page-model.integration.test.ts > fails closed when an authorized case locale lacks its structural presentation source 0ms
+ × |integration| src/config/read-private-page-model.integration.test.ts > reauthenticates and reads fresh saved drafts on every call without publishing or replacing earlier DTOs 0ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > returns only DTO presentation and contextual route data, without Native account or publication authority 0ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/read-private-page-model.integration.test.ts > rejects the same Request after revoking its Native session instead of reusing a prior authorization 0ms
+   → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > composes an authorized home profile draft with only private targets
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > composes an authorized about profile draft with only private targets
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > composes an authorized cases profile draft with only private targets
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/read-private-page-model.integration.test.ts:137:23
+    135|       options(),
+    136|     );
+    137|     expect(result.ok).toBe(true);
+       |                       ^
+    138|     if (!result.ok) throw new Error('Expected profile draft model.');
+    139|     const base = `/preview-ui/pt/professional-profiles/${profileId}`;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > keeps an authorized navigation primary ID as its real structural target scope
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/read-private-page-model.integration.test.ts:158:21
+    156|     options(),
+    157|   );
+    158|   expect(result.ok).toBe(true);
+       |                     ^
+    159|   if (!result.ok) throw new Error('Expected navigation draft model.');
+    160|   expect(result.value.routeContext.pageScope).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > composes a slugless private case with the unique real same-locale structural source ID
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/read-private-page-model.integration.test.ts:168:21
+    166| it('composes a slugless private case with the unique real same-locale …
+    167|   const result = await readPrivatePageModel(request('case-content', ca…
+    168|   expect(result.ok).toBe(true);
+       |                     ^
+    169|   if (!result.ok) throw new Error('Expected slugless case draft model.…
+    170|   expect(result.value.kind).toBe('case');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > independently rejects anonymous access and a selected document from another locale
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/read-private-page-model.integration.test.ts:52:36
+     50|   expect(response.ok).toBe(false);
+     51|   if (response.ok) throw new Error('Expected closed private model fail…
+     52|   expect(response.response.status).toBe(status);
+       |                                    ^
+     53|   expect(response.response.headers.get('cache-control')).toContain('pr…
+     54|   expect(response.response.headers.get('cache-control')).toContain('no…
+ ❯ src/config/read-private-page-model.integration.test.ts:189:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > reauthenticates and reads fresh saved drafts on every call without publishing or replacing earlier DTOs
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/read-private-page-model.integration.test.ts:217:20
+    215|   const incoming = request();
+    216|   const first = await readPrivatePageModel(incoming, options());
+    217|   expect(first.ok).toBe(true);
+       |                    ^
+    218|   const caseFirst = await readPrivatePageModel(request('case-content',…
+    219|   expect(caseFirst.ok).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > returns only DTO presentation and contextual route data, without Native account or publication authority
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/read-private-page-model.integration.test.ts:270:21
+    268| it('returns only DTO presentation and contextual route data, without N…
+    269|   const result = await readPrivatePageModel(request(), options());
+    270|   expect(result.ok).toBe(true);
+       |                     ^
+    271|   if (!result.ok) throw new Error('Expected presentation DTO model.');
+    272|   const json = JSON.stringify(result.value);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  |integration| src/config/read-private-page-model.integration.test.ts > rejects the same Request after revoking its Native session instead of reusing a prior authorization
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/read-private-page-model.integration.test.ts:300:64
+    298| it('rejects the same Request after revoking its Native session instead…
+    299|   const incoming = request();
+    300|   expect((await readPrivatePageModel(incoming, options())).ok).toBe(tr…
+       |                                                                ^
+    301|   await fixture.payload.db.updateOne({
+    302|     collection: 'users',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 2 passed (11)
+   Start at  19:06:03
+   Duration  8.06s (import 62%, tests 29%, transform 5%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

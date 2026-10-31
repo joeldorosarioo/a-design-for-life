@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project unit src/helpers/payload/preview-session.visual-url.test.ts src/helpers/payload/private-preview-path.test.ts",
+  "exitCode": 0,
+  "recordedAt": "2026-10-30T22:03:54.4905054Z"
+}

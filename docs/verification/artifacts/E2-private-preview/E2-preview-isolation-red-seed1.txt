@@ -1,0 +1,136 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+      Running tests with seed "1"
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[18:59:28] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[18:59:28] INFO: Migrating: 20261030_003022_initial_base
+[18:59:28] INFO: Migrated:  20261030_003022_initial_base (40ms)
+[18:59:28] INFO: Migrating: 20261030_020021_editorial_models
+[18:59:28] INFO: Migrated:  20261030_020021_editorial_models (83ms)
+[18:59:28] INFO: Migrating: 20261030_020521_structural_uniqueness
+[18:59:28] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[18:59:28] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[18:59:28] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[18:59:28] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[18:59:28] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (3ms)
+[18:59:28] INFO: Migrating: 20261030_030036_global_editorial_copy
+[18:59:28] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[18:59:28] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[18:59:28] INFO: Migrated:  20261030_035306_protect_case_identity_references (9ms)
+[18:59:28] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[18:59:28] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (7ms)
+[18:59:28] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[18:59:28] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (6ms)
+[18:59:28] INFO: Migrating: 20261030_093430_private_media_manifests
+[18:59:28] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[18:59:28] INFO: Migrating: 20261030_124550_publication_coordination
+[18:59:28] INFO: Migrated:  20261030_124550_publication_coordination (36ms)
+[18:59:28] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[18:59:28] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[18:59:28] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[18:59:28] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[18:59:28] INFO: Done.
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures legacy structural publications before future nullable columns exist and keeps private versions intact 717ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures the canonical previously published body while preserving a newer private draft 442ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > projects only the actor-selected saved draft profile and refuses a selected foreign locale 24ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > projects the actor-selected draft navigation with its own profile and refuses cross-locale IDs 13ms
+ × |integration| src/features/cases/server/get-preview-case.integration.test.ts > orders and features only same-locale authorized drafts with private content-ID paths and exact count 30ms
+   → expected { ok: true, value: { …(4) } } to match object { ok: true, value: { count: 2, …(2) } }
+(1 matching property omitted from actual)
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > renders a saved case draft without a public slug and refuses a selected foreign-locale document 23ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > keeps Native anonymous access denied and all getters refuse a real request without a session 7ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > never publishes a draft, advances public root or returns account/storage data 45ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > refuses the same cookie after its Native session is revoked 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/server/get-preview-case.integration.test.ts > orders and features only same-locale authorized drafts with private content-ID paths and exact count
+AssertionError: expected { ok: true, value: { …(4) } } to match object { ok: true, value: { count: 2, …(2) } }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,19 +1,53 @@
+  {
+    "ok": true,
+    "value": {
+      "cases": [
+        {
++         "caseId": "7d2f3ddb-5aac-44dd-956d-3ea4bb0ebe7c",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "99cfaf95-4e9c-4875-90eb-9562104007ef",
++         },
++         "eyebrow": null,
++         "locale": "pt",
+          "path": "/preview-ui/pt/case-content/efd225b5-0ca4-46ad-9fd6-be15827d10bf/case",
++         "summary": "Synthetic summary",
+          "title": "PRIVATE FIRST",
+        },
+        {
++         "caseId": "462953f0-36c8-43ae-afc2-98869b12a4ff",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "99cfaf95-4e9c-4875-90eb-9562104007ef",
++         },
++         "eyebrow": null,
++         "locale": "pt",
+          "path": "/preview-ui/pt/case-content/f6253eab-1d9e-4aa6-a355-dc31f3b77a6b/case",
++         "summary": "Synthetic summary",
+          "title": "PRIVATE SECOND",
+        },
++       {
++         "caseId": "a50b8ba9-a3a0-4ee9-94c3-a1959f22e77b",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "dadccc4b-2a46-4125-bfbf-9ca739f2be73",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/f9aeb053-d4aa-4376-90fa-fcd550441cd1/case",
++         "summary": "Synthetic summary",
++         "title": "Newer private baseline draft",
++       },
+      ],
+-     "count": 2,
++     "count": 3,
+      "featured": [
+        {
+          "title": "PRIVATE SECOND",
+        },
+      ],
+
+ ❯ src/features/cases/server/get-preview-case.integration.test.ts:219:18
+    217| it('orders and features only same-locale authorized drafts with privat…
+    218|   const result = await getPreviewCases('pt', await actorRequest());
+    219|   expect(result).toMatchObject({
+       |                  ^
+    220|     ok: true,
+    221|     value: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 8 passed (9)
+   Start at  18:59:23
+   Duration  11.80s (import 55%, tests 39%, transform 3%, setup 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

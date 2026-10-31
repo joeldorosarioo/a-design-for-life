@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project integration src/features/cases/server/get-preview-case.integration.test.ts",
+  "exitCode": 0,
+  "recordedAt": "2026-10-30T20:54:04.1479547Z"
+}

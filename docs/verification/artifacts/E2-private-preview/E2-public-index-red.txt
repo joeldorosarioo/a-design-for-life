@@ -1,0 +1,199 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/build-public-index.test.ts (17 tests | 16 failed) 15ms
+   × advertises only confirmed translations and their own language-specific canonical paths 6ms
+   × omits unpublished structural pages without hiding an independently confirmed case 1ms
+   × limits structural alternates to the locales with confirmed profile and navigation 1ms
+   × advertises the configured sitemap only for public production and excludes private entry points 1ms
+   × rejects an untrusted non-origin configuration javascript:alert(1) 1ms
+   × rejects an untrusted non-origin configuration https://user:[REDACTED_EMAIL] 0ms
+   × rejects an untrusted non-origin configuration https://example.invalid/nested 0ms
+   × rejects an untrusted non-origin configuration https://example.invalid/?q=1 0ms
+   × rejects an untrusted non-origin configuration https://example.invalid/#fragment 0ms
+   × rejects paths outside the confirmed locale case contract /en/cases/wrong-locale 0ms
+   × rejects paths outside the confirmed locale case contract /pt/cases/old?query=1 0ms
+   × rejects paths outside the confirmed locale case contract /preview-ui/pt/case-content/private/case 0ms
+   × rejects paths outside the confirmed locale case contract //outside.invalid/path 0ms
+   × rejects paths outside the confirmed locale case contract /pt/cases/Uppercase 0ms
+   × rejects paths outside the confirmed locale case contract /pt/about 0ms
+   × rejects ambiguous identity/locale and duplicate canonical paths rather than guessing an alternate 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 16 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > advertises only confirmed translations and their own language-specific canonical paths
+AssertionError: expected [] to deeply equal [ …(9) ]
+
+- Expected
++ Received
+
+- [
+-   "https://synthetic-portfolio.example.invalid/pt",
+-   "https://synthetic-portfolio.example.invalid/pt/cases",
+-   "https://synthetic-portfolio.example.invalid/pt/sobre",
+-   "https://synthetic-portfolio.example.invalid/en",
+-   "https://synthetic-portfolio.example.invalid/en/cases",
+-   "https://synthetic-portfolio.example.invalid/en/about",
+-   "https://synthetic-portfolio.example.invalid/en/cases/published-name",
+-   "https://synthetic-portfolio.example.invalid/pt/cases/nome-publicado",
+-   "https://synthetic-portfolio.example.invalid/pt/cases/somente-portugues",
+- ]
++ []
+
+ ❯ src/config/build-public-index.test.ts:18:41
+     16| it('advertises only confirmed translations and their own language-spec…
+     17|   const sitemap = buildPublicSitemap(source);
+     18|   expect(sitemap.map(item => item.url)).toEqual([
+       |                                         ^
+     19|     `${origin}/pt`, `${origin}/pt/cases`, `${origin}/pt/sobre`,
+     20|     `${origin}/en`, `${origin}/en/cases`, `${origin}/en/about`,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/16]⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > omits unpublished structural pages without hiding an independently confirmed case
+AssertionError: expected [] to have a length of 3 but got +0
+
+- Expected
++ Received
+
+- 3
++ 0
+
+ ❯ src/config/build-public-index.test.ts:36:19
+     34| it('omits unpublished structural pages without hiding an independently…
+     35|   const sitemap = buildPublicSitemap({ ...source, pages: { pt: false, …
+     36|   expect(sitemap).toHaveLength(3);
+       |                   ^
+     37|   expect(sitemap.every(item => /\/(pt|en)\/cases\//.test(item.url))).t…
+     38| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/16]⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > limits structural alternates to the locales with confirmed profile and navigation
+AssertionError: expected [] to deeply equal [ { …(2) }, { …(2) }, { …(2) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "alternates": {
+-       "languages": {
+-         "pt": "https://synthetic-portfolio.example.invalid/pt",
+-       },
+-     },
+-     "url": "https://synthetic-portfolio.example.invalid/pt",
+-   },
+-   {
+-     "alternates": {
+-       "languages": {
+-         "pt": "https://synthetic-portfolio.example.invalid/pt/cases",
+-       },
+-     },
+-     "url": "https://synthetic-portfolio.example.invalid/pt/cases",
+-   },
+-   {
+-     "alternates": {
+-       "languages": {
+-         "pt": "https://synthetic-portfolio.example.invalid/pt/sobre",
+-       },
+-     },
+-     "url": "https://synthetic-portfolio.example.invalid/pt/sobre",
+-   },
+- ]
++ []
+
+ ❯ src/config/build-public-index.test.ts:41:19
+     39| it('limits structural alternates to the locales with confirmed profile…
+     40|   const sitemap = buildPublicSitemap({ ...source, pages: { pt: true, e…
+     41|   expect(sitemap).toEqual([
+       |                   ^
+     42|     { url: `${origin}/pt`, alternates: { languages: { pt: `${origin}/p…
+     43|     { url: `${origin}/pt/cases`, alternates: { languages: { pt: `${ori…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/16]⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > advertises the configured sitemap only for public production and excludes private entry points
+AssertionError: expected { rules: { userAgent: '*', …(1) } } to deeply equal { …(2) }
+
+- Expected
++ Received
+
+  {
+    "rules": {
+-     "allow": "/",
+-     "disallow": [
+-       "/admin",
+-       "/api/",
+-       "/preview",
+-       "/preview-ui/",
+-       "/preview-media/",
+-       "/language-preference",
+-     ],
++     "disallow": "/",
+      "userAgent": "*",
+    },
+-   "sitemap": "https://synthetic-portfolio.example.invalid/sitemap.xml",
+  }
+
+ ❯ src/config/build-public-index.test.ts:52:52
+     50| });
+     51| it('advertises the configured sitemap only for public production and e…
+     52|   expect(buildRobots({ origin, indexable: true })).toEqual({
+       |                                                    ^
+     53|     rules: { userAgent: '*', allow: '/', disallow: ['/admin', '/api/',…
+     54|     sitemap: `${origin}/sitemap.xml`,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/16]⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects an untrusted non-origin configuration javascript:alert(1)
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects an untrusted non-origin configuration https://user:[REDACTED_EMAIL]
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects an untrusted non-origin configuration https://example.invalid/nested
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects an untrusted non-origin configuration https://example.invalid/?q=1
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects an untrusted non-origin configuration https://example.invalid/#fragment
+AssertionError: expected [Function] to throw an error
+ ❯ src/config/build-public-index.test.ts:61:68
+     59|   'https://example.invalid/nested', 'https://example.invalid/?q=1', 'h…
+     60| ])('rejects an untrusted non-origin configuration %s', invalid => {
+     61|   expect(() => buildPublicSitemap({ ...source, origin: invalid })).toT…
+       |                                                                    ^
+     62|   expect(() => buildRobots({ origin: invalid, indexable: true })).toTh…
+     63| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/16]⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects paths outside the confirmed locale case contract /en/cases/wrong-locale
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects paths outside the confirmed locale case contract /pt/cases/old?query=1
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects paths outside the confirmed locale case contract /preview-ui/pt/case-content/private/case
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects paths outside the confirmed locale case contract //outside.invalid/path
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects paths outside the confirmed locale case contract /pt/cases/Uppercase
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects paths outside the confirmed locale case contract /pt/about
+AssertionError: expected [Function] to throw an error
+ ❯ src/config/build-public-index.test.ts:68:108
+     66|   '//outside.invalid/path', '/pt/cases/Uppercase', '/pt/about',
+     67| ])('rejects paths outside the confirmed locale case contract %s', inva…
+     68|   expect(() => buildPublicSitemap({ ...source, cases: [{ caseId: first…
+       |                                                                                                            ^
+     69| });
+     70| it('rejects ambiguous identity/locale and duplicate canonical paths ra…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/16]⎯
+
+ FAIL  |unit| src/config/build-public-index.test.ts > rejects ambiguous identity/locale and duplicate canonical paths rather than guessing an alternate
+AssertionError: expected [Function] to throw an error
+ ❯ src/config/build-public-index.test.ts:71:139
+     69| });
+     70| it('rejects ambiguous identity/locale and duplicate canonical paths ra…
+     71|   expect(() => buildPublicSitemap({ ...source, cases: [...source.cases…
+       |                                                                                                                                           ^
+     72|   expect(() => buildPublicSitemap({ ...source, cases: [...source.cases…
+     73| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/16]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  16 failed | 1 passed (17)
+   Start at  19:04:09
+   Duration  472ms (setup 74%, transform 10%, import 9%, tests 5%, worker 2%)
+

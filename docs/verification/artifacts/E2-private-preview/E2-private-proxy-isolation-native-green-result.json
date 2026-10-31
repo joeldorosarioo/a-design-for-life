@@ -1,0 +1,5 @@
+{
+  "recordedAt": "2026-10-30T22:13:00.3985261Z",
+  "command": "pnpm exec vitest run --project integration proxy capture-legacy get-preview-case --sequence.shuffle.files --sequence.seed=1",
+  "exitCode": 0
+}

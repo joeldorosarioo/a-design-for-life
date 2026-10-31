@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project integration src/config/prepare-private-preview-request.integration.test.ts src/helpers/payload/preview-visual-upgrade.integration.test.ts --reporter verbose",
+  "exitCode": 1,
+  "recordedAt": "2026-10-30T22:02:14.0530249Z"
+}

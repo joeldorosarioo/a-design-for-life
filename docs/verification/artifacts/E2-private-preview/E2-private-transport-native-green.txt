@@ -1,0 +1,88 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+      Running tests with seed "1"
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[19:04:11] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[19:04:12] INFO: Migrating: 20261030_003022_initial_base
+[19:04:12] INFO: Migrated:  20261030_003022_initial_base (40ms)
+[19:04:12] INFO: Migrating: 20261030_020021_editorial_models
+[19:04:12] INFO: Migrated:  20261030_020021_editorial_models (90ms)
+[19:04:12] INFO: Migrating: 20261030_020521_structural_uniqueness
+[19:04:12] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[19:04:12] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[19:04:12] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[19:04:12] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[19:04:12] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[19:04:12] INFO: Migrating: 20261030_030036_global_editorial_copy
+[19:04:12] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[19:04:12] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[19:04:12] INFO: Migrated:  20261030_035306_protect_case_identity_references (7ms)
+[19:04:12] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[19:04:12] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[19:04:12] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[19:04:12] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (17ms)
+[19:04:12] INFO: Migrating: 20261030_093430_private_media_manifests
+[19:04:12] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[19:04:12] INFO: Migrating: 20261030_124550_publication_coordination
+[19:04:12] INFO: Migrated:  20261030_124550_publication_coordination (33ms)
+[19:04:12] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[19:04:12] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[19:04:12] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[19:04:12] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[19:04:12] INFO: Done.
+ ✓ |integration| src/helpers/payload/preview-session.integration.test.ts > requires a native session for the helper and applies explicit anonymous Local API access 8ms
+ ✓ |integration| src/helpers/payload/preview-session.integration.test.ts > returns only the closed document and locale scope after native authentication 21ms
+ ✓ |integration| src/helpers/payload/preview-session.integration.test.ts > rejects untrusted origins and ambiguous external return paths before reading a document 10ms
+ ✓ |integration| src/helpers/payload/preview-session.integration.test.ts > rejects the same signed cookie once its native session has been revoked 5ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > has a real Native control for cookie CSRF metadata before testing the new transport 13ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > passes only an authenticated authorized direct GET to the private App Page 12ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > passes only an authenticated authorized direct HEAD to the private App Page 10ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > accepts a direct browser navigation without Origin when Native Sec-Fetch-Site is none 9ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > does not accept a non-browser cookie without Origin or Fetch Metadata 1ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > denies anonymous valid, malformed and duplicated scopes before revealing scope errors 3ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > keeps foreign-Origin cookie rejection and authenticated cross-site rejection separate 3ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > does not use Host or forwarded origin headers to authorize a foreign origin 1ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > validates source collection/page/locale and never returns a Native document to the caller 25ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > rejects duplicate returnTo and query attempts to override a path scope after Native authentication 12ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > allows a safe return path and framework RSC marker without making either an authority selector 10ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > denies unsupported methods before Next and does not parse a request body as preview scope 9ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > never returns null for a path outside its owned private surface 0ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > does not read a document for a duplicated authenticated query or trust a forged public context 11ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > keeps anonymous HEAD empty and fails closed for an invalid configured logical origin 1ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > returns Native context only through the server-only Page reauthorization API 8ms
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > rejects the same Native session after revocation before the private Page runs 6ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures legacy structural publications before future nullable columns exist and keeps private versions intact 593ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures the canonical previously published body while preserving a newer private draft 362ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > projects only the actor-selected saved draft profile and refuses a selected foreign locale 32ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > projects the actor-selected draft navigation with its own profile and refuses cross-locale IDs 15ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > orders and features its same-locale drafts while retaining every unrelated authorized draft 75ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > renders a saved case draft without a public slug and refuses a selected foreign-locale document 40ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > keeps Native anonymous access denied and all getters refuse a real request without a session 8ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > never publishes a draft, advances public root or returns account/storage data 57ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > refuses the same cookie after its Native session is revoked 5ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > preserves the explicit no-page legacy307 and escaped view1 HTML/return link 20ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > preserves anonymous401, mismatched locale403 and unsafe return400 without a redirect 17ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual home to a closed private scope 10ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual about to a closed private scope 8ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual cases to a closed private scope 9ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > supports a navigation draft visual scope and a case visual scope without requiring public slugs 13ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > rejects an unsupported collection/page combination and preserves auth-first behavior 12ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > rejects duplicate controlled parameters before any ambiguous document lookup, after Native auth 17ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > does not follow visitor Host/Forwarded values or external return data when selecting visual destinations 10ms
+
+ Test Files  5 passed (5)
+      Tests  39 passed (39)
+   Start at  19:04:07
+   Duration  19.37s (import 65%, tests 30%, setup 3%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

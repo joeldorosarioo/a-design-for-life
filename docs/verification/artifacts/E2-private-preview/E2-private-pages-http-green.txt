@@ -1,0 +1,125 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test private-pages.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[19:19:01] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[19:19:01] INFO: Migrating: 20261030_003022_initial_base
+[19:19:01] INFO: Migrated:  20261030_003022_initial_base (39ms)
+[19:19:01] INFO: Migrating: 20261030_020021_editorial_models
+[19:19:01] INFO: Migrated:  20261030_020021_editorial_models (99ms)
+[19:19:01] INFO: Migrating: 20261030_020521_structural_uniqueness
+[19:19:01] INFO: Migrated:  20261030_020521_structural_uniqueness (7ms)
+[19:19:01] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[19:19:01] INFO: Migrated:  20261030_024431_case_locale_uniqueness (4ms)
+[19:19:01] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[19:19:01] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[19:19:01] INFO: Migrating: 20261030_030036_global_editorial_copy
+[19:19:01] INFO: Migrated:  20261030_030036_global_editorial_copy (8ms)
+[19:19:02] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[19:19:02] INFO: Migrated:  20261030_035306_protect_case_identity_references (8ms)
+[19:19:02] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[19:19:02] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (5ms)
+[19:19:02] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[19:19:02] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[19:19:02] INFO: Migrating: 20261030_093430_private_media_manifests
+[19:19:02] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[19:19:02] INFO: Migrating: 20261030_124550_publication_coordination
+[19:19:02] INFO: Migrated:  20261030_124550_publication_coordination (37ms)
+[19:19:02] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[19:19:02] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (2ms)
+[19:19:02] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[19:19:02] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (1ms)
+[19:19:02] INFO: Done.
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 45ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 13.3s
+  Running TypeScript ...
+  Finished TypeScript in 9.2s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 129ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+└ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+✓ Ready in 173ms
+✓ Running next.config.ts took 44ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 8 tests using 1 worker
+
+(node:40788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:40788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:127:1 › denies anonymous HTML, HEAD and Flight before any private document can stream (74ms)
+  x  2 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:150:3 › pt: renders all four saved draft pages without JavaScript or public media destinations (1.1s)
+  -  3 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:150:3 › en: renders all four saved draft pages without JavaScript or public media destinations
+  -  4 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:198:1 › keeps authorized document, HEAD and Flight private and omits Native credentials from their bodies
+  -  5 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:228:1 › delivers private image/PDF bytes only through authenticated preview-media and rejects optimizer bypasses
+  -  6 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:257:1 › rejects foreign origins, forged scopes, duplicated parameters and writes before the private Page
+  -  7 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:281:1 › reads a newly saved draft on the same URL without mutating its confirmed public generation
+  -  8 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:303:1 › revokes the same session for document, HEAD, Flight and original draft media
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:150:3 › pt: renders all four saved draft pages without JavaScript or public media destinations 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      183 |         ).toBe(0);
+      184 |         const rasters = page.locator(`img[src="/preview-media/${imageId}/original"]`);
+    > 185 |         expect(await rasters.count()).toBeGreaterThan(0);
+          |                                       ^
+      186 |         await expect(rasters.first()).not.toHaveAttribute('srcset');
+      187 |         await expect(
+      188 |           page.locator(`a[href="/preview-media/${pdfId}/original"]`).first(),
+        at E:\a-design-for-life\src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:185:39
+
+    Error Context: test-results\app-(portfolio)-preview-ui-53c35-r-public-media-destinations-chromium\error-context.md
+
+    Error Context: test-results\app-(portfolio)-preview-ui-53c35-r-public-media-destinations-chromium\error-context.md
+
+  1 failed
+    [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:150:3 › pt: renders all four saved draft pages without JavaScript or public media destinations 
+  6 did not run
+  1 passed (40.1s)
+[ELIFECYCLE] Command failed with exit code 1.

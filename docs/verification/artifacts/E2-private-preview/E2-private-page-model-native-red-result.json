@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project integration src/config/read-private-page-model.integration.test.ts --reporter verbose",
+  "exitCode": 1,
+  "recordedAt": "2026-10-30T22:06:12.7510448Z"
+}

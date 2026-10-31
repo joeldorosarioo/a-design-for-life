@@ -1,0 +1,3 @@
+src/features/cases/server/get-preview-case.integration.test.ts(94,15): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CaseContentSelect<false> | CaseContentSelect<true>'.
+Checking formatting...
+All matched files use Prettier code style!

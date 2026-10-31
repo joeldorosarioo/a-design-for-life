@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project unit src/config/build-public-index.test.ts src/config/build-localized-metadata.test.ts",
+  "recordedAt": "2026-10-30T22:04:44.7288548Z",
+  "exitCode": 0
+}
