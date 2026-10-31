@@ -1,0 +1,3 @@
+$ tsc --noEmit
+src/app/(portfolio)/[locale]/public-pages.e2e.test.ts(13,75): error TS2339: Property 'fullyParallel' does not exist on type 'FullProject<{}, {}>'.
+[ELIFECYCLE] Command failed with exit code 2.

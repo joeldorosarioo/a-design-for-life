@@ -1,0 +1,31 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-image.test.tsx (3 tests | 1 failed) 118ms
+   × uses only the protected original, dimensions, sizes and literal caption 101ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-image.test.tsx > uses only the protected original, dimensions, sizes and literal caption
+Error: expect(element).toHaveAttribute("sizes", "(min-width: 1328px) 1280px, calc(100vw - 48px)") // element.getAttribute("sizes") === "(min-width: 1328px) 1280px, calc(100vw - 48px)"
+
+Expected the element to have attribute:
+  sizes="(min-width: 1328px) 1280px, calc(100vw - 48px)"
+Received:
+  sizes="(min-width: 1440px) 1280px, (min-width: 1024px) calc(100vw - 160px), calc(100vw - 48px)"
+ ❯ src/features/cases/components/case-image.test.tsx:26:15
+     24|   expect(img).toHaveAttribute('width', '1280');
+     25|   expect(img).toHaveAttribute('height', '480');
+     26|   expect(img).toHaveAttribute(
+       |               ^
+     27|     'sizes',
+     28|     '(min-width: 1328px) 1280px, calc(100vw - 48px)',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  17:05:11
+   Duration  1.35s (environment 64%, setup 17%, tests 10%, import 7%, transform 2%)
+

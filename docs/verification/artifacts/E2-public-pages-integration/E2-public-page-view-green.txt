@@ -1,0 +1,1401 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/app/(portfolio)/_components/public-page-view.test.tsx (6 tests | 3 failed) 235ms
+   × composes the confirmed cases page with the four destinations and current resume 17ms
+   × composes the confirmed about page with the four destinations and current resume 13ms
+   × passes only the received featured cards to Home and derives actual list count 58ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > composes the confirmed cases page with the four destinations and current resume
+TestingLibraryElementError: Found multiple elements with the role "banner"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<header
+  class="_header_af062d"
+>
+  <div
+    class="portfolio-container _headerInner_af062d"
+  >
+    <a
+      class="_brand_af062d"
+      href="/pt"
+    >
+      Marca sintética
+    </a>
+    <nav
+      aria-label="Navegação principal"
+      class="_desktopNavigation_af062d"
+    >
+      <ul
+        class="_navigationList_af062d"
+      >
+        <li>
+          <a
+            class="_navigationLink_af062d"
+            href="/pt/cases"
+          >
+            Projetos
+          </a>
+        </li>
+        <li>
+          <a
+            class="_navigationLink_af062d"
+            href="/pt/sobre"
+          >
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a
+            aria-label="Currículo (abre em nova aba)"
+            class="_navigationLink_af062d"
+            href="/media/00000000-0000-4000-8000-000000000001/original"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Currículo
+            <span
+              class="_visuallyHidden_af062d"
+            >
+               
+              (
+              abre em nova aba
+              )
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="_navigationLink_af062d"
+            href="#contact"
+          >
+            Contato
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="_languageControl_af062d"
+    >
+      <button>
+        English
+      </button>
+    </div>
+    <div
+      class="_mobileMenu_af062d"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        class="ui-button ui-button-secondary _menuTrigger_af062d"
+        data-state="closed"
+        type="button"
+      >
+        Abrir menu
+      </button>
+    </div>
+  </div>
+</header>
+
+Ignored nodes: comments, script, style
+<header
+  class="_listingOpening_1dfb04"
+  data-reading-key="cases-opening"
+>
+  <a
+    class="_textLink_1dfb04"
+    href="/pt"
+  >
+    <span
+      aria-hidden="true"
+    >
+      ← 
+    </span>
+    Home
+  </a>
+  <div
+    class="_sectionHeading_1dfb04"
+  >
+    <h1
+      class="_listingTitle_1dfb04"
+    >
+      Synthetic list heading
+    </h1>
+    <div
+      class="_prose_1dfb04 "
+    >
+      <p>
+        Synthetic list description
+      </p>
+    </div>
+    <p
+      class="_count_1dfb04"
+    >
+      1
+       
+      Cases
+    </p>
+  </div>
+</header>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <a
+      class="_skipLink_7d550f"
+      href="#main-content"
+    >
+      Pular para o conteúdo
+    </a>
+    <header
+      class="_header_af062d"
+    >
+      <div
+        class="portfolio-container _headerInner_af062d"
+      >
+        <a
+          class="_brand_af062d"
+          href="/pt"
+        >
+          Marca sintética
+        </a>
+        <nav
+          aria-label="Navegação principal"
+          class="_desktopNavigation_af062d"
+        >
+          <ul
+            class="_navigationList_af062d"
+          >
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="/pt/cases"
+              >
+                Projetos
+              </a>
+            </li>
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="/pt/sobre"
+              >
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a
+                aria-label="Currículo (abre em nova aba)"
+                class="_navigationLink_af062d"
+                href="/media/00000000-0000-4000-8000-000000000001/original"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Currículo
+                <span
+                  class="_visuallyHidden_af062d"
+                >
+                   
+                  (
+                  abre em nova aba
+                  )
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="#contact"
+              >
+                Contato
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div
+          class="_languageControl_af062d"
+        >
+          <button>
+            English
+          </button>
+        </div>
+        <div
+          class="_mobileMenu_af062d"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="dialog"
+            class="ui-button ui-button-secondary _menuTrigger_af062d"
+            data-state="closed"
+            type="button"
+          >
+            Abrir menu
+          </button>
+        </div>
+      </div>
+    </header>
+    <main
+      id="main-content"
+      tabindex="-1"
+    >
+      <div
+        class="portfolio-container _listing_1dfb04"
+      >
+        <header
+          class="_listingOpening_1dfb04"
+          data-reading-key="cases-opening"
+        >
+          <a
+            class="_textLink_1dfb04"
+            href="/pt"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ← 
+            </span>
+            Home
+          </a>
+          <div
+            class="_sectionHeading_1dfb04"
+          >
+            <h1
+              class="_listingTitle_1dfb04"
+            >
+              Synthetic list heading
+            </h1>
+            <div
+              class="_prose_1dfb04 "
+            >
+              <p>
+                Synthetic list description
+              </p>
+            </div>
+            <p
+              class="_count_1dfb04"
+            >
+              1
+               
+              Cases
+            </p>
+          </div>
+        </header>
+        <div
+          data-reading-key="cases-list"
+        >
+          <ul
+            class="_caseGrid_1dfb04"
+          >
+            <li>
+              <article
+                class="_caseCard_1dfb04"
+              >
+                <div
+                  class="_cardCopy_1dfb04"
+                >
+                  <h2
+                    class="_cardTitle_1dfb04"
+                  >
+                    <a
+                      href="/pt/cases/confirmed-slug"
+                    >
+                      Synthetic confirmed case
+                    </a>
+                  </h2>
+                  <div
+                    class="_prose_1dfb04 "
+                  >
+                    <p>
+                      Synthetic confirmed summary
+                    </p>
+                  </div>
+                  <a
+                    aria-label="Read synthetic case: Synthetic confirmed case"
+                    class="_textLink_1dfb04"
+                    href="/pt/cases/confirmed-slug"
+                  >
+                    Read synthetic case
+                    <span
+                      aria-hidden="true"
+                    >
+                       →
+                    </span>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="_footer_af062d"
+    >
+      <div
+        class="portfolio-container _footerInner_af062d"
+      >
+        <p
+          class="_footerEyebrow_af062d"
+        >
+          Contato sintético
+        </p>
+        <h2
+          class="_footerTitle_af062d"
+        >
+          Título sintético
+        </h2>
+        <p
+          class="_footerDescription_af062d"
+        >
+          Descrição sintética
+        </p>
+        <ul
+          aria-label="Contato"
+          class="_contactList_af062d"
+          id="contact"
+          tabindex="-1"
+        >
+          <li>
+            <a
+              class="ui-button ui-button-secondary"
+              href="mailto:[REDACTED_EMAIL]"
+            >
+              E-mail
+            </a>
+          </li>
+          <li>
+            <a
+              class="ui-button ui-button-secondary"
+              href="https://www.linkedin.com/in/synthetic-pt"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              aria-label="Currículo (abre em nova aba)"
+              class="ui-button ui-button-secondary"
+              href="/media/00000000-0000-4000-8000-000000000001/original"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Currículo
+              <span
+                class="_visuallyHidden_af062d"
+              >
+                 (
+                abre em nova aba
+                )
+              </span>
+            </a>
+          </li>
+        </ul>
+        <img
+          alt=""
+          class="_footerDivider_af062d"
+          height="1"
+          src="/figma/footer-divider.svg"
+          width="1280"
+        />
+        <div
+          class="_footerMeta_af062d"
+        >
+          <a
+            class="_footerBrand_af062d"
+            href="/pt"
+          >
+            Marca sintética
+          </a>
+          <p
+            class="_copyright_af062d"
+          >
+            Texto sintético
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ ❯ getMultipleElementsFoundError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:46:25
+     44|   render(<PublicPageView kind={kind} locale="pt" portfolio={portfolio}…
+     45|   expect(screen.getByRole('heading', { level: 1, name: heading })).toB…
+     46|   const header = screen.getByRole('banner');
+       |                         ^
+     47|   const links = within(within(header).getByRole('navigation')).getAllB…
+     48|   expect(links.map(link => link.getAttribute('href'))).toEqual(['/pt/c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > composes the confirmed about page with the four destinations and current resume
+TestingLibraryElementError: Found multiple elements with the role "banner"
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<header
+  class="_header_af062d"
+>
+  <div
+    class="portfolio-container _headerInner_af062d"
+  >
+    <a
+      class="_brand_af062d"
+      href="/pt"
+    >
+      Marca sintética
+    </a>
+    <nav
+      aria-label="Navegação principal"
+      class="_desktopNavigation_af062d"
+    >
+      <ul
+        class="_navigationList_af062d"
+      >
+        <li>
+          <a
+            class="_navigationLink_af062d"
+            href="/pt/cases"
+          >
+            Projetos
+          </a>
+        </li>
+        <li>
+          <a
+            class="_navigationLink_af062d"
+            href="/pt/sobre"
+          >
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a
+            aria-label="Currículo (abre em nova aba)"
+            class="_navigationLink_af062d"
+            href="/media/00000000-0000-4000-8000-000000000001/original"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Currículo
+            <span
+              class="_visuallyHidden_af062d"
+            >
+               
+              (
+              abre em nova aba
+              )
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="_navigationLink_af062d"
+            href="#contact"
+          >
+            Contato
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="_languageControl_af062d"
+    >
+      <button>
+        English
+      </button>
+    </div>
+    <div
+      class="_mobileMenu_af062d"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        class="ui-button ui-button-secondary _menuTrigger_af062d"
+        data-state="closed"
+        type="button"
+      >
+        Abrir menu
+      </button>
+    </div>
+  </div>
+</header>
+
+Ignored nodes: comments, script, style
+<header
+  class="_aboutOpening_ac1f13"
+  data-reading-key="about-opening"
+>
+  <h1
+    class="_aboutTitle_ac1f13"
+  >
+    Synthetic About heading
+  </h1>
+  <div
+    class="_prose_ac1f13 _aboutDescription_ac1f13"
+  >
+    <p>
+      Synthetic About description
+    </p>
+  </div>
+</header>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <a
+      class="_skipLink_7d550f"
+      href="#main-content"
+    >
+      Pular para o conteúdo
+    </a>
+    <header
+      class="_header_af062d"
+    >
+      <div
+        class="portfolio-container _headerInner_af062d"
+      >
+        <a
+          class="_brand_af062d"
+          href="/pt"
+        >
+          Marca sintética
+        </a>
+        <nav
+          aria-label="Navegação principal"
+          class="_desktopNavigation_af062d"
+        >
+          <ul
+            class="_navigationList_af062d"
+          >
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="/pt/cases"
+              >
+                Projetos
+              </a>
+            </li>
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="/pt/sobre"
+              >
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a
+                aria-label="Currículo (abre em nova aba)"
+                class="_navigationLink_af062d"
+                href="/media/00000000-0000-4000-8000-000000000001/original"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Currículo
+                <span
+                  class="_visuallyHidden_af062d"
+                >
+                   
+                  (
+                  abre em nova aba
+                  )
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="#contact"
+              >
+                Contato
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div
+          class="_languageControl_af062d"
+        >
+          <button>
+            English
+          </button>
+        </div>
+        <div
+          class="_mobileMenu_af062d"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="dialog"
+            class="ui-button ui-button-secondary _menuTrigger_af062d"
+            data-state="closed"
+            type="button"
+          >
+            Abrir menu
+          </button>
+        </div>
+      </div>
+    </header>
+    <main
+      id="main-content"
+      tabindex="-1"
+    >
+      <article
+        class="portfolio-container _about_ac1f13"
+      >
+        <header
+          class="_aboutOpening_ac1f13"
+          data-reading-key="about-opening"
+        >
+          <h1
+            class="_aboutTitle_ac1f13"
+          >
+            Synthetic About heading
+          </h1>
+          <div
+            class="_prose_ac1f13 _aboutDescription_ac1f13"
+          >
+            <p>
+              Synthetic About description
+            </p>
+          </div>
+        </header>
+        <section
+          class="_introduction_ac1f13"
+          data-reading-key="about-introduction"
+        >
+          <div
+            class="_introductionCopy_ac1f13"
+          >
+            <h2
+              class="_visuallyHidden_ac1f13"
+            >
+              Intro
+            </h2>
+            <div
+              class="_prose_ac1f13 _introductionProse_ac1f13"
+            >
+              <p>
+                Synthetic introduction
+              </p>
+            </div>
+          </div>
+          <div
+            class="_introductionPortrait_ac1f13"
+          />
+        </section>
+        <section
+          class="_editorialRow_ac1f13"
+          data-reading-key="about-journey"
+        >
+          <div />
+        </section>
+        <div
+          data-reading-key="about-desk"
+        />
+        <div
+          class="_editorialEmphasis_ac1f13"
+          data-reading-key="about-emphasis"
+        />
+        <section
+          class="_editorialRow_ac1f13"
+          data-reading-key="about-approach"
+        >
+          <div
+            class="_editorialBody_ac1f13"
+          />
+        </section>
+        <section
+          class="_editorialRow_ac1f13"
+          data-reading-key="about-in-motion"
+        >
+          <div />
+        </section>
+        <section
+          class="_editorialRow_ac1f13 _closing_ac1f13"
+          data-reading-key="about-closing"
+        >
+          <div
+            class="_closingHeading_ac1f13"
+          />
+          <div
+            class="_editorialBody_ac1f13"
+          >
+            <a
+              class="_textLink_ac1f13"
+              href="/pt/cases"
+            >
+              More projects
+              <span
+                aria-hidden="true"
+              >
+                 →
+              </span>
+            </a>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer
+      class="_footer_af062d"
+    >
+      <div
+        class="portfolio-container _footerInner_af062d"
+      >
+        <p
+          class="_footerEyebrow_af062d"
+        >
+          Contato sintético
+        </p>
+        <h2
+          class="_footerTitle_af062d"
+        >
+          Título sintético
+        </h2>
+        <p
+          class="_footerDescription_af062d"
+        >
+          Descrição sintética
+        </p>
+        <ul
+          aria-label="Contato"
+          class="_contactList_af062d"
+          id="contact"
+          tabindex="-1"
+        >
+          <li>
+            <a
+              class="ui-button ui-button-secondary"
+              href="mailto:[REDACTED_EMAIL]"
+            >
+              E-mail
+            </a>
+          </li>
+          <li>
+            <a
+              class="ui-button ui-button-secondary"
+              href="https://www.linkedin.com/in/synthetic-pt"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              aria-label="Currículo (abre em nova aba)"
+              class="ui-button ui-button-secondary"
+              href="/media/00000000-0000-4000-8000-000000000001/original"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Currículo
+              <span
+                class="_visuallyHidden_af062d"
+              >
+                 (
+                abre em nova aba
+                )
+              </span>
+            </a>
+          </li>
+        </ul>
+        <img
+          alt=""
+          class="_footerDivider_af062d"
+          height="1"
+          src="/figma/footer-divider.svg"
+          width="1280"
+        />
+        <div
+          class="_footerMeta_af062d"
+        >
+          <a
+            class="_footerBrand_af062d"
+            href="/pt"
+          >
+            Marca sintética
+          </a>
+          <p
+            class="_copyright_af062d"
+          >
+            Texto sintético
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ ❯ getMultipleElementsFoundError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:46:25
+     44|   render(<PublicPageView kind={kind} locale="pt" portfolio={portfolio}…
+     45|   expect(screen.getByRole('heading', { level: 1, name: heading })).toB…
+     46|   const header = screen.getByRole('banner');
+       |                         ^
+     47|   const links = within(within(header).getByRole('navigation')).getAllB…
+     48|   expect(links.map(link => link.getAttribute('href'))).toEqual(['/pt/c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > passes only the received featured cards to Home and derives actual list count
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Read synthetic case"
+
+Here are the accessible roles:
+
+  link:
+
+  Name "Pular para o conteúdo":
+  <a
+    class="_skipLink_7d550f"
+    href="#main-content"
+  />
+
+  Name "Marca sintética":
+  <a
+    class="_brand_af062d"
+    href="/pt"
+  />
+
+  Name "Projetos":
+  <a
+    class="_navigationLink_af062d"
+    href="/pt/cases"
+  />
+
+  Name "Sobre":
+  <a
+    class="_navigationLink_af062d"
+    href="/pt/sobre"
+  />
+
+  Name "Currículo (abre em nova aba)":
+  <a
+    aria-label="Currículo (abre em nova aba)"
+    class="_navigationLink_af062d"
+    href="/media/00000000-0000-4000-8000-000000000001/original"
+    rel="noopener noreferrer"
+    target="_blank"
+  />
+
+  Name "Contato":
+  <a
+    class="_navigationLink_af062d"
+    href="#contact"
+  />
+
+  Name "Home":
+  <a
+    class="_textLink_1dfb04"
+    href="/pt"
+  />
+
+  Name "Synthetic confirmed case":
+  <a
+    href="/pt/cases/confirmed-slug"
+  />
+
+  Name "Read synthetic case: Synthetic confirmed case":
+  <a
+    aria-label="Read synthetic case: Synthetic confirmed case"
+    class="_textLink_1dfb04"
+    href="/pt/cases/confirmed-slug"
+  />
+
+  Name "E-mail":
+  <a
+    class="ui-button ui-button-secondary"
+    href="mailto:[REDACTED_EMAIL]"
+  />
+
+  Name "LinkedIn":
+  <a
+    class="ui-button ui-button-secondary"
+    href="https://www.linkedin.com/in/synthetic-pt"
+  />
+
+  Name "Currículo (abre em nova aba)":
+  <a
+    aria-label="Currículo (abre em nova aba)"
+    class="ui-button ui-button-secondary"
+    href="/media/00000000-0000-4000-8000-000000000001/original"
+    rel="noopener noreferrer"
+    target="_blank"
+  />
+
+  Name "Marca sintética":
+  <a
+    class="_footerBrand_af062d"
+    href="/pt"
+  />
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="_header_af062d"
+  />
+
+  Name "":
+  <header
+    class="_listingOpening_1dfb04"
+    data-reading-key="cases-opening"
+  />
+
+  --------------------------------------------------
+  navigation:
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="_desktopNavigation_af062d"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="_navigationList_af062d"
+  />
+
+  Name "":
+  <ul
+    class="_caseGrid_1dfb04"
+  />
+
+  Name "Contato":
+  <ul
+    aria-label="Contato"
+    class="_contactList_af062d"
+    id="contact"
+    tabindex="-1"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  button:
+
+  Name "Abrir menu":
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="ui-button ui-button-secondary _menuTrigger_af062d"
+    data-state="closed"
+    type="button"
+  />
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  <main
+    id="main-content"
+    tabindex="-1"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "Synthetic list heading":
+  <h1
+    class="_listingTitle_1dfb04"
+  />
+
+  Name "Synthetic confirmed case":
+  <h2
+    class="_cardTitle_1dfb04"
+  />
+
+  Name "Título sintético":
+  <h2
+    class="_footerTitle_af062d"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  Name "":
+  <p
+    class="_count_1dfb04"
+  />
+
+  Name "":
+  <p />
+
+  Name "":
+  <p
+    class="_footerEyebrow_af062d"
+  />
+
+  Name "":
+  <p
+    class="_footerDescription_af062d"
+  />
+
+  Name "":
+  <p
+    class="_copyright_af062d"
+  />
+
+  --------------------------------------------------
+  article:
+
+  Name "":
+  <article
+    class="_caseCard_1dfb04"
+  />
+
+  --------------------------------------------------
+  contentinfo:
+
+  Name "":
+  <footer
+    class="_footer_af062d"
+  />
+
+  --------------------------------------------------
+  presentation:
+
+  Name "":
+  <img
+    alt=""
+    class="_footerDivider_af062d"
+    height="1"
+    src="/figma/footer-divider.svg"
+    width="1280"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+  <div>
+    <a
+      class="_skipLink_7d550f"
+      href="#main-content"
+    >
+      Pular para o conteúdo
+    </a>
+    <header
+      class="_header_af062d"
+    >
+      <div
+        class="portfolio-container _headerInner_af062d"
+      >
+        <a
+          class="_brand_af062d"
+          href="/pt"
+        >
+          Marca sintética
+        </a>
+        <nav
+          aria-label="Navegação principal"
+          class="_desktopNavigation_af062d"
+        >
+          <ul
+            class="_navigationList_af062d"
+          >
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="/pt/cases"
+              >
+                Projetos
+              </a>
+            </li>
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="/pt/sobre"
+              >
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a
+                aria-label="Currículo (abre em nova aba)"
+                class="_navigationLink_af062d"
+                href="/media/00000000-0000-4000-8000-000000000001/original"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Currículo
+                <span
+                  class="_visuallyHidden_af062d"
+                >
+                   
+                  (
+                  abre em nova aba
+                  )
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="_navigationLink_af062d"
+                href="#contact"
+              >
+                Contato
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div
+          class="_mobileMenu_af062d"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="dialog"
+            class="ui-button ui-button-secondary _menuTrigger_af062d"
+            data-state="closed"
+            type="button"
+          >
+            Abrir menu
+          </button>
+        </div>
+      </div>
+    </header>
+    <main
+      id="main-content"
+      tabindex="-1"
+    >
+      <div
+        class="portfolio-container _listing_1dfb04"
+      >
+        <header
+          class="_listingOpening_1dfb04"
+          data-reading-key="cases-opening"
+        >
+          <a
+            class="_textLink_1dfb04"
+            href="/pt"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ← 
+            </span>
+            Home
+          </a>
+          <div
+            class="_sectionHeading_1dfb04"
+          >
+            <h1
+              class="_listingTitle_1dfb04"
+            >
+              Synthetic list heading
+            </h1>
+            <div
+              class="_prose_1dfb04 "
+            >
+              <p>
+                Synthetic list description
+              </p>
+            </div>
+            <p
+              class="_count_1dfb04"
+            >
+              1
+               
+              Cases
+            </p>
+          </div>
+        </header>
+        <div
+          data-reading-key="cases-list"
+        >
+          <ul
+            class="_caseGrid_1dfb04"
+          >
+            <li>
+              <article
+                class="_caseCard_1dfb04"
+              >
+                <div
+                  class="_cardCopy_1dfb04"
+                >
+                  <h2
+                    class="_cardTitle_1dfb04"
+                  >
+                    <a
+                      href="/pt/cases/confirmed-slug"
+                    >
+                      Synthetic confirmed case
+                    </a>
+                  </h2>
+                  <div
+                    class="_prose_1dfb04 "
+                  >
+                    <p>
+                      Synthetic confirmed summary
+                    </p>
+                  </div>
+                  <a
+                    aria-label="Read synthetic case: Synthetic confirmed case"
+                    class="_textLink_1dfb04"
+                    href="/pt/cases/confirmed-slug"
+                  >
+                    Read synthetic case
+                    <span
+                      aria-hidden="true"
+                    >
+                       →
+                    </span>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="_footer_af062d"
+    >
+      <div
+        class="portfolio-container _footerInner_af062d"
+      >
+        <p
+          class="_footerEyebrow_af062d"
+        >
+          Contato sintético
+        </p>
+        <h2
+          class="_footerTitle_af062d"
+        >
+          Título sintético
+        </h2>
+        <p
+          class="_footerDescription_af062d"
+        >
+          Descrição sintética
+        </p>
+        <ul
+          aria-label="Contato"
+          class="_contactList_af062d"
+          id="contact"
+          tabindex="-1"
+        >
+          <li>
+            <a
+              class="ui-button ui-button-secondary"
+              href="mailto:[REDACTED_EMAIL]"
+            >
+              E-mail
+            </a>
+          </li>
+          <li>
+            <a
+              class="ui-button ui-button-secondary"
+              href="https://www.linkedin.com/in/synthetic-pt"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              aria-label="Currículo (abre em nova aba)"
+              class="ui-button ui-button-secondary"
+              href="/media/00000000-0000-4000-8000-000000000001/original"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Currículo
+              <span
+                class="_visuallyHidden_af062d"
+              >
+                 (
+                abre em nova aba
+                )
+              </span>
+            </a>
+          </li>
+        </ul>
+        <img
+          alt=""
+          class="_footerDivider_af062d"
+          height="1"
+          src="/figma/footer-divider.svg"
+          width="1280"
+        />
+        <div
+          class="_footerMeta_af062d"
+        >
+          <a
+            class="_footerBrand_af062d"
+            href="/pt"
+          >
+            Marca sintética
+          </a>
+          <p
+            class="_copyright_af062d"
+          >
+            Texto sintético
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:62:17
+     60|   render(<PublicPageView kind="cases" locale="pt" portfolio={portfolio…
+     61|   expect(screen.getByText('1 Cases')).toBeVisible();
+     62|   expect(screen.getByRole('link', { name: 'Read synthetic case' })).to…
+       |                 ^
+     63| });
+     64| it('keeps a confirmed case readable before structural content has ever…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 3 passed (6)
+   Start at  17:05:08
+   Duration  4.03s (import 59%, environment 20%, transform 11%, tests 6%, setup 5%)
+

@@ -1,0 +1,16 @@
+{
+  "extends": "E:/a-design-for-life/tsconfig.json",
+  "compilerOptions": { "incremental": false },
+  "files": ["E:/a-design-for-life/next-env.d.ts"],
+  "include": [
+    "E:/a-design-for-life/src/features/professional-profile/content/stable-profile-reading-keys.ts",
+    "E:/a-design-for-life/src/features/professional-profile/content/stable-profile-reading-keys.test.ts",
+    "E:/a-design-for-life/src/features/professional-profile/content/stable-profile-reading-keys.integration.test.ts",
+    "E:/a-design-for-life/src/features/professional-profile/content/validate-publication.test.ts",
+    "E:/a-design-for-life/src/features/site-navigation/contracts/navigation.schema.test.ts",
+    "E:/a-design-for-life/src/features/site-navigation/content/reading-position-message.integration.test.ts",
+    "E:/a-design-for-life/src/features/language-switcher/helpers/reading-position-message.ts",
+    "E:/a-design-for-life/src/features/language-switcher/helpers/reading-position-message.test.ts"
+  ],
+  "exclude": []
+}

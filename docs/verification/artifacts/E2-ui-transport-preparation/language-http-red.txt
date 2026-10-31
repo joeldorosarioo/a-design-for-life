@@ -1,0 +1,259 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/app/(portfolio)/route.test.ts (11 tests | 11 failed) 16ms
+   ❯ GET / (11)
+     × temporarily negotiates "pt" / "en-US,en;q=0.9" to /pt without saving a preference 9ms
+     × temporarily negotiates "en" / "pt-BR,pt;q=0.9" to /en without saving a preference 1ms
+     × temporarily negotiates null / "en;q=0.5,pt-BR;q=0.9" to /pt without saving a preference 1ms
+     × temporarily negotiates null / "pt;q=0.4,en-US;q=0.9" to /en without saving a preference 0ms
+     × temporarily negotiates "invalid" / "pt-BR" to /pt without saving a preference 1ms
+     × temporarily negotiates "pt-BR" / "fr-FR" to /en without saving a preference 1ms
+     × temporarily negotiates null / "pt;q=invalid,en;q=0.5" to /en without saving a preference 0ms
+     × temporarily negotiates null / "fr-FR" to /en without saving a preference 0ms
+     × temporarily negotiates null / null to /en without saving a preference 0ms
+     × never turns a query or untrusted host into the redirect destination 1ms
+     × re-evaluates independent visits instead of reusing another visitor preference 0ms
+ ❯ |unit| src/app/(portfolio)/language-preference/route.test.ts (24 tests | 24 failed) 46ms
+   ❯ POST /language-preference (24)
+     × saves only the manual pt preference and does not navigate 28ms
+     × saves only the manual en preference and does not navigate 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":"pt-BR"} 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":"EN"} 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":" pt "} 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":""} 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":null} 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":1} 1ms
+     × rejects a body outside the closed locale-only contract: {} 1ms
+     × rejects a body outside the closed locale-only contract: null 1ms
+     × rejects a body outside the closed locale-only contract: "pt" 1ms
+     × rejects a body outside the closed locale-only contract: "pt" 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":"pt","returnTo":"https://elsewhere.example"} 1ms
+     × rejects a body outside the closed locale-only contract: {"locale":"en","siteOrigin":"https://elsewhere.example"} 0ms
+     × rejects a body outside the closed locale-only contract: {"locale":"pt","visitorId":"unexpected"} 1ms
+     × rejects untrusted Origin null before changing a cookie 1ms
+     × rejects untrusted Origin "null" before changing a cookie 0ms
+     × rejects untrusted Origin "https://elsewhere.example" before changing a cookie 0ms
+     × rejects untrusted Origin "http://127.0.0.1:3101" before changing a cookie 0ms
+     × rejects untrusted Origin "http://127.0.0.1:3100/path" before changing a cookie 0ms
+     × rejects malformed JSON without setting a cookie 1ms
+     × rejects a non-JSON content type even if the text contains a valid locale 0ms
+     × derives Secure only from the configured HTTPS origin 1ms
+     × restarts the cookie deadline on another manual choice 2ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 35 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates "pt" / "en-US,en;q=0.9" to /pt without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates "en" / "pt-BR,pt;q=0.9" to /en without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates null / "en;q=0.5,pt-BR;q=0.9" to /pt without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates null / "pt;q=0.4,en-US;q=0.9" to /en without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates "invalid" / "pt-BR" to /pt without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates "pt-BR" / "fr-FR" to /en without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates null / "pt;q=invalid,en;q=0.5" to /en without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates null / "fr-FR" to /en without saving a preference
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > temporarily negotiates null / null to /en without saving a preference
+AssertionError: expected 200 to be 307 // Object.is equality
+
+- Expected
++ Received
+
+- 307
++ 200
+
+ ❯ src/app/(portfolio)/route.test.ts:21:29
+     19|     if (accepted !== null) headers.set('accept-language', accepted);
+     20|     const response = GET(new NextRequest('http://127.0.0.1:3100/', { h…
+     21|     expect(response.status).toBe(307);
+       |                             ^
+     22|     expect(response.headers.get('location')).toBe(location);
+     23|     expect(response.headers.get('cache-control')).toBe('private, no-st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > never turns a query or untrusted host into the redirect destination
+AssertionError: expected null to be '/pt' // Object.is equality
+
+- Expected:
+"/pt"
+
++ Received:
+null
+
+ ❯ src/app/(portfolio)/route.test.ts:36:46
+     34|       },
+     35|     }));
+     36|     expect(response.headers.get('location')).toBe('/pt');
+       |                                              ^
+     37|     expect(response.headers.has('set-cookie')).toBe(false);
+     38|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/route.test.ts > GET / > re-evaluates independent visits instead of reusing another visitor preference
+AssertionError: expected null to be '/pt' // Object.is equality
+
+- Expected:
+"/pt"
+
++ Received:
+null
+
+ ❯ src/app/(portfolio)/route.test.ts:41:132
+     39|
+     40|   it('re-evaluates independent visits instead of reusing another visit…
+     41|     expect(GET(new NextRequest('http://127.0.0.1:3100/', { headers: { …
+       |                                                                                                                                    ^
+     42|     expect(GET(new NextRequest('http://127.0.0.1:3100/', { headers: { …
+     43|     expect(GET(new NextRequest('http://127.0.0.1:3100/', { headers: { …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > saves only the manual pt preference and does not navigate
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > saves only the manual en preference and does not navigate
+AssertionError: expected 200 to be 204 // Object.is equality
+
+- Expected
++ Received
+
+- 204
++ 200
+
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:27:29
+     25|   it.each(['pt', 'en'] as const)('saves only the manual %s preference …
+     26|     const response = await POST(request({ locale }));
+     27|     expect(response.status).toBe(204);
+       |                             ^
+     28|     expect(await response.text()).toBe('');
+     29|     expect(response.headers.get('location')).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":"pt-BR"}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":"EN"}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":" pt "}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":""}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":null}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":1}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: null
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: "pt"
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: "pt"
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":"pt","returnTo":"https://elsewhere.example"}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":"en","siteOrigin":"https://elsewhere.example"}
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a body outside the closed locale-only contract: {"locale":"pt","visitorId":"unexpected"}
+AssertionError: expected 200 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 200
+
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:49:29
+     47|   ])('rejects a body outside the closed locale-only contract: %j', asy…
+     48|     const response = await POST(request(body));
+     49|     expect(response.status).toBe(400);
+       |                             ^
+     50|     expect(response.headers.has('set-cookie')).toBe(false);
+     51|     expect(response.headers.has('location')).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects untrusted Origin null before changing a cookie
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects untrusted Origin "null" before changing a cookie
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects untrusted Origin "https://elsewhere.example" before changing a cookie
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects untrusted Origin "http://127.0.0.1:3101" before changing a cookie
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects untrusted Origin "http://127.0.0.1:3100/path" before changing a cookie
+AssertionError: expected 200 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 200
+
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:57:29
+     55|   it.each([null, 'null', 'https://elsewhere.example', 'http://127.0.0.…
+     56|     const response = await POST(request({ locale: 'pt' }, requestedOri…
+     57|     expect(response.status).toBe(403);
+       |                             ^
+     58|     expect(response.headers.has('set-cookie')).toBe(false);
+     59|     expect(response.headers.has('location')).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects malformed JSON without setting a cookie
+AssertionError: expected 200 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 200
+
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:66:29
+     64|       method: 'POST', headers: { origin, 'content-type': 'application/…
+     65|     }));
+     66|     expect(response.status).toBe(400);
+       |                             ^
+     67|     expect(response.headers.has('set-cookie')).toBe(false);
+     68|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > rejects a non-JSON content type even if the text contains a valid locale
+AssertionError: expected 200 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 200
+
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:74:29
+     72|       method: 'POST', headers: { origin, 'content-type': 'text/plain' …
+     73|     }));
+     74|     expect(response.status).toBe(400);
+       |                             ^
+     75|     expect(response.headers.has('set-cookie')).toBe(false);
+     76|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > derives Secure only from the configured HTTPS origin
+AssertionError: expected 200 to be 204 // Object.is equality
+
+- Expected
++ Received
+
+- 204
++ 200
+
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:87:29
+     85|       body: '{"locale":"en"}',
+     86|     }));
+     87|     expect(response.status).toBe(204);
+       |                             ^
+     88|     expect(response.headers.get('set-cookie')).toMatch(/; Secure(?:;|$…
+     89|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/35]⎯
+
+ FAIL  |unit| src/app/(portfolio)/language-preference/route.test.ts > POST /language-preference > restarts the cookie deadline on another manual choice
+AssertionError: the given combination of arguments (null and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string
+ ❯ src/app/(portfolio)/language-preference/route.test.ts:95:45
+     93|     vi.setSystemTime(new Date('2026-01-01T00:00:00Z'));
+     94|     const first = await POST(request({ locale: 'pt' }));
+     95|     expect(first.headers.get('set-cookie')).toContain('Expires=Tue, 30…
+       |                                             ^
+     96|     vi.setSystemTime(new Date('2026-01-02T00:00:00Z'));
+     97|     const next = await POST(request({ locale: 'en' }));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/35]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  35 failed (35)
+   Start at  15:23:02
+   Duration  2.41s (setup 90%, import 6%, transform 2%, tests 1%)
+

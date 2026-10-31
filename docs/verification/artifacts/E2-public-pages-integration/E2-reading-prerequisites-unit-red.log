@@ -1,0 +1,268 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/language-switcher/helpers/reading-position-message.test.ts (3 tests | 3 failed) 6ms
+   × uses approved technical pt copy when a legacy message field is absent 5ms
+   × uses approved technical en copy when a legacy message field is absent 0ms
+   × prefers the published editorial text without deriving it from a different locale 0ms
+ ❯ |unit| src/features/site-navigation/contracts/navigation.schema.test.ts (2 tests | 1 failed) 8ms
+   × accepts optional plain reading-position adjustment copy without opening arbitrary message fields 6ms
+ ❯ |unit| src/features/professional-profile/content/stable-profile-reading-keys.test.ts (7 tests | 5 failed) 16ms
+   × assigns distinct UUID reading identities to incomplete draft rows in both groups 8ms
+   × keeps identities attached to row IDs after title changes and reorder 2ms
+   × rejects changing an established trajectory row reading identity 3ms
+   × rejects changing an established methods row reading identity 1ms
+   × rejects duplicate reading identities across trajectory and method rows 1ms
+ ❯ |unit| src/features/professional-profile/content/validate-publication.test.ts (6 tests | 5 failed) 8ms
+   × rejects a published row without a valid reading identity: undefined 5ms
+   × rejects a published row without a valid reading identity: null 0ms
+   × rejects a published row without a valid reading identity: "" 0ms
+   × rejects a published row without a valid reading identity: "not-a-uuid" 0ms
+   × rejects a duplicate published identity across the two profile groups 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/language-switcher/helpers/reading-position-message.test.ts > uses approved technical pt copy when a legacy message field is absent
+AssertionError: expected '' to be 'Este trecho não tem equivalente neste…' // Object.is equality
+
+- Expected
++ Received
+
+- Este trecho não tem equivalente neste idioma. A leitura foi reposicionada.
+
+ ❯ src/features/language-switcher/helpers/reading-position-message.test.ts:8:98
+      6|   ['en', 'This passage has no equivalent in this language. The reading…
+      7| ] as const)('uses approved technical %s copy when a legacy message fie…
+      8|   for (const value of [undefined, null, '', '  ']) expect(readingPosit…
+       |                                                                                                  ^
+      9| });
+     10|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+ FAIL  |unit| src/features/language-switcher/helpers/reading-position-message.test.ts > uses approved technical en copy when a legacy message field is absent
+AssertionError: expected '' to be 'This passage has no equivalent in thi…' // Object.is equality
+
+- Expected
++ Received
+
+- This passage has no equivalent in this language. The reading position was adjusted.
+
+ ❯ src/features/language-switcher/helpers/reading-position-message.test.ts:8:98
+      6|   ['en', 'This passage has no equivalent in this language. The reading…
+      7| ] as const)('uses approved technical %s copy when a legacy message fie…
+      8|   for (const value of [undefined, null, '', '  ']) expect(readingPosit…
+       |                                                                                                  ^
+      9| });
+     10|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/14]⎯
+
+ FAIL  |unit| src/features/language-switcher/helpers/reading-position-message.test.ts > prefers the published editorial text without deriving it from a different locale
+AssertionError: expected '' to be 'Reviewed synthetic target-language no…' // Object.is equality
+
+- Expected
++ Received
+
+- Reviewed synthetic target-language notice
+
+ ❯ src/features/language-switcher/helpers/reading-position-message.test.ts:12:85
+     10|
+     11| it('prefers the published editorial text without deriving it from a di…
+     12|   expect(readingPositionMessage('en', 'Reviewed synthetic target-langu…
+       |                                                                                     ^
+     13| });
+     14|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/14]⎯
+
+ FAIL  |unit| src/features/site-navigation/contracts/navigation.schema.test.ts > accepts optional plain reading-position adjustment copy without opening arbitrary message fields
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "readingPositionAdjusted"
+    ],
+    "path": [
+      "messages"
+    ],
+    "message": "Unrecognized key: \"readingPositionAdjusted\""
+  }
+]
+ ❯ src/features/site-navigation/contracts/navigation.schema.test.ts:5:32
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/stable-profile-reading-keys.test.ts > assigns distinct UUID reading identities to incomplete draft rows in both groups
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/professional-profile/content/stable-profile-reading-keys.test.ts:24:50
+     22|   const trajectory = result.homeAbout!.trajectory![0].readingKey;
+     23|   const method = result.approach!.methods![0].readingKey;
+     24|   expect(z.uuid().safeParse(trajectory).success).toBe(true);
+       |                                                  ^
+     25|   expect(z.uuid().safeParse(method).success).toBe(true);
+     26|   expect(method).not.toBe(trajectory);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/stable-profile-reading-keys.test.ts > keeps identities attached to row IDs after title changes and reorder
+AssertionError: expected [ undefined, null ] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+  [
+-   "22222222-2222-4222-8222-222222222222",
+-   "11111111-1111-4111-8111-111111111111",
++   undefined,
++   null,
+  ]
+
+ ❯ src/features/professional-profile/content/stable-profile-reading-keys.test.ts:32:68
+     30|   const originalDoc = { homeAbout: { trajectory: [{ id: 'a', readingKe…
+     31|   const result = await apply({ homeAbout: { trajectory: [{ id: 'b', ti…
+     32|   expect(result.homeAbout!.trajectory!.map(row => row.readingKey)).toE…
+       |                                                                    ^
+     33| });
+     34|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/stable-profile-reading-keys.test.ts > rejects changing an established trajectory row reading identity
+AssertionError: promise resolved "{ homeAbout: { trajectory: [ …(1) ] } }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "homeAbout": {
++     "trajectory": [
++       {
++         "id": "a",
++         "readingKey": "22222222-2222-4222-8222-222222222222",
++       },
++     ],
++   },
+  }
+
+ ❯ src/features/professional-profile/content/stable-profile-reading-keys.test.ts:37:155
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/stable-profile-reading-keys.test.ts > rejects changing an established methods row reading identity
+AssertionError: promise resolved "{ approach: { methods: [ { …(2) } ] } }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "approach": {
++     "methods": [
++       {
++         "id": "a",
++         "readingKey": "22222222-2222-4222-8222-222222222222",
++       },
++     ],
++   },
+  }
+
+ ❯ src/features/professional-profile/content/stable-profile-reading-keys.test.ts:37:155
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/stable-profile-reading-keys.test.ts > rejects duplicate reading identities across trajectory and method rows
+AssertionError: promise resolved "{ homeAbout: { …(1) }, …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "approach": {
++     "methods": [
++       {
++         "readingKey": "11111111-1111-4111-8111-111111111111",
++       },
++     ],
++   },
++   "homeAbout": {
++     "trajectory": [
++       {
++         "readingKey": "11111111-1111-4111-8111-111111111111",
++       },
++     ],
++   },
+  }
+
+ ❯ src/features/professional-profile/content/stable-profile-reading-keys.test.ts:41:138
+     39|
+     40| it('rejects duplicate reading identities across trajectory and method …
+     41|   await expect(async () => apply({ homeAbout: { trajectory: [{ reading…
+       |                                                                                                                                          ^
+     42| });
+     43|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/validate-publication.test.ts > rejects a published row without a valid reading identity: undefined
+ FAIL  |unit| src/features/professional-profile/content/validate-publication.test.ts > rejects a published row without a valid reading identity: null
+ FAIL  |unit| src/features/professional-profile/content/validate-publication.test.ts > rejects a published row without a valid reading identity: ""
+ FAIL  |unit| src/features/professional-profile/content/validate-publication.test.ts > rejects a published row without a valid reading identity: "not-a-uuid"
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/professional-profile/content/validate-publication.test.ts:17:41
+     15|
+     16| it.each([undefined, null, '', 'not-a-uuid'])('rejects a published row …
+     17|   expect(() => validate(value, second)).toThrow(/homeAbout.trajectory.…
+       |                                         ^
+     18| });
+     19|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/14]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/validate-publication.test.ts > rejects a duplicate published identity across the two profile groups
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/professional-profile/content/validate-publication.test.ts:21:40
+     19|
+     20| it('rejects a duplicate published identity across the two profile grou…
+     21|   expect(() => validate(first, first)).toThrow(/approach.methods.0.rea…
+       |                                        ^
+     22| });
+     23|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/14]⎯
+
+
+ Test Files  4 failed (4)
+      Tests  14 failed | 4 passed (18)
+   Start at  17:07:10
+   Duration  1.37s (import 50%, setup 41%, transform 6%, tests 2%, worker 1%)
+

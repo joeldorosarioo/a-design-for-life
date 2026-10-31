@@ -1,0 +1,141 @@
+{
+  "pid": 14352,
+  "results": [
+    {
+      "name": "actual-helper-public-miss",
+      "status": 200,
+      "bytes": 84,
+      "headers": {
+        "cache-control": "private, no-store",
+        "content-type": "image/webp",
+        "etag": "UMQ_m5B-kaJDD-anPe9_nHlsmaTFFtfqaQKt7YjD8q8",
+        "x-nextjs-cache": "MISS"
+      },
+      "image": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 84,
+        "width": 64,
+        "height": 48,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 64,
+          "height": 48
+        }
+      }
+    },
+    {
+      "name": "actual-helper-public-hit",
+      "status": 200,
+      "bytes": 84,
+      "headers": {
+        "cache-control": "private, no-store",
+        "content-type": "image/webp",
+        "etag": "UMQ_m5B-kaJDD-anPe9_nHlsmaTFFtfqaQKt7YjD8q8",
+        "x-nextjs-cache": "HIT"
+      },
+      "image": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 84,
+        "width": 64,
+        "height": 48,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 64,
+          "height": 48
+        }
+      }
+    },
+    {
+      "name": "actual-helper-conditional-public-hit",
+      "status": 200,
+      "bytes": 84,
+      "headers": {
+        "cache-control": "private, no-store",
+        "content-type": "image/webp",
+        "etag": "UMQ_m5B-kaJDD-anPe9_nHlsmaTFFtfqaQKt7YjD8q8",
+        "x-nextjs-cache": "HIT"
+      },
+      "image": {
+        "format": "webp",
+        "mediaType": "image/webp",
+        "size": 84,
+        "width": 64,
+        "height": 48,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "isProgressive": false,
+        "isPalette": false,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 64,
+          "height": 48
+        }
+      }
+    },
+    {
+      "name": "actual-helper-revoked-warm-get",
+      "status": 404,
+      "bytes": 0,
+      "headers": {
+        "cache-control": "private, no-store"
+      }
+    },
+    {
+      "name": "actual-helper-revoked-warm-head",
+      "status": 404,
+      "bytes": 0,
+      "headers": {
+        "cache-control": "private, no-store"
+      }
+    },
+    {
+      "name": "actual-helper-revoked-warm-conditional",
+      "status": 404,
+      "bytes": 0,
+      "headers": {
+        "cache-control": "private, no-store"
+      }
+    },
+    {
+      "name": "actual-helper-forged-inner-header",
+      "status": 404,
+      "bytes": 0,
+      "headers": {
+        "cache-control": "private, no-store"
+      }
+    },
+    {
+      "name": "actual-helper-pdf-denied",
+      "status": 404,
+      "bytes": 0,
+      "headers": {
+        "cache-control": "private, no-store"
+      }
+    },
+    {
+      "name": "actual-helper-corrupt-root",
+      "status": 503,
+      "bytes": 0,
+      "headers": {
+        "cache-control": "private, no-store"
+      }
+    }
+  ]
+}
+own-child-stopped

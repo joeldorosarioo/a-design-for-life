@@ -1,0 +1,5 @@
+src/proxy.test.ts(38,66): error TS2345: Argument of type 'RequestInit | undefined' is not assignable to parameter of type 'import("E:/a-design-for-life/node_modules/.pnpm/next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155/node_modules/next/dist/server/web/spec-extension/request").RequestInit | undefined'.
+  Type 'RequestInit' is not assignable to type 'import("E:/a-design-for-life/node_modules/.pnpm/next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155/node_modules/next/dist/server/web/spec-extension/request").RequestInit'.
+    Types of property 'signal' are incompatible.
+      Type 'AbortSignal | null | undefined' is not assignable to type 'AbortSignal | undefined'.
+        Type 'null' is not assignable to type 'AbortSignal | undefined'.

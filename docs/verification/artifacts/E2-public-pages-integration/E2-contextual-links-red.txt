@@ -1,0 +1,136 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/server/resolve-contextual-link.test.ts (12 tests | 6 failed) 9ms
+   × resolves the typed home destination in the current locale 5ms
+   × resolves the typed cases destination in the current locale 1ms
+   × resolves the typed about destination in the current locale 0ms
+   × resolves the published case by UUID and current locale, never translating a slug 0ms
+   × uses the current profile PDF and forces its approved accessible new tab behavior 0ms
+   × keeps contact in the current page and preserves explicit external link behavior 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/resolve-contextual-link.test.ts > resolves the typed home destination in the current locale
+AssertionError: expected null to deeply equal { href: '/pt' }
+
+- Expected:
+{
+  "href": "/pt",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/resolve-contextual-link.test.ts:25:93
+     23|   ['home', '/pt'], ['cases', '/pt/cases'], ['about', '/pt/sobre'],
+     24| ] as const)('resolves the typed %s destination in the current locale',…
+     25|   expect(resolveContextualLink({ linkType: 'custom', destination: 'pag…
+       |                                                                                             ^
+     26| });
+     27| it('resolves the published case by UUID and current locale, never tran…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |unit| src/features/cases/server/resolve-contextual-link.test.ts > resolves the typed cases destination in the current locale
+AssertionError: expected null to deeply equal { href: '/pt/cases' }
+
+- Expected:
+{
+  "href": "/pt/cases",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/resolve-contextual-link.test.ts:25:93
+     23|   ['home', '/pt'], ['cases', '/pt/cases'], ['about', '/pt/sobre'],
+     24| ] as const)('resolves the typed %s destination in the current locale',…
+     25|   expect(resolveContextualLink({ linkType: 'custom', destination: 'pag…
+       |                                                                                             ^
+     26| });
+     27| it('resolves the published case by UUID and current locale, never tran…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |unit| src/features/cases/server/resolve-contextual-link.test.ts > resolves the typed about destination in the current locale
+AssertionError: expected null to deeply equal { href: '/pt/sobre' }
+
+- Expected:
+{
+  "href": "/pt/sobre",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/resolve-contextual-link.test.ts:25:93
+     23|   ['home', '/pt'], ['cases', '/pt/cases'], ['about', '/pt/sobre'],
+     24| ] as const)('resolves the typed %s destination in the current locale',…
+     25|   expect(resolveContextualLink({ linkType: 'custom', destination: 'pag…
+       |                                                                                             ^
+     26| });
+     27| it('resolves the published case by UUID and current locale, never tran…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |unit| src/features/cases/server/resolve-contextual-link.test.ts > resolves the published case by UUID and current locale, never translating a slug
+AssertionError: expected null to deeply equal { Object (href) }
+
+- Expected:
+{
+  "href": "/pt/cases/identidade-publicada",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/resolve-contextual-link.test.ts:28:101
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |unit| src/features/cases/server/resolve-contextual-link.test.ts > uses the current profile PDF and forces its approved accessible new tab behavior
+AssertionError: expected null to deeply equal { …(2) }
+
+- Expected:
+{
+  "href": "/media/00000000-0000-4000-8000-000000000020/original",
+  "newTab": true,
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/resolve-contextual-link.test.ts:36:104
+     34| });
+     35| it('uses the current profile PDF and forces its approved accessible ne…
+     36|   expect(resolveContextualLink({ linkType: 'custom', destination: 'res…
+       |                                                                                                        ^
+     37|   expect(resolveContextualLink({ linkType: 'custom', destination: 'res…
+     38| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  |unit| src/features/cases/server/resolve-contextual-link.test.ts > keeps contact in the current page and preserves explicit external link behavior
+AssertionError: expected null to deeply equal { href: '#contact' }
+
+- Expected:
+{
+  "href": "#contact",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/resolve-contextual-link.test.ts:40:90
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 6 passed (12)
+   Start at  16:56:58
+   Duration  471ms (setup 57%, import 29%, transform 10%, tests 3%, worker 1%)
+

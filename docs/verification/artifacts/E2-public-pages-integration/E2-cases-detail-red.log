@@ -1,0 +1,64 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-detail.test.tsx (3 tests | 3 failed) 25ms
+   × presents opening, facts and all three block types with stable reading keys 21ms
+   × derives contents from effective sections and preserves their IDs when reordered 2ms
+   × renders comparison as two text cards in editorial order with its limitation 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-detail.test.tsx > presents opening, facts and all three block types with stable reading keys
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-detail.test.tsx:31:80
+     29| it('presents opening, facts and all three block types with stable read…
+     30|   const { container } = render(<CaseDetail {...props} />);
+     31|   expect(screen.queryByRole('heading', { level: 1, name: 'Normal Empha…
+       |                                                                                ^
+     32|   expect(screen.getByText('Emphasis').tagName).toBe('SPAN');
+     33|   expect(screen.getByRole('link', { name: 'Back to studies' })).toHave…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/features/cases/components/case-detail.test.tsx > derives contents from effective sections and preserves their IDs when reordered
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-detail.test.tsx:49:15
+     47|   const { rerender } = render(<CaseDetail {...props} />);
+     48|   const toc = screen.queryByRole('navigation', { name: 'This study' });
+     49|   expect(toc).toBeInTheDocument();
+       |               ^
+     50|   expect(within(toc!).getAllByRole('link').map(link => link.getAttribu…
+     51|   expect(screen.queryByText('Stale independent contents')).not.toBeInT…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/features/cases/components/case-detail.test.tsx > renders comparison as two text cards in editorial order with its limitation
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-detail.test.tsx:61:19
+     59|   render(<CaseDetail {...props} />);
+     60|   const heading = screen.queryByRole('heading', { name: 'Comparison he…
+     61|   expect(heading).toBeInTheDocument();
+       |                   ^
+     62|   const comparison = heading!.closest('section')!;
+     63|   expect(within(comparison).getAllByRole('heading', { level: 3 }).map(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  16:57:05
+   Duration  1.32s (environment 63%, setup 16%, import 14%, transform 5%, tests 2%)
+

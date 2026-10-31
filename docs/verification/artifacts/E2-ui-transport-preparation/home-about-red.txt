@@ -1,0 +1,165 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/components/profile-image.test.tsx (4 tests | 3 failed) 28ms
+   × uses the protected original ID route and only localized alt/caption 22ms
+   × loads authenticated previews directly without a public optimizer URL 2ms
+   × keeps explicitly decorative photographs out of the accessible image list 2ms
+ ❯ |unit| src/features/professional-profile/components/about-content.test.tsx (3 tests | 2 failed) 30ms
+   × presents the full fixed article using localized text and supplied image uses 23ms
+   × keeps semantic reading keys in both locales 3ms
+ ❯ |unit| src/features/professional-profile/components/home-content.test.tsx (5 tests | 4 failed) 35ms
+   × presents structured profile groups in reading order and composes the supplied cases once 23ms
+   × uses supplied project and about destinations in the same tab 2ms
+   × preserves row reading keys after editorial reorder 1ms
+   × escapes plain editorial text and preserves paragraph and line boundaries 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/components/about-content.test.tsx > presents the full fixed article using localized text and supplied image uses
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/about-content.test.tsx:35:41
+     33| it('presents the full fixed article using localized text and supplied …
+     34|   const { container } = render(<AboutContent profile={profile} project…
+     35|   expect(screen.queryByRole('article')).toBeInTheDocument();
+       |                                         ^
+     36|   expect(screen.getAllByRole('heading').map((heading) => heading.textC…
+     37|     'Synthetic about title', 'Synthetic introduction heading', 'Synthe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/about-content.test.tsx > keeps semantic reading keys in both locales
+AssertionError: expected [] to include 'about-in-motion'
+ ❯ src/features/professional-profile/components/about-content.test.tsx:58:16
+     56|   const { container, rerender } = render(<AboutContent profile={profil…
+     57|   const keys = Array.from(container.querySelectorAll('[data-reading-ke…
+     58|   expect(keys).toContain('about-in-motion');
+       |                ^
+     59|   rerender(<AboutContent profile={{ ...profile, locale: 'pt', about: {…
+     60|   expect(Array.from(container.querySelectorAll('[data-reading-key]')).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/home-content.test.tsx > presents structured profile groups in reading order and composes the supplied cases once
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/home-content.test.tsx:48:114
+     46| it('presents structured profile groups in reading order and composes t…
+     47|   render(<HomeContent {...props} />);
+     48|   expect(screen.queryByRole('heading', { level: 1, name: 'Synthetic no…
+       |                                                                                                                  ^
+     49|   expect(screen.getAllByRole('heading').map((heading) => heading.textC…
+     50|     'Synthetic normal title Synthetic emphasized title',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/home-content.test.tsx > uses supplied project and about destinations in the same tab
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/home-content.test.tsx:66:70
+     64| it('uses supplied project and about destinations in the same tab', () …
+     65|   render(<HomeContent {...props} />);
+     66|   expect(screen.queryByRole('link', { name: 'Synthetic projects' })).t…
+       |                                                                      ^
+     67|   expect(screen.getByRole('link', { name: 'Synthetic about link' })).t…
+     68|   for (const link of screen.getAllByRole('link')) expect(link).not.toH…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/home-content.test.tsx > preserves row reading keys after editorial reorder
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/home-content.test.tsx:74:77
+     72| it('preserves row reading keys after editorial reorder', () => {
+     73|   const { rerender } = render(<HomeContent {...props} />);
+     74|   expect(screen.queryByRole('heading', { name: 'Synthetic first method…
+       |                                                                             ^
+     75|   expect(screen.getByRole('heading', { name: 'Synthetic first method' …
+     76|   rerender(<HomeContent {...props} profile={{ ...profile, approach: { …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/home-content.test.tsx > escapes plain editorial text and preserves paragraph and line boundaries
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/home-content.test.tsx:87:72
+     85|     ...profile, home: { ...profile.home, description: 'Synthetic first…
+     86|   }} />);
+     87|   expect(screen.queryByText('<script>synthetic unsafe text</script>'))…
+       |                                                                        ^
+     88|   expect(container.querySelector('script')).toBeNull();
+     89|   expect(screen.getByText(/Synthetic first line/).textContent).toBe('S…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/profile-image.test.tsx > uses the protected original ID route and only localized alt/caption
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/profile-image.test.tsx:18:93
+     16| it('uses the protected original ID route and only localized alt/captio…
+     17|   const { container } = render(<ProfileImage image={image} kind="portr…
+     18|   expect(screen.queryByRole('img', { name: 'Synthetic localized photog…
+       |                                                                                             ^
+     19|   const rendered = screen.getByRole('img');
+     20|   const url = new URL(rendered.getAttribute('src')!, 'http://localhost…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/profile-image.test.tsx > loads authenticated previews directly without a public optimizer URL
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/profile-image.test.tsx:29:37
+     27| it('loads authenticated previews directly without a public optimizer U…
+     28|   render(<ProfileImage image={image} kind="desk" mediaMode="preview" /…
+     29|   expect(screen.queryByRole('img')).toHaveAttribute('src', '/media/000…
+       |                                     ^
+     30|   expect(screen.getByRole('img')).not.toHaveAttribute('srcset');
+     31| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  |unit| src/features/professional-profile/components/profile-image.test.tsx > keeps explicitly decorative photographs out of the accessible image list
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/profile-image.test.tsx:36:42
+     34| it('keeps explicitly decorative photographs out of the accessible imag…
+     35|   const { container } = render(<ProfileImage image={{ ...image, decora…
+     36|   expect(container.querySelector('img')).toHaveAttribute('alt', '');
+       |                                          ^
+     37|   expect(screen.queryByRole('img')).not.toBeInTheDocument();
+     38|   expect(container.querySelector('figcaption')).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  9 failed | 3 passed (12)
+   Start at  15:59:27
+   Duration  1.47s (environment 65%, setup 17%, import 11%, transform 4%, tests 2%, worker 1%)
+
+

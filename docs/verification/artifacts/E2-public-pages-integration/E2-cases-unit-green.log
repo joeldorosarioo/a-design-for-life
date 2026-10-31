@@ -1,0 +1,13 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+No test files found, exiting with code 1
+
+filter: src/features/cases/components/case-*.test.tsx
+projects: unit
+
+|unit| 
+
+include: src/**/*.test.{ts,tsx}
+exclude:  src/**/*.integration.test.*, src/**/*.e2e.test.*, src/config/architecture.test.ts
+

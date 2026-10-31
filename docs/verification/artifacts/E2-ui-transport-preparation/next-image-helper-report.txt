@@ -1,0 +1,62 @@
+# E2 — helper do otimizador Next implementado
+
+30/10/2026. Etapa 2: **16,7% (1/6; E2.1 concluída pelo coordenador)**. A integração de imagens permanece em andamento; nenhum aceite A2 ou etapa 3 é alegado.
+
+**Revisão posterior — P2 corrigido e validado tecnicamente:** a primeira versão devolvia404 sem conservar a distinção A1 entre mídia ausente/revogada e cobertura pública faltante. A correção compartilha a classificação já existente em `resolveMediaAccess`, com RED Native real, GREEN54/54 unitários e GREEN25/25 integrados sob o lifecycle exclusivo do agente de campos. Detalhes, limites e hashes atuais em `E2-next-image-P2-fix.md`. Os resultados abaixo são históricos da primeira entrega; a composição e o aceite A2 permanecem pendentes.
+
+Foram alterados somente:
+
+- `E:/a-design-for-life/src/features/media-library/server/next-image-proxy.ts`
+- `E:/a-design-for-life/src/features/media-library/server/next-image-proxy.test.ts`
+- `E:/a-design-for-life/src/features/media-library/server.ts`: export público do helper.
+
+Não alterei app/proxy/configuração Next/schema de ambiente/dependências/lock/Git/banco. O coordenador compõe o Proxy e as opções confiáveis da execução. O desenho aprovado é o descrito na investigação `E2-next-image-contract.md`; este registro substitui o estado de protótipo somente para os três arquivos acima.
+
+## API para composição
+
+```ts
+handleNextImage(request: Request, context: {
+  publicationDirectory: string;
+  internalOrigin: string;
+  secret: string;
+  widths?: readonly number[];
+  qualities?: readonly number[];
+  timeoutMs?: number;
+}): Promise<Response | null>
+```
+
+Invocar somente no matcher `/_next/image`. `null` significa **requisição interna GET com HMAC válido e original imagem autorizado na geração confirmada atual**; somente nesse caso a composição devolve `NextResponse.next()`. Todas as requisições externas recebem um `Response` completo `private, no-store`; a composição não deve sobrepor esse resultado.
+
+`internalOrigin` aceita HTTP e hostname loopback literal `127.0.0.1`/`[::1]`, sem userinfo, caminho, query ou fragmento. Ele vem de configuração confiável do servidor, nunca do Host/forwarded/public SITE_ORIGIN. `secret` tem no mínimo 32 caracteres e vem de derivação de domínio exclusivamente servidor do segredo já existente, conforme composição do coordenador. Não há nova credencial ou serviço solicitado ao usuário. Topologia/configuração operacional final permanece em E3.
+
+Padrões: larguras atuais do Next 16 (32,48,64,96,128,256,384,640,750,828,1080,1200,1920,2048,3840), qualidade75, timeout10s. Caso `images.deviceSizes/imageSizes/qualities` mude, fornecer as mesmas allowlists no contexto. Timeout configurável entre1ms e30s. HMAC SHA-256 com domínio `portfolio-next-image-v1`, expiração30s, GET, query canônica e Accept; comparação constante. Header interno `x-portfolio-image-authorization` não é devolvido nem registrado.
+
+## Comportamento
+
+- Aceita apenas três parâmetros únicos `url,w,q`, `/media/{UUID minúsculo válido}/original`, larguras/qualidades permitidas. Prévia, PDF, derivados, URLs externas, fragmentos/queries no src e codificações ambíguas são recusados sem fetch.
+- Lê `current.json` e reaproveita `confirmedMedia`/schema do manifest existentes em **cada** chamada externa/interna; não importa `runtimePayload`, não consulta SQL para conceder acesso e não altera grants.
+- Após a correção P2, ausência de manifesto usa a classificação Native compartilhada: cobertura faltante ou origem indisponível gera503; privado/desconhecido saudável e retirada coberta gera404. PDF confirmado é recusado com404. Header interno falso ou assinatura expirada/modificada também não concede passagem.
+- Fetch interno GET manda somente Accept e assinatura, além dos headers de transporte do próprio fetch. Não encaminha cookies, Authorization, Range, If-None-Match, If-Modified-Since ou Host/forwarded do visitante. Usa `credentials: omit`, `cache: no-store`, `redirect: error`, abort e timeout.
+- Resultado externo preserva somente tipo de imagem aprovado, Vary Accept, ETag, disposição/CSP e indicador de cache do Next; remove cookie, headers internos/diagnósticos e comprimento/codificação que podem ter mudado com descompressão do fetch. HEAD não envia corpo. Não há caminho externo304: condicionais são suprimidas na chamada interna.
+- Corpo interno é consumido dentro do timeout **antes** de criar a resposta externa, para falha/timeout do corpo produzir503 sem bytes parciais. Isso acrescenta um buffer da imagem otimizada; consumo de memória/concorrência final não foi certificado nesta tarefa.
+
+## Verificação executada
+
+Artefatos em `work/stage2-briefs/image-probe/`:
+
+| Verificação | Resultado |
+| --- | --- |
+| RED do helper contra stub503 | 22 falhas comportamentais/14 casos que já esperavam erro seguro; `helper-red.log` |
+| Helper focado após implementação/regressões | **40/40**, `helper-green-final.log` |
+| Regressão focada helper + media-response + public-root | **53/53 em três arquivos**, `helper-focused-regression-approved.log` |
+| Tipagem isolada helper+testes | exit0, `helper-typecheck.log` e `helper-tsconfig.json` |
+| ESLint três arquivos próprios | exit0, sem saída, `helper-lint.log` |
+| Prettier três arquivos próprios | exit0, todos formatados |
+| Build produção da fixture importando o helper real | exit0, inclui tipagem, `helper-production-build.log` |
+| HTTP real do helper com Next16.4.3/Node24.22.2/React19.3.1 | `helper-production-probe.log` |
+
+Os testes do helper usam filesystem real, schema real e servidor HTTP loopback real para observar contrato de transporte/erros; a resposta sintética desse servidor **não** é tratada como prova do otimizador. A prova de otimização abaixo usa o pacote Next efetivo em produção. A primeira invocação dessa regressão com sandbox padrão falhou antes dos testes por EPERM na escrita normal do Vite em `node_modules/.vite-temp`; `helper-focused-regression.log` preserva a falha. A repetição com a permissão da execução autorizada passou53/53; essa falha de ambiente não é RED comportamental.
+
+Na fixture independente `E:/.work/e2-image-probe`, PNG sintético80×60/248B passou pelo helper real e pelo otimizador padrão do Next: **MISS200 e HIT200 com WebP64×48/84B**, sempre `private, no-store`. Condicional pública também terminou200/HIT, sem bypass304. Revogar a imagem no `current.json` recusou GET, HEAD e condicional de cache já aquecido com404/zero bytes/no-store. Header interno falso e PDF receberam404/zero; root corrompido recebeu503/zero/no-store. Nenhuma credencial/header interno apareceu nas respostas observadas. PID14352 parado em `finally`; verificação final da porta3104 contou zero listeners.
+
+`helper-source-hashes.json` identifica os três arquivos entregues. O coordenador mantém as verificações globais e a integração Payload/PostgreSQL reais. Permanecem pendentes a composição no app, regressões de publicar/retirar com SQL antigo, testes de publicação compartilhada, recursos do runtime final, CI e aceite A2. Nenhuma prova de R2/deploy/cache de CDN é alegada.

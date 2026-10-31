@@ -1,0 +1,46 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[16:33:50] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[16:33:50] INFO: Migrating: 20261030_003022_initial_base
+[16:33:50] INFO: Migrated:  20261030_003022_initial_base (41ms)
+[16:33:50] INFO: Migrating: 20261030_020021_editorial_models
+[16:33:50] INFO: Migrated:  20261030_020021_editorial_models (84ms)
+[16:33:50] INFO: Migrating: 20261030_020521_structural_uniqueness
+[16:33:50] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[16:33:50] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[16:33:50] INFO: Migrated:  20261030_024431_case_locale_uniqueness (4ms)
+[16:33:50] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[16:33:50] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[16:33:50] INFO: Migrating: 20261030_030036_global_editorial_copy
+[16:33:50] INFO: Migrated:  20261030_030036_global_editorial_copy (8ms)
+[16:33:50] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[16:33:50] INFO: Migrated:  20261030_035306_protect_case_identity_references (9ms)
+[16:33:50] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[16:33:50] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (9ms)
+[16:33:50] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[16:33:50] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (8ms)
+[16:33:50] INFO: Migrating: 20261030_093430_private_media_manifests
+[16:33:50] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[16:33:50] INFO: Migrating: 20261030_124550_publication_coordination
+[16:33:50] INFO: Migrated:  20261030_124550_publication_coordination (47ms)
+[16:33:50] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[16:33:50] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (4ms)
+[16:33:50] INFO: Done.
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  16:33:45
+   Duration  8.83s (import 47%, tests 46%, transform 5%, setup 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

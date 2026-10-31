@@ -1,0 +1,28 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/public-render-context.test.ts (32 tests | 1 failed) 242ms
+   × preserves an independently published detail200 when structural profile/navigation are absent 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > preserves an independently published detail200 when structural profile/navigation are absent
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/config/public-render-context.test.ts:111:115
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 41 passed (42)
+   Start at  17:01:55
+   Duration  1.54s (import 66%, setup 15%, tests 12%, transform 6%)
+

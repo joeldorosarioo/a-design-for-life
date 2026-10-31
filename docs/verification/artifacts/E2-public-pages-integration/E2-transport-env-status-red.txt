@@ -1,0 +1,122 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (24 tests | 8 failed) 18ms
+   × retains only a validated literal internal HTTP loopback origin 6ms
+   × rejects an unsafe internal origin: https://127.0.0.1:3100 1ms
+   × rejects an unsafe internal origin: http://localhost:3100 0ms
+   × rejects an unsafe internal origin: http://public.example.invalid 0ms
+   × rejects an unsafe internal origin: http://127.0.0.1:3100/path 0ms
+   × rejects an unsafe internal origin: http://user:pass@127.0.0.1 0ms
+   × rejects an unsafe internal origin: http://127.0.0.1?url=x 0ms
+   × derives local internal HTTP origin only from trusted loopback site configuration 0ms
+ ❯ |unit| src/helpers/payload/published-read-response.test.ts (3 tests | 2 failed) 9ms
+   × preserves200 for a confirmed DTO without consulting Native metadata 7ms
+   × preserves404 for a non-unavailable result without consulting Native metadata 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > retains only a validated literal internal HTTP loopback origin
+AssertionError: expected { NODE_ENV: 'test', …(5) } to match object { Object (INTERNAL_HTTP_ORIGIN) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "INTERNAL_HTTP_ORIGIN": "http://127.0.0.1:3100",
++   "APP_ENV": "test",
++   "DATABASE_URI": "[REDACTED_DATABASE_URL]",
++   "MEDIA_BUCKET": "adfl-test-files",
++   "NODE_ENV": "test",
++   "PAYLOAD_SECRET": "synthetic-test-secret-at-least-thirty-two-characters",
++   "SITE_ORIGIN": "http://127.0.0.1:3000",
+  }
+
+ ❯ src/config/server-env.test.ts:86:91
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: https://127.0.0.1:3100
+ FAIL  |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://localhost:3100
+ FAIL  |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://public.example.invalid
+ FAIL  |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1:3100/path
+ FAIL  |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://user:pass@127.0.0.1
+ FAIL  |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1?url=x
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:89:80
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > derives local internal HTTP origin only from trusted loopback site configuration
+AssertionError: expected null to be 'http://127.0.0.1:3100' // Object.is equality
+
+- Expected:
+"http://127.0.0.1:3100"
+
++ Received:
+null
+
+ ❯ src/config/server-env.test.ts:93:108
+     91| it('derives local internal HTTP origin only from trusted loopback site…
+     92|   const { resolveInternalHttpOrigin } = await import('./server-env');
+     93|   expect(resolveInternalHttpOrigin(readServerEnv({ ...validInput, SITE…
+       |                                                                                                            ^
+     94|   expect(resolveInternalHttpOrigin(readServerEnv({ ...validInput, INTE…
+     95|   const production = readServerEnv({ ...validInput, NODE_ENV:'producti…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  |unit| src/helpers/payload/published-read-response.test.ts > preserves200 for a confirmed DTO without consulting Native metadata
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/helpers/payload/published-read-response.test.ts:5:100
+      3| const subject = { collection:'professional-profiles' as const, where:{…
+      4| it('preserves200 for a confirmed DTO without consulting Native metadat…
+      5|   await expect(publishedReadStatus({ok:true,value:{title:'Confirmed'}}…
+       |                                                                                                    ^
+      6| });
+      7| it('preserves404 for a non-unavailable result without consulting Nativ…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  |unit| src/helpers/payload/published-read-response.test.ts > preserves404 for a non-unavailable result without consulting Native metadata
+AssertionError: expected 503 to be 404 // Object.is equality
+
+- Expected
++ Received
+
+- 404
++ 503
+
+ ❯ src/helpers/payload/published-read-response.test.ts:8:127
+      6| });
+      7| it('preserves404 for a non-unavailable result without consulting Nativ…
+      8|   await expect(publishedReadStatus({ok:false,error:{code:'forbidden',m…
+       |                                                                                                                               ^
+      9| });
+     10| it('keeps503 when the origin cannot prove absence', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  10 failed | 17 passed (27)
+   Start at  16:53:45
+   Duration  1.14s (import 64%, setup 29%, transform 4%, tests 2%, worker 1%)
+

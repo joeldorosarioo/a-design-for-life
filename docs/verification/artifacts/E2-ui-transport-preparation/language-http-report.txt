@@ -1,0 +1,91 @@
+# E2.4 — handlers HTTP preparados (parcial, sem execução Next/E2E)
+
+Etapa2 permanece **0/6 (0%)**. E2.4 não está concluída: integração real HTTP, UI manual, jornadas executadas e gate root continuam pendentes. O root liberou esta implementação após seu gate anterior; os cinco arquivos atribuídos estão agora **congelados para revisão**.
+
+Nenhum build, Next, DB, Docker, suíte global, E2E, stage, commit ou push foi executado por este agente. Core E2.4, navegação E2.2, arquivos de Perfil, configurações, dependências/lock e páginas localizadas permaneceram inalterados.
+
+## Arquivos e comportamento implementado
+
+### src/app/(portfolio)/route.ts
+
+GET(NextRequest):Response usa resolveEntryLocale pela entrada pública language-switcher/server, com request.cookies.get('portfolio_locale') e Accept-Language. Retorna307, Location relativa somente /pt ou /en, Cache-Control: private,no-store e corpo vazio.
+
+Sem leitura de SITE_ORIGIN/ambiente, cabeçalho de origem encaminhada ou serviços. Não grava, renova nem remove cookie, inclusive cookie inválido. Não usa query para destino. Não foi adicionado proxy/middleware global ou negociação nas URLs explícitas.
+
+dynamic=force-dynamic explicita a intenção. HEAD automático/roteamento do framework serão conferidos pelo root em HTTP real; não foram simulados como prova de Next nesta entrega.
+
+### src/app/(portfolio)/language-preference/route.ts
+
+POST(Request):Promise<Response> lê SITE_ORIGIN pela configuração validada readServerEnv existente. Exige Origin igual à origem canônica configurada, independentemente de request.url/Host/forwarded headers.
+
+Exige application/json (aceita parâmetro charset), JSON parseável e objeto estrito com apenas locale aceito pelo localeSchema existente. Não normaliza variações de locale, não aceita destino/returnTo/siteOrigin/identificador extra.
+
+Sucesso cria NextResponse204, sem corpo/Location, Cache-Control: private,no-store, e chama somente setLanguagePreference(locale,response,{siteOrigin}) já existente. O writer mantém portfolio_locale pt/en,180dias15552000s,Path=/,HttpOnly,SameSite=Lax,Secure somente HTTPS e sem Domain.
+
+Origin divergente/ausente/null retorna403. Corpo/mime/JSON/locale inválido retorna400. Falhas não definem cookie nem destino e também retornam private,no-store. A função não consulta geração, arquivos, CMS, mídia ou banco. Não há Action paralela, tracking, banner ou ID.
+
+O endpoint está disponível para chamada manual futura do controlador E2.5. Ainda não há UI chamadora; visita/hidratação não o invocam por esta implementação.
+
+## TDD observado e checks
+
+Node local .toolchain/node-v24.22.2-win-x64/node.exe, Vitest5.0.5 instalado. Testes usam NextRequest/Web Response/NextResponse reais. O ambiente de POST é sintético via vi.stubEnv e restaurado após cada teste; não há mock de serialização, cookie store ou serviço.
+
+Comando do RED/GREEN no diretório E:/a-design-for-life:
+
+```powershell
+& ./.toolchain/node-v24.22.2-win-x64/node.exe ./node_modules/vitest/vitest.mjs run --project unit 'src/app/(portfolio)/route.test.ts' 'src/app/(portfolio)/language-preference/route.test.ts'
+```
+
+- RED: exit1,35/35assertions falharam contra handlers baseline chamáveis que retornavam200 e nenhum comportamento. Falhas de status/destino e Set-Cookie ausente; nenhum import/config/install ausente.
+- GREEN inicial: exit0,35/35em2arquivos.
+- GREEN final pós-formatação: exit0,35/35em2arquivos,15:25:44,duração557ms.
+- ESLint scoped dos5arquivos: exit0, sem output.
+- Prettier --write e --check scoped dos5arquivos: check final exit0.
+
+Cobertura direta de GET: prioridade cookie/navegador/fallback, q/variantes/entrada inválida,307,Location relativa,cacheprivado,semSetCookie,query/host/forwardedheaders incapazes de mudar destino, visitas independentes.
+
+Cobertura direta de POST: pt/en,204/corpo vazio/semLocation,atributos reais docookie,13corpos inválidos/keys extras,5Origins inválidas,JSON inválido,mime nãoJSON,Secure derivado apenas de origem HTTPS configurada e renovação da data por nova escolha sob Date fake controlado.
+
+Logs privados: .work/E2.4-http-red.log, E2.4-http-green.log, E2.4-http-green-final.log e E2.4-http-lint.log. Só entradas sintéticas; sem cookies/segredos reais.
+
+**Essas chamadas diretas provam o contrato dos handlers e a serialização de cookies real, mas não são tráfego HTTP por Next em produção.** Não comprovam headers finais do framework, HEAD/405 automático, resolução do route group, cache do servidor, browser ou páginas. Nenhum resultado de execução foi omitido.
+
+## page.e2e.test.ts — oito jornadas preparadas, NÃO executadas
+
+Oito testes Playwright de HTTP/browser context, para o root executar depois com build/Next/DB próprios no suporte existente:
+
+1. Negociação por várias requests raiz com cookies/Accept-Language distintos,307/Location/semSetCookie/private,no-store.
+2. Query de redirect e forwarded host externos ignorados.
+3. POST manual204,Max-Age/atributos; cookie artificialmente envelhecido60s conserva expiry durante GET/HEAD de visita; outra escolha renova prazo e conserva somente o cookie funcional.
+4. Cookie explicitamente expirado no contexto nativo retoma navegador.
+5. Cookie removido retoma navegador.
+6. URLs explícitas PT/EN não redirecionam nem definem cookie apesar da preferência oposta.
+7. /pt/about e /en/sobre continuam404 reais.
+8. Requests manuais inválidas/estranhas não gravam; GET do endpoint é405 semcookie.
+
+Jornada6 testa exclusivamente ausência de negociação/renovação: não aceita seu status/conteúdo como prova de Home/Sobre corretas. As páginas/200 e geração publicada são responsabilidade das jornadas E2.2 do root. A ausência de Set-Cookie após hidratação/UI, clique real, leitura e ordenação em cliques rápidos/cancelamento/retorno-avanço ainda dependem de E2.5.
+
+Os testes usam context.request compartilhando o cookie jar do BrowserContext e maxRedirects=0 para observar a primeira resposta. Nenhuma nova fixture de dados publicados ou chamada Native foi criada.
+
+## Evidência de prazo e limite de relógio
+
+Unitário direto do handler e writer existente controlam Date do Node para comprovar180dias desde a última escolha manual. A jornada HTTP preparada confere Max-Age=15552000, preserva expiry em visitas, renova após uma escolha e cobre estados expirado/removido do contexto nativo.
+
+O teste envelhece explicitamente a expiry do cookie do contexto para tornar a renovação observável sem aguardar relógio real. Isso não representa avanço de180dias depois do mesmo Set-Cookie. Não usa page.clock como substituto de relógio nativo, não altera OS/produção e não muda a duração aprovada. Essa comprovação conjunta/limite foram aprovados pelo root no plano.
+
+## Hashes SHA256 — snapshot congelado
+
+| Arquivo relativo ao repo | SHA256 |
+| --- | --- |
+| src/app/(portfolio)/route.ts | 00C9D988C849575CDD6D887E0EB680B7787DF1689E3EDE4FBCFF2E781032A021 |
+| src/app/(portfolio)/route.test.ts | 0F34ECC7B55F68F883633903FDF2ABDC354D184E9B9F5700C40C5A9425A76D76 |
+| src/app/(portfolio)/language-preference/route.ts | 5A080AE1C9EF6DDA8A5862BC5A5422302F01334BB87A630793F513CB1A81A22B |
+| src/app/(portfolio)/language-preference/route.test.ts | BF5E75F0B1D2729AE04EB085897F153FC1BDD2AAFCCB08F24B8422B19446B397 |
+| src/app/(portfolio)/page.e2e.test.ts | 1210E67B76BF9E5DDCF84295F8DF4D4EAAE9BB40B12F49A1E66853BAB3433ABD |
+
+## Próximos gates do root
+
+Revisão dos5arquivos, typecheck/arquitetura/gate global, produçãoNext/HTTP e execução das8jornadas após integração das páginas. Depois integração com clique manual E2.5/ordem final cookie+URL/leitura, conteúdo publicado explícito e não renovação durante UI/hidratação. Não marcar E2.4 concluída só pelo GREEN direto.
+
+Plano seguido: work/stage2-briefs/E2.4-http-plan.md. Skills TDD/Writing Good Tests/Verification Before Completion aplicados. Nenhuma necessidade de adapter novo no core ou pergunta adicional de política. A2 continua antes da etapa3.
+

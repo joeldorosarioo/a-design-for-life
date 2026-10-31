@@ -1,0 +1,178 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/public-render-context.test.ts (30 tests | 29 failed) 90ms
+   × keeps the selected generation across publication and signs only a small context without a CMS body 22ms
+   × serves a known root without initializing Native: /pt 7ms
+   × serves a known root without initializing Native: /pt/cases 5ms
+   × serves a known root without initializing Native: /pt/sobre 4ms
+   × serves a known root without initializing Native: /pt/cases/pub%6cico 4ms
+   × strips all own incoming context and override variants while preserving router and image protocol headers 4ms
+   × rejects forged, malformed, oversized or cross-route/method context without a root fallback 4ms
+   × rejects an unavailable pin instead of reading a newly published current root 4ms
+   × fails closed to503 before rendering when snapshot storage is unavailable 5ms
+   × keeps invalid explicit routes404 without reading a corrupt root: /pt/about 2ms
+   × keeps invalid explicit routes404 without reading a corrupt root: /en/sobre 2ms
+   × keeps invalid explicit routes404 without reading a corrupt root: /pt/cases/a/b 2ms
+   × keeps invalid explicit routes404 without reading a corrupt root: /pt/cases/a%2Fb 2ms
+   × keeps invalid explicit routes404 without reading a corrupt root: /pt/cases/UPPER 2ms
+   × ignores surfaces outside its finite public HTML scope: / 1ms
+   × ignores surfaces outside its finite public HTML scope: /admin 1ms
+   × ignores surfaces outside its finite public HTML scope: /api/cases 1ms
+   × ignores surfaces outside its finite public HTML scope: /preview 1ms
+   × ignores surfaces outside its finite public HTML scope: /preview-media/a/original 1ms
+   × ignores surfaces outside its finite public HTML scope: /media/a/original 1ms
+   × ignores surfaces outside its finite public HTML scope: /language-preference 1ms
+   × ignores surfaces outside its finite public HTML scope: /_next/static/a 1ms
+   × ignores surfaces outside its finite public HTML scope: /_next/image 1ms
+   × ignores surfaces outside its finite public HTML scope: /fr/cases/a 1ms
+   × ignores surfaces outside its finite public HTML scope: /pt-BR 1ms
+   × returns308 directly from confirmed history without preparing a render pin 5ms
+   × keeps410 for a confirmed tombstone independently of missing shell coverage 4ms
+   × keeps503 when missing coverage has no healthy Native proof or current is corrupt 1ms
+   × denies unsupported methods on a recognized public route 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 29 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps the selected generation across publication and signs only a small context without a CMS body
+AssertionError: promise rejected "Error: Public render transport not implem…" instead of resolving
+ ❯ src/config/public-render-context.test.ts:45:7
+     43|  expect((await readPublicRenderContext(headers(next),options())).root)…
+     44|  expect(nativeCalls).toBe(0);return loaded.root?.generation;
+     45|  })()).resolves.toBe(a.generation);
+       |       ^
+     46| });
+     47| it.each(['/pt','/pt/cases','/pt/sobre','/pt/cases/pub%6cico'])('serves…
+
+Caused by: Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+ ❯ src/config/public-render-context.test.ts:36:23
+ ❯ src/config/public-render-context.test.ts:45:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > serves a known root without initializing Native: /pt
+ FAIL  |unit| src/config/public-render-context.test.ts > serves a known root without initializing Native: /pt/cases
+ FAIL  |unit| src/config/public-render-context.test.ts > serves a known root without initializing Native: /pt/sobre
+ FAIL  |unit| src/config/public-render-context.test.ts > serves a known root without initializing Native: /pt/cases/pub%6cico
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:49:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > strips all own incoming context and override variants while preserving router and image protocol headers
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:54:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > rejects forged, malformed, oversized or cross-route/method context without a root fallback
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:59:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > rejects an unavailable pin instead of reading a newly published current root
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:72:107
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > fails closed to503 before rendering when snapshot storage is unavailable
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:78:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps invalid explicit routes404 without reading a corrupt root: /pt/about
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps invalid explicit routes404 without reading a corrupt root: /en/sobre
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps invalid explicit routes404 without reading a corrupt root: /pt/cases/a/b
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps invalid explicit routes404 without reading a corrupt root: /pt/cases/a%2Fb
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps invalid explicit routes404 without reading a corrupt root: /pt/cases/UPPER
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:81:86
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /admin
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /api/cases
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /preview
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /preview-media/a/original
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /media/a/original
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /language-preference
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /_next/static/a
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /_next/image
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /fr/cases/a
+ FAIL  |unit| src/config/public-render-context.test.ts > ignores surfaces outside its finite public HTML scope: /pt-BR
+AssertionError: promise rejected "Error: Public render transport not implem…" instead of resolving
+ ❯ src/config/public-render-context.test.ts:84:71
+
+
+Caused by: Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+ ❯ src/config/public-render-context.test.ts:84:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > returns308 directly from confirmed history without preparing a render pin
+AssertionError: promise rejected "Error: Public render transport not implem…" instead of resolving
+ ❯ src/config/public-render-context.test.ts:87:155
+
+
+Caused by: Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+ ❯ src/config/public-render-context.test.ts:87:89
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps410 for a confirmed tombstone independently of missing shell coverage
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:91:88
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps503 when missing coverage has no healthy Native proof or current is corrupt
+Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+
+ ❯ src/config/public-render-context.test.ts:94:139
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/29]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > denies unsupported methods on a recognized public route
+AssertionError: promise rejected "Error: Public render transport not implem…" instead of resolving
+ ❯ src/config/public-render-context.test.ts:97:84
+     95| });
+     96| it('denies unsupported methods on a recognized public route',async()=>{
+     97|  await expect(preparePublicRenderRequest(request('/pt',{method:'POST'}…
+       |                                                                                    ^
+     98| });
+     99|
+
+Caused by: Error: Public render transport not implemented.
+ ❯ preparePublicRenderRequest src/config/public-render-context.ts:8:140
+ ❯ src/config/public-render-context.test.ts:97:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/29]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  29 failed | 1 passed (30)
+   Start at  16:55:52
+   Duration  1.42s (import 70%, setup 15%, transform 7%, tests 7%)
+

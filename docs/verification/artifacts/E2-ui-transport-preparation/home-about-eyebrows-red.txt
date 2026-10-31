@@ -1,0 +1,31 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/components/about-content.test.tsx (4 tests | 1 failed) 201ms
+   × renders the three editable section eyebrows without deriving labels from position 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/components/about-content.test.tsx > renders the three editable section eyebrows without deriving labels from position
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/professional-profile/components/about-content.test.tsx:75:59
+     73| it('renders the three editable section eyebrows without deriving label…
+     74|   render(<AboutContent profile={profile} projectsHref="/en/cases" />);
+     75|   expect(screen.queryByText('Synthetic journey eyebrow')).toBeInTheDoc…
+       |                                                           ^
+     76|   expect(screen.getByText('Synthetic approach eyebrow')).toBeInTheDocu…
+     77|   expect(screen.getByText('Synthetic motion eyebrow')).toBeInTheDocume…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  16:02:46
+   Duration  1.65s (environment 58%, setup 14%, tests 13%, import 12%, transform 3%)
+
+

@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "command": "pnpm exec vitest run --project integration src/features/cases/server/resolve-case-route.integration.test.ts",
+  "recordedAt": "2026-10-30T19:54:24.9715358Z"
+}

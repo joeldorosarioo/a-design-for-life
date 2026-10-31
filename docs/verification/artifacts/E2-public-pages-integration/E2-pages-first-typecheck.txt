@@ -1,0 +1,5 @@
+$ tsc --noEmit
+.next/types/validator.ts(85,39): error TS2307: Cannot find module '../../src/app/(portfolio)/[locale]/cases/[slug]/route.js' or its corresponding type declarations.
+src/features/cases/components/case-contents.test.tsx(67,9): error TS2352: Conversion of type '{ target: HTMLElement; isIntersecting: true; boundingClientRect: { top: number; }; }' to type 'IntersectionObserverEntry' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ target: HTMLElement; isIntersecting: true; boundingClientRect: { top: number; }; }' is missing the following properties from type 'IntersectionObserverEntry': intersectionRatio, intersectionRect, rootBounds, time
+[ELIFECYCLE] Command failed with exit code 2.

@@ -1,0 +1,31 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/components/profile-image.test.tsx (4 tests | 1 failed) 109ms
+   × loads authenticated previews directly without a public optimizer URL 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/components/profile-image.test.tsx > loads authenticated previews directly without a public optimizer URL
+Error: expect(element).toHaveAttribute("src", "/preview-media/00000000-0000-4000-8000-000000000001/original") // element.getAttribute("src") === "/preview-media/00000000-0000-4000-8000-000000000001/original"
+
+Expected the element to have attribute:
+  src="/preview-media/00000000-0000-4000-8000-000000000001/original"
+Received:
+  src="/media/00000000-0000-4000-8000-000000000001/original"
+ ❯ src/features/professional-profile/components/profile-image.test.tsx:34:37
+     32| it('loads authenticated previews directly without a public optimizer U…
+     33|   render(<ProfileImage image={image} kind="desk" mediaMode="preview" /…
+     34|   expect(screen.queryByRole('img')).toHaveAttribute(
+       |                                     ^
+     35|     'src',
+     36|     '/preview-media/00000000-0000-4000-8000-000000000001/original',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  16:52:32
+   Duration  1.29s (environment 64%, setup 17%, tests 9%, import 7%, transform 3%)
+

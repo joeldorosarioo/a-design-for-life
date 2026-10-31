@@ -1,0 +1,196 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/build-localized-metadata.test.ts (46 tests | 25 failed) 22ms
+   × keeps its PT canonical and never advertises an unpublished EN case 11ms
+   × uses an explicit self canonical for pt home 1ms
+   × uses an explicit self canonical for en home 0ms
+   × uses an explicit self canonical for pt cases 0ms
+   × uses an explicit self canonical for en cases 0ms
+   × uses an explicit self canonical for pt about 0ms
+   × uses an explicit self canonical for en about 0ms
+   × advertises only the supplied published equivalent and keeps EN self canonical 0ms
+   × uses editor-authored SEO for home 0ms
+   × uses editor-authored SEO for cases 0ms
+   × uses editor-authored SEO for about 0ms
+   × falls back only to the same published page heading/description for home 0ms
+   × falls back only to the same published page heading/description for cases 0ms
+   × falls back only to the same published page heading/description for about 0ms
+   × uses case SEO and falls back to its own title/summary without a structural profile 0ms
+   × does not invent profession or another page description when own copy is absent 0ms
+   × maps only the confirmed original SEO image and lets the metadata framework escape plain strings 0ms
+   × uses the case SEO image before its cover and does not borrow another locale profile image 0ms
+   × clears editorial indexing/canonical/alternates for pt status404 0ms
+   × clears editorial indexing/canonical/alternates for en status404 0ms
+   × clears editorial indexing/canonical/alternates for pt status410 0ms
+   × clears editorial indexing/canonical/alternates for en status410 0ms
+   × clears editorial indexing/canonical/alternates for pt status503 0ms
+   × clears editorial indexing/canonical/alternates for en status503 0ms
+   × applies environment noindex without changing positive self canonical 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 25 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > keeps its PT canonical and never advertises an unpublished EN case
+AssertionError: expected [Function create] to not throw an error but 'Error: Localized metadata not impleme…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Localized metadata not implemented."
+
+ ❯ src/config/build-localized-metadata.test.ts:14:189
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses an explicit self canonical for pt home
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses an explicit self canonical for en home
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses an explicit self canonical for pt cases
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses an explicit self canonical for en cases
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses an explicit self canonical for pt about
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses an explicit self canonical for en about
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:20:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > advertises only the supplied published equivalent and keeps EN self canonical
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:23:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses editor-authored SEO for home
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses editor-authored SEO for cases
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses editor-authored SEO for about
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:26:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > falls back only to the same published page heading/description for home
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > falls back only to the same published page heading/description for cases
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > falls back only to the same published page heading/description for about
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:30:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses case SEO and falls back to its own title/summary without a structural profile
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:33:74
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > does not invent profession or another page description when own copy is absent
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:36:151
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > maps only the confirmed original SEO image and lets the metadata framework escape plain strings
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:39:83
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > uses the case SEO image before its cover and does not borrow another locale profile image
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:42:118
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > clears editorial indexing/canonical/alternates for pt status404
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > clears editorial indexing/canonical/alternates for en status404
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > clears editorial indexing/canonical/alternates for pt status410
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > clears editorial indexing/canonical/alternates for en status410
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > clears editorial indexing/canonical/alternates for pt status503
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > clears editorial indexing/canonical/alternates for en status503
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:48:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/25]⎯
+
+ FAIL  |unit| src/config/build-localized-metadata.test.ts > applies environment noindex without changing positive self canonical
+Error: Localized metadata not implemented.
+ ❯ buildLocalizedMetadata src/config/build-localized-metadata.ts:17:9
+     15| };
+     16| export function buildLocalizedMetadata(_input:LocalizedMetadataInput):…
+     17|   throw new Error('Localized metadata not implemented.');
+       |         ^
+     18| }
+     19|
+ ❯ src/config/build-localized-metadata.test.ts:51:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/25]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  25 failed | 21 passed (46)
+   Start at  17:15:16
+   Duration  553ms (setup 54%, import 26%, transform 12%, tests 6%, worker 1%)
+

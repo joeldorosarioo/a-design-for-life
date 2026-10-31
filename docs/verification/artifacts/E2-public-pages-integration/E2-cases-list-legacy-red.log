@@ -1,0 +1,54 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-list.test.tsx (4 tests | 2 failed) 184ms
+   × reuses cards in received order without adding listing opening or count 143ms
+   × keeps the named title link and body when legacy content has no CTA label 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-list.test.tsx > reuses cards in received order without adding listing opening or count
+AssertionError: expected [ '/en/cases/second', …(1) ] to deeply equal [ '/en/cases/second', …(3) ]
+
+- Expected
++ Received
+
+  [
+    "/en/cases/second",
+-   "/en/cases/second",
+-   "/en/cases/first",
+    "/en/cases/first",
+  ]
+
+ ❯ src/features/cases/components/case-list.test.tsx:50:80
+     48|     'First supplied title',
+     49|   ]);
+     50|   expect(screen.getAllByRole('link').map((link) => link.getAttribute('…
+       |                                                                                ^
+     51|     '/en/cases/second',
+     52|     '/en/cases/second',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/cases/components/case-list.test.tsx > keeps the named title link and body when legacy content has no CTA label
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-list.test.tsx:72:73
+     70| it('keeps the named title link and body when legacy content has no CTA…
+     71|   render(<CaseGrid {...gridProps} caseLinkLabel={null} />);
+     72|   expect(screen.queryByRole('link', { name: 'Second supplied title' })…
+       |                                                                         ^
+     73|   expect(screen.getByText('<script>Literal summary</script>')).toBeInT…
+     74|   expect(screen.getAllByRole('link')).toHaveLength(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  16:59:49
+   Duration  1.72s (environment 54%, setup 17%, tests 12%, import 9%, transform 7%)
+
