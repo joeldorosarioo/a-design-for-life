@@ -22,7 +22,10 @@ type CaseCardPresentationSource = Pick<
   | 'cover'
 >;
 type CasePresentationSource = CaseCardPresentationSource &
-  Pick<CaseContent, 'introduction' | 'role' | 'scope' | 'contextNote' | 'sections' | 'seo'>;
+  Pick<
+    CaseContent,
+    'introduction' | 'role' | 'scope' | 'contextNote' | 'sections' | 'seo' | 'coverPresentation'
+  >;
 export function mapCaseCardPresentation(
   document: CaseCardPresentationSource,
   path: string,
@@ -89,13 +92,14 @@ export function mapCasePresentation(document: CasePresentationSource, path: stri
     introduction: document.introduction ?? null,
     path,
     cover: mapImageUse(document.cover) ?? null,
+    coverPresentation: document.coverPresentation ?? 'contained-cherry',
     role: document.role ?? null,
     scope: document.scope ?? null,
     contextNote: document.contextNote ?? null,
     sections,
     contents: sections.map((section) => ({
       readingKey: section.readingKey,
-      label: section.eyebrow?.trim() ? section.eyebrow : section.heading,
+      label: section.heading?.trim() ? section.heading : section.eyebrow,
       anchor: `section-${section.readingKey}`,
     })),
     seo: {

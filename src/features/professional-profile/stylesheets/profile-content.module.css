@@ -1,6 +1,4 @@
-/* Exact image slots and Section heading desktop variant are measured in the approved
-   reference. Remaining typography/spacing uses its documented token scale and is
-   provisional until the rendered-page visual comparison. */
+/* Profile slots and measured geometry follow the preserved Figma references and A2 comparison evidence. */
 .home,
 .about {
   overflow-wrap: anywhere;
@@ -10,12 +8,12 @@
 .projects,
 .homeAboutInner,
 .approach {
-  padding-block: var(--space-16);
+  padding-block: var(--space-6);
 }
 
 .hero {
   display: grid;
-  gap: var(--space-8);
+  gap: calc(var(--space-8) + var(--space-2));
   align-items: start;
 }
 
@@ -34,7 +32,7 @@
 }
 
 .heroTitle {
-  margin: var(--space-8) 0;
+  margin: var(--space-6) 0;
   font-size: var(--text-5xl);
   font-weight: var(--font-weight-semibold);
   line-height: var(--text-5xl--line-height);
@@ -43,7 +41,7 @@
 
 .heroEmphasis {
   display: block;
-  margin-block-start: var(--space-4);
+  margin-block-start: var(--space-6);
   color: var(--action-default);
   font-family: var(--font-serif);
   font-weight: var(--font-weight-normal);
@@ -62,6 +60,12 @@
 
 .prose p + p {
   margin-block-start: var(--space-6);
+}
+
+.heroCopy > a {
+  justify-content: flex-start;
+  min-width: min(13rem, 100%);
+  max-width: 100%;
 }
 
 .heroDescription {
@@ -103,6 +107,15 @@
   gap: var(--space-12);
 }
 
+.projects,
+.approach {
+  gap: var(--space-8);
+}
+
+.homeAboutCopy .sectionHeading {
+  gap: var(--space-6);
+}
+
 .homeAbout {
   background: var(--bg-subtle);
 }
@@ -110,6 +123,11 @@
 .homeAboutInner {
   display: grid;
   gap: var(--space-12);
+}
+
+.homeAboutCopy .prose {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
 }
 
 .homeAboutCopy > .textLink {
@@ -126,7 +144,7 @@
 }
 
 .trajectory {
-  gap: var(--space-8);
+  gap: calc(var(--space-8) + var(--space-2));
 }
 
 .itemTitle {
@@ -184,7 +202,12 @@
 .about {
   display: grid;
   gap: var(--space-16);
-  padding-block: var(--space-16) var(--space-24);
+  padding-block: var(--space-12) var(--space-24);
+}
+
+.about .prose {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
 }
 
 .aboutOpening {
@@ -195,7 +218,7 @@
 }
 
 .aboutTitle {
-  max-width: 36rem;
+  max-width: 60rem;
   margin: 0;
   font-family: var(--font-serif);
   font-size: var(--text-4xl);
@@ -204,10 +227,10 @@
   white-space: pre-line;
 }
 
-.aboutDescription {
-  max-width: 52rem;
-  font-size: var(--text-lg);
-  line-height: var(--text-lg--line-height);
+.about .aboutDescription {
+  max-width: 48rem;
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
 }
 
 .introduction,
@@ -217,6 +240,22 @@
   align-items: start;
 }
 
+.editorialRow {
+  gap: var(--space-6);
+}
+
+.editorialRow > figure + .editorialBody {
+  margin-block-start: var(--space-2);
+}
+
+.about .editorialBody > .eyebrow + .articleHeading {
+  margin-block-start: var(--space-6);
+}
+
+.editorialRow > div:first-child > .articleHeading {
+  margin-block-end: 0;
+}
+
 .introductionCopy,
 .editorialBody {
   min-width: 0;
@@ -224,8 +263,8 @@
 
 .introductionProse p:first-child {
   color: var(--text-primary);
-  font-size: var(--text-xl);
-  line-height: var(--text-xl--line-height);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
 }
 
 .articleHeading {
@@ -243,7 +282,7 @@
 
 .editorialEmphasis::before {
   display: block;
-  width: var(--space-8);
+  width: calc(var(--space-8) + var(--space-1));
   height: 2px;
   margin-block-end: var(--space-6);
   background: var(--action-default);
@@ -253,21 +292,33 @@
 .editorialEmphasis > .prose {
   color: inherit;
   font-family: var(--font-serif);
-  font-size: var(--text-4xl);
-  line-height: var(--text-4xl--line-height);
+  font-size: var(--text-3xl);
+  line-height: var(--text-3xl--line-height);
 }
 
 .closingHeading {
-  padding-block-start: var(--space-6);
   border-block-start: 1px solid var(--border-default);
 }
 
 .closing .textLink {
   display: inline-block;
-  margin-block-start: var(--space-8);
+  margin-block-start: var(--space-6);
+  padding-block: var(--space-3);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
 }
 
 @media (min-width: 64rem) {
+  .projects {
+    gap: var(--space-12);
+    padding-block: var(--space-16) var(--space-20);
+  }
+
+  .introductionProse p:first-child {
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+  }
+
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
     gap: var(--space-16);
@@ -297,15 +348,22 @@
   }
 
   .trajectory {
+    padding-block-start: var(--space-2);
     gap: var(--space-10, 2.5rem);
+  }
+
+  .method {
+    /* Preserve the original desktop card slot while allowing longer copy to grow. */
+    min-block-size: 16.625rem;
   }
 
   .methods {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-8);
+    gap: calc(var(--space-8) + var(--space-2));
   }
 
   .approach {
+    gap: var(--space-12);
     padding-block: var(--space-20);
   }
 
@@ -323,6 +381,14 @@
   .editorialRow {
     grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
     column-gap: clamp(2rem, 8.9vw, 8rem);
+  }
+
+  .editorialRow > figure + .editorialBody {
+    margin-block-start: 0;
+  }
+
+  .closingHeading {
+    padding-block-start: var(--space-6);
   }
 
   .introduction {
@@ -346,6 +412,11 @@
 
   .editorialBody {
     grid-column: 2;
+  }
+
+  .editorialEmphasis > .prose {
+    font-size: var(--text-4xl);
+    line-height: var(--text-4xl--line-height);
   }
 
   .editorialEmphasis {

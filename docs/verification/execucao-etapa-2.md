@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 2
 
-**Etapa 2: 80,0% do checklist (24/30 itens); 3/6 tarefas inteiramente encerradas. A2 pendente.**
+**Etapa 2: 83,3% do checklist (25/30 itens); 3/6 tarefas inteiramente encerradas. A2 pendente.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 

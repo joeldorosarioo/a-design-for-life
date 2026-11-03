@@ -1,0 +1,61 @@
+
+Running 3 tests using 1 worker
+
+(node:28656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › src\config\editorial-multiline.e2e.test.ts:98:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview (3.3s)
+(node:28684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [chromium] › src\config\editorial-multiline.e2e.test.ts:138:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview (2.1s)
+  ok 3 [chromium] › src\config\editorial-multiline.e2e.test.ts:158:1 › Native Case section heading retains authored line breaks through Save Draft and preview (1.3s)
+
+
+  1) [chromium] › src\config\editorial-multiline.e2e.test.ts:98:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic hero emphasis first line
+    - Synthetic hero emphasis second line
+    + Synthetic hero emphasis first line Synthetic hero emphasis second line
+
+      110 |   expect.soft(reread.homeAbout.title).toBe(homeAbout);
+      111 |   expect.soft(reread.about.title).toBe(about);
+    > 112 |   expect.soft(reread.home.titleEmphasis).toBe(heroEmphasis);
+          |                                          ^
+      113 |   await page.goto(
+      114 |     buildPrivatePreviewPath({
+      115 |       locale: 'pt',
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:112:42
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic hero emphasis first line
+    - Synthetic hero emphasis second line
+    + Synthetic hero emphasis first line Synthetic hero emphasis second line
+
+      124 |   expect
+      125 |     .soft(await page.locator('[data-reading-key="home-hero"] h1 > span').textContent())
+    > 126 |     .toBe(heroEmphasis);
+          |      ^
+      127 |   await page.goto(
+      128 |     buildPrivatePreviewPath({
+      129 |       locale: 'pt',
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:126:6
+
+    Error Context: test-results\editorial-multiline.e2e-Na-1f29a-raft-and-Home-About-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-1f29a-raft-and-Home-About-preview-chromium\error-context.md
+
+  1 failed
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:98:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview 
+  2 passed (15.2s)

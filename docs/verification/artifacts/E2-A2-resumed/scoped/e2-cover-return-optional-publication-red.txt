@@ -1,0 +1,93 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/content/validate-publication.test.ts (5 tests | 5 failed) 11ms
+   × allows publication with an absent optional return label (undefined) 5ms
+   × allows publication with an absent optional return label (null) 1ms
+   × allows publication with an absent optional return label () 0ms
+   × allows publication with an absent optional return label (  ) 0ms
+   × still rejects a missing required count noun and leaves the return label optional 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/site-navigation/content/validate-publication.test.ts > allows publication with an absent optional return label (undefined)
+ FAIL  |unit| src/features/site-navigation/content/validate-publication.test.ts > allows publication with an absent optional return label (null)
+ FAIL  |unit| src/features/site-navigation/content/validate-publication.test.ts > allows publication with an absent optional return label ()
+ FAIL  |unit| src/features/site-navigation/content/validate-publication.test.ts > allows publication with an absent optional return label (  )
+AssertionError: expected [Function] to not throw an error but 'ValidationError: The following field …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"ValidationError: The following field is invalid: controls.backToProjectsLabel"
+
+ ❯ src/features/site-navigation/content/validate-publication.test.ts:20:38
+     18|     data._status = 'published';
+     19|     data.controls = { ...(data.controls as Record<string, unknown>), b…
+     20|     expect(() => validate(data)).not.toThrow();
+       |                                      ^
+     21|   },
+     22| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |unit| src/features/site-navigation/content/validate-publication.test.ts > still rejects a missing required count noun and leaves the return label optional
+AssertionError: expected error to match asymmetric matcher
+
+- Expected
++ Received
+
+- ObjectContaining {
+-   "data": ObjectContaining {
++ ValidationError {
++   "message": "The following fields are invalid: controls.casesLabel, controls.backToProjectsLabel",
++   "cause": {
++     "collection": "site-navigation",
+      "errors": [
+-       ObjectContaining {
++       {
++         "message": "Preencha este campo antes de publicar.",
++         "path": "controls.casesLabel",
++       },
++       {
++         "message": "Preencha este campo antes de publicar.",
++         "path": "controls.backToProjectsLabel",
++       },
++     ],
++   },
++   "data": {
++     "collection": "site-navigation",
++     "errors": [
++       {
++         "message": "Preencha este campo antes de publicar.",
+          "path": "controls.casesLabel",
++       },
++       {
++         "message": "Preencha este campo antes de publicar.",
++         "path": "controls.backToProjectsLabel",
+        },
+      ],
+    },
++   "isOperational": true,
++   "isPublic": true,
++   "status": 400,
++   "name": "ValidationError",
+  }
+
+ ❯ src/features/site-navigation/content/validate-publication.test.ts:32:32
+     30|     backToProjectsLabel: null,
+     31|   };
+     32|   expect(() => validate(data)).toThrowError(
+       |                                ^
+     33|     expect.objectContaining({
+     34|       data: expect.objectContaining({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  06:50:05
+   Duration  1.35s (import 77%, setup 16%, transform 6%, tests 1%)
+

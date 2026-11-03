@@ -89,6 +89,20 @@ it('preserves the editable case card action label in the public projection', () 
   ).toMatchObject({ controls: { caseLinkLabel: 'Explore synthetic case' } });
 });
 
+it('preserves independently editable project return and case count labels', () => {
+  expect(
+    mapNavigation(
+      {
+        ...navigation,
+        controls: { casesLabel: 'case studies', backToProjectsLabel: 'Back to projects' },
+      },
+      profile,
+    ),
+  ).toMatchObject({
+    controls: { casesLabel: 'case studies', backToProjectsLabel: 'Back to projects' },
+  });
+});
+
 it.each([undefined, null, {}])(
   'keeps confirmed legacy navigation readable with absent case action label (%s)',
   (controls) => {

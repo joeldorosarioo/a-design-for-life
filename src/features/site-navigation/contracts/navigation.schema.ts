@@ -22,6 +22,7 @@ const controlsSchema = z.strictObject({
   caseLinkLabel: text,
   homeLabel: text,
   casesLabel: text,
+  backToProjectsLabel: text,
   contentsLabel: text,
   previousSectionLabel: text,
   nextSectionLabel: text,

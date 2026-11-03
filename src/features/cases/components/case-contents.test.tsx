@@ -109,3 +109,55 @@ it('follows history hash changes and omits empty navigation', () => {
   rerender(<CaseContents entries={[]} label="Contents" />);
   expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
 });
+
+// A direct return above the article must not keep announcing the last section as current.
+it('returns to the first section on scroll without another intersection notification', () => {
+  let notify: IntersectionObserverCallback = () => {};
+  class Observer {
+    constructor(callback: IntersectionObserverCallback) {
+      notify = callback;
+    }
+    observe() {}
+    disconnect() {}
+  }
+  vi.stubGlobal('IntersectionObserver', Observer);
+  render(
+    <>
+      <CaseContents entries={entries} label="Contents" />
+      <section id={entries[0].anchor} />
+      <section id={entries[1].anchor} />
+    </>,
+  );
+  const first = document.getElementById(entries[0].anchor)!;
+  const last = document.getElementById(entries[1].anchor)!;
+  let firstTop = -2000;
+  vi.spyOn(first, 'getBoundingClientRect').mockImplementation(
+    () => new DOMRect(0, firstTop, 342, 240),
+  );
+  const change = (intersects: boolean) => ({
+    target: last,
+    isIntersecting: intersects,
+    boundingClientRect: new DOMRect(0, intersects ? 60 : 5000, 342, 240),
+    intersectionRect: new DOMRect(0, 0, 0, 0),
+    rootBounds: new DOMRect(0, 0, 390, 844),
+    intersectionRatio: intersects ? 1 : 0,
+    time: 0,
+  });
+  act(() => notify([change(true)], {} as IntersectionObserver));
+  expect(screen.getByRole('link', { name: 'First topic' })).toHaveAttribute(
+    'aria-current',
+    'location',
+  );
+  // Below the article, no new section intersects; the final entry remains meaningful.
+  act(() => notify([change(false)], {} as IntersectionObserver));
+  expect(screen.getByRole('link', { name: 'First topic' })).toHaveAttribute(
+    'aria-current',
+    'location',
+  );
+  firstTop = 1200;
+  act(() => fireEvent.scroll(window));
+  expect(screen.getByRole('link', { name: 'Second topic' })).toHaveAttribute(
+    'aria-current',
+    'location',
+  );
+});

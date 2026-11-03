@@ -178,7 +178,7 @@ it('derives contents from effective sections and preserves their IDs when reorde
     within(screen.getByRole('navigation', { name: 'This study' }))
       .getAllByRole('link')
       .map((link) => link.textContent),
-  ).toEqual(['Compare entry', 'Context entry']);
+  ).toEqual(['Comparison heading', 'Context heading']);
   expect(document.getElementById('section-00000000-0000-4000-8000-000000000001')).toHaveTextContent(
     'Context heading',
   );
@@ -199,4 +199,55 @@ it('renders comparison as two text cards in editorial order with its limitation'
   expect(within(comparison).getByText('After paragraph')).toBeInTheDocument();
   expect(within(comparison).getByText('Supplied comparison limitation')).toBeInTheDocument();
   expect(within(comparison).queryByRole('img')).not.toBeInTheDocument();
+});
+
+it('uses an actual section eyebrow only when its heading is absent or blank', () => {
+  render(
+    <CaseDetail
+      {...props}
+      caseDetail={{
+        ...detail,
+        sections: detail.sections.map((section) => ({ ...section, heading: '  ' })),
+      }}
+    />,
+  );
+  expect(
+    within(screen.getByRole('navigation', { name: 'This study' }))
+      .getAllByRole('link')
+      .map((link) => link.textContent),
+  ).toEqual(['Context entry', 'Compare entry']);
+});
+
+// Omitting the divider on a later narrative loses the approved challenge boundary.
+it('separates later narrative and process sections with the original divider', () => {
+  const later = {
+    ...detail.sections[0]!,
+    readingKey: '00000000-0000-4000-8000-000000000081',
+    heading: 'Later narrative',
+    blocks: [],
+  };
+  const process = {
+    ...later,
+    readingKey: '00000000-0000-4000-8000-000000000082',
+    presentation: 'process' as const,
+    heading: 'Process section',
+  };
+  render(
+    <CaseDetail
+      {...props}
+      caseDetail={{
+        ...detail,
+        sections: [detail.sections[0]!, later, process, detail.sections[1]!],
+      }}
+    />,
+  );
+  const divider = (heading: string) =>
+    screen
+      .getByRole('heading', { name: heading })
+      .closest('section')!
+      .querySelector('img[src="/figma/case-divider.svg"]');
+  expect(divider('Context heading')).toBeNull();
+  expect(divider('Later narrative')).toHaveAttribute('alt', '');
+  expect(divider('Process section')).toHaveAttribute('alt', '');
+  expect(divider('Comparison heading')).toBeNull();
 });

@@ -118,7 +118,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
       fields: [
         { name: 'eyebrow', label: 'Identificação editorial', type: 'text' },
         { name: 'title', label: 'Título', type: 'text' },
-        { name: 'titleEmphasis', label: 'Ênfase editorial do título', type: 'text' },
+        { name: 'titleEmphasis', label: 'Ênfase editorial do título', type: 'textarea' },
         { name: 'description', label: 'Descrição', type: 'textarea' },
         imageUseField('portrait', 'Retrato'),
         { name: 'projectsLabel', label: 'Rótulo da ação para projetos', type: 'text' },
@@ -150,7 +150,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
       type: 'group',
       fields: [
         { name: 'eyebrow', label: 'Identificação editorial', type: 'text' },
-        { name: 'title', label: 'Título', type: 'text' },
+        { name: 'title', label: 'Título', type: 'textarea' },
         { name: 'description', label: 'Descrição', type: 'textarea' },
         {
           name: 'trajectory',
@@ -193,7 +193,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
       type: 'group',
       fields: [
         { name: 'eyebrow', label: 'Identificação editorial', type: 'text' },
-        { name: 'title', label: 'Título de abertura', type: 'text' },
+        { name: 'title', label: 'Título de abertura', type: 'textarea' },
         { name: 'description', label: 'Descrição de abertura', type: 'textarea' },
         { name: 'introductionHeading', label: 'Título da introdução', type: 'text' },
         { name: 'introduction', label: 'Introdução', type: 'textarea' },

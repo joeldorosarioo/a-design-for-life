@@ -1,0 +1,210 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/contracts/navigation.schema.test.ts (3 tests | 1 failed) 11ms
+   × keeps the project return label separate from the count noun and rejects style objects 4ms
+ ❯ |unit| src/features/site-navigation/server/map-navigation.test.ts (8 tests | 1 failed) 12ms
+   × preserves independently editable project return and case count labels 3ms
+ ❯ |unit| src/features/cases/server/cover-presentation.test.ts (8 tests | 8 failed) 20ms
+   × accepts and projects the closed contained-cherry cover presentation without changing cards 10ms
+   × accepts and projects the closed contained-soft cover presentation without changing cards 1ms
+   × keeps the legacy cover when its presentation is undefined 5ms
+   × keeps the legacy cover when its presentation is null 1ms
+   × rejects an unsupported cover presentation in input and confirmed data: "cover" 1ms
+   × rejects an unsupported cover presentation in input and confirmed data: "#ffc9d4" 0ms
+   × rejects an unsupported cover presentation in input and confirmed data: "" 0ms
+   × rejects an unsupported cover presentation in input and confirmed data: {"background":"pink"} 0ms
+ ❯ |unit| src/app/(portfolio)/_components/public-page-view.test.tsx (11 tests | 5 failed) 235ms
+   × renders the independent CMS return label without changing the list count noun 3ms
+   × uses its own pt fallback when the optional return label is undefined 1ms
+   × uses its own pt fallback when the optional return label is null 0ms
+   × uses its own en fallback when the optional return label is  0ms
+   × uses its own en fallback when the optional return label is    0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 15 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > renders the independent CMS return label without changing the list count noun
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "backToProjectsLabel"
+    ],
+    "path": [
+      "controls"
+    ],
+    "message": "Unrecognized key: \"backToProjectsLabel\""
+  }
+]
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:182:39
+    180|
+    181| it('renders the independent CMS return label without changing the list…
+    182|   const changed = navigationDTOSchema.parse({
+       |                                       ^
+    183|     ...navigation,
+    184|     controls: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/15]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own pt fallback when the optional return label is undefined
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own pt fallback when the optional return label is null
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own en fallback when the optional return label is 
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own en fallback when the optional return label is   
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "backToProjectsLabel"
+    ],
+    "path": [
+      "controls"
+    ],
+    "message": "Unrecognized key: \"backToProjectsLabel\""
+  }
+]
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:206:39
+    204|   ['en', '  ', 'Back to projects'],
+    205| ] as const)('uses its own %s fallback when the optional return label i…
+    206|   const changed = navigationDTOSchema.parse({
+       |                                       ^
+    207|     ...navigation,
+    208|     controls: { ...navigation.controls, casesLabel: 'Count noun only',…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/15]⎯
+
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > accepts and projects the closed contained-cherry cover presentation without changing cards
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > accepts and projects the closed contained-soft cover presentation without changing cards
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/cases/server/cover-presentation.test.ts:20:70
+     18|   'accepts and projects the closed %s cover presentation without chang…
+     19|   (coverPresentation) => {
+     20|     expect(caseInputSchema.safeParse({ coverPresentation }).success).t…
+       |                                                                      ^
+     21|     const source = { ...document, coverPresentation };
+     22|     const detail = mapCasePresentation(source, path);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/15]⎯
+
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > keeps the legacy cover when its presentation is undefined
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > keeps the legacy cover when its presentation is null
+AssertionError: expected { …(15) } to match object { Object (coverPresentation) }
+(20 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "coverPresentation": "contained-cherry",
++   "caseId": "00000000-0000-4000-8000-000000000002",
++   "contents": [],
++   "contextNote": null,
++   "cover": null,
++   "eyebrow": null,
++   "introduction": null,
++   "locale": "en",
++   "path": "/en/cases/synthetic",
++   "role": null,
++   "scope": null,
++   "sections": [],
++   "seo": {
++     "description": null,
++     "image": null,
++     "title": "Synthetic detail",
++   },
++   "summary": null,
++   "title": "Synthetic detail",
++   "titleParts": {
++     "emphasis": null,
++     "normal": "Synthetic detail",
++   },
+  }
+
+ ❯ src/features/cases/server/cover-presentation.test.ts:31:18
+     29| it.each([undefined, null])('keeps the legacy cover when its presentati…
+     30|   const detail = mapCasePresentation({ ...document, coverPresentation:…
+     31|   expect(detail).toMatchObject({ coverPresentation: 'contained-cherry'…
+       |                  ^
+     32|   const legacy = { ...detail, coverPresentation: value };
+     33|   expect(caseDetailDTOSchema.parse(legacy)).toMatchObject({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/15]⎯
+
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > rejects an unsupported cover presentation in input and confirmed data: "cover"
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > rejects an unsupported cover presentation in input and confirmed data: "#ffc9d4"
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > rejects an unsupported cover presentation in input and confirmed data: ""
+ FAIL  |unit| src/features/cases/server/cover-presentation.test.ts > rejects an unsupported cover presentation in input and confirmed data: {"background":"pink"}
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/cases/server/cover-presentation.test.ts:47:7
+     45|         coverPresentation,
+     46|       }).success,
+     47|     ).toBe(false);
+       |       ^
+     48|   },
+     49| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/15]⎯
+
+ FAIL  |unit| src/features/site-navigation/contracts/navigation.schema.test.ts > keeps the project return label separate from the count noun and rejects style objects
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/site-navigation/contracts/navigation.schema.test.ts:43:5
+     41|       controls: { casesLabel: 'case studies', backToProjectsLabel: 'Ba…
+     42|     }).success,
+     43|   ).toBe(true);
+       |     ^
+     44|   for (const value of [undefined, null, '', '  '])
+     45|     expect(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/15]⎯
+
+ FAIL  |unit| src/features/site-navigation/server/map-navigation.test.ts > preserves independently editable project return and case count labels
+ZodError: [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "backToProjectsLabel"
+    ],
+    "path": [
+      "controls"
+    ],
+    "message": "Unrecognized key: \"backToProjectsLabel\""
+  }
+]
+ ❯ mapNavigationPresentation src/features/site-navigation/server/map-navigation.ts:15:30
+     13|   if (!profile || document.locale !== profile.locale) return;
+     14|   const locale = document.locale;
+     15|   return navigationDTOSchema.parse({
+       |                              ^
+     16|     locale,
+     17|     brand: { label: document.header?.brandLabel ?? null, href: `/${loc…
+ ❯ mapNavigation src/features/site-navigation/server/map-navigation.ts:52:10
+ ❯ src/features/site-navigation/server/map-navigation.test.ts:94:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/15]⎯
+
+
+ Test Files  4 failed (4)
+      Tests  15 failed | 15 passed (30)
+   Start at  06:48:48
+   Duration  5.08s (import 55%, transform 16%, setup 13%, environment 12%, tests 4%)
+

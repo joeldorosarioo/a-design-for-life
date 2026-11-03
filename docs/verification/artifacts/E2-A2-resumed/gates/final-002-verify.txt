@@ -1,0 +1,545 @@
+$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm test:case-state-css && pnpm build
+$ tsc --noEmit
+$ eslint .
+
+E:\a-design-for-life\src\migrations\20261030_093430_private_media_manifests.ts
+   3:32  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+   3:41  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+  15:34  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+  15:43  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[10:43:29] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[10:43:29] INFO: Migrating: 20261030_003022_initial_base
+[10:43:29] INFO: Migrated:  20261030_003022_initial_base (40ms)
+[10:43:29] INFO: Migrating: 20261030_020021_editorial_models
+[10:43:29] INFO: Migrated:  20261030_020021_editorial_models (90ms)
+[10:43:29] INFO: Migrating: 20261030_020521_structural_uniqueness
+[10:43:29] INFO: Migrated:  20261030_020521_structural_uniqueness (7ms)
+[10:43:29] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[10:43:29] INFO: Migrated:  20261030_024431_case_locale_uniqueness (4ms)
+[10:43:29] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[10:43:29] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (3ms)
+[10:43:29] INFO: Migrating: 20261030_030036_global_editorial_copy
+[10:43:29] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[10:43:29] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[10:43:29] INFO: Migrated:  20261030_035306_protect_case_identity_references (6ms)
+[10:43:29] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[10:43:29] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[10:43:29] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[10:43:29] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (8ms)
+[10:43:29] INFO: Migrating: 20261030_093430_private_media_manifests
+[10:43:29] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[10:43:29] INFO: Migrating: 20261030_124550_publication_coordination
+[10:43:29] INFO: Migrated:  20261030_124550_publication_coordination (38ms)
+[10:43:29] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[10:43:29] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[10:43:29] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[10:43:29] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[10:43:29] INFO: Migrating: 20261031_011109_e2_case_card_copy
+[10:43:29] INFO: Migrated:  20261031_011109_e2_case_card_copy (1ms)
+[10:43:29] INFO: Migrating: 20261103_095414_e2_cover_presentation_and_return_copy
+[10:43:29] INFO: Migrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)
+[10:43:29] INFO: Done.
+[10:44:38] INFO: Not Found
+[10:44:38] INFO: Not Found
+[10:44:39] INFO: Not Found
+[10:44:39] INFO: Not Found
+[10:44:40] INFO: Not Found
+[10:44:40] INFO: Not Found
+[10:44:44] ERROR: This user is locked due to having too many failed login attempts.
+    err: {
+      "type": "LockedAuth",
+      "message": "This user is locked due to having too many failed login attempts.",
+      "stack":
+          LockedAuth: This user is locked due to having too many failed login attempts.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:27:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:84:18
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "LockedAuth"
+    }
+[10:44:44] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:24:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:85:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:45] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:110:11
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:45] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at reserveNativePasswordReset (E:/a-design-for-life/src/helpers/payload/password-reset-guard.ts:29:24)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async buildBeforeOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32)
+              at async resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:27:16)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:114:6
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[10:44:45] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at reserveNativePasswordReset (E:/a-design-for-life/src/helpers/payload/password-reset-guard.ts:29:24)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async buildBeforeOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32)
+              at async resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:27:16)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:143:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[10:44:45] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:54:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:144:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[10:44:45] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:54:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at async Promise.all (index 1)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:159:21
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[10:44:45] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:169:6
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:171:11
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at reserveNativePasswordReset (E:/a-design-for-life/src/helpers/payload/password-reset-guard.ts:29:24)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async buildBeforeOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32)
+              at async resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:27:16)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:175:6
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[10:44:46] ERROR: Editorial email delivery is unavailable.
+    err: {
+      "type": "EditorialEmailUnavailable",
+      "message": "Editorial email delivery is unavailable.",
+      "stack":
+          EditorialEmailUnavailable: Editorial email delivery is unavailable.
+              at Object.sendEmail (E:/a-design-for-life/src/helpers/payload/editorial-email.ts:84:15)
+              at async forgotPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/forgotPassword.js:193:13)
+              at async forgotPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/forgotPassword.js:14:5)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:182:28
+              at withUnavailableCapturedDelivery (E:/a-design-for-life/testing/fixtures/editorial-auth.ts:89:12)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:181:3
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "name": "EditorialEmailUnavailable"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] ERROR: This user is locked due to having too many failed login attempts.
+    err: {
+      "type": "LockedAuth",
+      "message": "This user is locked due to having too many failed login attempts.",
+      "stack":
+          LockedAuth: This user is locked due to having too many failed login attempts.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:27:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:201:18
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "LockedAuth"
+    }
+[10:44:46] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:24:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:202:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[10:44:46] INFO: The following field is invalid: password
+[10:45:02] ERROR: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async createOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:421:13)
+              at async createHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/create.js:11:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/config/publication-updates.integration.test.ts:386:29
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+[10:45:49] ERROR: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async updateByIDOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/updateByID.js:226:13)
+              at async updateByIDHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/updateByID.js:9:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at nativeDraft (E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:61:35)
+              at E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:109:24
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+[10:45:50] ERROR: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async updateByIDOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/updateByID.js:226:13)
+              at async updateByIDHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/updateByID.js:9:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at nativeDraft (E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:61:35)
+              at E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:109:24
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+[10:47:04] INFO: You are not allowed to perform this action.
+[10:47:04] INFO: You are not allowed to perform this action.
+[10:47:04] INFO: You are not allowed to perform this action.
+
+ Test Files  144 passed (144)
+      Tests  1162 passed | 2 skipped (1164)
+   Start at  10:43:24
+   Duration  229.14s (import 40%, tests 38%, setup 10%, environment 10%, transform 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+$ node --test scripts/emit-case-state-css.test.mjs
+✔ emits browser-ready tokens and negative shell CSS at the fixed public path without source directives (90.0776ms)
+✔ rebuilds from the canonical token source instead of a frozen copied palette (36.2929ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 336.5426
+$ node scripts/emit-case-state-css.mjs && next build
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 40ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.0s
+  Running TypeScript ...
+  Finished TypeScript in 4.2s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 123ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+├ ƒ /robots.txt
+└ ƒ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

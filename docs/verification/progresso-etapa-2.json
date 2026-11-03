@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-31T00:17:52.054Z",
+  "updatedAt": "2026-11-03T14:32:16.005Z",
   "stage": 2,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 24,
+  "completedItems": 25,
   "totalItems": 30,
-  "percentage": 80,
+  "percentage": 83.3,
   "closedTasks": ["E2.1", "E2.4", "E2.5"],
   "totalTasks": 6,
   "approval": "A2 pending; stage3 not authorized",
-  "remainingEstimate": "12–18 hours of work, updated after user asked for remaining time; not a guaranteed delivery time.",
+  "remainingEstimate": "2–4 horas para restauração, evidências atuais, CI e pacote; sujeitas a falhas, sem garantia de horário. Não inclui leitor de tela, interrompido por orientação do usuário.",
   "criteria": [
     {
       "id": "E2.1.1",
@@ -68,7 +68,7 @@
       "id": "E2.2.5",
       "done": false,
       "summary": "Gate integral e comparação visual Home/Sobre",
-      "evidence": "Comparação renderizada Figma e gate após as últimas mudanças ainda abertos."
+      "evidence": "Gates Windows final-003 concluídos: verify exit0,1164pass/2skips/144arquivos+2CSS; fullE2E113/113exit0. Build008 XCwWNaSVVZ2kr6jeLy4Aa/fonte500digestf49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784. Atualização das capturas/auditorias V9 e CI Linux no SHA exato ainda necessárias; caixa permanece aberta."
     },
     {
       "id": "E2.3.1",
@@ -98,7 +98,7 @@
       "id": "E2.3.5",
       "done": false,
       "summary": "Gate e comparações de listagem/detalhes PT/EN e segundo EN",
-      "evidence": "Todos os18frames e textos de referência estão disponíveis, com origem e hashes. Faltam comparação renderizada e gate atual."
+      "evidence": "Gates Windows final-003 concluídos: verify exit0,1164pass/2skips/144arquivos+2CSS; fullE2E113/113exit0. Build008 XCwWNaSVVZ2kr6jeLy4Aa/fonte500digestf49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784. Atualização das capturas/auditorias V9 e CI Linux no SHA exato ainda necessárias; caixa permanece aberta."
     },
     {
       "id": "E2.4.1",
@@ -170,37 +170,45 @@
       "id": "E2.6.2",
       "done": false,
       "summary": "Acessibilidade automatizada e inspeção manual completa",
-      "evidence": "Menu/links têm provas; faltam leitor de tela, zoom e auditoria integrada."
+      "evidence": "Build008 XCwWNaSVVZ2kr6jeLy4Aa: axe18layouts/27estados0violações/36incomplete; filaV9 revista34glifos+17fundosmodais,183focos/9diálogos/251alvos0falhas,contraste mínimo7,821591:1. Percurso manual008 atual em Chrome200% real:Escape/foco,Space/Tab/Enter,Sobre/Contato/ShiftTabCTA e reset100%,launcherexit0/fonte500estável. Leitor formal não concluído por decisão do usuário; NVDA desativado,não reaberto. Sem declaraçãoWCAG."
     },
     {
       "id": "E2.6.3",
-      "done": false,
+      "done": true,
       "summary": "Comparação visual completa e larguras intermediárias",
-      "evidence": "Todos os18baselines disponíveis. Prévia visual privada e comparação renderizada completa ainda pendentes."
+      "evidence": "Build008/fonte500digestf49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784:982/982em18alvos,18PNGs V9 atuais conferidos com seus recibos e BYTE-IDÊNTICOS aos18 do007 revisados integralmente; reutilização da revisão explicitamente registrada,nenhuma diferença nova.81cenários responsivos320–1536px/texto200%/texto longo/coresforçadas/reduzido:0falhas. ZoomChrome200%manual008 atual e reset100%. Duas diferenças pequenas de quebra pela pilha aprovada continuam nomeadas. Manifesto visual-qa-v9/final18-visual-qa-manifest.json SHA5d0ad907a8bc806f5108f140e8bd37ac93adae307a45f5b760ec4c7626108fd3. CI/gates de aceite nas caixas próprias."
     },
     {
       "id": "E2.6.4",
       "done": false,
       "summary": "Jornadas públicas/privadas, gate e diagnóstico de desempenho",
-      "evidence": "Prévia visual autenticada no build de produção local:8/8HTTP (HTML semJSPT/EN nasquatro páginas,HEAD,Flight/prefetch,mídia/PDF privados,negações e revogação). Fonte474arquivos+78exports em artifacts/E2-private-preview. Faltam gate integral atual,jornadas públicas ampliadas e diagnóstico de desempenho."
+      "evidence": "final-003: verify0(1164pass/2skips/144files+2CSS), fullE2E0(113/113), todos500hashes estáveis e12PNGs A1 originais restaurados. Inclui HTTP308/FontFace reais GREEN após falhas001/002 preservadas. Diagnóstico00718LH/20recursos é snapshot anterior; novo diagnóstico008, CI e restauração pós-teardown ainda necessários."
     },
     {
       "id": "E2.6.5",
       "done": false,
       "summary": "Pacote A2 demonstrável entregue com modelos privados",
-      "evidence": "Entrega A2 ainda não produzida; etapa3 depende da aprovação posterior."
+      "evidence": "18capturasV9 e duas demonstrações008 atuais com hashes/recibos e fonte500 conferidos. Exportgates19/19 revisado; pacote final ainda não montado/entregue. A2 pendente; etapa3 não autorizada."
     }
   ],
-  "recalculatedAt": "2026-10-31T01:24:33.429Z",
+  "recalculatedAt": "2026-11-03T14:37:02.577Z",
   "notes": [
-    "Gate integral atual exit0:1048testes passaram,2Windows skips,131arquivos; tipos,lint(0erros/4avisos herdados),formato e build passaram. Banco isolado limpo. Falhas históricas de instalação,fixtures,formato e assertions continuam preservadas nos respectivos artefatos.",
-    "Lote público atual63/63exit0,BuildIDeW1hAx7oCWrO98E-xBAyT;446hashes conferidos antes da captura do gate. A falha real de decode prematuro foi reproduzida em2REDunits, corrigida e comprovada no navegador com imagens/fontes reais e cancelamento; diagnóstico temporário removido.",
-    "Prévia privada:8/8HTTP,20unit/50Native focados anteriores e frame17/17+46regressões. Native completo atual inclui a correção final de tipagem/isolaçãodo seletor. O layout privado não monta o provider de leitura público.",
-    "E2.4 eE2.5 encerradas no escopo funcional e gate atual. A2 ainda depende de fidelidade visual,SEO completo,a11y/manual,desempenho inicial e pacote demonstrável privado. Dois testes de plataformaWindows precisam de execuçãoLinuxCI atual; regressão antigaA1browser eCI ainda pendentes.",
-    "Todos os18frames/textos e5originais estão disponíveis, privados. Loader visual Native ainda não executado. Campos específicos do card dependem da resposta do usuário; nenhum campo novo ou texto profissional foi publicado.",
-    "Novas mudanças posteriores a esta captura exigem as regressões afetadas antes da entrega final. Etapa3 continua sem autorização.",
-    "Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado.",
-    "Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2.",
-    "Pausa explícita solicitada pelo usuário após concluir cardTitle/cardEyebrow editáveis comfallback (c3b4860):38unit+6Native,tipos/lint/formato0; coordenador44unit+2CSS atuais. Nenhuma nova caixa completa; visual/gate/a11y/performance/A2 seguem abertos. Retomada registrada em retomada-etapa-2.md."
+    "Gates Windows completos008, visual/responsividade e fila axe atuais concluídos; percurso manual008 com teclado/zoom200% realizado. Restauração pós-teardown003 exit0/SQL197522exato/10drafts7mediaRootNULLops0/28objetos.20observações de recursos008 prontas,18LH em andamento. CI/commits/pacote ainda pendentes; leitor formal continua desativado por orientação do usuário.",
+    "Retomada autorizada explicitamente em03/11/2026; avisos antigos de pausa são históricos. Raiz E:\\a-design-for-life, develop, runtimeNode24.22.2/pnpm12.10.1/lockfile preservados. Nenhum commit novo ou promoção remota foi feito ainda nesta retomada.",
+    "Candidata008: BuildID XCwWNaSVVZ2kr6jeLy4Aa, fonte500/digestf49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784. verify0 e E2E113/113 atuais. A evidência007 permanece vinculada ao seu build/digest anterior; não é renomeada como captura008.",
+    "Fixture privadaV5 carregada/atualizada e revalidação dos10rascunhos/7mídias realizada; Rootnulo/0operações públicas, todasrevisões preservadas. Migração doscards e nova migração aditiva de apresentação/retorno aplicadas somente em bancos isolados. Cinco originais,18capturas históricas e28objetos privados preservados.",
+    "CheckpointV5 restaurado em banco isolado novo, SQL de dados197522caracteres idêntico após normalizar apenas chavesrestrict aleatórias. Dump original186227bytes SHA256E4BEECB735A873C831217DBFB901BD53B3DC41A2CD7BF41FD05F57AFB3CBCC91 preservado. Runnersglobais removem o container55433; restauração posterior guardada foi preparada. Portas5432/55432 preservadas.",
+    "Leitor de tela formal permanece incompleto. O NVDA foi encerrado ao receber a instrução do usuário, não será reiniciado nesta execução; auditoria automática e árvore acessível não substituem essa prova.",
+    "Preparação/leituras auxiliares anteriores que usaram node24.21do shell não são gates da aplicação. Builds e jornadas da aplicação usam o Node portátil24.22.2; checagens finais usarão executável/ambiente pinados explicitamente.",
+    "Nenhum Analytics, produção, contratação ou integração da etapa3 foi ativado. O pacoteA2 registrará comandos/exits/snapshots/limites atuais e pendências nomeadas.",
+    "Histórico anterior à retomada — Gate integral atual exit0:1048testes passaram,2Windows skips,131arquivos; tipos,lint(0erros/4avisos herdados),formato e build passaram. Banco isolado limpo. Falhas históricas de instalação,fixtures,formato e assertions continuam preservadas nos respectivos artefatos.",
+    "Histórico anterior à retomada — Lote público atual63/63exit0,BuildIDeW1hAx7oCWrO98E-xBAyT;446hashes conferidos antes da captura do gate. A falha real de decode prematuro foi reproduzida em2REDunits, corrigida e comprovada no navegador com imagens/fontes reais e cancelamento; diagnóstico temporário removido.",
+    "Histórico anterior à retomada — Prévia privada:8/8HTTP,20unit/50Native focados anteriores e frame17/17+46regressões. Native completo atual inclui a correção final de tipagem/isolaçãodo seletor. O layout privado não monta o provider de leitura público.",
+    "Histórico anterior à retomada — E2.4 eE2.5 encerradas no escopo funcional e gate atual. A2 ainda depende de fidelidade visual,SEO completo,a11y/manual,desempenho inicial e pacote demonstrável privado. Dois testes de plataformaWindows precisam de execuçãoLinuxCI atual; regressão antigaA1browser eCI ainda pendentes.",
+    "Histórico anterior à retomada — Todos os18frames/textos e5originais estão disponíveis, privados. Loader visual Native ainda não executado. Campos específicos do card dependem da resposta do usuário; nenhum campo novo ou texto profissional foi publicado.",
+    "Histórico anterior à retomada — Novas mudanças posteriores a esta captura exigem as regressões afetadas antes da entrega final. Etapa3 continua sem autorização.",
+    "Histórico anterior à retomada — Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado.",
+    "Histórico anterior à retomada — Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2.",
+    "Histórico anterior à retomada — Pausa explícita solicitada pelo usuário após concluir cardTitle/cardEyebrow editáveis comfallback (c3b4860):38unit+6Native,tipos/lint/formato0; coordenador44unit+2CSS atuais. Nenhuma nova caixa completa; visual/gate/a11y/performance/A2 seguem abertos. Retomada registrada em retomada-etapa-2.md."
   ]
 }

@@ -143,6 +143,7 @@
 
 .contactList {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   gap: var(--space-4);
   max-width: 100%;
@@ -151,6 +152,16 @@
 
 .contactList > li {
   max-width: 100%;
+}
+
+.contactList > li:first-child {
+  min-width: min(13rem, 100%);
+}
+
+.contactList > li:first-child > a {
+  width: 100%;
+  max-width: 100%;
+  justify-content: flex-start;
 }
 
 .footerDivider {
@@ -177,6 +188,9 @@
 }
 
 .copyright {
+  width: 11rem;
+  max-width: 100%;
+  text-align: left;
   color: var(--color-cherry-cola-100);
   font-size: var(--text-xs);
   line-height: var(--text-xs--line-height);
@@ -228,6 +242,10 @@
 
   .footerInner {
     padding-top: var(--space-20);
+  }
+
+  .copyright {
+    width: 16rem;
   }
 
   .footerTitle {

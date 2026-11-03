@@ -50,5 +50,12 @@ jobs:
         run: pnpm verify
       - name: Install Chromium headless shell
         run: pnpm exec playwright install --with-deps chromium --only-shell
+      - name: Select an installed TrueType font for resource journeys
+        run: |
+          font="$(fc-match --format '%{file}' 'sans-serif:fontformat=TrueType')"
+          test -r "$font"
+          [[ "$font" == *.ttf ]]
+          printf 'READING_E2E_FONT_FILE=%s\n' "$font" >> "$GITHUB_ENV"
+          sha256sum "$font"
       - name: Browser journeys
         run: pnpm test:e2e

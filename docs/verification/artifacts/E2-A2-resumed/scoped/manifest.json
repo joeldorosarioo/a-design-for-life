@@ -1,0 +1,806 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reviewed logical projection of39historical scoped exports; not another test run or finalA2approval",
+  "originalPrivateManifestSha256": "990955ffe98470b5eeeb4e1e2ca49828b9ee1aab3f40d5306e8c49acb15cddd1",
+  "privateManifestCopied": false,
+  "absoluteInputPathsProjected": true,
+  "exportsCount": 39,
+  "totalExportedBytes": 82670,
+  "exports": [
+    {
+      "file": "e2-cover-return-cva-case-image-green.txt",
+      "group": "E2-cover-return",
+      "bytes": 204,
+      "sha256": "3805c0672b2682a136cb5ca1fe15fa670b7a30623b1b97e7391efaec1033506c",
+      "originalBytes": 204,
+      "originalSha256": "3805c0672b2682a136cb5ca1fe15fa670b7a30623b1b97e7391efaec1033506c",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/cva-case-image-green.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-cva-format.txt",
+      "group": "E2-cover-return",
+      "bytes": 51,
+      "sha256": "4c9ac6c4cc3a0a115822334f328d38ca0af5ee5959324df99943ee06264b165e",
+      "originalBytes": 51,
+      "originalSha256": "4c9ac6c4cc3a0a115822334f328d38ca0af5ee5959324df99943ee06264b165e",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/cva-format.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-cva-lint.txt",
+      "group": "E2-cover-return",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/cva-lint.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": true
+    },
+    {
+      "file": "e2-cover-return-format-final.txt",
+      "group": "E2-cover-return",
+      "bytes": 71,
+      "sha256": "322fb47b8b1c4d69b5eb65449e2dd0d1cc44c5a9b9f198a383a216b540ae6192",
+      "originalBytes": 71,
+      "originalSha256": "322fb47b8b1c4d69b5eb65449e2dd0d1cc44c5a9b9f198a383a216b540ae6192",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/format-final.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-format.txt",
+      "group": "E2-cover-return",
+      "bytes": 1430,
+      "sha256": "f3243865ae0b7f229f22448b6875cb5f7f3196bc2101ee868a7d44e7cfe583f0",
+      "originalBytes": 1430,
+      "originalSha256": "f3243865ae0b7f229f22448b6875cb5f7f3196bc2101ee868a7d44e7cfe583f0",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/format.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-generate-migration.txt",
+      "group": "E2-cover-return",
+      "bytes": 358,
+      "sha256": "3bca14bd73d44367efa1640b9be1e65d027587f6550188f5f721dbe237b69086",
+      "originalBytes": 458,
+      "originalSha256": "d031808870ee352150292965081f655279d18fb66c05d4ced13e11f74fd97e9c",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 20
+        }
+      ],
+      "sourceLabel": "E2-cover-return/generate-migration.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-generate-types.txt",
+      "group": "E2-cover-return",
+      "bytes": 145,
+      "sha256": "f245b8f294daf155755c0ad870ca568835288a6d54ec798c02d3b2673a959960",
+      "originalBytes": 185,
+      "originalSha256": "3d74f684bb604cbd6f79406e5a32a1c515d3cb10ac4c1f6d43134d2431fe9d72",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 8
+        }
+      ],
+      "sourceLabel": "E2-cover-return/generate-types.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-lint.txt",
+      "group": "E2-cover-return",
+      "bytes": 256,
+      "sha256": "04beac6443df1273803dd0eb27753ebdc9c07518f6fa17d8f004a38f54c864b7",
+      "originalBytes": 256,
+      "originalSha256": "04beac6443df1273803dd0eb27753ebdc9c07518f6fa17d8f004a38f54c864b7",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/lint.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-native-final.txt",
+      "group": "E2-cover-return",
+      "bytes": 503,
+      "sha256": "c5878d7a6c08b820a69e68c8ca1a8d22a2b8a523efcdb81ad0649036a258df2d",
+      "originalBytes": 503,
+      "originalSha256": "c5878d7a6c08b820a69e68c8ca1a8d22a2b8a523efcdb81ad0649036a258df2d",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/native-final.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-native-green.txt",
+      "group": "E2-cover-return",
+      "bytes": 501,
+      "sha256": "a85ce031c8400ca07387f88e891e6b3559074b8a65c82ccdd0d141ce3e13dd54",
+      "originalBytes": 501,
+      "originalSha256": "a85ce031c8400ca07387f88e891e6b3559074b8a65c82ccdd0d141ce3e13dd54",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/native-green.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-native-red.txt",
+      "group": "E2-cover-return",
+      "bytes": 15418,
+      "sha256": "a86ce90d83a4426c417a826498c7c053414a5af21d355c142380757727bba83c",
+      "originalBytes": 15470,
+      "originalSha256": "5dd12ceeac0749547066d8d1fdcb90affcd97ddf0c6ae8af964927495c27883f",
+      "redactions": [
+        {
+          "rule": "named-json-secret",
+          "matches": 2
+        }
+      ],
+      "sourceLabel": "E2-cover-return/native-red.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-native-with-legacy-green.txt",
+      "group": "E2-cover-return",
+      "bytes": 503,
+      "sha256": "97ccbaa48dd1669b6790eb6aa091ac9c34fa249d8c2005e24dfc583b775909c1",
+      "originalBytes": 503,
+      "originalSha256": "97ccbaa48dd1669b6790eb6aa091ac9c34fa249d8c2005e24dfc583b775909c1",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/native-with-legacy-green.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-optional-publication-red.txt",
+      "group": "E2-cover-return",
+      "bytes": 3686,
+      "sha256": "fe7f2dba154892595c884d445c0d723b8435b368d69e14e8556198b03743afdc",
+      "originalBytes": 3686,
+      "originalSha256": "fe7f2dba154892595c884d445c0d723b8435b368d69e14e8556198b03743afdc",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/optional-publication-red.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-report.md",
+      "group": "E2-cover-return",
+      "bytes": 7105,
+      "sha256": "4be55c961732e7f3cce4a069255bc1b859ad3973425252e2b7d333854d9d33f3",
+      "originalBytes": 7105,
+      "originalSha256": "4be55c961732e7f3cce4a069255bc1b859ad3973425252e2b7d333854d9d33f3",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/report.md",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-technical-db-migrate-after.txt",
+      "group": "E2-cover-return",
+      "bytes": 279,
+      "sha256": "05cbe04ccbd0e5f309415419c512c4c370f2e7cf1abb84d1c640a9133beead42",
+      "originalBytes": 359,
+      "originalSha256": "d3a9df6a29af082b253a6298c0da0b81e8843e3f63d4e5633649c5daa787064b",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 16
+        }
+      ],
+      "sourceLabel": "E2-cover-return/technical-db-migrate-after.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-technical-db-migrate-before.txt",
+      "group": "E2-cover-return",
+      "bytes": 2146,
+      "sha256": "3891b30a57818852e36d4e093b17255e02420dccf2d816a14b6074b226fab372",
+      "originalBytes": 2746,
+      "originalSha256": "7ee756378a3d05dc54b5eadc4853895f7d268f7d2a49b92f910dc88ef77ae0f2",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 120
+        }
+      ],
+      "sourceLabel": "E2-cover-return/technical-db-migrate-before.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-typecheck-first.txt",
+      "group": "E2-cover-return",
+      "bytes": 16,
+      "sha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "originalBytes": 16,
+      "originalSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/typecheck-first.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-unit-after-contracts.txt",
+      "group": "E2-cover-return",
+      "bytes": 9720,
+      "sha256": "4496c24df6d2fc130d56342a704d451deac0647d4ceace6e84be20b28b15a53f",
+      "originalBytes": 9720,
+      "originalSha256": "4496c24df6d2fc130d56342a704d451deac0647d4ceace6e84be20b28b15a53f",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/unit-after-contracts.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-unit-green.txt",
+      "group": "E2-cover-return",
+      "bytes": 207,
+      "sha256": "df57c6026911a5df5f3b9dc34a070a1822255a2da4f47c15c1dfd0657bc24fb2",
+      "originalBytes": 207,
+      "originalSha256": "df57c6026911a5df5f3b9dc34a070a1822255a2da4f47c15c1dfd0657bc24fb2",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/unit-green.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-cover-return-unit-red.txt",
+      "group": "E2-cover-return",
+      "bytes": 9248,
+      "sha256": "25485c0dde885b835c7c6975e436347f6c861e56fd932ba6530e6748cf5f398f",
+      "originalBytes": 9248,
+      "originalSha256": "25485c0dde885b835c7c6975e436347f6c861e56fd932ba6530e6748cf5f398f",
+      "redactions": [],
+      "sourceLabel": "E2-cover-return/unit-red.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-format.txt",
+      "group": "E2-native-multiline",
+      "bytes": 304,
+      "sha256": "e8375d0155a7789ba59ae097d5c0dd8467d9f2bf60226fe679183dbd5daadcf3",
+      "originalBytes": 304,
+      "originalSha256": "e8375d0155a7789ba59ae097d5c0dd8467d9f2bf60226fe679183dbd5daadcf3",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/format.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-generate-types.txt",
+      "group": "E2-native-multiline",
+      "bytes": 68,
+      "sha256": "13141045f3fea7ecc35357939b85a43075f4d8ab03077f0762d3fafd7e38cf86",
+      "originalBytes": 88,
+      "originalSha256": "9ed9929c637bdbf37ac47f568bed5edf526eb1ee6320eb792fccaff12e77199a",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 4
+        }
+      ],
+      "sourceLabel": "E2-native-multiline/generate-types.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-hero-format.txt",
+      "group": "E2-native-multiline",
+      "bytes": 158,
+      "sha256": "13c1850edf472831e78b26d846f4ef4765f86adb9da78ccfea849c299b1c942d",
+      "originalBytes": 158,
+      "originalSha256": "13c1850edf472831e78b26d846f4ef4765f86adb9da78ccfea849c299b1c942d",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/hero-format.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-hero-generate-types.txt",
+      "group": "E2-native-multiline",
+      "bytes": 68,
+      "sha256": "390e1c2ac0d5e375dadec34071c6e82f68d026fd1cf4b9d3cdf9f87423d06b2f",
+      "originalBytes": 88,
+      "originalSha256": "bae48def2971b91f2558a171f675ca8165afa5259fc59100795670a089a4a5ab",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 4
+        }
+      ],
+      "sourceLabel": "E2-native-multiline/hero-generate-types.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-hero-lint.txt",
+      "group": "E2-native-multiline",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/hero-lint.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": true
+    },
+    {
+      "file": "e2-native-multiline-hero-migration-skip-empty.txt",
+      "group": "E2-native-multiline",
+      "bytes": 202,
+      "sha256": "7545188cf79429ada49260d04c2d96104a5dbc2721c5de08b1b129507740a2fe",
+      "originalBytes": 262,
+      "originalSha256": "90a07ae40230e8c65ff30f2125ce7e86ca6f75b0b190e73c8624042ca0b56ebe",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 12
+        }
+      ],
+      "sourceLabel": "E2-native-multiline/hero-migration-skip-empty.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-lint.txt",
+      "group": "E2-native-multiline",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/lint.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": true
+    },
+    {
+      "file": "e2-native-multiline-migrate-before.txt",
+      "group": "E2-native-multiline",
+      "bytes": 2318,
+      "sha256": "dfcac65d5cac3c768f7019abea9fd3c39963cd1af0b2ff977363ffe5572e60de",
+      "originalBytes": 2958,
+      "originalSha256": "fb5ccb3cbe074242a51e4b94844e8aa7e42bccccc7fdf7f0bde31de3e5f00df5",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 128
+        }
+      ],
+      "sourceLabel": "E2-native-multiline/migrate-before.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-migration-skip-empty.txt",
+      "group": "E2-native-multiline",
+      "bytes": 202,
+      "sha256": "ff47800e66070b3423688be69f9e4a4936f0b009fafd663f525d6977e7b4a534",
+      "originalBytes": 262,
+      "originalSha256": "3f30e1011c155678aba0833ef879250d565ec4ecb5ee7e7b3a8b1242c5eee936",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 12
+        }
+      ],
+      "sourceLabel": "E2-native-multiline/migration-skip-empty.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-native-hero-green-candidate003.txt",
+      "group": "E2-native-multiline",
+      "bytes": 913,
+      "sha256": "e280058a0199ba2f805b2dc58700eeb55e6c8fd61c7b9705dbc806fa9f9feb18",
+      "originalBytes": 913,
+      "originalSha256": "e280058a0199ba2f805b2dc58700eeb55e6c8fd61c7b9705dbc806fa9f9feb18",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/native-hero-green-candidate003.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [
+          "bSRKmF68fRa54zSxfLfOQ"
+        ],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-native-hero-red.txt",
+      "group": "E2-native-multiline",
+      "bytes": 3222,
+      "sha256": "adde6b07dcc626e52d51afb7e3a31649b2b261ea9e92d3023293ffb463db1072",
+      "originalBytes": 3222,
+      "originalSha256": "adde6b07dcc626e52d51afb7e3a31649b2b261ea9e92d3023293ffb463db1072",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/native-hero-red.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [
+          "W8rBO7P9kI_Dmj9Po036Z"
+        ],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-native-ui-green.txt",
+      "group": "E2-native-multiline",
+      "bytes": 913,
+      "sha256": "41dadeaec4424c7b513a9d2e209ec955dc192778d85932236745eab4b1c0a7d0",
+      "originalBytes": 913,
+      "originalSha256": "41dadeaec4424c7b513a9d2e209ec955dc192778d85932236745eab4b1c0a7d0",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/native-ui-green.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [
+          "W8rBO7P9kI_Dmj9Po036Z"
+        ],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-native-ui-red-browser-fetch.txt",
+      "group": "E2-native-multiline",
+      "bytes": 10315,
+      "sha256": "451911921bbe282e03bc2fe43bb1fad78dd332048c2e19010b35dc4982f2bdc4",
+      "originalBytes": 10315,
+      "originalSha256": "451911921bbe282e03bc2fe43bb1fad78dd332048c2e19010b35dc4982f2bdc4",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/native-ui-red-browser-fetch.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [
+          "OQ24Tzea4ev6eqAw2LbDq"
+        ],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-native-ui-red-first.txt",
+      "group": "E2-native-multiline",
+      "bytes": 5065,
+      "sha256": "37622e4f246b63ce562d512b73960dd37a8c94d5462c46a450e8f6825eb46ab3",
+      "originalBytes": 5065,
+      "originalSha256": "37622e4f246b63ce562d512b73960dd37a8c94d5462c46a450e8f6825eb46ab3",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/native-ui-red-first.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-next-candidate003.txt",
+      "group": "E2-native-multiline",
+      "bytes": 158,
+      "sha256": "a77053ef21b558419ebded27146f69841d5c57c6c1c4485f71edc1f0a1f5b530",
+      "originalBytes": 158,
+      "originalSha256": "a77053ef21b558419ebded27146f69841d5c57c6c1c4485f71edc1f0a1f5b530",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/next-candidate003.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-next-current-build.txt",
+      "group": "E2-native-multiline",
+      "bytes": 158,
+      "sha256": "98e70538bbdb5a71cee7127d2cfe960aa4e2e9079b437b7f4da4c320ad47d124",
+      "originalBytes": 158,
+      "originalSha256": "98e70538bbdb5a71cee7127d2cfe960aa4e2e9079b437b7f4da4c320ad47d124",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/next-current-build.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-next-old-build.txt",
+      "group": "E2-native-multiline",
+      "bytes": 242,
+      "sha256": "f73670c87caef2c7fb77d0a64b831a81fb9357360044f24e780ffecfed56cab7",
+      "originalBytes": 302,
+      "originalSha256": "ed3b63394fbc82f5afd82a83389855b418d0559505b7d69966995cd22633751f",
+      "redactions": [
+        {
+          "rule": "ansi",
+          "matches": 12
+        }
+      ],
+      "sourceLabel": "E2-native-multiline/next-old-build.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-next-w8-hero-red.txt",
+      "group": "E2-native-multiline",
+      "bytes": 158,
+      "sha256": "2417dbee7eff8945bfddc198bbcaaf2042038f3051683f0f2dda0aa2edc34152",
+      "originalBytes": 158,
+      "originalSha256": "2417dbee7eff8945bfddc198bbcaaf2042038f3051683f0f2dda0aa2edc34152",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/next-w8-hero-red.log",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    },
+    {
+      "file": "e2-native-multiline-report.md",
+      "group": "E2-native-multiline",
+      "bytes": 6359,
+      "sha256": "0984e3c98bdc99e49ac842c53e16b55d6eee934e20776729c4f59595f4d4b810",
+      "originalBytes": 6359,
+      "originalSha256": "0984e3c98bdc99e49ac842c53e16b55d6eee934e20776729c4f59595f4d4b810",
+      "redactions": [],
+      "sourceLabel": "E2-native-multiline/report.md",
+      "sourceVersion": {
+        "role": "historical-scoped-transition",
+        "buildIdsExplicitlyRecorded": [],
+        "unknownBuildsNotInferred": true
+      },
+      "emptyFile": false
+    }
+  ],
+  "milestones": [
+    {
+      "id": "cover-return-unit-red",
+      "file": "e2-cover-return-unit-red.txt",
+      "exitCode": 1,
+      "failed": 15,
+      "passed": 15,
+      "scope": "Initial missing strict contracts/mapping; not a combined candidate gate."
+    },
+    {
+      "id": "return-ui-red",
+      "file": "e2-cover-return-unit-after-contracts.txt",
+      "exitCode": 1,
+      "failed": 5,
+      "passed": 34,
+      "scope": "Actual rendered return action still used count noun after contracts were introduced."
+    },
+    {
+      "id": "optional-publication-red",
+      "file": "e2-cover-return-optional-publication-red.txt",
+      "exitCode": 1,
+      "failed": 5,
+      "scope": "New optional control incorrectly required by generic publication validation."
+    },
+    {
+      "id": "focused-unit-green",
+      "file": "e2-cover-return-unit-green.txt",
+      "exitCode": 0,
+      "passed": 47,
+      "files": 7,
+      "scope": "Scoped transition snapshot, before later CVA/multiline work."
+    },
+    {
+      "id": "native-red",
+      "file": "e2-cover-return-native-red.txt",
+      "exitCode": 1,
+      "failed": 9,
+      "scope": "Native fields dropped by preimplementation collection metadata; actual persistence assertions, not setup errors."
+    },
+    {
+      "id": "native-green",
+      "file": "e2-cover-return-native-final.txt",
+      "exitCode": 0,
+      "passed": 10,
+      "files": 2,
+      "scope": "Closed choices/optional return copy; actual publication, preview, digest/HMAC and legacy compatibility."
+    },
+    {
+      "id": "cva-green",
+      "file": "e2-cover-return-cva-case-image-green.txt",
+      "exitCode": 0,
+      "passed": 3,
+      "files": 1,
+      "scope": "Structural CVA refactor; unchanged Native not rerun."
+    },
+    {
+      "id": "multiline-preparation-failure",
+      "file": "e2-native-multiline-native-ui-red-first.txt",
+      "exitCode": 1,
+      "scope": "GET404 from initial APIRequestContext preparation; not behavioral RED."
+    },
+    {
+      "id": "multiline-four-controls-red",
+      "file": "e2-native-multiline-native-ui-red-browser-fetch.txt",
+      "exitCode": 1,
+      "failed": 3,
+      "assertionsFailed": 8,
+      "build": "OQ24Tzea4ev6eqAw2LbDq"
+    },
+    {
+      "id": "multiline-four-controls-green",
+      "file": "e2-native-multiline-native-ui-green.txt",
+      "exitCode": 0,
+      "passed": 3,
+      "assertionsPassed": 8,
+      "build": "W8rBO7P9kI_Dmj9Po036Z"
+    },
+    {
+      "id": "hero-emphasis-red",
+      "file": "e2-native-multiline-native-hero-red.txt",
+      "exitCode": 1,
+      "failed": 1,
+      "passed": 2,
+      "newAssertionsFailed": 2,
+      "previousAssertionsPassed": 8,
+      "build": "W8rBO7P9kI_Dmj9Po036Z"
+    },
+    {
+      "id": "multiline-final-green",
+      "file": "e2-native-multiline-native-hero-green-candidate003.txt",
+      "exitCode": 0,
+      "passed": 3,
+      "assertionsPassed": 10,
+      "build": "bSRKmF68fRa54zSxfLfOQ"
+    }
+  ],
+  "review": {
+    "all39ExportHashesMatch": true,
+    "all39OriginalHashesMatch": true,
+    "knownSecretPatternCandidates": 0,
+    "scope": "Known-pattern review plus original/export hash verification; no new tests or application writes"
+  },
+  "limits": [
+    "Focused runs retain their original snapshots and actual failure/exit semantics; current aggregate008is separate.",
+    "Three empty lintlogs are preserved but emptiness alone is not proof of exit0.",
+    "Screenreader verification interrupted at user request; noWCAG/P12/productionclaim.",
+    "Newtoolingreports clarify CRLF/LF normalization without rewriting historicalreceipts."
+  ]
+}

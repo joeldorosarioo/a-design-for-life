@@ -2,6 +2,7 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import { parsePrivatePreviewPath } from '@/helpers/payload/private-preview-path';
 import styles from '../stylesheets/language-switcher.module.css';
+import { LanguageFlag } from './language-flag';
 export function PrivateLanguageLink({
   locale,
   href,
@@ -15,17 +16,7 @@ export function PrivateLanguageLink({
   const label = target === 'en' ? 'English' : 'Português';
   if (href !== null && parsePrivatePreviewPath(href).locale !== target)
     throw new TypeError('Private language link must target the counterpart locale.');
-  const flag = (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element -- exact approved static Figma language vector */}
-      <img
-        src={target === 'en' ? '/figma/language-en.svg' : '/figma/language-br.svg'}
-        width={32}
-        height={32}
-        alt=""
-      />
-    </>
-  );
+  const flag = <LanguageFlag locale={locale} />;
   return href === null ? (
     <Button
       className={styles.toggle}

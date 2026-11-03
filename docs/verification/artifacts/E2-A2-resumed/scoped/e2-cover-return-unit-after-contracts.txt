@@ -1,0 +1,335 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/app/(portfolio)/_components/public-page-view.test.tsx (11 tests | 5 failed) 305ms
+   × renders the independent CMS return label without changing the list count noun 17ms
+   × uses its own pt fallback when the optional return label is undefined 13ms
+   × uses its own pt fallback when the optional return label is null 13ms
+   × uses its own en fallback when the optional return label is  7ms
+   × uses its own en fallback when the optional return label is    7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > renders the independent CMS return label without changing the list count noun
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Synthetic return action"
+
+Here are the accessible roles:
+
+  article:
+
+  Name "":
+  <article
+    class="_detail_1dfb04"
+  />
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="portfolio-container _detailOpening_1dfb04"
+    data-reading-key="case-opening"
+  />
+
+  --------------------------------------------------
+  link:
+
+  Name "Synthetic count noun":
+  <a
+    class="_textLink_1dfb04"
+    href="/pt/cases"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "Synthetic confirmed case":
+  <h1
+    class="_detailTitle_1dfb04"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<main
+  id="main-content"
+  tabindex="-1"
+>
+  <article
+    class="_detail_1dfb04"
+  >
+    <header
+      class="portfolio-container _detailOpening_1dfb04"
+      data-reading-key="case-opening"
+    >
+      <a
+        class="_textLink_1dfb04"
+        href="/pt/cases"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ← 
+        </span>
+        Synthetic count noun
+      </a>
+      <h1
+        class="_detailTitle_1dfb04"
+      >
+        Synthetic confirmed case
+      </h1>
+      <div
+        class="_prose_1dfb04 _openingIntroduction_1dfb04"
+      >
+        <p>
+          Synthetic confirmed summary
+        </p>
+      </div>
+    </header>
+    <div
+      class="portfolio-container _readingLayout_1dfb04"
+    >
+      <div
+        class="_articleBody_1dfb04"
+      />
+    </div>
+  </article>
+</main>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:193:43
+    191|     <PublicPageView kind="case" locale="pt" portfolio={{ ...portfolio,…
+    192|   );
+    193|   expect(within(screen.getByRole('main')).getByRole('link', { name: 'S…
+       |                                           ^
+    194|     .toHaveAttribute('href', '/pt/cases');
+    195|   unmount();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own pt fallback when the optional return label is undefined
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own pt fallback when the optional return label is null
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Voltar aos projetos"
+
+Here are the accessible roles:
+
+  article:
+
+  Name "":
+  <article
+    class="_detail_1dfb04"
+  />
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="portfolio-container _detailOpening_1dfb04"
+    data-reading-key="case-opening"
+  />
+
+  --------------------------------------------------
+  link:
+
+  Name "Count noun only":
+  <a
+    class="_textLink_1dfb04"
+    href="/pt/cases"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "Synthetic confirmed case":
+  <h1
+    class="_detailTitle_1dfb04"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<main
+  id="main-content"
+  tabindex="-1"
+>
+  <article
+    class="_detail_1dfb04"
+  >
+    <header
+      class="portfolio-container _detailOpening_1dfb04"
+      data-reading-key="case-opening"
+    >
+      <a
+        class="_textLink_1dfb04"
+        href="/pt/cases"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ← 
+        </span>
+        Count noun only
+      </a>
+      <h1
+        class="_detailTitle_1dfb04"
+      >
+        Synthetic confirmed case
+      </h1>
+      <div
+        class="_prose_1dfb04 _openingIntroduction_1dfb04"
+      >
+        <p>
+          Synthetic confirmed summary
+        </p>
+      </div>
+    </header>
+    <div
+      class="portfolio-container _readingLayout_1dfb04"
+    >
+      <div
+        class="_articleBody_1dfb04"
+      />
+    </div>
+  </article>
+</main>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:211:43
+    209|   });
+    210|   render(<PublicPageView kind="case" locale={locale} portfolio={{ ...p…
+    211|   expect(within(screen.getByRole('main')).getByRole('link', { name: ex…
+       |                                           ^
+    212|   expect(within(screen.getByRole('main')).queryByRole('link', { name: …
+    213| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own en fallback when the optional return label is 
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > uses its own en fallback when the optional return label is   
+TestingLibraryElementError: Unable to find an accessible element with the role "link" and name "Back to projects"
+
+Here are the accessible roles:
+
+  article:
+
+  Name "":
+  <article
+    class="_detail_1dfb04"
+  />
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="portfolio-container _detailOpening_1dfb04"
+    data-reading-key="case-opening"
+  />
+
+  --------------------------------------------------
+  link:
+
+  Name "Count noun only":
+  <a
+    class="_textLink_1dfb04"
+    href="/en/cases"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "Synthetic confirmed case":
+  <h1
+    class="_detailTitle_1dfb04"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<main
+  id="main-content"
+  tabindex="-1"
+>
+  <article
+    class="_detail_1dfb04"
+  >
+    <header
+      class="portfolio-container _detailOpening_1dfb04"
+      data-reading-key="case-opening"
+    >
+      <a
+        class="_textLink_1dfb04"
+        href="/en/cases"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ← 
+        </span>
+        Count noun only
+      </a>
+      <h1
+        class="_detailTitle_1dfb04"
+      >
+        Synthetic confirmed case
+      </h1>
+      <div
+        class="_prose_1dfb04 _openingIntroduction_1dfb04"
+      >
+        <p>
+          Synthetic confirmed summary
+        </p>
+      </div>
+    </header>
+    <div
+      class="portfolio-container _readingLayout_1dfb04"
+    >
+      <div
+        class="_articleBody_1dfb04"
+      />
+    </div>
+  </article>
+</main>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:211:43
+    209|   });
+    210|   render(<PublicPageView kind="case" locale={locale} portfolio={{ ...p…
+    211|   expect(within(screen.getByRole('main')).getByRole('link', { name: ex…
+       |                                           ^
+    212|   expect(within(screen.getByRole('main')).queryByRole('link', { name: …
+    213| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  5 failed | 34 passed (39)
+   Start at  06:49:31
+   Duration  2.85s (import 54%, setup 19%, environment 16%, tests 6%, transform 6%)
+

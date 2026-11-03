@@ -283,7 +283,10 @@ it('passes the supplied server contextual resolver into CaseDetail rather than r
     <PublicPageView {...privateProps} kind="case" detail={privateDetail} />,
   );
   const main = within(screen.getByRole('main'));
-  expect(main.getByRole('link', { name: /Cases/ })).toHaveAttribute('href', targets.cases);
+  expect(main.getByRole('link', { name: 'Voltar aos projetos' })).toHaveAttribute(
+    'href',
+    targets.cases,
+  );
   expect(main.getByRole('link', { name: 'Private contextual destination' })).toHaveAttribute(
     'href',
     targets.about,

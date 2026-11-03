@@ -1,0 +1,79 @@
+{
+  "purpose": "Projection of preserved scoped RED/GREEN evidence, not another test execution",
+  "receipt": {
+    "recordedAt": "2026-11-03T14:01:37.1786740+00:00",
+    "scope": [
+      "src/proxy.ts",
+      "src/proxy.test.ts"
+    ],
+    "runtime": "Node24.22.2; installed Next16.4.3; Vitest5.0.5; no dependency changes",
+    "cause": "Next redirect adapter constructs NextURL(Location) without base. Relative historical route Location causes Invalid URL after proxy already returned308.",
+    "productionChange": "headers.set('Location', new URL(decision.location, env.SITE_ORIGIN).href);",
+    "security": "Uses validated SITE_ORIGIN; ignores Host, x-forwarded-host/proto and Forwarded. Existing308/no-store/empty GET+HEAD body/no-token/no-cookie remain.",
+    "red": {
+      "command": "node node_modules/vitest/vitest.mjs run --project unit src/proxy.test.ts -t \"emits a confirmed historical\"",
+      "exit": 1,
+      "expectedFailures": 2,
+      "skipped": 39,
+      "reason": "Real NextURL TypeError: Invalid URL for GET and HEAD",
+      "sourceWasUnpatched": true
+    },
+    "green": {
+      "command": "node node_modules/vitest/vitest.mjs run --project unit src/proxy.test.ts",
+      "exit": 0,
+      "passed": 41,
+      "failed": 0
+    },
+    "lint": {
+      "command": "node node_modules/eslint/bin/eslint.js src/proxy.ts src/proxy.test.ts",
+      "exit": 0
+    },
+    "formatting": {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check src/proxy.ts src/proxy.test.ts",
+      "exit": 0
+    },
+    "diffCheck": {
+      "command": "git diff --check -- src/proxy.ts src/proxy.test.ts",
+      "exit": 0
+    },
+    "environmentCleanup": "Only child shell: removed INTERNAL_HTTP_ORIGIN and MEDIA_STORAGE_ROOT before focused unit runs; production env/security unchanged.",
+    "notRun": [
+      "build",
+      "global verify",
+      "integration/PostgreSQL",
+      "HTTP E2E afterpatch"
+    ],
+    "coordinatorRequired": "Rebuild and rerun current HTTP E2E308 plus full gates; final snapshots/captures/audits/performance must bind new production source.",
+    "tddCompliance": "Behavior test written first, expected assertion RED observed against real NextURL, one-line implementation, full proxy unit GREEN; no mock of route resolver/NextURL, real isolated Root filesystem. No claim of HTTP E2E completion.",
+    "hashes": [
+      {
+        "path": "src/proxy.ts",
+        "sha256": "c163ed037e6c630c6772e4eecd1b2152bce405031e7b07ff6ff1fd34b702ee0b"
+      },
+      {
+        "path": "src/proxy.test.ts",
+        "sha256": "0c8127ed4aca0411d7da0be995911b2f228ef8c0de60e9dd5da045a8eb500f7a"
+      },
+      {
+        "path": "scoped-evidence/proxy-before.ts",
+        "sha256": "07e01ba5f892acfe5241ad7e1a564b114df9f461027f4a766d596d8d02c666c8"
+      },
+      {
+        "path": "scoped-evidence/redirect-next-url-red.log",
+        "sha256": "92748e2b8b1630e7dfe4caa50615561e3a23f4089f4b1e0d9568dd773742db91"
+      },
+      {
+        "path": "scoped-evidence/redirect-next-url-green.log",
+        "sha256": "b3523b1e88665ff216e27591e591d8e42ad350f4142a6a1bff4bc7fccce6e686"
+      }
+    ]
+  },
+  "redLog": "\r\n RUN  v5.0.5 E:/a-design-for-life\r\n\r\n ❯ |unit| src/proxy.test.ts (41 tests | 2 failed | 39 skipped) 34ms\r\n   × emits a confirmed historical GET redirect consumable by Next on the configured origin despite forged Host headers 24ms\r\n   × emits a confirmed historical HEAD redirect consumable by Next on the configured origin despite forged Host headers 9ms\r\n\r\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯\r\n\r\n FAIL  |unit| src/proxy.test.ts > emits a confirmed historical GET redirect consumable by Next on the configured origin despite forged Host headers\r\n FAIL  |unit| src/proxy.test.ts > emits a confirmed historical HEAD redirect consumable by Next on the configured origin despite forged Host headers\r\nAssertionError: expected [Function] to not throw an error but 'TypeError: Invalid URL' was thrown\r\n\r\n- Expected:\r\nundefined\r\n\r\n+ Received:\r\n\"TypeError: Invalid URL\"\r\n\r\n ❯ src/proxy.test.ts:160:10\r\n    158|           headers: Object.fromEntries(incoming.headers),\r\n    159|         }),\r\n    160|     ).not.toThrow();\r\n       |          ^\r\n    161|     expect(location).toBe('https://portfolio.example.invalid/pt/cases/…\r\n    162|     expect(response.headers.get('cache-control')).toBe('no-store, max-…\r\n\r\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯\r\n\r\n\r\n Test Files  1 failed (1)\r\n      Tests  2 failed | 39 skipped (41)\r\n   Start at  10:59:43\r\n   Duration  1.56s (import 75%, setup 14%, transform 9%, tests 2%)\r\n\r\n",
+  "greenLog": "\r\n RUN  v5.0.5 E:/a-design-for-life\r\n\r\n\r\n Test Files  1 passed (1)\r\n      Tests  41 passed (41)\r\n   Start at  11:00:12\r\n   Duration  1.66s (import 68%, tests 12%, setup 12%, transform 7%)\r\n\r\n",
+  "timestampLimit": "Full command wall-clock start/end were not recorded; original Vitest local start clock/duration and receipt recordedAt remain visible. No ISO start/end inferred.",
+  "pathProjection": {
+    "absolutePathsReplacedWithLogicalLabels": 5,
+    "originalProjectionSha256": "46106bf350f2e5ab1deee87274c05159d805235dc7b2aaa55cb613b0374c4722",
+    "originalReceiptPreserved": true
+  }
+}

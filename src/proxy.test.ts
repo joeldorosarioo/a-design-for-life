@@ -8,6 +8,7 @@ import { rm } from 'node:fs/promises';
 import path from 'node:path';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { NextRequest } from 'next/server';
+import { NextURL } from 'next/dist/server/web/next-url';
 import { unstable_doesMiddlewareMatch } from 'next/experimental/testing/server';
 import { readServerEnv } from './config/server-env';
 import { publicRootDirectory } from './helpers/payload/public-root-directory';
@@ -97,6 +98,76 @@ afterEach(async () => {
   await rm(resolved, { recursive: true, force: true });
   vi.unstubAllEnvs();
 });
+it.each(['GET', 'HEAD'] as const)(
+  'emits a confirmed historical %s redirect consumable by Next on the configured origin despite forged Host headers',
+  async (method) => {
+    configure({
+      NODE_ENV: 'production',
+      APP_ENV: 'production',
+      SITE_ORIGIN: 'https://portfolio.example.invalid',
+    });
+    const caseId = randomUUID();
+    const contentId = randomUUID();
+    await withPublicRootWriter(directory, async (_current, commit) =>
+      commit({
+        generation: randomUUID(),
+        subjects: {
+          [`case-content/${contentId}`]: {
+            operationId: randomUUID(),
+            targetRevision: randomUUID(),
+            value: z.json().parse({
+              kind: 'case',
+              caseId,
+              contentId,
+              locale: 'pt',
+              slug: 'current-case',
+              slugs: ['historical-case', 'current-case'],
+              detail: mapCaseDetail({
+                id: contentId,
+                case: caseId,
+                locale: 'pt',
+                slug: 'current-case',
+                title: 'Confirmed case',
+                summary: 'Confirmed summary',
+                _status: 'published',
+                createdAt: '',
+                updatedAt: '',
+              }),
+            }),
+          },
+        },
+      }),
+    );
+    const incoming = request('/pt/cases/historical-case?generation=FORGED', {
+      method,
+      headers: {
+        host: 'forged-host.invalid',
+        'x-forwarded-host': 'forged-forwarded.invalid',
+        'x-forwarded-proto': 'http',
+        forwarded: 'host=forged-forwarded.invalid;proto=http',
+      },
+    });
+    const response = await proxy(incoming);
+    expect(response.status).toBe(308);
+    const location = response.headers.get('location')!;
+    // Next's redirect adapter consumes Location without a base URL.
+    expect(
+      () =>
+        new NextURL(location, {
+          forceLocale: false,
+          headers: Object.fromEntries(incoming.headers),
+        }),
+    ).not.toThrow();
+    expect(location).toBe('https://portfolio.example.invalid/pt/cases/current-case');
+    expect(response.headers.get('cache-control')).toBe('no-store, max-age=0');
+    expect(response.headers.get('x-middleware-next')).toBeNull();
+    expect(response.headers.has('x-middleware-override-headers')).toBe(false);
+    expect(response.headers.has(PUBLIC_RENDER_CONTEXT_HEADER)).toBe(false);
+    expect(response.headers.get('set-cookie')).toBeNull();
+    expect(await response.text()).toBe('');
+    expect(nativeCalls).toBe(0);
+  },
+);
 it('passes a signed404 through Next.next while replacing forged incoming context', async () => {
   const response = await proxy(
     request('/pt/about', {

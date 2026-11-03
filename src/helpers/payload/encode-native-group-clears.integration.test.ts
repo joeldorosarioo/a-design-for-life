@@ -12,11 +12,14 @@ import { readPublicRoot } from './public-root';
 import { runtimePublication } from './publication-runtime';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
+let rootBefore: Awaited<ReturnType<typeof readPublicRoot>>;
 beforeAll(async () => {
   fixture = await createEditorialPayloadFixture('native-null-group-clears');
 });
 beforeEach(async () => {
   await clearStructuralFixture(fixture.payload);
+  // Structural cleanup preserves publications belonging to other feature suites.
+  rootBefore = await readPublicRoot(runtimePublication().directory);
 });
 afterAll(async () => {
   await fixture?.payload.destroy();
@@ -64,7 +67,7 @@ it('creates accepted null named groups through real Native validation', async ()
     alt: null,
     caption: null,
   });
-  expect(await readPublicRoot(runtimePublication().directory)).toBeNull();
+  expect(await readPublicRoot(runtimePublication().directory)).toEqual(rootBefore);
 });
 
 it('clears a populated group without retaining media or replacing unrelated sibling data', async () => {
@@ -124,7 +127,7 @@ it('clears a populated group without retaining media or replacing unrelated sibl
       req: observed,
     }),
   ).rejects.toMatchObject({ status: 409 });
-  expect(await readPublicRoot(runtimePublication().directory)).toBeNull();
+  expect(await readPublicRoot(runtimePublication().directory)).toEqual(rootBefore);
 });
 
 it('preserves omitted groups and their real draft media usage', async () => {

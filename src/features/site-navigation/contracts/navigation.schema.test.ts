@@ -34,3 +34,19 @@ it('accepts the case card action label as optional draft text', () => {
     navigationInputSchema.safeParse({ controls: { caseLinkLabel: { text: 'Synthetic' } } }).success,
   ).toBe(false);
 });
+
+it('keeps the project return label separate from the count noun and rejects style objects', () => {
+  expect(
+    navigationInputSchema.safeParse({
+      controls: { casesLabel: 'case studies', backToProjectsLabel: 'Back to projects' },
+    }).success,
+  ).toBe(true);
+  for (const value of [undefined, null, '', '  '])
+    expect(
+      navigationInputSchema.safeParse({ controls: { backToProjectsLabel: value } }).success,
+    ).toBe(true);
+  expect(
+    navigationInputSchema.safeParse({ controls: { backToProjectsLabel: { text: 'Back' } } })
+      .success,
+  ).toBe(false);
+});

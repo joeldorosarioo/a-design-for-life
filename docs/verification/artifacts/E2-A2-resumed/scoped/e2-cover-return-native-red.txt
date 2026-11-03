@@ -1,0 +1,412 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |integration| src/features/cases/server/cover-presentation.integration.test.ts (4 tests | 4 failed) 1146ms
+   × persists the closed cover choice in private Native content, versions and authenticated preview 153ms
+   × keeps published cover choices independent by locale and leaves the confirmed snapshot unchanged by draft edits 360ms
+   × allows clearing the optional choice while preserving the old publication until explicit republish 190ms
+   × rejects arbitrary presentations before Native sanitization without advancing the revision 161ms
+ ❯ |integration| src/features/site-navigation/content/return-label.integration.test.ts (5 tests | 5 failed) 2600ms
+   × persists the independent return label in Native drafts and versions without changing the other language 65ms
+   × publishes a custom return label independently and preserves it while a private draft is cleared 127ms
+   × allows explicit publication with optional return copy null 73ms
+   × allows explicit publication with optional return copy  61ms
+   × allows explicit publication with optional return copy    63ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/server/cover-presentation.integration.test.ts > persists the closed cover choice in private Native content, versions and authenticated preview
+AssertionError: expected { …(24) } to match object { coverPresentation: 'contained-soft' }
+(31 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "coverPresentation": "contained-soft",
++   "_status": "draft",
++   "cardEyebrow": null,
++   "cardTitle": null,
++   "case": "902753bf-9d8d-419d-ae0c-e193dcbe36e6",
++   "contextNote": null,
++   "cover": {
++     "alt": "Synthetic cover",
++     "caption": null,
++     "decorative": false,
++     "media": "23843b93-06e1-40c7-8335-162784f0acd2",
++   },
++   "createdAt": "2026-11-03T09:53:40.579Z",
++   "editorialRevision": "499bb0ec-6497-48d0-ad69-81049510213d",
++   "eyebrow": null,
++   "id": "95bbb326-69c7-452f-9ae3-0ea391d81362",
++   "introduction": null,
++   "latestPublicationIntent": null,
++   "leaseToken": "[REDACTED]",
++   "locale": "pt",
++   "publicConfirmed": false,
++   "role": "Synthetic role",
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": {
++             "root": {
++               "children": [
++                 {
++                   "children": [
++                     {
++                       "detail": 0,
++                       "format": 0,
++                       "mode": "normal",
++                       "style": "",
++                       "text": "Synthetic narrative",
++                       "type": "text",
++                       "version": 1,
++                     },
++                   ],
++                   "direction": null,
++                   "format": "",
++                   "indent": 0,
++                   "type": "paragraph",
++                   "version": 1,
++                 },
++               ],
++               "direction": null,
++               "format": "",
++               "indent": 0,
++               "type": "root",
++               "version": 1,
++             },
++           },
++           "eyebrow": null,
++           "heading": null,
++           "id": "6ae9af24d0660a81c4962e82",
++           "note": null,
++           "readingKey": "cc79ab10-223e-4243-868a-2c069971e1bc",
++         },
++       ],
++       "description": null,
++       "eyebrow": null,
++       "heading": "Synthetic section",
++       "id": "6ae9af24d0660a81c4962e83",
++       "note": null,
++       "presentation": "narrative",
++       "readingKey": "a7f16563-999b-4a40-83f6-7921f823afcb",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": "synthetic-77f4f81e-c1f6-4a33-afcd-427d1aad4ee6",
++   "summary": "Synthetic summary",
++   "title": "Synthetic title",
++   "titleEmphasis": null,
++   "updatedAt": "2026-11-03T09:53:40.580Z",
+  }
+
+ ❯ src/features/cases/server/cover-presentation.integration.test.ts:69:18
+     67|   const draft = await create(caseId, 'pt', 'contained-soft');
+     68|   const reread = await fixture.payload.findByID({ collection: 'case-co…
+     69|   expect(reread).toMatchObject({ coverPresentation: 'contained-soft' }…
+       |                  ^
+     70|   const versions = await fixture.payload.findVersions({ collection: 'c…
+     71|   expect(versions.docs[0].version).toMatchObject({ coverPresentation: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |integration| src/features/cases/server/cover-presentation.integration.test.ts > keeps published cover choices independent by locale and leaves the confirmed snapshot unchanged by draft edits
+AssertionError: expected { ok: true, value: { …(16) } } to match object { ok: true, value: { …(1) } }
+(24 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+-     "coverPresentation": "contained-soft",
++     "coverPresentation": "contained-cherry",
+    },
+  }
+
+ ❯ src/features/cases/server/cover-presentation.integration.test.ts:83:43
+     81|   const captured = await readPublicRoot(directory);
+     82|   await save(pt.id, { coverPresentation: 'contained-cherry' });
+     83|   expect(await confirmed('pt', pt.slug!)).toMatchObject({ ok: true, va…
+       |                                           ^
+     84|   expect(await confirmed('en', en.slug!)).toMatchObject({ ok: true, va…
+     85|   expect(await getPreviewCase('pt', pt.id, await fixture.request())).t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |integration| src/features/cases/server/cover-presentation.integration.test.ts > allows clearing the optional choice while preserving the old publication until explicit republish
+AssertionError: expected { …(24) } to match object { coverPresentation: null }
+(31 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "coverPresentation": null,
++   "_status": "draft",
++   "cardEyebrow": null,
++   "cardTitle": null,
++   "case": "71c34ec3-9be1-4e71-87e1-9de2ae192d44",
++   "contextNote": null,
++   "cover": {
++     "alt": "Synthetic cover",
++     "caption": null,
++     "decorative": false,
++     "media": "23843b93-06e1-40c7-8335-162784f0acd2",
++   },
++   "createdAt": "2026-11-03T09:53:41.052Z",
++   "editorialRevision": "81ded1d8-140d-42c3-a516-b9f5b5076d78",
++   "eyebrow": null,
++   "id": "435fd47b-8213-4eab-b3df-334f2c01aae8",
++   "introduction": null,
++   "latestPublicationIntent": "75e1f0b7-22c3-4f95-bd6a-270af222e8b7",
++   "leaseToken": "[REDACTED]",
++   "locale": "en",
++   "publicConfirmed": true,
++   "role": "Synthetic role",
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": {
++             "root": {
++               "children": [
++                 {
++                   "children": [
++                     {
++                       "detail": 0,
++                       "format": 0,
++                       "mode": "normal",
++                       "style": "",
++                       "text": "Synthetic narrative",
++                       "type": "text",
++                       "version": 1,
++                     },
++                   ],
++                   "direction": null,
++                   "format": "",
++                   "indent": 0,
++                   "type": "paragraph",
++                   "version": 1,
++                 },
++               ],
++               "direction": null,
++               "format": "",
++               "indent": 0,
++               "type": "root",
++               "version": 1,
++             },
++           },
++           "eyebrow": null,
++           "heading": null,
++           "id": "6ae9af25d0660a81c4962e88",
++           "note": null,
++           "readingKey": "57d678fb-1762-48f0-bf16-cee9f8cdcde6",
++         },
++       ],
++       "description": null,
++       "eyebrow": null,
++       "heading": "Synthetic section",
++       "id": "6ae9af25d0660a81c4962e89",
++       "note": null,
++       "presentation": "narrative",
++       "readingKey": "b6b42775-c27c-40ec-ac7e-b2bbbb9486cc",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": "synthetic-54c9dbf1-8259-4d8d-94df-fc080e047dd5",
++   "summary": "Synthetic summary",
++   "title": "Synthetic title",
++   "titleEmphasis": null,
++   "updatedAt": "2026-11-03T09:53:41.162Z",
+  }
+
+ ❯ src/features/cases/server/cover-presentation.integration.test.ts:92:65
+     90|   const published = await create(await parent(), 'en', 'contained-soft…
+     91|   const captured = await readPublicRoot(directory);
+     92|   expect(await save(published.id, { coverPresentation: null })).toMatc…
+       |                                                                 ^
+     93|   expect(await getPreviewCase('en', published.id, await fixture.reques…
+     94|   expect(await readPublicRoot(directory)).toEqual(captured);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |integration| src/features/cases/server/cover-presentation.integration.test.ts > rejects arbitrary presentations before Native sanitization without advancing the revision
+AssertionError: expected { …(24) } to match object { …(2) }
+(30 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "coverPresentation": "contained-cherry",
+    "editorialRevision": "1b212c1c-06bf-45cf-b040-09ad5c47be8f",
+  }
+
+ ❯ src/features/cases/server/cover-presentation.integration.test.ts:103:164
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |integration| src/features/site-navigation/content/return-label.integration.test.ts > persists the independent return label in Native drafts and versions without changing the other language
+AssertionError: expected { …(12) } to match object { Object (casesLabel, backToProjectsLabel) }
+(11 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "backToProjectsLabel": "Retornar aos projetos sintéticos",
+    "casesLabel": "casos sintéticos",
+  }
+
+ ❯ src/features/site-navigation/content/return-label.integration.test.ts:62:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  |integration| src/features/site-navigation/content/return-label.integration.test.ts > publishes a custom return label independently and preserves it while a private draft is cleared
+AssertionError: expected { ok: true, …(1) } to match object { ok: true, …(1) }
+(39 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "controls": {
+-       "backToProjectsLabel": "Back to synthetic projects",
+        "casesLabel": "case studies",
+      },
+    },
+  }
+
+ ❯ src/features/site-navigation/content/return-label.integration.test.ts:74:33
+     72|   const captured = await readPublicRoot(directory);
+     73|   await save('en', { casesLabel: 'case studies', backToProjectsLabel: …
+     74|   expect(await confirmed('en')).toMatchObject({ ok: true, value: { con…
+       |                                 ^
+     75|   expect(await readPublicRoot(directory)).toEqual(captured);
+     76| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  |integration| src/features/site-navigation/content/return-label.integration.test.ts > allows explicit publication with optional return copy null
+AssertionError: expected { ok: true, …(1) } to match object { ok: true, …(1) }
+(39 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "controls": {
+-       "backToProjectsLabel": null,
+        "casesLabel": "case studies",
+      },
+    },
+  }
+
+ ❯ src/features/site-navigation/content/return-label.integration.test.ts:80:33
+     78| it.each([null, '', '  '])('allows explicit publication with optional r…
+     79|   await save('en', { casesLabel: 'case studies', backToProjectsLabel }…
+     80|   expect(await confirmed('en')).toMatchObject({ ok: true, value: { con…
+       |                                 ^
+     81| });
+     82|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  |integration| src/features/site-navigation/content/return-label.integration.test.ts > allows explicit publication with optional return copy 
+AssertionError: expected { ok: true, …(1) } to match object { ok: true, …(1) }
+(39 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "controls": {
+-       "backToProjectsLabel": "",
+        "casesLabel": "case studies",
+      },
+    },
+  }
+
+ ❯ src/features/site-navigation/content/return-label.integration.test.ts:80:33
+     78| it.each([null, '', '  '])('allows explicit publication with optional r…
+     79|   await save('en', { casesLabel: 'case studies', backToProjectsLabel }…
+     80|   expect(await confirmed('en')).toMatchObject({ ok: true, value: { con…
+       |                                 ^
+     81| });
+     82|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  |integration| src/features/site-navigation/content/return-label.integration.test.ts > allows explicit publication with optional return copy   
+AssertionError: expected { ok: true, …(1) } to match object { ok: true, …(1) }
+(39 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "controls": {
+-       "backToProjectsLabel": "  ",
+        "casesLabel": "case studies",
+      },
+    },
+  }
+
+ ❯ src/features/site-navigation/content/return-label.integration.test.ts:80:33
+     78| it.each([null, '', '  '])('allows explicit publication with optional r…
+     79|   await save('en', { casesLabel: 'case studies', backToProjectsLabel }…
+     80|   expect(await confirmed('en')).toMatchObject({ ok: true, value: { con…
+       |                                 ^
+     81| });
+     82|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  9 failed (9)
+   Start at  06:53:36
+   Duration  9.45s (import 51%, tests 41%, transform 6%, setup 2%)
+
+     Import  |integration| 130 modules were evaluated 246 times · 4.69s total, 51% of tracked time
+             ~2.21s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+

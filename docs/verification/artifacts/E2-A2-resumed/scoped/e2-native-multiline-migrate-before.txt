@@ -1,0 +1,32 @@
+[07:18:06] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[07:18:06] INFO: Migrating: 20261030_003022_initial_base
+[07:18:06] INFO: Migrated:  20261030_003022_initial_base (41ms)
+[07:18:06] INFO: Migrating: 20261030_020021_editorial_models
+[07:18:06] INFO: Migrated:  20261030_020021_editorial_models (87ms)
+[07:18:06] INFO: Migrating: 20261030_020521_structural_uniqueness
+[07:18:06] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[07:18:06] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[07:18:06] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[07:18:06] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[07:18:06] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[07:18:06] INFO: Migrating: 20261030_030036_global_editorial_copy
+[07:18:06] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[07:18:06] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[07:18:06] INFO: Migrated:  20261030_035306_protect_case_identity_references (7ms)
+[07:18:06] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[07:18:06] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (5ms)
+[07:18:06] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[07:18:06] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (6ms)
+[07:18:06] INFO: Migrating: 20261030_093430_private_media_manifests
+[07:18:06] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[07:18:06] INFO: Migrating: 20261030_124550_publication_coordination
+[07:18:06] INFO: Migrated:  20261030_124550_publication_coordination (33ms)
+[07:18:06] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[07:18:06] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[07:18:06] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[07:18:06] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (1ms)
+[07:18:06] INFO: Migrating: 20261031_011109_e2_case_card_copy
+[07:18:06] INFO: Migrated:  20261031_011109_e2_case_card_copy (2ms)
+[07:18:06] INFO: Migrating: 20261103_095414_e2_cover_presentation_and_return_copy
+[07:18:06] INFO: Migrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)
+[07:18:06] INFO: Done.

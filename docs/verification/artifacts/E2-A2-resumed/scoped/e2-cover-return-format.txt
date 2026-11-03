@@ -1,0 +1,21 @@
+src/features/cases/contracts/case.schema.ts 49ms (unchanged)
+src/features/cases/contracts/case-dto.schema.ts 15ms (unchanged)
+src/features/cases/server/map-case-detail.ts 23ms
+src/features/cases/server/map-case-detail.test.ts 21ms
+src/features/cases/server/cover-presentation.test.ts 7ms (unchanged)
+src/features/cases/server/cover-presentation.integration.test.ts 21ms
+src/features/cases/components/case-image.tsx 11ms (unchanged)
+src/features/cases/content/collections/case-content.ts 8ms
+src/features/cases/server/get-preview-case.ts 6ms (unchanged)
+src/features/site-navigation/contracts/navigation.schema.ts 4ms (unchanged)
+src/features/site-navigation/contracts/navigation.schema.test.ts 5ms (unchanged)
+src/features/site-navigation/server/map-navigation.test.ts 8ms (unchanged)
+src/features/site-navigation/content/validate-publication.ts 4ms (unchanged)
+src/features/site-navigation/content/validate-publication.test.ts 3ms (unchanged)
+src/features/site-navigation/content/return-label.integration.test.ts 13ms
+src/features/site-navigation/content/collections/site-navigation.ts 11ms
+src/app/(portfolio)/_components/public-page-view.tsx 16ms (unchanged)
+src/app/(portfolio)/_components/public-page-view.test.tsx 15ms
+src/migrations/index.ts 3ms
+src/migrations/20261103_095414_e2_cover_presentation_and_return_copy.ts 2ms
+src/migrations/20261103_095414_e2_cover_presentation_and_return_copy.json 129ms

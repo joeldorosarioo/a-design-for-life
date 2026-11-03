@@ -79,7 +79,7 @@ export async function proxy(request: NextRequest): Promise<Response> {
     }
     const headers = responseHeaders(decision.status);
     if (decision.status === 308) {
-      headers.set('Location', decision.location);
+      headers.set('Location', new URL(decision.location, env.SITE_ORIGIN).href);
       return new Response(null, { status: 308, headers });
     }
     if (decision.status === 405) {

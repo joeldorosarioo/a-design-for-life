@@ -29,3 +29,19 @@ it.each([
     render(<PrivateLanguageLink locale="pt" href={href} languageLabel="Idioma" />),
   ).toThrow();
 });
+
+it.each([
+  ['pt', 'en', 'English', '/figma/language-br.svg'],
+  ['en', 'pt', 'Português', '/figma/language-en.svg'],
+] as const)(
+  'identifies current %s visually in an authorized private counterpart link',
+  (locale, target, label, flag) => {
+    const href = `/preview-ui/${target}/professional-profiles/${id}/about`;
+    render(<PrivateLanguageLink locale={locale} href={href} languageLabel="Language" />);
+    const control = screen.getByRole('link', { name: label });
+    expect(control.querySelector('img')).toHaveAttribute('src', flag);
+    expect(control.querySelector('img')).toHaveAttribute('alt', '');
+    expect(control).toHaveAttribute('href', href);
+    expect(control).toHaveAttribute('lang', target);
+  },
+);
