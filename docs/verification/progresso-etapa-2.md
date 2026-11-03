@@ -1,3 +1,5 @@
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada. E3 autorizada e depois pausada até reunir as informações necessárias. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). O relatório abaixo preserva o snapshot anterior à aprovação.
+
 # Progresso verificável — etapa 2
 
 **96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. A2 pendente.**

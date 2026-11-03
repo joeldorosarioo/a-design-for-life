@@ -7,8 +7,8 @@
   "percentage": 96.7,
   "closedTasks": ["E2.1", "E2.2", "E2.3", "E2.4", "E2.5"],
   "totalTasks": 6,
-  "approval": "A2 pending; stage3 not authorized",
-  "remainingEstimate": "Somente fechamento documental, CI do commit exato e empacotamento final: aproximadamente 0,5–1 hora. Leitor formal não será executado nesta sessão por orientação do usuário.",
+  "approval": "A2 approved with screen-reader work outstanding; stage3 authorized and subsequently paused at explicit user request",
+  "remainingEstimate": "Etapa 2 aceita com pendência do leitor registrada; etapa 3 pausada até reunir as informações necessárias.",
   "criteria": [
     {
       "id": "E2.1.1",
@@ -193,6 +193,7 @@
   ],
   "recalculatedAt": "2026-11-03T15:32:27.972Z",
   "notes": [
+    "Atualização03/11/2026: usuário aprovou A2 com a pendência E2.6.2 preservada, autorizou E3 e depois pausou até consolidar informações. Contagens não mudam:29/30;E2.1–E2.5 encerradas. Registros anteriores de A2 pendente são históricos. Ver retomada-etapa-3.md.",
     "E2.1–E2.5 integralmente encerradas. Build008/fonte500f49 e CI c9be4dc atuais;18LH/20recursos,restauração/smoke004 e pacoteA2real revisados. Único critério incompleto E2.6.2:leitor formal desativado por orientação do usuário. A2 aguarda revisão/aprovação;etapa3 não autorizada.",
     "Retomada autorizada em03/11/2026,develop preservada. Implementação c9be4dc23c12f45fadd27cafc05a599b8b3a0c44 e CI41655739795 SUCCESS. O commit documental e seu CI exato ficam no recibo externo final, após promoção normal em develop protegida. Nenhum histórico publicado reescrito.",
     "Candidata008: BuildID XCwWNaSVVZ2kr6jeLy4Aa, fonte500/digestf49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784. verify0 e E2E113/113 atuais. A evidência007 permanece vinculada ao seu build/digest anterior; não é renomeada como captura008.",
@@ -210,5 +211,6 @@
     "Histórico anterior à retomada — Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado.",
     "Histórico anterior à retomada — Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2.",
     "Histórico anterior à retomada — Pausa explícita solicitada pelo usuário após concluir cardTitle/cardEyebrow editáveis comfallback (c3b4860):38unit+6Native,tipos/lint/formato0; coordenador44unit+2CSS atuais. Nenhuma nova caixa completa; visual/gate/a11y/performance/A2 seguem abertos. Retomada registrada em retomada-etapa-2.md."
-  ]
+  ],
+  "approvalRecordedAt": "2026-11-03T22:04:36.698Z"
 }
