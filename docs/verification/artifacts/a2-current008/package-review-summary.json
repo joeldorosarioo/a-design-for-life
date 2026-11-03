@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44",
+  "packageName": "A2-review-c9be4dc-v2",
+  "manifestSha256": "3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15",
+  "startedAt": "2026-11-03T15:26:01.065Z",
+  "finishedAt": "2026-11-03T15:26:10.945Z",
+  "exitCode": 0,
+  "artifactsVerified": 181,
+  "localReferencesPerViewport": [
+    204,
+    204
+  ],
+  "filterCombinations": 108,
+  "decodedImagesPerViewport": 18,
+  "videosPerViewport": 2,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "screenshotSha256": "60741174f6330b5afcb6f91eda1caa691bba982f41e1a3f219f9b407ddfaf7c9"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "screenshotSha256": "a1c6b7247cc5046a3a9394acca19c26a3bf9f486e7068cd8a4af42483ab8c8b3"
+    }
+  ],
+  "externalRequests": 0,
+  "pageErrors": 0,
+  "browserClosed": true,
+  "rootReviewedBothScreenshots": true,
+  "originalRed": {
+    "viewport": 390,
+    "documentWidth": 626,
+    "overflow": 236,
+    "retained": true
+  },
+  "minimalFix": ".limits { overflow-wrap: anywhere; }",
+  "generatorSha256": "10eaf7c1840b00496d4e0e7d641d619084bb0e0de279887ee119a2a4a50e8f35",
+  "readerExecuted": false,
+  "screenReaderCriterion": "incomplete by explicit user instruction; NVDA disabled",
+  "finalPackagePolicy": "Documentation commit and exact-SHA CI are recorded by the external final delivery receipt; the same generator and full offline QA are required for outputs/A2."
+}

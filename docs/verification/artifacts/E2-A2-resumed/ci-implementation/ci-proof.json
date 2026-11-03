@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-03T14:52:49.652Z",
+  "repository": "joeldorosarioo/a-design-for-life",
+  "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44",
+  "runId": 41655739795,
+  "runUrl": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/41655739795",
+  "jobId": 125985416252,
+  "jobUrl": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/41655739795/job/125985416252",
+  "status": "completed",
+  "conclusion": "success",
+  "requiredCheck": "type-lint-test-architecture-build",
+  "runnerLabels": [
+    "ubuntu-24.04"
+  ],
+  "startedAt": "2026-11-03T14:38:50Z",
+  "completedAt": "2026-11-03T14:47:40Z",
+  "sourceIdentity": "CI checked out this exact Git commit; the local500-file audit digest is recorded separately, not recomputed by this CI workflow.",
+  "results": {
+    "vitestPassed": 1166,
+    "vitestSkipped": 0,
+    "testFiles": 144,
+    "caseStateCssPassed": 2,
+    "e2ePassed": 113
+  },
+  "platformCoverage": {
+    "renderSnapshotFile": "16tests pass; POSIX privacy-mode assertion is included on Linux",
+    "publicationWriterFile": "4tests pass; actual Linux abstract-socket SIGSTOP/SIGCONT assertion included",
+    "allVitestTestsRan": true
+  },
+  "fontFixture": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+    "copiedToProduct": false
+  },
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:38:51Z",
+      "completedAt": "2026-11-03T14:38:52Z"
+    },
+    {
+      "name": "Checkout",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:38:52Z",
+      "completedAt": "2026-11-03T14:38:54Z"
+    },
+    {
+      "name": "Node",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:38:54Z",
+      "completedAt": "2026-11-03T14:38:59Z"
+    },
+    {
+      "name": "pnpm",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:38:59Z",
+      "completedAt": "2026-11-03T14:39:02Z"
+    },
+    {
+      "name": "Install from lockfile",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:39:02Z",
+      "completedAt": "2026-11-03T14:39:12Z"
+    },
+    {
+      "name": "Install verified local PDF checker",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:39:12Z",
+      "completedAt": "2026-11-03T14:39:12Z"
+    },
+    {
+      "name": "Check isolated container tooling",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:39:12Z",
+      "completedAt": "2026-11-03T14:39:12Z"
+    },
+    {
+      "name": "Verify",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:39:12Z",
+      "completedAt": "2026-11-03T14:44:30Z"
+    },
+    {
+      "name": "Install Chromium headless shell",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:44:30Z",
+      "completedAt": "2026-11-03T14:44:54Z"
+    },
+    {
+      "name": "Select an installed TrueType font for resource journeys",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:44:54Z",
+      "completedAt": "2026-11-03T14:44:54Z"
+    },
+    {
+      "name": "Browser journeys",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:44:54Z",
+      "completedAt": "2026-11-03T14:47:35Z"
+    },
+    {
+      "name": "Post pnpm",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:47:35Z",
+      "completedAt": "2026-11-03T14:47:35Z"
+    },
+    {
+      "name": "Post Node",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:47:35Z",
+      "completedAt": "2026-11-03T14:47:36Z"
+    },
+    {
+      "name": "Post Checkout",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:47:36Z",
+      "completedAt": "2026-11-03T14:47:36Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T14:47:36Z",
+      "completedAt": "2026-11-03T14:47:36Z"
+    }
+  ],
+  "originalLogSha256": "d815667296e053f757aa5f114ff0274e1efcac34813689a28e2d125aa01a78b5",
+  "originalLogBytes": 427138,
+  "method": "Read-only official GitHub metadata and downloaded exact-run log; no setting, access or branch mutation."
+}

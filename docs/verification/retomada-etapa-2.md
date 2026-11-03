@@ -1,3 +1,11 @@
+> **Aviso histórico — atualização de 03/11/2026.** A pausa descrita abaixo foi encerrada pela autorização expressa de retomada de E2.1–E2.6. O texto antigo permanece como histórico; o estado atual está em [A2](A2.md) e no [progresso da etapa 2](progresso-etapa-2.json). A etapa 3 continua aguardando aprovação expressa de A2.
+>
+> A fixture privada V5 teve restauração ensaiada e restore real pós-gates 003, com 10 rascunhos, 7 mídias Native, Root nulo, 0 operações públicas e dados/objetos conferidos. O percurso atual inclui gates locais, CI Linux aprovado, capturas/auditorias V9, manual 008, desempenho 008 e smoke 008/004; não se reutilizam os snapshots antigos como se fossem atuais.
+>
+> Usar Node 24.22.2 da `.toolchain`, pnpm 12.10.1 e o lockfile validado. A prévia usa loopback 3100 e o PostgreSQL de teste isolado usa 55433; os serviços 5432/55432 foram preservados. NVDA permanece encerrado e o leitor formal não foi concluído a pedido do usuário. Checkpoints, originais, DPAPI e dados privados continuam nos arquivos técnicos privados, fora do pacote compartilhável.
+
+---
+
 # Retomada da etapa2 — pausa solicitada pelo usuário
 
 O usuário pediu para concluir o item atual e parar para continuar em outra sessão. O item dos campos opcionais do card foi concluído; **não continuar trabalho nesta sessão**. A autorização de E2.1–E2.6 permanece registrada, mas a execução está pausada por solicitação explícita. A2 não foi entregue/aprovada; etapa3 não está autorizada.

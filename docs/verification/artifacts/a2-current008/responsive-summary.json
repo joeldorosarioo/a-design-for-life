@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Automated browser reflow/DOM stress; text resize is not browser zoom",
+  "pageFamilies": 9,
+  "widths": [
+    320,
+    390,
+    640,
+    768,
+    820,
+    1024,
+    1280,
+    1440,
+    1536
+  ],
+  "scenarios": 81,
+  "failures": 0,
+  "pageErrors": 0,
+  "textResize200PercentSamples": 27,
+  "temporaryLongTextSamples": 27,
+  "forcedColorsSamples": 27,
+  "menuSamples": 18,
+  "actualBrowserZoomTested": false,
+  "textResizeIsBrowserZoom": false,
+  "screenReaderTested": false,
+  "nativeDataEdited": false,
+  "evidence": [
+    {
+      "label": "responsive-v9.json",
+      "sha256": "52bc8724a47c97e15f1d025291cc6938f44b065968442ae3ee70da93061008eb"
+    },
+    {
+      "label": "receipt-responsive-v9.json",
+      "sha256": "4ca76ad3d831ce12b128deaadbd13a6ca8644706ebedb3dc56367a979d6e2c64"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Two automated private-preview demonstrations; no screen-reader or public reading-provider claim",
+  "count": 2,
+  "videos": [
+    {
+      "journey": "mobile-pt-en",
+      "file": "demonstrations/mobile-pt-en.webm",
+      "sha256": "7179daf0a26a9b1433d5d0535991c61eab80c90a7fa45af91b7f747590045f05",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      }
+    },
+    {
+      "journey": "desktop-en",
+      "file": "demonstrations/desktop-en.webm",
+      "sha256": "5ca05ec115ca5cb5f970feee11e7c946c5f394d92713f1d974bb0dcb84d1aec1",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      }
+    }
+  ],
+  "localExportLimit": "Automatic page-at-hash video basenames were redacted as emails in the detailed local manifest. This reviewed gallery index uses logical destinations and the unchanged video hashes.",
+  "screenReaderExecuted": false,
+  "evidence": [
+    {
+      "label": "demonstration-manifest-v9.json",
+      "sha256": "0498316e01e994dbdb09e2246a6b7d9826828f4af54339454ab364d526d3045b"
+    },
+    {
+      "label": "receipt-demos-v9.json",
+      "sha256": "ee1b91ef384f6e20a7f29dffc1fa38e70b21d4de29925b85223ef2d64e58f911"
+    }
+  ]
+}

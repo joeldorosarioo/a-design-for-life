@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Reviewed local package evidence inventory; detailed payloads remain local",
+  "localJsonLogArtifacts": 85,
+  "reviewedLocalBytes": 1858659,
+  "localExporterExit": 0,
+  "localExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "localMedia": {
+    "png": 18,
+    "pngDpr": 2,
+    "webm": 2,
+    "webmDpr": 1
+  },
+  "separateGateExportFiles": 19,
+  "separateFocusedHistoricalFiles": 39,
+  "countsByExecution": {
+    "non-command-data": 16,
+    "executed-command": 69
+  },
+  "readerPending": true,
+  "wcagConformanceCertified": false,
+  "publicPerformanceAccepted": false,
+  "productionPublished": false,
+  "stage3Started": false,
+  "selectionLimit": "This repository selection contains only aggregate counts/metrics/provenance. It excludes detailed27 axe states, full geometry/editorial values, routes, case/Figma IDs, auth, media originals, SQL/dumps and raw traces."
+}

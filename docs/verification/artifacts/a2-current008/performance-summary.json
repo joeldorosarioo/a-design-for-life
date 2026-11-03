@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Initial private local lab diagnostic, not public acceptance, field p75 or INP",
+  "protocolSha256": "0750991d17e2d1d8f871adade90376f65d029a4aab2bc2f26eb04a718e082b45",
+  "completeLighthouseRuns": 18,
+  "resourceObservations": 20,
+  "independentlyRecomputedAllAggregateMetrics": true,
+  "targets": [
+    {
+      "family": "home",
+      "locale": "pt",
+      "viewport": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 211.38,
+          "min": 206.809,
+          "max": 222.064,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 172.058,
+          "min": 161.443,
+          "max": 173.435,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 198,
+          "min": 197,
+          "max": 202,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "family": "home",
+      "locale": "pt",
+      "viewport": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 213.031,
+          "min": 209.258,
+          "max": 220.589,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 170.608,
+          "min": 163.05,
+          "max": 175.929,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 187,
+          "min": 185,
+          "max": 197,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "family": "listing",
+      "locale": "pt",
+      "viewport": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 194.088,
+          "min": 193.862,
+          "max": 224.213,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 160.481,
+          "min": 157.533,
+          "max": 160.772,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 236,
+          "min": 219,
+          "max": 249,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "family": "listing",
+      "locale": "pt",
+      "viewport": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 212.797,
+          "min": 186.934,
+          "max": 212.959,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 162.781,
+          "min": 153.624,
+          "max": 179.621,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 202,
+          "min": 187,
+          "max": 207,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "family": "case-template-02",
+      "locale": "en",
+      "viewport": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 193.759,
+          "min": 191.532,
+          "max": 196.165,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 193.759,
+          "min": 191.532,
+          "max": 196.165,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 188,
+          "min": 187,
+          "max": 199,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "family": "case-template-02",
+      "locale": "en",
+      "viewport": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 186.609,
+          "min": 182.531,
+          "max": 198.622,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 182.531,
+          "min": 169.955,
+          "max": 198.622,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 185,
+          "min": 173,
+          "max": 190,
+          "runs": 3
+        }
+      }
+    }
+  ],
+  "resources": {
+    "rows": 20,
+    "motionModes": [
+      "reduce",
+      "no-preference"
+    ],
+    "machine": {
+      "platform": "win32",
+      "release": "10.0.26300",
+      "arch": "x64",
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor             ",
+      "logicalCpus": 12,
+      "totalMemoryBytes": 17077932032
+    },
+    "browser": "156.0.8078.80",
+    "node": "24.22.2",
+    "scriptResourceTiming": {
+      "counts": [
+        8
+      ],
+      "encodedBytes": [
+        187156
+      ],
+      "decodedBytes": [
+        621242
+      ],
+      "transferBytes": [
+        189556
+      ],
+      "limit": "Observed external entries initiatorType script only; excludes inline/RSC/HTML and preload entries classified link; not total JavaScript budget"
+    },
+    "htmlEncodedBytes": {
+      "min": 6247,
+      "max": 10368
+    },
+    "scriptRequestCounts": [
+      9
+    ],
+    "imageRequestCounts": [
+      5,
+      4
+    ],
+    "fontRequestCounts": [
+      0
+    ],
+    "thirdPartyRequests": 0,
+    "mobileMenu": {
+      "observations": 10,
+      "wallClockMs": {
+        "min": 29.80370000000039,
+        "max": 35.74079999999958
+      },
+      "additionalRequests": 0,
+      "additionalEncodedBytes": 0,
+      "limit": "Host automation wall time until visible dialog, not INP or causal Motion measurement"
+    }
+  },
+  "conditions": {
+    "network": "loopback-unthrottled",
+    "cpu": "unthrottled",
+    "cache": "cold-browser-after-auth-preflight; server-warm",
+    "dpr": 2,
+    "repetitions": 3
+  },
+  "fieldData": false,
+  "p12Approval": false,
+  "scoreGate": false,
+  "analyticsEnabled": false,
+  "rawArtifactsExported": false,
+  "limits": [
+    "External script bytes are a subtotal excluding inline/RSC/HTML and preload entries classified link.",
+    "Menu wall time is not INP or causal Motion attribution.",
+    "Private original-media transport does not prove public Next.Image performance."
+  ],
+  "evidence": [
+    {
+      "label": "performance-recalculated-v9.json",
+      "sha256": "0195920e4b19f56ac64feb20982d570b8ae5fd470c8766f22cb8e279b606245d"
+    },
+    {
+      "label": "lighthouse-summary-v9.json",
+      "sha256": "668fb6704362fd2ebd9babca8d1e2981bcaa2224fe19ec75d8f0c4a7509820f2"
+    },
+    {
+      "label": "resource-observations-v9.json",
+      "sha256": "00ddb8f2f565df904aad90a53f5c312dcbf5e922249df247bcca4e780b6248f8"
+    }
+  ]
+}
