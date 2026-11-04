@@ -1,0 +1,32 @@
+{
+  "runId": "c099a415-fcb5-40b3-884d-0f581ba52aa4",
+  "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "network": "none",
+  "readOnlyLock": true,
+  "cleanup": [
+    {
+      "removed": true,
+      "id": "8b0850e917968624f32854facf8d932e23aa26f5f2616804fb6447e9e910bb70"
+    },
+    {
+      "removed": true,
+      "id": "4b46e1758fe201b92d2574890e3b0076745c42c16b8fa794af93fda4e58717cb"
+    }
+  ],
+  "holderId": "8b0850e917968624f32854facf8d932e23aa26f5f2616804fb6447e9e910bb70",
+  "contenderId": "4b46e1758fe201b92d2574890e3b0076745c42c16b8fa794af93fda4e58717cb",
+  "holder": {
+    "pid": 1,
+    "device": "86",
+    "inode": "36310271996439320"
+  },
+  "contenderConflictExit": 75,
+  "holderTerminationExit": 137,
+  "contenderAfterTerminationExit": 0,
+  "contenderAfterTermination": {
+    "pid": 1,
+    "device": "86",
+    "inode": "36310271996439320"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,194 @@
+=== r2-backup-wiring-red-001.txt ===
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+··········x·xx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/r2-repository.test.ts > rejects an R2 source identity mismatch before capturing data or contacting the backup bucket
+AssertionError: expected [Function] to throw error matching /registered source media identity/i but got 'Unregistered backup repository'
+
+- Expected:
+/registered source media identity/i
+
++ Received:
+"Unregistered backup repository"
+
+ ❯ ops/backup/r2-repository.test.ts:369:83
+    367|       },
+    368|     };
+    369|     await expect(runBackup(runOptions(createR2BackupRepository(options…
+       |                                                                                   ^
+    370|       /registered source media identity/i,
+    371|     );
+ ❯ withBoundary ops/backup/r2-repository.test.ts:102:18
+ ❯ ops/backup/r2-repository.test.ts:360:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| ops/backup/r2-repository.test.ts > admits only a registered R2 reader and stages before checking a restore target
+AssertionError: expected [] to deeply equal [ 'GET namespace.json', …(3) ]
+
+- Expected
++ Received
+
+- [
+-   "GET namespace.json",
+-   "GET sets/4308c944-54e8-406f-86ec-f38af18cdb7b/pending.json",
+-   "GET sets/4308c944-54e8-406f-86ec-f38af18cdb7b/complete.json",
+-   "GET sets/4308c944-54e8-406f-86ec-f38af18cdb7b/payload.age",
+- ]
++ []
+
+ ❯ ops/backup/r2-repository.test.ts:452:82
+    450|       expect(requests).toHaveLength(start);
+    451|       await expect(restoreBackup({ ...input, repository: approved })).…
+    452|       expect(requests.slice(start).map(({ method, key }) => `${method}…
+       |                                                                                  ^
+    453|         'GET namespace.json',
+    454|         `GET sets/${id}/pending.json`,
+ ❯ withPrivateBackupWorkspace ops/backup/repository.ts:390:12
+ ❯ ops/backup/r2-repository.test.ts:434:5
+ ❯ withBoundary ops/backup/r2-repository.test.ts:102:12
+ ❯ ops/backup/r2-repository.test.ts:433:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| ops/backup/r2-repository.test.ts > backs up a fenced R2 media source and recovers the encrypted set through the existing isolated target
+Error: Unregistered backup repository
+ ❯ localBackupRepositoryScope ops/backup/repository.ts:70:21
+     68| export function localBackupRepositoryScope(repository: LocalBackupRepo…
+     69|   const scope = scopes.get(repository);
+     70|   if (!scope) throw new Error('Unregistered backup repository');
+       |                     ^
+     71|   return { root: scope.root, namespace: structuredClone(scope.namespac…
+     72| }
+ ❯ runBackup ops/backup/run.ts:59:22
+ ❯ ops/backup/r2-repository.test.ts:483:29
+ ❯ withBoundary ops/backup/r2-repository.test.ts:102:12
+ ❯ ops/backup/r2-repository.test.ts:466:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 11 passed (14)
+   Start at  02:02:06
+   Duration  847ms (tests 37%, setup 29%, import 27%, transform 7%, worker 1%)
+
+Exit: 1
+
+=== r2-backup-wiring-green-001.txt ===
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+··············
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  02:03:22
+   Duration  1.12s (tests 51%, import 22%, setup 19%, transform 8%)
+
+Exit: 0
+
+=== r2-backup-wiring-red-002.txt ===
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·······x······x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/r2-repository.test.ts > binds the source-media separation check to the bucket used by its S3 client
+Error: Backup R2 marker could not be read
+ ❯ json ops/backup/r2-repository.ts:148:13
+    146|     } catch (error) {
+    147|       if (error instanceof MissingBackupObject) return undefined;
+    148|       throw new Error('Backup R2 marker could not be read');
+       |             ^
+    149|     }
+    150|   }
+ ❯ Object.checkNamespace ops/backup/r2-repository.ts:189:21
+ ❯ Object.begin ops/backup/r2-repository.ts:238:7
+ ❯ ops/backup/r2-repository.test.ts:295:5
+ ❯ withBoundary ops/backup/r2-repository.test.ts:102:12
+ ❯ ops/backup/r2-repository.test.ts:281:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| ops/backup/r2-repository.test.ts > backs up a fenced R2 media source and recovers the encrypted set through the existing isolated target
+AccessDenied: Loopback fixture
+ ❯ S3RestXmlProtocol.handleError node_modules/.pnpm/@aws-sdk+core@3.979.1/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:1398:27
+ ❯ S3RestXmlProtocol.deserializeResponse node_modules/.pnpm/@smithy+core@3.38.1/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:410:13
+ ❯ node_modules/.pnpm/@smithy+core@3.38.1/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24
+ ❯ node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.85/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:380:20
+ ❯ node_modules/.pnpm/@smithy+core@3.38.1/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:179:50
+ ❯ node_modules/.pnpm/@aws-sdk+checksums@3.1002.1/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:235:24
+ ❯ node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.85/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28
+ ❯ node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.85/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20
+ ❯ node_modules/.pnpm/@aws-sdk+core@3.979.1/node_modules/@aws-sdk/core/dist-cjs/submodules/client/index.js:127:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 13 passed (15)
+   Start at  02:05:11
+   Duration  875ms (tests 40%, setup 27%, import 26%, transform 7%, worker 1%)
+
+Exit: 1
+
+=== r2-backup-wiring-red-003.txt ===
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·············x·
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/r2-repository.test.ts > admits only a registered R2 reader and stages before checking a restore target
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ ops/backup/r2-repository.test.ts:487:40
+    485|       registered.backupId = randomUUID();
+    486|       await expect(recovery).rejects.toThrow();
+    487|       expect(unregisteredReaderCalled).toBe(false);
+       |                                        ^
+    488|       expect(requests.slice(start).map(({ method, key }) => `${method}…
+    489|         'GET namespace.json',
+ ❯ withPrivateBackupWorkspace ops/backup/repository.ts:390:12
+ ❯ ops/backup/r2-repository.test.ts:459:5
+ ❯ withBoundary ops/backup/r2-repository.test.ts:102:12
+ ❯ ops/backup/r2-repository.test.ts:458:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 passed (15)
+   Start at  02:06:27
+   Duration  1.23s (tests 55%, import 20%, setup 19%, transform 7%)
+
+Exit: 1
+
+=== r2-backup-wiring-green-003.txt ===
+v24.22.2
+& $node 'node_modules\vitest\vitest.mjs' run --project unit 'ops/backup' --reporter=dot
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·················································································································································
+
+ Test Files  11 passed (11)
+      Tests  145 passed (145)
+   Start at  02:07:00
+   Duration  3.38s (tests 57%, setup 29%, import 10%, transform 3%)
+
+Exit: 0

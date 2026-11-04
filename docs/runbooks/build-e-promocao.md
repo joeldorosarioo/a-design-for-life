@@ -13,7 +13,7 @@ Escopo atual: preparação e validação **locais**, E3.4. A3/A4 continuam pende
 
 ## Build local coordenado
 
-Executar na raiz, após proteção dos serviços e gates pelo responsável. Nenhum destes comandos foi executado como parte da preparação dos arquivos.
+Executar na raiz, após proteger os serviços e congelar a fonte. O ensaio 004 usou Buildx no builder desktop-linux com o lockfile congelado, inspeção pelo ID imutável e smoke sem rede. Os recibos preservam o snapshot de fonte e o vínculo com as provas HTTP. [Verificação da imagem 004](../verification/artifacts/E3-image/docker-draft-build-004.json)
 
 ```powershell
 # Rascunho honesto para fonte ainda não commitada. Não é candidata aprovada.

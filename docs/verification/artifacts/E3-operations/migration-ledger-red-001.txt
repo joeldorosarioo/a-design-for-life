@@ -1,0 +1,59 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/migrations/controlled.test.ts (6 tests | 6 failed) 9ms
+   × recognizes the reviewed predecessor and the already-current native history 5ms
+   × refuses empty history before operational effects 2ms
+   × refuses gapped history before operational effects 0ms
+   × refuses duplicate history before operational effects 0ms
+   × refuses unknown history before operational effects 0ms
+   × refuses development history before operational effects 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/migrations/controlled.test.ts > recognizes the reviewed predecessor and the already-current native history
+AssertionError: expected 'already-current' to be 'pending' // Object.is equality
+
+Expected: "pending"
+Received: "already-current"
+
+ ❯ ops/migrations/controlled.test.ts:23:48
+     21|
+     22| it('recognizes the reviewed predecessor and the already-current native…
+     23|   expect(planControlledMigration(predecessor)).toBe('pending');
+       |                                                ^
+     24|   expect(
+     25|     planControlledMigration([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |unit| ops/migrations/controlled.test.ts > refuses empty history before operational effects
+ FAIL  |unit| ops/migrations/controlled.test.ts > refuses gapped history before operational effects
+ FAIL  |unit| ops/migrations/controlled.test.ts > refuses duplicate history before operational effects
+ FAIL  |unit| ops/migrations/controlled.test.ts > refuses unknown history before operational effects
+ FAIL  |unit| ops/migrations/controlled.test.ts > refuses development history before operational effects
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ ops/migrations/controlled.test.ts:39:49
+     37|   ['development', [...predecessor, { name: 'dev', batch: -1 }]],
+     38| ])('refuses %s history before operational effects', (_name, ledger) =>…
+     39|   expect(() => planControlledMigration(ledger)).toThrow(/history/i);
+       |                                                 ^
+     40| });
+     41|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  01:51:44
+   Duration  421ms (setup 77%, transform 11%, import 7%, tests 4%, worker 2%)
+
+EXIT_CODE=1
