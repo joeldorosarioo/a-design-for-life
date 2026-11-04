@@ -4,7 +4,12 @@ import { assertServedPublication } from '@/helpers/payload/publication-http-veri
 import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
 import { randomUUID } from 'node:crypto';
 import { expect, it } from 'vitest';
-import { mapCaseDetail } from '@/features/cases/server';
+import {
+  mapCaseDetail,
+  renderCaseRouteResponse,
+  selectCaseStatePresentation,
+} from '@/features/cases/server';
+import { mapProfile } from '@/features/professional-profile/server';
 import type { PublicationUpdate } from '@/payload-types';
 import type { PublicRoot } from '@/helpers/payload/public-root';
 import { planPublicationObservations } from './portfolio-publication-observation';
@@ -146,7 +151,10 @@ it('does not observe a requested operation superseded in the actual selected roo
   ).rejects.toThrow('Publication observation requires the selected operation.');
 });
 
-function mediaWithdrawal(removed?: { mediaId: string; variant: 'original' }[]) {
+function mediaWithdrawal(
+  removed?: { mediaId: string; variant: 'original' }[],
+  slugs: string[] = [],
+) {
   const caseId = randomUUID();
   const contentId = randomUUID();
   const subject = entry({
@@ -156,7 +164,7 @@ function mediaWithdrawal(removed?: { mediaId: string; variant: 'original' }[]) {
     locale: 'pt',
     slug: null,
     detail: null,
-    slugs: [],
+    slugs,
     media: [],
     ...(removed && { mediaObservation: { removed } }),
   });
@@ -169,6 +177,90 @@ function mediaWithdrawal(removed?: { mediaId: string; variant: 'original' }[]) {
   };
   return { root, operation: intent('case-content', contentId, subject), siteOrigin };
 }
+
+it.each(['technical', 'editorial'] as const)(
+  'requires the exact %s withdrawal document and rejects a live case even with its heading and 410 headers',
+  async (variant) => {
+    const input = mediaWithdrawal([], ['withdrawn']);
+    if (variant === 'editorial') {
+      input.root.subjects[`professional-profiles/${randomUUID()}`] = entry({
+        kind: 'profile',
+        locale: 'pt',
+        profile: JSON.parse(
+          JSON.stringify(
+            mapProfile({
+              id: randomUUID(),
+              locale: 'pt',
+              _status: 'published',
+              contacts: {
+                email: 'editorial@example.invalid',
+                linkedin: 'https://www.linkedin.com/in/confirmed',
+              },
+              resume: randomUUID(),
+              createdAt: '',
+              updatedAt: '',
+            }),
+          ),
+        ),
+      });
+      input.root.subjects[`site-navigation/${randomUUID()}`] = entry({
+        kind: 'navigation',
+        locale: 'pt',
+        navigation: {
+          locale: 'pt',
+          header: {
+            brandLabel: 'Marca',
+            projectsLabel: 'Projetos',
+            aboutLabel: 'Sobre',
+            resumeLabel: 'CV',
+            contactLabel: 'Contato',
+          },
+          footer: {
+            title: 'Rodapé',
+            emailLabel: 'E-mail',
+            linkedinLabel: 'LinkedIn',
+            resumeLabel: 'CV',
+          },
+          controls: {
+            newTabLabel: 'Nova aba',
+            openMenuLabel: 'Abrir',
+            closeMenuLabel: 'Fechar',
+            languageLabel: 'Idioma',
+          },
+          messages: {
+            caseUnavailableTitle: 'Retirada editorial',
+            caseUnavailableDescription: 'Descrição editorial',
+          },
+        },
+      });
+    }
+    const path = '/pt/cases/withdrawn';
+    const probe = (await planPublicationObservations(input)).find((item) => item.path === path);
+    expect(probe?.status).toBe(410);
+    const locale = 'pt';
+    const presentation = await selectCaseStatePresentation({
+      locale,
+      status: 410,
+      root: input.root,
+    });
+    const heading = variant === 'editorial' ? 'Retirada editorial' : 'Case indisponível';
+    expect(presentation?.title ?? null).toBe(variant === 'editorial' ? heading : null);
+    const genuine = renderCaseRouteResponse({ status: 410, locale }, locale, presentation);
+    const bytes = Buffer.from(await genuine.arrayBuffer());
+    const stale = Buffer.from(
+      `<!doctype html><html lang="pt"><head><meta name="robots" content="noindex, nofollow"><title>${heading}</title></head><body><main><article data-reading-key="case-opening"><h1>${heading}</h1><p>Old public detail content</p></article></main></body></html>`,
+    );
+
+    expect(probe!.matches(bytes, genuine.headers)).toBe(true);
+    expect(probe!.matches(stale, genuine.headers)).toBe(false);
+    const wrongMime = new Headers(genuine.headers);
+    wrongMime.set('Content-Type', 'application/json');
+    expect(probe!.matches(bytes, wrongMime)).toBe(false);
+    const missingRobots = new Headers(genuine.headers);
+    missingRobots.delete('X-Robots-Tag');
+    expect(probe!.matches(bytes, missingRobots)).toBe(false);
+  },
+);
 
 it('cannot acknowledge public withdrawal through the HTTP plan while the revoked asset still returns bytes', async () => {
   const mediaId = randomUUID();

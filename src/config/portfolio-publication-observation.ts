@@ -3,7 +3,11 @@ import { isDeepStrictEqual } from 'node:util';
 import type { PublicationUpdate } from '@/payload-types';
 import type { PublicRoot } from '@/helpers/payload/public-root';
 import { type PublicObservation } from '@/helpers/payload/publication-http-verification';
-import { getPublishedCaseAggregate } from '@/features/cases/server';
+import {
+  getPublishedCaseAggregate,
+  renderCaseRouteResponse,
+  selectCaseStatePresentation,
+} from '@/features/cases/server';
 import { casePublicSnapshotSchema, confirmedCases } from '@/features/cases/server/case-publication';
 import { getPublishedProfile } from '@/features/professional-profile/server';
 import { getPublishedNavigation } from '@/features/site-navigation/server';
@@ -29,6 +33,23 @@ function html(path: string, status: number, expected: PublicPageObservation): Pu
     path,
     status,
     matches: (body, headers) => matchesPublicPage(body, headers, expected),
+  };
+}
+
+async function withdrawnCase(
+  locale: Locale,
+  root: PublicRoot,
+): Promise<Omit<PublicObservation, 'path'>> {
+  const presentation = await selectCaseStatePresentation({ locale, status: 410, root });
+  const expected = renderCaseRouteResponse({ status: 410, locale }, locale, presentation);
+  const expectedBody = Buffer.from(await expected.arrayBuffer());
+  const robots = expected.headers.get('x-robots-tag');
+  return {
+    status: expected.status,
+    matches: (body, headers) =>
+      headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() === 'text/html' &&
+      headers.get('x-robots-tag') === robots &&
+      expectedBody.equals(body),
   };
 }
 
@@ -170,6 +191,7 @@ export async function planPublicationObservations({
           }),
         );
       }
+      let withdrawn: Omit<PublicObservation, 'path'> | undefined;
       for (const slug of item.slugs) {
         if (slug === item.slug) continue;
         const path = '/' + item.locale + '/cases/' + slug;
@@ -190,13 +212,8 @@ export async function planPublicationObservations({
             },
           });
         } else {
-          const expected = html(path, 410, { locale: item.locale });
-          add({
-            ...expected,
-            matches: (body, headers) =>
-              headers.get('x-robots-tag') === 'noindex, nofollow' &&
-              expected.matches(body, headers),
-          });
+          withdrawn ??= await withdrawnCase(item.locale, root);
+          add({ path, ...withdrawn });
         }
       }
     }

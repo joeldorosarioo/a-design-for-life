@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+···xx··
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > requires the exact technical withdrawal document and rejects a live case even with its heading and 410 headers
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > requires the exact editorial withdrawal document and rejects a live case even with its heading and 410 headers
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/config/portfolio-publication-observation.test.ts:255:52
+    253|
+    254|     expect(probe!.matches(bytes, genuine.headers)).toBe(true);
+    255|     expect(probe!.matches(stale, genuine.headers)).toBe(false);
+       |                                                    ^
+    256|     const wrongMime = new Headers(genuine.headers);
+    257|     wrongMime.set('Content-Type', 'application/json');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  03:08:18
+   Duration  6.29s (setup 68%, transform 15%, import 15%, tests 1%, worker 1%)
+
+EXIT_CODE=1
