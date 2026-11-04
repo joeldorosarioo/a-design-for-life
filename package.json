@@ -20,6 +20,7 @@
     "migrate:create": "node --conditions=react-server ./node_modules/payload/bin.js migrate:create",
     "migrate": "node --conditions=react-server ./node_modules/payload/bin.js migrate",
     "setup:media-checker": "node testing/setup/install-qpdf.mjs",
+    "setup:backup-tools": "node testing/setup/install-age.mjs",
     "test": "vitest run",
     "test:unit": "vitest run --project unit",
     "test:integration": "vitest run --project integration",
@@ -29,11 +30,14 @@
     "lint": "eslint .",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm test:case-state-css && pnpm build",
-    "test:case-state-css": "node --test scripts/emit-case-state-css.test.mjs"
+    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm test:case-state-css && pnpm test:stage-progress && pnpm build",
+    "test:case-state-css": "node --test scripts/emit-case-state-css.test.mjs",
+    "test:stage-progress": "node --test scripts/recalculate-stage-progress.test.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.1161.0",
     "@payloadcms/db-postgres": "3.92.1",
+    "@payloadcms/email-resend": "3.92.1",
     "@payloadcms/next": "3.92.1",
     "@payloadcms/richtext-lexical": "3.92.1",
     "@payloadcms/ui": "3.92.1",
@@ -43,6 +47,7 @@
     "graphql": "16.14.2",
     "motion": "14.7.1",
     "next": "16.4.3",
+    "parse5": "8.0.1",
     "payload": "3.92.1",
     "pdfjs-dist": "6.4.299",
     "react": "19.3.1",

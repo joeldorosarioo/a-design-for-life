@@ -1,0 +1,14 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > marks the anonymous profile JSON with the generation that supplies its public fields 46ms
+ ✓ |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > keeps invalid locale at 404 and unavailable coverage at 503 without a generation marker 3ms
+ ✓ |unit| src/features/site-navigation/content/collections/site-navigation.published.test.ts > marks navigation JSON from the same root as its confirmed profile dependency 55ms
+ ✓ |unit| src/features/cases/content/collections/case-content.published.test.ts > returns only confirmed locale cards and featured cards from one captured generation while current.json advances 73ms
+ ✓ |unit| src/features/cases/content/collections/case-content.published.test.ts > distinguishes confirmed empty cards from a missing, empty or corrupt root 35ms
+
+ Test Files  3 passed (3)
+      Tests  5 passed (5)
+   Start at  00:56:12
+   Duration  3.65s (import 85%, setup 10%, transform 3%, tests 2%)
+

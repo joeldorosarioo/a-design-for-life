@@ -9,6 +9,7 @@ import {
 import { profilePublicationAdapter } from './features/professional-profile/server/profile-publication';
 import { navigationPublicationAdapter } from './features/site-navigation/server/navigation-publication';
 import { PublicationUpdates } from './helpers/payload/publication-updates.collection';
+import { PublicationRetries } from './helpers/payload/publication-retries.collection';
 import { publicationFields } from './helpers/payload/publication-fields';
 import { editorialError } from './helpers/payload/editorial-revision';
 import path from 'node:path';
@@ -27,7 +28,9 @@ import {
 import { installPayloadProvider } from './helpers/payload/runtime';
 import { getPayload, buildConfig } from 'payload';
 import { installMediaRuntime } from './features/media-library/server/media-runtime';
-import { readServerEnv } from './config/server-env';
+import { readServerEnv, resolveInternalHttpOrigin } from './config/server-env';
+import { readIntegrationEnv } from './config/integration-env';
+import { createR2ObjectStorage } from './helpers/storage/r2-storage';
 import { usersCollection } from './helpers/payload/users.collection';
 import { editorialEmailAdapter } from './helpers/payload/editorial-email';
 import { nativePreviewURL } from './helpers/payload/preview-session';
@@ -43,18 +46,32 @@ import { Media } from './features/media-library/content/collections/media';
 
 loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
+const integrations = readIntegrationEnv(process.env, env);
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const Users = usersCollection(env.SITE_ORIGIN);
 const publicationDirectory = publicRootDirectory(env);
-installPublicationProvider(() => portfolioPublicationCoordinator(publicationDirectory));
+const verificationOrigin =
+  env.PUBLICATION_HTTP_VERIFICATION_ENABLED === 'true' && resolveInternalHttpOrigin(env);
+installPublicationProvider(() =>
+  portfolioPublicationCoordinator(
+    publicationDirectory,
+    verificationOrigin
+      ? { internalOrigin: verificationOrigin, siteOrigin: env.SITE_ORIGIN }
+      : undefined,
+  ),
+);
 installMediaRuntime({
-  root:
-    env.MEDIA_STORAGE_ROOT ??
-    path.resolve(
-      '.work/private-media',
-      env.MEDIA_BUCKET,
-      new URL(env.DATABASE_URI).pathname.slice(1),
-    ),
+  ...(integrations.storage.driver === 'r2'
+    ? { storage: createR2ObjectStorage(integrations.storage) }
+    : {
+        root:
+          env.MEDIA_STORAGE_ROOT ??
+          path.resolve(
+            '.work/private-media',
+            env.MEDIA_BUCKET,
+            new URL(env.DATABASE_URI).pathname.slice(1),
+          ),
+      }),
   checkerBinary:
     env.MEDIA_CHECKER_BINARY ??
     path.resolve(
@@ -64,7 +81,7 @@ installMediaRuntime({
 
 const config = buildConfig({
   secret: env.PAYLOAD_SECRET,
-  email: editorialEmailAdapter(env.APP_ENV, env.DATABASE_URI),
+  email: editorialEmailAdapter(env.APP_ENV, env.DATABASE_URI, integrations.resend),
   hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
@@ -90,6 +107,8 @@ const config = buildConfig({
     publicationFields(ProfessionalProfiles, profilePublicationAdapter),
     Media,
     PublicationUpdates,
+    // Default OFF: apply the additive migration before operational opt-in.
+    ...(env.PUBLICATION_RETRIES_ENABLED === 'true' ? [PublicationRetries] : []),
   ].map((collection) =>
     ['case-content', 'site-navigation', 'professional-profiles'].includes(collection.slug)
       ? {

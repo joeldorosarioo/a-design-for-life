@@ -11,6 +11,31 @@ const validInput = {
   MEDIA_BUCKET: 'adfl-test-files',
 } satisfies NodeJS.ProcessEnv;
 
+it('keeps retry registration off unless the server explicitly opts in', () => {
+  expect(readServerEnv(validInput).PUBLICATION_RETRIES_ENABLED).toBeUndefined();
+  expect(readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENABLED: 'true' })).toMatchObject({
+    PUBLICATION_RETRIES_ENABLED: 'true',
+  });
+});
+it('rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime', () => {
+  expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENABLED: '1' })).toThrow(
+    /PUBLICATION_RETRIES_ENABLED/,
+  );
+});
+it('keeps the detached worker off and requires metadata registration before explicit worker opt-in', () => {
+  expect(readServerEnv(validInput).PUBLICATION_RETRY_WORKER_ENABLED).toBeUndefined();
+  expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRY_WORKER_ENABLED: 'true' })).toThrow(
+    /PUBLICATION_RETRY_WORKER_ENABLED/,
+  );
+  expect(
+    readServerEnv({
+      ...validInput,
+      PUBLICATION_RETRIES_ENABLED: 'true',
+      PUBLICATION_RETRY_WORKER_ENABLED: 'true',
+    }).PUBLICATION_RETRY_WORKER_ENABLED,
+  ).toBe('true');
+});
+
 describe('readServerEnv', () => {
   // Removing secret validation would permit an unsafe CMS startup.
   it('recusa iniciar sem segredo do Payload', () => {
@@ -123,4 +148,37 @@ it('derives local internal HTTP origin only from trusted loopback site configura
       readServerEnv({ ...production, INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3000' }),
     ),
   ).toBe('http://127.0.0.1:3000');
+});
+
+it('allows public HTTP receipt verification only in an explicit isolated test runtime with a trusted origin', () => {
+  const selected = 'PUBLICATION_HTTP_VERIFICATION_ENABLED';
+  expect(readServerEnv(validInput)).not.toHaveProperty(selected);
+  expect(() => readServerEnv({ ...validInput, [selected]: 'true' })).toThrow(
+    /PUBLICATION_HTTP_VERIFICATION_ENABLED/,
+  );
+  expect(() =>
+    readServerEnv({
+      ...validInput,
+      APP_ENV: 'local',
+      NODE_ENV: 'development',
+      [selected]: 'true',
+      INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
+    }),
+  ).toThrow(/PUBLICATION_HTTP_VERIFICATION_ENABLED/);
+  expect(() =>
+    readServerEnv({
+      ...validInput,
+      [selected]: 'true',
+      INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
+    }),
+  ).toThrow(/PUBLICATION_HTTP_VERIFICATION_ENABLED/);
+  expect(
+    readServerEnv({
+      ...validInput,
+      [selected]: 'true',
+      INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
+      DATABASE_URI: 'postgres://adfl:local@127.0.0.1:55434/adfl_test_runner',
+      MEDIA_BUCKET: 'adfl-test-runner',
+    }),
+  ).toHaveProperty(selected, 'true');
 });

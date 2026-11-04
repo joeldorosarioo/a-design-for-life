@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·x·
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > verifies current detail, canonical history and withdrawn routes with one root and the same fixed canonical origin
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/portfolio-publication-observation.test.ts:98:96
+     96|   const redirected = online.at(-1)!;
+     97|   const destination = siteOrigin + '/pt/cases/atual';
+     98|   expect(redirected.matches(Buffer.from(destination), new Headers({ Lo…
+       |                                                                                                ^
+     99|   expect(redirected.matches(Buffer.from('unexpected body'), new Header…
+    100|   expect(redirected.matches(Buffer.from('/pt/cases/atual'), new Header…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  01:04:25
+   Duration  6.36s (setup 50%, import 29%, transform 20%, worker 1%)
+
+Exit: 1

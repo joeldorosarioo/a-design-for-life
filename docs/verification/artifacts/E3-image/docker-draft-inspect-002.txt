@@ -1,0 +1,21 @@
+StartedUTC=2026-11-04T00:33:20.4493893Z
+ImageID=sha256:b368acbe78a99668d2b07ff3d4bc85f7da5cfeac5139dce1c4fecf2cefa7d91a
+{
+  "imageId": "sha256:b368acbe78a99668d2b07ff3d4bc85f7da5cfeac5139dce1c4fecf2cefa7d91a",
+  "registryDigests": [],
+  "platform": "linux/amd64",
+  "user": "10001:10001",
+  "revision": "draft-e3-local",
+  "layers": 14,
+  "environmentNames": [
+    "HOSTNAME",
+    "MEDIA_CHECKER_BINARY",
+    "NEXT_TELEMETRY_DISABLED",
+    "NODE_ENV",
+    "NODE_VERSION",
+    "PATH",
+    "PORT",
+    "YARN_VERSION"
+  ]
+}
+EXIT_CODE=0

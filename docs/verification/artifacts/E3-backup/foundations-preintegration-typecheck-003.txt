@@ -1,0 +1,48 @@
+COMMAND: pnpm exec tsc --noEmit --incremental false
+src/helpers/payload/backup-snapshot.integration.test.ts(124,40): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(o: {}): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 2, '(o: object): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+src/helpers/payload/backup-snapshot.integration.test.ts(181,13): error TS2322: Type 'DatabaseAdapterResult<PostgresAdapter>' is not assignable to type '{ allowIDOnCreate: boolean; defaultIDType: "number" | "text"; init: (args: { payload: BasePayload; }) => BaseDatabaseAdapter; name: string; }'.
+  Types of property 'allowIDOnCreate' are incompatible.
+    Type 'boolean | undefined' is not assignable to type 'boolean'.
+      Type 'undefined' is not assignable to type 'boolean'.
+src/helpers/payload/backup-snapshot.integration.test.ts(221,24): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(o: {}): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 2, '(o: object): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+src/helpers/payload/backup-snapshot.integration.test.ts(268,32): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(o: {}): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 2, '(o: object): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+src/helpers/payload/backup-snapshot.integration.test.ts(291,22): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(o: {}): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 2, '(o: object): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+src/helpers/payload/backup-snapshot.integration.test.ts(294,32): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(o: {}): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 2, '(o: object): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+src/helpers/payload/backup-snapshot.integration.test.ts(316,22): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(o: {}): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 2, '(o: object): string[]', gave the following error.
+    Argument of type '{ [id: string]: { db: unknown; reject: () => Promise<void>; resolve: () => Promise<void>; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+EXIT_CODE: 2

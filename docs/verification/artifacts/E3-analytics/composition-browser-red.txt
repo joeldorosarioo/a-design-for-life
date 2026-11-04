@@ -1,0 +1,232 @@
+Command: & 'E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe' node_modules/vitest/vitest.mjs run --project unit src/features/analytics/browser/document-analytics.test.ts --reporter=dot
+Exit code: 1
+Pinned Node24.22.2; pnpm12.10.1/package/lock unchanged.
+Scope: authorized conditional analytics composition and native anchors only. Synthetic, intercepted script/measurement boundary. No Google SDK execution/network, DB, build, global tests or services.
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·········xxxxx··xxx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > queues genuine arguments objects with denied consent before the intercepted async no-referrer script load
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:72:23
+     70|       f.scripts.push(script);
+     71|     }});
+     72|     expect(f.scripts).toHaveLength(1);
+       |                       ^
+     73|     expect(f.scripts[0].src).toBe('https://www.googletagmanager.com/gt…
+     74|     expect(f.scripts[0].async).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > reuses one session and script across remounts and completed A to B to A views
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:97:23
+     95|     b();
+     96|     mountDocumentAnalytics({document: f.doc, runtime, context: home, l…
+     97|     expect(f.scripts).toHaveLength(1);
+       |                       ^
+     98|     expect(f.commands().filter((command) => command[0] === 'config')).…
+     99|     expect(f.eventCommands().map((command) => (command[2] as {page_loc…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > tracks only fixed-purpose bubbling native actions with sanitized context and preserves default action
+AssertionError: expected [] to deeply equal [ …(5) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "event",
+-     "page_view",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "contact_email_click",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "contact_linkedin_click",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "resume_open",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "resume_open",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+- ]
++ []
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:115:31
+    113|     await f.click(f.link('resume'), 'auxclick', {button: 1});
+    114|     expect(emailEvent.defaultPrevented).toBe(false);
+    115|     expect(f.eventCommands()).toEqual([
+       |                               ^
+    116|       ['event', 'page_view', {send_to:'G-TESTONLY1',language:'en',page…
+    117|       ['event', 'contact_email_click', {send_to:'G-TESTONLY1',language…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > waits for later native preventDefault checks and ignores arbitrary/secondary actions
+AssertionError: expected [] to deeply equal [ 'page_view' ]
+
+- Expected
++ Received
+
+- [
+-   "page_view",
+- ]
++ []
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:138:60
+    136|     f.doc.body.appendChild(button);
+    137|     await f.click(button);
+    138|     expect(f.eventCommands().map((command) => command[1])).toEqual(['p…
+       |                                                            ^
+    139|   });
+    140|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > removes contact handling on cleanup/exclusion and cancels queued actions from an obsolete context
+AssertionError: expected [] to deeply equal [ 'page_view' ]
+
+- Expected
++ Received
+
+- [
+-   "page_view",
+- ]
++ []
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:152:60
+    150|     mountDocumentAnalytics({document: f.doc, runtime: {...runtime, are…
+    151|     await f.click(link);
+    152|     expect(f.eventCommands().map((command) => command[1])).toEqual(['p…
+       |                                                            ^
+    153|   });
+    154|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > stops permanently on loader throw and keeps native contact navigation working
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:177:19
+    175|     release();
+    176|     mountDocumentAnalytics({document: f.doc, runtime, context: about, …
+    177|     expect(loads).toBe(1);
+       |                   ^
+    178|     expect(f.commands()).toEqual(before);
+    179|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > stops permanently on script error or changed runtime ownership
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:184:23
+    182|     const f = fixture();
+    183|     mountDocumentAnalytics({document: f.doc, runtime, context: home, l…
+    184|     expect(f.scripts).toHaveLength(1);
+       |                       ^
+    185|     f.scripts[0].dispatchEvent(new Event('error'));
+    186|     await f.click(f.link('resume'));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  |unit| src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > never reads URL/referrer/title/cookie/storage and does not accept outside calls to its owned global queue
+AssertionError: expected [] to deeply equal [ 'page_view' ]
+
+- Expected
++ Received
+
+- [
+-   "page_view",
+- ]
++ []
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:208:60
+    206|     }
+    207|     expect(() => mountDocumentAnalytics({document:f.doc,runtime,contex…
+    208|     expect(f.eventCommands().map((command) => command[1])).toEqual(['p…
+       |                                                            ^
+    209|     const before = f.commands();
+    210|     f.host.gtag?.('event', 'unapproved', {email:'secret'});
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 11 passed (19)
+   Start at  21:40:54
+   Duration  12.52s (environment 97%, setup 1%, tests 1%)
+
+

@@ -1,0 +1,339 @@
+COMMAND: pnpm exec vitest run --project integration src/helpers/payload/backup-snapshot.integration.test.ts src/features/media-library/server/backup-inventory.integration.test.ts
+START_UTC: 2026-11-04T01:00:23.2316682Z
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[22:00:30] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (87ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (6ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (34ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (1ms)[39m
+[22:00:30] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[22:00:30] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[22:00:30] [32mINFO[39m: [36mDone.[39m
+stdout | src/features/media-library/server/backup-inventory.integration.test.ts > exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B
+{"event":"backup-proof-tool","containerId":"6a6e4d921226ab083e97e5832026cf001e930d0fff98a4983121cc34201f2e04","tool":"rm","args":["-f","/tmp/adfl-backup-48847f54-c29f-4f10-84b7-8eb5ef7184e5.dump"],"exitCode":0,"stdout":"","stderr":""}
+
+stdout | src/features/media-library/server/backup-inventory.integration.test.ts
+{"event":"backup-proof-owned-resource","containerId":"6a6e4d921226ab083e97e5832026cf001e930d0fff98a4983121cc34201f2e04","networkId":"33e4210365aa682627004714f42f88cb95063dd55aaf82c3653ab7516d351e35","runId":"b3824bb6-27a3-4793-b2d1-fa3833e7bf4d"}
+
+ ❯ |integration| src/features/media-library/server/backup-inventory.integration.test.ts (2 tests | 1 failed) 2485ms
+   × exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B 1569ms
+stdout | src/helpers/payload/backup-snapshot.integration.test.ts
+{"event":"backup-proof-owned-resource","containerId":"6a6e4d921226ab083e97e5832026cf001e930d0fff98a4983121cc34201f2e04","networkId":"33e4210365aa682627004714f42f88cb95063dd55aaf82c3653ab7516d351e35","runId":"b3824bb6-27a3-4793-b2d1-fa3833e7bf4d"}
+
+ ❯ |integration| src/helpers/payload/backup-snapshot.integration.test.ts (2 tests | 1 failed) 949ms
+   × enforces native read-only access and rolls back after a rejected write 43ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/backup-snapshot.integration.test.ts > enforces native read-only access and rolls back after a rejected write
+AssertionError: expected Error: Failed query: update "cases" set "… { …(2) } to match object { code: '25006' }
+(21 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
++ DrizzleQueryError {
++   "message": "Failed query: update \"cases\" set \"internal_title\" = $1, \"updated_at\" = $2 where (\"cases\".\"id\" = $3 and \"cases\".\"id\" = $4) returning \"id\", \"internal_title\", \"sort_order\", \"featured\", \"editorial_revision\", \"content_revision\", \"lease_token\", \"lease_owner\", \"lease_expires_at\", \"latest_publication_intent\", \"public_confirmed\", \"updated_at\", \"created_at\"
++ params: Unsafe write,2026-11-04T01:00:37.635Z,fb09754f-2902-4a9c-b90d-3f5f7ed0ba08,fb09754f-2902-4a9c-b90d-3f5f7ed0ba08",
++   "cause": error {
++     "message": "cannot execute UPDATE in a read-only transaction",
++     "length": 118,
++     "name": "error",
++     "severity": "ERROR",
+      "code": "25006",
++     "detail": undefined,
++     "hint": undefined,
++     "position": undefined,
++     "internalPosition": undefined,
++     "internalQuery": undefined,
++     "where": undefined,
++     "schema": undefined,
++     "table": undefined,
++     "column": undefined,
++     "dataType": undefined,
++     "constraint": undefined,
++     "file": "utility.c",
++     "line": "407",
++     "routine": "PreventCommandIfReadOnly",
++   },
++   "query": "update \"cases\" set \"internal_title\" = $1, \"updated_at\" = $2 where (\"cases\".\"id\" = $3 and \"cases\".\"id\" = $4) returning \"id\", \"internal_title\", \"sort_order\", \"featured\", \"editorial_revision\", \"content_revision\", \"lease_token\", \"lease_owner\", \"lease_expires_at\", \"latest_publication_intent\", \"public_confirmed\", \"updated_at\", \"created_at\"",
++   "params": [
++     "Unsafe write",
++     "2026-11-04T01:00:37.635Z",
++     "fb09754f-2902-4a9c-b90d-3f5f7ed0ba08",
++     "fb09754f-2902-4a9c-b90d-3f5f7ed0ba08",
++   ],
+  }
+
+ ❯ src/helpers/payload/backup-snapshot.integration.test.ts:108:4
+    106|       async () => 'unexpected',
+    107|     ),
+    108|   ).rejects.toMatchObject({ code: '25006' });
+       |    ^
+    109|   expect(
+    110|     await fixture.payload.db.findOne({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/features/media-library/server/backup-inventory.integration.test.ts > exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B
+AssertionError: expected [ …(103) ] to deeply equal ArrayContaining{…}
+
+- Expected
++ Received
+
+- ArrayContaining [
+-   "ecbed2b0-1fd8-4b18-a702-4b31bca8d3cf",
++ [
++   "00a99318-9e3f-44e5-9313-9b5a71cd7ab0",
++   "0412a96a-4699-4e44-9c16-7bbfec584935",
++   "063e8850-8695-4ad7-bff1-a158f3319648",
++   "113c44e1-ef48-46e5-bea8-877cd7228f32",
++   "17264a0f-f155-41c9-a59e-cf77f4c7cca1",
++   "1a0cf93f-4fde-41c8-b7dd-0d4b288eb58a",
++   "1af87437-eb05-402c-bc2d-246ef983a820",
++   "1ba72d5d-74a7-46d4-ab4e-5aba4fc00941",
++   "1bcf32fe-731d-4602-a80c-56ee0d8a7d3f",
++   "2c27362c-a682-40cf-aec5-b30b952cd5de",
++   "2ebd212d-4e12-4f2c-85bb-113ad018c7e5",
++   "2f6f62c7-9c45-4f05-bc08-08a2b38ea497",
++   "309b38a2-6346-4d9c-a8a4-81b0e4bab881",
++   "32dbf20c-e4cd-4295-9ce3-46c576919f7e",
++   "3412d71a-1a59-48f2-aeef-18c757d4e801",
++   "378ec60e-abf5-49d9-b0a2-29708a73d5b6",
++   "38c2bc20-9090-4c00-b943-3e56169c52b1",
++   "38d9ff30-f051-4381-940e-9ae6f499dbaf",
++   "3c779f03-eeb1-4c15-84cb-6d1a5bf88cb0",
++   "3c85a623-6542-458e-9d2d-c638d93bf235",
++   "3edd43b8-a169-4350-a03d-cee61e9ce1c2",
++   "40782758-f96f-4f1d-b920-5721c87e7271",
++   "4113cb91-d362-4a28-a8f3-430106d9563b",
++   "435db258-add5-46d7-95c3-b5da2480989b",
++   "43fe82b5-2982-4bc2-904d-3e828e70eabe",
++   "46cd3f0f-8acc-41f6-8e02-91c84dc25a54",
++   "4a119503-a5d1-4a89-8b57-cb15916acdb8",
++   "4a525075-0db4-4d3a-9cf1-178e73f8e805",
++   "50136d81-92d9-4c0e-87ed-3c4f5fbc8f16",
++   "54728e11-3099-4260-a395-2022635bb259",
++   "55247433-0890-4b65-aca9-7f11a6e1b045",
++   "57a8f28c-7341-45a6-afcb-066baf314b96",
++   "597d55ba-0790-4ae2-8664-7bb342f7f1fe",
++   "5e7b206d-0665-4118-ae16-49dcbe3bb649",
++   "6093035f-c966-45d7-9fdd-78106ea35ab1",
++   "62d2d63e-9c63-42b8-aaf6-672594706ab4",
++   "6459c129-2a51-4f93-8ac2-4a6284e5b3f3",
++   "65d3c049-b77d-4dcf-9c55-4c79aa4e4549",
++   "668321c4-aab6-48d9-80ca-f3f580ae9777",
++   "6a2e8ae0-505f-4b29-9994-4f8956fedebe",
++   "6e0182ba-2f87-4b63-9393-dc8618d90761",
++   "700a4681-ec6a-4eb3-a39f-4c0e603aa66d",
++   "73637dd7-8a65-4759-9842-1d7bd5200ed1",
++   "76f68228-75fa-4bbb-8a3b-4a76734a291d",
++   "7719feb0-c334-4c89-a8e8-bd5f88365d8b",
++   "77ecea8a-f7f5-4071-955c-e464c7c82068",
++   "784e3c37-1c23-4956-ba76-24ffc3de16a6",
++   "7a347425-9b51-4380-8fc7-ab332176a3f3",
++   "7a4630fe-5a14-42cd-9e86-6894d5e2a838",
++   "7be0c5da-dae2-443a-8530-824dc4ccd271",
++   "7c5b74ea-975c-4020-bd26-e07f75fb7edf",
++   "7f04c768-bff3-4066-b260-94204d2eb8c0",
++   "80efceb2-9a79-4902-8897-387f6c3de83b",
++   "81f1c2a8-d1ca-473d-83d8-2eb215a93a44",
++   "8de71cd0-a1da-423c-95c6-011ca7dcc4a7",
++   "8e2931a7-f5d2-4883-8e60-ba31d3a96de7",
++   "900cf86d-cf75-4188-92e5-33637b15fec0",
++   "9260f155-2844-457f-952b-069d996862fd",
++   "9287da7f-f856-40a9-90b9-ef294a9e3c0d",
++   "967aa140-2d84-4280-8951-f2a36f035555",
++   "97802337-53b2-4f1b-b6e5-76aa1deaf4d3",
++   "9d9edd58-1463-400c-99db-1e929df4f8b4",
++   "9da14164-9ffd-456c-97dc-a4c285adb1e2",
++   "9e4b437e-f030-4b6f-a1ff-6d2dd7cfa9d6",
++   "9ec86dd4-31be-43ac-ae34-36b3468c4cdf",
+    "a32c4d4a-1784-40e9-a617-5cd1a02f7ed6",
+-   "5c928be4-daa4-4221-8afa-aa1038f6b249",
+-   "888c7de3-45a2-4589-8d3a-36538c5ca79f",
+-   "7a7baef4-3f70-4b3b-81f2-c92aa27a355b",
+-   "e413ac3f-2549-461e-82c8-798e27301ad5",
+-   "42841483-9dfc-4454-a79a-7c2ebcd6a00a",
+-   "bb691f99-d3f9-4ce9-a104-7d0938713598",
+-   "3acc71bf-c68f-4810-9868-1aaa8ff9196d",
+-   "fd67b282-5879-49d9-97b3-cd1365d52462",
+-   "fda1722f-76b7-4810-aee4-48c6d93f91f3",
+-   "bcd7d7e2-2009-4133-92cc-b11953d72d54",
+-   "367fea88-ae4c-48c9-8864-ac12fdd83410",
+-   "d17512c9-4120-42bb-bece-6b0495a73a29",
+-   "b0a3ebb4-77ab-4900-bc3e-b0f77b562ab6",
+-   "af2ab05f-d3c8-4585-9cf2-67934c212325",
+-   "029b7a41-8ba5-412f-8567-498baad87b9d",
+-   "bb509433-a175-453e-a37d-c7bb12040b3f",
+-   "546edfd6-6cd3-480c-aea7-c784596dcc0d",
+-   "2d0ffa59-e288-45be-b608-9ab0be594867",
+-   "3e90a1f3-dc4b-429f-98c1-8d3fa2e47415",
+-   "79d1e575-1564-47b4-a3ad-939586eefa2c",
+-   "8c1782d8-92be-4c16-b751-a0f9b4ea78b0",
+-   "2b113b4c-e32e-4218-95ad-b309824b773f",
+-   "cf87d24d-1511-4fc8-b062-8b7b2fc3bcbe",
+-   "38b6307c-0d5f-439b-911f-8d89c5e95025",
+-   "6e266a6e-c27c-4996-9afc-e50b124ec4b8",
+-   "58ae3718-3c0e-4be2-b5ad-52b07a844dac",
+-   "678f6f65-e706-4e64-865f-876576241c44",
+-   "026f122c-6c3c-4b3d-81d9-196188a9e004",
+-   "3b8e98da-189a-4217-b7d8-e3149d2eabfc",
+-   "724ad751-ea27-45bb-b31a-0aefae922deb",
+-   "4071018f-788f-48e0-b687-29ba701a64b4",
+-   "a3dd248b-f857-4752-9af6-fb7ee1f3c3ee",
+-   "b2f76d99-a281-4787-ba1d-525d2f6cc33f",
+-   "9b6c84f5-ac08-47e7-8a69-0f5d4cad991b",
+-   "fc410613-358a-4aad-a690-081167f0ec1b",
+-   "db2ce1c8-19ba-44f4-b968-b4a08b7ea7bd",
+-   "71fbf8a9-d02a-4a9d-9449-b5ff0e7a4ded",
+-   "a736f5c9-ea71-45a8-ac94-a64e55a8bffd",
+-   "3f329dd3-f9ac-4e54-9812-089d0d8edbc2",
+-   "1c799b5a-5e29-4d27-984e-43f7245ec8ab",
+-   "8931ff4d-a0ec-4e96-aeca-69f8599663e2",
+-   "4d90c8c9-8def-49f8-9961-998e59422978",
+-   "542ae013-988a-4580-a9d4-420adb9ebcb3",
+-   "f6cc6df7-232b-4c22-b91f-f328490878c2",
+-   "3f85effc-acff-4a14-9980-2b2be78a658f",
+-   "b484bf2b-0bd5-4cdd-af27-7cde1ef31521",
+-   "7c87b24f-8351-4c02-9b50-8deafea93fd7",
+-   "93820613-3056-48e3-b332-5de82097f07c",
+-   "fa477715-dda3-4609-94cf-7244e898ee84",
+-   "b6c24fe3-c197-4be8-8b5b-fb25a1797459",
+-   "1cc9466c-c333-44d2-8c8d-1823a9cf287c",
+-   "acc0b06c-d620-4b99-8926-930b746cd441",
+-   "d91ad639-8e5f-4f7a-ad54-eb8c4a39f285",
+-   "1748bb35-d903-40f1-8d02-2a8cd6b7342d",
+-   "a3f9babf-286c-4e9e-bf39-dc982c31a84b",
+-   "dd5f76c9-f4ac-465a-8ce7-c4ef80ccdf11",
+-   "60d802fa-f1ca-4d11-b105-47068f2a486e",
+-   "e95b0dcd-16d0-4394-bdd5-bf159ee27ada",
+-   "90e1e2d3-0a1b-46a2-9903-e025903034b0",
+-   "06236989-d6af-4930-9c6e-7c06e20c1743",
+-   "8a0b0762-ff5b-4505-9d9e-6f34f3703745",
+-   "4051ac1f-4f68-42a8-b4f2-15f61aedeae1",
+-   "45f405ac-04b4-4361-8832-719492c385e0",
+-   "6d86d670-992e-44f5-a3f5-a492afb7a7cd",
+-   "5a657836-911f-4557-a586-d39c9dc76bec",
+-   "4404ef34-45a7-4e2c-86a8-322da9d89fc8",
+-   "a2dab6cf-9ecf-4f4b-9df1-5bcf9142d9da",
+-   "61939b4e-31d2-4061-8dd7-c293b076fffd",
+-   "c0f9ff9e-ab4a-4e77-88a4-47db40bd621f",
+-   "ed1427dd-746d-42dc-b971-92df4b95ad62",
+-   "79076845-9596-4740-b16d-37bb3c5d918c",
+-   "c627dab7-7385-4f23-8def-0d15a915d226",
+-   "54f0eda2-fbf0-4a38-a5c1-4107488e124c",
+-   "e1e2b0f2-b51c-44b0-9de0-56cdee027f3a",
+-   "b9934bea-6130-4481-96ef-fdd0c61671f8",
+-   "6c789336-2c94-4cef-b280-fa0ca752b54e",
+-   "5dbeed74-d5f0-4d11-868b-9a2f505507f3",
+-   "72400262-a69b-4171-a3e8-0b252aadb0b0",
+-   "841858d0-75ac-489d-aefe-a40c77ca43bc",
+-   "6c4e1061-fc26-4795-9a7b-d3c9ecf87bb9",
+-   "4b1eb177-d26f-455a-8a91-efed5bc3f7d1",
+-   "398b02d9-e82e-4403-9660-c32dea94b6b3",
+-   "5535295d-7f4d-40a5-971b-df7742a29888",
+-   "56c126c9-3683-4c05-8773-20f6aca101ba",
+-   "38103a3c-4eca-4519-aed8-655bccd1fe26",
+-   "ca791a69-eeb6-41fe-b029-8f298e083a68",
+-   "6d1786f0-801d-4e77-b347-39ed8140fe95",
+-   "b5525e96-49c5-49a8-8e9a-bfedd5b0cd62",
+-   "30777815-edb8-4eee-a280-38ae680c717a",
+-   "f683f5b0-a50a-44f0-bdc7-51a81880eeec",
+-   "ce3f24e4-84d0-4472-b1cf-c9125d82ba7f",
+-   "d89da80a-4f49-42bb-8a8e-aa4f1c2090f2",
+-   "a9fab4e6-d036-4601-a1dc-a57f9cb2a646",
+-   "10d1104f-2ab9-4938-bc89-60d877bc4565",
+-   "10f76b41-09e1-4526-aeea-cb38ca6a87c8",
+-   "0d078e76-3584-4db6-9eac-35e984c8fefd",
+-   "fa444589-ee65-44f0-aaa8-45852abdaeb7",
+-   "1e0d697b-4384-42bb-86f7-f8b82a4e2f49",
+-   "edf5c1ee-91aa-4d8f-9b7d-5a3ee1dbe19a",
+-   "694e0e4d-9027-4a87-b961-01c1667e4534",
+-   "78e24eb7-3ff4-4c9d-9c7f-6e054bb3433c",
++   "a4e4eba3-4d2b-4747-aa95-004a1153b10e",
++   "ad01af78-36bd-4061-a1ca-994371f9a49e",
++   "b111624e-d2dd-46bb-a745-e51c5f6920c5",
++   "b3c43750-5716-4413-9aed-af99c60d92ee",
++   "b428c994-610d-4143-9abc-9a3eb49071bf",
++   "b7690ea2-5e8a-45e0-9c48-4d13446a201f",
++   "b9dc8722-7a2d-4f32-8b6d-051af8690f3d",
++   "bc06ff34-bdb3-4aed-8f9f-de4f80b966e8",
++   "be5a2814-6a64-4595-a675-123315466fa7",
++   "c06e6911-1c54-4cda-ab3c-6f0820e5e37d",
++   "c0ef2168-f4e5-4943-8888-33132f6b8d63",
++   "c14f0478-aaf3-460a-9f67-0fdcd6982d2d",
++   "c48a49e7-6598-47a1-9ae4-8788da96ba9d",
++   "c6de4918-53d7-49e4-a833-e720ceb58139",
++   "c719e9b5-5e97-4038-88e8-396989d79ca9",
++   "caabf58a-c19b-4e3e-ad6e-17ab258b2a84",
++   "cab02d37-39d5-4be6-bf83-122496591a12",
++   "cc5f3100-df66-493e-9272-e4d32d054f2b",
++   "ce46f1e4-9eb4-49ff-97d4-027aadc7f0d3",
++   "cef657b7-a769-4504-88b3-aaaa0f3a4138",
++   "cf307f38-2d3f-4cf5-b928-90b6126d4b2f",
++   "d4810d95-627d-45bb-a9c6-f207a8cfe4ee",
++   "d5db1654-ade3-449d-b7d3-6d2f681a324f",
++   "dad664e8-6209-4613-adfd-7c0936de744c",
++   "dae70106-d08c-40e8-a1d5-0e5bc39cac62",
++   "dafb033d-dae6-4401-b09d-9c1e896b0537",
++   "dd689c24-1b15-480d-ba66-62a5b2bf07c2",
++   "df540f25-6805-45e2-963e-43e2868e3678",
++   "e75a87e1-28b7-4767-ace4-0fd9559ef30a",
++   "ea2fe2dd-0734-485b-9f9b-30a1246d9d74",
++   "ecbed2b0-1fd8-4b18-a702-4b31bca8d3cf",
++   "f16b4491-208f-42bf-bdf0-8affd33eae73",
++   "f6fe5641-b7e0-46b0-be01-3f06d96478f0",
++   "f8d688bb-73ca-4d8b-b02d-1be8e9408092",
++   "f9dfeea6-735e-462a-a83a-19afc27eb675",
++   "fc47991a-3a65-452d-80f6-b5b016baa4c1",
++   "fe0bcc86-f9bc-4285-a9c7-3074579c865a",
+  ]
+
+ ❯ src/features/media-library/server/backup-inventory.integration.test.ts:201:44
+    199|         expect(snapshot.snapshotId).toMatch(/^[a-f0-9]{8}-[a-f0-9]{8}-…
+    200|         expect(snapshot.root).toEqual(confirmedA);
+    201|         expect(snapshot.captured.mediaIds).toEqual(
+       |                                            ^
+    202|           expect.arrayContaining([image.id, pdf.id, ...pagingIds]),
+    203|         );
+ ❯ withNativeBackupSnapshot src/helpers/payload/backup-snapshot.ts:78:18
+ ❯ src/features/media-library/server/backup-inventory.integration.test.ts:192:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 2 passed (4)
+   Start at  22:00:23
+   Duration  14.22s (import 49%, tests 47%, transform 2%, setup 2%)
+
+EXIT_CODE: 1
+END_UTC: 2026-11-04T01:00:40.7780318Z

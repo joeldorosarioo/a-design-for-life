@@ -3,6 +3,7 @@ import { once } from 'node:events';
 import { createServer } from 'node:net';
 import setupDatabase from './integration-global';
 import { configureTestEnvironment } from './test-environment';
+import { preserveNextGeneratedFiles } from './preserve-next-generated-files';
 
 export default async function setup() {
   const env = configureTestEnvironment();
@@ -28,15 +29,27 @@ export default async function setup() {
   await once(probe, 'listening');
   await new Promise<void>((resolve) => probe.close(() => resolve()));
 
-  const stopDatabase = setupDatabase();
-  const build = spawnSync(process.execPath, ['./node_modules/next/dist/bin/next', 'build'], {
-    stdio: 'inherit',
-    env: productionEnv,
-    windowsHide: true,
-  });
-  if (build.error || build.status !== 0) {
+  const stopDatabase = await setupDatabase();
+  try {
+    const sourceFiles = await preserveNextGeneratedFiles({
+      root: process.cwd(),
+      distDir: process.env.NEXT_TEST_DIST_DIR!,
+    });
+    let build: ReturnType<typeof spawnSync>;
+    try {
+      build = spawnSync(process.execPath, ['./node_modules/next/dist/bin/next', 'build'], {
+        stdio: 'inherit',
+        env: productionEnv,
+        windowsHide: true,
+      });
+    } finally {
+      await sourceFiles.restore();
+    }
+    if (build.error || build.status !== 0)
+      throw build.error ?? new Error('Build local falhou: ' + build.status);
+  } catch (error) {
     stopDatabase();
-    throw build.error ?? new Error(`Build local falhou: ${build.status}`);
+    throw error;
   }
 
   const server = spawn(

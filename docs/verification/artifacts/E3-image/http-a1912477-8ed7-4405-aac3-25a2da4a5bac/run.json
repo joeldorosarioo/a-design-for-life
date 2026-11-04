@@ -1,0 +1,17 @@
+{
+  "runId": "a1912477-8ed7-4405-aac3-25a2da4a5bac",
+  "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+  "startedUTC": "2026-11-04T00:43:05.656Z",
+  "httpOnly": true,
+  "datasets": [],
+  "containers": [],
+  "status": "failed",
+  "databaseContainerId": "2b06dc11092dcc374e7d02215a1b8d7422a188e4f60bb2d4315db8a768fee38a",
+  "databaseNetworkId": "9352c47c50ed0c20c6ad879ad920eeb1ee4e03640990de403614e5892f45b988",
+  "databaseHostPort": 55434,
+  "failure": "Isolated native child failed: a-seed-private.log",
+  "cleanup": [],
+  "databaseStoppedAndRemoved": true,
+  "finishedUTC": "2026-11-04T00:43:21.226Z",
+  "fullBrowserImageE2E": "pending"
+}

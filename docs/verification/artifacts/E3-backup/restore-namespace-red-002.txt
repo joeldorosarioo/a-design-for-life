@@ -1,0 +1,49 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/restore-target.test.ts (26 tests | 1 failed | 25 skipped) 25ms
+   × accepts a fresh owned restore target compatible with the validated test server environment 24ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > accepts a fresh owned restore target compatible with the validated test server environment
+AssertionError: promise rejected "ZodError: [
+  {
+    "code": "custom",
+   … { …(2) }" instead of resolving
+ ❯ ops/backup/restore-target.test.ts:178:50
+    176|   expect(new URL(env.DATABASE_URI).pathname).toBe(`/${compatible.datab…
+    177|   const boundary = createRestoreTargetBoundary(async () => ({ ...obser…
+    178|   await expect(boundary.acquire(compatible, now)).resolves.toBeDefined…
+       |                                                  ^
+    179| });
+    180|
+
+Caused by: ZodError: [
+  {
+    "code": "custom",
+    "message": "Restore requires distinct acquired isolated destinations",
+    "path": []
+  }
+]
+ ❯ Object.acquire ops/backup/restore-target.ts:78:35
+ ❯ ops/backup/restore-target.test.ts:178:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { _zod: { def: [ { code: 'custom', message: 'Restore requires distinct acquired isolated destinations', path: [] } ], constr: 'Function<ZodError>', traits: { constructor: 'Function<Set>', has: 'Function<has>', add: 'Function<add>', delete: 'Function<delete>', difference: 'Function<difference>', clear: 'Function<clear>', entries: 'Function<entries>', forEach: 'Function<forEach>', intersection: 'Function<intersection>', isSubsetOf: 'Function<isSubsetOf>', isSupersetOf: 'Function<isSupersetOf>', isDisjointFrom: 'Function<isDisjointFrom>', size: 2, symmetricDifference: 'Function<symmetricDifference>', union: 'Function<union>', values: 'Function<values>', keys: 'Function<values>' }, message: '[
+  {
+    "code": "custom",
+    "message": "Restore requires distinct acquired isolated destinations",
+    "path": []
+  }
+]' }, issues: [ { code: 'custom', message: 'Restore requires distinct acquired isolated destinations', path: [] } ], format: 'Function<anonymous>', flatten: 'Function<anonymous>', addIssue: 'Function<anonymous>', addIssues: 'Function<anonymous>', isEmpty: false }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 25 skipped (26)
+   Start at  21:39:29
+   Duration  460ms (setup 58%, import 25%, transform 8%, tests 7%, worker 1%)
+
+
+EXIT_CODE=1

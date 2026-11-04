@@ -1,0 +1,162 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+xxxxxxxxxxxxxxxxxxxx
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 20 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > confirms the expected generation and complete public JSON through an anonymous GET
+AssertionError: promise rejected "Error: Publication observer is not implem…" instead of resolving
+ ❯ src/helpers/payload/publication-http-verification.test.ts:49:95
+     47|     response.end(' pública confirmada"}');
+     48|   }, async (origin) => {
+     49|     await expect(assertServedPublication({ origin, generation, observa…
+       |                                                                                               ^
+     50|   });
+     51|   expect(requests).toEqual([{ method: 'GET', path: observation.path, c…
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:43:3
+
+Caused by: Error: Publication observer is not implemented.
+ ❯ assertServedPublication src/helpers/payload/publication-http-verification.ts:21:9
+ ❯ src/helpers/payload/publication-http-verification.test.ts:49:18
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:43:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses a completed response that differs from the public observation 0
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses a completed response that differs from the public observation 1
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses a completed response that differs from the public observation 2
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses a completed response that differs from the public observation 3
+AssertionError: expected [Function] to throw error including 'Public HTTP verification failed.' but got 'Publication observer is not implement…'
+
+Expected: "Public HTTP verification failed."
+Received: "Publication observer is not implemented."
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:66:95
+     64|     response.end(body);
+     65|   }, async (origin) => {
+     66|     await expect(assertServedPublication({ origin, generation, observa…
+       |                                                                                               ^
+     67|   });
+     68|   expect(requests).toBe(1);
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:61:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > checks the exact expected redirect and never follows it
+Error: Publication observer is not implemented.
+ ❯ assertServedPublication src/helpers/payload/publication-http-verification.ts:21:9
+     19| export async function assertServedPublication(input: PublicVerificatio…
+     20|   void input;
+     21|   throw new Error('Publication observer is not implemented.');
+       |         ^
+     22| }
+     23|
+ ❯ src/helpers/payload/publication-http-verification.test.ts:79:11
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:73:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > rejects unsafe paths before issuing any request for the plan (//foreign.test/pt)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > rejects unsafe paths before issuing any request for the plan (/pt/../private)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > rejects unsafe paths before issuing any request for the plan (/pt%2fprivate)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > rejects unsafe paths before issuing any request for the plan (/pt?preview=1)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > rejects unsafe paths before issuing any request for the plan (/pt\private)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > rejects unsafe paths before issuing any request for the plan (/pt#foo)
+AssertionError: expected [Function] to throw error including 'Unsafe public HTTP verification plan.' but got 'Publication observer is not implement…'
+
+Expected: "Unsafe public HTTP verification plan."
+Received: "Publication observer is not implemented."
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:88:121
+     86|   let requests = 0;
+     87|   await withServer((_request, response) => { requests++; response.end(…
+     88|     await expect(assertServedPublication({ origin, generation, observa…
+       |                                                                                                                         ^
+     89|   });
+     90|   expect(requests).toBe(0);
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:87:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses unsafe or ambiguous verification origins (https://127.0.0.1:3000)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses unsafe or ambiguous verification origins (http://localhost:3000)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses unsafe or ambiguous verification origins (http://127.1:3000)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses unsafe or ambiguous verification origins (http://127.0.0.1:3000/path)
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses unsafe or ambiguous verification origins (http://user@127.0.0.1:3000)
+AssertionError: expected [Function] to throw error including 'Unsafe public HTTP verification plan.' but got 'Publication observer is not implement…'
+
+Expected: "Unsafe public HTTP verification plan."
+Received: "Publication observer is not implemented."
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:94:93
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > bounds the complete body and rejects a transport interruption after matching headers
+AssertionError: expected [Function] to throw error including 'Public HTTP verification failed.' but got 'Publication observer is not implement…'
+
+Expected: "Public HTTP verification failed."
+Received: "Publication observer is not implemented."
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:104:81
+    102|     response.end(Buffer.alloc(40));
+    103|   }, async (origin) => {
+    104|     await expect(assertServedPublication({ ...plan, origin, maxBodyByt…
+       |                                                                                 ^
+    105|   });
+    106|   await withServer((_request, response) => {
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:99:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > applies one deadline even if the headers arrive and the body never finishes
+AssertionError: expected [Function] to throw error including 'Public HTTP verification failed.' but got 'Publication observer is not implement…'
+
+Expected: "Public HTTP verification failed."
+Received: "Publication observer is not implemented."
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:120:111
+    118|     response.write('incomplete', () => { started = true; });
+    119|   }, async (origin) => {
+    120|     await expect(assertServedPublication({ origin, generation, observa…
+       |                                                                                                               ^
+    121|   });
+    122|   expect(started).toBe(true);
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:116:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/20]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > requires a nonempty, bounded set of observations before requesting the origin
+AssertionError: expected [Function] to throw error including 'Unsafe public HTTP verification plan.' but got 'Publication observer is not implement…'
+
+Expected: "Unsafe public HTTP verification plan."
+Received: "Publication observer is not implemented."
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:129:82
+    127|   await withServer((_request, response) => { requests++; response.end(…
+    128|     for (const observations of [[], Array.from({ length: 65 }, () => o…
+    129|       await expect(assertServedPublication({ origin, generation, obser…
+       |                                                                                  ^
+    130|     }
+    131|   });
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:127:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/20]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  20 failed (20)
+   Start at  00:39:40
+   Duration  548ms (setup 64%, tests 12%, transform 11%, import 11%, worker 1%)
+
+Exit: 1

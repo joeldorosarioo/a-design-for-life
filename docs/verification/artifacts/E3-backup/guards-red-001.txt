@@ -1,0 +1,557 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/retention.test.ts ops/backup/restore-target.test.ts
+NODE: 24.22.2; scoped unit tests; no Docker/PG/cloud
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/retention.test.ts (25 tests | 25 failed) 17ms
+   × selects only complete sets strictly older than 56 days after a verified replacement 7ms
+   × preserves an incomplete old upload without treating it as completed 2ms
+   × does not select anything when no old complete set exists 1ms
+   × refuses retention with absent replacement 1ms
+   × refuses retention with forged verified flag 0ms
+   × refuses a proof copied into a new object 0ms
+   × refuses a replacement absent from the current listing 0ms
+   × refuses a stale integrity proof before selecting any set 0ms
+   × refuses a replacement that completed too long ago 0ms
+   × fails closed for duplicate identity 0ms
+   × fails closed for foreign namespace 0ms
+   × fails closed for invalid completion date 0ms
+   × fails closed for future completion 0ms
+   × fails closed for completion predates creation 0ms
+   × fails closed for extra control field 0ms
+   × fails closed for unexpected ciphertext path 0ms
+   × fails closed for non-list input 0ms
+   × refuses a same-ID marker changed after integrity verification 0ms
+   × refuses a verified replacement older than another complete set 0ms
+   × refuses corrupted ciphertext bytes 0ms
+   × refuses corrupted manifest bytes 0ms
+   × refuses an invalid manifest even when its hash matches 0ms
+   × refuses conflicting duplicate object references inside the encrypted manifest 0ms
+   × does not trust mutations to original input after verification 0ms
+   × refuses an invalid clock 0ms
+ ❯ |unit| ops/backup/restore-target.test.ts (25 tests | 25 failed) 35ms
+   × runs a restore effect only after acquiring and rechecking owned empty resources 15ms
+   × refuses production before inspecting resources 2ms
+   × refuses ambiguous environment before inspecting resources 0ms
+   × refuses name-only database before inspecting resources 0ms
+   × refuses foreign namespace before inspecting resources 0ms
+   × refuses reused identity across destinations before inspecting resources 0ms
+   × refuses pre-existing resources without issuing a permit 2ms
+   × refuses lost ownership lease without issuing a permit 1ms
+   × refuses nonempty database without issuing a permit 1ms
+   × refuses nonempty media without issuing a permit 1ms
+   × refuses nonempty publication without issuing a permit 0ms
+   × refuses stale observation without issuing a permit 0ms
+   × refuses expired ownership without issuing a permit 0ms
+   × refuses old acquisition without issuing a permit 0ms
+   × refuses absence checked after acquisition without issuing a permit 0ms
+   × refuses future observation without issuing a permit 0ms
+   × refuses extra bypass field without issuing a permit 0ms
+   × refuses ownership claimed for a different resource 0ms
+   × rechecks identity before any restore effect 2ms
+   × rechecks nonempty before any restore effect 2ms
+   × rechecks lease before any restore effect 2ms
+   × rejects a forged permit with no restore effect 2ms
+   × refuses a permit issued by another resource boundary 0ms
+   × consumes the permit even if the restore effect fails 0ms
+   × refuses a permit once its freshness window expires 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 50 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > runs a restore effect only after acquiring and rechecking owned empty resources
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ ops/backup/restore-target.test.ts:41:24
+     39|     expect(await readFile(file, 'utf8')).toBe('adfl_restore_1111111111…
+     40|   });
+     41|   expect(observations).toBe(2);
+       |                        ^
+     42| });
+     43| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses production before inspecting resources
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses ambiguous environment before inspecting resources
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses name-only database before inspecting resources
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses foreign namespace before inspecting resources
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses reused identity across destinations before inspecting resources
+AssertionError: expected [Function] to throw error not including 'Inspection should not run'
+ ❯ ops/backup/restore-target.test.ts:51:49
+     49| ])('refuses %s before inspecting resources', async (_name, candidate) …
+     50|   const boundary = createRestoreTargetBoundary(async () => { throw new…
+     51|   await expect(boundary.acquire(candidate, now)).rejects.not.toThrow('…
+       |                                                 ^
+     52| });
+     53| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses pre-existing resources without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses lost ownership lease without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses nonempty database without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses nonempty media without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses nonempty publication without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses stale observation without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses expired ownership without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses old acquisition without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses absence checked after acquisition without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses future observation without issuing a permit
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses extra bypass field without issuing a permit
+AssertionError: promise resolved "{ environment: 'test', …(4) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "database": {
++     "identity": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++     "namespace": "adfl_restore_11111111111141118111111111111111",
++   },
++   "environment": "test",
++   "media": {
++     "identity": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++     "namespace": "adfl-restore-11111111-1111-4111-8111-111111111111",
++   },
++   "ownerId": "11111111-1111-4111-8111-111111111111",
++   "publication": {
++     "identity": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
++     "namespace": "adfl-restore-11111111-1111-4111-8111-111111111111",
++   },
+  }
+
+ ❯ ops/backup/restore-target.test.ts:67:46
+     65| ])('refuses %s without issuing a permit', async (_name, changed) => {
+     66|   const boundary = createRestoreTargetBoundary(async () => ({ ...obser…
+     67|   await expect(boundary.acquire(target, now)).rejects.toThrow();
+       |                                              ^
+     68| });
+     69| it('refuses ownership claimed for a different resource', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses ownership claimed for a different resource
+AssertionError: promise resolved "{ environment: 'test', …(4) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "database": {
++     "identity": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++     "namespace": "adfl_restore_11111111111141118111111111111111",
++   },
++   "environment": "test",
++   "media": {
++     "identity": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++     "namespace": "adfl-restore-11111111-1111-4111-8111-111111111111",
++   },
++   "ownerId": "11111111-1111-4111-8111-111111111111",
++   "publication": {
++     "identity": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
++     "namespace": "adfl-restore-11111111-1111-4111-8111-111111111111",
++   },
+  }
+
+ ❯ ops/backup/restore-target.test.ts:72:46
+     70|   const observation = observed(); observation.target.database.identity…
+     71|   const boundary = createRestoreTargetBoundary(async () => observation…
+     72|   await expect(boundary.acquire(target, now)).rejects.toThrow();
+       |                                              ^
+     73| });
+     74| it.each(['identity', 'nonempty', 'lease'] as const)('rechecks %s befor…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > rechecks identity before any restore effect
+ FAIL  |unit| ops/backup/restore-target.test.ts > rechecks nonempty before any restore effect
+ FAIL  |unit| ops/backup/restore-target.test.ts > rechecks lease before any restore effect
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/restore-target.test.ts:87:94
+     85|   const permit = await boundary.acquire(target, now);
+     86|   await withOutput(async file => {
+     87|     await expect(boundary.run(permit, now, async () => { await writeFi…
+       |                                                                                              ^
+     88|     await expect(readFile(file)).rejects.toMatchObject({ code: 'ENOENT…
+     89|   });
+ ❯ withOutput ops/backup/restore-target.test.ts:30:15
+ ❯ ops/backup/restore-target.test.ts:86:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > rejects a forged permit with no restore effect
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/restore-target.test.ts:94:114
+     92|   const boundary = createRestoreTargetBoundary(async () => observed());
+     93|   await withOutput(async file => {
+     94|     await expect(boundary.run({ verified: true, target }, now, async (…
+       |                                                                                                                  ^
+     95|     await expect(readFile(file)).rejects.toMatchObject({ code: 'ENOENT…
+     96|   });
+ ❯ withOutput ops/backup/restore-target.test.ts:30:15
+ ❯ ops/backup/restore-target.test.ts:93:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses a permit issued by another resource boundary
+AssertionError: promise resolved "'unsafe'" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"unsafe"
+
+ ❯ ops/backup/restore-target.test.ts:101:88
+     99|   const first = createRestoreTargetBoundary(async () => observed());
+    100|   const second = createRestoreTargetBoundary(async () => observed());
+    101|   await expect(second.run(await first.acquire(target, now), now, async…
+       |                                                                                        ^
+    102| });
+    103| it('consumes the permit even if the restore effect fails', async () =>…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > consumes the permit even if the restore effect fails
+AssertionError: promise resolved "'unsafe'" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"unsafe"
+
+ ❯ ops/backup/restore-target.test.ts:107:64
+    105|   const permit = await boundary.acquire(target, now);
+    106|   await expect(boundary.run(permit, now, async () => { throw new Error…
+    107|   await expect(boundary.run(permit, now, async () => 'unsafe')).reject…
+       |                                                                ^
+    108| });
+    109| it('refuses a permit once its freshness window expires', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/50]⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses a permit once its freshness window expires
+AssertionError: promise resolved "'unsafe'" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"unsafe"
+
+ ❯ ops/backup/restore-target.test.ts:112:97
+    110|   const boundary = createRestoreTargetBoundary(async () => observed());
+    111|   const permit = await boundary.acquire(target, now);
+    112|   await expect(boundary.run(permit, new Date('2026-12-01T00:01:01.000Z…
+       |                                                                                                 ^
+    113| });
+    114|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > selects only complete sets strictly older than 56 days after a verified replacement
+AssertionError: expected [ …(4) ] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+  [
+    "22222222-2222-4222-8222-222222222222",
++   "33333333-3333-4333-8333-333333333333",
++   "44444444-4444-4444-8444-444444444444",
++   "11111111-1111-4111-8111-111111111111",
+  ]
+
+ ❯ ops/backup/retention.test.ts:41:6
+     39|   const recent = set('44444444-4444-4444-8444-444444444444', '2026-11-…
+     40|   expect(select([old.marker, boundary.marker, recent.marker, replaceme…
+     41|     .toEqual(['22222222-2222-4222-8222-222222222222']);
+       |      ^
+     42| });
+     43| it('preserves an incomplete old upload without treating it as complete…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > preserves an incomplete old upload without treating it as completed
+AssertionError: expected [ { version: 1, …(7) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "ciphertext": {
++       "byteLength": 58,
++       "key": "sets/11111111-1111-4111-8111-111111111111/payload.age",
++       "sha256": "0b27f28c32b454f87c84b185c325a299343b80eef7300aad17d0a2b78a17c930",
++     },
++     "complete": true,
++     "completedAt": "2026-11-30T23:59:50.000Z",
++     "createdAt": "2026-11-30T23:59:50.000Z",
++     "id": "11111111-1111-4111-8111-111111111111",
++     "manifestSha256": "6145c1b10154d6f10766c6345695026facc19c2fd03ba82b2a4c444803ec7d22",
++     "namespace": {
++       "environment": "test",
++       "project": "a-design-for-life",
++       "source": "isolated-backup-proof",
++     },
++     "version": 1,
++   },
++ ]
+
+ ❯ ops/backup/retention.test.ts:48:49
+     46|     createdAt: '2026-01-01T00:00:00.000Z', complete: false,
+     47|   };
+     48|   expect(select([pending, replacement.marker])).toEqual([]);
+       |                                                 ^
+     49| });
+     50| it('does not select anything when no old complete set exists', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > does not select anything when no old complete set exists
+AssertionError: expected [ { version: 1, …(7) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "ciphertext": {
++       "byteLength": 58,
++       "key": "sets/11111111-1111-4111-8111-111111111111/payload.age",
++       "sha256": "0b27f28c32b454f87c84b185c325a299343b80eef7300aad17d0a2b78a17c930",
++     },
++     "complete": true,
++     "completedAt": "2026-11-30T23:59:50.000Z",
++     "createdAt": "2026-11-30T23:59:50.000Z",
++     "id": "11111111-1111-4111-8111-111111111111",
++     "manifestSha256": "6145c1b10154d6f10766c6345695026facc19c2fd03ba82b2a4c444803ec7d22",
++     "namespace": {
++       "environment": "test",
++       "project": "a-design-for-life",
++       "source": "isolated-backup-proof",
++     },
++     "version": 1,
++   },
++ ]
+
+ ❯ ops/backup/retention.test.ts:51:40
+     49| });
+     50| it('does not select anything when no old complete set exists', () => {
+     51|   expect(select([replacement.marker])).toEqual([]);
+       |                                        ^
+     52| });
+     53| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses retention with absent replacement
+ FAIL  |unit| ops/backup/retention.test.ts > refuses retention with forged verified flag
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:57:89
+     55|   ['forged verified flag', { verified: true, marker: replacement.marke…
+     56| ])('refuses retention with %s', (_name, invalidProof) => {
+     57|   expect(() => select([old.marker, replacement.marker], { replacement:…
+       |                                                                                         ^
+     58| });
+     59| it('refuses a proof copied into a new object', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses a proof copied into a new object
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:60:91
+     58| });
+     59| it('refuses a proof copied into a new object', () => {
+     60|   expect(() => select([old.marker, replacement.marker], { replacement:…
+       |                                                                                           ^
+     61| });
+     62| it('refuses a replacement absent from the current listing', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses a replacement absent from the current listing
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:63:38
+     61| });
+     62| it('refuses a replacement absent from the current listing', () => {
+     63|   expect(() => select([old.marker])).toThrow();
+       |                                      ^
+     64| });
+     65| it('refuses a stale integrity proof before selecting any set', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses a stale integrity proof before selecting any set
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:67:122
+     65| it('refuses a stale integrity proof before selecting any set', () => {
+     66|   const receipt = proof();
+     67|   expect(() => select([old.marker, replacement.marker], { replacement:…
+       |                                                                                                                          ^
+     68| });
+     69| it('refuses a replacement that completed too long ago', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses a replacement that completed too long ago
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:71:70
+     69| it('refuses a replacement that completed too long ago', () => {
+     70|   const stale = set(newId, '2026-11-30T23:49:00.000Z');
+     71|   expect(() => verifyCompletedBackup({ ...stale, ciphertext, now })).t…
+       |                                                                      ^
+     72| });
+     73| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for duplicate identity
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for foreign namespace
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for invalid completion date
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for future completion
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for completion predates creation
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for extra control field
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for unexpected ciphertext path
+ FAIL  |unit| ops/backup/retention.test.ts > fails closed for non-list input
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:83:35
+     81|   ['non-list input', () => ({ complete: true })],
+     82| ])('fails closed for %s', (_name, markers) => {
+     83|   expect(() => select(markers())).toThrow();
+       |                                   ^
+     84| });
+     85| it('refuses a same-ID marker changed after integrity verification', ()…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses a same-ID marker changed after integrity verification
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:86:97
+     84| });
+     85| it('refuses a same-ID marker changed after integrity verification', ()…
+     86|   expect(() => select([old.marker, { ...replacement.marker, manifestSh…
+       |                                                                                                 ^
+     87| });
+     88| it('refuses a verified replacement older than another complete set', (…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses a verified replacement older than another complete set
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:90:72
+     88| it('refuses a verified replacement older than another complete set', (…
+     89|   const newer = set('66666666-6666-4666-8666-666666666666', '2026-11-3…
+     90|   expect(() => select([old.marker, replacement.marker, newer.marker]))…
+       |                                                                        ^
+     91| });
+     92| it.each(['ciphertext', 'manifest'] as const)('refuses corrupted %s byt…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses corrupted ciphertext bytes
+ FAIL  |unit| ops/backup/retention.test.ts > refuses corrupted manifest bytes
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:93:111
+     91| });
+     92| it.each(['ciphertext', 'manifest'] as const)('refuses corrupted %s byt…
+     93|   expect(() => verifyCompletedBackup({ ...replacement, ciphertext, now…
+       |                                                                                                               ^
+     94| });
+     95| it('refuses an invalid manifest even when its hash matches', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses an invalid manifest even when its hash matches
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:97:153
+     95| it('refuses an invalid manifest even when its hash matches', () => {
+     96|   const manifest = Buffer.from(JSON.stringify({ ...JSON.parse(replacem…
+     97|   expect(() => verifyCompletedBackup({ ...replacement, marker: { ...re…
+       |                                                                                                                                                         ^
+     98| });
+     99| it('refuses conflicting duplicate object references inside the encrypt…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses conflicting duplicate object references inside the encrypted manifest
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:103:153
+    101|   parsed.objects.push({ ...parsed.objects[0], sha256: 'f'.repeat(64) }…
+    102|   const manifest = Buffer.from(JSON.stringify(parsed));
+    103|   expect(() => verifyCompletedBackup({ ...replacement, marker: { ...re…
+       |                                                                                                                                                         ^
+    104| });
+    105| it('does not trust mutations to original input after verification', ()…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > does not trust mutations to original input after verification
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:109:110
+    107|   const receipt = verifyCompletedBackup({ ...current, ciphertext, now …
+    108|   current.marker.namespace.source = 'changed-source';
+    109|   expect(() => selectExpiredBackups([old.marker, current.marker], now,…
+       |                                                                                                              ^
+    110| });
+    111| it('refuses an invalid clock', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/50]⎯
+
+ FAIL  |unit| ops/backup/retention.test.ts > refuses an invalid clock
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/retention.test.ts:112:77
+    110| });
+    111| it('refuses an invalid clock', () => {
+    112|   expect(() => select([old.marker, replacement.marker], {}, new Date(N…
+       |                                                                             ^
+    113| });
+    114|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/50]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  50 failed (50)
+   Start at  21:28:37
+   Duration  4.77s (setup 97%, transform 1%, worker 1%, import 1%, tests 1%)
+
+EXIT_CODE: 1

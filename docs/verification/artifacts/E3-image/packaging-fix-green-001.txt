@@ -1,0 +1,29 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/image/assemble-standalone.test.ts (4 tests | 1 failed) 108ms
+   × restores the optional dependency graph so the real module loader resolves traced canvas 46ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/image/assemble-standalone.test.ts > restores the optional dependency graph so the real module loader resolves traced canvas
+Error: Cannot find module '@napi-rs/canvas'
+Require stack:
+- C:\Users\joeld\AppData\Local\Temp\adfl-standalone-G7dWAX\workspace\dist\standalone\node_modules\.pnpm\pdf-fixture\node_modules\pdfjs-dist\package.json
+ ❯ ops/image/assemble-standalone.test.ts:58:10
+     56|   if (process.platform !== 'win32') expect(path.isAbsolute(await readl…
+     57|   expect(await readFile(path.join(selected.destinationLink, 'index.cjs…
+     58|   expect(requireFromPdf('@napi-rs/canvas')).toEqual({ fixture: true });
+       |          ^
+     59|   await expect(assembleOptionalCanvas(selected.root, selected.standalo…
+     60| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  1 failed | 56 passed (57)
+   Start at  21:30:33
+   Duration  576ms (setup 75%, transform 10%, tests 8%, import 5%, worker 2%)
+
+EXIT_CODE=1

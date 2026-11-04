@@ -1,0 +1,35 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (1 test | 1 failed) 19ms
+   × uploads captured bytes using a signed immutable request and complete integrity metadata 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > uploads captured bytes using a signed immutable request and complete integrity metadata
+AssertionError: expected [] to deeply equal [ 'PUT' ]
+
+- Expected
++ Received
+
+- [
+-   "PUT",
+- ]
++ []
+
+ ❯ src/helpers/storage/r2-storage.test.ts:76:53
+     74|   bytes.fill(9);
+     75|   const object = await writing;
+     76|   expect(requests.map((request) => request.method)).toEqual(['PUT']);
+       |                                                     ^
+     77|   expect(requests[0].bytes).toEqual(Buffer.from([3, 1, 4]));
+     78|   expect(requests[0].key).toMatch(/^[a-f0-9]{64}$/);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  20:18:55
+   Duration  432ms (setup 72%, import 11%, transform 9%, tests 6%, worker 1%)
+

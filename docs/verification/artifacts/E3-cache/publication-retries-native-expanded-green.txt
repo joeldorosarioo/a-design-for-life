@@ -1,0 +1,68 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[22:34:10] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (46ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (107ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (10ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (10ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (36ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (2ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[22:34:10] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[22:34:10] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (3ms)[39m
+[22:34:10] [32mINFO[39m: [36mDone.[39m
+stdout | src/helpers/payload/publication-retries.integration.test.ts
+Native retry provenance {
+  runId: '50ceda27-534f-4c11-b7f2-a31b27d275c7',
+  containerId: '64b70dd8c4041ae5a1618932a29af830e852206a6335621a8ceba62874278821',
+  networkId: '113df33d3808efbc837351a76fce3163fc09dbdafe83be6e9b00f17f8e36de51',
+  image: 'postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b',
+  postgres: '17.11',
+  node: '24.22.2',
+  enabled: 'true',
+  databasePort: '55434'
+}
+
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > persists retry actor and due time in the same Native editorial transaction while remaining invisible before COMMIT 53ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > rolls back execution metadata with its actual editorial intention and cannot independently claim uncommitted work 27ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > gives two Native CAS claimers reading the same persisted version exactly one winner 34ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > retains a durably started version despite real filesystem failure without double-incrementing legacy coordinator attempts 49ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > skips stale and future outcome versions after a newer manual attempt without replacing its schedule 46ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > records only independently confirmed core outcomes and never turns execution metadata into public authority 63ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > routes a newer native intention to existing stale reconciliation without allocating the old target another attempt 66ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps the approved immutable intention claimable after a real newer private draft changes editorialRevision 234ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps a legacy NULL actor manual-only and rebinds solely to the real authorized manual editor 38ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > denies anonymous helper access and keeps the Native technical metadata API private even to editors 23ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > refuses a provisional attempt claim inside a caller-owned editorial transaction 22ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > routes a genuinely missing native head to safe existing reconciliation without allocating another version 26ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > replays the original Native capture with the later retry table absent and restores only additive execution schema 127ms
+
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+   Start at  22:34:03
+   Duration  10.37s (import 51%, tests 41%, transform 6%, setup 2%)
+

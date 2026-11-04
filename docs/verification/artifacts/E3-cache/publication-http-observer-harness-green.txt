@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses the preserved visual database before probing or launching any process 3ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > accepts only the private uncached health contract when deciding that the owned child is ready 21ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a build directory outside its acquired run: .work/next-build 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a build directory outside its acquired run: .next 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a build directory outside its acquired run: .work/next-tests/aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 3100 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 3101 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 5432 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 55432 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 55433 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 55434 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > preserves the canonical root namespace while using its own optimizer loopback and no external integrations 4ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > leaves an occupied port untouched without launching or killing a process 2ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > passes a bound test observer listener only to an explicitly opted-in child 18ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > restarts only its retained child with the same completed build and immutable environment 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > refuses a different build on restart while preserving the running owned child 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > cleans up its own child when readiness never succeeds 1ms
+ ✓ |unit| testing/setup/owned-next-server.test.ts > propagates a child launch error instead of mistaking another HTTP response for readiness 1ms
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  01:06:42
+   Duration  665ms (setup 49%, import 26%, tests 12%, transform 12%, worker 1%)
+

@@ -1,6 +1,6 @@
 import 'server-only';
 import { createLocalReq, getPayload } from 'payload';
-import config from '@payload-config';
+
 import { readServerEnv } from './server-env';
 import { provisionStructuralDocuments } from './provision-structural-documents';
 
@@ -9,6 +9,7 @@ const env = readServerEnv(process.env);
 if (!['local', 'test'].includes(env.APP_ENV)) {
   throw new Error('This stage only authorizes local or isolated-test provisioning.');
 }
+const { default: config } = await import('@payload-config');
 const payload = await getPayload({ config, disableOnInit: true });
 try {
   const req = await createLocalReq({ context: { trustedStructuralProvisioning: true } }, payload);

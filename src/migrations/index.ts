@@ -13,6 +13,7 @@ import * as migration_20261030_190345_e2_editorial_presentation_fields from './2
 import * as migration_20261030_201024_e2_reading_position_adjusted from './20261030_201024_e2_reading_position_adjusted';
 import * as migration_20261031_011109_e2_case_card_copy from './20261031_011109_e2_case_card_copy';
 import * as migration_20261103_095414_e2_cover_presentation_and_return_copy from './20261103_095414_e2_cover_presentation_and_return_copy';
+import * as migration_20261104_012603_publication_retry_metadata from './20261104_012603_publication_retry_metadata';
 
 export const migrations = [
   {
@@ -89,5 +90,10 @@ export const migrations = [
     up: migration_20261103_095414_e2_cover_presentation_and_return_copy.up,
     down: migration_20261103_095414_e2_cover_presentation_and_return_copy.down,
     name: '20261103_095414_e2_cover_presentation_and_return_copy',
+  },
+  {
+    up: migration_20261104_012603_publication_retry_metadata.up,
+    down: migration_20261104_012603_publication_retry_metadata.down,
+    name: '20261104_012603_publication_retry_metadata',
   },
 ];

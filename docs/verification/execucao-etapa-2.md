@@ -1,8 +1,8 @@
-> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada. E3 autorizada e depois pausada até reunir as informações necessárias. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). O relatório abaixo preserva o snapshot anterior à aprovação.
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
 
 # Execução autorizada — etapa 2
 
-**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. A2 pendente.**
+**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 

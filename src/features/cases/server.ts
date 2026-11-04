@@ -15,6 +15,10 @@ export {
   publishedCaseRouteSchema,
 } from './server/get-published-cases';
 export { getFeaturedCases } from './server/get-featured-cases';
+export {
+  getPublishedCaseAggregate,
+  publishedCaseAggregateSchema,
+} from './server/published-case-aggregate';
 
 export { resolveContextualLink } from './server/resolve-contextual-link';
 export { renderCaseRouteResponse } from './server/case-route-response';

@@ -1,0 +1,43 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ↓ |unit| testing/setup/test-environment.test.ts > allocates the dedicated runner namespace rather than the preserved visual database
+ ↓ |unit| testing/setup/test-environment.test.ts > opts retry metadata into only the exact owned Native test namespace
+ × |unit| testing/setup/test-environment.test.ts > keeps the ordinary owned test runtime worker off despite an inherited opt-in 11ms
+   → expected undefined to be 'false' // Object.is equality
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace
+ ↓ |unit| testing/setup/test-environment.test.ts > replaces inherited storage and internal origin and clears integration credentials
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects inherited bucket mismatches before configuring the runtime
+ ↓ |unit| testing/setup/test-environment.test.ts > keeps an absent optional checker absent across repeated configuration and child process environment
+ ↓ |unit| testing/setup/test-environment.test.ts > preserves an explicitly configured PDF checker executable
+ ↓ |unit| testing/setup/test-environment.test.ts > normalizes a supported localhost test origin only for the literal internal HTTP transport
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/test-environment.test.ts > keeps the ordinary owned test runtime worker off despite an inherited opt-in
+AssertionError: expected undefined to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+undefined
+
+ ❯ testing/setup/test-environment.test.ts:38:48
+     36|   process.env.PUBLICATION_RETRY_WORKER_ENABLED = 'true';
+     37|   const env = configureTestEnvironment();
+     38|   expect(env.PUBLICATION_RETRY_WORKER_ENABLED).toBe('false');
+       |                                                ^
+     39|   expect(process.env.PUBLICATION_RETRY_WORKER_ENABLED).toBe('false');
+     40| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 skipped (11)
+   Start at  23:09:00
+   Duration  483ms (setup 60%, import 26%, transform 9%, tests 3%, worker 1%)
+

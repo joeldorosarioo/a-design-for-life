@@ -1,0 +1,47 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/payload/editorial-email-transport.test.ts (5 tests | 2 failed | 3 skipped) 14ms
+   × turns a rejected provider response into a safe editorial failure 11ms
+   × turns a failed provider connection into a safe editorial failure 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/editorial-email-transport.test.ts > turns a rejected provider response into a safe editorial failure
+AssertionError: expected [Function] to throw error including 'Editorial email delivery is unavailab…' but got 'Error sending email: 422 - {"name":"v…'
+
+Expected: "Editorial email delivery is unavailable."
+Received: "Error sending email: 422 - {"name":"validation_error","message":"private-recipient@example.invalid secret-reset-token"}"
+
+ ❯ src/helpers/payload/editorial-email-transport.test.ts:53:6
+     51|   await expect(adapter('staging').sendEmail({
+     52|     to: 'editor@example.invalid', html: 'Synthetic recovery content',
+     53|   })).rejects.toThrow('Editorial email delivery is unavailable.');
+       |      ^
+     54| });
+     55|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/helpers/payload/editorial-email-transport.test.ts > turns a failed provider connection into a safe editorial failure
+AssertionError: expected [Function] to throw error including 'Editorial email delivery is unavailab…' but got 'synthetic-network-error secret-reset-…'
+
+Expected: "Editorial email delivery is unavailable."
+Received: "synthetic-network-error secret-reset-token"
+
+ ❯ src/helpers/payload/editorial-email-transport.test.ts:61:6
+     59|   await expect(adapter('production').sendEmail({
+     60|     to: 'editor@example.invalid', html: 'Synthetic recovery content',
+     61|   })).rejects.toThrow('Editorial email delivery is unavailable.');
+       |      ^
+     62| });
+     63|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 3 skipped (5)
+   Start at  20:16:50
+   Duration  1.10s (import 77%, setup 20%, tests 1%, transform 1%)
+

@@ -1,0 +1,59 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ↓ |unit| src/config/server-env.test.ts > keeps retry registration off unless the server explicitly opts in
+ ↓ |unit| src/config/server-env.test.ts > rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime
+ × |unit| src/config/server-env.test.ts > keeps the detached worker off and requires metadata registration before explicit worker opt-in 8ms
+   → expected [Function] to throw an error
+ ↓ |unit| src/config/server-env.test.ts > readServerEnv > recusa iniciar sem segredo do Payload
+ ↓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: undefined
+ ↓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: 
+ ↓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: https://database.example.com/adfl
+ ↓ |unit| src/config/server-env.test.ts > readServerEnv > entrega configuração tipada ao adaptador e descarta variáveis estranhas
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"APP_ENV":"production"}
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@db.example.com/adfl_test_base"}
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@127.0.0.1:55433/adfl_production"}
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"MEDIA_BUCKET":"adfl-production-media"}
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://production.example.com"}
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://127.0.0.1:3100"}
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: ftp://files.example.com
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://site.example.com/path
+ ↓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://user:pass@site.example.com
+ ↓ |unit| src/config/server-env.test.ts > protege recursos no build de produção local usado pelo Playwright
+ ↓ |unit| src/config/server-env.test.ts > confines an explicit test media root to its isolated bucket and database namespace
+ ↓ |unit| src/config/server-env.test.ts > retains only a validated literal internal HTTP loopback origin
+ ↓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: https://127.0.0.1:3100
+ ↓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://localhost:3100
+ ↓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://public.example.invalid
+ ↓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1:3100/path
+ ↓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://user:pass@127.0.0.1
+ ↓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1?url=x
+ ↓ |unit| src/config/server-env.test.ts > derives local internal HTTP origin only from trusted loopback site configuration
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > keeps the detached worker off and requires metadata registration before explicit worker opt-in
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:27:92
+     25| it('keeps the detached worker off and requires metadata registration b…
+     26|   expect(readServerEnv(validInput).PUBLICATION_RETRY_WORKER_ENABLED).t…
+     27|   expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRY_WORKER…
+       |                                                                                            ^
+     28|     /PUBLICATION_RETRY_WORKER_ENABLED/,
+     29|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 26 skipped (27)
+   Start at  23:08:31
+   Duration  469ms (setup 62%, import 25%, transform 9%, tests 3%, worker 1%)
+

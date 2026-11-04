@@ -42,9 +42,9 @@ As fixtures de grafos são definidas ao lado do teste em architecture.test.ts e 
 
 ## Configuração em execução
 
-`readServerEnv` continua sendo a fronteira Zod de entrada. `readPublicRuntime` é executado no servidor e seleciona explicitamente `siteOrigin`, `environment` e `analytics: null`. Seu tipo é derivado da função. Segredo do Payload, URI de banco, bucket e NODE_ENV não são serializados no DTO.
+`readServerEnv` continua sendo a fronteira Zod de entrada. `readPublicRuntime` é executado no servidor e seleciona explicitamente `siteOrigin`, `environment` e `analytics`. O campo `analytics` permanece null, salvo quando `APP_ENV=production`, `PUBLIC_SITE_ENABLED=true` e a identificação GA4 está configurada; nesse caso, contém somente `{ measurementId, publicSiteEnabled: true }`. Seu tipo é derivado da função. Segredo do Payload, URI de banco, bucket e NODE_ENV não são serializados no DTO.
 
-Analytics null representa integração ainda não configurada nesta etapa; não é uma escolha de consentimento. E3.3 mantém a política aprovada de medição automática exclusivamente na produção pública, sem cookies de analytics e sem banner. Nenhum script do Google ou identificador fictício foi inserido.
+O gate `PUBLIC_SITE_ENABLED` fica desabilitado por padrão, inclusive na produção ainda privada. A configuração de produção pública exige origem HTTPS e `GA4_MEASUREMENT_ID` válido; ambientes local/test/staging continuam com analytics null. O DTO condicional prepara a integração e não carrega um script Google nem define uma identificação real. O gate operacional não é uma escolha de consentimento: E3.3 preserva medição automática exclusivamente na produção efetivamente pública, sem cookies de analytics e sem banner. A composição e as provas de medição/relatórios permanecem necessárias antes da ativação.
 
 ## CI e bloqueio externo
 

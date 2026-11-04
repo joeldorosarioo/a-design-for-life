@@ -83,7 +83,7 @@ test('Native CMS persists pending shared and localized updates through reload an
     await page.reload();
     await expect(page.locator('[data-publication-state="update-pending"]')).toBeVisible();
     await page.screenshot({
-      path: 'docs/verification/artifacts/E1.8/native-shared-pending.png',
+      path: test.info().outputPath('native-shared-pending.png'),
       fullPage: true,
     });
   });
@@ -117,7 +117,7 @@ test('Native CMS persists pending shared and localized updates through reload an
     await page.reload();
     await expect(page.locator('[data-publication-state="update-pending"]')).toBeVisible();
     await page.screenshot({
-      path: 'docs/verification/artifacts/E1.8/native-case-pending.png',
+      path: test.info().outputPath('native-case-pending.png'),
       fullPage: true,
     });
   });
@@ -127,7 +127,7 @@ test('Native CMS persists pending shared and localized updates through reload an
     'New Native publication confirmed after retry',
   );
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.8/native-case-confirmed.png',
+    path: test.info().outputPath('native-case-confirmed.png'),
     fullPage: true,
   });
   expect((await request.get(`/api/case-content/${content.id}/publication-status`)).status()).toBe(
@@ -209,7 +209,7 @@ test('Native CMS rejects a stale retry and keeps withdrawal pending until the pu
     'Newer confirmed Native title',
   );
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.8/native-stale-retry.png',
+    path: test.info().outputPath('native-stale-retry.png'),
     fullPage: true,
   });
   await page.reload();
@@ -225,7 +225,7 @@ test('Native CMS rejects a stale retry and keeps withdrawal pending until the pu
     await page.reload();
     await expect(page.locator('[data-publication-state="update-pending"]')).toBeVisible();
     await page.screenshot({
-      path: 'docs/verification/artifacts/E1.8/native-withdraw-pending.png',
+      path: test.info().outputPath('native-withdraw-pending.png'),
       fullPage: true,
     });
   });
@@ -283,7 +283,7 @@ test('Native CMS edits the illustrative Figma model only as a private draft', as
   await narrative.scrollIntoViewIfNeeded();
   await expect(narrative).toContainText('O que a pessoa precisa saber para avançar?');
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.8/native-figma-draft.png',
+    path: test.info().outputPath('native-figma-draft.png'),
     fullPage: true,
   });
   const current = await fixture.payload.findByID({

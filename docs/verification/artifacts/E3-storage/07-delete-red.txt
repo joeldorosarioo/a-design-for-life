@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (7 tests | 1 failed) 31ms
+   × deletes only the specified immutable object and leaves another original readable 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > deletes only the specified immutable object and leaves another original readable
+AssertionError: expected { …(3) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "byteLength": 3,
+  "key": "a309f531d9732fcf39224f2c7001bd3c628197e249ff02652b8df014d71850d0",
+  "sha256": "9ceed0d818acc42d0318974c548e2251f888f8512bc5c4c70378aa969a883cad",
+}
+
+ ❯ src/helpers/storage/object-storage.test.ts:80:38
+     78|   };
+     79|   await transport.delete?.(object);
+     80|   expect(await adapter.head(object)).toBeNull();
+       |                                      ^
+     81|   expect(await adapter.read(retained)).toEqual(new Uint8Array([2, 7, 1…
+     82| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  20:16:00
+   Duration  434ms (setup 75%, tests 10%, transform 8%, import 6%, worker 1%)
+

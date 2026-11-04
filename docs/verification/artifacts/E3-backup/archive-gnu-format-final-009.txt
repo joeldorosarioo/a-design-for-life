@@ -1,0 +1,4 @@
+COMMAND: pnpm exec prettier --check ops/backup/tools.ts ops/backup/tools.test.ts ops/backup/archive.ts ops/backup/archive.test.ts ops/backup/age.ts ops/backup/age.test.ts
+Checking formatting...
+All matched files use Prettier code style!
+EXIT_CODE: 0

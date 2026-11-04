@@ -1,0 +1,14 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > returns only minimal process readiness with no-store and nosniff 22ms
+ ✓ |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > provides an empty HEAD response with the same public status and safety headers 1ms
+ ✓ |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > stays available with unusable dependency configuration and network disabled 0ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  20:52:31
+   Duration  376ms (setup 73%, transform 11%, tests 10%, import 6%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:52:30.5954768Z EXIT=0 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/app/(portfolio)/health/route.test.ts --reporter verbose

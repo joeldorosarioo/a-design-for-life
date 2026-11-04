@@ -1,0 +1,146 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/local-target.test.ts; fixture cleanup validated before registration
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/local-target.test.ts (9 tests | 9 failed) 19ms
+   × refuses production before any technical target command 6ms
+   × refuses staging before any technical target command 0ms
+   × refuses local before any technical target command 0ms
+   × refuses a pre-existing database instead of adopting it 0ms
+   × performs restore effects only under the actual fresh filesystem/lease guard and cleans only its new targets 7ms
+   × refuses a forged target token before any restore effect 0ms
+   × rechecks actual media emptiness before invoking the database restore process 1ms
+   × refuses catalog identity replacement and leaves targets for review instead of dropping a different database 1ms
+   × keeps a concrete target lease exclusive without TTL takeover 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > refuses production before any technical target command
+ FAIL  |unit| ops/backup/local-target.test.ts > refuses staging before any technical target command
+ FAIL  |unit| ops/backup/local-target.test.ts > refuses local before any technical target command
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/local-target.test.ts:11:239
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > refuses a pre-existing database instead of adopting it
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/local-target.test.ts:12:192
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > performs restore effects only under the actual fresh filesystem/lease guard and cleans only its new targets
+AssertionError: expected {} to match object { …(4) }
+
+- Expected
++ Received
+
+- {
+-   "databaseName": StringMatching /^adfl_test_restore_[a-f0-9]{32}$/,
+-   "mediaRoot": Any<String>,
+-   "ownerId": StringMatching /^[a-f0-9-]{36}$/,
+-   "publicationDirectory": Any<String>,
+- }
++ {}
+
+ ❯ record ops/backup/local-target.test.ts:8:63
+
+ ❯ ops/backup/local-target.test.ts:16:122
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > refuses a forged target token before any restore effect
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/local-target.test.ts:20:270
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > rechecks actual media emptiness before invoking the database restore process
+AssertionError: expected {} to match object { …(4) }
+
+- Expected
++ Received
+
+- {
+-   "databaseName": StringMatching /^adfl_test_restore_[a-f0-9]{32}$/,
+-   "mediaRoot": Any<String>,
+-   "ownerId": StringMatching /^[a-f0-9-]{36}$/,
+-   "publicationDirectory": Any<String>,
+- }
++ {}
+
+ ❯ record ops/backup/local-target.test.ts:8:63
+
+ ❯ ops/backup/local-target.test.ts:21:243
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > refuses catalog identity replacement and leaves targets for review instead of dropping a different database
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ops/backup/local-target.test.ts:22:531
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  |unit| ops/backup/local-target.test.ts > keeps a concrete target lease exclusive without TTL takeover
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/local-target.test.ts:23:239
+
+ ❯ withOwnedLocalRestoreTarget ops/backup/local-target.ts:7:163
+ ❯ ops/backup/local-target.test.ts:23:108
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed (9)
+   Start at  22:48:26
+   Duration  490ms (setup 56%, import 28%, transform 10%, tests 6%, worker 1%)
+
+EXIT_CODE: 1

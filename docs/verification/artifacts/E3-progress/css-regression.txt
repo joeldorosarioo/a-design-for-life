@@ -1,0 +1,14 @@
+Command: node --test scripts/emit-case-state-css.test.mjs
+Node: 24.22.2; pnpm: 12.10.1
+Exit: 0
+
+✔ emits browser-ready tokens and negative shell CSS at the fixed public path without source directives (93.7677ms)
+✔ rebuilds from the canonical token source instead of a frozen copied palette (37.6673ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 904.2137

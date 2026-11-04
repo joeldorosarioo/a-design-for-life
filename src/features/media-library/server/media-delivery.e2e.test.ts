@@ -1,3 +1,4 @@
+import { assertIsolatedTestEnvironment } from '../../../../testing/setup/test-environment';
 import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { createHash } from 'node:crypto';
 import {
@@ -206,7 +207,7 @@ test('native media UI creates an immutable asset and shows its private thumbnail
   const thumbnail = await page.request.get(`/preview-media/${doc.id}/w80`);
   expect(thumbnail.status()).toBe(200);
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.6/native-media-ui.png',
+    path: test.info().outputPath('native-media-ui.png'),
     fullPage: true,
   });
 });
@@ -272,13 +273,8 @@ test('real storage loss stays503 while SQL loss preserves confirmed public bytes
       req: await fixture.request(),
     })) as Media | null;
     const manifest = mediaManifestSchema.parse(raw?.manifest);
+    assertIsolatedTestEnvironment(process.env);
     const database = new URL(process.env.DATABASE_URI!);
-    if (
-      process.env.APP_ENV !== 'test' ||
-      database.port !== '55433' ||
-      !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname)
-    )
-      throw new Error('Fault injection requires owned isolated test resources');
     const root = path.resolve(
       process.env.MEDIA_STORAGE_ROOT ??
         path.join('.work/private-media', process.env.MEDIA_BUCKET!, database.pathname.slice(1)),

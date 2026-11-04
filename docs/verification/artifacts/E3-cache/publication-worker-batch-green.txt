@@ -1,0 +1,10 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > executes only a bounded sequential batch and preserves progress after one execution fails 2ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  23:03:26
+   Duration  469ms (setup 85%, transform 8%, import 4%, worker 2%, tests 1%)
+

@@ -1,0 +1,21 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > executes only a bounded sequential batch and preserves progress after one execution fails 2ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 0 1ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: -1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 1.5 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: NaN 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 101 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an invalid injected instant before loading due Native work 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > detaches the first drain, never overlaps a running drain, and stops future scheduling 3ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > contains detached drain failures, logs no raw errors, and tries a later bounded drain 2ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > can stop before the detached callback without touching the application Payload pool 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > rejects a timer overflow before it can turn an intended long poll into a busy loop 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > lets a started drain settle when stopping and never starts another after settlement 0ms
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  23:10:50
+   Duration  402ms (setup 76%, transform 10%, import 8%, tests 4%, worker 2%)
+

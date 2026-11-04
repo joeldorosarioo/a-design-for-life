@@ -18,12 +18,20 @@ export function SiteFooter({ navigation }: { navigation: NavigationPresentation 
           className={styles.contactList}
         >
           <li>
-            <a className={buttonVariants()} href={`mailto:${contacts.email}`}>
+            <a
+              className={buttonVariants()}
+              href={`mailto:${contacts.email}`}
+              data-analytics-purpose="email"
+            >
               {footer.emailLabel}
             </a>
           </li>
           <li>
-            <a className={buttonVariants()} href={contacts.linkedin}>
+            <a
+              className={buttonVariants()}
+              href={contacts.linkedin}
+              data-analytics-purpose="linkedin"
+            >
               {footer.linkedinLabel}
             </a>
           </li>
@@ -31,6 +39,7 @@ export function SiteFooter({ navigation }: { navigation: NavigationPresentation 
             <a
               className={buttonVariants()}
               href={navigation.items[2].destination.href}
+              data-analytics-purpose="resume"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${footer.resumeLabel} (${controls.newTabLabel})`}

@@ -1,0 +1,245 @@
+{
+  "frozenAt": "2026-11-04T01:51:49.2365290+00:00",
+  "checkout": "E:\\a-design-for-life",
+  "scope": "Current complete file hashes; other existing shared changes are not attributed wholly to this retry slice.",
+  "node": "24.22.2",
+  "postgres": "17.11",
+  "payload": "3.92.1",
+  "flagDefault": "OFF",
+  "protectedFiles": [
+    "src/helpers/payload/publication-coordinator.ts",
+    "src/helpers/payload/publication-updates.collection.ts",
+    "src/migrations/20261030_124550_publication_coordination.ts"
+  ],
+  "protectedDiffExit": 0,
+  "protectedDiff": [],
+  "files": [
+    {
+      "path": "src/helpers/payload/publication-retries.collection.ts",
+      "bytes": 1006,
+      "sha256": "41bde614733a9f2baaa211cbc079b080c2fb0cdd9cfce5539caaabb0bdb7cfe1"
+    },
+    {
+      "path": "src/helpers/payload/publication-retries.ts",
+      "bytes": 10429,
+      "sha256": "5ad90dc49835dff8dd94ec7f0729435c1494f4a4d36f4451e08f8604ae3d89eb"
+    },
+    {
+      "path": "src/helpers/payload/publication-retries.integration.test.ts",
+      "bytes": 25605,
+      "sha256": "5a360381f1015541789db07ca82e72ba7723dfbdd211b1ac5ee0cf6df8669791"
+    },
+    {
+      "path": "src/helpers/payload/publication-retry-policy.ts",
+      "bytes": 7573,
+      "sha256": "9c82eccbc531bb674a44b38c9782f316e27431ccbebe1dc355d40db6bdb58c1d"
+    },
+    {
+      "path": "src/helpers/payload/publication-retry-policy.test.ts",
+      "bytes": 13419,
+      "sha256": "73db4548a30103b6f502f85c0a94eb3915ffa93fda716b94cb2d71354e31a273"
+    },
+    {
+      "path": "src/helpers/payload/publication-updates.ts",
+      "bytes": 5807,
+      "sha256": "5c1f81cad2304a91363e01f4610eb35b4173d2c45c45c2de09e1f6383ff5df95"
+    },
+    {
+      "path": "src/config/capture-legacy-publications.ts",
+      "bytes": 7406,
+      "sha256": "26d69e0c28c7a96bf2f7f8a5d5df157010bc5c3cb53a5eb78388523c20d05221"
+    },
+    {
+      "path": "src/config/server-env.ts",
+      "bytes": 5282,
+      "sha256": "dff0fe9120e7de659415049ac619d589cf1a129ae229046212e1a699c6270e24"
+    },
+    {
+      "path": "src/config/server-env.test.ts",
+      "bytes": 5376,
+      "sha256": "ee5ab9d6133f65784a64cb98b910d1b4ff5accc1b3d04cbc031c7698ff54d021"
+    },
+    {
+      "path": "src/payload.config.ts",
+      "bytes": 5878,
+      "sha256": "b4f653cef6c5797a509e5442b409b86e3645a9a3fe2f71a654a948ff30f947be"
+    },
+    {
+      "path": "src/payload-types.ts",
+      "bytes": 30518,
+      "sha256": "856f573f8729055422176b32d401cecca44bd7f6751c1dcd0b0084d47f4e06a7"
+    },
+    {
+      "path": "src/migrations/20261104_012603_publication_retry_metadata.ts",
+      "bytes": 1227,
+      "sha256": "265ab9301f3a550afa4ac5d3fb3cb1c07b15884b7f5ebd6550fa30b910d1dcdd"
+    },
+    {
+      "path": "src/migrations/20261104_012603_publication_retry_metadata.json",
+      "bytes": 197670,
+      "sha256": "e51dfca2f919ee692a00dc2eaee70e0b3677f9ab7928a25eb2fd1fdd27596926"
+    },
+    {
+      "path": "src/migrations/index.ts",
+      "bytes": 4999,
+      "sha256": "4daf6d37267d23b386a77c08b18f8a45d23928ada6ac945ba39ce9d8a93da168"
+    },
+    {
+      "path": "testing/setup/test-environment.ts",
+      "bytes": 3187,
+      "sha256": "95e99c5015d95977a52db581b53f9b79f30b89aff3d9c036ea83ad0ec11f944f"
+    },
+    {
+      "path": "testing/setup/test-environment.test.ts",
+      "bytes": 4415,
+      "sha256": "eee093a8757f4952e666566b32fe39647fa1adcb15fc22b370958c5f2a5ca098"
+    },
+    {
+      "path": "docs/runbooks/publicacao-e-cache.md",
+      "bytes": 13452,
+      "sha256": "94b3e00c6632c18fb125036b31c210253778eb5520c5664526d44da445ad9970"
+    }
+  ],
+  "logs": [
+    {
+      "file": "publication-retries-flag-red.txt",
+      "bytes": 5862,
+      "sha256": "5b0e60659b226114d63d614377d3051082e71d2d7ec86f251bf3bb406ceaabc5"
+    },
+    {
+      "file": "publication-retries-focused-native-final.txt",
+      "bytes": 16384,
+      "sha256": "e075fd077e3d44717d084395487dde5ccf088a63ca92c79a081404e181bab6b3"
+    },
+    {
+      "file": "publication-retries-format-corrected.txt",
+      "bytes": 68,
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "file": "publication-retries-format-final.txt",
+      "bytes": 180,
+      "sha256": "6689f14ecfbd324c16608293322c6a8c535f15aa220a2a0cb138dc38ede321fb"
+    },
+    {
+      "file": "publication-retries-generation-resanitize-error.txt",
+      "bytes": 1311,
+      "sha256": "1761037e5c2a7db73053966507f145e1ec86ccec0fdebcede85f2b14c6db5255"
+    },
+    {
+      "file": "publication-retries-generation-transform-error.txt",
+      "bytes": 2147,
+      "sha256": "3ed7c44ccdf839ced20aa5fc137955c5835ccf0d660ada7f59c3cfafd82848a6"
+    },
+    {
+      "file": "publication-retries-generation-unapplied-lock-relation.txt",
+      "bytes": 588,
+      "sha256": "f0b58bc930299277485b824fb502c0cc0c53581cb139dea904ad7171d5badae2"
+    },
+    {
+      "file": "publication-retries-generation.txt",
+      "bytes": 588,
+      "sha256": "c878eaf65ff7631f640d66ffa12596706cdf3681fc3e00cf2adaa982c309ffda"
+    },
+    {
+      "file": "publication-retries-legacy-format-final.txt",
+      "bytes": 68,
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "file": "publication-retries-legacy-immediate-green.txt",
+      "bytes": 6743,
+      "sha256": "15ff6bca7304cb814d27bfbe8ceb043e533c957a6d65fec0d112adbf23fe574b"
+    },
+    {
+      "file": "publication-retries-legacy-immediate-red.txt",
+      "bytes": 7838,
+      "sha256": "971c019697ff93e91ed160c973a7bccb8b0bc465046bc66d5fdcdee940dcc3f3"
+    },
+    {
+      "file": "publication-retries-legacy-lint-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "publication-retries-legacy-typecheck-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "publication-retries-legacy-unit-final.txt",
+      "bytes": 12287,
+      "sha256": "b94a9292caab016ac9051f6a284fcb3ec2c369ea19885369b8f897c634f696a2"
+    },
+    {
+      "file": "publication-retries-lint-corrected.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "publication-retries-lint-final.txt",
+      "bytes": 448,
+      "sha256": "6b89279881f666d8d5258c68eca722f2cdc02dc5e2c70338b9ed63726ce4fd38"
+    },
+    {
+      "file": "publication-retries-missing-head-red.txt",
+      "bytes": 7492,
+      "sha256": "f6551c0f29304d13b548f8d541ff91e1fd3dbdbf59c70b8a126280746fab28bb"
+    },
+    {
+      "file": "publication-retries-native-expanded-green.txt",
+      "bytes": 6343,
+      "sha256": "96aa60292197300203f742c90ef8fc65054e6e3c8935953befba5a9af18525fc"
+    },
+    {
+      "file": "publication-retries-native-green.txt",
+      "bytes": 5591,
+      "sha256": "45463e31fe2e8d74fc922ea6daf3cb3ca2dc7aceeaed8ae2718fc8a98f8ceb58"
+    },
+    {
+      "file": "publication-retries-native-red.txt",
+      "bytes": 5915,
+      "sha256": "9e5bdcdac4eaa9badd978a73fe908e621cb23453c0d5946fe320a6b26f05f425"
+    },
+    {
+      "file": "publication-retries-preparation-lint.txt",
+      "bytes": 1146,
+      "sha256": "880b8d9ba7eb1c2d34732951eef76aa0b2ba90b2bb4bb9dbbfece3cf61cc34dd"
+    },
+    {
+      "file": "publication-retries-preparation-typecheck.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "publication-retries-test-optin-red.txt",
+      "bytes": 2402,
+      "sha256": "9a9a23e7657aac4c3cf46408942b9e467f9e3ee2cdfe34fe679ce8f4b9e2e2c8"
+    },
+    {
+      "file": "publication-retries-typecheck-corrected.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "publication-retries-typecheck-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "publication-retries-types-final.txt",
+      "bytes": 88,
+      "sha256": "36ad65959408917136dfb1aabea5f44b4e3b8d42730580bf671cd23ead6e9b77"
+    },
+    {
+      "file": "publication-retries-unit-final.txt",
+      "bytes": 12288,
+      "sha256": "e6f4ab8bbf4012296796d509ad757b9720325590738481df43d4e557bf2f4463"
+    },
+    {
+      "file": "publication-retries-withdrawal-final.txt",
+      "bytes": 6744,
+      "sha256": "00eb8cd913d26c0985fdfd9c812ed065543de27f091a0faea2c9552437a6ba67"
+    }
+  ]
+}

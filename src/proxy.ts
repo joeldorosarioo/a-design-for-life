@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { handleNextImage } from '@/features/media-library/server';
 import { renderCaseRouteResponse } from '@/features/cases/server';
 import { installPayloadProvider } from '@/helpers/payload/runtime';
+import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
 import { publicRootDirectory } from '@/helpers/payload/public-root-directory';
 import { readServerEnv, resolveInternalHttpOrigin } from './config/server-env';
 import { preparePublicRenderRequest } from './config/public-render-context';
@@ -73,11 +74,13 @@ export async function proxy(request: NextRequest): Promise<Response> {
         decision.caseStateLocale,
         decision.caseStatePresentation,
       );
+      if (decision.generation) response.headers.set(publicGenerationHeader, decision.generation);
       return request.method === 'HEAD'
         ? new Response(null, { status: response.status, headers: response.headers })
         : response;
     }
     const headers = responseHeaders(decision.status);
+    if (decision.generation) headers.set(publicGenerationHeader, decision.generation);
     if (decision.status === 308) {
       headers.set('Location', new URL(decision.location, env.SITE_ORIGIN).href);
       return new Response(null, { status: 308, headers });

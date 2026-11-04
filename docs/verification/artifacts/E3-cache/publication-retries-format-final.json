@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\prettier\\bin\\prettier.cjs' '--check' 'src/helpers/payload/publication-retries.ts' 'src/helpers/payload/publication-retries.collection.ts' 'src/helpers/payload/publication-retries.integration.test.ts' 'src/helpers/payload/publication-updates.ts' 'src/config/capture-legacy-publications.ts' 'src/config/server-env.ts' 'src/config/server-env.test.ts' 'src/payload.config.ts' 'src/payload-types.ts' 'src/migrations/20261104_012603_publication_retry_metadata.ts' 'src/migrations/20261104_012603_publication_retry_metadata.json' 'src/migrations/index.ts' 'testing/setup/test-environment.ts' 'testing/setup/test-environment.test.ts' 'docs/runbooks/publicacao-e-cache.md'",
+  "startedAt": "2026-11-04T01:42:52.0968136+00:00",
+  "finishedAt": "2026-11-04T01:42:53.0637724+00:00",
+  "exitCode": 1,
+  "log": "publication-retries-format-final.txt"
+}

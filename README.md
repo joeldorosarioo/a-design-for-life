@@ -2,7 +2,7 @@
 
 Portfólio bilíngue de Product Design e UX. O nome técnico faz referência à música A Design for Life, de Manic Street Preachers; aparência e conteúdo público seguem o Figma e os contratos aprovados.
 
-A1 foi aprovada e a retomada de E2.1–E2.6 foi autorizada em 03/11/2026. Esta base contém o CMS Payload e o portfólio bilíngue. A2 aguarda revisão do usuário; a etapa 3 não foi iniciada.
+A1 e A2 foram aprovadas; A2 mantém a pendência formal do leitor de tela. A etapa 3 foi retomada por autorização explícita em 03/11/2026 e está em desenvolvimento e validação locais. Nenhuma produção, contratação ou medição real está autorizada.
 
 - [Fontes aprovadas](docs/specs/2026-10-29-portfolio-spec-v1.md).
 - [Acompanhamento da etapa 1](docs/verification/execucao-etapa-1.md).
@@ -18,4 +18,4 @@ A implementação de E2.1–E2.6, as decisões preservadas e as evidências est�
 
 A verificação formal com leitor de tela permanece interrompida a pedido do usuário. O pacote A2 e seus limites devem ser revisados conforme o registro de entrega.
 
-A etapa 3, integrações posteriores e produção aguardam aprovação expressa de A2 pelo usuário.
+O [progresso da etapa 3](docs/verification/progresso-etapa-3.md) registra critérios completos e pendências externas. A3/A4 continuam pendentes; a execução local não autoriza produção.

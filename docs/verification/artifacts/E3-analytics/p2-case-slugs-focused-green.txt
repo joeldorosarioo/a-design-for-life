@@ -1,0 +1,13 @@
+Command: & 'E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe' node_modules/vitest/vitest.mjs run --project unit src/features/analytics/contracts/event.schema.test.ts src/features/analytics/analytics-session.test.ts --reporter=dot
+Exit code: 0
+Scope: analytics feature only; authorized architecture docs formatting only.
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+··································································································
+
+ Test Files  2 passed (2)
+      Tests  98 passed (98)
+   Start at  21:09:27
+   Duration  466ms (setup 61%, import 25%, transform 8%, tests 4%, worker 2%)
+

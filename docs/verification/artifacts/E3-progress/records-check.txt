@@ -1,0 +1,7 @@
+Command: controlled progress-record validation against approved plan and HEAD
+Node: 24.22.2; no services/build/global lifecycle
+Exit: 0
+
+{"command":"node scripts/recalculate-stage-progress.mjs --check","exit":0,"output":{"completedItems":29,"totalItems":30,"percentage":96.7,"closedTasks":["E2.1","E2.2","E2.3","E2.4","E2.5"],"totalTasks":6,"recalculatedAt":"2026-11-03T23:19:42.063Z"}}
+{"command":"node scripts/recalculate-stage-progress.mjs --stage 3 --check","exit":0,"output":{"completedItems":0,"totalItems":30,"percentage":0,"closedTasks":[],"totalTasks":6,"recalculatedAt":"2026-11-03T23:19:42.267Z"}}
+{"node":"v24.22.2","e2CriteriaAndApprovalTimestampPreserved":true,"specsUnchangedAgainstHEAD":true,"e3SummariesEqualOriginalThirtyCriteria":true,"bothChecksReadOnlyBytesAndMtime":true,"stages":{"2":{"items":"29/30","percentage":96.7,"closedTasks":"5/6"},"3":{"items":"0/30","percentage":0,"closedTasks":"0/6"}}}

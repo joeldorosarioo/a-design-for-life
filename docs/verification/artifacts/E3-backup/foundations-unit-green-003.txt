@@ -1,0 +1,52 @@
+COMMAND: pnpm exec vitest run --project unit src/helpers/storage/restore-object.test.ts src/features/media-library/server/backup-inventory.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/restore-object.test.ts (16 tests | 1 failed) 116ms
+   × restores captured bytes under the original immutable key in a newly owned private namespace 28ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > restores captured bytes under the original immutable key in a newly owned private namespace
+AssertionError: expected Uint8Array[ 111, 114, 105, 103, …(-73) ] to deeply equal Buffer[ 111, 114, 105, 103, 105, …(-78) ]
+
+- Expected
++ Received
+
+@@ -1,7 +1,6 @@
+- {
+-   "data": [
++ Uint8Array [
+    111,
+    114,
+    105,
+    103,
+    105,
+@@ -29,8 +28,6 @@
+    98,
+    121,
+    116,
+    101,
+    115,
+-   ],
+-   "type": "Buffer",
+- }
++ ]
+
+ ❯ src/helpers/storage/restore-object.test.ts:30:73
+     28|   expect(await writer.restore(reference(), bytes)).toEqual(reference()…
+     29|   expect(await readdir(options.root)).toEqual(['a'.repeat(64)]);
+     30|   expect(await createLocalObjectStorage(options.root).get(reference())…
+       |                                                                         ^
+     31| });
+     32| it('makes an identical repeated restoration idempotent without rewriti…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 22 passed (23)
+   Start at  21:48:09
+   Duration  558ms (setup 55%, import 17%, tests 16%, transform 11%, worker 1%)
+
+EXIT_CODE: 1

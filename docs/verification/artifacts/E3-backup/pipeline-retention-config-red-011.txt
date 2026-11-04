@@ -1,0 +1,39 @@
+COMMAND: pnpm exec vitest run --project unit src/helpers/storage/object-retention.test.ts -t "fences actual SDK DELETE"
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-retention.test.ts (7 tests | 1 failed | 6 skipped) 51ms
+   × fences actual SDK DELETE across separate factories for the same endpoint/bucket 50ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-retention.test.ts > fences actual SDK DELETE across separate factories for the same endpoint/bucket
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-retention.test.ts:138:40
+    136|   await withObjectStorageRetention(first, async () => {
+    137|     options.bucket = 'changed-retention';
+    138|     await expect(second.delete(object)).rejects.toThrow(/busy/i);
+       |                                        ^
+    139|     expect(methods).not.toContain('DELETE');
+    140|     expect(await first.get(object)).toEqual(new Uint8Array([1, 2, 3]));
+ ❯ withPublicationWriter src/helpers/payload/publication-writer.ts:32:18
+ ❯ src/helpers/storage/object-retention.test.ts:136:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 skipped (7)
+   Start at  22:25:58
+   Duration  521ms (setup 48%, import 29%, tests 13%, transform 9%, worker 1%)
+
+EXIT_CODE: 1

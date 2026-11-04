@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "phase": "initial",
+  "dataset": "a",
+  "failure": "pt/home alternates mismatch",
+  "results": [
+    {
+      "name": "health",
+      "status": 200,
+      "bytes": 18,
+      "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+      "cacheControl": "no-store, max-age=0"
+    }
+  ]
+}

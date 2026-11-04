@@ -1,0 +1,596 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/tools.test.ts ops/backup/archive.test.ts ops/backup/age.test.ts (actual tool fixture configured, private identity outside project)
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/tools.test.ts (6 tests | 6 failed) 20ms
+   × runs the actual process without interpreting shell syntax in an argument 7ms
+   × streams real input to an exclusive output file 4ms
+   × refuses an existing output before spawning and preserves its bytes 6ms
+   × refuses failed process output without exposing stderr or retaining a partial destination 1ms
+   × terminates only its own timed-out process and refuses completion 1ms
+   × bounds stdout captured in memory instead of accepting unlimited output 1ms
+ ❯ |unit| ops/backup/age.test.ts (4 tests | 4 failed) 22ms
+   × rejects a secret identity or recipient file path before invoking a binary 10ms
+   ❯ real age1.3.2 local proof (3)
+     × encrypts with only a public recipient and decrypts with the separate private identity 5ms
+     × rejects adulterated ciphertext and never publishes plaintext destination 2ms
+     × rejects an invalid identity without leaking its contents or publishing plaintext 4ms
+ ❯ |unit| ops/backup/archive.test.ts (17 tests | 17 failed) 49ms
+   × validates and extracts complete regular USTAR files before returning a quarantine 11ms
+   × refuses traversal before creating any extraction destination 5ms
+   × refuses absolute path before creating any extraction destination 3ms
+   × refuses private identity before creating any extraction destination 3ms
+   × refuses symbolic link before creating any extraction destination 2ms
+   × refuses hard link before creating any extraction destination 2ms
+   × refuses directory before creating any extraction destination 2ms
+   × refuses PAX metadata before creating any extraction destination 2ms
+   × refuses GNU long name before creating any extraction destination 2ms
+   × refuses unexpected prefix before creating any extraction destination 2ms
+   × refuses duplicate member before creating any extraction destination 2ms
+   × refuses invalid checksum before extraction effects 2ms
+   × refuses invalid padding before extraction effects 2ms
+   × refuses invalid trailing before extraction effects 2ms
+   × refuses to reuse an existing quarantine and preserves its bytes 3ms
+   × does not create an archive for a private identity or other forbidden entry name 2ms
+   × creates a real bsdtar USTAR archive and verifies all streamed file hashes 3ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 27 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/age.test.ts > rejects a secret identity or recipient file path before invoking a binary
+AssertionError: promise resolved "{ path: '', byteLength: +0, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 0,
++   "path": "",
++   "sha256": "",
++   "toolVersion": "",
+  }
+
+ ❯ ops/backup/age.test.ts:11:123
+      9| it('rejects a secret identity or recipient file path before invoking a…
+     10|  for(const recipient of ['AGE-SECRET-KEY-SYNTHETIC','C:/private/identi…
+     11|   await expect(encryptBackupArchive({sourcePath:'source',destination:'…
+       |                                                                                                                           ^
+     12|  }
+     13| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/27]⎯
+
+ FAIL  |unit| ops/backup/age.test.ts > real age1.3.2 local proof > encrypts with only a public recipient and decrypts with the separate private identity
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\backup-tool-tests\age-kRaQM5\payload.age'
+ ❯ ops/backup/age.test.ts:20:16
+     18|   const bytes=Buffer.from('synthetic private dump and media marker');a…
+     19|   const encrypted=await encryptBackupArchive({sourcePath:source,destin…
+     20|   const cipher=await readFile(ciphertext);expect(cipher.includes(bytes…
+       |                ^
+     21|   expect(encrypted.sha256).toBe(createHash('sha256').update(cipher).di…
+     22|   expect(encrypted.toolVersion).toBe('v1.3.2');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/27]⎯
+
+ FAIL  |unit| ops/backup/age.test.ts > real age1.3.2 local proof > rejects adulterated ciphertext and never publishes plaintext destination
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\backup-tool-tests\age-F70ArQ\payload.age'
+ ❯ ops/backup/age.test.ts:29:15
+     27|   const config=await fixture(),root=await scratch(),source=path.join(r…
+     28|   await writeFile(source,'synthetic plaintext');await encryptBackupArc…
+     29|   const bytes=await readFile(ciphertext);bytes[bytes.length-1]^=1;awai…
+       |               ^
+     30|   await expect(decryptBackupArchive({sourcePath:ciphertext,destination…
+     31|   await expect(readFile(restored)).rejects.toMatchObject({code:'ENOENT…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/27]⎯
+
+ FAIL  |unit| ops/backup/age.test.ts > real age1.3.2 local proof > rejects an invalid identity without leaking its contents or publishing plaintext
+AssertionError: expected null to be an instance of Error
+ ❯ ops/backup/age.test.ts:37:19
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > validates and extracts complete regular USTAR files before returning a quarantine
+AssertionError: expected [] to deeply equal [ 'manifest.json', 'database.dump' ]
+
+- Expected
++ Received
+
+- [
+-   "manifest.json",
+-   "database.dump",
+- ]
++ []
+
+ ❯ ops/backup/archive.test.ts:25:49
+     23|   await writeFile(archive,tar(valid()));
+     24|   const result=await extractValidatedBackupArchive({archivePath:archiv…
+     25|   expect(result.entries.map(entry=>entry.name)).toEqual(['manifest.jso…
+       |                                                 ^
+     26|   expect(await readFile(path.join(destination,'database.dump'),'utf8')…
+     27|   expect(result.entries[0].sha256).toBe('44136fa355b3678a1146ad16f7e86…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses traversal before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-y8zamU\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses absolute path before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-4IR4ld\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses private identity before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-1jC1YI\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses symbolic link before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-dIHMvz\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses hard link before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-5k8b1o\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses directory before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-d6fX2y\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses PAX metadata before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-5Z238n\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses GNU long name before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-GzoQyL\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses unexpected prefix before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-NCNG7v\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses duplicate member before creating any extraction destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-OsKgKv\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:43:81
+     41|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     42|   await writeFile(archive,tar([...valid(),entry]));
+     43|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     44|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses invalid checksum before extraction effects
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-eOzWbE\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:53:81
+     51|   if(failure==='trailing') bytes=Buffer.concat([bytes,Buffer.alloc(512…
+     52|   await writeFile(archive,bytes);
+     53|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     54|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     55| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses invalid padding before extraction effects
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-r91Z4N\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:53:81
+     51|   if(failure==='trailing') bytes=Buffer.concat([bytes,Buffer.alloc(512…
+     52|   await writeFile(archive,bytes);
+     53|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     54|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     55| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses invalid trailing before extraction effects
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-BtPPdj\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:53:81
+     51|   if(failure==='trailing') bytes=Buffer.concat([bytes,Buffer.alloc(512…
+     52|   await writeFile(archive,bytes);
+     53|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     54|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     55| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses to reuse an existing quarantine and preserves its bytes
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-f1S0Q6\\quarantine",
++   "entries": [],
+  }
+
+ ❯ ops/backup/archive.test.ts:59:81
+     57|   const root=await scratch(), archive=path.join(root,'set.tar'), desti…
+     58|   await writeFile(archive,tar(valid())); await mkdir(destination); awa…
+     59|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     60|   expect(await readFile(path.join(destination,'sentinel'),'utf8')).toB…
+     61| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > does not create an archive for a private identity or other forbidden entry name
+AssertionError: promise resolved "{ path: '', byteLength: +0, …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 0,
++   "entries": [],
++   "path": "",
++   "sha256": "",
++   "toolVersion": "",
+  }
+
+ ❯ ops/backup/archive.test.ts:65:120
+     63|   const root=await scratch(), file=path.join(root,'identity.txt'); awa…
+     64|   const destination=path.join(root,'set.tar');
+     65|   await expect(createBackupArchive({entries:[{name:'identity.txt',path…
+       |                                                                                                                        ^
+     66|   await expect(readFile(destination)).rejects.toMatchObject({code:'ENO…
+     67| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/27]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > creates a real bsdtar USTAR archive and verifies all streamed file hashes
+AssertionError: expected '' to match /^bsdtar 3\.8\.9/
+
+- Expected:
+/^bsdtar 3\.8\.9/
+
++ Received:
+""
+
+ ❯ ops/backup/archive.test.ts:74:30
+     72|   for(const file of valid()){const selected=path.join(source,file.name…
+     73|   const result=await createBackupArchive({entries,destination:path.joi…
+     74|   expect(result.toolVersion).toMatch(/^bsdtar 3\.8\.9/);
+       |                              ^
+     75|   expect(result.entries.map(entry=>[entry.name,entry.byteLength])).toE…
+     76|   expect(result.sha256).toBe(createHash('sha256').update(await readFil…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/27]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > runs the actual process without interpreting shell syntax in an argument
+AssertionError: expected '' to be 'literal $() ; & value' // Object.is equality
+
+- Expected
++ Received
+
+- literal $() ; & value
+
+ ❯ ops/backup/tools.test.ts:10:25
+      8| it('runs the actual process without interpreting shell syntax in an ar…
+      9|   const result = await runBackupTool({ binary: process.execPath, args:…
+     10|   expect(result.stdout).toBe('literal $() ; & value');
+       |                         ^
+     11| });
+     12| it('streams real input to an exclusive output file', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/27]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > streams real input to an exclusive output file
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\backup-tool-tests\process-k6yCSf\output'
+ ❯ ops/backup/tools.test.ts:16:10
+     14|   await writeFile(input, Buffer.alloc(200_000, 7));
+     15|   await runBackupTool({ binary: process.execPath, args: ['-e', 'proces…
+     16|   expect(await readFile(output)).toEqual(Buffer.alloc(200_000, 7));
+       |          ^
+     17| });
+     18| it('refuses an existing output before spawning and preserves its bytes…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/27]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > refuses an existing output before spawning and preserves its bytes
+AssertionError: promise resolved "{ stdout: '', exitCode: +0 }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "exitCode": 0,
++   "stdout": "",
+  }
+
+ ❯ ops/backup/tools.test.ts:21:164
+     19|   const root = await scratch(), output = path.join(root, 'output'), ef…
+     20|   await writeFile(output, 'existing');
+     21|   await expect(runBackupTool({ binary: process.execPath, args: ['-e', …
+       |                                                                                                                                                                    ^
+     22|   expect(await readFile(output, 'utf8')).toBe('existing');
+     23|   await expect(readFile(effect)).rejects.toMatchObject({ code: 'ENOENT…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/27]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > refuses failed process output without exposing stderr or retaining a partial destination
+AssertionError: expected null to be an instance of Error
+ ❯ ops/backup/tools.test.ts:28:19
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/27]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > terminates only its own timed-out process and refuses completion
+AssertionError: promise resolved "{ stdout: '', exitCode: +0 }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "exitCode": 0,
++   "stdout": "",
+  }
+
+ ❯ ops/backup/tools.test.ts:33:116
+     31| });
+     32| it('terminates only its own timed-out process and refuses completion',…
+     33|   await expect(runBackupTool({ binary: process.execPath, args: ['-e', …
+       |                                                                                                                    ^
+     34| });
+     35| it('bounds stdout captured in memory instead of accepting unlimited ou…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/27]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > bounds stdout captured in memory instead of accepting unlimited output
+AssertionError: promise resolved "{ stdout: '', exitCode: +0 }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "exitCode": 0,
++   "stdout": "",
+  }
+
+ ❯ ops/backup/tools.test.ts:36:118
+     34| });
+     35| it('bounds stdout captured in memory instead of accepting unlimited ou…
+     36|   await expect(runBackupTool({ binary: process.execPath, args: ['-e', …
+       |                                                                                                                      ^
+     37| });
+     38|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/27]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  27 failed (27)
+   Start at  22:24:29
+   Duration  498ms (setup 70%, tests 10%, transform 9%, import 9%, worker 1%)
+
+EXIT_CODE: 1

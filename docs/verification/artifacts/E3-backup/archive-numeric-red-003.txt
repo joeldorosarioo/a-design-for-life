@@ -1,0 +1,52 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/archive.test.ts -t "internal NUL"
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/archive.test.ts (18 tests | 1 failed | 17 skipped) 23ms
+   × refuses an internal NUL in a numeric USTAR field even when the checksum matches 22ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses an internal NUL in a numeric USTAR field even when the checksum matches
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "directory": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-QqSOlI\\quarantine",
++   "entries": [
++     {
++       "byteLength": 2,
++       "name": "manifest.json",
++       "path": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-QqSOlI\\quarantine\\manifest.json",
++       "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
++     },
++     {
++       "byteLength": 39,
++       "name": "database.dump",
++       "path": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-QqSOlI\\quarantine\\database.dump",
++       "sha256": "714612e087a931f591ffe99c4c21347a2b847b24c65ed8a3f9ad97111916f915",
++     },
++   ],
+  }
+
+ ❯ ops/backup/archive.test.ts:62:81
+     60|   bytes.write(checksum.toString(8).padStart(6,'0')+'\0 ',148,'ascii');
+     61|   await writeFile(archive,bytes);
+     62|   await expect(extractValidatedBackupArchive({archivePath:archive,dest…
+       |                                                                                 ^
+     63|   await expect(readdir(destination)).rejects.toMatchObject({code:'ENOE…
+     64| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 skipped (18)
+   Start at  22:31:11
+   Duration  393ms (setup 73%, transform 10%, tests 8%, import 7%, worker 2%)
+
+EXIT_CODE: 1

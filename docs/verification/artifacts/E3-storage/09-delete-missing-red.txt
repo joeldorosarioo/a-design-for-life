@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (8 tests | 1 failed) 30ms
+   × makes a repeated technical deletion harmless 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > makes a repeated technical deletion harmless
+AssertionError: promise rejected "Error: ENOENT: no such file or directory,… { …(4) }" instead of resolving
+ ❯ src/helpers/storage/object-storage.test.ts:87:39
+     85|   const object = await adapter.put(new Uint8Array([3, 1, 4]));
+     86|   await adapter.delete(object);
+     87|   await expect(adapter.delete(object)).resolves.toBeUndefined();
+       |                                       ^
+     88| });
+     89|
+
+Caused by: Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\media-storage-zEGQGO\0ad99d72ccb95b181d75fbf802826c626c60a82b77c555d0d7000746962c82a6'
+ ❯ get src/helpers/storage/object-storage.ts:31:20
+ ❯ Object.delete src/helpers/storage/object-storage.ts:62:7
+ ❯ src/helpers/storage/object-storage.test.ts:87:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'E:\a-design-for-life\.work\media-storage-zEGQGO\0ad99d72ccb95b181d75fbf802826c626c60a82b77c555d0d7000746962c82a6' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  20:16:27
+   Duration  383ms (setup 71%, tests 12%, transform 9%, import 7%, worker 2%)
+

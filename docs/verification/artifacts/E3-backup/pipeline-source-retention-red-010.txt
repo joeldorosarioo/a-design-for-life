@@ -1,0 +1,149 @@
+COMMAND: pnpm exec vitest run --project unit src/helpers/storage/object-retention.test.ts ops/backup/contracts.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/contracts.test.ts (3 tests | 1 failed) 10ms
+   × records an honest dirty local revision with the captured source fingerprint 9ms
+ ❯ |unit| src/helpers/storage/object-retention.test.ts (7 tests | 5 failed) 70ms
+   × refuses physical deletion while source objects are retained and permits it after release 11ms
+   × fences another concrete factory for the same canonical local storage identity 3ms
+   × refuses a copied or injected transport instead of manufacturing a retention guarantee 1ms
+   × refuses overlapping capture of the same source instead of taking over its lease 1ms
+   × fences actual SDK DELETE across separate factories for the same endpoint/bucket 45ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/contracts.test.ts > records an honest dirty local revision with the captured source fingerprint
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ops/backup/contracts.test.ts:6:25
+      4| it('records an honest dirty local revision with the captured source fi…
+      5|  const result=backupManifestSchema.safeParse({...manifest,application:…
+      6|  expect(result.success).toBe(true);
+       |                         ^
+      7|  if(result.success)expect(result.data.application).toMatchObject({revi…
+      8| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |unit| src/helpers/storage/object-retention.test.ts > refuses physical deletion while source objects are retained and permits it after release
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-retention.test.ts:15:39
+     13|  const{storage}=await local();const object=await storage.put(new Uint8…
+     14|  await withObjectStorageRetention(storage,async()=>{
+     15|   await expect(storage.delete(object)).rejects.toThrow(/busy/i);
+       |                                       ^
+     16|   expect(await storage.get(object)).toEqual(new Uint8Array([1,2,3]));
+     17|  });
+ ❯ withObjectStorageRetention src/helpers/storage/object-retention.ts:4:121
+ ❯ src/helpers/storage/object-retention.test.ts:14:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |unit| src/helpers/storage/object-retention.test.ts > fences another concrete factory for the same canonical local storage identity
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-retention.test.ts:22:88
+     20| it('fences another concrete factory for the same canonical local stora…
+     21|  const{storage,root}=await local();const object=await storage.put(new …
+     22|  await withObjectStorageRetention(storage,async()=>{await expect(secon…
+       |                                                                                        ^
+     23|  expect(await second.head(object)).toEqual(object);
+     24| });
+ ❯ withObjectStorageRetention src/helpers/storage/object-retention.ts:4:121
+ ❯ src/helpers/storage/object-retention.test.ts:22:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |unit| src/helpers/storage/object-retention.test.ts > refuses a copied or injected transport instead of manufacturing a retention guarantee
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-retention.test.ts:31:82
+     29| it('refuses a copied or injected transport instead of manufacturing a …
+     30|  const{storage}=await local();let executed=false;
+     31|  await expect(withObjectStorageRetention({...storage},async()=>{execut…
+       |                                                                                  ^
+     32| });
+     33| it('releases the source fence after the backup capture fails',async()=…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |unit| src/helpers/storage/object-retention.test.ts > refuses overlapping capture of the same source instead of taking over its lease
+AssertionError: promise resolved "'fe94d404-01ed-4937-b2ea-dbe42b3a0c06'" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"fe94d404-01ed-4937-b2ea-dbe42b3a0c06"
+
+ ❯ src/helpers/storage/object-retention.test.ts:39:153
+     37| });
+     38| it('refuses overlapping capture of the same source instead of taking o…
+     39|  const{storage}=await local();await withObjectStorageRetention(storage…
+       |                                                                                                                                                         ^
+     40| });
+     41| it('fences actual SDK DELETE across separate factories for the same en…
+ ❯ withObjectStorageRetention src/helpers/storage/object-retention.ts:4:121
+ ❯ src/helpers/storage/object-retention.test.ts:39:37
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  |unit| src/helpers/storage/object-retention.test.ts > fences actual SDK DELETE across separate factories for the same endpoint/bucket
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-retention.test.ts:54:86
+
+ ❯ withObjectStorageRetention src/helpers/storage/object-retention.ts:4:121
+ ❯ src/helpers/storage/object-retention.test.ts:54:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 4 passed (10)
+   Start at  22:22:11
+   Duration  557ms (setup 55%, import 25%, tests 11%, transform 8%, worker 1%)
+
+EXIT_CODE: 1

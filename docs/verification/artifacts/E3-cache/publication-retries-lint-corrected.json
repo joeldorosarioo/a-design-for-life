@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\eslint\\bin\\eslint.js' 'src/helpers/payload/publication-retries.ts' 'src/helpers/payload/publication-retries.collection.ts' 'src/helpers/payload/publication-retries.integration.test.ts' 'src/helpers/payload/publication-updates.ts' 'src/config/capture-legacy-publications.ts' 'src/config/server-env.ts' 'src/config/server-env.test.ts' 'src/payload.config.ts' 'src/migrations/20261104_012603_publication_retry_metadata.ts' 'src/migrations/index.ts' 'testing/setup/test-environment.ts' 'testing/setup/test-environment.test.ts'",
+  "startedAt": "2026-11-04T01:44:46.6303516+00:00",
+  "finishedAt": "2026-11-04T01:44:49.2232464+00:00",
+  "exitCode": 0,
+  "log": "publication-retries-lint-corrected.txt"
+}

@@ -1,12 +1,14 @@
-> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada. E3 autorizada e depois pausada até reunir as informações necessárias. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). O relatório abaixo preserva o snapshot anterior à aprovação.
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
 
 # Progresso verificável — etapa 2
 
-**96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. A2 pendente.**
+**96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
-A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. A caixa de preparação do primeiro RED pode estar concluída com a implementação ainda aberta nas seguintes (E2.5.1). Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis.
+A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis. Aprovação do usuário é independente da contagem.
+
+A caixa de preparação do primeiro RED pode estar concluída com a implementação ainda aberta nas seguintes (E2.5.1).
 
 | Tarefa | Itens | Estado       |
 | ------ | ----- | ------------ |
@@ -52,7 +54,11 @@ A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso 
 
 ## Gates e limites
 
-E2.1–E2.5 integralmente encerradas. Build008/fonte500f49 e CI c9be4dc atuais;18LH/20recursos,restauração/smoke004 e pacoteA2real revisados. Único critério incompleto E2.6.2:leitor formal desativado por orientação do usuário. A2 aguarda revisão/aprovação;etapa3 não autorizada.
+Atualização atual03/11/2026: E3 retomada explicitamente após a pausa histórica; decisão Resend e limites em retomada-etapa-3.md. A2 aprovada com pendência formal do leitor:29/30 critérios,5/6 tarefas; evidências originais preservadas.
+
+Histórico da pausa — Atualização03/11/2026: usuário aprovou A2 com a pendência E2.6.2 preservada, autorizou E3 e depois pausou até consolidar informações. Contagens não mudam:29/30;E2.1–E2.5 encerradas. Registros anteriores de A2 pendente são históricos. Ver retomada-etapa-3.md.
+
+Histórico anterior à aprovação A2 — E2.1–E2.5 integralmente encerradas. Build008/fonte500f49 e CI c9be4dc atuais;18LH/20recursos,restauração/smoke004 e pacoteA2real revisados. Único critério incompleto E2.6.2:leitor formal desativado por orientação do usuário. A2 aguarda revisão/aprovação;etapa3 não autorizada.
 
 Retomada autorizada em03/11/2026,develop preservada. Implementação c9be4dc23c12f45fadd27cafc05a599b8b3a0c44 e CI41655739795 SUCCESS. O commit documental e seu CI exato ficam no recibo externo final, após promoção normal em develop protegida. Nenhum histórico publicado reescrito.
 
@@ -86,6 +92,6 @@ Histórico anterior à retomada — Negativos editoriais integrados:5/5HTTP exit
 
 Histórico anterior à retomada — Pausa explícita solicitada pelo usuário após concluir cardTitle/cardEyebrow editáveis comfallback (c3b4860):38unit+6Native,tipos/lint/formato0; coordenador44unit+2CSS atuais. Nenhuma nova caixa completa; visual/gate/a11y/performance/A2 seguem abertos. Retomada registrada em retomada-etapa-2.md.
 
-Estimativa: Somente fechamento documental, CI do commit exato e empacotamento final: aproximadamente 0,5–1 hora. Leitor formal não será executado nesta sessão por orientação do usuário.
+Estimativa: Etapa 2 aceita com pendência do leitor registrada; etapa 3 explicitamente retomada em 03/11/2026.
 
-A2 pendente; etapa3 depende da aprovação explícita do usuário.
+Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.

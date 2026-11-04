@@ -43,9 +43,13 @@ pnpm format:check
 pnpm build
 ```
 
-Vitest separa unidade, integração e arquitetura; não descobre arquivos Playwright. Cada projeto de integração usa um contêiner PostgreSQL real temporário com tmpfs em 55433, aplica as migrações pelo CLI nativo e remove apenas esse serviço ao terminar. O subprocesso Docker recebe um placeholder sintético exclusivamente para satisfazer a interpolação do serviço local não selecionado; o segredo obrigatório desse serviço permanece obrigatório para iniciar o ambiente local.
+Vitest separa unidade, integração e arquitetura; não descobre arquivos Playwright. O lifecycle de integração agora usa somente `compose.test.yaml`, projeto `adfl-isolated-tests-<UUIDv4>`, serviço `postgres-isolated`, PostgreSQL real em tmpfs e bind exclusivo `127.0.0.1:55434`. O banco é exatamente `adfl_test_runner`; bucket `adfl-test-runner` e root `.work/private-media/adfl-test-runner/adfl_test_runner` devem corresponder. O compose local e o PostgreSQL visual em 55433 ficam preservados.
 
-Playwright prepara o mesmo banco isolado, constrói Next em NODE_ENV=production/APP_ENV=test, inicia o processo Next diretamente e aguarda HTTP real do painel. No encerramento, termina o processo próprio antes de remover o banco. TEST_SITE_ORIGIN pode alterar host/porta de loopback; o servidor deriva ambos e aceita somente HTTP local. TEST_DATABASE_URI exige banco local adfl_test__; TEST_MEDIA_BUCKET exige adfl-test-_. Configuração fora desses limites é recusada antes de iniciar/limpar recursos.
+Antes de qualquer consulta Docker, o runner adquire um lease exclusivo da porta55434 no diretório temporário do usuário, compartilhado entre checkouts e UUIDs. Mantém esse lease durante preflight, tentativa de criação, cleanup de início falho e teardown. Recusa projeto/container/rede existentes e verifica a disponibilidade da porta. O escopo é o mesmo usuário do sistema operacional nesta máquina, com diretório temporário compartilhado; não coordena outros usuários ou hosts que compartilhem um daemon Docker. `--project-name` e arquivo compose são explícitos: `COMPOSE_PROJECT_NAME` herdado não pode selecionar o ambiente visual. Um `TEST_DATABASE_URI` ou `TEST_MEDIA_BUCKET` diferente do namespace exato é recusado. Não apontar testes para outro PostgreSQL de loopback. O ambiente substitui storage/origem interna herdados e limpa configuração/credenciais externas de mídia, e-mail e Analytics antes de iniciar subprocessos.
+
+Sob o lease, o runner registra a ausência prévia dos recursos. Depois da tentativa de criação, inclusive se ela falhar, confere labels de projeto/serviço/execução/finalidade/checkout/compose, nome, IDs imutáveis, imagem fixada, banco/usuário sintéticos, bind, tmpfs e rede exclusiva. Captura os IDs verificados uma única vez; cleanup usa somente esses IDs, sem descobrir/adotar recursos por nome. A limpeza revalida a identidade antes de cada stop/remove e remove somente recursos novos dessa execução. Divergências são falhas seguras; não geram adoção ou remoção automática de recursos desconhecidos. A prova de indisponibilidade de PostgreSQL usa disconnect/connect da rede e container próprios derivados desse lifecycle, com verificação antes e depois.
+
+Playwright constrói Next em `NODE_ENV=production`/`APP_ENV=test` em `.work/next-tests/<UUIDv4>` e inicia o servidor usando a mesma configuração. O default HTTP é `127.0.0.1:3101`; `TEST_SITE_ORIGIN` pode selecionar outra origem HTTP local livre. `pnpm build`/`pnpm start` comuns usam `.work/next-build`; `.next` da prévia 008 não é substituído. `NEXT_TEST_DIST_DIR` só aceita o caminho de teste validado; caminhos absolutos, traversal, `.next`, `public` e ancestrais com symlink/junction são recusados. O roundtrip de migrações usa o mesmo lifecycle por `testing/migrations/editorial-roundtrip.ps1`.
 
 `test:architecture` e o agregador `verify` existem, mas a suíte/regras de arquitetura só entram em E1.2. A ausência de testes arquiteturais não equivale a aprovação. E1.1 apresenta os comandos efetivamente executados e suas saídas, incluindo falhas.
 
@@ -54,13 +58,9 @@ Playwright prepara o mesmo banco isolado, constrói Next em NODE_ENV=production/
 ```powershell
 # Ctrl+C encerra o servidor Next iniciado no terminal.
 docker compose -f compose.local.yaml stop postgres-local
-# Se for necessário remover apenas o serviço temporário de testes que sobrou de uma interrupção:
-$env:LOCAL_POSTGRES_PASSWORD = 'synthetic-unused-local-service-placeholder'
-docker compose -f compose.local.yaml rm --stop --force postgres-test
-Remove-Item Env:\LOCAL_POSTGRES_PASSWORD
 ```
 
-O último bloco afeta somente postgres-test deste compose. Não executar down --volumes, drop de banco compartilhado ou limpeza global do Docker. O volume local persistente permanece preservado. Segredos, downloads e caches em .env/.work/.toolchain não são versionados. Serviços reais de e-mail/R2, homologação e produção pertencem às etapas posteriores.
+Os testes encerram o processo HTTP próprio antes do callback de limpeza do banco. Uma execução interrompida pode deixar recursos/lease compartilhado da porta55434; inspecionar o UUID, checkout, token do lease, labels e IDs e resolver a interrupção de forma explícita antes de repetir. Não executar `compose.local.yaml rm postgres-test`: esse serviço contém a base visual preservada em 55433. Não executar `down --volumes`, drop de banco compartilhado ou limpeza global do Docker. O volume local persistente permanece preservado. Segredos, downloads e caches em `.env`/`.work`/`.toolchain` não são versionados. Serviços reais de e-mail/R2, homologação e produção exigem as autorizações da etapa correspondente.
 
 ## Verificação E2: fonte real e preservação da prévia
 
@@ -77,4 +77,4 @@ pnpm test:e2e
 
 Em Linux, selecionar uma TrueType legível instalada e registrar seu hash. A CI faz essa seleção com Fontconfig depois de instalar as dependências oficiais do Chromium; falha explicitamente caso não encontre um arquivo .ttf legível. A origem da seleção é a [documentação de padrões do Fontconfig](https://fontconfig.pages.freedesktop.org/fontconfig/fontconfig-user.html). Não há download de fonte pelo produto.
 
-Os runners completos recriam `.next` e removem o container `postgres-test`/tmpfs em 55433, incluindo quaisquer outras bases visuais nesse mesmo container. Antes de executar, parar as prévias próprias 3100/3101, preservar checkpoints verificados e seus objetos privados, e planejar a restauração somente após todos os teardowns. Manter os serviços 5432/55432 intactos. Os 12 PNGs históricos A1 precisam de cópia conferida antes do runner: guardar as novas capturas separadamente e devolver os originais byte a byte. Esses passos não autorizam limpar bases desconhecidas nem substituir originais.
+O risco histórico de reconstruir `.next` e remover `postgres-test`/55433 motivou o isolamento E3 descrito acima. Os runners atuais usam recursos novos próprios e output Next separado; não é necessário parar a prévia 008 para esses runners. A preservação continua obrigatória antes de qualquer comando externo que escreva em `.next` ou manipule o compose local. Manter 5432/55432/55433 intactos e não substituir originais/checkpoints/capturas históricos por evidência nova. Ver `artifacts/E3-isolation` para a evidência técnica e distinguir units de validação real PostgreSQL/Next.

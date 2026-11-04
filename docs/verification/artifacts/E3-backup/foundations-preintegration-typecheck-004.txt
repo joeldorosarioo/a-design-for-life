@@ -1,0 +1,6 @@
+COMMAND: pnpm exec tsc --noEmit --incremental false
+src/helpers/payload/backup-snapshot.integration.test.ts(185,13): error TS2322: Type '{ allowIDOnCreate: boolean; defaultIDType: "number" | "text"; init: (args: { payload: Payload; }) => PostgresAdapter; name?: string; }' is not assignable to type '{ allowIDOnCreate: boolean; defaultIDType: "number" | "text"; init: (args: { payload: BasePayload; }) => BaseDatabaseAdapter; name: string; }'.
+  Types of property 'name' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+EXIT_CODE: 2

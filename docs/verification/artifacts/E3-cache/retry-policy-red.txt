@@ -1,0 +1,575 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > arms a committed intention for recovery even when its immediate caller never starts an attempt 12ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { Object (kind, state) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > starts the immediate attempt with a durable version and pre-arms the first proposed retry 2ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'start', …(2) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > does not spend a retry before its persisted due time 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'not-due' }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > pre-arms the proposed 1/5/15-second stages and leaves a fourth failure pending for manual recovery 2ms
+   → expected 'invalid' to be 'start' // Object.is equality
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > can recover a due intention whose process died before the immediate post-write attempt 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'start', …(2) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > manual recovery resets the proposed budget while preserving the same immutable operation 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'start', …(2) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > automatic identifies a different native latest intent for reconciliation without spending or promoting the old target 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'reconcile-stale', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > manual identifies a different native latest intent for reconciliation without spending or promoting the old target 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'reconcile-stale', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > immediate identifies a different native latest intent for reconciliation without spending or promoting the old target 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'reconcile-stale', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > routes a missing native publication head to reconciliation instead of choosing another target 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'reconcile-stale', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > keeps the approved intent eligible after a newer private draft changes only the editorial revision 1ms
+   → expected 'invalid' to be 'start' // Object.is equality
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late public outcome after a newer started attempt or manual reset 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late superseded outcome after a newer started attempt or manual reset 0ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late update-pending outcome after a newer started attempt or manual reset 0ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > never applies another operation outcome even when its version matches 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > public outcome ends automatic scheduling only for the matching started attempt 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'apply', state: { …(5) } }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > superseded outcome ends automatic scheduling only for the matching started attempt 0ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'apply', state: { …(5) } }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reopen terminal public state for a retry or late failure 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'terminal' }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reopen terminal superseded state for a retry or late failure 0ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'terminal' }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > leaves unscheduled legacy work manual-only while permitting an explicit manual reset 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'unscheduled' }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot repeatedly allocate immediate attempts outside the automatic budget 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > compares an offset-bearing persisted instant in UTC and emits a canonical next due time 1ms
+   → expected 'invalid' to be 'start' // Object.is equality
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 2 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 3 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 4 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 5 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 6 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 7 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 8 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 9 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 10 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 11 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 2 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 3 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects invalid outcome tokens without changing policy state: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects invalid outcome tokens without changing policy state: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects invalid outcome tokens without changing policy state: 2 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects an outcome outside the native receipt states 0ms
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 0 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 1 0ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses a due-time overflow instead of persisting an invalid timestamp 1ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+ × |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses attempt-version overflow so old outcomes can never alias a newer attempt 0ms
+   → expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects an invalid new operation id instead of arming unrelated work 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 26 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > arms a committed intention for recovery even when its immediate caller never starts an attempt
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { Object (kind, state) }
+
+- Expected
++ Received
+
+  {
+-   "kind": "initialized",
+-   "state": {
+-     "attempts": 0,
+-     "automaticAttempts": 0,
+-     "nextAttemptAt": "2026-11-03T12:00:01.000Z",
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "state": "update-pending",
+-   },
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:24:56
+     22|
+     23| it('arms a committed intention for recovery even when its immediate ca…
+     24|   expect(initializePublicationRetry(operationId, now)).toEqual({
+       |                                                        ^
+     25|     kind: 'initialized',
+     26|     state: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > starts the immediate attempt with a durable version and pre-arms the first proposed retry
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'start', …(2) }
+
+- Expected
++ Received
+
+  {
+-   "attempt": {
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "version": 1,
+-   },
+-   "kind": "start",
+-   "state": {
+-     "attempts": 1,
+-     "automaticAttempts": 0,
+-     "nextAttemptAt": "2026-11-03T12:00:01.000Z",
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "state": "update-pending",
+-   },
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:44:5
+     42|       now,
+     43|     ),
+     44|   ).toEqual({
+       |     ^
+     45|     kind: 'start',
+     46|     attempt: { operationId, version: 1 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > does not spend a retry before its persisted due time
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'not-due' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "skip",
+-   "reason": "not-due",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:65:5
+     63|       now,
+     64|     ),
+     65|   ).toEqual({ kind: 'skip', reason: 'not-due' });
+       |     ^
+     66| });
+     67|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > pre-arms the proposed 1/5/15-second stages and leaves a fourth failure pending for manual recovery
+AssertionError: expected 'invalid' to be 'start' // Object.is equality
+
+Expected: "start"
+Received: "invalid"
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:95:26
+     93|       () => new Date(entry.time),
+     94|     );
+     95|     expect(planned.kind).toBe('start');
+       |                          ^
+     96|     if (planned.kind !== 'start') throw new Error('Expected a proposed…
+     97|     expect(planned.attempt).toEqual({ operationId, version: entry.vers…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > can recover a due intention whose process died before the immediate post-write attempt
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'start', …(2) }
+
+- Expected
++ Received
+
+  {
+-   "attempt": {
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "version": 1,
+-   },
+-   "kind": "start",
+-   "state": {
+-     "attempts": 1,
+-     "automaticAttempts": 1,
+-     "nextAttemptAt": "2026-11-03T12:00:06.000Z",
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "state": "update-pending",
+-   },
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:126:19
+    124|     () => new Date('2026-11-03T12:00:01.000Z'),
+    125|   );
+    126|   expect(planned).toEqual({
+       |                   ^
+    127|     kind: 'start',
+    128|     attempt: { operationId, version: 1 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > manual recovery resets the proposed budget while preserving the same immutable operation
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'start', …(2) }
+
+- Expected
++ Received
+
+  {
+-   "attempt": {
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "version": 5,
+-   },
+-   "kind": "start",
+-   "state": {
+-     "attempts": 5,
+-     "automaticAttempts": 0,
+-     "nextAttemptAt": "2026-11-03T12:05:01.000Z",
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "state": "update-pending",
+-   },
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:145:19
+    143|     () => new Date('2026-11-03T12:05:00.000Z'),
+    144|   );
+    145|   expect(planned).toEqual({
+       |                   ^
+    146|     kind: 'start',
+    147|     attempt: { operationId, version: 5 },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > automatic identifies a different native latest intent for reconciliation without spending or promoting the old target
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > manual identifies a different native latest intent for reconciliation without spending or promoting the old target
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > immediate identifies a different native latest intent for reconciliation without spending or promoting the old target
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'reconcile-stale', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "kind": "reconcile-stale",
+-   "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:168:7
+    166|         now,
+    167|       ),
+    168|     ).toEqual({ kind: 'reconcile-stale', operationId });
+       |       ^
+    169|     expect(input.attempts).toBe(0);
+    170|   },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > routes a missing native publication head to reconciliation instead of choosing another target
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'reconcile-stale', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "kind": "reconcile-stale",
+-   "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:180:5
+    178|       now,
+    179|     ),
+    180|   ).toEqual({ kind: 'reconcile-stale', operationId });
+       |     ^
+    181| });
+    182|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > keeps the approved intent eligible after a newer private draft changes only the editorial revision
+AssertionError: expected 'invalid' to be 'start' // Object.is equality
+
+Expected: "start"
+Received: "invalid"
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:193:24
+    191|     () => new Date('2026-11-03T12:00:01.000Z'),
+    192|   );
+    193|   expect(planned.kind).toBe('start');
+       |                        ^
+    194|   if (planned.kind !== 'start') throw new Error('Private draft must no…
+    195|   expect(planned.attempt.operationId).toBe(operationId);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late public outcome after a newer started attempt or manual reset
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late superseded outcome after a newer started attempt or manual reset
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late update-pending outcome after a newer started attempt or manual reset
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "kind": "skip",
+-   "reason": "stale-outcome",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:206:7
+    204|     expect(
+    205|       applyPublicationRetryOutcome(input, { operationId, version: 4 },…
+    206|     ).toEqual({ kind: 'skip', reason: 'stale-outcome' });
+       |       ^
+    207|     expect(input.nextAttemptAt).toBe('2026-11-03T12:05:01.000Z');
+    208|   },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > never applies another operation outcome even when its version matches
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "kind": "skip",
+-   "reason": "different-operation",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:218:5
+    216|       'public',
+    217|     ),
+    218|   ).toEqual({ kind: 'skip', reason: 'different-operation' });
+       |     ^
+    219| });
+    220|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > public outcome ends automatic scheduling only for the matching started attempt
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'apply', state: { …(5) } }
+
+- Expected
++ Received
+
+  {
+-   "kind": "apply",
+-   "state": {
+-     "attempts": 2,
+-     "automaticAttempts": 1,
+-     "nextAttemptAt": null,
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "state": "public",
+-   },
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:230:7
+    228|         outcome,
+    229|       ),
+    230|     ).toEqual({
+       |       ^
+    231|       kind: 'apply',
+    232|       state: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > superseded outcome ends automatic scheduling only for the matching started attempt
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'apply', state: { …(5) } }
+
+- Expected
++ Received
+
+  {
+-   "kind": "apply",
+-   "state": {
+-     "attempts": 2,
+-     "automaticAttempts": 1,
+-     "nextAttemptAt": null,
+-     "operationId": "13a927bc-de52-42a2-b732-544b4919bf07",
+-     "state": "superseded",
+-   },
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:230:7
+    228|         outcome,
+    229|       ),
+    230|     ).toEqual({
+       |       ^
+    231|       kind: 'apply',
+    232|       state: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reopen terminal public state for a retry or late failure
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reopen terminal superseded state for a retry or late failure
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'terminal' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "skip",
+-   "reason": "terminal",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:249:7
+    247|     expect(
+    248|       planPublicationRetryAttempt(input, { mode: 'manual', latestPubli…
+    249|     ).toEqual({ kind: 'skip', reason: 'terminal' });
+       |       ^
+    250|     expect(
+    251|       applyPublicationRetryOutcome(input, { operationId, version: 2 },…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > leaves unscheduled legacy work manual-only while permitting an explicit manual reset
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', reason: 'unscheduled' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "skip",
+-   "reason": "unscheduled",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:260:5
+    258|   expect(
+    259|     planPublicationRetryAttempt(input, { mode: 'automatic', latestPubl…
+    260|   ).toEqual({ kind: 'skip', reason: 'unscheduled' });
+       |     ^
+    261|   expect(
+    262|     planPublicationRetryAttempt(input, { mode: 'manual', latestPublica…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot repeatedly allocate immediate attempts outside the automatic budget
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'skip', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "kind": "skip",
+-   "reason": "already-attempted",
++   "kind": "invalid",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:274:5
+    272|       now,
+    273|     ),
+    274|   ).toEqual({ kind: 'skip', reason: 'already-attempted' });
+       |     ^
+    275| });
+    276|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > compares an offset-bearing persisted instant in UTC and emits a canonical next due time
+AssertionError: expected 'invalid' to be 'start' // Object.is equality
+
+Expected: "start"
+Received: "invalid"
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:283:24
+    281|     now,
+    282|   );
+    283|   expect(planned.kind).toBe('start');
+       |                        ^
+    284|   if (planned.kind !== 'start') throw new Error('Equal instants must b…
+    285|   expect(planned.state.nextAttemptAt).toBe('2026-11-03T12:00:05.000Z');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 0
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 1
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+
+- Expected
++ Received
+
+  {
+    "kind": "invalid",
+-   "reason": "invalid-clock",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:341:58
+    339|   },
+    340| ])('cannot schedule an attempt from an invalid or failing injected clo…
+    341|   expect(initializePublicationRetry(operationId, clock)).toEqual({
+       |                                                          ^
+    342|     kind: 'invalid',
+    343|     reason: 'invalid-clock',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses a due-time overflow instead of persisting an invalid timestamp
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+
+- Expected
++ Received
+
+  {
+    "kind": "invalid",
+-   "reason": "time-overflow",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:352:58
+    350| it('refuses a due-time overflow instead of persisting an invalid times…
+    351|   const clock = () => new Date('9999-12-31T23:59:59.500Z');
+    352|   expect(initializePublicationRetry(operationId, clock)).toEqual({
+       |                                                          ^
+    353|     kind: 'invalid',
+    354|     reason: 'time-overflow',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/26]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses attempt-version overflow so old outcomes can never alias a newer attempt
+AssertionError: expected { kind: 'invalid', …(1) } to deeply equal { kind: 'invalid', …(1) }
+
+- Expected
++ Received
+
+  {
+    "kind": "invalid",
+-   "reason": "attempt-overflow",
++   "reason": "invalid-input",
+  }
+
+ ❯ src/helpers/payload/publication-retry-policy.test.ts:368:5
+    366|       now,
+    367|     ),
+    368|   ).toEqual({ kind: 'invalid', reason: 'attempt-overflow' });
+       |     ^
+    369| });
+    370|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/26]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  26 failed | 21 passed (47)
+   Start at  21:34:01
+   Duration  739ms (setup 71%, transform 10%, import 9%, tests 8%, worker 1%)
+

@@ -1,0 +1,15 @@
+Command: & 'E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe' node_modules/vitest/vitest.mjs run --project unit src/features/analytics/server/public-page-composition.test.tsx --reporter=dot
+Exit code: 0
+Pinned Node24.22.2; pnpm12.10.1/package/lock unchanged.
+Scope: authorized conditional analytics composition and native anchors only. Synthetic, intercepted script/measurement boundary. No Google SDK execution/network, DB, build, global tests or services.
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·····
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  21:48:46
+   Duration  1.53s (import 71%, setup 13%, transform 12%, tests 4%)
+
+

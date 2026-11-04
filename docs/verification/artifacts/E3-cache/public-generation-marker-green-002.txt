@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+····························································x············································
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > exposes the same generation as the signed public render pin and ignores visitor overrides
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/proxy.test.ts:191:52
+    189|   const response = await proxy(incoming);
+    190|   expect(response.status).toBe(200);
+    191|   const header = response.headers.get('x-portfolio-generation');
+       |                                                    ^
+    192|   expect(header).toBe(root.generation);
+    193|   expect(response.headers.has('x-middleware-request-x-portfolio-genera…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 104 passed (105)
+   Start at  00:43:05
+   Duration  3.26s (import 63%, tests 19%, setup 12%, transform 6%)
+
+Exit: 1

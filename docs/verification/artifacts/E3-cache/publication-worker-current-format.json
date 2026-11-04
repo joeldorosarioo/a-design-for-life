@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\prettier\\bin\\prettier.cjs' '--check' 'src/helpers/payload/publication-retry-worker.ts' 'src/helpers/payload/publication-retry-worker.test.ts' 'src/helpers/payload/publication-retry-execution.ts' 'src/helpers/payload/publication-retry-execution.test.ts' 'src/config/publication-worker.ts' 'src/config/publication-worker.test.ts' 'src/config/publication-worker.integration.test.ts' 'src/config/publication-worker.e2e.test.ts' 'src/helpers/payload/publication-updates.ts' 'src/helpers/payload/confirm-publication-write.ts' 'src/helpers/payload/publication-transport.ts' 'src/config/server-env.ts' 'src/config/server-env.test.ts' 'testing/setup/test-environment.ts' 'testing/setup/test-environment.test.ts' 'src/instrumentation.ts'",
+  "startedAt": "2026-11-04T03:42:03.6762501+00:00",
+  "finishedAt": "2026-11-04T03:42:04.6200962+00:00",
+  "exitCode": 0,
+  "log": "publication-worker-current-format.txt"
+}

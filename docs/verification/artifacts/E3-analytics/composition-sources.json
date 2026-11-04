@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-11-03",
+  "sources": [
+    {
+      "url": "https://developers.google.com/tag-platform/gtagjs",
+      "fact": "The official native Google tag snippet uses an async script and function gtag(){dataLayer.push(arguments)}. The prepared browser queue retains genuine Arguments objects."
+    },
+    {
+      "url": "https://developers.google.com/tag-platform/security/guides/consent?consentmode=advanced",
+      "fact": "Consent defaults precede commands that send measurement data, including config and event."
+    },
+    {
+      "url": "https://developers.google.com/analytics/devguides/collection/ga4/events",
+      "fact": "Automatically collected events include first_visit, session_start and user_engagement; command capture alone does not certify SDK/property/report scope."
+    }
+  ],
+  "activationGuard": "mountDocumentAnalytics defaults loadScript to null; the production component passes no loader. Thus even an enabled production/public DTO cannot activate the unverified SDK.",
+  "inspectionSeam": "A controlled GoogleScriptLoader receives a prepared async/no-referrer HTMLScriptElement only after denied defaults, sanitized settings, config and first valid event are queued. Unit/React tests capture it without executing or requesting Google code.",
+  "remainingEvidence": [
+    "official SDK artifact version/date/hash",
+    "fully intercepted real SDK/browser wire and storage, including hidden/derived/autonomous behavior and referrer headers",
+    "actual property/stream/enhanced-measurement settings",
+    "property/server-derived event and report behavior unavailable from wire alone",
+    "actual full application/browser route composition and JavaScript cost",
+    "A3/A4 public-traffic sequencing conflict"
+  ]
+}

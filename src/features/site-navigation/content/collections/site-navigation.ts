@@ -1,4 +1,7 @@
-import { publishedReadResponse } from '@/helpers/payload/published-read-response';
+import {
+  capturePublishedReadRoot,
+  publishedReadResponse,
+} from '@/helpers/payload/published-read-response';
 import { getPublishedNavigation } from '../../server/get-published-navigation';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { isDraftOperation, protectEditorialCollection } from '@/helpers/payload/editorial-revision';
@@ -35,11 +38,13 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
             },
             { status: 404 },
           );
-        const result = await getPublishedNavigation(parsed.data);
+        const root = await capturePublishedReadRoot();
+        const result = await getPublishedNavigation(parsed.data, undefined, root);
         return publishedReadResponse(
           result,
           { collection: 'site-navigation', where: { locale: { equals: parsed.data } } },
           req,
+          root,
         );
       },
     },

@@ -1,0 +1,123 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[23:21:32] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:21:32] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:21:32] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[23:21:32] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:21:32] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (88ms)[39m
+[23:21:32] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:21:32] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (37ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (1ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (1ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[23:21:33] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[23:21:33] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (4ms)[39m
+[23:21:33] [32mINFO[39m: [36mDone.[39m
+stdout | src/config/publication-worker.integration.test.ts
+Native worker provenance {
+  runId: 'fcd95748-7e4e-4916-a3f0-f176085aec5c',
+  containerId: '74fa10c1f6372386811b35945a4c3a00ba1d3499487dc5f1500d4e9c9e3df587',
+  networkId: '49f0856d37305b1bab486221ce1c38bc336381989f4dc6cbff14d5002b084673',
+  node: '24.22.2',
+  workerEnabled: 'false',
+  databasePort: '55434'
+}
+
+ × |integration| src/config/publication-worker.integration.test.ts > maintains terminal due metadata including version0 so it cannot starve later pending work 127ms
+   → expected { …(6) } to match object { startedAttemptsVersion: +0, …(1) }
+(4 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > maintains null-actor due metadata including version0 so it cannot starve later pending work 67ms
+   → expected { …(6) } to match object { startedAttemptsVersion: +0, …(1) }
+(4 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > maintains missing-account due metadata including version0 so it cannot starve later pending work 74ms
+   → expected { …(6) } to match object { startedAttemptsVersion: +0, …(1) }
+(4 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > maintains stale due metadata including version0 so it cannot starve later pending work 137ms
+   → expected { …(6) } to match object { startedAttemptsVersion: +0, …(1) }
+(4 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > does not allocate another immediate post-write attempt while a real pending one waits, but permits explicit manual reset 77ms
+   → expected { …(6) } to match object { startedAttemptsVersion: 1 }
+(5 matching properties omitted from actual)
+ ✓ |integration| src/config/publication-worker.integration.test.ts > drains a due Native intention with its recorded real actor and exactly one durable automatic claim 69ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains terminal due metadata including version0 so it cannot starve later pending work
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains null-actor due metadata including version0 so it cannot starve later pending work
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains missing-account due metadata including version0 so it cannot starve later pending work
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains stale due metadata including version0 so it cannot starve later pending work
+AssertionError: expected { …(6) } to match object { startedAttemptsVersion: +0, …(1) }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "nextAttemptAt": null,
++   "nextAttemptAt": "2020-01-01T00:00:00.000Z",
+    "startedAttemptsVersion": 0,
+  }
+
+ ❯ src/config/publication-worker.integration.test.ts:92:78
+     90|     });
+     91|     await drain();
+     92|     expect(await readPublicationRetry(operationId, await fixture.reque…
+       |                                                                              ^
+     93|       startedAttemptsVersion: 0,
+     94|       nextAttemptAt: null,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > does not allocate another immediate post-write attempt while a real pending one waits, but permits explicit manual reset
+AssertionError: expected { …(6) } to match object { startedAttemptsVersion: 1 }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "startedAttemptsVersion": 1,
++   "startedAttemptsVersion": 2,
+  }
+
+ ❯ src/config/publication-worker.integration.test.ts:117:78
+    115|     expect(await readPublicationRetry(operationId, await fixture.reque…
+    116|     expect(await confirmPublicationWrite(subject, await fixture.reques…
+    117|     expect(await readPublicationRetry(operationId, await fixture.reque…
+       |                                                                              ^
+    118|     expect(await retryPublicationUpdate(operationId, await fixture.req…
+    119|     expect(await readPublicationRetry(operationId, await fixture.reque…
+ ❯ src/helpers/payload/public-root.ts:41:16
+ ❯ withPublicationWriter src/helpers/payload/publication-writer.ts:32:12
+ ❯ src/config/publication-worker.integration.test.ts:113:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 1 passed (6)
+   Start at  23:21:26
+   Duration  10.50s (import 56%, tests 36%, transform 6%, setup 2%)
+

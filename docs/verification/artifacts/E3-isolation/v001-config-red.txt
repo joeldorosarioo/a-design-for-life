@@ -1,0 +1,56 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| testing/setup/test-environment.test.ts (9 tests | 2 failed) 22ms
+   × keeps an absent optional checker absent across repeated configuration and child process environment 5ms
+   × normalizes a supported localhost test origin only for the literal internal HTTP transport 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/test-environment.test.ts > keeps an absent optional checker absent across repeated configuration and child process environment
+AssertionError: expected 'undefined' to be undefined
+
+- Expected:
+undefined
+
++ Received:
+"undefined"
+
+ ❯ testing/setup/test-environment.test.ts:61:44
+     59|   delete process.env.MEDIA_CHECKER_BINARY;
+     60|   configureTestEnvironment();
+     61|   expect(process.env.MEDIA_CHECKER_BINARY).toBeUndefined();
+       |                                            ^
+     62|   configureTestEnvironment();
+     63|   expect(process.env.MEDIA_CHECKER_BINARY).toBeUndefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| testing/setup/test-environment.test.ts > normalizes a supported localhost test origin only for the literal internal HTTP transport
+ZodError: [
+  {
+    "code": "custom",
+    "path": [
+      "INTERNAL_HTTP_ORIGIN"
+    ],
+    "message": "INTERNAL_HTTP_ORIGIN deve usar HTTP de loopback literal sem dados extras"
+  }
+]
+ ❯ readServerEnv src/config/server-env.ts:121:26
+    119|
+    120| export function readServerEnv(input: NodeJS.ProcessEnv): ServerEnv {
+    121|   return serverEnvSchema.parse(input);
+       |                          ^
+    122| }
+    123|
+ ❯ configureTestEnvironment testing/setup/test-environment.ts:34:15
+ ❯ testing/setup/test-environment.test.ts:74:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 7 passed (9)
+   Start at  20:38:30
+   Duration  460ms (setup 58%, import 26%, transform 8%, tests 7%, worker 1%)
+

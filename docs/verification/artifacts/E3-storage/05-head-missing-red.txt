@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (6 tests | 1 failed) 27ms
+   × reports an explicitly missing object from head 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > reports an explicitly missing object from head
+AssertionError: promise rejected "Error: ENOENT: no such file or directory,… { …(4) }" instead of resolving
+ ❯ src/helpers/storage/object-storage.test.ts:70:38
+     68|   const { adapter } = await storage();
+     69|   const missing = { key: 'a'.repeat(64), byteLength: 0, sha256: 'b'.re…
+     70|   await expect(adapter.head(missing)).resolves.toBeNull();
+       |                                      ^
+     71| });
+     72|
+
+Caused by: Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\media-storage-FXN6pt\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+ ❯ get src/helpers/storage/object-storage.ts:30:20
+ ❯ Object.head src/helpers/storage/object-storage.ts:61:7
+ ❯ src/helpers/storage/object-storage.test.ts:70:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'E:\a-design-for-life\.work\media-storage-FXN6pt\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  20:15:33
+   Duration  429ms (setup 72%, transform 11%, tests 9%, import 6%, worker 2%)
+

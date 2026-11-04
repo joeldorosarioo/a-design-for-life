@@ -1,0 +1,13 @@
+{
+  "probeDelivery": "stdin --input-type=module, updated host probe, NOT the embedded002 probe",
+  "probeSha256": "7c98f351d706fa5a980967fc07fededd2940962fdd77c1310b53cd79dac97316",
+  "embedded002Failure": "PDFDocumentProxy.destroy is not a function",
+  "log": "docker-native-smoke-002-stdin-probe.txt",
+  "inspectionLog": "docker-draft-inspect-002.txt",
+  "probeSource": "ops/image/runtime-smoke.mjs",
+  "exitCode": 0,
+  "embedded002ProbeExitCode": 1,
+  "imageId": "sha256:b368acbe78a99668d2b07ff3d4bc85f7da5cfeac5139dce1c4fecf2cefa7d91a",
+  "cleanCommitCandidate": false,
+  "network": "none"
+}

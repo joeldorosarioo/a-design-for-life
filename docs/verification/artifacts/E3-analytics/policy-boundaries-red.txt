@@ -1,0 +1,167 @@
+Pinned Node: E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe
+Scope: owned analytics only; synthetic/captured outbound boundary; no Google loader/request.
+Exit code: 1
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+xxxxxxx·····xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx········xx
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 43 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits local/public preview=false to false
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits test/public preview=false to false
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits staging/public preview=false to false
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits preview/public preview=false to false
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/admin preview=false to false
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/private preview=false to false
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/public preview=true to false
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/analytics/analytics-policy.test.ts:16:56
+     14|     ['production', 'public', false, true],
+     15|   ])('limits %s/%s preview=%s to %s', (environment, area, preview, exp…
+     16|     expect(canMeasure({ environment, area, preview })).toBe(expected);
+       |                                                        ^
+     17|   });
+     18| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/43]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra email field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra href field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra label field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra personName field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra token field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra user_id field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra content field rather than silently stripping it
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra client_id field rather than silently stripping it
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:21:9
+     19|         portfolioAnalyticsEventSchema.safeParse({ name: 'page_view', .…
+     20|           .success,
+     21|       ).toBe(false);
+       |         ^
+     22|     },
+     23|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/43]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved scroll event
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved file_download event
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved click event
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved login event
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved user_engagement event
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:28:82
+     26|     'rejects the unapproved %s event',
+     27|     (name) => {
+     28|       expect(portfolioAnalyticsEventSchema.safeParse({ name, ...page }…
+       |                                                                                  ^
+     29|     },
+     30|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/43]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en?email=synthetic@example.invalid"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en#token"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "//other.invalid/en"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "https://other.invalid/en"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/admin"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/admin"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/api/users/reset-password/token"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/preview-ui/en/cases/example"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/preview-media/secret/original"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/private/en"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/private"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/reset-password"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/../../private"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/token/123"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/[case]?token=secret"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/pt/about"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/sobre"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/%61dmin"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en\\admin"
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en\n"
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:41:88
+     39|     '/en/', '/en/%61dmin', '/en\\admin', '/en\n',
+     40|   ])('rejects unsafe or unapproved page path %j', (pagePath) => {
+     41|     expect(publicAnalyticsContextSchema.safeParse({ locale: 'en', page…
+       |                                                                                        ^
+     42|   });
+     43|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/43]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects a locale/path mismatch
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:52:95
+     50|
+     51|   it('rejects a locale/path mismatch', () => {
+     52|     expect(publicAnalyticsContextSchema.safeParse({ locale: 'pt', page…
+       |                                                                                               ^
+     53|   });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/43]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects extra public context fields
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:56:91
+     54|
+     55|   it('rejects extra public context fields', () => {
+     56|     expect(publicAnalyticsContextSchema.safeParse({ ...page, title: 'p…
+       |                                                                                           ^
+     57|   });
+     58| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/43]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  43 failed | 13 passed (56)
+   Start at  20:46:41
+   Duration  579ms (setup 71%, import 16%, transform 7%, tests 5%, worker 2%)
+

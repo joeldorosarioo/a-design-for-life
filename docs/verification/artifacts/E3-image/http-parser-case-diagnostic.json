@@ -1,0 +1,7 @@
+{
+  "source": "actual installed React19.3.1 SSR renderer, no DB/services",
+  "html": "<link rel=\"alternate\" hrefLang=\"pt\" href=\"http://127.0.0.1:3103/pt\"/>",
+  "parserAsUsedRejectsValidAlternate": true,
+  "normalizedAttributeParserRecognizesIt": true,
+  "status": "harness metadata attribute case bug reproduced"
+}

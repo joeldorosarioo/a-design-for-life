@@ -1,0 +1,28 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+---------------------------x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > allows public HTTP receipt verification only in an explicit isolated test runtime with a trusted origin
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:156:70
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 27 skipped (28)
+   Start at  00:57:07
+   Duration  532ms (setup 59%, import 29%, transform 8%, tests 2%, worker 1%)
+
+Exit: 1

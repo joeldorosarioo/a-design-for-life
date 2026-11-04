@@ -44,6 +44,13 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Install verified local PDF checker
         run: pnpm setup:media-checker
+      - name: Install verified local backup tools
+        run: pnpm setup:backup-tools
+      - name: Configure ephemeral synthetic backup test tools
+        run: |
+          config="$(node testing/setup/configure-backup-tools.mjs)"
+          test -f "$config"
+          printf 'ADFL_TEST_BACKUP_TOOLS_CONFIG=%s\n' "$config" >> "$GITHUB_ENV"
       - name: Check isolated container tooling
         run: docker compose version
       - name: Verify

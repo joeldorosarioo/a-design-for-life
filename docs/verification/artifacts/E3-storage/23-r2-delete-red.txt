@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (8 tests | 1 failed) 86ms
+   × deletes a verified remote object and makes a repeated deletion harmless 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > deletes a verified remote object and makes a repeated deletion harmless
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/helpers/storage/r2-storage.test.ts:121:35
+    119|   const object = await adapter!.put(new Uint8Array([3, 1, 4]));
+    120|   await adapter?.delete?.(object);
+    121|   expect(objects.has(object.key)).toBe(false);
+       |                                   ^
+    122|   await expect(adapter!.delete(object)).resolves.toBeUndefined();
+    123| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  20:21:49
+   Duration  556ms (setup 48%, import 25%, tests 20%, transform 7%, worker 1%)
+

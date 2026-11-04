@@ -1,0 +1,305 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.41kB 0.0s done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 1.3s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/node:24.22.2-trixie-slim@sha256:54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446
+#4 DONE 0.8s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 1.35kB done
+#5 DONE 0.0s
+
+#6 [base 1/2] FROM docker.io/library/node:24.22.2-trixie-slim@sha256:54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446
+#6 DONE 0.0s
+
+#7 [base 2/2] WORKDIR /app
+#7 CACHED
+
+#8 [internal] load build context
+#8 ...
+
+#9 [runtime 1/8] RUN groupadd --gid 10001 app && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin app
+#9 DONE 1.9s
+
+#8 [internal] load build context
+#8 transferring context: 1.35MB 3.8s done
+#8 DONE 3.9s
+
+#10 [dependencies 1/4] RUN test "amd64" = "amd64"
+#10 CACHED
+
+#11 [dependencies 2/4] RUN corepack enable && corepack prepare pnpm@12.10.1 --activate && test "$(pnpm --version)" = "12.10.1"
+#11 CACHED
+
+#12 [dependencies 3/4] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+#12 DONE 0.1s
+
+#13 [dependencies 4/4] RUN pnpm install --frozen-lockfile
+#13 0.727 ? Verifying lockfile against supply-chain policies (1105 entries)...
+#13 1.012 Update available! 12.10.1 → 12.16.1.
+#13 1.012 Changelog: https://pnpm.io/v/12.16.1
+#13 1.012 To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -
+#13 1.171 Packages are hard linked from the content-addressable store to the virtual store.
+#13 1.171   Content-addressable store is at: /app/.work/pnpm-store/v11
+#13 1.171   Virtual store is at:             node_modules/.pnpm
+#13 1.333 Downloading @next/swc-linux-x64-gnu@16.4.3: 0.00 B/35.23 MB
+#13 1.579 Downloading @rolldown/binding-linux-x64-gnu@1.2.15: 0.00 B/8.30 MB
+#13 1.725 Downloading pdfjs-dist@6.4.299: 0.00 B/8.53 MB
+#13 2.247 Downloading @img/sharp-libvips-linux-x64@1.3.4: 0.00 B/8.21 MB
+#13 3.283 Progress: resolved 902, reused 0, downloaded 241, added 224
+#13 4.491 Downloading @img/sharp-libvips-linux-x64@1.3.4: 1.31 MB/8.21 MB
+#13 5.029 Downloading monaco-editor@0.57.0: 0.00 B/18.57 MB
+#13 6.029 Downloading @next/swc-linux-x64-gnu@16.4.3: 5.41 MB/35.23 MB
+#13 6.606 Downloading next@16.4.3: 0.00 B/43.60 MB
+#13 7.620 Progress: resolved 902, reused 0, downloaded 576, added 550
+#13 8.619 Progress: resolved 902, reused 0, downloaded 673, added 672
+#13 9.623 Progress: resolved 902, reused 0, downloaded 800, added 770
+#13 10.10 Downloading @napi-rs/canvas-linux-x64-gnu@1.0.13: 0.00 B/15.16 MB
+#13 11.11 Progress: resolved 902, reused 0, downloaded 894, added 864
+#13 11.42 ✓ Lockfile passes supply-chain policies (1105 entries in 10.7s)
+#13 11.42 Lockfile is up to date, resolution step is skipped
+#13 12.48 Downloading next@16.4.3: 16.62 MB/43.60 MB
+#13 13.49 Downloading next@16.4.3: 25.11 MB/43.60 MB
+#13 14.53 Downloading next@16.4.3: 43.60 MB/43.60 MB, done
+#13 14.73 Packages: +902
+#13 14.73 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#13 14.89 Progress: resolved 902, reused 0, downloaded 902, added 902, done
+#13 14.91 .../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+#13 14.91 .../node_modules/unrs-resolver postinstall$ node postinstall.js
+#13 14.91 .../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+#13 14.91 .../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+#13 15.03 .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+#13 15.04 .../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+#13 15.04 .../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+#13 15.04 .../node_modules/unrs-resolver postinstall: Done
+#13 15.23 
+#13 15.23 dependencies:
+#13 15.23 + @aws-sdk/client-s3 3.1161.0
+#13 15.23 + @payloadcms/db-postgres 3.92.1
+#13 15.23 + @payloadcms/email-resend 3.92.1
+#13 15.23 + @payloadcms/next 3.92.1
+#13 15.23 + @payloadcms/richtext-lexical 3.92.1
+#13 15.23 + @payloadcms/ui 3.92.1
+#13 15.23 + @radix-ui/react-dialog 1.3.1
+#13 15.23 + class-variance-authority 0.7.1
+#13 15.23 + dotenv 18.0.9
+#13 15.23 + graphql 16.14.2
+#13 15.23 + motion 14.7.1
+#13 15.23 + next 16.4.3
+#13 15.23 + parse5 8.0.1
+#13 15.23 + payload 3.92.1
+#13 15.23 + pdfjs-dist 6.4.299
+#13 15.23 + react 19.3.1
+#13 15.23 + react-dom 19.3.1
+#13 15.23 + server-only 0.0.1
+#13 15.23 + sharp 0.35.5
+#13 15.23 + zod 4.6.7
+#13 15.23 
+#13 15.23 devDependencies:
+#13 15.23 + @axe-core/playwright 4.14.0
+#13 15.23 + @playwright/test 1.64.1
+#13 15.23 + @tailwindcss/postcss 4.3.3
+#13 15.23 + @testing-library/dom 10.4.2
+#13 15.23 + @testing-library/jest-dom 7.0.1
+#13 15.23 + @testing-library/react 16.3.3
+#13 15.23 + @testing-library/user-event 14.6.8
+#13 15.23 + @types/node 24.19.2
+#13 15.23 + @types/react 19.3.0
+#13 15.23 + @types/react-dom 19.3.0
+#13 15.23 + dependency-cruiser 18.7.0
+#13 15.23 + esbuild 0.28.2
+#13 15.23 + eslint 9.39.5
+#13 15.23 + eslint-config-next 16.4.3
+#13 15.23 + jsdom 30.1.3
+#13 15.23 + lighthouse 13.6.0
+#13 15.23 + postcss 8.5.32
+#13 15.23 + prettier 3.9.10
+#13 15.23 + tailwindcss 4.3.3
+#13 15.23 + tsx 4.23.15
+#13 15.23 + typescript 6.0.3
+#13 15.23 + vite 8.3.5
+#13 15.23 + vitest 5.0.5
+#13 15.23 
+#13 15.30 Done in 14.7s using pnpm v12.10.1
+#13 DONE 16.0s
+
+#14 [builder 1/4] RUN apt-get update && apt-get install --yes --no-install-recommends ca-certificates unzip && rm -rf /var/lib/apt/lists/*
+#14 0.594 Get:1 http://deb.debian.org/debian trixie InRelease [140 kB]
+#14 0.613 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#14 0.633 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#14 0.719 Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9678 kB]
+#14 1.142 Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [1108 B]
+#14 1.142 Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [296 kB]
+#14 1.859 Fetched 10.2 MB in 1s (7497 kB/s)
+#14 1.859 Reading package lists...
+#14 2.452 Reading package lists...
+#14 3.095 Building dependency tree...
+#14 3.323 Reading state information...
+#14 3.663 The following additional packages will be installed:
+#14 3.663   openssl
+#14 3.666 Suggested packages:
+#14 3.666   zip
+#14 3.723 The following NEW packages will be installed:
+#14 3.726   ca-certificates openssl unzip
+#14 3.787 0 upgraded, 3 newly installed, 0 to remove and 1 not upgraded.
+#14 3.787 Need to get 1842 kB of archives.
+#14 3.787 After this operation, 3363 kB of additional disk space will be used.
+#14 3.787 Get:1 http://deb.debian.org/debian-security trixie-security/main amd64 openssl amd64 3.5.7-1~deb13u3 [1508 kB]
+#14 4.186 Get:2 http://deb.debian.org/debian-security trixie-security/main amd64 ca-certificates all 20250419+deb13u1 [161 kB]
+#14 4.255 Get:3 http://deb.debian.org/debian trixie/main amd64 unzip amd64 6.0-29+deb13u1 [173 kB]
+#14 4.557 debconf: unable to initialize frontend: Dialog
+#14 4.557 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#14 4.557 debconf: falling back to frontend: Readline
+#14 4.557 debconf: unable to initialize frontend: Readline
+#14 4.557 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 3.)
+#14 4.557 debconf: falling back to frontend: Teletype
+#14 4.561 debconf: unable to initialize frontend: Teletype
+#14 4.561 debconf: (This frontend requires a controlling tty.)
+#14 4.561 debconf: falling back to frontend: Noninteractive
+#14 5.036 Preconfiguring packages ...
+#14 5.103 Fetched 1842 kB in 1s (3411 kB/s)
+#14 5.131 Selecting previously unselected package openssl.
+#14 5.131 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 5036 files and directories currently installed.)
+#14 5.162 Preparing to unpack .../openssl_3.5.7-1~deb13u3_amd64.deb ...
+#14 5.165 Unpacking openssl (3.5.7-1~deb13u3) ...
+#14 5.228 Selecting previously unselected package ca-certificates.
+#14 5.229 Preparing to unpack .../ca-certificates_20250419+deb13u1_all.deb ...
+#14 5.231 Unpacking ca-certificates (20250419+deb13u1) ...
+#14 5.275 Selecting previously unselected package unzip.
+#14 5.276 Preparing to unpack .../unzip_6.0-29+deb13u1_amd64.deb ...
+#14 5.279 Unpacking unzip (6.0-29+deb13u1) ...
+#14 5.306 Setting up unzip (6.0-29+deb13u1) ...
+#14 5.314 Setting up openssl (3.5.7-1~deb13u3) ...
+#14 5.324 Setting up ca-certificates (20250419+deb13u1) ...
+#14 5.391 debconf: unable to initialize frontend: Dialog
+#14 5.391 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#14 5.391 debconf: falling back to frontend: Readline
+#14 5.391 debconf: unable to initialize frontend: Readline
+#14 5.391 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+#14 5.391 debconf: falling back to frontend: Teletype
+#14 5.394 debconf: unable to initialize frontend: Teletype
+#14 5.394 debconf: (This frontend requires a controlling tty.)
+#14 5.394 debconf: falling back to frontend: Noninteractive
+#14 5.666 Updating certificates in /etc/ssl/certs...
+#14 6.080 148 added, 0 removed; done.
+#14 6.107 Processing triggers for ca-certificates (20250419+deb13u1) ...
+#14 6.113 Updating certificates in /etc/ssl/certs...
+#14 6.417 0 added, 0 removed; done.
+#14 6.417 Running hooks in /etc/ca-certificates/update.d...
+#14 6.418 done.
+#14 DONE 6.5s
+
+#15 [builder 2/4] COPY . .
+#15 DONE 0.5s
+
+#16 [builder 3/4] RUN node testing/setup/install-qpdf.mjs
+#16 1.254 Installed verified QPDF 12.4.2 (linux-x64)
+#16 DONE 1.3s
+
+#17 [builder 4/4] RUN APP_ENV=test     SITE_ORIGIN=http://127.0.0.1:3000     PAYLOAD_SECRET=synthetic-image-build-only-not-a-runtime-secret     DATABASE_URI=postgres://synthetic:synthetic@127.0.0.1:9/adfl_test_image_build     MEDIA_BUCKET=adfl-test-image-build     pnpm build && node ops/image/assemble-standalone.mjs . .work/next-build/standalone
+#17 0.570 $ node scripts/emit-case-state-css.mjs && next build
+#17 1.078 ▲ Next.js 16.4.3 (Turbopack)
+#17 1.116 ✓ Running next.config.ts took 37ms
+#17 1.128 - Experiments (use with caution):
+#17 1.128   ⨯ turbopackServerFastRefresh
+#17 1.128 
+#17 1.163   Creating an optimized production build ...
+#17 59.72 ✓ Compiled successfully in 59s
+#17 59.79   Running TypeScript ...
+#17 73.48   Finished TypeScript in 13.7s ...
+#17 73.49   Collecting page data using 11 workers ...
+#17 75.08   Generating static pages using 11 workers (0/3) ...
+#17 75.25 ✓ Generating static pages using 11 workers (3/3) in 168ms
+#17 75.26   Finalizing page optimization ...
+#17 76.16 
+#17 76.17 Route (app)
+#17 76.17 ┌ ƒ /
+#17 76.17 ├ ○ /_not-found
+#17 76.17 ├ ƒ /[locale]
+#17 76.17 ├ ƒ /[locale]/[...unmatched]
+#17 76.17 ├ ƒ /[locale]/[about]
+#17 76.17 ├ ƒ /[locale]/cases
+#17 76.17 ├ ƒ /[locale]/cases/[slug]
+#17 76.17 ├ ƒ /admin/[[...segments]]
+#17 76.17 ├ ƒ /api/[...slug]
+#17 76.17 ├ ƒ /health
+#17 76.17 ├ ƒ /language-preference
+#17 76.17 ├ ƒ /media/[id]/[variant]
+#17 76.17 ├ ƒ /preview
+#17 76.17 ├ ƒ /preview-media/[id]/[variant]
+#17 76.17 ├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+#17 76.17 ├ ƒ /robots.txt
+#17 76.17 └ ƒ /sitemap.xml
+#17 76.17 
+#17 76.17 
+#17 76.17 ƒ Proxy (Middleware)
+#17 76.17 
+#17 76.17 ○  (Static)   prerendered as static content
+#17 76.17 ƒ  (Dynamic)  server-rendered on demand
+#17 76.17 
+#17 76.51 {"link":"node_modules/.pnpm/pdfjs-dist@6.4.299/node_modules/@napi-rs/canvas","target":"../../../@napi-rs+canvas@1.0.13/node_modules/@napi-rs/canvas","status":"created"}
+#17 DONE 77.0s
+
+#18 [runtime 2/8] COPY --from=builder --chown=10001:10001 /app/.work/next-build/standalone ./
+#18 DONE 0.8s
+
+#19 [runtime 3/8] COPY --from=builder --chown=10001:10001 /app/.work/next-build/static ./.work/next-build/static
+#19 DONE 0.1s
+
+#20 [runtime 4/8] COPY --from=builder --chown=10001:10001 /app/public ./public
+#20 DONE 0.0s
+
+#21 [runtime 5/8] COPY --from=builder /app/.toolchain/qpdf-12.4.2-linux-x64 /opt/qpdf
+#21 DONE 0.0s
+
+#22 [runtime 6/8] COPY --chown=10001:10001 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ./ops/image/
+#22 DONE 0.0s
+
+#23 [runtime 7/8] RUN mkdir -p .work/publication .work/private-media .work/editorial-mail .work/next-build/cache && chown -R 10001:10001 .work
+#23 DONE 1.6s
+
+#24 [runtime 8/8] RUN /opt/qpdf/bin/qpdf --version
+#24 0.470 qpdf version 12.4.2
+#24 0.470 Run qpdf --copyright to see copyright and license information.
+#24 DONE 0.5s
+
+#25 exporting to image
+#25 exporting layers
+#25 exporting layers 0.8s done
+#25 writing image sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36 done
+#25 naming to docker.io/library/adfl:e3-local-draft-004 done
+#25 DONE 0.8s
+
+#26 resolving provenance for metadata file
+#26 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jl2ypkkomunr3d4xo6lwhbujo

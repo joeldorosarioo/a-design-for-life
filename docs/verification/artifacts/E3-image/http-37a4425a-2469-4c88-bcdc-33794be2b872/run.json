@@ -1,0 +1,346 @@
+{
+  "runId": "37a4425a-2469-4c88-bcdc-33794be2b872",
+  "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+  "startedUTC": "2026-11-04T00:54:03.626Z",
+  "httpOnly": true,
+  "datasets": [
+    {
+      "key": "a",
+      "database": "adfl_test_image_a_37a4425a24694c88bcdc33794be2b872",
+      "bucket": "adfl-test-image-a-37a4425a24694c88bcdc33794be2b872",
+      "origin": "http://127.0.0.1:3103",
+      "port": 3001,
+      "fixture": {
+        "namespace": "public-e96b0615",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-e96b0615",
+            "brand": "Synthetic PT public-e96b0615 portfolio",
+            "projects": "Synthetic PT public-e96b0615 projects",
+            "about": "Synthetic PT public-e96b0615 about",
+            "resume": "Synthetic PT public-e96b0615 resume",
+            "contact": "Synthetic PT public-e96b0615 contact",
+            "openMenu": "Synthetic PT public-e96b0615 open menu",
+            "closeMenu": "Synthetic PT public-e96b0615 close menu",
+            "newTab": "Synthetic PT public-e96b0615 opens a new tab",
+            "contents": "Synthetic PT public-e96b0615 contents",
+            "readCase": "Synthetic PT public-e96b0615 read case",
+            "homeTitle": "Synthetic PT public-e96b0615 home",
+            "homeEmphasis": "Synthetic PT public-e96b0615 editorial emphasis",
+            "aboutTitle": "Synthetic PT public-e96b0615 about page",
+            "listingTitle": "Synthetic PT public-e96b0615 case list",
+            "contextHeading": "Synthetic PT public-e96b0615 context heading",
+            "comparisonHeading": "Synthetic PT public-e96b0615 comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "385701a4-dc37-443c-951c-8d5a9311349b",
+            "resumeHref": "/media/385701a4-dc37-443c-951c-8d5a9311349b/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-e96b0615",
+            "brand": "Synthetic EN public-e96b0615 portfolio",
+            "projects": "Synthetic EN public-e96b0615 projects",
+            "about": "Synthetic EN public-e96b0615 about",
+            "resume": "Synthetic EN public-e96b0615 resume",
+            "contact": "Synthetic EN public-e96b0615 contact",
+            "openMenu": "Synthetic EN public-e96b0615 open menu",
+            "closeMenu": "Synthetic EN public-e96b0615 close menu",
+            "newTab": "Synthetic EN public-e96b0615 opens a new tab",
+            "contents": "Synthetic EN public-e96b0615 contents",
+            "readCase": "Synthetic EN public-e96b0615 read case",
+            "homeTitle": "Synthetic EN public-e96b0615 home",
+            "homeEmphasis": "Synthetic EN public-e96b0615 editorial emphasis",
+            "aboutTitle": "Synthetic EN public-e96b0615 about page",
+            "listingTitle": "Synthetic EN public-e96b0615 case list",
+            "contextHeading": "Synthetic EN public-e96b0615 context heading",
+            "comparisonHeading": "Synthetic EN public-e96b0615 comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "f83f38c5-d417-4349-aac5-d1b33338daa5",
+            "resumeHref": "/media/f83f38c5-d417-4349-aac5-d1b33338daa5/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "716704f0-d4dd-4d41-95b5-cd71b291c034",
+            "locales": {
+              "pt": {
+                "contentId": "6f082473-9182-4273-aa20-5e8110a2d4b2",
+                "slug": "public-e96b0615-second-pt",
+                "path": "/pt/cases/public-e96b0615-second-pt",
+                "title": "Synthetic PT public-e96b0615 second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "249a0cf0-476d-4ef4-a5f9-21a9dcb7de84",
+                "slug": "public-e96b0615-second-en",
+                "path": "/en/cases/public-e96b0615-second-en",
+                "title": "Synthetic EN public-e96b0615 second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "a808211a-4a9d-4168-bd24-f5e688e3c5dd",
+            "locales": {
+              "pt": {
+                "contentId": "72d4dc75-c0b2-4f0d-bbd0-3be8cd677b98",
+                "slug": "public-e96b0615-first-pt",
+                "path": "/pt/cases/public-e96b0615-first-pt",
+                "title": "Synthetic PT public-e96b0615 first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "eba80198-f0bf-4a34-aaca-71431d4d7e02",
+                "slug": "public-e96b0615-first-en",
+                "path": "/en/cases/public-e96b0615-first-en",
+                "title": "Synthetic EN public-e96b0615 first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "176e5df8-a8eb-499a-9651-9dce6cad1a74",
+            "locales": {
+              "pt": {
+                "contentId": "131d7c00-a3e5-4b50-9a5e-8eac08c9b421",
+                "slug": "public-e96b0615-ptonly-pt",
+                "path": "/pt/cases/public-e96b0615-ptonly-pt",
+                "title": "Synthetic PT public-e96b0615 ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "299459b9-f486-4c0f-8917-58fece05dec0",
+                "slug": "public-e96b0615-ptonly-en",
+                "path": "/en/cases/public-e96b0615-ptonly-en",
+                "title": "Synthetic EN public-e96b0615 ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "21b18b3c-cbbb-42df-8c9d-ab4f0ed21f26",
+          "email": "editor-37ad9269-70c7-47e5-b7b5-924005e8059b@example.invalid"
+        },
+        "image": {
+          "id": "41a51d39-9faa-4b94-aac2-d8d1bf96fe00",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "385701a4-dc37-443c-951c-8d5a9311349b",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "409b7fc1-8058-4635-b023-d15260b095f5",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "2aa0af35504894a5dbb813abbe0094e044d35231b0acb69e78351139e84ae441",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-a-37a4425a24694c88bcdc33794be2b872\\adfl_test_image_a_37a4425a24694c88bcdc33794be2b872",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\2aa0af35504894a5dbb813abbe0094e044d35231b0acb69e78351139e84ae441",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\37a4425a-2469-4c88-bcdc-33794be2b872\\a\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\37a4425a-2469-4c88-bcdc-33794be2b872\\a\\optimizer",
+      "captureHash": "28c6893d288beb08",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-a-37a4425a24694c88bcdc33794be2b872/adfl_test_image_a_37a4425a24694c88bcdc33794be2b872",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    },
+    {
+      "key": "b",
+      "database": "adfl_test_image_b_37a4425a24694c88bcdc33794be2b872",
+      "bucket": "adfl-test-image-b-37a4425a24694c88bcdc33794be2b872",
+      "origin": "http://127.0.0.1:3104",
+      "port": 3002,
+      "fixture": {
+        "namespace": "public-c2391262",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-c2391262",
+            "brand": "Synthetic PT public-c2391262 portfolio",
+            "projects": "Synthetic PT public-c2391262 projects",
+            "about": "Synthetic PT public-c2391262 about",
+            "resume": "Synthetic PT public-c2391262 resume",
+            "contact": "Synthetic PT public-c2391262 contact",
+            "openMenu": "Synthetic PT public-c2391262 open menu",
+            "closeMenu": "Synthetic PT public-c2391262 close menu",
+            "newTab": "Synthetic PT public-c2391262 opens a new tab",
+            "contents": "Synthetic PT public-c2391262 contents",
+            "readCase": "Synthetic PT public-c2391262 read case",
+            "homeTitle": "Synthetic PT public-c2391262 home",
+            "homeEmphasis": "Synthetic PT public-c2391262 editorial emphasis",
+            "aboutTitle": "Synthetic PT public-c2391262 about page",
+            "listingTitle": "Synthetic PT public-c2391262 case list",
+            "contextHeading": "Synthetic PT public-c2391262 context heading",
+            "comparisonHeading": "Synthetic PT public-c2391262 comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "7cae00ef-4d43-4a22-b9fb-8fba5353db8a",
+            "resumeHref": "/media/7cae00ef-4d43-4a22-b9fb-8fba5353db8a/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-c2391262",
+            "brand": "Synthetic EN public-c2391262 portfolio",
+            "projects": "Synthetic EN public-c2391262 projects",
+            "about": "Synthetic EN public-c2391262 about",
+            "resume": "Synthetic EN public-c2391262 resume",
+            "contact": "Synthetic EN public-c2391262 contact",
+            "openMenu": "Synthetic EN public-c2391262 open menu",
+            "closeMenu": "Synthetic EN public-c2391262 close menu",
+            "newTab": "Synthetic EN public-c2391262 opens a new tab",
+            "contents": "Synthetic EN public-c2391262 contents",
+            "readCase": "Synthetic EN public-c2391262 read case",
+            "homeTitle": "Synthetic EN public-c2391262 home",
+            "homeEmphasis": "Synthetic EN public-c2391262 editorial emphasis",
+            "aboutTitle": "Synthetic EN public-c2391262 about page",
+            "listingTitle": "Synthetic EN public-c2391262 case list",
+            "contextHeading": "Synthetic EN public-c2391262 context heading",
+            "comparisonHeading": "Synthetic EN public-c2391262 comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "5b52c46c-cc15-47a4-8512-3c4cce0a347a",
+            "resumeHref": "/media/5b52c46c-cc15-47a4-8512-3c4cce0a347a/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "547768af-179b-4234-bb55-b168117c4691",
+            "locales": {
+              "pt": {
+                "contentId": "f0d494e1-8622-4179-8c2f-1fb31954b3aa",
+                "slug": "public-c2391262-second-pt",
+                "path": "/pt/cases/public-c2391262-second-pt",
+                "title": "Synthetic PT public-c2391262 second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "1233a124-8b08-4641-8ec8-3a0679df8701",
+                "slug": "public-c2391262-second-en",
+                "path": "/en/cases/public-c2391262-second-en",
+                "title": "Synthetic EN public-c2391262 second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "0163722d-4e0e-4c10-97c4-9de426c30949",
+            "locales": {
+              "pt": {
+                "contentId": "8e3e3258-211f-4ef0-a45f-912adaae12aa",
+                "slug": "public-c2391262-first-pt",
+                "path": "/pt/cases/public-c2391262-first-pt",
+                "title": "Synthetic PT public-c2391262 first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "29fd5ddc-3234-4658-8142-702453dbe4fd",
+                "slug": "public-c2391262-first-en",
+                "path": "/en/cases/public-c2391262-first-en",
+                "title": "Synthetic EN public-c2391262 first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "5be99fdd-53b2-4fb5-bf47-4103b20dbd3b",
+            "locales": {
+              "pt": {
+                "contentId": "5e31e373-3936-4bb8-8c2e-585ccbf750af",
+                "slug": "public-c2391262-ptonly-pt",
+                "path": "/pt/cases/public-c2391262-ptonly-pt",
+                "title": "Synthetic PT public-c2391262 ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "45d2b3c6-c87c-4a05-ab0d-4be908567d49",
+                "slug": "public-c2391262-ptonly-en",
+                "path": "/en/cases/public-c2391262-ptonly-en",
+                "title": "Synthetic EN public-c2391262 ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "625efdf0-c09c-479b-8468-0a1979534310",
+          "email": "editor-455f63b0-fa31-47c4-b435-38fcdede1a8a@example.invalid"
+        },
+        "image": {
+          "id": "2d9f942d-0a6c-46fe-b48c-825546952cb1",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "7cae00ef-4d43-4a22-b9fb-8fba5353db8a",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "d047055c-4fd3-470f-be63-6ac78c78380a",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "ed03d640b0243070e48306161ceb883ddf76cf905dd1b9f6a4f55fd65755d948",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-b-37a4425a24694c88bcdc33794be2b872\\adfl_test_image_b_37a4425a24694c88bcdc33794be2b872",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\ed03d640b0243070e48306161ceb883ddf76cf905dd1b9f6a4f55fd65755d948",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\37a4425a-2469-4c88-bcdc-33794be2b872\\b\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\37a4425a-2469-4c88-bcdc-33794be2b872\\b\\optimizer",
+      "captureHash": "f1282ae3d08daf25",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-b-37a4425a24694c88bcdc33794be2b872/adfl_test_image_b_37a4425a24694c88bcdc33794be2b872",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    }
+  ],
+  "containers": [
+    {
+      "id": "a5a25c0f500f50775146982651829282ed1cfded6abaa331bad631c7b2d5e8af",
+      "dataset": "a",
+      "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+      "user": "10001:10001",
+      "networkMode": "container:7e700123f60edd02e9c0042eea94ef91519d917324963a5d516f73d2c9547c58",
+      "portsPublished": false,
+      "labels": {
+        "runId": "37a4425a-2469-4c88-bcdc-33794be2b872",
+        "purpose": "image-local-verification"
+      }
+    },
+    {
+      "id": "4f2ee78edfc70fbe1a4b9d952a16c7b0ae2c8029236fa0bd961b6269b5abab3a",
+      "dataset": "b",
+      "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+      "user": "10001:10001",
+      "networkMode": "container:7e700123f60edd02e9c0042eea94ef91519d917324963a5d516f73d2c9547c58",
+      "portsPublished": false,
+      "labels": {
+        "runId": "37a4425a-2469-4c88-bcdc-33794be2b872",
+        "purpose": "image-local-verification"
+      }
+    }
+  ],
+  "status": "failed",
+  "databaseContainerId": "7e700123f60edd02e9c0042eea94ef91519d917324963a5d516f73d2c9547c58",
+  "databaseNetworkId": "cf6a3f2c7c1589066cab248f0af17209e9557bd7617a9f03d5d817e399fc2798",
+  "databaseHostPort": 55434,
+  "failure": "HTTP consumer failed: a/initial",
+  "cleanup": [
+    {
+      "id": "4f2ee78edfc70fbe1a4b9d952a16c7b0ae2c8029236fa0bd961b6269b5abab3a",
+      "stoppedAndRemoved": true
+    },
+    {
+      "id": "a5a25c0f500f50775146982651829282ed1cfded6abaa331bad631c7b2d5e8af",
+      "stoppedAndRemoved": true
+    }
+  ],
+  "databaseStoppedAndRemoved": true,
+  "finishedUTC": "2026-11-04T00:54:33.115Z",
+  "fullBrowserImageE2E": "pending"
+}

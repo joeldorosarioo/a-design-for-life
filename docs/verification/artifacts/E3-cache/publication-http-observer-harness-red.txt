@@ -1,0 +1,58 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses the preserved visual database before probing or launching any process
+ ↓ |unit| testing/setup/owned-next-server.test.ts > accepts only the private uncached health contract when deciding that the owned child is ready
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a build directory outside its acquired run: .work/next-build
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a build directory outside its acquired run: .next
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a build directory outside its acquired run: .work/next-tests/aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 3100
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 3101
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 5432
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 55432
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 55433
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a primary, visual or database listener port: 55434
+ ↓ |unit| testing/setup/owned-next-server.test.ts > preserves the canonical root namespace while using its own optimizer loopback and no external integrations
+ ↓ |unit| testing/setup/owned-next-server.test.ts > leaves an occupied port untouched without launching or killing a process
+ × |unit| testing/setup/owned-next-server.test.ts > passes a bound test observer listener only to an explicitly opted-in child 21ms
+   → promise resolved "{ …(6) }" instead of rejecting
+ ↓ |unit| testing/setup/owned-next-server.test.ts > restarts only its retained child with the same completed build and immutable environment
+ ↓ |unit| testing/setup/owned-next-server.test.ts > refuses a different build on restart while preserving the running owned child
+ ↓ |unit| testing/setup/owned-next-server.test.ts > cleans up its own child when readiness never succeeds
+ ↓ |unit| testing/setup/owned-next-server.test.ts > propagates a child launch error instead of mistaking another HTTP response for readiness
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/owned-next-server.test.ts > passes a bound test observer listener only to an explicitly opted-in child
+AssertionError: promise resolved "{ …(6) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "buildId": "synthetic-existing-next-build",
++   "distDirectory": "E:\\a-design-for-life\\.work\\next-tests\\4ce282fd-b66c-4fc4-97e2-7c33308f0312",
++   "logs": [Function logs],
++   "origin": "http://127.0.0.1:3102",
++   "restart": [Function restart],
++   "stop": [Function stop],
+  }
+
+ ❯ testing/setup/owned-next-server.test.ts:190:119
+    188|     const address = listener.address();
+    189|     if (!address || typeof address === 'string') throw new Error('Expe…
+    190|     await expect(startOwnedNextServer({ env: environment(), publicatio…
+       |                                                                                                                       ^
+    191|     expect(control.children).toHaveLength(0);
+    192|     const child = await startOwnedNextServer({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 skipped (18)
+   Start at  01:05:21
+   Duration  541ms (setup 52%, import 28%, transform 13%, tests 6%, worker 1%)
+

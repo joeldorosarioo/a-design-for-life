@@ -1,0 +1,447 @@
+COMMAND: pnpm exec vitest run --project unit src/helpers/storage/restore-object.test.ts src/features/media-library/server/backup-inventory.test.ts
+NODE:24.22.2; no PG/Docker lease consumed
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/backup-inventory.test.ts (7 tests | 7 failed) 10ms
+   × includes current and trashed originals, variants and confirmed-root-only objects with deduplication 6ms
+   × deduplicates a confirmed reference to the same current immutable manifest 1ms
+   × refuses the same object key with conflicting integrity metadata 1ms
+   × refuses a duplicate media identity rather than silently skipping one record 0ms
+   × refuses a malformed manifest instead of omitting required bytes 0ms
+   × refuses malformed confirmed-root media rather than hiding backup incompleteness 0ms
+   × refuses different manifests for the same current and confirmed immutable media 0ms
+ ❯ |unit| src/helpers/storage/restore-object.test.ts (16 tests | 16 failed) 22ms
+   × restores captured bytes under the original immutable key in a newly owned private namespace 5ms
+   × makes an identical repeated restoration idempotent without rewriting existing bytes 1ms
+   × refuses a divergent object under the same key and preserves the original 4ms
+   × validates input integrity before creating an object 1ms
+   × refuses malformed references before writing: {"key":"../outside"} 1ms
+   × refuses malformed references before writing: {"sha256":"invalid"} 1ms
+   × refuses malformed references before writing: {"byteLength":-1} 1ms
+   × refuses malformed references before writing: {"byteLength":1.5} 0ms
+   × refuses to adopt a pre-existing destination even when empty 3ms
+   × refuses a destination outside the exact fresh restore namespace: public/private 1ms
+   × refuses a destination outside the exact fresh restore namespace: .next/static/private 0ms
+   × refuses a destination outside the exact fresh restore namespace: .work/private-media/adfl-test-existing/adfl_test_existing 0ms
+   × captures bytes before the caller mutates the input 0ms
+   × allows concurrent identical writes only after complete bytes are visible 0ms
+   × refuses a root replaced after acquisition 0ms
+   × refuses a linked ancestor without touching its destination 2ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 23 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > restores captured bytes under the original immutable key in a newly owned private namespace
+Error: ENOENT: no such file or directory, scandir 'E:\a-design-for-life\.work\private-media\adfl-test-restore-1eafa290-3665-4a03-875c-7d6e91dafb00\adfl_test_restore_1eafa29036654a03875c7d6e91dafb00'
+ ❯ src/helpers/storage/restore-object.test.ts:29:10
+     27|   const writer = await createLocalRestoreObjectWriter(options);
+     28|   expect(await writer.restore(reference(), bytes)).toEqual(reference()…
+     29|   expect(await readdir(options.root)).toEqual(['a'.repeat(64)]);
+       |          ^
+     30|   expect(await createLocalObjectStorage(options.root).get(reference())…
+     31| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > makes an identical repeated restoration idempotent without rewriting existing bytes
+Error: ENOENT: no such file or directory, stat 'E:\a-design-for-life\.work\private-media\adfl-test-restore-b0b1b29f-6dad-43f4-94ff-baa44d8c7802\adfl_test_restore_b0b1b29f6dad43f494ffbaa44d8c7802\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+ ❯ src/helpers/storage/restore-object.test.ts:35:18
+     33|   const options = fresh(); const writer = await createLocalRestoreObje…
+     34|   await writer.restore(reference(), bytes);
+     35|   const before = await stat(path.join(options.root, reference().key));
+       |                  ^
+     36|   await writer.restore(reference(), bytes);
+     37|   const after = await stat(path.join(options.root, reference().key));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses a divergent object under the same key and preserves the original
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 25,
++   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++   "sha256": "b95ae8222dee27219da5a9172ecc2e39ca44af1f94e66e569af83d3d3e65903e",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:45:60
+     43|   await writer.restore(reference(), bytes);
+     44|   const changed = Buffer.from('divergent immutable bytes');
+     45|   await expect(writer.restore(reference(changed), changed)).rejects.to…
+       |                                                            ^
+     46|   expect(await readFile(path.join(options.root, reference().key))).toE…
+     47| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > validates input integrity before creating an object
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 31,
++   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++   "sha256": "6626e09d148018f7ed0cd440c07129aceda6eae306e2c4a776df88945455ece6",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:50:70
+     48| it('validates input integrity before creating an object', async () => {
+     49|   const options = fresh(); const writer = await createLocalRestoreObje…
+     50|   await expect(writer.restore(reference(), Buffer.from('corrupted'))).…
+       |                                                                      ^
+     51|   expect(await readdir(options.root)).toEqual([]);
+     52| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses malformed references before writing: {"key":"../outside"}
+AssertionError: promise resolved "{ key: '../outside', …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 31,
++   "key": "../outside",
++   "sha256": "6626e09d148018f7ed0cd440c07129aceda6eae306e2c4a776df88945455ece6",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:55:70
+     53| it.each([{ key: '../outside' }, { sha256: 'invalid' }, { byteLength: -…
+     54|   const options = fresh(); const writer = await createLocalRestoreObje…
+     55|   await expect(writer.restore({ ...reference(), ...changed }, bytes)).…
+       |                                                                      ^
+     56|   expect(await readdir(options.root)).toEqual([]);
+     57| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses malformed references before writing: {"sha256":"invalid"}
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 31,
++   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++   "sha256": "invalid",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:55:70
+     53| it.each([{ key: '../outside' }, { sha256: 'invalid' }, { byteLength: -…
+     54|   const options = fresh(); const writer = await createLocalRestoreObje…
+     55|   await expect(writer.restore({ ...reference(), ...changed }, bytes)).…
+       |                                                                      ^
+     56|   expect(await readdir(options.root)).toEqual([]);
+     57| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses malformed references before writing: {"byteLength":-1}
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": -1,
++   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++   "sha256": "6626e09d148018f7ed0cd440c07129aceda6eae306e2c4a776df88945455ece6",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:55:70
+     53| it.each([{ key: '../outside' }, { sha256: 'invalid' }, { byteLength: -…
+     54|   const options = fresh(); const writer = await createLocalRestoreObje…
+     55|   await expect(writer.restore({ ...reference(), ...changed }, bytes)).…
+       |                                                                      ^
+     56|   expect(await readdir(options.root)).toEqual([]);
+     57| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses malformed references before writing: {"byteLength":1.5}
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 1.5,
++   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++   "sha256": "6626e09d148018f7ed0cd440c07129aceda6eae306e2c4a776df88945455ece6",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:55:70
+     53| it.each([{ key: '../outside' }, { sha256: 'invalid' }, { byteLength: -…
+     54|   const options = fresh(); const writer = await createLocalRestoreObje…
+     55|   await expect(writer.restore({ ...reference(), ...changed }, bytes)).…
+       |                                                                      ^
+     56|   expect(await readdir(options.root)).toEqual([]);
+     57| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses to adopt a pre-existing destination even when empty
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "restore": [Function restore],
++   "root": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-restore-ab915d3a-13b8-4c9f-afb1-1bc7c41ee8c9\\adfl_test_restore_ab915d3a13b84c9fafb11bc7c41ee8c9",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:61:56
+     59|   const options = fresh(); await mkdir(options.root, { recursive: true…
+     60|   await writeFile(path.join(path.dirname(options.root), 'owner-sentine…
+     61|   await expect(createLocalRestoreObjectWriter(options)).rejects.toThro…
+       |                                                        ^
+     62|   expect(await readFile(path.join(path.dirname(options.root), 'owner-s…
+     63| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses a destination outside the exact fresh restore namespace: public/private
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "restore": [Function restore],
++   "root": "E:\\a-design-for-life\\public\\private",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:65:104
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses a destination outside the exact fresh restore namespace: .next/static/private
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "restore": [Function restore],
++   "root": "E:\\a-design-for-life\\.next\\static\\private",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:65:104
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses a destination outside the exact fresh restore namespace: .work/private-media/adfl-test-existing/adfl_test_existing
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "restore": [Function restore],
++   "root": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-existing\\adfl_test_existing",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:65:104
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > captures bytes before the caller mutates the input
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\private-media\adfl-test-restore-19db39e4-5479-4c26-98b0-4180b0a3f52f\adfl_test_restore_19db39e454794c2698b04180b0a3f52f\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+ ❯ src/helpers/storage/restore-object.test.ts:71:10
+     69|   const input = Buffer.from(bytes); const pending = writer.restore(ref…
+     70|   await pending;
+     71|   expect(await readFile(path.join(options.root, reference().key))).toE…
+       |          ^
+     72| });
+     73| it('allows concurrent identical writes only after complete bytes are v…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > allows concurrent identical writes only after complete bytes are visible
+Error: ENOENT: no such file or directory, scandir 'E:\a-design-for-life\.work\private-media\adfl-test-restore-c977696f-616f-4965-b92d-5dc33114ad12\adfl_test_restore_c977696f616f4965b92d5dc33114ad12'
+ ❯ src/helpers/storage/restore-object.test.ts:76:10
+     74|   const options = fresh(); const writer = await createLocalRestoreObje…
+     75|   await Promise.all([writer.restore(reference(), bytes), writer.restor…
+     76|   expect(await readdir(options.root)).toEqual(['a'.repeat(64)]);
+       |          ^
+     77|   expect(await readFile(path.join(options.root, reference().key))).toE…
+     78| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses a root replaced after acquisition
+Error: ENOENT: no such file or directory, rename 'E:\a-design-for-life\.work\private-media\adfl-test-restore-c413c3fe-9824-42e7-bb24-3ca5a10213d8\adfl_test_restore_c413c3fe982442e7bb243ca5a10213d8' -> 'E:\a-design-for-life\.work\private-media\adfl-test-restore-c413c3fe-9824-42e7-bb24-3ca5a10213d8\adfl_test_restore_c413c3fe982442e7bb243ca5a10213d8-original'
+ ❯ src/helpers/storage/restore-object.test.ts:81:3
+     79| it('refuses a root replaced after acquisition', async () => {
+     80|   const options = fresh(); const writer = await createLocalRestoreObje…
+     81|   await rename(options.root, `${options.root}-original`); await mkdir(…
+       |   ^
+     82|   await expect(writer.restore(reference(), bytes)).rejects.toThrow();
+     83|   expect(await readdir(options.root)).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/23]⎯
+
+ FAIL  |unit| src/helpers/storage/restore-object.test.ts > refuses a linked ancestor without touching its destination
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "restore": [Function restore],
++   "root": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-restore-7828feb4-f046-4cef-904a-c564b73c95c5\\adfl_test_restore_7828feb4f0464cef904ac564b73c95c5",
+  }
+
+ ❯ src/helpers/storage/restore-object.test.ts:88:56
+     86|   const options = fresh(); const real = fresh(); await mkdir(real.root…
+     87|   await symlink(path.dirname(real.root), path.dirname(options.root), p…
+     88|   await expect(createLocalRestoreObjectWriter(options)).rejects.toThro…
+       |                                                        ^
+     89|   expect(await readdir(real.root)).toEqual([]);
+     90| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > includes current and trashed originals, variants and confirmed-root-only objects with deduplication
+AssertionError: expected [] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+- [
+-   "11111111-1111-4111-8111-111111111111",
+-   "22222222-2222-4222-8222-222222222222",
+- ]
++ []
+
+ ❯ src/features/media-library/server/backup-inventory.test.ts:10:30
+      8| it('includes current and trashed originals, variants and confirmed-roo…
+      9|   const inventory = collectBackupMediaInventory({ media: [{ id, manife…
+     10|   expect(inventory.mediaIds).toEqual([id, another]);
+       |                              ^
+     11|   expect(inventory.objects.map(object => object.key)).toEqual(['a'.rep…
+     12| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > deduplicates a confirmed reference to the same current immutable manifest
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   "11111111-1111-4111-8111-111111111111",
+- ]
++ []
+
+ ❯ src/features/media-library/server/backup-inventory.test.ts:17:30
+     15|   confirmed.subjects['case-content/synthetic'].value.media = [{ id, ma…
+     16|   const inventory = collectBackupMediaInventory({ media: [{ id, manife…
+     17|   expect(inventory.mediaIds).toEqual([id]);
+       |                              ^
+     18|   expect(inventory.objects).toHaveLength(2);
+     19| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > refuses the same object key with conflicting integrity metadata
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/media-library/server/backup-inventory.test.ts:22:134
+     20| it('refuses the same object key with conflicting integrity metadata', …
+     21|   const other = manifest(); other.original.object.sha256 = 'f'.repeat(…
+     22|   expect(() => collectBackupMediaInventory({ media: [{ id, manifest: m…
+       |                                                                                                                                      ^
+     23| });
+     24| it('refuses a duplicate media identity rather than silently skipping o…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > refuses a duplicate media identity rather than silently skipping one record
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/media-library/server/backup-inventory.test.ts:25:130
+     23| });
+     24| it('refuses a duplicate media identity rather than silently skipping o…
+     25|   expect(() => collectBackupMediaInventory({ media: [{ id, manifest: m…
+       |                                                                                                                                  ^
+     26| });
+     27| it('refuses a malformed manifest instead of omitting required bytes', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > refuses a malformed manifest instead of omitting required bytes
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/media-library/server/backup-inventory.test.ts:28:122
+     26| });
+     27| it('refuses a malformed manifest instead of omitting required bytes', …
+     28|   expect(() => collectBackupMediaInventory({ media: [{ id, manifest: {…
+       |                                                                                                                          ^
+     29| });
+     30| it('refuses malformed confirmed-root media rather than hiding backup i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > refuses malformed confirmed-root media rather than hiding backup incompleteness
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/media-library/server/backup-inventory.test.ts:32:77
+     30| it('refuses malformed confirmed-root media rather than hiding backup i…
+     31|   const confirmed = root(); confirmed.subjects['case-content/synthetic…
+     32|   expect(() => collectBackupMediaInventory({ media: [], root: confirme…
+       |                                                                             ^
+     33| });
+     34| it('refuses different manifests for the same current and confirmed imm…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/23]⎯
+
+ FAIL  |unit| src/features/media-library/server/backup-inventory.test.ts > refuses different manifests for the same current and confirmed immutable media
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/media-library/server/backup-inventory.test.ts:36:105
+     34| it('refuses different manifests for the same current and confirmed imm…
+     35|   const confirmed = root(); confirmed.subjects['case-content/synthetic…
+     36|   expect(() => collectBackupMediaInventory({ media: [{ id, manifest: m…
+       |                                                                                                         ^
+     37| });
+     38|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/23]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  23 failed (23)
+   Start at  21:46:30
+   Duration  451ms (setup 73%, transform 10%, import 9%, tests 6%, worker 2%)
+
+EXIT_CODE: 1

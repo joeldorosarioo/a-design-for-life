@@ -1,0 +1,256 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| testing/setup/install-age.test.ts (13 tests | 13 failed) 29ms
+   × pins only the two verified upstream archives and rejects unsupported architectures 7ms
+   × refuses an archive path outside the fixed upstream directory: /etc/passwd 1ms
+   × refuses an archive path outside the fixed upstream directory: ../outside 0ms
+   × refuses an archive path outside the fixed upstream directory: age/../../outside 0ms
+   × refuses an archive path outside the fixed upstream directory: C:/outside 0ms
+   × refuses an archive path outside the fixed upstream directory: age/file:stream 0ms
+   × refuses an archive path outside the fixed upstream directory: other/file 0ms
+   × refuses an archive path outside the fixed upstream directory: age/linked/../outside 0ms
+   × accepts the exact ordinary upstream tree and requires both native executables 0ms
+   × never replaces an existing installation with mismatched provenance 9ms
+   × rejects a corrupt cached archive without extracting, downloading or replacing it 4ms
+   × refuses a linked toolchain before touching the external target 3ms
+   × requires an absolute project root 1ms
+ ❯ |unit| testing/setup/configure-backup-tools.test.ts (11 tests | 11 failed) 34ms
+   × generates no identity outside APP_ENV=test: local 10ms
+   × generates no identity outside APP_ENV=test: staging 2ms
+   × generates no identity outside APP_ENV=test: production 2ms
+   × generates no identity outside APP_ENV=test: undefined 3ms
+   × refuses a non-synthetic namespace before creating files 2ms
+   × refuses a non-synthetic namespace before creating files 2ms
+   × refuses a non-synthetic namespace before creating files 2ms
+   × refuses a non-synthetic namespace before creating files 2ms
+   × refuses a non-synthetic namespace before creating files 2ms
+   × does not generate keys in a different project 2ms
+   × requires verified installation instead of downloading tools during identity generation 3ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 24 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > generates no identity outside APP_ENV=test: local
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > generates no identity outside APP_ENV=test: staging
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > generates no identity outside APP_ENV=test: production
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > generates no identity outside APP_ENV=test: undefined
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/configure-backup-tools.test.ts:17:81
+     15| it.each(['local', 'staging', 'production', undefined])('generates no i…
+     16|   const root = await project();
+     17|   await expect(configureBackupTools({ root, env: { ...synthetic(), APP…
+       |                                                                                 ^
+     18|   expect(await readdir(root)).toEqual(['package.json']);
+     19| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/24]⎯
+
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > refuses a non-synthetic namespace before creating files
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > refuses a non-synthetic namespace before creating files
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > refuses a non-synthetic namespace before creating files
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > refuses a non-synthetic namespace before creating files
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > refuses a non-synthetic namespace before creating files
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/configure-backup-tools.test.ts:28:85
+     26| ])('refuses a non-synthetic namespace before creating files', async (o…
+     27|   const root = await project();
+     28|   await expect(configureBackupTools({ root, env: { ...synthetic(), ...…
+       |                                                                                     ^
+     29|   expect(await readdir(root)).toEqual(['package.json']);
+     30| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/24]⎯
+
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > does not generate keys in a different project
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/configure-backup-tools.test.ts:33:65
+     31| it('does not generate keys in a different project', async () => {
+     32|   const root = await project('unrelated-project');
+     33|   await expect(configureBackupTools({ root, env: synthetic() })).rejec…
+       |                                                                 ^
+     34|   expect(await readdir(root)).toEqual(['package.json']);
+     35| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/24]⎯
+
+ FAIL  |unit| testing/setup/configure-backup-tools.test.ts > requires verified installation instead of downloading tools during identity generation
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/configure-backup-tools.test.ts:39:65
+     37|   const root = await project();
+     38|   await mkdir(path.join(root, '.toolchain'));
+     39|   await expect(configureBackupTools({ root, env: synthetic() })).rejec…
+       |                                                                 ^
+     40|   expect(await readdir(root)).toEqual(['.toolchain', 'package.json']);
+     41| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > pins only the two verified upstream archives and rejects unsupported architectures
+AssertionError: expected [Function] to throw an error
+ ❯ testing/setup/install-age.test.ts:13:51
+     11|   expect(ageDistribution('win32', 'x64')).toMatchObject({ archive: 'ag…
+     12|   expect(ageDistribution('linux', 'x64')).toMatchObject({ archive: 'ag…
+     13|   expect(() => ageDistribution('linux', 'arm64')).toThrow();
+       |                                                   ^
+     14|   expect(() => ageDistribution('darwin', 'x64')).toThrow();
+     15| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: /etc/passwd
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: ../outside
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: age/../../outside
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: C:/outside
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: age/file:stream
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: other/file
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses an archive path outside the fixed upstream directory: age/linked/../outside
+AssertionError: expected [Function] to throw an error
+ ❯ testing/setup/install-age.test.ts:19:132
+     17| it.each(['/etc/passwd', '../outside', 'age/../../outside', 'C:/outside…
+     18|   'refuses an archive path outside the fixed upstream directory: %s', …
+     19|     expect(() => validateAgeArchiveEntries(['age/', 'age/age.exe', 'ag…
+       |                                                                                                                                    ^
+     20|   },
+     21| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > accepts the exact ordinary upstream tree and requires both native executables
+AssertionError: expected [Function] to throw an error
+ ❯ testing/setup/install-age.test.ts:25:74
+     23|   const selected = ageDistribution('linux', 'x64');
+     24|   expect(() => validateAgeArchiveEntries(['age/', 'age/age', 'age/age-…
+     25|   expect(() => validateAgeArchiveEntries(['age/', 'age/age'], selected…
+       |                                                                          ^
+     26| });
+     27| it('never replaces an existing installation with mismatched provenance…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > never replaces an existing installation with mismatched provenance
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/install-age.test.ts:33:37
+     31|   await writeFile(path.join(installed, '.codex-install.json'), JSON.st…
+     32|   await writeFile(path.join(installed, 'preserved.txt'), 'existing too…
+     33|   await expect(installAge({ root })).rejects.toThrow(/existing|install…
+       |                                     ^
+     34|   expect(await readFile(path.join(installed, 'preserved.txt'), 'utf8')…
+     35|   await expect(readdir(path.join(root, '.work'))).rejects.toMatchObjec…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > rejects a corrupt cached archive without extracting, downloading or replacing it
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/install-age.test.ts:43:37
+     41|   const archive = path.join(cache, ageDistribution(process.platform, p…
+     42|   await writeFile(archive, 'corrupt synthetic archive');
+     43|   await expect(installAge({ root })).rejects.toThrow(/sha256/i);
+       |                                     ^
+     44|   expect(await readFile(archive, 'utf8')).toBe('corrupt synthetic arch…
+     45|   await expect(readdir(path.join(root, '.toolchain', `age-1.3.2-${proc…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > refuses a linked toolchain before touching the external target
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/install-age.test.ts:51:37
+     49|   const outside = await scratch();
+     50|   await symlink(outside, path.join(root, '.toolchain'), process.platfo…
+     51|   await expect(installAge({ root })).rejects.toThrow(/linked/i);
+       |                                     ^
+     52|   expect(await readdir(outside)).toEqual([]);
+     53| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/24]⎯
+
+ FAIL  |unit| testing/setup/install-age.test.ts > requires an absolute project root
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ testing/setup/install-age.test.ts:55:57
+     53| });
+     54| it('requires an absolute project root', async () => {
+     55|   await expect(installAge({ root: 'relative-project' })).rejects.toThr…
+       |                                                         ^
+     56| });
+     57|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/24]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  24 failed (24)
+   Start at  23:11:09
+   Duration  548ms (setup 69%, transform 11%, tests 10%, import 8%, worker 1%)
+
+EXIT_CODE=1

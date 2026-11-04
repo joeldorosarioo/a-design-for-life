@@ -1,0 +1,95 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+xxx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > proves initial shared order with empty public DTOs in both languages before the shell exists
+AssertionError: expected [] to deeply equal [ [ …(2) ], [ …(2) ] ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "/api/case-content/published/pt",
+-     200,
+-   ],
+-   [
+-     "/api/case-content/published/en",
+-     200,
+-   ],
+- ]
++ []
+
+ ❯ src/config/portfolio-publication-observation.test.ts:26:58
+     24|   const root = { generation: randomUUID(), subjects: { ['cases/' + cas…
+     25|   const plan = await planPublicationObservations({ root, operation: in…
+     26|   expect(plan.map(({ path, status }) => [path, status])).toEqual([
+       |                                                          ^
+     27|     ['/api/case-content/published/pt', 200], ['/api/case-content/publi…
+     28|   ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > verifies current detail, canonical history and withdrawn routes with one root and the same fixed canonical origin
+AssertionError: expected [] to deeply equal [ [ …(2) ], …(2) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "/api/case-content/published/pt",
+-     200,
+-   ],
+-   [
+-     "/pt/cases/atual",
+-     200,
+-   ],
+-   [
+-     "/pt/cases/antigo",
+-     308,
+-   ],
+- ]
++ []
+
+ ❯ src/config/portfolio-publication-observation.test.ts:53:60
+     51|   const published = entry(old);
+     52|   const online = await planPublicationObservations({ root: rootFor(pub…
+     53|   expect(online.map(({ path, status }) => [path, status])).toEqual([
+       |                                                            ^
+     54|     ['/api/case-content/published/pt', 200], ['/pt/cases/atual', 200],…
+     55|   ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > does not observe a requested operation superseded in the actual selected root
+AssertionError: promise resolved "[]" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+[]
+
+ ❯ src/config/portfolio-publication-observation.test.ts:72:109
+     70|   const next = entry({ kind: 'case-order', caseId, sortOrder: 1, featu…
+     71|   const root = { generation: randomUUID(), subjects: { ['cases/' + cas…
+     72|   await expect(planPublicationObservations({ root, operation: intent('…
+       |                                                                                                             ^
+     73| });
+     74|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  00:56:14
+   Duration  3.84s (import 80%, transform 10%, setup 9%, tests 1%)
+
+Exit: 1

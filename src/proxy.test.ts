@@ -15,6 +15,7 @@ import { publicRootDirectory } from './helpers/payload/public-root-directory';
 import { withPublicRootWriter } from './helpers/payload/public-root';
 import { installPayloadProvider } from './helpers/payload/runtime';
 import {
+  preparePublicRenderRequest,
   readPublicRenderContext,
   PUBLIC_RENDER_CONTEXT_HEADER,
 } from './config/public-render-context';
@@ -108,9 +109,10 @@ it.each(['GET', 'HEAD'] as const)(
     });
     const caseId = randomUUID();
     const contentId = randomUUID();
+    const generation = randomUUID();
     await withPublicRootWriter(directory, async (_current, commit) =>
       commit({
-        generation: randomUUID(),
+        generation,
         subjects: {
           [`case-content/${contentId}`]: {
             operationId: randomUUID(),
@@ -149,6 +151,7 @@ it.each(['GET', 'HEAD'] as const)(
     });
     const response = await proxy(incoming);
     expect(response.status).toBe(308);
+    expect(response.headers.get('x-portfolio-generation')).toBe(generation);
     const location = response.headers.get('location')!;
     // Next's redirect adapter consumes Location without a base URL.
     expect(
@@ -168,6 +171,44 @@ it.each(['GET', 'HEAD'] as const)(
     expect(nativeCalls).toBe(0);
   },
 );
+it('exposes the same generation as the signed public render pin and ignores visitor overrides', async () => {
+  const root = editorialNegativeRoot(404);
+  root.subjects = Object.fromEntries(
+    Object.entries(root.subjects).filter(([subject]) => !subject.startsWith('case-content/')),
+  );
+  const caseId = randomUUID();
+  root.subjects[`cases/${caseId}`] = {
+    operationId: randomUUID(),
+    targetRevision: randomUUID(),
+    value: { kind: 'case-order', caseId, sortOrder: 0, featured: false },
+  };
+  await withPublicRootWriter(directory, async (_current, commit) => commit(root));
+  const incoming = request('/pt', {
+    headers: {
+      'x-portfolio-generation': 'forged',
+      'x-middleware-request-x-portfolio-generation': 'forged',
+    },
+  });
+  const response = await proxy(incoming);
+  expect(response.status).toBe(200);
+  const header = response.headers.get('x-portfolio-generation');
+  expect(header).toBe(root.generation);
+  expect(response.headers.has('x-middleware-request-x-portfolio-generation')).toBe(false);
+  const later = { ...root, generation: randomUUID() };
+  await withPublicRootWriter(directory, async (_current, commit) => commit(later));
+  const token = response.headers.get(`x-middleware-request-${PUBLIC_RENDER_CONTEXT_HEADER}`)!;
+  const loaded = await readPublicRenderContext(
+    new Headers({ [PUBLIC_RENDER_CONTEXT_HEADER]: token }),
+    {
+      publicationDirectory: directory,
+      secret,
+    },
+  );
+  expect(loaded.root?.generation).toBe(header);
+  expect(
+    await preparePublicRenderRequest(incoming, { publicationDirectory: directory, secret }),
+  ).toMatchObject({ generation: later.generation });
+});
 it('passes a signed404 through Next.next while replacing forged incoming context', async () => {
   const response = await proxy(
     request('/pt/about', {
@@ -193,6 +234,7 @@ it('passes a signed404 through Next.next while replacing forged incoming context
     ).context,
   ).toMatchObject({ status: 404, locale: 'pt', pin: null });
   expect(response.headers.get(PUBLIC_RENDER_CONTEXT_HEADER)).toBeNull();
+  expect(response.headers.get('x-portfolio-generation')).toBeNull();
   expect(nativeCalls).toBe(0);
 });
 // Exercise Next's real matcher consumer rather than inspecting config source text.
@@ -533,9 +575,8 @@ function editorialNegativeRoot(status: 404 | 410 | 503): PublicRoot {
 it.each([404, 410, 503] as const)(
   'renders current editorial case%s directly, preserving HEAD/conditionals and excluding request identity',
   async (status) => {
-    await withPublicRootWriter(directory, async (_current, commit) =>
-      commit(editorialNegativeRoot(status)),
-    );
+    const root = editorialNegativeRoot(status);
+    await withPublicRootWriter(directory, async (_current, commit) => commit(root));
     const slug = status === 404 ? 'UPPER-PRIVATE' : 'current-case';
     const get = await proxy(
       request(`/pt/cases/${slug}?generation=FORGED`, {
@@ -551,6 +592,7 @@ it.each([404, 410, 503] as const)(
     expect(get.headers.get('cache-control')).toBe('no-store, max-age=0');
     expect(get.headers.get('x-robots-tag')).toBe('noindex, nofollow');
     if (status === 503) expect(get.headers.get('retry-after')).toBe('60');
+    expect(get.headers.get('x-portfolio-generation')).toBe(status === 404 ? null : root.generation);
     const html = await get.text();
     expect(html).toContain(`EDITORIAL${status}`);
     expect(html).toContain('CURRENT FOOTER');

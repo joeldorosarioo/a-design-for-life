@@ -1,0 +1,168 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/proxy.test.ts (41 tests | 41 failed) 19ms
+   × emits a confirmed historical GET redirect consumable by Next on the configured origin despite forged Host headers 5ms
+   × emits a confirmed historical HEAD redirect consumable by Next on the configured origin despite forged Host headers 1ms
+   × passes a signed404 through Next.next while replacing forged incoming context 0ms
+   × runs Proxy for the entire supported locale surface: /pt 0ms
+   × runs Proxy for the entire supported locale surface: /en 0ms
+   × runs Proxy for the entire supported locale surface: /pt/unknown 0ms
+   × runs Proxy for the entire supported locale surface: /en/unknown 0ms
+   × runs Proxy for the entire supported locale surface: /pt/unknown/deep 0ms
+   × runs Proxy for the entire supported locale surface: /en/unknown/deep 0ms
+   × keeps unrelated surfaces outside the public Proxy matcher: /admin 0ms
+   × keeps unrelated surfaces outside the public Proxy matcher: /api/cases 0ms
+   × keeps unrelated surfaces outside the public Proxy matcher: /fr/unknown 0ms
+   × keeps unrelated surfaces outside the public Proxy matcher: /unknown 0ms
+   × keeps unrelated surfaces outside the public Proxy matcher: /preview 0ms
+   × keeps unrelated surfaces outside the public Proxy matcher: /media/a/original 0ms
+   × passes unknown GET /pt/unknown to the Page as a locale-bound no-store404 0ms
+   × passes unknown HEAD /pt/unknown/deep to the Page as a locale-bound no-store404 0ms
+   × passes unknown GET /en/unknown to the Page as a locale-bound no-store404 0ms
+   × passes unknown HEAD /en/unknown/deep to the Page as a locale-bound no-store404 0ms
+   × passes safe503 to the Page when no healthy Native origin can classify missing coverage 0ms
+   × leaves an excluded API path outside the public render transport 0ms
+   × denies unsupported HTML methods without emitting a render token 0ms
+   × fails closed without a token if server configuration cannot authenticate context 0ms
+   × returns the image helper refusal directly instead of entering the optimizer 0ms
+   × passes only a valid signed and root-authorized inner image request to Next 0ms
+   × does not strip image authentication and turn a forged inner request into an outer fetch 0ms
+   × preserves the final external no-store wrapper from the image helper using a synthetic HTTP origin 0ms
+   × requires an explicit trusted internal origin in production regardless of Host/forwarded headers 0ms
+   × returns a direct safe case404 without a render token and strips the HEAD body 0ms
+   × returns a direct safe case410 without a render token and strips the HEAD body 0ms
+   × returns a direct safe case503 without a render token and strips the HEAD body 1ms
+   × keeps negative case HTML and classification headers independent of the visited slug 0ms
+   × runs the private pre-stream authorization boundary for /preview-ui 0ms
+   × runs the private pre-stream authorization boundary for /preview-ui/invalid 0ms
+   × runs the private pre-stream authorization boundary for /preview-ui/pt/case-content/11111111-1111-4111-8111-111111111111/case 0ms
+   × does not claim neighboring paths as a private preview surface 0ms
+   × fails closed before Next when private authentication is unavailable and ignores forged public authority 0ms
+   × renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity 0ms
+   × renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity 0ms
+   × renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity 0ms
+   × makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 41 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > emits a confirmed historical GET redirect consumable by Next on the configured origin despite forged Host headers
+ FAIL  |unit| src/proxy.test.ts > emits a confirmed historical HEAD redirect consumable by Next on the configured origin despite forged Host headers
+ FAIL  |unit| src/proxy.test.ts > passes a signed404 through Next.next while replacing forged incoming context
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt/unknown
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en/unknown
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt/unknown/deep
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en/unknown/deep
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /admin
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /api/cases
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /fr/unknown
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /unknown
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /preview
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /media/a/original
+ FAIL  |unit| src/proxy.test.ts > passes unknown GET /pt/unknown to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes unknown HEAD /pt/unknown/deep to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes unknown GET /en/unknown to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes unknown HEAD /en/unknown/deep to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes safe503 to the Page when no healthy Native origin can classify missing coverage
+ FAIL  |unit| src/proxy.test.ts > leaves an excluded API path outside the public render transport
+ FAIL  |unit| src/proxy.test.ts > denies unsupported HTML methods without emitting a render token
+ FAIL  |unit| src/proxy.test.ts > fails closed without a token if server configuration cannot authenticate context
+ FAIL  |unit| src/proxy.test.ts > returns the image helper refusal directly instead of entering the optimizer
+ FAIL  |unit| src/proxy.test.ts > passes only a valid signed and root-authorized inner image request to Next
+ FAIL  |unit| src/proxy.test.ts > does not strip image authentication and turn a forged inner request into an outer fetch
+ FAIL  |unit| src/proxy.test.ts > preserves the final external no-store wrapper from the image helper using a synthetic HTTP origin
+ FAIL  |unit| src/proxy.test.ts > requires an explicit trusted internal origin in production regardless of Host/forwarded headers
+ FAIL  |unit| src/proxy.test.ts > returns a direct safe case404 without a render token and strips the HEAD body
+ FAIL  |unit| src/proxy.test.ts > returns a direct safe case410 without a render token and strips the HEAD body
+ FAIL  |unit| src/proxy.test.ts > returns a direct safe case503 without a render token and strips the HEAD body
+ FAIL  |unit| src/proxy.test.ts > keeps negative case HTML and classification headers independent of the visited slug
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/invalid
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/pt/case-content/11111111-1111-4111-8111-111111111111/case
+ FAIL  |unit| src/proxy.test.ts > does not claim neighboring paths as a private preview surface
+ FAIL  |unit| src/proxy.test.ts > fails closed before Next when private authentication is unavailable and ignores forged public authority
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity
+ FAIL  |unit| src/proxy.test.ts > makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure
+ZodError: [
+  {
+    "code": "custom",
+    "path": [
+      "MEDIA_STORAGE_ROOT"
+    ],
+    "message": "Testes exigem armazenamento privado no namespace isolado de bucket e banco"
+  }
+]
+ ❯ readServerEnv src/config/server-env.ts:88:25
+     86|
+     87|       if (
+     88|         !['localhost', '127.0.0.1', '[::1]'].includes(database.hostnam…
+       |                         ^
+     89|         !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname)
+     90|       ) {
+ ❯ configure src/proxy.test.ts:53:48
+ ❯ src/proxy.test.ts:89:2
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/82]⎯
+
+ FAIL  |unit| src/proxy.test.ts > emits a confirmed historical GET redirect consumable by Next on the configured origin despite forged Host headers
+ FAIL  |unit| src/proxy.test.ts > emits a confirmed historical HEAD redirect consumable by Next on the configured origin despite forged Host headers
+ FAIL  |unit| src/proxy.test.ts > passes a signed404 through Next.next while replacing forged incoming context
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt/unknown
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en/unknown
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /pt/unknown/deep
+ FAIL  |unit| src/proxy.test.ts > runs Proxy for the entire supported locale surface: /en/unknown/deep
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /admin
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /api/cases
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /fr/unknown
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /unknown
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /preview
+ FAIL  |unit| src/proxy.test.ts > keeps unrelated surfaces outside the public Proxy matcher: /media/a/original
+ FAIL  |unit| src/proxy.test.ts > passes unknown GET /pt/unknown to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes unknown HEAD /pt/unknown/deep to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes unknown GET /en/unknown to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes unknown HEAD /en/unknown/deep to the Page as a locale-bound no-store404
+ FAIL  |unit| src/proxy.test.ts > passes safe503 to the Page when no healthy Native origin can classify missing coverage
+ FAIL  |unit| src/proxy.test.ts > leaves an excluded API path outside the public render transport
+ FAIL  |unit| src/proxy.test.ts > denies unsupported HTML methods without emitting a render token
+ FAIL  |unit| src/proxy.test.ts > fails closed without a token if server configuration cannot authenticate context
+ FAIL  |unit| src/proxy.test.ts > returns the image helper refusal directly instead of entering the optimizer
+ FAIL  |unit| src/proxy.test.ts > passes only a valid signed and root-authorized inner image request to Next
+ FAIL  |unit| src/proxy.test.ts > does not strip image authentication and turn a forged inner request into an outer fetch
+ FAIL  |unit| src/proxy.test.ts > preserves the final external no-store wrapper from the image helper using a synthetic HTTP origin
+ FAIL  |unit| src/proxy.test.ts > requires an explicit trusted internal origin in production regardless of Host/forwarded headers
+ FAIL  |unit| src/proxy.test.ts > returns a direct safe case404 without a render token and strips the HEAD body
+ FAIL  |unit| src/proxy.test.ts > returns a direct safe case410 without a render token and strips the HEAD body
+ FAIL  |unit| src/proxy.test.ts > returns a direct safe case503 without a render token and strips the HEAD body
+ FAIL  |unit| src/proxy.test.ts > keeps negative case HTML and classification headers independent of the visited slug
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/invalid
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/pt/case-content/11111111-1111-4111-8111-111111111111/case
+ FAIL  |unit| src/proxy.test.ts > does not claim neighboring paths as a private preview surface
+ FAIL  |unit| src/proxy.test.ts > fails closed before Next when private authentication is unavailable and ignores forged public authority
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity
+ FAIL  |unit| src/proxy.test.ts > makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure
+TypeError: The "paths[0]" argument must be of type string. Received undefined
+ ❯ src/proxy.test.ts:102:49
+    100| });
+    101| it.each(['GET', 'HEAD'] as const)(
+    102|   'emits a confirmed historical %s redirect consumable by Next on the …
+       |                                                 ^
+    103|   async (method) => {
+    104|     configure({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/82]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  41 failed (41)
+   Start at  20:38:34
+   Duration  1.90s (import 78%, setup 14%, transform 7%, tests 1%)
+

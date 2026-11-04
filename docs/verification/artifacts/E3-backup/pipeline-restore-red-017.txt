@@ -1,0 +1,156 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/restore.test.ts; real age/tar+filesystem, technical target process boundary only
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/restore.test.ts (7 tests | 7 failed) 821ms
+   × refuses production before decrypting or contacting any restore target 21ms
+   × refuses an injected repository before any target operation 1ms
+   × decrypts an actual complete set and restores original keys plus the captured public root under the owned target guard 187ms
+   × does not acquire a target when a different valid age identity cannot decrypt the set 157ms
+   × does not acquire a target when stored ciphertext is corrupted 156ms
+   × does not acquire a target when the private manifest hash differs from its complete marker 157ms
+   × rejects an allowed but unreferenced archive object before acquiring a fresh application target 141ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > refuses production before decrypting or contacting any restore target
+AssertionError: promise resolved "{ backupId: '', …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "backupId": "",
++   "durationMs": 0,
++   "restoredObjectCount": 0,
++   "rootGeneration": null,
+  }
+
+ ❯ ops/backup/restore.test.ts:20:397
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > refuses an injected repository before any target operation
+AssertionError: promise resolved "{ backupId: '', …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "backupId": "",
++   "durationMs": 0,
++   "restoredObjectCount": 0,
++   "rootGeneration": null,
+  }
+
+ ❯ ops/backup/restore.test.ts:21:329
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > decrypts an actual complete set and restores original keys plus the captured public root under the owned target guard
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ops/backup/restore.test.ts:22:699
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > does not acquire a target when a different valid age identity cannot decrypt the set
+AssertionError: promise resolved "{ backupId: '', …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "backupId": "",
++   "durationMs": 0,
++   "restoredObjectCount": 0,
++   "rootGeneration": null,
+  }
+
+ ❯ ops/backup/restore.test.ts:23:397
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > does not acquire a target when stored ciphertext is corrupted
+AssertionError: promise resolved "{ backupId: '', …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "backupId": "",
++   "durationMs": 0,
++   "restoredObjectCount": 0,
++   "rootGeneration": null,
+  }
+
+ ❯ ops/backup/restore.test.ts:24:537
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > does not acquire a target when the private manifest hash differs from its complete marker
+AssertionError: promise resolved "{ backupId: '', …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "backupId": "",
++   "durationMs": 0,
++   "restoredObjectCount": 0,
++   "rootGeneration": null,
+  }
+
+ ❯ ops/backup/restore.test.ts:25:553
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  |unit| ops/backup/restore.test.ts > rejects an allowed but unreferenced archive object before acquiring a fresh application target
+AssertionError: promise resolved "{ backupId: '', …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "backupId": "",
++   "durationMs": 0,
++   "restoredObjectCount": 0,
++   "rootGeneration": null,
+  }
+
+ ❯ ops/backup/restore.test.ts:26:1966
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed (7)
+   Start at  22:54:08
+   Duration  1.29s (tests 70%, setup 16%, import 9%, transform 4%)
+
+EXIT_CODE: 1

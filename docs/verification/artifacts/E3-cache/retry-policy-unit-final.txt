@@ -1,0 +1,57 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > arms a committed intention for recovery even when its immediate caller never starts an attempt 3ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > starts the immediate attempt with a durable version and pre-arms the first proposed retry 2ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > does not spend a retry before its persisted due time 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > pre-arms the proposed 1/5/15-second stages and leaves a fourth failure pending for manual recovery 1ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > can recover a due intention whose process died before the immediate post-write attempt 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > manual recovery resets the proposed budget while preserving the same immutable operation 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > automatic identifies a different native latest intent for reconciliation without spending or promoting the old target 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > manual identifies a different native latest intent for reconciliation without spending or promoting the old target 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > immediate identifies a different native latest intent for reconciliation without spending or promoting the old target 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > routes a missing native publication head to reconciliation instead of choosing another target 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reuse an older public receipt when a manual retry names an operation superseded by a newer native intent 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > keeps the approved intent eligible after a newer private draft changes only the editorial revision 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late public outcome after a newer started attempt or manual reset 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late superseded outcome after a newer started attempt or manual reset 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > ignores a late update-pending outcome after a newer started attempt or manual reset 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > never applies another operation outcome even when its version matches 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > public outcome ends automatic scheduling only for the matching started attempt 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > superseded outcome ends automatic scheduling only for the matching started attempt 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reopen terminal public state for a retry or late failure 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > does not reopen terminal superseded state for a retry or late failure 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > leaves unscheduled legacy work manual-only while permitting an explicit manual reset 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot repeatedly allocate immediate attempts outside the automatic budget 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > compares an offset-bearing persisted instant in UTC and emits a canonical next due time 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 2 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 3 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 4 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 5 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 6 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 7 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 8 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 9 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 10 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > fails closed on an invalid or inconsistent persisted policy state: 11 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 2 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects incomplete or wider retry commands rather than inferring a target: 3 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects invalid outcome tokens without changing policy state: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects invalid outcome tokens without changing policy state: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects invalid outcome tokens without changing policy state: 2 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects an outcome outside the native receipt states 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 0 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses a due-time overflow instead of persisting an invalid timestamp 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses attempt-version overflow so old outcomes can never alias a newer attempt 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects an invalid new operation id instead of arming unrelated work 0ms
+
+ Test Files  1 passed (1)
+      Tests  48 passed (48)
+   Start at  21:38:48
+   Duration  530ms (setup 58%, import 28%, transform 9%, tests 4%, worker 1%)
+
