@@ -46,6 +46,9 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
     req: await fixture.request(),
     overrideAccess: false,
   });
+  // Bound the fault scenario before Vitest advances to the next file. Its
+  // timeout reports failure without cancelling awaited IPC or HTTP.
+  const signal = AbortSignal.timeout(45_000);
   const children: ChildProcess[] = [];
   const start = () => {
     const child = fork('testing/fixtures/publication-process.ts', [], {
@@ -61,14 +64,14 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
   let stopped = false;
   try {
     const writer = start();
-    const held = once(writer, 'message');
+    const held = once(writer, 'message', { signal });
     writer.send({
       mode: 'crash-ack',
       operationId: doc.latestPublicationIntent,
       userId: fixture.user.id,
     });
     expect((await held)[0]).toMatchObject({ event: 'before-ack' });
-    const exited = once(writer, 'exit');
+    const exited = once(writer, 'exit', { signal });
     writer.kill();
     await exited;
     expect(
@@ -93,34 +96,41 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
     setOwnedTestDatabaseNetwork('disconnect');
     stopped = true;
     const reader = start();
-    const ready = once(reader, 'message');
+    const ready = once(reader, 'message', { signal });
     reader.send({ mode: 'http' });
     const event = (await ready)[0] as { event: string; port: number };
     expect(event.event).toBe('ready');
     const base = `http://127.0.0.1:${event.port}`;
-    const known = await fetch(`${base}/pt/cases/${slug}`);
+    const known = await fetch(`${base}/pt/cases/${slug}`, { signal });
     expect(known.status).toBe(200);
     expect(await known.text()).toContain('Survives real process restart');
-    const bytes = await fetch(`${base}/media/${media.id}/original`);
+    const bytes = await fetch(`${base}/media/${media.id}/original`, { signal });
     expect(bytes.status).toBe(200);
     expect((await bytes.arrayBuffer()).byteLength).toBeGreaterThan(0);
-    expect((await fetch(`${base}/media/${media.id}/original`, { method: 'HEAD' })).status).toBe(
-      200,
-    );
-    const unknown = await fetch(`${base}/pt/cases/no-confirmed-cache-${randomUUID()}`);
+    expect(
+      (await fetch(`${base}/media/${media.id}/original`, { method: 'HEAD', signal })).status,
+    ).toBe(200);
+    const unknown = await fetch(`${base}/pt/cases/no-confirmed-cache-${randomUUID()}`, { signal });
     expect(unknown.status).toBe(503);
     expect(await unknown.text()).not.toContain('Case não encontrado');
   } finally {
-    for (const child of children)
-      if (child.exitCode === null && child.signalCode === null) {
-        const done = once(child, 'exit');
-        child.kill();
-        await done;
-      }
-    if (stopped) setOwnedTestDatabaseNetwork('connect');
+    try {
+      if (stopped) setOwnedTestDatabaseNetwork('connect');
+    } finally {
+      const cleanupSignal = AbortSignal.timeout(3_000);
+      await Promise.all(
+        children
+          .filter((child) => child.exitCode === null && child.signalCode === null)
+          .map((child) => {
+            const done = once(child, 'exit', { signal: cleanupSignal });
+            child.kill();
+            return done;
+          }),
+      );
+    }
     fixture = await createEditorialPayloadFixture(`e1.8-after-outage-${randomUUID()}`);
   }
   expect(
     await retryPublicationUpdate(doc.latestPublicationIntent!, await fixture.request()),
   ).toMatchObject({ ok: true, value: { state: 'public' } });
-}, 30000);
+}, 60_000);
