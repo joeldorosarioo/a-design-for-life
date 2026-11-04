@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 12,
+  "completedItems": 15,
   "totalItems": 30,
-  "percentage": 40,
+  "percentage": 50,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -126,9 +126,9 @@
     },
     {
       "id": "E3.4.5",
-      "done": false,
+      "done": true,
       "summary": "Rodar `pnpm verify`, E2E contra a imagem e inspeção de usuário/processo/camadas; commit `build: preparar imagem unica e homologacao isolada`.",
-      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados. Após trocar a base, a imagem Alpine passou 29 testes direcionados, inspeção e prova HTTP sintética. A suíte completa e as jornadas Chromium contra a nova imagem estão pendentes. [Recibo](artifacts/E3-image/local-alpine-preview-001.json)."
+      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados. Após trocar a base, a imagem Alpine passou 29 testes direcionados, inspeção e prova HTTP sintética. [Recibo](artifacts/E3-image/local-alpine-preview-001.json). A repetição serial encerrou com pnpm verify e Playwright completos. O build Alpine da revisão exata fb7935f passou 82 verificações HTTP, quatro jornadas Chromium e inspeção de usuário, processos, 20 camadas e 88 estáticos e manifestos. [Suítes](artifacts/E3-operations/alpine-local-gates-002.json) · [Imagem](artifacts/E3-image/local-alpine-image-proof-002.json)."
     },
     {
       "id": "E3.5.1",
@@ -150,15 +150,15 @@
     },
     {
       "id": "E3.5.4",
-      "done": false,
+      "done": true,
       "summary": "Executar migração em etapa controlada separada da inicialização, com backup prévio. Testar migração da versão anterior e rollback de imagem com schema compatível; impedir execução concorrente. Migração destrutiva só com aprovação explícita e recuperação preparada. Não executar reversão automática de dados para acompanhar rollback de imagem.",
-      "evidence": "Job Linux separou backup e migração, preservou o catálogo anterior sob lock de sessão e lock transacional, releu o backup criptografado antes de aplicar a migração e retornou already-current na repetição. O rollback local anterior cobre as imagens 004/007 e existe prova separada da migração atual. O ensaio com o commit exato do predecessor segue em andamento. [Prova do job](artifacts/E3-operations/linux-operational-job-proof.json)."
+      "evidence": "Job Linux separou backup e migração, preservou o catálogo anterior sob lock de sessão e lock transacional, releu o backup criptografado antes de aplicar a migração e retornou already-current na repetição. O rollback local anterior cobre as imagens 004/007 e existe prova separada da migração atual. O ensaio com o commit exato do predecessor segue em andamento. [Prova do job](artifacts/E3-operations/linux-operational-job-proof.json). Em Docker sem portas publicadas, a sequência da revisão exata 60314d2 para fb7935f em Alpine e de volta para 60314d2 validou login nativo e rotas HTTP antes e depois da migração 15→16. O OID e o hash do catálogo após migração foram preservados durante o rollback de imagem. [Recibo](artifacts/E3-operations/exact-predecessor-alpine-rollback-001.json)."
     },
     {
       "id": "E3.5.5",
-      "done": false,
+      "done": true,
       "summary": "Demonstrar falhas de PostgreSQL/R2 sem retirar por engano a aplicação que ainda serve cache; rodar testes, E2E operacional e `pnpm verify`; commit `chore: preparar migracoes diagnosticos e operacao`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": " O Next real preservou páginas confirmadas durante a indisponibilidade do PostgreSQL, inclusive após reinício. No ensaio TLS S3 em loopback, a mídia devolveu 200→503→200 enquanto as quatro páginas PT/EN em cache e /health continuaram 200 com a mesma geração. O diagnóstico autenticado e as suítes pnpm verify e Playwright passaram. [Falha de armazenamento](artifacts/E3-operations/r2-loopback-warm-readiness-001.json) · [Suítes](artifacts/E3-operations/alpine-local-gates-002.json)."
     },
     {
       "id": "E3.6.1",
@@ -188,7 +188,7 @@
       "id": "E3.6.5",
       "done": false,
       "summary": "Restaurar um conjunto de verdade em banco/bucket isolados, descriptografar com a identidade separada e verificar conteúdos PT/EN, versões/rotas, arquivos e login/recuperação necessários. Registrar duração e resultado como observações, sem inventar RPO/RTO contratados. Entregar A3 e commit `ops: comprovar backup e recuperacao isolada`.",
-      "evidence": "Conjunto criptografado real recuperado em PostgreSQL e filesystem descartáveis. A imagem 007 verificou conteúdo PT/EN, versões/rotas/mídias, login, painel, revogação da sessão anterior, senha nova e token de reset de uso único com uma mensagem capturada. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. Faltam restauração no bucket R2 isolado e entrega do pacote A3. Recibos em artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl."
+      "evidence": "Conjunto criptografado real recuperado em PostgreSQL e filesystem descartáveis. A imagem 007 verificou conteúdo PT/EN, versões/rotas/mídias, login, painel, revogação da sessão anterior, senha nova e token de reset de uso único com uma mensagem capturada. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. Faltam restauração no bucket R2 isolado e entrega do pacote A3. Recibos em artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl. O job com UID/GID 70 leu volumes da imagem Alpine em modo somente leitura, releu o conjunto criptografado de 256.248 bytes em 1.507 ms e restaurou em PostgreSQL descartável em 902 ms, com raiz e quatro objetos verificados por SHA-256. O destino de mídia desta prova foi local. [Recibo](artifacts/E3-backup/alpine-rootless-backup-restore.json)."
     }
   ],
   "notes": [
@@ -211,5 +211,5 @@
     "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3.",
     "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos."
   ],
-  "recalculatedAt": "2026-11-04T15:54:42.931Z"
+  "recalculatedAt": "2026-11-04T16:59:04.185Z"
 }
