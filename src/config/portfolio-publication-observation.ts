@@ -7,6 +7,7 @@ import { getPublishedCaseAggregate } from '@/features/cases/server';
 import { casePublicSnapshotSchema, confirmedCases } from '@/features/cases/server/case-publication';
 import { getPublishedProfile } from '@/features/professional-profile/server';
 import { getPublishedNavigation } from '@/features/site-navigation/server';
+import { planPublicMediaObservations } from '@/features/media-library/server/publication-media-observation';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import { readPublishedPortfolio } from './read-published-portfolio';
 import { matchesPublicPage, type PublicPageObservation } from './publication-page-observation';
@@ -75,6 +76,13 @@ export async function planPublicationObservations({
     subject.targetRevision !== operation.targetRevision
   )
     throw new Error('Publication observation requires the selected operation.');
+  const media = planPublicMediaObservations(
+    root,
+    key,
+    operation.state === 'update-pending' &&
+      (operation.subjectCollection === 'case-content' ||
+        operation.subjectCollection === 'professional-profiles'),
+  );
   const result = new Map<string, PublicObservation>();
   const add = (observation: PublicObservation) => result.set(observation.path, observation);
 
@@ -193,5 +201,5 @@ export async function planPublicationObservations({
       }
     }
   }
-  return [...result.values()];
+  return [...result.values(), ...media];
 }

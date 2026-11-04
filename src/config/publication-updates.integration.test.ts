@@ -1,3 +1,6 @@
+import { once } from 'node:events';
+import { createServer } from 'node:http';
+import { portfolioPublicationCoordinator } from './publication';
 import { handleEndpoints, getPayload } from 'payload';
 import config from '@payload-config';
 import { retryPublicationUpdate } from '../helpers/payload/publication-updates';
@@ -1000,6 +1003,174 @@ it('acknowledges the durable root only after the observer proves the revision an
     );
     expect(await readPublicRoot(directory)).toEqual(failedRoot);
   } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+it('retains the revoked routes of a promoted superseded predecessor on Native retry', async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'publication-media-predecessor-'));
+  const probes: string[] = [];
+  const observer = createServer((request, response) => {
+    probes.push(`${request.method} ${request.url}`);
+    response.writeHead(503);
+    response.end();
+  });
+  try {
+    const listening = once(observer, 'listening');
+    observer.listen(0, '127.0.0.1');
+    await listening;
+    const address = observer.address();
+    if (!address || typeof address === 'string')
+      throw new Error('Missing owned loopback observer.');
+    const observedCoordinator = () =>
+      portfolioPublicationCoordinator(directory, {
+        internalOrigin: `http://127.0.0.1:${address.port}`,
+        siteOrigin: 'https://portfolio.example.invalid',
+      });
+    const outbox = (operationId: string) =>
+      fixture.payload.db.findOne<PublicationUpdate>({
+        collection: 'publication-updates',
+        where: { operationId: { equals: operationId } },
+      });
+
+    const parent = await fixture.payload.create({
+      collection: 'cases',
+      data: { internalTitle: 'Synthetic Native media predecessor' },
+      req: await fixture.request(),
+      overrideAccess: false,
+    });
+    const first = await mediaMetadataFixture(fixture.payload);
+    const replacement = await mediaMetadataFixture(fixture.payload);
+    const doc = await fixture.payload.create({
+      collection: 'case-content',
+      data: {
+        ...casePublicationFixture(first.id),
+        case: parent.id,
+        locale: 'pt',
+        _status: 'published',
+      },
+      req: await fixture.request(),
+      overrideAccess: false,
+    });
+    const subject = `case-content/${doc.id}`;
+    const original = doc.latestPublicationIntent!;
+    const baseline = portfolioPublicationCoordinator(directory);
+    for (const operation of [parent.latestPublicationIntent!, original]) {
+      expect(await baseline.retry(operation, await fixture.request())).toMatchObject({
+        state: 'public',
+      });
+    }
+    // Seed a harmless previously observed route on the acknowledged baseline.
+    // Its absence from the successor proves the real Native query found this
+    // exact public predecessor instead of falling back to the unacknowledged path.
+    await withPublicRootWriter(directory, async (root, commit) => {
+      const previous = root?.subjects[subject];
+      if (!root || !previous) throw new Error('Missing acknowledged baseline.');
+      const value = z.object({}).passthrough().parse(previous.value);
+      await commit({
+        ...root,
+        generation: randomUUID(),
+        subjects: {
+          ...root.subjects,
+          [subject]: {
+            ...previous,
+            value: z.json().parse({
+              ...value,
+              mediaObservation: { removed: [{ mediaId: randomUUID(), variant: 'original' }] },
+            }),
+          },
+        },
+      });
+    });
+
+    const changed = await fixture.payload.update({
+      collection: 'case-content',
+      id: doc.id,
+      data: {
+        cover: { media: replacement.id, decorative: false, alt: 'Synthetic replacement' },
+        _status: 'published',
+      },
+      draft: false,
+      req: await observedRequest('case-content', doc.id, await fixture.request()),
+      overrideAccess: false,
+    });
+    const predecessor = changed.latestPublicationIntent!;
+    const routesFor = (mediaId: string) => [
+      { mediaId, variant: 'original' },
+      { mediaId, variant: 'w16' },
+      { mediaId, optimizer: true },
+    ];
+    expect(await observedCoordinator().retry(predecessor, await fixture.request())).toMatchObject({
+      operationId: predecessor,
+      state: 'update-pending',
+    });
+    const promoted = await readPublicRoot(directory);
+    expect(promoted?.subjects[subject]).toMatchObject({
+      operationId: predecessor,
+      value: {
+        media: [expect.objectContaining({ id: replacement.id })],
+        mediaObservation: { removed: routesFor(first.id) },
+      },
+    });
+    expect(await outbox(predecessor)).toMatchObject({ state: 'update-pending' });
+
+    const withdrawn = await fixture.payload.update({
+      collection: 'case-content',
+      id: doc.id,
+      data: { _status: 'draft' },
+      draft: false,
+      req: await observedRequest('case-content', doc.id, await fixture.request()),
+      overrideAccess: false,
+    });
+    const successor = withdrawn.latestPublicationIntent!;
+    expect(await observedCoordinator().retry(predecessor, await fixture.request())).toMatchObject({
+      operationId: predecessor,
+      state: 'superseded',
+    });
+    expect(await outbox(predecessor)).toMatchObject({ state: 'superseded' });
+    expect(await readPublicRoot(directory)).toEqual(promoted);
+    expect(probes).toEqual(['GET /api/case-content/published/pt']);
+
+    expect(await observedCoordinator().retry(successor, await fixture.request())).toMatchObject({
+      operationId: successor,
+      state: 'update-pending',
+    });
+    const withdrawnRoot = await readPublicRoot(directory);
+    expect(withdrawnRoot?.subjects[subject]).toMatchObject({
+      operationId: successor,
+      value: {
+        media: [],
+        mediaObservation: { removed: [...routesFor(first.id), ...routesFor(replacement.id)] },
+      },
+    });
+    expect(await outbox(original)).toMatchObject({ state: 'public' });
+    expect(await outbox(predecessor)).toMatchObject({ state: 'superseded' });
+    expect(await outbox(successor)).toMatchObject({ state: 'update-pending' });
+
+    expect(await observedCoordinator().retry(successor, await fixture.request())).toMatchObject({
+      operationId: successor,
+      state: 'update-pending',
+    });
+    expect(await readPublicRoot(directory)).toEqual(withdrawnRoot);
+    expect(probes).toEqual(Array(3).fill('GET /api/case-content/published/pt'));
+    console.info('Owned Native media predecessor evidence', {
+      runId: process.env.ADFL_TEST_RUN_ID,
+      containerId: process.env.ADFL_TEST_CONTAINER_ID,
+      networkId: process.env.ADFL_TEST_NETWORK_ID,
+      predecessor,
+      successor,
+      generation: withdrawnRoot?.generation,
+      removedTargets: 6,
+      pendingObserverAttempts: probes.length,
+    });
+  } finally {
+    if (observer.listening) {
+      const closed = new Promise<void>((resolve, reject) => {
+        observer.close((error) => (error ? reject(error) : resolve()));
+      });
+      observer.closeAllConnections();
+      await closed;
+    }
     await rm(directory, { recursive: true, force: true });
   }
 });

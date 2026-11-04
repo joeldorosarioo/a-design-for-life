@@ -1,3 +1,7 @@
+import { once } from 'node:events';
+import { createServer } from 'node:http';
+import { assertServedPublication } from '@/helpers/payload/publication-http-verification';
+import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
 import { randomUUID } from 'node:crypto';
 import { expect, it } from 'vitest';
 import { mapCaseDetail } from '@/features/cases/server';
@@ -70,6 +74,8 @@ it('verifies current detail, canonical history and withdrawn routes with one roo
     updatedAt: '',
   });
   const old = {
+    media: [],
+    mediaObservation: { removed: [] },
     kind: 'case',
     caseId,
     contentId,
@@ -138,4 +144,102 @@ it('does not observe a requested operation superseded in the actual selected roo
   await expect(
     planPublicationObservations({ root, operation: intent('cases', caseId, prior), siteOrigin }),
   ).rejects.toThrow('Publication observation requires the selected operation.');
+});
+
+function mediaWithdrawal(removed?: { mediaId: string; variant: 'original' }[]) {
+  const caseId = randomUUID();
+  const contentId = randomUUID();
+  const subject = entry({
+    kind: 'case',
+    caseId,
+    contentId,
+    locale: 'pt',
+    slug: null,
+    detail: null,
+    slugs: [],
+    media: [],
+    ...(removed && { mediaObservation: { removed } }),
+  });
+  const root: PublicRoot = {
+    generation: randomUUID(),
+    subjects: {
+      [`cases/${caseId}`]: entry({ kind: 'case-order', caseId, sortOrder: 0, featured: false }),
+      [`case-content/${contentId}`]: subject,
+    },
+  };
+  return { root, operation: intent('case-content', contentId, subject), siteOrigin };
+}
+
+it('cannot acknowledge public withdrawal through the HTTP plan while the revoked asset still returns bytes', async () => {
+  const mediaId = randomUUID();
+  const input = mediaWithdrawal([{ mediaId, variant: 'original' }]);
+  const mediaPath = `/media/${mediaId}/original`;
+  let leaking = true;
+  const requests: [string | undefined, string | undefined, string | undefined][] = [];
+  const observer = createServer((request, response) => {
+    requests.push([request.method, request.url, request.headers.range]);
+    response.setHeader(publicGenerationHeader, input.root.generation);
+    if (request.url === '/api/case-content/published/pt') {
+      response.writeHead(200, { 'Content-Type': 'application/json' });
+      response.end(JSON.stringify({ ok: true, value: { cards: [], featured: [] } }));
+    } else if (request.url === mediaPath) {
+      response.writeHead(leaking ? 200 : 404, { 'Cache-Control': 'private, no-store' });
+      response.end(leaking ? 'Synthetic leaked bytes' : undefined);
+    } else {
+      response.writeHead(500);
+      response.end();
+    }
+  });
+  try {
+    const listening = once(observer, 'listening');
+    observer.listen(0, '127.0.0.1');
+    await listening;
+    const address = observer.address();
+    if (!address || typeof address === 'string')
+      throw new Error('Missing owned loopback observer.');
+    const verify = async () =>
+      assertServedPublication({
+        origin: `http://127.0.0.1:${address.port}`,
+        generation: input.root.generation,
+        observations: await planPublicationObservations(input),
+      });
+    await expect(verify()).rejects.toThrow('Public HTTP verification failed.');
+    expect(requests).toEqual([
+      ['GET', '/api/case-content/published/pt', undefined],
+      ['GET', mediaPath, undefined],
+    ]);
+    leaking = false;
+    requests.length = 0;
+    await expect(verify()).resolves.toBeUndefined();
+    expect(requests).toEqual([
+      ['GET', '/api/case-content/published/pt', undefined],
+      ['GET', mediaPath, undefined],
+      ['HEAD', mediaPath, undefined],
+      ['GET', mediaPath, 'bytes=0-15'],
+    ]);
+  } finally {
+    if (observer.listening) {
+      const closed = new Promise<void>((resolve, reject) => {
+        observer.close((error) => (error ? reject(error) : resolve()));
+      });
+      observer.closeAllConnections();
+      await closed;
+    }
+  }
+});
+
+it('does not treat historical missing provenance on a promoted pending case as proof of no removals', async () => {
+  const historical = mediaWithdrawal();
+  await expect(planPublicationObservations(historical)).rejects.toThrow(
+    'Public media observation provenance unavailable.',
+  );
+  // Terminal public A1 roots remain readable and can recheck the known current projections.
+  await expect(
+    planPublicationObservations({
+      ...historical,
+      operation: { ...historical.operation, state: 'public' },
+    }),
+  ).resolves.toEqual([
+    expect.objectContaining({ path: '/api/case-content/published/pt', status: 200 }),
+  ]);
 });

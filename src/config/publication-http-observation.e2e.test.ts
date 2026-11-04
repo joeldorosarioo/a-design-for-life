@@ -1,6 +1,12 @@
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { once } from 'node:events';
-import { createServer, type Server } from 'node:http';
+import {
+  createServer,
+  request as relayRequest,
+  type IncomingMessage,
+  type Server,
+} from 'node:http';
+import { pipeline } from 'node:stream/promises';
 import { expect, test, type APIRequestContext } from '@playwright/test';
 import {
   clearStructuralFixture,
@@ -23,6 +29,106 @@ import { readPublicRoot } from '@/helpers/payload/public-root';
 import { publicRootDirectory } from '@/helpers/payload/public-root-directory';
 import { readPublicationRetry } from '@/helpers/payload/publication-retries';
 import { readServerEnv } from './server-env';
+
+type RelayedRead = {
+  method?: string;
+  pathname?: string;
+  range?: string;
+  generation?: string;
+  upstreamStatus?: number;
+  injected?: boolean;
+};
+
+function staleOptimizerObserver(input: {
+  primaryOrigin: string;
+  allowedPaths: ReadonlySet<string>;
+  optimizer: string;
+  stale: { bytes: Buffer; type: string };
+  reads: RelayedRead[];
+}) {
+  if (!/^http:\/\/(?:127\.0\.0\.1|\[::1\]):[1-9]\d{0,4}$/.test(input.primaryOrigin))
+    throw new Error('Expected the owned primary Next origin.');
+  return createServer(async (incoming, outgoing) => {
+    const { method, url: pathname, headers } = incoming;
+    if (
+      !pathname ||
+      !input.allowedPaths.has(pathname) ||
+      (method !== 'GET' && method !== 'HEAD') ||
+      headers.cookie !== undefined ||
+      headers.authorization !== undefined ||
+      headers['x-portfolio-image-authorization'] !== undefined ||
+      (headers.accept !== undefined && headers.accept !== 'image/webp') ||
+      (headers.range !== undefined && headers.range !== 'bytes=0-15')
+    ) {
+      outgoing.writeHead(400).end();
+      return;
+    }
+    try {
+      // The primary has its own self-origin. Never target the publisher child
+      // or this listener, and never forward Next's signed inner header.
+      const upstream = await new Promise<IncomingMessage>((resolve, reject) => {
+        const upstreamRequest = relayRequest(
+          `${input.primaryOrigin}${pathname}`,
+          {
+            agent: false,
+            method,
+            signal: AbortSignal.timeout(4_500),
+            headers: {
+              'Cache-Control': 'no-cache',
+              ...(headers.accept && { Accept: headers.accept }),
+              ...(headers.range && { Range: headers.range }),
+            },
+          },
+          resolve,
+        );
+        upstreamRequest.on('error', reject);
+        upstreamRequest.end();
+      });
+      const marker = upstream.headers[publicGenerationHeader];
+      const read: RelayedRead = {
+        method,
+        pathname,
+        range: headers.range,
+        generation: typeof marker === 'string' ? marker : undefined,
+        upstreamStatus: upstream.statusCode,
+      };
+      input.reads.push(read);
+      if (pathname === input.optimizer && method === 'GET' && !headers.range) {
+        for await (const chunk of upstream as AsyncIterable<Buffer>) {
+          if (chunk.byteLength) throw new Error('Primary optimizer exposed unexpected bytes.');
+        }
+        if (upstream.statusCode !== 404 || !upstream.complete || !read.generation)
+          throw new Error('The actual optimizer did not prove an empty captured denial.');
+        read.injected = true;
+        outgoing.writeHead(200, {
+          [publicGenerationHeader]: read.generation,
+          'Cache-Control': 'private, no-store',
+          'Content-Type': input.stale.type,
+          'Content-Length': String(input.stale.bytes.byteLength),
+        });
+        outgoing.end(input.stale.bytes);
+        return;
+      }
+      for (const name of [
+        publicGenerationHeader,
+        'cache-control',
+        'content-length',
+        'content-range',
+        'content-type',
+        'location',
+        'x-robots-tag',
+      ]) {
+        const value = upstream.headers[name];
+        if (value !== undefined) outgoing.setHeader(name, value);
+      }
+      outgoing.writeHead(upstream.statusCode ?? 502);
+      await pipeline(upstream, outgoing);
+    } catch {
+      if (outgoing.headersSent) outgoing.destroy();
+      else outgoing.writeHead(502).end();
+    }
+  });
+}
 
 test.use({ trace: 'off', screenshot: 'off', video: 'off' });
 
@@ -335,19 +441,226 @@ test('confirms an HTTP-observed generation and retries the same durable root aft
       ),
     ).toBe(true);
 
-    const withdrawn = await fixture.payload.update({
-      collection: 'case-content',
-      id: next.id,
-      data: { _status: 'draft' },
-      draft: false,
-      req: await observedRequest('case-content', next.id, await fixture.request()),
-      overrideAccess: false,
-    });
-    const withdrawnRoot = await acknowledge('case-content', withdrawn);
-    for (const slug of [firstSlug, nextSlug]) {
-      const gone = await anonymous(`/pt/cases/${slug}`, 410, withdrawnRoot.generation);
-      expect(gone.response.headers.get('x-robots-tag')).toBe('noindex, nofollow');
-      expect(gone.body.includes('Synthetic retried observed case')).toBe(false);
+    {
+      const sharedSlug = `observer-shared-${randomUUID().slice(0, 8)}`;
+      const shared = await fixture.payload.create({
+        collection: 'case-content',
+        data: {
+          ...casePublicationFixture(caseImage.id),
+          case: parent.id,
+          locale: 'en',
+          title: 'Synthetic shared observed case',
+          slug: sharedSlug,
+          _status: 'published',
+        },
+        req: await fixture.request(),
+        overrideAccess: false,
+      });
+      const sharedRoot = await acknowledge('case-content', shared);
+      const original = `/media/${caseImage.id}/original`;
+      const derivative = `/media/${caseImage.id}/w16`;
+      const optimizer = `/_next/image?url=${encodeURIComponent(original)}&w=64&q=75`;
+      const paths = [original, derivative, optimizer];
+      const primaryOrigin = env.INTERNAL_HTTP_ORIGIN!;
+      expect(new URL(primaryOrigin).port).toBe(new URL(env.SITE_ORIGIN).port);
+      expect(primaryOrigin).not.toBe(server!.origin);
+
+      async function mediaProbe(
+        origin: string,
+        pathname: string,
+        generation: string,
+        expected: number,
+        phase: string,
+        mode: 'get' | 'head' | 'range' = 'get',
+      ) {
+        const response = await fetch(`${origin}${pathname}`, {
+          method: mode === 'head' ? 'HEAD' : 'GET',
+          headers: {
+            Accept: 'image/webp',
+            ...(mode === 'range' && { Range: 'bytes=0-15' }),
+          },
+          cache: 'no-store',
+          credentials: 'omit',
+          redirect: 'manual',
+          signal: AbortSignal.timeout(8_000),
+        });
+        const bytes = Buffer.from(await response.arrayBuffer());
+        const hash = createHash('sha256').update(bytes).digest('hex');
+        observations.push({
+          phase,
+          pathname,
+          mode,
+          status: response.status,
+          generation,
+          bytes: bytes.byteLength,
+          sha256: hash,
+          optimizerCache: response.headers.get('x-nextjs-cache'),
+        });
+        expect(response.status).toBe(expected);
+        expect(response.headers.get(publicGenerationHeader)).toBe(generation);
+        expect(response.headers.get('cache-control')).toContain('no-store');
+        if (expected === 404) {
+          expect(bytes).toHaveLength(0);
+          expect(response.headers.has('content-range')).toBe(false);
+        } else {
+          expect(bytes.byteLength).toBeGreaterThan(0);
+          expect(response.headers.get('content-type')).toMatch(/^image\//);
+        }
+        return { response, bytes, hash };
+      }
+
+      const warm = new Map<string, Awaited<ReturnType<typeof mediaProbe>>>();
+      for (const pathname of paths)
+        warm.set(
+          pathname,
+          await mediaProbe(primaryOrigin, pathname, sharedRoot.generation, 200, 'warm'),
+        );
+      const hit = await mediaProbe(
+        primaryOrigin,
+        optimizer,
+        sharedRoot.generation,
+        200,
+        'warm-hit',
+      );
+      expect(hit.response.headers.get('x-nextjs-cache')).toBe('HIT');
+      expect(hit.hash).toBe(warm.get(optimizer)!.hash);
+
+      async function withdraw(saved: Saved) {
+        return fixture.payload.update({
+          collection: 'case-content',
+          id: saved.id,
+          data: { _status: 'draft' },
+          draft: false,
+          req: await observedRequest('case-content', saved.id, await fixture.request()),
+          overrideAccess: false,
+        });
+      }
+
+      const stillShared = await acknowledge('case-content', await withdraw(shared));
+      await anonymous(`/en/cases/${sharedSlug}`, 410, stillShared.generation);
+      for (const pathname of paths) {
+        const probe = await mediaProbe(
+          server!.origin,
+          pathname,
+          stillShared.generation,
+          200,
+          'shared',
+        );
+        expect(probe.hash).toBe(warm.get(pathname)!.hash);
+      }
+
+      const withdrawn = await withdraw(next);
+      const withdrawalOperation = withdrawn.latestPublicationIntent!;
+      await stopChild();
+      const reads: RelayedRead[] = [];
+      failingObserver = staleOptimizerObserver({
+        primaryOrigin,
+        allowedPaths: new Set([
+          '/api/case-content/published/pt',
+          '/pt',
+          '/pt/cases',
+          '/pt/sobre',
+          '/en',
+          '/en/cases',
+          '/en/about',
+          `/pt/cases/${firstSlug}`,
+          `/pt/cases/${nextSlug}`,
+          `/en/cases/${sharedSlug}`,
+          ...paths,
+        ]),
+        optimizer,
+        stale: { bytes: hit.bytes, type: hit.response.headers.get('content-type')! },
+        reads,
+      });
+      const listening = once(failingObserver, 'listening');
+      failingObserver.listen({ host: '127.0.0.1', port: 0, exclusive: true });
+      await listening;
+      await start(failingObserver);
+      const failedMedia = await requestReceipt('case-content', withdrawn);
+      observations.push({
+        phase: 'optimizer-cache-leak-before-ack',
+        reads,
+        injectedHash: hit.hash,
+      });
+      const pendingMediaRoot = await readPublicRoot(directory);
+      expect(failedMedia).toEqual({
+        ok: true,
+        value: {
+          operationId: withdrawalOperation,
+          targetRevision: withdrawn.editorialRevision,
+          state: 'update-pending',
+        },
+      });
+      expect(pendingMediaRoot?.generation).not.toBe(stillShared.generation);
+      expect(pendingMediaRoot?.subjects[`case-content/${withdrawn.id}`]).toMatchObject({
+        operationId: withdrawalOperation,
+        targetRevision: withdrawn.editorialRevision,
+      });
+      expect(await outbox(withdrawalOperation)).toMatchObject({ state: 'update-pending' });
+      expect(reads.at(-1)).toMatchObject({
+        method: 'GET',
+        pathname: optimizer,
+        upstreamStatus: 404,
+        injected: true,
+        generation: pendingMediaRoot!.generation,
+      });
+      expect(
+        reads.some(
+          ({ pathname, upstreamStatus }) =>
+            pathname === `/pt/cases/${nextSlug}` && upstreamStatus === 410,
+        ),
+      ).toBe(true);
+      for (const pathname of [original, derivative]) {
+        expect(
+          reads
+            .filter((read) => read.pathname === pathname)
+            .map((read) => [read.method, read.range, read.upstreamStatus]),
+        ).toEqual([
+          ['GET', undefined, 404],
+          ['HEAD', undefined, 404],
+          ['GET', 'bytes=0-15', 404],
+        ]);
+      }
+      expect(
+        await readPublicationRetry(withdrawalOperation, await fixture.request()),
+      ).toMatchObject({
+        startedAttemptsVersion: 1,
+        retryUserId: fixture.user.id,
+      });
+
+      await stopChild();
+      await stopObserver();
+      await start();
+      expect(new Set(evidence.builds).size).toBe(1);
+      const persistedMedia = await editor!.get(
+        `/api/case-content/${withdrawn.id}/publication-status`,
+      );
+      expect(persistedMedia.status()).toBe(200);
+      expect(await persistedMedia.json()).toEqual({ receipt: failedMedia.value });
+      const withdrawnRoot = await acknowledge('case-content', withdrawn);
+      expect(withdrawnRoot).toEqual(pendingMediaRoot);
+      expect(
+        await readPublicationRetry(withdrawalOperation, await fixture.request()),
+      ).toMatchObject({
+        startedAttemptsVersion: 2,
+        nextAttemptAt: null,
+      });
+      for (const pathname of paths)
+        for (const mode of ['get', 'head', 'range'] as const)
+          await mediaProbe(
+            server!.origin,
+            pathname,
+            withdrawnRoot.generation,
+            404,
+            'same-root-denial',
+            mode,
+          );
+
+      for (const slug of [firstSlug, nextSlug]) {
+        const gone = await anonymous(`/pt/cases/${slug}`, 410, withdrawnRoot.generation);
+        expect(gone.response.headers.get('x-robots-tag')).toBe('noindex, nofollow');
+        expect(gone.body.includes('Synthetic retried observed case')).toBe(false);
+      }
     }
   } finally {
     try {

@@ -1,3 +1,6 @@
+import * as payloadModule from 'payload';
+import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
+import { readPublicRoot } from '@/helpers/payload/public-root';
 import { createHmac, randomUUID } from 'node:crypto';
 import { createServer, type IncomingMessage, type ServerResponse, type Server } from 'node:http';
 import { mkdtemp, rm, writeFile } from 'node:fs/promises';
@@ -350,5 +353,44 @@ it('keeps missing media unavailable when the Native classification origin cannot
   });
   await root('revoked');
   await denied(await handleNextImage(request(), context()), 503);
+  expect(received).toHaveLength(0);
+});
+
+it('marks the outer captured generation even if the inner response or current root changes', async () => {
+  const selected = await readPublicRoot(directory);
+  respond = async (_request, response) => {
+    await root('revoked');
+    response.writeHead(200, {
+      'Content-Type': 'image/webp',
+      [publicGenerationHeader]: (await readPublicRoot(directory))!.generation,
+    });
+    response.end(bytes);
+  };
+  const response = await handleNextImage(request(), context());
+  expect(response!.status).toBe(200);
+  expect(Buffer.from(await response!.arrayBuffer())).toEqual(bytes);
+  expect((await readPublicRoot(directory))?.generation).not.toBe(selected!.generation);
+  expect(response!.headers.get(publicGenerationHeader)).toBe(selected!.generation);
+});
+
+it('marks the same empty optimizer denial for unknown and private media without touching cache', async () => {
+  await root('revoked');
+  const generation = (await readPublicRoot(directory))!.generation;
+  const payload = new payloadModule.BasePayload();
+  Object.assign(payload, {
+    config: { i18n: { fallbackLanguage: 'en', supportedLanguages: { en: { translations: {} } } } },
+    db: {
+      findOne: async ({ where }: { where: { id: { equals: string } } }) =>
+        where.id.equals === id ? { usages: [] } : null,
+    },
+  });
+  installPayloadProvider(async () => payload);
+  for (const search of [query, query.replace(id, randomUUID())]) {
+    for (const options of [{}, { method: 'HEAD' }, { headers: { range: 'bytes=0-15' } }]) {
+      const response = await handleNextImage(request(search, options), context());
+      await denied(response, 404);
+      expect(response!.headers.get(publicGenerationHeader)).toBe(generation);
+    }
+  }
   expect(received).toHaveLength(0);
 });
