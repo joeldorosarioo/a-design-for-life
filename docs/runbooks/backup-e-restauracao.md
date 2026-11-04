@@ -88,7 +88,7 @@ Unidades atuais do escopo: `pipeline-unit-current-023.txt`, **192 passaram / 1 s
 
 O criador suporta somente engines/versionamentos comprovados: bsdtar3.8.9 e GNUtar1.35. A variante GNU foi comprovada em Node Linux da imagem003, sem rede/mounts/portas, com arquivo de200KB, conforme `archive-gnu-linux-f4bcac05-661a-42b7-9bd6-5cf476230fff.json`. O instalador de age 1.3.2 também passou em contêiner Linux isolado, sem rede, com teste de ida e volta e rejeição de identidade errada em `portable-tools-linux-4bed9120-df6d-4480-bc70-b1278ecee5a0.json`. Falta executar o job operacional completo.
 
-Continuam pendentes: bucket privado R2 real/credenciais próprias e readback remoto, job Linux completo com age e coordenação de namespace/volumes, agenda semanal e pré-migração, restauração HTTP/painel/login/recuperação da aplicação, gates completos e CI atualizados. E3.6.2 tem prova de recusa de alvo, retenção de recentes, readback antes da conclusão e preservação do último conjunto válido sob upload parcial. As condições acima mantêm os demais critérios E3.6 abertos.
+Continuam pendentes o bucket privado R2 com credenciais próprias e readback remoto, o job Linux completo com age e coordenação de volumes, a agenda semanal e pré-migração, a restauração em bucket R2 isolado e a execução no CI remoto. E3.6.2 tem prova de recusa de alvo, retenção de recentes, readback antes da conclusão e preservação do último conjunto válido sob upload parcial. As condições acima mantêm os demais critérios E3.6 abertos.
 
 ## Repositório R2 e leitor de recuperação
 

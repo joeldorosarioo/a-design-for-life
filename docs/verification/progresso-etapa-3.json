@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 8,
+  "completedItems": 9,
   "totalItems": 30,
-  "percentage": 26.7,
+  "percentage": 30,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -60,9 +60,9 @@
     },
     {
       "id": "E3.2.4",
-      "done": false,
+      "done": true,
       "summary": "Testar falha entre gravação e invalidação, reinício durante tentativa e nova publicação antes de retry antigo. Retirada de publicação/revogação não aparece como concluída enquanto a verificação ainda encontrar o recurso público. Rascunho nunca publicado continua privado em qualquer falha; manter cache confirmado não autoriza consultar a versão de rascunho.",
-      "evidence": "O Next reteve a confirmação após o relay reapresentar a resposta antiga do otimizador. A nova tentativa conferiu a mesma raiz e nove respostas 404 vazias. O PostgreSQL real confirmou a cadeia de predecessor superado e a repetição sem recriar a raiz. O Playwright saiu 0. O wrapper saiu 2 ao encontrar entradas temporárias PID 0 no Windows e a limpeza independente passou. Falta a prova de reinício automático do worker quando interrompido na janela de confirmação. Recibos em artifacts/E3-cache/media-ack-wiring-report.md."
+      "evidence": "Native real comprovou falha após COMMIT e antes da projeção e que nova publicação supera tentativa antiga. E2e-004 confirmou SIGKILL depois da gravação da raiz e antes do recibo SQL, seguido por confirmação automática da mesma operação, revisão, geração e SHA-256. A retirada permaneceu pendente diante de bytes antigos do otimizador. O RED reproduziu a aceitação de HTML antigo com status 410, e o GREEN comprovou a rejeição nos estados editorial e técnico. O Next real confirmou o documento 410 legítimo e nove negações vazias. E2e-003 já confirmou privacidade de rascunho e mídia sem concessão durante indisponibilidade e reinício. Verify-010 e e2e-004 passaram com fonte idêntica. Recibos de interrupção, retirada e mídia em artifacts/E3-cache e gates em artifacts/E3-gates."
     },
     {
       "id": "E3.2.5",
@@ -128,7 +128,7 @@
       "id": "E3.4.5",
       "done": true,
       "summary": "Rodar `pnpm verify`, E2E contra a imagem e inspeção de usuário/processo/camadas; commit `build: preparar imagem unica e homologacao isolada`.",
-      "evidence": "verify-009 exit 0 e imagem local imutável 007 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium, em duas configurações isoladas antes e depois dos reinícios. Navegação PT/EN, mídia/PDF, recusa de rascunho, login e sessão no painel. Zero destinos externos ou WebSockets, inclusive depois da correção do avatar. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas nas quatro fases. Auditoria de 14 camadas sem caminhos vedados e 88 estáticos/manifestos sem marcadores. Recibos em artifacts/E3-image/http-aa2bf392-4bb1-4170-a443-15cbc42f2a2c/run.json. A suíte completa do Chromium em Next local tem recibos separados. Registry e homologação permanecem no critério E3.4.4."
+      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados."
     },
     {
       "id": "E3.5.1",
@@ -206,7 +206,8 @@
     "E3.4.3 encerrado após 82 verificações HTTP com a mesma imagem e duas configurações isoladas, incluindo persistência local e troca de origem sem rebuild. A prova no navegador da imagem e o registry/homologação continuam em aberto.",
     "E3.2.5 encerrado com prova real de bytes e autorização, gate completo atual e commit local 1e93925. A observação da revogação antes do recibo editorial continua pendente no critério próprio.",
     "E3.4.1 encerrado depois de provar o RED de defaults indevidos sob nomes já permitidos e reinspecionar a imagem 004. A prova HTTP de dois ambientes permanece vinculada ao snapshot da imagem 004.",
-    "E3.4.5 encerrado com gate, jornadas Chromium e inspeção na mesma imagem 007. As execuções 005 que bloquearam Gravatar foram preservadas como RED operacional."
+    "E3.4.5 encerrado com gate, jornadas Chromium e inspeção na mesma imagem 007. As execuções 005 que bloquearam Gravatar foram preservadas como RED operacional.",
+    "E3.2.4 encerrado após prova de SIGKILL e recuperação automática, defesa contra corpo 410 antigo e execução Next real. E3.2.2 e E3.2.3 mantêm as provas operacionais e de sitemap próprias."
   ],
-  "recalculatedAt": "2026-11-04T05:56:30.459Z"
+  "recalculatedAt": "2026-11-04T06:21:01.212Z"
 }

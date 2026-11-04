@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 26,7% do checklist (8/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 30,0% do checklist (9/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -11,7 +11,7 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 ## Acompanhamento
 
 - [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
-- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 2/5 critérios.
+- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 3/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 0/5 critérios.
 - [ ] E3.4 Imagem única, configuração de execução e homologação — 4/5 critérios.
 - [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
@@ -114,3 +114,15 @@ O ensaio recuperou o PostgreSQL e os objetos para um destino local descartável,
 ### Chromium contra a imagem Docker 007
 
 O mesmo ID de imagem iniciou em dois ambientes descartáveis e passou 82 verificações HTTP e quatro jornadas Chromium antes e depois dos reinícios. A navegação cobriu Home, lista e detalhe PT/EN, alternância de idioma, imagem otimizada e PDF, negação anônima de rascunho e mídia privada, login e sessão do Payload. O interceptador bloqueava destinos externos e registrou zero tentativas nas quatro fases. O processo Node/Next executou como PID 1, UID/GID 10001, sem capabilities efetivas. Foram removidos os contêineres, o banco e os relays do ensaio. A prova cobre essas jornadas contra a imagem. O registro de homologação/registry e a suíte Chromium completa em Next local são separados. [Recibo](artifacts/E3-image/http-aa2bf392-4bb1-4170-a443-15cbc42f2a2c/run.json).
+
+### Interrupção da publicação e corpo da retirada
+
+O Next foi encerrado por SIGKILL com a raiz promovida e a confirmação SQL ainda pendente. Após iniciar outro processo com o mesmo build, o worker confirmou a operação automaticamente. Operação, revisão, geração e SHA-256 de `current.json` permaneceram idênticos. A primeira tentativa do fixture parou com 401 na leitura de status. O recibo seguinte comprovou o encerramento e a retomada. O wrapper registrou saída 2 por uma mudança no inventário de listeners de 55433, enquanto o Playwright saiu 0 e a limpeza dos recursos descartáveis passou. A inspeção posterior identificou o contêiner visual original e o mesmo build. [Relatório](artifacts/E3-cache/publication-worker-crash-report.md).
+
+Dois testes reproduziram a aceitação de HTML antigo com status 410, nos estados editorial e técnico. O observador passou a conferir o documento que o proxy produziria para a raiz selecionada, com o mesmo renderizador. Os 73 testes focados passaram. A nova execução em Next real aprovou as três jornadas de publicação e manteve os hashes das 41 capturas históricas. A mídia revogada permaneceu pendente diante de bytes antigos e a resposta 410 legítima permitiu a confirmação. [RED](artifacts/E3-cache/withdrawal-exact-body-red-001.txt), [GREEN](artifacts/E3-cache/withdrawal-exact-body-green-001.txt) e [Chromium](artifacts/E3-gates/e2e-004-result.json).
+
+### Gate e imagem da revisão atual
+
+O gate 010 terminou com saída 0 no Node 24.22.2 e pnpm 12.10.1. Passaram tipagem, lint, formato, 209 arquivos do Vitest com 1938 testes aprovados e 3 pulados, CSS, progresso e build Next. Houve quatro avisos históricos de lint. A fonte preservada coincide com o Chromium focado e com a imagem 008. [Gate](artifacts/E3-gates/verify-010-result.json).
+
+A imagem 008 é `sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c`. Passou os smokes nativos, 14 camadas sem caminhos vedados, 88 estáticos/manifestos sem marcadores e o probe offline em 5642 ms. Os dois ambientes locais passaram 82 verificações HTTP e quatro jornadas Chromium antes e depois dos reinícios. O login usou o avatar local, com zero tentativas externas e zero WebSockets. Os processos eram PID 1 com UID/GID 10001. Os recursos descartáveis foram removidos. [Recibo da imagem](artifacts/E3-image/docker-draft-build-008.json) e [ensaio HTTP/Chromium](artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json).
