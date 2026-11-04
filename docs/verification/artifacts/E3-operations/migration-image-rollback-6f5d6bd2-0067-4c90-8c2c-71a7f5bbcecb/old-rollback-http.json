@@ -1,0 +1,219 @@
+{
+  "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "appId": "0f5e9923838e69f4370530b96516f3c28f120e37f2e4bbfc7877589b863c5a46",
+  "ok": true,
+  "phase": "old-rollback",
+  "dataset": "rollback",
+  "httpOnlyConsumer": true,
+  "runtimePublicDtoTransport": "No dedicated runtime DTO serialization is emitted by this snapshot; HTML origin/isolation and secret absence verified.",
+  "results": [
+    {
+      "name": "health",
+      "status": 200,
+      "bytes": 18,
+      "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+      "cacheControl": "no-store, max-age=0"
+    },
+    {
+      "name": "pt/home",
+      "status": 200,
+      "bytes": 51069,
+      "sha256": "0e8c005d24166a6eeae1c07fab31900031096871de1e43fa905ae39cd68f12c1",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3106/pt",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3106/pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3106/en"
+        }
+      ]
+    },
+    {
+      "name": "pt/list",
+      "status": 200,
+      "bytes": 40892,
+      "sha256": "416d0b8f720b39a3dd29cfe6d167b5ecb4ff09dc613b07c0462aa5206739c02d",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3106/pt/cases",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3106/pt/cases"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3106/en/cases"
+        }
+      ]
+    },
+    {
+      "name": "pt/detail",
+      "status": 200,
+      "bytes": 48373,
+      "sha256": "b4f39b3bb4e9a62aa56d08d8e6890ac03d0b9cb17b102758af22dbe249713f16",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3106/pt/cases/public-72795700-first-pt",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3106/pt/cases/public-72795700-first-pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3106/en/cases/public-72795700-first-en"
+        }
+      ]
+    },
+    {
+      "name": "en/home",
+      "status": 200,
+      "bytes": 61002,
+      "sha256": "cc34a5e64856a7a0beab368cf1b52d2e68696a867994eae70fbe76daf10b591d",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3106/en",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3106/pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3106/en"
+        }
+      ]
+    },
+    {
+      "name": "en/list",
+      "status": 200,
+      "bytes": 36684,
+      "sha256": "085bd8942c2a52fb0507e067e14f93555f63c4c3ade67a417e6dcfaa4ec78dc2",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3106/en/cases",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3106/pt/cases"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3106/en/cases"
+        }
+      ]
+    },
+    {
+      "name": "en/detail",
+      "status": 200,
+      "bytes": 54116,
+      "sha256": "224f1594d7259e447b260cc376cae5c8c8ea68c2a80d7b4b16f3f96d54dfb9b1",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3106/en/cases/public-72795700-first-en",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3106/pt/cases/public-72795700-first-pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3106/en/cases/public-72795700-first-en"
+        }
+      ]
+    },
+    {
+      "name": "private-draft",
+      "status": 404,
+      "bytes": 2993,
+      "sha256": "dd972f8c7e0354d271940e1b37acdb1a3a35f5a7412eeb2ae0f852f71b667d3a",
+      "cacheControl": "no-store, max-age=0"
+    },
+    {
+      "name": "admin/login",
+      "status": 200,
+      "bytes": 49059,
+      "sha256": "9d784e38a89b503a06937cdb7fc6f38c17dcbc43fa2cee504a6cdf31b07fa189",
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+    },
+    {
+      "name": "static-asset",
+      "status": 200,
+      "bytes": 265,
+      "sha256": "0e77b0c8ebeac207c4f59dbfa0eb9b4cddbcbbda818bf071f8ba8042e6c57c6e",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "anonymous-native-api",
+      "status": 403,
+      "bytes": 70,
+      "sha256": "9eaaefa4f97d1e7a53c0c004b88e2013f7a962ae702e4edaa8281ac1efa06dd8",
+      "cacheControl": null
+    },
+    {
+      "name": "native-login",
+      "status": 200,
+      "authenticatedUserMatched": true,
+      "nativeMeStatus": 200,
+      "cookieHttpOnly": true,
+      "tokenRemovedFromBody": true,
+      "tokenPersisted": false
+    },
+    {
+      "name": "image-original",
+      "status": 200,
+      "bytes": 102,
+      "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+      "cacheControl": "no-store"
+    },
+    {
+      "name": "pdf-original",
+      "status": 200,
+      "bytes": 710,
+      "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+      "cacheControl": "no-store"
+    },
+    {
+      "name": "authorized-optimizer",
+      "status": 200,
+      "bytes": 107,
+      "sha256": "690a1aa34ba9c1afcd77845c4183c8b4c1b9e41319ea38a7aee82ee51b90bbcf",
+      "cacheControl": "private, no-store"
+    },
+    {
+      "name": "private-or-unknown-media-denied",
+      "status": 404,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cacheControl": "private, no-store"
+    },
+    {
+      "name": "private-or-unknown-media-denied",
+      "status": 404,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cacheControl": "private, no-store"
+    },
+    {
+      "name": "private-or-unknown-media-denied",
+      "status": 404,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cacheControl": "private, no-store"
+    },
+    {
+      "name": "private-or-unknown-media-denied",
+      "status": 404,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cacheControl": "private, no-store"
+    },
+    {
+      "name": "robots-closed",
+      "status": 200,
+      "bytes": 27,
+      "sha256": "d17b641665bc0d4e8b0836dc3b4539a0cddbfceb72ccfb01a0b733683238dcd5",
+      "cacheControl": "public, max-age=0, must-revalidate"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 23,3% do checklist (7/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 26,7% do checklist (8/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -13,7 +13,7 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 - [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
 - [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 2/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 0/5 critérios.
-- [ ] E3.4 Imagem única, configuração de execução e homologação — 3/5 critérios.
+- [ ] E3.4 Imagem única, configuração de execução e homologação — 4/5 critérios.
 - [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
 - [ ] E3.6 Backup criptografado e restauração isolada — 1/5 critérios.
 - [ ] Pacote A3 com evidências e limitações concretas entregue.
@@ -44,7 +44,7 @@ Auditoria adicional — E3.2.1: cache001 real passou1/1 (201,63s total; teste1,2
 
 - A imagem local 004 compilou com o lockfile congelado e manteve o mesmo fingerprint de fonte. O runtime passou com UID/GID 10001, QPDF, sharp, Canvas e PDF.js. A auditoria examinou 14 camadas e 11.046 entradas, além de 88 estáticos e manifestos. E3.4.2 encerrado. A execução em duas configurações, o teste do probe e a promoção dependem dos seus recibos próprios.
 
-### Gate completo da fonte local atual
+### Gate completo da fonte da imagem 004
 
 - `verify-004`, saída 1. Tipagem, lint e formato passaram. Em 200 arquivos do Vitest houve 1.864 testes aprovados, duas falhas e três ignorados. O primeiro filho Node do teste Canvas herdou `NODE_PATH` do pnpm e resolveu o pacote real antes do vínculo sintético. O novo marcador também alterou o contrato `404` para case privado e caminho desconhecido. O teste Canvas agora desativa a busca global no processo sintético e exige `MODULE_NOT_FOUND` antes do vínculo. A resposta direta `404` mantém o formato anterior. Os testes focados das correções passaram 89/89 pelo pnpm.
 - `verify-005`, saída 1. Os 200 arquivos e 1.866 testes passaram, com três ignorados. CSS e recálculo passaram. O PowerShell deixou `NEXT_TEST_DIST_DIR` vazio, e a guarda de build recusou a entrada. O script de execução agora seleciona explicitamente `.work/next-build` e limpa os demais overrides com o provedor Env.
@@ -69,3 +69,48 @@ O cache de bytes e a autorização de mídia foram exercitados em conjunto e sep
 O guard de inspeção agora verifica valores dos defaults esperados, além dos nomes. A suíte detectou que a versão anterior aceitava valores indevidos em HOSTNAME, PORT, MEDIA_CHECKER_BINARY e PATH, além de entrada duplicada. O RED falhou em 5 casos, o GREEN combinado passou 36/36 e a reinspeção da imagem 004 passou. A comparação de digests e o ensaio HTTP de duas configurações isoladas completam E3.4.1.
 
 O probe de saúde usa HTTP direto para 127.0.0.1, limita a resposta a 512 bytes e exige JSON completo. O RED mostrou o encaminhamento por um proxy herdado e aceitação de dois corpos fora do contrato. GREEN 5/5. A validação Linux montou somente o probe atualizado, em leitura, sobre a imagem imutável 004 e ativou um proxy inacessível. O Docker ficou saudável, com GET/HEAD 200 e probe embutido saída 0. Essa prova valida o novo arquivo no runtime Linux. A imagem 004 permanece vinculada aos próprios bytes, e o Coolify ainda precisa de ensaio real.
+
+### Operações locais e imagem 005
+
+- O transporte de backup foi exercitado com o SDK S3, requisições assinadas para dois buckets sintéticos em loopback e age/tar reais. O repositório relê o ciphertext e o marcador, valida o vínculo com a origem e conserva o conjunto existente em colisão. Os 145 testes focados passaram, sem pulos. O banco da prova composta de transporte foi simulado. Retenção R2 desabilitada e sem agenda ou bucket real. [Relatório](artifacts/E3-backup/r2-backup-wiring-report.md).
+- O PostgreSQL descartável iniciou com o catálogo anterior de 15 migrações. A execução criou e releu o backup criptografado antes de aplicar a migração aditiva, recusou um concorrente e recuperou catálogo, usuário e raiz em outro banco descartável. A falha de dump conservou os 15 registros e repetir o job após migrar devolveu `already-current`. A exclusão Linux por inode passou em ensaio separado. Faltam o job operacional e o rollback da imagem sobre o schema migrado. [Prova Native](artifacts/E3-operations/migration-local-report.md).
+- O planejador de observação de mídia e o transporte binário conferem a geração, os bytes e a negação de acesso. A proveniência no arquivo da raiz distingue alvos removidos. O planejador e os marcadores passaram 101 testes unitários. A fatia de proveniência passou 81 com um pulo existente no Windows. A arquitetura passou 34. Faltam a ligação ao recibo editorial, a guarda de predecessores históricos pendentes, o filtro Native no banco e o ensaio Next de mídia antes do ACK. [Proveniência](artifacts/E3-cache/media-provenance-report.md) e [verificação](artifacts/E3-cache/media-verification-report.md).
+- A imagem Linux 005 usou Node 24.22.2, pnpm 12.10.1, lockfile congelado e UID 10001. O build e os smokes nativos passaram com a fonte de 626 arquivos em `065c471bd08cad8a81720b057d6545349f637bb2ae093450173b23bf6fc85b92`. A imagem local imutável é `sha256:882ef66ce39aa9903873cc8d4af2305e102ae833e0c9f895cdd236d1f932fe8d`. A auditoria examinou 14 camadas e 11042 entradas, sem caminhos vedados. 88 estáticos e manifestos passaram pela inspeção de marcadores sintéticos. O probe veio na própria imagem e marcou saudável em 6453 ms, sem acesso ao banco, com GET/HEAD 200. Registry e Coolify ficam para as provas próprias. [Imagem](artifacts/E3-image/docker-draft-build-005.json), [camadas](artifacts/E3-image/layers-draft-005.json), [estáticos](artifacts/E3-image/static-manifest-marker-scan-005.json) e [probe](artifacts/E3-image/offline-health-draft-005.json).
+
+### Gate completo da fonte da imagem 005
+
+`pnpm verify` terminou com saída 0 usando Node 24.22.2, pnpm 12.10.1 e PostgreSQL 17.11 descartável na porta 55434. Passaram tipagem, lint, formatação, 208 arquivos do Vitest com 1.929 testes aprovados e três pulados, os testes de CSS e de progresso e o build do Next 16.4.3. Houve quatro avisos históricos de lint em uma migração. O manifesto de 626 arquivos preservou o mesmo fingerprint da imagem 005 antes e depois da execução. [Saída](artifacts/E3-gates/verify-007-full.txt) e [recibo](artifacts/E3-gates/verify-007-result.json).
+
+### Chromium completo no checkpoint da imagem 005
+
+O ensaio local `e2e-003` passou 116/116 em 4,7 minutos. A fonte conservou o fingerprint de `verify-007` e as 41 capturas históricas mantiveram seus hashes. O ensaio rodou em Next compilado no Windows com PostgreSQL descartável. A execução em Chromium contra o contêiner Linux é independente. [Saída](artifacts/E3-gates/e2e-003-full.txt) e [recibo](artifacts/E3-gates/e2e-003-result.json).
+
+### Avatar do painel e isolamento do Chromium
+
+As duas primeiras execuções Chromium da imagem 005 falharam depois do login. Na repetição diagnóstica, o bloqueio interceptou dois GET de imagem a `www.gravatar.com`. A versão instalada do Payload usa Gravatar por padrão e compõe o caminho a partir de um hash do e-mail. O verificador não permitiu a saída e preservou apenas host, método, tipo e etapa. Os contêineres e bancos dos dois ensaios foram removidos. [Primeira execução](artifacts/E3-image/http-7d45b5c9-d33d-489e-b11e-72821f1ce64d/run.json) e [diagnóstico sanitizado](artifacts/E3-image/http-1c875040-cdc8-4a38-925c-77914427a741/a-initial-browser-network-failure.json).
+
+A configuração do painel seleciona o avatar padrão local do próprio Payload. O teste adjacente da configuração sanitizada falhou porque o valor efetivo era `gravatar` e passou depois de passar a `default`. A confirmação em Chromium requer imagem reconstruída. [RED](artifacts/E3-operations/payload-admin-avatar-red-001.txt) e [GREEN](artifacts/E3-operations/payload-admin-avatar-green-001.txt).
+
+### Observação de mídia e recuperação após exclusão
+
+O observador foi ligado à confirmação da revisão no runner. Os 107 testes focados passaram após três falhas comportamentais. O PostgreSQL comprovou a identificação do predecessor já reconhecido e a preservação da proveniência de outro predecessor ainda selecionado e superado. O Next compilado exercitou mídia compartilhada, original e derivado, cache do otimizador, a retirada pendente diante dos bytes antigos e a confirmação posterior da mesma geração com nove negações vazias. O Playwright passou. O wrapper registrou saída 2 por entradas transitórias PID 0, e a inspeção independente confirmou a liberação dos recursos e portas. A prova de interrupção e retomada pelo worker ainda está aberta. [Recibos](artifacts/E3-cache/media-ack-wiring-report.md).
+
+A prova com age e tar reais recuperou a chave, o tamanho, o SHA-256 e os bytes de uma mídia sintética após remover o objeto na origem. O marcador permaneceu igual. O ensaio de oito testes passou sem pulos. A coordenação do limpador operacional e a retenção no R2 continuam abertas. [Recibo](artifacts/E3-backup/post-deletion-recovery-001.txt).
+
+### Gate da fonte da imagem 007
+
+O gate 008 parou porque o teste do avatar excedeu o limite de cinco segundos ao importar a configuração completa do Payload. Os demais 1.934 testes passaram e três foram pulados. Um diagnóstico separado com o projeto unitário mediu 4,23 s para esse teste e 1.587 aprovações. O limite foi ajustado somente nesse teste, que preservou a asserção de avatar local. A imagem 006 compilou e passou as inspeções, porém o gate correspondente saiu 1. [Falha preservada](artifacts/E3-gates/verify-008-result.json).
+
+O gate 009 saiu 0, com Node 24.22.2 e pnpm 12.10.1. Passaram tipagem, lint, formato, 209 arquivos do Vitest, 1935 testes com 3 pulados, CSS, recálculo e build do Next. O lint registrou quatro avisos históricos de migração. A mesma fonte de 627 arquivos foi usada pelo build da imagem imutável `sha256:623e6eac85a24212695da3522467cc4fb94c6466b517d561019994d6f8220983`, com auditoria de camadas, estáticos e probe offline. [Gate 009](artifacts/E3-gates/verify-009-result.json) e [imagem 007](artifacts/E3-image/docker-draft-build-007.json).
+
+### Rollback local entre imagens imutáveis
+
+O ensaio 004 → 007 → 004 usou o mesmo banco descartável e preservou seu OID. Aplicou o backup e a migração nativa antes de iniciar a candidata. A volta preservou as 16 entradas e o hash do catálogo migrado. As três fases passaram 60 verificações HTTP somadas e os recursos descartáveis foram removidos. A 004 é a imagem anterior local e já contém o arquivo aditivo. O job no Coolify e a imagem do código exato do predecessor continuam em aberto. [Recibo](artifacts/E3-operations/migration-image-rollback-6f5d6bd2-0067-4c90-8c2c-71a7f5bbcecb/run.json).
+
+### Restauração de aplicação e recuperação nativa
+
+O ensaio recuperou o PostgreSQL e os objetos para um destino local descartável, com descriptografia real por age. A imagem 007 atendeu a raiz restaurada e passou oito verificações HTTP. Conferiu detalhes PT/EN, bytes da imagem, PDF na lixeira privado, login e painel. A redefinição capturou uma mensagem no contêiner, revogou a sessão e a senha anteriores, aceitou a nova senha e recusou o reuso do token com 403. O contêiner foi removido antes da liberação do alvo restaurado. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. R2 real e o pacote A3 permanecem abertos. [Eventos do ensaio](artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl) e [saída do teste](artifacts/E3-backup/restore-http-docker-007-001.txt).
+
+### Chromium contra a imagem Docker 007
+
+O mesmo ID de imagem iniciou em dois ambientes descartáveis e passou 82 verificações HTTP e quatro jornadas Chromium antes e depois dos reinícios. A navegação cobriu Home, lista e detalhe PT/EN, alternância de idioma, imagem otimizada e PDF, negação anônima de rascunho e mídia privada, login e sessão do Payload. O interceptador bloqueava destinos externos e registrou zero tentativas nas quatro fases. O processo Node/Next executou como PID 1, UID/GID 10001, sem capabilities efetivas. Foram removidos os contêineres, o banco e os relays do ensaio. A prova cobre essas jornadas contra a imagem. O registro de homologação/registry e a suíte Chromium completa em Next local são separados. [Recibo](artifacts/E3-image/http-aa2bf392-4bb1-4170-a443-15cbc42f2a2c/run.json).

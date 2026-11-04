@@ -99,3 +99,7 @@ O escritor usa bucket exclusivo e grava namespace, pendência, ciphertext e conc
 `restoreBackup` aceita o leitor registrado de recuperação. O leitor verifica o namespace, o marcador e todo o ciphertext antes de preparar o arquivo privado. A descriptografia e a validação do arquivo acontecem antes de adquirir o destino PostgreSQL e de mídia isolado. A primeira prova de composição usa destino local. A importação em bucket R2 novo e a jornada HTTP de login e recuperação seguem pendentes.
 
 As provas em loopback exercitaram o SDK S3 fixado com buckets sintéticos distintos. A última execução usou as ferramentas age e tar reais da fixture e passou 145 testes unitários sem skips. O callback PostgreSQL da prova de composição R2 é sintético. O dump e a restauração PostgreSQL reais pertencem às provas Native do pipeline local e da migração controlada. [Recibos de backup](../verification/artifacts/E3-backup/)
+
+## Restauração HTTP em imagem local
+
+A prova com PostgreSQL, filesystem, age e tar reais iniciou a imagem 007 sobre o alvo restaurado durante sua aquisição descartável. Verificou o conteúdo PT/EN, imagem, PDF privado, login, painel e redefinição com e-mail capturado localmente. A senha e a sessão anteriores foram revogadas e o token usado foi recusado. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. A importação para bucket R2 isolado continua aberta. [Recibo](../verification/artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl).

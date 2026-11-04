@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 7,
+  "completedItems": 8,
   "totalItems": 30,
-  "percentage": 23.3,
+  "percentage": 26.7,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -56,13 +56,13 @@
       "id": "E3.2.3",
       "done": false,
       "summary": "Conectar operações persistidas de E1.8: atualização de conteúdo, rotas históricas, destaques, ordem, contagem, sitemap/alternates e mídias. Executar tentativas por processo da mesma stack ou job nativo validado, com processamento idempotente e exclusão de operações obsoletas. Proposta operacional a avaliar em A3: propagação normal em até 60 segundos; tentativas automáticas em 1, 5 e 15 segundos, depois estado pendente visível e repetição manual. Isso é uma proposta operacional, não uma meta já aprovada na entrevista.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "O worker local comprovou fila persistida e drenagem com PostgreSQL real. O observador de mídia comprovou Native e Next na mesma geração, inclusive compartilhamento, cache HIT, hashes e revogação após a última referência. A raiz preserva a proveniência entre tentativas e recusa confirmar antecedente histórico pendente sem prova. A ativação segue restrita ao runner. Faltam ensaio do sitemap indexável, política/limites e coordenação da stack operacional. Recibos em artifacts/E3-cache/media-ack-wiring-report.md."
     },
     {
       "id": "E3.2.4",
       "done": false,
       "summary": "Testar falha entre gravação e invalidação, reinício durante tentativa e nova publicação antes de retry antigo. Retirada de publicação/revogação não aparece como concluída enquanto a verificação ainda encontrar o recurso público. Rascunho nunca publicado continua privado em qualquer falha; manter cache confirmado não autoriza consultar a versão de rascunho.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "O Next reteve a confirmação após o relay reapresentar a resposta antiga do otimizador. A nova tentativa conferiu a mesma raiz e nove respostas 404 vazias. O PostgreSQL real confirmou a cadeia de predecessor superado e a repetição sem recriar a raiz. O Playwright saiu 0. O wrapper saiu 2 ao encontrar entradas temporárias PID 0 no Windows e a limpeza independente passou. Falta a prova de reinício automático do worker quando interrompido na janela de confirmação. Recibos em artifacts/E3-cache/media-ack-wiring-report.md."
     },
     {
       "id": "E3.2.5",
@@ -126,9 +126,9 @@
     },
     {
       "id": "E3.4.5",
-      "done": false,
+      "done": true,
       "summary": "Rodar `pnpm verify`, E2E contra a imagem e inspeção de usuário/processo/camadas; commit `build: preparar imagem unica e homologacao isolada`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "verify-009 exit 0 e imagem local imutável 007 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium, em duas configurações isoladas antes e depois dos reinícios. Navegação PT/EN, mídia/PDF, recusa de rascunho, login e sessão no painel. Zero destinos externos ou WebSockets, inclusive depois da correção do avatar. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas nas quatro fases. Auditoria de 14 camadas sem caminhos vedados e 88 estáticos/manifestos sem marcadores. Recibos em artifacts/E3-image/http-aa2bf392-4bb1-4170-a443-15cbc42f2a2c/run.json. A suíte completa do Chromium em Next local tem recibos separados. Registry e homologação permanecem no critério E3.4.4."
     },
     {
       "id": "E3.5.1",
@@ -152,7 +152,7 @@
       "id": "E3.5.4",
       "done": false,
       "summary": "Executar migração em etapa controlada separada da inicialização, com backup prévio. Testar migração da versão anterior e rollback de imagem com schema compatível; impedir execução concorrente. Migração destrutiva só com aprovação explícita e recuperação preparada. Não executar reversão automática de dados para acompanhar rollback de imagem.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Migração Native com catálogo de 15 registros, backup criptografado relido antes do up, recusa de concorrência, repetição segura e restauração técnica isolada. O ensaio local 004 → 007 → 004 passou 60 verificações HTTP e preservou OID, 16 registros e o hash do catálogo após o rollback. A 004 já inclui o arquivo aditivo. Faltam o job operacional e a comprovação da versão exata de 60314d2 empacotada. Recibos em artifacts/E3-operations/migration-image-rollback-6f5d6bd2-0067-4c90-8c2c-71a7f5bbcecb/run.json."
     },
     {
       "id": "E3.5.5",
@@ -182,17 +182,17 @@
       "id": "E3.6.4",
       "done": false,
       "summary": "Coordenar snapshot de banco e arquivos: objetos imutáveis referenciados pelo dump são copiados/validados; suspender limpeza de órfãos durante o conjunto e não permitir exclusão física que quebre a cópia. Só aplicar retenção a conjuntos completos fora da janela; apagar arquivo corrente não apaga imediatamente seu histórico de backup.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Snapshot Native e cópia validada guardam as referências do dump. A prova local recusou exclusão física sob fence. A retenção FS preserva conjuntos recentes e incompletos. Uma nova prova com age e tar reais apagou o objeto sintético na origem após concluir o backup, verificou que o marcador persistiu e recuperou a chave, tamanho, SHA-256 e bytes originais. Faltam coordenação da limpeza operacional e retenção remota, que segue desabilitada. Recibos em artifacts/E3-backup/post-deletion-recovery-001.txt e pipeline-native-proof-024.txt."
     },
     {
       "id": "E3.6.5",
       "done": false,
       "summary": "Restaurar um conjunto de verdade em banco/bucket isolados, descriptografar com a identidade separada e verificar conteúdos PT/EN, versões/rotas, arquivos e login/recuperação necessários. Registrar duração e resultado como observações, sem inventar RPO/RTO contratados. Entregar A3 e commit `ops: comprovar backup e recuperacao isolada`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Conjunto criptografado real recuperado em PostgreSQL e filesystem descartáveis. A imagem 007 verificou conteúdo PT/EN, versões/rotas/mídias, login, painel, revogação da sessão anterior, senha nova e token de reset de uso único com uma mensagem capturada. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. Faltam restauração no bucket R2 isolado e entrega do pacote A3. Recibos em artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl."
     }
   ],
   "notes": [
-    "Auditoria solicitada pelo usuário: E3.5.1 (logs seguros/diagnóstico mínimo) e E3.2.1 (cache em Next real com origem indisponível/reinício) integralmente comprovadas. Outras28caixas abertas, sem crédito parcial;0/6tarefas encerradas. Gate verify003: exit0,161arquivos/1465testes passaram e3ignorados, CSS2/2, progresso36/36, tipagem/lint/formato/build passaram nesse snapshot. Foram registrados4avisos ESLint históricos e2avisos de tracing amplo; correção da imagem em andamento. Mudanças posteriores exigem seus próprios gates. Vitest001 falhou e permanece preservado; Native00224/24 e cache0011/1 passaram. A imagem draft001 compilou, mas native-smoke001 falhou por ligação pnpm opcional canvas ausente, sem prova de imagem pronta.",
+    "Auditoria inicial de 03/11/2026, preservada como histórico: E3.5.1 (logs seguros/diagnóstico mínimo) e E3.2.1 (cache em Next real com origem indisponível/reinício) integralmente comprovadas. Outras28caixas abertas, sem crédito parcial;0/6tarefas encerradas. Gate verify003: exit0,161arquivos/1465testes passaram e3ignorados, CSS2/2, progresso36/36, tipagem/lint/formato/build passaram nesse snapshot. Foram registrados4avisos ESLint históricos e2avisos de tracing amplo; correção da imagem em andamento. Mudanças posteriores exigem seus próprios gates. Vitest001 falhou e permanece preservado; Native00224/24 e cache0011/1 passaram. A imagem draft001 compilou, mas native-smoke001 falhou por ligação pnpm opcional canvas ausente, sem prova de imagem pronta.",
     "Retomada explícita em 03/11/2026 após a pausa histórica. A2 aprovada com a pendência formal E2.6.2 preservada: 29/30 critérios e 5/6 tarefas encerradas. A aprovação não equivale à prova de leitor de tela nem à conformidade WCAG.",
     "Decisão de e-mail: uma conta Resend, subdomínio de envio mail.joeldorosarioo.dev e uma chave de envio por projeto. Ambos os portfólios usam e-mail somente para recuperação nativa de senha e não precisam de caixa de entrada. A decisão não autoriza envio real de teste.",
     "BLOCK-R2-ACTUAL-INTEGRATION: acessos mínimos, buckets privados separados por ambiente e backup, configuração real e prova integrada de upload/entrega/privacidade ainda pendentes. Teste FS/local não substitui integração R2.",
@@ -205,7 +205,8 @@
     "E3.4.2 encerrado com a imagem local 004, inspeção e smoke atuais, auditoria de todas as camadas e dos estáticos e manifestos. E3.4.1 e E3.4.3–5 seguem abertos até provas de execução, promoção e homologação nos critérios próprios.",
     "E3.4.3 encerrado após 82 verificações HTTP com a mesma imagem e duas configurações isoladas, incluindo persistência local e troca de origem sem rebuild. A prova no navegador da imagem e o registry/homologação continuam em aberto.",
     "E3.2.5 encerrado com prova real de bytes e autorização, gate completo atual e commit local 1e93925. A observação da revogação antes do recibo editorial continua pendente no critério próprio.",
-    "E3.4.1 encerrado depois de provar o RED de defaults indevidos sob nomes já permitidos e reinspecionar a imagem 004. A prova HTTP de dois ambientes permanece vinculada ao snapshot da imagem 004."
+    "E3.4.1 encerrado depois de provar o RED de defaults indevidos sob nomes já permitidos e reinspecionar a imagem 004. A prova HTTP de dois ambientes permanece vinculada ao snapshot da imagem 004.",
+    "E3.4.5 encerrado com gate, jornadas Chromium e inspeção na mesma imagem 007. As execuções 005 que bloquearam Gravatar foram preservadas como RED operacional."
   ],
-  "recalculatedAt": "2026-11-04T04:57:44.250Z"
+  "recalculatedAt": "2026-11-04T05:56:30.459Z"
 }

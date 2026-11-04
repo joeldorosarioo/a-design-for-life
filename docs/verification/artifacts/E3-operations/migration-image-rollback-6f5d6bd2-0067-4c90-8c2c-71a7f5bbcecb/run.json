@@ -1,0 +1,190 @@
+{
+  "runId": "6f5d6bd2-0067-4c90-8c2c-71a7f5bbcecb",
+  "provenance": {
+    "older": {
+      "image": {
+        "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+        "registryDigests": [],
+        "platform": "linux/amd64",
+        "user": "10001:10001",
+        "revision": "draft-e3-local-004",
+        "layers": 14,
+        "environmentNames": [
+          "HOSTNAME",
+          "MEDIA_CHECKER_BINARY",
+          "NEXT_TELEMETRY_DISABLED",
+          "NODE_ENV",
+          "NODE_VERSION",
+          "PATH",
+          "PORT",
+          "YARN_VERSION"
+        ]
+      },
+      "source": {
+        "phase": "image-draft-004-before",
+        "head": "60314d2a095b178f16ddc3972e384d153ba031b5",
+        "files": 615,
+        "digest": "9390cc9ee4914f9a23c04948d7b1124ec83349f3cf607c30c98b6158c1893628"
+      },
+      "buildReceiptSha256": "0f51a7fae45351f0007c8e1b7e30a8a9ad6fa0ac5fa4a73ca9ea282345ed91f0",
+      "sourceIncludesAdditiveMigration": true,
+      "predecessorCommitImage": false
+    },
+    "newer": {
+      "image": {
+        "imageId": "sha256:623e6eac85a24212695da3522467cc4fb94c6466b517d561019994d6f8220983",
+        "registryDigests": [],
+        "platform": "linux/amd64",
+        "user": "10001:10001",
+        "revision": "draft-e3-local-007",
+        "layers": 14,
+        "environmentNames": [
+          "HOSTNAME",
+          "MEDIA_CHECKER_BINARY",
+          "NEXT_TELEMETRY_DISABLED",
+          "NODE_ENV",
+          "NODE_VERSION",
+          "PATH",
+          "PORT",
+          "YARN_VERSION"
+        ]
+      },
+      "source": {
+        "phase": "image-draft-007-before",
+        "head": "e430e6e42ebea4f57cfd475840572f59d1f05880",
+        "files": 627,
+        "digest": "c6daf402e5a31cba6dfc175502eb230f1d5a793839bd678c886488b1a9f19a24"
+      },
+      "buildReceipt": "E3-image/docker-draft-build-007.json",
+      "buildReceiptSha256": "5d612227dac74ebc7a19c51e1b13238e567faadd14c8f4d14d5895b422c3ab59",
+      "verify": "E3-gates/verify-009-result.json",
+      "verifyReceiptSha256": "f059011d5b8a04c9fc63145842b2c278e482d8e7c818fb93f5ff01264583241f"
+    },
+    "harness": {
+      "image-rollback-by-id.mjs": "2d9108ebec6cce42cfa64a2c8339d032a0389bb5611c112fd6bc303374adb190",
+      "image-rollback-native.mjs": "80ca9f35f81e1f412e9e8366e62d891098270d3d04e559eb492dcb66c34e17fe",
+      "image-http-seed.mjs": "bd1a3ebcf54b0f99e29f770e26cc09bd7a556e043a096abde0f73e1fea1719f3",
+      "image-http-verify.mjs": "dc25f0106dee834a7a1df3dc943b5022195c1ebac384718b9c757fd80daa2b6f",
+      "source-snapshot.mjs": "1326dd0e04371a603df6174fc11445e66516b0271256023dce6c2e8b9633c1f7"
+    },
+    "consumerBefore": {
+      "phase": "image-rollback-6f5d6bd2-0067-4c90-8c2c-71a7f5bbcecb-before",
+      "head": "e430e6e42ebea4f57cfd475840572f59d1f05880",
+      "files": 627,
+      "digest": "c6daf402e5a31cba6dfc175502eb230f1d5a793839bd678c886488b1a9f19a24"
+    },
+    "consumerAfter": {
+      "phase": "image-rollback-6f5d6bd2-0067-4c90-8c2c-71a7f5bbcecb-after",
+      "head": "e430e6e42ebea4f57cfd475840572f59d1f05880",
+      "files": 627,
+      "digest": "c6daf402e5a31cba6dfc175502eb230f1d5a793839bd678c886488b1a9f19a24"
+    }
+  },
+  "database": "adfl_test_migration_6f5d6bd200674c908c2c71a7f5bbcecb",
+  "origin": "http://127.0.0.1:3106",
+  "appPort": 3003,
+  "phases": [
+    {
+      "phase": "old-before",
+      "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+      "appId": "0e130d18530dfe9a58ca2d477c711ccd9b466155bc4e2f2015fae75f0c93eaca",
+      "user": "10001:10001",
+      "retryFlag": "false",
+      "schema": {
+        "databaseOid": "16385",
+        "ledgerRows": 15,
+        "ledgerSha256": "6f0a363d61c9e30a59699a4d813c87fb54baee254311bcf5d0ab453d0f8701b9",
+        "retryTable": false
+      },
+      "embeddedProbeExitCode": 0,
+      "httpChecks": 20,
+      "publicationNamespace": "a4f1d0203a378362f81a5014ebf04900604971e798790bec28b0cfd3f6e4604f"
+    },
+    {
+      "phase": "new-after",
+      "imageId": "sha256:623e6eac85a24212695da3522467cc4fb94c6466b517d561019994d6f8220983",
+      "appId": "3533855c7b4b9a1f1973919343d0e9c53ff38415d14d45b53de5b812e5a4748d",
+      "user": "10001:10001",
+      "retryFlag": "true",
+      "schema": {
+        "databaseOid": "16385",
+        "ledgerRows": 16,
+        "ledgerSha256": "73bf0c63361778bb67f976da113c7cf590398fc35797d537bf972aa6fd930e8e",
+        "retryTable": true
+      },
+      "embeddedProbeExitCode": 0,
+      "httpChecks": 20,
+      "publicationNamespace": "a4f1d0203a378362f81a5014ebf04900604971e798790bec28b0cfd3f6e4604f"
+    },
+    {
+      "phase": "old-rollback",
+      "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+      "appId": "0f5e9923838e69f4370530b96516f3c28f120e37f2e4bbfc7877589b863c5a46",
+      "user": "10001:10001",
+      "retryFlag": "false",
+      "schema": {
+        "databaseOid": "16385",
+        "ledgerRows": 16,
+        "ledgerSha256": "73bf0c63361778bb67f976da113c7cf590398fc35797d537bf972aa6fd930e8e",
+        "retryTable": true
+      },
+      "embeddedProbeExitCode": 0,
+      "httpChecks": 20,
+      "publicationNamespace": "a4f1d0203a378362f81a5014ebf04900604971e798790bec28b0cfd3f6e4604f"
+    }
+  ],
+  "schema": {
+    "before": {
+      "databaseOid": "16385",
+      "ledgerRows": 15,
+      "ledgerSha256": "6f0a363d61c9e30a59699a4d813c87fb54baee254311bcf5d0ab453d0f8701b9",
+      "retryTable": false
+    },
+    "after": {
+      "databaseOid": "16385",
+      "ledgerRows": 16,
+      "ledgerSha256": "73bf0c63361778bb67f976da113c7cf590398fc35797d537bf972aa6fd930e8e",
+      "retryTable": true
+    },
+    "afterRollback": {
+      "databaseOid": "16385",
+      "ledgerRows": 16,
+      "ledgerSha256": "73bf0c63361778bb67f976da113c7cf590398fc35797d537bf972aa6fd930e8e",
+      "retryTable": true
+    }
+  },
+  "cleanup": [
+    {
+      "id": "0e130d18530dfe9a58ca2d477c711ccd9b466155bc4e2f2015fae75f0c93eaca",
+      "stoppedAndRemoved": true
+    },
+    {
+      "id": "3533855c7b4b9a1f1973919343d0e9c53ff38415d14d45b53de5b812e5a4748d",
+      "stoppedAndRemoved": true
+    },
+    {
+      "id": "0f5e9923838e69f4370530b96516f3c28f120e37f2e4bbfc7877589b863c5a46",
+      "stoppedAndRemoved": true
+    }
+  ],
+  "status": "passed-local-image-rollback",
+  "databaseContainerId": "2d672439f38127e5fc39bf0a056ec96eb30e4fe653adcbece7c8ef21fefe1fee",
+  "databaseNetworkId": "dd4eecd31457e6289f4012e250a06cf313532eebe3bc5294bc5e3383f79a5ee5",
+  "baseline": {
+    "phase": "prepare",
+    "status": "predecessor-ready",
+    "ledgerRows": 15,
+    "schemaSha256": "435147e232a3cd92a77019dfbfa87e1b8e6f01f1e433169c86e055d23878cce2"
+  },
+  "fixtureRecordSha256": "a7a3e898c947a7f437160601f8b43fcb2673ac7ade0a073cb0ae7dafa8449cf0",
+  "migration": {
+    "phase": "apply",
+    "status": "applied",
+    "ledgerRows": 16,
+    "schemaSha256": "435147e232a3cd92a77019dfbfa87e1b8e6f01f1e433169c86e055d23878cce2",
+    "backupId": "665af099-36a7-4dea-9d0f-f01e2773bb36",
+    "ciphertextSha256": "d7c2ca2118a1fd626fe9be8e92c2cdbd512c5dbc0f03c5698976bb26c5afa984",
+    "complete": true
+  },
+  "databaseStoppedAndRemoved": true
+}

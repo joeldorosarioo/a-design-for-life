@@ -1,0 +1,27 @@
+{
+  "dataset": "a",
+  "phase": "initial",
+  "imageId": "sha256:882ef66ce39aa9903873cc8d4af2305e102ae833e0c9f895cdd236d1f932fe8d",
+  "containerId": "2c97ec2e8c337b53abdd89f5a67bf4f5076dbca587a74d97e7f811a16abc9a3e",
+  "blockedRequests": 2,
+  "blockedWebSockets": 0,
+  "samples": [
+    {
+      "step": "admin-browser-login",
+      "scheme": "https",
+      "siteCategory": "external-network",
+      "host": "www.gravatar.com",
+      "method": "GET",
+      "resourceType": "image"
+    },
+    {
+      "step": "admin-browser-login",
+      "scheme": "https",
+      "siteCategory": "external-network",
+      "host": "www.gravatar.com",
+      "method": "GET",
+      "resourceType": "image"
+    }
+  ],
+  "omitted": 0
+}
