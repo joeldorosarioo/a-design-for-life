@@ -36,6 +36,12 @@ A fixture verifica a composição da aplicação e do transporte S3. A privacida
 node ./node_modules/vitest/vitest.mjs run --project integration src/features/media-library/server/r2-delivery.integration.test.ts
 ```
 
+### R2 no desenvolvimento
+
+Use `MEDIA_STORAGE_DRIVER=r2` para selecionar o R2. `R2_BUCKET` escolhe o bucket remoto e tem precedência sobre `MEDIA_BUCKET`. `R2_MEDIA_PREFIX` delimita o caminho dos objetos. O adaptador adiciona o prefixo nas operações do SDK e mantém as chaves de 64 caracteres gravadas nos manifests. Defina o prefixo antes de gravar objetos, pois alterá-lo depois exige mover os bytes referenciados. O runner automatizado continua usando armazenamento local.
+
+O ensaio de 04/11/2026 usou a aplicação local, PostgreSQL do projeto e um prefixo de desenvolvimento do R2. O reset removeu seis objetos do prefixo após cópia local. O Payload salvou uma imagem sintética e quatro derivados, confirmou o SHA-256 do original e leu a variante de 640 px via prévia autenticada. O acesso anônimo pela aplicação retornou 404. A consulta sem assinatura ao endpoint S3 retornou 400 para o original e o derivado. A configuração de domínio público do bucket, publicação e retirada no R2 real seguem com provas próprias. [Recibo do ensaio](../verification/artifacts/E3-storage/r2-development-prefix-001.json)
+
 ## Pendências antes do aceite real
 
 - Configurar bucket privado de homologação e credencial limitada ao bucket; produção e backups permanecem separados, com credenciais distintas.

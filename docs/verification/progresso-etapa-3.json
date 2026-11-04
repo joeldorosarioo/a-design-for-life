@@ -26,13 +26,13 @@
       "id": "E3.1.3",
       "done": false,
       "summary": "Escrever integração real com bucket de homologação: upload válido, publicação, entrega autorizada, derivados, remoção de referência e acesso privado. Primeiro observar falha contratual com cenário controlado; implementar o adaptador mínimo e obter GREEN. Testes não apontam para o bucket de produção.",
-      "evidence": "Payload/PostgreSQL reais e transporte S3 controlado em loopback provaram upload, publicação, original/derivado, privacidade de prévia e revogação após retirada. Vitest 1/1. Falta repetir com bucket R2 autorizado. [Runbook](../runbooks/armazenamento.md)."
+      "evidence": "Payload/PostgreSQL reais e transporte S3 controlado em loopback provaram upload, publicação, original/derivado, privacidade de prévia e revogação após retirada. Vitest 1/1. Falta repetir com bucket R2 autorizado. [Runbook](../runbooks/armazenamento.md). O R2 real também recebeu uma imagem sintética e quatro derivados pelo Payload/PostgreSQL local, com prévia autenticada e SHA-256 verificado. Publicação e retirada no bucket de homologação ainda pendentes. [Recibo](artifacts/E3-storage/r2-development-prefix-001.json)."
     },
     {
       "id": "E3.1.4",
       "done": false,
       "summary": "Comprovar que URL direta do objeto/derivado no R2 não é pública; revisar caminhos do otimizador e caches. Testar falha de rede no envio e impedir referência editorial apontando a upload incompleto. Artefatos de imagem recebem chaves imutáveis; alteração de arquivo gera novo recurso/revisão, facilitando recuperação consistente.",
-      "evidence": "A desconexão no terceiro PUT assinado devolveu 503 sem criar referência de mídia. A repetição criou outra chave imutável e comprovou entrega e revogação. A negação no endpoint direto de um bucket R2 real segue pendente. [Runbook](../runbooks/armazenamento.md)."
+      "evidence": "A desconexão no terceiro PUT assinado devolveu 503 sem criar referência de mídia. A repetição criou outra chave imutável e comprovou entrega e revogação. A negação no endpoint direto de um bucket R2 real segue pendente. [Runbook](../runbooks/armazenamento.md). No prefixo R2 de desenvolvimento, os GETs sem assinatura ao endpoint S3 retornaram 400 para o original e o derivado. Falta a prova completa de URLs/domínios, cache e falha controlada no ambiente autorizado. [Recibo](artifacts/E3-storage/r2-development-prefix-001.json)."
     },
     {
       "id": "E3.1.5",
@@ -211,5 +211,5 @@
     "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3.",
     "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos."
   ],
-  "recalculatedAt": "2026-11-04T12:58:44.299Z"
+  "recalculatedAt": "2026-11-04T15:12:52.626Z"
 }

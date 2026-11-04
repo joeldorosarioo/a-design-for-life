@@ -9,12 +9,14 @@ import {
   S3Client,
   S3ServiceException,
 } from '@aws-sdk/client-s3';
+import { isR2KeyPrefix } from './r2-key-prefix';
 import { assertObjectReference, type ObjectStorage, type StoredObject } from './object-storage';
 import { registerObjectStorageRetention, withObjectStorageRetention } from './object-retention';
 
 export type R2StorageOptions = {
   endpoint: string;
   bucket: string;
+  keyPrefix?: string;
   accessKeyId: string;
   secretAccessKey: string;
 };
@@ -37,11 +39,13 @@ export function createR2ObjectStorage(options: R2StorageOptions): R2ObjectStorag
     endpoint.hash ||
     endpoint.pathname !== '/' ||
     !/^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$/.test(options.bucket) ||
+    (options.keyPrefix !== undefined && !isR2KeyPrefix(options.keyPrefix)) ||
     !options.accessKeyId.trim() ||
     !options.secretAccessKey.trim()
   )
     throw new Error('Invalid R2 configuration');
   const bucket = options.bucket;
+  const prefix = options.keyPrefix === undefined ? '' : options.keyPrefix.replace(/\/$/, '') + '/';
   const client = new S3Client({
     endpoint: endpoint.origin,
     region: 'auto',
@@ -59,7 +63,9 @@ export function createR2ObjectStorage(options: R2StorageOptions): R2ObjectStorag
     error instanceof S3ServiceException && error.$metadata.httpStatusCode === 404;
   const get = async (object: StoredObject): Promise<Uint8Array> => {
     assertObjectReference(object);
-    const response = await client.send(new GetObjectCommand({ Bucket: bucket, Key: object.key }));
+    const response = await client.send(
+      new GetObjectCommand({ Bucket: bucket, Key: prefix + object.key }),
+    );
     if (!response.Body) throw new Error('Object integrity failure');
     const bytes = await response.Body.transformToByteArray();
     if (
@@ -81,7 +87,7 @@ export function createR2ObjectStorage(options: R2StorageOptions): R2ObjectStorag
       return withObjectStorageRetention(adapter, async () => {
         try {
           await get(object);
-          await client.send(new DeleteObjectCommand({ Bucket: bucket, Key: object.key }));
+          await client.send(new DeleteObjectCommand({ Bucket: bucket, Key: prefix + object.key }));
         } catch (error) {
           if (missing(error)) return;
           throw error;
@@ -92,7 +98,7 @@ export function createR2ObjectStorage(options: R2StorageOptions): R2ObjectStorag
       assertObjectReference(object);
       try {
         const response = await client.send(
-          new HeadObjectCommand({ Bucket: bucket, Key: object.key }),
+          new HeadObjectCommand({ Bucket: bucket, Key: prefix + object.key }),
         );
         if (
           response.ContentLength !== object.byteLength ||
@@ -116,7 +122,7 @@ export function createR2ObjectStorage(options: R2StorageOptions): R2ObjectStorag
       await client.send(
         new PutObjectCommand({
           Bucket: bucket,
-          Key: object.key,
+          Key: prefix + object.key,
           Body: captured,
           ContentLength: captured.byteLength,
           ContentType: 'application/octet-stream',

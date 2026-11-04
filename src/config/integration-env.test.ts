@@ -96,3 +96,35 @@ it('lets local development select R2 explicitly while preserving captured email'
   expect(result.storage).toMatchObject({ driver: 'r2' });
   expect(result.resend).toBeUndefined();
 });
+
+it('uses the configured bucket and prefix for opted-in local R2', () => {
+  const result = readIntegrationEnv(
+    {
+      ...remote,
+      MEDIA_STORAGE_DRIVER: 'r2',
+      R2_BUCKET: 'remote-development-media',
+      R2_MEDIA_PREFIX: 'development/rebuild/media',
+    },
+    validServerEnv({ NODE_ENV: 'development', APP_ENV: 'local', MEDIA_BUCKET: 'local-files' }),
+  );
+  expect(result.storage).toMatchObject({
+    driver: 'r2',
+    bucket: 'remote-development-media',
+    keyPrefix: 'development/rebuild/media',
+  });
+});
+
+it.each(['', '/media', 'media//files', 'media/../files', 'media/%2e%2e/files', 'media\n'])(
+  'rejects an invalid R2 media prefix: %j',
+  (prefix) => {
+    expect(() =>
+      readIntegrationEnv({ ...remote, R2_MEDIA_PREFIX: prefix }, deployed('staging')),
+    ).toThrow(/integration configuration/i);
+  },
+);
+
+it('rejects an explicitly empty R2 bucket instead of using the local bucket', () => {
+  expect(() => readIntegrationEnv({ ...remote, R2_BUCKET: '' }, deployed('staging'))).toThrow(
+    /integration configuration/i,
+  );
+});
