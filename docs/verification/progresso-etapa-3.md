@@ -1,6 +1,6 @@
 # Progresso verificável — etapa 3
 
-**16,7%: 5/30 itens; 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**20,0%: 6/30 itens; 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs --stage 3`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
@@ -9,7 +9,7 @@ A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso 
 | Tarefa | Itens | Estado       |
 | ------ | ----- | ------------ |
 | E3.1   | 0/5   | Pendente     |
-| E3.2   | 1/5   | Em andamento |
+| E3.2   | 2/5   | Em andamento |
 | E3.3   | 0/5   | Pendente     |
 | E3.4   | 2/5   | Em andamento |
 | E3.5   | 1/5   | Em andamento |
@@ -26,7 +26,7 @@ A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso 
 - [ ] **E3.2.2** Implementar cache compatível com a versão do Next validada, chaveado por ambiente/origem, idioma e dependência. Preservar último resultado público válido em falhas e usar armazenamento persistente montado na VPS quando necessário à estratégia escolhida. Não presumir que invalidar uma tag prova regeneração; uma verificação pública confirma a revisão servida. Registrar a API exata e o comportamento observado. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
 - [ ] **E3.2.3** Conectar operações persistidas de E1.8: atualização de conteúdo, rotas históricas, destaques, ordem, contagem, sitemap/alternates e mídias. Executar tentativas por processo da mesma stack ou job nativo validado, com processamento idempotente e exclusão de operações obsoletas. Proposta operacional a avaliar em A3: propagação normal em até 60 segundos; tentativas automáticas em 1, 5 e 15 segundos, depois estado pendente visível e repetição manual. Isso é uma proposta operacional, não uma meta já aprovada na entrevista. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
 - [ ] **E3.2.4** Testar falha entre gravação e invalidação, reinício durante tentativa e nova publicação antes de retry antigo. Retirada de publicação/revogação não aparece como concluída enquanto a verificação ainda encontrar o recurso público. Rascunho nunca publicado continua privado em qualquer falha; manter cache confirmado não autoriza consultar a versão de rascunho. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
-- [ ] **E3.2.5** Validar cache de bytes e autorização das mídias separadamente: arquivo compartilhado com outra publicação continua permitido; removida a última referência pública, invalidar autorização/entrega controlada e não usar cópia de cache como permissão. Não prometer apagar cópias já baixadas. Rodar integração e `pnpm verify`; commit `feat: garantir atualizacao publica e tolerancia a falhas`. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
+- [x] **E3.2.5** Validar cache de bytes e autorização das mídias separadamente: arquivo compartilhado com outra publicação continua permitido; removida a última referência pública, invalidar autorização/entrega controlada e não usar cópia de cache como permissão. Não prometer apagar cópias já baixadas. Rodar integração e `pnpm verify`; commit `feat: garantir atualizacao publica e tolerancia a falhas`. Evidência/pendência: Teste real 102 da suíte e2e-002 (116/116, exit 0) confirmou original, derivado e Next.Image com bytes e cache HIT enquanto havia referência compartilhada PT/EN. Após a última retirada, GET/HEAD com If-None-Match e Range negaram bytes antes/depois de reinício com PostgreSQL indisponível, inclusive quando o otimizador ainda tinha bytes em disco. O cache não concedeu acesso. No runbook, a negação vale para novas requisições. Prova atual em artifacts/E3-cache/proof-002-full-e2e-evidence.json, 95 observações e cleanupFailures 0. verify-006 exit 0, 1.866 passaram/3 skips no mesmo snapshot. Commit 1e93925 em develop.
 - [ ] **E3.3.1** Escrever RED para ambientes/áreas excluídos, campos não permitidos e duplicação de page view. Implementar schema fechado, inicialização única e envio por navegação pública concluída; não contabilizar navegação cancelada nem enviar endereço de e-mail/LinkedIn como rótulo/URL do evento. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
 - [ ] **E3.3.2** Configurar GA4 com `analytics_storage: denied` antes de qualquer medição e sem mudança posterior para habilitar armazenamento. Desativar publicidade/remarketing, User-ID e medição automática ampliada de rolagem, busca, cliques externos e downloads que extrapole os eventos aprovados. Não instalar gerenciador de tags ou outro produto de analytics sem necessidade aprovada. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
 - [ ] **E3.3.3** Testar contrato do transporte em ambiente isolado, sem enviar dados reais ao Google: somente eventos aprovados, locale, caminho público sanitizado e dados técnicos indispensáveis do protocolo; sem nomes, e-mails, tokens, conteúdo privado ou identificadores persistentes alternativos. Evento `resume_open` confirma o acionamento, não o download/leitura. Inspecionar cookies e storage; o cookie funcional de idioma não pode ser lido para identificar visitantes. Evidência/pendência: Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial.
@@ -73,6 +73,8 @@ Auditoria em 04/11/2026: E3.6.2 encerrado pela prova integral dos guardas, readb
 E3.4.2 encerrado com a imagem local 004, inspeção e smoke atuais, auditoria de todas as camadas e dos estáticos e manifestos. E3.4.1 e E3.4.3–5 seguem abertos até provas de execução, promoção e homologação nos critérios próprios.
 
 E3.4.3 encerrado após 82 verificações HTTP com a mesma imagem e duas configurações isoladas, incluindo persistência local e troca de origem sem rebuild. A prova no navegador da imagem e o registry/homologação continuam em aberto.
+
+E3.2.5 encerrado com prova real de bytes e autorização, gate completo atual e commit local 1e93925. A observação da revogação antes do recibo editorial continua pendente no critério próprio.
 
 Estimativa: 24–40 horas de trabalho, excluindo esperas externas; revisar diante de bloqueio concreto.
 

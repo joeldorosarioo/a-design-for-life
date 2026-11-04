@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 16,7% do checklist (5/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 20,0% do checklist (6/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -11,7 +11,7 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 ## Acompanhamento
 
 - [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
-- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 1/5 critérios.
+- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 2/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 0/5 critérios.
 - [ ] E3.4 Imagem única, configuração de execução e homologação — 2/5 critérios.
 - [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
@@ -61,3 +61,5 @@ O [ensaio HTTP da imagem 004](artifacts/E3-image/http-973f5053-f16b-4c9a-b183-84
 O ensaio `e2e-002` terminou com saída 0 e 116/116 testes no Chromium. O Next 16.4.3 foi compilado para produção e iniciado no runner com PostgreSQL 17.11 descartável. O ensaio incluiu a origem indisponível, cache confirmado após reinício, autorização de imagens, remoção da última referência e observação da revisão antes do recibo editorial. A função de saída de cada teste manteve as novas capturas em pasta privada própria. As 41 capturas históricas conservaram os hashes. Os 615 arquivos da fonte conservaram o fingerprint de `verify-006` e da imagem 004.
 
 A primeira chamada `e2e-001` parou antes dos serviços porque o wrapper PowerShell entregou `list json` como nome de reporter ao Playwright. A execução corrigida usou diretamente o mesmo comando Node do script do projeto e preservou a vírgula. [Recibos do navegador](artifacts/E3-gates/). Este ensaio usou o build local. A prova completa em navegador contra a imagem continua pendente.
+
+O cache de bytes e a autorização de mídia foram exercitados em conjunto e separadamente na execução atual. E3.2.5 encerrado com o teste 102 do Chromium, `verify-006` e o commit local `1e93925`. A retirada da última referência recusou os bytes que o otimizador ainda mantinha em disco. O observador antes do recibo editorial ainda tem uma prova de mídia própria.

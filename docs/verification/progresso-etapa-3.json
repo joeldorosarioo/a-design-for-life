@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 5,
+  "completedItems": 6,
   "totalItems": 30,
-  "percentage": 16.7,
+  "percentage": 20,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -66,9 +66,9 @@
     },
     {
       "id": "E3.2.5",
-      "done": false,
+      "done": true,
       "summary": "Validar cache de bytes e autorização das mídias separadamente: arquivo compartilhado com outra publicação continua permitido; removida a última referência pública, invalidar autorização/entrega controlada e não usar cópia de cache como permissão. Não prometer apagar cópias já baixadas. Rodar integração e `pnpm verify`; commit `feat: garantir atualizacao publica e tolerancia a falhas`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Teste real 102 da suíte e2e-002 (116/116, exit 0) confirmou original, derivado e Next.Image com bytes e cache HIT enquanto havia referência compartilhada PT/EN. Após a última retirada, GET/HEAD com If-None-Match e Range negaram bytes antes/depois de reinício com PostgreSQL indisponível, inclusive quando o otimizador ainda tinha bytes em disco. O cache não concedeu acesso. No runbook, a negação vale para novas requisições. Prova atual em artifacts/E3-cache/proof-002-full-e2e-evidence.json, 95 observações e cleanupFailures 0. verify-006 exit 0, 1.866 passaram/3 skips no mesmo snapshot. Commit 1e93925 em develop."
     },
     {
       "id": "E3.3.1",
@@ -203,7 +203,8 @@
     "A3/A4 não concedidas. Nenhum lançamento, compra, contratação, e-mail real ou alteração de permissão editorial é autorizado por este registro. Ver execucao-etapa-3.md e retomada-etapa-3.md.",
     "Auditoria em 04/11/2026: E3.6.2 encerrado pela prova integral dos guardas, readback, preservação sob upload parcial e alvo nativo novo. Worker e observador HTTP têm evidências focadas, com confirmação servida ainda em integração. O contexto Docker teve RED com sentinelas sintéticos privados e GREEN de 21 entradas permitidas e 28 excluídas; falta reconstruir a imagem da fonte atual.",
     "E3.4.2 encerrado com a imagem local 004, inspeção e smoke atuais, auditoria de todas as camadas e dos estáticos e manifestos. E3.4.1 e E3.4.3–5 seguem abertos até provas de execução, promoção e homologação nos critérios próprios.",
-    "E3.4.3 encerrado após 82 verificações HTTP com a mesma imagem e duas configurações isoladas, incluindo persistência local e troca de origem sem rebuild. A prova no navegador da imagem e o registry/homologação continuam em aberto."
+    "E3.4.3 encerrado após 82 verificações HTTP com a mesma imagem e duas configurações isoladas, incluindo persistência local e troca de origem sem rebuild. A prova no navegador da imagem e o registry/homologação continuam em aberto.",
+    "E3.2.5 encerrado com prova real de bytes e autorização, gate completo atual e commit local 1e93925. A observação da revogação antes do recibo editorial continua pendente no critério próprio."
   ],
-  "recalculatedAt": "2026-11-04T04:35:38.380Z"
+  "recalculatedAt": "2026-11-04T04:44:42.345Z"
 }
