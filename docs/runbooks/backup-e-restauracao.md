@@ -10,6 +10,8 @@ O comando `backup` usa a raiz da mesma origem, banco e ambiente da aplicação. 
 
 Ao executar backup com a aplicação em serviço, compartilhe o namespace de rede do processo que publica e remove objetos. Monte o volume de publicação no mesmo caminho absoluto `/app/.work/publication`; o socket abstrato que protege snapshot e objetos pertence a esse namespace de rede. A exclusão entre jobs usa um advisory lock do PostgreSQL na mesma conexão dedicada por todo o backup ou migração. Confirme os dois mecanismos no executor de homologação antes de agendar o comando `backup` semanalmente. A execução extra anterior à atualização deve concluir e registrar seu marcador antes da troca de imagem. A migração `migrate` cria e verifica o seu próprio conjunto antes de executar DDL. [Migração controlada](migracoes.md).
 
+O job comprovou a criação de dois conjuntos criptografados e a recuperação independente do catálogo anterior à migração. [Evidência do job](../verification/artifacts/E3-operations/linux-operational-job-report.md).
+
 Em teste, o job exige banco UUID próprio, porta interna 25434 em loopback e volume descartável. O modo de homologação exige revisão Git completa e alvo declarado. Produção, tentativas automáticas, verificação pública e comandos destrutivos são recusados pelo entrypoint desta etapa.
 
 ## Guardas disponíveis

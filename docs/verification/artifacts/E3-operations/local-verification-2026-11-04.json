@@ -1,0 +1,37 @@
+{
+  "candidateRevision": "94a6e321a8b94b266edf56cadc81220a3f9ad627",
+  "candidateLocalImageId": "sha256:8fe77736e98e958a3270e8a4e7d63996f230d616e02dc3b32c27896f9555a267",
+  "candidateBuild": "passed",
+  "candidateFaultAndUploadMeasurement": "interrupted before fixture and HTTP assertions",
+  "fullGate": {
+    "command": "pnpm verify",
+    "runId": "d54830cc-c4da-4171-959e-00f3e900c258",
+    "distDir": ".work/next-tests/d54830cc-c4da-4171-959e-00f3e900c258",
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "next": "16.4.3",
+    "started": "2026-11-04T12:39:27.980Z",
+    "finished": "2026-11-04T12:56:24.353Z",
+    "exitCode": 1,
+    "signal": null,
+    "sourceRestoration": "unchanged",
+    "protectedBefore": "f741ec913bffbbff219279ac71f347ee65e9e0f6c2f6c9e3a6dd7aa10abfa3a1",
+    "protectedAfter": "f741ec913bffbbff219279ac71f347ee65e9e0f6c2f6c9e3a6dd7aa10abfa3a1",
+    "buildId": null
+  },
+  "focusedReplay": {
+    "passed": [
+      "encrypted native backup and restore",
+      "controlled migration",
+      "composed S3 media delivery"
+    ],
+    "failed": [
+      "publication restart reached its explicit deadline"
+    ],
+    "databaseReconnected": true
+  },
+  "analyticsChromiumPassed": 2,
+  "diagnosticUnitPassed": 5,
+  "diagnosticCookieE2E": "origin fixed after 401; final focused HTTP proof pending",
+  "exactPredecessorRollback": "application image built; rollback scenario unverified"
+}

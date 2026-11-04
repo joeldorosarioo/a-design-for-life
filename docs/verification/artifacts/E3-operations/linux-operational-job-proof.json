@@ -1,0 +1,273 @@
+{
+  "verified": "2026-11-04",
+  "scope": "discardable Linux Docker and PostgreSQL, no published host ports or Internet route",
+  "toolVersions": {
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "pgServer": "17.11",
+    "pgDump": "17.11",
+    "age": "1.3.2",
+    "tar": "GNU tar 1.35",
+    "uid": 10001
+  },
+  "focusedUnitTests": {
+    "filesPassed": 4,
+    "testsPassed": 39
+  },
+  "transactionExclusionRed": {
+    "runId": "18197f59-067e-4df8-b85a-806dc8a48de4",
+    "imageId": "sha256:fdce9cdb44de9a5f7048ba8fe377e9b74f9075bf9966bf23961151ffa68575b1",
+    "databaseVersion": "17.11",
+    "events": [
+      {
+        "event": "seed-reviewed-predecessor",
+        "migrations": 15
+      },
+      {
+        "event": "concurrent-migration-job-refused",
+        "exit": 1,
+        "migrations": 15
+      },
+      {
+        "event": "concurrent-migration-transaction-refused",
+        "exit": 0,
+        "migrations": 16
+      },
+      {
+        "event": "cleaned-up",
+        "databaseId": "d1eb0c3a2b9c0ac37b4eea86fb54070f1cce9a06cb5492317536b136f59a30ce",
+        "restoreDatabaseId": null,
+        "volume": "adfl-ops-proof-18197f59-067-sets"
+      }
+    ]
+  },
+  "jobAndTransactionExclusionGreen": {
+    "runId": "90919485-5bb8-41aa-a2e2-8a2ebb555584",
+    "imageId": "sha256:734df47a9bb63fe400cdcb4be0c689c25eb8d6dedd2ec9bba2aec20d1583a949",
+    "databaseVersion": "17.11",
+    "events": [
+      {
+        "event": "seed-reviewed-predecessor",
+        "migrations": 15
+      },
+      {
+        "event": "concurrent-migration-job-refused",
+        "exit": 1,
+        "migrations": 15
+      },
+      {
+        "event": "concurrent-migration-transaction-refused",
+        "exit": 1,
+        "migrations": 15
+      },
+      {
+        "event": "migration-applied-after-encrypted-backup",
+        "marker": {
+          "version": 1,
+          "id": "493fa700-3534-4dcb-a3d0-0d3364cef952",
+          "namespace": {
+            "project": "a-design-for-life",
+            "environment": "test",
+            "source": "ops-90919485-5bb8-41aa-a2e2-8a2ebb555584"
+          },
+          "createdAt": "2026-11-04T12:41:32.571Z",
+          "complete": true,
+          "completedAt": "2026-11-04T12:41:34.420Z",
+          "manifestSha256": "1fd388fd824bc538d8664aee393d45c580541184255a6b2140e6b841790814f3",
+          "ciphertext": {
+            "byteLength": 153832,
+            "sha256": "7532a264d9ef4d8ab3284a94a0042f92d86cc7c7551911d862e236c6f34d95d9",
+            "key": "sets/493fa700-3534-4dcb-a3d0-0d3364cef952/payload.age"
+          }
+        },
+        "migrations": 16
+      },
+      {
+        "event": "idempotent-migration",
+        "migrations": 16
+      },
+      {
+        "event": "standalone-encrypted-backup",
+        "marker": {
+          "version": 1,
+          "id": "12c80ddf-f0c6-41cb-94c8-29e7ce08b17e",
+          "namespace": {
+            "project": "a-design-for-life",
+            "environment": "test",
+            "source": "ops-90919485-5bb8-41aa-a2e2-8a2ebb555584"
+          },
+          "createdAt": "2026-11-04T12:44:04.956Z",
+          "complete": true,
+          "completedAt": "2026-11-04T12:44:08.527Z",
+          "manifestSha256": "1d238700ddaf6906d186d0b37f2249f6950a03989246e62954ce7892757a1289",
+          "ciphertext": {
+            "byteLength": 164072,
+            "sha256": "7c83ce9d30e0f425b444581473dd520181ac504bee5d58c25fea0fc771971744",
+            "key": "sets/12c80ddf-f0c6-41cb-94c8-29e7ce08b17e/payload.age"
+          }
+        },
+        "durationMs": 4208
+      },
+      {
+        "event": "cleaned-up",
+        "databaseId": "5266a8330d9d7ec1a0b8c7570e7b27d797fc33b4d943d3132bf3656280cc169c",
+        "restoreDatabaseId": "6cb33d5afe47a9fe9600e652f78cab52ea72efa10154853cccc97c9069ef990c",
+        "volume": "adfl-ops-proof-90919485-5bb-sets"
+      }
+    ]
+  },
+  "initialIsolatedWorkflow": {
+    "runId": "1843bbea-e2aa-43c2-ade4-816f5e6842e7",
+    "imageId": "sha256:76d969c2c0e39d5fb37d9d59a349ffe7cb4f6019aabbca5c30cc66fb1c4d2dac",
+    "databaseVersion": "17.11",
+    "events": [
+      {
+        "event": "seed-reviewed-predecessor",
+        "migrations": 15
+      },
+      {
+        "event": "concurrent-migration-refused",
+        "exit": 1,
+        "migrations": 15
+      },
+      {
+        "event": "migration-applied-after-encrypted-backup",
+        "marker": {
+          "version": 1,
+          "id": "bcc52ab8-1f9d-4e4d-9b4c-108665810c89",
+          "namespace": {
+            "project": "a-design-for-life",
+            "environment": "test",
+            "source": "ops-1843bbea-e2aa-43c2-ade4-816f5e6842e7"
+          },
+          "createdAt": "2026-11-04T12:32:35.586Z",
+          "complete": true,
+          "completedAt": "2026-11-04T12:32:36.391Z",
+          "manifestSha256": "c84be61bb1e838daff92f747be54badd43185149f8bd12a42a8821c55d57e701",
+          "ciphertext": {
+            "byteLength": 153832,
+            "sha256": "763ca4af3c53c02a6b51459a56d6e393ce02b71a7e150cf33a1a3da6e1d31de3",
+            "key": "sets/bcc52ab8-1f9d-4e4d-9b4c-108665810c89/payload.age"
+          }
+        },
+        "migrations": 16
+      },
+      {
+        "event": "idempotent-migration",
+        "migrations": 16
+      },
+      {
+        "event": "standalone-encrypted-backup",
+        "marker": {
+          "version": 1,
+          "id": "d49d4fca-278b-4af6-a0fe-5179c78b27bd",
+          "namespace": {
+            "project": "a-design-for-life",
+            "environment": "test",
+            "source": "ops-1843bbea-e2aa-43c2-ade4-816f5e6842e7"
+          },
+          "createdAt": "2026-11-04T12:33:06.751Z",
+          "complete": true,
+          "completedAt": "2026-11-04T12:33:07.281Z",
+          "manifestSha256": "66eaf84bbe1d2594fd4172e2606e0a57bd7a0306b819f83e66a1a86f661a16f5",
+          "ciphertext": {
+            "byteLength": 164072,
+            "sha256": "f1b00f5450914951f4432879afc9a61ece1f116e51109c29d51f22d8436b9d6f",
+            "key": "sets/d49d4fca-278b-4af6-a0fe-5179c78b27bd/payload.age"
+          }
+        },
+        "durationMs": 605
+      },
+      {
+        "event": "tools",
+        "uid": "10001",
+        "age": "v1.3.2",
+        "pgDump": "pg_dump (PostgreSQL) 17.11 (Debian 17.11-0+deb13u1)",
+        "tar": "tar (GNU tar) 1.35"
+      },
+      {
+        "event": "cleaned-up",
+        "databaseId": "b0fefd30c8b0d649db7a750843a0d4d4be0a2e01dd3c21396f342c8ce190a1e5",
+        "volume": "adfl-ops-proof-1843bbea-e2a-sets"
+      }
+    ]
+  },
+  "initialRestoreHarness": "age rejected the input path followed by -o. The failure happened after the job backup, lock and migration checks.",
+  "independentRestorationGreen": {
+    "runId": "1ddec971-5784-4e8c-b3c8-b3afb142d8a1",
+    "imageId": "sha256:734df47a9bb63fe400cdcb4be0c689c25eb8d6dedd2ec9bba2aec20d1583a949",
+    "databaseVersion": "17.11",
+    "events": [
+      {
+        "event": "seed-reviewed-predecessor",
+        "migrations": 15
+      },
+      {
+        "event": "migration-applied-after-encrypted-backup",
+        "marker": {
+          "version": 1,
+          "id": "df1d0643-648d-4ef6-bdd7-d00ad5902cfb",
+          "namespace": {
+            "project": "a-design-for-life",
+            "environment": "test",
+            "source": "ops-1ddec971-5784-4e8c-b3c8-b3afb142d8a1"
+          },
+          "createdAt": "2026-11-04T12:52:16.522Z",
+          "complete": true,
+          "completedAt": "2026-11-04T12:52:24.231Z",
+          "manifestSha256": "91c65e05e3f79c01a13a892bf6d581e89b536d237d765083fb4497d146f91b5d",
+          "ciphertext": {
+            "byteLength": 153832,
+            "sha256": "f8de481745140935a953b518ee4505b60ab4f8fa41d12e203717987cd738b66b",
+            "key": "sets/df1d0643-648d-4ef6-bdd7-d00ad5902cfb/payload.age"
+          }
+        },
+        "migrations": 16
+      },
+      {
+        "event": "idempotent-migration",
+        "migrations": 16
+      },
+      {
+        "event": "standalone-encrypted-backup",
+        "marker": {
+          "version": 1,
+          "id": "7d5611e2-7ea3-467b-a53e-6a895995be90",
+          "namespace": {
+            "project": "a-design-for-life",
+            "environment": "test",
+            "source": "ops-1ddec971-5784-4e8c-b3c8-b3afb142d8a1"
+          },
+          "createdAt": "2026-11-04T12:54:34.198Z",
+          "complete": true,
+          "completedAt": "2026-11-04T12:54:47.619Z",
+          "manifestSha256": "b08488c8fbec8d6e5e5ab2d9a0ae1ac00ca0785ae176e2af0aeba51ac8acba73",
+          "ciphertext": {
+            "byteLength": 164072,
+            "sha256": "884fc5905958e0da01a3fd2007bd4f24a53d8f000e3b8a13ddf512a64d5e69f6",
+            "key": "sets/7d5611e2-7ea3-467b-a53e-6a895995be90/payload.age"
+          }
+        },
+        "durationMs": 14141
+      },
+      {
+        "event": "restored-pre-migration-snapshot-to-independent-postgresql",
+        "restoredMigrations": 15,
+        "sourceMigrations": 16
+      },
+      {
+        "event": "tools",
+        "uid": "10001",
+        "age": "v1.3.2",
+        "pgDump": "pg_dump (PostgreSQL) 17.11 (Debian 17.11-0+deb13u1)",
+        "tar": "tar (GNU tar) 1.35"
+      },
+      {
+        "event": "cleaned-up",
+        "databaseId": "050a16007293500cbd6ead8c121b56b5f3bf572a5e5d7635b30c9034115218f7",
+        "restoreDatabaseId": "73bce369549c0e7a9ce10f8ab5a1afd5c4736058bf926f54344f0ba05ec84a5b",
+        "volume": "adfl-ops-proof-1ddec971-578-sets"
+      }
+    ]
+  }
+}
