@@ -1,5 +1,5 @@
 import 'server-only';
-import { randomUUID } from 'node:crypto';
+import { logger } from '@/helpers/logger';
 import { createLocalReq, type Payload } from 'payload';
 import { localeSchema, type Locale } from '@/helpers/i18n/locale.schema';
 import { runtimePayload } from '@/helpers/payload/runtime';
@@ -58,7 +58,11 @@ export async function resolveCaseRoute(
       return { status: 503, locale: language };
     return { status: 404 };
   } catch {
-    console.error('Case route origin unavailable', { correlationId: randomUUID() });
+    logger.error({
+      operation: 'case.route.read',
+      result: 'unavailable',
+      context: { statusCode: 503, errorCode: 'unavailable' },
+    });
     return { status: 503, locale: language };
   }
 }

@@ -1,4 +1,5 @@
 import 'server-only';
+import { logger } from '@/helpers/logger';
 import { randomUUID } from 'node:crypto';
 import {
   APIError,
@@ -143,7 +144,11 @@ export const guardMediaOperation: CollectionBeforeOperationHook = async ({
     if (error instanceof ProcessingBusy)
       throw new APIError(error.message, 503, { code: 'busy' }, true);
     if (error instanceof APIError) throw error;
-    console.error('Media upload unavailable', { correlationId: randomUUID() });
+    logger.error({
+      operation: 'media.upload',
+      result: 'unavailable',
+      context: { statusCode: 503, errorCode: 'unavailable' },
+    });
     throw new APIError(
       'O processamento do arquivo está temporariamente indisponível. Tente novamente.',
       503,

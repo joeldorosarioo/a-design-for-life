@@ -1,5 +1,5 @@
 import 'server-only';
-import { randomUUID } from 'node:crypto';
+import { logger } from '@/helpers/logger';
 import { createLocalReq, type PayloadRequest } from 'payload';
 import { runtimePayload } from '@/helpers/payload/runtime';
 import { resolveMediaAccess } from './resolve-media-access';
@@ -12,7 +12,11 @@ const privateHeaders = {
 };
 
 function unavailableMediaResponse() {
-  console.error('Media delivery unavailable', { correlationId: randomUUID() });
+  logger.error({
+    operation: 'media.delivery',
+    result: 'unavailable',
+    context: { statusCode: 503, errorCode: 'unavailable' },
+  });
   return new Response(null, { status: 503, headers: privateHeaders });
 }
 

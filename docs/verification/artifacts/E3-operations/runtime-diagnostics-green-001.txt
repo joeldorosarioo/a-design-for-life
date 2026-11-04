@@ -1,0 +1,13 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+······················································{"dateISO":"2026-11-04T04:48:44.780Z","level":"error","operation":"case.route.read","result":"unavailable","correlationId":"e3747960-d322-44b5-afc6-ae91272ad2d1","context":{"statusCode":503,"errorCode":"unavailable"}}
+{"dateISO":"2026-11-04T04:48:44.781Z","level":"error","operation":"case.route.read","result":"unavailable","correlationId":"ea27b070-446a-4a6b-8b0d-8af7f5561ee8","context":{"statusCode":503,"errorCode":"unavailable"}}
+·················
+
+ Test Files  4 passed (4)
+      Tests  71 passed (71)
+   Start at  01:48:42
+   Duration  2.67s (import 63%, transform 17%, setup 15%, tests 5%)
+
+Exit: 0

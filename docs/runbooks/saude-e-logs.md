@@ -2,7 +2,7 @@
 
 ## Estado desta preparação
 
-Implementação local de E3.5: logger seguro e handlers públicos de prontidão. Não há Coolify/homologação configurados nesta entrega. Probe real, rotação, consultas aos logs, falhas reais de PostgreSQL/R2, integração dos consumidores e gates operacionais continuam pendentes. Nenhum critério integral de E3.5 é encerrado apenas por estes testes unitários.
+A prontidão pública e os diagnósticos estruturados foram exercitados localmente. O probe da imagem e o atendimento de cache com o PostgreSQL indisponível já têm recibos próprios. Coolify, rotação aplicada, consulta a logs do ambiente operacional e falhas reais de R2 continuam pendentes.
 
 ## Prontidão pública
 
@@ -10,11 +10,11 @@ Implementação local de E3.5: logger seguro e handlers públicos de prontidão.
 
 A resposta indica que o processo consegue executar esse handler. Não certifica banco, mídia, publicação, cache completo, capacidade de disco ou recuperação. Não deve consultar dependências para decidir se páginas confirmadas em cache continuam servíveis. URLs, headers, cookies, credenciais e detalhes de falhas não entram no corpo público.
 
-GET/HEAD são os únicos handlers definidos pela aplicação. A resposta de outros métodos, o comportamento pelo proxy e a ausência de cache intermediário precisam ser verificados no Next/imagem reais; o teste direto de handler não comprova implantação.
+GET/HEAD são os handlers definidos pela aplicação. As duas respostas passaram no Next e na imagem Linux local. A verificação do proxy e da configuração de homologação depende do ambiente operacional.
 
-## Probe proposto para a imagem e o Coolify
+## Probe da imagem e configuração futura no Coolify
 
-Proposta inicial, ainda não aplicada: intervalo30s, timeout5s e três falhas consecutivas. Medir o período inicial com a imagem e o volume reais antes de fixá-lo. Confirmar que o binário Node está disponível na imagem final e executar o probe de dentro do contêiner, pela porta local correta. Não pressupor curl/wget na imagem mínima.
+O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. Medir o período inicial e validar o executor no Coolify com os volumes operacionais.
 
 Exemplo de comando para uma imagem cujo listener local usa a porta3000, a validar antes de configurar:
 
@@ -61,7 +61,9 @@ Não converter falha do logger em mudança dos contratos públicos404/410/503 ou
 
 ## Integração dos consumidores e diagnóstico privado
 
-Pontos existentes para integração pelo coordenador: `src/features/media-library/server/media-response.ts` e `resolve-media-access.ts`, que usam console.error com correlação. Substituir por evento estático `media.delivery`/`unavailable` com status503, preservando respostas, autorização de mídia e conteúdo privado. Usar os resultados categóricos já conhecidos nos limites de publicação/cache; não serializar Error nem a requisição. Esta entrega não alterou esses consumidores.
+Os limites de entrega e ingestão de mídia e de resolução de rota usam os eventos estáticos `media.delivery`, `media.upload` e `case.route.read`. Em falha, emitem `unavailable` com status 503, preservando os contratos de resposta e autorização. O worker de publicação já usa o mesmo logger.
+
+Em homologação e produção, a configuração do Payload projeta somente diagnósticos de nível `warn` ou superior. O hook do Pino converte essas chamadas em `payload.runtime` e inclui o status somente quando autorizado. Mensagens, bindings de logger filho e argumentos brutos ficam fora do stdout. Local e teste mantêm o comportamento habitual de logging do Payload. O teste inicializou `BasePayload` real com a conexão do banco desativada e exerceu seu logger filho. RED 9 falharam e 5 passaram, GREEN focado 71/71. Tipagem, lint e formato passaram. [Recibos locais](../verification/artifacts/E3-operations/).
 
 Diagnóstico PostgreSQL/R2 deve permanecer separado de `/health`. A aplicação já usa `runtimePayload()` e `payload.auth({ headers: request.headers })`, por exemplo em `helpers/payload/preview-session.ts`. Reutilizar a sessão nativa e exigir usuário da coleção `users` em eventual diagnóstico; não criar autenticação paralela. Não reutilizar a autorização completa da prévia como se fosse uma autorização genérica, pois ela também valida escopo de documento. Não há novo endpoint diagnóstico nesta entrega. Sua autorização, resposta mínima, proteção de cache e integração precisam de testes próprios.
 

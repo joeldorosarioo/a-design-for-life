@@ -1,7 +1,7 @@
 import 'server-only';
 import type { PayloadRequest } from 'payload';
 import type { Media } from '@/payload-types';
-import { randomUUID } from 'node:crypto';
+import { logger } from '@/helpers/logger';
 import {
   mediaAccessInputSchema,
   type MediaAccessInput,
@@ -46,7 +46,11 @@ export async function resolveMediaAccess(
     const bytes = await mediaRuntime().storage.read(rendition.object);
     return { ok: true, value: { bytes, type: rendition.type } };
   } catch {
-    console.error('Media delivery unavailable', { correlationId: randomUUID() });
+    logger.error({
+      operation: 'media.delivery',
+      result: 'unavailable',
+      context: { statusCode: 503, errorCode: 'unavailable' },
+    });
     return { ok: false, status: 503 };
   }
 }

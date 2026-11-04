@@ -1,4 +1,5 @@
 import 'server-only';
+import type { Config } from 'payload';
 import { randomUUID } from 'node:crypto';
 import { writeSync } from 'node:fs';
 import { redact } from './redact';
@@ -89,3 +90,24 @@ export function createLogger(options: LoggerOptions = {}) {
 }
 
 export const logger = createLogger();
+
+export function payloadRuntimeLoggerOptions(
+  environment: 'local' | 'test' | 'staging' | 'production',
+  sink = logger,
+): Config['logger'] {
+  if (environment !== 'staging' && environment !== 'production') return undefined;
+  return {
+    options: {
+      level: 'warn',
+      hooks: {
+        logMethod(args) {
+          // Do not forward Pino's raw arguments or child bindings to its destination.
+          const fields: unknown = args[0];
+          const statusCode =
+            ownValue(ownValue(fields, 'err'), 'status') ?? ownValue(fields, 'statusCode');
+          sink.error({ operation: 'payload.runtime', result: 'failure', context: { statusCode } });
+        },
+      },
+    },
+  };
+}

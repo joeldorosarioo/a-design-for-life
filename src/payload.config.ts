@@ -29,6 +29,7 @@ import { installPayloadProvider } from './helpers/payload/runtime';
 import { getPayload, buildConfig } from 'payload';
 import { installMediaRuntime } from './features/media-library/server/media-runtime';
 import { readServerEnv, resolveInternalHttpOrigin } from './config/server-env';
+import { payloadRuntimeLoggerOptions } from './helpers/logger';
 import { readIntegrationEnv } from './config/integration-env';
 import { createR2ObjectStorage } from './helpers/storage/r2-storage';
 import { usersCollection } from './helpers/payload/users.collection';
@@ -81,6 +82,7 @@ installMediaRuntime({
 
 const config = buildConfig({
   secret: env.PAYLOAD_SECRET,
+  logger: payloadRuntimeLoggerOptions(env.APP_ENV),
   email: editorialEmailAdapter(env.APP_ENV, env.DATABASE_URI, integrations.resend),
   hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
