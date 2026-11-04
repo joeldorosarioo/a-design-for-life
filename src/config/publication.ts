@@ -17,7 +17,7 @@ export const publicationAdapters = {
 };
 export function portfolioPublicationCoordinator(
   directory: string,
-  observation?: { internalOrigin: string; siteOrigin: string },
+  observation?: { internalOrigin: string; siteOrigin: string; indexable?: boolean },
 ) {
   return createPublicationCoordinator({
     directory,
@@ -35,6 +35,7 @@ export function portfolioPublicationCoordinator(
             root,
             operation,
             siteOrigin: observation.siteOrigin,
+            indexable: observation.indexable,
           }),
         });
       }),

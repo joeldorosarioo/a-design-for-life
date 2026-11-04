@@ -104,10 +104,16 @@ async function waitForExit(state: OwnedChild) {
 
 /** Owns only its returned child handle; never adopts, discovers or kills a PID/port. */
 export async function startOwnedNextServer(
-  options: { env: NodeJS.ProcessEnv; port?: number; publicationObserverListener?: Server },
+  options: {
+    env: NodeJS.ProcessEnv;
+    port?: number;
+    publicationObserverListener?: Server;
+    indexableSitemap?: true;
+  },
   runtime: OwnedNextServerRuntime = systemRuntime,
 ): Promise<{
   origin: string;
+  siteOrigin: string;
   buildId: string;
   distDirectory: string;
   logs: () => string;
@@ -164,6 +170,27 @@ export async function startOwnedNextServer(
     INTERNAL_HTTP_ORIGIN: internalOrigin,
     MEDIA_STORAGE_DRIVER: 'local',
   });
+  if (options.indexableSitemap) {
+    if (options.publicationObserverListener)
+      throw new Error('Indexable reader cannot run the publisher.');
+    delete env.GA4_MEASUREMENT_ID;
+    // The process only binds to loopback and reads the owned test DB. These inert
+    // values satisfy deployed configuration shape; the sitemap uses no providers.
+    Object.assign(env, {
+      APP_ENV: 'production',
+      SITE_ORIGIN: `https://sitemap-${env.ADFL_TEST_RUN_ID}.example.invalid`,
+      PUBLIC_SITE_ENABLED: 'false',
+      PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false',
+      PUBLICATION_RETRY_WORKER_ENABLED: 'false',
+      MEDIA_STORAGE_DRIVER: 'r2',
+      R2_ENDPOINT: 'https://00000000000000000000000000000000.r2.cloudflarestorage.com',
+      R2_ACCESS_KEY_ID: 'synthetic-inert-access-key',
+      R2_SECRET_ACCESS_KEY: 'synthetic-inert-secret-key',
+      RESEND_API_KEY: 'synthetic-inert-resend-key',
+      EDITORIAL_EMAIL_FROM_ADDRESS: 'synthetic@mail.joeldorosarioo.dev',
+      EDITORIAL_EMAIL_FROM_NAME: 'Synthetic read-only sitemap proof',
+    });
+  }
   const distDirectory = path.resolve(dist);
   const buildId = (await runtime.readBuildId(distDirectory)).trim();
   if (!/^[A-Za-z0-9_-]+$/.test(buildId))
@@ -239,6 +266,7 @@ export async function startOwnedNextServer(
   }
   return {
     origin,
+    siteOrigin: env.SITE_ORIGIN!,
     buildId,
     distDirectory,
     logs: () => logs,

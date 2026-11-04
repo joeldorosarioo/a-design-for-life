@@ -55,7 +55,8 @@ function prepareObservation(
 
   const headers: Record<string, string> = { 'Cache-Control': 'no-cache' };
   if (!media) {
-    if (!pathPattern.test(path)) throw new Error('Unsafe public HTTP verification plan.');
+    if (path !== '/sitemap.xml' && !pathPattern.test(path))
+      throw new Error('Unsafe public HTTP verification plan.');
     return { path, status, matches, method: 'GET', headers, bodyLimit };
   }
 

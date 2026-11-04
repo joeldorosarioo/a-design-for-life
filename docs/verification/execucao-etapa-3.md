@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 30,0% do checklist (9/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 33,3% do checklist (10/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -11,7 +11,7 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 ## Acompanhamento
 
 - [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
-- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 3/5 critérios.
+- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 4/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 0/5 critérios.
 - [ ] E3.4 Imagem única, configuração de execução e homologação — 4/5 critérios.
 - [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
@@ -126,3 +126,7 @@ Dois testes reproduziram a aceitação de HTML antigo com status 410, nos estado
 O gate 010 terminou com saída 0 no Node 24.22.2 e pnpm 12.10.1. Passaram tipagem, lint, formato, 209 arquivos do Vitest com 1938 testes aprovados e 3 pulados, CSS, progresso e build Next. Houve quatro avisos históricos de lint. A fonte preservada coincide com o Chromium focado e com a imagem 008. [Gate](artifacts/E3-gates/verify-010-result.json).
 
 A imagem 008 é `sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c`. Passou os smokes nativos, 14 camadas sem caminhos vedados, 88 estáticos/manifestos sem marcadores e o probe offline em 5642 ms. Os dois ambientes locais passaram 82 verificações HTTP e quatro jornadas Chromium antes e depois dos reinícios. O login usou o avatar local, com zero tentativas externas e zero WebSockets. Os processos eram PID 1 com UID/GID 10001. Os recursos descartáveis foram removidos. [Recibo da imagem](artifacts/E3-image/docker-draft-build-008.json) e [ensaio HTTP/Chromium](artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json).
+
+### Sitemap indexável e limite de novas tentativas
+
+O sitemap indexável do Next serviu as URLs atuais e alternates PT/EN da mesma geração, excluindo rascunho, slug histórico e tradução retirada. XML antigo com marcador atual manteve a atualização pendente. A repetição confirmou a mesma operação, revisão e geração com o XML correto. O worker comprovou 1/5/15 s como horários de elegibilidade, limite de três tentativas automáticas, persistência ao recriar o dreno e rearme manual autorizado. 23 testes Native e quatro jornadas Chromium passaram. O alvo de 60 s fica para medição e aprovação A3. [Prova local da E3.2.3](artifacts/E3-cache/e3-2-3-sitemap-retry-report.md).

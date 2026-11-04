@@ -14,6 +14,7 @@ import { getPublishedNavigation } from '@/features/site-navigation/server';
 import { planPublicMediaObservations } from '@/features/media-library/server/publication-media-observation';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import { readPublishedPortfolio } from './read-published-portfolio';
+import { readPublicSitemap } from './read-public-index';
 import { matchesPublicPage, type PublicPageObservation } from './publication-page-observation';
 
 const locales = ['pt', 'en'] as const;
@@ -84,10 +85,12 @@ export async function planPublicationObservations({
   root,
   operation,
   siteOrigin,
+  indexable = false,
 }: {
   root: PublicRoot;
   operation: PublicationUpdate;
   siteOrigin: string;
+  indexable?: boolean;
 }): Promise<PublicObservation[]> {
   const key = operation.subjectCollection + '/' + operation.subjectId;
   const subject = root.subjects[key];
@@ -217,6 +220,16 @@ export async function planPublicationObservations({
         }
       }
     }
+  }
+  if (indexable) {
+    const expected = Buffer.from(await readPublicSitemap(root, siteOrigin));
+    add({
+      path: '/sitemap.xml',
+      status: 200,
+      matches: (body, headers) =>
+        headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() === 'application/xml' &&
+        expected.equals(body),
+    });
   }
   return [...result.values(), ...media];
 }

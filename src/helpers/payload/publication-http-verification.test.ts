@@ -124,7 +124,42 @@ it('checks the exact expected redirect and never follows it', async () => {
   expect(requests).toEqual(['/pt/cases/former', '/pt/cases/former']);
 });
 
+it('observes only the exact public sitemap path with the selected generation', async () => {
+  const requests: (string | undefined)[] = [];
+  const xml = '<urlset><url><loc>https://portfolio.example.invalid/pt</loc></url></urlset>';
+  await withServer(
+    (request, response) => {
+      requests.push(request.url);
+      response.writeHead(200, {
+        [publicGenerationHeader]: generation,
+        'Content-Type': 'application/xml',
+      });
+      response.end(xml);
+    },
+    async (origin) => {
+      await expect(
+        assertServedPublication({
+          origin,
+          generation,
+          observations: [
+            {
+              path: '/sitemap.xml',
+              status: 200,
+              matches: (bytes, headers) =>
+                headers.get('content-type') === 'application/xml' &&
+                Buffer.from(bytes).toString() === xml,
+            },
+          ],
+        }),
+      ).resolves.toBeUndefined();
+    },
+  );
+  expect(requests).toEqual(['/sitemap.xml']);
+});
+
 it.each([
+  '/private.xml',
+  '/sitemap.xml?draft=1',
   '//foreign.test/pt',
   '/pt/../private',
   '/pt%2fprivate',
