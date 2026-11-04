@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-04",
+  "preview": {
+    "name": "adfl-local-preview-d92c64701221",
+    "run": "d92c64701221",
+    "image": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+    "origin": "http://127.0.0.1:3101",
+    "checks": {
+      "migrate": "passed",
+      "seed": "passed",
+      "/": "307",
+      "/pt": "200",
+      "/pt/cases": "200",
+      "/en": "200",
+      "/en/cases": "200",
+      "/pt/sobre": "200",
+      "/pt/cases/public-26c5b92f-first-pt": "200",
+      "syntheticTitle": true,
+      "robotsDisallow": true,
+      "sitemapEmpty": true,
+      "syntheticPdf": 200
+    },
+    "container": "34550c0c3ca0bffeb3f14da4d471b727c1abfbab4e7b9b990e473150a34389e0",
+    "demoCase": "/pt/cases/public-26c5b92f-first-pt",
+    "passed": true
+  },
+  "persistenceProbe": {
+    "image": "sha256:ada32d976b8809964817e38865622ff10dcbf494e171485b555a27cc83a1420d",
+    "run": "496bb6f9498847db",
+    "checks": [
+      {
+        "phase": "fresh",
+        "container": "e5eafe7d6fc1e6152ef9bd2c483d75e8108f05d4f89fafda3041bc20c4f8decf",
+        "runtime": {
+          "alpine": "3.24.3",
+          "node": "24.22.2",
+          "pid1Uid": 70,
+          "capEff": 0,
+          "children": [
+            {
+              "name": "postgres",
+              "uid": 70
+            },
+            {
+              "name": "postgres",
+              "uid": 70
+            },
+            {
+              "name": "next-server (v1",
+              "uid": 70
+            }
+          ],
+          "health": 200
+        },
+        "gracefulExit": true
+      },
+      {
+        "phase": "recreated",
+        "container": "87bf604eaf93c3e44b9d9bc9f4edff54ce4a19a5da9c69f8d8954a1cd0bcd71f",
+        "runtime": {
+          "alpine": "3.24.3",
+          "node": "24.22.2",
+          "pid1Uid": 70,
+          "capEff": 0,
+          "children": [
+            {
+              "name": "postgres",
+              "uid": 70
+            },
+            {
+              "name": "next-server (v1",
+              "uid": 70
+            }
+          ],
+          "health": 200
+        },
+        "gracefulExit": true,
+        "databaseMarkerPreserved": true
+      }
+    ],
+    "passed": true,
+    "volumeRemoved": true
+  },
+  "imageInspection": {
+    "platform": "linux/amd64",
+    "user": "70:70",
+    "revision": "draft-local-alpine3.24",
+    "layers": 20,
+    "registryDigests": []
+  },
+  "focusedUnitTests": 29,
+  "scope": "Synthetic loopback preview. Main local database and R2 were outside the run."
+}

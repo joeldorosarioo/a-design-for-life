@@ -37,6 +37,7 @@
 !ops/migrations/controlled.ts
 !ops/image/health-probe.mjs
 !ops/image/runtime-smoke.mjs
+!ops/image/start-local-stack.mjs
 !ops/image/assemble-standalone.mjs
 # Defense in depth if a private file is ever put below an allowed source directory.
 **/.env

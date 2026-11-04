@@ -9,7 +9,9 @@ const valid = () => ({
   Architecture: 'amd64',
   RepoDigests: [],
   Config: {
-    User: '10001:10001',
+    User: '70:70',
+    Cmd: ['node', 'server.js'],
+    StopSignal: 'SIGTERM',
     Labels: { 'org.opencontainers.image.revision': revision },
     Env: ['NODE_ENV=production', 'PORT=3000', 'HOSTNAME=0.0.0.0'],
   },
@@ -22,7 +24,7 @@ describe('local image inspection', () => {
       imageId,
       registryDigests: [],
       platform: 'linux/amd64',
-      user: '10001:10001',
+      user: '70:70',
       revision,
       layers: 1,
       environmentNames: ['HOSTNAME', 'NODE_ENV', 'PORT'],
@@ -42,6 +44,11 @@ describe('local image inspection', () => {
     const record = valid();
     record.Config.User = 'root';
     expect(() => inspectLocalImage(record, { imageId, revision })).toThrow();
+  });
+  it('refuses a different default startup command', () => {
+    const record = valid();
+    record.Config.Cmd = ['node', 'ops/image/start-local-stack.mjs'];
+    expect(() => inspectLocalImage(record, { imageId, revision })).toThrow('startup configuration');
   });
   it('refuses the wrong source revision', () => {
     expect(() => inspectLocalImage(valid(), { imageId, revision: 'a'.repeat(40) })).toThrow();

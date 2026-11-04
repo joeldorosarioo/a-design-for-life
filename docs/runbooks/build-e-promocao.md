@@ -4,10 +4,10 @@ Escopo atual: preparação e validação **locais**, E3.4. A3/A4 continuam pende
 
 ## Contrato de empacotamento
 
-- Base: `docker.io/library/node:24.22.2-trixie-slim@sha256:54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446`, índice oficial verificado em 03/11/2026. Manifesto linux/amd64: `sha256:e053394f15519046270b637f0655c284d2fc844e013451fcb36e02dcfba29280`.
-- Plataforma validável nesta implementação: **linux/amd64**. O instalador existente de QPDF12.4.2 só tem distribuição Linux x64 verificada. A arquitetura da VPS futura ainda precisa ser confirmada; não promover para ARM64 por suposição.
-- pnpm12.10.1 e lockfile congelado; nenhuma atualização de dependência durante build. A instalação de `unzip`/certificados ocorre apenas no builder Debian. O instalador existente verifica SHA256 do arquivo oficial QPDF e sua versão; a distribuição inteira é copiada para `/opt/qpdf`.
-- Runtime com UID/GID10001, saída padrão, sem migração na inicialização, `node server.js`. Copia somente standalone rastreado, `public`, estáticos em `.work/next-build/static`, QPDF e dois probes operacionais. Preserva `distDir`, otimizador/autorização privada e headers existentes.
+- O build usa as imagens oficiais Node 24.22.2 e PostgreSQL 17.11 em Alpine 3.24. O Dockerfile fixa o digest de cada base.
+- Plataforma validável nesta implementação: **linux/amd64**. A arquitetura da VPS futura ainda precisa ser confirmada; não promover para ARM64 por suposição.
+- pnpm 12.10.1 usa o lockfile congelado. Um estágio separado compila QPDF 12.4.2 para musl a partir do arquivo oficial, com checksum SHA-256 fixado. O runtime recebe o executável e a licença.
+- O runtime usa UID/GID 70, saída padrão e `node server.js` para usar PostgreSQL externo. O Compose local seleciona o supervisor para iniciar PostgreSQL e Next juntos. As migrações seguem um comando separado. A aplicação mantém os estáticos em `.work/next-build/static`, o otimizador privado e os headers existentes.
 - `.dockerignore` usa allowlist. `.env`, `.work`, `.next`, `.toolchain`, dumps, checkpoints, originais privados e relatórios do host ficam fora do contexto. O suporte TypeScript sintético de `testing` entra apenas no builder para o typecheck dos testes adjacentes; não há cópia de fixture privada nem de binários de fixture. Tracing exclui esse suporte e dados privados.
 - Somente valores sintéticos fixos no comando de build: loopback, banco `adfl_test_image_build` na porta9, bucket de teste e segredo descartável. Não aceitar segredos reais como build args. `SOURCE_REVISION` é o único argumento de configuração da aplicação exposto ao build; não recebe origem, credencial ou identificação GA.
 

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { access, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { access, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -9,7 +9,11 @@ import sharp from 'sharp';
 
 assert.equal(process.platform, 'linux');
 assert.equal(process.arch, 'x64');
-assert.equal(process.getuid(), 10001);
+assert.match(await readFile('/etc/alpine-release', 'utf8'), /^3\.24\./);
+assert.equal(process.version, 'v24.22.2');
+assert.match(execFileSync('postgres', ['--version'], { encoding: 'utf8' }), / 17\.11\s*$/);
+assert.equal(process.getuid(), 70);
+assert.equal(process.getgid(), 70);
 const checker = process.env.MEDIA_CHECKER_BINARY ?? '/opt/qpdf/bin/qpdf';
 assert.match(execFileSync(checker, ['--version'], { encoding: 'utf8' }), /^qpdf version 12\.4\.2/);
 const require = createRequire(import.meta.url);
@@ -73,5 +77,5 @@ try {
   await rm(directory, { recursive: true, force: true });
 }
 console.log(
-  'Verified linux/amd64, UID10001, QPDF12.4.2, sharp, native canvas and PDF.js resources.',
+  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas and PDF.js resources.',
 );

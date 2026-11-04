@@ -10,7 +10,7 @@ Usar o **mesmo ID da imagem local** em dois containers com nomes/portas, bancos,
 
 Fornecer via `--env-file` privado somente a configuração de execução necessária: segredo Payload próprio, URI de banco isolado, `APP_ENV=local`, `SITE_ORIGIN` de loopback correspondente à porta publicada, `INTERNAL_HTTP_ORIGIN=http://127.0.0.1:3000`, bucket/local storage próprios. Não passar esse arquivo ao build ou incluí-lo no Git/dossiê. Não reutilizar credenciais/volume/namespace entre as duas configurações.
 
-Montagens por container, com permissões UID/GID10001:
+Montagens por container, com permissões UID/GID 70:
 
 | Destino                              | Finalidade                                                                         |
 | ------------------------------------ | ---------------------------------------------------------------------------------- |

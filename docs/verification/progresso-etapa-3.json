@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 13,
+  "completedItems": 12,
   "totalItems": 30,
-  "percentage": 43.3,
+  "percentage": 40,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -110,7 +110,7 @@
       "id": "E3.4.2",
       "done": true,
       "summary": "Criar Docker multistage com dependências/lockfile fixados, usuário sem privilégios e artefatos estritamente necessários. Segredos somente na execução; build sem consultar conteúdo de produção. Não usar `NEXT_PUBLIC_*` para valores que variam entre homologação/produção; não pré-renderizar metadados absolutos com origem do ambiente de build.",
-      "evidence": "Build local 004 linux/amd64, exit 0, digest local sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36. Fonte estável antes e depois. Docker multistage com base Node 24.22.2 por digest, pnpm 12.10.1 e lockfile congelado. Inspeção exit 0 confirmou UID/GID 10001 e somente nomes de configuração runtime esperados. Smoke nativo offline exit 0. Contexto sintético BuildKit 21 permitidos/28 excluídos. Auditoria de 14 camadas e 11046 entradas sem caminhos vedados, e 88 estáticos/manifestos sem marcadores sintéticos de segredo, origem ou banco de build. Rotas editoriais e metadados dependentes de origem continuam dinâmicos. Recibos docker-draft-{build,inspect}-004, native-smoke-draft-004, layers-draft-004 e static-manifest-marker-scan-004 em artifacts/E3-image. O ID local da configuração ainda não é digest de manifesto publicado."
+      "evidence": "Build local 004 linux/amd64, exit 0, digest local sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36. Fonte estável antes e depois. Docker multistage com base Node 24.22.2 por digest, pnpm 12.10.1 e lockfile congelado. Inspeção exit 0 confirmou UID/GID 10001 e somente nomes de configuração runtime esperados. Smoke nativo offline exit 0. Contexto sintético BuildKit 21 permitidos/28 excluídos. Auditoria de 14 camadas e 11046 entradas sem caminhos vedados, e 88 estáticos/manifestos sem marcadores sintéticos de segredo, origem ou banco de build. Rotas editoriais e metadados dependentes de origem continuam dinâmicos. Recibos docker-draft-{build,inspect}-004, native-smoke-draft-004, layers-draft-004 e static-manifest-marker-scan-004 em artifacts/E3-image. O ID local da configuração ainda não é digest de manifesto publicado. Novo build local em Alpine 3.24.3 com UID/GID 70, inspeção da imagem, smoke nativo e prévia isolada. [Recibo](artifacts/E3-image/local-alpine-preview-001.json)."
     },
     {
       "id": "E3.4.3",
@@ -126,9 +126,9 @@
     },
     {
       "id": "E3.4.5",
-      "done": true,
+      "done": false,
       "summary": "Rodar `pnpm verify`, E2E contra a imagem e inspeção de usuário/processo/camadas; commit `build: preparar imagem unica e homologacao isolada`.",
-      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados."
+      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados. Após trocar a base, a imagem Alpine passou 29 testes direcionados, inspeção e prova HTTP sintética. A suíte completa e as jornadas Chromium contra a nova imagem estão pendentes. [Recibo](artifacts/E3-image/local-alpine-preview-001.json)."
     },
     {
       "id": "E3.5.1",
@@ -211,5 +211,5 @@
     "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3.",
     "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos."
   ],
-  "recalculatedAt": "2026-11-04T15:12:52.626Z"
+  "recalculatedAt": "2026-11-04T15:54:42.931Z"
 }
