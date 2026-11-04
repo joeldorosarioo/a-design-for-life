@@ -1,0 +1,69 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+x··xx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/image/health-probe.test.ts > uses the container loopback listener even when Node enables an ambient HTTP proxy
+AssertionError: expected { requests: [], proxyConnections: 1 } to deeply equal { requests: [ 'GET /health' ], …(1) }
+
+- Expected
++ Received
+
+  {
+-   "proxyConnections": 0,
+-   "requests": [
+-     "GET /health",
+-   ],
++   "proxyConnections": 1,
++   "requests": [],
+  }
+
+ ❯ ops/image/health-probe.test.ts:52:46
+     50|       const origin = `http://127.0.0.1:${proxyPort}`;
+     51|       const result = await probe(port, { NODE_USE_ENV_PROXY: '1', HTTP…
+     52|       expect({ requests, proxyConnections }).toEqual({ requests: ['GET…
+       |                                              ^
+     53|       expect(result).toEqual({ status: 0, stdout: '', stderr: '' });
+     54|     });
+ ❯ withServer ops/image/health-probe.test.ts:18:5
+ ❯ ops/image/health-probe.test.ts:47:5
+ ❯ withServer ops/image/health-probe.test.ts:18:5
+ ❯ ops/image/health-probe.test.ts:42:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| ops/image/health-probe.test.ts > rejects invalid readiness responses silently (2)
+ FAIL  |unit| ops/image/health-probe.test.ts > rejects invalid readiness responses silently (3)
+AssertionError: expected { stdout: '', stderr: '', status: +0 } to deeply equal { status: 1, stdout: '', stderr: '' }
+
+- Expected
++ Received
+
+  {
+-   "status": 1,
++   "status": 0,
+    "stderr": "",
+    "stdout": "",
+  }
+
+ ❯ ops/image/health-probe.test.ts:68:31
+     66|     response.end(body);
+     67|   }, async (port) => {
+     68|     expect(await probe(port)).toEqual({ status: 1, stdout: '', stderr:…
+       |                               ^
+     69|   });
+     70| });
+ ❯ withServer ops/image/health-probe.test.ts:18:5
+ ❯ ops/image/health-probe.test.ts:64:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 2 passed (5)
+   Start at  01:53:02
+   Duration  771ms (tests 62%, setup 30%, import 4%, transform 3%, worker 1%)
+
+Exit: 1

@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 20,0% do checklist (6/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 23,3% do checklist (7/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -13,7 +13,7 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 - [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
 - [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 2/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 0/5 critérios.
-- [ ] E3.4 Imagem única, configuração de execução e homologação — 2/5 critérios.
+- [ ] E3.4 Imagem única, configuração de execução e homologação — 3/5 critérios.
 - [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
 - [ ] E3.6 Backup criptografado e restauração isolada — 1/5 critérios.
 - [ ] Pacote A3 com evidências e limitações concretas entregue.
@@ -63,3 +63,9 @@ O ensaio `e2e-002` terminou com saída 0 e 116/116 testes no Chromium. O Next 16
 A primeira chamada `e2e-001` parou antes dos serviços porque o wrapper PowerShell entregou `list json` como nome de reporter ao Playwright. A execução corrigida usou diretamente o mesmo comando Node do script do projeto e preservou a vírgula. [Recibos do navegador](artifacts/E3-gates/). Este ensaio usou o build local. A prova completa em navegador contra a imagem continua pendente.
 
 O cache de bytes e a autorização de mídia foram exercitados em conjunto e separadamente na execução atual. E3.2.5 encerrado com o teste 102 do Chromium, `verify-006` e o commit local `1e93925`. A retirada da última referência recusou os bytes que o otimizador ainda mantinha em disco. O observador antes do recibo editorial ainda tem uma prova de mídia própria.
+
+### Identidade da imagem e probe de loopback
+
+O guard de inspeção agora verifica valores dos defaults esperados, além dos nomes. A suíte detectou que a versão anterior aceitava valores indevidos em HOSTNAME, PORT, MEDIA_CHECKER_BINARY e PATH, além de entrada duplicada. O RED falhou em 5 casos, o GREEN combinado passou 36/36 e a reinspeção da imagem 004 passou. A comparação de digests e o ensaio HTTP de duas configurações isoladas completam E3.4.1.
+
+O probe de saúde usa HTTP direto para 127.0.0.1, limita a resposta a 512 bytes e exige JSON completo. O RED mostrou o encaminhamento por um proxy herdado e aceitação de dois corpos fora do contrato. GREEN 5/5. A validação Linux montou somente o probe atualizado, em leitura, sobre a imagem imutável 004 e ativou um proxy inacessível. O Docker ficou saudável, com GET/HEAD 200 e probe embutido saída 0. Essa prova valida o novo arquivo no runtime Linux. A imagem 004 permanece vinculada aos próprios bytes, e o Coolify ainda precisa de ensaio real.

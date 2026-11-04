@@ -85,3 +85,25 @@ describe('Docker invocation', () => {
     },
   );
 });
+
+describe('baked environment defaults', () => {
+  it.each([
+    ['HOSTNAME', 'staging-origin.example.invalid'],
+    ['PORT', 'synthetic-private-marker'],
+    ['MEDIA_CHECKER_BINARY', '/private/synthetic-root'],
+    ['PATH', '/synthetic/build-tools'],
+  ])('refuses unauthorized values even under the expected %s name', (key, value) => {
+    const record = valid();
+    record.Config.Env = [
+      ...record.Config.Env.filter((entry) => !entry.startsWith(`${key}=`)),
+      `${key}=${value}`,
+    ];
+    expect(() => inspectLocalImage(record, { imageId, revision })).toThrow('Runtime configuration');
+  });
+
+  it('refuses duplicate allowed names so the effective image environment is unambiguous', () => {
+    const record = valid();
+    record.Config.Env.push('PORT=3000');
+    expect(() => inspectLocalImage(record, { imageId, revision })).toThrow('Runtime configuration');
+  });
+});

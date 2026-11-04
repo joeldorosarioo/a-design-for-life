@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 6,
+  "completedItems": 7,
   "totalItems": 30,
-  "percentage": 20,
+  "percentage": 23.3,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -102,9 +102,9 @@
     },
     {
       "id": "E3.4.1",
-      "done": false,
+      "done": true,
       "summary": "Escrever RED para promoção de digests diferentes e para configuração pública vazando segredo/origem de homologação. Implementar validação mínima e teste com a mesma imagem iniciada em duas configurações locais isoladas. Inspecionar HTML/manifestos/bundles sem disparar Analytics real.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "RED de digests diferentes e IDs inválidos em promotion-red.txt, GREEN 8/8. RED atual de valores privados/origem de homologação gravados sob nomes permitidos e duplicados (5 falharam, 18 passaram). GREEN combinado dos guards 36/36 e nova inspeção da imagem 004 pelo ID imutável, exit 0. A mesma imagem 004 passou 82 verificações HTTP nas duas configurações locais, com origem e dados isolados. HTML, manifestos e estáticos conferidos contra marcadores sintéticos de origem e segredo, sem Analytics real. Recibos image-baked-values-*, static-manifest-marker-scan-004 e http-973f5053-f16b-4c9a-b183-8470d9719ebf em artifacts/E3-image. Registry e homologação seguem nos critérios próprios."
     },
     {
       "id": "E3.4.2",
@@ -204,7 +204,8 @@
     "Auditoria em 04/11/2026: E3.6.2 encerrado pela prova integral dos guardas, readback, preservação sob upload parcial e alvo nativo novo. Worker e observador HTTP têm evidências focadas, com confirmação servida ainda em integração. O contexto Docker teve RED com sentinelas sintéticos privados e GREEN de 21 entradas permitidas e 28 excluídas; falta reconstruir a imagem da fonte atual.",
     "E3.4.2 encerrado com a imagem local 004, inspeção e smoke atuais, auditoria de todas as camadas e dos estáticos e manifestos. E3.4.1 e E3.4.3–5 seguem abertos até provas de execução, promoção e homologação nos critérios próprios.",
     "E3.4.3 encerrado após 82 verificações HTTP com a mesma imagem e duas configurações isoladas, incluindo persistência local e troca de origem sem rebuild. A prova no navegador da imagem e o registry/homologação continuam em aberto.",
-    "E3.2.5 encerrado com prova real de bytes e autorização, gate completo atual e commit local 1e93925. A observação da revogação antes do recibo editorial continua pendente no critério próprio."
+    "E3.2.5 encerrado com prova real de bytes e autorização, gate completo atual e commit local 1e93925. A observação da revogação antes do recibo editorial continua pendente no critério próprio.",
+    "E3.4.1 encerrado depois de provar o RED de defaults indevidos sob nomes já permitidos e reinspecionar a imagem 004. A prova HTTP de dois ambientes permanece vinculada ao snapshot da imagem 004."
   ],
-  "recalculatedAt": "2026-11-04T04:44:42.345Z"
+  "recalculatedAt": "2026-11-04T04:57:44.250Z"
 }

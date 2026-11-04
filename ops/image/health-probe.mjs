@@ -1,12 +1,38 @@
-// A readiness probe only. Database/R2 diagnostics are deliberately separate.
+import { get } from 'node:http';
+
+const maximumBodyBytes = 512;
+
+// Readiness is local even when the app uses an ambient proxy for external traffic.
 try {
-  const response = await fetch(`http://127.0.0.1:${process.env.PORT ?? '3000'}/health`, {
-    signal: AbortSignal.timeout(4_000),
-    redirect: 'error',
+  const selectedPort = process.env.PORT ?? '3000';
+  const port = Number(selectedPort);
+  if (!/^[1-9]\d{0,4}$/.test(selectedPort) || port > 65_535) throw new Error('Invalid port.');
+  const signal = AbortSignal.timeout(4_000);
+  const response = await new Promise((resolve, reject) => {
+    const request = get(
+      { hostname: '127.0.0.1', port, path: '/health', agent: false, signal },
+      resolve,
+    );
+    request.once('error', reject);
   });
-  const body = await response.json();
-  if (response.status !== 200 || body?.status !== 'ready' || Object.keys(body).length !== 1)
-    process.exitCode = 1;
+  try {
+    const type = response.headers['content-type']?.split(';')[0]?.trim().toLowerCase();
+    if (response.statusCode !== 200 || type !== 'application/json')
+      throw new Error('Unexpected readiness response.');
+    let size = 0;
+    const chunks = [];
+    for await (const chunk of response) {
+      size += chunk.length;
+      if (size > maximumBodyBytes) throw new Error('Oversized readiness response.');
+      chunks.push(chunk);
+    }
+    if (!response.complete) throw new Error('Incomplete readiness response.');
+    const body = JSON.parse(Buffer.concat(chunks, size).toString('utf8'));
+    if (body?.status !== 'ready' || Object.keys(body).length !== 1)
+      throw new Error('Unexpected readiness body.');
+  } finally {
+    response.destroy();
+  }
 } catch {
   process.exitCode = 1;
 }

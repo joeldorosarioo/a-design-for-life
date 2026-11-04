@@ -1,0 +1,55 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+··················xxxxx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/image/inspect-local-image.test.ts > baked environment defaults > refuses unauthorized values even under the expected HOSTNAME name
+ FAIL  |unit| ops/image/inspect-local-image.test.ts > baked environment defaults > refuses unauthorized values even under the expected PORT name
+ FAIL  |unit| ops/image/inspect-local-image.test.ts > baked environment defaults > refuses unauthorized values even under the expected MEDIA_CHECKER_BINARY name
+ FAIL  |unit| ops/image/inspect-local-image.test.ts > baked environment defaults > refuses unauthorized values even under the expected PATH name
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ ops/image/inspect-local-image.test.ts:98:68
+     96|     const record = valid();
+     97|     record.Config.Env = [...record.Config.Env.filter((entry) => !entry…
+     98|     expect(() => inspectLocalImage(record, { imageId, revision })).toT…
+       |                                                                    ^
+     99|   });
+    100|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |unit| ops/image/inspect-local-image.test.ts > baked environment defaults > refuses duplicate allowed names so the effective image environment is unambiguous
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ ops/image/inspect-local-image.test.ts:104:68
+    102|     const record = valid();
+    103|     record.Config.Env.push('PORT=3000');
+    104|     expect(() => inspectLocalImage(record, { imageId, revision })).toT…
+       |                                                                    ^
+    105|   });
+    106| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 18 passed (23)
+   Start at  01:55:59
+   Duration  399ms (setup 75%, transform 12%, import 6%, tests 5%, worker 2%)
+
+Exit: 1

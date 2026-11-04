@@ -14,7 +14,7 @@ GET/HEAD são os handlers definidos pela aplicação. As duas respostas passaram
 
 ## Probe da imagem e configuração futura no Coolify
 
-O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. Medir o período inicial e validar o executor no Coolify com os volumes operacionais.
+O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. A versão atual do probe usa um agente HTTP direto, independentemente do proxy de ambiente, e limita a resposta a 512 bytes. A prova Linux montou somente o arquivo atualizado sobre a imagem 004 e confirmou GET/HEAD e estado saudável com proxy inacessível. Medir o período inicial e validar o executor no Coolify com os volumes operacionais.
 
 Exemplo de comando para uma imagem cujo listener local usa a porta3000, a validar antes de configurar:
 

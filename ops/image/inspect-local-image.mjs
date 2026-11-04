@@ -3,15 +3,16 @@ import { pathToFileURL } from 'node:url';
 
 const digest = /^sha256:[a-f0-9]{64}$/;
 const sourceRevision = /^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/;
+// Values inherited from the pinned base and the Dockerfile's static runtime defaults.
 const allowedEnvironment = new Set([
-  'PATH',
-  'NODE_VERSION',
-  'YARN_VERSION',
-  'NODE_ENV',
-  'NEXT_TELEMETRY_DISABLED',
-  'PORT',
-  'HOSTNAME',
-  'MEDIA_CHECKER_BINARY',
+  'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  'NODE_VERSION=24.22.2',
+  'YARN_VERSION=1.22.22',
+  'NODE_ENV=production',
+  'NEXT_TELEMETRY_DISABLED=1',
+  'PORT=3000',
+  'HOSTNAME=0.0.0.0',
+  'MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf',
 ]);
 
 export function inspectLocalImage(record, expected) {
@@ -24,9 +25,13 @@ export function inspectLocalImage(record, expected) {
   if (record?.Config?.Labels?.['org.opencontainers.image.revision'] !== expected.revision)
     throw new Error('Unexpected source revision.');
   if (!Array.isArray(record.Config.Env)) throw new Error('Missing environment metadata.');
-  const environmentNames = record.Config.Env.map((entry) => String(entry).split('=', 1)[0]).sort();
-  if (environmentNames.some((name) => !allowedEnvironment.has(name)))
+  const environment = record.Config.Env;
+  if (
+    new Set(environment).size !== environment.length ||
+    environment.some((entry) => !allowedEnvironment.has(entry))
+  )
     throw new Error('Runtime configuration must remain outside image metadata.');
+  const environmentNames = environment.map((entry) => entry.split('=', 1)[0]).sort();
   if (
     !Array.isArray(record.RootFS?.Layers) ||
     record.RootFS.Layers.length === 0 ||
