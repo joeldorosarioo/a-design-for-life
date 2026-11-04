@@ -1,0 +1,35 @@
+Owned Next crash API assertion RED
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| testing/setup/owned-next-server.test.ts (19 tests | 1 failed | 18 skipped) 8ms
+   × kills only the owned process and waits for its abrupt exit before returning 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/owned-next-server.test.ts > kills only the owned process and waits for its abrupt exit before returning
+AssertionError: expected undefined to deeply equal Any<Function>
+
+- Expected:
+Any<Function>
+
++ Received:
+undefined
+
+ ❯ testing/setup/owned-next-server.test.ts:280:24
+    278|   const server = await startOwnedNextServer({ env: environment() }, co…
+    279|   const child = control.children[0]!;
+    280|   expect(server.crash).toEqual(expect.any(Function));
+       |                        ^
+    281|   const exit = once(child, 'exit');
+    282|   const finishKill = child.kill;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 skipped (19)
+   Start at  02:59:44
+   Duration  436ms (setup 59%, import 28%, transform 10%, tests 2%, worker 1%)
+
+EXIT 1

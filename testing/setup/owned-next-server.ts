@@ -112,6 +112,7 @@ export async function startOwnedNextServer(
   distDirectory: string;
   logs: () => string;
   restart: () => Promise<void>;
+  crash: () => Promise<{ pid: number; signal: 'SIGKILL' }>;
   stop: () => Promise<void>;
 }> {
   const env = { ...options.env };
@@ -222,9 +223,12 @@ export async function startOwnedNextServer(
       await runtime.wait();
     }
   }
-  function sequential(operation: () => Promise<void>) {
+  function sequential<T>(operation: () => Promise<T>) {
     const result = queue.then(operation);
-    queue = result.catch(() => {});
+    queue = result.then(
+      () => undefined,
+      () => undefined,
+    );
     return result;
   }
   try {
@@ -250,6 +254,19 @@ export async function startOwnedNextServer(
           await stopCurrent();
           throw error;
         }
+      }),
+    crash: () =>
+      sequential(async () => {
+        const state = current;
+        const pid = state?.child.pid;
+        if (closed || !state || state.terminal || !pid || !state.child.kill('SIGKILL'))
+          throw new Error('Owned Next child is not available for abrupt termination.');
+        await waitForExit(state);
+        if (state.child.signalCode !== 'SIGKILL')
+          throw new Error('Owned Next child did not report an abrupt exit.');
+        current = undefined;
+        closed = true;
+        return { pid, signal: state.child.signalCode };
       }),
     stop: () => {
       closed = true;

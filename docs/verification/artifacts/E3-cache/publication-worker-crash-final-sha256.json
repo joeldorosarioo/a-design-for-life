@@ -1,0 +1,26 @@
+{
+  "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+  "digest": "1e3dcaddf27c293e6f02020a63cb6929194a7bf9589c628e567d511e2497b863",
+  "files": [
+    {
+      "path": "next-env.d.ts",
+      "sha256": "ec8fe87b409db846858ae7d48e4aa144f2ebcfebcb623c34da86d7688bb67d95"
+    },
+    {
+      "path": "src/config/publication-worker.e2e.test.ts",
+      "sha256": "d0098b50e34e4769b7e1cc59c854b70a1ef9405aa7f9047824823d61a99bfad7"
+    },
+    {
+      "path": "testing/setup/owned-next-server.test.ts",
+      "sha256": "2a6d9ab40d10e61d8c0873bcfbcc3bfa095b518e8ab94a85696b9bcbd381569c"
+    },
+    {
+      "path": "testing/setup/owned-next-server.ts",
+      "sha256": "a0b1296d17d50d2eedad0cf1fd1dcdfe7495617e7a472009ff752bb8e862d34d"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "64f3c9d6863fee9d3fd8707e5543bba29487d389b2e17117e8ec2cd451eb70ce"
+    }
+  ]
+}
