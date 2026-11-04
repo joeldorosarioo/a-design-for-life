@@ -87,6 +87,7 @@ const config = buildConfig({
   hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
+    avatar: 'default',
     user: Users.slug,
     importMap: { baseDir: sourceDirectory },
   },
