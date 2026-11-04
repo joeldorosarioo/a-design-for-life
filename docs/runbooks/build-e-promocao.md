@@ -49,6 +49,8 @@ O ID local `sha256:...` é o digest da configuração da imagem. **Ele não é o
 
 ## Publicação e promoção futuras
 
+O [workflow manual de preflight](../../.github/workflows/release.yml) confere o SHA exato de `develop`, compila para Linux amd64, inspeciona a imagem pelo ID e roda o smoke nativo sem rede. O executor usa acesso de leitura ao repositório. O resultado é evidência de empacotamento local ao executor, separada do manifesto que o registry emitirá.
+
 Sem registry escolhido, não há workflow com push automático nem publicação externa habilitada. Após escolha/autorização, publicar a candidata validada e registrar seu digest de manifesto. Homologação e candidata de produção devem referenciar exatamente o mesmo `repository@sha256:...`; `ops/verify-image.ts` compara os digests bem formados. Tag, inclusive tag de commit, não substitui digest. Não usar `latest`; não reconstruir durante promoção.
 
 Antes da promoção real: comprovar staging autenticada, configuração mínima em execução, isolamento banco/bucket/cache/segredos, backup e migração controlada quando necessária. A4 e autorização de lançamento continuam necessárias. Rollback troca a imagem por digest compatível com o schema; não reverte dados automaticamente.

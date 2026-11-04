@@ -1,6 +1,16 @@
 # Backup e restauração — preparação local E3.6
 
-Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job operacional, o bucket real e o agendamento continuam pendentes.
+Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job Linux de execução separada está disponível. A ativação do agendamento e a validação com o bucket de homologação continuam pendentes.
+
+## Job Linux de backup
+
+Construa `ops/backup/Dockerfile` a partir do commit da aplicação e registre a revisão e o ID da imagem antes de habilitar o job. O entrypoint roda com UID 10001 e usa Node 24.22.2, pnpm 12.10.1, o cliente PostgreSQL 17.11 e age 1.3.2. A imagem usa um contexto próprio que inclui código e lockfile. Guarde a identidade privada do age fora da VPS. Injete somente o recipient público em `OPS_BACKUP_RECIPIENT`.
+
+O comando `backup` usa a raiz da mesma origem, banco e ambiente da aplicação. Mantenha `SITE_ORIGIN`, `DATABASE_URI` e `MEDIA_BUCKET` coerentes com o alvo aprovado. Na homologação, confirme o destino com `OPS_STAGING_DATABASE_TARGET` no formato `host:porta/banco` e use um identificador técnico em `OPS_BACKUP_SOURCE`. A conexão aceita parâmetros TCP explícitos e, quando aplicável, somente `sslmode` como opção da URI. Forneça `OPS_BACKUP_BUCKET`, `OPS_BACKUP_ACCESS_KEY_ID` e `OPS_BACKUP_SECRET_ACCESS_KEY` do bucket privado exclusivo pelo mecanismo de segredos do executor. Os acessos de mídia seguem a configuração R2 da aplicação. Consulte o marcador de conclusão somente após a releitura do conjunto.
+
+Ao executar backup com a aplicação em serviço, compartilhe o namespace de rede do processo que publica e remove objetos. Monte o volume de publicação no mesmo caminho absoluto `/app/.work/publication`; o socket abstrato que protege snapshot e objetos pertence a esse namespace de rede. A exclusão entre jobs usa um advisory lock do PostgreSQL na mesma conexão dedicada por todo o backup ou migração. Confirme os dois mecanismos no executor de homologação antes de agendar o comando `backup` semanalmente. A execução extra anterior à atualização deve concluir e registrar seu marcador antes da troca de imagem. A migração `migrate` cria e verifica o seu próprio conjunto antes de executar DDL. [Migração controlada](migracoes.md).
+
+Em teste, o job exige banco UUID próprio, porta interna 25434 em loopback e volume descartável. O modo de homologação exige revisão Git completa e alvo declarado. Produção, tentativas automáticas, verificação pública e comandos destrutivos são recusados pelo entrypoint desta etapa.
 
 ## Guardas disponíveis
 

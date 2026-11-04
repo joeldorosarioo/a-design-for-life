@@ -1,0 +1,38 @@
+name: Release preflight
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  image-preflight:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Build and inspect Linux image
+        run: |
+          set -euo pipefail
+          revision="$(git rev-parse HEAD)"
+          [[ "$revision" =~ ^[a-f0-9]{40}$ && "$revision" == "$GITHUB_SHA" ]]
+          test -z "$(git status --porcelain)"
+          image="adfl:preflight-$revision"
+          docker build --platform linux/amd64 --build-arg "SOURCE_REVISION=$revision" --tag "$image" --progress plain .
+          image_id="$(docker image inspect --format '{{.Id}}' "$image")"
+          node ops/image/inspect-local-image.mjs "$image" "$image_id" "$revision"
+          docker run --rm --network none --entrypoint node "$image_id" ops/image/runtime-smoke.mjs

@@ -1,0 +1,25 @@
+# Only the application and its operational entrypoint, never local secrets or data.
+**
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!tsconfig.json
+!src/
+!src/**
+!testing/setup/install-age.mjs
+!ops/backup/*.ts
+!ops/migrations/controlled.ts
+ops/backup/*.test.ts
+src/**/*.test.*
+**/.env
+**/.env.*
+**/.git
+**/.git/**
+**/.work
+**/.work/**
+**/.next
+**/.next/**
+**/.toolchain
+**/.toolchain/**
+**/node_modules
+**/node_modules/**

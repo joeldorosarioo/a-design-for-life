@@ -1,0 +1,111 @@
+{
+  "runId": "bc87190a-c69e-4786-8343-29010e9dee11",
+  "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+  "node": "v24.22.2",
+  "checks": [
+    {
+      "phase": "origin-up",
+      "ready": true,
+      "checked": [
+        {
+          "path": "/pt",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/pt/cases",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/en",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/en/cases",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/pt/cases/cache-probe-never-confirmed",
+          "status": 404,
+          "generation": null
+        }
+      ]
+    },
+    {
+      "phase": "recreated-origin-down",
+      "ready": true,
+      "checked": [
+        {
+          "path": "/pt",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/pt/cases",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/en",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/en/cases",
+          "status": 200,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        },
+        {
+          "path": "/pt/cases/cache-probe-never-confirmed",
+          "status": 503,
+          "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6"
+        }
+      ]
+    },
+    {
+      "phase": "different-origin-same-volume",
+      "ready": true,
+      "checked": [
+        {
+          "path": "/pt",
+          "status": 503,
+          "generation": null
+        }
+      ]
+    }
+  ],
+  "cleanup": [
+    {
+      "container": "ccec8a7077e4af8dc0581c35eed24a4df3fd94fa9b2c92af21940486a1ea4052",
+      "removed": true
+    },
+    {
+      "container": "e9f3a4abe561700c71b8459cc2e675b334e326764fac7ff31a3c19978cdbe025",
+      "removed": true
+    },
+    {
+      "container": "3553bcc42126c6675706bbc989d6a08b4a3e8167931edb999eb17ac96df7c787",
+      "removed": true
+    }
+  ],
+  "root": {
+    "generation": "6d875948-ba56-40d6-a6dc-7b5710aa20d6",
+    "sha256": "129c98a94bb2eef21933ff80316265adb7150524a33e5e6bd2291df7a07f9997",
+    "namespace": "55541ca4557097456127cde3e09b215e5c144b3561b9a11f423bb189bc55a00a"
+  },
+  "databaseRemovedBeforeRecreation": true,
+  "recreated": {
+    "id": "e9f3a4abe561700c71b8459cc2e675b334e326764fac7ff31a3c19978cdbe025",
+    "previous": "ccec8a7077e4af8dc0581c35eed24a4df3fd94fa9b2c92af21940486a1ea4052",
+    "sameImage": true,
+    "sameVolume": true,
+    "rootHash": "129c98a94bb2eef21933ff80316265adb7150524a33e5e6bd2291df7a07f9997"
+  },
+  "passed": true,
+  "volumeRemoved": true,
+  "previewPreserved": true,
+  "exitCode": 0
+}

@@ -26,6 +26,7 @@
 !ops/backup/archive.ts
 !ops/backup/contracts.ts
 !ops/backup/local-target.ts
+!ops/backup/native-source.ts
 !ops/backup/repository.ts
 !ops/backup/r2-repository.ts
 !ops/backup/restore-target.ts

@@ -1,14 +1,13 @@
 import { createHash } from 'node:crypto';
 import path from 'node:path';
-import type { MigrateUpArgs } from '@payloadcms/db-postgres';
-import type { Migration, Payload } from 'payload';
-import { captureBackupMediaInventory } from '../../src/features/media-library/server/backup-inventory';
-import { withNativeBackupSnapshot } from '../../src/helpers/payload/backup-snapshot';
+import { sql, type MigrateUpArgs } from '@payloadcms/db-postgres';
+import type { Migration, Payload, PayloadRequest } from 'payload';
 import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory';
 import { withPublicationWriter } from '../../src/helpers/payload/publication-writer';
 import { createLocalObjectStorage } from '../../src/helpers/storage/object-storage';
 import { migrations } from '../../src/migrations';
 import { createLocalBackupRepository } from '../backup/repository';
+import { createNativeBackupSource } from '../backup/native-source';
 import { runBackup, type RunBackupOptions } from '../backup/run';
 
 type MigrationRecord = { name?: string | null; batch?: number | null };
@@ -101,7 +100,7 @@ function localTarget(databaseUri: string, siteOrigin: string) {
   return { id, name: database.pathname.slice(1) };
 }
 
-function assertNativeAdapter(payload: Payload, databaseUri: string) {
+export function assertUnconnectedMigrationAdapter(payload: Payload, databaseUri: string) {
   const db = payload.db;
   if (
     db.name !== 'postgres' ||
@@ -120,9 +119,10 @@ function assertNativeAdapter(payload: Payload, databaseUri: string) {
     );
 }
 
-async function readHistory(payload: Payload) {
-  return (await payload.find({ collection: 'payload-migrations', limit: 0, overrideAccess: true }))
-    .docs;
+async function readHistory(payload: Payload, req?: PayloadRequest) {
+  return (
+    await payload.find({ collection: 'payload-migrations', limit: 0, overrideAccess: true, req })
+  ).docs;
 }
 
 function upwardOnly(payload: Payload, migration: ReturnType<typeof reviewedMigration>): Migration {
@@ -148,7 +148,17 @@ function upwardOnly(payload: Payload, migration: ReturnType<typeof reviewedMigra
         typeof id === 'string' || typeof id === 'number' ? payload.db.sessions?.[id] : undefined;
       if (!session?.db || session.db !== input.db)
         throw new Error('Controlled migration requires the Native transaction database.');
-      await migration.up(input as MigrateUpArgs);
+      const { db, req } = input as MigrateUpArgs;
+      // Keep exclusion in the actual DDL transaction even if the job's
+      // separate advisory-lock session disconnects after the backup.
+      const lock = await db.execute(sql`
+        SELECT pg_try_advisory_xact_lock(hashtextextended('adfl:reviewed-migration-up', 0)) AS acquired
+      `);
+      if (lock.rows[0]?.acquired !== true)
+        throw new Error('Reviewed migration transaction is busy.');
+      if (planControlledMigration(await readHistory(payload, req)) !== 'pending')
+        throw new Error('Reviewed migration transaction no longer has the expected predecessor.');
+      await migration.up({ db, req, payload });
     },
     async down() {
       throw new Error('Controlled migration only supports the reviewed up operation.');
@@ -156,66 +166,84 @@ function upwardOnly(payload: Payload, migration: ReturnType<typeof reviewedMigra
   };
 }
 
+export async function inspectReviewedMigration(payload: Payload) {
+  const history = await readHistory(payload);
+  return {
+    status: planControlledMigration(history),
+    schemaSha256: createHash('sha256')
+      .update(
+        history
+          .map(({ name }) => name)
+          .sort()
+          .join('\n'),
+      )
+      .digest('hex'),
+  };
+}
+
+/** The caller holds an exclusive job lock and has already stopped application writers. */
+export async function applyReviewedMigration(
+  payload: Payload,
+  createVerifiedBackup: () => Promise<Awaited<ReturnType<typeof runBackup>>['marker']>,
+): Promise<ControlledMigrationResult> {
+  if ((await inspectReviewedMigration(payload)).status === 'already-current')
+    return { status: 'already-current' };
+  const backup = await createVerifiedBackup();
+  if ((await inspectReviewedMigration(payload)).status !== 'pending')
+    throw new Error('The native migration history changed after the pre-migration backup.');
+  await payload.db.migrate({ migrations: [upwardOnly(payload, reviewedMigration())] });
+  if ((await inspectReviewedMigration(payload)).status !== 'already-current')
+    throw new Error('Native migration finished without the reviewed current history.');
+  return { status: 'applied', backup };
+}
+
 export async function runControlledMigration(
   options: ControlledMigrationOptions,
 ): Promise<ControlledMigrationResult> {
   assertLocalRuntime();
   const target = localTarget(options.databaseUri, options.siteOrigin);
-  const migration = reviewedMigration();
+  reviewedMigration();
   return withPublicationWriter('a-design-for-life:controlled-local-migration:55434', async () => {
     options.assertOwned(target.name);
     const payload = await options.initialize();
     assertLocalRuntime();
-    assertNativeAdapter(payload, options.databaseUri);
+    assertUnconnectedMigrationAdapter(payload, options.databaseUri);
     options.assertOwned(target.name);
     await payload.db.connect!();
-    if (planControlledMigration(await readHistory(payload)) === 'already-current')
-      return { status: 'already-current' };
-
-    const namespace = {
-      project: 'a-design-for-life',
-      environment: 'test',
-      source: `migration-${target.id}`,
-    } as const;
-    const repository = await createLocalBackupRepository({ namespace });
-    const directory = publicRootDirectory({
-      APP_ENV: 'test',
-      SITE_ORIGIN: options.siteOrigin,
-      DATABASE_URI: options.databaseUri,
+    return applyReviewedMigration(payload, async () => {
+      const namespace = {
+        project: 'a-design-for-life',
+        environment: 'test',
+        source: `migration-${target.id}`,
+      } as const;
+      const repository = await createLocalBackupRepository({ namespace });
+      const directory = publicRootDirectory({
+        APP_ENV: 'test',
+        SITE_ORIGIN: options.siteOrigin,
+        DATABASE_URI: options.databaseUri,
+      });
+      const storage = createLocalObjectStorage(
+        path.resolve('.work/private-media', `adfl-test-migration-${target.id}`, target.name),
+      );
+      const backup = await runBackup({
+        namespace,
+        repository,
+        application: options.backup.application,
+        recipient: options.backup.recipient,
+        tools: options.backup.tools,
+        source: createNativeBackupSource({
+          payload,
+          directory,
+          storage,
+          async dump(input) {
+            options.assertOwned(target.name);
+            await options.backup.dump(input);
+          },
+        }),
+      });
+      assertLocalRuntime();
+      options.assertOwned(target.name);
+      return backup.marker;
     });
-    const storage = createLocalObjectStorage(
-      path.resolve('.work/private-media', `adfl-test-migration-${target.id}`, target.name),
-    );
-    const backup = await runBackup({
-      namespace,
-      repository,
-      application: options.backup.application,
-      recipient: options.backup.recipient,
-      tools: options.backup.tools,
-      source: {
-        storage,
-        capture: (consume) =>
-          withNativeBackupSnapshot(
-            { payload, directory, capture: captureBackupMediaInventory },
-            ({ snapshotId, root, captured }) =>
-              consume({
-                root,
-                objects: captured.objects,
-                async dump(destination) {
-                  options.assertOwned(target.name);
-                  await options.backup.dump({ snapshotId, destination });
-                },
-              }),
-          ),
-      },
-    });
-    assertLocalRuntime();
-    options.assertOwned(target.name);
-    if (planControlledMigration(await readHistory(payload)) !== 'pending')
-      throw new Error('The native migration history changed after the pre-migration backup.');
-    await payload.db.migrate({ migrations: [upwardOnly(payload, migration)] });
-    if (planControlledMigration(await readHistory(payload)) !== 'already-current')
-      throw new Error('Native migration finished without the reviewed current history.');
-    return { status: 'applied', backup: backup.marker };
   });
 }

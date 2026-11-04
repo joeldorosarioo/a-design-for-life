@@ -130,3 +130,7 @@ A imagem 008 é `sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64e
 ### Sitemap indexável e limite de novas tentativas
 
 O sitemap indexável do Next serviu as URLs atuais e alternates PT/EN da mesma geração, excluindo rascunho, slug histórico e tradução retirada. XML antigo com marcador atual manteve a atualização pendente. A repetição confirmou a mesma operação, revisão e geração com o XML correto. O worker comprovou 1/5/15 s como horários de elegibilidade, limite de três tentativas automáticas, persistência ao recriar o dreno e rearme manual autorizado. 23 testes Native e quatro jornadas Chromium passaram. O alvo de 60 s fica para medição e aprovação A3. [Prova local da E3.2.3](artifacts/E3-cache/e3-2-3-sitemap-retry-report.md).
+
+### Cache confirmado em volume Docker
+
+Prova Docker local de 04/11/2026 com a imagem 008 e PostgreSQL descartável. Depois de remover o banco e recriar o contêiner com o mesmo volume nomeado, Home e listagem PT/EN mantiveram 200, a mesma geração e o mesmo SHA-256 de current.json. Caminho sem cobertura passou de 404 com banco disponível para 503 com no-store e Retry-After. Uma origem distinta montando o mesmo volume recebeu 503 sem geração. Montagem e isolamento comprovados localmente, com ativação em VPS ainda pendente. [Recibo do volume nomeado](artifacts/E3-cache/named-volume-001.json).

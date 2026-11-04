@@ -50,7 +50,7 @@
       "id": "E3.2.2",
       "done": false,
       "summary": "Implementar cache compatível com a versão do Next validada, chaveado por ambiente/origem, idioma e dependência. Preservar último resultado público válido em falhas e usar armazenamento persistente montado na VPS quando necessário à estratégia escolhida. Não presumir que invalidar uma tag prova regeneração; uma verificação pública confirma a revisão servida. Registrar a API exata e o comportamento observado.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Prova Docker local de 04/11/2026 com a imagem 008 e PostgreSQL descartável. Depois de remover o banco e recriar o contêiner com o mesmo volume nomeado, Home e listagem PT/EN mantiveram 200, a mesma geração e o mesmo SHA-256 de current.json. Caminho sem cobertura passou de 404 com banco disponível para 503 com no-store e Retry-After. Uma origem distinta montando o mesmo volume recebeu 503 sem geração. Montagem e isolamento comprovados localmente, com ativação em VPS ainda pendente. [Recibo do volume nomeado](artifacts/E3-cache/named-volume-001.json)."
     },
     {
       "id": "E3.2.3",
@@ -210,5 +210,5 @@
     "E3.2.4 encerrado após prova de SIGKILL e recuperação automática, defesa contra corpo 410 antigo e execução Next real. E3.2.2 e E3.2.3 mantêm as provas operacionais e de sitemap próprias.",
     "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3."
   ],
-  "recalculatedAt": "2026-11-04T11:50:19.802Z"
+  "recalculatedAt": "2026-11-04T12:24:24.391Z"
 }

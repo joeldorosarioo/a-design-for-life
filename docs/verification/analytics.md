@@ -1,6 +1,6 @@
-# E3.3 — preparação local de Analytics
+# E3.3 — contrato e verificação local de Analytics
 
-Em 03/11/2026, existe uma feature independente com política, contratos, sessão por documento, adaptador de comandos gtag injetado e componentes React. **E3.3 permanece aberta.** A composição condicional foi ligada às respostas públicas verificadas e aos links aprovados. O aplicativo mantém o carregamento do SDK desativado (`loadScript=null`). A verificação focada não fecha nenhuma das cinco caixas do plano. Faltam a inspeção do SDK, a comparação de custo de JavaScript, a prova no navegador com Next real e os relatórios.
+A feature reúne política, contratos, sessão por documento, adaptador de comandos gtag injetado e componentes React. A composição condicional foi ligada às respostas públicas verificadas e aos links aprovados. O aplicativo mantém o carregamento do SDK desativado (`loadScript=null`). **E3.3 permanece aberta** enquanto faltam a inspeção do SDK e da propriedade real, a prova do custo de JavaScript após ativação e os relatórios.
 
 ## Contratos e política
 
@@ -40,7 +40,7 @@ A configuração Enhanced Measurement precisa ser comprovada na futura proprieda
 
 ## Limitação obrigatória de relatórios — BLOCK-GA4-REPORT-LIMITATION
 
-**Fatos documentados em 03/11/2026:** analytics_storage=denied impede cookies de analytics, mas permite pings sem cookies. Estes podem incluir dados técnicos e sinais do navegador; não equivalem à ausência de transmissão. [Google — Consent Mode](https://developers.google.com/tag-platform/security/concepts/consent-mode?hl=en).
+**Documentação conferida em 04/11/2026.** analytics_storage=denied impede cookies de analytics, mas permite pings sem cookies. Estes podem incluir dados técnicos e sinais do navegador; não equivalem à ausência de transmissão. [Google — Consent Mode](https://developers.google.com/tag-platform/security/concepts/consent-mode?hl=en).
 
 O Google informa que, sem tráfego consentido suficiente para modelar, eventos de usuários que negam consentimento não são relatados. Requisitos publicados incluem 1.000 eventos denied/dia por pelo menos sete dias e 1.000 usuários granted/dia em pelo menos sete dos últimos 28 dias, além de implementação avançada e critérios internos; atingi-los não garante elegibilidade. Sem identificador persistente, pageviews não permitem observar quantos usuários distintos os geraram. [Google — modelagem comportamental](https://support.google.com/analytics/answer/11161109?hl=en).
 
@@ -54,4 +54,21 @@ Node24.22.2 fixado; pnpm12.10.1 preservado; Vitest5.0.5. Os logs reais RED/GREEN
 
 A composição atual exige resposta pública verificada com status 200 e configuração explícita antes da fronteira cliente. A sessão fica no Document e os links públicos aprovados carregam apenas a finalidade fixa. Os testes substituem somente a execução externa do script. A execução comum usa `loadScript=null` e não inicia o SDK, mesmo com o DTO de produção pública habilitado. A inspeção interceptada do SDK real precisa resolver a coleta automática antes de qualquer ativação.
 
-As provas em `artifacts/E3-analytics/composition-*` registram RED/GREEN de fronteira do servidor, documento, React, navegação nativa e composição da resposta. O último conjunto focado somou 181/181 testes em 13 arquivos, com tipagem, lint e formatação do escopo com saída 0. A auditoria integral de páginas e estados no navegador, os cookies/storage/wire do SDK, o custo de JavaScript e os relatórios permanecem sem prova.
+As provas em `artifacts/E3-analytics/composition-*` registram RED/GREEN de fronteira do servidor, documento, React, navegação nativa e composição da resposta. O último conjunto focado somou 181/181 testes em 13 arquivos, com tipagem, lint e formatação do escopo com saída 0. Os cookies, o storage e os requests do SDK real ainda precisam ser inspecionados, assim como o custo da medição ativada e os relatórios.
+
+## Chromium isolado — 04/11/2026
+
+O teste `src/features/analytics/analytics-events.e2e.test.ts` compila o adaptador real de documento em um harness sintético. O substituto fica no carregador injetado. Ele lê os comandos que o adaptador entregaria ao SDK e os envia a um receptor Playwright em loopback, sem anexar o script do Google. O contexto bloqueia service workers e o teste intercepta todas as requisições.
+
+- Antes da ativação sintética, o navegador não iniciou a sessão com ambiente test/staging, área admin, prévia, liberação pública desligada ou caminho com query.
+- A sequência pública EN → PT → EN produziu três visitas. A remontagem consecutiva, o clique cancelado e o link fora do contrato não geraram eventos adicionais. Os acionamentos nativos de e-mail, LinkedIn e currículo produziram um evento de cada.
+- O receptor conferiu o comando inicial de armazenamento negado, um único config com pageview automático desligado e a lista completa de eventos, com origem canônica sintética, idioma, título e referrer vazios. Hrefs e parâmetros privados nunca entraram no corpo.
+- As requisições não levaram cookies. O teste tornou a propriedade `document.cookie` ilegível e confirmou que o cookie de idioma permaneceu intacto e separado. IndexedDB, localStorage e sessionStorage não receberam entradas. O teste registrou zero requisições externas.
+
+No build real de Next 16.4.3, o Chromium verificou as duas homes, o detalhe publicado, a tradução não publicada (404), a prévia anônima (401), o login do painel e a prévia autenticada do rascunho (200 privado). Todas as páginas ficaram livres de scripts e globais de medição, botões e diálogos de consentimento e requisições externas. O teste da prévia anônima foi corrigido para refletir o 401 já estabelecido no contrato da aplicação.
+
+As duas jornadas Chromium passaram com Node 24.22.2 e Playwright 1.64.1. Passaram também 167 testes unitários focados em 10 arquivos, tipagem, lint e formatação. O recibo registra os comandos de consentimento, configuração e eventos, além de tamanho e armazenamento. [Recibo Chromium](artifacts/E3-analytics/chromium-local-001.json)
+
+O harness minificado com o adaptador e suas dependências mediu 459.473 bytes brutos e 95.688 com gzip. O mesmo harness com montagem vazia mediu 882 bytes brutos e 564 com gzip. Essa comparação mede a fixture isolada, com esbuild, e o recibo separa os bytes de script observados no Next com medição inativa. A comparação do bundle da aplicação após ativação e o custo do SDK real ficam para a prova de ativação.
+
+A captura termina na fronteira do SDK. A inspeção interceptada do SDK real precisa identificar os dados técnicos e eventos enviados, com os controles de medição aprimorada da propriedade verificados e o bloqueio de relatórios registrado acima. [Medição aprimorada](https://support.google.com/analytics/answer/9216061?hl=en) · [Eventos automáticos](https://support.google.com/analytics/answer/9234069?hl=en)
