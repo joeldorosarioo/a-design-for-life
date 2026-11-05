@@ -9,7 +9,7 @@ const valid = () => ({
   Architecture: 'amd64',
   RepoDigests: [],
   Config: {
-    User: '70:70',
+    User: 'appuser',
     Cmd: ['node', 'server.js'],
     StopSignal: 'SIGTERM',
     Labels: { 'org.opencontainers.image.revision': revision },
@@ -24,7 +24,7 @@ describe('local image inspection', () => {
       imageId,
       registryDigests: [],
       platform: 'linux/amd64',
-      user: '70:70',
+      user: 'appuser',
       revision,
       layers: 1,
       environmentNames: ['HOSTNAME', 'NODE_ENV', 'PORT'],
@@ -40,11 +40,16 @@ describe('local image inspection', () => {
       inspectLocalImage({ ...valid(), Architecture: architecture }, { imageId, revision }),
     ).toThrow();
   });
-  it('refuses a privileged runtime', () => {
-    const record = valid();
-    record.Config.User = 'root';
-    expect(() => inspectLocalImage(record, { imageId, revision })).toThrow();
-  });
+  it.each(['root', '0', '0:0', 'postgres', '70:70', 'appuser:0', 'unexpected-user'])(
+    'refuses a privileged or unexpected runtime identity %s',
+    (user) => {
+      const record = valid();
+      record.Config.User = user;
+      expect(() => inspectLocalImage(record, { imageId, revision })).toThrow(
+        'Unexpected runtime user',
+      );
+    },
+  );
   it('refuses a different default startup command', () => {
     const record = valid();
     record.Config.Cmd = ['node', 'ops/image/start-local-stack.mjs'];

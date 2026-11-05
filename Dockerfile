@@ -41,8 +41,13 @@ ENV NODE_ENV=production \
     PORT=3000 \
     HOSTNAME=0.0.0.0 \
     MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf
+# Keep UID/GID 70 so existing PostgreSQL and application volumes retain access.
 RUN apk add --no-cache ca-certificates libjpeg-turbo libstdc++ libcrypto3 zlib \
+    && apk add --no-cache --virtual .account-tools shadow \
     && test "$(id -u postgres):$(id -g postgres)" = "70:70" \
+    && usermod --login appuser --shell /sbin/nologin postgres \
+    && apk del .account-tools \
+    && test "$(id -u appuser):$(id -g appuser)" = "70:70" \
     && mkdir -p .work/publication .work/private-media .work/editorial-mail .work/next-build/cache \
     && chown -R 70:70 .work
 COPY --from=node-base /usr/local/bin/node /usr/local/bin/node
@@ -51,7 +56,7 @@ COPY --from=builder --chown=70:70 /app/.work/next-build/standalone ./
 COPY --from=builder --chown=70:70 /app/.work/next-build/static ./.work/next-build/static
 COPY --from=builder --chown=70:70 /app/public ./public
 COPY --chown=70:70 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ops/image/start-local-stack.mjs ./ops/image/
-USER 70:70
+USER appuser
 RUN node ops/image/runtime-smoke.mjs
 COPY --from=qpdf /tmp/qpdf-source/LICENSE.txt /opt/qpdf/LICENSE.txt
 EXPOSE 3000 5432

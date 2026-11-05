@@ -88,6 +88,8 @@ E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite 
 
 Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsum, auditar as páginas e validar o R2 existente. Escolheu captura local de e-mail e backup criptografado em filesystem. As provas locais dessa rodada estão em A3 e web-quality.md; os critérios integrais de homologação mantêm suas dependências.
 
+05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md.
+
 Estimativa: 24–40 horas de trabalho, excluindo esperas externas; revisar diante de bloqueio concreto.
 
 Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.

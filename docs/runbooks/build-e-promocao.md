@@ -1,15 +1,23 @@
 # Imagem única e promoção por digest
 
-Escopo atual: preparação e validação **locais**, E3.4. A3/A4 continuam pendentes. Registry, VPS/Coolify e homologação real não foram escolhidos/disponibilizados; este procedimento não autoriza publicação externa nem lançamento. Os testes de metadados não equivalem a construir ou consumir a imagem.
+Escopo atual: validação local E3.4 e preparação da homologação privada. Em 05/11/2026, o usuário contratou uma VPS Hostinger, configurou o Coolify Atlas em `https://panel.joeldorosarioo.dev`, criou o projeto `a-design-for-life` com environment `staging` e escolheu GHCR privado em `ghcr.io/joeldorosarioo/a-design-for-life`. Forneceu credenciais separadas para baixar e publicar a imagem privada. A aplicação ainda precisa do digest de manifesto e da configuração real completa de staging. A3/A4 e lançamento em produção continuam pendentes. Os testes de metadados não equivalem a consumir a imagem na VPS.
 
 ## Contrato de empacotamento
 
 - O build usa as imagens oficiais Node 24.22.2 e PostgreSQL 17.11 em Alpine 3.24. O Dockerfile fixa o digest de cada base.
 - Plataforma validável nesta implementação: **linux/amd64**. A arquitetura da VPS futura ainda precisa ser confirmada; não promover para ARM64 por suposição.
 - pnpm 12.10.1 usa o lockfile congelado. Um estágio separado compila QPDF 12.4.2 para musl a partir do arquivo oficial, com checksum SHA-256 fixado. O runtime recebe o executável e a licença.
-- O runtime usa UID/GID 70, saída padrão e `node server.js` para usar PostgreSQL externo. O Compose local seleciona o supervisor para iniciar PostgreSQL e Next juntos. As migrações seguem um comando separado. A aplicação mantém os estáticos em `.work/next-build/static`, o otimizador privado e os headers existentes.
+- O runtime usa `USER appuser`, resolvido para UID/GID70 para preservar a propriedade dos volumes, saída padrão e `node server.js` para usar PostgreSQL externo. O Compose local seleciona o supervisor para iniciar PostgreSQL e Next juntos. As migrações seguem um comando separado. A aplicação mantém os estáticos em `.work/next-build/static`, o otimizador privado e os headers existentes.
 - `.dockerignore` usa allowlist. `.env`, `.work`, `.next`, `.toolchain`, dumps, checkpoints, originais privados e relatórios do host ficam fora do contexto. O suporte TypeScript sintético de `testing` entra apenas no builder para o typecheck dos testes adjacentes; não há cópia de fixture privada nem de binários de fixture. Tracing exclui esse suporte e dados privados.
 - Somente valores sintéticos fixos no comando de build: loopback, banco `adfl_test_image_build` na porta9, bucket de teste e segredo descartável. Não aceitar segredos reais como build args. `SOURCE_REVISION` é o único argumento de configuração da aplicação exposto ao build; não recebe origem, credencial ou identificação GA.
+
+## Cotas e manutenção do host
+
+A definição de `USER appuser` vale para o processo da aplicação e para o supervisor PostgreSQL/Next. O build instala as dependências como administrador somente nos estágios de montagem; ferramentas temporárias de criação de conta são removidas no mesmo `RUN`. A execução final conserva UID/GID70, com login de shell desativado. A inspeção de metadados e o smoke precisam comprovar nome e identidade efetiva antes de promover uma nova imagem.
+
+O Compose local possui cotas ajustáveis de CPU/RAM, capabilities removidas e `no-new-privileges`. Ao criar o recurso em Coolify, configurar e inspecionar as cotas reais desse projeto; começar a avaliação com1CPU/2GiB e ajustar com medição da stack completa. Preservar capacidade para o sistema, Coolify e demais projetos. Builds continuam fora da VPS.
+
+Antes de aplicar atualizações do host e Docker Engine, obter o inventário real de versões, recursos, atualizações de segurança disponíveis e workloads ativos. Preparar backup/restauração e uma janela de manutenção quando a atualização exigir reinício. Esse documento não comprova patch instalado nem autoriza reiniciar serviços de outros projetos. Atualizar bases fixadas por digest requer revisão, rebuild e nova validação; `--pull` não altera sozinho um digest fixo. [Boas práticas de build](https://docs.docker.com/build/building/best-practices/) e [limites de recursos](https://docs.docker.com/engine/containers/resource_constraints/).
 
 ## Build local coordenado
 
@@ -29,6 +37,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Recursos nativos da imagem falharam' }
 O smoke usa somente PDF/imagem sintéticos gerados em `/tmp`, verifica UID, QPDF, sharp, canvas nativo e PDF.js; não lê conteúdo editorial nem precisa de banco/rede. A prova HTTP/E2E real descrita no [runbook de homologação](homologacao.md) ainda é obrigatória.
 
 Depois dos gates e de um commit coeso, uma candidata precisa ser construída do **commit exato e limpo**:
+Uma exportação `git archive` do commit exato também permite isolar a candidata de alterações locais preservadas. Nesse caso, registre o commit, o hash do arquivo exportado e os argumentos do build; nenhum arquivo não versionado, `.env` ou alteração da árvore de trabalho pode ser acrescentado à exportação.
 
 ```powershell
 $pending = git status --porcelain
@@ -51,7 +60,7 @@ O ID local `sha256:...` é o digest da configuração da imagem. **Ele não é o
 
 O [workflow manual de preflight](../../.github/workflows/release.yml) confere o SHA exato de `develop`, compila para Linux amd64, inspeciona a imagem pelo ID e roda o smoke nativo sem rede. O executor usa acesso de leitura ao repositório. O resultado é evidência de empacotamento local ao executor, separada do manifesto que o registry emitirá.
 
-Sem registry escolhido, não há workflow com push automático nem publicação externa habilitada. Após escolha/autorização, publicar a candidata validada e registrar seu digest de manifesto. Homologação e candidata de produção devem referenciar exatamente o mesmo `repository@sha256:...`; `ops/verify-image.ts` compara os digests bem formados. Tag, inclusive tag de commit, não substitui digest. Não usar `latest`; não reconstruir durante promoção.
+O workflow continua somente de preflight, sem push automático. A publicação privada manual no GHCR selecionado usa o token de publicação por stdin; o token de leitura permanece separado para o Coolify. Antes do envio, verificar a visibilidade privada do package existente ou o padrão privado de criação; depois, reler a visibilidade e o digest do manifesto. Não enviar credenciais como argumentos de build nem injetar os tokens na aplicação. Publicar somente a candidata validada e registrar seu digest de manifesto. Homologação e candidata de produção devem referenciar exatamente o mesmo `repository@sha256:...`; `ops/verify-image.ts` compara os digests bem formados. Tag, inclusive tag de commit, não substitui digest. Não usar `latest`; não reconstruir durante promoção.
 
 Antes da promoção real: comprovar staging autenticada, configuração mínima em execução, isolamento banco/bucket/cache/segredos, backup e migração controlada quando necessária. A4 e autorização de lançamento continuam necessárias. Rollback troca a imagem por digest compatível com o schema; não reverte dados automaticamente.
 

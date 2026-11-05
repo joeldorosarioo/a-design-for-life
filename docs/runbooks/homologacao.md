@@ -1,6 +1,6 @@
 # Homologação isolada e prova local da mesma imagem
 
-E3 local foi retomada em 03/11/2026. Este runbook prepara a validação; não registra um deploy ocorrido. VPS/Coolify, registry e homologação reais permanecem indisponíveis/não verificados. A3/A4 e produção seguem pendentes.
+E3 local foi retomada em 03/11/2026. Em 05/11/2026, a VPS Hostinger e o Coolify Atlas foram configurados pelo usuário; `https://panel.joeldorosarioo.dev` respondeu com TLS válido. O projeto `a-design-for-life` possui o environment `staging`. O GHCR privado foi escolhido e a publicação da candidata está em preparação. Este runbook ainda não registra deploy da aplicação na VPS nem prova integral de homologação. A3/A4 e produção seguem pendentes.
 
 ## Prova local antes de contratar
 

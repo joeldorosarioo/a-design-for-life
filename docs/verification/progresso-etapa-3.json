@@ -210,7 +210,8 @@
     "E3.2.4 encerrado após prova de SIGKILL e recuperação automática, defesa contra corpo 410 antigo e execução Next real. E3.2.2 e E3.2.3 mantêm as provas operacionais e de sitemap próprias.",
     "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3.",
     "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos.",
-    "Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsum, auditar as páginas e validar o R2 existente. Escolheu captura local de e-mail e backup criptografado em filesystem. As provas locais dessa rodada estão em A3 e web-quality.md; os critérios integrais de homologação mantêm suas dependências."
+    "Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsum, auditar as páginas e validar o R2 existente. Escolheu captura local de e-mail e backup criptografado em filesystem. As provas locais dessa rodada estão em A3 e web-quality.md; os critérios integrais de homologação mantêm suas dependências.",
+    "05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md."
   ],
-  "recalculatedAt": "2026-11-05T15:45:12.255Z"
+  "recalculatedAt": "2026-11-05T17:48:54.824Z"
 }

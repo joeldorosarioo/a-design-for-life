@@ -24,6 +24,10 @@ Em uma máquina sem a imagem `adfl:local-alpine3.24`, use `--build` no lugar de 
 
 O serviço `portfolio` reúne Next/Payload e PostgreSQL em um contêiner Alpine 3.24 com UID/GID 70, sem capabilities Linux adicionais. O Node é o PID 1 e encaminha o encerramento para os dois processos. A aplicação e o banco ficam acessíveis em loopback, respectivamente nas portas 3000 e 5432. Os dados do PostgreSQL e as raízes e caches do aplicativo ficam em volumes próprios.
 
+A imagem define `USER appuser`, associado ao UID/GID70 já proprietário dos volumes. O Compose mantém a identidade numérica `70:70`. O nome do usuário de sistema não altera a conta SQL configurada no `.env`.
+
+O Compose limita esse contêiner a **1CPU e 2GiB de RAM**, sem swap adicional. São limites iniciais para uso local e validação, não uma medição de capacidade de produção. Para ajustar sem editar o Compose, defina `PORTFOLIO_CPU_LIMIT` e `PORTFOLIO_MEMORY_LIMIT` no `.env`; o limite total de memória e swap acompanha a RAM. Recrie somente o serviço `portfolio` para aplicar valores alterados. Em uma VPS compartilhada, dimensione cotas por projeto depois de verificar recursos disponíveis e carga; o nome de um environment não aplica esses limites automaticamente.
+
 Em um banco recém-inicializado, execute `pnpm migrate` no host antes de provisionar conteúdo. O runtime inicia o PostgreSQL e o Next e preserva o histórico de migrações existente. Use `pnpm provision:structural` para criar os perfis e a navegação iniciais como rascunhos. A publicação exige conteúdo editorial e uma conta provisionada.
 
 As páginas públicas ficam em `http://localhost:3000/pt` e `http://localhost:3000/en`. O painel fica em `http://localhost:3000/admin`. Um banco sem perfil e navegação publicados devolve 404 nas páginas públicas. Durante o desenvolvimento do código, `pnpm dev` pode ser usado com o Next do contêiner parado e um PostgreSQL disponível na porta do `.env`.

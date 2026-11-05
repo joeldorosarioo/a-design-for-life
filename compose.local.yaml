@@ -8,6 +8,9 @@ services:
     command: [node, ops/image/start-local-stack.mjs]
     env_file: .env
     environment:
+      # Registry credentials are consumed by Docker/Coolify, never by the application.
+      GHCR_READ_TOKEN: ''
+      GHCR_PUBLISH_TOKEN: ''
       APP_ENV: local
       INTERNAL_HTTP_ORIGIN: http://127.0.0.1:3000
       MEDIA_STORAGE_DRIVER: ${MEDIA_STORAGE_DRIVER:-r2}
@@ -15,6 +18,9 @@ services:
       PUBLICATION_RETRY_WORKER_ENABLED: 'false'
       PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false'
     user: '70:70'
+    cpus: '${PORTFOLIO_CPU_LIMIT:-1.0}'
+    mem_limit: ${PORTFOLIO_MEMORY_LIMIT:-2g}
+    memswap_limit: ${PORTFOLIO_MEMORY_LIMIT:-2g}
     cap_drop:
       - ALL
     security_opt:

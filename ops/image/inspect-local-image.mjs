@@ -26,7 +26,7 @@ export function inspectLocalImage(record, expected) {
   if (record?.Id !== expected.imageId) throw new Error('Unexpected local image identity.');
   if (record?.Os !== 'linux' || record?.Architecture !== 'amd64')
     throw new Error('Only the verified linux/amd64 image is supported.');
-  if (record?.Config?.User !== '70:70') throw new Error('Unexpected runtime user.');
+  if (record?.Config?.User !== 'appuser') throw new Error('Unexpected runtime user.');
   const { Entrypoint, Cmd, StopSignal } = record.Config;
   if (
     (Entrypoint != null && (!Array.isArray(Entrypoint) || Entrypoint.length !== 0)) ||
