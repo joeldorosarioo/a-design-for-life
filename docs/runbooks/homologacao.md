@@ -1,6 +1,6 @@
 # Homologação isolada e prova local da mesma imagem
 
-E3 local foi retomada em 03/11/2026. Em 05/11/2026, a VPS Hostinger e o Coolify Atlas foram configurados pelo usuário; `https://panel.joeldorosarioo.dev` respondeu com TLS válido. O projeto `a-design-for-life` possui o environment `staging`. O GHCR privado já recebeu a candidata da revisão `196bfad427880ad91b0605d9f55f6b8dd711278a`; a candidata com o fluxo de primeira inicialização ainda precisa ser construída, validada e publicada. Este runbook ainda não registra deploy da aplicação na VPS nem prova integral de homologação. A3/A4 e produção seguem pendentes.
+E3 local foi retomada em 03/11/2026. Em 05/11/2026, a VPS Hostinger e o Coolify Atlas foram configurados pelo usuário; `https://panel.joeldorosarioo.dev` respondeu com TLS válido. O projeto `a-design-for-life` possui o environment `staging`. O GHCR privado contém a nova candidata `4eab005ab099d253d83a068c66a6d7948dfefb98`, construída e validada localmente com o fluxo de primeira inicialização. Este runbook ainda não registra deploy da aplicação na VPS nem prova integral de homologação. A3/A4 e produção seguem pendentes.
 
 ## Prova local antes de contratar
 
@@ -36,6 +36,18 @@ A imagem 004 passou 82 verificações HTTP em dois bancos descartáveis com `APP
 
 O Playwright local teve 116 testes aprovados com o Next compilado para produção. A prova do navegador usando a imagem Linux é uma execução própria. Os snapshots e resultados de cada consumidor seguem em seus recibos.
 
+## Candidata pronta para a primeira inicialização
+
+Revisão `4eab005ab099d253d83a068c66a6d7948dfefb98`. A mesma imagem passou no modo PostgreSQL-only e no modo HTTP como `appuser`, UID/GID 70, e está disponível no GHCR privado. O import `.work/coolify-staging/staging-variables.txt` contém 25 variáveis, incluindo Resend e `STAGING_DATABASE_ONLY=true`, com os valores anteriores preservados. [Recibo da candidata](../verification/artifacts/E3-image/staging-bootstrap-candidate-4eab005-001.json).
+
+No recurso existente **a-design-for-life → staging → portfolio-staging**:
+
+1. Em **General → Docker Registry**, manter **Docker Image** como `ghcr.io/joeldorosarioo/a-design-for-life` e preencher **Docker Image Tag or Hash** com `sha256-4929f8965a0e6d3ce71c6b33681e3620c1c1be0333b2299531b3efe4b529ea40`. Salvar. Esse é o digest de manifesto do registry; o ID local 82e551 não deve ser usado nesse campo. [Formato do Coolify](https://coolify.io/docs/applications/deployments/docker-image#change-the-deployed-image).
+2. Em **Environment Variables**, acrescentar `STAGING_DATABASE_ONLY=true`, com **Build time: Not available during build** e **Runtime: Available in the container**. Manter as 24 variáveis já configuradas. O arquivo privado completo é a referência para os comandos do host; não publicar seu conteúdo.
+3. Em **Health Checks**, usar o comando **CMD** `node /app/ops/image/health-probe.mjs`, salvar e habilitar. Durante esta fase, a prontidão confirma somente o PostgreSQL; Next/HTTP 3000 ainda não iniciam.
+4. Conferir as configurações já preparadas: supervisor `--entrypoint "node /app/ops/image/start-local-stack.mjs"`, capabilities removidas, `no-new-privileges`, **1 CPU/2 GiB**, volumes próprios de PGDATA/publicação/cache e **Consistent name (no rolling updates)**. A porta exposta da aplicação permanece 3000; 5432 fica sem mapeamento no host. Manter a autenticação privada no proxy.
+5. Clicar em **Deploy** para iniciar o recurso em modo PostgreSQL-only e conferir os logs. Em seguida, executar o bootstrap por SSH conforme os cinco passos abaixo. A execução na VPS exige verificar o IP privado real do novo contêiner e o acesso SSH; este recibo local não a presume.
+
 ## Preparar a primeira inicialização na VPS
 
 Este procedimento prepara somente homologação privada. Não registra execução na VPS nem encerra A3/A4.
@@ -58,6 +70,16 @@ Este procedimento prepara somente homologação privada. Não registra execuçã
    Conferir `.work/coolify-staging/initialization-receipt.json`: alvo/origem esperados, **16 migrações**, conta editorial identificada e **4 documentos estruturais** PT/EN. A verificação deve preservar a mesma conta e os mesmos documentos. Se o CLI recusar o alvo, manter PG-only ativo e investigar; não limpar tabelas nem contornar as guardas.
 
 5. **Ativar a aplicação na mesma nova candidata.** Após recibo válido, R2/Resend configurados e acesso privado protegido no proxy, alterar `STAGING_DATABASE_ONLY=false` **tanto no arquivo privado quanto nas variáveis do Coolify**. Salvar e fazer redeploy do **mesmo novo digest**, sem rebuild. O supervisor passa a iniciar Next depois do PostgreSQL e o CMD de saúde volta a exigir `/health` HTTP200 com somente `{"status":"ready"}`. Verificar login editorial e prosseguir com a população controlada de conteúdo; os quatro rascunhos estruturais ainda não constituem portfólio publicado.
+
+## Conteúdo demonstrativo após o bootstrap
+
+Depois de confirmar o recibo de inicialização e ativar `STAGING_DATABASE_ONLY=false` no arquivo privado e no Coolify, usando o mesmo digest:
+
+1. Confirmar o IP privado atual do contêiner após o redeploy. Abrir um túnel SSH de `127.0.0.1:55436` para esse IP, porta 3000; manter a sessão aberta. O seed usa essa conexão privada e a sessão editorial Native, com a origem de staging configurada.
+2. No checkout do operador, executar `pnpm run seed:staging --database CONFIRMED_DATABASE_NAME`, substituindo o marcador pelo banco exato do import privado. O comando lê somente a conta editorial do .env e os originais aprovados do plano local; gera os PDFs Lorem ipsum e publica pelo mesmo fluxo Native do CMS.
+3. Conferir `.work/coolify-staging/lorem-seed-receipt.json`: 7 mídias, 2 identidades de case, 8 documentos localizados e 10 rotas verificadas. O checkpoint privado permite repetir o comando; dados editoriais modificados são recusados, em vez de substituídos.
+4. Abrir o domínio temporário autenticado e revisar PT/EN. O conteúdo continua demonstrativo, com `PUBLIC_SITE_ENABLED=false`, sem Analytics ou indexação. A entrega real por R2/staging recebe evidência própria; a prova HTTP local usou arquivos sintéticos.
+5. Guardar os recibos sem anexar credenciais, cookies ou arquivos privados ao Git. O envio real de recuperação por Resend tem autorização específica e não faz parte desses comandos.
 
 ## Homologação real pendente
 

@@ -1,6 +1,6 @@
 # Imagem única e promoção por digest
 
-Escopo atual: validação local E3.4 e preparação da homologação privada. Em 05/11/2026, o usuário contratou uma VPS Hostinger, configurou o Coolify Atlas em `https://panel.joeldorosarioo.dev`, criou o projeto `a-design-for-life` com environment `staging` e escolheu GHCR privado em `ghcr.io/joeldorosarioo/a-design-for-life`. Forneceu credenciais separadas para baixar e publicar a imagem privada. A aplicação ainda precisa do digest de manifesto e da configuração real completa de staging. A3/A4 e lançamento em produção continuam pendentes. Os testes de metadados não equivalem a consumir a imagem na VPS.
+Escopo atual: validação local E3.4 e preparação da homologação privada. Em 05/11/2026, o usuário contratou uma VPS Hostinger, configurou o Coolify Atlas em `https://panel.joeldorosarioo.dev`, criou o projeto `a-design-for-life` com environment `staging` e escolheu GHCR privado em `ghcr.io/joeldorosarioo/a-design-for-life`. Forneceu credenciais separadas para baixar e publicar a imagem privada. O digest atual está registrado ao fim deste runbook; a aplicação ainda precisa do primeiro bootstrap e da validação na VPS. A3/A4 e lançamento em produção continuam pendentes. Os testes de metadados não equivalem a consumir a imagem na VPS.
 
 ## Contrato de empacotamento
 
@@ -77,3 +77,13 @@ ghcr.io/joeldorosarioo/a-design-for-life@sha256:69725221daf7ab017fe5c31c736de8b7
 No formulário Docker Image do Coolify, use o repository em Image name, deixe Tag vazio e informe somente os64caracteres hexadecimais em SHA256 digest. Create Application cria a configuração; o deploy fica para depois do login de registry, variáveis reais, volumes persistentes, quotas e proteção da homologação.
 
 A imagem inicia somente Next por padrão. Para o requisito de PostgreSQL e aplicação no mesmo contêiner, configure em General → Custom Docker Options `--entrypoint "node /app/ops/image/start-local-stack.mjs"`, segundo o [suporte do Coolify ao entrypoint com argumentos](https://coolify.io/docs/applications/builds/custom-docker-options#override-the-entrypoint). Configure Ports Exposes como3000, preserve volumes UID/GID70 e mantenha5432 sem publicação no host da VPS. A validação desse executor na VPS ainda é uma prova própria. [Recibo da publicação privada](../verification/artifacts/E3-image/ghcr-private-candidate-196bfad-001.json).
+
+## Candidata atual para inicialização de staging — 05/11/2026
+
+A revisão `4eab005ab099d253d83a068c66a6d7948dfefb98` substitui a candidata anterior no procedimento de primeiro bootstrap. O mesmo ID local passou o modo PostgreSQL-only e o modo HTTP com dados sintéticos. Foram auditadas as 20 camadas, incluindo tar/gzip e metadata, contra 18 variantes de segredos conhecidos, com zero correspondências; a exportação foi removida. O package continua privado, a entrega anônima foi recusada 401 e o pull pelo digest com token de leitura passou. A credencial de publicação foi novamente substituída pela de leitura. [Recibo completo](../verification/artifacts/E3-image/staging-bootstrap-candidate-4eab005-001.json).
+
+```text
+ghcr.io/joeldorosarioo/a-design-for-life@sha256:4929f8965a0e6d3ce71c6b33681e3620c1c1be0333b2299531b3efe4b529ea40
+```
+
+Para o recurso já existente, **General → Docker Registry → Docker Image Tag or Hash** usa `sha256-4929f8965a0e6d3ce71c6b33681e3620c1c1be0333b2299531b3efe4b529ea40`. O campo de criação separado SHA256 Digest continua recebendo somente os 64 hexadecimais. Não misturar esses dois formatos de tela. O primeiro Deploy deve usar `STAGING_DATABASE_ONLY=true` e CMD health; a inicialização é um comando explícito pelo checkout do operador, via SSH, seguido do mesmo digest em modo de aplicação. [Passo a passo de homologação](homologacao.md#candidata-pronta-para-a-primeira-inicialização). Nenhum Deploy na VPS ou publicação de produção foi executado nesta rodada.
