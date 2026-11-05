@@ -108,3 +108,75 @@ it('refuses a PostgreSQL data directory from a different major version', async (
   await expect(startLocalStack({ env, launch })).rejects.toThrow('PostgreSQL 17');
   expect(launch).not.toHaveBeenCalled();
 });
+
+it('keeps only PostgreSQL running during explicit private staging initialization', async () => {
+  const { database, app, launch, env } = await fixture(true);
+  const controller = new AbortController();
+  const result = startLocalStack({
+    env: {
+      ...env,
+      APP_ENV: 'staging',
+      PUBLIC_SITE_ENABLED: 'false',
+      PUBLICATION_RETRIES_ENABLED: 'false',
+      PUBLICATION_RETRY_WORKER_ENABLED: 'false',
+      PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false',
+      STAGING_DATABASE_ONLY: 'true',
+    },
+    signal: controller.signal,
+    launch,
+    waitForDatabase: async () => {},
+  });
+  await new Promise<void>((resolve) => setImmediate(resolve));
+  controller.abort();
+  await expect(result).resolves.toBe(0);
+  expect(launch).toHaveBeenCalledTimes(1);
+  expect(app.kill).not.toHaveBeenCalled();
+  expect(database.kill).toHaveBeenCalledWith('SIGINT');
+});
+
+it.each([
+  { APP_ENV: 'production' },
+  { APP_ENV: 'local' },
+  { PUBLIC_SITE_ENABLED: 'true' },
+  { PUBLICATION_RETRIES_ENABLED: 'true' },
+  { PUBLICATION_RETRY_WORKER_ENABLED: 'true' },
+  { PUBLICATION_HTTP_VERIFICATION_ENABLED: 'true' },
+  { STAGING_DATABASE_ONLY: 'yes' },
+])('refuses unsafe database-only startup before launching a process (%#)', async (overrides) => {
+  const { launch, env } = await fixture(true);
+  await expect(
+    startLocalStack({
+      env: {
+        ...env,
+        APP_ENV: 'staging',
+        PUBLIC_SITE_ENABLED: 'false',
+        PUBLICATION_RETRIES_ENABLED: 'false',
+        PUBLICATION_RETRY_WORKER_ENABLED: 'false',
+        PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false',
+        STAGING_DATABASE_ONLY: 'true',
+        ...overrides,
+      },
+      launch,
+      waitForDatabase: async () => {},
+    }),
+  ).rejects.toThrow('private staging');
+  expect(launch).not.toHaveBeenCalled();
+});
+
+it('exits when PostgreSQL fails in database-only initialization without launching Next', async () => {
+  const { database, launch, env } = await fixture(true);
+  const result = startLocalStack({
+    env: {
+      ...env,
+      APP_ENV: 'staging',
+      PUBLIC_SITE_ENABLED: 'false',
+      STAGING_DATABASE_ONLY: 'true',
+    },
+    launch,
+    waitForDatabase: async () => {},
+  });
+  await new Promise<void>((resolve) => setImmediate(resolve));
+  database.fail();
+  await expect(result).resolves.toBe(1);
+  expect(launch).toHaveBeenCalledTimes(1);
+});

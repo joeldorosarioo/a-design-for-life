@@ -4,27 +4,13 @@ import path from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { promisify } from 'node:util';
+import { embeddedDatabaseTarget, stagingDatabaseOnly } from './staging-mode.mjs';
 
 const databasePort = '5432';
 const run = promisify(execFile);
 
 function databaseSettings(env) {
-  const url = new URL(env.DATABASE_URI ?? '');
-  if (
-    !['postgres:', 'postgresql:'].includes(url.protocol) ||
-    !['localhost', '127.0.0.1'].includes(url.hostname) ||
-    (url.port && url.port !== databasePort) ||
-    url.search ||
-    url.hash ||
-    !path.isAbsolute(env.PGDATA ?? '')
-  ) {
-    throw new Error('Expected a local PostgreSQL URL and an absolute PGDATA.');
-  }
-
-  const user = decodeURIComponent(url.username);
-  const database = decodeURIComponent(url.pathname.slice(1));
-  if (!/^[a-z_][a-z0-9_]{0,62}$/i.test(user) || !/^[a-z_][a-z0-9_]{0,62}$/i.test(database))
-    throw new Error('Expected simple PostgreSQL role and database names.');
+  const { url, user, database } = embeddedDatabaseTarget(env);
 
   const postgresEnv = { PATH: env.PATH, LANG: env.LANG, PGDATA: env.PGDATA };
   const versionPath = path.join(env.PGDATA, 'PG_VERSION');
@@ -94,6 +80,7 @@ export async function startLocalStack({
   waitForDatabase = probeDatabase,
 } = {}) {
   if (signal.aborted) return 0;
+  const databaseOnly = stagingDatabaseOnly(env);
   const { postgresEnv, user, database } = databaseSettings(env);
   const requestStop = Promise.withResolvers();
   const abort = () => requestStop.resolve('stopping');
@@ -119,6 +106,11 @@ export async function startLocalStack({
     const opening = await Promise.race([requestStop.promise, postgres.exited, ready]);
     if (opening !== 'ready') return opening === 'stopping' ? 0 : 1;
     if (signal.aborted) return 0;
+
+    if (databaseOnly) {
+      const closing = await Promise.race([requestStop.promise, postgres.exited]);
+      return closing === 'stopping' ? 0 : 1;
+    }
 
     next = watch(launch(process.execPath, ['server.js'], { env, stdio: 'inherit' }));
     const closing = await Promise.race([requestStop.promise, postgres.exited, next.exited]);

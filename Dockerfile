@@ -55,7 +55,7 @@ COPY --from=qpdf /opt/qpdf/bin/qpdf /opt/qpdf/bin/qpdf
 COPY --from=builder --chown=70:70 /app/.work/next-build/standalone ./
 COPY --from=builder --chown=70:70 /app/.work/next-build/static ./.work/next-build/static
 COPY --from=builder --chown=70:70 /app/public ./public
-COPY --chown=70:70 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ops/image/start-local-stack.mjs ./ops/image/
+COPY --chown=70:70 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ops/image/start-local-stack.mjs ops/image/staging-mode.mjs ./ops/image/
 USER appuser
 RUN node ops/image/runtime-smoke.mjs
 COPY --from=qpdf /tmp/qpdf-source/LICENSE.txt /opt/qpdf/LICENSE.txt
