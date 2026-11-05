@@ -209,6 +209,7 @@ export async function runBackup(
       completedAt: new Date(checkedClock(clock())).toISOString(),
       complete: true as const,
       manifestSha256: createHash('sha256').update(manifestBytes).digest('hex'),
+      ...('imageId' in application ? { application } : {}),
       ciphertext: {
         key: `sets/${id}/payload.age`,
         byteLength: uploaded.byteLength,

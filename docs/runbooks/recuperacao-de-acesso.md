@@ -15,6 +15,16 @@ Uma conta Resend e o subdomínio escolhido `mail.joeldorosarioo.dev` podem atend
 
 Recuperação, tokens temporários, uso único, expiração, proteção contra abuso e sessões permanecem nativos e protegidos pelas garantias A1. A captura local não comprova entrega real. O adaptador oficial não oferece uma opção própria de timeout de envio; não se promete prazo de entrega com este incremento.
 
+## Captura local validada
+
+O ambiente local mantém o transporte de captura privada. Em 05/11/2026, a cópia restaurada do banco do portfólio passou pela solicitação nativa de recuperação, produziu uma mensagem capturada e aceitou a redefinição. A mesma sessão e a senha anteriores foram recusadas, a senha nova autenticou e a reutilização do token recebeu 403. Essa redefinição ocorreu somente na cópia restaurada. Os arquivos de captura do ensaio foram removidos ao encerrar o alvo. [Recibo do fluxo local](../verification/artifacts/E3-backup/local-portfolio-backup-restore-003.json)
+
+Para testar no ambiente de uso diário, solicite a recuperação no painel. As mensagens ficam no volume privado da aplicação. Copie a captura para o diretório ignorado do host e abra o arquivo mais recente para acessar o link local.
+
+```powershell
+docker compose -f compose.local.yaml cp portfolio:/app/.work/editorial-mail .work/editorial-mail-captures
+```
+
 ## Dados necessários para a prova real
 
 1. Confirmar no Resend que `mail.joeldorosarioo.dev` foi verificado com os registros DNS gerados pelo próprio serviço. Preservar registros do domínio principal e de outros projetos. Não habilitar recebimento/inboxes por causa da recuperação de senha.

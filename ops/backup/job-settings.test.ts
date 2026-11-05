@@ -22,6 +22,69 @@ const staging = {
   OPS_TEST_RUN_ID: undefined,
 };
 
+const localPortfolio = {
+  ...local,
+  APP_ENV: 'local',
+  DATABASE_URI: 'postgresql://portfolio:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
+  OPS_LOCAL_DATABASE_TARGET: '127.0.0.1:5432/a_design_for_life_rebuild',
+  OPS_BACKUP_SOURCE: 'portfolio-local',
+  OPS_APPLICATION_IMAGE_ID: 'sha256:' + 'a'.repeat(64),
+  OPS_APPLICATION_REVISION: 'draft-local-alpine3.24',
+  OPS_TEST_RUN_ID: undefined,
+};
+
+it('backs up the explicitly confirmed local portfolio with a local repository namespace', () => {
+  const job = selectBackupJob(localPortfolio, ['backup']);
+  expect(job).toMatchObject({
+    command: 'backup',
+    databaseUri: localPortfolio.DATABASE_URI,
+    namespace: { project: 'a-design-for-life', environment: 'local', source: 'portfolio-local' },
+  });
+  expect(job.application('3'.repeat(64))).toEqual({
+    imageId: 'sha256:' + 'a'.repeat(64),
+    revision: 'draft-local-alpine3.24',
+    schemaSha256: '3'.repeat(64),
+  });
+});
+
+it('keeps the local application identity independent of the operational image fingerprint', () => {
+  const job = selectBackupJob({ ...localPortfolio, OPS_SOURCE_SHA256: 'f'.repeat(64) }, ['backup']);
+  expect(job.application('3'.repeat(64))).toEqual({
+    imageId: localPortfolio.OPS_APPLICATION_IMAGE_ID,
+    revision: localPortfolio.OPS_APPLICATION_REVISION,
+    schemaSha256: '3'.repeat(64),
+  });
+});
+
+it.each([
+  [{ ...localPortfolio, OPS_LOCAL_DATABASE_TARGET: undefined }, ['backup']],
+  [{ ...localPortfolio, OPS_LOCAL_DATABASE_TARGET: '127.0.0.1:5432/another_database' }, ['backup']],
+  [{ ...localPortfolio, OPS_BACKUP_SOURCE: undefined }, ['backup']],
+  [{ ...localPortfolio, OPS_APPLICATION_IMAGE_ID: undefined }, ['backup']],
+  [{ ...localPortfolio, OPS_APPLICATION_REVISION: undefined }, ['backup']],
+  [{ ...localPortfolio, OPS_APPLICATION_IMAGE_ID: 'adfl:local-alpine3.24' }, ['backup']],
+  [{ ...localPortfolio, OPS_APPLICATION_REVISION: 'unidentified-source' }, ['backup']],
+  [localPortfolio, ['migrate']],
+  [
+    {
+      ...localPortfolio,
+      DATABASE_URI: localPortfolio.DATABASE_URI.replace('127.0.0.1', 'remote-db'),
+      OPS_LOCAL_DATABASE_TARGET: localPortfolio.OPS_LOCAL_DATABASE_TARGET.replace(
+        '127.0.0.1',
+        'remote-db',
+      ),
+    },
+    ['backup'],
+  ],
+] as const)(
+  'refuses local jobs without an exact loopback target or with migration effects',
+  (env, args) => {
+    expect(() => selectBackupJob(env, args)).toThrow(
+      'Invalid operational backup job configuration.',
+    );
+  },
+);
+
 it('binds local backup to the exact disposable test database and source revision', () => {
   const job = selectBackupJob(local, ['backup']);
   expect(job).toMatchObject({

@@ -1,6 +1,10 @@
 import { BlockList, isIP } from 'node:net';
 import { z } from 'zod';
-import { backupApplicationSchema, backupNamespaceSchema } from './contracts';
+import {
+  backupApplicationSchema,
+  backupImageIdentitySchema,
+  backupNamespaceSchema,
+} from './contracts';
 import { postgresDumpConnection } from './postgres-dump';
 
 const stagedMigration = z.literal('true');
@@ -29,7 +33,7 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
   if (
     args.length !== 1 ||
     (command !== 'backup' && command !== 'migrate') ||
-    (environment !== 'test' && environment !== 'staging') ||
+    (environment !== 'local' && environment !== 'test' && environment !== 'staging') ||
     !env.DATABASE_URI ||
     !/^age1[0-9a-z]{58}$/.test(env.OPS_BACKUP_RECIPIENT ?? '') ||
     [
@@ -52,7 +56,16 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
 
   const revision = env.OPS_SOURCE_REVISION ?? '';
   const fingerprint = env.OPS_SOURCE_SHA256 || undefined;
-  if (
+  const applicationImage =
+    environment === 'local'
+      ? backupImageIdentitySchema.safeParse({
+          imageId: env.OPS_APPLICATION_IMAGE_ID,
+          revision: env.OPS_APPLICATION_REVISION,
+        })
+      : undefined;
+  if (environment === 'local') {
+    if (!applicationImage?.success) throw invalid();
+  } else if (
     !(sourceRevision.test(revision) && fingerprint === undefined) &&
     !(
       environment === 'test' &&
@@ -74,6 +87,14 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
     )
       throw invalid();
     source = 'ops-' + ownership.data;
+  } else if (environment === 'local') {
+    if (
+      command !== 'backup' ||
+      !['127.0.0.1', 'localhost', '::1'].includes(connection.PGHOST) ||
+      env.OPS_LOCAL_DATABASE_TARGET !==
+        new URL(databaseUri).hostname + ':' + connection.PGPORT + '/' + connection.PGDATABASE
+    )
+      throw invalid();
   } else if (
     !stagingDatabaseHost(connection.PGHOST) ||
     env.OPS_STAGING_DATABASE_TARGET !==
@@ -95,10 +116,17 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
     namespace: namespace.data,
     recipient: env.OPS_BACKUP_RECIPIENT!,
     application: (schemaSha256: string) =>
-      backupApplicationSchema.parse({
-        revision,
-        ...(fingerprint === undefined ? {} : { sourceSha256: fingerprint }),
-        schemaSha256,
-      }),
+      backupApplicationSchema.parse(
+        applicationImage?.success
+          ? {
+              ...applicationImage.data,
+              schemaSha256,
+            }
+          : {
+              revision,
+              ...(fingerprint === undefined ? {} : { sourceSha256: fingerprint }),
+              schemaSha256,
+            },
+      ),
   };
 }

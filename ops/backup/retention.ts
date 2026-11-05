@@ -7,6 +7,7 @@ import {
   checkedClock,
   completeBackupMarkerSchema,
   sameNamespace,
+  sameBackupApplication,
   type CompleteBackupMarker,
 } from './contracts';
 
@@ -42,7 +43,8 @@ export function verifyCompletedBackup(input: unknown): VerifiedBackupCompletion 
   if (
     manifest.id !== marker.id ||
     manifest.createdAt !== marker.createdAt ||
-    !sameNamespace(manifest.namespace, marker.namespace)
+    !sameNamespace(manifest.namespace, marker.namespace) ||
+    !sameBackupApplication(marker.application, manifest.application)
   )
     throw new Error('Backup completion identity differs from its manifest');
   const receipt = Object.freeze({}) as VerifiedBackupCompletion;
@@ -68,7 +70,8 @@ export async function verifyCompletedBackupStream(input: {
     digest(manifestBytes) !== marker.manifestSha256 ||
     manifest.id !== marker.id ||
     manifest.createdAt !== marker.createdAt ||
-    !sameNamespace(manifest.namespace, marker.namespace)
+    !sameNamespace(manifest.namespace, marker.namespace) ||
+    !sameBackupApplication(marker.application, manifest.application)
   )
     throw new Error('Backup completion integrity was not verified');
   let byteLength = 0;

@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-05",
+  "scope": "Backup of the actual local portfolio database and its referenced R2 media. Independent PostgreSQL and filesystem restore with native captured recovery.",
+  "backup": {
+    "id": "d2c6a175-bd80-4ac5-b892-fad0ae8c915e",
+    "namespace": {
+      "project": "a-design-for-life",
+      "environment": "local",
+      "source": "portfolio-local"
+    },
+    "durationMs": 13583,
+    "byteLength": 6698792,
+    "ciphertextSha256": "797fb93121d5f28559b5d78ff92856951bceeeeb7bbd4021b06ede95791edc43",
+    "manifestSha256": "4a250287024b3675136cfe4ef7afd416dd203988edf952e706e9b000fee66a7c",
+    "sourceImage": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+    "backupImage": "sha256:c64314f18dfe8a0a1d15187217598b1cf8d3064b95ab87337cb759030fe6e61b",
+    "persistedStore": ".work/backup-sets",
+    "identityStoredSeparately": true,
+    "identityFile": ".work/backup-keys/local.agekey",
+    "privateIdentityPublished": false,
+    "sourceMountsReadOnly": true,
+    "jobUid": "70:70"
+  },
+  "restore": {
+    "runId": "dcb32c11-48c0-4821-8523-313be6d3d96d",
+    "sourceImage": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+    "backupImage": "sha256:c64314f18dfe8a0a1d15187217598b1cf8d3064b95ab87337cb759030fe6e61b",
+    "backupId": "d2c6a175-bd80-4ac5-b892-fad0ae8c915e",
+    "backupDurationMs": 13583,
+    "checks": {
+      "restoredCounts": {
+        "migrations": 16,
+        "users": 1,
+        "profiles": 2,
+        "navigation": 2,
+        "cases": 2,
+        "contents": 4,
+        "routes": 4,
+        "media": 7
+      },
+      "restoredRootSha256": "2b62daa905c05f9b1ead48d585340eef685b88cb73bda91c0a79a95d3acec95e",
+      "restoredObjectHashes": 28,
+      "http": {
+        "/pt": 200,
+        "/en": 200,
+        "/pt/cases": 200,
+        "/en/cases": 200,
+        "/pt/sobre": 200,
+        "/en/about": 200,
+        "/pt/cases/lorem-ipsum-01": 200,
+        "/en/cases/lorem-ipsum-01": 200,
+        "/en/cases/lorem-ipsum-02": 200,
+        "/pt/cases/lorem-ipsum-02": 200
+      },
+      "nativeRecovery": {
+        "initialLogin": 200,
+        "oneCapturedMessage": true,
+        "reset": 200,
+        "oldSessionRevoked": true,
+        "oldPasswordRejected": 401,
+        "newPasswordLogin": 200,
+        "usedTokenRejected": 403,
+        "mainAccountPasswordChanged": false
+      },
+      "mainCountsPreserved": true
+    },
+    "scopedResources": [],
+    "sourceCounts": {
+      "migrations": 16,
+      "users": 1,
+      "profiles": 2,
+      "navigation": 2,
+      "cases": 2,
+      "contents": 4,
+      "routes": 4,
+      "media": 7
+    },
+    "sourceRoot": {
+      "sha256": "2b62daa905c05f9b1ead48d585340eef685b88cb73bda91c0a79a95d3acec95e",
+      "generation": "5cdfc168-e8ae-4dcd-b777-57db24977586"
+    },
+    "currentStep": "native reset",
+    "restore": {
+      "backupId": "d2c6a175-bd80-4ac5-b892-fad0ae8c915e",
+      "restoredObjectCount": 28,
+      "rootGeneration": "5cdfc168-e8ae-4dcd-b777-57db24977586",
+      "durationMs": 15948
+    },
+    "completed": true,
+    "ownedDatabaseContainerRemoved": true
+  },
+  "validation": {
+    "red": {
+      "failed": 1,
+      "passed": 27
+    },
+    "focusedGreen": {
+      "files": 4,
+      "passed": 76,
+      "failed": 0
+    },
+    "typecheck": 0,
+    "targetedLint": 0
+  },
+  "priorAttempt": {
+    "result": "Harness cleanup expectation corrected from exit0 to accepted SIGTERM exit143 for direct Node server. The owned containers and abandoned lease were removed before retry.",
+    "sourceMutation": false
+  },
+  "limits": [
+    "Password recovery used private local capture. No external e-mail delivery was requested.",
+    "The persistent backup repository is local. A separate remote backup bucket was not used."
+  ]
+}

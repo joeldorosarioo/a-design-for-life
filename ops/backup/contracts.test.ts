@@ -10,6 +10,32 @@ const manifest = {
   publicRoot: null,
   objects: [],
 };
+it('records an immutable local application image and its inspected draft label in the archive', () => {
+  const application = {
+    imageId: 'sha256:' + 'd'.repeat(64),
+    revision: 'draft-local-alpine3.24',
+    schemaSha256: 'c'.repeat(64),
+  };
+  expect(backupManifestSchema.parse({ ...manifest, application }).application).toEqual(application);
+});
+
+it.each([
+  { revision: 'draft-local-alpine3.24', schemaSha256: 'c'.repeat(64) },
+  {
+    imageId: 'adfl:local-alpine3.24',
+    revision: 'draft-local-alpine3.24',
+    schemaSha256: 'c'.repeat(64),
+  },
+  {
+    imageId: 'sha256:' + 'd'.repeat(64),
+    revision: 'draft-local-alpine3.24',
+    sourceSha256: 'b'.repeat(64),
+    schemaSha256: 'c'.repeat(64),
+  },
+])('rejects unbound or mixed local application provenance', (application) => {
+  expect(backupManifestSchema.safeParse({ ...manifest, application }).success).toBe(false);
+});
+
 it('records an honest dirty local revision with the captured source fingerprint', () => {
   const result = backupManifestSchema.safeParse({
     ...manifest,

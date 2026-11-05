@@ -6,7 +6,7 @@ import path from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { z } from 'zod';
 import { publicRootSchema } from '../../src/helpers/payload/public-root';
-import { sameNamespace, validateBackupArchiveManifest } from './contracts';
+import { sameNamespace, sameBackupApplication, validateBackupArchiveManifest } from './contracts';
 import { localBackupRepositoryScope, withPrivateBackupWorkspace } from './repository';
 import { r2BackupReaderScope, type R2BackupReader } from './r2-repository';
 import { decryptBackupArchive } from './age';
@@ -65,7 +65,8 @@ export async function restoreBackup(options: RestoreBackupOptions): Promise<{
       manifest.id !== marker.id ||
       manifest.createdAt !== marker.createdAt ||
       !sameNamespace(manifest.namespace, marker.namespace) ||
-      !sameNamespace(scope.namespace, manifest.namespace)
+      !sameNamespace(scope.namespace, manifest.namespace) ||
+      !sameBackupApplication(marker.application, manifest.application)
     )
       throw new Error('Backup manifest identity differs from its repository');
     const entries = new Map(extracted.entries.map((entry) => [entry.name, entry.path]));

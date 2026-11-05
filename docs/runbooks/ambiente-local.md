@@ -14,10 +14,9 @@ if (-not (Test-Path -LiteralPath '.env')) { Copy-Item -LiteralPath '.env.example
 
 Preencha o `.env` ignorado pelo Git com `PAYLOAD_SECRET` de pelo menos 32 caracteres e `DATABASE_URI` do banco de desenvolvimento na porta 5432. Para usar o bucket real, configure as variáveis R2 do modelo. O volume PostgreSQL existente chama-se `a-design-for-life-rebuild-postgres-data`. Em uma máquina nova, crie esse volume com `docker volume create a-design-for-life-rebuild-postgres-data`.
 
-Nesta máquina, encerre `pnpm dev` com Ctrl+C e pare `a-design-for-life-rebuild-postgres` antes da primeira troca para o Compose. Preserve o contêiner antigo até confirmar a troca. Se o Compose falhar, pare `portfolio` antes de reiniciar o PostgreSQL antigo para evitar que dois processos abram o mesmo volume.
+A consolidação de 05/11/2026 reutilizou o volume PostgreSQL existente no serviço `portfolio`. Para iniciar o ambiente de uso diário, execute o Compose.
 
 ```powershell
-docker stop a-design-for-life-rebuild-postgres
 docker compose -f compose.local.yaml up -d --no-build --wait
 ```
 
@@ -29,11 +28,20 @@ Em um banco recém-inicializado, execute `pnpm migrate` no host antes de provisi
 
 As páginas públicas ficam em `http://localhost:3000/pt` e `http://localhost:3000/en`. O painel fica em `http://localhost:3000/admin`. Um banco sem perfil e navegação publicados devolve 404 nas páginas públicas. Durante o desenvolvimento do código, `pnpm dev` pode ser usado com o Next do contêiner parado e um PostgreSQL disponível na porta do `.env`.
 
-## Conta sintética local
+## Conta editorial e conteúdo local
 
-O primeiro cadastro público é bloqueado também no hook, pois o endpoint nativo first-register ignora access.create. A conta sintética usada na prova foi provisionada pela Local API em processo controlado, com contexto trustedAccountProvisioning explícito. O login real usa o fluxo nativo; não existe autenticação paralela.
+Defina `LOCAL_EDITOR_EMAIL` e `LOCAL_EDITOR_PASSWORD` somente no `.env` ignorado pelo Git. O comando abaixo cria a conta pela Local API autorizada. Uma conta com o mesmo e-mail preserva a senha e o registro existentes.
 
-Para reproduzir a preparação local, definir LOCAL_EDITOR_EMAIL e LOCAL_EDITOR_PASSWORD somente no .env ignorado, usar domínio .invalid para dados sintéticos e executar a mesma Local API em contexto de operador. Não passar senhas como argumentos ou registrá-las no relatório. O provisionamento de duas contas editoriais e recuperação completa é entregue em E1.7; esta base não promete esse fluxo completo.
+```powershell
+$env:APP_ENV = 'local'
+pnpm provision:editor
+```
+
+O painel em `http://localhost:3000/admin` usa essa conta e a autenticação nativa do Payload. O primeiro cadastro público segue bloqueado pelo hook editorial.
+
+Por autorização do usuário em 05/11/2026, o ambiente recebeu Lorem ipsum, dois cases em PT/EN, as cinco imagens originais do layout e dois PDFs demonstrativos. Contatos e currículos são exemplos temporários. O conteúdo pode ser substituído pelo painel. [Registro da preparação local](../verification/artifacts/E3-local/local-runtime-lorem-001.json)
+
+O e-mail usa captura local. O backup criptografado do ambiente pode ser gerado com `pnpm backup:local`. Os conjuntos ficam em `.work/backup-sets`; a identidade de recuperação fica separada em `.work/backup-keys/local.agekey`. O procedimento e a prova de restauração estão no [runbook de backup](backup-e-restauracao.md).
 
 ## Verificação
 

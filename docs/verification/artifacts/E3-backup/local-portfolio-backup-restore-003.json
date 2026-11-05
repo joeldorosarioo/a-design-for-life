@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-05",
+  "scope": "Post-SEO backup of the actual local portfolio database and referenced R2 media with durable source-application provenance. Independent PostgreSQL and filesystem restore with native captured recovery.",
+  "backup": {
+    "id": "f9d86c69-dd83-49fe-9849-cd35f982a68a",
+    "namespace": {
+      "project": "a-design-for-life",
+      "environment": "local",
+      "source": "portfolio-local"
+    },
+    "durationMs": 7537,
+    "byteLength": 6719272,
+    "ciphertextSha256": "cec65bd06808af943bb12860dc5e82d73fe1e99ab80e711a7fcb64837701ce18",
+    "manifestSha256": "4cf340e35dd846b0700e077df3495809950d9d0ffc690b392eea3e794efcfac7",
+    "application": {
+      "imageId": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+      "revision": "draft-local-alpine3.24",
+      "schemaSha256": "d2923bddb2698729ede60e37703a6deac4eae5cdcd0e5a41dab6c5ee7a787735"
+    },
+    "sourceImage": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+    "backupImage": "sha256:0c525ddeeeadc5c63a951576368828ca0d48a2d913a9fdaf6fa9841a780a453c",
+    "operationalImageSourceSha256": "e2cac7329fd94a79c4c8c2b38cd140bb377645ecf961e304f55bebe24314e561",
+    "persistedStore": ".work/backup-sets",
+    "identityStoredSeparately": true,
+    "identityFile": ".work/backup-keys/local.agekey",
+    "privateIdentityPublished": false,
+    "sourceMountsReadOnly": true,
+    "jobUid": "70:70"
+  },
+  "restore": {
+    "runId": "d7e3ae6a-06ae-4957-93ff-fe683981f08a",
+    "sourceImage": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+    "backupImage": "sha256:0c525ddeeeadc5c63a951576368828ca0d48a2d913a9fdaf6fa9841a780a453c",
+    "backupId": "f9d86c69-dd83-49fe-9849-cd35f982a68a",
+    "backupDurationMs": 7537,
+    "checks": {
+      "restoredCounts": {
+        "migrations": 16,
+        "users": 1,
+        "profiles": 2,
+        "navigation": 2,
+        "cases": 2,
+        "contents": 4,
+        "routes": 4,
+        "media": 7
+      },
+      "restoredRootSha256": "136fbe05670ef86bb5f734c081f609cbc97c47910b66d9ab5872c806cc28a387",
+      "restoredObjectHashes": 28,
+      "http": {
+        "/pt": 200,
+        "/en": 200,
+        "/pt/cases": 200,
+        "/en/cases": 200,
+        "/pt/sobre": 200,
+        "/en/about": 200,
+        "/pt/cases/lorem-ipsum-01": 200,
+        "/pt/cases/lorem-ipsum-02": 200,
+        "/en/cases/lorem-ipsum-01": 200,
+        "/en/cases/lorem-ipsum-02": 200
+      },
+      "nativeRecovery": {
+        "initialLogin": 200,
+        "oneCapturedMessage": true,
+        "reset": 200,
+        "oldSessionRevoked": true,
+        "oldPasswordRejected": 401,
+        "newPasswordLogin": 200,
+        "usedTokenRejected": 403,
+        "mainAccountPasswordChanged": false
+      },
+      "mainCountsPreserved": true
+    },
+    "scopedResources": [],
+    "sourceCounts": {
+      "migrations": 16,
+      "users": 1,
+      "profiles": 2,
+      "navigation": 2,
+      "cases": 2,
+      "contents": 4,
+      "routes": 4,
+      "media": 7
+    },
+    "sourceRoot": {
+      "sha256": "136fbe05670ef86bb5f734c081f609cbc97c47910b66d9ab5872c806cc28a387",
+      "generation": "02dc28fd-0812-4e11-9090-b53f3e03cdee"
+    },
+    "applicationProvenance": {
+      "marker": {
+        "imageId": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+        "revision": "draft-local-alpine3.24",
+        "schemaSha256": "d2923bddb2698729ede60e37703a6deac4eae5cdcd0e5a41dab6c5ee7a787735"
+      },
+      "encryptedManifest": {
+        "imageId": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+        "revision": "draft-local-alpine3.24",
+        "schemaSha256": "d2923bddb2698729ede60e37703a6deac4eae5cdcd0e5a41dab6c5ee7a787735"
+      },
+      "inspectedImageMatched": true
+    },
+    "currentStep": "native reset",
+    "restore": {
+      "backupId": "f9d86c69-dd83-49fe-9849-cd35f982a68a",
+      "restoredObjectCount": 28,
+      "rootGeneration": "02dc28fd-0812-4e11-9090-b53f3e03cdee",
+      "durationMs": 17544
+    },
+    "completed": true,
+    "ownedDatabaseContainerRemoved": true
+  },
+  "validation": {
+    "focusedGreen": {
+      "files": 7,
+      "passed": 104,
+      "failed": 0,
+      "skipped": 0
+    },
+    "typecheck": 0,
+    "targetedLint": 0,
+    "localMediaRoot": "Configured local MEDIA_STORAGE_ROOT is validated within the mounted private-media volume and explicitly forwarded to the job."
+  },
+  "previousProof": {
+    "receipt": "local-portfolio-backup-restore-002.json",
+    "preserved": true,
+    "limitation": "The earlier functional restore proof appended the application image to its output while the encrypted manifest identified the operational source fingerprint. This new set records the inspected application image and revision durably in both its marker and encrypted manifest."
+  },
+  "compatibility": "Existing archives and markers using clean revisions or draft source fingerprints remain readable. New local jobs require the inspected source application image and revision.",
+  "limits": [
+    "Password recovery used private local capture.",
+    "The persistent backup repository is local. A separate remote backup bucket was not used."
+  ]
+}

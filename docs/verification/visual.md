@@ -42,3 +42,9 @@ Gates 003 locais: verify exit 0, 1.164 passes/2 skips Windows/144 arquivos, mais
 Restore real 003: 10 rascunhos, 7 mídias Native, Root nulo, 0 operações públicas, 28 objetos e SQL de dados coincidente. Smoke008/004 passou 18 HTML/5 mídias/9 menus/2 capas claras, sem escritas. Falhas 001–003 do smoke eram precondições do helper, não RED da aplicação.
 
 O primeiro snapshot revisado é `A2-review-c9be4dc-v2`, com QA real aprovada. A entrega final usará `outputs/A2` depois de documentos B/CI; o SHA e a prova exata ficam no recibo externo `outputs/A2-entrega.json`. Não afirmar existência desses destinos finais antes da geração real. Sem publicação de produção, analytics, contratação ou etapa 3. Nenhum resultado visual substitui leitor de tela ou conformidade WCAG.
+
+## Diagnóstico local de 05/11/2026 com Lorem Ipsum
+
+A imagem Alpine `sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81` serviu oito páginas PT/EN em 390, 820 e 1440 px. Foram capturadas 24 telas e mapeadas 16 referências originais do Figma por frame e SHA-256. A amostra inspecionada inclui Home PT desktop/móvel, Case01 PT móvel e Sobre EN desktop. A hierarquia, os recortes dos originais e o fluxo das seções renderizaram sem sobreposição ou overflow nesses alvos.
+
+Os textos temporários foram autorizados pelo usuário e identificam a demonstração local. As capturas atuais e as referências têm conteúdos editoriais distintos. A comparação de pixels e o aceite do conteúdo definitivo ficam associados à sua revisão posterior. [Recibo e mapeamento](artifacts/E4-local-audit/local-placeholder-audit-2026-11-05.json)

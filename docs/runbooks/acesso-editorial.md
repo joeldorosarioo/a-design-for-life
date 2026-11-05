@@ -6,6 +6,8 @@ O acesso usa exclusivamente autenticação, hash de senha, sessões, cookies e r
 
 A primeira conta deve ser provisionada por código de servidor executado em implantação controlada, com `context: { trustedAccountProvisioning: true }`. Essa capacidade não é aceita de corpo, query ou headers HTTP. O guard também protege o bootstrap nativo `first-register`, que ignora o access control internamente. O provisionamento inicial real e os dois e-mails responsáveis são entradas de E3.1; testes locais usam exclusivamente identidades sintéticas `example.invalid` no PostgreSQL isolado.
 
+No ambiente local, preencha `LOCAL_EDITOR_EMAIL` e `LOCAL_EDITOR_PASSWORD` no `.env` privado e execute `pnpm provision:editor` após `pnpm migrate`. O comando valida `APP_ENV=local` antes de carregar a aplicação e usa a Local API nativa com o contexto de provisionamento. Se o e-mail já existir, conserva a conta e a senha atuais. A saída informa somente se a conta foi criada ou já existia. Em seguida, `pnpm provision:structural` prepara os quatro rascunhos de Perfil e Navegação, em PT/EN.
+
 Depois de autenticar, uma pessoa editora pode criar a segunda conta em **Users** no painel nativo. Cada conta deve pertencer a uma pessoa, com senha própria; ambas têm as mesmas permissões editoriais. Criação anônima, leitura/alteração anônima e exclusão de usuários são recusadas no servidor. Não reutilizar a senha de fixture e não incluir credenciais em argumentos de comandos, logs, capturas ou repositório.
 
 ## Sessão e prévia

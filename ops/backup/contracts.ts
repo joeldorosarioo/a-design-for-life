@@ -5,7 +5,7 @@ const digest = z.string().regex(/^[a-f0-9]{64}$/);
 const timestamp = z.iso.datetime({ precision: 3 });
 export const backupNamespaceSchema = z.strictObject({
   project: z.literal('a-design-for-life'),
-  environment: z.enum(['test', 'staging', 'production']),
+  environment: z.enum(['local', 'test', 'staging', 'production']),
   source: z.string().regex(/^[a-z0-9][a-z0-9-]{2,62}$/),
 });
 const artifact = z.strictObject({ byteLength: z.number().int().positive().safe(), sha256: digest });
@@ -15,7 +15,12 @@ const setIdentity = {
   namespace: backupNamespaceSchema,
   createdAt: timestamp,
 };
+export const backupImageIdentitySchema = z.strictObject({
+  imageId: z.string().regex(/^sha256:[a-f0-9]{64}$/),
+  revision: z.string().regex(/^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/),
+});
 export const backupApplicationSchema = z.union([
+  backupImageIdentitySchema.extend({ schemaSha256: digest }),
   z.strictObject({ revision: z.string().regex(/^[a-f0-9]{40}$/), schemaSha256: digest }),
   z.strictObject({
     revision: z.literal('draft-uncommitted'),
@@ -45,6 +50,7 @@ export const completeBackupMarkerSchema = z
     complete: z.literal(true),
     completedAt: timestamp,
     manifestSha256: digest,
+    application: backupApplicationSchema.optional(),
     ciphertext: artifact.extend({ key: z.string() }),
   })
   .superRefine((value, context) => {
@@ -73,6 +79,14 @@ export function sameNamespace(first: BackupNamespace, second: BackupNamespace): 
     first.environment === second.environment &&
     first.source === second.source
   );
+}
+
+export function sameBackupApplication(
+  recorded: CompleteBackupMarker['application'],
+  application: BackupManifest['application'],
+): boolean {
+  if (recorded === undefined) return !('imageId' in application);
+  return JSON.stringify(recorded) === JSON.stringify(application);
 }
 
 export function validateBackupArchiveManifest(input: {

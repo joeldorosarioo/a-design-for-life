@@ -119,7 +119,7 @@ async function main() {
           source,
           tools,
         };
-        if (settings.namespace.environment === 'test')
+        if (settings.namespace.environment === 'local' || settings.namespace.environment === 'test')
           return runBackup({
             ...options,
             repository: await createLocalBackupRepository({ namespace: settings.namespace }),

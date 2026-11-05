@@ -2,6 +2,20 @@
 
 Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job Linux de execução separada está disponível. A ativação do agendamento e a validação com o bucket de homologação continuam pendentes.
 
+## Backup do portfólio local
+
+Com o serviço `portfolio` do Compose local em execução, use o comando abaixo na raiz do projeto.
+
+```powershell
+pnpm backup:local
+```
+
+O helper lê o `.env` existente e confere sua correspondência com o contêiner local. Ele deriva a confirmação `OPS_LOCAL_DATABASE_TARGET`, identifica os volumes e executa a imagem `adfl:backup-local` como UID/GID 70:70. A origem é montada somente para leitura. Quando a mídia está no R2, o job lê os objetos referenciados com a configuração da aplicação. O modo `APP_ENV=local` aceita somente `backup` e exige um alvo PostgreSQL de loopback confirmado exatamente.
+
+Os conjuntos criptografados ficam em `.work/backup-sets`. A identidade age permanece separada em `.work/backup-keys/local.agekey`, com o recipient público em `local-recipient.txt`. O helper reutiliza essa identidade nas execuções seguintes e valida tamanho e SHA-256 do arquivo persistido antes de informar sucesso. O marcador persistido e o manifesto criptografado registram a imagem imutável da aplicação, sua revisão inspecionada e o hash do schema. O helper exige que o marcador devolvido corresponda à imagem e à revisão observadas antes de informar sucesso. Para armazenamento local com `MEDIA_STORAGE_ROOT` explícito, ele valida o caminho dentro de `/app/.work/private-media` e o encaminha ao job. A imagem operacional deve ser construída a partir da fonte verificada com seu fingerprint antes da primeira execução.
+
+Em 05/11/2026, o banco local com uma conta editorial, dois perfis, duas navegações, dois cases, quatro traduções e sete registros de mídia gerou um conjunto de 6.719.272 bytes em 7.537 ms. A restauração em PostgreSQL independente levou 17.544 ms, incluindo a verificação de 28 objetos por SHA-256, dez páginas PT/EN com HTTP 200 e a jornada nativa de recuperação com captura privada. Na cópia restaurada, a senha nova funcionou, a senha e a sessão anteriores foram recusadas e o token usado foi rejeitado. O banco de origem conservou suas contagens e a senha da conta principal. [Recibo do backup local](../verification/artifacts/E3-backup/local-portfolio-backup-restore-003.json)
+
 ## Job Linux de backup
 
 Construa `ops/backup/Dockerfile` a partir do commit da aplicação e registre a revisão e o ID da imagem antes de habilitar o job. A imagem usa UID/GID 10001:10001 por padrão e inclui Node 24.22.2, pnpm 12.10.1, o cliente PostgreSQL 17.11 e age 1.3.2. A imagem usa um contexto próprio que inclui código e lockfile. Guarde a identidade privada do age fora da VPS. Injete somente o recipient público em `OPS_BACKUP_RECIPIENT`.

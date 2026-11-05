@@ -1,0 +1,55 @@
+{
+  "runId": "689cd776a1a6c404f87e7e29",
+  "date": "2026-11-05",
+  "database": "adfl_test_r2_689cd776a1a6c404f87e7e29",
+  "scope": "Native Payload on an isolated local PostgreSQL with a uniquely owned subprefix of the configured development R2 prefix.",
+  "checks": {
+    "invalidUploadRejectedWithoutObjects": true,
+    "authenticatedPreview": 200,
+    "anonymousBeforePublication": 404,
+    "confirmedPublishedOriginal": 200,
+    "confirmedPublishedDerivative": 200,
+    "originalSha256Verified": true,
+    "derivativeWidth": 640,
+    "unsignedS3OriginalAndDerivative": [
+      400,
+      400
+    ],
+    "afterWithdrawalOriginalAndDerivative": [
+      404,
+      404
+    ]
+  },
+  "objectsCreated": 5,
+  "originalSha256": "d21fd67d05f98cb5f007f960ae98a04562dc58402cc06ce1005a115387b8448e",
+  "publicDomainConfigurationVerified": false,
+  "completed": true,
+  "cleanup": {
+    "ownedObjectsRemoved": 5,
+    "objectsOutsideOwnedPrefixTargeted": 0,
+    "ownedPrefixEmpty": true
+  },
+  "payloadPoolClosed": true,
+  "databaseIsolation": {
+    "host": "127.0.0.1",
+    "port": 55438,
+    "image": "sha256:ab20e934b27ba3ff927c1b4c9ff8cf6c32f315f743efe68dd3441182a87fb085",
+    "runtimeUser": "70:70",
+    "storage": "tmpfs",
+    "ownedContainerRemoved": true,
+    "migrationsApplied": 16
+  },
+  "integrationPrerequisites": {
+    "r2MediaConfigurationPresent": true,
+    "resendApiKeyPresent": false,
+    "editorialSenderPresent": false,
+    "authorizedEditorialRecipientPresent": false,
+    "dedicatedBackupBucketAndCredentialsPresent": false
+  },
+  "remainingVerification": [
+    "Cloudflare account settings for custom public domains and r2.dev.",
+    "Provider failure and cache verification in the designated staging environment.",
+    "Real password-recovery delivery after configuring Resend sender and authorized recipient.",
+    "Backup bucket and credentials distinct from media, followed by remote backup retention and restoration."
+  ]
+}

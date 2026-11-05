@@ -345,3 +345,34 @@ toolProof(
     expect(boundary.calls).toBe(0);
   },
 );
+
+toolProof(
+  'rejects marker application provenance that differs from the encrypted manifest before acquiring a target',
+  async () => {
+    const data = await setup();
+    const receipt = await backup(data);
+    const boundary = targetBoundary();
+    await writeFile(
+      path.join(data.repository.root, 'sets', receipt.marker.id, 'complete.json'),
+      JSON.stringify({
+        ...receipt.marker,
+        application: {
+          imageId: 'sha256:' + '9'.repeat(64),
+          revision: 'draft-local-alpine3.24',
+          schemaSha256: 'b'.repeat(64),
+        },
+      }),
+    );
+    await expect(
+      restoreBackup({
+        backupId: receipt.marker.id,
+        repository: data.repository,
+        identityPath: config!.identityPath,
+        ageBinary: config!.ageBinary,
+        target: boundary.target,
+        async verifyRestored() {},
+      }),
+    ).rejects.toThrow('Backup manifest identity differs from its repository');
+    expect(boundary.calls).toBe(0);
+  },
+);
