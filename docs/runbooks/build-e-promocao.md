@@ -65,3 +65,15 @@ O workflow continua somente de preflight, sem push automático. A publicação p
 Antes da promoção real: comprovar staging autenticada, configuração mínima em execução, isolamento banco/bucket/cache/segredos, backup e migração controlada quando necessária. A4 e autorização de lançamento continuam necessárias. Rollback troca a imagem por digest compatível com o schema; não reverte dados automaticamente.
 
 Referências de implementação: [Next standalone e tracing](https://nextjs.org/docs/app/api-reference/config/next-config-js/output), [Next self-hosting/configuração de execução](https://nextjs.org/docs/app/guides/self-hosting). Os padrões de tracing permanecem estreitos e estáticos conforme `bundle-analyzable-paths`; não há include da raiz inteira.
+
+## Candidata privada publicada — 05/11/2026
+
+A exportação exata do commit `196bfad427880ad91b0605d9f55f6b8dd711278a` foi construída, auditada e verificada localmente. O package GHCR permanece privado. O manifesto foi relido com autenticação e conferido contra o SHA256 do corpo; seu config digest corresponde ao ID local `9946d30ff31a`. O pull pelo digest usando o token de leitura passou e a tentativa anônima foi recusada. A credencial de publicação no Docker foi substituída pela de leitura; o token de publicação fornecido inclui o escopo adicional repo e deve ser revogado ou restringido depois do uso.
+
+```text
+ghcr.io/joeldorosarioo/a-design-for-life@sha256:69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa
+```
+
+No formulário Docker Image do Coolify, use o repository em Image name, deixe Tag vazio e informe somente os64caracteres hexadecimais em SHA256 digest. Create Application cria a configuração; o deploy fica para depois do login de registry, variáveis reais, volumes persistentes, quotas e proteção da homologação.
+
+A imagem inicia somente Next por padrão. Para o requisito de PostgreSQL e aplicação no mesmo contêiner, configure em General → Custom Docker Options `--entrypoint "node /app/ops/image/start-local-stack.mjs"`, segundo o [suporte do Coolify ao entrypoint com argumentos](https://coolify.io/docs/applications/builds/custom-docker-options#override-the-entrypoint). Configure Ports Exposes como3000, preserve volumes UID/GID70 e mantenha5432 sem publicação no host da VPS. A validação desse executor na VPS ainda é uma prova própria. [Recibo da publicação privada](../verification/artifacts/E3-image/ghcr-private-candidate-196bfad-001.json).

@@ -90,6 +90,8 @@ Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsu
 
 05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md.
 
+05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json.
+
 Estimativa: 24–40 horas de trabalho, excluindo esperas externas; revisar diante de bloqueio concreto.
 
 Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.
