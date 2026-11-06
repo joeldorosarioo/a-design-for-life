@@ -23,6 +23,12 @@
 !testing/setup/configure-backup-tools.mjs
 # Native backup integration tests import these modules during type checking.
 !ops/backup/age.ts
+# Operational backup runtime shares the application image and publication locks.
+!ops/backup/build-runtime.mjs
+!ops/backup/runtime-entry.ts
+!ops/backup/job-runner.ts
+!ops/backup/job-settings.ts
+!ops/backup/postgres-dump.ts
 !ops/backup/archive.ts
 !ops/backup/contracts.ts
 !ops/backup/local-target.ts

@@ -14,6 +14,10 @@ RUN mkdir /tmp/qpdf-source && tar -xzf /tmp/qpdf.tar.gz -C /tmp/qpdf-source --st
     && cmake --build /tmp/qpdf-build --target qpdf --parallel 3 \
     && install -D -s /tmp/qpdf-build/qpdf/qpdf /opt/qpdf/bin/qpdf
 
+FROM node-base AS backup-crypto
+ADD --checksum=sha256:cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10 https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-linux-amd64.tar.gz /tmp/age.tar.gz
+RUN tar -xzf /tmp/age.tar.gz -C /tmp && /tmp/age/age --version
+
 FROM node-base AS dependencies
 ARG TARGETARCH
 RUN test "$TARGETARCH" = "amd64"
@@ -29,7 +33,9 @@ RUN APP_ENV=test \
     PAYLOAD_SECRET=synthetic-image-build-only-not-a-runtime-secret \
     DATABASE_URI=postgres://synthetic:synthetic@127.0.0.1:9/adfl_test_image_build \
     MEDIA_BUCKET=adfl-test-image-build \
-    pnpm build && node ops/image/assemble-standalone.mjs . .work/next-build/standalone
+    pnpm build \
+    && node ops/image/assemble-standalone.mjs . .work/next-build/standalone \
+    && node ops/backup/build-runtime.mjs . .work/next-build/standalone
 
 FROM docker.io/library/postgres:17.11-alpine3.24@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4 AS runtime
 WORKDIR /app
@@ -40,18 +46,23 @@ ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=3000 \
     HOSTNAME=0.0.0.0 \
-    MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf
+    MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf \
+    OPS_SOURCE_REVISION=$SOURCE_REVISION
 # Keep UID/GID 70 so existing PostgreSQL and application volumes retain access.
-RUN apk add --no-cache ca-certificates libjpeg-turbo libstdc++ libcrypto3 zlib \
+RUN apk add --no-cache ca-certificates libjpeg-turbo libstdc++ libcrypto3 zlib tar \
     && apk add --no-cache --virtual .account-tools shadow \
     && test "$(id -u postgres):$(id -g postgres)" = "70:70" \
     && usermod --login appuser --shell /sbin/nologin postgres \
     && apk del .account-tools \
     && test "$(id -u appuser):$(id -g appuser)" = "70:70" \
-    && mkdir -p .work/publication .work/private-media .work/editorial-mail .work/next-build/cache \
-    && chown -R 70:70 .work
+    && if [ ! -e /usr/bin/tar ]; then ln -s /bin/tar /usr/bin/tar; fi \
+    && /usr/bin/tar --version | head -n 1 | grep -Fx 'tar (GNU tar) 1.35' \
+    && mkdir -p .work/publication .work/private-media .work/editorial-mail .work/next-build/cache .work/backup-private .work/backup-sets \
+    && chown -R 70:70 .work \
+    && chmod 0700 .work/backup-private .work/backup-sets
 COPY --from=node-base /usr/local/bin/node /usr/local/bin/node
 COPY --from=qpdf /opt/qpdf/bin/qpdf /opt/qpdf/bin/qpdf
+COPY --from=backup-crypto /tmp/age/age /opt/adfl-age/age
 COPY --from=builder --chown=70:70 /app/.work/next-build/standalone ./
 COPY --from=builder --chown=70:70 /app/.work/next-build/static ./.work/next-build/static
 COPY --from=builder --chown=70:70 /app/public ./public

@@ -2,6 +2,32 @@
 
 Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job Linux de execução separada está disponível. A ativação do agendamento e a validação com o bucket de homologação continuam pendentes.
 
+## Bucket R2 de backup do staging
+
+O bucket autorizado é `eliana-novaes-media-backups`, separado de `eliana-novaes-media`, na mesma conta e jurisdição do `R2_ENDPOINT` existente. Usar classe Standard e manter Public Development URL desabilitada e nenhum Custom Domain. Não configurar expiração automática de objetos: o repositório remoto ainda não aplica retenção por conjuntos completos.
+
+Em R2 Object Storage → Overview → Account Details → API Tokens → Manage, criar um Account API token chamado `eliana-novaes-media-backups`, com Object Read & Write restrito somente a esse bucket. Guardar os campos S3 Access Key ID e Secret Access Key no `.env` local:
+
+```dotenv
+OPS_BACKUP_BUCKET=eliana-novaes-media-backups
+OPS_BACKUP_ACCESS_KEY_ID=<Access Key ID>
+OPS_BACKUP_SECRET_ACCESS_KEY=<Secret Access Key>
+```
+
+A configuração foi disponibilizada pelo usuário em06/11/2026. Upload/readback por SHA-256 passaram e o arquivo próprio de teste foi removido. Ambas as credenciais recusaram acesso ao outro bucket. O endpoint S3 recusou GET anônimo com400/InvalidArgument; essa prova não inspeciona o painel de domínios públicos. [Recibo de preparação](../verification/artifacts/E3-backup/staging-full-backup-preparation-001.json).
+
+A cópia de segurança do banco atual foi criptografada e restaurada em PostgreSQL17 isolado:31tabelas, schema17, conta/sessões e todas as linhas corresponderam ao snapshot somente leitura. Essa cópia não inclui objetosR2 nem raiz publicada e não é apresentada como backup completo.
+
+## Executor na mesma imagem Alpine
+
+`ops/backup/build-runtime.mjs` empacota o entrypoint em `src/backup-runtime.mjs` e acrescenta somente suas dependências ao standalone. A imagem da aplicação inclui age1.3.2, GNUtar1.35 e o cliente PostgreSQL17.11 já existente. O comando operacional é `node --conditions=react-server src/backup-runtime.mjs backup`, executado como `appuser`70:70 no contêiner da aplicação. Não requer outro serviço ou imagem operacional em execução.
+
+O entrypoint exige staging privado, LinuxAlpine3.24 e UID70. Traduz somente o endereço PostgreSQL de loopback para o único IPv4 privado observado no próprio contêiner. A origem, o banco e o namespace de publicação permanecem os mesmos; alvos externos, porta diferente, produção e interfaces ambíguas são recusados. O job compartilhado conserva o advisory lock, snapshot nativo, fence dos objetos, checksums e upload/readback antes do marcador completo.
+
+O operador configura no executor os três campos `OPS_BACKUP_*` acima, o recipient público `OPS_BACKUP_RECIPIENT`, a identidade técnica `OPS_BACKUP_SOURCE` e a revisão imutável da imagem. A identidade privada age permanece fora da VPS, da imagem, do Git e do bucket. Preparação do comando não comprova execução remota, agendamento ou restauração do conjunto.
+
+Referências: [criar bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/), [credenciais R2](https://developers.cloudflare.com/r2/api/tokens/) e [acesso público](https://developers.cloudflare.com/r2/buckets/public-buckets/).
+
 ## Backup do portfólio local
 
 Com o serviço `portfolio` do Compose local em execução, use o comando abaixo na raiz do projeto.
