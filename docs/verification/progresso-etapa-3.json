@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-11-06T20:52:31.735Z",
+  "updatedAt": "2026-11-06T21:42:48.284Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 27,
+  "completedItems": 29,
   "totalItems": 30,
-  "percentage": 90,
-  "closedTasks": ["E3.2", "E3.4", "E3.6"],
+  "percentage": 96.7,
+  "closedTasks": ["E3.1", "E3.2", "E3.4", "E3.5", "E3.6"],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
   "remainingEstimate": "24–40 horas de trabalho, excluindo esperas externas; revisar diante de bloqueio concreto.",
   "criteria": [
     {
       "id": "E3.1.1",
-      "done": false,
+      "done": true,
       "summary": "Levantar acessos existentes; apresentar VPS/plano e custos atuais antes de contratar. Dimensionar aplicação, PostgreSQL, homologação, build quando aplicável e pico de processamento medido. Registrar domínio escolhido pelo usuário, registry, origens dos ambientes, conta/propriedade GA4, envio de e-mail e credenciais mínimas. Nenhum domínio, provedor ou preço é presumido por este plano.",
-      "evidence": "Infraestrutura existente, origens, registry, Resend e conta/propriedade/fluxo GA4 identificados. O responsável informou2núcleos,8GBRAM,100GBdisco e8TBtransferência, além do valor contratado, guardado apenas no inventário privado ignorado. Não foi informado período do valor, região ou nome do plano; não se inferiu preço mensal nem KVM2 pelo hardware. Domínio próprio permanece adiado pelo usuário. Falta dimensionamento por consumo/pico medidos na Atlas compartilhada, com cotas atuais do app preservadas. A chave SSH existente foi localizada e seu caminho configurado no.env; ativação do agent e teste de autenticação aguardam execução interativa do usuário. [Inventário relatado](artifacts/E3-storage/r2-privacy-atlas-operator-confirmation-005.json)."
+      "evidence": "Inventário da Atlas compartilhada e valor contratado registrados, com o valor em arquivo privado e sem presumir periodicidade/plano/região. SSH v2 confirmou2CPU,8326619136bytesRAM e102888095744bytesdisco; appuser/1CPU/2GiB preservados. Dezenove GETs públicos autenticados (13páginas/6imagens,concorrência2) retornaram200; mediana101ms/máximo710ms, pico amostrado CGROUP298885120bytes, semOOM. O pico acumulado do app343818240bytes é desde sua criação e não atribuído ao backup. Na mesma imagem/host, validação/processamento reais de JPEG9,88MB ePNG12MP passaram em1822ms/654ms, com tetos1CPU/1GiB e hash de cinco derivados cada; nenhuma gravação PostgreSQL/R2. O host conservou mais de6GB disponíveis; ensaios e volumes próprios removidos. Builds ficam no GitHub, backup/recuperação têm medições próprias. Dimensionamento aceito somente para o staging atual observado; produção/domínio próprio adiados pelo responsável. [Medições e limites](artifacts/E3-operations/atlas-capacity-001.json), [leituras reais](artifacts/E3-operations/atlas-public-read-cgroup-001.json) e [preservação](artifacts/E3-operations/atlas-post-verification-preservation-001.json)."
     },
     {
       "id": "E3.1.2",
@@ -144,9 +144,9 @@
     },
     {
       "id": "E3.5.3",
-      "done": false,
+      "done": true,
       "summary": "Configurar logs de execução consultáveis no Coolify e separados dos de implantação; proposta inicial de rotação: 10 MB por arquivo, três arquivos por contêiner, ajustada ao disco contratado e documentada em A3. Diagnósticos não expõem credenciais, configuração ou texto de rascunho. Sem monitoramento/notificações externos.",
-      "evidence": "Logs de execução são consultáveis pelo Coolify e há configuração proposta10MB×3arquivos, mas a API restrita não retornou o LogConfig efetivo do contêiner. Falta comprovar driver/limites aplicados, consulta separada dos logs de implantação e rotação na Atlas. Não se confunde configuração declarada com inspeção do host. MCP autenticado ainda precisa ser carregado nesta conversa; SSH por chave não está disponível em modo não interativo. [Runbook](../runbooks/saude-e-logs.md) e [runtime MCP](artifacts/E3-operations/hostinger-mcp-runtime-availability-001.json)."
+      "evidence": "Inspeção SSH confirmou no app real LogConfig json-file, max-size10m e max-file3; APIs Coolify de execução e implantação responderam200 por endpoints separados, com correlação/resultado estruturados consultáveis e corpos brutos somente em memória. Na mesma imagem/host, fixture isolada sem rede/segredos emitiu42MiB e rotacionou para três arquivos/25067752bytes, mantendo5980registros finais contíguos e descartando4772antigos. Reinício da mesma fixture preservou configuração/marcador anterior e confirmou novo processo; limpeza removeu contêiner/volumes próprios. O app real manteve CID, início e Healthy; nenhuma configuração global ou deploy foi alterado. Logs Docker pertencem ao contêiner e não se promete histórico após sua remoção. [Prova integral](artifacts/E3-operations/staging-log-rotation-002.json) e [runbook](../runbooks/saude-e-logs.md)."
     },
     {
       "id": "E3.5.4",
@@ -223,7 +223,9 @@
     "06/11/2026: E3.2.2 encerrado com persistência real da raiz confirmada entre substituições do contêiner e provas locais existentes de falha/isolamento; E3.5.2 encerrado com configuração efetiva, limite de início medido6011ms e negativa/recuperação do probe na mesma imagem local. Nenhum reinício ou pane foi provocado no staging. E3.2 é a terceira frente integralmente encerrada.",
     "06/11/2026: E3.3.5 encerrado com ausência de banner previamente comprovada, custo estático do SDK oficial e dos assets implantados, e gate completo atual exit0 (235arquivos/2306testes,3skips). A correção send_page_view=false global reproduziu RED6→GREEN5eventos com os mesmos bytes oficiais, sem encaminhar medição. E3.3.2/.3 seguem abertos pelos ajustes do painel e revisão dos dados adicionais/leituras de cookie; nenhum SDK foi ativado. Hostinger autenticado em Windows/WSL, mas suas ferramentas não estão carregadas no runtime desta conversa; nenhuma operação na VPS ocorreu via MCP.",
     "06/11/2026: responsável confirmou que desativou Google signals, coleta granular de localização/dispositivo e dados fornecidos pelo usuário. Somado à confirmação anterior de Medição aprimorada OFF e aos controles denied/anúncios/User-ID já comprovados no código/SDK, encerra E3.3.2. Relato do operador identificado em recibo separado, sem alterar a captura histórica do SDK. E3.3.3 permanece aberto e Analytics não foi ativado; nenhuma alteração de código, novo teste de SDK ou deploy nesta atualização.",
-    "06/11/2026: responsável confirmou R2 sem Custom Domains ativos e Public Development URL desativada no escopo solicitado dos dois buckets; E3.1.4 encerrado com as provas anteriores de privacidade/cache/falhas. Capacidade Atlas relatada:2núcleos/8GBRAM/100GBdisco/8TBtransferência. Valor contratado guardado em inventário privado, sem presumir periodicidade. E3.1.1 permanece aberto por medição de carga/recursos. Caminho da chave existente configurado no.env, sem gerar chave, ativar serviço Windows, alterar VPS ou disparar deploy."
+    "06/11/2026: responsável confirmou R2 sem Custom Domains ativos e Public Development URL desativada no escopo solicitado dos dois buckets; E3.1.4 encerrado com as provas anteriores de privacidade/cache/falhas. Capacidade Atlas relatada:2núcleos/8GBRAM/100GBdisco/8TBtransferência. Valor contratado guardado em inventário privado, sem presumir periodicidade. E3.1.1 permanece aberto por medição de carga/recursos. Caminho da chave existente configurado no.env, sem gerar chave, ativar serviço Windows, alterar VPS ou disparar deploy.",
+    "06/11/2026: SSH nativo com a nova chave v2 do usuário autenticou em BatchMode/host key estrita; caminho no.env atualizado sem ler a chave privada nem receber sua passphrase. E3.5.3 encerrado por LogConfig real, consulta Coolify separada e rotação/restart comprovados em fixture própria no mesmo host/imagem. O app real não reiniciou, permaneceu Healthy e os recursos descartáveis foram removidos. Nenhum log bruto ou segredo foi persistido. E3.5 passa a frente integralmente encerrada.",
+    "06/11/2026: E3.1.1 encerrado com inventário/custo relatados e dimensionamento medido da Atlas no escopo autorizado de staging. O app real passou19GETs, semOOM; validação/derivação de2originais sintéticos na mesma imagem/host passou com fontes iguais ao deploy cd74963. Host com folga observada, builds fora da VPS, cotas do app preservadas. Ensaios próprios foram removidos, mesmoCID/Healthy confirmado e nenhuma produção, dump novo ou escrita noR2 executados. E3.1 passa a frente integralmente encerrada; E3.3.3 é o único critério restante."
   ],
-  "recalculatedAt": "2026-11-06T20:52:35.516Z"
+  "recalculatedAt": "2026-11-06T21:50:04.468Z"
 }

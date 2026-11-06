@@ -1,0 +1,818 @@
+{
+  "version": 1,
+  "kind": "atlas-measured-staging-capacity-and-processing-peak",
+  "checkedAt": "2026-11-06T21:40:39.194Z",
+  "status": "passed",
+  "criterion": "E3.1.1",
+  "scope": "Current shared Atlas staging and two bounded synthetic media pipeline cases; no production launch or sustained-load guarantee.",
+  "applicationRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+  "imageDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+  "reportedPlan": {
+    "cpuCores": 2,
+    "memoryGB": 8,
+    "diskGB": 100,
+    "bandwidthTB": 8,
+    "planName": "not-inferred",
+    "billingPeriod": "not-inferred",
+    "region": "not-inferred",
+    "paidAmountProvided": true,
+    "paidAmountPubliclyPersisted": false,
+    "paidAmountRecordedInOwnerOnlyIgnoredOperatorInventory": true
+  },
+  "measuredHost": {
+    "cpuCount": 2,
+    "memoryTotalBytes": 8326619136,
+    "availableMemoryBeforeBytes": 6802890752,
+    "minimumAvailableDuringSyntheticCasesBytes": 6626668544,
+    "diskBefore": {
+      "total": 102888095744,
+      "used": 7995887616,
+      "free": 94875430912
+    },
+    "swapTotalBytes": 0,
+    "afterFixtureCleanup": {
+      "memory": {
+        "MemTotalBytes": 8326619136,
+        "MemAvailableBytes": 6762938368,
+        "SwapTotalBytes": 0,
+        "SwapFreeBytes": 0
+      },
+      "disk": {
+        "total": 102888095744,
+        "used": 7985639424,
+        "free": 94885679104
+      },
+      "loadAverage": [
+        0.24658203125,
+        0.11767578125,
+        0.08837890625
+      ],
+      "cpuCount": 2
+    },
+    "osPrettyName": "Ubuntu 24.04.5 LTS",
+    "dockerVersion": "29.9.3",
+    "platformEvidence": "docs/verification/artifacts/E3-operations/atlas-post-verification-preservation-001.json"
+  },
+  "liveApplication": {
+    "evidence": "docs/verification/artifacts/E3-operations/atlas-public-read-cgroup-001.json",
+    "preservationEvidence": "docs/verification/artifacts/E3-operations/atlas-post-verification-preservation-001.json",
+    "observedRequests": {
+      "count": 19,
+      "pageReads": 13,
+      "imageReads": 6,
+      "allStatuses200": true,
+      "medianLatencyMs": 101,
+      "maxLatencyMs": 710,
+      "totalResponseBytes": 1072371
+    },
+    "cgroup": {
+      "memoryCurrentBeforeBytes": 242720768,
+      "memoryCurrentAfterBytes": 292114432,
+      "sampledMemoryMaxBytes": 298885120,
+      "memoryPeakSinceCreationBytes": 343818240,
+      "cpuDeltaUsec": 1189975,
+      "durationMs": 12059,
+      "oomDelta": 0,
+      "oomKillDelta": 0
+    },
+    "limitsSource": "Root SSH inspection recorded separately in preservationEvidence; no limits changed by this proof.",
+    "effectiveLimits": {
+      "nanoCpus": 1000000000,
+      "memoryBytes": 2147483648,
+      "memorySwapBytes": 2147483648
+    },
+    "user": "appuser",
+    "finalHealthStatus": "healthy"
+  },
+  "pipelineSourceProvenance": {
+    "exactWorkingBytesComparedWithDeployedGitRevision": true,
+    "files": [
+      {
+        "path": "src/features/media-library/server/validate-upload.ts",
+        "sha256": "d1f52691a3a5a11bc8a5db40f878376278e57ab04d931c62dd64a266ac03833d",
+        "exactDeployedBytes": true
+      },
+      {
+        "path": "src/features/media-library/server/process-image.ts",
+        "sha256": "fe31a02721fbb605ea2463c62517ecb68f3e909ce706d3201d91a9312499c29a",
+        "exactDeployedBytes": true
+      },
+      {
+        "path": "src/features/media-library/server/preflight-upload.ts",
+        "sha256": "31b8c8283fec035acfb58b42b9d10953ab08c2c27e72af1ef27627be3aa8a6ec",
+        "exactDeployedBytes": true
+      },
+      {
+        "path": "src/features/media-library/server/inspect-pdf.ts",
+        "sha256": "7f935b8351d46bce73a4686a4a8048e2461e3a4e6827a39ea545986aadf358e3",
+        "exactDeployedBytes": true
+      },
+      {
+        "path": "src/features/media-library/server/check-pdf-streams.ts",
+        "sha256": "1c3a271344683f02e0a65ae414d9a8410f6b5614385515d872b54fe59e97f6ac",
+        "exactDeployedBytes": true
+      },
+      {
+        "path": "src/features/media-library/contracts/pdf-inspection.schema.ts",
+        "sha256": "066daf5f979b4c21d48660dc15208866ded72c1f3fc47297abddd449e57e739d",
+        "exactDeployedBytes": true
+      }
+    ],
+    "method": "Bundle unmodified validateUpload/processImage and their local validation dependencies; all npm dependencies external and resolved from the actual immutable image. No application code was modified."
+  },
+  "instrumentation": {
+    "files": [
+      {
+        "path": ".work/stage3-finalization-2026-11-06/capacity-5575fd7a-ef7b-4fec-b9d8-87e764ba5db0/entry.ts",
+        "sha256": "b7460cefc4766abb3c52bf137ade6f322cd91e1d48ee4f45044bc06c70dbe871",
+        "visibility": "private-ignored"
+      },
+      {
+        "path": ".work/stage3-finalization-2026-11-06/capacity-5575fd7a-ef7b-4fec-b9d8-87e764ba5db0/capacity-fixture.mjs",
+        "sha256": "9301ad8935a31d59e723c710278a8b922200ec42d429d9416c0c68f2cbaf217c",
+        "visibility": "private-ignored"
+      },
+      {
+        "path": ".work/stage3-finalization-2026-11-06/capacity-5575fd7a-ef7b-4fec-b9d8-87e764ba5db0/driver.mjs",
+        "sha256": "78401b929785b9ccd05e65b62df603a35cef07d3750e6396b742db0997331237",
+        "visibility": "private-ignored"
+      },
+      {
+        "path": ".work/stage3-finalization-2026-11-06/capacity-5575fd7a-ef7b-4fec-b9d8-87e764ba5db0/runner.py",
+        "sha256": "b4a258ecbae367db31cd88ab105f29259e88431a8718b4e2bc9355d86848d641",
+        "visibility": "private-ignored"
+      },
+      {
+        "path": ".work/stage3-finalization-2026-11-06/capacity-5575fd7a-ef7b-4fec-b9d8-87e764ba5db0/result.json",
+        "sha256": "0b847cff083aaed57167e5e3bfe7036dbfab9a5cc9f8648b829f37a8f332deb8",
+        "visibility": "private-ignored"
+      }
+    ],
+    "entryBundleBytes": 16205,
+    "remoteTransfer": "Three synthetic files via authenticated SSH/SCP into UUID-owned root directory with mode0700; input and bundle hashes reread before execution. Individual files readonly-bound into the isolated fixture.",
+    "postResultObservationHoldMs": 1800
+  },
+  "isolatedMedia": {
+    "version": 1,
+    "kind": "atlas-bounded-isolated-media-capacity",
+    "runId": "5575fd7a-ef7b-4fec-b9d8-87e764ba5db0",
+    "startedAt": "2026-11-06T21:38:17Z",
+    "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "requestedLimits": {
+      "nanoCpus": 1000000000,
+      "memoryBytes": 1073741824,
+      "memoryAndSwapBytes": 1073741824,
+      "pidsLimit": 128,
+      "user": "70:70",
+      "network": "none",
+      "capabilities": "ALL dropped",
+      "noNewPrivileges": true,
+      "readOnlyRoot": true
+    },
+    "hostBefore": {
+      "memory": {
+        "MemTotalBytes": 8326619136,
+        "MemAvailableBytes": 6802890752,
+        "SwapTotalBytes": 0,
+        "SwapFreeBytes": 0
+      },
+      "disk": {
+        "total": 102888095744,
+        "used": 7995887616,
+        "free": 94875430912
+      },
+      "loadAverage": [
+        0.2041015625,
+        0.10498046875,
+        0.08349609375
+      ],
+      "cpuCount": 2
+    },
+    "cases": [
+      {
+        "case": "jpeg-near-limit",
+        "containerId": "5c4f75812600591ca9904ee139d51f6de36af521908e59910bf597148a9d163c",
+        "hostBefore": {
+          "memory": {
+            "MemTotalBytes": 8326619136,
+            "MemAvailableBytes": 6794117120,
+            "SwapTotalBytes": 0,
+            "SwapFreeBytes": 0
+          },
+          "disk": {
+            "total": 102888095744,
+            "used": 7995887616,
+            "free": 94875430912
+          },
+          "loadAverage": [
+            0.2041015625,
+            0.10498046875,
+            0.08349609375
+          ],
+          "cpuCount": 2
+        },
+        "actualLimits": {
+          "NanoCpus": 1000000000,
+          "Memory": 1073741824,
+          "MemorySwap": 1073741824,
+          "PidsLimit": 128,
+          "NetworkMode": "none",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "ReadonlyRootfs": true
+        },
+        "anonymousVolumes": 1,
+        "cgroupInitial": {
+          "memory.current": 10399744,
+          "memory.peak": 10702848,
+          "memory.max": 1073741824,
+          "memory.swap.max": 0,
+          "memory.events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "cpu.max": "100000 100000",
+          "cpu.stat": {
+            "usage_usec": 43663,
+            "user_usec": 27304,
+            "system_usec": 16358,
+            "core_sched.force_idle_usec": 0,
+            "nr_periods": 1,
+            "nr_throttled": 0,
+            "throttled_usec": 0,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "pids.current": 6,
+          "pids.max": 128
+        },
+        "report": {
+          "kind": "atlas-isolated-media-capacity",
+          "case": "jpeg-near-limit",
+          "input": {
+            "name": "noise-near10mb.jpg",
+            "bytes": 9876792,
+            "width": 3600,
+            "height": 2700,
+            "type": "image/jpeg",
+            "sha256": "218de90aa474774cbc40157267496be66026b9950431add571b368cf228a2ec5"
+          },
+          "runtime": {
+            "node": "v24.22.2",
+            "platform": "linux",
+            "arch": "x64",
+            "uid": 70,
+            "gid": 70,
+            "alpine": "3.24.3",
+            "sharp": "0.35.5",
+            "vips": "8.18.7"
+          },
+          "timingMs": {
+            "validation": 263.82795500000003,
+            "processing": 1558.4325170000002,
+            "totalValidationAndProcessing": 1822.2604720000002
+          },
+          "memoryBytes": {
+            "beforeInput": {
+              "rss": 87281664,
+              "heapTotal": 18542592,
+              "heapUsed": 11891936,
+              "external": 3121382,
+              "arrayBuffers": 274743
+            },
+            "afterInput": {
+              "rss": 97730560,
+              "heapTotal": 20377600,
+              "heapUsed": 10270192,
+              "external": 12646725,
+              "arrayBuffers": 10020571
+            },
+            "afterProcessing": {
+              "rss": 147701760,
+              "heapTotal": 20377600,
+              "heapUsed": 10699168,
+              "external": 29292913,
+              "arrayBuffers": 23316799
+            }
+          },
+          "usage": {
+            "beforeInput": {
+              "userCPUTime": 146191,
+              "systemCPUTime": 80023,
+              "maxRSS": 85236,
+              "sharedMemorySize": 0,
+              "unsharedDataSize": 0,
+              "unsharedStackSize": 0,
+              "minorPageFault": 15625,
+              "majorPageFault": 0,
+              "swappedOut": 0,
+              "fsRead": 0,
+              "fsWrite": 0,
+              "ipcSent": 0,
+              "ipcReceived": 0,
+              "signalsCount": 0,
+              "voluntaryContextSwitches": 671,
+              "involuntaryContextSwitches": 686
+            },
+            "beforeProcessing": {
+              "userCPUTime": 165682,
+              "systemCPUTime": 86481,
+              "maxRSS": 95440,
+              "sharedMemorySize": 0,
+              "unsharedDataSize": 0,
+              "unsharedStackSize": 0,
+              "minorPageFault": 18308,
+              "majorPageFault": 0,
+              "swappedOut": 0,
+              "fsRead": 0,
+              "fsWrite": 0,
+              "ipcSent": 0,
+              "ipcReceived": 0,
+              "signalsCount": 0,
+              "voluntaryContextSwitches": 753,
+              "involuntaryContextSwitches": 699
+            },
+            "afterProcessing": {
+              "userCPUTime": 1814860,
+              "systemCPUTime": 187741,
+              "maxRSS": 220808,
+              "sharedMemorySize": 0,
+              "unsharedDataSize": 0,
+              "unsharedStackSize": 0,
+              "minorPageFault": 78289,
+              "majorPageFault": 0,
+              "swappedOut": 0,
+              "fsRead": 0,
+              "fsWrite": 0,
+              "ipcSent": 0,
+              "ipcReceived": 0,
+              "signalsCount": 0,
+              "voluntaryContextSwitches": 2943,
+              "involuntaryContextSwitches": 2546
+            },
+            "cpuProcessingUsec": 1750438,
+            "maxRssKiB": 220808,
+            "maxRssScope": "Cumulative since this fresh Node child started, including imports and input; not an incremental allocation."
+          },
+          "variants": [
+            {
+              "variant": "w342",
+              "width": 342,
+              "height": 256,
+              "bytes": 6568,
+              "sha256": "fc23402aaf965f5c3e83e3eb8751dc81c5b56f58f6dc3dfe6a26b99ad41b6c21"
+            },
+            {
+              "variant": "w640",
+              "width": 640,
+              "height": 480,
+              "bytes": 71776,
+              "sha256": "c75f56e22423d05919f53cbe17b7b27c9276e4b04c58f3ce7a9c1a77bdcea901"
+            },
+            {
+              "variant": "w960",
+              "width": 960,
+              "height": 720,
+              "bytes": 231526,
+              "sha256": "43c4f7dc6936944406e5ef8d5b5479b58951a6d8a7a79df8f863359ad2e63120"
+            },
+            {
+              "variant": "w1280",
+              "width": 1280,
+              "height": 960,
+              "bytes": 473248,
+              "sha256": "0ec137de2ed478820c32aae21746f4f1d87c8d8616b891442c2fedf6fc94f17c"
+            },
+            {
+              "variant": "w2560",
+              "width": 2560,
+              "height": 1920,
+              "bytes": 2636462,
+              "sha256": "92267a3b0e32d372d1e25e053c305b4d641ccf8d756a18bf3391d8afb9792483"
+            }
+          ]
+        },
+        "exitCode": 0,
+        "oomKilled": false,
+        "cgroupBeforeExit": {
+          "memory.current": 55914496,
+          "memory.peak": 163917824,
+          "memory.max": 1073741824,
+          "memory.swap.max": 0,
+          "memory.events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "cpu.max": "100000 100000",
+          "cpu.stat": {
+            "usage_usec": 2013042,
+            "user_usec": 1821231,
+            "system_usec": 191811,
+            "core_sched.force_idle_usec": 0,
+            "nr_periods": 22,
+            "nr_throttled": 1,
+            "throttled_usec": 10693,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "pids.current": 14,
+          "pids.max": 128
+        },
+        "cgroupPeakBytes": 163917824,
+        "cgroupScope": "Fresh one-case fixture lifetime, including imports/input and a brief post-result observation hold; not the live app cgroup.",
+        "sampleCount": 16,
+        "minimumHostMemoryAvailableBytes": 6626668544,
+        "elapsedContainerSeconds": 4.427396544997464,
+        "hostAfter": {
+          "memory": {
+            "MemTotalBytes": 8326619136,
+            "MemAvailableBytes": 6724333568,
+            "SwapTotalBytes": 0,
+            "SwapFreeBytes": 0
+          },
+          "disk": {
+            "total": 102888095744,
+            "used": 7996010496,
+            "free": 94875308032
+          },
+          "loadAverage": [
+            0.26806640625,
+            0.1201171875,
+            0.0888671875
+          ],
+          "cpuCount": 2
+        }
+      },
+      {
+        "case": "png-12mp",
+        "containerId": "f88beab59b372651bd6c90a61089e70809f7e6864693a4ab21a0c82ba2a14c65",
+        "hostBefore": {
+          "memory": {
+            "MemTotalBytes": 8326619136,
+            "MemAvailableBytes": 6735454208,
+            "SwapTotalBytes": 0,
+            "SwapFreeBytes": 0
+          },
+          "disk": {
+            "total": 102888095744,
+            "used": 7995895808,
+            "free": 94875422720
+          },
+          "loadAverage": [
+            0.26806640625,
+            0.1201171875,
+            0.0888671875
+          ],
+          "cpuCount": 2
+        },
+        "actualLimits": {
+          "NanoCpus": 1000000000,
+          "Memory": 1073741824,
+          "MemorySwap": 1073741824,
+          "PidsLimit": 128,
+          "NetworkMode": "none",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "ReadonlyRootfs": true
+        },
+        "anonymousVolumes": 1,
+        "cgroupInitial": {
+          "memory.current": 10260480,
+          "memory.peak": 10686464,
+          "memory.max": 1073741824,
+          "memory.swap.max": 0,
+          "memory.events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "cpu.max": "100000 100000",
+          "cpu.stat": {
+            "usage_usec": 47775,
+            "user_usec": 31865,
+            "system_usec": 15909,
+            "core_sched.force_idle_usec": 0,
+            "nr_periods": 1,
+            "nr_throttled": 0,
+            "throttled_usec": 0,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "pids.current": 7,
+          "pids.max": 128
+        },
+        "report": {
+          "kind": "atlas-isolated-media-capacity",
+          "case": "png-12mp",
+          "input": {
+            "name": "compressible-12mp.png",
+            "bytes": 353304,
+            "width": 4000,
+            "height": 3000,
+            "type": "image/png",
+            "sha256": "78ebf4dd83fccf5a77d4a0de354ede053d940f15ac0ffb5f96eafc62d23995a3"
+          },
+          "runtime": {
+            "node": "v24.22.2",
+            "platform": "linux",
+            "arch": "x64",
+            "uid": 70,
+            "gid": 70,
+            "alpine": "3.24.3",
+            "sharp": "0.35.5",
+            "vips": "8.18.7"
+          },
+          "timingMs": {
+            "validation": 252.575429,
+            "processing": 401.214188,
+            "totalValidationAndProcessing": 653.789617
+          },
+          "memoryBytes": {
+            "beforeInput": {
+              "rss": 87298048,
+              "heapTotal": 18542592,
+              "heapUsed": 11886216,
+              "external": 3186918,
+              "arrayBuffers": 274743
+            },
+            "afterInput": {
+              "rss": 87822336,
+              "heapTotal": 18542592,
+              "heapUsed": 11953208,
+              "external": 3123237,
+              "arrayBuffers": 628191
+            },
+            "afterProcessing": {
+              "rss": 127762432,
+              "heapTotal": 19066880,
+              "heapUsed": 12399424,
+              "external": 3564361,
+              "arrayBuffers": 994661
+            }
+          },
+          "usage": {
+            "beforeInput": {
+              "userCPUTime": 130518,
+              "systemCPUTime": 64131,
+              "maxRSS": 85252,
+              "sharedMemorySize": 0,
+              "unsharedDataSize": 0,
+              "unsharedStackSize": 0,
+              "minorPageFault": 15685,
+              "majorPageFault": 0,
+              "swappedOut": 0,
+              "fsRead": 0,
+              "fsWrite": 0,
+              "ipcSent": 0,
+              "ipcReceived": 0,
+              "signalsCount": 0,
+              "voluntaryContextSwitches": 655,
+              "involuntaryContextSwitches": 509
+            },
+            "beforeProcessing": {
+              "userCPUTime": 132088,
+              "systemCPUTime": 64131,
+              "maxRSS": 85764,
+              "sharedMemorySize": 0,
+              "unsharedDataSize": 0,
+              "unsharedStackSize": 0,
+              "minorPageFault": 15873,
+              "majorPageFault": 0,
+              "swappedOut": 0,
+              "fsRead": 0,
+              "fsWrite": 0,
+              "ipcSent": 0,
+              "ipcReceived": 0,
+              "signalsCount": 0,
+              "voluntaryContextSwitches": 664,
+              "involuntaryContextSwitches": 509
+            },
+            "afterProcessing": {
+              "userCPUTime": 684766,
+              "systemCPUTime": 133593,
+              "maxRSS": 156220,
+              "sharedMemorySize": 0,
+              "unsharedDataSize": 0,
+              "unsharedStackSize": 0,
+              "minorPageFault": 65393,
+              "majorPageFault": 0,
+              "swappedOut": 0,
+              "fsRead": 0,
+              "fsWrite": 0,
+              "ipcSent": 0,
+              "ipcReceived": 0,
+              "signalsCount": 0,
+              "voluntaryContextSwitches": 3026,
+              "involuntaryContextSwitches": 1873
+            },
+            "cpuProcessingUsec": 622140,
+            "maxRssKiB": 156220,
+            "maxRssScope": "Cumulative since this fresh Node child started, including imports and input; not an incremental allocation."
+          },
+          "variants": [
+            {
+              "variant": "w342",
+              "width": 342,
+              "height": 257,
+              "bytes": 230,
+              "sha256": "35a469e060c319e156afaaa8adcb987cc2bac6df8cf5dde5c5276b38de5dae25"
+            },
+            {
+              "variant": "w640",
+              "width": 640,
+              "height": 480,
+              "bytes": 606,
+              "sha256": "72bade4917ded6557c50c8ff2ce9b24213ddca6852f0efc5cfd6a2ac82982a1f"
+            },
+            {
+              "variant": "w960",
+              "width": 960,
+              "height": 720,
+              "bytes": 1288,
+              "sha256": "7fbc1376b6571c1150d9385dd4f28f00c97c135b6e0acaf65fd506bd50b2690c"
+            },
+            {
+              "variant": "w1280",
+              "width": 1280,
+              "height": 960,
+              "bytes": 2244,
+              "sha256": "baefcda57548498aef94e46cdd5481b17f3b3c0b76efded774481d456ed2eeba"
+            },
+            {
+              "variant": "w2560",
+              "width": 2560,
+              "height": 1920,
+              "bytes": 8798,
+              "sha256": "7a0007a193585baae4b9b8cda9e39c718086ca010374db3c9f579eae2429af45"
+            }
+          ]
+        },
+        "exitCode": 0,
+        "oomKilled": false,
+        "cgroupBeforeExit": {
+          "memory.current": 30384128,
+          "memory.peak": 98656256,
+          "memory.max": 1073741824,
+          "memory.swap.max": 0,
+          "memory.events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "cpu.max": "100000 100000",
+          "cpu.stat": {
+            "usage_usec": 826559,
+            "user_usec": 689784,
+            "system_usec": 136774,
+            "core_sched.force_idle_usec": 0,
+            "nr_periods": 9,
+            "nr_throttled": 3,
+            "throttled_usec": 20709,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "pids.current": 14,
+          "pids.max": 128
+        },
+        "cgroupPeakBytes": 98656256,
+        "cgroupScope": "Fresh one-case fixture lifetime, including imports/input and a brief post-result observation hold; not the live app cgroup.",
+        "sampleCount": 7,
+        "minimumHostMemoryAvailableBytes": 6644178944,
+        "elapsedContainerSeconds": 3.1296433550014626,
+        "hostAfter": {
+          "memory": {
+            "MemTotalBytes": 8326619136,
+            "MemAvailableBytes": 6752043008,
+            "SwapTotalBytes": 0,
+            "SwapFreeBytes": 0
+          },
+          "disk": {
+            "total": 102888095744,
+            "used": 7996014592,
+            "free": 94875303936
+          },
+          "loadAverage": [
+            0.24658203125,
+            0.11767578125,
+            0.08837890625
+          ],
+          "cpuCount": 2
+        }
+      }
+    ],
+    "cleanup": {
+      "containers": [
+        {
+          "id": "5c4f75812600591ca9904ee139d51f6de36af521908e59910bf597148a9d163c",
+          "removed": true,
+          "anonymousVolumesRemoved": 1
+        },
+        {
+          "id": "f88beab59b372651bd6c90a61089e70809f7e6864693a4ab21a0c82ba2a14c65",
+          "removed": true,
+          "anonymousVolumesRemoved": 1
+        }
+      ],
+      "remainingOwnedContainers": 0,
+      "remoteDirectoryRemoved": true
+    },
+    "passed": true,
+    "verifiedImage": {
+      "id": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+      "repositoryDigests": [
+        "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a"
+      ],
+      "user": "appuser"
+    },
+    "hostAfter": {
+      "memory": {
+        "MemTotalBytes": 8326619136,
+        "MemAvailableBytes": 6762938368,
+        "SwapTotalBytes": 0,
+        "SwapFreeBytes": 0
+      },
+      "disk": {
+        "total": 102888095744,
+        "used": 7985639424,
+        "free": 94885679104
+      },
+      "loadAverage": [
+        0.24658203125,
+        0.11767578125,
+        0.08837890625
+      ],
+      "cpuCount": 2
+    },
+    "completedAt": "2026-11-06T21:38:25Z"
+  },
+  "operationalSizing": {
+    "currentDisposition": "Keep the current one-CPU/two-GiB staging quota; observed reads and measured serial media samples fit it with substantial host headroom.",
+    "buildPlacement": "GitHub Actions outside Atlas, as already configured; no production build added on this host.",
+    "processingConcurrency": "Current ProcessingGate allows one active operation and one queued request; processImage sets sharp.concurrency(1).",
+    "backup": "The existing full-backup job completed in14692ms and recovery in46378ms in their own receipts. No new real dump or R2 write was triggered for this proof; live cgroup lifetime peak is not attributed specifically to backup.",
+    "disk": "Current PostgreSQL/cache/image/log allocations coexist with more than94billion free bytes in this observation; no growth rate or future storage guarantee inferred.",
+    "futureProduction": "Production remains deferred; this observation does not reserve capacity or approve co-location of future production/other projects."
+  },
+  "metricInterpretation": {
+    "processMaxRss": "KiB, cumulative since each fresh Node process began, including imports and input; not incremental allocation.",
+    "cgroupPeak": "Bytes charged to the fresh fixture cgroup and descendants since creation; includes validation, processing, integrity checks and brief observation hold.",
+    "notInterchangeable": "Process RSS, memory charged to a cgroup and Docker CLI memory have different accounting. They are not added together, treated as the same metric or used to attribute a live-operation peak.",
+    "cpu": "Per-process CPU is microseconds; cgroup cpu.stat is cumulative for the fresh fixture lifetime. Explicit CPU quotas were inspected, not inferred from elapsed time."
+  },
+  "limits": [
+    "Only two preserved still-image controls and a brief19request/concurrency2staging observation were measured.",
+    "The media fixture exercises real validation/decoding/derivative processing, not Payload transactions, PostgreSQL writes, R2 delivery or a simultaneous whole-stack workload.",
+    "A fresh1GiBfixture limit is separate from the2GiBlive-app limit; successful execution is not a universal bound for every allowed input.",
+    "The live-app memory.peak is cumulative since container creation and can include earlier operations; no reset or single-operation attribution was performed.",
+    "Host free-memory fluctuations can include other host work; no other application data was inspected or modified.",
+    "No plan name, recurring monthly cost, payment period, renewal cost or region was inferred."
+  ],
+  "effects": {
+    "applicationCodeChanges": 0,
+    "applicationRestarts": 0,
+    "databaseAccessesByFixture": 0,
+    "r2RequestsByFixture": 0,
+    "emailsSent": 0,
+    "analyticsRequests": 0,
+    "newImagesBuiltOrPulled": 0,
+    "productionAccessed": false,
+    "syntheticContainersCreated": 2,
+    "syntheticContainersRemoved": 2,
+    "syntheticAnonymousVolumesRemoved": 2,
+    "remoteSyntheticDirectoryRemoved": true
+  },
+  "relatedEvidence": [
+    "docs/verification/artifacts/E3-operations/atlas-public-read-cgroup-001.json",
+    "docs/verification/artifacts/E3-operations/atlas-post-verification-preservation-001.json",
+    "docs/verification/artifacts/E3-backup/staging-retention-operation-001.json",
+    "docs/verification/artifacts/E3-backup/staging-recovery-copy-001.json",
+    "docs/verification/artifacts/E3-storage/r2-privacy-atlas-operator-confirmation-005.json"
+  ],
+  "references": [
+    "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+    "https://docs.docker.com/engine/containers/resource_constraints/",
+    "https://nodejs.org/api/process.html#processresourceusage"
+  ]
+}

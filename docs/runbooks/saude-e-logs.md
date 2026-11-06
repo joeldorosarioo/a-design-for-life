@@ -2,7 +2,7 @@
 
 ## Estado validado
 
-O staging usa o probe Node incluído na mesma imagem privada homologada. A configuração real, GET/HEAD autenticados e o início observado foram conferidos sem reiniciar ou interromper o atendimento. Os diagnósticos estruturados e o atendimento de cache durante indisponibilidade têm provas isoladas próprias. Driver, rotação efetiva e consulta dos logs operacionais continuam com verificação separada; o estado Healthy não encerra esses itens.
+O staging usa o probe Node incluído na mesma imagem privada homologada. A configuração real, GET/HEAD autenticados e o início observado foram conferidos sem reiniciar ou interromper o atendimento. Os diagnósticos estruturados e o atendimento de cache durante indisponibilidade têm provas isoladas próprias. Driver, limites e consulta separada de logs operacionais foram conferidos no app real. A rotação e a continuidade após reinício foram exercitadas em um contêiner sintético próprio no mesmo host, com a mesma imagem e configuração; o app em atendimento permaneceu intacto.
 
 ## Prontidão pública
 
@@ -71,20 +71,26 @@ Em homologação e produção, a configuração do Payload projeta somente diagn
 
 O diagnóstico fica em `GET /api/operations/diagnostics` e exige uma sessão Native da coleção `users`. Uma chamada anônima recebe 401 vazio antes das sondas. A resposta autenticada usa `private, no-store` e devolve somente o estado de PostgreSQL e R2. PostgreSQL usa `SELECT 1` e R2 usa `HeadBucket` no bucket configurado, com uma janela de resposta de 2 s para cada sonda. Em modo de armazenamento local, R2 aparece como `not-configured`. Dependência indisponível produz 503 apenas no diagnóstico. Se o próprio banco impedir a autenticação Native, o endpoint pode ficar indisponível junto com o painel. O probe do Coolify continua apontando exclusivamente para `/health`. [Compatibilidade de HeadBucket](https://developers.cloudflare.com/r2/api/s3/api/#implemented-bucket-level-operations)
 
-## Consulta e rotação propostas
+## Consulta e rotação verificadas no staging
 
-Proposta inicial de rotação:10MB por arquivo e três arquivos por contêiner. Confirmar no executor/log driver disponível do Coolify, aplicar na configuração de infraestrutura apropriada e ajustar ao disco contratado antes de A3. Não existe configuração aplicada por este runbook.
+Em 06/11/2026, o `HostConfig.LogConfig` do contêiner real confirmou `json-file`, `max-size=10m` e `max-file=3`, exatamente a proposta inicial. Não foi necessário mudar o Docker daemon, aplicar flags, recriar o app ou disparar deploy. A configuração efetiva foi lida diretamente por SSH, com o app Healthy e a mesma imagem privada homologada. [Recibo completo](../verification/artifacts/E3-operations/staging-log-rotation-002.json).
 
-Separar logs de implantação (build/pull/início) dos logs de execução (stdout da aplicação). Demonstrar consulta por correlação e por resultado; provocar rotação com dados técnicos sintéticos sem segredos, verificar limite de disco, retenção e continuidade após reinício. Guardar configuração efetiva e recibos da prova. Não habilitar debug que inclua headers, env, SQL com valores privados ou conteúdo editorial.
+Os logs de execução foram consultados por `GET /api/v1/applications/{uuid}/logs?lines=all&show_timestamps=true`; os de implantação, por `GET /api/v1/deployments/{deploymentUuid}` para o deploy existente e finalizado. Ambos responderam 200 e seus corpos foram tratados somente em memória. A leitura de execução encontrou 25 linhas, incluindo uma linha JSON de `payload.runtime`, resultado `failure` e UUID de correlação válido; nenhum texto bruto, dado editorial ou credencial foi incluído no recibo. São superfícies separadas no Coolify: Runtime Logs e Deployment Logs. A consulta exige a capacidade `read:sensitive`; não expor tokens nos comandos ou nos registros. [API de execução](https://coolify.io/docs/api/endpoints/applications/get-application-logs-by-uuid) · [API de implantação](https://coolify.io/docs/api/endpoints/deployments/get-deployment-by-uuid).
 
-Não adicionar monitoramento ou notificações externos. A observação pelo próprio host não comprova detecção da queda da VPS.
+A prova de rotação usou um contêiner UUID próprio no mesmo Docker host, sem banco, credenciais da aplicação, rede ou portas publicadas. A mesma imagem iniciou somente o emissor Node sintético, como UID/GID 70, com 0,1 CPU, 128 MiB de memória, até 32 processos, capabilities removidas, `no-new-privileges`, raiz somente leitura e tmpfs pequeno. O driver e os limites eram idênticos aos do app. Foram emitidos 42 MiB em 10.752 registros, em lotes de 1 MiB com pausa mínima de 500 ms. A leitura por `docker logs` comprovou 5.980 registros finais contíguos, sequências 4.772–10.751; os primeiros 4.772 foram descartados pela rotação.
+
+O `stat` apenas dos arquivos próprios registrou três arquivos e 25.067.752 bytes no total. Os dois maiores tinham cerca de 10 MB, com ultrapassagem limitada a um registro; a asserção admitiu até 8.192 bytes de margem por arquivo. O conteúdo desses arquivos não foi lido ou alterado diretamente: a consulta dos registros usou a API de logs do Docker, como orienta sua [documentação](https://docs.docker.com/engine/logging/drivers/json-file/).
+
+Somente a fixture foi reiniciada. O mesmo contêiner conservou configuração e marcador final anterior, e o marcador de início do novo processo ficou legível. O primeiro ensaio falhou porque o harness consultou o novo marcador imediatamente após `docker restart`; a nova medição comprovou sua ausência na primeira leitura e presença após 293 ms, dentro do limite de cinco segundos. A correção foi uma espera pela condição real no runner privado; o contrato não foi relaxado. A fixture e seus volumes anônimos próprios foram removidos, com zero contêineres do ensaio restantes. O app real manteve o mesmo ID, digest, horário de início e estado Healthy.
+
+Esses resultados comprovam limites e consulta atuais e o comportamento do mesmo driver/configuração sob rotação e reinício; não afirmam que o volume sintético foi produzido pelo site ou que ele foi reiniciado. O histórico de `docker logs` pertence ao contêiner e não tem garantia de persistência depois de sua remoção/substituição em um deploy. Não foi contratado ou configurado serviço externo de monitoramento, retenção ou notificações.
 
 ## Evidência ainda necessária para A3
 
 - Preservar os recibos atuais de GET/HEAD, configuração e início do probe ao promover a imagem; métodos adicionais e alterações futuras precisam de suas provas próprias.
-- Comprovar acesso e rotação dos logs de execução separadamente dos de implantação no Coolify de homologação.
+- Preservar os recibos de consulta separada e rotação acima; conferir novamente o LogConfig efetivo se a configuração do executor mudar.
 - Exercitar falhas reais de PostgreSQL/R2 com páginas confirmadas em cache e provar que a prontidão não as retira indevidamente do serviço.
 - Integrar eventos seguros de publicação, cache, processamento e integrações; executar gates Native/E2E/verify no ambiente isolado coordenado.
 - Consultar os recibos e limites de migração controlada, backup e rollback nos runbooks próprios; a prova de saúde não substitui essas verificações.
 
-Os testes unitários da preparação validam a linha serializada, projeção de contexto, limites/erros e os handlers diretos. Não substituem estas provas operacionais.
+Os testes unitários da preparação validam a linha serializada, projeção de contexto, limites/erros e os handlers diretos. Eles complementam os recibos operacionais de consulta e rotação, sem transformar logs brutos em dados permitidos para a aplicação.

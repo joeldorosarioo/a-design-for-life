@@ -1,0 +1,196 @@
+{
+  "applicationAfter": {
+    "containerId": "a36007f90f6c",
+    "health": "healthy",
+    "image": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "imageId": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "logConfig": {
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      },
+      "Type": "json-file"
+    },
+    "startedAt": "2026-11-06T18:04:45.455045428Z",
+    "status": "running"
+  },
+  "applicationBefore": {
+    "containerId": "a36007f90f6c",
+    "health": "healthy",
+    "image": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "imageId": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "logConfig": {
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      },
+      "Type": "json-file"
+    },
+    "startedAt": "2026-11-06T18:04:45.455045428Z",
+    "status": "running"
+  },
+  "applicationUnchanged": true,
+  "cleanup": {
+    "ownedAnonymousVolumesRemoved": true,
+    "ownedContainerRemoved": true,
+    "remainingOwnedContainers": 0
+  },
+  "completedAtEpoch": 1794001056.9312773,
+  "durationMs": 29695,
+  "fixture": {
+    "capDrop": [
+      "ALL"
+    ],
+    "containerId": "a9ef91a6dcd20217732533060358008bcd09b48a5f176094cbf1a265560ed006",
+    "hostPortsPublished": false,
+    "imageId": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "logConfig": {
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      },
+      "Type": "json-file"
+    },
+    "memoryBytes": 134217728,
+    "memorySwapBytes": 134217728,
+    "nanoCpus": 100000000,
+    "networkMode": "none",
+    "pidsLimit": 32,
+    "privateAppEnvironmentCopied": false,
+    "readOnlyRootfs": true,
+    "securityOpt": [
+      "no-new-privileges:true"
+    ],
+    "user": "70:70",
+    "mountCount": 1,
+    "tmpfsMaximumBytes": 16777216,
+    "imageHealthcheckDisabledForSyntheticFixture": true
+  },
+  "kind": "same-host-json-file-rotation-proof",
+  "restart": {
+    "configurationPreserved": true,
+    "newProcessStartupMarkerReadable": true,
+    "oldCompletionMarkerRetained": true,
+    "processInstanceChanged": true,
+    "rawLogsPersisted": false,
+    "sameContainerId": true
+  },
+  "restartReadiness": {
+    "firstImmediateSnapshot": {
+      "lineCount": 30,
+      "newStartupMarkerPresent": false,
+      "oldCompletionMarkerPresent": true
+    },
+    "noRecordFiltered": true,
+    "pollCount": 5,
+    "readinessCondition": "New process startup marker present and previous completion marker retained.",
+    "timeoutMs": 5000,
+    "waitedMs": 293
+  },
+  "rotation": {
+    "correlationAndResultFilterMatches": 5980,
+    "dockerLogsReadbackBytes": 24494246,
+    "emittedRecords": 10752,
+    "emittedSyntheticBytes": 44040192,
+    "fileCount": 3,
+    "fileSizesBytes": [
+      5064051,
+      10001845,
+      10001856
+    ],
+    "firstRetainedSequence": 4772,
+    "lastRetainedSequence": 10751,
+    "maximumConfiguredFileBytes": 10000000,
+    "maximumConfiguredFiles": 3,
+    "maximumSingleRecordOvershootAllowanceBytes": 8192,
+    "oldestRecordsDiscarded": 4772,
+    "rateLimit": "1 MiB batch followed by at least 500 ms pause; CPU capped at 0.1",
+    "rawLogsPersisted": false,
+    "readMode": "stat-only; no direct file content access",
+    "retainedSequenceContiguous": true,
+    "retainedSyntheticRecords": 5980,
+    "totalBytes": 25067752
+  },
+  "runId": "a5388ec2-0d8d-4d75-af2a-144fb83f986d",
+  "startedAtEpoch": 1794001027.2364316,
+  "status": "passed",
+  "version": 1,
+  "coolifyLogConsultation": {
+    "runtime": {
+      "endpoint": "/applications/{appUuid}/logs",
+      "status": 200,
+      "utf8Bytes": 3618,
+      "lineCount": 25,
+      "structuredJsonLines": 1,
+      "correlationUuidLines": 1,
+      "operationCounts": {
+        "payload.runtime": 1
+      },
+      "resultCounts": {
+        "failure": 1
+      },
+      "rawLogPersisted": false
+    },
+    "deployment": {
+      "endpoint": "/deployments/{deploymentUuid}",
+      "status": 200,
+      "deploymentUuid": "dzeb1xlupba8kijfts6xboih",
+      "state": "finished",
+      "utf8Bytes": 36089,
+      "lineCount": 1,
+      "structuredJsonLines": 1,
+      "correlationUuidLines": 0,
+      "operationCounts": {},
+      "resultCounts": {},
+      "rawLogPersisted": false
+    },
+    "separateEndpoints": true,
+    "noDeploymentTriggered": true
+  },
+  "checkedAt": "2026-11-06T21:37:36.699Z",
+  "scope": {
+    "stagingApplicationChanged": false,
+    "otherApplicationsChanged": false,
+    "dockerDaemonConfigurationChanged": false,
+    "newImagesPulled": false,
+    "productionAccessed": false,
+    "externalLogServiceConfigured": false,
+    "onlySyntheticFixtureRestarted": true
+  },
+  "limitations": [
+    "Rotation and restart were exercised in an owned synthetic container on the same host with the same image, driver and limits; no bulk logs or restart were injected into the real application.",
+    "Docker log history belongs to a container; this does not promise persistence after its deletion/replacement during deployment.",
+    "File metadata was read with stat only. Raw file contents and raw application/deployment logs were not persisted."
+  ],
+  "references": [
+    "https://docs.docker.com/engine/logging/drivers/json-file/",
+    "https://coolify.io/docs/api/endpoints/applications/get-application-logs-by-uuid",
+    "https://coolify.io/docs/api/endpoints/deployments/get-deployment-by-uuid",
+    "https://coolify.io/docs/applications/configuration/overview"
+  ],
+  "criterion": "E3.5.3",
+  "criterionDisposition": "complete-with-real-application-log-configuration-consultation-and-same-host-synthetic-rotation-proof",
+  "appRuntimeAndDeployBodiesKeptInMemoryOnly": true,
+  "harnessRegression": {
+    "firstAttempt": "failed-immediate-post-restart-marker-assertion",
+    "firstAttemptRunId": "0f54b482-1a1c-4ec2-9721-6fe0767185f5",
+    "firstAttemptCleanup": {
+      "ownedAnonymousVolumesRemoved": true,
+      "ownedContainerRemoved": true,
+      "remainingOwnedContainers": 0
+    },
+    "firstAttemptApplicationUnchanged": true,
+    "firstAttemptPrivateReceiptSha256": "2044c5437fdf809d9a8cb04572e415c012265de554593e8714304f902738e898",
+    "diagnosis": "Docker restart returned before Node emitted the new process startup marker. The second run recorded the first immediate snapshot without that marker, then its appearance after 293 ms with the old completion marker still present.",
+    "correction": "Private harness waits for both real markers with a five-second deadline; no application or Docker configuration changed.",
+    "testContractRelaxed": false
+  },
+  "sanitization": {
+    "credentialsCopiedToFixture": false,
+    "rawApplicationLogsPersisted": false,
+    "rawDeploymentLogsPersisted": false,
+    "rawDockerLogFileContentsReadDirectly": false,
+    "privateDatabaseRead": false,
+    "otherContainersInspectedForLogs": false
+  }
+}
