@@ -35,9 +35,10 @@
     "lint": "eslint .",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm test:case-state-css && pnpm test:stage-progress && pnpm build",
+    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm test:case-state-css && pnpm test:stage-progress && pnpm test:deploy && pnpm build",
     "test:case-state-css": "node --test scripts/emit-case-state-css.test.mjs",
-    "test:stage-progress": "node --test scripts/recalculate-stage-progress.test.mjs"
+    "test:stage-progress": "node --test scripts/recalculate-stage-progress.test.mjs",
+    "test:deploy": "node --test ops/deploy/*.test.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1161.0",

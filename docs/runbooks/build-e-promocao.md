@@ -2,6 +2,10 @@
 
 Escopo atual: validação local E3.4 e preparação da homologação privada. Em 05/11/2026, o usuário contratou uma VPS Hostinger, configurou o Coolify Atlas em `https://panel.joeldorosarioo.dev`, criou o projeto `a-design-for-life` com environment `staging` e escolheu GHCR privado em `ghcr.io/joeldorosarioo/a-design-for-life`. Forneceu credenciais separadas para baixar e publicar a imagem privada. O digest atual está registrado ao fim deste runbook; a aplicação ainda precisa do primeiro bootstrap e da validação na VPS. A3/A4 e lançamento em produção continuam pendentes. Os testes de metadados não equivalem a consumir a imagem na VPS.
 
+## Automação por branch preparada em 06/11/2026
+
+O responsável definiu `develop → staging` (ambiente de testes) e `main → production` quando esse ambiente existir. Os workflows locais preparam verificação, build no runner GitHub, publicação privada e atualização automática do digest no Coolify; produção reaproveita a imagem já homologada sem rebuild. Ativação depende da configuração única das credenciais/environments e das flags explícitas, ambas desligadas por ausência. Não houve push, chamada autenticada ao Coolify ou produção nesta preparação. Seguir [GitHub Actions → Coolify por ambiente](github-coolify.md).
+
 ## Contrato de empacotamento
 
 - O build usa as imagens oficiais Node 24.22.2 e PostgreSQL 17.11 em Alpine 3.24. O Dockerfile fixa o digest de cada base.

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "branch-deployment-automation-prepared-locally",
+  "sourceBaseRevision": "36baf9f",
+  "branchMapping": {
+    "develop": "staging",
+    "main": "production"
+  },
+  "productionExisting": false,
+  "automaticDeploymentDefault": "off unless explicitly enabled by repository variable",
+  "verification": {
+    "deploymentTestsPassed": 61,
+    "deploymentTestsFailed": 0,
+    "lintExitCode": 0,
+    "formatExitCode": 0,
+    "workflowSyntax": {
+      "yamlFiles": 2,
+      "bashBlocks": 18,
+      "parseExitCode": 0,
+      "bashSyntaxExitCode": 0,
+      "branchAndOptInGuardsVerified": true,
+      "protectedCheckNamePreserved": true
+    },
+    "exactPackageScriptGlobPassed": true,
+    "existingRequiredJobNamePreserved": true,
+    "existingVerificationStepsPreserved": true
+  },
+  "behavior": {
+    "stagingBuildsImageOnce": true,
+    "privatePackageRequired": true,
+    "coolifyReceivesImmutableDigest": true,
+    "productionReusesTestedManifestBytes": true,
+    "sourceTreeAllowsMergeCommitRevisionDifference": true,
+    "markerWrittenOnlyAfterHealthyStagingJob": true,
+    "schemaApprovalRequiredBeforeApiMutation": true,
+    "branchWideConcurrencyIncludesMarker": true,
+    "coolifySecretsOnlyInDeploymentJob": true,
+    "applicationConfigurationPatchFields": [
+      "docker_registry_image_tag"
+    ],
+    "cdnRedirectCredentialsRemovedAndDigestChecked": true
+  },
+  "activationNeeded": [
+    "Coolify API access and separate read/write + deploy credentials",
+    "GitHub staging environment secrets/variables and deployment branch policy",
+    "GHCR package access for repository GITHUB_TOKEN",
+    "Reviewed workflows delivered to GitHub and staging opt-in enabled"
+  ],
+  "sourceHashes": {
+    ".github/workflows/checks.yml": "85fbbcf93dd3ea4e4744686d5b9e802709c35060488fff28b95b61e7a181544b",
+    ".github/workflows/release.yml": "989a96c4e3464234ff743ae69eaf781ae5b83f876d9d3535bbae2993c3146eec",
+    "ops/deploy/coolify.mjs": "29a8e3396ff32cc954dee15563903aa9af14b2759859359e9509d72820759078",
+    "ops/deploy/coolify.test.mjs": "3679cf3f85af71087db3c03e3990bc43943e5e09cf4bffce007c9b0b36a516f4",
+    "ops/deploy/registry.mjs": "3be18141fa614994606b4ca40015a92a41f8a31f844f914b9972a04a2836bc71",
+    "ops/deploy/registry.test.mjs": "92d4252e7111dc30e23532ea829a0bf75163e690b6bc4e98efe3ede8d6502051",
+    "package.json": "2b7c70916be8cea7eb5fa1d4d844067361c66d9cfa9ded49107be25b9a71b49e"
+  },
+  "limits": [
+    "All tests used injected HTTP responses; no authenticated Coolify/GHCR API was called by these scripts.",
+    "No workflow was pushed, executed remotely or enabled in this preparation.",
+    "Production was not created or deployed; A3/A4 remain pending."
+  ],
+  "stage": {
+    "completedItems": 15,
+    "totalItems": 30,
+    "percentage": 50,
+    "closedTasks": 0,
+    "totalTasks": 6
+  },
+  "recordedAt": "2026-11-06T05:06:10.455837+00:00"
+}
