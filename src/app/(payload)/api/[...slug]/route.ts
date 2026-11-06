@@ -1,3 +1,4 @@
+import { protectNativeFirstUserResponse } from '@/helpers/payload/first-user-response';
 import { confirmNativePublication } from '@/helpers/payload/publication-transport';
 // Maintained application facade around native Payload REST transports.
 import config from '@payload-config';
@@ -41,7 +42,7 @@ export const POST: ReturnType<typeof REST_POST> = async (request, args) => {
       );
     }
   }
-  const response = await nativePost(request, args);
+  const response = await protectNativeFirstUserResponse(await nativePost(request, args), slug);
   if (!isEditorialAuthTransport(slug)) return confirmNativePublication(response, request);
   const headers = new Headers(response.headers);
   headers.set('Cache-Control', 'no-store, max-age=0');

@@ -31,6 +31,7 @@ const runtimeKeys = new Set([
   'PUBLICATION_RETRY_WORKER_ENABLED',
   'PUBLICATION_HTTP_VERIFICATION_ENABLED',
   'STAGING_DATABASE_ONLY',
+  'EDITORIAL_FIRST_ACCESS_ENABLED',
   'PGDATA',
   'PORT',
   'HOSTNAME',
@@ -61,7 +62,7 @@ export function readInitializationArguments(args) {
   if (
     !databaseName.test(database ?? '') ||
     ['postgres', 'template0', 'template1', 'adfl_local'].includes(database.toLowerCase()) ||
-    !['initialize', 'verify'].includes(mode)
+    !['initialize', 'verify', 'prepare-first-access'].includes(mode)
   )
     throw invalid();
   return { database, mode };
@@ -88,6 +89,8 @@ export function prepareStagingInitialization(importText, editorialText, args) {
     (runtime.NODE_ENV !== undefined && runtime.NODE_ENV !== 'production') ||
     (runtime.NEXT_TELEMETRY_DISABLED !== undefined && runtime.NEXT_TELEMETRY_DISABLED !== '1') ||
     runtime.STAGING_DATABASE_ONLY !== 'true' ||
+    (runtime.EDITORIAL_FIRST_ACCESS_ENABLED !== undefined &&
+      !['true', 'false'].includes(runtime.EDITORIAL_FIRST_ACCESS_ENABLED)) ||
     offFlags.some((key) => runtime[key] !== 'false')
   )
     throw invalid();
@@ -117,7 +120,8 @@ export function prepareStagingInitialization(importText, editorialText, args) {
     decodeURIComponent(database.pathname.slice(1)) !== selection.database
   )
     throw invalid();
-  const editor = readStagingEditor(parse(editorialText));
+  const editor =
+    selection.mode === 'prepare-first-access' ? undefined : readStagingEditor(parse(editorialText));
   const runtimeDatabaseUri = database.href;
   database.hostname = '127.0.0.1';
   database.port = '55435';
@@ -137,6 +141,16 @@ export function prepareStagingInitialization(importText, editorialText, args) {
       PAYLOAD_MIGRATING: 'true',
     }),
   };
+}
+
+// The browser-first mode has no capability to read editorial credentials.
+export async function loadStagingInitialization(args, { readRuntime, readEditorial }) {
+  const selection = readInitializationArguments(args);
+  const [runtimeText, editorialText] = await Promise.all([
+    readRuntime(),
+    selection.mode === 'prepare-first-access' ? undefined : readEditorial(),
+  ]);
+  return prepareStagingInitialization(runtimeText, editorialText, args);
 }
 
 export function planStagingCatalog(

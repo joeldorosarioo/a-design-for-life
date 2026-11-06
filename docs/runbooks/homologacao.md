@@ -2,6 +2,18 @@
 
 E3 local foi retomada em 03/11/2026. Em 05/11/2026, a VPS Hostinger e o Coolify Atlas foram configurados pelo usuário; `https://panel.joeldorosarioo.dev` respondeu com TLS válido. O projeto `a-design-for-life` possui o environment `staging`. O GHCR privado contém a nova candidata `4eab005ab099d253d83a068c66a6d7948dfefb98`, construída e validada localmente com o fluxo de primeira inicialização. Este runbook ainda não registra deploy da aplicação na VPS nem prova integral de homologação. A3/A4 e produção seguem pendentes.
 
+## Primeiro acesso editorial pelo navegador
+
+Fluxo solicitado pelo usuário em 06/11/2026. O primeiro cadastro usa a tela Native do Payload; e-mail e senha são escolhidos no navegador. As credenciais LOCAL_EDITOR/STAGING_EDITOR do .env não participam deste modo.
+
+1. Preparar somente o schema com `pnpm run initialize:staging --database CONFIRMED_DATABASE_NAME --mode prepare-first-access`. O modo exige staging privada em PG-only, catálogo vazio ou completo conhecido e túnel 55435; não lê o arquivo editorial .env nem cria conta/drafts. Em staging, as 16 migrações já foram aplicadas e a leitura independente confirmou 0 usuários/0 perfis/0 navegações. O recibo é `pending-first-access`, com editorId null.
+2. Usar a candidata que inclui a flag `EDITORIAL_FIRST_ACCESS_ENABLED`, mantendo a proteção HTTP Basic e HTTPS da homologação. Em **General → Build & deploy → Image**, o campo **Image** contém somente `ghcr.io/joeldorosarioo/a-design-for-life`; **Tag** recebe `sha256-<digest atual>`. A referência publicada desse fluxo é registrada na seção da candidata após validação.
+3. Em **Environment Variables**, atualizar `STAGING_DATABASE_ONLY=false` e acrescentar `EDITORIAL_FIRST_ACCESS_ENABLED=true`, ambos somente Runtime. Manter `PUBLIC_SITE_ENABLED=false`, workers desativados e o CMD health existente. Salvar e fazer redeploy com os mesmos volumes e **Consistent name (no rolling updates)**, para haver apenas um processo PostgreSQL por volume.
+4. Abrir `/admin/create-first-user` no domínio privado, passar pela autenticação de homologação (`staging-review`) e preencher e-mail, nova senha e confirmação no formulário Native. O servidor aceita somente esse primeiro cadastro, com Origin válida e lock transacional; a conta e os 4 rascunhos PT/EN são gravados juntos. Após a primeira conta, o cadastro inicial fecha automaticamente; criação anônima genérica permanece recusada.
+5. Após criar a conta, entrar normalmente em `/admin/login` com as credenciais escolhidas. O fluxo mantém a política sem JWT no JSON e a sessão em cookie HttpOnly. Na versão fixada, o primeiro cadastro não garante auto-login; o login Native comum completa a sessão. Conteúdo demonstrativo e publicação dos rascunhos são passos posteriores.
+
+[Provas do fluxo e do schema real](../verification/artifacts/E3-operations/browser-first-access-001.json). O modo antigo `initialize` continua disponível para provisionamento por operador, mas não é o caminho escolhido para esta primeira conta.
+
 ## Prova local antes de contratar
 
 O responsável coordena a execução para preservar compilação008, prévia atual, fixture V5 e PostgreSQL visual55433, além de5432/55432. Não iniciar serviços/gates globais em paralelo ou reutilizar bancos/containers existentes por conveniência. Reservar portas e nomes próprios após inspeção atual; não copiar `.env` do host para a imagem.

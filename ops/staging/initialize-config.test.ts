@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   planStagingCatalog,
+  loadStagingInitialization,
   prepareStagingInitialization,
   readInitializationArguments,
   readStagingEditor,
@@ -68,6 +69,52 @@ it('accepts the generated disabled-telemetry setting and rejects changing its st
   expect(() =>
     prepareStagingInitialization(source() + '\nNEXT_TELEMETRY_DISABLED=0', editor, args),
   ).toThrow();
+});
+it('prepares browser-first access without reading or forwarding editorial credentials', async () => {
+  const readEditorial = vi.fn(async () => {
+    throw new Error('Editorial file must not be read');
+  });
+  const readRuntime = vi.fn(async () => source() + '\nEDITORIAL_FIRST_ACCESS_ENABLED=true');
+  const selected = await loadStagingInitialization(
+    ['--database', 'portfolio_stage', '--mode', 'prepare-first-access'],
+    { readRuntime, readEditorial },
+  );
+  expect(readRuntime).toHaveBeenCalledOnce();
+  expect(readEditorial).not.toHaveBeenCalled();
+  expect(selected.mode).toBe('prepare-first-access');
+  expect(selected.editor).toBeUndefined();
+  expect(selected.environment).not.toHaveProperty('STAGING_EDITOR_EMAIL');
+  expect(selected.environment).not.toHaveProperty('STAGING_EDITOR_PASSWORD');
+  expect(selected.environment.EDITORIAL_FIRST_ACCESS_ENABLED).toBe('true');
+});
+it('retains the credential requirement in initialize and verify modes', async () => {
+  const readEditorial = vi.fn(async () => '');
+  await expect(
+    loadStagingInitialization(['--database', 'portfolio_stage', '--mode', 'verify'], {
+      readRuntime: async () => source(),
+      readEditorial,
+    }),
+  ).rejects.toThrow();
+  expect(readEditorial).toHaveBeenCalledOnce();
+  expect(() => prepareStagingInitialization(source(), '', args)).toThrow();
+});
+it('does not parse even supplied editorial text in browser-first mode', () => {
+  expect(
+    prepareStagingInitialization(source(), undefined, [
+      '--database',
+      'portfolio_stage',
+      '--mode',
+      'prepare-first-access',
+    ]).editor,
+  ).toBeUndefined();
+  expect(
+    prepareStagingInitialization(source(), 'STAGING_EDITOR_EMAIL=invalid', [
+      '--database',
+      'portfolio_stage',
+      '--mode',
+      'prepare-first-access',
+    ]).editor,
+  ).toBeUndefined();
 });
 it('does not import unrelated .env values or expose private inputs in errors', () => {
   const secret = 'synthetic-never-echo-credential';

@@ -95,3 +95,51 @@ it('normalizes a supported localhost test origin only for the literal internal H
   expect(env.INTERNAL_HTTP_ORIGIN).toBe('http://127.0.0.1:3101');
   expect(process.env.INTERNAL_HTTP_ORIGIN).toBe('http://127.0.0.1:3101');
 });
+
+it('clears an inherited first-access window unless the dedicated runner opts in', () => {
+  process.env.EDITORIAL_FIRST_ACCESS_ENABLED = 'true';
+  const env = configureTestEnvironment();
+  expect(process.env.EDITORIAL_FIRST_ACCESS_ENABLED).toBeUndefined();
+  expect(env).not.toHaveProperty('EDITORIAL_FIRST_ACCESS_ENABLED');
+  expect(env).not.toHaveProperty('PUBLIC_SITE_ENABLED');
+});
+
+it('opens first access only for the explicit private owned test runner and keeps it on repeated setup', () => {
+  process.env.ADFL_TEST_FIRST_ACCESS_ENABLED = 'true';
+  process.env.EDITORIAL_FIRST_ACCESS_ENABLED = 'false';
+  process.env.PUBLIC_SITE_ENABLED = 'true';
+  const env = configureTestEnvironment();
+  expect(env).toMatchObject({
+    APP_ENV: 'test',
+    EDITORIAL_FIRST_ACCESS_ENABLED: 'true',
+    PUBLIC_SITE_ENABLED: 'false',
+    DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+    MEDIA_BUCKET: 'adfl-test-runner',
+  });
+  expect(process.env.EDITORIAL_FIRST_ACCESS_ENABLED).toBe('true');
+  expect(process.env.PUBLIC_SITE_ENABLED).toBe('false');
+  expect(configureTestEnvironment()).toEqual(env);
+});
+
+it.each(['false', 'TRUE', '1'])(
+  'does not open first access for a nonliteral opt-in %s',
+  (marker) => {
+    process.env.ADFL_TEST_FIRST_ACCESS_ENABLED = marker;
+    process.env.EDITORIAL_FIRST_ACCESS_ENABLED = 'true';
+    const env = configureTestEnvironment();
+    expect(process.env.EDITORIAL_FIRST_ACCESS_ENABLED).toBeUndefined();
+    expect(env).not.toHaveProperty('EDITORIAL_FIRST_ACCESS_ENABLED');
+    expect(env).not.toHaveProperty('PUBLIC_SITE_ENABLED');
+  },
+);
+
+it('closes the first-access window again when the dedicated opt-in is removed', () => {
+  process.env.ADFL_TEST_FIRST_ACCESS_ENABLED = 'true';
+  configureTestEnvironment();
+  delete process.env.ADFL_TEST_FIRST_ACCESS_ENABLED;
+  const env = configureTestEnvironment();
+  expect(process.env.EDITORIAL_FIRST_ACCESS_ENABLED).toBeUndefined();
+  expect(process.env.PUBLIC_SITE_ENABLED).toBeUndefined();
+  expect(env).not.toHaveProperty('EDITORIAL_FIRST_ACCESS_ENABLED');
+  expect(env).not.toHaveProperty('PUBLIC_SITE_ENABLED');
+});

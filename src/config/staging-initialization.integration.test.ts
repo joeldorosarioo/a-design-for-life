@@ -1,5 +1,4 @@
 import { randomUUID } from 'node:crypto';
-import { createServer, connect, type Socket, type Server } from 'node:net';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { getPayload, type Migration, type Payload } from 'payload';
 import config from '@payload-config';
@@ -9,14 +8,14 @@ import { isolatedTestDatabaseUri } from '../../testing/setup/test-environment';
 import {
   closeStagingPayload,
   initializeStaging,
+  type EditorialStagingInitializationOptions,
   type StagingInitializationOptions,
 } from '../../ops/staging/initialize';
 
 type NativeClient = InstanceType<NonNullable<Payload['db']['pg']>['Client']>;
-let relay: Server;
 let administrator: NativeClient;
 let makeClient: NonNullable<Payload['db']['pg']>['Client'];
-const sockets = new Set<Socket>();
+let driver: NonNullable<Payload['db']['pg']>;
 const databases = new Set<string>();
 const payloads = new Set<Payload>();
 let acquired: ReturnType<typeof inspectOwnedTestDatabase>;
@@ -26,6 +25,48 @@ function assertOwned() {
   if (current.containerId !== acquired.containerId || current.networkId !== acquired.networkId)
     throw new Error('Staging initializer proof lost its acquired PostgreSQL.');
 }
+// Test-only transport adaptation. Guard inputs still use logical port55435,
+// but every actual socket goes to the acquired synthetic runner on55434.
+// Never bind or connect to the user's real SSH forward on55435.
+function ownedTransport() {
+  function redirected(config: unknown) {
+    assertOwned();
+    if (
+      !config ||
+      typeof config !== 'object' ||
+      !('connectionString' in config) ||
+      typeof config.connectionString !== 'string'
+    )
+      throw new Error('Owned Native transport configuration required.');
+    const url = new URL(config.connectionString);
+    const fixture = new URL(isolatedTestDatabaseUri);
+    const database = decodeURIComponent(url.pathname.slice(1));
+    if (
+      url.host !== '127.0.0.1:55435' ||
+      url.username !== fixture.username ||
+      url.password !== fixture.password ||
+      url.search ||
+      url.hash ||
+      !/^adfl_test_staging_[a-f0-9]{32}$/.test(database) ||
+      !databases.has(database)
+    )
+      throw new Error('Owned Native transport refused a nonfixture target.');
+    url.port = '55434';
+    return { ...config, connectionString: url.href };
+  }
+  class OwnedClient extends driver.Client {
+    constructor(config?: ConstructorParameters<typeof driver.Client>[0]) {
+      super(redirected(config));
+    }
+  }
+  class OwnedPool extends driver.Pool {
+    constructor(config?: ConstructorParameters<typeof driver.Pool>[0]) {
+      super(redirected(config));
+    }
+  }
+  return { ...driver, Client: OwnedClient, Pool: OwnedPool } as typeof driver;
+}
+
 async function prepared(database: string) {
   assertOwned();
   const selected = new URL(isolatedTestDatabaseUri);
@@ -43,6 +84,7 @@ async function prepared(database: string) {
     key: `staging-initialize-proof-${randomUUID()}`,
   });
   payload.db.poolOptions = { connectionString: selected.href };
+  payload.db.pg = ownedTransport();
   payloads.add(payload);
   return payload;
 }
@@ -58,7 +100,7 @@ async function target() {
   const uri = new URL(isolatedTestDatabaseUri);
   uri.port = '55435';
   uri.pathname = `/${database}`;
-  const options: StagingInitializationOptions = {
+  const options: EditorialStagingInitializationOptions = {
     databaseUri: uri.href,
     database,
     role: 'adfl_test',
@@ -72,7 +114,7 @@ async function target() {
   return options;
 }
 async function client(options: StagingInitializationOptions) {
-  const connection = new makeClient({ connectionString: options.databaseUri });
+  const connection = new (ownedTransport().Client)({ connectionString: options.databaseUri });
   await connection.connect();
   return connection;
 }
@@ -90,42 +132,15 @@ beforeAll(async () => {
     disableOnInit: true,
     key: `staging-initialize-admin-${randomUUID()}`,
   });
-  makeClient = base.db.pg!.Client;
+  driver = base.db.pg!;
+  makeClient = driver.Client;
   await base.destroy();
   administrator = new makeClient({ connectionString: isolatedTestDatabaseUri });
   await administrator.connect();
-  relay = createServer((incoming) => {
-    const upstream = connect({ host: '127.0.0.1', port: 55434 });
-    sockets.add(incoming);
-    sockets.add(upstream);
-    incoming.on('error', () => upstream.destroy());
-    upstream.on('error', () => incoming.destroy());
-    incoming.on('close', () => {
-      sockets.delete(incoming);
-      upstream.destroy();
-    });
-    upstream.on('close', () => {
-      sockets.delete(upstream);
-      incoming.destroy();
-    });
-    incoming.pipe(upstream).pipe(incoming);
-  });
-  await new Promise<void>((resolve, reject) => {
-    relay.once('error', reject);
-    relay.listen(55435, '127.0.0.1', () => {
-      relay.removeListener('error', reject);
-      resolve();
-    });
-  });
 });
 afterAll(async () => {
   if (acquired) assertOwned();
   for (const payload of payloads) await close(payload);
-  for (const socket of sockets) socket.destroy();
-  if (relay?.listening)
-    await new Promise<void>((resolve, reject) =>
-      relay.close((error) => (error ? reject(error) : resolve())),
-    );
   if (administrator) {
     for (const database of databases) {
       assertOwned();
@@ -296,4 +311,74 @@ it('rolls back the first editor and all structural drafts together after a real 
     freshProvisioning: true,
   });
   await close(retry);
+}, 90000);
+
+it('prepares only the schema for browser-first access without accepting editor credentials or adopting existing accounts', async () => {
+  const source = await target();
+  const options = {
+    databaseUri: source.databaseUri,
+    database: source.database,
+    role: source.role,
+    origin: source.origin,
+    mode: 'prepare-first-access' as const,
+  };
+  const first = await prepared(options.database);
+  const ready = await initializeStaging(first, options);
+  expect(ready).toMatchObject({
+    status: 'pending-first-access',
+    migrations: 16,
+    editorId: null,
+    structuralDocuments: 0,
+    structural: [],
+    freshProvisioning: false,
+  });
+  expect((await first.count({ collection: 'users', overrideAccess: true })).totalDocs).toBe(0);
+  expect(
+    (
+      await first.find({
+        collection: 'site-navigation',
+        draft: true,
+        limit: 0,
+        overrideAccess: true,
+      })
+    ).totalDocs,
+  ).toBe(0);
+  expect(
+    (
+      await first.find({
+        collection: 'professional-profiles',
+        draft: true,
+        limit: 0,
+        overrideAccess: true,
+      })
+    ).totalDocs,
+  ).toBe(0);
+  await close(first);
+  const repeated = await prepared(options.database);
+  expect(await initializeStaging(repeated, options)).toMatchObject({
+    status: 'pending-first-access',
+    editorId: null,
+    structuralDocuments: 0,
+  });
+  await repeated.create({
+    collection: 'users',
+    data: source.editor,
+    context: { trustedAccountProvisioning: true },
+    overrideAccess: true,
+  });
+  await close(repeated);
+  const occupied = await prepared(options.database);
+  await expect(initializeStaging(occupied, options)).rejects.toThrow();
+  expect((await occupied.count({ collection: 'users', overrideAccess: true })).totalDocs).toBe(1);
+  expect(
+    (
+      await occupied.find({
+        collection: 'professional-profiles',
+        draft: true,
+        limit: 0,
+        overrideAccess: true,
+      })
+    ).totalDocs,
+  ).toBe(0);
+  await close(occupied);
 }, 90000);

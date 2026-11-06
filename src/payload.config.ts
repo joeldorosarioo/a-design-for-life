@@ -1,3 +1,4 @@
+import { provisionStructuralDocuments } from './config/provision-structural-documents';
 import { withConfirmedTransactions } from './helpers/payload/transaction-settlement';
 import { publicRootDirectory } from './helpers/payload/public-root-directory';
 import { installPublicationProvider } from './helpers/payload/publication-runtime';
@@ -52,7 +53,14 @@ const integrations = readIntegrationEnv(process.env, env);
 const r2Storage =
   integrations.storage.driver === 'r2' ? createR2ObjectStorage(integrations.storage) : undefined;
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
-const Users = usersCollection(env.SITE_ORIGIN);
+const Users = usersCollection(env.SITE_ORIGIN, {
+  enabled: env.EDITORIAL_FIRST_ACCESS_ENABLED === 'true',
+  appEnv: env.APP_ENV,
+  publicSiteEnabled: env.PUBLIC_SITE_ENABLED === 'true',
+  databaseUri: env.DATABASE_URI,
+  mediaBucket: env.MEDIA_BUCKET,
+  provisionStructuralDocuments,
+});
 const publicationDirectory = publicRootDirectory(env);
 const verificationOrigin =
   env.PUBLICATION_HTTP_VERIFICATION_ENABLED === 'true' && resolveInternalHttpOrigin(env);

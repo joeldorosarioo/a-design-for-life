@@ -17,9 +17,11 @@ async function main() {
   if (
     !process.env.STAGING_OPERATOR_WORKDIR ||
     !process.env.STAGING_INITIALIZATION_DATABASE ||
-    !['initialize', 'verify'].includes(process.env.STAGING_INITIALIZATION_MODE ?? '') ||
-    !process.env.STAGING_EDITOR_EMAIL ||
-    !process.env.STAGING_EDITOR_PASSWORD
+    !['initialize', 'verify', 'prepare-first-access'].includes(
+      process.env.STAGING_INITIALIZATION_MODE ?? '',
+    ) ||
+    (process.env.STAGING_INITIALIZATION_MODE !== 'prepare-first-access' &&
+      (!process.env.STAGING_EDITOR_EMAIL || !process.env.STAGING_EDITOR_PASSWORD))
   )
     throw new Error('Missing private operator inputs.');
   // The fresh owned directory has no .env. Do not merge unrelated local settings
@@ -38,17 +40,23 @@ async function main() {
     key: `staging-initialize-${crypto.randomUUID()}`,
   });
   try {
-    const result = await initializeStaging(payload, {
+    const target = {
       databaseUri: env.DATABASE_URI,
       database: process.env.STAGING_INITIALIZATION_DATABASE,
       role: decodeURIComponent(new URL(env.DATABASE_URI).username),
       origin: env.SITE_ORIGIN,
-      mode: process.env.STAGING_INITIALIZATION_MODE as 'initialize' | 'verify',
-      editor: {
-        email: process.env.STAGING_EDITOR_EMAIL,
-        password: process.env.STAGING_EDITOR_PASSWORD,
-      },
-    });
+    };
+    const result =
+      process.env.STAGING_INITIALIZATION_MODE === 'prepare-first-access'
+        ? await initializeStaging(payload, { ...target, mode: 'prepare-first-access' })
+        : await initializeStaging(payload, {
+            ...target,
+            mode: process.env.STAGING_INITIALIZATION_MODE as 'initialize' | 'verify',
+            editor: {
+              email: process.env.STAGING_EDITOR_EMAIL!,
+              password: process.env.STAGING_EDITOR_PASSWORD!,
+            },
+          });
     writeSync(1, JSON.stringify(result));
   } finally {
     await closeStagingPayload(payload);

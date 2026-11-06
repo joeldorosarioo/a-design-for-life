@@ -1,9 +1,14 @@
 import 'server-only';
-import { AuthenticationError, Forbidden, LockedAuth, type CollectionConfig } from 'payload';
+import { AuthenticationError, LockedAuth, type CollectionConfig } from 'payload';
 import { EditorialEmailUnavailable } from './editorial-email';
 import { reserveNativePasswordReset } from './password-reset-guard';
+import { editorialFirstAccess, type EditorialFirstAccessOptions } from './editorial-first-access';
 
-export function usersCollection(siteOrigin: string): CollectionConfig {
+export function usersCollection(
+  siteOrigin: string,
+  options?: EditorialFirstAccessOptions,
+): CollectionConfig {
+  const firstAccess = editorialFirstAccess(siteOrigin, options);
   return {
     slug: 'users',
     auth: {
@@ -24,6 +29,7 @@ export function usersCollection(siteOrigin: string): CollectionConfig {
     },
     hooks: {
       beforeOperation: [
+        firstAccess.beforeOperation,
         reserveNativePasswordReset,
         ({ operation, req }) => {
           if (
@@ -56,17 +62,8 @@ export function usersCollection(siteOrigin: string): CollectionConfig {
           }
         },
       ],
-      beforeChange: [
-        ({ operation, req }) => {
-          // Native first-register bypasses access. Only server code can set this context.
-          if (
-            operation === 'create' &&
-            req.user?.collection !== 'users' &&
-            req.context.trustedAccountProvisioning !== true
-          )
-            throw new Forbidden(req.t);
-        },
-      ],
+      beforeChange: [firstAccess.beforeChange],
+      afterChange: [firstAccess.afterChange],
     },
     fields: [],
   };

@@ -34,9 +34,14 @@ export function configureTestEnvironment() {
   const siteOrigin = process.env.TEST_SITE_ORIGIN ?? 'http://127.0.0.1:3101';
   const internalOrigin = new URL(siteOrigin);
   if (internalOrigin.hostname === 'localhost') internalOrigin.hostname = '127.0.0.1';
+  // A normal suite must never inherit a first-account registration window.
+  delete process.env.EDITORIAL_FIRST_ACCESS_ENABLED;
   const env = readServerEnv({
     NODE_ENV: process.env.NODE_ENV === 'production' ? 'production' : 'test',
     APP_ENV: 'test',
+    ...(process.env.ADFL_TEST_FIRST_ACCESS_ENABLED === 'true'
+      ? { EDITORIAL_FIRST_ACCESS_ENABLED: 'true', PUBLIC_SITE_ENABLED: 'false' }
+      : {}),
     // The owned migration lifecycle applies this additive schema before fixtures run.
     PUBLICATION_RETRIES_ENABLED: 'true',
     PUBLICATION_RETRY_WORKER_ENABLED: 'false',
