@@ -1,6 +1,10 @@
 # Homologação isolada e prova local da mesma imagem
 
-E3 local foi retomada em 03/11/2026. A VPS Hostinger e o Coolify Atlas foram configurados pelo usuário, com o projeto `a-design-for-life`, environment `staging` e aplicação `portfolio-staging`. O usuário confirmou o deploy anterior em PG-only como Running/Healthy. Em 06/11/2026, as 16 migrações foram aplicadas por túnel privado e a leitura independente confirmou zero contas. A nova candidata `434ee5c92dc71f1c8147831bd38dea7c244af386` está no GHCR privado e permite criar a primeira conta pelo navegador; o redeploy e esse cadastro pelo usuário seguem pendentes. A3/A4 e produção continuam pendentes.
+E3 local foi retomada em 03/11/2026. A VPS Hostinger e o Coolify Atlas foram configurados pelo usuário, com o projeto `a-design-for-life`, environment `staging` e aplicação `app` (nome anterior: `portfolio-staging`). O usuário confirmou o deploy anterior em PG-only como Running/Healthy. Em 06/11/2026, as 16 migrações foram aplicadas por túnel privado e a leitura independente confirmou zero contas. A nova candidata `434ee5c92dc71f1c8147831bd38dea7c244af386` está no GHCR privado e permite criar a primeira conta pelo navegador; o redeploy e esse cadastro pelo usuário seguem pendentes. A3/A4 e produção continuam pendentes.
+
+## Atualização atual: rótulos e conta do CMS — 06/11/2026
+
+O usuário confirmou a criação da conta, o login e o teste de envio de recuperação. O recurso se chama `app`. O schema17 já foi aplicado depois de backup criptografado e restauração isolada, preservando conta, senha, sessões e conteúdo. A nova imagem privada do commit `d267aa7` está pronta para redeploy. Seguir [Painel editorial em português e perfil da conta](cms-editorial.md) para a tag atual e os passos; o roteiro de primeiro acesso abaixo é histórico e não deve ser repetido para a conta existente.
 
 ## Primeiro acesso editorial pelo navegador
 
@@ -31,7 +35,7 @@ Build e smoke nativo passaram; a mesma imagem executou os modos PG-only e HTTP e
 
 ## Acesso ao PostgreSQL de staging
 
-O PostgreSQL está dentro do container da aplicação. No Coolify, abrir `a-design-for-life → staging → portfolio-staging → Terminal` e executar `psql "$DATABASE_URI"`. No prompt SQL, `\dt` lista tabelas e `\q` encerra. Esse acesso não depende de abrir o site público nem de criar um recurso PostgreSQL adicional no Coolify.
+O PostgreSQL está dentro do container da aplicação. No Coolify, abrir `a-design-for-life → staging → app → Terminal` e executar `psql "$DATABASE_URI"`. No prompt SQL, `\dt` lista tabelas e `\q` encerra. Esse acesso não depende de abrir o site público nem de criar um recurso PostgreSQL adicional no Coolify.
 
 Para uma interface gráfica local, usar o driver **PostgreSQL** do DBeaver ou o pgAdmin. Com o túnel SSH existente aberto, conectar a `127.0.0.1:55435`; banco, usuário e senha são os de `DATABASE_URI` em **Environment Variables** da aplicação no Coolify. A senha de staging é própria; não usar automaticamente a senha do banco local nem a do painel/editor. A aba SSH do cliente pode ficar desativada quando o túnel já está aberto pelo terminal.
 
