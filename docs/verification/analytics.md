@@ -97,3 +97,9 @@ $node = '.\.toolchain\node-v24.22.2-win-x64\node.exe'
 ```
 
 O script recusa sobrescrever os arquivos de captura/resultado. Para reproduzir os mesmos bytes de 06/11, reutilizar a captura local com o SHA acima; novo download pode trazer uma revisão diferente do fornecedor e deve ser tratado como nova observação. `activationPermitted=false` é deliberado mesmo quando a sequência passa: obter uma sequência correta não aprova os dados adicionais nem os relatórios. E3.3.2/3 e a limitação de relatórios permanecem sujeitos às evidências próprias. O custo JavaScript e a comparação implantada agora têm evidência real para revisão de E3.3.5; nenhum serviço foi contratado ou publicação em produção executada.
+
+## Confirmação dos controles da propriedade — 06/11/2026
+
+O responsável confirmou: “Desativei os três agora”, em resposta à conferência de Google signals, coleta granular de localização/dispositivo e coleta de dados fornecidos pelo usuário. Medição aprimorada OFF já havia sido confirmada. Esse relato resolve a pendência de configuração de E3.3.2, junto aos controles de consentimento denied permanente, publicidade e User-ID já comprovados no código e na inspeção anterior. Não se atribui ao relato o ajuste de um quarto controle de personalização; a proteção de publicidade possui evidência própria na implementação e em NPA=1 do ensaio anterior.
+
+A confirmação foi registrada separadamente e não altera retroativamente o estado da captura histórica do SDK. Não houve consulta independente à conta, novo download/ensaio do SDK, alteração de código ou deploy nesta atualização. E3.3.3 continua pendente pela avaliação das leituras de cookie, necessidade dos campos técnicos e identificadores entre documentos. O loader permanece null, inclusive no staging; relatórios continuam não demonstrados. [Relato do operador](artifacts/E3-analytics/property-controls-operator-confirmation-003.json).

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "kind": "ga4-property-controls-operator-confirmation",
+  "recordedAt": "2026-11-06T20:34:16.976Z",
+  "measurementId": "G-DXFQKDH52Z",
+  "evidenceType": "explicit-operator-report",
+  "operatorAnswer": "Desativei os três agora",
+  "confirmedSettings": {
+    "googleSignals": "disabled",
+    "granularLocationAndDevice": "disabled",
+    "userProvidedData": "disabled"
+  },
+  "previousConfirmation": {
+    "enhancedMeasurement": "disabled-as-previously-reported-by-operator",
+    "evidence": "docs/verification/artifacts/E3-analytics/real-sdk-offline-002.json"
+  },
+  "advertisingControls": {
+    "separatePropertyAdPersonalizationSwitchReportedInThisReply": false,
+    "implementation": "ad_storage/ad_user_data/ad_personalization denied; allow_google_signals and allow_ad_personalization_signals false; ads_data_redaction true; url_passthrough false",
+    "existingOfflineSdkObservation": "GCS=G100, NPA=1; no User-ID observed"
+  },
+  "criterion": "E3.3.2",
+  "criterionDisposition": "complete-with-operator-settings-report-and-existing-implementation-evidence",
+  "limitations": [
+    "No independent Google account read or configuration change was performed by the agent.",
+    "No new SDK was downloaded or executed after this operator configuration change.",
+    "The earlier pinned SDK receipt remains unchanged and describes its earlier capture.",
+    "This does not complete E3.3.3: cookie reads, technical-field minimization and cross-document identifiers remain under review.",
+    "No GA4 reports have been demonstrated under the permanently denied policy."
+  ],
+  "effects": {
+    "applicationCodeChanged": false,
+    "analyticsActivated": false,
+    "stagingDeploymentTriggered": false,
+    "productionAccessed": false,
+    "externalRequestsSent": 0
+  },
+  "evidence": [
+    "docs/verification/artifacts/E3-analytics/real-sdk-offline-002.json",
+    "docs/verification/artifacts/E3-gates/verify-finalization-2026-11-06-001.json",
+    "src/features/analytics/gtag-session.ts"
+  ]
+}

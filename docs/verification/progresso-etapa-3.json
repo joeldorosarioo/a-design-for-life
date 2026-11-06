@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-11-06T20:27:27.481Z",
+  "updatedAt": "2026-11-06T20:34:16.976Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 25,
+  "completedItems": 26,
   "totalItems": 30,
-  "percentage": 83.3,
+  "percentage": 86.7,
   "closedTasks": ["E3.2", "E3.4", "E3.6"],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -78,9 +78,9 @@
     },
     {
       "id": "E3.3.2",
-      "done": false,
+      "done": true,
       "summary": "Configurar GA4 com `analytics_storage: denied` antes de qualquer medição e sem mudança posterior para habilitar armazenamento. Desativar publicidade/remarketing, User-ID e medição automática ampliada de rolagem, busca, cliques externos e downloads que extrapole os eventos aprovados. Não instalar gerenciador de tags ou outro produto de analytics sem necessidade aprovada.",
-      "evidence": "Consent/default denied precede js/config/event; defaults globais e por stream desligam page_view automático, anúncios e sinais. SDK oficial interceptado confirmou GCS=G100/NPA=1 e cinco eventos esperados após corrigir o default global. Medição aprimorada desativada por relato do responsável. A captura de tela de06/11 mostrou coleta granular de dispositivo/local ainda ligada; foram fornecidos os controles exatos a desligar, incluindo Signals, dados fornecidos e personalização. Falta confirmação desses estados; Analytics permanece desativado. [SDK real](artifacts/E3-analytics/real-sdk-offline-002.json) e [análise](analytics.md)."
+      "evidence": "Consent/default mantém analytics_storage, ad_storage, ad_user_data e ad_personalization denied antes de js/config/event, sem update para granted; anúncios/sinais e page_view automático são desativados nos defaults. O SDK oficial interceptado confirmou GCS=G100/NPA=1, sem User-ID e com os cinco eventos esperados. O responsável já confirmou Medição aprimorada OFF e agora confirmou Signals, coleta granular e dados fornecidos pelo usuário OFF. A confirmação é relato do operador, sem leitura independente da conta; não afirma ajuste de um quarto controle não relatado. Nenhum gerenciador de tags foi instalado. O contrato completo de minimização continua aberto em E3.3.3 e o loader permanece null. [Confirmação da propriedade](artifacts/E3-analytics/property-controls-operator-confirmation-003.json) e [SDK real](artifacts/E3-analytics/real-sdk-offline-002.json)."
     },
     {
       "id": "E3.3.3",
@@ -221,7 +221,8 @@
     "06/11/2026: itens de backup anterior ao deploy, retenção R2 de oito semanas e recuperação no escopo autorizado concluídos no staging, pipeline42265240175. O texto operacional de E3.6.5 foi ajustado à escolha expressa do responsável: novo banco no mesmo PostgreSQL, sem bucket temporário e com leitura das mídias existentes. A contagem considera esse escopo autorizado; não atesta restauração de objetos em outro bucket. Suíte remota completa, imagem Healthy e ensaio de recuperação de 46378 ms comprovados. A3/A4 seguem pendentes.",
     "06/11/2026: revisão das evidências existentes encerrou E3.1.2/.3/.5 no escopo de staging autorizado, sem novos testes, e-mails ou operações no R2. A marcação antiga desconsiderava o ciclo real R2, o preflight de acesso cruzado e o relato do teste de e-mail. Produção permanece adiada. O responsável forneceu G-DXFQKDH52Z; ID salvo somente no .env local, sem ativar coleta no staging. MCP Hostinger configurado; autenticação em andamento.",
     "06/11/2026: E3.2.2 encerrado com persistência real da raiz confirmada entre substituições do contêiner e provas locais existentes de falha/isolamento; E3.5.2 encerrado com configuração efetiva, limite de início medido6011ms e negativa/recuperação do probe na mesma imagem local. Nenhum reinício ou pane foi provocado no staging. E3.2 é a terceira frente integralmente encerrada.",
-    "06/11/2026: E3.3.5 encerrado com ausência de banner previamente comprovada, custo estático do SDK oficial e dos assets implantados, e gate completo atual exit0 (235arquivos/2306testes,3skips). A correção send_page_view=false global reproduziu RED6→GREEN5eventos com os mesmos bytes oficiais, sem encaminhar medição. E3.3.2/.3 seguem abertos pelos ajustes do painel e revisão dos dados adicionais/leituras de cookie; nenhum SDK foi ativado. Hostinger autenticado em Windows/WSL, mas suas ferramentas não estão carregadas no runtime desta conversa; nenhuma operação na VPS ocorreu via MCP."
+    "06/11/2026: E3.3.5 encerrado com ausência de banner previamente comprovada, custo estático do SDK oficial e dos assets implantados, e gate completo atual exit0 (235arquivos/2306testes,3skips). A correção send_page_view=false global reproduziu RED6→GREEN5eventos com os mesmos bytes oficiais, sem encaminhar medição. E3.3.2/.3 seguem abertos pelos ajustes do painel e revisão dos dados adicionais/leituras de cookie; nenhum SDK foi ativado. Hostinger autenticado em Windows/WSL, mas suas ferramentas não estão carregadas no runtime desta conversa; nenhuma operação na VPS ocorreu via MCP.",
+    "06/11/2026: responsável confirmou que desativou Google signals, coleta granular de localização/dispositivo e dados fornecidos pelo usuário. Somado à confirmação anterior de Medição aprimorada OFF e aos controles denied/anúncios/User-ID já comprovados no código/SDK, encerra E3.3.2. Relato do operador identificado em recibo separado, sem alterar a captura histórica do SDK. E3.3.3 permanece aberto e Analytics não foi ativado; nenhuma alteração de código, novo teste de SDK ou deploy nesta atualização."
   ],
-  "recalculatedAt": "2026-11-06T20:27:31.290Z"
+  "recalculatedAt": "2026-11-06T20:34:21.607Z"
 }
