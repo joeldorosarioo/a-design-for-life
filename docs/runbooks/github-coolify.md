@@ -19,7 +19,7 @@ O job de verificação existente, `type-lint-test-architecture-build`, mantém o
 4. Criar outro token, `a-design-for-life-staging-deploy`, com permissão **Deploy**. Esse segundo token solicita o deploy.
 5. Guardar os valores em local privado. Eles serão cadastrados como secrets do GitHub; não entram nas variáveis de execução do app nem no Dockerfile.
 
-O dashboard cria um token exclusivamente de deploy quando a permissão Deploy é selecionada. Por isso o fluxo usa duas credenciais, dispensando `root` e `read:sensitive`. Um token criado por API com os três escopos pode ser usado pelo cliente, mas não é necessário neste roteiro. Tokens pertencem ao time ativo no momento da criação; usar o time ao qual pertence o projeto.
+A configuração existente usa credenciais separadas para imagem e deploy. Na versão instalada 4.6.0, o formulário também permite combinar permissões e limitar o acesso ao recurso selecionado. Os tokens pertencem ao time ativo no momento da criação; usar o time ao qual pertence o projeto.
 
 [Permissões da API](https://coolify.io/docs/api/permissions) e [integração com GitHub Actions](https://coolify.io/docs/applications/sources/github/actions).
 
@@ -77,3 +77,15 @@ A configuração de produção não foi criada nem ativada nesta rodada. O mapea
 ## Verificação local
 
 Executar `pnpm test:deploy` para os testes offline de API, guardas por branch/schema/UUID, status de deploy, pacote privado e promoção do mesmo manifesto. `pnpm verify` também executa esses testes. Os cenários usam respostas simuladas: não substituem a primeira execução real do GitHub Actions nem um deploy autenticado no Coolify.
+
+## Backup obrigatório antes do deploy — preparação
+
+O cliente exige um backup completo antes de alterar a tag ou solicitar o deploy. Usa `COOLIFY_BACKUP_TOKEN` para consultar a tarefa e sua saída, solicitar uma execução e aguardar o marcador completo. Os dois tokens anteriores continuam responsáveis pela imagem e pelo deploy. Falha, timeout, execução antiga ou mudança da origem impedem a atualização.
+
+No Coolify 4.6.0, abrir Keys & Tokens → API Tokens → New token, na mesma equipe do projeto. Description: `a-design-for-life-staging-backup`; Expires in: `90 days`; permissões Read, Read sensitive data, Write e Deploy. Em Access → Resources, selecionar apenas `a-design-for-life → staging → app`. A leitura sensível é necessária para conferir o comando e o marcador da tarefa. Respostas brutas e valores do ambiente ficam somente em memória; a saída persistida contém apenas campos técnicos permitidos.
+
+Salvar o token completo em `COOLIFY_BACKUP_TOKEN` no `.env` local. A configuração de CI usa esse nome como secret do environment `staging`, e `COOLIFY_BACKUP_TASK_UUID=lqtmrgwvbnnmd1oyodjisrhx` como variável desse mesmo environment. Produção requer seus próprios recursos e credenciais quando autorizada; o fluxo de produção continua desativado.
+
+A API do Coolify pode substituir identidades públicas no log por `<REDACTED>`. O gate confere APP_ENV e OPS_BACKUP_SOURCE reais e o comando exato da tarefa antes de aceitar essa substituição apenas no namespace conhecido. UUID, hashes, tamanhos e datas nunca aceitam redação. O recibo registra quais campos públicos foram reconstruídos.
+
+[Formulário oficial da versão 4.6.0](https://github.com/coollabsio/coolify/blob/v4.6.0/resources/views/livewire/security/partials/api-token-fields.blade.php).

@@ -1,6 +1,6 @@
 # Backup e restauração — preparação local E3.6
 
-Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job Linux de execução separada está disponível. A ativação do agendamento e a validação com o bucket de homologação continuam pendentes.
+Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. A identidade privada de recuperação fica separada da VPS e do bucket. O staging já criou um conjunto completo no R2 e passou pela restauração PostgreSQL isolada e conferência de todos os arquivos. O agendamento semanal está ativo. Retenção remota por conjuntos, integração automática antes de atualizações e restauração para outro bucket R2 seguem pendentes.
 
 ## Bucket R2 de backup do staging
 
@@ -27,6 +27,20 @@ O entrypoint exige staging privado, LinuxAlpine3.24 e UID70. Traduz somente o en
 O operador configura no executor os três campos `OPS_BACKUP_*` acima, o recipient público `OPS_BACKUP_RECIPIENT` e a identidade técnica `OPS_BACKUP_SOURCE`. A revisão vem de `ops/image/build-identity.json`, gerado no build com o mesmo argumento do label OCI; o entrypoint a valida e fornece ao job somente no processo de backup. `OPS_SOURCE_REVISION` não fica no ENV da imagem. A identidade privada age permanece fora da VPS, da imagem, do Git e do bucket. Preparação do comando não comprova execução remota, agendamento ou restauração do conjunto.
 
 Referências: [criar bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/), [credenciais R2](https://developers.cloudflare.com/r2/api/tokens/) e [acesso público](https://developers.cloudflare.com/r2/buckets/public-buckets/).
+
+## Backup completo real do staging — 06/11/2026
+
+O conjunto `3a8a9a5c-7a4d-4c32-96af-c137b08b3581` foi criado no bucket privado `eliana-novaes-media-backups`, pela mesma imagem Alpine da aplicação. A execução foi iniciada pelo operador em Execute Now: a API exige escrita e deploy no mesmo token, enquanto os dois tokens existentes separam essas permissões. A tarefa `encrypted-full-backup` está habilitada com `0 3 * * 0`, domingo às 03h no fuso configurado no servidor Atlas, timeout 1800 s. A identidade privada age não foi enviada ao servidor ou ao bucket.
+
+O ciphertext tem 2.898.824 bytes e SHA-256 `c5e23fe970185be9caa5d306b0f825b2d4ff8ce207435f7beb09899a3d5a584a`. A criação durou 20,19 s, incluindo inicialização e conclusão do job. O download, descriptografia e restauração isolada foram concluídos em 32.134 ms. Os tempos são observações deste conjunto, sem compromisso de RPO/RTO.
+
+Foram conferidos 31 objetos por tamanho/SHA-256 e 34 membros do arquivo: dump, manifesto, raiz confirmada e objetos. O PostgreSQL17 restaurado confirmou 31 tabelas, 17 migrações, uma conta, 2 perfis, 2 navegações, 2 projetos, 4 traduções e 8 registros de mídia. Schema, todas as linhas públicas, conta e sessões corresponderam ao snapshot somente de leitura da origem. As dez rotas PT/EN da raiz e todos os arquivos referenciados foram conferidos. O contêiner isolado e toda a quarentena descriptografada foram removidos.
+
+A imagem implantada é a revisão `d3e765f113c2b5831edf6d86f15d3431e2a019fc`, digest `sha256:6056c46a5a6f6f66f0b49c5cc1e83c2b21bdc88df3bee88fbf12d972eb0f0324`. O pipeline completo passou e o recurso ficou Healthy. A primeira candidata foi recusada corretamente pelo guard de ENV operacional; a correção passou a derivar a revisão do arquivo imutável da imagem, preservando esse guard.
+
+Não confundir esta restauração de banco/arquivos em quarentena local com a prova ainda pendente de restauração para bucket R2 isolado e jornada HTTP de login/recuperação na cópia. A retenção remota de oito semanas e o hook automático anterior a atualizações também permanecem abertos. Até a integração desse hook, execute Execute Now e confira o marcador completo antes de qualquer atualização/migração planejada.
+
+[Recibo completo sanitizado](../verification/artifacts/E3-backup/staging-complete-backup-restore-001.json).
 
 ## Backup do portfólio local
 
@@ -161,3 +175,15 @@ As provas em loopback exercitaram o SDK S3 fixado com buckets sintéticos distin
 ## Restauração HTTP em imagem local
 
 A prova com PostgreSQL, filesystem, age e tar reais iniciou a imagem 007 sobre o alvo restaurado durante sua aquisição descartável. Verificou o conteúdo PT/EN, imagem, PDF privado, login, painel e redefinição com e-mail capturado localmente. A senha e a sessão anteriores foram revogadas e o token usado foi recusado. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. A importação para bucket R2 isolado continua aberta. [Recibo](../verification/artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl).
+
+## Escopo de recuperação definido pelo operador — 06/11/2026
+
+O usuário dispensou o bucket temporário e escolheu restaurar uma cópia no mesmo PostgreSQL de homologação. O destino será um banco novo com UUID no nome, dentro do servidor já existente. O banco que atende o site fica preservado. Não serão criados outro bucket ou outro serviço de banco.
+
+Na prova HTTP, a cópia usará o R2 atual somente para leitura. Isso não é apresentado como restauração dos objetos em outro bucket: essa parte do ensaio anterior foi retirada do escopo pelo usuário. A descriptografia e a conferência dos arquivos do conjunto continuam locais, com identidade privada fora da VPS/R2. Login e redefinição de senha serão exercitados somente na cópia, com e-mail capturado localmente. A criação, o OID e a limpeza do banco de teste deverão ser comprovados antes de registrar o ensaio como concluído.
+
+## Migração manual revisada na mesma imagem
+
+O entrypoint aceita `backup` e, somente com `OPS_ALLOW_REVIEWED_MIGRATION=true` no processo operador, `migrate`. O caminho de migração usa o catálogo revisado existente e conclui um backup verificado antes do DDL. Os escritores da aplicação precisam ser previamente interrompidos pelo operador, conforme o contrato de migração controlada. O lock do job coordena backup/migração/retenção, mas não substitui essa pausa dos escritores.
+
+Não existe migração automática no startup ou no deploy. Com as 17 entradas já aplicadas, a execução revisada é idempotente e retorna `already-current`. Nenhuma migração nova é necessária nesta rodada.
