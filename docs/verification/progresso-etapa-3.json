@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T00:31:46.830Z",
+  "updatedAt": "2026-11-06T13:42:52.553445+00:00",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
   "completedItems": 15,
@@ -122,7 +122,7 @@
       "id": "E3.4.4",
       "done": false,
       "summary": "Construir a imagem identificada pelo commit, publicar no registry autorizado e implantar somente em homologação autenticada, sem indexação e sem Analytics. Registrar digest, configuração sem segredos e evidência de que a candidata a produção tem exatamente o mesmo digest. A promoção real fica para depois de A4.",
-      "evidence": "Workflow manual de preflight constrói a revisão exata, inspeciona a imagem Linux e roda smoke offline. Domínio, registry e VPS/Coolify ainda indefinidos. Faltam digest do registry e implantação autenticada de homologação. [Build e promoção](../runbooks/build-e-promocao.md)."
+      "evidence": "Em 06/11/2026, o workflow42225045302 do commit8cf1d83 construiu/publicou a imagem privada e concluiu o deploy automático em staging. O digest1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838 foi confirmado por API independente com finished/running:healthy e GET anônimo401. O marcador homologado e o resolver somente-leitura confirmaram a mesma candidata, sem produção. O critério integral permanece aberto até a prova explícita das exclusões de indexação e Analytics no runtime homologado. [Recibo](artifacts/E3-operations/github-coolify-activation-001.json)."
     },
     {
       "id": "E3.4.5",
@@ -212,7 +212,8 @@
     "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos.",
     "Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsum, auditar as páginas e validar o R2 existente. Escolheu captura local de e-mail e backup criptografado em filesystem. As provas locais dessa rodada estão em A3 e web-quality.md; os critérios integrais de homologação mantêm suas dependências.",
     "05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md.",
-    "05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json."
+    "05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json.",
+    "06/11/2026: deploy automático develop→staging ativado e primeiro pipeline integral GREEN, com publicação privada, digest imutável, Finished/Healthy, autenticação e marcador confirmados. Produção continua ausente/desativada; o resolver da candidata foi exercitado somente em leitura com referência main simulada. A3/A4 não concedidas. Ver github-coolify-activation-001.json."
   ],
-  "recalculatedAt": "2026-11-05T18:02:28.507Z"
+  "recalculatedAt": "2026-11-06T13:42:52.864Z"
 }
