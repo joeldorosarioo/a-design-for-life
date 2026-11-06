@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "focused-recovery-green-awaiting-full-ci",
+  "failedWorkflowRunId": 42216556839,
+  "observedFailure": {
+    "journeysPassed": 37,
+    "journeysFailed": 17,
+    "journeysNotRun": 69,
+    "firstFailure": "public-cache.e2e intentional database network outage",
+    "primaryError": "Connection terminated unexpectedly",
+    "laterFailures": "ECONNREFUSED after the test worker restarted with the origin still disconnected"
+  },
+  "rootCause": {
+    "nativeDestroyRetainsPools": true,
+    "idlePgPoolErrorWithoutListenerThrows": true,
+    "realInstalledPoolReproducedWithoutSocket": true
+  },
+  "correction": {
+    "scope": "testing harness and fixture factory only",
+    "boundTo": [
+      "exact synthetic namespace",
+      "run ID",
+      "immutable container ID",
+      "immutable network ID"
+    ],
+    "acceptedErrors": [
+      "Connection terminated unexpectedly",
+      "ECONNRESET"
+    ],
+    "unexpectedOrOutOfScopeErrorsStillFail": true,
+    "deduplicatedPoolObserver": true,
+    "scopeClosedAfterVerifiedReconnect": true,
+    "originalDockerErrorRepropagated": true,
+    "applicationChanged": false,
+    "globalProcessErrorHandlerAdded": false
+  },
+  "focusedVerification": {
+    "guardTestsPassed": 35,
+    "typecheckExitCode": 0,
+    "lintExitCode": 0,
+    "browserJourneysPassed": 5,
+    "browserExitCode": 0,
+    "ownedRunId": "17129104-f543-42d4-a913-687bb15a583a",
+    "remainingOwnedContainers": 0,
+    "remainingOwnedNetworks": 0,
+    "preexistingNextEnvSha256Preserved": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66",
+    "tsconfigUnchanged": true,
+    "networkRecoveryRegressionTestsPassed": 3,
+    "totalFocusedUnitTestsPassed": 38
+  },
+  "productionTouched": false,
+  "stagingDatabaseTouched": false,
+  "secretValuesPrinted": false
+}

@@ -7,9 +7,12 @@ import { runtimePublication } from '../../src/helpers/payload/publication-runtim
 import { withPublicRootWriter } from '../../src/helpers/payload/public-root';
 import { createLocalReq, getPayload, type Payload } from 'payload';
 import config from '@payload-config';
+import { observeOwnedDatabasePool } from '../setup/owned-database-outage';
 
 export async function createEditorialPayloadFixture(key: string) {
   const payload = await getPayload({ config, key });
+  if (!payload.db.pool) throw new Error('The Native fixture requires its acquired test pool.');
+  observeOwnedDatabasePool(payload.db.pool);
   const user = await payload.create({
     collection: 'users',
     data: {
