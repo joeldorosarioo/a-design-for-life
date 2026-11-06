@@ -1,6 +1,6 @@
 # Homologação isolada e prova local da mesma imagem
 
-E3 local foi retomada em 03/11/2026. Em 05/11/2026, a VPS Hostinger e o Coolify Atlas foram configurados pelo usuário; `https://panel.joeldorosarioo.dev` respondeu com TLS válido. O projeto `a-design-for-life` possui o environment `staging`. O GHCR privado contém a nova candidata `4eab005ab099d253d83a068c66a6d7948dfefb98`, construída e validada localmente com o fluxo de primeira inicialização. Este runbook ainda não registra deploy da aplicação na VPS nem prova integral de homologação. A3/A4 e produção seguem pendentes.
+E3 local foi retomada em 03/11/2026. A VPS Hostinger e o Coolify Atlas foram configurados pelo usuário, com o projeto `a-design-for-life`, environment `staging` e aplicação `portfolio-staging`. O usuário confirmou o deploy anterior em PG-only como Running/Healthy. Em 06/11/2026, as 16 migrações foram aplicadas por túnel privado e a leitura independente confirmou zero contas. A nova candidata `434ee5c92dc71f1c8147831bd38dea7c244af386` está no GHCR privado e permite criar a primeira conta pelo navegador; o redeploy e esse cadastro pelo usuário seguem pendentes. A3/A4 e produção continuam pendentes.
 
 ## Primeiro acesso editorial pelo navegador
 
@@ -13,6 +13,29 @@ Fluxo solicitado pelo usuário em 06/11/2026. O primeiro cadastro usa a tela Nat
 5. Após criar a conta, entrar normalmente em `/admin/login` com as credenciais escolhidas. O fluxo mantém a política sem JWT no JSON e a sessão em cookie HttpOnly. Na versão fixada, o primeiro cadastro não garante auto-login; o login Native comum completa a sessão. Conteúdo demonstrativo e publicação dos rascunhos são passos posteriores.
 
 [Provas do fluxo e do schema real](../verification/artifacts/E3-operations/browser-first-access-001.json). O modo antigo `initialize` continua disponível para provisionamento por operador, mas não é o caminho escolhido para esta primeira conta.
+
+## Candidata privada do primeiro acesso — 06/11/2026
+
+Publicação privada verificada, source `434ee5c92dc71f1c8147831bd38dea7c244af386`. Em **General → Build & deploy → Image**, preencher:
+
+- **Image:** `ghcr.io/joeldorosarioo/a-design-for-life`
+- **Tag:** `sha256-353062470dac78f313f5dff9755b214304f2e942305384a62bf632d704b75bf3`
+
+Em **Environment Variables**, alterar somente `STAGING_DATABASE_ONLY=false` e adicionar `EDITORIAL_FIRST_ACCESS_ENABLED=true`, ambos Runtime. As outras variáveis, credenciais, origem e volumes permanecem os mesmos. O arquivo privado de importação foi atualizado para 26 variáveis e validado; não contém credenciais editoriais. Fazer redeploy com **Consistent name (no rolling updates)** e aguardar Running/Healthy.
+
+Abrir [primeiro cadastro](https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/admin/create-first-user), passar pelo HTTP Basic da homologação e escolher as credenciais no formulário. Em seguida, usar [login editorial](https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/admin/login). A primeira conta fecha o cadastro inicial automaticamente, mesmo com a flag habilitada. Os 4 rascunhos estruturais são criados na mesma transação da conta.
+
+Build e smoke nativo passaram; a mesma imagem executou os modos PG-only e HTTP em dois containers descartáveis como appuser UID/GID70, com CPU/memória limitadas, capabilities removidas e no-new-privileges. Health HTTP200, perda do PostgreSQL e parada normal foram verificados. As 20 camadas e metadata não continham correspondências dos segredos conhecidos. GHCR privado recusou acesso anônimo e permitiu pull pelo digest usando credencial somente de leitura. Não houve redeploy remoto desta candidata, cadastro editorial ou envio real de e-mail pelo agente.
+
+[Recibo da imagem e publicação](../verification/artifacts/E3-operations/browser-first-access-image-001.json). Etapa 3 permanece em 15/30 critérios (50%), com 0/6 tarefas integralmente encerradas.
+
+## Acesso ao PostgreSQL de staging
+
+O PostgreSQL está dentro do container da aplicação. No Coolify, abrir `a-design-for-life → staging → portfolio-staging → Terminal` e executar `psql "$DATABASE_URI"`. No prompt SQL, `\dt` lista tabelas e `\q` encerra. Esse acesso não depende de abrir o site público nem de criar um recurso PostgreSQL adicional no Coolify.
+
+Para uma interface gráfica local, usar o driver **PostgreSQL** do DBeaver ou o pgAdmin. Com o túnel SSH existente aberto, conectar a `127.0.0.1:55435`; banco, usuário e senha são os de `DATABASE_URI` em **Environment Variables** da aplicação no Coolify. A senha de staging é própria; não usar automaticamente a senha do banco local nem a do painel/editor. A aba SSH do cliente pode ficar desativada quando o túnel já está aberto pelo terminal.
+
+O túnel encaminha a porta local55435 ao IP interno do container na VPS, porta5432. Depois de um redeploy, conferir novamente `hostname -i` no Terminal do Coolify e reabrir o túnel com esse IP se ele tiver mudado. O banco não possui porta pública; manter esse acesso por SSH. [Configuração SSH do DBeaver](https://dbeaver.com/docs/dbeaver/SSH-Configuration/).
 
 ## Prova local antes de contratar
 
