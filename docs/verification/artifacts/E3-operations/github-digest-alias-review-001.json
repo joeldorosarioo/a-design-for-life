@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "pre-merge-contract-gap-corrected-awaiting-real-workflow",
+  "observed": {
+    "workflowPublishedTag": "commit-<revision>",
+    "coolifyConsumedTag": "sha256-<manifest-digest>",
+    "digestAliasPreviouslyCreated": false
+  },
+  "correction": {
+    "createAliasBeforeDeploy": true,
+    "sameLocalImageNoRebuild": true,
+    "remoteManifestDigestReadbackRequired": true,
+    "packagePrivacyRechecked": true,
+    "healthyStagingMarkerStillAfterDeploy": true
+  },
+  "source": "https://docs.docker.com/reference/cli/docker/buildx/imagetools/inspect/",
+  "productionTouched": false,
+  "secretValuesPrinted": false
+}

@@ -114,6 +114,14 @@ jobs:
           [[ "$reference" == "$repository@sha256:"* ]]
           digest="${reference#"$repository@"}"
           [[ "$digest" =~ ^sha256:[a-f0-9]{64}$ ]]
+          # Coolify consumes a tag, so publish its immutable digest alias first.
+          # Reuse the same local image; verify the remote manifest is unchanged.
+          immutable_reference="$repository:${digest/:/-}"
+          docker tag "$IMAGE_REFERENCE" "$immutable_reference"
+          docker push "$immutable_reference"
+          published_digest="$(docker buildx imagetools inspect "$immutable_reference" --format '{{.Manifest.Digest}}')"
+          [[ "$published_digest" == "$digest" ]]
+          assert_private_package
           printf 'digest=%s\n' "$digest" >> "$GITHUB_OUTPUT"
       - name: Remove registry credentials
         if: always()
