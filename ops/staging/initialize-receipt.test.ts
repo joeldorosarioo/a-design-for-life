@@ -8,7 +8,7 @@ const base = {
   version: 1,
   environment: 'staging',
   ...selected,
-  migrations: 16,
+  migrations: 17,
   migrationLedgerSha256: 'a'.repeat(64),
   completedAt: '2026-11-05T00:00:00.000Z',
 };
@@ -45,6 +45,15 @@ it('accepts the pending discriminant only with no editorial account or structura
     { freshProvisioning: true },
   ])
     expect(validInitializationReceipt({ ...pending(), ...override }, selected)).toBe(false);
+});
+it('refuses receipts from the previous migration catalog instead of merging them into a current receipt', () => {
+  const current = complete();
+  const outdatedPending = { ...pending(), migrations: 16 };
+  const outdatedComplete = { ...current, migrations: 16 };
+  expect(validInitializationReceipt(outdatedPending, selected)).toBe(false);
+  expect(validInitializationReceipt(outdatedComplete, selected)).toBe(false);
+  expect(() => mergeInitializationReceipt(outdatedPending, current, selected)).toThrow();
+  expect(() => mergeInitializationReceipt(outdatedComplete, current, selected)).toThrow();
 });
 it('preserves complete legacy receipt validation and the original structural baseline', () => {
   const original = complete();

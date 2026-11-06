@@ -11,6 +11,7 @@ export function usersCollection(
   const firstAccess = editorialFirstAccess(siteOrigin, options);
   return {
     slug: 'users',
+    labels: { singular: 'Usuário', plural: 'Usuários' },
     auth: {
       useSessions: true,
       tokenExpiration: 7200,
@@ -20,7 +21,11 @@ export function usersCollection(
       forgotPassword: { expiration: 3_600_000, minRequestInterval: 15_000 },
       cookies: { sameSite: 'Lax', secure: new URL(siteOrigin).protocol === 'https:' },
     },
-    admin: { useAsTitle: 'email' },
+    admin: {
+      useAsTitle: 'email',
+      description:
+        'Contas de acesso ao painel. O nome e a foto identificam quem edita o conteúdo; são separados do perfil profissional público da Eliana.',
+    },
     access: {
       create: ({ req }) => req.user?.collection === 'users',
       read: ({ req }) => req.user?.collection === 'users',
@@ -65,6 +70,29 @@ export function usersCollection(
       beforeChange: [firstAccess.beforeChange],
       afterChange: [firstAccess.afterChange],
     },
-    fields: [],
+    fields: [
+      {
+        name: 'name',
+        label: 'Nome de exibição',
+        type: 'text',
+        admin: {
+          description:
+            'Como você quer ser identificado no painel. Este é o nome da sua conta e não altera o nome público da Eliana no portfólio.',
+        },
+      },
+      {
+        name: 'avatar',
+        label: 'Foto de perfil da conta',
+        type: 'upload',
+        relationTo: 'media',
+        filterOptions: {
+          mimeType: { in: ['image/jpeg', 'image/png', 'image/webp', 'image/avif'] },
+        },
+        admin: {
+          description:
+            'Selecione ou envie uma imagem JPEG, PNG, WebP ou AVIF de até 10 MB. A foto aparece na sua conta do painel e não altera o retrato público da Eliana. Sem foto, o painel usa suas iniciais.',
+        },
+      },
+    ],
   };
 }

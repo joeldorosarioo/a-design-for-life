@@ -150,13 +150,13 @@ afterAll(async () => {
   }
 });
 
-it('initializes sixteen Native migrations and one editor/four drafts, then preserves credentials/content on rerun', async () => {
+it('initializes the current Native migration catalog and one editor/four drafts, then preserves credentials/content on rerun', async () => {
   const options = await target();
   const first = await prepared(options.database);
   const created = await initializeStaging(first, options);
   expect(created).toMatchObject({
     status: 'initialized',
-    migrations: 16,
+    migrations: migrations.length,
     structuralDocuments: 4,
     freshProvisioning: true,
   });
@@ -326,7 +326,7 @@ it('prepares only the schema for browser-first access without accepting editor c
   const ready = await initializeStaging(first, options);
   expect(ready).toMatchObject({
     status: 'pending-first-access',
-    migrations: 16,
+    migrations: migrations.length,
     editorId: null,
     structuralDocuments: 0,
     structural: [],

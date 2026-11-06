@@ -5,7 +5,7 @@ afterEach(() => vi.unstubAllEnvs());
 
 // This test includes a cold import of the full Payload application configuration.
 it(
-  'uses the built-in local avatar in the sanitized Payload admin configuration',
+  'uses the private account avatar and Portuguese admin with English available',
   { timeout: 30_000 },
   async () => {
     vi.stubEnv('NODE_ENV', 'test');
@@ -25,6 +25,10 @@ it(
     vi.stubEnv('GA4_MEASUREMENT_ID', undefined);
 
     const config = await (await import('./payload.config')).default;
-    expect(config.admin.avatar).toBe('default');
+    expect(config.admin.avatar).toEqual({
+      Component: '/helpers/payload/editorial-user-avatar#EditorialUserAvatar',
+    });
+    expect(config.i18n.fallbackLanguage).toBe('pt');
+    expect(Object.keys(config.i18n.supportedLanguages).sort()).toEqual(['en', 'pt']);
   },
 );

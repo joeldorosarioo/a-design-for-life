@@ -131,7 +131,7 @@ export function stagingSeedSettings(runtime, editorSource, receipt, expectedData
       ['initialized', 'verified'].includes(receipt.status) &&
       receipt.database === databaseName &&
       receipt.origin === origin.origin &&
-      receipt.migrations === 16,
+      receipt.migrations === 17,
     'initialization-receipt-required',
   );
   id(receipt.editorId);

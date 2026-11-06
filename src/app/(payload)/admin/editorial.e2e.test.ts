@@ -488,7 +488,7 @@ test('native version comparison restores a draft; native Save Draft and Publish 
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
   expect((await restored).status()).toBe(200);
   await expect(page).toHaveURL(new RegExp(`/admin/collections/site-navigation/${doc.id}$`));
-  const brand = page.getByRole('textbox', { name: 'Marca/retorno à Home' });
+  const brand = page.getByRole('textbox', { name: 'Nome ou marca que leva à página inicial' });
   await expect(brand).toHaveValue('Synthetic brandLabel');
   expect(
     (await (await request.get(`/api/site-navigation/${doc.id}?depth=0`)).json()).header.brandLabel,

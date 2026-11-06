@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "cms-portuguese-and-account-profile-source-verified",
+  "sourceBaseRevision": "d437026",
+  "scope": {
+    "adminLanguages": [
+      "pt",
+      "en"
+    ],
+    "fallbackLanguage": "pt",
+    "contentLocalesUnchanged": [
+      "pt",
+      "en"
+    ],
+    "collectionsReviewed": [
+      "users",
+      "site-navigation",
+      "professional-profiles",
+      "cases",
+      "case-content",
+      "case-routes",
+      "media"
+    ],
+    "accountFields": [
+      "name",
+      "avatar"
+    ],
+    "accountFieldsOptional": true,
+    "publicProfileFieldsChanged": false,
+    "technicalNamesPreserved": true
+  },
+  "validation": {
+    "typecheckExitCode": 0,
+    "lintExitCode": 0,
+    "unitTestsPassed": 48,
+    "controlledMigrationUnitTestsPassed": 7,
+    "architectureTestsPassed": 34,
+    "nativeTestsPassed": 14,
+    "nativeTestsBasis": "5 initializer +3first-access passed in first round;3users+2profile+1controlled-migration passed after harness correction",
+    "browserTestsPassed": 4,
+    "browserBuildProductionPassed": true,
+    "nativeForbiddenAssertionLanguageIndependent": true,
+    "browserFallbackVerifiedWithUnsupportedLocale": true,
+    "pdfAvatarRejected": true,
+    "avatarBytesPrivate": true,
+    "avatarAnonymousAccessDenied": true,
+    "imageScopeSameOriginOnly": true,
+    "realMailSentByAgent": false
+  },
+  "controlledMigration": {
+    "runId": "925bedd8-d96c-4b12-bf52-222b8e578a83",
+    "database": "adfl_test_migration_2ed89beab12a40e29ad6e1ebdcad6c02",
+    "databaseContainerId": "d8fb5048d8ea20fbbee83716b68ecfb5b0bd6b4c6c96aa6563cc2ca528eb18a9",
+    "databaseNetworkId": "257fa2d5e967697dc16a37b4f52116906849badd16f7eb111a4bdd1acdf881a5",
+    "backupId": "30cf12cf-9dd0-431b-adb2-20b14546dd8b",
+    "ciphertextSha256": "5ed35e4502cba6182de40bc9bf28f206c1f4f26c23241f244f0c52bad5634e94",
+    "schemaSha256": "6605edeae15fab046d359b62a89b0794d15a16ca7224317a7d51a13565f7c3d8",
+    "predecessorRows": 16,
+    "currentRows": 17,
+    "existingAccountLoginVerified": true,
+    "restoredAccountLoginVerified": true,
+    "competingJobRefused": true,
+    "preMigrationRestoreVerified": true
+  },
+  "migration": {
+    "name": "20261106_035830_cms_user_profile",
+    "from": 16,
+    "to": 17,
+    "addsNullableColumns": [
+      "users.name",
+      "users.avatar_id"
+    ],
+    "avatarForeignKey": "media.id ON DELETE SET NULL",
+    "addsIndex": "users_avatar_idx",
+    "accountCredentialsAndSessionsPreserved": true,
+    "backupAndPredecessorRestoreVerified": true
+  },
+  "operatorReported": {
+    "resourceName": "app",
+    "stagingPtAccessible": true,
+    "editorialAccountCreated": true,
+    "adminLoginTested": true,
+    "passwordRecoveryEmailTested": true,
+    "independentMessageDeliveryInspection": false
+  },
+  "stagingPreflight": {
+    "status": "verified-readonly-predecessor16",
+    "postgresqlMajor": 17,
+    "targetIdentityVerified": true,
+    "reviewedMigrationPrefixVerified": true,
+    "migrations": 16,
+    "counts": {
+      "users": 1,
+      "media": 0,
+      "profiles": 2,
+      "navigation": 2
+    },
+    "newAccountColumnsPresent": false,
+    "ddlExecuted": false,
+    "accountOrCredentialsModified": false,
+    "checkedAt": "2026-11-06T04:13:38.060Z"
+  },
+  "preservation": {
+    ".env": true,
+    "next-env.d.ts": true,
+    "tsconfig.json": true,
+    ".next/BUILD_ID": true
+  },
+  "sourceHashes": {
+    "src/payload.config.ts": "cacc7be0c0aa3a679fd1fa95d255ee0533424c004b0841451c8cbab31f624778",
+    "src/helpers/payload/users.collection.ts": "5b3147197655c39ad12949c517dc04ccc09008fbaa693e4a51eb786b6d5f5980",
+    "src/helpers/payload/editorial-user-avatar.tsx": "adacdd971680e9ce61fa86ee24b65189c0aecfc0702c0b47c33ac2c4bbd2a21b",
+    "src/migrations/20261106_035830_cms_user_profile.ts": "d85d760a176bd26f03fd9f677688c2b1ac9ce8092add2f23c622abd7d5658cfc",
+    "src/features/site-navigation/content/collections/site-navigation.ts": "ef8b784343cfb866c5a47fa2c52a1b51757d5f7152cfdac858511c80bc4add64",
+    "src/features/professional-profile/content/collections/professional-profiles.ts": "9bad0c005acdb4a03eb9ff2b4442f07f2261afd05a3869d09f2eb8e7840e32f8",
+    "src/features/cases/content/collections/case-content.ts": "e7ee366876d9360dc509833d6bc1aba17fdcd312497f3362621f1eb5aa49011d"
+  },
+  "evidenceLog": "cms-editorial-account-001.txt",
+  "limits": [
+    "Private staging still runs the preceding image; packaging and actual schema upgrade are separate operations.",
+    "All automated account and browser checks used synthetic records and owned PostgreSQL; no real reset email was sent.",
+    "A3/A4 and production remain pending."
+  ],
+  "stage": {
+    "completedItems": 15,
+    "totalItems": 30,
+    "percentage": 50,
+    "closedTasks": 0,
+    "totalTasks": 6
+  }
+}

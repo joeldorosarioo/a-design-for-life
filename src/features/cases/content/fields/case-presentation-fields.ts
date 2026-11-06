@@ -5,10 +5,11 @@ export function casePresentationFields(): Field[] {
   return [
     {
       name: 'titleEmphasis',
-      label: 'Ênfase final do título',
+      label: 'Continuação do título em destaque (opcional)',
       type: 'text',
       admin: {
-        description: 'Sufixo opcional do título. O título completo é derivado das duas partes.',
+        description:
+          'Parte final do título exibida com destaque visual. Escreva somente a continuação: ela será unida ao título principal para formar o título completo do projeto.',
       },
     },
   ];
@@ -18,21 +19,46 @@ export function sectionPresentationFields(): Field[] {
   return [
     {
       name: 'presentation',
-      label: 'Apresentação da seção',
+      label: 'Como apresentar esta seção',
       type: 'select',
       defaultValue: 'narrative',
       options: [
-        { label: 'Narrativa', value: 'narrative' },
-        { label: 'Processo', value: 'process' },
-        { label: 'Comparação textual antes e depois', value: 'comparison' },
+        { label: 'Texto e imagens do estudo', value: 'narrative' },
+        { label: 'Etapas do processo', value: 'process' },
+        { label: 'Antes e depois em dois textos', value: 'comparison' },
         { label: 'Aprendizados', value: 'learnings' },
       ],
       admin: {
-        description: 'Composição predefinida. Comparação exige dois blocos de texto ao publicar.',
+        description:
+          'Escolha o arranjo visual desta seção. Antes e depois exige exatamente dois blocos de texto, primeiro o cenário inicial e depois a proposta. As outras opções aceitam os blocos de texto e imagem disponíveis.',
       },
     },
-    { name: 'eyebrow', label: 'Identificação visível da seção e do sumário', type: 'text' },
-    { name: 'description', label: 'Introdução da seção', type: 'textarea' },
-    { name: 'note', label: 'Nota da seção', type: 'textarea' },
+    {
+      name: 'eyebrow',
+      label: 'Texto curto acima do título da seção',
+      type: 'text',
+      admin: {
+        description:
+          'Identificação curta exibida antes do título. Exemplo: Processo ou Aprendizados. Também identifica a seção no sumário quando não houver título.',
+      },
+    },
+    {
+      name: 'description',
+      label: 'Introdução da seção',
+      type: 'textarea',
+      admin: {
+        description:
+          'Breve apresentação exibida junto ao título da seção, antes dos blocos de texto e imagem.',
+      },
+    },
+    {
+      name: 'note',
+      label: 'Observação da seção',
+      type: 'textarea',
+      admin: {
+        description:
+          'Informação complementar apresentada junto à abertura da seção, como uma ressalva ou contexto curto.',
+      },
+    },
   ];
 }

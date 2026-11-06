@@ -18,7 +18,7 @@ export function validInitializationReceipt(value, selected) {
     value.environment === 'staging' &&
     value.database === selected.database &&
     value.origin === selected.origin &&
-    value.migrations === 16 &&
+    value.migrations === 17 &&
     /^[a-f0-9]{64}$/.test(value.migrationLedgerSha256 ?? '') &&
     Array.isArray(value.structural);
   if (!base) return false;

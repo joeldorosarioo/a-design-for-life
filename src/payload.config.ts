@@ -17,6 +17,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config as loadEnv } from 'dotenv';
 import { postgresAdapter } from '@payloadcms/db-postgres';
+import { en } from '@payloadcms/translations/languages/en';
+import { pt } from '@payloadcms/translations/languages/pt';
 import {
   lexicalEditor,
   ParagraphFeature,
@@ -93,12 +95,13 @@ installMediaRuntime({
 
 const config = buildConfig({
   secret: env.PAYLOAD_SECRET,
+  i18n: { fallbackLanguage: 'pt', supportedLanguages: { pt, en } },
   logger: payloadRuntimeLoggerOptions(env.APP_ENV),
   email: editorialEmailAdapter(env.APP_ENV, env.DATABASE_URI, integrations.resend),
   hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
-    avatar: 'default',
+    avatar: { Component: '/helpers/payload/editorial-user-avatar#EditorialUserAvatar' },
     user: Users.slug,
     importMap: { baseDir: sourceDirectory },
   },
