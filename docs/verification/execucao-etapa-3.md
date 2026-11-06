@@ -14,12 +14,20 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 - [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 4/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 2/5 critérios.
 - [ ] E3.4 Imagem única, configuração de execução e homologação — 4/5 critérios.
-- [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
+- [ ] E3.5 Migrações, logs e verificações de saúde — 3/5 critérios.
 - [ ] E3.6 Backup criptografado e restauração isolada — 2/5 critérios.
 - [ ] Pacote A3 com evidências e limitações concretas entregue.
 - [ ] A3 aprovada explicitamente pelo usuário.
 
-## Decisões e bloqueios externos
+## Estado atual e leitura da contagem — 06/11/2026
+
+A aplicação e o CMS estão implantados em staging, com deploy automático develop→staging comprovado no workflow42225045302. VPS/Coolify, GHCR privado, Resend e conta editorial já existem. O usuário confirmou o teste real de envio da recuperação; isso não é um envio adicional pelo agente. Os registros históricos abaixo não revogam essas configurações ou autorizações.
+
+15/30 (50%) mede critérios de aceite integralmente comprovados; não mede linhas de código nem percentual geral da implementação. 0/6 significa nenhuma frente com todos os seus cinco critérios encerrados. Cache/publicação e imagem/homologação estão em4/5 cada. Não apresentar a contagem de frentes como se nada tivesse sido entregue.
+
+Próximas prioridades: validar a versão implantada e seus guardas operacionais (mídia/publicação, cache/worker, saúde/logs, exclusão de indexação/Analytics); configurar e provar backup remoto agendado e restauração isolada; concluir as configurações/inspeção do SDK de Analytics e consolidar o pacote de aceite A3. Produção permanece desativada e não é pré-requisito para usar o staging. Não recontratar nem reprovisionar os recursos já existentes.
+
+## Decisões e bloqueios externos — histórico inicial
 
 Uma conta Resend; `mail.joeldorosarioo.dev` como subdomínio de envio; uma chave de envio por projeto. Ambos os portfólios usam e-mail apenas na recuperação nativa de senha e não precisam de caixa de entrada. Nenhum envio real autorizado. Não registrar tokens/senhas em chat, logs ou repositório.
 
