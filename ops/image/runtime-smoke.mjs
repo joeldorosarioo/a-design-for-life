@@ -24,6 +24,9 @@ assert.match(
   /^tar \(GNU tar\) 1\.35(?:\r?\n|$)/,
 );
 await access('/app/src/backup-runtime.mjs');
+const buildIdentity = JSON.parse(await readFile('/app/ops/image/build-identity.json', 'utf8'));
+assert.deepEqual(Object.keys(buildIdentity), ['revision']);
+assert.match(buildIdentity.revision, /^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/);
 const checker = process.env.MEDIA_CHECKER_BINARY ?? '/opt/qpdf/bin/qpdf';
 assert.match(execFileSync(checker, ['--version'], { encoding: 'utf8' }), /^qpdf version 12\.4\.2/);
 const require = createRequire(import.meta.url);
