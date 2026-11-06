@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "staging-activation-configured-awaiting-protected-ci",
+  "operatorAuthorized": true,
+  "target": {
+    "repository": "joeldorosarioo/a-design-for-life",
+    "branch": "develop",
+    "environment": "staging",
+    "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp"
+  },
+  "preflight": {
+    "apiEnabledByOperator": true,
+    "configurationTokenReadStatus": 200,
+    "configurationTokenWriteStatus": 200,
+    "sameTagWritePreservedSettings": true,
+    "deploymentOnlyTokenReadStatus": 403,
+    "deploymentOnlyTokenReadExpectedDenied": true,
+    "applicationStatus": "running:healthy",
+    "consistentContainerName": true
+  },
+  "githubConfiguration": {
+    "repository": "joeldorosarioo/a-design-for-life",
+    "environment": "staging",
+    "productionTouched": false,
+    "secretValuesPrinted": false,
+    "steps": [
+      {
+        "operation": "environment-variable",
+        "name": "COOLIFY_URL",
+        "verified": true
+      },
+      {
+        "operation": "environment-variable",
+        "name": "COOLIFY_RESOURCE_UUID",
+        "verified": true
+      },
+      {
+        "operation": "environment-variable",
+        "name": "APPROVED_MIGRATION_TREE",
+        "verified": true
+      },
+      {
+        "operation": "environment-secret",
+        "name": "COOLIFY_TOKEN",
+        "stored": true
+      },
+      {
+        "operation": "environment-secret",
+        "name": "COOLIFY_DEPLOY_TOKEN",
+        "stored": true
+      },
+      {
+        "operation": "repository-activation-variable",
+        "name": "STAGING_AUTODEPLOY_ENABLED",
+        "verified": true
+      }
+    ],
+    "status": "staging-github-settings-configured",
+    "completedAt": "2026-11-06T11:45:38.374Z"
+  },
+  "apiCompatibility": {
+    "applicationNumericIdMayBeRedacted": true,
+    "canonicalUuidRequired": true,
+    "deploymentBoundByNestedApplicationUuid": true,
+    "foreignExplicitUuidRejected": true,
+    "offlineTestsPassed": 65
+  },
+  "production": {
+    "created": false,
+    "enabled": false,
+    "touched": false
+  },
+  "pending": [
+    "Publish the integration branch, pass required CI and merge normally into develop.",
+    "Observe the automatic private image publication and staging deployment to Healthy."
+  ],
+  "secretValuesPrinted": false
+}

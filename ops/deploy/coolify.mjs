@@ -100,13 +100,47 @@ function configuration(input, env) {
     tag: input.digest.replace(':', '-'),
   };
 }
-function applicationIdentity(application, selected, expectedTag) {
+function optionalNumericId(value, code) {
+  if (value === undefined) return undefined;
   requireDeployment(
-    application &&
-      application.uuid === selected.resourceUuid &&
-      /^(?:0|[1-9][0-9]*)$/.test(String(application.id)),
+    ['string', 'number'].includes(typeof value) && /^(?:0|[1-9][0-9]*)$/.test(String(value)),
+    code,
+  );
+  return String(value);
+}
+function consistentApplicationId(expected, observed) {
+  requireDeployment(
+    expected === undefined || observed === undefined || expected === observed,
     'application-target-mismatch',
   );
+  return expected ?? observed;
+}
+function deploymentApplicationIdentity(state, selected, applicationId) {
+  const explicitUuids = [];
+  if (Object.hasOwn(state, 'application_uuid')) explicitUuids.push(state.application_uuid);
+  if (state.application && Object.hasOwn(state.application, 'uuid'))
+    explicitUuids.push(state.application.uuid);
+  // A redacted application response may omit its numeric id. Any supplied UUID
+  // must still match, even when an older payload has matching numeric ids.
+  requireDeployment(
+    explicitUuids.every((value) => value === selected.resourceUuid),
+    'deployment-target-mismatch',
+  );
+  const jobId = optionalNumericId(state.application_id, 'deployment-target-mismatch');
+  const nestedId = optionalNumericId(state.application?.id, 'deployment-target-mismatch');
+  const numericIds = [applicationId, jobId, nestedId].filter((value) => value !== undefined);
+  requireDeployment(new Set(numericIds).size <= 1, 'deployment-target-mismatch');
+  requireDeployment(
+    explicitUuids.length > 0 || (applicationId !== undefined && jobId === applicationId),
+    'deployment-target-mismatch',
+  );
+}
+function applicationIdentity(application, selected, expectedTag) {
+  requireDeployment(
+    application && application.uuid === selected.resourceUuid,
+    'application-target-mismatch',
+  );
+  const id = optionalNumericId(application.id, 'application-target-mismatch');
   requireDeployment(application.build_pack === 'dockerimage', 'application-type-mismatch');
   requireDeployment(
     application.docker_registry_image_name === imageRepository,
@@ -115,7 +149,7 @@ function applicationIdentity(application, selected, expectedTag) {
   requireDeployment(application.health_check_enabled === true, 'healthcheck-required');
   if (expectedTag !== undefined)
     requireDeployment(application.docker_registry_image_tag === expectedTag, 'image-tag-mismatch');
-  return { id: String(application.id), status: application.status };
+  return { id, status: application.status };
 }
 
 /** Calls only the canonical panel API; injected dependencies make tests entirely offline. */
@@ -171,7 +205,7 @@ export async function deployCoolify(
   const original = applicationIdentity(await api('GET', applicationPath), selected);
   await api('PATCH', applicationPath, { docker_registry_image_tag: selected.tag });
   const saved = applicationIdentity(await api('GET', applicationPath), selected, selected.tag);
-  requireDeployment(saved.id === original.id, 'application-target-mismatch');
+  const applicationId = consistentApplicationId(original.id, saved.id);
   const deployment = await api('POST', '/deploy', { uuid: selected.resourceUuid });
   requireDeployment(
     Array.isArray(deployment?.deployments) && deployment.deployments.length === 1,
@@ -188,10 +222,8 @@ export async function deployCoolify(
   const maximumPolls = Math.max(1, Math.ceil(timeoutMs / pollIntervalMs));
   for (let attempt = 0; attempt < maximumPolls && now() < deadline; attempt++) {
     const state = await api('GET', `/deployments/${deploymentUuid}`);
-    requireDeployment(
-      state?.deployment_uuid === deploymentUuid && String(state.application_id) === original.id,
-      'deployment-target-mismatch',
-    );
+    requireDeployment(state?.deployment_uuid === deploymentUuid, 'deployment-target-mismatch');
+    deploymentApplicationIdentity(state, selected, applicationId);
     if (state.docker_registry_image_tag != null && state.docker_registry_image_tag !== '')
       requireDeployment(state.docker_registry_image_tag === selected.tag, 'image-tag-mismatch');
     requireDeployment(
@@ -206,7 +238,7 @@ export async function deployCoolify(
         selected,
         selected.tag,
       );
-      requireDeployment(current.id === original.id, 'application-target-mismatch');
+      consistentApplicationId(applicationId, current.id);
       if (current.status === 'running:healthy')
         return {
           status: 'deployed',

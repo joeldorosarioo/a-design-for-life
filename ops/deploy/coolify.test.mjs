@@ -410,3 +410,104 @@ test('supports a separately configured production resource only from main with i
   assert.equal(result.environment, 'production');
   assert.equal(result.resourceUuid, productionUuid);
 });
+
+test('accepts the real redacted application payload without id and binds the job by explicit application UUID', async () => {
+  for (const jobApplication of [
+    { application_id: '1', application: { id: 1, uuid: stagingResourceUuid } },
+    { application_id: '1', application_uuid: stagingResourceUuid },
+  ]) {
+    const app = application();
+    delete app.id;
+    const client = fakeApi({
+      app,
+      onRequest: (request) =>
+        request.url.includes('/deployments/')
+          ? new Response(
+              JSON.stringify({
+                deployment_uuid: deploymentUuid,
+                status: 'finished',
+                ...jobApplication,
+              }),
+              { status: 200 },
+            )
+          : undefined,
+    });
+    const result = await deployCoolify(options(), client.dependencies);
+    assert.equal(result.status, 'deployed');
+    assert.equal(result.resourceUuid, stagingResourceUuid);
+  }
+});
+
+test('rejects every explicit foreign application UUID even when numeric application IDs match', async () => {
+  for (const jobApplication of [
+    { application: { id: 42, uuid: productionUuid } },
+    { application_uuid: productionUuid },
+    { application_uuid: stagingResourceUuid, application: { id: 42, uuid: productionUuid } },
+    { application_uuid: productionUuid, application: { id: 42, uuid: stagingResourceUuid } },
+    { application_uuid: null },
+    { application: { id: 42, uuid: null } },
+  ]) {
+    const client = fakeApi({
+      onRequest: (request) =>
+        request.url.includes('/deployments/')
+          ? new Response(
+              JSON.stringify({
+                deployment_uuid: deploymentUuid,
+                application_id: '42',
+                status: 'finished',
+                ...jobApplication,
+              }),
+              { status: 200 },
+            )
+          : undefined,
+    });
+    await assert.rejects(
+      deployCoolify(options(), client.dependencies),
+      (error) => error.code === 'deployment-target-mismatch',
+    );
+  }
+});
+
+test('refuses a job without application UUID when all application payloads omit their numeric id', async () => {
+  const app = application();
+  delete app.id;
+  const client = fakeApi({
+    app,
+    onRequest: (request) =>
+      request.url.includes('/deployments/')
+        ? new Response(
+            JSON.stringify({
+              deployment_uuid: deploymentUuid,
+              application_id: '1',
+              status: 'finished',
+            }),
+            { status: 200 },
+          )
+        : undefined,
+  });
+  await assert.rejects(
+    deployCoolify(options(), client.dependencies),
+    (error) => error.code === 'deployment-target-mismatch',
+  );
+});
+
+test('still rejects conflicting numeric identities when the application UUID matches', async () => {
+  const client = fakeApi({
+    onRequest: (request) =>
+      request.url.includes('/deployments/')
+        ? new Response(
+            JSON.stringify({
+              deployment_uuid: deploymentUuid,
+              application_id: '99',
+              application: { id: 99, uuid: stagingResourceUuid },
+              status: 'finished',
+            }),
+            { status: 200 },
+          )
+        : undefined,
+  });
+  await assert.rejects(
+    deployCoolify(options(), client.dependencies),
+    (error) => error.code === 'deployment-target-mismatch',
+  );
+});
