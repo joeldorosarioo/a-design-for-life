@@ -1,6 +1,6 @@
 # E3.3 — contrato e verificação local de Analytics
 
-A feature reúne política, contratos, sessão por documento, adaptador de comandos gtag injetado e componentes React. A composição condicional foi ligada às respostas públicas verificadas e aos links aprovados. O aplicativo mantém o carregamento do SDK desativado (`loadScript=null`). **E3.3 permanece aberta** enquanto faltam a inspeção do SDK e da propriedade real, a prova do custo de JavaScript após ativação e os relatórios.
+A feature reúne política, contratos, sessão por documento, adaptador de comandos gtag injetado e componentes React. A composição condicional foi ligada às respostas públicas verificadas e aos links aprovados. O aplicativo mantém o carregamento do SDK desativado (`loadScript=null`). A inspeção interceptada do SDK real e a comparação do custo de JavaScript foram concluídas em 06/11/2026, conforme o recibo mais recente abaixo. **E3.3 permanece aberta** pela revisão dos campos/leituras do SDK, pela inspeção dos controles da propriedade e pelos limites dos relatórios; a medição continua desativada.
 
 ## Contratos e política
 
@@ -72,3 +72,28 @@ As duas jornadas Chromium passaram com Node 24.22.2 e Playwright 1.64.1. Passara
 O harness minificado com o adaptador e suas dependências mediu 459.473 bytes brutos e 95.688 com gzip. O mesmo harness com montagem vazia mediu 882 bytes brutos e 564 com gzip. Essa comparação mede a fixture isolada, com esbuild, e o recibo separa os bytes de script observados no Next com medição inativa. A comparação do bundle da aplicação após ativação e o custo do SDK real ficam para a prova de ativação.
 
 A captura termina na fronteira do SDK. A inspeção interceptada do SDK real precisa identificar os dados técnicos e eventos enviados, com os controles de medição aprimorada da propriedade verificados e o bloqueio de relatórios registrado acima. [Medição aprimorada](https://support.google.com/analytics/answer/9216061?hl=en) · [Eventos automáticos](https://support.google.com/analytics/answer/9234069?hl=en)
+
+## SDK real interceptado e custo atual — 06/11/2026
+
+O responsável forneceu o fluxo `G-DXFQKDH52Z` e confirmou que a Medição aprimorada está desativada. Esse estado é relato do operador; os controles Google Signals, granularidade de localização/dispositivo e dados fornecidos pelo usuário ainda não foram inspecionados independentemente. Flags `vtp_enable*` do template interno do script não equivalem à auditoria desses controles e não invalidam o relato do responsável.
+
+O script oficial foi obtido por um único GET estático e guardado fora do Git. A captura não executou o SDK nem chamou endpoints de medição. Bytes: **477.089**, SHA-256 `4c1c8a92bfdde6b56befdbf90138fdec498744cc5b2a5d4b4e496b5b669dd7ac`; gzip recomprimido localmente: **163.252 bytes**. A execução ocorreu depois, com os bytes locais íntegros em origem `.invalid`, interceptação de todas as requisições, service workers bloqueados e proxy de loopback que responde erro sem encaminhar conexões. Zero requisições de medição chegaram ao Google.
+
+O RED real observou seis eventos de wire para cinco comandos manuais: três pageviews em vez de dois. O controle com a própria `createGtagSession` e fila gtag padrão reproduziu a emissão inicial adicional; alterar apenas o histórico não a explicou. O SDK identificava o primeiro registro como interno e o seguinte como evento externo. A configuração apenas por stream não foi suficiente com esses bytes. A [documentação oficial de privacidade](https://developers.google.com/tag-platform/security/guides/privacy) também define `gtag('set', { send_page_view: false })` global. Ao preparar esse valor antes de `js/config`, mantendo o `false` por stream, o mesmo SDK passou a produzir exatamente dois pageviews e os três contatos aprovados. Nenhum request/evento foi filtrado para obter o GREEN; os bytes do SDK permaneceram intactos.
+
+O teste de ordem do adaptador primeiro falhou pela ausência desse default global e depois passou. A rodada focada concluiu **180/180 testes em 11 arquivos**, incluindo 13 testes do decodificador de query/batch de coleta. O harness reprodutível confirmou cinco eventos, contexto canônico PT/EN, títulos/referrers vazios e nenhuma sentinela privada transmitida. Não houve novos cookies, writes de cookies, localStorage/sessionStorage ou abertura de IndexedDB; o cookie funcional de idioma ficou igual. O SDK, porém, realizou **sete leituras de `document.cookie`** e enviou resolução/client hints no protocolo. Essas observações não são apresentadas como prova de identificação, mas exigem avaliação antes de aprovar o critério integral de privacidade. O `loadScript=null` padrão continua inalterado, inclusive com ID configurado.
+
+A captura estática autenticada da home `/pt` implantada encontrou **11 assets JavaScript**, **753.055 bytes decodificados** e **233.118 bytes com gzip local**, além dos scripts inline registrados no recibo. Não executou esses scripts nem recebeu script Google. A comparação separa esse orçamento atual, o acréscimo do SDK e o harness isolado de **458.902 bytes /95.452 bytes gzip**. Somar o harness ao bundle Next duplicaria dependências compartilhadas. Esses valores são custo estático, não tempo de carregamento ou medida de produção ativada. Ausência de banner/controles de consentimento permanece comprovada nas jornadas CI existentes e no código que não foi alterado para esse comportamento. [Recibo completo](artifacts/E3-analytics/real-sdk-offline-002.json).
+
+### Reproduzir a inspeção sem enviar eventos
+
+Executar na raiz do projeto, com dependências instaladas e Chromium do Playwright disponível. O primeiro comando baixa somente o código oficial para uma pasta nova; o segundo executa os bytes locais sob interceptação/proxy. Não são necessárias credenciais do CMS ou do Google para o harness.
+
+```powershell
+$node = '.\.toolchain\node-v24.22.2-win-x64\node.exe'
+& $node src/features/analytics/verification/capture-google-sdk.mjs G-DXFQKDH52Z .work/analytics-sdk-new
+& $node --import tsx src/features/analytics/verification/inspect-real-sdk.mjs .work/analytics-sdk-new/sdk-manifest.json .work/analytics-sdk-new/inspection.json
+& $node node_modules/vitest/vitest.mjs run --project unit src/features/analytics
+```
+
+O script recusa sobrescrever os arquivos de captura/resultado. Para reproduzir os mesmos bytes de 06/11, reutilizar a captura local com o SHA acima; novo download pode trazer uma revisão diferente do fornecedor e deve ser tratado como nova observação. `activationPermitted=false` é deliberado mesmo quando a sequência passa: obter uma sequência correta não aprova os dados adicionais nem os relatórios. E3.3.2/3 e a limitação de relatórios permanecem sujeitos às evidências próprias. O custo JavaScript e a comparação implantada agora têm evidência real para revisão de E3.3.5; nenhum serviço foi contratado ou publicação em produção executada.

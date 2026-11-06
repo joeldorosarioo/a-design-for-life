@@ -1,8 +1,8 @@
 # Saúde e logs de execução
 
-## Estado desta preparação
+## Estado validado
 
-A prontidão pública e os diagnósticos estruturados foram exercitados localmente. O probe da imagem e o atendimento de cache com o PostgreSQL indisponível já têm recibos próprios. Coolify, rotação aplicada, consulta a logs do ambiente operacional e falhas reais de R2 continuam pendentes.
+O staging usa o probe Node incluído na mesma imagem privada homologada. A configuração real, GET/HEAD autenticados e o início observado foram conferidos sem reiniciar ou interromper o atendimento. Os diagnósticos estruturados e o atendimento de cache durante indisponibilidade têm provas isoladas próprias. Driver, rotação efetiva e consulta dos logs operacionais continuam com verificação separada; o estado Healthy não encerra esses itens.
 
 ## Prontidão pública
 
@@ -10,19 +10,23 @@ A prontidão pública e os diagnósticos estruturados foram exercitados localmen
 
 A resposta indica que o processo consegue executar esse handler. Não certifica banco, mídia, publicação, cache completo, capacidade de disco ou recuperação. Não deve consultar dependências para decidir se páginas confirmadas em cache continuam servíveis. URLs, headers, cookies, credenciais e detalhes de falhas não entram no corpo público.
 
-GET/HEAD são os handlers definidos pela aplicação. As duas respostas passaram no Next e na imagem Linux local. A verificação do proxy e da configuração de homologação depende do ambiente operacional.
+GET/HEAD são os handlers definidos pela aplicação. Além das provas no Next e na imagem Linux local, as duas respostas passaram pela origem real autenticada de staging: HTTP200, corpo mínimo ou vazio, JSON, no-store, nosniff e noindex. [Recibo atual](../verification/artifacts/E3-operations/staging-health-probe-001.json).
 
-## Probe da imagem e configuração futura no Coolify
+## Probe da imagem e configuração medida no Coolify
 
-O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. A versão atual do probe usa um agente HTTP direto, independentemente do proxy de ambiente, e limita a resposta a 512 bytes. A prova Linux montou somente o arquivo atualizado sobre a imagem 004 e confirmou GET/HEAD e estado saudável com proxy inacessível. Medir o período inicial e validar o executor no Coolify com os volumes operacionais.
+O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. A versão atual do probe usa um agente HTTP direto, independentemente do proxy de ambiente, e limita a resposta a 512 bytes. A prova Linux montou somente o arquivo atualizado sobre a imagem 004 e confirmou GET/HEAD e estado saudável com proxy inacessível. Esses resultados históricos são complementados pela observação atual da imagem por digest no Coolify, abaixo.
 
-Exemplo de comando para uma imagem cujo listener local usa a porta3000, a validar antes de configurar:
+O recurso real está com healthcheck habilitado do tipo CMD, intervalo30s, timeout5s, três tentativas e período inicial30s. Comando configurado:
 
 ```sh
-node --input-type=module -e 'try { const response = await fetch("http://127.0.0.1:3000/health", { signal: AbortSignal.timeout(4500), cache: "no-store" }); const body = await response.json(); if (response.status !== 200 || body?.status !== "ready" || Object.keys(body).length !== 1) process.exitCode = 1; } catch { process.exitCode = 1; }'
+node /app/ops/image/health-probe.mjs
 ```
 
-O comando não imprime diagnóstico. Ajustar quoting ao executor real do Coolify. Guardar o exit code e comprovar tempo limite, início, recuperação e três falhas no ambiente de homologação. O limite interno de4,5s deixa margem para o timeout externo proposto de5s; os tempos efetivos ainda precisam ser medidos.
+O probe consulta somente `http://127.0.0.1:3000/health`, ignora proxy de ambiente, limita o corpo a512bytes e usa timeout interno4s, deixando margem ao timeout externo5s. Em modo HTTP não consulta PostgreSQL ou R2. O modo PostgreSQL-only de bootstrap é separado e não é a prontidão da aplicação já em atendimento.
+
+No deploy existente `dzeb1xlupba8kijfts6xboih`, o Coolify registrou o novo contêiner iniciado em `2026-11-06T18:04:45.664900Z`. O pipeline emitiu o recibo somente após observar `running:healthy`, às `18:04:51.6745560Z`. O limite superior conservador é6011ms, incluindo1ms pela precisão dos timestamps, dentro do período inicial30s. Trata-se de um início observado, não de uma garantia de capacidade ou do instante exato do primeiro probe. A leitura usou apenas a API e o log já existente em memória; não houve novo deploy ou restart. [Recibo de configuração e início](../verification/artifacts/E3-operations/staging-health-probe-001.json).
+
+Uma fixture HTTP local, sem PostgreSQL, mídia, portas de host ou configuração privada, executou o binário embutido na mesma imagem `sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a`. HTTP200 retornou exit0; HTTP503 e timeout retornaram exit1, sem stdout/stderr; a volta a HTTP200 retornou exit0. O timeout levou4345ms. O SHA-256 do probe embutido coincidiu com a fonte revisada. Contêiner e volumes anônimos próprios foram removidos. Não se forçaram falhas no staging nem se alegou testar a contagem interna de retries do Docker. [Recibo da mesma imagem](../verification/artifacts/E3-operations/staging-image-health-probe-local-001.json).
 
 ## API de logs
 
@@ -77,10 +81,10 @@ Não adicionar monitoramento ou notificações externos. A observação pelo pr�
 
 ## Evidência ainda necessária para A3
 
-- Verificar GET/HEAD reais e outros métodos, proxy/cache, binário Node e probe dentro da mesma imagem promovível.
+- Preservar os recibos atuais de GET/HEAD, configuração e início do probe ao promover a imagem; métodos adicionais e alterações futuras precisam de suas provas próprias.
 - Comprovar acesso e rotação dos logs de execução separadamente dos de implantação no Coolify de homologação.
 - Exercitar falhas reais de PostgreSQL/R2 com páginas confirmadas em cache e provar que a prontidão não as retira indevidamente do serviço.
 - Integrar eventos seguros de publicação, cache, processamento e integrações; executar gates Native/E2E/verify no ambiente isolado coordenado.
-- Concluir migração controlada, backup e rollback em seus runbooks próprios. Esta entrega não os implementa nem certifica.
+- Consultar os recibos e limites de migração controlada, backup e rollback nos runbooks próprios; a prova de saúde não substitui essas verificações.
 
 Os testes unitários da preparação validam a linha serializada, projeção de contexto, limites/erros e os handlers diretos. Não substituem estas provas operacionais.

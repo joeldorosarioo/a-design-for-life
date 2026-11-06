@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "kind": "e3-1-staging-existing-evidence-reconciliation",
+  "reviewedAt": "2026-11-06T19:47:05.245Z",
+  "scope": "Review of existing evidence for the authorized staging environment. Production is deferred by the operator; no production resources are required or certified by this review.",
+  "activity": {
+    "existingFilesRead": true,
+    "testsExecuted": 0,
+    "remoteRequests": 0,
+    "realEmailsSent": 0,
+    "r2ObjectsCreated": 0,
+    "r2ObjectsDeleted": 0,
+    "globalChecklistFilesChanged": false
+  },
+  "crossBucketIsolation": {
+    "evidence": "docs/verification/artifacts/E3-backup/staging-full-backup-preparation-001.json",
+    "originalProbeCompletedAt": "2026-11-06T14:57:54.486Z",
+    "mediaBucket": "eliana-novaes-media",
+    "backupBucket": "eliana-novaes-media-backups",
+    "distinctCredentialValuesAssertedByOriginalProbe": true,
+    "operationsCheckedByOriginalProbe": "HeadBucket on the other bucket with each credential; only HTTP 401 or 403 counted as refusal. Exact individual refusal status codes were not retained.",
+    "backupCredentialCannotAccessMediaBucketHead": true,
+    "mediaCredentialCannotAccessBackupBucketHead": true,
+    "scopeLimit": "The receipt proves the recorded HeadBucket refusals, not a fresh test of every S3 verb or of a production bucket that does not exist."
+  },
+  "mediaLifecycle": {
+    "evidence": "docs/verification/artifacts/E3-storage/r2-native-publication-withdrawal-002.json",
+    "realR2": true,
+    "isolatedNativePayloadAndPostgresql": true,
+    "authenticatedPreviewStatus": 200,
+    "anonymousBeforePublicationStatus": 404,
+    "publishedOriginalAndDerivativeStatus": [
+      200,
+      200
+    ],
+    "originalSha256Verified": true,
+    "afterWithdrawalStatus": [
+      404,
+      404
+    ],
+    "ownedObjectsCleanedByOriginalRun": 5,
+    "staleRemainingPrerequisites": [
+      "Resend configuration",
+      "Dedicated backup bucket and credentials",
+      "Publication and withdrawal in real R2"
+    ],
+    "stalePrerequisitesExplanation": "Those fields describe the state on 2026-11-05. Later configuration, operator confirmation and completed backup evidence supersede them; the historical receipt is preserved."
+  },
+  "directPrivacy": {
+    "evidence": "docs/verification/artifacts/E3-storage/r2-dev-disabled-private-probe-003.json",
+    "signedReadStatus": 200,
+    "suppliedR2DevReadStatus": 401,
+    "publicCustomDomainConfigurationCertified": false,
+    "apiCredentialNamesPresent": [],
+    "knownCloudflareApiCredentialPresent": false,
+    "s3CredentialsDoNotEnumerateCustomDomains": true,
+    "remainingEvidence": "Confirm whether any custom public domains are attached to the existing media bucket. S3 object evidence and the supplied r2.dev URL alone do not establish that account-level setting. No additional bucket is required."
+  },
+  "uploadFailureAndCache": {
+    "failedUploadEvidence": "src/features/media-library/server/r2-delivery.integration.test.ts",
+    "failedUploadScenario": "Third signed PUT loses its connection; upload returns 503 and media count remains unchanged. Retrying succeeds with fresh immutable keys.",
+    "immutableRequestRedAndGreen": [
+      "docs/verification/artifacts/E3-storage/13-r2-put-red.txt",
+      "docs/verification/artifacts/E3-storage/14-r2-put-green.txt"
+    ],
+    "cacheEvidence": "docs/verification/artifacts/E3-cache/proof-002-full-e2e-evidence.json",
+    "cacheScope": "Compiled Next application in an isolated local environment; original, derivative and optimizer cache HIT are revoked after the last public reference, including origin outage and restart. This does not assert a newly executed staging outage.",
+    "repeatedTestsNecessaryForThisReconciliation": false
+  },
+  "editorialEmail": {
+    "evidence": "docs/verification/A3.md#confirmação-do-operador-em-staging-e-revisão-editorial--06112026",
+    "evidenceClass": "operator-reported real staging test",
+    "operatorReportedAccountCreationLoginAndRecoveryEmailTest": true,
+    "reportAcceptedForAuthorizedStagingScope": true,
+    "configurationPresenceOnly": {
+      "RESEND_API_KEY": true,
+      "EDITORIAL_EMAIL_FROM_ADDRESS": true,
+      "EDITORIAL_EMAIL_FROM_NAME": true
+    },
+    "existingFullNativeFlow": "Captured recovery, reset, new-password login, session revocation and single-use token were proved in isolated tests and recovery-copy evidence.",
+    "noNewRealMessageRequired": true,
+    "noIndependentAgentDeliveryOrRealTokenUseRequirementAdded": true,
+    "limits": "This review accepts the operator report; it does not claim provider delivery telemetry or an additional real email sent by the agent."
+  },
+  "criterionProposals": [
+    {
+      "id": "E3.1.1",
+      "fullySatisfiedByThisReview": false,
+      "disposition": "Keep open until coordinator consolidates actual infrastructure inventory and measured sizing and the GA4 property/stream inventory. Existing staging origin and intentionally deferred public domain are valid recorded decisions; do not require production provisioning."
+    },
+    {
+      "id": "E3.1.2",
+      "fullySatisfiedInAuthorizedStagingScope": true,
+      "disposition": "Close for staging using the concrete cross-bucket refusal receipt, distinct media/backup credentials and existing independent staging database. Record production isolation as a deferred activation prerequisite, not a requirement to create production now."
+    },
+    {
+      "id": "E3.1.3",
+      "fullySatisfiedInAuthorizedStagingScope": true,
+      "disposition": "Close using the existing real Native R2 cycle and preserved adapter RED/GREEN. Earlier text saying publication/withdrawal or a real R2 repeat is missing is obsolete."
+    },
+    {
+      "id": "E3.1.4",
+      "fullySatisfiedByThisReview": false,
+      "disposition": "Keep open only for unresolved account-level custom-domain privacy evidence. Reuse the already proved immutable upload, failed-upload consistency, optimizer/cache revocation, unsigned S3 denial and supplied r2.dev denial; do not repeat passed tests or request a new bucket."
+    },
+    {
+      "id": "E3.1.5",
+      "fullySatisfiedInAuthorizedStagingScope": true,
+      "disposition": "Close using configured Resend and the accepted operator report of the real recovery-email test, with captured-flow integration and existing full CI. Do not impose another real email or real token reset."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/verification/artifacts/E3-backup/staging-full-backup-preparation-001.json",
+      "sha256": "1938adebf04fd680c7c9489bc91c7a446f7a73e7e485fb97f05885fde7c6b975"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-storage/r2-native-publication-withdrawal-002.json",
+      "sha256": "903432357a5232e064c2e7f3adcdbb84f71a91f30ca41e7a5e078e35526faacc"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-storage/r2-dev-disabled-private-probe-003.json",
+      "sha256": "43cf8633f439a8be80490215e96af58b0b9324710df2ee71eda7e893a5ca8d34"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-operations/github-coolify-activation-001.json",
+      "sha256": "d53309b944112db4583405d994c6dc08131efd8ea21b49761f9f387953232b61"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-storage/13-r2-put-red.txt",
+      "sha256": "2e27bf43ac3389fef2a5fdc6593880870e987236a8d0c4eecc472f28389c6cd5"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-storage/14-r2-put-green.txt",
+      "sha256": "848098c1cbf58140ff57aafbdd74060fac029553a942963ec78975453e2678d7"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-storage/33-final-focused-units.txt",
+      "sha256": "574d92650d73f2ae72eaa2a321fdbfcba995e253067e117bf72ff79870868c47"
+    },
+    {
+      "path": "src/features/media-library/server/r2-delivery.integration.test.ts",
+      "sha256": "64611ae5e88c893b3468671ae2fcc9ac70233ae22e4974edb479a8544fcdc7aa"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-cache/proof-002-full-e2e-evidence.json",
+      "sha256": "64ffb37da5b925fea32f3c7a6214a024a194e4dde36a2024014403615521a4c9"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-email/delivery-green.txt",
+      "sha256": "3104d771247eb12a6f0e92bfaa0824c9154972dbe99e48324ba23b50a6e01350"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-operations/eliana-content-staging-001.json",
+      "sha256": "d40f4d095c208d523c87193f1e4884281c4ee7bad3a14ee53f2a7277acc734ef"
+    }
+  ]
+}

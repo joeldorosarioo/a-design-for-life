@@ -9,6 +9,7 @@ type GtagPageContext = {
   language: Locale;
 };
 type GtagPrivacyDefaults = GtagPageContext & {
+  send_page_view: false;
   ignore_referrer: true;
   ads_data_redaction: true;
   url_passthrough: false;
@@ -65,6 +66,8 @@ export function createGtagSession({
               ad_personalization: 'denied',
             });
             dispatch('set', {
+              // The SDK can bootstrap a destination before per-stream config is consumed.
+              send_page_view: false,
               ads_data_redaction: true,
               url_passthrough: false,
               allow_google_signals: false,

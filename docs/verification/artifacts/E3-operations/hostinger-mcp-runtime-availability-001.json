@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "kind": "hostinger-mcp-authentication-and-runtime-discovery",
+  "checkedAt": "2026-11-06T20:00:15.256Z",
+  "hostinger": {
+    "configuredEndpoint": "https://mcp.hostinger.com",
+    "authenticated": true,
+    "serverName": "Hostinger API",
+    "serverVersion": "3.8.1",
+    "advertisedTools": [
+      "search",
+      "execute",
+      "multi-execute"
+    ]
+  },
+  "accessMethod": {
+    "cliVersion": "0.167.0",
+    "transport": "official-app-server-WebSocket-over-control-socket-via-CLI-proxy",
+    "rawOAuthCredentialsReadOrExported": false,
+    "globalConfigurationChanged": false,
+    "newThreadsCreated": false,
+    "threadsResumed": false
+  },
+  "currentConversation": {
+    "windowsDaemonContainsActiveThread": false,
+    "mcpToolCallRejectedBeforeHostingerExecution": true,
+    "errorClass": "thread-not-found",
+    "wslAppServerTransport": "stdio",
+    "wslAppServersExposeExternalControlSocket": false,
+    "wslDefaultControlSocketConnection": "refused"
+  },
+  "actualEffects": {
+    "hostingerApiOperationsExecuted": 0,
+    "vpsChanges": 0,
+    "purchases": 0,
+    "dnsChanges": 0
+  },
+  "nextAction": "Reload/restart the configured MCP server in the app so the active runtime loads its authenticated tool catalog; do not repeat OAuth or restart the VPS.",
+  "officialReferences": [
+    "https://learn.chatgpt.com/docs/app-server",
+    "https://learn.chatgpt.com/docs/extend/mcp"
+  ]
+}
