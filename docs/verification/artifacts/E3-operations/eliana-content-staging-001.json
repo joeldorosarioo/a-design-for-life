@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "content-published-and-verified",
+  "environment": "staging",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sources": {
+    "website": "https://eliananovaes.com/",
+    "figmaFallbackSection": "approach",
+    "figmaExport": "editorial-text-2026-10-30.json#/home/{pt,en}/approach"
+  },
+  "content": {
+    "profiles": 2,
+    "navigation": 2,
+    "projects": 2,
+    "projectTranslations": 4,
+    "newMedia": 7,
+    "preexistingMediaPreserved": 1,
+    "projectTitles": [
+      "Modelo de financiamento",
+      "Flexibilidade de pagamento"
+    ],
+    "languages": [
+      "pt",
+      "en"
+    ],
+    "blankResumePdfsExplicitlyAuthorized": true,
+    "resumeLinksMarkedInPreparation": true
+  },
+  "nativePublication": {
+    "confirmedSubjects": 10,
+    "allPublic": true,
+    "existingStructuralDocumentIdsPreserved": true,
+    "accountRecreated": false,
+    "passwordChanged": false,
+    "transport": "Native HTTPS API, authenticated existing editor, revision/lease guards and publication receipts"
+  },
+  "verification": {
+    "pages": [
+      {
+        "path": "/pt",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/en",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/pt/sobre",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/en/about",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/pt/cases",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/en/cases",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/pt/cases/modelo-de-financiamento",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/en/cases/financing-model",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/pt/cases/flexibilidade-de-pagamento",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      },
+      {
+        "path": "/en/cases/payment-flexibility",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptPresent": false
+      }
+    ],
+    "files": [
+      {
+        "asset": "portrait-home",
+        "status": 200,
+        "bytes": 96455,
+        "sha256Verified": true
+      },
+      {
+        "asset": "portrait-about",
+        "status": 200,
+        "bytes": 121607,
+        "sha256Verified": true
+      },
+      {
+        "asset": "source-home-cover",
+        "status": 200,
+        "bytes": 95036,
+        "sha256Verified": true
+      },
+      {
+        "asset": "case-fee",
+        "status": 200,
+        "bytes": 271754,
+        "sha256Verified": true
+      },
+      {
+        "asset": "case-flexibility",
+        "status": 200,
+        "bytes": 210150,
+        "sha256Verified": true
+      },
+      {
+        "asset": "resume-pt",
+        "status": 200,
+        "bytes": 431,
+        "sha256Verified": true
+      },
+      {
+        "asset": "resume-en",
+        "status": 200,
+        "bytes": 431,
+        "sha256Verified": true
+      }
+    ],
+    "unauthenticatedStatus": 401,
+    "browserPages": [
+      {
+        "device": "desktop",
+        "path": "/pt",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      },
+      {
+        "device": "desktop",
+        "path": "/en",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      },
+      {
+        "device": "desktop",
+        "path": "/pt/sobre",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      },
+      {
+        "device": "desktop",
+        "path": "/pt/cases/modelo-de-financiamento",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      },
+      {
+        "device": "desktop",
+        "path": "/pt/cases/flexibilidade-de-pagamento",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      },
+      {
+        "device": "mobile",
+        "path": "/pt",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      },
+      {
+        "device": "mobile",
+        "path": "/pt/cases",
+        "status": 200,
+        "horizontalOverflow": false,
+        "brokenImages": 0
+      }
+    ],
+    "analyticsNetworkRequests": 0,
+    "visualDesktopAndMobileInspected": true
+  },
+  "releaseIdentityEvidence": "github-coolify-activation-001.json",
+  "applicationCodeChanged": false,
+  "deploymentTriggered": false,
+  "productionTouched": false,
+  "purchases": false,
+  "secretValuesPrinted": false,
+  "checkedAt": "2026-11-06T14:35:35.632996+00:00"
+}

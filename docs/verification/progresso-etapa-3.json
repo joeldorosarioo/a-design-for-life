@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-06T13:42:52.553445+00:00",
+  "updatedAt": "2026-11-06T14:35:35.637841+00:00",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 15,
+  "completedItems": 16,
   "totalItems": 30,
-  "percentage": 50,
-  "closedTasks": [],
+  "percentage": 53.3,
+  "closedTasks": ["E3.4"],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
   "remainingEstimate": "24–40 horas de trabalho, excluindo esperas externas; revisar diante de bloqueio concreto.",
@@ -120,9 +120,9 @@
     },
     {
       "id": "E3.4.4",
-      "done": false,
+      "done": true,
       "summary": "Construir a imagem identificada pelo commit, publicar no registry autorizado e implantar somente em homologação autenticada, sem indexação e sem Analytics. Registrar digest, configuração sem segredos e evidência de que a candidata a produção tem exatamente o mesmo digest. A promoção real fica para depois de A4.",
-      "evidence": "Em 06/11/2026, o workflow42225045302 do commit8cf1d83 construiu/publicou a imagem privada e concluiu o deploy automático em staging. O digest1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838 foi confirmado por API independente com finished/running:healthy e GET anônimo401. O marcador homologado e o resolver somente-leitura confirmaram a mesma candidata, sem produção. O critério integral permanece aberto até a prova explícita das exclusões de indexação e Analytics no runtime homologado. [Recibo](artifacts/E3-operations/github-coolify-activation-001.json)."
+      "evidence": "Encerrado em06/11/2026: build/publicação privada/deploy do commit8cf1d83 e marcador da mesma candidata foram comprovados no workflow42225045302, com manifesto1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838 e Finished/Healthy. A importação editorial posterior permitiu verificar dez páginas reais PT/EN: todas200 com noindex e sem SDK Analytics, sete arquivos com SHA-256 exato e acesso anônimo401. Sete navegações Chromium em desktop/celular não fizeram requisições Analytics. Produção não foi criada/promovida. [Deploy e candidata](artifacts/E3-operations/github-coolify-activation-001.json) · [Conteúdo e exclusões operacionais](artifacts/E3-operations/eliana-content-staging-001.json)."
     },
     {
       "id": "E3.4.5",
@@ -214,7 +214,8 @@
     "05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md.",
     "05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json.",
     "06/11/2026: deploy automático develop→staging ativado e primeiro pipeline integral GREEN, com publicação privada, digest imutável, Finished/Healthy, autenticação e marcador confirmados. Produção continua ausente/desativada; o resolver da candidata foi exercitado somente em leitura com referência main simulada. A3/A4 não concedidas. Ver github-coolify-activation-001.json.",
-    "Auditoria de comunicação do progresso em06/11/2026: 15/30 é contagem de critérios integrais de aceite, não porcentagem de código implementado. 0/6 significa nenhuma das seis frentes com todos os cinco critérios encerrados; cache/publicação e imagem/homologação estão em4/5 cada. Descrições antigas de infraestrutura indisponível não representam o staging já implantado. Próximas prioridades: validação operacional do staging, backup remoto agendado/restauração isolada, configuração e inspeção do SDK de Analytics e consolidação para aceite A3. Não repetir provisionamento já concluído nem ativar produção."
+    "Auditoria de comunicação do progresso em06/11/2026: 15/30 é contagem de critérios integrais de aceite, não porcentagem de código implementado. 0/6 significa nenhuma das seis frentes com todos os cinco critérios encerrados; cache/publicação e imagem/homologação estão em4/5 cada. Descrições antigas de infraestrutura indisponível não representam o staging já implantado. Próximas prioridades: validação operacional do staging, backup remoto agendado/restauração isolada, configuração e inspeção do SDK de Analytics e consolidação para aceite A3. Não repetir provisionamento já concluído nem ativar produção.",
+    "06/11/2026: textos do site eliananovaes.com reescritos emPT/EN e Abordagem complementada com o export do Figma por autorização explícita. Publicados2perfis,2navegações,2projetos/4traduções;5imagens originais e2PDFs em branco autorizados. Dez páginas/sete arquivos e sete navegações reais passaram. E3.4.4 encerrado pela comprovação operacional de noindex/Analytics desativado, somada ao deploy/digest anterior. E3.4 é a primeira frente integralmente encerrada; A3/A4 continuam pendentes."
   ],
-  "recalculatedAt": "2026-11-06T13:49:06.670Z"
+  "recalculatedAt": "2026-11-06T14:35:35.734Z"
 }
