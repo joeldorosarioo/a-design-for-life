@@ -7,7 +7,7 @@
 | `develop` | `staging` — ambiente de testes | Verificar, construir uma imagem privada, atualizar o digest e fazer redeploy do recurso `app`. |
 | `main`    | `production` — quando existir  | Promover o mesmo digest já validado em staging, sem reconstruir a imagem.                      |
 
-Preparado localmente em 06/11/2026. Não houve push destes workflows, configuração de secrets remotos, chamada à API do Coolify ou deploy por esta automação. Os dois fluxos ficam desativados enquanto as respectivas variáveis de ativação estiverem ausentes. Produção permanece sem autorização A3/A4.
+Staging ativado e validado em 06/11/2026. A [PR1](https://github.com/joeldorosarioo/a-design-for-life/pull/1) foi integrada normalmente após os checks obrigatórios. O [primeiro workflow completo](https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42225045302) publicou a imagem privada, concluiu o deploy com Running/Healthy e registrou o mesmo manifesto homologado. STAGING_AUTODEPLOY_ENABLED=true está no repositório; produção permanece ausente e desativada. [Evidência sem credenciais](../verification/artifacts/E3-operations/github-coolify-activation-001.json).
 
 O job de verificação existente, `type-lint-test-architecture-build`, mantém o nome e os passos obrigatórios. O `pnpm verify` inclui os testes dos clientes de deploy. Pull requests e branches diferentes continuam passando pelas verificações, sem publicar imagem ou fazer deploy. A fila por branch cobre verificação, publicação, redeploy e registro da imagem saudável.
 
@@ -58,7 +58,7 @@ O workflow usa o `GITHUB_TOKEN` temporário, com `packages: write` somente nos j
 
 ## 4. Ativar e validar staging
 
-1. Enviar as mudanças por pull request e integrá-las a `develop` depois do check obrigatório. O código preparado permanece local até esse envio.
+1. Enviar as mudanças por pull request e integrá-las a `develop` depois do check obrigatório. A integração inicial já foi concluída; novas alterações seguem o mesmo caminho pela develop protegida.
 2. Em **Settings → Secrets and variables → Actions → Variables → New repository variable**, cadastrar `STAGING_AUTODEPLOY_ENABLED=true`. Essa é uma variável do repositório, não do environment nem do app.
 3. Fazer o próximo push/merge em `develop` e acompanhar **Actions → Checks**. A sequência é verificação → build/publicação → deploy staging → registro da imagem saudável.
 4. No Coolify, conferir o novo Deployment Log e `Running / Healthy`; o cliente já aguarda esses dois resultados antes de aprovar a execução.
