@@ -62,7 +62,9 @@ jobs:
       - name: Verify
         run: pnpm verify
       - name: Install Chromium headless shell
-        run: pnpm exec playwright install --with-deps chromium --only-shell
+        # Ubuntu 24.04 already provides the shared libraries and Liberation fonts.
+        # Avoid downloading unrelated font packs from the slow APT mirror.
+        run: pnpm exec playwright install chromium --only-shell
       - name: Select an installed TrueType font for resource journeys
         run: |
           font="$(fc-match --format '%{file}' 'sans-serif:fontformat=TrueType')"

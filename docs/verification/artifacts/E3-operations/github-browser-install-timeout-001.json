@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "observed-ci-timeout-before-browser-journeys",
+  "workflowRunId": 42213557119,
+  "jobId": 127877860061,
+  "maximumMinutes": 15,
+  "verificationPassed": true,
+  "vitest": {
+    "files": 227,
+    "testsPassed": 2189
+  },
+  "deployTestsPassed": 65,
+  "chromiumInstallation": {
+    "durationSeconds": 532,
+    "osLibrariesAlreadyInstalled": true,
+    "liberationFontAlreadyInstalled": true,
+    "additionalFontPackages": 9,
+    "additionalArchivesMB": 21.1,
+    "observedMirror": "azure.archive.ubuntu.com",
+    "approximateKBPerSecond": 38,
+    "browserDownloaded": false,
+    "journeysStarted": false
+  },
+  "correction": "Install the Chromium headless shell using the runner existing libraries and TrueType fonts; remove only --with-deps.",
+  "requiredCheckPreserved": true,
+  "jobTimeoutUnchanged": true,
+  "productionTouched": false,
+  "secretValuesPrinted": false
+}
