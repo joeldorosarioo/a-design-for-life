@@ -1,0 +1,26 @@
+
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 66B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 1.35kB done
+#2 DONE 0.0s
+
+#3 [internal] load build context
+#3 transferring context: 4.29kB 0.0s done
+#3 DONE 0.0s
+
+#4 [1/1] COPY . /context
+#4 DONE 0.0s
+
+#5 exporting to client directory
+#5 copying files 4.51kB 0.0s done
+#5 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/r54s2pk244ubwl3axb6ajvcfy
+
+BUILD_EXIT_CODE=0
+PROOF_EXIT_CODE=0

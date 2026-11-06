@@ -1,0 +1,2 @@
+COMMAND: pnpm exec tsc --noEmit --incremental false
+EXIT_CODE: 0

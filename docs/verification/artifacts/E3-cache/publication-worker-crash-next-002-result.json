@@ -1,0 +1,62 @@
+{
+  "kind": "worker-crash-next",
+  "runId": "4685c770-4709-4adf-a482-89a1aeed43dc",
+  "started": "2026-11-04T06:06:07.1419099+00:00",
+  "finished": "2026-11-04T06:07:14.2262289+00:00",
+  "command": [
+    "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+    "--conditions=react-server",
+    "./node_modules/@playwright/test/cli.js",
+    "test",
+    "src/config/publication-worker.e2e.test.ts",
+    "-g",
+    "automatically acknowledges the same promoted generation",
+    "--project=chromium",
+    "--workers=1",
+    "--reporter=list,json",
+    "--output=C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\publication-worker-crash-next-002-results"
+  ],
+  "exitCode": 0,
+  "log": "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\publication-worker-crash-next-002.log",
+  "localPostgresImage": "sha256:ab20e934b27ba3ff927c1b4c9ff8cf6c32f315f743efe68dd3441182a87fb085",
+  "sourceBefore": {
+    "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+    "digest": "1e3dcaddf27c293e6f02020a63cb6929194a7bf9589c628e567d511e2497b863",
+    "count": 632
+  },
+  "sourceAfter": {
+    "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+    "digest": "1e3dcaddf27c293e6f02020a63cb6929194a7bf9589c628e567d511e2497b863",
+    "count": 632
+  },
+  "sourceUnchanged": true,
+  "protectedBefore": [
+    {
+      "LocalPort": 55433,
+      "LocalAddress": "127.0.0.1",
+      "OwningProcess": 23324
+    }
+  ],
+  "protectedAfter": [],
+  "protectedUnchanged": false,
+  "lifecycleBefore": {
+    "containers": [],
+    "networks": [],
+    "locks": [],
+    "listeners": []
+  },
+  "lifecycleAfter": {
+    "containers": [],
+    "networks": [],
+    "locks": [],
+    "listeners": []
+  },
+  "clean": true,
+  "observedPidZero": [
+    {
+      "LocalPort": 3102,
+      "LocalAddress": "127.0.0.1",
+      "OwningProcess": 0
+    }
+  ]
+}

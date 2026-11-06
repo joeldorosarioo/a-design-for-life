@@ -1,0 +1,72 @@
+Command: & 'E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe' node_modules/vitest/vitest.mjs run --project unit src/features/analytics/browser/native-navigation.test.tsx --reporter=dot
+Exit code: 1
+Pinned Node24.22.2; pnpm12.10.1/package/lock unchanged.
+Scope: authorized conditional analytics composition and native anchors only. Synthetic, intercepted script/measurement boundary. No Google SDK execution/network, DB, build, global tests or services.
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+xxx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/browser/native-navigation.test.tsx > measures only the explicitly purposed header/footer native anchors without changing their destinations or tab behavior
+Error: expect(element).toHaveAttribute("data-analytics-purpose", "email") // element.getAttribute("data-analytics-purpose") === "email"
+
+Expected the element to have attribute:
+  data-analytics-purpose="email"
+Received:
+  null
+ ❯ src/features/analytics/browser/native-navigation.test.tsx:39:17
+     37|   const linkedin = contacts.getByRole('link',{name:'LinkedIn'});
+     38|   const resume = contacts.getByRole('link',{name:'Resume (opens in a n…
+     39|   expect(email).toHaveAttribute('data-analytics-purpose','email');
+       |                 ^
+     40|   expect(email).toHaveAttribute('href','mailto:en@example.invalid');
+     41|   expect(email).not.toHaveAttribute('target');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/features/analytics/browser/native-navigation.test.tsx > keeps the real mobile resume action measurable while the menu closes with its native new-tab contract
+Error: expect(element).toHaveAttribute("data-analytics-purpose", "resume") // element.getAttribute("data-analytics-purpose") === "resume"
+
+Expected the element to have attribute:
+  data-analytics-purpose="resume"
+Received:
+  null
+ ❯ src/features/analytics/browser/native-navigation.test.tsx:62:18
+     60|   expect(resume).toHaveAttribute('target','_blank');
+     61|   expect(resume).toHaveAttribute('rel','noopener noreferrer');
+     62|   expect(resume).toHaveAttribute('data-analytics-purpose','resume');
+       |                  ^
+     63|   await user.click(resume);
+     64|   expect(within(owner.body).queryByRole('dialog')).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/features/analytics/browser/native-navigation.test.tsx > does not measure a TrackedLink action twice when component and document paths coexist
+AssertionError: expected [ 'page_view', 'resume_open' ] to deeply equal [ 'page_view' ]
+
+- Expected
++ Received
+
+  [
+    "page_view",
++   "resume_open",
+  ]
+
+ ❯ src/features/analytics/browser/native-navigation.test.tsx:80:43
+     78|     {name:'resume_open',locale:'en',pagePath:'/en'},
+     79|   ]);
+     80|   expect(events().map((entry)=>entry[1])).toEqual(['page_view']);
+       |                                           ^
+     81| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  21:44:44
+   Duration  3.33s (import 58%, environment 23%, tests 7%, setup 6%, transform 5%)
+
+

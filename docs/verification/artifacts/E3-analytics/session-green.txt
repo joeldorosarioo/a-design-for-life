@@ -1,0 +1,13 @@
+Pinned Node: E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe
+Scope: owned analytics only; synthetic/captured outbound boundary; no Google loader/request.
+Exit code: 0
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·························
+
+ Test Files  1 passed (1)
+      Tests  25 passed (25)
+   Start at  20:48:56
+   Duration  483ms (setup 56%, import 28%, transform 12%, tests 3%, worker 1%)
+

@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "private-browser-first-access-candidate-ready",
+  "sourceRevision": "434ee5c92dc71f1c8147831bd38dea7c244af386",
+  "sourceArchiveSha256": "6c6a8c96f74d5d7a11c0591f3858a51553c840da97ca85b157cac76c64f1f2f0",
+  "imageId": "sha256:43c1d2c8a654b837d9ec4ce0db387f4b61857149aa08f47c9d0eff78f641a173",
+  "platform": "linux/amd64",
+  "imageUser": "appuser",
+  "manifestDigest": "sha256:353062470dac78f313f5dff9755b214304f2e942305384a62bf632d704b75bf3",
+  "immutableReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:353062470dac78f313f5dff9755b214304f2e942305384a62bf632d704b75bf3",
+  "coolify": {
+    "image": "ghcr.io/joeldorosarioo/a-design-for-life",
+    "tag": "sha256-353062470dac78f313f5dff9755b214304f2e942305384a62bf632d704b75bf3",
+    "runtimeOverrides": {
+      "STAGING_DATABASE_ONLY": "false",
+      "EDITORIAL_FIRST_ACCESS_ENABLED": "true"
+    },
+    "publicSiteEnabled": false,
+    "publicationWorkersEnabled": false,
+    "samePersistentVolumesRequired": true,
+    "deploymentMode": "consistent name; no rolling updates",
+    "remoteDeploymentPerformedByAgent": false,
+    "currentRemoteMode": "database-only; user reported Running/Healthy"
+  },
+  "build": {
+    "exitCode": 0,
+    "exactGitArchive": true,
+    "envFileRead": false,
+    "sourceWorkspaceRemoved": true,
+    "sourceArchiveRemoved": true,
+    "nativeSmokeExitCode": 0,
+    "nativeSmoke": "Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas and PDF.js resources."
+  },
+  "runtime": {
+    "version": 1,
+    "attempt": "001",
+    "sourceRevision": "434ee5c92dc71f1c8147831bd38dea7c244af386",
+    "imageId": "sha256:43c1d2c8a654b837d9ec4ce0db387f4b61857149aa08f47c9d0eff78f641a173",
+    "runId": "76ea41f1-2428-4131-a65a-437b20591d13",
+    "startedAt": "2026-11-06T03:15:47.091Z",
+    "scope": "Two distinct disposable containers and synthetic database environments from the same candidate image; no real dataset or external integrations.",
+    "envFileRead": false,
+    "network": "none",
+    "hostBinds": [],
+    "publishedPorts": [],
+    "persistentVolumes": [],
+    "phases": [
+      {
+        "mode": "pg-only",
+        "appEnv": "staging",
+        "databaseOnly": true,
+        "containerId": "658f4c9566574e716f236019954286e9ac26dc228aa6cfcb13b99cfca636d534",
+        "imageId": "sha256:43c1d2c8a654b837d9ec4ce0db387f4b61857149aa08f47c9d0eff78f641a173",
+        "imageUser": "appuser",
+        "uid": 70,
+        "gid": 70,
+        "username": "appuser",
+        "capabilitiesZero": true,
+        "noNewPrivileges": true,
+        "cpuLimit": 1,
+        "memoryBytes": 536870912,
+        "memoryAndSwapBytes": 536870912,
+        "pidsLimit": 128,
+        "network": "none",
+        "hostBinds": [],
+        "publishedPorts": [],
+        "persistentVolumes": [],
+        "pgdata": "tmpfs UID/GID70",
+        "healthy": true,
+        "healthProbeExitCode": 0,
+        "readyInMs": 5557,
+        "oomKilled": false,
+        "removed": true,
+        "httpPort3000Absent": true,
+        "postgresKilled": true,
+        "exitAfterPostgresLoss": 1
+      },
+      {
+        "mode": "http",
+        "appEnv": "test",
+        "databaseOnly": false,
+        "containerId": "887c5080fcf8b455be4c3e9b6e50f0b79971dc03810433b4a6c140def5686f87",
+        "imageId": "sha256:43c1d2c8a654b837d9ec4ce0db387f4b61857149aa08f47c9d0eff78f641a173",
+        "imageUser": "appuser",
+        "uid": 70,
+        "gid": 70,
+        "username": "appuser",
+        "capabilitiesZero": true,
+        "noNewPrivileges": true,
+        "cpuLimit": 1,
+        "memoryBytes": 2147483648,
+        "memoryAndSwapBytes": 2147483648,
+        "pidsLimit": 128,
+        "network": "none",
+        "hostBinds": [],
+        "publishedPorts": [],
+        "persistentVolumes": [],
+        "pgdata": "tmpfs UID/GID70",
+        "healthy": true,
+        "healthProbeExitCode": 0,
+        "readyInMs": 5554,
+        "oomKilled": false,
+        "removed": true,
+        "httpHealth": {
+          "status": 200,
+          "body": {
+            "status": "ready"
+          }
+        },
+        "gracefulStopExitCode": 0
+      }
+    ],
+    "passed": true,
+    "publicationAttempted": false,
+    "completedAt": "2026-11-06T03:16:04.603Z",
+    "exitCode": 0
+  },
+  "knownSecretAudit": {
+    "allLayersVerified": true,
+    "archiveEntries": 8386,
+    "bytesScannedIncludingRecursion": 1859984808,
+    "distinctSecretValues": 8,
+    "distinctUriPasswords": 2,
+    "elapsedSeconds": 25.314,
+    "expectedLayers": 20,
+    "exportBytes": 613246464,
+    "exportRemoved": true,
+    "gzipArchives": 6,
+    "imageId": "sha256:43c1d2c8a654b837d9ec4ce0db387f4b61857149aa08f47c9d0eff78f641a173",
+    "kind": "local-all-layer-known-secret-audit",
+    "knownSecretsOnly": true,
+    "layersTraversed": 20,
+    "localDockerSocketVerified": true,
+    "matchedPatternVariants": 0,
+    "metadataFiles": 3,
+    "patternVariants": 18,
+    "privateSources": [
+      {
+        "passwordUris": 3,
+        "secretFields": 7
+      },
+      {
+        "passwordUris": 1,
+        "secretFields": 4
+      }
+    ],
+    "remoteOperations": 0,
+    "repoSha": "434ee5c92dc71f1c8147831bd38dea7c244af386",
+    "sourceRevisionLabelVerified": true,
+    "status": "passed",
+    "streamsScanned": 6019,
+    "tarArchives": 26
+  },
+  "privateRegistry": {
+    "visibility": "private",
+    "anonymousPullStatus": 401,
+    "readonlyPullVerified": true,
+    "publisherCredentialReplacedWithReadOnly": true
+  },
+  "runtimeImport": {
+    "variableCount": 26,
+    "checks": {
+      "sourceEnvUnchanged": true,
+      "existingSettingsPreserved": true,
+      "databaseCredentialsPreserved": true,
+      "payloadSecretPreserved": true,
+      "r2CredentialsAndPrefixPreserved": true,
+      "resendConfigurationPreserved": true,
+      "originPreserved": true,
+      "ownerOnlyWindowsAcl": true,
+      "serverSchemaValid": true,
+      "integrationSchemaValid": true,
+      "pendingReceiptVerified": true,
+      "stagingDatabaseOnlyFalse": true,
+      "editorialFirstAccessEnabled": true
+    },
+    "secretValuesPrinted": false
+  },
+  "remoteSchema": {
+    "status": "verified-readonly",
+    "targetIdentityVerified": true,
+    "postgresqlMajor": 17,
+    "counts": {
+      "migrations": 16,
+      "users": 0,
+      "profiles": 0,
+      "navigation": 0
+    },
+    "ddlExecuted": false,
+    "editorialAccountCreated": false,
+    "checkedAt": "2026-11-06T03:14:33.736Z"
+  },
+  "preservation": {
+    "status": "verified",
+    "checks": {
+      ".env": true,
+      "next-env.d.ts": true,
+      "tsconfig.json": true,
+      ".next/BUILD_ID": true
+    },
+    "secretValuesPrinted": false
+  },
+  "limits": [
+    "The user must deploy this candidate in private Coolify staging and create the first account in the Native browser form.",
+    "No editorial account has been created by the agent; its credentials are chosen in the browser.",
+    "Formal staging acceptance and A3/A4 remain pending; no production deployment or real email was performed."
+  ],
+  "stage": {
+    "completedItems": 15,
+    "totalItems": 30,
+    "percentage": 50,
+    "closedTasks": 0,
+    "totalTasks": 6
+  },
+  "recordedAt": "2026-11-06T03:18:18.061831+00:00"
+}

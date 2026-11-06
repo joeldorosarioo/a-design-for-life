@@ -1,0 +1,89 @@
+{
+  "time": "2026-11-03T23:32:00.333Z",
+  "before": {
+    "id": "7e6b8f052e04e2bad8f1be35d9712b0a0874582f0ba4a17205de6a9ea9294938",
+    "running": true,
+    "paused": false,
+    "startedAt": "2026-11-03T14:10:31.793348728Z",
+    "ports": {
+      "5432/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "55433"
+        }
+      ]
+    },
+    "networks": {
+      "a-design-for-life-local_default": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "a-design-for-life-local-postgres-test-1",
+          "postgres-test"
+        ],
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "6f56c2bf4f4731b311d13395816fa4ec5a10bb6cb1abafcd20901e74c4d83f76",
+        "EndpointID": "16d1f69fcaaeaab41e50d05a0a9ac55670eb7660222fc3c6c320871fda1a5e70",
+        "Gateway": "172.19.0.1",
+        "IPAddress": "172.19.0.2",
+        "MacAddress": "a6:3b:aa:b9:b7:57",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "a-design-for-life-local-postgres-test-1",
+          "postgres-test",
+          "7e6b8f052e04"
+        ]
+      }
+    }
+  },
+  "after": {
+    "id": "7e6b8f052e04e2bad8f1be35d9712b0a0874582f0ba4a17205de6a9ea9294938",
+    "running": true,
+    "paused": false,
+    "startedAt": "2026-11-03T14:10:31.793348728Z",
+    "ports": {
+      "5432/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "55433"
+        }
+      ]
+    },
+    "networks": {
+      "a-design-for-life-local_default": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "a-design-for-life-local-postgres-test-1",
+          "postgres-test"
+        ],
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "6f56c2bf4f4731b311d13395816fa4ec5a10bb6cb1abafcd20901e74c4d83f76",
+        "EndpointID": "16d1f69fcaaeaab41e50d05a0a9ac55670eb7660222fc3c6c320871fda1a5e70",
+        "Gateway": "172.19.0.1",
+        "IPAddress": "172.19.0.2",
+        "MacAddress": "a6:3b:aa:b9:b7:57",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "a-design-for-life-local-postgres-test-1",
+          "postgres-test",
+          "7e6b8f052e04"
+        ]
+      }
+    }
+  },
+  "visualUnchanged": true,
+  "owned": {
+    "containerId": "863c59190afbfe6bb82e1ec2806f3e1c00dbb560599bfb2671b1004080c66618",
+    "networkId": "bd96e3f129b542c873ea28aa70e3819a8f819a488055991eb5e8b9c9df1f2ffb",
+    "databaseQuery": "1"
+  }
+}

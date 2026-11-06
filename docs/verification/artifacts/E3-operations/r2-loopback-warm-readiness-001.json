@@ -1,0 +1,116 @@
+{
+  "verifiedDate": "2026-11-04",
+  "result": "passed",
+  "exitCode": 0,
+  "scope": "Synthetic R2-compatible HTTPS endpoint resolved to IPv4 loopback in a Docker network-none namespace. The exact built Next server ran unchanged as a child. PostgreSQL was intentionally unreachable throughout this specific proof.",
+  "mediaIntegrity": "Successful responses before and after the socket fault matched the expected synthetic PDF SHA-256.",
+  "firstAttempt": "The test mounted the public namespace read-only, preventing the normal snapshot pin. The corrected runner copied the same synthetic root into a writable disposable namespace inside the container.",
+  "cleanup": {
+    "labeledContainersRemaining": 0,
+    "labeledVolumesRemaining": 0
+  },
+  "runId": "b9ea53a1-a2ea-4515-b65e-6f3f6ae8a43c",
+  "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f",
+  "rootSha256": "c848c3a3a28a4966ded9227391540a206fef0a2c088ea0a630e3756db1acc394",
+  "phases": [
+    {
+      "phase": "storage-up",
+      "health": 200,
+      "pages": [
+        {
+          "path": "/pt",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/en",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/pt/cases",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/en/cases",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        }
+      ],
+      "media": 200
+    },
+    {
+      "phase": "storage-disconnected",
+      "health": 200,
+      "pages": [
+        {
+          "path": "/pt",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/en",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/pt/cases",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/en/cases",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        }
+      ],
+      "media": 503
+    },
+    {
+      "phase": "storage-recovered",
+      "health": 200,
+      "pages": [
+        {
+          "path": "/pt",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/en",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/pt/cases",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        },
+        {
+          "path": "/en/cases",
+          "status": 200,
+          "generation": "d1d3932a-93ab-41a4-b9f0-ff76dfb7975f"
+        }
+      ],
+      "media": 200
+    }
+  ],
+  "storageCalls": [
+    {
+      "signed": true,
+      "disconnected": false
+    },
+    {
+      "signed": true,
+      "disconnected": true
+    },
+    {
+      "signed": true,
+      "disconnected": false
+    }
+  ],
+  "imageId": "sha256:73cc9ef9646e20ac2463630678f1fc52ad2227dec450753d4d6478e04efbbf41",
+  "revision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+  "network": "none",
+  "hostPortsPublished": 0
+}

@@ -3,6 +3,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import { z } from 'zod';
 import { localeSchema, type Locale } from '@/helpers/i18n/locale.schema';
 import { readPublicRoot, type PublicRoot } from '@/helpers/payload/public-root';
+import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
 import { pinPublicRoot, readPinnedPublicRoot } from '@/helpers/payload/render-snapshot';
 import { runtimePayload } from '@/helpers/payload/runtime';
 import { publishedReadStatus } from '@/helpers/payload/published-read-response';
@@ -19,7 +20,7 @@ import { readPublishedPortfolio } from './read-published-portfolio';
 
 export const PUBLIC_RENDER_CONTEXT_HEADER = 'x-portfolio-render-context';
 export type PublicRenderOptions = { publicationDirectory: string; secret: string };
-export type PublicRenderDecision =
+export type PublicRenderDecision = (
   | { status: 308; location: string }
   | { status: 405 }
   | {
@@ -27,7 +28,8 @@ export type PublicRenderDecision =
       caseStateLocale: Locale;
       caseStatePresentation?: CaseStatePresentation;
     }
-  | { status: 200 | 404 | 410 | 503; requestHeaders: Headers };
+  | { status: 200 | 404 | 410 | 503; requestHeaders: Headers }
+) & { generation?: string };
 type PublicRoute = {
   locale: Locale;
   pathname: string;
@@ -102,6 +104,8 @@ function cleanHeaders(input: Headers) {
   const headers = new Headers(input);
   for (const name of [...headers.keys()])
     if (
+      name === publicGenerationHeader ||
+      name === `x-middleware-request-${publicGenerationHeader}` ||
       name.startsWith('x-portfolio-render-') ||
       name.startsWith('x-middleware-request-x-portfolio-render-') ||
       name === 'x-middleware-override-headers'
@@ -169,6 +173,7 @@ async function directCaseState(
   return {
     status,
     caseStateLocale: locale,
+    ...(root && status !== 404 ? { generation: root.generation } : {}),
     ...(presentation ? { caseStatePresentation: presentation } : {}),
   };
 }
@@ -197,7 +202,7 @@ export async function preparePublicRenderRequest(
       root = await readPublicRoot(options.publicationDirectory);
       if (route.kind === 'detail') {
         const resolution = await resolveCaseRoute(route.locale, route.slug!, undefined, root);
-        if (resolution.status === 308) return resolution;
+        if (resolution.status === 308) return { ...resolution, generation: root?.generation };
         status = resolution.status;
         if (status === 200 && !(await getPublishedCase(route.locale, route.slug!, root)).ok)
           status = 503;
@@ -223,7 +228,11 @@ export async function preparePublicRenderRequest(
     status,
     pin,
   });
-  return { status, requestHeaders: signedHeaders(request, context, options) };
+  return {
+    status,
+    requestHeaders: signedHeaders(request, context, options),
+    generation: pin?.generation,
+  };
 }
 
 /** No fresh-root fallback and no cross-request memoization. Page composition owns React.cache. */

@@ -1,0 +1,175 @@
+{
+  "date": "2026-11-04",
+  "run": "e3-analytics-e2e-003",
+  "node": "24.22.2",
+  "next": "16.4.3",
+  "playwright": "1.64.1",
+  "browser": "chromium",
+  "testSourceSha256": "afa264d5e1ce29d105b50ef15b582b0528d1c7c42469d165a498e7faa9e1deda",
+  "analyticsTestsPassed": 2,
+  "focusedUnitTestsPassed": 167,
+  "offlineContract": {
+    "durationMs": 1528,
+    "eventCommands": [
+      [
+        "event",
+        "page_view",
+        {
+          "send_to": "G-E3OFFLINE",
+          "page_location": "https://portfolio-e3.example.invalid/en",
+          "page_referrer": "",
+          "page_title": "",
+          "language": "en"
+        }
+      ],
+      [
+        "event",
+        "contact_email_click",
+        {
+          "send_to": "G-E3OFFLINE",
+          "page_location": "https://portfolio-e3.example.invalid/en",
+          "page_referrer": "",
+          "page_title": "",
+          "language": "en"
+        }
+      ],
+      [
+        "event",
+        "contact_linkedin_click",
+        {
+          "send_to": "G-E3OFFLINE",
+          "page_location": "https://portfolio-e3.example.invalid/en",
+          "page_referrer": "",
+          "page_title": "",
+          "language": "en"
+        }
+      ],
+      [
+        "event",
+        "resume_open",
+        {
+          "send_to": "G-E3OFFLINE",
+          "page_location": "https://portfolio-e3.example.invalid/en",
+          "page_referrer": "",
+          "page_title": "",
+          "language": "en"
+        }
+      ],
+      [
+        "event",
+        "page_view",
+        {
+          "send_to": "G-E3OFFLINE",
+          "page_location": "https://portfolio-e3.example.invalid/pt/cases/synthetic-case",
+          "page_referrer": "",
+          "page_title": "",
+          "language": "pt"
+        }
+      ],
+      [
+        "event",
+        "page_view",
+        {
+          "send_to": "G-E3OFFLINE",
+          "page_location": "https://portfolio-e3.example.invalid/en",
+          "page_referrer": "",
+          "page_title": "",
+          "language": "en"
+        }
+      ]
+    ],
+    "commandKinds": [
+      "consent",
+      "set",
+      "js",
+      "config",
+      "event",
+      "set",
+      "event",
+      "set",
+      "event",
+      "set",
+      "event",
+      "set",
+      "event",
+      "set",
+      "event"
+    ],
+    "consentDefault": [
+      "consent",
+      "default",
+      {
+        "analytics_storage": "denied",
+        "ad_storage": "denied",
+        "ad_user_data": "denied",
+        "ad_personalization": "denied"
+      }
+    ],
+    "config": [
+      [
+        "config",
+        "G-E3OFFLINE",
+        {
+          "send_page_view": false
+        }
+      ]
+    ],
+    "externalRequests": 0,
+    "cookieNames": [
+      "portfolio_locale"
+    ],
+    "browserStorageOrigins": 0,
+    "syntheticHarnessJavaScriptBytes": 459473,
+    "syntheticHarnessJavaScriptGzipBytes": 95688,
+    "syntheticBaselineJavaScriptBytes": 882,
+    "syntheticBaselineJavaScriptGzipBytes": 564
+  },
+  "nextExclusions": {
+    "durationMs": 22993,
+    "cases": [
+      {
+        "kind": "home-en",
+        "status": 200,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 626821
+      },
+      {
+        "kind": "home-pt",
+        "status": 200,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 626821
+      },
+      {
+        "kind": "published-case",
+        "status": 200,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 626821
+      },
+      {
+        "kind": "unpublished-case",
+        "status": 404,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 0
+      },
+      {
+        "kind": "anonymous-preview",
+        "status": 401,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 0
+      },
+      {
+        "kind": "admin-login",
+        "status": 200,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 2869609
+      },
+      {
+        "kind": "authenticated-draft-preview",
+        "status": 200,
+        "hasGoogleGlobals": false,
+        "scriptBytes": 621505
+      }
+    ],
+    "externalRequests": 0
+  }
+}

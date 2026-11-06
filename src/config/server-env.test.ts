@@ -11,6 +11,31 @@ const validInput = {
   MEDIA_BUCKET: 'adfl-test-files',
 } satisfies NodeJS.ProcessEnv;
 
+it('keeps retry registration off unless the server explicitly opts in', () => {
+  expect(readServerEnv(validInput).PUBLICATION_RETRIES_ENABLED).toBeUndefined();
+  expect(readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENABLED: 'true' })).toMatchObject({
+    PUBLICATION_RETRIES_ENABLED: 'true',
+  });
+});
+it('rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime', () => {
+  expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENABLED: '1' })).toThrow(
+    /PUBLICATION_RETRIES_ENABLED/,
+  );
+});
+it('keeps the detached worker off and requires metadata registration before explicit worker opt-in', () => {
+  expect(readServerEnv(validInput).PUBLICATION_RETRY_WORKER_ENABLED).toBeUndefined();
+  expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRY_WORKER_ENABLED: 'true' })).toThrow(
+    /PUBLICATION_RETRY_WORKER_ENABLED/,
+  );
+  expect(
+    readServerEnv({
+      ...validInput,
+      PUBLICATION_RETRIES_ENABLED: 'true',
+      PUBLICATION_RETRY_WORKER_ENABLED: 'true',
+    }).PUBLICATION_RETRY_WORKER_ENABLED,
+  ).toBe('true');
+});
+
 describe('readServerEnv', () => {
   // Removing secret validation would permit an unsafe CMS startup.
   it('recusa iniciar sem segredo do Payload', () => {
@@ -123,4 +148,87 @@ it('derives local internal HTTP origin only from trusted loopback site configura
       readServerEnv({ ...production, INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3000' }),
     ),
   ).toBe('http://127.0.0.1:3000');
+});
+
+it('allows public HTTP receipt verification only in an explicit isolated test runtime with a trusted origin', () => {
+  const selected = 'PUBLICATION_HTTP_VERIFICATION_ENABLED';
+  expect(readServerEnv(validInput)).not.toHaveProperty(selected);
+  expect(() => readServerEnv({ ...validInput, [selected]: 'true' })).toThrow(
+    /PUBLICATION_HTTP_VERIFICATION_ENABLED/,
+  );
+  expect(() =>
+    readServerEnv({
+      ...validInput,
+      APP_ENV: 'local',
+      NODE_ENV: 'development',
+      [selected]: 'true',
+      INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
+    }),
+  ).toThrow(/PUBLICATION_HTTP_VERIFICATION_ENABLED/);
+  expect(() =>
+    readServerEnv({
+      ...validInput,
+      [selected]: 'true',
+      INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
+    }),
+  ).toThrow(/PUBLICATION_HTTP_VERIFICATION_ENABLED/);
+  expect(
+    readServerEnv({
+      ...validInput,
+      [selected]: 'true',
+      INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
+      DATABASE_URI: 'postgres://adfl:local@127.0.0.1:55434/adfl_test_runner',
+      MEDIA_BUCKET: 'adfl-test-runner',
+    }),
+  ).toHaveProperty(selected, 'true');
+});
+
+describe('explicit browser first access', () => {
+  const firstAccess = {
+    ...validInput,
+    DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+    MEDIA_BUCKET: 'adfl-test-runner',
+    PUBLIC_SITE_ENABLED: 'false',
+    EDITORIAL_FIRST_ACCESS_ENABLED: 'true',
+  } satisfies NodeJS.ProcessEnv;
+  it('keeps browser first access off by default and retains its explicit isolated opt-in', () => {
+    expect(readServerEnv(validInput).EDITORIAL_FIRST_ACCESS_ENABLED).toBeUndefined();
+    expect(readServerEnv(firstAccess).EDITORIAL_FIRST_ACCESS_ENABLED).toBe('true');
+    expect(
+      readServerEnv({ ...firstAccess, EDITORIAL_FIRST_ACCESS_ENABLED: 'false' })
+        .EDITORIAL_FIRST_ACCESS_ENABLED,
+    ).toBe('false');
+  });
+  it('allows explicit first access only for private HTTPS staging or the exact isolated test runner', () => {
+    expect(
+      readServerEnv({
+        ...firstAccess,
+        NODE_ENV: 'production',
+        APP_ENV: 'staging',
+        SITE_ORIGIN: 'https://staging.example.invalid',
+        DATABASE_URI: 'postgres://stage:synthetic@127.0.0.1:5432/staging',
+        MEDIA_BUCKET: 'stage-media',
+      }).EDITORIAL_FIRST_ACCESS_ENABLED,
+    ).toBe('true');
+  });
+  it.each([
+    { APP_ENV: 'production', NODE_ENV: 'production', SITE_ORIGIN: 'https://site.example.invalid' },
+    { APP_ENV: 'local', NODE_ENV: 'production' },
+    { PUBLIC_SITE_ENABLED: 'true' },
+    { PUBLIC_SITE_ENABLED: undefined },
+    { APP_ENV: 'staging', NODE_ENV: 'production', SITE_ORIGIN: 'http://staging.example.invalid' },
+    {
+      DATABASE_URI:
+        'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55433/adfl_test_other',
+    },
+    { MEDIA_BUCKET: 'adfl-test-other' },
+    { EDITORIAL_FIRST_ACCESS_ENABLED: 'yes' },
+  ] satisfies Partial<NodeJS.ProcessEnv>[])(
+    'refuses a first-access opt-in outside its private setup scope: %j',
+    (override) => {
+      expect(() => readServerEnv({ ...firstAccess, ...override })).toThrow(
+        /EDITORIAL_FIRST_ACCESS_ENABLED/,
+      );
+    },
+  );
 });

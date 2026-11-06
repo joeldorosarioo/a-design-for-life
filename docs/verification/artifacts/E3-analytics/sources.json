@@ -1,0 +1,41 @@
+{
+  "verifiedAt": "2026-11-03",
+  "scope": "Official Google documentation only; no accounts, property access, Google loader or analytics measurements",
+  "sources": [
+    {
+      "url": "https://developers.google.com/tag-platform/security/concepts/consent-mode?hl=en",
+      "fact": "Denied analytics storage prevents analytics cookie read/write, while cookieless measurements and technical signals may still be transmitted."
+    },
+    {
+      "url": "https://developers.google.com/tag-platform/security/guides/consent?consentmode=advanced",
+      "fact": "Consent defaults must precede config/event measurement commands; URL passthrough is an optional setting."
+    },
+    {
+      "url": "https://developers.google.com/analytics/devguides/collection/ga4/reference/config",
+      "fact": "send_page_view=false prevents the snippet default page_view; advertising/signal settings and explicit page location/referrer/title overrides are documented."
+    },
+    {
+      "url": "https://developers.google.com/tag-platform/gtagjs/reference",
+      "fact": "set, config, event and consent command contracts are documented."
+    },
+    {
+      "url": "https://support.google.com/analytics/answer/9216061?hl=en",
+      "fact": "Enhanced measurement is controlled in the property and can collect URL/search/link data; browser history pageviews need separate control."
+    },
+    {
+      "url": "https://developers.google.com/analytics/devguides/collection/ga4/events",
+      "fact": "Automatically collected events include first_visit, session_start and user_engagement; command capture alone cannot prove the SDK's actual wire behavior."
+    },
+    {
+      "url": "https://support.google.com/analytics/answer/11161109?hl=en",
+      "fact": "Behavioral modeling requires denied and granted traffic thresholds and further eligibility checks; insufficient consented traffic can leave denied events unreported."
+    }
+  ],
+  "inference": "This portfolio's permanently denied policy supplies no granted training population of its own. Sending cookieless pings does not establish any of the approved reports, and local transport tests cannot close the report gate.",
+  "missingEvidence": [
+    "actual property/stream settings",
+    "intercepted real SDK wire/storage verification",
+    "actual reports by approved event/page/locale under the unchanged policy",
+    "eligibility/reporting identity evidence and any authorized public-production data needed after launch"
+  ]
+}

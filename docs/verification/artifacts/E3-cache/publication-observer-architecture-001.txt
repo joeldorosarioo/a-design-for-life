@@ -1,0 +1,23 @@
+failed to load config from E:\a-design-for-life\vitest.config.ts
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: EPERM: operation not permitted, open 'E:\a-design-for-life\node_modules\.vite-temp\vitest.config.ts.timestamp-1793764847142-a1ae4817e7d94.mjs'
+    at async open (node:internal/fs/promises:1345:25)
+    at async Object.writeFile (node:internal/fs/promises:1972:14)
+    at async loadConfigFromBundledFile (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/chunks/node.js:38258:3)
+    at async bundleAndLoadConfigFile (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/chunks/node.js:38106:21)
+    at async loadConfigFromFile (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/chunks/node.js:38066:42)
+    at async resolveConfig (file:///E:/a-design-for-life/node_modules/.pnpm/vite@8.3.5_@types+node@24.1_fa8ce942326cbdad4cf677be5f655ac3/node_modules/vite/dist/node/chunks/node.js:37668:22)
+    at async resolveConfig (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/index.1TqnEahn.js:9269:25)
+    at async createVitest (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/cli-api.De07GUeT.js:13392:17)
+    at async prepareVitest (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/cli-api.De07GUeT.js:13787:14)
+    at async startVitest (file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/cli-api.De07GUeT.js:13705:14) {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'E:\\a-design-for-life\\node_modules\\.vite-temp\\vitest.config.ts.timestamp-1793764847142-a1ae4817e7d94.mjs'
+}
+
+
+
+Exit: 1

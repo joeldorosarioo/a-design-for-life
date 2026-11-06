@@ -1,0 +1,13 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup src/helpers/storage; actual age/tar configured; no PostgreSQL/Docker lifecycle
+v24.22.2
+12.10.1
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  14 passed (14)
+      Tests  192 passed | 1 skipped (193)
+   Start at  23:10:14
+   Duration  3.17s (tests 54%, setup 34%, import 9%, transform 2%, worker 1%)
+
+EXIT_CODE: 0

@@ -1,0 +1,167 @@
+{
+  "config": {
+    "argv": [
+      "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+      "E:\\a-design-for-life\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "src/config/publication-http-observation.e2e.test.ts",
+      "--project=chromium",
+      "--workers=1",
+      "--reporter=list,json"
+    ],
+    "configFile": "E:\\a-design-for-life\\playwright.config.ts",
+    "rootDir": "E:/a-design-for-life/src",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "E:\\a-design-for-life\\testing\\setup\\playwright.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/a-design-for-life/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "E:/a-design-for-life/src",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.e2e.test.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "E:\\a-design-for-life\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "E:\\a-design-for-life\\src",
+        "snapshotDir": "E:\\a-design-for-life\\src",
+        "testIgnore": [],
+        "testMatch": "**/*.e2e.test.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3101",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "config\\publication-http-observation.e2e.test.ts",
+      "file": "config/publication-http-observation.e2e.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "confirms an HTTP-observed generation and retries the same durable root after an observer 503",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9772,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "buffer": "KG5vZGU6MzQ5NDgpIFdhcm5pbmc6IFRoZSAnTk9fQ09MT1InIGVudiBpcyBpZ25vcmVkIGR1ZSB0byB0aGUgJ0ZPUkNFX0NPTE9SJyBlbnYgYmVpbmcgc2V0LgooVXNlIGBub2RlIC0tdHJhY2Utd2FybmluZ3MgLi4uYCB0byBzaG93IHdoZXJlIHRoZSB3YXJuaW5nIHdhcyBjcmVhdGVkKQo="
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-04T04:07:59.128Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "E3-real-publication-observation.json",
+                      "contentType": "application/json",
+                      "body": "eyJydW5JZCI6ImEzZTU4ZGE5LWE0ZDItNDgwZS04MzI4LTFmNWY1MDExY2RlZSIsImNvbnRhaW5lcklkIjoiNzY3NWJiMWE3ZGNmYmFkMDA2NjFkMzlmZmQ3ODE3Y2FlNmQ0NjE3YzI2YWFkZWYzZTI4NWYxZWFmMWZmNTE1MiIsIm5ldHdvcmtJZCI6ImRmN2Y2NzRlOTg2NWMyNDIxYTY0OGFlZTNkOWMxNmFjYTdhYjUwZDhmYTIzMDMxNzMzZWY3OTlkY2YzNzkwZDMiLCJub2RlIjoiMjQuMjIuMiIsImJ1aWxkcyI6WyJfZzJ5SEFPQVNMSXBjMS1Lc1A5ZS0iLCJfZzJ5SEFPQVNMSXBjMS1Lc1A5ZS0iLCJfZzJ5SEFPQVNMSXBjMS1Lc1A5ZS0iXSwib3JpZ2lucyI6WyJodHRwOi8vMTI3LjAuMC4xOjMxMDIiLCJodHRwOi8vMTI3LjAuMC4xOjMxMDIiLCJodHRwOi8vMTI3LjAuMC4xOjMxMDIiXSwib2JzZXJ2YXRpb25zIjpbeyJjb2xsZWN0aW9uIjoiY2FzZXMiLCJvcGVyYXRpb25JZCI6ImRmMzdiYzg2LTQ1ZGUtNGNlNC04ODE5LThmZGI4NGQzNzYyMiIsInJlY2VpcHQiOnsib3BlcmF0aW9uSWQiOiJkZjM3YmM4Ni00NWRlLTRjZTQtODgxOS04ZmRiODRkMzc2MjIiLCJ0YXJnZXRSZXZpc2lvbiI6Ijk5YmQxOTRhLTI3MzItNDVkNS1iNTAzLTA5OTBjMjZlNmJlZSIsInN0YXRlIjoicHVibGljIn0sImVkaXRvcmlhbFN0YXR1cyI6MjAwfSx7InBhdGhuYW1lIjoiL2FwaS9jYXNlLWNvbnRlbnQvcHVibGlzaGVkL3B0Iiwic3RhdHVzIjoyMDAsImdlbmVyYXRpb24iOiJhNmQwYjI5My03OGU2LTRjMmMtOThkNy05MmFiMGU4Yjg2NzQiLCJieXRlcyI6NDYsImxvY2F0aW9uIjpudWxsfSx7InBhdGhuYW1lIjoiL2FwaS9jYXNlLWNvbnRlbnQvcHVibGlzaGVkL2VuIiwic3RhdHVzIjoyMDAsImdlbmVyYXRpb24iOiJhNmQwYjI5My03OGU2LTRjMmMtOThkNy05MmFiMGU4Yjg2NzQiLCJieXRlcyI6NDYsImxvY2F0aW9uIjpudWxsfSx7ImNvbGxlY3Rpb24iOiJwcm9mZXNzaW9uYWwtcHJvZmlsZXMiLCJvcGVyYXRpb25JZCI6IjI1ODFkZTg2LWMwMTYtNDE3NS1iOTBkLWJlOWYyOTYwZTljNyIsInJlY2VpcHQiOnsib3BlcmF0aW9uSWQiOiIyNTgxZGU4Ni1jMDE2LTQxNzUtYjkwZC1iZTlmMjk2MGU5YzciLCJ0YXJnZXRSZXZpc2lvbiI6IjBmMjUzNmI2LTEyN2ItNGY1MS1hNTU0LTIxNWMyZDE1ZjViOSIsInN0YXRlIjoicHVibGljIn0sImVkaXRvcmlhbFN0YXR1cyI6MjAwfSx7InBhdGhuYW1lIjoiL2FwaS9wcm9mZXNzaW9uYWwtcHJvZmlsZXMvcHVibGlzaGVkL3B0Iiwic3RhdHVzIjoyMDAsImdlbmVyYXRpb24iOiJlZWQ5OTljZi0xMmQzLTQ2N2UtYjU1OC05MDA3ZDNiMmZkNjUiLCJieXRlcyI6MjYyNSwibG9jYXRpb24iOm51bGx9LHsiY29sbGVjdGlvbiI6InNpdGUtbmF2aWdhdGlvbiIsIm9wZXJhdGlvbklkIjoiMTFjY2E0ZWItZTQ1Ni00YTA1LTk5YzUtMzY2MDI2NTI2Y2I4IiwicmVjZWlwdCI6eyJvcGVyYXRpb25JZCI6IjExY2NhNGViLWU0NTYtNGEwNS05OWM1LTM2NjAyNjUyNmNiOCIsInRhcmdldFJldmlzaW9uIjoiMjg1YzgxYTgtYjZlMi00MDM5LThmMTEtNzRiZmM1NGYzM2NlIiwic3RhdGUiOiJwdWJsaWMifSwiZWRpdG9yaWFsU3RhdHVzIjoyMDB9LHsicGF0aG5hbWUiOiIvYXBpL3NpdGUtbmF2aWdhdGlvbi9wdWJsaXNoZWQvcHQiLCJzdGF0dXMiOjIwMCwiZ2VuZXJhdGlvbiI6IjU3ZmJlNGE0LWIzYTUtNGE4MC04Yzc3LWI3OWU0OWE2YjgwYyIsImJ5dGVzIjoyMTAwLCJsb2NhdGlvbiI6bnVsbH0seyJjb2xsZWN0aW9uIjoiY2FzZS1jb250ZW50Iiwib3BlcmF0aW9uSWQiOiI5Y2QyM2M4Mi1lNjgzLTQxZjEtODQ5Zi00N2I3OTQ2YjZkOTciLCJyZWNlaXB0Ijp7Im9wZXJhdGlvbklkIjoiOWNkMjNjODItZTY4My00MWYxLTg0OWYtNDdiNzk0NmI2ZDk3IiwidGFyZ2V0UmV2aXNpb24iOiI0Mzg0NjU1Ny01MWJhLTQ5NWUtODc1Mi1hZjc1NmI0NmY1NGQiLCJzdGF0ZSI6InB1YmxpYyJ9LCJlZGl0b3JpYWxTdGF0dXMiOjIwMH0seyJwYXRobmFtZSI6Ii9wdC9jYXNlcy9vYnNlcnZlci1maXJzdC1iYzc0ZWQzYyIsInN0YXR1cyI6MjAwLCJnZW5lcmF0aW9uIjoiNzVlODI3NjgtMjhlZi00MjQ3LTk2M2MtM2Y5NGM3OTNmODUzIiwiYnl0ZXMiOjM0NDQ1LCJsb2NhdGlvbiI6bnVsbH0seyJjb2xsZWN0aW9uIjoiY2FzZS1jb250ZW50Iiwib3BlcmF0aW9uSWQiOiI5MzZkZTJiOS1kNTliLTQzNjAtOTlmOS0zZjk0ZjcxMjFhNGMiLCJyZWNlaXB0Ijp7Im9wZXJhdGlvbklkIjoiOTM2ZGUyYjktZDU5Yi00MzYwLTk5ZjktM2Y5NGY3MTIxYTRjIiwidGFyZ2V0UmV2aXNpb24iOiI5OGU3YTEyZS0zYTFjLTRjMzMtYWZiMi0xZGZiNzVhZmQwODMiLCJzdGF0ZSI6InVwZGF0ZS1wZW5kaW5nIn0sImVkaXRvcmlhbFN0YXR1cyI6MjAwfSx7InBoYXNlIjoic2VsZWN0ZWQtb2JzZXJ2ZXItNTAzIiwicmVxdWVzdHMiOlt7Im1ldGhvZCI6IkdFVCIsInBhdGhuYW1lIjoiL2FwaS9jYXNlLWNvbnRlbnQvcHVibGlzaGVkL3B0IiwiY29va2llIjpmYWxzZSwiYXV0aG9yaXphdGlvbiI6ZmFsc2V9XX0seyJwaGFzZSI6InByb21vdGVkLWJ1dC1wZW5kaW5nIiwiZ2VuZXJhdGlvbiI6ImNjNzRjOWIyLTU0ZDUtNDhmMy1hMmRmLWE0ZjYxZmU2OTk2OCIsInN0YXJ0ZWRWZXJzaW9uIjoxfSx7ImNvbGxlY3Rpb24iOiJjYXNlLWNvbnRlbnQiLCJvcGVyYXRpb25JZCI6IjkzNmRlMmI5LWQ1OWItNDM2MC05OWY5LTNmOTRmNzEyMWE0YyIsInJlY2VpcHQiOnsib3BlcmF0aW9uSWQiOiI5MzZkZTJiOS1kNTliLTQzNjAtOTlmOS0zZjk0ZjcxMjFhNGMiLCJ0YXJnZXRSZXZpc2lvbiI6Ijk4ZTdhMTJlLTNhMWMtNGMzMy1hZmIyLTFkZmI3NWFmZDA4MyIsInN0YXRlIjoicHVibGljIn0sImVkaXRvcmlhbFN0YXR1cyI6MjAwfSx7InBhdGhuYW1lIjoiL3B0L2Nhc2VzL29ic2VydmVyLWZpcnN0LWJjNzRlZDNjIiwic3RhdHVzIjozMDgsImdlbmVyYXRpb24iOiJjYzc0YzliMi01NGQ1LTQ4ZjMtYTJkZi1hNGY2MWZlNjk5NjgiLCJieXRlcyI6NTQsImxvY2F0aW9uIjoiaHR0cDovLzEyNy4wLjAuMTozMTAxL3B0L2Nhc2VzL29ic2VydmVyLXJldHJ5LWYzYTQwM2NmIn0seyJwYXRobmFtZSI6Ii9wdC9jYXNlcy9vYnNlcnZlci1yZXRyeS1mM2E0MDNjZiIsInN0YXR1cyI6MjAwLCJnZW5lcmF0aW9uIjoiY2M3NGM5YjItNTRkNS00OGYzLWEyZGYtYTRmNjFmZTY5OTY4IiwiYnl0ZXMiOjM0NDYxLCJsb2NhdGlvbiI6bnVsbH0seyJjb2xsZWN0aW9uIjoiY2FzZS1jb250ZW50Iiwib3BlcmF0aW9uSWQiOiJmMWQ3NGMzMS1iZDY3LTQyNzEtOTAxNS04NzdhZGY0Y2ViNjAiLCJyZWNlaXB0Ijp7Im9wZXJhdGlvbklkIjoiZjFkNzRjMzEtYmQ2Ny00MjcxLTkwMTUtODc3YWRmNGNlYjYwIiwidGFyZ2V0UmV2aXNpb24iOiJkNjc3NDk1MS1kNGMwLTRmZTQtOTM1Yy1hZjI1NTAxNTc5N2EiLCJzdGF0ZSI6InB1YmxpYyJ9LCJlZGl0b3JpYWxTdGF0dXMiOjIwMH0seyJwYXRobmFtZSI6Ii9wdC9jYXNlcy9vYnNlcnZlci1maXJzdC1iYzc0ZWQzYyIsInN0YXR1cyI6NDEwLCJnZW5lcmF0aW9uIjoiMTg4MDI0ZGUtNDVmOC00ZjlhLWE2ZTUtYzIwZWRhNGYwNDRmIiwiYnl0ZXMiOjI2OTQsImxvY2F0aW9uIjpudWxsfSx7InBhdGhuYW1lIjoiL3B0L2Nhc2VzL29ic2VydmVyLXJldHJ5LWYzYTQwM2NmIiwic3RhdHVzIjo0MTAsImdlbmVyYXRpb24iOiIxODgwMjRkZS00NWY4LTRmOWEtYTZlNS1jMjBlZGE0ZjA0NGYiLCJieXRlcyI6MjY5NCwibG9jYXRpb24iOm51bGx9XX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1721042d9197abf7431c-4b135361df6c07f9be57",
+          "file": "config/publication-http-observation.e2e.test.ts",
+          "line": 33,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T04:07:04.351Z",
+    "duration": 67391.201,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

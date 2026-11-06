@@ -1,0 +1,24 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test --project=chromium --workers=1 '--reporter=list json' '--output=C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\e2e-001-results'
+Error: Cannot find module 'list json'
+Require stack:
+- E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js
+- E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\program.js
+- E:\a-design-for-life\node_modules\.pnpm\@playwright+test@1.64.1\node_modules\@playwright\test\cli.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+    at require.resolve (node:internal/modules/helpers:175:31)
+    at resolveReporter (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js:210:18)
+    at E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js:164:42
+    at Array.map (<anonymous>)
+    at resolveReporterOption (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js:164:30)
+    at overridesFromOptions (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js:125:15)
+    at runTests (E:\a-design-for-life\node_modules\.pnpm\playwright@1.64.1\node_modules\playwright\lib\cli\testActions.js:42:24) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\a-design-for-life\\node_modules\\.pnpm\\playwright@1.64.1\\node_modules\\playwright\\lib\\cli\\testActions.js',
+    'E:\\a-design-for-life\\node_modules\\.pnpm\\playwright@1.64.1\\node_modules\\playwright\\lib\\program.js',
+    'E:\\a-design-for-life\\node_modules\\.pnpm\\@playwright+test@1.64.1\\node_modules\\@playwright\\test\\cli.js'
+  ]
+}
+[ELIFECYCLE] Command failed with exit code 1.

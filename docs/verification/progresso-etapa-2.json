@@ -7,8 +7,8 @@
   "percentage": 96.7,
   "closedTasks": ["E2.1", "E2.2", "E2.3", "E2.4", "E2.5"],
   "totalTasks": 6,
-  "approval": "A2 pending; stage3 not authorized",
-  "remainingEstimate": "Somente fechamento documental, CI do commit exato e empacotamento final: aproximadamente 0,5–1 hora. Leitor formal não será executado nesta sessão por orientação do usuário.",
+  "approval": "A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03",
+  "remainingEstimate": "Etapa 2 aceita com pendência do leitor registrada; etapa 3 explicitamente retomada em 03/11/2026.",
   "criteria": [
     {
       "id": "E2.1.1",
@@ -191,9 +191,11 @@
       "evidence": "Pacote privado A2-review-c9be4dc-v2 concreto/revisado:181artefatos,18PNG,2WEBM,manifestSHA3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15. QAreal15:26:01–15:26:10UTC exit0:181hashes/108filtros/204links/18imagensporviewport/2vídeospausados,0overflow1440e390/0redeexterna/0erros;duascapturasrevistaspelo coordenador. RED390overflow236 efixmínimo wrap preservados. artifacts/a2-current008/package-review-summary.json. Entrega final outputs/A2 e reciboexterno vinculam commitdocumental/CI exatos; A2 segue aguardando aprovação,etapa3 não iniciada."
     }
   ],
-  "recalculatedAt": "2026-11-03T15:32:27.972Z",
+  "recalculatedAt": "2026-11-03T23:19:42.063Z",
   "notes": [
-    "E2.1–E2.5 integralmente encerradas. Build008/fonte500f49 e CI c9be4dc atuais;18LH/20recursos,restauração/smoke004 e pacoteA2real revisados. Único critério incompleto E2.6.2:leitor formal desativado por orientação do usuário. A2 aguarda revisão/aprovação;etapa3 não autorizada.",
+    "Atualização atual03/11/2026: E3 retomada explicitamente após a pausa histórica; decisão Resend e limites em retomada-etapa-3.md. A2 aprovada com pendência formal do leitor:29/30 critérios,5/6 tarefas; evidências originais preservadas.",
+    "Histórico da pausa — Atualização03/11/2026: usuário aprovou A2 com a pendência E2.6.2 preservada, autorizou E3 e depois pausou até consolidar informações. Contagens não mudam:29/30;E2.1–E2.5 encerradas. Registros anteriores de A2 pendente são históricos. Ver retomada-etapa-3.md.",
+    "Histórico anterior à aprovação A2 — E2.1–E2.5 integralmente encerradas. Build008/fonte500f49 e CI c9be4dc atuais;18LH/20recursos,restauração/smoke004 e pacoteA2real revisados. Único critério incompleto E2.6.2:leitor formal desativado por orientação do usuário. A2 aguarda revisão/aprovação;etapa3 não autorizada.",
     "Retomada autorizada em03/11/2026,develop preservada. Implementação c9be4dc23c12f45fadd27cafc05a599b8b3a0c44 e CI41655739795 SUCCESS. O commit documental e seu CI exato ficam no recibo externo final, após promoção normal em develop protegida. Nenhum histórico publicado reescrito.",
     "Candidata008: BuildID XCwWNaSVVZ2kr6jeLy4Aa, fonte500/digestf49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784. verify0 e E2E113/113 atuais. A evidência007 permanece vinculada ao seu build/digest anterior; não é renomeada como captura008.",
     "Fixture privadaV5 carregada/atualizada e revalidação dos10rascunhos/7mídias realizada; Rootnulo/0operações públicas, todasrevisões preservadas. Migração doscards e nova migração aditiva de apresentação/retorno aplicadas somente em bancos isolados. Cinco originais,18capturas históricas e28objetos privados preservados.",
@@ -210,5 +212,6 @@
     "Histórico anterior à retomada — Novo milestone SEO/idioma privado:13/13HTTPexit0,9Native privados e6NativeReader passaram. Estado atual dos arquivos posteriores ao gate1048 ainda exige verificação agregada; não é aprovação A2. Rascunhos continuam privados e Analytics não foi ativado.",
     "Histórico anterior à retomada — Negativos editoriais integrados:5/5HTTP exit0 no BuildIDxAv0xWu583U-tm8mDJkdf. RED HTTP real observou o texto técnico A1 antes da composição. Isso fecha E2.3.4, sem antecipar comparação visual, auditoria manual ou gate final A2.",
     "Histórico anterior à retomada — Pausa explícita solicitada pelo usuário após concluir cardTitle/cardEyebrow editáveis comfallback (c3b4860):38unit+6Native,tipos/lint/formato0; coordenador44unit+2CSS atuais. Nenhuma nova caixa completa; visual/gate/a11y/performance/A2 seguem abertos. Retomada registrada em retomada-etapa-2.md."
-  ]
+  ],
+  "approvalRecordedAt": "2026-11-03T22:04:36.698Z"
 }

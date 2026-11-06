@@ -1,12 +1,10 @@
+import { assertIsolatedTestEnvironment } from '../setup/test-environment';
+import { inspectOwnedTestDatabase } from '../setup/owned-test-database';
 import assert from 'node:assert/strict';
 import { getPayload } from 'payload';
 import config from '@payload-config';
-if (
-  process.env.APP_ENV !== 'test' ||
-  new URL(process.env.DATABASE_URI ?? '').port !== '55433' ||
-  new URL(process.env.DATABASE_URI ?? '').pathname !== '/adfl_test_base'
-)
-  throw new Error('Roundtrip verification requires the isolated tmpfs fixture');
+assertIsolatedTestEnvironment(process.env);
+inspectOwnedTestDatabase();
 const payload = await getPayload({ config, disableOnInit: true });
 try {
   for (const collection of ['site-navigation', 'professional-profiles'] as const) {

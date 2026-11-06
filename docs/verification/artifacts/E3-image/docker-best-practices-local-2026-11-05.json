@@ -1,0 +1,149 @@
+{
+  "recordedAt": "2026-11-05T17:48:00.825435+00:00",
+  "scope": "Local Docker hardening; private registry preparation; no application deployment on the VPS.",
+  "imageProof": {
+    "imageId": "sha256:0954d0003f1035ddeb17fbbf64622b57dde8341f14022a8dd7f73c74882d6fd0",
+    "revision": "draft-docker-hardening-20261105",
+    "nativeSmoke": "Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas and PDF.js resources.",
+    "postgresStartup": true,
+    "username": "appuser",
+    "uid": 70,
+    "gid": 70,
+    "cpuLimit": 1,
+    "memoryBytes": 2147483648,
+    "memoryAndSwapBytes": 2147483648,
+    "capDrop": [
+      "ALL"
+    ],
+    "ownedProbeContainer": "c22a84d230177c6621a5d6e8611595943d8e1779aac9154c0245a09809f4799f",
+    "ownedProbeRemoved": true
+  },
+  "liveRuntime": {
+    "containerId": "382d5adbcfda2d97c9d3b99f82c6f6d9d165ab80a5264c04ad55af5bab4d304a",
+    "imageId": "sha256:0954d0003f1035ddeb17fbbf64622b57dde8341f14022a8dd7f73c74882d6fd0",
+    "imageUser": "appuser",
+    "runtimeUid": 70,
+    "runtimeGid": 70,
+    "cpuLimit": 1,
+    "memoryBytes": 2147483648,
+    "memoryAndSwapBytes": 2147483648,
+    "capDrop": [
+      "ALL"
+    ],
+    "noNewPrivileges": true,
+    "registryCredentialsExcluded": true,
+    "healthy": true,
+    "oomKilled": false,
+    "responses": [
+      {
+        "path": "/health",
+        "status": 200,
+        "bodySha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd"
+      },
+      {
+        "path": "/admin",
+        "status": 200,
+        "bodySha256": "94a40f7deab61338346e4db8dcc503b1a4217e387ca3679e7274b9bd3c6d8178"
+      },
+      {
+        "path": "/pt",
+        "status": 200,
+        "bodySha256": "5ae77471e12c578dd9e4421bfce50d0c1b70e7ae6737580bdc7e15de8ffce6ba"
+      },
+      {
+        "path": "/en",
+        "status": 200,
+        "bodySha256": "f70e58db47faeae5809d3b9eb152cf4be8ad2cf0924cfaa3c42b2f21e719093c"
+      },
+      {
+        "path": "/pt/sobre",
+        "status": 200,
+        "bodySha256": "dab5d203a0cd6210dcfe83374f88516b22f33926a47b1c02afd4568d50f206c5"
+      },
+      {
+        "path": "/en/about",
+        "status": 200,
+        "bodySha256": "dd1b8d7dc53367f7a751b3075dfff6181f4e084d27580f13e3915c5cb9c2bd82"
+      },
+      {
+        "path": "/pt/cases",
+        "status": 200,
+        "bodySha256": "037c143e12da8610813109db7e0d612f1345e356fc4560a74ee6cfaf408f7678"
+      },
+      {
+        "path": "/en/cases",
+        "status": 200,
+        "bodySha256": "92c9ced04fb47950a87ab123786739f4ea69facbd0d4252c92c0c6ca00de6b6c"
+      },
+      {
+        "path": "/pt/cases/lorem-ipsum-01",
+        "status": 200,
+        "bodySha256": "cdf23a324baf56d457e375ac3e1c6852eec35bd0777ea54579a8b3a8faefb78f"
+      },
+      {
+        "path": "/pt/cases/lorem-ipsum-02",
+        "status": 200,
+        "bodySha256": "80b7d6a60f0df73ab0da7f0410daff8e1a766cf75627c8eb741d61e58a535731"
+      },
+      {
+        "path": "/en/cases/lorem-ipsum-01",
+        "status": 200,
+        "bodySha256": "a9f0d0316b8b5f50e92268817c085d821770d0fb9cbfcf3716453be003cc0c95"
+      },
+      {
+        "path": "/en/cases/lorem-ipsum-02",
+        "status": 200,
+        "bodySha256": "add1fdd7e27e03de1f3d9b424a164768ed2b71356bacb0d2dcdedda9a1ca7bd3"
+      }
+    ],
+    "nextEnvPreserved": true
+  },
+  "knownSecretAudit": {
+    "imageId": "sha256:0954d0003f1035ddeb17fbbf64622b57dde8341f14022a8dd7f73c74882d6fd0",
+    "scanScope": "all exported image layers and metadata",
+    "archiveBytes": 613217792,
+    "checkedKnownSecretCount": 9,
+    "knownSecretMatches": 0,
+    "matchedVariableNames": [],
+    "privateAuditArchiveRemoved": true
+  },
+  "checks": {
+    "focusedUnitFiles": 2,
+    "focusedUnitTestsPassed": 35,
+    "focusedLint": "passed",
+    "composeConfig": "passed",
+    "build": "passed",
+    "peerReview": "no blocking findings"
+  },
+  "backups": {
+    "before": {
+      "setId": "fee63449-bad9-4cf8-8411-b7530073f16e",
+      "imageId": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+      "byteLength": 6719272,
+      "durationMs": 8217
+    },
+    "after": {
+      "setId": "1db140cf-6e0d-4fdc-8370-7e1ec75d1f1b",
+      "imageId": "sha256:0954d0003f1035ddeb17fbbf64622b57dde8341f14022a8dd7f73c74882d6fd0",
+      "byteLength": 6719272,
+      "durationMs": 6947
+    },
+    "schemaSha256Unchanged": true,
+    "restoreRepeatedThisRun": false
+  },
+  "sourceFilesSha256": {
+    "Dockerfile": "19160e9657d304d09d38f5413eff5027e8e0e1da4de0262878b6ed64b3d4b68a",
+    "compose.local.yaml": "4ef267c6d2ca196c71419e76435e40f4ac552480bc7e69608cd24a7b5ccadfac",
+    ".dockerignore": "667a2628a1e36c050276ef13017bf4fd061645a473cb89bd00c913d0bce4f075",
+    "ops/image/inspect-local-image.mjs": "6b77671dc80969533582ceb47b92e77b89fbb709e431cb7f64e04f50a05d6de3",
+    "ops/image/inspect-local-image.test.ts": "e8e55c2773baccddb8480c032ee52e55564e561f097aed0d8a19ff15d9ad01d2",
+    "ops/image/runtime-smoke.mjs": "bce99f803a35eaa00403a8579172f23b23517f4c2a32a744f56e3760c223e045"
+  },
+  "limits": {
+    "capacityBaseline": "initial local quotas; validate load and shared VPS inventory before sizing staging",
+    "hostAndDockerUpdates": "not verified or applied on VPS",
+    "applicationDeployment": "pending private image publication and complete staging configuration",
+    "registryManifestDigest": "not the local image ID",
+    "historicalNextEnvChange": "preserved, excluded from commit"
+  }
+}

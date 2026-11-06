@@ -1,0 +1,219 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/publication-media-observation.test.ts (3 tests | 3 failed) 17ms
+   × checks the exact stored bytes and canonical optimized image while another owner keeps the grant 13ms
+   × requires empty GET, HEAD and Range denials for each removed target after the final grant 2ms
+   × uses the same first confirmed manifest as media delivery and handles a PDF without an optimizer target 2ms
+ ❯ |unit| src/helpers/payload/publication-http-verification.test.ts (35 tests | 3 failed) 1070ms
+   × issues only the closed anonymous media and optimizer methods and headers 2ms
+   × allows a valid large original without relaxing the ordinary projection limit 6ms
+   × refuses any bytes in an expected media denial, independently of the matcher 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > issues only the closed anonymous media and optimizer methods and headers
+Error: Unsafe public HTTP verification plan.
+ ❯ assertServedPublication src/helpers/payload/publication-http-verification.ts:89:11
+     87|   const plan = observations.map(({ path, status, matches }) => ({ path…
+     88|   if (plan.some(({ path }) => path.length > 512 || !pathPattern.test(p…
+     89|     throw new Error('Unsafe public HTTP verification plan.');
+       |           ^
+     90|
+     91|   const deadline = performance.now() + timeoutMs;
+ ❯ src/helpers/payload/publication-http-verification.test.ts:383:17
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:369:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > allows a valid large original without relaxing the ordinary projection limit
+Error: Public HTTP verification failed.
+ ❯ assertServedPublication src/helpers/payload/publication-http-verification.ts:116:11
+    114|   } catch {
+    115|     // Callers can report a stable diagnostic without echoing paths, p…
+    116|     throw new Error('Public HTTP verification failed.');
+       |           ^
+    117|   } finally {
+    118|     clearTimeout(timeout);
+ ❯ src/helpers/payload/publication-http-verification.test.ts:471:7
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:5
+ ❯ src/helpers/payload/publication-http-verification.test.ts:459:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-http-verification.test.ts > refuses any bytes in an expected media denial, independently of the matcher
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/payload/publication-http-verification.test.ts:503:8
+    501|           ],
+    502|         }),
+    503|       ).rejects.toThrow('Public HTTP verification failed.');
+       |        ^
+    504|     },
+    505|   );
+ ❯ withServer src/helpers/payload/publication-http-verification.test.ts:31:11
+ ❯ src/helpers/payload/publication-http-verification.test.ts:484:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |unit| src/features/media-library/server/publication-media-observation.test.ts > checks the exact stored bytes and canonical optimized image while another owner keeps the grant
+AssertionError: expected [] to deeply equal [ [ …(2) ], [ …(2) ], [ …(2) ] ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/original",
+-     200,
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     200,
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     200,
+-   ],
+- ]
++ []
+
+ ❯ src/features/media-library/server/publication-media-observation.test.ts:50:60
+     48| it('checks the exact stored bytes and canonical optimized image while …
+     49|   const probes = plan(scenario(true), selected);
+     50|   expect(probes.map(({ path, status }) => [path, status])).toEqual([
+       |                                                            ^
+     51|     [original, 200],
+     52|     [`/media/${mediaId}/w16`, 200],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |unit| src/features/media-library/server/publication-media-observation.test.ts > requires empty GET, HEAD and Range denials for each removed target after the final grant
+AssertionError: expected [] to deeply equal [ [ …(3) ], [ …(3) ], [ …(3) ], …(6) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/original",
+-     404,
+-     "get",
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/original",
+-     404,
+-     "head",
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/original",
+-     404,
+-     "range",
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     404,
+-     "get",
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     404,
+-     "head",
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     404,
+-     "range",
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     404,
+-     "get",
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     404,
+-     "head",
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     404,
+-     "range",
+-   ],
+- ]
++ []
+
+ ❯ src/features/media-library/server/publication-media-observation.test.ts:68:80
+     66| it('requires empty GET, HEAD and Range denials for each removed target…
+     67|   const probes = plan(scenario(false), selected);
+     68|   expect(probes.map(({ path, status, media }) => [path, status, media?…
+       |                                                                                ^
+     69|     [original, `/media/${mediaId}/w16`, optimizer].flatMap((path) =>
+     70|       ['get', 'head', 'range'].map((mode) => [path, 404, mode]),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  |unit| src/features/media-library/server/publication-media-observation.test.ts > uses the same first confirmed manifest as media delivery and handles a PDF without an optimizer target
+AssertionError: expected [] to deeply equal [ [ …(2) ], [ …(2) ], [ …(2) ], …(4) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/original",
+-     200,
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     404,
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     404,
+-   ],
+-   [
+-     "/media/78fc8567-0622-41a4-b5c6-a8f8a4472c8c/w16",
+-     404,
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     404,
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     404,
+-   ],
+-   [
+-     "/_next/image?url=%2Fmedia%2F78fc8567-0622-41a4-b5c6-a8f8a4472c8c%2Foriginal&w=64&q=75",
+-     404,
+-   ],
+- ]
++ []
+
+ ❯ src/features/media-library/server/publication-media-observation.test.ts:101:60
+     99|   };
+    100|   const probes = plan(root, selected);
+    101|   expect(probes.map(({ path, status }) => [path, status])).toEqual([
+       |                                                            ^
+    102|     [original, 200],
+    103|     ...Array.from({ length: 3 }, () => [`/media/${mediaId}/w16`, 404]),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 32 passed (38)
+   Start at  02:03:47
+   Duration  1.50s (tests 63%, setup 24%, import 7%, transform 5%, worker 1%)
+
+EXIT 1

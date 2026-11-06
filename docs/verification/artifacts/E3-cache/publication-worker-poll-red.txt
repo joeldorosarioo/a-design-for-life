@@ -1,0 +1,44 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > executes only a bounded sequential batch and preserves progress after one execution fails 2ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 0 1ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: -1 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 1.5 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: NaN 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 101 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an invalid injected instant before loading due Native work 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > detaches the first drain, never overlaps a running drain, and stops future scheduling 2ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > contains detached drain failures, logs no raw errors, and tries a later bounded drain 2ms
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > can stop before the detached callback without touching the application Payload pool 0ms
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > rejects a timer overflow before it can turn an intended long poll into a busy loop 4ms
+   → expected [Function] to throw an error
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > lets a started drain settle when stopping and never starts another after settlement 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > rejects a timer overflow before it can turn an intended long poll into a busy loop
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/helpers/payload/publication-retry-worker.test.ts:137:7
+    135|     pollIntervalMs: 2_147_483_648,
+    136|     drain: async () => ({ selected: 0, processed: 0, failed: 0 }),
+    137|   })).toThrow('Invalid publication retry poll interval.');
+       |       ^
+    138| });
+    139|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 11 passed (12)
+   Start at  23:10:41
+   Duration  402ms (setup 74%, transform 11%, import 8%, tests 6%, worker 2%)
+

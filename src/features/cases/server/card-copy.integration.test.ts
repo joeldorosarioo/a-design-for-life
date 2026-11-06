@@ -1,3 +1,4 @@
+import { assertIsolatedTestEnvironment } from '../../../../testing/setup/test-environment';
 import { randomUUID } from 'node:crypto';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -31,14 +32,7 @@ let mediaId: string;
 const owned: { collection: 'cases' | 'case-content'; id: string }[] = [];
 
 beforeAll(async () => {
-  const database = new URL(process.env.DATABASE_URI ?? 'file:///invalid');
-  if (
-    process.env.APP_ENV !== 'test' ||
-    !['127.0.0.1', 'localhost', '[::1]'].includes(database.hostname) ||
-    !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname) ||
-    database.port !== '55433'
-  )
-    throw new Error('Card copy Native tests require the isolated test database.');
+  assertIsolatedTestEnvironment(process.env);
   fixture = await createEditorialPayloadFixture('e2-card-copy-' + randomUUID());
   previousDirectory = runtimePublication().directory;
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-card-copy-'));

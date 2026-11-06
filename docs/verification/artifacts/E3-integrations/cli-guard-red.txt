@@ -1,0 +1,12 @@
+{"status":1,"command":"node --conditions=react-server node_modules/payload/bin.js run src/config/provision-structural-documents.cli.ts","environment":"synthetic-staging-refusal-no-remote-credentials"}
+Error running script: E:\a-design-for-life\src\config\provision-structural-documents.cli.ts
+Error: Integration configuration is incomplete or invalid. Check the private environment configuration.
+    at invalidConfiguration (E:\a-design-for-life\src\config\integration-env.ts:50:9)
+    at readIntegrationEnv (E:\a-design-for-life\src\config\integration-env.ts:74:26)
+    at <anonymous> (E:\a-design-for-life\src\payload.config.ts:48:22)
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async runBinScript (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:91:13)
+    at async bin (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\dist\bin\index.js:61:29)
+    at async start (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/bin.js:30:7)
+    at async file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/bin.js:33:5

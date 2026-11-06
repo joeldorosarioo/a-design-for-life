@@ -1,0 +1,66 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[00:50:39] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (107ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (9ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (5ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (45ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (3ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[00:50:39] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[00:50:39] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (3ms)[39m
+[00:50:39] [32mINFO[39m: [36mDone.[39m
+····[00:50:43] [31mERROR[39m: [36mA gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.[39m
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async createOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:421:13)
+              at async createHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/create.js:11:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/config/publication-updates.integration.test.ts:387:29
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+·························
+
+ Test Files  3 passed (3)
+      Tests  29 passed (29)
+   Start at  00:50:32
+   Duration  26.77s (tests 65%, import 31%, transform 2%, setup 1%)
+
+Exit: 0

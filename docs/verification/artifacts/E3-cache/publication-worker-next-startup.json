@@ -1,0 +1,60 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' --conditions=react-server '.\\node_modules\\@playwright\\test\\cli.js' test src/config/publication-worker.e2e.test.ts --project=chromium --workers=1 --reporter=list,json",
+  "startedAt": "2026-11-04T03:44:48.5810980+00:00",
+  "finishedAt": "2026-11-04T03:46:28.5102925+00:00",
+  "exitCode": 0,
+  "log": "publication-worker-next-startup.txt",
+  "before": [
+    {
+      "Path": "E:\\a-design-for-life\\next-env.d.ts",
+      "Hash": "EC8FE87B409DB846858AE7D48E4AA144F2EBCFEBCB623C34DA86D7688BB67D95"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\tsconfig.json",
+      "Hash": "64F3C9D6863FEE9D3FD8707E5543BBA29487D389B2E17117E8EC2CD451EB70CE"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\instrumentation.ts",
+      "Hash": "D61F9B1D33C2CA88D8CD09DDFC2A75651CB5238CEEC65F041030A2CB1ECCA57D"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.ts",
+      "Hash": "5338E0A5B5D918BF13AF1A9E0E197B9D38835BA85160048669FB0193E272AEFE"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.e2e.test.ts",
+      "Hash": "53FC38A2DF8F85B2480CB55DB7FF72627FD50870F8B1EF80D79B7D8BC53CEAC8"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\testing\\setup\\playwright.ts",
+      "Hash": "3192BDF0348F24E7446FB67AA6EA73176F7559C8C164F8416C82DB063B1F4526"
+    }
+  ],
+  "after": [
+    {
+      "Path": "E:\\a-design-for-life\\next-env.d.ts",
+      "Hash": "EC8FE87B409DB846858AE7D48E4AA144F2EBCFEBCB623C34DA86D7688BB67D95"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\tsconfig.json",
+      "Hash": "64F3C9D6863FEE9D3FD8707E5543BBA29487D389B2E17117E8EC2CD451EB70CE"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\instrumentation.ts",
+      "Hash": "D61F9B1D33C2CA88D8CD09DDFC2A75651CB5238CEEC65F041030A2CB1ECCA57D"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.ts",
+      "Hash": "5338E0A5B5D918BF13AF1A9E0E197B9D38835BA85160048669FB0193E272AEFE"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.e2e.test.ts",
+      "Hash": "53FC38A2DF8F85B2480CB55DB7FF72627FD50870F8B1EF80D79B7D8BC53CEAC8"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\testing\\setup\\playwright.ts",
+      "Hash": "3192BDF0348F24E7446FB67AA6EA73176F7559C8C164F8416C82DB063B1F4526"
+    }
+  ],
+  "identical": true
+}

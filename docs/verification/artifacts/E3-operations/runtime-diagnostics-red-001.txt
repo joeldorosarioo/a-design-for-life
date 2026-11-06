@@ -1,0 +1,143 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+xxxxxxx···[01:47:51] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:47:51] [31mERROR[39m: [36msynthetic-email-address[39m
+    [35mauthorization[39m: "synthetic-auth-header"
+    [35mcookie[39m: "synthetic-cookie"
+    err: {
+      "type": "Error",
+      "message": "synthetic-draft-private-text",
+      "stack":
+          Error: synthetic-draft-private-text
+              at E:/a-design-for-life/src/helpers/logger/payload-runtime-logger.test.ts:32:33
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "status": 503,
+      "cause": {
+        "token": "synthetic-reset-token"
+      }
+    }
+[01:47:51] [33mWARN[39m:
+    [35mauthorization[39m: "synthetic-auth-header"
+    [35mstatusCode[39m: 429
+    [35mpassword[39m: "synthetic-secret-password"
+[01:47:51] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:47:51] [31mERROR[39m: [36msynthetic-email-address[39m
+    [35mauthorization[39m: "synthetic-auth-header"
+    [35mcookie[39m: "synthetic-cookie"
+    err: {
+      "type": "Error",
+      "message": "synthetic-draft-private-text",
+      "stack":
+          Error: synthetic-draft-private-text
+              at E:/a-design-for-life/src/helpers/logger/payload-runtime-logger.test.ts:32:33
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "status": 503,
+      "cause": {
+        "token": "synthetic-reset-token"
+      }
+    }
+[01:47:51] [33mWARN[39m:
+    [35mauthorization[39m: "synthetic-auth-header"
+    [35mstatusCode[39m: 429
+    [35mpassword[39m: "synthetic-secret-password"
+xx··
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/logger/payload-runtime-logger.test.ts > sends only closed diagnostic fields through the real Native logger in staging
+ FAIL  |unit| src/helpers/logger/payload-runtime-logger.test.ts > sends only closed diagnostic fields through the real Native logger in production
+AssertionError: expected [] to have a length of 2 but got +0
+
+- Expected
++ Received
+
+- 2
++ 0
+
+ ❯ src/helpers/logger/payload-runtime-logger.test.ts:36:19
+     34|     child.error({ err: error, cookie: 'synthetic-cookie' }, 'synthetic…
+     35|     child.warn({ statusCode: 429, password: 'synthetic-secret-password…
+     36|     expect(lines).toHaveLength(2);
+       |                   ^
+     37|     expect(lines.join('')).not.toMatch(/synthetic-|stack|hostname|pass…
+     38|     expect(lines.map((line) => JSON.parse(line))).toMatchObject([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when media preparation fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when media preparation fails for HEAD
+AssertionError: expected "error" to be called once with arguments: [ { …(3) } ]
+
+Number of calls: 0
+
+ ❯ expectUnavailable src/features/media-library/server/media-response.test.ts:20:24
+     18|
+     19| async function expectUnavailable(response: Response) {
+     20|   expect(logger.error).toHaveBeenCalledExactlyOnceWith({
+       |                        ^
+     21|     operation: 'media.delivery', result: 'unavailable', context: { sta…
+     22|   });
+ ❯ src/features/media-library/server/media-response.test.ts:40:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when preview authentication fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when preview authentication fails for HEAD
+AssertionError: expected "error" to be called once with arguments: [ { …(3) } ]
+
+Number of calls: 0
+
+ ❯ expectUnavailable src/features/media-library/server/media-response.test.ts:20:24
+     18|
+     19| async function expectUnavailable(response: Response) {
+     20|   expect(logger.error).toHaveBeenCalledExactlyOnceWith({
+       |                        ^
+     21|     operation: 'media.delivery', result: 'unavailable', context: { sta…
+     22|   });
+ ❯ src/features/media-library/server/media-response.test.ts:51:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when native request preparation fails
+AssertionError: expected "error" to be called once with arguments: [ { …(3) } ]
+
+Number of calls: 0
+
+ ❯ expectUnavailable src/features/media-library/server/media-response.test.ts:20:24
+     18|
+     19| async function expectUnavailable(response: Response) {
+     20|   expect(logger.error).toHaveBeenCalledExactlyOnceWith({
+       |                        ^
+     21|     operation: 'media.delivery', result: 'unavailable', context: { sta…
+     22|   });
+ ❯ src/features/media-library/server/media-response.test.ts:68:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when native filename lookup fails for GET
+ FAIL  |unit| src/features/media-library/server/media-response.test.ts > returns a safe uncached 503 when native filename lookup fails for HEAD
+AssertionError: expected "error" to be called once with arguments: [ { …(3) } ]
+
+Number of calls: 0
+
+ ❯ expectUnavailable src/features/media-library/server/media-response.test.ts:20:24
+     18|
+     19| async function expectUnavailable(response: Response) {
+     20|   expect(logger.error).toHaveBeenCalledExactlyOnceWith({
+       |                        ^
+     21|     operation: 'media.delivery', result: 'unavailable', context: { sta…
+     22|   });
+ ❯ src/features/media-library/server/media-response.test.ts:92:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  9 failed | 5 passed (14)
+   Start at  01:47:45
+   Duration  5.91s (setup 75%, import 22%, transform 2%, worker 1%)
+
+Exit: 1

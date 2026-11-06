@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (9 tests | 1 failed) 35ms
+   × never follows a symbolic object entry even when its target bytes match the reference 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > never follows a symbolic object entry even when its target bytes match the reference
+Error: EPERM: operation not permitted, symlink 'E:\a-design-for-life\.work\media-storage-OFPPkQ\d37e9e43f3d56636272816607cfc79117c3fe141ecb4d0f96a13e7d0f2f2f9ca' -> 'E:\a-design-for-life\.work\media-storage-OFPPkQ\cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc'
+ ❯ src/helpers/storage/object-storage.test.ts:93:3
+     91|   const object = await adapter.put(new Uint8Array([3, 1, 4]));
+     92|   const link = { ...object, key: 'c'.repeat(64) };
+     93|   await symlink(path.join(root, object.key), path.join(root, link.key)…
+       |   ^
+     94|   await expect(adapter.head(link)).rejects.toThrow();
+     95|   await expect(adapter.get(link)).rejects.toThrow();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  20:16:59
+   Duration  389ms (setup 70%, tests 13%, transform 9%, import 6%, worker 1%)
+

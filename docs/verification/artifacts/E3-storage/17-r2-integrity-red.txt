@@ -1,0 +1,67 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (5 tests | 3 failed) 85ms
+   × rejects a downloaded object with corrupt bytes 12ms
+   × rejects a downloaded object with corrupt metadata 7ms
+   × rejects a downloaded object with corrupt length 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects a downloaded object with corrupt bytes
+AssertionError: promise resolved "Uint8Array[ 3, 1, 5 ]" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ Uint8Array [
++   3,
++   1,
++   5,
++ ]
+
+ ❯ src/helpers/storage/r2-storage.test.ts:102:37
+    100|   if (corruption === 'metadata') objects.get(object.key)!.sha256 = 'b'…
+    101|   if (corruption === 'length') object.byteLength = 4;
+    102|   await expect(adapter!.get(object)).rejects.toThrow('integrity');
+       |                                     ^
+    103| });
+    104|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects a downloaded object with corrupt metadata
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects a downloaded object with corrupt length
+AssertionError: promise resolved "Uint8Array[ 3, 1, 4 ]" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ Uint8Array [
++   3,
++   1,
++   4,
++ ]
+
+ ❯ src/helpers/storage/r2-storage.test.ts:102:37
+    100|   if (corruption === 'metadata') objects.get(object.key)!.sha256 = 'b'…
+    101|   if (corruption === 'length') object.byteLength = 4;
+    102|   await expect(adapter!.get(object)).rejects.toThrow('integrity');
+       |                                     ^
+    103| });
+    104|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 2 passed (5)
+   Start at  20:20:12
+   Duration  634ms (setup 49%, import 25%, tests 18%, transform 7%, worker 1%)
+

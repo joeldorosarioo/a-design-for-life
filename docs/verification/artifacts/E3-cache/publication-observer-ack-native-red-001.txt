@@ -1,0 +1,88 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[00:49:41] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (46ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (95ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (6ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:49:41] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[00:49:41] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (49ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (2ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[00:49:42] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[00:49:42] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (5ms)[39m
+[00:49:42] [32mINFO[39m: [36mDone.[39m
+ ↓ |integration| src/config/publication-updates.integration.test.ts > keeps a committed native target private until public publication is confirmed
+ ↓ |integration| src/config/publication-updates.integration.test.ts > publishes the committed immutable target and persists its confirmation receipt
+ ↓ |integration| src/config/publication-updates.integration.test.ts > keeps the confirmed canonical body while a newer native title and slug are pending
+ ↓ |integration| src/config/publication-updates.integration.test.ts > retains confirmed bytes through pending withdrawal and releases publication pins after confirmation
+ ↓ |integration| src/config/publication-updates.integration.test.ts > cannot consume an uncommitted external transaction and rollback leaves no executable intent
+ ↓ |integration| src/config/publication-updates.integration.test.ts > rejects the installed adapter missing-session autocommit fallback before a publication fence
+ ↓ |integration| src/config/publication-updates.integration.test.ts > characterizes a real deferred PostgreSQL COMMIT failure and never treats the saved response as public
+ ↓ |integration| src/config/publication-updates.integration.test.ts > does not let an old in-flight attempt overwrite a newer confirmed generation
+ ↓ |integration| src/config/publication-updates.integration.test.ts > publishes the intended immutable body after a newer private draft without exposing the draft
+ ↓ |integration| src/config/publication-updates.integration.test.ts > preserves media and route ownership across a real SQL acknowledgement rejection after root publication
+ ↓ |integration| src/config/publication-updates.integration.test.ts > does not retire root route ownership when a failed acknowledgement is superseded by a pending withdrawal
+ ↓ |integration| src/config/publication-updates.integration.test.ts > reports feature publication pending while the global writer is busy, then confirms only after real promotion
+ ↓ |integration| src/config/publication-updates.integration.test.ts > keeps internal shared-case edits private without replacing the latest publication intent
+ ↓ |integration| src/config/publication-updates.integration.test.ts > releases a never-public cancelled intent only after withdrawal reconciliation and allows deletion and slug reuse
+ ↓ |integration| src/config/publication-updates.integration.test.ts > ignores forged Native public metadata and hides a committed pending target from anonymous where, sort and count
+ × |integration| src/config/publication-updates.integration.test.ts > acknowledges the durable root only after the observer proves the revision and retries that same root 70ms
+   → expected { …(3) } to match object { …(2) }
+(1 matching property omitted from actual)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/publication-updates.integration.test.ts > acknowledges the durable root only after the observer proves the revision and retries that same root
+AssertionError: expected { …(3) } to match object { …(2) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "operationId": "206d159b-3a85-46c3-9d33-1f5a6e93cb63",
+-   "state": "update-pending",
++   "state": "public",
+  }
+
+ ❯ src/config/publication-updates.integration.test.ts:980:75
+    978|       },
+    979|     });
+    980|     expect(await coordinator.retry(operationId, await fixture.request(…
+       |                                                                           ^
+    981|       operationId,
+    982|       state: 'update-pending',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 skipped (16)
+   Start at  00:49:34
+   Duration  10.06s (import 76%, tests 12%, transform 8%, setup 3%)
+
+Exit: 1

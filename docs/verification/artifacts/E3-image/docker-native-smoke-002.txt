@@ -1,0 +1,12 @@
+StartedUTC=2026-11-04T00:33:20.9439575Z
+Command=docker run --rm --network none --entrypoint node sha256:b368acbe78a99668d2b07ff3d4bc85f7da5cfeac5139dce1c4fecf2cefa7d91a ops/image/runtime-smoke.mjs
+file:///app/ops/image/runtime-smoke.mjs:70
+    await document.destroy();
+                   ^
+
+TypeError: document.destroy is not a function
+    at file:///app/ops/image/runtime-smoke.mjs:70:20
+
+Node.js v24.22.2
+FinishedUTC=2026-11-04T00:33:21.5779768Z
+EXIT_CODE=1

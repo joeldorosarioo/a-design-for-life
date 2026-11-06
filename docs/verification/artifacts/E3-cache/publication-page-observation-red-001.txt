@@ -1,0 +1,52 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+xx··········
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/publication-page-observation.test.ts > matches rendered heading, cards in order and localized metadata with actual escaped text
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/publication-page-observation.test.ts:33:29
+     31|
+     32| it('matches rendered heading, cards in order and localized metadata wi…
+     33|   expect(match(complete())).toBe(true);
+       |                             ^
+     34| });
+     35|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/config/publication-page-observation.test.ts > can verify an empty published list even if optional headline and alternate are absent
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/publication-page-observation.test.ts:38:78
+     36| it('can verify an empty published list even if optional headline and a…
+     37|   const html = complete('<div data-reading-key="cases-list"></div>', '…
+     38|   expect(match(html, { ...page, cards: [], heading: null, alternates: …
+       |                                                                              ^
+     39| });
+     40|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 10 passed (12)
+   Start at  00:52:23
+   Duration  527ms (setup 72%, transform 12%, import 12%, tests 2%, worker 2%)
+
+Exit: 1

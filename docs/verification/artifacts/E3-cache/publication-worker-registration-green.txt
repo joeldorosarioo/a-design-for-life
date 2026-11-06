@@ -1,0 +1,12 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/config/publication-worker.test.ts > does no application initialization when the operational worker flag is off 3ms
+ ✓ |unit| src/config/publication-worker.test.ts > refuses worker registration without migrated metadata before initializing the application 1ms
+ ✓ |unit| src/config/publication-worker.test.ts > returns from opt-in registration before any detached application initialization 1ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  23:17:20
+   Duration  370ms (setup 78%, transform 10%, import 8%, tests 2%, worker 2%)
+

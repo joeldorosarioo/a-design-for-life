@@ -5,18 +5,20 @@ import { authPassword, capturedMessages, capturedResetToken } from './editorial-
 let step = 'browser startup';
 const browser = await chromium.launch({ headless: true });
 try {
-  const page = await browser.newPage();
+  const page = await browser.newPage({ locale: 'pt-BR' });
   const origin = process.env.SITE_ORIGIN!;
   step = 'native forgot form';
   await page.goto(`${origin}/admin/forgot`);
   await page.getByRole('textbox', { name: /^Email/ }).fill(process.env.NATIVE_RECOVERY_EMAIL!);
-  const forgot = page.waitForResponse(
-    (response) =>
-      response.url().endsWith('/api/users/forgot-password') &&
-      response.request().method() === 'POST',
-  );
-  await page.getByRole('button', { name: /^Submit$/i }).click();
-  if ((await forgot).status() !== 200) throw new Error();
+  const [forgot] = await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        response.url().endsWith('/api/users/forgot-password') &&
+        response.request().method() === 'POST',
+    ),
+    page.getByRole('button', { name: /^Enviar$/i }).click(),
+  ]);
+  if (forgot.status() !== 200) throw new Error();
   step = 'local delivery capture';
   const messages = await capturedMessages(process.env.NATIVE_RECOVERY_EMAIL!);
   if (messages.length !== 1) throw new Error();
@@ -25,25 +27,27 @@ try {
   await page.goto(`${origin}/admin/reset/${token}`);
   step = 'native hydrated form validation';
   await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: /^Reset Password$/i }).click();
+  await page.getByRole('button', { name: /^Redefinir Senha$/i }).click();
   await page.locator('.field-error').first().waitFor({ state: 'visible', timeout: 5_000 });
   step = 'native password inputs';
-  await page.getByLabel(/^New Password/i).fill(`${authPassword}ui`);
-  await page.getByLabel(/^Confirm Password/i).fill(`${authPassword}ui`);
+  await page.getByLabel(/^Nova Senha/i).fill(`${authPassword}ui`);
+  await page.getByLabel(/^Confirmar Senha/i).fill(`${authPassword}ui`);
   await page.waitForFunction(
     () => document.querySelectorAll('.field-error').length === 0,
     undefined,
     { timeout: 5_000 },
   );
   step = 'native reset response';
-  const reset = page.waitForResponse(
-    (response) =>
-      new URL(response.url()).pathname === '/api/users/reset-password' &&
-      response.request().method() === 'POST',
-    { timeout: 10_000 },
-  );
-  await page.getByRole('button', { name: /^Reset Password$/i }).click();
-  if ((await reset).status() !== 200) throw new Error();
+  const [reset] = await Promise.all([
+    page.waitForResponse(
+      (response) =>
+        new URL(response.url()).pathname === '/api/users/reset-password' &&
+        response.request().method() === 'POST',
+      { timeout: 10_000 },
+    ),
+    page.getByRole('button', { name: /^Redefinir Senha$/i }).click(),
+  ]);
+  if (reset.status() !== 200) throw new Error();
   step = 'native session redirect';
   await page.waitForURL((url) => url.pathname === '/admin', { timeout: 10_000 });
   const cookie = (await page.context().cookies()).find((cookie) => cookie.name === 'payload-token');

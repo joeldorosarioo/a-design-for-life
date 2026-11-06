@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "browser-first-access-source-verified",
+  "sourceBaseRevision": "c78609fd2ad76100758f473cba9c194b774da7ac",
+  "sourceSnapshot": {
+    "ops/staging/initialize-config.mjs": "dc2940c4d7eb72f17414de385b46a4872064faaad08c3b742d16051a9d8bfdd8",
+    "ops/staging/initialize.cli.mjs": "bd906fff0c38c8e1b488cad3ca5c2d473d3067c32f139e6d5bad0673e1ef27b5",
+    "ops/staging/initialize.native.ts": "4d19f26f234913096d1574d2791e60fc904ba8fd769cdf2a9a188dfcb3ed2bc1",
+    "ops/staging/initialize.ts": "86df225ff3ea5579ae31860d9ba6688ea393c7df679d5b0523f8fca4016296b4",
+    "src/config/server-env.ts": "cf575655109daa06a73816b6469a4d54440d5d59ad04c04439888bb7511d2c0f",
+    "src/helpers/payload/users.collection.ts": "8707cd3dfb3f4c1912034aa2647011045dc775c6480e82b634d2e03fcb4bec70",
+    "src/helpers/payload/editorial-first-access.ts": "2aac3f94082e59596b8644fcc41e52258e3287b8d778133733494aa30e744ff1",
+    "src/helpers/payload/first-user-response.ts": "390214fdeff6c6b2d585621a86beefc0ae5d32473f918fe59e5a056ca7317274",
+    "src/helpers/payload/auth-transport.ts": "95185b3ce66b0409fa4c574aba111f231346eaa6544ece79a1d123fd631b612d",
+    "src/payload.config.ts": "ecd8edb3a1d268d6adb269daa717c8f6a2e4009a01f16ad88a7ab03d50b5649e",
+    "src/app/(payload)/api/[...slug]/route.ts": "e653290fe7eacbb9ec2b8373dfb1c371b7cf259e02ad6d40c4b761ab9b4f81f3"
+  },
+  "validation": {
+    "typecheckExitCode": 0,
+    "lintExitCode": 0,
+    "formatExitCode": 0,
+    "unitPassed": 159,
+    "architecturePassed": 34,
+    "initializerNativePassed": 5,
+    "firstAccessNativePassed": 3,
+    "browserJourneyPassed": 1,
+    "secondRegistrationStatus": 403,
+    "anonymousGenericCreateStatus": 403,
+    "raceWinners": 1,
+    "atomicUserAndFourDraftsRollbackVerified": true,
+    "jsonTokenAbsent": true,
+    "browserFlow": "Native first-register followed by ordinary Native login",
+    "passwordChosenInBrowser": true,
+    "realEmailSends": 0
+  },
+  "remoteSchema": {
+    "status": "verified-readonly",
+    "targetIdentityVerified": true,
+    "postgresqlMajor": 17,
+    "counts": {
+      "migrations": 16,
+      "users": 0,
+      "profiles": 0,
+      "navigation": 0
+    },
+    "ddlExecuted": false,
+    "editorialAccountCreated": false,
+    "checkedAt": "2026-11-06T02:42:00.760Z"
+  },
+  "remoteSchemaOnly": {
+    "migrationsApplied": 16,
+    "editorialAccountsCreated": 0,
+    "structuralDraftsCreated": 0,
+    "editorialEnvRead": false,
+    "pendingFirstAccess": true
+  },
+  "proxyProtection": {
+    "status": 401,
+    "https": true,
+    "basicAuthenticationChallenge": true,
+    "anonymousAccessAllowed": false,
+    "credentialsSent": false
+  },
+  "preservation": {
+    "rootEnvUnchanged": true,
+    "preexistingNextEnvUnchanged": true,
+    "tsconfigUnchanged": true,
+    "localPreviewBuildUnchanged": true
+  },
+  "evidenceLog": "browser-first-access-001.txt",
+  "limits": [
+    "Candidate packaging and private publication are verified separately after this source commit.",
+    "No editorial account has been created in the real staging database; the user chooses credentials in the browser.",
+    "Production publication remains unauthorized."
+  ],
+  "stage": {
+    "completedItems": 15,
+    "totalItems": 30,
+    "percentage": 50,
+    "closedTasks": 0,
+    "totalTasks": 6
+  }
+}

@@ -1,0 +1,91 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (19 tests | 11 failed) 113ms
+   × rejects contradictory HEAD metadata even when GET returns the expected bytes 11ms
+   × rejects a malformed reference without making any request: {"key":"../escape"} 5ms
+   × rejects a malformed reference without making any request: {"sha256":""} 4ms
+   × rejects a malformed reference without making any request: {"byteLength":-1} 3ms
+   × rejects incomplete or unsafe remote configuration before use: {"endpoint":"http://remote.example"} 1ms
+   × rejects incomplete or unsafe remote configuration before use: {"endpoint":"https://user:pass@remote.example"} 1ms
+   × rejects incomplete or unsafe remote configuration before use: {"endpoint":"https://remote.example/bucket"} 1ms
+   × rejects incomplete or unsafe remote configuration before use: {"endpoint":"https://remote.example?secret=value"} 1ms
+   × rejects incomplete or unsafe remote configuration before use: {"bucket":""} 1ms
+   × rejects incomplete or unsafe remote configuration before use: {"accessKeyId":""} 1ms
+   × rejects incomplete or unsafe remote configuration before use: {"secretAccessKey":" "} 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects contradictory HEAD metadata even when GET returns the expected bytes
+AssertionError: promise resolved "{ …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 3,
++   "key": "45ababcaddfad9c5e7a8abe14b7dd987f2cad2269474967dc25b182f876ec012",
++   "sha256": "9ceed0d818acc42d0318974c548e2251f888f8512bc5c4c70378aa969a883cad",
+  }
+
+ ❯ src/helpers/storage/r2-storage.test.ts:128:38
+    126|   const object = await adapter!.put(new Uint8Array([3, 1, 4]));
+    127|   state.corruptHead = true;
+    128|   await expect(adapter!.head(object)).rejects.toThrow('integrity');
+       |                                      ^
+    129| });
+    130| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects a malformed reference without making any request: {"key":"../escape"}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects a malformed reference without making any request: {"sha256":""}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects a malformed reference without making any request: {"byteLength":-1}
+AssertionError: expected [Function] to throw error including 'Invalid object reference' but got 'Synthetic transport failure'
+
+Expected: "Invalid object reference"
+Received: "Synthetic transport failure"
+
+ ❯ src/helpers/storage/r2-storage.test.ts:137:40
+    135|   const { adapter, requests } = await boundary();
+    136|   const reference = { key: 'a'.repeat(64), byteLength: 0, sha256: 'b'.…
+    137|   await expect(adapter!.get(reference)).rejects.toThrow('Invalid objec…
+       |                                        ^
+    138|   await expect(adapter!.head(reference)).rejects.toThrow('Invalid obje…
+    139|   await expect(adapter!.delete(reference)).rejects.toThrow('Invalid ob…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"endpoint":"http://remote.example"}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"endpoint":"https://user:pass@remote.example"}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"endpoint":"https://remote.example/bucket"}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"endpoint":"https://remote.example?secret=value"}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"bucket":""}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"accessKeyId":""}
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > rejects incomplete or unsafe remote configuration before use: {"secretAccessKey":" "}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/r2-storage.test.ts:153:53
+    151|   const { options } = await boundary();
+    152|   const factory = (r2 as { createR2ObjectStorage: (options: R2StorageO…
+    153|   expect(() => factory({ ...options, ...invalid })).toThrow('Invalid R…
+       |                                                     ^
+    154| });
+    155|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed | 8 passed (19)
+   Start at  20:22:31
+   Duration  582ms (setup 44%, tests 26%, import 23%, transform 6%, worker 1%)
+

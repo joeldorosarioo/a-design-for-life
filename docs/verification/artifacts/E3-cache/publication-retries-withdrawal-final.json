@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project integration src/helpers/payload/publication-retries.integration.test.ts --reporter=verbose -t 'keeps real withdrawal execution safe through approved media trash'",
+  "startedAt": "2026-11-04T01:44:18.8502872+00:00",
+  "finishedAt": "2026-11-04T01:44:32.1528329+00:00",
+  "exitCode": 0,
+  "log": "publication-retries-withdrawal-final.txt"
+}

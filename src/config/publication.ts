@@ -7,6 +7,7 @@ import {
 } from '@/features/cases/server/case-publication';
 import { profilePublicationAdapter } from '@/features/professional-profile/server/profile-publication';
 import { navigationPublicationAdapter } from '@/features/site-navigation/server/navigation-publication';
+import { withPublicMediaObservation } from '@/features/media-library/server';
 import { z } from 'zod';
 export const publicationAdapters = {
   cases: caseOrderPublicationAdapter,
@@ -14,13 +15,35 @@ export const publicationAdapters = {
   'professional-profiles': profilePublicationAdapter,
   'site-navigation': navigationPublicationAdapter,
 };
-export function portfolioPublicationCoordinator(directory: string) {
+export function portfolioPublicationCoordinator(
+  directory: string,
+  observation?: { internalOrigin: string; siteOrigin: string; indexable?: boolean },
+) {
   return createPublicationCoordinator({
     directory,
+    verify:
+      observation &&
+      (async (root, operation) => {
+        const [{ planPublicationObservations }, { assertServedPublication }] = await Promise.all([
+          import('./portfolio-publication-observation'),
+          import('@/helpers/payload/publication-http-verification'),
+        ]);
+        await assertServedPublication({
+          origin: observation.internalOrigin,
+          generation: root.generation,
+          observations: await planPublicationObservations({
+            root,
+            operation,
+            siteOrigin: observation.siteOrigin,
+            indexable: observation.indexable,
+          }),
+        });
+      }),
     reconcile: async (root, operation, req, options) =>
       publicationAdapters[operation.subjectCollection].reconcile?.(root, operation, req, options),
-    compose: async (root, operation) => {
+    compose: async (root, operation, { previousAcknowledged }) => {
       const adapter = publicationAdapters[operation.subjectCollection];
+      const subject = `${operation.subjectCollection}/${operation.subjectId}`;
       const value = adapter.apply
         ? adapter.apply(root, operation)
         : z.json().parse(operation.target);
@@ -28,10 +51,16 @@ export function portfolioPublicationCoordinator(directory: string) {
         generation: randomUUID(),
         subjects: {
           ...root?.subjects,
-          [`${operation.subjectCollection}/${operation.subjectId}`]: {
+          [subject]: {
             operationId: operation.operationId,
             targetRevision: operation.targetRevision,
-            value,
+            value: observation
+              ? withPublicMediaObservation(
+                  value,
+                  root?.subjects[subject]?.value,
+                  previousAcknowledged,
+                )
+              : value,
           },
         },
       };

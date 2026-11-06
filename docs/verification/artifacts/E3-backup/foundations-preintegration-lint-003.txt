@@ -1,0 +1,15 @@
+COMMAND: pnpm exec eslint src/helpers/storage/restore-object.ts src/helpers/storage/restore-object.test.ts src/features/media-library/server/backup-inventory.ts src/features/media-library/server/backup-inventory.test.ts src/helpers/payload/backup-snapshot.ts src/helpers/payload/backup-snapshot.integration.test.ts src/features/media-library/server.ts
+
+E:\a-design-for-life\src\features\media-library\server\backup-inventory.ts
+  43:51  warning  '_input' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\a-design-for-life\src\helpers\payload\backup-snapshot.integration.test.ts
+  11:45  error  Helpers e componentes genéricos não dependem de features  architecture/import-boundaries
+  12:37  error  Helpers e componentes genéricos não dependem de features  architecture/import-boundaries
+
+E:\a-design-for-life\src\helpers\payload\backup-snapshot.ts
+  5:45  warning  '_req' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 4 problems (2 errors, 2 warnings)
+
+EXIT_CODE: 1

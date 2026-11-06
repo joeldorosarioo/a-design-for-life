@@ -1,0 +1,49 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > executes only a bounded sequential batch and preserves progress after one execution fails 7ms
+   → expected { Object (result, events, ...) } to deeply equal { result: { selected: 3, …(2) }, …(2) }
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > executes only a bounded sequential batch and preserves progress after one execution fails
+AssertionError: expected { Object (result, events, ...) } to deeply equal { result: { selected: 3, …(2) }, …(2) }
+
+- Expected
++ Received
+
+  {
+-   "events": [
+-     "first",
+-     "broken",
+-     "last",
+-   ],
+-   "maximumActive": 1,
++   "events": [],
++   "maximumActive": 0,
+    "result": {
+-     "failed": 1,
+-     "processed": 2,
+-     "selected": 3,
++     "failed": 0,
++     "processed": 0,
++     "selected": 0,
+    },
+  }
+
+ ❯ src/helpers/payload/publication-retry-worker.test.ts:26:45
+     24|     },
+     25|   });
+     26|   expect({ result, events, maximumActive }).toEqual({
+       |                                             ^
+     27|     result: { selected: 3, processed: 2, failed: 1 },
+     28|     events: ['first', 'broken', 'last'],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  23:03:06
+   Duration  373ms (setup 78%, transform 9%, import 8%, tests 3%, worker 2%)
+

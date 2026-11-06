@@ -1,0 +1,70 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/archive.test.ts -t "GNU tar|unvalidated tar"
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/archive.test.ts (22 tests | 2 failed | 18 skipped) 37ms
+   × uses the explicit GNU tar 1.35 command while validating actual produced archive bytes 13ms
+   × refuses unvalidated tar version bsdtar 3.8.9.1 before creation effects 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > uses the explicit GNU tar 1.35 command while validating actual produced archive bytes
+AssertionError: promise rejected "Error: Backup tar version requires valida…" instead of resolving
+ ❯ ops/backup/archive.test.ts:257:4
+    255|   await expect(
+    256|     createBackupArchive({ entries, destination, tarBinary: process.exe…
+    257|   ).resolves.toMatchObject({
+       |    ^
+    258|     toolVersion: 'tar (GNU tar) 1.35\nCopyright (C) Free Software Foun…
+    259|     entries: [
+
+Caused by: Error: Backup tar version requires validation
+ ❯ createBackupArchive ops/backup/archive.ts:145:49
+ ❯ ops/backup/archive.test.ts:255:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| ops/backup/archive.test.ts > refuses unvalidated tar version bsdtar 3.8.9.1 before creation effects
+AssertionError: promise resolved "{ …(5) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "byteLength": 3072,
++   "entries": [
++     {
++       "byteLength": 2,
++       "name": "manifest.json",
++       "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
++     },
++     {
++       "byteLength": 39,
++       "name": "database.dump",
++       "sha256": "714612e087a931f591ffe99c4c21347a2b847b24c65ed8a3f9ad97111916f915",
++     },
++   ],
++   "path": "E:\\a-design-for-life\\.work\\backup-tool-tests\\archive-0asTT9\\unvalidated.tar",
++   "sha256": "1cf4471a0c82bde121c49b70bea1d8e12f1cdfaf833569131a19bff679fa7ae9",
++   "toolVersion": "bsdtar 3.8.9.1",
+  }
+
+ ❯ ops/backup/archive.test.ts:295:6
+    293|     await expect(
+    294|       createBackupArchive({ entries, destination, tarBinary: process.e…
+    295|     ).rejects.toThrow();
+       |      ^
+    296|     await expect(readFile(effect)).rejects.toMatchObject({ code: 'ENOE…
+    297|     await expect(readFile(destination)).rejects.toMatchObject({ code: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed | 18 skipped (22)
+   Start at  22:45:56
+   Duration  403ms (setup 67%, tests 13%, transform 10%, import 8%, worker 1%)
+
+EXIT_CODE: 1

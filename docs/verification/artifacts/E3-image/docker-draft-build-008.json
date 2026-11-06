@@ -1,0 +1,23 @@
+{
+  "startedAt": "2026-11-04T06:11:54.5770099+00:00",
+  "finishedAt": "2026-11-04T06:13:22.7418417+00:00",
+  "command": "docker buildx build --builder desktop-linux --platform linux/amd64 --load --progress plain --metadata-file <receipt> --build-arg SOURCE_REVISION=draft-e3-local-008 --tag adfl:e3-local-draft-008 .",
+  "buildExit": 0,
+  "sourceUnchanged": true,
+  "inspectExit": 0,
+  "smokeExit": 0,
+  "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+  "sourceBefore": {
+    "phase": "image-draft-008-before",
+    "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+    "files": 627,
+    "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+  },
+  "sourceAfter": {
+    "phase": "image-draft-008-after",
+    "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+    "files": 627,
+    "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+  },
+  "cleanCommitCandidate": false
+}

@@ -1,0 +1,47 @@
+{
+  "layout": [
+    {
+      "path": "/app/node_modules/.pnpm/pdfjs-dist@6.4.299/node_modules/@napi-rs/canvas",
+      "exists": false
+    },
+    {
+      "path": "/app/node_modules/.pnpm/@napi-rs+canvas@1.0.13/node_modules/@napi-rs/canvas",
+      "exists": true,
+      "type": "directory"
+    },
+    {
+      "path": "/app/node_modules/.pnpm/@napi-rs+canvas-linux-x64-gnu@1.0.13/node_modules/@napi-rs/canvas-linux-x64-gnu",
+      "exists": true,
+      "type": "directory"
+    },
+    {
+      "path": "/app/.work/pnpm-store",
+      "exists": false
+    },
+    {
+      "path": "/app/.work/pnpm-cache",
+      "exists": false
+    },
+    {
+      "path": "/app/testing",
+      "exists": true,
+      "type": "directory"
+    },
+    {
+      "path": "/app/src",
+      "exists": true,
+      "type": "directory"
+    },
+    {
+      "path": "/app/docs",
+      "exists": false
+    }
+  ],
+  "packages": [
+    "@napi-rs+canvas-linux-x64-gnu@1.0.13",
+    "@napi-rs+canvas@1.0.13",
+    "pdfjs-dist@6.4.299"
+  ],
+  "pdfjsCanvasResolution": "MODULE_NOT_FOUND"
+}
+EXIT_CODE=0

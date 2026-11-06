@@ -1,0 +1,87 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/config/server-env.test.ts > keeps retry registration off unless the server explicitly opts in 9ms
+   → expected { NODE_ENV: 'test', …(5) } to match object { PUBLICATION_RETRIES_ENABLED: 'true' }
+(6 matching properties omitted from actual)
+ × |unit| src/config/server-env.test.ts > rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime 1ms
+   → expected [Function] to throw an error
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa iniciar sem segredo do Payload 1ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: undefined 0ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL:  1ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: https://database.example.com/adfl 0ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > entrega configuração tipada ao adaptador e descarta variáveis estranhas 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"APP_ENV":"production"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@db.example.com/adfl_test_base"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@127.0.0.1:55433/adfl_production"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"MEDIA_BUCKET":"adfl-production-media"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://production.example.com"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://127.0.0.1:3100"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: ftp://files.example.com 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://site.example.com/path 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://user:pass@site.example.com 0ms
+ ✓ |unit| src/config/server-env.test.ts > protege recursos no build de produção local usado pelo Playwright 0ms
+ ✓ |unit| src/config/server-env.test.ts > confines an explicit test media root to its isolated bucket and database namespace 0ms
+ ✓ |unit| src/config/server-env.test.ts > retains only a validated literal internal HTTP loopback origin 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: https://127.0.0.1:3100 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://localhost:3100 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://public.example.invalid 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1:3100/path 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://user:pass@127.0.0.1 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1?url=x 0ms
+ ✓ |unit| src/config/server-env.test.ts > derives local internal HTTP origin only from trusted loopback site configuration 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > keeps retry registration off unless the server explicitly opts in
+AssertionError: expected { NODE_ENV: 'test', …(5) } to match object { PUBLICATION_RETRIES_ENABLED: 'true' }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "PUBLICATION_RETRIES_ENABLED": "true",
++   "APP_ENV": "test",
++   "DATABASE_URI": "postgres://adfl:local@127.0.0.1:55433/adfl_test_base",
++   "MEDIA_BUCKET": "adfl-test-files",
++   "NODE_ENV": "test",
++   "PAYLOAD_SECRET": "synthetic-test-secret-at-least-thirty-two-characters",
++   "SITE_ORIGIN": "http://127.0.0.1:3000",
+  }
+
+ ❯ src/config/server-env.test.ts:16:81
+     14| it('keeps retry registration off unless the server explicitly opts in'…
+     15|   expect(readServerEnv(validInput).PUBLICATION_RETRIES_ENABLED).toBeUn…
+     16|   expect(readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENABLED: '…
+       |                                                                                 ^
+     17|     PUBLICATION_RETRIES_ENABLED: 'true',
+     18|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:21:84
+     19| });
+     20| it('rejects an ambiguous retry opt-in instead of enabling a partially …
+     21|   expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENAB…
+       |                                                                                    ^
+     22|     /PUBLICATION_RETRIES_ENABLED/,
+     23|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 24 passed (26)
+   Start at  22:25:26
+   Duration  453ms (setup 60%, import 25%, transform 8%, tests 6%, worker 1%)
+

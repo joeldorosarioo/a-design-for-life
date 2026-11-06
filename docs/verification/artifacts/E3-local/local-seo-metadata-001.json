@@ -1,0 +1,91 @@
+{
+  "completedAt": "2026-11-05T15:23:15.706Z",
+  "scope": "Metadata-only native CMS update after performance measurements",
+  "routes": 10,
+  "uniqueTitles": 10,
+  "visibleMainTextPreserved": true,
+  "before": {
+    "/pt": {
+      "mainTextSha256": "4b41dae44825a125a3d41886e9edcfa6681a3e22ed35cf0137e20d21a263540c",
+      "title": "Lorem ipsum | Demonstração local"
+    },
+    "/en": {
+      "mainTextSha256": "122da5a280984ebb2736156b5773983dec1726b60876565011d14d69b4d420cf",
+      "title": "Lorem ipsum | Local demonstration"
+    },
+    "/pt/cases": {
+      "mainTextSha256": "4e3a45aba0854e1eb2b6b24ba63d4c9e0991f5f5acda1e3c64d539f8ffeb0b3b",
+      "title": "Lorem ipsum dolor."
+    },
+    "/en/cases": {
+      "mainTextSha256": "69a9ee679f3e0f70b69044d0c05df423c0c31ba5e019b82688797c6cfda2c1ce",
+      "title": "Lorem ipsum dolor."
+    },
+    "/pt/sobre": {
+      "mainTextSha256": "0c1b9ef42ead93efe71002b6c97ab10364e2721692409f99749321ee587f7d7b",
+      "title": "Lorem ipsum dolor sit amet."
+    },
+    "/en/about": {
+      "mainTextSha256": "0ba8895f8d4f9e8a42aca64521c213362e5b10f020f852683223bf6ffb01ce91",
+      "title": "Lorem ipsum dolor sit amet."
+    },
+    "/pt/cases/lorem-ipsum-01": {
+      "mainTextSha256": "ed1334e2d1e9eb37a66b0f9dd562dfdc18452e71e578d4f3b9a97595464faa10",
+      "title": "Lorem ipsum dolor sit amet."
+    },
+    "/en/cases/lorem-ipsum-01": {
+      "mainTextSha256": "8d9b5a55bc0c5b9364f5462c01662913a04451598efbb8a6601cc44d0bef3823",
+      "title": "Lorem ipsum dolor sit amet."
+    },
+    "/pt/cases/lorem-ipsum-02": {
+      "mainTextSha256": "f76c5421420fc2a4dace5e3e4e98963e3edcfb7f0da4107d11c4cbee37da2a29",
+      "title": "Dolor sit amet consectetur adipiscing."
+    },
+    "/en/cases/lorem-ipsum-02": {
+      "mainTextSha256": "afbc838c2e033b93f1b9da7b32f946fd5780050fc355cf1f8adfb52bd9a1afa9",
+      "title": "Dolor sit amet consectetur adipiscing."
+    }
+  },
+  "after": {
+    "/pt": {
+      "mainTextSha256": "4b41dae44825a125a3d41886e9edcfa6681a3e22ed35cf0137e20d21a263540c",
+      "title": "Início | Lorem ipsum | Demonstração local PT"
+    },
+    "/en": {
+      "mainTextSha256": "122da5a280984ebb2736156b5773983dec1726b60876565011d14d69b4d420cf",
+      "title": "Home | Lorem ipsum | Local demonstration EN"
+    },
+    "/pt/cases": {
+      "mainTextSha256": "4e3a45aba0854e1eb2b6b24ba63d4c9e0991f5f5acda1e3c64d539f8ffeb0b3b",
+      "title": "Projetos | Lorem ipsum | Demonstração local PT"
+    },
+    "/en/cases": {
+      "mainTextSha256": "69a9ee679f3e0f70b69044d0c05df423c0c31ba5e019b82688797c6cfda2c1ce",
+      "title": "Projects | Lorem ipsum | Local demonstration EN"
+    },
+    "/pt/sobre": {
+      "mainTextSha256": "0c1b9ef42ead93efe71002b6c97ab10364e2721692409f99749321ee587f7d7b",
+      "title": "Sobre | Lorem ipsum | Demonstração local PT"
+    },
+    "/en/about": {
+      "mainTextSha256": "0ba8895f8d4f9e8a42aca64521c213362e5b10f020f852683223bf6ffb01ce91",
+      "title": "About | Lorem ipsum | Local demonstration EN"
+    },
+    "/pt/cases/lorem-ipsum-01": {
+      "mainTextSha256": "ed1334e2d1e9eb37a66b0f9dd562dfdc18452e71e578d4f3b9a97595464faa10",
+      "title": "Case demonstrativo 01 | Lorem ipsum | PT"
+    },
+    "/en/cases/lorem-ipsum-01": {
+      "mainTextSha256": "8d9b5a55bc0c5b9364f5462c01662913a04451598efbb8a6601cc44d0bef3823",
+      "title": "Demonstration case 01 | Lorem ipsum | EN"
+    },
+    "/pt/cases/lorem-ipsum-02": {
+      "mainTextSha256": "f76c5421420fc2a4dace5e3e4e98963e3edcfb7f0da4107d11c4cbee37da2a29",
+      "title": "Case demonstrativo 02 | Lorem ipsum | PT"
+    },
+    "/en/cases/lorem-ipsum-02": {
+      "mainTextSha256": "afbc838c2e033b93f1b9da7b32f946fd5780050fc355cf1f8adfb52bd9a1afa9",
+      "title": "Demonstration case 02 | Lorem ipsum | EN"
+    }
+  }
+}

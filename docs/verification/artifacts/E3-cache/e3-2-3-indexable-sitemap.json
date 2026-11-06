@@ -1,0 +1,61 @@
+{
+  "runId": "7b750bed-6dc4-4d82-ad6c-e1645b925990",
+  "containerId": "c6b7f44e850dc04d9297ced16c2e0d2d79a9a928794e10222fc9cf918bfc247c",
+  "networkId": "852f8464e3d9f8d2902e00b2918c41b19dda40e6a6f53ae28c4ade71dc185897",
+  "phases": [
+    {
+      "phase": "published",
+      "generation": "e0ae5088-469c-4920-a41e-e64202856cb0",
+      "count": 11,
+      "sha256": "17936070b36a5101c152cdd8924f0c085aa89530e142a071679314cd27718aac"
+    },
+    {
+      "phase": "renamed",
+      "generation": "a86c4ad0-6729-44b7-9649-28761dd8ca87",
+      "count": 11,
+      "sha256": "aaa683e64dd2e03e8461f28688483860004111a805f40ba63419b21aab604aeb"
+    },
+    {
+      "phase": "withdrawn",
+      "generation": "24760aa8-8b2a-4562-a413-e41a2db377b3",
+      "count": 10,
+      "sha256": "1fae021955cc2532d81830b12678132fd481767a5d03102cf23154a085c430d0"
+    },
+    {
+      "phase": "stale-xml-rejected",
+      "generation": "ded9e775-e06d-434b-affb-7608e5119eef",
+      "count": 10,
+      "sha256": "1fae021955cc2532d81830b12678132fd481767a5d03102cf23154a085c430d0"
+    },
+    {
+      "phase": "same-generation-acknowledged",
+      "generation": "ded9e775-e06d-434b-affb-7608e5119eef",
+      "pending": {
+        "operationId": "9cdacf3f-1569-4d91-9e14-2ac4c1e546d8",
+        "targetRevision": "9723b54c-0a2d-4984-b2f0-eaf0d044fd51",
+        "state": "update-pending"
+      },
+      "acknowledged": {
+        "operationId": "9cdacf3f-1569-4d91-9e14-2ac4c1e546d8",
+        "targetRevision": "9723b54c-0a2d-4984-b2f0-eaf0d044fd51",
+        "state": "public"
+      },
+      "observations": [
+        "/api/case-content/published/pt",
+        "/api/case-content/published/en",
+        "/pt",
+        "/pt/cases",
+        "/pt/sobre",
+        "/en",
+        "/en/cases",
+        "/en/about",
+        "/sitemap.xml"
+      ]
+    }
+  ],
+  "reader": {
+    "origin": "http://127.0.0.1:3102",
+    "siteOrigin": "https://sitemap-7b750bed-6dc4-4d82-ad6c-e1645b925990.example.invalid",
+    "buildId": "Psb-7TsmRv3nDSUR5uC8l"
+  }
+}

@@ -1,0 +1,16 @@
+
+E:\a-design-for-life\src\helpers\payload\publication-retries.ts
+  37:3  warning  '_operationId' is defined but never used  @typescript-eslint/no-unused-vars
+  38:3  warning  '_req' is defined but never used          @typescript-eslint/no-unused-vars
+  39:3  warning  '_clock' is defined but never used        @typescript-eslint/no-unused-vars
+  44:3  warning  '_operationId' is defined but never used  @typescript-eslint/no-unused-vars
+  45:3  warning  '_req' is defined but never used          @typescript-eslint/no-unused-vars
+  50:3  warning  '_operationId' is defined but never used  @typescript-eslint/no-unused-vars
+  51:3  warning  '_command' is defined but never used      @typescript-eslint/no-unused-vars
+  52:3  warning  '_req' is defined but never used          @typescript-eslint/no-unused-vars
+  53:3  warning  '_clock' is defined but never used        @typescript-eslint/no-unused-vars
+  58:3  warning  '_input' is defined but never used        @typescript-eslint/no-unused-vars
+  59:3  warning  '_req' is defined but never used          @typescript-eslint/no-unused-vars
+
+✖ 11 problems (0 errors, 11 warnings)
+

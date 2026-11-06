@@ -1,6 +1,7 @@
 import 'server-only';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { readPublicRoot } from '@/helpers/payload/public-root';
+import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
 import { confirmedMedia } from './public-media';
 import { classifyMissingPublicMedia } from './classify-missing-public-media';
 
@@ -22,8 +23,10 @@ const privateHeaders = {
   'X-Robots-Tag': 'noindex, nofollow',
   'Referrer-Policy': 'no-referrer',
 };
-function empty(status: number) {
-  return new Response(null, { status, headers: privateHeaders });
+function empty(status: number, generation?: string) {
+  const headers = new Headers(privateHeaders);
+  if (generation) headers.set(publicGenerationHeader, generation);
+  return new Response(null, { status, headers });
 }
 function optimizerQuery(request: Request, context: NextImageContext) {
   const url = new URL(request.url);
@@ -104,13 +107,16 @@ export async function handleNextImage(
     const internal = internalOrigin(context);
     const root = await readPublicRoot(context.publicationDirectory);
     const manifest = confirmedMedia(root).find((media) => media.id === parsed.mediaId)?.manifest;
-    if (!manifest) return empty(await classifyMissingPublicMedia(parsed.mediaId, root));
+    if (!manifest) {
+      const status = await classifyMissingPublicMedia(parsed.mediaId, root);
+      return empty(status, status === 404 ? root?.generation : undefined);
+    }
     if (
       manifest.kind !== 'image' ||
       manifest.original.variant !== 'original' ||
       !imageTypes.has(manifest.original.type)
     )
-      return empty(404);
+      return empty(404, root?.generation);
     const accept = request.headers.get('accept') ?? '';
     if (accept.length > 4096) return empty(400);
     if (request.headers.has(signatureHeader)) {
@@ -140,6 +146,7 @@ export async function handleNextImage(
     // Consume inside the timeout: an incomplete body must produce 503 before any bytes escape.
     const bytes = await upstream.arrayBuffer();
     const headers = new Headers(privateHeaders);
+    if (root) headers.set(publicGenerationHeader, root.generation);
     headers.set('Content-Type', type);
     headers.set('Vary', 'Accept');
     for (const name of [

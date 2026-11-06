@@ -1,0 +1,47 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/config/server-env.test.ts > keeps retry registration off unless the server explicitly opts in 5ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime 1ms
+ ✓ |unit| src/config/server-env.test.ts > keeps the detached worker off and requires metadata registration before explicit worker opt-in 1ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa iniciar sem segredo do Payload 0ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: undefined 0ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL:  0ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: https://database.example.com/adfl 0ms
+ ✓ |unit| src/config/server-env.test.ts > readServerEnv > entrega configuração tipada ao adaptador e descarta variáveis estranhas 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"APP_ENV":"production"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@db.example.com/adfl_test_base"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@127.0.0.1:55433/adfl_production"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"MEDIA_BUCKET":"adfl-production-media"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://production.example.com"} 1ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"SITE_ORIGIN":"https://127.0.0.1:3100"} 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: ftp://files.example.com 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://site.example.com/path 0ms
+ ✓ |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://user:pass@site.example.com 0ms
+ ✓ |unit| src/config/server-env.test.ts > protege recursos no build de produção local usado pelo Playwright 0ms
+ ✓ |unit| src/config/server-env.test.ts > confines an explicit test media root to its isolated bucket and database namespace 0ms
+ ✓ |unit| src/config/server-env.test.ts > retains only a validated literal internal HTTP loopback origin 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: https://127.0.0.1:3100 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://localhost:3100 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://public.example.invalid 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1:3100/path 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://user:pass@127.0.0.1 0ms
+ ✓ |unit| src/config/server-env.test.ts > rejects an unsafe internal origin: http://127.0.0.1?url=x 0ms
+ ✓ |unit| src/config/server-env.test.ts > derives local internal HTTP origin only from trusted loopback site configuration 0ms
+ ✓ |unit| testing/setup/test-environment.test.ts > allocates the dedicated runner namespace rather than the preserved visual database 7ms
+ ✓ |unit| testing/setup/test-environment.test.ts > opts retry metadata into only the exact owned Native test namespace 2ms
+ ✓ |unit| testing/setup/test-environment.test.ts > keeps the ordinary owned test runtime worker off despite an inherited opt-in 2ms
+ ✓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace 2ms
+ ✓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace 1ms
+ ✓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace 1ms
+ ✓ |unit| testing/setup/test-environment.test.ts > replaces inherited storage and internal origin and clears integration credentials 2ms
+ ✓ |unit| testing/setup/test-environment.test.ts > rejects inherited bucket mismatches before configuring the runtime 1ms
+ ✓ |unit| testing/setup/test-environment.test.ts > keeps an absent optional checker absent across repeated configuration and child process environment 2ms
+ ✓ |unit| testing/setup/test-environment.test.ts > preserves an explicitly configured PDF checker executable 2ms
+ ✓ |unit| testing/setup/test-environment.test.ts > normalizes a supported localhost test origin only for the literal internal HTTP transport 2ms
+
+ Test Files  2 passed (2)
+      Tests  38 passed (38)
+   Start at  23:09:10
+   Duration  509ms (setup 60%, import 25%, transform 9%, tests 5%, worker 1%)
+

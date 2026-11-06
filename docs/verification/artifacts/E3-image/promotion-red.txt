@@ -1,0 +1,74 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/verify-image.test.ts (8 tests | 7 failed) 11ms
+   × rejects a candidate image different from the staged digest 7ms
+   × rejects an unverified mutable or malformed promotion identity: {} 1ms
+   × rejects an unverified mutable or malformed promotion identity: null 1ms
+   × rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"latest","productionCandidateDigest":"latest"} 0ms
+   × rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"sha256:aaa","productionCandidateDigest":"sha256:aaa"} 0ms
+   × rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","productionCandidateDigest":"sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","bypass":true} 0ms
+   × rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","productionCandidateDigest":1} 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/verify-image.test.ts > rejects a candidate image different from the staged digest
+AssertionError: expected { ok: true } to match object { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "invalid-input",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ ops/verify-image.test.ts:6:114
+      4| // A candidate differing from the validated immutable image must never…
+      5| it('rejects a candidate image different from the staged digest', () =>…
+      6|   expect(verifyImagePromotion({ stagingDigest: digest, productionCandi…
+       |                                                                                                                  ^
+      7| });
+      8| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| ops/verify-image.test.ts > rejects an unverified mutable or malformed promotion identity: {}
+ FAIL  |unit| ops/verify-image.test.ts > rejects an unverified mutable or malformed promotion identity: null
+ FAIL  |unit| ops/verify-image.test.ts > rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"latest","productionCandidateDigest":"latest"}
+ FAIL  |unit| ops/verify-image.test.ts > rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"sha256:aaa","productionCandidateDigest":"sha256:aaa"}
+ FAIL  |unit| ops/verify-image.test.ts > rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","productionCandidateDigest":"sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","bypass":true}
+ FAIL  |unit| ops/verify-image.test.ts > rejects an unverified mutable or malformed promotion identity: {"stagingDigest":"sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","productionCandidateDigest":1}
+AssertionError: expected { ok: true } to match object { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "invalid-input",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ ops/verify-image.test.ts:15:39
+     13|   { stagingDigest: digest, productionCandidateDigest: 1 },
+     14| ])('rejects an unverified mutable or malformed promotion identity: %j'…
+     15|   expect(verifyImagePromotion(input)).toMatchObject({ ok: false, error…
+       |                                       ^
+     16| });
+     17| it('permits only the same valid immutable image identity', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 1 passed (8)
+   Start at  20:48:30
+   Duration  410ms (setup 78%, transform 9%, import 7%, tests 4%, worker 2%)
+
+EXIT_CODE=1

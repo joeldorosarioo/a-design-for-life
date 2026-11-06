@@ -1,0 +1,112 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/publication-media-provenance.test.ts (4 tests | 2 failed | 2 skipped) 11ms
+   × rejects unsafe or oversized predecessor proof before composing 9ms
+   × rejects unsafe or oversized predecessor proof before composing 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/publication-media-provenance.test.ts > rejects unsafe or oversized predecessor proof before composing
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "generation": "91e458cb-d358-4f33-9bfb-e073efa06f9e",
++   "subjects": {
++     "case-content/948830e4-49f6-4d01-bfd0-eed0dfecca89": {
++       "operationId": "de880298-d20e-4592-b739-353fffaf1cd8",
++       "targetRevision": "a617a119-03ea-4200-bd7e-74c29c68bda8",
++       "value": {
++         "caseId": "c9001c8e-c792-4a0a-8abe-83520e1007de",
++         "contentId": "948830e4-49f6-4d01-bfd0-eed0dfecca89",
++         "detail": null,
++         "kind": "case",
++         "locale": "pt",
++         "media": [],
++         "slug": null,
++         "slugs": [],
++       },
++     },
++     "cases/c9001c8e-c792-4a0a-8abe-83520e1007de": {
++       "operationId": "06f5db4a-4b70-42f4-86ed-2d623e05e28c",
++       "targetRevision": "2693883a-8b8e-4aad-9ec3-ac3ce2b74c9c",
++       "value": {
++         "caseId": "c9001c8e-c792-4a0a-8abe-83520e1007de",
++         "featured": false,
++         "kind": "case-order",
++         "sortOrder": 0,
++       },
++     },
++   },
+  }
+
+ ❯ src/config/publication-media-provenance.test.ts:155:4
+    153|   await expect(
+    154|     composition('unused-by-pure-composition')(root, operation, { previ…
+    155|   ).rejects.toThrow();
+       |    ^
+    156| });
+    157|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/config/publication-media-provenance.test.ts > rejects unsafe or oversized predecessor proof before composing
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "generation": "3b8646b5-93b4-40c5-8065-75bd737cbb27",
++   "subjects": {
++     "case-content/9ebfd729-5db1-4596-9880-64c5856e21db": {
++       "operationId": "fe9a4cd5-23a6-470d-a738-1e0350218998",
++       "targetRevision": "292e5425-dc64-4eaf-9a29-04e46df82c84",
++       "value": {
++         "caseId": "28a8d86d-c821-412c-aaf6-dea8b05c98c9",
++         "contentId": "9ebfd729-5db1-4596-9880-64c5856e21db",
++         "detail": null,
++         "kind": "case",
++         "locale": "pt",
++         "media": [],
++         "slug": null,
++         "slugs": [],
++       },
++     },
++     "cases/28a8d86d-c821-412c-aaf6-dea8b05c98c9": {
++       "operationId": "695a15fd-a285-4618-952c-91134404d292",
++       "targetRevision": "a7dfe171-bb9b-44e8-a9f2-12a57ac17230",
++       "value": {
++         "caseId": "28a8d86d-c821-412c-aaf6-dea8b05c98c9",
++         "featured": false,
++         "kind": "case-order",
++         "sortOrder": 0,
++       },
++     },
++   },
+  }
+
+ ❯ src/config/publication-media-provenance.test.ts:155:4
+    153|   await expect(
+    154|     composition('unused-by-pure-composition')(root, operation, { previ…
+    155|   ).rejects.toThrow();
+       |    ^
+    156| });
+    157|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 skipped (4)
+   Start at  01:53:50
+   Duration  1.32s (import 75%, setup 17%, transform 7%, tests 1%)
+
+EXIT 1

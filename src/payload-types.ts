@@ -75,6 +75,7 @@ export interface Config {
     'professional-profiles': ProfessionalProfile;
     media: Media;
     'publication-updates': PublicationUpdate;
+    'publication-retries': PublicationRetry;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     'professional-profiles': ProfessionalProfilesSelect<false> | ProfessionalProfilesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'publication-updates': PublicationUpdatesSelect<false> | PublicationUpdatesSelect<true>;
+    'publication-retries': PublicationRetriesSelect<false> | PublicationRetriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -130,11 +132,21 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Contas de acesso ao painel. O nome e a foto identificam quem edita o conteúdo; são separados do perfil profissional público da Eliana.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: string;
+  /**
+   * Como você quer ser identificado no painel. Este é o nome da sua conta e não altera o nome público da Eliana no portfólio.
+   */
+  name?: string | null;
+  /**
+   * Selecione ou envie uma imagem JPEG, PNG, WebP ou AVIF de até 10 MB. A foto aparece na sua conta do painel e não altera o retrato público da Eliana. Sem foto, o painel usa suas iniciais.
+   */
+  avatar?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -156,175 +168,16 @@ export interface User {
   collection: 'users';
 }
 /**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cases".
- */
-export interface Case {
-  id: string;
-  internalTitle: string;
-  sortOrder?: number | null;
-  featured?: boolean | null;
-  editorialRevision?: string | null;
-  contentRevision?: string | null;
-  leaseToken?: string | null;
-  leaseOwner?: string | null;
-  leaseExpiresAt?: string | null;
-  latestPublicationIntent?: string | null;
-  publicConfirmed?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "case-content".
- */
-export interface CaseContent {
-  id: string;
-  case: string | Case;
-  locale: 'pt' | 'en';
-  eyebrow?: string | null;
-  title?: string | null;
-  /**
-   * Sufixo opcional do título. O título completo é derivado das duas partes.
-   */
-  titleEmphasis?: string | null;
-  /**
-   * Se vazio, o card usa o título completo do estudo.
-   */
-  cardTitle?: string | null;
-  /**
-   * Se vazio, o card usa a identificação editorial do estudo.
-   */
-  cardEyebrow?: string | null;
-  summary?: string | null;
-  introduction?: string | null;
-  slug?: string | null;
-  cover?: {
-    media?: (string | null) | Media;
-    decorative?: boolean | null;
-    alt?: string | null;
-    caption?: string | null;
-  };
-  /**
-   * Duas composições fixas da referência. Se vazio, mantém a capa contida em cereja.
-   */
-  coverPresentation?: ('contained-cherry' | 'contained-soft') | null;
-  role?: string | null;
-  scope?: string | null;
-  contextNote?: string | null;
-  sections?:
-    | {
-        readingKey?: string | null;
-        heading?: string | null;
-        /**
-         * Composição predefinida. Comparação exige dois blocos de texto ao publicar.
-         */
-        presentation?: ('narrative' | 'process' | 'comparison' | 'learnings') | null;
-        eyebrow?: string | null;
-        description?: string | null;
-        note?: string | null;
-        blocks?:
-          | (
-              | {
-                  /**
-                   * Identidade estável do trecho; compartilhar entre traduções equivalentes.
-                   */
-                  readingKey?: string | null;
-                  eyebrow?: string | null;
-                  heading?: string | null;
-                  note?: string | null;
-                  content?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: any;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'text';
-                }
-              | {
-                  /**
-                   * Identidade estável do trecho; compartilhar entre traduções equivalentes.
-                   */
-                  readingKey?: string | null;
-                  image?: {
-                    media?: (string | null) | Media;
-                    decorative?: boolean | null;
-                    alt?: string | null;
-                    caption?: string | null;
-                  };
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'image';
-                }
-              | {
-                  /**
-                   * Identidade estável do trecho; compartilhar entre traduções equivalentes.
-                   */
-                  readingKey?: string | null;
-                  presentation?: ('pair' | 'comparison') | null;
-                  first?: {
-                    media?: (string | null) | Media;
-                    decorative?: boolean | null;
-                    alt?: string | null;
-                    caption?: string | null;
-                  };
-                  second?: {
-                    media?: (string | null) | Media;
-                    decorative?: boolean | null;
-                    alt?: string | null;
-                    caption?: string | null;
-                  };
-                  firstLabel?: string | null;
-                  secondLabel?: string | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'image-pair';
-                }
-            )[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  seo?: {
-    title?: string | null;
-    description?: string | null;
-    image?: {
-      media?: (string | null) | Media;
-      decorative?: boolean | null;
-      alt?: string | null;
-      caption?: string | null;
-    };
-  };
-  editorialRevision?: string | null;
-  contentRevision?: string | null;
-  leaseToken?: string | null;
-  leaseOwner?: string | null;
-  leaseExpiresAt?: string | null;
-  latestPublicationIntent?: string | null;
-  publicConfirmed?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * Arquivos são imutáveis. Para trocar uma imagem ou PDF, envie uma nova mídia.
+ * Biblioteca de imagens e currículos: JPEG, PNG, WebP ou AVIF até 10 MB e PDF até 5 MB. Para trocar um arquivo, envie uma nova mídia. As descrições das imagens são preenchidas nos campos do conteúdo em que forem usadas.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: string;
+  /**
+   * Identificação de uso interno, sem alterar o nome do arquivo nem o texto exibido no site. Exemplo: Retrato da Eliana ou Currículo em português.
+   */
   label?: string | null;
   manifest?:
     | {
@@ -358,72 +211,545 @@ export interface Media {
   height?: number | null;
 }
 /**
+ * Cadastre cada projeto uma vez. Aqui você define a identificação, a ordem e o destaque; os textos em português e inglês ficam em Conteúdo dos projetos.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cases".
+ */
+export interface Case {
+  id: string;
+  /**
+   * Nome para encontrar este projeto no CMS. Exemplo: Redesenho do aplicativo. O título exibido no site é preenchido em Conteúdo dos projetos.
+   */
+  internalTitle: string;
+  /**
+   * Projetos com números menores aparecem primeiro. Esta ordem é compartilhada pelas versões em português e inglês.
+   */
+  sortOrder?: number | null;
+  /**
+   * Inclui este projeto entre os destaques da página inicial quando houver conteúdo publicado no idioma visitado.
+   */
+  featured?: boolean | null;
+  editorialRevision?: string | null;
+  contentRevision?: string | null;
+  leaseToken?: string | null;
+  leaseOwner?: string | null;
+  leaseExpiresAt?: string | null;
+  latestPublicationIntent?: string | null;
+  publicConfirmed?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Escreva a versão de um projeto em português ou inglês. Cada idioma tem seu próprio rascunho e sua própria publicação; os campos de ajuda permanecem em português.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-content".
+ */
+export interface CaseContent {
+  id: string;
+  /**
+   * Selecione o projeto cadastrado em Projetos. As versões em português e inglês devem apontar para o mesmo projeto. Esta escolha não pode ser alterada depois de salvar.
+   */
+  case: string | Case;
+  /**
+   * Escolha o idioma dos textos que serão exibidos no site. Esta escolha não pode ser alterada depois de salvar. Para o outro idioma, crie outro conteúdo para o mesmo projeto.
+   */
+  locale: 'pt' | 'en';
+  /**
+   * Identifica o tipo de projeto na abertura. Exemplo: Design de produto. Também aparece no cartão do projeto quando não houver um texto específico para ele.
+   */
+  eyebrow?: string | null;
+  /**
+   * Título principal exibido na página do projeto. Se houver uma continuação em destaque, preencha-a no campo seguinte.
+   */
+  title?: string | null;
+  /**
+   * Parte final do título exibida com destaque visual. Escreva somente a continuação: ela será unida ao título principal para formar o título completo do projeto.
+   */
+  titleEmphasis?: string | null;
+  /**
+   * Título mais curto para os cartões da página inicial e da lista de projetos. Se ficar vazio, será usado o título completo do projeto.
+   */
+  cardTitle?: string | null;
+  /**
+   * Texto curto mostrado acima do título nos cartões. Se ficar vazio, será usado o texto da abertura do projeto.
+   */
+  cardEyebrow?: string | null;
+  /**
+   * Apresentação curta exibida no cartão do projeto. Resuma o desafio e a proposta; este texto é obrigatório para publicar.
+   */
+  summary?: string | null;
+  /**
+   * Texto de abertura apresentado na página do projeto, antes das seções do estudo. Pode ser mais detalhado que o resumo do cartão.
+   */
+  introduction?: string | null;
+  /**
+   * Última parte do endereço desta tradução. Exemplo: redesenho-do-aplicativo. Use letras minúsculas, números e hífens; o endereço deve estar livre neste idioma. Obrigatório para publicar.
+   */
+  slug?: string | null;
+  /**
+   * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+   */
+  cover?: {
+    /**
+     * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+     */
+    media?: (string | null) | Media;
+    /**
+     * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+     */
+    decorative?: boolean | null;
+    /**
+     * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+     */
+    alt?: string | null;
+    /**
+     * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+     */
+    caption?: string | null;
+  };
+  /**
+   * Escolha a composição da imagem na abertura do projeto. A imagem fica inteira sobre a cor selecionada; se não escolher, será usado o fundo cereja.
+   */
+  coverPresentation?: ('contained-cherry' | 'contained-soft') | null;
+  /**
+   * Função exercida por Eliana neste trabalho. Exemplo: Designer de produto. Este campo é obrigatório para publicar.
+   */
+  role?: string | null;
+  /**
+   * Descreva as responsabilidades e entregas de Eliana. Exemplo: Pesquisa com usuários, prototipação e testes de usabilidade.
+   */
+  scope?: string | null;
+  /**
+   * Contexto complementar exibido na abertura, como período, equipe ou condições do estudo. Preencha apenas informações que pertençam a este projeto.
+   */
+  contextNote?: string | null;
+  /**
+   * Organize a narrativa do projeto na ordem de leitura. Cada seção pode reunir textos e imagens; o sumário é criado a partir destes títulos. Para publicar, adicione pelo menos um bloco de conteúdo.
+   */
+  sections?:
+    | {
+        /**
+         * Identificador gerado ao salvar para manter a posição de leitura na troca de idioma. Ao criar a seção equivalente na tradução, copie o identificador da seção original. Não altere o identificador de uma seção já salva.
+         */
+        readingKey?: string | null;
+        /**
+         * Título principal desta parte do estudo. Também será usado no sumário; se ficar vazio, será usado o texto curto da seção.
+         */
+        heading?: string | null;
+        /**
+         * Escolha o arranjo visual desta seção. Antes e depois exige exatamente dois blocos de texto, primeiro o cenário inicial e depois a proposta. As outras opções aceitam os blocos de texto e imagem disponíveis.
+         */
+        presentation?: ('narrative' | 'process' | 'comparison' | 'learnings') | null;
+        /**
+         * Identificação curta exibida antes do título. Exemplo: Processo ou Aprendizados. Também identifica a seção no sumário quando não houver título.
+         */
+        eyebrow?: string | null;
+        /**
+         * Breve apresentação exibida junto ao título da seção, antes dos blocos de texto e imagem.
+         */
+        description?: string | null;
+        /**
+         * Informação complementar apresentada junto à abertura da seção, como uma ressalva ou contexto curto.
+         */
+        note?: string | null;
+        /**
+         * Adicione e ordene os conteúdos desta seção: texto formatado, uma imagem ou duas imagens. Na apresentação Antes e depois, use exatamente dois blocos de texto, nessa ordem.
+         */
+        blocks?:
+          | (
+              | {
+                  /**
+                   * Identificador gerado ao salvar para manter a posição de leitura na troca de idioma. Para um bloco equivalente na tradução, copie o identificador do bloco original. Não altere o identificador de um bloco já salvo.
+                   */
+                  readingKey?: string | null;
+                  /**
+                   * Pequena identificação exibida antes do título deste texto. Exemplo: Pesquisa ou Cenário inicial.
+                   */
+                  eyebrow?: string | null;
+                  /**
+                   * Título deste trecho dentro da seção. Use para introduzir o assunto do texto abaixo.
+                   */
+                  heading?: string | null;
+                  /**
+                   * Informação complementar apresentada junto deste bloco, como uma ressalva ou explicação curta.
+                   */
+                  note?: string | null;
+                  /**
+                   * Escreva o conteúdo deste trecho. Use os controles do editor para parágrafos, listas, destaques e links. O texto não pode ficar vazio ao publicar.
+                   */
+                  content?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'text';
+                }
+              | {
+                  /**
+                   * Identificador gerado ao salvar para manter a posição de leitura na troca de idioma. Para um bloco equivalente na tradução, copie o identificador do bloco original. Não altere o identificador de um bloco já salvo.
+                   */
+                  readingKey?: string | null;
+                  /**
+                   * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+                   */
+                  image?: {
+                    /**
+                     * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+                     */
+                    media?: (string | null) | Media;
+                    /**
+                     * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+                     */
+                    decorative?: boolean | null;
+                    /**
+                     * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+                     */
+                    alt?: string | null;
+                    /**
+                     * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+                     */
+                    caption?: string | null;
+                  };
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'image';
+                }
+              | {
+                  /**
+                   * Identificador gerado ao salvar para manter a posição de leitura na troca de idioma. Para um bloco equivalente na tradução, copie o identificador do bloco original. Não altere o identificador de um bloco já salvo.
+                   */
+                  readingKey?: string | null;
+                  /**
+                   * Escolha entre duas imagens relacionadas ou uma comparação de antes e depois. Na comparação, a primeira imagem representa o antes e a segunda representa o depois.
+                   */
+                  presentation?: ('pair' | 'comparison') | null;
+                  /**
+                   * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+                   */
+                  first?: {
+                    /**
+                     * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+                     */
+                    media?: (string | null) | Media;
+                    /**
+                     * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+                     */
+                    decorative?: boolean | null;
+                    /**
+                     * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+                     */
+                    alt?: string | null;
+                    /**
+                     * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+                     */
+                    caption?: string | null;
+                  };
+                  /**
+                   * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+                   */
+                  second?: {
+                    /**
+                     * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+                     */
+                    media?: (string | null) | Media;
+                    /**
+                     * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+                     */
+                    decorative?: boolean | null;
+                    /**
+                     * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+                     */
+                    alt?: string | null;
+                    /**
+                     * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+                     */
+                    caption?: string | null;
+                  };
+                  /**
+                   * Texto curto mostrado junto à primeira imagem. Exemplo: Antes ou Versão inicial.
+                   */
+                  firstLabel?: string | null;
+                  /**
+                   * Texto curto mostrado junto à segunda imagem. Exemplo: Depois ou Proposta final.
+                   */
+                  secondLabel?: string | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'image-pair';
+                }
+            )[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Textos e imagem usados ao encontrar ou compartilhar a página deste projeto. Preencha no idioma deste conteúdo.
+   */
+  seo?: {
+    /**
+     * Título específico para a aba do navegador e os resultados de busca. Use este campo se quiser apresentar um texto diferente do título do projeto.
+     */
+    title?: string | null;
+    /**
+     * Resumo da página para resultados de busca e compartilhamentos. Explique em uma ou duas frases o assunto deste projeto.
+     */
+    description?: string | null;
+    /**
+     * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+     */
+    image?: {
+      /**
+       * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+       */
+      media?: (string | null) | Media;
+      /**
+       * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+       */
+      decorative?: boolean | null;
+      /**
+       * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+       */
+      alt?: string | null;
+      /**
+       * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+       */
+      caption?: string | null;
+    };
+  };
+  editorialRevision?: string | null;
+  contentRevision?: string | null;
+  leaseToken?: string | null;
+  leaseOwner?: string | null;
+  leaseExpiresAt?: string | null;
+  latestPublicationIntent?: string | null;
+  publicConfirmed?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Registro automático dos endereços atuais, reservados e anteriores dos projetos. Não é editado manualmente.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "case-routes".
  */
 export interface CaseRoute {
   id: string;
+  /**
+   * Idioma ao qual este endereço pertence.
+   */
   locale: 'pt' | 'en';
+  /**
+   * Endereço reservado para o projeto neste idioma, sem o domínio do site.
+   */
   slug: string;
+  /**
+   * Projeto que mantém a reserva deste endereço.
+   */
   case: string | Case;
+  /**
+   * Documento de conteúdo responsável por este endereço.
+   */
   content: string | CaseContent;
+  /**
+   * Registra se o endereço já esteve público, para preservar o histórico e impedir sua reutilização por outro projeto.
+   */
   everPublished: boolean;
+  /**
+   * Indica se o endereço está reservado em rascunho, é o endereço publicado atual ou pertence ao histórico.
+   */
   state: 'draft' | 'current' | 'historical';
   updatedAt: string;
   createdAt: string;
 }
 /**
+ * Textos do menu, do rodapé, dos botões e dos avisos do site. Há um documento por idioma: preencha os textos em português no documento pt e em inglês no documento en.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-navigation".
  */
 export interface SiteNavigation {
   id: string;
+  /**
+   * pt corresponde a português e en a inglês. Preencha todos os textos abaixo nesse idioma. O idioma deste documento não pode ser alterado.
+   */
   locale: 'pt' | 'en';
+  /**
+   * Textos dos links no cabeçalho. Os destinos já estão definidos: altere apenas o texto que o visitante vê.
+   */
   header?: {
+    /**
+     * Texto no canto superior do site e na assinatura do rodapé. Ao clicar, o visitante volta à página inicial. Ex.: Eliana.
+     */
     brandLabel?: string | null;
+    /**
+     * Link do menu que abre a lista de projetos no idioma atual. Ex.: Projetos.
+     */
     projectsLabel?: string | null;
+    /**
+     * Link do menu que abre a página de apresentação e trajetória. Ex.: Sobre mim.
+     */
     aboutLabel?: string | null;
+    /**
+     * Link do menu que abre o currículo em PDF em uma nova aba. Ex.: Currículo. O arquivo é escolhido em Perfil profissional.
+     */
     resumeLabel?: string | null;
+    /**
+     * Link do menu que leva aos contatos no rodapé da página atual. Ex.: Vamos conversar.
+     */
     contactLabel?: string | null;
   };
+  /**
+   * Conteúdo exibido no fim das páginas. O e-mail, o endereço do LinkedIn e o PDF do currículo vêm de Perfil profissional.
+   */
   footer?: {
+    /**
+     * Pequena chamada que apresenta a área de contato. Ex.: Vamos criar algo juntos.
+     */
     eyebrow?: string | null;
+    /**
+     * Frase em destaque no rodapé que convida o visitante a conversar. Ex.: Tem um projeto em mente?
+     */
     title?: string | null;
+    /**
+     * Complemento exibido abaixo do título do rodapé. Explique brevemente como entrar em contato ou que tipo de colaboração procura.
+     */
     description?: string | null;
+    /**
+     * Texto clicável que abre uma mensagem para o e-mail do Perfil profissional. Ex.: Enviar e-mail. Preencha o texto do botão, não o endereço de e-mail.
+     */
     emailLabel?: string | null;
+    /**
+     * Texto clicável que abre o LinkedIn informado em Perfil profissional. Ex.: Meu LinkedIn. O endereço do perfil é preenchido naquela coleção.
+     */
     linkedinLabel?: string | null;
+    /**
+     * Texto clicável que abre o PDF do currículo em uma nova aba. Ex.: Ver currículo. O arquivo é escolhido em Perfil profissional.
+     */
     resumeLabel?: string | null;
+    /**
+     * Linha de assinatura ou direitos autorais exibida no fim do site. Ex.: © 2026 Eliana.
+     */
     copyright?: string | null;
   };
+  /**
+   * Nomes das ações e dos elementos de apoio do site. Use frases curtas no idioma deste documento; estes campos não recebem endereços de links.
+   */
   controls?: {
+    /**
+     * Ação exibida nos cartões de projetos da página inicial e da listagem. Ex.: Ver projeto.
+     */
     caseLinkLabel?: string | null;
+    /**
+     * Link de retorno à página inicial, usado na listagem e quando o menu completo não está disponível. Ex.: Início.
+     */
     homeLabel?: string | null;
+    /**
+     * Palavra que acompanha a quantidade na listagem e identifica o link para projetos nas mensagens do site. Ex.: Projetos.
+     */
     casesLabel?: string | null;
     /**
-     * Ação de retorno no detalhe, independente do nome usado na contagem de cases.
+     * Link no início da página de um projeto. Ex.: Voltar aos projetos. Se ficar vazio, o site usa o texto padrão do idioma.
      */
     backToProjectsLabel?: string | null;
+    /**
+     * Título acima da lista de seções que permite navegar pelo projeto. Ex.: Neste projeto.
+     */
     contentsLabel?: string | null;
+    /**
+     * Rótulo reservado para voltar à seção anterior de um projeto. Ex.: Seção anterior. Não aparece no layout atual.
+     */
     previousSectionLabel?: string | null;
+    /**
+     * Rótulo reservado para avançar à próxima seção de um projeto. Ex.: Próxima seção. Não aparece no layout atual.
+     */
     nextSectionLabel?: string | null;
+    /**
+     * Botão que abre a navegação em telas menores, como celulares. Ex.: Abrir menu.
+     */
     openMenuLabel?: string | null;
+    /**
+     * Botão exibido dentro do menu para fechá-lo em telas menores. Ex.: Fechar menu.
+     */
     closeMenuLabel?: string | null;
+    /**
+     * Nome do controle de troca de idioma, usado também por leitores de tela. Ex.: Idioma do site.
+     */
     languageLabel?: string | null;
+    /**
+     * Complemento acessível dos links que abrem outra aba, como o currículo. Ex.: abre em nova aba.
+     */
     newTabLabel?: string | null;
+    /**
+     * Título que acompanha a contribuição profissional na abertura de cada projeto. Ex.: Minha atuação. A atuação de cada projeto é preenchida em Conteúdo dos projetos.
+     */
     roleLabel?: string | null;
+    /**
+     * Título que acompanha as áreas ou entregas na abertura de cada projeto. Ex.: Escopo. Os detalhes de cada projeto são preenchidos em Conteúdo dos projetos.
+     */
     scopeLabel?: string | null;
   };
+  /**
+   * Textos exibidos quando uma tradução, página ou lista não está disponível. Oriente o visitante com mensagens claras no idioma deste documento.
+   */
   messages?: {
+    /**
+     * Aviso ao trocar para um idioma em que o projeto ainda não está publicado. O visitante é levado à lista nesse idioma. Ex.: Este projeto ainda não está disponível em português.
+     */
     translationUnavailable?: string | null;
+    /**
+     * Aviso após a troca de idioma quando o site precisa ajustar a posição de leitura por falta de uma seção correspondente. Ex.: Ajustamos sua posição de leitura nesta tradução.
+     */
     readingPositionAdjusted?: string | null;
+    /**
+     * Título mostrado quando não há projetos publicados para a lista ou área de destaques no idioma atual. Ex.: Novos projetos em breve.
+     */
     emptyCasesTitle?: string | null;
+    /**
+     * Texto de apoio exibido abaixo do título de lista vazia. Ex.: Estou preparando os próximos projetos para compartilhar aqui.
+     */
     emptyCasesDescription?: string | null;
+    /**
+     * Título mostrado ao acessar um projeto que deixou de estar publicado. Ex.: Projeto indisponível.
+     */
     caseUnavailableTitle?: string | null;
+    /**
+     * Texto que orienta o visitante quando um projeto foi retirado de publicação. Ex.: Este projeto não está mais disponível. Conheça os outros trabalhos.
+     */
     caseUnavailableDescription?: string | null;
+    /**
+     * Título mostrado quando o site não consegue carregar o conteúdo naquele momento. Ex.: Conteúdo temporariamente indisponível.
+     */
     temporaryFailureTitle?: string | null;
+    /**
+     * Explicação para uma falha temporária de carregamento ou de troca de idioma. Ex.: Não foi possível carregar o conteúdo. Tente novamente em instantes.
+     */
     temporaryFailureDescription?: string | null;
+    /**
+     * Rótulo reservado para repetir uma ação após falha. Ex.: Tentar novamente. Não aparece no layout atual.
+     */
     retryLabel?: string | null;
+    /**
+     * Título mostrado para um endereço que não corresponde a uma página disponível. Ex.: Página não encontrada.
+     */
     notFoundTitle?: string | null;
+    /**
+     * Texto que orienta o visitante a continuar navegando após acessar um endereço inexistente. Ex.: Confira os projetos ou volte à página inicial.
+     */
     notFoundDescription?: string | null;
   };
   editorialRevision?: string | null;
@@ -438,122 +764,400 @@ export interface SiteNavigation {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Textos, imagens, contatos e currículo da Eliana. Há um perfil por idioma; preencha os campos no idioma do documento e publique cada versão separadamente.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "professional-profiles".
  */
 export interface ProfessionalProfile {
   id: string;
+  /**
+   * Idioma desta versão do perfil. Preencha todos os textos neste idioma; ele não pode ser alterado depois.
+   */
   locale: 'pt' | 'en';
+  /**
+   * Identificação pública da Eliana, usada para apresentar a profissional no site.
+   */
   identity?: {
+    /**
+     * Nome que será apresentado no portfólio. Exemplo: Eliana.
+     */
     name?: string | null;
+    /**
+     * Como a profissional se apresenta ao público. Exemplo: Designer de produto.
+     */
     role?: string | null;
   };
+  /**
+   * Primeira seção da página inicial: apresentação, título em destaque, retrato e acesso aos projetos.
+   */
   home?: {
+    /**
+     * Pequena chamada que identifica a apresentação antes do título principal. Exemplo: Design com propósito.
+     */
     eyebrow?: string | null;
+    /**
+     * Primeira parte do título de abertura da página inicial.
+     */
     title?: string | null;
+    /**
+     * Parte do título que recebe destaque visual e complementa o título principal.
+     */
     titleEmphasis?: string | null;
+    /**
+     * Parágrafo que explica quem é a Eliana e o que ela faz, exibido na abertura da página inicial.
+     */
     description?: string | null;
+    /**
+     * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+     */
     portrait?: {
+      /**
+       * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+       */
       media?: (string | null) | Media;
+      /**
+       * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+       */
       decorative?: boolean | null;
+      /**
+       * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+       */
       alt?: string | null;
+      /**
+       * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+       */
       caption?: string | null;
     };
+    /**
+     * Texto exibido na ação que leva à lista de projetos. Exemplo: Conheça meus projetos. O destino é definido pelo site.
+     */
     projectsLabel?: string | null;
   };
+  /**
+   * Textos que apresentam a seleção de projetos na página inicial.
+   */
   homeProjects?: {
+    /**
+     * Chamada curta da seção de projetos. Exemplo: Projetos selecionados.
+     */
     eyebrow?: string | null;
+    /**
+     * Título que apresenta os projetos destacados na página inicial.
+     */
     title?: string | null;
+    /**
+     * Breve texto de apoio ao título da seção de projetos na página inicial.
+     */
     description?: string | null;
   };
+  /**
+   * Textos de abertura da página que reúne todos os projetos disponíveis neste idioma.
+   */
   listing?: {
+    /**
+     * Chamada curta exibida antes do título da lista de projetos.
+     */
     eyebrow?: string | null;
+    /**
+     * Título principal da página que lista os projetos. Exemplo: Projetos.
+     */
     title?: string | null;
+    /**
+     * Texto de apoio exibido na abertura da página de projetos.
+     */
     description?: string | null;
   };
+  /**
+   * Resumo sobre a Eliana e os principais momentos da trajetória profissional, exibidos na página inicial.
+   */
   homeAbout?: {
+    /**
+     * Chamada curta que apresenta a seção sobre a profissional. Exemplo: Um pouco sobre mim.
+     */
     eyebrow?: string | null;
+    /**
+     * Título da seção sobre a Eliana na página inicial.
+     */
     title?: string | null;
+    /**
+     * Apresentação resumida que acompanha a trajetória na página inicial.
+     */
     description?: string | null;
+    /**
+     * Adicione os momentos da trajetória na ordem em que devem aparecer no site.
+     */
     trajectory?:
       | {
+          /**
+           * Gerado ao salvar. Na tradução, use o mesmo código da etapa correspondente para manter a posição de leitura. Não altere um código já salvo.
+           */
           readingKey?: string | null;
+          /**
+           * Data ou intervalo exibido junto desta etapa. Exemplo: 2020–2023.
+           */
           period?: string | null;
+          /**
+           * Nome da experiência, formação ou momento profissional.
+           */
           title?: string | null;
+          /**
+           * Breve explicação sobre a experiência e sua importância na trajetória.
+           */
           description?: string | null;
           id?: string | null;
         }[]
       | null;
+    /**
+     * Texto da ação que abre a biografia completa. Exemplo: Saiba mais sobre mim. O destino é definido pelo site.
+     */
     aboutLabel?: string | null;
   };
+  /**
+   * Apresenta a abordagem de trabalho da Eliana e os cartões que explicam seus métodos.
+   */
   approach?: {
+    /**
+     * Chamada curta que identifica a seção de abordagem. Exemplo: Como trabalho.
+     */
     eyebrow?: string | null;
+    /**
+     * Título que apresenta a forma de trabalhar na página inicial.
+     */
     title?: string | null;
+    /**
+     * Texto que resume os princípios e a forma de conduzir o trabalho.
+     */
     description?: string | null;
+    /**
+     * Adicione cada método na ordem em que os cartões devem aparecer na página inicial.
+     */
     methods?:
       | {
+          /**
+           * Gerado ao salvar. Na tradução, use o mesmo código do método correspondente para manter a posição de leitura. Não altere um código já salvo.
+           */
           readingKey?: string | null;
+          /**
+           * Título do cartão que identifica esta etapa ou método de trabalho.
+           */
           title?: string | null;
+          /**
+           * Texto do cartão que explica como este método contribui para o trabalho.
+           */
           description?: string | null;
+          /**
+           * Linha curta de termos que complementa o método. Exemplo: Pesquisa · Escuta · Experimentação.
+           */
           keywords?: string | null;
           id?: string | null;
         }[]
       | null;
   };
+  /**
+   * Conteúdo da página Sobre, organizado na sequência de seções que aparece no site.
+   */
   about?: {
+    /**
+     * Chamada que identifica a página Sobre antes do título principal.
+     */
     eyebrow?: string | null;
+    /**
+     * Título de abertura da biografia completa.
+     */
     title?: string | null;
+    /**
+     * Texto introdutório apresentado junto ao título principal da página Sobre.
+     */
     description?: string | null;
+    /**
+     * Identifica a introdução para quem usa leitores de tela. Este título não aparece visualmente no site.
+     */
     introductionHeading?: string | null;
+    /**
+     * Apresentação mais detalhada sobre a Eliana. Separe os parágrafos com uma linha em branco.
+     */
     introduction?: string | null;
+    /**
+     * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+     */
     portrait?: {
+      /**
+       * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+       */
       media?: (string | null) | Media;
+      /**
+       * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+       */
       decorative?: boolean | null;
+      /**
+       * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+       */
       alt?: string | null;
+      /**
+       * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+       */
       caption?: string | null;
     };
+    /**
+     * Título que apresenta o percurso pessoal e profissional.
+     */
     journeyHeading?: string | null;
+    /**
+     * Chamada curta que identifica a seção de trajetória na página Sobre.
+     */
     journeyEyebrow?: string | null;
+    /**
+     * Relato do percurso pessoal e profissional. Separe os parágrafos com uma linha em branco.
+     */
     journey?: string | null;
+    /**
+     * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+     */
     deskPhotograph?: {
+      /**
+       * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+       */
       media?: (string | null) | Media;
+      /**
+       * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+       */
       decorative?: boolean | null;
+      /**
+       * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+       */
       alt?: string | null;
+      /**
+       * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+       */
       caption?: string | null;
     };
+    /**
+     * Frase de destaque exibida após a fotografia de mesa, criando uma pausa na leitura.
+     */
     editorialEmphasis?: string | null;
+    /**
+     * Título da seção de abordagem na página Sobre.
+     */
     approachHeading?: string | null;
+    /**
+     * Chamada curta que identifica a seção sobre a forma de trabalhar.
+     */
     approachEyebrow?: string | null;
+    /**
+     * Explicação detalhada da abordagem profissional. Separe os parágrafos com uma linha em branco.
+     */
     approach?: string | null;
+    /**
+     * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+     */
     architecturePhotograph?: {
+      /**
+       * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+       */
       media?: (string | null) | Media;
+      /**
+       * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+       */
       decorative?: boolean | null;
+      /**
+       * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+       */
       alt?: string | null;
+      /**
+       * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+       */
       caption?: string | null;
     };
+    /**
+     * Título da seção sobre interesses, atividades e aprendizados em andamento.
+     */
     inMotionHeading?: string | null;
+    /**
+     * Chamada curta que identifica a seção Em movimento.
+     */
     inMotionEyebrow?: string | null;
+    /**
+     * Conte o que mantém a Eliana em movimento, como interesses e aprendizados atuais. Separe os parágrafos com uma linha em branco.
+     */
     inMotion?: string | null;
+    /**
+     * Identifica o encerramento para quem usa leitores de tela. Este título não aparece visualmente no site.
+     */
     closingHeading?: string | null;
+    /**
+     * Mensagem final da página Sobre, antes do acesso aos projetos.
+     */
     closing?: string | null;
+    /**
+     * Texto da ação exibida ao final da página Sobre. Exemplo: Veja meus projetos. O destino é definido pelo site.
+     */
     projectsLabel?: string | null;
   };
+  /**
+   * Endereços de contato usados pelo site, inclusive nos links do rodapé. Os textos desses links são definidos em Navegação.
+   */
   contacts?: {
+    /**
+     * Endereço público que recebe os contatos do portfólio. Informe apenas o e-mail, sem o prefixo mailto:.
+     */
     email?: string | null;
+    /**
+     * URL completa e segura do perfil profissional. Exemplo: https://www.linkedin.com/in/seu-perfil/.
+     */
     linkedin?: string | null;
   };
+  /**
+   * Selecione ou envie o currículo em PDF, com até 5 MB, no idioma deste documento. O mesmo arquivo é usado pelos links de currículo do site.
+   */
   resume?: (string | null) | Media;
+  /**
+   * Informações usadas nas abas do navegador, resultados de busca e prévias de links. Preencha textos específicos para cada página neste idioma.
+   */
   seo?: {
+    /**
+     * Título da página inicial usado na aba do navegador e nos metadados de busca e compartilhamento.
+     */
     homeTitle?: string | null;
+    /**
+     * Resumo da apresentação da Eliana que pode aparecer em resultados de busca e prévias de links.
+     */
     homeDescription?: string | null;
+    /**
+     * Título específico da lista de projetos, usado na aba do navegador e nos metadados. Exemplo: Projetos | Eliana.
+     */
     listingTitle?: string | null;
+    /**
+     * Resumo do conteúdo encontrado na página que reúne os projetos.
+     */
     listingDescription?: string | null;
+    /**
+     * Título específico da biografia, usado na aba do navegador e nos metadados. Exemplo: Sobre | Eliana.
+     */
     aboutTitle?: string | null;
+    /**
+     * Resumo da biografia que pode aparecer em resultados de busca e prévias de links.
+     */
     aboutDescription?: string | null;
+    /**
+     * Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.
+     */
     image?: {
+      /**
+       * Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.
+       */
       media?: (string | null) | Media;
+      /**
+       * Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.
+       */
       decorative?: boolean | null;
+      /**
+       * Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.
+       */
       alt?: string | null;
+      /**
+       * Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.
+       */
       caption?: string | null;
     };
   };
@@ -599,6 +1203,20 @@ export interface PublicationUpdate {
   state: 'update-pending' | 'public' | 'superseded';
   attempts: number;
   diagnostic?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publication-retries".
+ */
+export interface PublicationRetry {
+  id: string;
+  operationId: string;
+  retryUserId?: string | null;
+  startedAttemptsVersion: number;
+  automaticAttempts: number;
+  nextAttemptAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -705,6 +1323,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  avatar?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1136,6 +1756,19 @@ export interface PublicationUpdatesSelect<T extends boolean = true> {
   state?: T;
   attempts?: T;
   diagnostic?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publication-retries_select".
+ */
+export interface PublicationRetriesSelect<T extends boolean = true> {
+  operationId?: T;
+  retryUserId?: T;
+  startedAttemptsVersion?: T;
+  automaticAttempts?: T;
+  nextAttemptAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

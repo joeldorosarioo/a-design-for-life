@@ -1,0 +1,43 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/payload/editorial-email-transport.test.ts (5 tests | 3 failed) 7ms
+   × delivers native recovery through the configured Resend transport in staging 4ms
+   × delivers native recovery through the configured Resend transport in production 0ms
+   × uses only the configured sender even if an internal message supplies another from address 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/editorial-email-transport.test.ts > delivers native recovery through the configured Resend transport in staging
+ FAIL  |unit| src/helpers/payload/editorial-email-transport.test.ts > delivers native recovery through the configured Resend transport in production
+EditorialEmailUnavailable: Editorial email delivery is unavailable.
+ ❯ Object.sendEmail src/helpers/payload/editorial-email.ts:37:68
+     35|     defaultFromName: 'Editorial local capture',
+     36|     async sendEmail(message) {
+     37|       if (environment !== 'local' && environment !== 'test') throw new…
+       |                                                                    ^
+     38|       const directory = path.resolve(
+     39|         '.work/editorial-mail',
+ ❯ src/helpers/payload/editorial-email-transport.test.ts:31:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/helpers/payload/editorial-email-transport.test.ts > uses only the configured sender even if an internal message supplies another from address
+EditorialEmailUnavailable: Editorial email delivery is unavailable.
+ ❯ Object.sendEmail src/helpers/payload/editorial-email.ts:37:68
+     35|     defaultFromName: 'Editorial local capture',
+     36|     async sendEmail(message) {
+     37|       if (environment !== 'local' && environment !== 'test') throw new…
+       |                                                                    ^
+     38|       const directory = path.resolve(
+     39|         '.work/editorial-mail',
+ ❯ src/helpers/payload/editorial-email-transport.test.ts:71:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 2 passed (5)
+   Start at  20:15:40
+   Duration  412ms (setup 75%, transform 11%, import 10%, tests 3%, worker 2%)
+

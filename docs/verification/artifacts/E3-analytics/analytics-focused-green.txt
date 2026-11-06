@@ -1,0 +1,13 @@
+Command: & 'E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe' node_modules/vitest/vitest.mjs run --project unit src/features/analytics --reporter=dot
+Exit code: 0
+Pinned Node24.22.2; pnpm12.10.1 unchanged. Analytics-only scope; no services/build/DB/global tests/real measurements.
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·······························································································
+
+ Test Files  5 passed (5)
+      Tests  95 passed (95)
+   Start at  20:58:16
+   Duration  1.78s (setup 42%, environment 29%, import 17%, transform 6%, tests 5%, worker 1%)
+

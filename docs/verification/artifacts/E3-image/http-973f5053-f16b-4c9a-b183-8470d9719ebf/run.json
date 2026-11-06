@@ -1,0 +1,494 @@
+{
+  "runId": "973f5053-f16b-4c9a-b183-8470d9719ebf",
+  "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "provenance": {
+    "revision": "draft-e3-local-004",
+    "node": "v24.22.2",
+    "source": {
+      "phase": "image-draft-004-before",
+      "head": "60314d2a095b178f16ddc3972e384d153ba031b5",
+      "files": 615,
+      "digest": "9390cc9ee4914f9a23c04948d7b1124ec83349f3cf607c30c98b6158c1893628"
+    },
+    "harness": {
+      "image-http-run-by-id.mjs": "296d164ff2006fb9bd6f382e5ec65a418f8a2a674b4ecd4b233b2107476a64ea",
+      "image-http-seed.mjs": "bd1a3ebcf54b0f99e29f770e26cc09bd7a556e043a096abde0f73e1fea1719f3",
+      "image-http-verify.mjs": "dc25f0106dee834a7a1df3dc943b5022195c1ebac384718b9c757fd80daa2b6f",
+      "source-snapshot.mjs": "1326dd0e04371a603df6174fc11445e66516b0271256023dce6c2e8b9633c1f7"
+    },
+    "buildReceipt": {
+      "path": "E3-image/docker-draft-build-004.json",
+      "sha256": "0f51a7fae45351f0007c8e1b7e30a8a9ad6fa0ac5fa4a73ca9ea282345ed91f0"
+    },
+    "fullVerificationReceipt": {
+      "path": "E3-gates/verify-006-result.json",
+      "sha256": "ca324ea3eba9ce0740051e2570108dcea40fb2b1d8b4842a1251542f81d7afb8"
+    },
+    "image": {
+      "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+      "registryDigests": [],
+      "platform": "linux/amd64",
+      "user": "10001:10001",
+      "revision": "draft-e3-local-004",
+      "layers": 14,
+      "environmentNames": [
+        "HOSTNAME",
+        "MEDIA_CHECKER_BINARY",
+        "NEXT_TELEMETRY_DISABLED",
+        "NODE_ENV",
+        "NODE_VERSION",
+        "PATH",
+        "PORT",
+        "YARN_VERSION"
+      ]
+    },
+    "dockerContext": "desktop-linux",
+    "consumerBefore": {
+      "phase": "image-http-973f5053-f16b-4c9a-b183-8470d9719ebf-before",
+      "head": "60314d2a095b178f16ddc3972e384d153ba031b5",
+      "files": 615,
+      "digest": "9390cc9ee4914f9a23c04948d7b1124ec83349f3cf607c30c98b6158c1893628"
+    },
+    "consumerAfter": {
+      "phase": "image-http-973f5053-f16b-4c9a-b183-8470d9719ebf-after",
+      "head": "60314d2a095b178f16ddc3972e384d153ba031b5",
+      "files": 615,
+      "digest": "9390cc9ee4914f9a23c04948d7b1124ec83349f3cf607c30c98b6158c1893628"
+    }
+  },
+  "startedUTC": "2026-11-04T04:32:08.536Z",
+  "httpOnly": true,
+  "datasets": [
+    {
+      "key": "a",
+      "database": "adfl_test_image_a_973f5053f16b4c9ab1838470d9719ebf",
+      "bucket": "adfl-test-image-a-973f5053f16b4c9ab1838470d9719ebf",
+      "origin": "http://127.0.0.1:3103",
+      "port": 3001,
+      "fixture": {
+        "namespace": "public-de54ccb6",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-de54ccb6",
+            "brand": "Synthetic PT public-de54ccb6 portfolio",
+            "projects": "Synthetic PT public-de54ccb6 projects",
+            "about": "Synthetic PT public-de54ccb6 about",
+            "resume": "Synthetic PT public-de54ccb6 resume",
+            "contact": "Synthetic PT public-de54ccb6 contact",
+            "openMenu": "Synthetic PT public-de54ccb6 open menu",
+            "closeMenu": "Synthetic PT public-de54ccb6 close menu",
+            "newTab": "Synthetic PT public-de54ccb6 opens a new tab",
+            "contents": "Synthetic PT public-de54ccb6 contents",
+            "readCase": "Synthetic PT public-de54ccb6 read case",
+            "homeTitle": "Synthetic PT public-de54ccb6 home",
+            "homeEmphasis": "Synthetic PT public-de54ccb6 editorial emphasis",
+            "aboutTitle": "Synthetic PT public-de54ccb6 about page",
+            "listingTitle": "Synthetic PT public-de54ccb6 case list",
+            "contextHeading": "Synthetic PT public-de54ccb6 context heading",
+            "comparisonHeading": "Synthetic PT public-de54ccb6 comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "212e106f-fcb3-448b-bbb9-dc88f814d37f",
+            "resumeHref": "/media/212e106f-fcb3-448b-bbb9-dc88f814d37f/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-de54ccb6",
+            "brand": "Synthetic EN public-de54ccb6 portfolio",
+            "projects": "Synthetic EN public-de54ccb6 projects",
+            "about": "Synthetic EN public-de54ccb6 about",
+            "resume": "Synthetic EN public-de54ccb6 resume",
+            "contact": "Synthetic EN public-de54ccb6 contact",
+            "openMenu": "Synthetic EN public-de54ccb6 open menu",
+            "closeMenu": "Synthetic EN public-de54ccb6 close menu",
+            "newTab": "Synthetic EN public-de54ccb6 opens a new tab",
+            "contents": "Synthetic EN public-de54ccb6 contents",
+            "readCase": "Synthetic EN public-de54ccb6 read case",
+            "homeTitle": "Synthetic EN public-de54ccb6 home",
+            "homeEmphasis": "Synthetic EN public-de54ccb6 editorial emphasis",
+            "aboutTitle": "Synthetic EN public-de54ccb6 about page",
+            "listingTitle": "Synthetic EN public-de54ccb6 case list",
+            "contextHeading": "Synthetic EN public-de54ccb6 context heading",
+            "comparisonHeading": "Synthetic EN public-de54ccb6 comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "d5a25164-dce7-4e4e-80ba-21b615fdf02b",
+            "resumeHref": "/media/d5a25164-dce7-4e4e-80ba-21b615fdf02b/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "e5e96a35-a7af-4689-bfc0-dae149696c27",
+            "locales": {
+              "pt": {
+                "contentId": "566af7d2-42fc-4070-9b42-e93edcaa355b",
+                "slug": "public-de54ccb6-second-pt",
+                "path": "/pt/cases/public-de54ccb6-second-pt",
+                "title": "Synthetic PT public-de54ccb6 second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "969a285a-5e1a-4c06-92c6-6ef688cdc1b4",
+                "slug": "public-de54ccb6-second-en",
+                "path": "/en/cases/public-de54ccb6-second-en",
+                "title": "Synthetic EN public-de54ccb6 second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "5a71bb9f-baa8-4c9c-8d9b-4f6da27e258e",
+            "locales": {
+              "pt": {
+                "contentId": "284b670a-8d46-4327-9178-c2b506a9d5d3",
+                "slug": "public-de54ccb6-first-pt",
+                "path": "/pt/cases/public-de54ccb6-first-pt",
+                "title": "Synthetic PT public-de54ccb6 first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "5271c175-8073-421d-937a-2ff77825e8c1",
+                "slug": "public-de54ccb6-first-en",
+                "path": "/en/cases/public-de54ccb6-first-en",
+                "title": "Synthetic EN public-de54ccb6 first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "73cdc58f-9321-428d-9dde-d20d6f2016d7",
+            "locales": {
+              "pt": {
+                "contentId": "5ee9788e-0d57-4f04-a140-9f644aa2a2cc",
+                "slug": "public-de54ccb6-ptonly-pt",
+                "path": "/pt/cases/public-de54ccb6-ptonly-pt",
+                "title": "Synthetic PT public-de54ccb6 ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "de17dd8c-ceeb-40e2-9187-083f6e5d2e34",
+                "slug": "public-de54ccb6-ptonly-en",
+                "path": "/en/cases/public-de54ccb6-ptonly-en",
+                "title": "Synthetic EN public-de54ccb6 ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "16d5e9cc-b49d-4bed-aa7f-31524be9d235",
+          "email": "editor-6b58195a-3d8c-4ea7-8c73-e722d73d7d17@example.invalid"
+        },
+        "image": {
+          "id": "003503ed-dd9d-425a-ae1d-697132d481a1",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "212e106f-fcb3-448b-bbb9-dc88f814d37f",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "76a071db-fa3c-4804-9cac-ec3b790fed8e",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "0a8fb30c7126fc1831b57db13ca38eef3caee97ab04a7e968f2c56df53063431",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-a-973f5053f16b4c9ab1838470d9719ebf\\adfl_test_image_a_973f5053f16b4c9ab1838470d9719ebf",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\0a8fb30c7126fc1831b57db13ca38eef3caee97ab04a7e968f2c56df53063431",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\973f5053-f16b-4c9a-b183-8470d9719ebf\\a\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\973f5053-f16b-4c9a-b183-8470d9719ebf\\a\\optimizer",
+      "captureHash": "b920b1b48c4faffe",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-a-973f5053f16b4c9ab1838470d9719ebf/adfl_test_image_a_973f5053f16b4c9ab1838470d9719ebf",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    },
+    {
+      "key": "b",
+      "database": "adfl_test_image_b_973f5053f16b4c9ab1838470d9719ebf",
+      "bucket": "adfl-test-image-b-973f5053f16b4c9ab1838470d9719ebf",
+      "origin": "http://127.0.0.1:3104",
+      "port": 3002,
+      "fixture": {
+        "namespace": "public-690390db",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-690390db",
+            "brand": "Synthetic PT public-690390db portfolio",
+            "projects": "Synthetic PT public-690390db projects",
+            "about": "Synthetic PT public-690390db about",
+            "resume": "Synthetic PT public-690390db resume",
+            "contact": "Synthetic PT public-690390db contact",
+            "openMenu": "Synthetic PT public-690390db open menu",
+            "closeMenu": "Synthetic PT public-690390db close menu",
+            "newTab": "Synthetic PT public-690390db opens a new tab",
+            "contents": "Synthetic PT public-690390db contents",
+            "readCase": "Synthetic PT public-690390db read case",
+            "homeTitle": "Synthetic PT public-690390db home",
+            "homeEmphasis": "Synthetic PT public-690390db editorial emphasis",
+            "aboutTitle": "Synthetic PT public-690390db about page",
+            "listingTitle": "Synthetic PT public-690390db case list",
+            "contextHeading": "Synthetic PT public-690390db context heading",
+            "comparisonHeading": "Synthetic PT public-690390db comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "af439370-ab8f-4c11-8698-d104ee96cf6c",
+            "resumeHref": "/media/af439370-ab8f-4c11-8698-d104ee96cf6c/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-690390db",
+            "brand": "Synthetic EN public-690390db portfolio",
+            "projects": "Synthetic EN public-690390db projects",
+            "about": "Synthetic EN public-690390db about",
+            "resume": "Synthetic EN public-690390db resume",
+            "contact": "Synthetic EN public-690390db contact",
+            "openMenu": "Synthetic EN public-690390db open menu",
+            "closeMenu": "Synthetic EN public-690390db close menu",
+            "newTab": "Synthetic EN public-690390db opens a new tab",
+            "contents": "Synthetic EN public-690390db contents",
+            "readCase": "Synthetic EN public-690390db read case",
+            "homeTitle": "Synthetic EN public-690390db home",
+            "homeEmphasis": "Synthetic EN public-690390db editorial emphasis",
+            "aboutTitle": "Synthetic EN public-690390db about page",
+            "listingTitle": "Synthetic EN public-690390db case list",
+            "contextHeading": "Synthetic EN public-690390db context heading",
+            "comparisonHeading": "Synthetic EN public-690390db comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "e528560a-050d-4be8-b0a4-8f12b57d8f3d",
+            "resumeHref": "/media/e528560a-050d-4be8-b0a4-8f12b57d8f3d/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "dc0bdaa4-6d94-4837-9c42-8658a175a141",
+            "locales": {
+              "pt": {
+                "contentId": "8feeb9d6-f898-4e64-89f4-f122d7c9c0a3",
+                "slug": "public-690390db-second-pt",
+                "path": "/pt/cases/public-690390db-second-pt",
+                "title": "Synthetic PT public-690390db second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "52be1e99-8f01-4e02-bb87-43020377a3bd",
+                "slug": "public-690390db-second-en",
+                "path": "/en/cases/public-690390db-second-en",
+                "title": "Synthetic EN public-690390db second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "3c3530f5-8d19-427d-a0cf-0ac96096bd3f",
+            "locales": {
+              "pt": {
+                "contentId": "f3ea5a86-4e37-4a15-8698-8b6f6222debc",
+                "slug": "public-690390db-first-pt",
+                "path": "/pt/cases/public-690390db-first-pt",
+                "title": "Synthetic PT public-690390db first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "0f005cdb-4421-44bd-866f-f36d0ef07eef",
+                "slug": "public-690390db-first-en",
+                "path": "/en/cases/public-690390db-first-en",
+                "title": "Synthetic EN public-690390db first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "56175c58-ab11-4186-a849-3973ac86b450",
+            "locales": {
+              "pt": {
+                "contentId": "d4881fc6-07bd-4322-b66f-6a2b93fc7ed2",
+                "slug": "public-690390db-ptonly-pt",
+                "path": "/pt/cases/public-690390db-ptonly-pt",
+                "title": "Synthetic PT public-690390db ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "471857b9-8b03-4760-8f8e-c296b367d703",
+                "slug": "public-690390db-ptonly-en",
+                "path": "/en/cases/public-690390db-ptonly-en",
+                "title": "Synthetic EN public-690390db ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "18144b02-8415-4206-8187-4c2030443822",
+          "email": "editor-b7915706-34e0-4738-be61-4f1514e7491a@example.invalid"
+        },
+        "image": {
+          "id": "c255f31f-e2b6-430e-be5f-3b94c316320b",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "af439370-ab8f-4c11-8698-d104ee96cf6c",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "b231eba4-a25c-4480-9717-75fe39349960",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "5bb3e4865dce46cd8c7ff865e5eaba1daa29e49eb416f380401e6101e72b76cf",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-b-973f5053f16b4c9ab1838470d9719ebf\\adfl_test_image_b_973f5053f16b4c9ab1838470d9719ebf",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\5bb3e4865dce46cd8c7ff865e5eaba1daa29e49eb416f380401e6101e72b76cf",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\973f5053-f16b-4c9a-b183-8470d9719ebf\\b\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\973f5053-f16b-4c9a-b183-8470d9719ebf\\b\\optimizer",
+      "captureHash": "fdeef63393308e3a",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-b-973f5053f16b4c9ab1838470d9719ebf/adfl_test_image_b_973f5053f16b4c9ab1838470d9719ebf",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    }
+  ],
+  "containers": [
+    {
+      "id": "45e8104771a1b7eca8f5e52a27d76e3ab8bfdda5169d0247b085100b7afdfb18",
+      "dataset": "a",
+      "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+      "user": "10001:10001",
+      "networkMode": "container:cefa046a01455193aa6eaa9e82f6223c459f8d39345c5e204e2a06b5b730c8e3",
+      "portsPublished": false,
+      "labels": {
+        "runId": "973f5053-f16b-4c9a-b183-8470d9719ebf",
+        "purpose": "image-local-verification"
+      }
+    },
+    {
+      "id": "f11b2baca05d1879149e7e6b58e06ec68dad18e339d713da8fbb41ae33f0951b",
+      "dataset": "b",
+      "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+      "user": "10001:10001",
+      "networkMode": "container:cefa046a01455193aa6eaa9e82f6223c459f8d39345c5e204e2a06b5b730c8e3",
+      "portsPublished": false,
+      "labels": {
+        "runId": "973f5053-f16b-4c9a-b183-8470d9719ebf",
+        "purpose": "image-local-verification"
+      }
+    }
+  ],
+  "readiness": [
+    {
+      "id": "45e8104771a1b7eca8f5e52a27d76e3ab8bfdda5169d0247b085100b7afdfb18",
+      "dataset": "a",
+      "phase": "initial",
+      "startedAt": "2026-11-04T04:32:23.23771666Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T04:32:28.306627242Z",
+      "automaticProbeFinishedAt": "2026-11-04T04:32:28.535219155Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    },
+    {
+      "id": "f11b2baca05d1879149e7e6b58e06ec68dad18e339d713da8fbb41ae33f0951b",
+      "dataset": "b",
+      "phase": "initial",
+      "startedAt": "2026-11-04T04:32:39.467269163Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T04:32:44.53343438Z",
+      "automaticProbeFinishedAt": "2026-11-04T04:32:44.752185475Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    },
+    {
+      "id": "45e8104771a1b7eca8f5e52a27d76e3ab8bfdda5169d0247b085100b7afdfb18",
+      "dataset": "a",
+      "phase": "restart",
+      "startedAt": "2026-11-04T04:32:48.750124948Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T04:32:53.807041886Z",
+      "automaticProbeFinishedAt": "2026-11-04T04:32:54.018222893Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    },
+    {
+      "id": "f11b2baca05d1879149e7e6b58e06ec68dad18e339d713da8fbb41ae33f0951b",
+      "dataset": "b",
+      "phase": "restart",
+      "startedAt": "2026-11-04T04:33:00.293939986Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T04:33:05.347973598Z",
+      "automaticProbeFinishedAt": "2026-11-04T04:33:05.575125569Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    }
+  ],
+  "status": "passed-http-consumer",
+  "databaseContainerId": "cefa046a01455193aa6eaa9e82f6223c459f8d39345c5e204e2a06b5b730c8e3",
+  "databaseNetworkId": "9f27554482a79c376e85e6276217be418fcbd2dd463a138f5e83903a5e451955",
+  "databaseHostPort": 55434,
+  "cleanup": [
+    {
+      "id": "f11b2baca05d1879149e7e6b58e06ec68dad18e339d713da8fbb41ae33f0951b",
+      "stoppedAndRemoved": true
+    },
+    {
+      "id": "45e8104771a1b7eca8f5e52a27d76e3ab8bfdda5169d0247b085100b7afdfb18",
+      "stoppedAndRemoved": true
+    }
+  ],
+  "databaseStoppedAndRemoved": true,
+  "finishedUTC": "2026-11-04T04:33:13.546Z",
+  "fullBrowserImageE2E": "pending"
+}

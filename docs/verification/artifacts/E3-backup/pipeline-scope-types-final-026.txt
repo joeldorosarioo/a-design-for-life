@@ -1,0 +1,2 @@
+COMMAND: pnpm exec tsc --project C work/E3-backup-pipeline/pipeline-scope.tsconfig.json; same compiler options, explicit backup roots, inherited aliases, no generated output
+EXIT_CODE: 0

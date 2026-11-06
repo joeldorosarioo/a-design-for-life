@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-11-04T00:48:07.9090623Z",
+  "node": "v24.22.2",
+  "red": "restore-namespace-red-002.txt",
+  "redExit": 1,
+  "redFailed": 1,
+  "redFilteredSkipped": 25,
+  "green": "restore-namespace-green-002.txt",
+  "greenExit": 0,
+  "greenPassed": 51,
+  "reason": "The first restore guard used DB/media names rejected by validated test server-env; corrected to adfl_test_restore_ and adfl-test-restore- without changing server-env.",
+  "files": [
+    {
+      "Path": "E:\\a-design-for-life\\ops\\backup\\restore-target.ts",
+      "Hash": "3264E2EF4D07BFEA4CF8C32B28A1A6DF7393022D2E266DB55736223DF90DAE9E"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\ops\\backup\\restore-target.test.ts",
+      "Hash": "255088C27500FAF34195DA2E242CFF48F6E85F36C8232B4FE80A3CA60BF0EE37"
+    }
+  ],
+  "notExecuted": [
+    "actual backup",
+    "age encryption/decryption",
+    "actual restored Payload",
+    "remote bucket",
+    "full gate after these changes"
+  ],
+  "toolingFailure": "PowerShell parser rejected the first edit command before any mutation; corrected via literal C node writer. This was not behavioral RED."
+}

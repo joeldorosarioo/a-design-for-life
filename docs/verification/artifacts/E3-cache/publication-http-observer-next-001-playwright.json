@@ -1,0 +1,196 @@
+{
+  "config": {
+    "argv": [
+      "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+      "E:\\a-design-for-life\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "src/config/publication-http-observation.e2e.test.ts",
+      "--project=chromium",
+      "--workers=1",
+      "--reporter=list,json"
+    ],
+    "configFile": "E:\\a-design-for-life\\playwright.config.ts",
+    "rootDir": "E:/a-design-for-life/src",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "E:\\a-design-for-life\\testing\\setup\\playwright.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/a-design-for-life/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "E:/a-design-for-life/src",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.e2e.test.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "E:\\a-design-for-life\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "E:\\a-design-for-life\\src",
+        "snapshotDir": "E:\\a-design-for-life\\src",
+        "testIgnore": [],
+        "testMatch": "**/*.e2e.test.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3101",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "config\\publication-http-observation.e2e.test.ts",
+      "file": "config/publication-http-observation.e2e.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "confirms an HTTP-observed generation and retries the same durable root after the observer listener goes away",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8536,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"ok\": true,\u001b[22m\n\u001b[2m    \"value\": Object {\u001b[22m\n\u001b[2m      \"operationId\": \"f5a0b6f6-392c-480c-88ed-4abb1f87b3fe\",\u001b[22m\n\u001b[32m-     \"state\": \"public\",\u001b[39m\n\u001b[31m+     \"state\": \"update-pending\",\u001b[39m\n\u001b[2m      \"targetRevision\": \"efb7bc6d-3f5e-4ea6-a3e0-0d94d7941bbf\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"ok\": true,\u001b[22m\n\u001b[2m    \"value\": Object {\u001b[22m\n\u001b[2m      \"operationId\": \"f5a0b6f6-392c-480c-88ed-4abb1f87b3fe\",\u001b[22m\n\u001b[32m-     \"state\": \"public\",\u001b[39m\n\u001b[31m+     \"state\": \"update-pending\",\u001b[39m\n\u001b[2m      \"targetRevision\": \"efb7bc6d-3f5e-4ea6-a3e0-0d94d7941bbf\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\u001b[2m  }\u001b[22m\n    at acknowledge (E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts:92:21)\n    at E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts:283:25",
+                    "location": {
+                      "file": "E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts",
+                      "column": 21,
+                      "line": 92
+                    },
+                    "snippet": "  90 |       editorialStatus: response.status(),\n  91 |     });\n> 92 |     expect(receipt).toEqual({\n     |                     ^\n  93 |       ok: true,\n  94 |       value: { operationId, targetRevision: saved.editorialRevision, state: 'public' },\n  95 |     });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts",
+                        "column": 21,
+                        "line": 92
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"ok\": true,\u001b[22m\n\u001b[2m    \"value\": Object {\u001b[22m\n\u001b[2m      \"operationId\": \"f5a0b6f6-392c-480c-88ed-4abb1f87b3fe\",\u001b[22m\n\u001b[32m-     \"state\": \"public\",\u001b[39m\n\u001b[31m+     \"state\": \"update-pending\",\u001b[39m\n\u001b[2m      \"targetRevision\": \"efb7bc6d-3f5e-4ea6-a3e0-0d94d7941bbf\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\u001b[2m  }\u001b[22m\n\n  90 |       editorialStatus: response.status(),\n  91 |     });\n> 92 |     expect(receipt).toEqual({\n     |                     ^\n  93 |       ok: true,\n  94 |       value: { operationId, targetRevision: saved.editorialRevision, state: 'public' },\n  95 |     });\n    at acknowledge (E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts:92:21)\n    at E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts:283:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "buffer": "KG5vZGU6MjM1NTYpIFdhcm5pbmc6IFRoZSAnTk9fQ09MT1InIGVudiBpcyBpZ25vcmVkIGR1ZSB0byB0aGUgJ0ZPUkNFX0NPTE9SJyBlbnYgYmVpbmcgc2V0LgooVXNlIGBub2RlIC0tdHJhY2Utd2FybmluZ3MgLi4uYCB0byBzaG93IHdoZXJlIHRoZSB3YXJuaW5nIHdhcyBjcmVhdGVkKQo="
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-04T04:02:52.198Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "E3-real-publication-observation.json",
+                      "contentType": "application/json",
+                      "body": "eyJydW5JZCI6IjIzOTcxOGQ5LTNhZWUtNGYwZi1hMzMyLWNjNjVkNGFjNzBhNyIsImNvbnRhaW5lcklkIjoiZGI5MmVjOTEzYTFjODZhNzFmNjRjZTJiYTk4N2I5ZWQyNTUwZjYyY2QwZjFjMmEwNGRlYmU2ZDFiNTY5YjU4MSIsIm5ldHdvcmtJZCI6ImM2N2UwNDI1MTVhZmU2NDk4YTA1NDAwMWI0ZDE0Y2IxNGEyMDRjZWNkNzUxOWRlOTVhZmIyNjFmOGNjOGVkZWQiLCJub2RlIjoiMjQuMjIuMiIsImJ1aWxkcyI6WyJEX2dudWNVMFhQQTNfVnJuOWhlTlIiLCJEX2dudWNVMFhQQTNfVnJuOWhlTlIiXSwib3JpZ2lucyI6WyJodHRwOi8vMTI3LjAuMC4xOjMxMDIiLCJodHRwOi8vMTI3LjAuMC4xOjMxMDIiXSwib2JzZXJ2YXRpb25zIjpbeyJjb2xsZWN0aW9uIjoiY2FzZXMiLCJvcGVyYXRpb25JZCI6IjQyMzRjMmEwLTU4YmEtNDgzNy04ZGM4LTBhOTA3ZWFlMzk0YyIsInJlY2VpcHQiOnsib3BlcmF0aW9uSWQiOiI0MjM0YzJhMC01OGJhLTQ4MzctOGRjOC0wYTkwN2VhZTM5NGMiLCJ0YXJnZXRSZXZpc2lvbiI6IjNlZGQ5N2RhLTU5YzgtNDE4OS04YmU4LWRmYWZiNTFmMDI1YSIsInN0YXRlIjoicHVibGljIn0sImVkaXRvcmlhbFN0YXR1cyI6MjAwfSx7InBhdGhuYW1lIjoiL2FwaS9jYXNlLWNvbnRlbnQvcHVibGlzaGVkL3B0Iiwic3RhdHVzIjoyMDAsImdlbmVyYXRpb24iOiIxODE2OGRjZC00ZTMwLTQ0NTItOWJjNS1jYzQwZTAyZDA4NjgiLCJieXRlcyI6NDYsImxvY2F0aW9uIjpudWxsfSx7InBhdGhuYW1lIjoiL2FwaS9jYXNlLWNvbnRlbnQvcHVibGlzaGVkL2VuIiwic3RhdHVzIjoyMDAsImdlbmVyYXRpb24iOiIxODE2OGRjZC00ZTMwLTQ0NTItOWJjNS1jYzQwZTAyZDA4NjgiLCJieXRlcyI6NDYsImxvY2F0aW9uIjpudWxsfSx7ImNvbGxlY3Rpb24iOiJwcm9mZXNzaW9uYWwtcHJvZmlsZXMiLCJvcGVyYXRpb25JZCI6ImEwMDcxN2NlLWZhM2QtNDE4My05ZTYzLWE3NDU4MjllYWYxYyIsInJlY2VpcHQiOnsib3BlcmF0aW9uSWQiOiJhMDA3MTdjZS1mYTNkLTQxODMtOWU2My1hNzQ1ODI5ZWFmMWMiLCJ0YXJnZXRSZXZpc2lvbiI6IjJmMjUyZDA0LWQxN2UtNGQ5My1hYmRhLTdkMzM0MTlhNzEyMSIsInN0YXRlIjoicHVibGljIn0sImVkaXRvcmlhbFN0YXR1cyI6MjAwfSx7InBhdGhuYW1lIjoiL2FwaS9wcm9mZXNzaW9uYWwtcHJvZmlsZXMvcHVibGlzaGVkL3B0Iiwic3RhdHVzIjoyMDAsImdlbmVyYXRpb24iOiI1ZmUzNzI4Zi0wMDQ5LTQyODEtYjUzMS0zYzI1ZjNkMWI4ODkiLCJieXRlcyI6MjYyNSwibG9jYXRpb24iOm51bGx9LHsiY29sbGVjdGlvbiI6InNpdGUtbmF2aWdhdGlvbiIsIm9wZXJhdGlvbklkIjoiMTMwZDU5ODItNDRlNi00MzUzLWE5OTAtZWQyODhmMTAzMGNmIiwicmVjZWlwdCI6eyJvcGVyYXRpb25JZCI6IjEzMGQ1OTgyLTQ0ZTYtNDM1My1hOTkwLWVkMjg4ZjEwMzBjZiIsInRhcmdldFJldmlzaW9uIjoiNmUzNDI1YzYtYjFhMi00YjU2LTk4YjgtOTg5ODQ2MmQ2M2I0Iiwic3RhdGUiOiJwdWJsaWMifSwiZWRpdG9yaWFsU3RhdHVzIjoyMDB9LHsicGF0aG5hbWUiOiIvYXBpL3NpdGUtbmF2aWdhdGlvbi9wdWJsaXNoZWQvcHQiLCJzdGF0dXMiOjIwMCwiZ2VuZXJhdGlvbiI6IjBjOTBmMjllLTE0MzMtNDlmNC1hMDNhLTViYmNjMzRiMGY0MiIsImJ5dGVzIjoyMTAwLCJsb2NhdGlvbiI6bnVsbH0seyJjb2xsZWN0aW9uIjoiY2FzZS1jb250ZW50Iiwib3BlcmF0aW9uSWQiOiI4MzZlMWU3YS04NzA3LTQ5ZTEtYmJlYS1jYTZjZDAwYjk4NzIiLCJyZWNlaXB0Ijp7Im9wZXJhdGlvbklkIjoiODM2ZTFlN2EtODcwNy00OWUxLWJiZWEtY2E2Y2QwMGI5ODcyIiwidGFyZ2V0UmV2aXNpb24iOiI0ODhhNjEwMC1kM2Y5LTQ5MzItODdlMy03ZWJhNzljNzY0NGQiLCJzdGF0ZSI6InB1YmxpYyJ9LCJlZGl0b3JpYWxTdGF0dXMiOjIwMH0seyJwYXRobmFtZSI6Ii9wdC9jYXNlcy9vYnNlcnZlci1maXJzdC1iNWNhYTYwYyIsInN0YXR1cyI6MjAwLCJnZW5lcmF0aW9uIjoiM2JjNjYzYmUtZDBhZS00MmMwLTlhYTUtZjBiYWFjYjBiNGU4IiwiYnl0ZXMiOjM0NDQ1LCJsb2NhdGlvbiI6bnVsbH0seyJwaGFzZSI6Im9ic2VydmVyLWxpc3RlbmVyLXVuYXZhaWxhYmxlIiwicmVzdWx0Ijp7Im9rIjp0cnVlLCJ2YWx1ZSI6eyJvcGVyYXRpb25JZCI6ImY1YTBiNmY2LTM5MmMtNDgwYy04OGVkLTRhYmIxZjg3YjNmZSIsInRhcmdldFJldmlzaW9uIjoiZWZiN2JjNmQtM2Y1ZS00ZWE2LWEzZTAtMGQ5NGQ3OTQxYmJmIiwic3RhdGUiOiJ1cGRhdGUtcGVuZGluZyJ9fX0seyJwaGFzZSI6InByb21vdGVkLWJ1dC1wZW5kaW5nIiwiZ2VuZXJhdGlvbiI6IjIxMDJkNjczLWNmNGQtNGQxMS1iZDk2LWJkZmEwMmM1ODIzNyIsInN0YXJ0ZWRWZXJzaW9uIjoxfSx7ImNvbGxlY3Rpb24iOiJjYXNlLWNvbnRlbnQiLCJvcGVyYXRpb25JZCI6ImY1YTBiNmY2LTM5MmMtNDgwYy04OGVkLTRhYmIxZjg3YjNmZSIsInJlY2VpcHQiOnsib3BlcmF0aW9uSWQiOiJmNWEwYjZmNi0zOTJjLTQ4MGMtODhlZC00YWJiMWY4N2IzZmUiLCJ0YXJnZXRSZXZpc2lvbiI6ImVmYjdiYzZkLTNmNWUtNGVhNi1hM2UwLTBkOTRkNzk0MWJiZiIsInN0YXRlIjoidXBkYXRlLXBlbmRpbmcifSwiZWRpdG9yaWFsU3RhdHVzIjoyMDB9XX0="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\a-design-for-life\\test-results\\config-publication-http-ob-e4e40-observer-listener-goes-away-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\a-design-for-life\\src\\config\\publication-http-observation.e2e.test.ts",
+                    "column": 21,
+                    "line": 92
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1721042d9197abf7431c-27f7edef4caef84eff39",
+          "file": "config/publication-http-observation.e2e.test.ts",
+          "line": 37,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T04:01:35.357Z",
+    "duration": 88252.098,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

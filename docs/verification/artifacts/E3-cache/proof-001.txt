@@ -1,0 +1,199 @@
+[21:23:34] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[21:23:34] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[21:23:34] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (257ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (195ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (13ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (8ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (11ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (28ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (12ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (15ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (18ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (8ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (98ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (6ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (18ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (7ms)[39m
+[21:23:35] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[21:23:35] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (3ms)[39m
+[21:23:35] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 183ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 37.8s
+  Running TypeScript ...
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.work/next-tests/3f4e0d0f-2bfb-4d43-a895-97ac2c5218d6/types/**/*.ts'
+  	- include was updated to add '.work/next-tests/3f4e0d0f-2bfb-4d43-a895-97ac2c5218d6/dev/types/**/*.ts'
+
+  Finished TypeScript in 40s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 120ms
+  Finalizing page optimization ...
+Turbopack build encountered 2 warnings:
+./src/config/next-dist.ts:18:19
+Warning: Dynamic filesystem access causes tracing of the whole project
+  16 |   const normalize = (value: string) => (process.platform === 'win32' ? value.toLowerCase()...
+  17 |   try {
+> 18 |     if (normalize(realpathSync(ancestor)) === normalize(ancestor)) return;
+     |                   ^^^^^^^^^^^^^^^^^^^^^^
+  19 |   } catch {
+  20 |     /* Dangling links are never a safe output or cleanup target. */
+  21 |   }
+
+Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+This can slow down deployments or lead to failures when size limits are exceeded.
+To resolve this, you can
+- make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+- only use them in development, or
+- opt out by adding an ignore comment to the highlighted call: fs.realpathSync(/*turbopackIgnore: true*/ ...), or
+- remove them.
+
+Import traces:
+  App Route:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/payload.config.ts
+    ./src/app/(payload)/api/[...slug]/route.ts
+
+  Instrumentation:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/payload.config.ts
+    ./src/instrumentation.ts
+
+  Middleware:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/features/media-library/server/resolve-media-access.ts
+    ./src/features/media-library/server.ts
+    ./src/proxy.ts
+
+  Server Component:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/features/media-library/server/resolve-media-access.ts
+    ./src/features/media-library/server.ts
+    ./src/features/cases/server/map-case-detail.ts
+    ./src/features/cases/server.ts
+    ./src/app/(portfolio)/_components/public-page-view.tsx
+    ./src/app/(portfolio)/[locale]/not-found.tsx
+
+
+./src/config/next-dist.ts:6:34
+Warning: Dynamic filesystem access causes tracing of the whole project
+  4 | export function assertUnlinkedWorkspacePath(selected: string, root = process.cwd()) {
+  5 |   const target = path.resolve(root, selected);
+> 6 |   const relative = path.relative(path.resolve(root), target);
+    |                                  ^^^^^^^^^^^^^^^^^^
+  7 |   if (
+  8 |     !relative ||
+  9 |     relative === '..' ||
+
+Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+This can slow down deployments or lead to failures when size limits are exceeded.
+To resolve this, you can
+- make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+- only use them in development, or
+- opt out by adding an ignore comment to the highlighted call: path.resolve(/*turbopackIgnore: true*/ ...), or
+- remove them.
+
+Import traces:
+  App Route:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/payload.config.ts
+    ./src/app/(payload)/api/[...slug]/route.ts
+
+  Instrumentation:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/payload.config.ts
+    ./src/instrumentation.ts
+
+  Middleware:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/features/media-library/server/resolve-media-access.ts
+    ./src/features/media-library/server.ts
+    ./src/proxy.ts
+
+  Server Component:
+    ./src/config/next-dist.ts
+    ./src/features/media-library/server/media-runtime.ts
+    ./src/features/media-library/server/resolve-media-access.ts
+    ./src/features/media-library/server.ts
+    ./src/features/cases/server/map-case-detail.ts
+    ./src/features/cases/server.ts
+    ./src/app/(portfolio)/_components/public-page-view.tsx
+    ./src/app/(portfolio)/[locale]/not-found.tsx
+
+
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /health
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+├ ƒ /robots.txt
+└ ƒ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 194ms
+✓ Running next.config.ts took 68ms
+⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 1 test using 1 worker
+
+(node:31696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\config\public-cache.e2e.test.ts:43:1 › serves confirmed PT/EN data and shared media across full origin outage and same-build Next restart, then denies cached bytes after final revocation (1.2m)
+
+  1 passed (3.4m)
+
+EXIT_CODE=0

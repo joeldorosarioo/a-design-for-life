@@ -1,0 +1,136 @@
+{
+  "recordedAt": "2026-11-04T02:25:33.787Z",
+  "scope": "Frozen backup engine, dependencies/tests and current runbook; Native024 separately records full app-source fingerprint during its run",
+  "files": [
+    {
+      "path": "ops/backup/age.test.ts",
+      "byteLength": 6754,
+      "sha256": "b3dfa11815fcbe2f8d275a7d6d0235fd7e401620d644664ff8a51ad7202702fb"
+    },
+    {
+      "path": "ops/backup/age.ts",
+      "byteLength": 2496,
+      "sha256": "16b844be0e982a72f8f5514349c7c543a2ce8409b9396d569ebf7373130671d7"
+    },
+    {
+      "path": "ops/backup/archive.test.ts",
+      "byteLength": 12343,
+      "sha256": "b1556e595f675ad4c93a39df4622c14599aba6a2b9bb5689ac9df41982cd5beb"
+    },
+    {
+      "path": "ops/backup/archive.ts",
+      "byteLength": 9146,
+      "sha256": "f19157c95e582cf6191f3a3d8d39e5928b3927094d50f9befb6f5ccb4e2109cd"
+    },
+    {
+      "path": "ops/backup/contracts.test.ts",
+      "byteLength": 2899,
+      "sha256": "093948b34424d4c2a98e4193774cc7fa6ee971d6eef7c8dcf4e8ce5561e70558"
+    },
+    {
+      "path": "ops/backup/contracts.ts",
+      "byteLength": 4235,
+      "sha256": "5e9f0a7b0a77227d12e29db8fb4186cf239249ce29cb89332cc1e6120ae29dfd"
+    },
+    {
+      "path": "ops/backup/local-target.test.ts",
+      "byteLength": 8179,
+      "sha256": "72d7b70fa4d01da028ab61ca5ab0ae1fecbc7db69edb9f24c99744a2ab05edac"
+    },
+    {
+      "path": "ops/backup/local-target.ts",
+      "byteLength": 14430,
+      "sha256": "b7e10af80e695bb5e7ea6f4029a6242f2143bcdd081d42ab69916b77edb262e5"
+    },
+    {
+      "path": "ops/backup/repository.test.ts",
+      "byteLength": 9278,
+      "sha256": "99afca69c6af97bea97ee744ac4491db099e03eeb48b781c915575b988978626"
+    },
+    {
+      "path": "ops/backup/repository.ts",
+      "byteLength": 15463,
+      "sha256": "1d407ef0c86313717000f38c1ae32a83fb560eba39cea91b335fe628beddf780"
+    },
+    {
+      "path": "ops/backup/restore-target.test.ts",
+      "byteLength": 8400,
+      "sha256": "64ce32f917c81281c701b6878f28a486a8c06b3dd1687656ba1a7b8a47eb0864"
+    },
+    {
+      "path": "ops/backup/restore-target.ts",
+      "byteLength": 4245,
+      "sha256": "d4f9461cb7d37efe59b78e7b034fadaeacd1c14f66f6f531f3febb7f3787e237"
+    },
+    {
+      "path": "ops/backup/restore.test.ts",
+      "byteLength": 11720,
+      "sha256": "ed102183f07e5bf3052e27d5195227de57c23fb07d524c66777d2c0f93a718be"
+    },
+    {
+      "path": "ops/backup/restore.ts",
+      "byteLength": 4092,
+      "sha256": "039d3ba7b25c345e699b9cac8961e2d5019e8a5dc3146f3ca4b966ae4595f035"
+    },
+    {
+      "path": "ops/backup/retention.test.ts",
+      "byteLength": 7017,
+      "sha256": "545f9311e1125bd44002c77c8355b75469343f65e21f7b67e5026120fbeac1c6"
+    },
+    {
+      "path": "ops/backup/retention.ts",
+      "byteLength": 5389,
+      "sha256": "bec5828392cc33d55eb2fbef1ef880b0b452b499ea85aff7fe22e0f28ac3f887"
+    },
+    {
+      "path": "ops/backup/run.test.ts",
+      "byteLength": 7824,
+      "sha256": "e3bfc5b34c16c36cdef1fe294a981befdf637a0b78ae27149f5fccb0fc61acb6"
+    },
+    {
+      "path": "ops/backup/run.ts",
+      "byteLength": 8458,
+      "sha256": "4b2071828ee04389e0f8e50558d125dd071a8439f7eb5143a8ce02f58412283b"
+    },
+    {
+      "path": "ops/backup/tools.test.ts",
+      "byteLength": 3220,
+      "sha256": "46daffbef4f31916d3f6d501be12430df6693804a69bf36f10af36828196670b"
+    },
+    {
+      "path": "ops/backup/tools.ts",
+      "byteLength": 6981,
+      "sha256": "dfbd66e1c012428c0cd80f7731db9b7d85a632c280c265f0515727bcc3ad5e5e"
+    },
+    {
+      "path": "src/helpers/storage/object-retention.ts",
+      "byteLength": 1832,
+      "sha256": "f67e422ee3b82330873b6bfe61664b133ca6f864b21941042c4d6aa358bcc6d2"
+    },
+    {
+      "path": "src/helpers/storage/object-retention.test.ts",
+      "byteLength": 5744,
+      "sha256": "224b12abcde5f6cb02599348f55db61cf96134592e35ca9447c41bfb8a5c2a3a"
+    },
+    {
+      "path": "src/helpers/storage/object-storage.ts",
+      "byteLength": 3273,
+      "sha256": "602f6a264c687d35357a2432a2e0a66fc7a568b534f782a9ad41832fa45792f7"
+    },
+    {
+      "path": "src/helpers/storage/r2-storage.ts",
+      "byteLength": 4241,
+      "sha256": "e46dbf461f14ffcb92173840825411a9c4bb2ca0522651781bda995721262749"
+    },
+    {
+      "path": "src/features/media-library/server/backup-set.integration.test.ts",
+      "byteLength": 20929,
+      "sha256": "3515e51a7041aa06fca7ab6e43eda5d874d70808d99453de2e3659244fe526fb"
+    },
+    {
+      "path": "docs/runbooks/backup-e-restauracao.md",
+      "byteLength": 16315,
+      "sha256": "1f697be51dd82dec7ef083822c4c538083d11b0c01936f170a8a9bbafa25a5c1"
+    }
+  ]
+}

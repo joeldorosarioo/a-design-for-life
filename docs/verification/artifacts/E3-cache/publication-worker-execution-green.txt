@@ -1,0 +1,14 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+{"dateISO":"2026-11-04T02:08:02.456Z","level":"error","operation":"publication.retry.record","result":"unavailable","correlationId":"339a23e8-f4fa-4e04-8911-33e662f8c557","context":"[REDACTED]"}
+ ✓ |unit| src/helpers/payload/publication-retry-execution.test.ts > executes once after the durable claim and records only that started token with the core receipt 3ms
+ ✓ |unit| src/helpers/payload/publication-retry-execution.test.ts > leaves an ineligible attempt pending without executing a target or recording an outcome 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-execution.test.ts > uses existing stale reconciliation without allocating or recording an invented attempt 0ms
+ ✓ |unit| src/helpers/payload/publication-retry-execution.test.ts > preserves an actual public receipt if independent execution-metadata recording fails afterward 2ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  23:08:02
+   Duration  441ms (setup 76%, transform 10%, import 9%, tests 2%, worker 2%)
+

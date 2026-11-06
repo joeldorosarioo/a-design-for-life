@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "focused-ui-regressions-green-awaiting-full-ci",
+  "failedWorkflowRunId": 42220798111,
+  "previousFullBrowserRun": {
+    "passed": 118,
+    "failed": 5,
+    "notRun": 0,
+    "controlledDatabaseOutageRecovered": true
+  },
+  "causes": {
+    "missingCardLocaleRestoration": "Offscreen lazy images below the viewport were included when the fallback reading target was the whole card grid.",
+    "mediaForm": "The test used an obsolete field label.",
+    "nativeRecovery": "The helper waited for English controls while the native UI used Portuguese."
+  },
+  "corrections": {
+    "lazyImagesMustIntersectViewport": true,
+    "visibleLazyAndEagerResourceWaitsPreserved": true,
+    "mediaSelectorMatchesApprovedPortugueseLabel": true,
+    "nativeRecoveryLocale": "pt-BR",
+    "responseAndClickAwaitedTogether": true,
+    "timeoutsChanged": false
+  },
+  "verification": {
+    "readingRed": {
+      "testsPassed": 10,
+      "testsFailed": 1,
+      "failedAssertion": "offscreen lazy image timedOut true instead of false"
+    },
+    "readingGreenTestsPassed": 19,
+    "focusedBrowserJourneysPassed": 7,
+    "browserExitCode": 0,
+    "nextProductionBuildPassed": true,
+    "ownedRunId": "6b259ae1-9320-472b-a796-f4eb7bbe9722",
+    "remainingOwnedContainers": 0,
+    "remainingOwnedNetworks": 0,
+    "preexistingNextEnvPreserved": true
+  },
+  "stagingDatabaseTouched": false,
+  "realEmailSent": false,
+  "productionTouched": false,
+  "secretValuesPrinted": false
+}

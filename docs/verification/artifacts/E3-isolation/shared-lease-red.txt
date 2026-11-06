@@ -1,0 +1,55 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| testing/setup/test-lifecycle-lock.test.ts (7 tests | 3 failed) 70ms
+   × serializes distinct checkout roots on shared port55434 even for run 443f2f55-41c5-499a-9c24-a038128133f7 15ms
+   × serializes distinct checkout roots on shared port55434 even for run e865e644-0b6b-4aac-bfac-e7d8609cd037 13ms
+   × refuses a linked shared lease ancestor even when the checkout itself is unlinked 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/test-lifecycle-lock.test.ts > serializes distinct checkout roots on shared port55434 even for run 443f2f55-41c5-499a-9c24-a038128133f7
+ FAIL  |unit| testing/setup/test-lifecycle-lock.test.ts > serializes distinct checkout roots on shared port55434 even for run e865e644-0b6b-4aac-bfac-e7d8609cd037
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ testing/setup/test-lifecycle-lock.test.ts:50:106
+     48|   let secondRelease: (() => void) | undefined;
+     49|   try {
+     50|     expect(() => { secondRelease = acquireTestLifecycleLock(otherRunId…
+       |                                                                                                          ^
+     51|   } finally { secondRelease?.(); firstRelease(); }
+     52| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| testing/setup/test-lifecycle-lock.test.ts > refuses a linked shared lease ancestor even when the checkout itself is unlinked
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ testing/setup/test-lifecycle-lock.test.ts:60:89
+     58|   let release: (() => void) | undefined;
+     59|   try {
+     60|     expect(() => { release = acquireTestLifecycleLock(runId, checkout,…
+       |                                                                                         ^
+     61|     expect(readdirSync(outside)).toEqual([]);
+     62|   } finally { release?.(); }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 4 passed (7)
+   Start at  20:46:24
+   Duration  443ms (setup 62%, tests 23%, transform 8%, import 6%, worker 1%)
+

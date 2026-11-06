@@ -1,0 +1,14 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > writes one JSON line with required metadata and preserves a valid correlation 3ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > emits only validated technical context, omitting secrets and private content 1ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > redacts unknown values and nested cycles without evaluating getters 0ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  20:49:39
+   Duration  425ms (setup 69%, transform 17%, import 11%, tests 2%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:49:38.6066140Z EXIT=0 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/helpers/logger/logger.test.ts --reporter verbose

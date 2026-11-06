@@ -1,0 +1,16 @@
+{
+  "privateIdentityInsideProjectOrArchive": false,
+  "node": "v24.22.2",
+  "ageVersion": "v1.3.2",
+  "privateIdentityContentsRecorded": false,
+  "tarSHA256": "A3AC62FD4CDF619A7C53F71CA3FE5FB42F72020975670FF29AFE3603F6416A8E",
+  "ageSHA256": "2821A4ED191DA07372ACD302E5F6FEAE7A7985E285E1417765EBE74025AF45F0",
+  "pnpm": "12.10.1",
+  "observedAt": "2026-11-04T01:36:44.3774251Z",
+  "scope": "Actual local age/USTAR proof; no DB, cloud or operational job",
+  "ephemeralTestIdentityGenerated": true,
+  "platform": "win32-amd64",
+  "additionalPrivateIdentityGenerated": false,
+  "differentValidIdentitySource": "https://github.com/FiloSottile/age/blob/v1.3.2/age_test.go",
+  "tarVersion": "bsdtar 3.8.9 - libarchive 3.8.9 zlib/1.2.13.1-motley liblzma/5.8.3 bz2lib/1.0.8 libzstd/1.5.7 cng/2.0 libb2/bundled "
+}

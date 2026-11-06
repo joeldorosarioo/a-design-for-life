@@ -314,9 +314,10 @@ it.each([
   expect(nativeCalls).toBe(0);
 });
 it('returns308 directly from confirmed history without preparing a render pin', async () => {
-  await withPublicRootWriter(directory, async (_, commit) => commit(snapshot()));
+  const root = snapshot();
+  await withPublicRootWriter(directory, async (_, commit) => commit(root));
   await expect(preparePublicRenderRequest(request('/pt/cases/antigo'), options())).resolves.toEqual(
-    { status: 308, location: '/pt/cases/publico' },
+    { status: 308, location: '/pt/cases/publico', generation: root.generation },
   );
   expect(nativeCalls).toBe(0);
 });
@@ -337,7 +338,7 @@ it('keeps410 for a confirmed tombstone independently of missing shell coverage',
   await withPublicRootWriter(directory, async (_, commit) => commit(a));
   await writeFile(path.join(directory, 'render-snapshots'), 'blocked pin storage');
   const prepared = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
-  expect(prepared).toEqual({ status: 410, caseStateLocale: 'pt' });
+  expect(prepared).toEqual({ status: 410, caseStateLocale: 'pt', generation: a.generation });
   expect(await readdir(directory)).toEqual(['current.json', 'render-snapshots']);
   expect(nativeCalls).toBe(0);
 });
@@ -486,7 +487,7 @@ it('preserves410 and the exact technical fallback when no confirmed structural p
   );
   await withPublicRootWriter(directory, async (_current, commit) => commit(root));
   const prepared = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
-  expect(prepared).toEqual({ status: 410, caseStateLocale: 'pt' });
+  expect(prepared).toEqual({ status: 410, caseStateLocale: 'pt', generation: root.generation });
   expect(casePresentation(prepared)).toBeNull();
   expect(nativeCalls).toBe(0);
 });

@@ -1,12 +1,16 @@
 import 'server-only';
-import { createLocalReq, Forbidden, type PayloadRequest } from 'payload';
+import { createLocalReq, Forbidden, type PayloadRequest, type Where } from 'payload';
 import { withPublicRootWriter, type PublicRoot } from './public-root';
 import type { PublicationUpdate } from '@/payload-types';
 import type { PublicReceipt } from './publication-receipt.schema';
 export type { PublicReceipt } from './publication-receipt.schema';
 export type PublicationCoordinatorOptions = {
   directory: string;
-  compose: (root: PublicRoot | null, operation: PublicationUpdate) => Promise<PublicRoot>;
+  compose: (
+    root: PublicRoot | null,
+    operation: PublicationUpdate,
+    context: { previousAcknowledged: boolean },
+  ) => Promise<PublicRoot>;
   reconcile?: (
     root: PublicRoot,
     operation: PublicationUpdate,
@@ -14,6 +18,7 @@ export type PublicationCoordinatorOptions = {
     options: { retirePending: boolean },
   ) => Promise<void>;
   beforePromote?: (operation: PublicationUpdate) => Promise<void>;
+  verify?: (root: PublicRoot, operation: PublicationUpdate) => Promise<void>;
 };
 export async function requirePublicationTransaction(req: PayloadRequest) {
   const transactionID = await req.transactionID;
@@ -21,6 +26,30 @@ export async function requirePublicationTransaction(req: PayloadRequest) {
   if (!transactionID || !adapter.sessions?.[String(transactionID)]?.db)
     throw new Error('An active native publication transaction is required.');
 }
+function findOlderOperations(
+  operation: PublicationUpdate,
+  req: PayloadRequest,
+  previousOperationId?: string,
+) {
+  const pending: Where = { state: { equals: 'update-pending' } };
+  return req.payload.db.find<PublicationUpdate>({
+    collection: 'publication-updates',
+    req,
+    where: {
+      and: [
+        { subjectCollection: { equals: operation.subjectCollection } },
+        { subjectId: { equals: operation.subjectId } },
+        { operationId: { not_equals: operation.operationId } },
+        previousOperationId
+          ? { or: [pending, { operationId: { equals: previousOperationId } }] }
+          : pending,
+      ],
+    },
+    pagination: false,
+    limit: 0,
+  });
+}
+
 export function createPublicationCoordinator(options: PublicationCoordinatorOptions) {
   return {
     directory: options.directory,
@@ -120,28 +149,31 @@ export function createPublicationCoordinator(options: PublicationCoordinatorOpti
               });
             } else {
               let confirmed = root;
-              if (root?.subjects[subjectKey]?.operationId !== operationId) {
-                confirmed = await options.compose(root, operation);
+              const previous = root?.subjects[subjectKey];
+              // A selected predecessor can have reached current.json without its SQL ACK.
+              const older =
+                options.verify && previous && previous.operationId !== operationId
+                  ? await findOlderOperations(operation, fresh, previous.operationId)
+                  : undefined;
+              if (previous?.operationId !== operationId) {
+                const previousAcknowledged = Boolean(
+                  previous &&
+                  older?.docs.some(
+                    (prior) =>
+                      prior.operationId === previous.operationId &&
+                      prior.targetRevision === previous.targetRevision &&
+                      prior.state === 'public',
+                  ),
+                );
+                confirmed = await options.compose(root, operation, { previousAcknowledged });
                 await requirePublicationTransaction(fresh);
                 await commit(confirmed);
               }
               if (!confirmed) throw new Error('Public root unavailable.');
               await requirePublicationTransaction(fresh);
-              const older = await req.payload.db.find({
-                collection: 'publication-updates',
-                req: fresh,
-                where: {
-                  and: [
-                    { subjectCollection: { equals: operation.subjectCollection } },
-                    { subjectId: { equals: operation.subjectId } },
-                    { operationId: { not_equals: operationId } },
-                    { state: { equals: 'update-pending' } },
-                  ],
-                },
-                pagination: false,
-                limit: 0,
-              });
-              for (const prior of older.docs)
+              const operations = older ?? (await findOlderOperations(operation, fresh));
+              for (const prior of operations.docs) {
+                if (prior.state !== 'update-pending') continue;
                 await req.payload.db.updateOne({
                   collection: 'publication-updates',
                   req: fresh,
@@ -149,7 +181,10 @@ export function createPublicationCoordinator(options: PublicationCoordinatorOpti
                   where: { id: { equals: prior.id } },
                   data: { state: 'superseded' },
                 });
+              }
               await options.reconcile?.(confirmed, operation, fresh, { retirePending: true });
+              // A failed observation leaves the durable root recoverable and SQL pending.
+              await options.verify?.(confirmed, operation);
               await req.payload.db.updateOne({
                 collection: operation.subjectCollection,
                 req: fresh,

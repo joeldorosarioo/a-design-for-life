@@ -1,0 +1,237 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/integration-env.test.ts (20 tests | 19 failed) 18ms
+   × selects isolated remote integration settings for staging at runtime 9ms
+   × selects isolated remote integration settings for production at runtime 1ms
+   × refuses incomplete remote configuration for staging before startup 1ms
+   × refuses incomplete remote configuration for production before startup 0ms
+   × rejects an endpoint that would expose storage credentials: http://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com 0ms
+   × rejects an endpoint that would expose storage credentials: https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com.evil.invalid 0ms
+   × rejects an endpoint that would expose storage credentials: https://user:password@0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com 0ms
+   × rejects an endpoint that would expose storage credentials: https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com/path 0ms
+   × rejects an endpoint that would expose storage credentials: https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com?key=secret 0ms
+   × accepts the official eu jurisdiction endpoint 1ms
+   × accepts the official us jurisdiction endpoint 0ms
+   × accepts the official fedramp jurisdiction endpoint 0ms
+   × rejects invalid project integration settings without echoing secrets: {"EDITORIAL_EMAIL_FROM_ADDRESS":"editor@outside.example.invalid"} 0ms
+   × rejects invalid project integration settings without echoing secrets: {"EDITORIAL_EMAIL_FROM_NAME":"Unsafe\r\nBcc: other@example.invalid"} 0ms
+   × rejects invalid project integration settings without echoing secrets: {"RESEND_API_KEY":""} 0ms
+   × rejects invalid project integration settings without echoing secrets: {"R2_SECRET_ACCESS_KEY":""} 0ms
+   × rejects invalid project integration settings without echoing secrets: {"MEDIA_STORAGE_DRIVER":"unknown"} 0ms
+   × refuses a deliberate live storage driver in the test environment 0ms
+   × lets local development select R2 explicitly while preserving captured email 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > selects isolated remote integration settings for staging at runtime
+ FAIL  |unit| src/config/integration-env.test.ts > selects isolated remote integration settings for production at runtime
+AssertionError: expected { storage: { driver: 'local' } } to deeply equal { …(2) }
+
+- Expected
++ Received
+
+  {
+-   "resend": {
+-     "apiKey": "re_synthetic_for_configuration_only",
+-     "fromAddress": "a-design-for-life@mail.joeldorosarioo.dev",
+-     "fromName": "A Design for Life",
+-   },
+    "storage": {
+-     "accessKeyId": "synthetic-r2-access-key",
+-     "bucket": "synthetic-private-media",
+-     "driver": "r2",
+-     "endpoint": "https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com",
+-     "secretAccessKey": "synthetic-r2-secret-key",
++     "driver": "local",
+    },
+  }
+
+ ❯ src/config/integration-env.test.ts:18:61
+     16| // A deployed application must never silently fall back to ephemeral l…
+     17| it.each(['staging', 'production'] as const)('selects isolated remote i…
+     18|   expect(readIntegrationEnv(remote, deployed(environment))).toEqual({
+       |                                                             ^
+     19|     storage: {
+     20|       driver: 'r2', bucket: 'synthetic-private-media', endpoint: remot…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > refuses incomplete remote configuration for staging before startup
+ FAIL  |unit| src/config/integration-env.test.ts > refuses incomplete remote configuration for production before startup
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/integration-env.test.ts:30:63
+     28| });
+     29| it.each(['staging', 'production'] as const)('refuses incomplete remote…
+     30|   expect(() => readIntegrationEnv({}, deployed(environment))).toThrow(…
+       |                                                               ^
+     31|   expect(() => readIntegrationEnv({ ...remote, MEDIA_STORAGE_DRIVER: '…
+     32| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > rejects an endpoint that would expose storage credentials: http://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com
+ FAIL  |unit| src/config/integration-env.test.ts > rejects an endpoint that would expose storage credentials: https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com.evil.invalid
+ FAIL  |unit| src/config/integration-env.test.ts > rejects an endpoint that would expose storage credentials: https://user:password@0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com
+ FAIL  |unit| src/config/integration-env.test.ts > rejects an endpoint that would expose storage credentials: https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com/path
+ FAIL  |unit| src/config/integration-env.test.ts > rejects an endpoint that would expose storage credentials: https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com?key=secret
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/integration-env.test.ts:40:95
+     38|   'https://0123456789abcdef0123456789abcdef.r2.cloudflarestorage.com?k…
+     39| ])('rejects an endpoint that would expose storage credentials: %s', (e…
+     40|   expect(() => readIntegrationEnv({ ...remote, R2_ENDPOINT: endpoint }…
+       |                                                                                               ^
+     41| });
+     42| it.each(['eu', 'us', 'fedramp'])('accepts the official %s jurisdiction…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > accepts the official eu jurisdiction endpoint
+AssertionError: expected { driver: 'local' } to match object { driver: 'r2', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "driver": "r2",
+-   "endpoint": "https://0123456789abcdef0123456789abcdef.eu.r2.cloudflarestorage.com",
++   "driver": "local",
+  }
+
+ ❯ src/config/integration-env.test.ts:44:97
+     42| it.each(['eu', 'us', 'fedramp'])('accepts the official %s jurisdiction…
+     43|   const endpoint = 'https://0123456789abcdef0123456789abcdef.' + juris…
+     44|   expect(readIntegrationEnv({ ...remote, R2_ENDPOINT: endpoint }, depl…
+       |                                                                                                 ^
+     45| });
+     46| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > accepts the official us jurisdiction endpoint
+AssertionError: expected { driver: 'local' } to match object { driver: 'r2', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "driver": "r2",
+-   "endpoint": "https://0123456789abcdef0123456789abcdef.us.r2.cloudflarestorage.com",
++   "driver": "local",
+  }
+
+ ❯ src/config/integration-env.test.ts:44:97
+     42| it.each(['eu', 'us', 'fedramp'])('accepts the official %s jurisdiction…
+     43|   const endpoint = 'https://0123456789abcdef0123456789abcdef.' + juris…
+     44|   expect(readIntegrationEnv({ ...remote, R2_ENDPOINT: endpoint }, depl…
+       |                                                                                                 ^
+     45| });
+     46| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > accepts the official fedramp jurisdiction endpoint
+AssertionError: expected { driver: 'local' } to match object { driver: 'r2', …(1) }
+
+- Expected
++ Received
+
+  {
+-   "driver": "r2",
+-   "endpoint": "https://0123456789abcdef0123456789abcdef.fedramp.r2.cloudflarestorage.com",
++   "driver": "local",
+  }
+
+ ❯ src/config/integration-env.test.ts:44:97
+     42| it.each(['eu', 'us', 'fedramp'])('accepts the official %s jurisdiction…
+     43|   const endpoint = 'https://0123456789abcdef0123456789abcdef.' + juris…
+     44|   expect(readIntegrationEnv({ ...remote, R2_ENDPOINT: endpoint }, depl…
+       |                                                                                                 ^
+     45| });
+     46| it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > rejects invalid project integration settings without echoing secrets: {"EDITORIAL_EMAIL_FROM_ADDRESS":"editor@outside.example.invalid"}
+ FAIL  |unit| src/config/integration-env.test.ts > rejects invalid project integration settings without echoing secrets: {"EDITORIAL_EMAIL_FROM_NAME":"Unsafe\r\nBcc: other@example.invalid"}
+ FAIL  |unit| src/config/integration-env.test.ts > rejects invalid project integration settings without echoing secrets: {"RESEND_API_KEY":""}
+ FAIL  |unit| src/config/integration-env.test.ts > rejects invalid project integration settings without echoing secrets: {"R2_SECRET_ACCESS_KEY":""}
+ FAIL  |unit| src/config/integration-env.test.ts > rejects invalid project integration settings without echoing secrets: {"MEDIA_STORAGE_DRIVER":"unknown"}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/integration-env.test.ts:53:88
+     51|   { MEDIA_STORAGE_DRIVER: 'unknown' },
+     52| ])('rejects invalid project integration settings without echoing secre…
+     53|   expect(() => readIntegrationEnv({ ...remote, ...override }, deployed…
+       |                                                                                        ^
+     54| });
+     55| it('keeps captured email and local bytes in tests even if remote keys …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > refuses a deliberate live storage driver in the test environment
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/integration-env.test.ts:59:97
+     57| });
+     58| it('refuses a deliberate live storage driver in the test environment',…
+     59|   expect(() => readIntegrationEnv({ ...remote, MEDIA_STORAGE_DRIVER: '…
+       |                                                                                                 ^
+     60| });
+     61| it('lets local development select R2 explicitly while preserving captu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/19]⎯
+
+ FAIL  |unit| src/config/integration-env.test.ts > lets local development select R2 explicitly while preserving captured email
+AssertionError: expected { driver: 'local' } to match object { driver: 'r2' }
+
+- Expected
++ Received
+
+  {
+-   "driver": "r2",
++   "driver": "local",
+  }
+
+ ❯ src/config/integration-env.test.ts:63:26
+     61| it('lets local development select R2 explicitly while preserving captu…
+     62|   const result = readIntegrationEnv({ ...remote, MEDIA_STORAGE_DRIVER:…
+     63|   expect(result.storage).toMatchObject({ driver: 'r2' });
+       |                          ^
+     64|   expect(result.resend).toBeUndefined();
+     65| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/19]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  19 failed | 1 passed (20)
+   Start at  20:20:24
+   Duration  579ms (setup 54%, import 30%, transform 10%, tests 5%, worker 1%)
+

@@ -1,0 +1,70 @@
+{
+  "recordedAt": "2026-11-04T03:49:25.9242323+00:00",
+  "scope": "Worker scope handoff at completion of focused Next and Native proofs",
+  "files": [
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\publication-retry-worker.ts",
+      "Hash": "342928A869B22A1B1BEEC9E272E3382C3DD11FF37BE7EFCBD63B955B37919F0D"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\publication-retry-worker.test.ts",
+      "Hash": "B6294B5BFD369C5D5CAA2B15E4A79B2BCFFF254FBCAC31BCB13FB7C80C1DE87C"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\publication-retry-execution.ts",
+      "Hash": "9DBF7E3AF9D7F977FFE51D6B1F54B7BAA47FED52D1B4EECDD03B5C75224F1FC5"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\publication-retry-execution.test.ts",
+      "Hash": "0700BB1ADAF605EC32D45499E1104535800B5C3F727D8A20CDDBBB0CFB33DBD5"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.ts",
+      "Hash": "5338E0A5B5D918BF13AF1A9E0E197B9D38835BA85160048669FB0193E272AEFE"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.test.ts",
+      "Hash": "093C3C8A024C3320D152B1E7216F7DE61710963C1CFBF556C3525B547A79E4CF"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.integration.test.ts",
+      "Hash": "6FDCBE5946EDD1258B64B1654C521B9FD584A328C7D0614CAD2371C099477713"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\publication-worker.e2e.test.ts",
+      "Hash": "53FC38A2DF8F85B2480CB55DB7FF72627FD50870F8B1EF80D79B7D8BC53CEAC8"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\publication-updates.ts",
+      "Hash": "923BECF8787482FF5847F2B0212D401B572A3C36EA58B2D95F33DD89D60FFE6E"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\confirm-publication-write.ts",
+      "Hash": "DFD3E79BE666D774623477B9720C9195F2F3E99CD6411287A8AD686482915F07"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\publication-transport.ts",
+      "Hash": "2404C0EC9CFB5C70B267C0ABA24ECCEE1E1A0570FF8F54F4A4C15AD6AC26C0A0"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\server-env.ts",
+      "Hash": "94CAA2A1D1629FFDB5B03CFF93FAB0E4259E3636C3B57459F1A06314FF7F659F"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\config\\server-env.test.ts",
+      "Hash": "04258A0FF52B70CF28BF96F40071DA28382951800449598FB8F552A1FB1B1837"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\testing\\setup\\test-environment.ts",
+      "Hash": "A1D8F784825662C2EF2201A86F3472C87C2CDA44DF73E30D860922FA794BBB4C"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\testing\\setup\\test-environment.test.ts",
+      "Hash": "7B16284B9FA54968A0AFA53E878FD1CF9D67CE47D4875C30A39602EFB7185708"
+    },
+    {
+      "Path": "E:\\a-design-for-life\\src\\instrumentation.ts",
+      "Hash": "D61F9B1D33C2CA88D8CD09DDFC2A75651CB5238CEEC65F041030A2CB1ECCA57D"
+    }
+  ]
+}

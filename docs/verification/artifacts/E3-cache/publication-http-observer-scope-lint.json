@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\eslint\\bin\\eslint.js' 'src/config/publication-http-observation.e2e.test.ts' 'testing/setup/owned-next-server.ts' 'testing/setup/owned-next-server.test.ts'",
+  "startedAt": "2026-11-04T04:06:41.5493078+00:00",
+  "finishedAt": "2026-11-04T04:06:48.9110162+00:00",
+  "exitCode": 0,
+  "log": "publication-http-observer-scope-lint.txt"
+}

@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project integration src/helpers/payload/publication-retries.integration.test.ts --reporter=verbose -t 'keeps a legacy NULL actor manual-only'",
+  "startedAt": "2026-11-04T01:49:10.3306607+00:00",
+  "finishedAt": "2026-11-04T01:49:23.0965873+00:00",
+  "exitCode": 0,
+  "log": "publication-retries-legacy-immediate-green.txt"
+}

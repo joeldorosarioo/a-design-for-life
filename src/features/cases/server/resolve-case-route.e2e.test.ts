@@ -310,7 +310,7 @@ test('native Payload suggestion is explicit and title edits preserve manual slug
   await expect(page.locator('#field-title')).toHaveValue('Completely different title');
   await expect(page.getByText(/^Submitting/)).toHaveCount(0);
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.5/native-slug-suggestion.png',
+    path: test.info().outputPath('native-slug-suggestion.png'),
     fullPage: true,
   });
 });

@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/features/professional-profile/server/get-published-profile.test.ts > projeta o perfil confirmado e rejeita chave/idioma inconsistentes sem consultar Native 20ms
+ ✓ |unit| src/features/site-navigation/server/get-published-navigation.test.ts > compõe contatos e currículo do perfil confirmado na mesma geração e exige a dependência 34ms
+ ✓ |unit| src/features/cases/server/get-featured-cases.test.ts > usa somente destaque compartilhado confirmado e tradução confirmada no idioma solicitado 23ms
+ ✓ |unit| src/features/cases/server/get-published-cases.test.ts > filtra idioma e aplica ordem manual confirmada, preservando o contrato mínimo do card 56ms
+ ✓ |unit| src/features/cases/server/get-published-cases.test.ts > distingue agregado vazio confirmado de ausência de cobertura 1ms
+ ✓ |unit| src/features/cases/server/get-published-cases.test.ts > deriva canonical, histórico e SEO só dos detalhes confirmados na ordem da geração 6ms
+ ✓ |unit| src/features/cases/server/get-published-cases.test.ts > recusa cache com slug inválido em vez de projetar links ou histórico arbitrários 3ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > uses independently edited card copy without changing the detail or SEO 13ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > falls back for absent or blank optional copy: undefined 0ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > falls back for absent or blank optional copy: null 0ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > falls back for absent or blank optional copy: "" 0ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > falls back for absent or blank optional copy: " \n\t " 0ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > resolves each optional field independently and preserves authored copy 0ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > accepts plain optional Native fields in the strict input contract 3ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > reads the confirmed card projection for listing and highlights, retaining detail SEO 9ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > retains legacy confirmed snapshots without an independent card projection 2ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a confirmed card with mismatched caseId instead of linking another body 2ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a confirmed card with mismatched locale instead of linking another body 1ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a confirmed card with mismatched path instead of linking another body 1ms
+ ✓ |unit| src/features/cases/server/map-case-card-copy.test.ts > rejects a malformed provided projection instead of silently reverting to the detail 2ms
+ ✓ |unit| src/features/cases/content/collections/case-content.published.test.ts > returns only confirmed locale cards and featured cards from one captured generation while current.json advances 91ms
+ ✓ |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > marks the anonymous profile JSON with the generation that supplies its public fields 62ms
+ ✓ |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > keeps invalid locale at 404 and unavailable coverage at 503 without a generation marker 4ms
+ ✓ |unit| src/features/cases/content/collections/case-content.published.test.ts > distinguishes confirmed empty cards from a missing, empty or corrupt root 37ms
+ ✓ |unit| src/features/site-navigation/content/collections/site-navigation.published.test.ts > marks navigation JSON from the same root as its confirmed profile dependency 43ms
+
+ Test Files  8 passed (8)
+      Tests  25 passed (25)
+   Start at  00:55:38
+   Duration  4.63s (import 86%, setup 10%, transform 3%, tests 1%)
+

@@ -1,0 +1,227 @@
+Pinned Node: E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe
+Scope: owned analytics only; synthetic/captured outbound boundary; no Google loader/request.
+Exit code: 1
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+············xxxxx·····xxx
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > waits for a valid completed navigation or explicit action before initialization
+AssertionError: expected [] to deeply equal [ { …(2) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "measurementId": "G-TESTONLY1",
+-     "siteOrigin": "https://portfolio.example.invalid",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:47:25
+     45|     expect(events).toEqual([]);
+     46|     session.completeNavigation(home);
+     47|     expect(initialized).toEqual([{
+       |                         ^
+     48|       measurementId: 'G-TESTONLY1', siteOrigin: 'https://portfolio.exa…
+     49|     }]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > counts A to B to A while suppressing repeats of each completed page
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(2) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/about",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:61:20
+     59|     session.completeNavigation(about);
+     60|     session.completeNavigation(home);
+     61|     expect(events).toEqual([
+       |                    ^
+     62|       { name: 'page_view', locale: 'en', pagePath: '/en' },
+     63|       { name: 'page_view', locale: 'en', pagePath: '/en/about' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > keeps distinct confirmed case paths distinct
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(1) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/project-a",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/project-b",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:73:20
+     71|     session.completeNavigation({ locale: 'pt', pagePath: '/pt/cases/pr…
+     72|     session.completeNavigation({ locale: 'pt', pagePath: '/pt/cases/pr…
+     73|     expect(events).toEqual([
+       |                    ^
+     74|       { name: 'page_view', locale: 'pt', pagePath: '/pt/cases/project-…
+     75|       { name: 'page_view', locale: 'pt', pagePath: '/pt/cases/project-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > does not count a target that was never completed
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:84:20
+     82|     session.completeNavigation(home);
+     83|     // A router may begin work for about, but it must not call complet…
+     84|     expect(events).toEqual([{ name: 'page_view', locale: 'en', pagePat…
+       |                    ^
+     85|   });
+     86|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > maps fixed contact purposes to minimal action events and counts repeated actions
+AssertionError: expected [] to deeply equal [ { …(3) }, { …(3) }, { …(3) }, …(1) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:93:20
+     91|     session.trackContact('resume', home);
+     92|     session.trackContact('resume', home);
+     93|     expect(events).toEqual([
+       |                    ^
+     94|       { name: 'contact_email_click', locale: 'en', pagePath: '/en' },
+     95|       { name: 'contact_linkedin_click', locale: 'en', pagePath: '/en' …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > uses the same page-view deduplication through track
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/analytics-session.test.ts:126:20
+    124|     session.track({ name: 'page_view', ...home });
+    125|     session.completeNavigation(home);
+    126|     expect(events).toHaveLength(1);
+       |                    ^
+    127|   });
+    128|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > does not turn an unavailable transport into a product navigation failure or retry loop
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/analytics-session.test.ts:135:22
+    133|     expect(() => session.completeNavigation(home)).not.toThrow();
+    134|     session.completeNavigation(home);
+    135|     expect(attempts).toBe(1);
+       |                      ^
+    136|   });
+    137|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > document-scoped analytics session > does not retry a failing initializer on subsequent actions
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/analytics/analytics-session.test.ts:145:22
+    143|     expect(() => session.trackContact('resume', home)).not.toThrow();
+    144|     session.trackContact('email', home);
+    145|     expect(attempts).toBe(1);
+       |                      ^
+    146|   });
+    147| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 17 passed (25)
+   Start at  20:48:20
+   Duration  429ms (setup 74%, transform 10%, import 9%, tests 6%, worker 2%)
+

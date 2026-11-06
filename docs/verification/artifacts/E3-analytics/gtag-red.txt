@@ -1,0 +1,146 @@
+Pinned Node: E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe
+Scope: owned analytics only; synthetic/captured outbound boundary; no Google loader/request.
+Exit code: 1
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+x·x·
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/gtag-session.test.ts > intercepted gtag boundary > queues denied consent and sanitized privacy defaults before configuration and measurement
+AssertionError: expected [] to deeply equal [ …(5) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "consent",
+-     "default",
+-     {
+-       "ad_personalization": "denied",
+-       "ad_storage": "denied",
+-       "ad_user_data": "denied",
+-       "analytics_storage": "denied",
+-     },
+-   ],
+-   [
+-     "set",
+-     {
+-       "ads_data_redaction": true,
+-       "allow_ad_personalization_signals": false,
+-       "allow_google_signals": false,
+-       "ignore_referrer": true,
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "url_passthrough": false,
+-     },
+-   ],
+-   [
+-     "js",
+-     Any<Date>,
+-   ],
+-   [
+-     "config",
+-     "G-TESTONLY1",
+-     {
+-       "send_page_view": false,
+-     },
+-   ],
+-   [
+-     "event",
+-     "page_view",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+- ]
++ []
+
+ ❯ src/features/analytics/gtag-session.test.ts:17:22
+     15|     expect(commands).toEqual([]);
+     16|     session.completeNavigation(home);
+     17|     expect(commands).toEqual([
+       |                      ^
+     18|       ['consent', 'default', {
+     19|         analytics_storage: 'denied', ad_storage: 'denied',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/analytics/gtag-session.test.ts > intercepted gtag boundary > updates only sanitized public context and emits only the four approved events
+AssertionError: expected [] to deeply equal [ …(4) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     "event",
+-     "page_view",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "contact_email_click",
+-     {
+-       "language": "en",
+-       "page_location": "https://portfolio.example.invalid/en",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "contact_linkedin_click",
+-     {
+-       "language": "pt",
+-       "page_location": "https://portfolio.example.invalid/pt/sobre",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+-   [
+-     "event",
+-     "resume_open",
+-     {
+-       "language": "pt",
+-       "page_location": "https://portfolio.example.invalid/pt/cases/project-a",
+-       "page_referrer": "",
+-       "page_title": "",
+-       "send_to": "G-TESTONLY1",
+-     },
+-   ],
+- ]
++ []
+
+ ❯ src/features/analytics/gtag-session.test.ts:56:66
+     54|     session.trackContact('linkedin', { locale: 'pt', pagePath: '/pt/so…
+     55|     session.trackContact('resume', { locale: 'pt', pagePath: '/pt/case…
+     56|     expect(commands.filter((command) => command[0] === 'event')).toEqu…
+       |                                                                  ^
+     57|       ['event', 'page_view', { send_to: 'G-TESTONLY1', language: 'en',
+     58|         page_location: 'https://portfolio.example.invalid/en', page_re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 2 passed (4)
+   Start at  20:50:04
+   Duration  447ms (setup 59%, import 27%, transform 9%, tests 4%, worker 1%)
+

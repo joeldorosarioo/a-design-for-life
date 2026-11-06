@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-04T00:57:20.912Z",
+  "node": "24.22.2",
+  "react": "19.3.1",
+  "html": "<link rel=\"alternate\" hrefLang=\"pt\" href=\"http://127.0.0.1:3103/pt\"/>",
+  "before": "Actual ReactSSR hrefLang attribute was not normalized; HTTP attempt5 failed in the harness before completing.",
+  "after": "Parser normalizes attribute names to lowercase; actual ReactSSR alternate now matches.",
+  "productChanged": false,
+  "fullHTTPRerunExecuted": false
+}

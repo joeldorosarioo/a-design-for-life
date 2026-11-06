@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > writes one JSON line with required metadata and preserves a valid correlation 3ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > emits only validated technical context, omitting secrets and private content 1ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > redacts unknown values and nested cycles without evaluating getters 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: publication.confirm
+PRIVATE_SENTINEL 1ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: https://private.invalid/reset?token=PRIVATE_SENTINEL 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: PRIVATE_SENTINEL@private.invalid 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > accepts hostile event objects without evaluating accessors 1ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > returns an honest failure receipt when the writer throws without logging the error 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: false 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: undefined 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: Promise {} 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > falls back to a valid timestamp if the clock fails 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > falls back to a valid timestamp if the clock fails 0ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > drops malformed and unbounded technical values rather than coercing them 0ms
+
+ Test Files  1 passed (1)
+      Tests  15 passed (15)
+   Start at  20:51:05
+   Duration  392ms (setup 69%, transform 16%, import 10%, tests 3%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:51:05.4095788Z EXIT=0 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/helpers/logger/logger.test.ts --reporter verbose

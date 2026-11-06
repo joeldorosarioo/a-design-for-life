@@ -1,0 +1,70 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > writes one JSON line with required metadata and preserves a valid correlation 6ms
+   → expected [ '' ] to have a length of 2 but got 1
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > emits only validated technical context, omitting secrets and private content 0ms
+   → Unexpected end of JSON input
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > redacts unknown values and nested cycles without evaluating getters 1ms
+   → expected {} to be '[REDACTED]' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > writes one JSON line with required metadata and preserves a valid correlation
+AssertionError: expected [ '' ] to have a length of 2 but got 1
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ src/helpers/logger/logger.test.ts:26:32
+     24|     });
+     25|
+     26|     expect(output.split('\n')).toHaveLength(2);
+       |                                ^
+     27|     expect(output.endsWith('\n')).toBe(true);
+     28|     expect(JSON.parse(output)).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > emits only validated technical context, omitting secrets and private content
+SyntaxError: Unexpected end of JSON input
+ ❯ src/helpers/logger/logger.test.ts:73:17
+     71|     });
+     72|
+     73|     expect(JSON.parse(output)).toMatchObject({
+       |                 ^
+     74|       level: 'error',
+     75|       context: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > redacts unknown values and nested cycles without evaluating getters
+AssertionError: expected {} to be '[REDACTED]' // Object.is equality
+
+- Expected:
+"[REDACTED]"
+
++ Received:
+{}
+
+ ❯ src/helpers/logger/logger.test.ts:103:38
+    101|
+    102|     expect(redact(cycle)).toEqual({});
+    103|     expect(redact([cycle, [cycle]])).toBe('[REDACTED]');
+       |                                      ^
+    104|     expect(redact(new Error('PRIVATE_SENTINEL'))).toBe('[REDACTED]');
+    105|     expect(redact('PRIVATE_SENTINEL')).toBe('[REDACTED]');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  20:48:42
+   Duration  413ms (setup 71%, transform 14%, import 9%, tests 3%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:48:41.6286176Z EXIT=1 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/helpers/logger/logger.test.ts --reporter verbose

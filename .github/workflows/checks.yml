@@ -8,6 +8,12 @@ on:
 permissions:
   contents: read
 
+# Keep build, deploy and the tested-image marker in one branch-wide queue.
+# Another push must not redeploy staging between its health check and marker.
+concurrency:
+  group: adfl-ci-cd-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   verification:
     name: type-lint-test-architecture-build
@@ -44,12 +50,21 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Install verified local PDF checker
         run: pnpm setup:media-checker
+      - name: Install verified local backup tools
+        run: pnpm setup:backup-tools
+      - name: Configure ephemeral synthetic backup test tools
+        run: |
+          config="$(node testing/setup/configure-backup-tools.mjs)"
+          test -f "$config"
+          printf 'ADFL_TEST_BACKUP_TOOLS_CONFIG=%s\n' "$config" >> "$GITHUB_ENV"
       - name: Check isolated container tooling
         run: docker compose version
       - name: Verify
         run: pnpm verify
       - name: Install Chromium headless shell
-        run: pnpm exec playwright install --with-deps chromium --only-shell
+        # Ubuntu 24.04 already provides the shared libraries and Liberation fonts.
+        # Avoid downloading unrelated font packs from the slow APT mirror.
+        run: pnpm exec playwright install chromium --only-shell
       - name: Select an installed TrueType font for resource journeys
         run: |
           font="$(fc-match --format '%{file}' 'sans-serif:fontformat=TrueType')"
@@ -59,3 +74,139 @@ jobs:
           sha256sum "$font"
       - name: Browser journeys
         run: pnpm test:e2e
+
+  build-staging:
+    name: Build private staging image
+    needs: verification
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop' && vars.STAGING_AUTODEPLOY_ENABLED == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/release.yml
+
+  deploy-staging:
+    name: Deploy staging and wait for health
+    needs: build-staging
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop' && vars.STAGING_AUTODEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    environment: staging
+    steps:
+      - name: Checkout deployment scripts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Deploy the immutable image to staging
+        env:
+          COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          COOLIFY_DEPLOY_TOKEN: ${{ secrets.COOLIFY_DEPLOY_TOKEN }}
+          COOLIFY_RESOURCE_UUID: ${{ vars.COOLIFY_RESOURCE_UUID }}
+          APPROVED_MIGRATION_TREE: ${{ vars.APPROVED_MIGRATION_TREE }}
+          IMAGE_DIGEST: ${{ needs.build-staging.outputs.digest }}
+          MIGRATION_TREE: ${{ needs.build-staging.outputs.migration-tree }}
+        run: node ops/deploy/coolify.mjs --environment staging --digest "$IMAGE_DIGEST" --migration-tree "$MIGRATION_TREE"
+
+  mark-staging-tested:
+    name: Record the healthy staging image
+    needs: [build-staging, deploy-staging]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop' && vars.STAGING_AUTODEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout registry scripts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Mark the exact image after staging is healthy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_TREE: ${{ needs.build-staging.outputs.source-tree }}
+          IMAGE_DIGEST: ${{ needs.build-staging.outputs.digest }}
+        run: node ops/deploy/registry.mjs mark --source-tree "$SOURCE_TREE" --digest "$IMAGE_DIGEST"
+
+  resolve-production-image:
+    name: Resolve the image already tested in staging
+    needs: verification
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.PRODUCTION_AUTODEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      packages: read
+    outputs:
+      digest: ${{ steps.resolve.outputs.digest }}
+      migration-tree: ${{ steps.identity.outputs.migration-tree }}
+    steps:
+      - name: Checkout the production source tree
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Resolve exact source and migration trees
+        id: identity
+        run: |
+          set -euo pipefail
+          source_tree="$(git rev-parse 'HEAD^{tree}')"
+          migration_tree="$(git rev-parse HEAD:src/migrations)"
+          [[ "$source_tree" =~ ^[a-f0-9]{40}$ && "$migration_tree" =~ ^[a-f0-9]{40}$ ]]
+          printf 'source-tree=%s\nmigration-tree=%s\n' "$source_tree" "$migration_tree" >> "$GITHUB_OUTPUT"
+      - name: Resolve the tested manifest without rebuilding
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_TREE: ${{ steps.identity.outputs.source-tree }}
+        run: node ops/deploy/registry.mjs resolve --source-tree "$SOURCE_TREE"
+
+  deploy-production:
+    name: Promote the tested image to production
+    needs: resolve-production-image
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.PRODUCTION_AUTODEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    environment: production
+    steps:
+      - name: Checkout deployment scripts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Deploy the same immutable image to production
+        env:
+          COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          COOLIFY_DEPLOY_TOKEN: ${{ secrets.COOLIFY_DEPLOY_TOKEN }}
+          COOLIFY_RESOURCE_UUID: ${{ vars.COOLIFY_RESOURCE_UUID }}
+          APPROVED_MIGRATION_TREE: ${{ vars.APPROVED_MIGRATION_TREE }}
+          IMAGE_DIGEST: ${{ needs.resolve-production-image.outputs.digest }}
+          MIGRATION_TREE: ${{ needs.resolve-production-image.outputs.migration-tree }}
+        run: node ops/deploy/coolify.mjs --environment production --digest "$IMAGE_DIGEST" --migration-tree "$MIGRATION_TREE"

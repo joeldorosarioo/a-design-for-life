@@ -1,0 +1,1618 @@
+{
+  "scope": "Exact local Linux image for fb7935f, two owned synthetic datasets on network-none containers, no preview/main database, R2 or external publication.",
+  "build": {
+    "revision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+    "gitTree": "22df6c09815e5e879054b7688b9e70862c14ef3b",
+    "contextSource": "Selected paths from git archive of the exact revision; Docker allowlist applied during build.",
+    "contextCandidateFiles": 634,
+    "contextCandidateFingerprintSha256": "d6ae867d9ba67b9719b68b3fddc49c2bf7919d7309bd24bc9501338f0bff775d",
+    "contextContainsEnv": false,
+    "buildExitCode": 0,
+    "inspectExitCode": 0,
+    "nativeSmokeExitCode": 0,
+    "inspection": {
+      "imageId": "sha256:73cc9ef9646e20ac2463630678f1fc52ad2227dec450753d4d6478e04efbbf41",
+      "registryDigests": [],
+      "platform": "linux/amd64",
+      "user": "70:70",
+      "revision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+      "layers": 20,
+      "environmentNames": [
+        "DOCKER_PG_LLVM_DEPS",
+        "GOSU_VERSION",
+        "HOSTNAME",
+        "LANG",
+        "MEDIA_CHECKER_BINARY",
+        "NEXT_TELEMETRY_DISABLED",
+        "NODE_ENV",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_SHA256",
+        "PG_VERSION",
+        "PORT"
+      ]
+    },
+    "nativeSmoke": "Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas and PDF.js resources.",
+    "buildLogSha256": "0359bd9770a3181d52a9056410191f6e11f4de25b537b4843ac66d40653e7dd3"
+  },
+  "layerAndStaticAudit": {
+    "imageId": "sha256:73cc9ef9646e20ac2463630678f1fc52ad2227dec450753d4d6478e04efbbf41",
+    "scope": "All final layer pathnames and synthetic markers in compiled static assets and Next manifests.",
+    "layerCount": 20,
+    "entryCount": 8286,
+    "layers": [
+      {
+        "blob": "blobs/sha256/75c137aedfb2760f88629236cb7b797630aed0c3d91d626d1d1bb694878fc2ba",
+        "entries": 515,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/a46a3bafcb603dc97670597201246506f98e5a6372d6dd6bff95fbe82c2daaaf",
+        "entries": 10,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/957d26e53b1ed5152079038cf0de8c6d0bd52a816ad3e20cc4cdbd7cd55bf9d8",
+        "entries": 29,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/b9f6ca12141f3136dbd518d2a9ed11e7129b12951b8984be8a9477e064048831",
+        "entries": 1,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/fa51465d1f6a9413b09529e99f73b7154a15db7457fcc0fe0a11f875d919212f",
+        "entries": 3474,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/b2711a83336c81a02ba25e3c640502b1a00e597add8ac44ef3231ca00cf46f48",
+        "entries": 6,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/9087553371de5b60cd2b27440cc4d6ee9da8bb1db1e9cf4cd684f8c91ffa5ef5",
+        "entries": 2,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/65a170ef4c1b8d8abe86b5f7b0ccc2f643f2d4f347545125b4d3632c409e136b",
+        "entries": 4,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/1da1a2dfe2071240acddfd3e74e462ce03490d59416a4cb3eef8e48a8b3ca37b",
+        "entries": 5,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/3936a53132a14ee4a433e0b6c5185bc6df36fb0b2b61196cf97890bdd7fa85de",
+        "entries": 4,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/6d6935aa4849f933d206760540f0a0335e88adcdefeb26493b4b409ab1281760",
+        "entries": 1,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/3e0c0c5032d8ea88771bbd80024cad1eaefac630831643bea2d1c9c59d7c7352",
+        "entries": 398,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/81ee3bad3cb6161541a751f084feb5633862b298674f594e85c7df7c2280e523",
+        "entries": 4,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/a850fefd62db387f6bd496546e0045fe541cf8e87a430bec2ada6baafdb19ec0",
+        "entries": 4,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/6ecad17ce10c3385c02d59fcb1d5e5f812cdc8223a3f5ede58b28ef1eddca652",
+        "entries": 3717,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/7a409cb750e054dac15cce165b3cdfd8bbc799a2eef2c0f65341d351ccf1fc00",
+        "entries": 91,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/bb4d5c7eacd4d70a7b6706633bf4601a151c76880d40870f830226548e114f52",
+        "entries": 10,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/fa17d8bb7fd7082205e659578bbe77f81a2d70b124cfe01d27eee6240591c77b",
+        "entries": 6,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/6a04d5315eae65cbc2704c8d1c08835f816f133a98c9044c17776884d92d20cd",
+        "entries": 2,
+        "forbiddenPaths": []
+      },
+      {
+        "blob": "blobs/sha256/e8af6b0d355191f771e9cc83e2dc1a1d24293488f7f940f2a92907227b63f514",
+        "entries": 3,
+        "forbiddenPaths": []
+      }
+    ],
+    "staticAndManifestCount": 88,
+    "forbiddenPathCount": 0,
+    "filesWithBuildMarkers": 0,
+    "detailedReceiptSha256": "4597a1a999ab5d2b22c4a4ad7424909a43dd5bf38315c060e5aad77f992846f8"
+  },
+  "httpAndChromium": {
+    "revision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+    "imageId": "sha256:73cc9ef9646e20ac2463630678f1fc52ad2227dec450753d4d6478e04efbbf41",
+    "runId": "6da4264e5afe",
+    "startedUTC": "2026-11-04T16:32:20.888598+00:00",
+    "fixtureModes": {
+      "environment": "test",
+      "media": "local",
+      "analytics": "disabled",
+      "serverNetwork": "none",
+      "portsPublished": false
+    },
+    "hostLoopbackRelays": {
+      "postgres": 55437,
+      "chromium": [
+        3110,
+        3111
+      ]
+    },
+    "datasets": [
+      {
+        "key": "a",
+        "containerId": "72502eb32abd152b31ad3f98cb99c123d46d9c0599db42cece6a7761b7a82fea",
+        "origin": "http://127.0.0.1:3110",
+        "database": "adfl_test_image_a_6da4264e5afe",
+        "volumeCount": 5,
+        "volumeNames": [
+          "341ed66d466e78d6d860d74e4a0dc300d0b3612239a5cc5e56f75bc915fee835",
+          "684fc6f30b6324c9d74fd8b5e16b5f85068ea63dc0ab3a261c805182815a10dd",
+          "7f23ae24f78a2a487fe483bd84fa39b29ef4df4552da1c1942c2cb2e9428fbd7",
+          "863a314b0bc47afaa06e424e439f94320def1505c302b01d925d68e06d31679b",
+          "3743b0a2458583d523c11cba91742ecb8ec5cdbd6d3d5224692b5a53ecfa6029"
+        ],
+        "fixtureNamespace": "public-816684fe",
+        "migratePassed": true,
+        "seedPassed": true,
+        "elapsedSeconds": 18.7,
+        "poolLifecycle": {
+          "adapterVersion": "3.92.1",
+          "payloadDestroyed": true,
+          "ownPoolEnded": true,
+          "fixtureDestroyCalled": false,
+          "forceExitUsed": false,
+          "before": {
+            "totalCount": 3,
+            "idleCount": 2,
+            "waitingCount": 0,
+            "sessionCount": 0,
+            "bootstrapCheckoutCount": 1
+          },
+          "synchronousRecheckPassed": true,
+          "bootstrapCheckoutReleased": 1,
+          "finalTotalCount": 0
+        }
+      },
+      {
+        "key": "b",
+        "containerId": "b307c355ccb9b342529b0d4a5d5009dc35b1b542bd9ec36a12dd183799272515",
+        "origin": "http://127.0.0.1:3111",
+        "database": "adfl_test_image_b_6da4264e5afe",
+        "volumeCount": 5,
+        "volumeNames": [
+          "2cbeff09c87c664b8100e6e6385bd2592088eeb11767d1b4ab0a727b1e71f454",
+          "c22a3edf32221296ca9b96c495446e770d99c03d296df88f4eb7f27a5a9979cf",
+          "f091c08413d5d52e7aae6b87997bc50315900d4df98451b5dd458cce0f742605",
+          "9344c556761bbf98b65667ed5bdab70693afb948de523f5bf3d894b50d4d77e2",
+          "9a6d92fe5f2478600c26842edff044654ae341ab718f154c7c5fef2aca066bff"
+        ],
+        "fixtureNamespace": "public-d512db84",
+        "migratePassed": true,
+        "seedPassed": true,
+        "elapsedSeconds": 18.43,
+        "poolLifecycle": {
+          "adapterVersion": "3.92.1",
+          "payloadDestroyed": true,
+          "ownPoolEnded": true,
+          "fixtureDestroyCalled": false,
+          "forceExitUsed": false,
+          "before": {
+            "totalCount": 3,
+            "idleCount": 2,
+            "waitingCount": 0,
+            "sessionCount": 0,
+            "bootstrapCheckoutCount": 1
+          },
+          "synchronousRecheckPassed": true,
+          "bootstrapCheckoutReleased": 1,
+          "finalTotalCount": 0
+        }
+      }
+    ],
+    "phases": [
+      {
+        "key": "a",
+        "phase": "initial",
+        "processes": [
+          {
+            "executable": "/usr/local/bin/node",
+            "argv": [
+              "node",
+              "ops/image/start-local-stack.mjs"
+            ],
+            "pid": 1,
+            "name": "MainThread",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 13,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 39,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 54,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 55,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 57,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 58,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 59,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 62,
+            "name": "next-server (v1",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          }
+        ],
+        "health": "healthy",
+        "httpChecks": 21,
+        "browserChecks": 7,
+        "externalAttempts": 0,
+        "websocketAttempts": 0,
+        "startAndHttpElapsedSeconds": 2.42,
+        "browserElapsedSeconds": 4.53,
+        "httpResults": [
+          {
+            "name": "health",
+            "status": 200,
+            "bytes": 18,
+            "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "pt/home",
+            "status": 200,
+            "bytes": 51085,
+            "sha256": "e4925454226be79ff5347ec55abe7e4856133325dbf06d0bc76d1328c35e10f2",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en"
+              }
+            ]
+          },
+          {
+            "name": "pt/list",
+            "status": 200,
+            "bytes": 40908,
+            "sha256": "8a52a3f7ecccd2b1626fc63dca0a6fd691569a9f02a2de89fe22d5da87d2a913",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/pt/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "pt/detail",
+            "status": 200,
+            "bytes": 48389,
+            "sha256": "1868ebf8fa7060566c5af2cc35362ec927d546ab1b0f575fe179a7ddf29958e1",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/pt/cases/public-816684fe-first-pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases/public-816684fe-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases/public-816684fe-first-en"
+              }
+            ]
+          },
+          {
+            "name": "en/home",
+            "status": 200,
+            "bytes": 61018,
+            "sha256": "36310554acc3f0552ebc8e5ef9fe45334d5ec3e6ecfc3c2bd928c1acd48b607d",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en"
+              }
+            ]
+          },
+          {
+            "name": "en/list",
+            "status": 200,
+            "bytes": 36700,
+            "sha256": "229462931fd864bc61484da18d946426e6e5485b5c5bdb39b95491634af2d2fb",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/en/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "en/detail",
+            "status": 200,
+            "bytes": 54132,
+            "sha256": "18fc1fecc6d6cc4540e7e50b4021c1b932122275d3f710874ff46e382102e351",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/en/cases/public-816684fe-first-en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases/public-816684fe-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases/public-816684fe-first-en"
+              }
+            ]
+          },
+          {
+            "name": "private-draft",
+            "status": 404,
+            "bytes": 2993,
+            "sha256": "2b91db55488dd71f32c7cf4a4a5db75e1c13276a5e7252a832a01b6b35218d48",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "admin/login",
+            "status": 200,
+            "bytes": 49059,
+            "sha256": "c8d4f9af354b18701599cb187481df97df11e998b6589be70618a3dd533227fa",
+            "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+          },
+          {
+            "name": "static-asset",
+            "status": 200,
+            "bytes": 265,
+            "sha256": "0e77b0c8ebeac207c4f59dbfa0eb9b4cddbcbbda818bf071f8ba8042e6c57c6e",
+            "cacheControl": "public, max-age=31536000, immutable"
+          },
+          {
+            "name": "anonymous-native-api",
+            "status": 403,
+            "bytes": 70,
+            "sha256": "9eaaefa4f97d1e7a53c0c004b88e2013f7a962ae702e4edaa8281ac1efa06dd8",
+            "cacheControl": null
+          },
+          {
+            "name": "native-login",
+            "status": 200,
+            "authenticatedUserMatched": true,
+            "nativeMeStatus": 200,
+            "cookieHttpOnly": true,
+            "tokenRemovedFromBody": true,
+            "tokenPersisted": false
+          },
+          {
+            "name": "image-original",
+            "status": 200,
+            "bytes": 102,
+            "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "pdf-original",
+            "status": 200,
+            "bytes": 710,
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "authorized-optimizer",
+            "status": 200,
+            "bytes": 107,
+            "sha256": "690a1aa34ba9c1afcd77845c4183c8b4c1b9e41319ea38a7aee82ee51b90bbcf",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "robots-closed",
+            "status": 200,
+            "bytes": 27,
+            "sha256": "d17b641665bc0d4e8b0836dc3b4539a0cddbfceb72ccfb01a0b733683238dcd5",
+            "cacheControl": "public, max-age=0, must-revalidate"
+          },
+          {
+            "name": "native-forgot-local-capture",
+            "status": 200,
+            "messageCount": 1,
+            "messageSha256": "97f6fed8060e239cf9548b2ee5deb97b6c1039f195df21c3099074b96301c690",
+            "resetTokenPersisted": false
+          }
+        ],
+        "browserJourney": {
+          "dataset": "a",
+          "phase": "initial",
+          "origin": "http://127.0.0.1:3110",
+          "containerId": "72502eb32abd152b31ad3f98cb99c123d46d9c0599db42cece6a7761b7a82fea",
+          "checks": [
+            "pt-home",
+            "pt-list-detail",
+            "en-locale-and-detail",
+            "image-and-pdf",
+            "anonymous-denials",
+            "admin-browser-login",
+            "external-network"
+          ],
+          "interceptedExternalAttempts": 0,
+          "interceptedWebSocketAttempts": 0,
+          "relayConnections": 6,
+          "playwrightVersion": "1.64.1",
+          "chromiumVersion": "156.0.8078.4",
+          "imageDecoded": true,
+          "pdf": {
+            "status": 200,
+            "bytes": 710,
+            "type": "application/pdf",
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+          },
+          "nativeHttpOnlySession": true
+        }
+      },
+      {
+        "key": "a",
+        "phase": "restart",
+        "processes": [
+          {
+            "executable": "/usr/local/bin/node",
+            "argv": [
+              "node",
+              "ops/image/start-local-stack.mjs"
+            ],
+            "pid": 1,
+            "name": "MainThread",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 13,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 22,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 23,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 25,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 26,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 27,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 30,
+            "name": "next-server (v1",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          }
+        ],
+        "health": "healthy",
+        "httpChecks": 20,
+        "browserChecks": 7,
+        "externalAttempts": 0,
+        "websocketAttempts": 0,
+        "startAndHttpElapsedSeconds": 9.99,
+        "browserElapsedSeconds": 3.51,
+        "httpResults": [
+          {
+            "name": "health",
+            "status": 200,
+            "bytes": 18,
+            "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "pt/home",
+            "status": 200,
+            "bytes": 51085,
+            "sha256": "e4925454226be79ff5347ec55abe7e4856133325dbf06d0bc76d1328c35e10f2",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en"
+              }
+            ]
+          },
+          {
+            "name": "pt/list",
+            "status": 200,
+            "bytes": 40908,
+            "sha256": "8a52a3f7ecccd2b1626fc63dca0a6fd691569a9f02a2de89fe22d5da87d2a913",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/pt/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "pt/detail",
+            "status": 200,
+            "bytes": 48389,
+            "sha256": "1868ebf8fa7060566c5af2cc35362ec927d546ab1b0f575fe179a7ddf29958e1",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/pt/cases/public-816684fe-first-pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases/public-816684fe-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases/public-816684fe-first-en"
+              }
+            ]
+          },
+          {
+            "name": "en/home",
+            "status": 200,
+            "bytes": 61018,
+            "sha256": "36310554acc3f0552ebc8e5ef9fe45334d5ec3e6ecfc3c2bd928c1acd48b607d",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en"
+              }
+            ]
+          },
+          {
+            "name": "en/list",
+            "status": 200,
+            "bytes": 36700,
+            "sha256": "229462931fd864bc61484da18d946426e6e5485b5c5bdb39b95491634af2d2fb",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/en/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "en/detail",
+            "status": 200,
+            "bytes": 54132,
+            "sha256": "18fc1fecc6d6cc4540e7e50b4021c1b932122275d3f710874ff46e382102e351",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3110/en/cases/public-816684fe-first-en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3110/pt/cases/public-816684fe-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3110/en/cases/public-816684fe-first-en"
+              }
+            ]
+          },
+          {
+            "name": "private-draft",
+            "status": 404,
+            "bytes": 2993,
+            "sha256": "2b91db55488dd71f32c7cf4a4a5db75e1c13276a5e7252a832a01b6b35218d48",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "admin/login",
+            "status": 200,
+            "bytes": 49059,
+            "sha256": "2137ffc1e77f63148a6a04f4122221a9b9e1c08dcd47e5210e3564b2b2ebf168",
+            "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+          },
+          {
+            "name": "static-asset",
+            "status": 200,
+            "bytes": 265,
+            "sha256": "0e77b0c8ebeac207c4f59dbfa0eb9b4cddbcbbda818bf071f8ba8042e6c57c6e",
+            "cacheControl": "public, max-age=31536000, immutable"
+          },
+          {
+            "name": "anonymous-native-api",
+            "status": 403,
+            "bytes": 70,
+            "sha256": "9eaaefa4f97d1e7a53c0c004b88e2013f7a962ae702e4edaa8281ac1efa06dd8",
+            "cacheControl": null
+          },
+          {
+            "name": "native-login",
+            "status": 200,
+            "authenticatedUserMatched": true,
+            "nativeMeStatus": 200,
+            "cookieHttpOnly": true,
+            "tokenRemovedFromBody": true,
+            "tokenPersisted": false
+          },
+          {
+            "name": "image-original",
+            "status": 200,
+            "bytes": 102,
+            "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "pdf-original",
+            "status": 200,
+            "bytes": 710,
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "authorized-optimizer",
+            "status": 200,
+            "bytes": 107,
+            "sha256": "690a1aa34ba9c1afcd77845c4183c8b4c1b9e41319ea38a7aee82ee51b90bbcf",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "robots-closed",
+            "status": 200,
+            "bytes": 27,
+            "sha256": "d17b641665bc0d4e8b0836dc3b4539a0cddbfceb72ccfb01a0b733683238dcd5",
+            "cacheControl": "public, max-age=0, must-revalidate"
+          }
+        ],
+        "browserJourney": {
+          "dataset": "a",
+          "phase": "restart",
+          "origin": "http://127.0.0.1:3110",
+          "containerId": "72502eb32abd152b31ad3f98cb99c123d46d9c0599db42cece6a7761b7a82fea",
+          "checks": [
+            "pt-home",
+            "pt-list-detail",
+            "en-locale-and-detail",
+            "image-and-pdf",
+            "anonymous-denials",
+            "admin-browser-login",
+            "external-network"
+          ],
+          "interceptedExternalAttempts": 0,
+          "interceptedWebSocketAttempts": 0,
+          "relayConnections": 6,
+          "playwrightVersion": "1.64.1",
+          "chromiumVersion": "156.0.8078.4",
+          "imageDecoded": true,
+          "pdf": {
+            "status": 200,
+            "bytes": 710,
+            "type": "application/pdf",
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+          },
+          "nativeHttpOnlySession": true
+        }
+      },
+      {
+        "key": "b",
+        "phase": "initial",
+        "processes": [
+          {
+            "executable": "/usr/local/bin/node",
+            "argv": [
+              "node",
+              "ops/image/start-local-stack.mjs"
+            ],
+            "pid": 1,
+            "name": "MainThread",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 13,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 38,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 54,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 55,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 57,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 58,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 59,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 62,
+            "name": "next-server (v1",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          }
+        ],
+        "health": "healthy",
+        "httpChecks": 21,
+        "browserChecks": 7,
+        "externalAttempts": 0,
+        "websocketAttempts": 0,
+        "startAndHttpElapsedSeconds": 3.48,
+        "browserElapsedSeconds": 4.64,
+        "httpResults": [
+          {
+            "name": "health",
+            "status": 200,
+            "bytes": 18,
+            "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "pt/home",
+            "status": 200,
+            "bytes": 51085,
+            "sha256": "32f5e0662efc867219894f67886f53f8caea20dbe4126eaf1fcf7be2edd06a57",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en"
+              }
+            ]
+          },
+          {
+            "name": "pt/list",
+            "status": 200,
+            "bytes": 40908,
+            "sha256": "8eafffd62de5f6350bb1ecfe9090c16a45f5cd15799d0a4ab8717e54fcf91bf4",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/pt/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "pt/detail",
+            "status": 200,
+            "bytes": 48389,
+            "sha256": "1628a73accc2466d2c07ba66e96b6c378982b94061185f9e2c5db283872220c8",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/pt/cases/public-d512db84-first-pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases/public-d512db84-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases/public-d512db84-first-en"
+              }
+            ]
+          },
+          {
+            "name": "en/home",
+            "status": 200,
+            "bytes": 61018,
+            "sha256": "b410eb7daa84e7c15fe51353bfc29da6fc95219ea8256d68b29b1d78b75c21b1",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en"
+              }
+            ]
+          },
+          {
+            "name": "en/list",
+            "status": 200,
+            "bytes": 36700,
+            "sha256": "9c425570903258eda7414596aad5d07eca03df5b2e14022ddc4261063bf51c26",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/en/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "en/detail",
+            "status": 200,
+            "bytes": 54132,
+            "sha256": "fb9412f6edeacfeba266c14af4fb56193eab61ab0b5d06cbb3244e64606206b7",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/en/cases/public-d512db84-first-en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases/public-d512db84-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases/public-d512db84-first-en"
+              }
+            ]
+          },
+          {
+            "name": "private-draft",
+            "status": 404,
+            "bytes": 2993,
+            "sha256": "d86c4914c32236c5a17b49cf7b1a887e23fa9b34d23038e67d37f5cf3fb51997",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "admin/login",
+            "status": 200,
+            "bytes": 49059,
+            "sha256": "3982c34021181e342169abdb38e2e47de0cec5ce54a640eec72b53c135b1e2a9",
+            "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+          },
+          {
+            "name": "static-asset",
+            "status": 200,
+            "bytes": 265,
+            "sha256": "0e77b0c8ebeac207c4f59dbfa0eb9b4cddbcbbda818bf071f8ba8042e6c57c6e",
+            "cacheControl": "public, max-age=31536000, immutable"
+          },
+          {
+            "name": "anonymous-native-api",
+            "status": 403,
+            "bytes": 70,
+            "sha256": "9eaaefa4f97d1e7a53c0c004b88e2013f7a962ae702e4edaa8281ac1efa06dd8",
+            "cacheControl": null
+          },
+          {
+            "name": "native-login",
+            "status": 200,
+            "authenticatedUserMatched": true,
+            "nativeMeStatus": 200,
+            "cookieHttpOnly": true,
+            "tokenRemovedFromBody": true,
+            "tokenPersisted": false
+          },
+          {
+            "name": "image-original",
+            "status": 200,
+            "bytes": 102,
+            "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "pdf-original",
+            "status": 200,
+            "bytes": 710,
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "authorized-optimizer",
+            "status": 200,
+            "bytes": 107,
+            "sha256": "690a1aa34ba9c1afcd77845c4183c8b4c1b9e41319ea38a7aee82ee51b90bbcf",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "robots-closed",
+            "status": 200,
+            "bytes": 27,
+            "sha256": "d17b641665bc0d4e8b0836dc3b4539a0cddbfceb72ccfb01a0b733683238dcd5",
+            "cacheControl": "public, max-age=0, must-revalidate"
+          },
+          {
+            "name": "native-forgot-local-capture",
+            "status": 200,
+            "messageCount": 1,
+            "messageSha256": "1bd5adae04e0b54be85afbda9c695f30e4b4447fe790d1353496b0ac940d2f2e",
+            "resetTokenPersisted": false
+          }
+        ],
+        "browserJourney": {
+          "dataset": "b",
+          "phase": "initial",
+          "origin": "http://127.0.0.1:3111",
+          "containerId": "b307c355ccb9b342529b0d4a5d5009dc35b1b542bd9ec36a12dd183799272515",
+          "checks": [
+            "pt-home",
+            "pt-list-detail",
+            "en-locale-and-detail",
+            "image-and-pdf",
+            "anonymous-denials",
+            "admin-browser-login",
+            "external-network"
+          ],
+          "interceptedExternalAttempts": 0,
+          "interceptedWebSocketAttempts": 0,
+          "relayConnections": 6,
+          "playwrightVersion": "1.64.1",
+          "chromiumVersion": "156.0.8078.4",
+          "imageDecoded": true,
+          "pdf": {
+            "status": 200,
+            "bytes": 710,
+            "type": "application/pdf",
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+          },
+          "nativeHttpOnlySession": true
+        }
+      },
+      {
+        "key": "b",
+        "phase": "restart",
+        "processes": [
+          {
+            "executable": "/usr/local/bin/node",
+            "argv": [
+              "node",
+              "ops/image/start-local-stack.mjs"
+            ],
+            "pid": 1,
+            "name": "MainThread",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 13,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 22,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 23,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 25,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 26,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 27,
+            "name": "postgres",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          },
+          {
+            "pid": 30,
+            "name": "next-server (v1",
+            "uid": 70,
+            "gid": 70,
+            "capEff": "0000000000000000",
+            "noNewPrivs": 1
+          }
+        ],
+        "health": "healthy",
+        "httpChecks": 20,
+        "browserChecks": 7,
+        "externalAttempts": 0,
+        "websocketAttempts": 0,
+        "startAndHttpElapsedSeconds": 10.0,
+        "browserElapsedSeconds": 3.51,
+        "httpResults": [
+          {
+            "name": "health",
+            "status": 200,
+            "bytes": 18,
+            "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "pt/home",
+            "status": 200,
+            "bytes": 51085,
+            "sha256": "32f5e0662efc867219894f67886f53f8caea20dbe4126eaf1fcf7be2edd06a57",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en"
+              }
+            ]
+          },
+          {
+            "name": "pt/list",
+            "status": 200,
+            "bytes": 40908,
+            "sha256": "8eafffd62de5f6350bb1ecfe9090c16a45f5cd15799d0a4ab8717e54fcf91bf4",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/pt/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "pt/detail",
+            "status": 200,
+            "bytes": 48389,
+            "sha256": "1628a73accc2466d2c07ba66e96b6c378982b94061185f9e2c5db283872220c8",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/pt/cases/public-d512db84-first-pt",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases/public-d512db84-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases/public-d512db84-first-en"
+              }
+            ]
+          },
+          {
+            "name": "en/home",
+            "status": 200,
+            "bytes": 61018,
+            "sha256": "b410eb7daa84e7c15fe51353bfc29da6fc95219ea8256d68b29b1d78b75c21b1",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en"
+              }
+            ]
+          },
+          {
+            "name": "en/list",
+            "status": 200,
+            "bytes": 36700,
+            "sha256": "9c425570903258eda7414596aad5d07eca03df5b2e14022ddc4261063bf51c26",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/en/cases",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases"
+              }
+            ]
+          },
+          {
+            "name": "en/detail",
+            "status": 200,
+            "bytes": 54132,
+            "sha256": "fb9412f6edeacfeba266c14af4fb56193eab61ab0b5d06cbb3244e64606206b7",
+            "cacheControl": "no-store, max-age=0",
+            "canonical": "http://127.0.0.1:3111/en/cases/public-d512db84-first-en",
+            "alternates": [
+              {
+                "locale": "pt",
+                "href": "http://127.0.0.1:3111/pt/cases/public-d512db84-first-pt"
+              },
+              {
+                "locale": "en",
+                "href": "http://127.0.0.1:3111/en/cases/public-d512db84-first-en"
+              }
+            ]
+          },
+          {
+            "name": "private-draft",
+            "status": 404,
+            "bytes": 2993,
+            "sha256": "d86c4914c32236c5a17b49cf7b1a887e23fa9b34d23038e67d37f5cf3fb51997",
+            "cacheControl": "no-store, max-age=0"
+          },
+          {
+            "name": "admin/login",
+            "status": 200,
+            "bytes": 49059,
+            "sha256": "52341283bdd980dc5a17480765705c03ce9a177776308e6def41b7763269b1ab",
+            "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+          },
+          {
+            "name": "static-asset",
+            "status": 200,
+            "bytes": 265,
+            "sha256": "0e77b0c8ebeac207c4f59dbfa0eb9b4cddbcbbda818bf071f8ba8042e6c57c6e",
+            "cacheControl": "public, max-age=31536000, immutable"
+          },
+          {
+            "name": "anonymous-native-api",
+            "status": 403,
+            "bytes": 70,
+            "sha256": "9eaaefa4f97d1e7a53c0c004b88e2013f7a962ae702e4edaa8281ac1efa06dd8",
+            "cacheControl": null
+          },
+          {
+            "name": "native-login",
+            "status": 200,
+            "authenticatedUserMatched": true,
+            "nativeMeStatus": 200,
+            "cookieHttpOnly": true,
+            "tokenRemovedFromBody": true,
+            "tokenPersisted": false
+          },
+          {
+            "name": "image-original",
+            "status": 200,
+            "bytes": 102,
+            "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "pdf-original",
+            "status": 200,
+            "bytes": 710,
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+            "cacheControl": "no-store"
+          },
+          {
+            "name": "authorized-optimizer",
+            "status": 200,
+            "bytes": 107,
+            "sha256": "690a1aa34ba9c1afcd77845c4183c8b4c1b9e41319ea38a7aee82ee51b90bbcf",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "private-or-unknown-media-denied",
+            "status": 404,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "cacheControl": "private, no-store"
+          },
+          {
+            "name": "robots-closed",
+            "status": 200,
+            "bytes": 27,
+            "sha256": "d17b641665bc0d4e8b0836dc3b4539a0cddbfceb72ccfb01a0b733683238dcd5",
+            "cacheControl": "public, max-age=0, must-revalidate"
+          }
+        ],
+        "browserJourney": {
+          "dataset": "b",
+          "phase": "restart",
+          "origin": "http://127.0.0.1:3111",
+          "containerId": "b307c355ccb9b342529b0d4a5d5009dc35b1b542bd9ec36a12dd183799272515",
+          "checks": [
+            "pt-home",
+            "pt-list-detail",
+            "en-locale-and-detail",
+            "image-and-pdf",
+            "anonymous-denials",
+            "admin-browser-login",
+            "external-network"
+          ],
+          "interceptedExternalAttempts": 0,
+          "interceptedWebSocketAttempts": 0,
+          "relayConnections": 6,
+          "playwrightVersion": "1.64.1",
+          "chromiumVersion": "156.0.8078.4",
+          "imageDecoded": true,
+          "pdf": {
+            "status": 200,
+            "bytes": 710,
+            "type": "application/pdf",
+            "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+          },
+          "nativeHttpOnlySession": true
+        }
+      }
+    ],
+    "harnessSha256": {
+      "audit.py": "cb8178d5f9e889b979fc974ca7138e27bd5f26087fa141e228e45e5242700546",
+      "host-driver.mjs": "72987e95e0e95e71ca05a39221748f046f93259c4747944af5107e1fb3c9a966",
+      "image-browser-journey.mjs": "e620a399a345837963213420ebd72212c8a56bb5ed82b35ee6ca55fd7865400d",
+      "image-http-seed.mjs": "bd1a3ebcf54b0f99e29f770e26cc09bd7a556e043a096abde0f73e1fea1719f3",
+      "image-http-verify.mjs": "dc25f0106dee834a7a1df3dc943b5022195c1ebac384718b9c757fd80daa2b6f",
+      "run.py": "50900eb612546791c604130bcb92a279525a4ea90eb68079e81f8d1bbed90c8f"
+    },
+    "imageInspection": {
+      "imageId": "sha256:73cc9ef9646e20ac2463630678f1fc52ad2227dec450753d4d6478e04efbbf41",
+      "registryDigests": [],
+      "platform": "linux/amd64",
+      "user": "70:70",
+      "revision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+      "layers": 20,
+      "environmentNames": [
+        "DOCKER_PG_LLVM_DEPS",
+        "GOSU_VERSION",
+        "HOSTNAME",
+        "LANG",
+        "MEDIA_CHECKER_BINARY",
+        "NEXT_TELEMETRY_DISABLED",
+        "NODE_ENV",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_SHA256",
+        "PG_VERSION",
+        "PORT"
+      ]
+    },
+    "passed": true,
+    "cleanup": [
+      {
+        "key": "b",
+        "containerRemoved": true,
+        "volumesRemoved": true,
+        "exitCode": 0
+      },
+      {
+        "key": "a",
+        "containerRemoved": true,
+        "volumesRemoved": true,
+        "exitCode": 0
+      }
+    ],
+    "endedUTC": "2026-11-04T16:33:42.755145+00:00",
+    "httpCheckCount": 82,
+    "browserJourneyCount": 4,
+    "browserCheckCount": 28,
+    "elapsedSeconds": 81.87
+  },
+  "priorAttempts": [
+    {
+      "runId": "ab242eb0cf79",
+      "result": "Both datasets seeded, runner rejected the Node PID 1 thread name MainThread.",
+      "adjustment": "Verify /proc/1/exe and cmdline plus process UID/GID/capabilities."
+    },
+    {
+      "runId": "5f6a722adde2",
+      "result": "A initial HTTP and Chromium and A restarted HTTP passed. Chromium stopped during the restarted locale-switch journey.",
+      "adjustment": "Use the app Playwright readiness sequence before a real locale click, then require HTTP 204 and navigation."
+    }
+  ]
+}

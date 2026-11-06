@@ -1,0 +1,17 @@
+Worker crash proof final source checks
+TSC EXIT 0
+Checking formatting...
+All matched files use Prettier code style!
+FORMAT EXIT 0
+LINT EXIT 0
+DIFF EXIT 0
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  19 passed (19)
+   Start at  03:02:54
+   Duration  472ms (setup 52%, import 25%, tests 13%, transform 9%, worker 1%)
+
+UNIT EXIT 0

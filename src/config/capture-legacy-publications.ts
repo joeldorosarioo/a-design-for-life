@@ -218,6 +218,7 @@ export async function captureLegacyPublications(req: PayloadRequest): Promise<nu
             dependencies: [...prepared.dependencies, 'legacy-bootstrap'],
           },
           req,
+          { scheduleRetry: false },
         );
         count++;
       }

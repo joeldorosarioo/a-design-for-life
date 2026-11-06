@@ -1,0 +1,6 @@
+Review P2: remove unauthorized analytics case-slug blacklist, retain full route/context/PII guards.
+RED command (complete output in p2-case-slugs-red.txt):
+& 'E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe' node_modules/vitest/vitest.mjs run --project unit src/features/analytics/contracts/event.schema.test.ts src/features/analytics/analytics-session.test.ts --reporter=dot
+RED rerun exit code: 1; 26 failed | 74 passed (100); two files.
+The original five-file/95-test snapshot and its artifacts remain unchanged.
+All checks use pinned Node24.22.2, synthetic data and captured outbound transport. No Google loader/measurements, services, DB, application build or global suite.

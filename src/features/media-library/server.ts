@@ -10,3 +10,4 @@ export {
   publicMediaSnapshotSchema,
 } from './server/public-media';
 export { handleNextImage } from './server/next-image-proxy';
+export { withPublicMediaObservation } from './server/publication-media-observation';

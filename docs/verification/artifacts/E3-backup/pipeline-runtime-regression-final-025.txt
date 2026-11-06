@@ -1,0 +1,11 @@
+COMMAND: pnpm exec vitest run --project unit src/features/media-library/server/media-runtime.test.ts; complete legacy/injected runtime preservation checks
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  23:19:57
+   Duration  407ms (setup 82%, transform 6%, tests 5%, import 5%, worker 2%)
+
+EXIT_CODE: 0

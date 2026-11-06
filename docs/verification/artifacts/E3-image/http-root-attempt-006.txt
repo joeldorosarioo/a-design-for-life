@@ -1,0 +1,8 @@
+{"stage":"owned-pg-acquired","runId":"b01a6bd6-95ab-414b-89ef-5ebf54795fa8","containerId":"f2f04140d540c3605007ae7c853dceb2c370b0f018195b2fed7084d447271a24","hostPort":55434}
+{"stage":"dataset-seeded","dataset":"a","database":"adfl_test_image_a_b01a6bd695ab414b89ef5ebf54795fa8","migrationExitCode":0,"fixtureNamespace":"public-8943b030"}
+{"stage":"dataset-seeded","dataset":"b","database":"adfl_test_image_b_b01a6bd695ab414b89ef5ebf54795fa8","migrationExitCode":0,"fixtureNamespace":"public-5c66bc7e"}
+{"stage":"http-consumer","dataset":"a","phase":"initial","exitCode":1,"checks":11,"failure":"Native synthetic login failed"}
+HTTP consumer failed: a/initial
+{"stage":"finished","status":"failed","exitCode":1,"artifact":"E:\\a-design-for-life\\docs\\verification\\artifacts\\E3-image\\http-b01a6bd6-95ab-414b-89ef-5ebf54795fa8","appCleanup":[{"id":"38b6abd1488a01322401356b6de2f5835a3a6b11bb41dd11ab5afe6c06499eca","stoppedAndRemoved":true},{"id":"f9d2ca27914fb072cbf934862cd59bd052652bbdd805e5e8a5225c24203fc7f6","stoppedAndRemoved":true}],"databaseStoppedAndRemoved":true}
+
+EXIT_CODE=1

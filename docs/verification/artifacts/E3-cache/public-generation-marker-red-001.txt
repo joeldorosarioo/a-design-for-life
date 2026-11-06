@@ -1,0 +1,128 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+···········································xxx···································xxx·
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > emits a confirmed historical GET redirect consumable by Next on the configured origin despite forged Host headers
+AssertionError: expected null to be '17206776-631c-4a8f-b805-1ed8daf85bbb' // Object.is equality
+
+- Expected:
+"17206776-631c-4a8f-b805-1ed8daf85bbb"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:156:83
+    156|     // Next's redirect adapter consumes Location without a base URL.
+    157|     expect(
+    158|       () =>
+       |  ^
+    159|         new NextURL(location, {
+    160|           forceLocale: false,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |unit| src/proxy.test.ts > emits a confirmed historical HEAD redirect consumable by Next on the configured origin despite forged Host headers
+AssertionError: expected null to be 'd267cdc9-ee33-4f76-91ae-973538acb3bd' // Object.is equality
+
+- Expected:
+"d267cdc9-ee33-4f76-91ae-973538acb3bd"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:156:83
+    156|     // Next's redirect adapter consumes Location without a base URL.
+    157|     expect(
+    158|       () =>
+       |  ^
+    159|         new NextURL(location, {
+    160|           forceLocale: false,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |unit| src/proxy.test.ts > exposes the same generation as the signed public render pin and ignores visitor overrides
+AssertionError: expected null to be '4bec835e-6735-4a91-8baf-3e6c0ca1492b' // Object.is equality
+
+- Expected:
+"4bec835e-6735-4a91-8baf-3e6c0ca1492b"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:181:43
+    180|   } });
+    181|   const response = await proxy(incoming);
+    182|   const header = response.headers.get('x-portfolio-generation');
+       | ^
+    183|   expect(header).toBe(root.generation);
+    184|   expect(response.headers.has('x-middleware-request-x-portfolio-genera…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected null to be '61abf754-bb5b-49d1-86f5-9a969770e821' // Object.is equality
+
+- Expected:
+"61abf754-bb5b-49d1-86f5-9a969770e821"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:583:78
+    582|     expect(html).toContain('mailto:current@example.invalid');
+    583|     expect(html).toContain(`href="/media/${mediaId}/original"`);
+    584|     expect(html).toContain('id="contact"');
+       |             ^
+    585|     expect(html).not.toMatch(
+    586|       /CASE BODY PRIVATE MARKER|UPPER-PRIVATE|current-case|FORGED|x-po…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected null to be '3ed968af-61e3-4060-953c-3bee9fa46749' // Object.is equality
+
+- Expected:
+"3ed968af-61e3-4060-953c-3bee9fa46749"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:583:78
+    582|     expect(html).toContain('mailto:current@example.invalid');
+    583|     expect(html).toContain(`href="/media/${mediaId}/original"`);
+    584|     expect(html).toContain('id="contact"');
+       |             ^
+    585|     expect(html).not.toMatch(
+    586|       /CASE BODY PRIVATE MARKER|UPPER-PRIVATE|current-case|FORGED|x-po…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected null to be '24a6226d-6bb4-4365-9609-638ab1164ead' // Object.is equality
+
+- Expected:
+"24a6226d-6bb4-4365-9609-638ab1164ead"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:583:78
+    582|     expect(html).toContain('mailto:current@example.invalid');
+    583|     expect(html).toContain(`href="/media/${mediaId}/original"`);
+    584|     expect(html).toContain('id="contact"');
+       |             ^
+    585|     expect(html).not.toMatch(
+    586|       /CASE BODY PRIVATE MARKER|UPPER-PRIVATE|current-case|FORGED|x-po…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  6 failed | 79 passed (85)
+   Start at  00:41:33
+   Duration  3.18s (import 73%, tests 12%, setup 8%, transform 7%)
+
+Exit: 1

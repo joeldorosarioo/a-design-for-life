@@ -8,6 +8,9 @@ import { readingPositionMessage, type SourcePage } from '@/features/language-swi
 import { resolveTranslatedDestination } from '@/features/language-switcher/server';
 import { getPublishedNavigation } from '@/features/site-navigation/server';
 import { PublicPageView } from './public-page-view';
+import { readServerEnv } from '@/config/server-env';
+import { readPublicRuntime } from '@/config/public-runtime';
+import { composePublicAnalytics } from '@/features/analytics/server';
 
 type Kind = 'home' | 'cases' | 'about' | 'case';
 function matchesExpected(
@@ -67,7 +70,7 @@ async function languageControl(
 export async function renderPublicPage(kind: Kind, locale: string, pathname: string) {
   const snapshot = await readPublicPageRequest();
   if (!matchesExpected(snapshot, locale, pathname) || !snapshot) notFound();
-  return (
+  const page = (
     <PublicPageView
       kind={kind}
       locale={snapshot.context.locale}
@@ -77,6 +80,16 @@ export async function renderPublicPage(kind: Kind, locale: string, pathname: str
       languageControl={await languageControl(snapshot, kind)}
     />
   );
+  if (snapshot.context.status !== 200) return page;
+  return composePublicAnalytics({
+    children: page,
+    verifiedPublic: true,
+    area: 'public',
+    preview: false,
+    status: snapshot.context.status,
+    context: { locale: snapshot.context.locale, pagePath: snapshot.context.pathname },
+    runtime: readPublicRuntime(readServerEnv(process.env)),
+  });
 }
 export async function publicPageMetadata(
   kind: Kind,

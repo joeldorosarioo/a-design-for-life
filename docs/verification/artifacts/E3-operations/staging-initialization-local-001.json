@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-05",
+  "status": "local-preparation-verified",
+  "sourceBaseRevision": "e24e274aa3153a8d549446fef00902839fd1eb54",
+  "sourceSnapshot": {
+    ".dockerignore": "a8614908ca7b95e8f120b4d1c75b156e56e5e5e534f8df72704e8c50524c88c4",
+    "Dockerfile": "91d3cabedbea270cc32f6f6a086c8e622f34606ca7b120b6c2fb7a0dffff0a47",
+    "ops/image/health-probe.mjs": "b36abf2ba8619b5928bdcbe581100b6aa79becfa6c97383031a6c0a1b5effe06",
+    "ops/image/health-probe.test.ts": "914ec6ea68a892e73562e20bf260b0b6da107602e9a25f6233def7e9441bb15d",
+    "ops/image/staging-mode.mjs": "213c71c6f67ccb5be5112129be0ec932ced1eefca70d42403cb2cdec3bdabe6a",
+    "ops/image/start-local-stack.mjs": "c797765960d34c7842b949a11056a9a8702983e0e9afb32fdb676b4055468e1b",
+    "ops/image/start-local-stack.test.ts": "4fe6ed0595a413f616bb3dee5d7bd3563b2c4b64eb87496c432badae7c0bae69",
+    "ops/staging/initialize-config.mjs": "fb84c49ad82496b3089789122989e5b8f73ccfd2a313ec10a33f2bdd13e4efa5",
+    "ops/staging/initialize-config.test.ts": "85e9f19d8c70b6abe2dcf7dc1bb971554bee21fffd09d1c889f536195d05d8b6",
+    "ops/staging/initialize.cli.mjs": "f314ca6a6407ac2ed61c744561b505dcbcbc8522d8861ee13a1bf32b42df908b",
+    "ops/staging/initialize.native.ts": "fa24a00c8a7d3cbd090b470149a8d0496acb331334112db083ba5d48d9891596",
+    "ops/staging/initialize.ts": "0a31d6e73637c271657aeeb740cc5c1776f866c3750c6879772cf37d94d7de03",
+    "ops/staging/seed-http.cli.mjs": "942611f7443e2a15364293de64cb7b5dd0dc354114303afbebdadd7e40d996ca",
+    "ops/staging/seed-http.e2e.ts": "fc4696a685993d6a052a9d91f0efa48fb618483eab4a74182cc2cd1edbc117ec",
+    "ops/staging/seed-http.mjs": "e9622b92ddb6e8da55b530b71b80c89b692424396cd1142650cbaf42a9b4dd5a",
+    "ops/staging/seed-http.playwright.config.ts": "05550584c3796d959760bac29922236430fcf54dcf383e65febb8bb408534e3b",
+    "ops/staging/seed-http.test.ts": "451dfa15de19195eb6cc4aeba515e46e66e50acd88c0c6027f0341d2374b0579",
+    "package.json": "d75cbaa5f087a91bd05f392dc81e52fb2a56c0418702f52e99b3e142ca4c30a3",
+    "src/config/staging-initialization.integration.test.ts": "1aaf7fb7035467206f0cd076f63b58d487cc02eb60db1d6c27200db9bf4472c8"
+  },
+  "validation": {
+    "typecheckExitCode": 0,
+    "lintExitCode": 0,
+    "formatExitCode": 0,
+    "focusedUnit": {
+      "files": 5,
+      "passed": 113,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "nativeInitialization": {
+      "files": 1,
+      "passed": 4,
+      "exitCode": 0,
+      "migrations": 16,
+      "editorialAccounts": 1,
+      "structuralDrafts": 4,
+      "idempotentPreservesCredentialsAndContent": true,
+      "foreignPartialAndConcurrentTargetsRefused": true,
+      "editorAndDraftsRollbackTogether": true
+    },
+    "nativeHttpSeed": {
+      "passed": 1,
+      "exitCode": 0,
+      "media": 7,
+      "caseIdentities": 2,
+      "localizedDocuments": 8,
+      "publicRoutes": 10,
+      "replayContentMutations": 0,
+      "mailFlowCalls": 0
+    },
+    "privateImportShape": {
+      "serverAndIntegrationSchemasValid": true,
+      "editorialCredentialsValid": true,
+      "dedicatedForward55435": true,
+      "privateValuesPrinted": false
+    },
+    "preservation": {
+      "sourceEnvUnchanged": true,
+      "preexistingNextEnvUnchanged": true,
+      "tsconfigUnchanged": true,
+      "previewBuildUnchanged": true
+    }
+  },
+  "evidenceLog": "staging-initialization-local-001.txt",
+  "evidenceLogSha256": "3e8c7bda165c6946fa2d263bfa31980c345a52e45f90e664c5a32469d25f9da7",
+  "isolation": {
+    "postgresql": "owned disposable PostgreSQL17 runner55434; initializer relay55435",
+    "media": "synthetic file-backed storage",
+    "realR2Writes": 0,
+    "realEmailSends": 0,
+    "remoteDatabaseChanges": false
+  },
+  "limits": [
+    "Candidate image packaging is verified separately after the source commit.",
+    "The runtime import flag requires the new candidate; revision196bfad does not implement database-only mode.",
+    "No VPS deployment, production publication or A3/A4 acceptance is recorded by this receipt."
+  ],
+  "stage": {
+    "completedItems": 15,
+    "totalItems": 30,
+    "percentage": 50,
+    "closedTasks": 0,
+    "totalTasks": 6
+  }
+}

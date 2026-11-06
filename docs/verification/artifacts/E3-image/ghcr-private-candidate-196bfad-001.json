@@ -1,0 +1,154 @@
+{
+  "publication": {
+    "repository": "ghcr.io/joeldorosarioo/a-design-for-life",
+    "sourceRevision": "196bfad427880ad91b0605d9f55f6b8dd711278a",
+    "sourceArchiveSha256": "00a08cecd28cd2a4a3fb65041f46b2dd8283b9ff5631e64f88947142b9d892ec",
+    "tag": "ghcr.io/joeldorosarioo/a-design-for-life:commit-196bfad427880ad91b0605d9f55f6b8dd711278a",
+    "startedAt": "2026-11-05T17:59:14.004Z",
+    "stage": "complete",
+    "additionalTokenScopes": [
+      "repo"
+    ],
+    "visibility": "private",
+    "publisherCredentialReplacedWithReadOnly": true,
+    "manifestDigest": "sha256:69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa",
+    "imageId": "sha256:9946d30ff31a76766062c6d2c01907d3a474d5dcfff9ed1a26df42a10c543c92",
+    "immutableReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa",
+    "anonymousPullStatus": 401,
+    "readonlyPullVerified": true,
+    "status": "published-private",
+    "completedAt": "2026-11-05T17:59:40.214Z"
+  },
+  "build": {
+    "sourceRevision": "196bfad427880ad91b0605d9f55f6b8dd711278a",
+    "sourceKind": "exact git archive; working-tree changes and untracked files excluded",
+    "sourceArchiveSha256": "00a08cecd28cd2a4a3fb65041f46b2dd8283b9ff5631e64f88947142b9d892ec",
+    "startedAt": "2026-11-05T17:52:39.642456+00:00",
+    "tag": "ghcr.io/joeldorosarioo/a-design-for-life:commit-196bfad427880ad91b0605d9f55f6b8dd711278a",
+    "labelSource": "https://github.com/joeldorosarioo/a-design-for-life",
+    "onlyApplicationBuildArgument": "SOURCE_REVISION",
+    "completedAt": "2026-11-05T17:53:36.025587+00:00",
+    "exitCode": 0
+  },
+  "preflight": {
+    "sourceRevision": "196bfad427880ad91b0605d9f55f6b8dd711278a",
+    "inspection": {
+      "imageId": "sha256:9946d30ff31a76766062c6d2c01907d3a474d5dcfff9ed1a26df42a10c543c92",
+      "registryDigests": [],
+      "platform": "linux/amd64",
+      "user": "appuser",
+      "revision": "196bfad427880ad91b0605d9f55f6b8dd711278a",
+      "layers": 20,
+      "environmentNames": [
+        "DOCKER_PG_LLVM_DEPS",
+        "GOSU_VERSION",
+        "HOSTNAME",
+        "LANG",
+        "MEDIA_CHECKER_BINARY",
+        "NEXT_TELEMETRY_DISABLED",
+        "NODE_ENV",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_SHA256",
+        "PG_VERSION",
+        "PORT"
+      ]
+    },
+    "nativeSmoke": "Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas and PDF.js resources.",
+    "knownSecretAudit": {
+      "scope": "all exported layers and metadata",
+      "archiveBytes": 613156864,
+      "checkedKnownSecretCount": 9,
+      "knownSecretMatches": 0
+    },
+    "passed": true,
+    "auditArchiveRemoved": true
+  },
+  "localRuntime": {
+    "containerId": "addcec70de697b67c9043992476179aaa93945eace862a239015f8714a25bed6",
+    "imageId": "sha256:9946d30ff31a76766062c6d2c01907d3a474d5dcfff9ed1a26df42a10c543c92",
+    "imageUser": "appuser",
+    "runtimeUid": 70,
+    "runtimeGid": 70,
+    "cpuLimit": 1,
+    "memoryBytes": 2147483648,
+    "memoryAndSwapBytes": 2147483648,
+    "capDrop": [
+      "ALL"
+    ],
+    "noNewPrivileges": true,
+    "registryCredentialsExcluded": true,
+    "healthy": true,
+    "oomKilled": false,
+    "responses": [
+      {
+        "path": "/health",
+        "status": 200,
+        "bodySha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd"
+      },
+      {
+        "path": "/admin",
+        "status": 200,
+        "bodySha256": "97922877fc41894a976054ef662dfe319caf1afde6a787cd6ca59cdb4af54bd2"
+      },
+      {
+        "path": "/pt",
+        "status": 200,
+        "bodySha256": "8f6b95cb0de3eb2ec54a03e38dc6e9d70563cabeb40e3e9cc14cfacd15836efe"
+      },
+      {
+        "path": "/en",
+        "status": 200,
+        "bodySha256": "de99312f5ce55a98dceadd036603386a33842e53128f1e9da1116662962a754a"
+      },
+      {
+        "path": "/pt/sobre",
+        "status": 200,
+        "bodySha256": "16f41b5ca255a12e4768d6f5dea5d74a9c7747a34086839da477fdc3928f7b24"
+      },
+      {
+        "path": "/en/about",
+        "status": 200,
+        "bodySha256": "94f77712c34de60c912aede04b93a4f07d7ad12875cc0daf8b2ff7f8256207db"
+      },
+      {
+        "path": "/pt/cases",
+        "status": 200,
+        "bodySha256": "1cd3eec9b3212e485dfb4e0f0dfd2e409356663ec467feda5b22d74ef09a3955"
+      },
+      {
+        "path": "/en/cases",
+        "status": 200,
+        "bodySha256": "725838da1c4526d960f43e4107a831d6abfddadfd758118cdd2cea75b2a1a95f"
+      },
+      {
+        "path": "/pt/cases/lorem-ipsum-01",
+        "status": 200,
+        "bodySha256": "ec1f7cdd3cd845b66f3eb07c1e48cd0417c108ba8bcfd98b0a70d19ce2f6f271"
+      },
+      {
+        "path": "/pt/cases/lorem-ipsum-02",
+        "status": 200,
+        "bodySha256": "fdcbe1d7241dcae5b071b5d7205ae2fa70baece381d5b8ee216c56e6216b4203"
+      },
+      {
+        "path": "/en/cases/lorem-ipsum-01",
+        "status": 200,
+        "bodySha256": "3c3b0069b0dbce37c8c6813ea13c9dbca25a2627c6fb8ec4c558da99b283704a"
+      },
+      {
+        "path": "/en/cases/lorem-ipsum-02",
+        "status": 200,
+        "bodySha256": "4f94434b0752de49dd5341c4729396010641de0c1be5b84806efb6d92afebbd1"
+      }
+    ],
+    "nextEnvPreserved": true
+  },
+  "scope": "Private registry publication and local verification only; no application deployment to VPS, no production release, no source push to GitHub.",
+  "limitations": [
+    "Coolify still needs registry login and complete staging environment, persistent volumes, quotas and authenticated access.",
+    "Host and Docker Engine updates on the shared VPS have not been inspected or applied.",
+    "Staging requires real R2 and Resend configuration; local capture does not satisfy startup configuration."
+  ]
+}

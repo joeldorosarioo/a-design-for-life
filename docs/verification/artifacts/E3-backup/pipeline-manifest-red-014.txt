@@ -1,0 +1,39 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/contracts.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/contracts.test.ts (7 tests | 3 failed) 12ms
+   × refuses an allowed object name omitted from the private manifest 3ms
+   × refuses a required private archive member that is absent 0ms
+   × refuses changed bytes even when all archive names are individually allowed 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/contracts.test.ts > refuses an allowed object name omitted from the private manifest
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/contracts.test.ts:52:242
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| ops/backup/contracts.test.ts > refuses a required private archive member that is absent
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/contracts.test.ts:53:166
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| ops/backup/contracts.test.ts > refuses changed bytes even when all archive names are individually allowed
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/contracts.test.ts:54:203
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 4 passed (7)
+   Start at  22:42:22
+   Duration  479ms (setup 60%, import 27%, transform 8%, tests 3%, worker 1%)
+
+EXIT_CODE: 1

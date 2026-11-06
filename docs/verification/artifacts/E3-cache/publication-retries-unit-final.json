@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' 'run' '--project' 'unit' 'src/helpers/payload/publication-retry-policy.test.ts' 'src/config/server-env.test.ts' 'testing/setup/test-environment.test.ts' '--reporter=verbose'",
+  "startedAt": "2026-11-04T01:42:51.3545084+00:00",
+  "finishedAt": "2026-11-04T01:42:52.9976860+00:00",
+  "exitCode": 0,
+  "log": "publication-retries-unit-final.txt"
+}

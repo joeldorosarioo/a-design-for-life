@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-04T05:33:44.2269934+00:00",
+  "nativeRunId": "7dbe1656-f2b1-4605-90d9-494543163f17",
+  "nextRunId": "695a8d60-5f57-4f55-b51f-20f6cbad62dc",
+  "bind": {
+    "ports": [
+      3101,
+      3102,
+      55434
+    ],
+    "exclusiveBind": true,
+    "allClosed": true
+  },
+  "containers": [],
+  "networks": [],
+  "locks": [],
+  "ownedListeners": [
+    "  TCP    127.0.0.1:3102         127.0.0.1:0            LISTENING       0",
+    "  TCP    127.0.0.1:3102         127.0.0.1:0            LISTENING       0"
+  ],
+  "protectedListeners": [],
+  "priorWrapperExit": 2,
+  "playwrightExit": 0,
+  "cleanupConfirmed": false
+}

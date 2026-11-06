@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "private-staging-schema17-ready-for-cms-image",
+  "sourceRevision": "d267aa711f50e3269ffb5c03add08761beb06bdb",
+  "migration": {
+    "name": "20261106_035830_cms_user_profile",
+    "from": 16,
+    "to": 17,
+    "counts": {
+      "media": 0,
+      "users": 1,
+      "profiles": 2,
+      "migrations": 17,
+      "navigation": 2
+    },
+    "accountIdsAndCredentialsPreserved": true,
+    "sessionsPreserved": true,
+    "structuralContentPreserved": true,
+    "newProfileFieldsNullable": true,
+    "editorialAccountsCreated": 0,
+    "editorialAccountsModified": 0,
+    "completedAt": "2026-11-06T04:34:32.310Z"
+  },
+  "backup": {
+    "encrypted": true,
+    "ciphertextSha256": "ae28487a54a1c3828e633e2c47c0fa055540f26aa24c48c14a52357f83f8ab78",
+    "ciphertextBytes": 157698,
+    "storage": "private owner-only local filesystem; no plaintext files",
+    "sourceSchema": 16,
+    "sourceReadOnly": true,
+    "sourceDdlExecuted": false,
+    "restoreVerified": true,
+    "restoreCounts": {
+      "migrations": 16,
+      "users": 1,
+      "profiles": 2,
+      "navigation": 2,
+      "media": 0
+    },
+    "verification": {
+      "accountPreserved": true,
+      "sessionsPreserved": true,
+      "structurePreserved": true,
+      "allPublicTableRowsMatched": true,
+      "schemaMetadataMatched": true,
+      "ciphertextReadbackMatched": true,
+      "customDumpHeaderVerified": true,
+      "snapshotExportedFromReadonlyRepeatableRead": true,
+      "ownerOnlyWindowsAcl": true,
+      "sourcePasswordPassedThroughEnvironmentOnly": true,
+      "noPlaintextFiles": true,
+      "restoreNetworkNone": true,
+      "noHostPortsOrPersistentMounts": true
+    },
+    "disposableContainersRemoved": true,
+    "persistentVolumesCreated": 0,
+    "networksCreated": 0,
+    "completedAt": "2026-11-06T04:28:53.160Z",
+    "dumpAndRestoreToolImage": "sha256:43c1d2c8a654b837d9ec4ce0db387f4b61857149aa08f47c9d0eff78f641a173"
+  },
+  "preservation": {
+    "rootEnvUnchanged": true,
+    "runtimeImportUnchanged": true,
+    "passwordAndPayloadSecretRotations": 0
+  },
+  "limits": [
+    "The operator must redeploy the already-published private image in Coolify; schema upgrade does not change the running app image.",
+    "This pre-migration backup contained zero media records; it is not evidence of R2 object restore or a dedicated remote backup bucket.",
+    "No production deployment, external service purchase or real email was performed."
+  ],
+  "stage": {
+    "completedItems": 15,
+    "totalItems": 30,
+    "percentage": 50,
+    "closedTasks": 0,
+    "totalTasks": 6
+  }
+}

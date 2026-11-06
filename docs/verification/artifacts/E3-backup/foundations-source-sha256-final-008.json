@@ -1,0 +1,47 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "518E3FB98E9BC601A3FA0D029D0E5AA9D818FEC8A750D901B271374220E82F1F",
+    "Path": "E:\\a-design-for-life\\src\\helpers\\storage\\restore-object.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "6FB2A77883EDB4F373AD2CDB62072F6719B1F5888871C17C51FD609E082C4B88",
+    "Path": "E:\\a-design-for-life\\src\\helpers\\storage\\restore-object.test.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7E7D298B5720B2B8711FBDE51C8E20D25E721E69DE31AB6E74DB55D9BED4C964",
+    "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\backup-snapshot.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "96CECC462E10770AEC9D4D9216BD7BDA0DB2BB30EC545A0C44E906795411B87A",
+    "Path": "E:\\a-design-for-life\\src\\helpers\\payload\\backup-snapshot.integration.test.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "4D84E6C489E563D4C57868BB3DE8C77E9DF060D9CD2E1E1556AFA0B7AECF54E5",
+    "Path": "E:\\a-design-for-life\\src\\features\\media-library\\server\\backup-inventory.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7989FED7E2141E61A5BFF7AEE6BBF371B60A6A34DBB4929BAB8D7B54F3FBB5ED",
+    "Path": "E:\\a-design-for-life\\src\\features\\media-library\\server\\backup-inventory.test.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9EDDBCEA8D97A52C347C06FAD5AC008E68782CA7942FCD2B6ECF0E1337E23CFC",
+    "Path": "E:\\a-design-for-life\\src\\features\\media-library\\server\\backup-inventory.integration.test.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "697AD7E3A8A7807AD9D19B13C4E6FC2F0A26112446CAF59500B95193189D906A",
+    "Path": "E:\\a-design-for-life\\src\\features\\media-library\\server.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "BB292245A3A3BC2A04AEF4E2ABA3239033D0ADA8C240CE6BDE8279D419250937",
+    "Path": "E:\\a-design-for-life\\docs\\runbooks\\backup-e-restauracao.md"
+  }
+]

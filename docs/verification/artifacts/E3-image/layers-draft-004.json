@@ -1,0 +1,94 @@
+{
+  "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "source": "9390cc9ee4914f9a23c04948d7b1124ec83349f3cf607c30c98b6158c1893628",
+  "at": "2026-11-04T04:20:35.357Z",
+  "scope": "Path inventories of every saved final image layer. Application content checks are separate.",
+  "layers": [
+    {
+      "index": 0,
+      "blob": "blobs/sha256/a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933",
+      "entries": 3271,
+      "forbidden": []
+    },
+    {
+      "index": 1,
+      "blob": "blobs/sha256/c160df216f70549e99ef57e5b7805983bd83d08342a4e27d30d43b1ea13d2726",
+      "entries": 18,
+      "forbidden": []
+    },
+    {
+      "index": 2,
+      "blob": "blobs/sha256/bcf977707864d939992b65570c0ec719f8bdfb698f073036de6f68c7c1f9e14d",
+      "entries": 3021,
+      "forbidden": []
+    },
+    {
+      "index": 3,
+      "blob": "blobs/sha256/2b07f9f1d39f9ad791a7254c545638ed967b976e8952d33b3a607043613730c5",
+      "entries": 50,
+      "forbidden": []
+    },
+    {
+      "index": 4,
+      "blob": "blobs/sha256/50ea8bae6680ecda8a2d72871601414ec173b9be016fdea7badfd13699f86902",
+      "entries": 4,
+      "forbidden": []
+    },
+    {
+      "index": 5,
+      "blob": "blobs/sha256/e6b621688a70644d0654adae56b526d2a93d84ebf7fdcc520a181d42fa97b092",
+      "entries": 1,
+      "forbidden": []
+    },
+    {
+      "index": 6,
+      "blob": "blobs/sha256/52ca145a6be8200a0c1ce556b65abdc71d028f6a7b2f688deaa4f32614698de5",
+      "entries": 14,
+      "forbidden": []
+    },
+    {
+      "index": 7,
+      "blob": "blobs/sha256/ddb2662280f7039ad1b61193f49427eaddaf0f143693cc8b9c90f64b27bb2849",
+      "entries": 3719,
+      "forbidden": []
+    },
+    {
+      "index": 8,
+      "blob": "blobs/sha256/68a98a6c335066cfe67bcb81ee9dfb4edfc8fdae9676ef42155f9cab4c8e3220",
+      "entries": 91,
+      "forbidden": []
+    },
+    {
+      "index": 9,
+      "blob": "blobs/sha256/61342e7efcc46b2b048fde2e09b74a2652e97c0fd86dea9434e944c837f4c318",
+      "entries": 10,
+      "forbidden": []
+    },
+    {
+      "index": 10,
+      "blob": "blobs/sha256/39f75ec9ce387d6609e510d6f5c23b4765c3ee6d62107a8af0573f0d5b25f7ad",
+      "entries": 19,
+      "forbidden": []
+    },
+    {
+      "index": 11,
+      "blob": "blobs/sha256/53464b72f09b98001ca51e25375c0ec4174d3897eb1aba367da7b639dcee844c",
+      "entries": 5,
+      "forbidden": []
+    },
+    {
+      "index": 12,
+      "blob": "blobs/sha256/90efbd5913db5aa19ef56eb128e8ba6b45d3fa1f2dd6d13df311167ab8a940e2",
+      "entries": 822,
+      "forbidden": []
+    },
+    {
+      "index": 13,
+      "blob": "blobs/sha256/246b7335d636d6a6e116fa57be897a535e3ef77759541d17118362168d47e519",
+      "entries": 1,
+      "forbidden": []
+    }
+  ],
+  "totalEntries": 11046,
+  "forbidden": []
+}

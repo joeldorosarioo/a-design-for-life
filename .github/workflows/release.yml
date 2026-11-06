@@ -1,0 +1,128 @@
+name: Staging image
+
+on:
+  workflow_call:
+    outputs:
+      digest:
+        description: Immutable manifest digest verified before staging deployment.
+        value: ${{ jobs.image-preflight.outputs.digest }}
+      source-tree:
+        description: Git tree identifying the exact image source.
+        value: ${{ jobs.image-preflight.outputs.source-tree }}
+      migration-tree:
+        description: Git tree of src/migrations requiring environment approval.
+        value: ${{ jobs.image-preflight.outputs.migration-tree }}
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  image-preflight:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop' && vars.STAGING_AUTODEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    outputs:
+      digest: ${{ steps.publish.outputs.digest }}
+      source-tree: ${{ steps.identity.outputs.source-tree }}
+      migration-tree: ${{ steps.identity.outputs.migration-tree }}
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Identify the exact source
+        id: identity
+        run: |
+          set -euo pipefail
+          revision="$(git rev-parse HEAD)"
+          source_tree="$(git rev-parse 'HEAD^{tree}')"
+          migration_tree="$(git rev-parse HEAD:src/migrations)"
+          [[ "$revision" =~ ^[a-f0-9]{40}$ && "$revision" == "$GITHUB_SHA" ]]
+          [[ "$source_tree" =~ ^[a-f0-9]{40}$ && "$migration_tree" =~ ^[a-f0-9]{40}$ ]]
+          test -z "$(git status --porcelain)"
+          repository="ghcr.io/${GITHUB_REPOSITORY,,}"
+          image="$repository:commit-$revision"
+          printf 'revision=%s\nsource-tree=%s\nmigration-tree=%s\nimage=%s\n' "$revision" "$source_tree" "$migration_tree" "$image" >> "$GITHUB_OUTPUT"
+      - name: Build and inspect the single Linux image
+        env:
+          SOURCE_REVISION: ${{ steps.identity.outputs.revision }}
+          SOURCE_TREE: ${{ steps.identity.outputs.source-tree }}
+          IMAGE_REFERENCE: ${{ steps.identity.outputs.image }}
+        run: |
+          set -euo pipefail
+          # The Docker CLI publishes one linux/amd64 manifest, without an attestation index.
+          docker build --platform linux/amd64 \
+            --provenance=false --sbom=false \
+            --build-arg "SOURCE_REVISION=$SOURCE_REVISION" \
+            --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
+            --label "life.adfl.source-tree=$SOURCE_TREE" \
+            --tag "$IMAGE_REFERENCE" --progress plain .
+          image_id="$(docker image inspect --format '{{.Id}}' "$IMAGE_REFERENCE")"
+          node ops/image/inspect-local-image.mjs "$IMAGE_REFERENCE" "$image_id" "$SOURCE_REVISION"
+          [[ "$(docker image inspect --format '{{index .Config.Labels "life.adfl.source-tree"}}' "$image_id")" == "$SOURCE_TREE" ]]
+          docker run --rm --network none --read-only \
+            --tmpfs /tmp:rw,noexec,nosuid,nodev,uid=70,gid=70,mode=0700,size=64m \
+            --cpus 1 --memory 2g --memory-swap 2g --pids-limit 128 \
+            --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint node "$image_id" ops/image/runtime-smoke.mjs
+      - name: Publish only to the existing private package
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PACKAGE_OWNER_TYPE: ${{ github.event.repository.owner.type }}
+          IMAGE_REFERENCE: ${{ steps.identity.outputs.image }}
+        run: |
+          set -euo pipefail
+          assert_private_package() {
+            node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          const [owner, name] = process.env.GITHUB_REPOSITORY.split('/');
+          const type = process.env.PACKAGE_OWNER_TYPE;
+          assert.ok(type === 'User' || type === 'Organization', 'Unexpected package owner type.');
+          const prefix = type === 'Organization' ? 'orgs' : 'users';
+          const url = `https://api.github.com/${prefix}/${encodeURIComponent(owner)}/packages/container/${encodeURIComponent(name.toLowerCase())}`;
+          const response = await fetch(url, {
+            headers: {
+              Authorization: `Bearer ${process.env.GH_TOKEN}`,
+              Accept: 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+              'User-Agent': 'ADFL-Private-Image-Workflow',
+            },
+            redirect: 'error',
+            signal: AbortSignal.timeout(15000),
+          });
+          assert.equal(response.status, 200, 'Existing package metadata must be accessible.');
+          assert.equal((await response.json()).visibility, 'private', 'Registry package must remain private.');
+          NODE
+          }
+          assert_private_package
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io --username "$GITHUB_ACTOR" --password-stdin
+          docker push "$IMAGE_REFERENCE"
+          assert_private_package
+          repository="ghcr.io/${GITHUB_REPOSITORY,,}"
+          reference="$(docker image inspect --format '{{index .RepoDigests 0}}' "$IMAGE_REFERENCE")"
+          [[ "$reference" == "$repository@sha256:"* ]]
+          digest="${reference#"$repository@"}"
+          [[ "$digest" =~ ^sha256:[a-f0-9]{64}$ ]]
+          # Coolify consumes a tag, so publish its immutable digest alias first.
+          # Reuse the same local image; verify the remote manifest is unchanged.
+          immutable_reference="$repository:${digest/:/-}"
+          docker tag "$IMAGE_REFERENCE" "$immutable_reference"
+          docker push "$immutable_reference"
+          published_digest="$(docker buildx imagetools inspect "$immutable_reference" --format '{{.Manifest.Digest}}')"
+          [[ "$published_digest" == "$digest" ]]
+          assert_private_package
+          printf 'digest=%s\n' "$digest" >> "$GITHUB_OUTPUT"
+      - name: Remove registry credentials
+        if: always()
+        run: docker logout ghcr.io

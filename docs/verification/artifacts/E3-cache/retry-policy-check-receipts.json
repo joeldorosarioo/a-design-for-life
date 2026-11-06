@@ -1,0 +1,106 @@
+{
+  "scope": "Pure policy only; no persisted adapter, coordinator, collection, migration, worker, startup, DB, service or full gate changes.",
+  "workingDirectory": "E:\\a-design-for-life",
+  "runtime": "Node v24.22.2",
+  "unitRunner": "Vitest v5.0.5",
+  "sourceSha256": {
+    "src/helpers/payload/publication-retry-policy.ts": "9C82ECCBC531BB674A44B38C9782F316E27431CCBEBE1DC355D40DB6BDB58C1D",
+    "src/helpers/payload/publication-retry-policy.test.ts": "73DB4548A30103B6F502F85C0A94EB3915FFA93FDA716B94CB2D71354E31A273"
+  },
+  "tdd": [
+    {
+      "phase": "initial RED",
+      "exit_code": 1,
+      "failed": 26,
+      "passed": 21,
+      "total": 47,
+      "log": "retry-policy-red.txt",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project unit src/helpers/payload/publication-retry-policy.test.ts --reporter=verbose"
+    },
+    {
+      "phase": "minimal GREEN",
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 47,
+      "total": 47,
+      "log": "retry-policy-green.txt",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project unit src/helpers/payload/publication-retry-policy.test.ts --reporter=verbose"
+    },
+    {
+      "phase": "stale prior-public receipt RED",
+      "exit_code": 1,
+      "failed": 1,
+      "passed": 47,
+      "total": 48,
+      "log": "retry-policy-stale-receipt-red.txt",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project unit src/helpers/payload/publication-retry-policy.test.ts --reporter=verbose"
+    },
+    {
+      "phase": "stale prior-public receipt GREEN",
+      "exit_code": 0,
+      "failed": 0,
+      "passed": 48,
+      "total": 48,
+      "log": "retry-policy-stale-receipt-green.txt",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project unit src/helpers/payload/publication-retry-policy.test.ts --reporter=verbose"
+    }
+  ],
+  "finalChecks": [
+    {
+      "check": "unit",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\vitest\\vitest.mjs' run --project unit src/helpers/payload/publication-retry-policy.test.ts --reporter=verbose",
+      "log": "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\retry-policy-unit-final.txt",
+      "mirror": "E:\\a-design-for-life\\docs\\verification\\artifacts\\E3-cache\\retry-policy-unit-final.txt",
+      "chunk_id": "28cffc",
+      "wall_time_seconds": 1.4261128,
+      "exit_code": 0,
+      "original_token_count": 253,
+      "output": " ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects an outcome outside the native receipt states 0ms\r\n ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 0 0ms\r\n ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > cannot schedule an attempt from an invalid or failing injected clock: 1 0ms\r\n ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses a due-time overflow instead of persisting an invalid timestamp 0ms\r\n ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > refuses attempt-version overflow so old outcomes can never alias a newer attempt 0ms\r\n ✓ |unit| src/helpers/payload/publication-retry-policy.test.ts > rejects an invalid new operation id instead of arming unrelated work 0ms\r\n\r\n Test Files  1 passed (1)\r\n      Tests  48 passed (48)\r\n   Start at  21:38:48\r\n   Duration  530ms (setup 58%, import 28%, transform 9%, tests 4%, worker 1%)\r\n\r\n"
+    },
+    {
+      "check": "lint",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\eslint\\bin\\eslint.js' src/helpers/payload/publication-retry-policy.ts src/helpers/payload/publication-retry-policy.test.ts",
+      "log": "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\retry-policy-lint-final.txt",
+      "mirror": "E:\\a-design-for-life\\docs\\verification\\artifacts\\E3-cache\\retry-policy-lint-final.txt",
+      "chunk_id": "883fd7",
+      "wall_time_seconds": 3.2601383999999998,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "check": "format",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\prettier\\bin\\prettier.cjs' --check src/helpers/payload/publication-retry-policy.ts src/helpers/payload/publication-retry-policy.test.ts",
+      "log": "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\retry-policy-format-final.txt",
+      "mirror": "E:\\a-design-for-life\\docs\\verification\\artifacts\\E3-cache\\retry-policy-format-final.txt",
+      "chunk_id": "58ec11",
+      "wall_time_seconds": 0.5162185,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "Checking formatting...\r\nAll matched files use Prettier code style!\r\n"
+    },
+    {
+      "check": "typecheck",
+      "command": "& '.\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\typescript\\bin\\tsc' --project 'C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\retry-policy.tsconfig.json' --noEmit --pretty false",
+      "log": "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\retry-policy-typecheck-final.txt",
+      "mirror": "E:\\a-design-for-life\\docs\\verification\\artifacts\\E3-cache\\retry-policy-typecheck-final.txt",
+      "chunk_id": "5b4a61",
+      "wall_time_seconds": 0.8693852,
+      "exit_code": 0,
+      "original_token_count": 15,
+      "output": "",
+      "correctedInvocation": true
+    }
+  ],
+  "invocationErrors": [
+    {
+      "exit_code": 1,
+      "log": "retry-policy-typecheck-invocation-error.txt",
+      "cause": "--pretty=false unsupported; corrected to --pretty false. Fresh scoped check exited0."
+    }
+  ],
+  "evidenceDirectories": [
+    "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution",
+    "E:\\a-design-for-life\\docs\\verification\\artifacts\\E3-cache"
+  ]
+}

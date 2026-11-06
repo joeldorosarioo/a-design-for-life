@@ -1,0 +1,132 @@
+{
+  "at": "2026-11-04T00:51:32.956Z",
+  "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+  "layers": [
+    {
+      "index": 0,
+      "blob": "blobs/sha256/a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933",
+      "sha256": "a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933",
+      "entries": 3271,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 1,
+      "blob": "blobs/sha256/c160df216f70549e99ef57e5b7805983bd83d08342a4e27d30d43b1ea13d2726",
+      "sha256": "c160df216f70549e99ef57e5b7805983bd83d08342a4e27d30d43b1ea13d2726",
+      "entries": 18,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 2,
+      "blob": "blobs/sha256/bcf977707864d939992b65570c0ec719f8bdfb698f073036de6f68c7c1f9e14d",
+      "sha256": "bcf977707864d939992b65570c0ec719f8bdfb698f073036de6f68c7c1f9e14d",
+      "entries": 3021,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 3,
+      "blob": "blobs/sha256/2b07f9f1d39f9ad791a7254c545638ed967b976e8952d33b3a607043613730c5",
+      "sha256": "2b07f9f1d39f9ad791a7254c545638ed967b976e8952d33b3a607043613730c5",
+      "entries": 50,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 4,
+      "blob": "blobs/sha256/50ea8bae6680ecda8a2d72871601414ec173b9be016fdea7badfd13699f86902",
+      "sha256": "50ea8bae6680ecda8a2d72871601414ec173b9be016fdea7badfd13699f86902",
+      "entries": 4,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 5,
+      "blob": "blobs/sha256/e6b621688a70644d0654adae56b526d2a93d84ebf7fdcc520a181d42fa97b092",
+      "sha256": "e6b621688a70644d0654adae56b526d2a93d84ebf7fdcc520a181d42fa97b092",
+      "entries": 1,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 6,
+      "blob": "blobs/sha256/58aeef399860495c31552c0bfb00c13b927a109c813fca921566d82336f67624",
+      "sha256": "58aeef399860495c31552c0bfb00c13b927a109c813fca921566d82336f67624",
+      "entries": 14,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 7,
+      "blob": "blobs/sha256/d20b31fbb48311f290b05830bf7ff5b3cd0ed4b3628d4886bf7cd61605cfd2a2",
+      "sha256": "d20b31fbb48311f290b05830bf7ff5b3cd0ed4b3628d4886bf7cd61605cfd2a2",
+      "entries": 3687,
+      "forbiddenPaths": [],
+      "applicationRootEntries": [
+        "app/.work/",
+        "app/node_modules/",
+        "app/public/",
+        "app/server.js"
+      ]
+    },
+    {
+      "index": 8,
+      "blob": "blobs/sha256/786ca812ef8257e8ee0cde1c890828af80e88f3d5f5a955a9a9fe03a26ad8bbb",
+      "sha256": "786ca812ef8257e8ee0cde1c890828af80e88f3d5f5a955a9a9fe03a26ad8bbb",
+      "entries": 90,
+      "forbiddenPaths": [],
+      "applicationRootEntries": [
+        "app/.work/"
+      ]
+    },
+    {
+      "index": 9,
+      "blob": "blobs/sha256/4efc30a153ce63b43104c92b6f3b8e2f6a2b125dce1f334ba198f2534cb42d1b",
+      "sha256": "4efc30a153ce63b43104c92b6f3b8e2f6a2b125dce1f334ba198f2534cb42d1b",
+      "entries": 10,
+      "forbiddenPaths": [],
+      "applicationRootEntries": [
+        "app/public/"
+      ]
+    },
+    {
+      "index": 10,
+      "blob": "blobs/sha256/a57d86a37d9d44dc57c4121ae43918cd29bedbbc052abfe9663a12adbb1c728a",
+      "sha256": "a57d86a37d9d44dc57c4121ae43918cd29bedbbc052abfe9663a12adbb1c728a",
+      "entries": 19,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    },
+    {
+      "index": 11,
+      "blob": "blobs/sha256/6ecbbced6eba9321121f3837b23fe3e1bbfc53ffd919479071185d856e8861b1",
+      "sha256": "6ecbbced6eba9321121f3837b23fe3e1bbfc53ffd919479071185d856e8861b1",
+      "entries": 5,
+      "forbiddenPaths": [],
+      "applicationRootEntries": [
+        "app/ops/"
+      ]
+    },
+    {
+      "index": 12,
+      "blob": "blobs/sha256/f27e7fe93d4b55f2217e78aef21fd8d9092ef37a0e1a62802537d4e2eb76c8f8",
+      "sha256": "f27e7fe93d4b55f2217e78aef21fd8d9092ef37a0e1a62802537d4e2eb76c8f8",
+      "entries": 789,
+      "forbiddenPaths": [],
+      "applicationRootEntries": [
+        "app/.work/"
+      ]
+    },
+    {
+      "index": 13,
+      "blob": "blobs/sha256/c50a65fdb9b3ff634302a0e30e9b41f3de758f53644c7beb2dbeeae11dc21681",
+      "sha256": "c50a65fdb9b3ff634302a0e30e9b41f3de758f53644c7beb2dbeeae11dc21681",
+      "entries": 1,
+      "forbiddenPaths": [],
+      "applicationRootEntries": []
+    }
+  ],
+  "scope": "Every saved layer pathname inspected; no private file contents printed. This is not a universal content secret scanner."
+}

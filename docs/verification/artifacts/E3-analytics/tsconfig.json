@@ -1,0 +1,9 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": { "incremental": false, "types": ["@testing-library/jest-dom/vitest"] },
+  "include": [
+    "../../../../src/features/analytics/**/*.ts",
+    "../../../../src/features/analytics/**/*.tsx"
+  ],
+  "exclude": []
+}

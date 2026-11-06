@@ -1,0 +1,10 @@
+COMMAND: pinned node --check C work/E3-backup-slice2/update-foundations-runbook.mjs; preserved syntax failure, not feature RED
+C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-backup-slice2\update-foundations-runbook.mjs:10
+`withNativeBackupSnapshot({ payload, directory, capture }, consume)`, em `src/helpers/payload/backup-snapshot.ts`, captura a raiz confirmada sob o escritor existente, abre transação nativa Payload/PostgreSQL `REPEATABLE READ READ ONLY` e exporta o snapshot por `pg_export_snapshot()`. A função `capture` recebe request e raiz para inventário na mesma transação. O escritor é liberado depois dessa captura; a transação exportadora permanece aberta durante `consume` e é finalizada em `finally`, inclusive em falhas. Nenhuma consulta SQL paralela de conteúdo foi adicionada. O protocolo de request é restrito em memória a esse período; `requireNativeBackupSnapshot` recusa requests comuns ou já liberados.
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'withNativeBackupSnapshot'
+    at checkSyntax (node:internal/main/check_syntax:84:5)
+
+Node.js v24.22.2
+EXIT_CODE: 1

@@ -1,0 +1,78 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[22:14:33] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (49ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (119ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (4ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (10ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (8ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (8ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (37ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (1ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (2ms)[39m
+[22:14:34] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[22:14:34] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[22:14:34] [32mINFO[39m: [36mDone.[39m
+ × |integration| src/helpers/payload/publication-retries.integration.test.ts > persists retry actor and due time in the same Native editorial transaction while remaining invisible before COMMIT 36ms
+   → expected null to match object { …(4) }
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > rolls back execution metadata with its actual editorial intention and cannot independently claim uncommitted work
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > gives two Native CAS claimers reading the same persisted version exactly one winner
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > retains a durably started version despite real filesystem failure without double-incrementing legacy coordinator attempts
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > skips stale and future outcome versions after a newer manual attempt without replacing its schedule
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > records only independently confirmed core outcomes and never turns execution metadata into public authority
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > routes a newer native intention to existing stale reconciliation without allocating the old target another attempt
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps the approved immutable intention claimable after a real newer private draft changes editorialRevision
+ ↓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps a legacy NULL actor manual-only and rebinds solely to the real authorized manual editor
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/publication-retries.integration.test.ts > persists retry actor and due time in the same Native editorial transaction while remaining invisible before COMMIT
+AssertionError: expected null to match object { …(4) }
+
+- Expected:
+{
+  "automaticAttempts": 0,
+  "operationId": "6723f2a4-3e6d-43bc-9ba5-e119bbf6e85f",
+  "retryUserId": "7ce58a52-4c87-4ff0-b712-1e55f297ece8",
+  "startedAttemptsVersion": 0,
+}
+
++ Received:
+null
+
+ ❯ src/helpers/payload/publication-retries.integration.test.ts:104:19
+    102|     await schedulePublicationRetry(operationId, req, () => new Date());
+    103|     const retry = await readPublicationRetry(operationId, req);
+    104|     expect(retry).toMatchObject({
+       |                   ^
+    105|       operationId,
+    106|       retryUserId: fixture.user.id,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 skipped (9)
+   Start at  22:14:27
+   Duration  9.34s (import 77%, tests 11%, transform 8%, setup 3%)
+

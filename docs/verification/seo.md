@@ -23,3 +23,9 @@ A primeira fixture Native tentava confirmar NavegaçãoEN com PerfilEN privado; 
 O gate agregado final 003 passou: `pnpm verify`, exit 0, 1.164 testes e 2 skips Windows, mais 2 testes CSS; `pnpm test:e2e`, exit 0, 113/113. Inclui os 4 HTTP de metadados e 9 HTTP de prévia privada. CI Ubuntu 24.04 no commit `c9be4dc23c12f45fadd27cafc05a599b8b3a0c44`, [run 41655739795](https://github.com/joeldorosarioo/a-design-for-life/actions/runs/41655739795): SUCCESS, 1.166 testes sem skips, 2 CSS e 113 E2E.
 
 BuildID `XCwWNaSVVZ2kr6jeLy4Aa`, fonte local de 500 arquivos/digest `f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784`. O CI identifica o SHA Git exato; não recalculou esse inventário local. Provas atuais em [A2](A2.md) e `artifacts/E2-A2-resumed/ci-implementation/`. O recibo externo final registra o commit documental e seu CI. Leitor formal continua incompleto por orientação do usuário; isso não reabre SEO nem representa conformidade WCAG. Nenhum ambiente público ou analytics foi ativado.
+
+## Diagnóstico local de 05/11/2026 com Lorem Ipsum
+
+As páginas auditadas apresentaram título, descrição, idioma, canonical próprio, duas alternates, um main e um h1. O diagnóstico identificou títulos temporários repetidos entre Sobre e Case. Após as medições, uma atualização somente de metadados produziu títulos e descrições únicos nas 10 URLs. Os fingerprints do texto visível das oito páginas iniciais permaneceram iguais.
+
+O ambiente local devolveu robots com Disallow geral e sitemap sem URLs, conforme sua política. Rotas desconhecidas PT/EN responderam 404 com noindex e sem canonical. O login do painel manteve cache privado e noindex. O recibo associa a geração usada nas medições à revisão posterior dos metadados. [Resultados e vínculos](artifacts/E4-local-audit/local-placeholder-audit-2026-11-05.json)

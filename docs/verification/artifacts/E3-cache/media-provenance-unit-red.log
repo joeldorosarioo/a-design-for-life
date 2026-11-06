@@ -1,0 +1,249 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/payload/publication-coordinator.test.ts (3 tests | 3 failed) 51ms
+   × passes the exact selected predecessor state to observed composition when it is public 26ms
+   × passes the exact selected predecessor state to observed composition when it is update-pending 12ms
+   × passes the exact selected predecessor state to observed composition when it is superseded 11ms
+ ❯ |unit| src/config/publication-media-provenance.test.ts (2 tests | 2 failed) 27ms
+   × keeps removed image routes across a durable root reload without changing old readers or grants 25ms
+   × carries an unacknowledged predecessor removal and drops it when the predecessor was public 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/publication-media-provenance.test.ts > keeps removed image routes across a durable root reload without changing old readers or grants
+AssertionError: expected { media: [], kind: 'case', …(6) } to match object { media: [], …(1) }
+(7 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "media": [],
+-   "mediaObservation": {
+-     "removed": [
+-       {
+-         "mediaId": "4d6b1f48-c327-4672-acd6-4daf95a3ef15",
+-         "variant": "original",
+-       },
+-       {
+-         "mediaId": "4d6b1f48-c327-4672-acd6-4daf95a3ef15",
+-         "variant": "w16",
+-       },
+-       {
+-         "mediaId": "4d6b1f48-c327-4672-acd6-4daf95a3ef15",
+-         "optimizer": true,
+-       },
+-     ],
+-   },
+  }
+
+ ❯ src/config/publication-media-provenance.test.ts:110:48
+    108|     await withPublicRootWriter(directory, (_, commit) => commit(next));
+    109|     const reloaded = previousRootReader.parse(await readPublicRoot(dir…
+    110|     expect(reloaded.subjects[selected]?.value).toMatchObject({
+       |                                                ^
+    111|       media: [],
+    112|       mediaObservation: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |unit| src/config/publication-media-provenance.test.ts > carries an unacknowledged predecessor removal and drops it when the predecessor was public
+AssertionError: expected { media: [], kind: 'case', …(6) } to match object { mediaObservation: { …(1) } }
+(8 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "mediaObservation": {
+-     "removed": [
+-       {
+-         "mediaId": "db33c079-8141-4712-a139-dfb5515ba2ce",
+-         "variant": "original",
+-       },
+-     ],
+-   },
++   "caseId": "fe3e3086-428b-45b9-9673-2fddde651850",
++   "contentId": "26087ef6-0a4e-4d1d-b219-fdad890526de",
++   "detail": null,
++   "kind": "case",
++   "locale": "pt",
++   "media": [],
++   "slug": null,
++   "slugs": [],
+  }
+
+ ❯ src/config/publication-media-provenance.test.ts:139:45
+    137|   const compose = composition('unused-by-pure-composition');
+    138|   const pending = await compose(root, operation, { previousAcknowledge…
+    139|   expect(pending.subjects[selected]?.value).toMatchObject({ mediaObser…
+       |                                             ^
+    140|   const confirmed = await compose(root, operation, { previousAcknowled…
+    141|   expect(confirmed.subjects[selected]?.value).toMatchObject({ mediaObs…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-coordinator.test.ts > passes the exact selected predecessor state to observed composition when it is public
+AssertionError: expected "vi.fn()" to be called with arguments: [ Array(3) ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,9 +1,18 @@
+  [
+-   ObjectContaining {
++   {
+      "generation": "8087f61a-3092-4e36-b3e6-027cdfd737e6",
++     "subjects": {
++       "cases/01f772ea-7b4b-4b34-87af-534816595b56": {
++         "operationId": "36578378-9eff-4bf3-985e-d1e2cc05351b",
++         "targetRevision": "474c1ac3-2b7e-42d7-850a-1b5bfa6626c6",
++         "value": {
++           "kind": "case-order",
+          },
++       },
++     },
++   },
+    {
+      "attempts": 1,
+      "createdAt": "",
+      "dependencies": [],
+      "diagnostic": null,
+@@ -15,10 +24,7 @@
+      "target": {
+        "kind": "case-order",
+      },
+      "targetRevision": "c3660858-a00f-473f-8183-80d2c844fa82",
+      "updatedAt": "",
+-   },
+-   {
+-     "previousAcknowledged": true,
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/helpers/payload/publication-coordinator.test.ts:116:24
+    114|       });
+    115|       expect(await coordinator.retry(next.operationId, req)).toMatchOb…
+    116|       expect(composed).toHaveBeenCalledWith(
+       |                        ^
+    117|         expect.objectContaining({ generation }),
+    118|         next,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-coordinator.test.ts > passes the exact selected predecessor state to observed composition when it is update-pending
+AssertionError: expected "vi.fn()" to be called with arguments: [ Array(3) ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,9 +1,18 @@
+  [
+-   ObjectContaining {
++   {
+      "generation": "56a08621-76e9-4e06-9eba-9f7f3fd00e75",
++     "subjects": {
++       "cases/99fb49e5-69af-4ec2-9cb9-73039d50c8d7": {
++         "operationId": "fe39fc54-1ff8-40a8-a798-e073dfe6ccfb",
++         "targetRevision": "8ce40bf8-5e8d-4170-90ca-848d3e7c0252",
++         "value": {
++           "kind": "case-order",
+          },
++       },
++     },
++   },
+    {
+      "attempts": 1,
+      "createdAt": "",
+      "dependencies": [],
+      "diagnostic": null,
+@@ -15,10 +24,7 @@
+      "target": {
+        "kind": "case-order",
+      },
+      "targetRevision": "1ce77043-6007-4663-a9c1-41a7d22f0689",
+      "updatedAt": "",
+-   },
+-   {
+-     "previousAcknowledged": false,
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/helpers/payload/publication-coordinator.test.ts:116:24
+    114|       });
+    115|       expect(await coordinator.retry(next.operationId, req)).toMatchOb…
+    116|       expect(composed).toHaveBeenCalledWith(
+       |                        ^
+    117|         expect.objectContaining({ generation }),
+    118|         next,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-coordinator.test.ts > passes the exact selected predecessor state to observed composition when it is superseded
+AssertionError: expected "vi.fn()" to be called with arguments: [ Array(3) ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,9 +1,18 @@
+  [
+-   ObjectContaining {
++   {
+      "generation": "8d83232a-855e-4233-b92e-c07f1cf2e7b2",
++     "subjects": {
++       "cases/231dbd77-8bdf-4f1b-b20a-0cbc6e298618": {
++         "operationId": "6d4b5047-2207-4a3c-95af-c49c291044b5",
++         "targetRevision": "3b9f17f1-13c0-46f9-b2f7-b997bcddb476",
++         "value": {
++           "kind": "case-order",
+          },
++       },
++     },
++   },
+    {
+      "attempts": 1,
+      "createdAt": "",
+      "dependencies": [],
+      "diagnostic": null,
+@@ -15,10 +24,7 @@
+      "target": {
+        "kind": "case-order",
+      },
+      "targetRevision": "64b8005e-d887-4e1c-a4c6-6d5ba3da955f",
+      "updatedAt": "",
+-   },
+-   {
+-     "previousAcknowledged": false,
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/helpers/payload/publication-coordinator.test.ts:116:24
+    114|       });
+    115|       expect(await coordinator.retry(next.operationId, req)).toMatchOb…
+    116|       expect(composed).toHaveBeenCalledWith(
+       |                        ^
+    117|         expect.objectContaining({ generation }),
+    118|         next,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  5 failed (5)
+   Start at  01:52:53
+   Duration  1.28s (import 74%, setup 18%, transform 4%, tests 3%)
+
+EXIT 1

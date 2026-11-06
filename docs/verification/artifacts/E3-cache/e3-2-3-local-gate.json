@@ -1,0 +1,42 @@
+{
+  "gate": {
+    "id": "verify-013",
+    "command": "pnpm verify",
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "typecheck": "passed",
+    "lint": {
+      "errors": 0,
+      "historicalWarnings": 4
+    },
+    "format": "passed",
+    "vitest": {
+      "filesPassed": 209,
+      "testsPassed": 1942,
+      "testsSkipped": 3
+    },
+    "cssTestsPassed": 2,
+    "progressTestsPassed": 36,
+    "build": {
+      "distDir": ".work/next-build",
+      "exitCode": -1073741819,
+      "windowsStatus": "0xC0000005"
+    }
+  },
+  "freshBuild": {
+    "command": "pnpm build",
+    "runId": "addb3f0e-c3f9-4054-b40f-c7a04525e2c4",
+    "distDir": ".work/next-tests/addb3f0e-c3f9-4054-b40f-c7a04525e2c4",
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "next": "16.4.3",
+    "started": "2026-11-04T12:05:03.556Z",
+    "finished": "2026-11-04T12:06:36.355Z",
+    "exitCode": 0,
+    "signal": null,
+    "sourceRestoration": "restored",
+    "protectedBefore": "f741ec913bffbbff219279ac71f347ee65e9e0f6c2f6c9e3a6dd7aa10abfa3a1",
+    "protectedAfter": "f741ec913bffbbff219279ac71f347ee65e9e0f6c2f6c9e3a6dd7aa10abfa3a1",
+    "buildId": "N_Yf54g-FWQGsPg8cNdGm"
+  }
+}
