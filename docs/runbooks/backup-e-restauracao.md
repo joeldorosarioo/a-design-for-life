@@ -24,7 +24,7 @@ A cópia de segurança do banco atual foi criptografada e restaurada em PostgreS
 
 O entrypoint exige staging privado, LinuxAlpine3.24 e UID70. Traduz somente o endereço PostgreSQL de loopback para o único IPv4 privado observado no próprio contêiner. A origem, o banco e o namespace de publicação permanecem os mesmos; alvos externos, porta diferente, produção e interfaces ambíguas são recusados. O job compartilhado conserva o advisory lock, snapshot nativo, fence dos objetos, checksums e upload/readback antes do marcador completo.
 
-O operador configura no executor os três campos `OPS_BACKUP_*` acima, o recipient público `OPS_BACKUP_RECIPIENT`, a identidade técnica `OPS_BACKUP_SOURCE` e a revisão imutável da imagem. A identidade privada age permanece fora da VPS, da imagem, do Git e do bucket. Preparação do comando não comprova execução remota, agendamento ou restauração do conjunto.
+O operador configura no executor os três campos `OPS_BACKUP_*` acima, o recipient público `OPS_BACKUP_RECIPIENT` e a identidade técnica `OPS_BACKUP_SOURCE`. A revisão vem de `ops/image/build-identity.json`, gerado no build com o mesmo argumento do label OCI; o entrypoint a valida e fornece ao job somente no processo de backup. `OPS_SOURCE_REVISION` não fica no ENV da imagem. A identidade privada age permanece fora da VPS, da imagem, do Git e do bucket. Preparação do comando não comprova execução remota, agendamento ou restauração do conjunto.
 
 Referências: [criar bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/), [credenciais R2](https://developers.cloudflare.com/r2/api/tokens/) e [acesso público](https://developers.cloudflare.com/r2/buckets/public-buckets/).
 
@@ -42,7 +42,9 @@ Os conjuntos criptografados ficam em `.work/backup-sets`. A identidade age perma
 
 Em 05/11/2026, o banco local com uma conta editorial, dois perfis, duas navegações, dois cases, quatro traduções e sete registros de mídia gerou um conjunto de 6.719.272 bytes em 7.537 ms. A restauração em PostgreSQL independente levou 17.544 ms, incluindo a verificação de 28 objetos por SHA-256, dez páginas PT/EN com HTTP 200 e a jornada nativa de recuperação com captura privada. Na cópia restaurada, a senha nova funcionou, a senha e a sessão anteriores foram recusadas e o token usado foi rejeitado. O banco de origem conservou suas contagens e a senha da conta principal. [Recibo do backup local](../verification/artifacts/E3-backup/local-portfolio-backup-restore-003.json)
 
-## Job Linux de backup
+## Job Linux separado — histórico dos ensaios
+
+Esta alternativa foi usada nos ensaios anteriores. O staging atual adota o executor da mesma imagem Alpine descrito acima; não precisa iniciar outro serviço de backup.
 
 Construa `ops/backup/Dockerfile` a partir do commit da aplicação e registre a revisão e o ID da imagem antes de habilitar o job. A imagem usa UID/GID 10001:10001 por padrão e inclui Node 24.22.2, pnpm 12.10.1, o cliente PostgreSQL 17.11 e age 1.3.2. A imagem usa um contexto próprio que inclui código e lockfile. Guarde a identidade privada do age fora da VPS. Injete somente o recipient público em `OPS_BACKUP_RECIPIENT`.
 
