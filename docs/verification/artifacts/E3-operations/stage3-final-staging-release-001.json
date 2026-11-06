@@ -1,0 +1,354 @@
+{
+  "version": 1,
+  "kind": "stage3-consolidated-staging-release-and-closeout",
+  "status": "passed",
+  "checkedAt": "2026-11-06T22:49:59.242Z",
+  "pullRequest": {
+    "number": 5,
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/pull/5",
+    "headSha": "3eae12d204ef4fe37faed602fb5699a1defb6a7c",
+    "mergeSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "mergeMethod": "normal-protected-merge-after-both-checks-passed",
+    "branchProtectionBypassed": false,
+    "priorSuccessfulChecks": [
+      42303102815,
+      42303056246
+    ]
+  },
+  "pipeline": {
+    "runId": 42304741961,
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961",
+    "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 128191108583,
+        "name": "type-lint-test-architecture-build",
+        "status": "completed",
+        "conclusion": "success",
+        "completedSteps": 17,
+        "activeSteps": [],
+        "failedSteps": []
+      },
+      {
+        "id": 128196677283,
+        "name": "Build private staging image / image-preflight",
+        "status": "completed",
+        "conclusion": "success",
+        "completedSteps": 10,
+        "activeSteps": [],
+        "failedSteps": []
+      },
+      {
+        "id": 128196678817,
+        "name": "Resolve the image already tested in staging",
+        "status": "completed",
+        "conclusion": "skipped",
+        "completedSteps": 0,
+        "activeSteps": [],
+        "failedSteps": []
+      },
+      {
+        "id": 128196680754,
+        "name": "Promote the tested image to production",
+        "status": "completed",
+        "conclusion": "skipped",
+        "completedSteps": 0,
+        "activeSteps": [],
+        "failedSteps": []
+      },
+      {
+        "id": 128197851247,
+        "name": "Deploy staging and wait for health",
+        "status": "completed",
+        "conclusion": "success",
+        "completedSteps": 7,
+        "activeSteps": [],
+        "failedSteps": []
+      },
+      {
+        "id": 128198619843,
+        "name": "Record the healthy staging image",
+        "status": "completed",
+        "conclusion": "success",
+        "completedSteps": 7,
+        "activeSteps": [],
+        "failedSteps": []
+      }
+    ]
+  },
+  "image": {
+    "manifestDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+    "registryConfigDigest": "sha256:ad16ddc9971fe23e3ee8c36aaf51b34c0d5f415b8656655401b38c2d6007d15d",
+    "revision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "sourceTree": "f038eee88541a7439de88fb3022d04d29de85485",
+    "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+    "registryMarkerReadback": {
+      "version": 1,
+      "kind": "read-only-tested-image-marker-resolution",
+      "checkedAt": "2026-11-06T22:47:31.422Z",
+      "sourceTree": "f038eee88541a7439de88fb3022d04d29de85485",
+      "marker": "staging-tested-tree-f038eee88541a7439de88fb3022d04d29de85485",
+      "result": {
+        "digest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "revision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "imageid": "sha256:ad16ddc9971fe23e3ee8c36aaf51b34c0d5f415b8656655401b38c2d6007d15d"
+      },
+      "requests": 5,
+      "allRegistryOperationsReadOnly": true,
+      "branchContextSimulatedForResolver": true,
+      "actualMainBranchChanged": false,
+      "productionResourcesAccessed": false,
+      "productionDeployed": false
+    },
+    "deploymentUuid": "3vpijnkbzsd761czm4b2avyk",
+    "applicationStatus": "running:healthy"
+  },
+  "tests": {
+    "linuxCi": {
+      "files": 235,
+      "vitestPassed": 2323,
+      "skipped": 0,
+      "browserJourneysPassed": 123
+    },
+    "localWindows": {
+      "vitestPassed": 2320,
+      "platformSkips": 3,
+      "selectedBrowserJourneys": 2
+    },
+    "deployedBrowser": {
+      "checksPassed": 48,
+      "checksTotal": 48,
+      "externalRequests": 0,
+      "analyticsEnabled": false
+    }
+  },
+  "backupBeforeDeploy": {
+    "status": "backed-up",
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "ibc3r8relhcbpfy6moblnfz1",
+    "sourceImageDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "marker": {
+      "id": "70c55120-c635-46a5-847c-ca76dd3ac49d",
+      "createdAt": "2026-11-06T22:42:45.854Z",
+      "completedAt": "2026-11-06T22:42:55.019Z",
+      "complete": true,
+      "manifestSha256": "bee709557bc414f9638f2af1f35a23c36dd5c9d6e7a88cf9c76d52dcf69480ab",
+      "ciphertext": {
+        "byteLength": 2898824,
+        "sha256": "dca7498dd19cc6f2d5e34c478ef90200bb065fc62936e7a140183461fed06f21"
+      }
+    },
+    "completedBeforeNewContainerStarted": true,
+    "newContainerStartedAt": "2026-11-06T22:43:20.047020238Z",
+    "observedGapMs": 25028,
+    "sourceImageMatchesPrevious": true,
+    "orderingLimit": "Observed backup completion precedes new container start. The client and its gates additionally enforce completion before image-tag PATCH; no exact PATCH timestamp is asserted."
+  },
+  "preservation": {
+    "before": {
+      "version": 1,
+      "checkedAtEpoch": 1794003482.1116977,
+      "containerId": "a36007f90f6c",
+      "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+      "imageId": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+      "imageRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+      "user": "appuser",
+      "status": "running",
+      "health": "healthy",
+      "startedAt": "2026-11-06T18:04:45.455045428Z",
+      "limits": {
+        "nanoCpus": 1000000000,
+        "memory": 2147483648,
+        "memorySwap": 2147483648
+      },
+      "logConfig": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "3",
+          "max-size": "10m"
+        }
+      },
+      "volumes": [
+        {
+          "destination": "/app/.work/publication",
+          "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+        },
+        {
+          "destination": "/app/.work/next-build/cache",
+          "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+        },
+        {
+          "destination": "/var/lib/postgresql/data",
+          "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+        }
+      ],
+      "confirmedPublicRoots": [
+        {
+          "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+          "bytes": 52668,
+          "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+        }
+      ],
+      "runningContainers": 8
+    },
+    "after": {
+      "version": 1,
+      "checkedAtEpoch": 1794005128.1300733,
+      "containerId": "e84995bd34de",
+      "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+      "imageId": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+      "imageRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+      "user": "appuser",
+      "status": "running",
+      "health": "healthy",
+      "startedAt": "2026-11-06T22:43:20.047020238Z",
+      "limits": {
+        "nanoCpus": 1000000000,
+        "memory": 2147483648,
+        "memorySwap": 2147483648
+      },
+      "logConfig": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "3",
+          "max-size": "10m"
+        }
+      },
+      "volumes": [
+        {
+          "destination": "/app/.work/next-build/cache",
+          "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+        },
+        {
+          "destination": "/app/.work/publication",
+          "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+        },
+        {
+          "destination": "/var/lib/postgresql/data",
+          "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+        }
+      ],
+      "confirmedPublicRoots": [
+        {
+          "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+          "bytes": 52668,
+          "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+        }
+      ],
+      "runningContainers": 8
+    },
+    "threeVolumeIdentitiesUnchanged": true,
+    "confirmedPublicRootsUnchanged": true,
+    "schemaMigrationTreeUnchanged": true,
+    "migrationExecuted": false
+  },
+  "http": [
+    {
+      "route": "/pt",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/en",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/pt/cases",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/en/cases",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/admin/login",
+      "status": 200,
+      "permissionsPolicy": null,
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/health",
+      "status": 200,
+      "permissionsPolicy": null,
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    }
+  ],
+  "anonymousStatus": 401,
+  "javascriptBudget": {
+    "assets": 11,
+    "decodedBytes": 753376,
+    "gzipRecompressedBytes": 233236,
+    "inlineScriptBytes": 31054,
+    "decodedDeltaFromPreviousBaseline": 321,
+    "gzipDeltaFromPreviousBaseline": 118,
+    "limit": "Own-app static bytes and local gzip recompression, not transferred-byte or activated-Analytics latency measurements."
+  },
+  "approval": {
+    "implementationCriteriaComplete": 30,
+    "implementationCriteriaTotal": 30,
+    "closedTasks": 6,
+    "totalTasks": 6,
+    "a3Approved": false,
+    "a4Approved": false,
+    "productionAuthorized": false,
+    "productionDeployed": false,
+    "stage4Started": false
+  },
+  "analytics": {
+    "loader": "null",
+    "measurementActivated": false,
+    "reportsDemonstrated": false,
+    "reportLimitationPreserved": true,
+    "freshSdkReviewRequiredBeforeActivation": true
+  },
+  "scope": {
+    "onlyStagingApplicationDeployed": true,
+    "newPaidServices": 0,
+    "runtimeCredentialChanges": 0,
+    "cmsLoginOrPasswordResetPerformed": false,
+    "realEmailsSent": 0,
+    "rawLogsOrCredentialsPublished": false
+  },
+  "timestampHandling": {
+    "rawTimestampsPreserved": true,
+    "comparisonPrecision": "microseconds after truncating Docker fractional nanoseconds for this Python parser",
+    "reproduction": "Nine fractional digits rejected by the local parser; six accepted. Equivalent normalized instants compared before writing; no application or service fix."
+  },
+  "evidence": [
+    {
+      "path": "docs/verification/artifacts/E3-analytics/real-sdk-document-policy-006.json",
+      "sha256": "e240dda2bebd8394d66543505fc003af56f84cfcb58bc677e1b2706d36a2eca2"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-gates/privacy-final-gates-2026-11-06-002.json",
+      "sha256": "0c608fbacab52366044eee9499cb194a563fcd96d6b21b42df7ed63cc90c1db6"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-operations/staging-device-policy-browser-001.json",
+      "sha256": "aa170ccee2af4186eef4cac813915cd735d9af186b4845705158d87d34d3b650"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-operations/atlas-capacity-001.json",
+      "sha256": "7ce5aeb68077ea9cd23074c0db12207879d9939de613af5a09121c655fc422f7"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-operations/staging-log-rotation-002.json",
+      "sha256": "5cb5b40cd4e812ddacf1b1c5f74fa947774cceb09f855c7a3ee60cb942ed1409"
+    }
+  ]
+}

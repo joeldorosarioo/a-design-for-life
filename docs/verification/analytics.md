@@ -150,3 +150,11 @@ O CLI agora usa por padrão a candidata de documento com header real da fixture.
 & $node --import tsx src/features/analytics/verification/inspect-real-sdk-privacy.mjs .work/analytics-sdk-new/sdk-manifest.json .work/analytics-sdk-new/document-policy.json document-policy
 & $node --import tsx src/features/analytics/verification/inspect-real-sdk-privacy.mjs .work/analytics-sdk-new/sdk-manifest.json .work/analytics-sdk-new/without-policy.json document-without-policy
 ```
+
+## Encerramento isolado e imagem homologada — 06/11/2026
+
+Os gates independentes foram concluídos: verify local 2.320 testes/três skips de plataforma e duas jornadas selecionadas; CI Linux 2.323 testes/zero skips e 123 jornadas completas. A revisão bf47f282 foi aplicada no staging pela PR5 e pelo pipeline 42304741961, manifesto 42574c55…7189. O browser implantado passou 48/48 checks com header e política nativa PT/EN, noindex e nenhuma medição. E3.3.3 está encerrado para o contrato isolado documentado. As capturas anteriores que registram a investigação ou uma candidata ainda pendente são históricas, sem negar o resultado final. [Release e gates](artifacts/E3-operations/stage3-final-staging-release-001.json).
+
+O orçamento estático atual é 753.376 bytes de JavaScript da aplicação e 233.236 bytes com gzip local, em 11 arquivos; acréscimos de 321/118 bytes em relação à referência 002. Nenhum novo SDK foi baixado nessa auditoria implantada. O custo do SDK permanece separado e a omissão do valor real de resolução segue vinculada aos bytes testados, sem API OFF garantida pelo fornecedor.
+
+Loader null, revisão de bytes/ambiente antes de A4/ativação e a limitação de relatórios permanecem. Este encerramento não aprova coleta, produção, usuários/sessões reais ou elegibilidade de modelagem.
