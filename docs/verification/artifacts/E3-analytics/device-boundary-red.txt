@@ -1,0 +1,157 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯  unit  src/features/analytics/gtag-session.test.ts (5 tests | 1 failed) 16ms
+   ❯ intercepted gtag boundary (4)
+     × queues denied consent and sanitized privacy defaults before configuration and measurement 11ms
+     ✓ never dispatches initialization commands while the site is private 0ms
+     ✓ updates only sanitized public context and emits only the four approved events 1ms
+     ✓ never dispatches a URL label or invalid event, even from an untyped caller 0ms
+   ✓ fails closed if consent initialization dispatch throws before configuration 0ms
+ ❯  unit  src/features/analytics/browser/document-analytics.test.ts (31 tests | 12 failed) 251ms
+   ❯ browser document analytics, entirely intercepted script boundary (31)
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"environment":"local"} 21ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"environment":"test"} 7ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"environment":"staging"} 6ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"area":"admin"} 6ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"area":"private"} 5ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"preview":true} 5ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"publicSiteEnabled":false} 6ms
+     ✓ does not initialize globals, loader or contact listeners for excluded runtime {"measurementId":null} 14ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: undefined 17ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: null 8ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 6ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {"features":false} 10ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 7ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 5ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 5ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 5ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 5ms
+     × does not create controller globals, listeners or SDK when device policy cannot be verified: {} 5ms
+     × fails closed when the policy accessor itself throws 5ms
+     × stops an existing controller if its device restriction is no longer verifiable 13ms
+     ✓ keeps the ordinary production entry fail closed while actual SDK policy evidence is missing 5ms
+     ✓ queues genuine arguments objects with denied consent before the intercepted async no-referrer script load 10ms
+     ✓ reuses one session and script across remounts and completed A to B to A views 5ms
+     ✓ tracks only fixed-purpose bubbling native actions with sanitized context and preserves default action 9ms
+     ✓ waits for later native preventDefault checks and ignores arbitrary/secondary actions 10ms
+     ✓ removes contact handling on cleanup/exclusion and cancels queued actions from an obsolete context 9ms
+     ✓ fails closed on unknown preexisting gtag ownership without reusing or retrying it 6ms
+     ✓ fails closed on unknown preexisting dataLayer ownership without reusing or retrying it 8ms
+     ✓ stops permanently on loader throw and keeps native contact navigation working 6ms
+     ✓ stops permanently on script error or changed runtime ownership 14ms
+     ✓ never reads URL/referrer/title/cookie/storage and does not accept outside calls to its owned global queue 6ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL   unit  src/features/analytics/gtag-session.test.ts > intercepted gtag boundary > queues denied consent and sanitized privacy defaults before configuration and measurement
+AssertionError: expected [ …(5) ] to deeply equal [ …(5) ]
+
+- Expected
++ Received
+
+@@ -18,11 +18,10 @@
+        "ignore_referrer": true,
+        "language": "en",
+        "page_location": "https://portfolio.example.invalid/en",
+        "page_referrer": "",
+        "page_title": "",
+-       "screen_resolution": "",
+        "send_page_view": false,
+        "url_passthrough": false,
+      },
+    ],
+    [
+
+ ❯ src/features/analytics/gtag-session.test.ts:26:22
+     24|     expect(commands).toEqual([]);
+     25|     session.completeNavigation(home);
+     26|     expect(commands).toEqual([
+       |                      ^
+     27|       [
+     28|         'consent',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: undefined
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: null
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {"features":false}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > does not create controller globals, listeners or SDK when device policy cannot be verified: {}
+AssertionError: expected [ HTMLScriptElement{ …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   <script
++     src="https://www.googletagmanager.com/gtag/js?id=G-TESTONLY1"
++   />,
++ ]
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:125:25
+    123|         }),
+    124|       ).not.toThrow();
+    125|       expect(f.scripts).toEqual([]);
+       |                         ^
+    126|       expect(f.host.dataLayer).toBeUndefined();
+    127|       expect(f.host.gtag).toBeUndefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > fails closed when the policy accessor itself throws
+AssertionError: expected [ HTMLScriptElement{ …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   <script
++     src="https://www.googletagmanager.com/gtag/js?id=G-TESTONLY1"
++   />,
++ ]
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:145:23
+    143|       mountDocumentAnalytics({ document: f.doc, runtime, context: home…
+    144|     ).not.toThrow();
+    145|     expect(f.scripts).toEqual([]);
+       |                       ^
+    146|     expect(f.host.dataLayer).toBeUndefined();
+    147|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL   unit  src/features/analytics/browser/document-analytics.test.ts > browser document analytics, entirely intercepted script boundary > stops an existing controller if its device restriction is no longer verifiable
+AssertionError: expected [ 'page_view', 'page_view', …(1) ] to deeply equal [ 'page_view' ]
+
+- Expected
++ Received
+
+  [
+    "page_view",
++   "page_view",
++   "contact_email_click",
+  ]
+
+
+ ❯ src/features/analytics/browser/document-analytics.test.ts:156:60
+    154|     mountDocumentAnalytics({ document: f.doc, runtime, context: about,…
+    155|     await f.click(email);
+    156|     expect(f.eventCommands().map((command) => command[1])).toEqual(['p…
+       |                                                            ^
+    157|   });
+    158|
+
+ Test Files  2 failed (2)
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+      Tests  13 failed | 23 passed (36)
+   Start at  18:49:06
+   Duration  14.79s (environment 93%, setup 3%, tests 2%, import 1%, transform 1%)

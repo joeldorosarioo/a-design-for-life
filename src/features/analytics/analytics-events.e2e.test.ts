@@ -108,6 +108,7 @@ test('the document transport sends only canonical approved events to an offline 
       await route.fulfill({ contentType: 'text/javascript', body: script });
     } else if (url.pathname === harnessPath) {
       await route.fulfill({
+        headers: { 'Permissions-Policy': 'ch-ua-high-entropy-values=()' },
         contentType: 'text/html',
         body: `<!doctype html><title>Synthetic title: must not leave the browser</title>
           <a id="email" href="#synthetic-contact@example.invalid" data-analytics-purpose="email">Email</a>
@@ -261,6 +262,23 @@ test('the owned Next runtime excludes the analytics script, globals and controls
     async function inspect(kind: string, pathname: string, status: number) {
       const response = await page.goto(pathname);
       expect(response?.status()).toBe(status);
+      const publicDocument = /^\/(?:pt|en)(?:\/|$)/.test(pathname);
+      if (publicDocument) {
+        expect(response?.headers()['permissions-policy']).toBe('ch-ua-high-entropy-values=()');
+        const policy = await page.evaluate(() => {
+          const doc = document as Document & {
+            featurePolicy?: { features(): string[]; allowsFeature(name: string): boolean };
+          };
+          const feature = 'ch-ua-high-entropy-values';
+          return {
+            recognized: doc.featurePolicy?.features().includes(feature) === true,
+            allowed: doc.featurePolicy?.allowsFeature(feature),
+          };
+        });
+        expect(policy).toEqual({ recognized: true, allowed: false });
+      } else {
+        expect(response?.headers()['permissions-policy']).toBeUndefined();
+      }
       await expect(
         page.locator('script[src*="googletagmanager"],script[src*="google-analytics"]'),
       ).toHaveCount(0);

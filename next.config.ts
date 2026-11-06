@@ -37,6 +37,10 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      ...['pt', 'en'].map((locale) => ({
+        source: `/${locale}/:path*`,
+        headers: [{ key: 'Permissions-Policy', value: 'ch-ua-high-entropy-values=()' }],
+      })),
       {
         source: '/preview-ui/:path*',
         headers: [

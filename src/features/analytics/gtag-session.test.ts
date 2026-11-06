@@ -38,6 +38,7 @@ describe('intercepted gtag boundary', () => {
         'set',
         {
           send_page_view: false,
+          screen_resolution: '',
           ads_data_redaction: true,
           url_passthrough: false,
           allow_google_signals: false,

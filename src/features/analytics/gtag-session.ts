@@ -10,6 +10,7 @@ type GtagPageContext = {
 };
 type GtagPrivacyDefaults = GtagPageContext & {
   send_page_view: false;
+  screen_resolution: '';
   ignore_referrer: true;
   ads_data_redaction: true;
   url_passthrough: false;
@@ -68,6 +69,8 @@ export function createGtagSession({
             dispatch('set', {
               // The SDK can bootstrap a destination before per-stream config is consumed.
               send_page_view: false,
+              // Empty context omits screen resolution in the pinned, intercepted SDK proof.
+              screen_resolution: '',
               ads_data_redaction: true,
               url_passthrough: false,
               allow_google_signals: false,

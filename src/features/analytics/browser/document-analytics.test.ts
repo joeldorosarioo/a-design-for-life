@@ -28,6 +28,10 @@ function fixture() {
   document.body.appendChild(frame);
   frames.push(frame);
   const doc = frame.contentDocument!;
+  Object.defineProperty(doc, 'featurePolicy', {
+    configurable: true,
+    value: { features: () => ['ch-ua-high-entropy-values'], allowsFeature: (): boolean => false },
+  });
   const host = frame.contentWindow! as AnalyticsHost;
   const scripts: HTMLScriptElement[] = [];
   const loadScript: GoogleScriptLoader = (script) => {
@@ -82,6 +86,77 @@ describe('browser document analytics, entirely intercepted script boundary', () 
       ).toEqual([]);
     },
   );
+
+  it.each([
+    undefined,
+    null,
+    {},
+    { features: false, allowsFeature: (): boolean => false },
+    { features: () => ['ch-ua-high-entropy-values'] },
+    { features: () => [], allowsFeature: (): boolean => false },
+    { features: () => null, allowsFeature: (): boolean => false },
+    { features: () => 'ch-ua-high-entropy-values', allowsFeature: (): boolean => false },
+    { features: () => ['ch-ua-high-entropy-values'], allowsFeature: (): boolean => true },
+    { features: () => ['ch-ua-high-entropy-values'], allowsFeature: (): undefined => undefined },
+    {
+      features: () => {
+        throw new Error('Synthetic policy error');
+      },
+      allowsFeature: (): boolean => false,
+    },
+    {
+      features: () => ['ch-ua-high-entropy-values'],
+      allowsFeature: () => {
+        throw new Error('Synthetic policy error');
+      },
+    },
+  ])(
+    'does not create controller globals, listeners or SDK when device policy cannot be verified: %j',
+    (policy) => {
+      const f = fixture();
+      Object.defineProperty(f.doc, 'featurePolicy', { configurable: true, value: policy });
+      const registrations = vi.spyOn(f.doc, 'addEventListener');
+      expect(() =>
+        mountDocumentAnalytics({
+          document: f.doc,
+          runtime,
+          context: home,
+          loadScript: f.loadScript,
+        }),
+      ).not.toThrow();
+      expect(f.scripts).toEqual([]);
+      expect(f.host.dataLayer).toBeUndefined();
+      expect(f.host.gtag).toBeUndefined();
+      expect(
+        registrations.mock.calls.filter(([name]) => name === 'click' || name === 'auxclick'),
+      ).toEqual([]);
+    },
+  );
+
+  it('fails closed when the policy accessor itself throws', () => {
+    const f = fixture();
+    Object.defineProperty(f.doc, 'featurePolicy', {
+      configurable: true,
+      get() {
+        throw new Error('Synthetic accessor error');
+      },
+    });
+    expect(() =>
+      mountDocumentAnalytics({ document: f.doc, runtime, context: home, loadScript: f.loadScript }),
+    ).not.toThrow();
+    expect(f.scripts).toEqual([]);
+    expect(f.host.dataLayer).toBeUndefined();
+  });
+
+  it('stops an existing controller if its device restriction is no longer verifiable', async () => {
+    const f = fixture();
+    mountDocumentAnalytics({ document: f.doc, runtime, context: home, loadScript: f.loadScript });
+    const email = f.link('email');
+    Object.defineProperty(f.doc, 'featurePolicy', { configurable: true, value: undefined });
+    mountDocumentAnalytics({ document: f.doc, runtime, context: about, loadScript: f.loadScript });
+    await f.click(email);
+    expect(f.eventCommands().map((command) => command[1])).toEqual(['page_view']);
+  });
 
   it('keeps the ordinary production entry fail closed while actual SDK policy evidence is missing', () => {
     const f = fixture();

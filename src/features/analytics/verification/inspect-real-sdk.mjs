@@ -135,6 +135,7 @@ try {
       else
         await route.fulfill({
           contentType: 'text/html',
+          headers: { 'Permissions-Policy': 'ch-ua-high-entropy-values=()' },
           body: `<!doctype html><title>Synthetic private title: do not transmit</title><a id="email" href="#synthetic-contact@example.invalid" data-analytics-purpose="email">Email</a><a id="linkedin" href="#synthetic-linkedin" data-analytics-purpose="linkedin">LinkedIn</a><a id="resume" href="#synthetic-resume" data-analytics-purpose="resume">Resume</a><script src="/harness.js"></script>`,
         });
     } else if (req.url() === manifest.sourceUrl) {

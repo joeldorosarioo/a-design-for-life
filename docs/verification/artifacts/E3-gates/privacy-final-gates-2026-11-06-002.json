@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "kind": "current-privacy-source-full-verification-and-selected-browser-gates",
+  "status": "passed",
+  "startedAt": "2026-11-06T21:56:40.243Z",
+  "completedAt": "2026-11-06T22:06:18.972Z",
+  "checkedAt": "2026-11-06T22:08:57.311Z",
+  "gateRunId": "cde690eb-1b7c-4cb2-b9fc-0434111a28f0",
+  "repositoryHeadWhenReceiptWritten": "004fe6020b02dcf5da6eab018b20ba4fcdb64f24",
+  "sourceScope": "Current working tree source hashes before and after both serial gates; this does not certify a subsequent source change, image or deployment.",
+  "platform": "win32",
+  "node": "24.22.2",
+  "pnpm": "12.10.1",
+  "source": [
+    {
+      "path": "next.config.ts",
+      "sha256": "97fc46834cb2f1a8d071b18439f6a9fe6d7364ecb6e75a7c4ae4f508562042b9"
+    },
+    {
+      "path": "src/features/analytics/analytics-events.e2e.test.ts",
+      "sha256": "74792e113746a198202be2dd0195d551e9ddcf3147adbc9c1cac6d4ecf0909f7"
+    },
+    {
+      "path": "src/features/analytics/browser/document-analytics.test.ts",
+      "sha256": "be6cf48d096b4b3bf46d34f6c01ae1ae2e31c7f7fce6f17388a598bb0404a7f4"
+    },
+    {
+      "path": "src/features/analytics/browser/document-analytics.ts",
+      "sha256": "21d344b4a606d94f164539799ccf64225b1d7d02734d9ccad0fef923be0a8c1c"
+    },
+    {
+      "path": "src/features/analytics/browser/native-navigation.test.tsx",
+      "sha256": "b650042d557b8151a57dc39ba723b216749348dbd03ec2eefb725b0205089beb"
+    },
+    {
+      "path": "src/features/analytics/components/browser-analytics-boundary.test.tsx",
+      "sha256": "520e159347a4144f8400bf6dc5d4df52b1a45d4eac53f3f399d03db9722d8ac2"
+    },
+    {
+      "path": "src/features/analytics/gtag-session.test.ts",
+      "sha256": "3a245a6587da97605a142375c9b0d9ce8a2d04dc268a0a52e0b9f457b5e8661d"
+    },
+    {
+      "path": "src/features/analytics/gtag-session.ts",
+      "sha256": "5621dcb4d62f898568a735918141526175cedec910ac54e684a171c4f37825d2"
+    },
+    {
+      "path": "src/features/analytics/verification/inspect-real-sdk.mjs",
+      "sha256": "0dbc6894f0ee1f981eaa8eaa03008f0607246fa59fc565ae3d515268bd6a4a55"
+    },
+    {
+      "path": "src/features/analytics/browser/device-policy.ts",
+      "sha256": "a0aaf4a4f51078e51eb8ccc542bd802bdfb9eb69fc6391d94e89190d49549430"
+    },
+    {
+      "path": "src/features/analytics/verification/inspect-real-sdk-privacy.mjs",
+      "sha256": "ebfc30026d2a901f20b9757a895733ef3aa863d6c24aaef5f0702a5e0ebe6274"
+    },
+    {
+      "path": "package.json",
+      "sha256": "2b7c70916be8cea7eb5fa1d4d844067361c66d9cfa9ded49107be25b9a71b49e"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "07c67f17617f0f41d155be2b519348d65e6704a3a82b7a779e4eaaebc2a9bbbb"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "1a43660e044d3686d3863733904351eafda0c242f2380f979ff61c42f77aed83"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "9ad3ffd4ee9ac66fec17b75f3bd34c22dce4d51db96acccdd8ccafc835713ed0"
+    }
+  ],
+  "results": {
+    "fullVerification": {
+      "command": "pnpm run verify",
+      "exitCode": 0,
+      "durationMs": 475350,
+      "typecheck": "passed",
+      "lint": {
+        "status": "passed",
+        "errors": 0,
+        "existingMigrationWarnings": 8
+      },
+      "format": "passed",
+      "vitest": {
+        "filesPassed": 235,
+        "filesFailed": 0,
+        "testsPassed": 2320,
+        "testsFailed": 0,
+        "testsSkipped": 3,
+        "testsTotal": 2323,
+        "skips": [
+          {
+            "file": "src/helpers/storage/object-storage.test.ts",
+            "reason": "Existing Windows symbolic-link platform condition."
+          },
+          {
+            "file": "src/helpers/payload/render-snapshot.test.ts",
+            "reason": "Existing POSIX private-file permission test excluded on Windows."
+          },
+          {
+            "file": "src/helpers/payload/publication-writer.test.ts",
+            "reason": "Existing Linux abstract socket and SIGSTOP/SIGCONT test excluded outside Linux."
+          }
+        ]
+      },
+      "caseStateCss": {
+        "passed": 2,
+        "failed": 0
+      },
+      "stageProgress": {
+        "passed": 36,
+        "failed": 0
+      },
+      "deploy": {
+        "passed": 83,
+        "failed": 0
+      },
+      "nextBuild": {
+        "status": "passed",
+        "version": "16.4.3",
+        "compileSeconds": 32.3
+      }
+    },
+    "selectedBrowser": {
+      "command": "node --conditions=react-server node_modules/@playwright/test/cli.js test src/features/analytics/analytics-events.e2e.test.ts --reporter=list",
+      "exitCode": 0,
+      "durationMs": 103104,
+      "browser": "Chromium",
+      "workers": 1,
+      "testsPassed": 2,
+      "testsFailed": 0,
+      "freshNextBuild": true,
+      "contracts": [
+        "Only canonical approved events reach the offline capture; no language-cookie access, automatic navigation duplication or external forwarding.",
+        "Owned Next test pages exclude Analytics scripts/globals/consent controls; PT/EN public pages deliver the policy header and admin/preview paths do not receive it."
+      ],
+      "fullBrowserSuiteExecuted": false
+    }
+  },
+  "isolation": {
+    "applicationEnvironment": "test",
+    "postgresqlHost": "127.0.0.1",
+    "postgresqlPort": 55434,
+    "postgresqlVersion": "17.11",
+    "syntheticBackupToolFixture": true,
+    "realCredentialsPassedInSpawnEnvironment": false,
+    "externalMeasurementRequestsForwarded": 0,
+    "realR2Requests": 0,
+    "realEmailsSent": 0,
+    "stagingChanged": false,
+    "productionAccessed": false
+  },
+  "cleanup": {
+    "ownedFixtures": [
+      {
+        "runId": "133d9e89-2cf5-49c8-b28f-97d3cdeea979",
+        "remainingOwnedContainers": 0,
+        "remainingOwnedNetworks": 0
+      },
+      {
+        "runId": "ac718805-0597-4b87-bbd6-ea53a3562b65",
+        "remainingOwnedContainers": 0,
+        "remainingOwnedNetworks": 0
+      }
+    ],
+    "localTestPortsAvailable": [55434, 3101],
+    "nextEnvPreserved": true,
+    "nextEnvSha256": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66",
+    "tsconfigPreserved": true,
+    "tsconfigSha256": "64f3c9d6863fee9d3fd8707e5543bba29487d389b2e17117e8ec2cd451eb70ce",
+    "sourceUnchanged": true,
+    "syntheticBackupIdentityRemoved": true
+  },
+  "priorAttempt": {
+    "gateRunId": "fa0c6a93-13ee-444d-ab85-20afc0fdb834",
+    "status": "failed-before-tests",
+    "typecheckExitCode": 2,
+    "diagnostic": "TS7023 in three allowsFeature callbacks in document-analytics.test.ts; explicit boolean return annotations were added to the test fixture before this fresh serial run.",
+    "applicationBehaviorChangedByThatCorrection": false,
+    "privateReceiptSha256": "0092c3e657a76e1e67063a8f58cf3f6e137acd14e4f35fed93c0a24133e52e93",
+    "sourcePreservedOnFailure": true,
+    "nextEnvPreservedOnFailure": true,
+    "tsconfigPreservedOnFailure": true
+  },
+  "warnings": [
+    "Eight existing unused-variable warnings in migration files; no lint errors.",
+    "Fresh isolated Next outputs have no build cache.",
+    "The test harness invokes next start with output:standalone and emits the existing warning; both selected journeys passed. This receipt does not certify a deployed image."
+  ],
+  "evidence": [
+    {
+      "path": ".work/stage3-finalization-2026-11-06/privacy-gates-cde690eb-1b7c-4cb2-b9fc-0434111a28f0/verify.log",
+      "sha256": "4f23c4f0cfbd6681be2e7f988370d686116f41209a4262c920380c195c1dd39b",
+      "visibility": "private-ignored"
+    },
+    {
+      "path": ".work/stage3-finalization-2026-11-06/privacy-gates-cde690eb-1b7c-4cb2-b9fc-0434111a28f0/analytics-e2e.log",
+      "sha256": "8c92ca2084381ad77e0221c519aff47460b64a4860e767b5af7fcb69324f7203",
+      "visibility": "private-ignored"
+    },
+    {
+      "path": ".work/stage3-finalization-2026-11-06/privacy-gates-cde690eb-1b7c-4cb2-b9fc-0434111a28f0/receipt.json",
+      "sha256": "dae888950591a1c048450441e82be53830d5200c688acb2e1880423dd10a500c",
+      "visibility": "private-ignored"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/encrypted-native-events-133d9e89-2cf5-49c8-b28f-97d3cdeea979.jsonl",
+      "sha256": "2ea9a36f161189437d1443c08b7dbbd7250984d1434aa7e54295f849ffa3a03c",
+      "visibility": "sanitized-synthetic-test-evidence"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/native-foundations-proof-133d9e89-2cf5-49c8-b28f-97d3cdeea979.jsonl",
+      "sha256": "65ee24c6d141cda1f6d5631f7e8216aa60a7463e4aa9d8b484cdfed35272695c",
+      "visibility": "sanitized-synthetic-test-evidence"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/native-snapshot-restore-0dda0b2a-4534-4ffa-97cf-f076b2b982e8.json",
+      "sha256": "2280ed64f299754e2950978da26a9b37d287d364bef9281bfa9adc94c5fd3016",
+      "visibility": "sanitized-synthetic-test-evidence"
+    }
+  ],
+  "sanitization": {
+    "rawGateLogsKeptPrivate": true,
+    "backupArtifactsJsonReviewed": true,
+    "contents": "Disposable synthetic test identifiers, tool versions/arguments and checksums; no real credentials, database content or recovery identity bytes.",
+    "knownSecretVariantsScanned": 23,
+    "knownSecretMatches": 0
+  }
+}
