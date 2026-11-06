@@ -35,6 +35,7 @@
 !ops/backup/native-source.ts
 !ops/backup/repository.ts
 !ops/backup/r2-repository.ts
+!ops/backup/r2-retention-lock.ts
 !ops/backup/restore-target.ts
 !ops/backup/restore.ts
 !ops/backup/retention.ts

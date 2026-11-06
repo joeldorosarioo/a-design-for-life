@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory';
 import { selectBackupJob } from './job-settings';
-import { embeddedBuildRevision, embeddedStagingBackupEnvironment } from './runtime-entry';
+import {
+  embeddedBuildRevision,
+  embeddedOperationalCommand,
+  embeddedStagingBackupEnvironment,
+} from './runtime-entry';
 
 const env = {
   NODE_ENV: 'production',
@@ -125,5 +129,24 @@ describe('embedded Alpine staging backup boundary', () => {
         'Invalid operational backup job configuration.',
       );
     }
+  });
+});
+
+describe('explicit operational commands in the same image', () => {
+  it('keeps routine backup available and refuses an unapproved migration', () => {
+    expect(embeddedOperationalCommand(['backup'], env)).toBe('backup');
+    expect(() => embeddedOperationalCommand(['migrate'], env)).toThrow();
+    expect(() =>
+      embeddedOperationalCommand(['migrate'], { ...env, OPS_ALLOW_REVIEWED_MIGRATION: 'false' }),
+    ).toThrow();
+  });
+
+  it('allows only the reviewed migration path with its explicit opt-in', () => {
+    const approved = { ...env, OPS_ALLOW_REVIEWED_MIGRATION: 'true' };
+    const command = embeddedOperationalCommand(['migrate'], approved);
+    expect(command).toBe('migrate');
+    expect(selectBackupJob({ ...approved, ...select() }, [command]).command).toBe('migrate');
+    for (const args of [[], ['restore'], ['migrate', 'another-migration'], ['backup', '--drop']])
+      expect(() => embeddedOperationalCommand(args, approved)).toThrow();
   });
 });

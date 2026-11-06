@@ -52,7 +52,7 @@ type BackupResult = {
   removedBackupIds: string[];
   durationMs: number;
 };
-type R2BackupResult = BackupResult & { retention: 'disabled' };
+type R2BackupResult = BackupResult & { retention: 'enabled' | 'disabled' };
 function overlap(first: string, second: string) {
   const relative = path.relative(first, second);
   return (
@@ -217,9 +217,14 @@ export async function runBackup(
       },
     };
     if ('retention' in repository) {
+      const complete = await repository.complete(marker, manifestBytes, clock());
+      const removedBackupIds =
+        repository.retention === 'enabled'
+          ? await repository.applyRetention(complete, clock())
+          : [];
       return {
-        marker: await repository.complete(marker, manifestBytes, clock()),
-        removedBackupIds: [],
+        marker: complete,
+        removedBackupIds,
         durationMs: Math.round(performance.now() - started),
         retention: repository.retention,
       };

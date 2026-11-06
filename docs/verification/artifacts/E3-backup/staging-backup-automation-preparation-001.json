@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "kind": "local-backup-automation-preparation",
+  "checkedAt": "2026-11-06T17:18:43.345Z",
+  "deploymentState": "not-deployed",
+  "productionTouched": false,
+  "scope": {
+    "backupTask": "encrypted-full-backup",
+    "retentionDays": 56,
+    "restoreDatabase": "fresh-UUID-database-on-existing-staging-PostgreSQL",
+    "media": "existing-R2-read-only",
+    "newBucketRequired": false,
+    "sourceDatabaseReplaced": false
+  },
+  "checks": {
+    "runtimeCommandUnitTests": 21,
+    "r2RetentionUnitTests": 53,
+    "postgres17OperationalLockIntegrationTests": 3,
+    "cloneAndReadOnlyStorageUnitTests": 26,
+    "deploymentUnitTests": 83,
+    "typecheck": "passed",
+    "implementationReview": "passed",
+    "finalTargetedUnitRun": {
+      "files": 19,
+      "passed": 287,
+      "skipped": 0,
+      "realAgeAndTar": true,
+      "includes": [
+        "ops/backup",
+        "restore-read-only",
+        "reviewed-migration-catalog"
+      ]
+    },
+    "architectureTests": 34
+  },
+  "r2DeleteBoundary": {
+    "providerConditionalDeleteVerified": false,
+    "wrongEtagDeleteStatus": 204,
+    "readAfterWrongEtagStatus": 404,
+    "owned256ByteProbeRemoved": true,
+    "userBackupSetsOrMediaDeleted": false,
+    "protection": "shared-PostgreSQL-operational-lock-and-trusted-immutable-writers",
+    "outsideGuarantee": "concurrent-out-of-band-administrative-modifications"
+  },
+  "restoreState": {
+    "readOnlyPreflight": "passed",
+    "postgresMajor": 17,
+    "canCreateDatabase": true,
+    "createDatabaseExecuted": false,
+    "httpRestoreExecuted": false
+  },
+  "remaining": [
+    "configure-COOLIFY_BACKUP_TOKEN",
+    "configure-staging-GitHub-backup-secret-and-task-variable",
+    "verify-real-predeployment-backup-gate",
+    "deploy-reviewed-image-and-check-health",
+    "create-fresh-backup-of-the-new-image",
+    "restore-and-test-new-database-clone",
+    "deliver-A3-evidence"
+  ]
+}

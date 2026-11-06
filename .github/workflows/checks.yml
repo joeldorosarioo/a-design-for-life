@@ -109,6 +109,8 @@ jobs:
           COOLIFY_URL: ${{ vars.COOLIFY_URL }}
           COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
           COOLIFY_DEPLOY_TOKEN: ${{ secrets.COOLIFY_DEPLOY_TOKEN }}
+          COOLIFY_BACKUP_TOKEN: ${{ secrets.COOLIFY_BACKUP_TOKEN }}
+          COOLIFY_BACKUP_TASK_UUID: ${{ vars.COOLIFY_BACKUP_TASK_UUID }}
           COOLIFY_RESOURCE_UUID: ${{ vars.COOLIFY_RESOURCE_UUID }}
           APPROVED_MIGRATION_TREE: ${{ vars.APPROVED_MIGRATION_TREE }}
           IMAGE_DIGEST: ${{ needs.build-staging.outputs.digest }}
@@ -205,6 +207,8 @@ jobs:
           COOLIFY_URL: ${{ vars.COOLIFY_URL }}
           COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
           COOLIFY_DEPLOY_TOKEN: ${{ secrets.COOLIFY_DEPLOY_TOKEN }}
+          COOLIFY_BACKUP_TOKEN: ${{ secrets.COOLIFY_BACKUP_TOKEN }}
+          COOLIFY_BACKUP_TASK_UUID: ${{ vars.COOLIFY_BACKUP_TASK_UUID }}
           COOLIFY_RESOURCE_UUID: ${{ vars.COOLIFY_RESOURCE_UUID }}
           APPROVED_MIGRATION_TREE: ${{ vars.APPROVED_MIGRATION_TREE }}
           IMAGE_DIGEST: ${{ needs.resolve-production-image.outputs.digest }}

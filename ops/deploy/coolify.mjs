@@ -1,6 +1,7 @@
 import { setTimeout as delay } from 'node:timers/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { CoolifyBackupError, runPreDeploymentBackup, stagingBackupTaskUuid } from './backup.mjs';
 
 export const coolifyOrigin = 'https://panel.joeldorosarioo.dev';
 export const imageRepository = 'ghcr.io/joeldorosarioo/a-design-for-life';
@@ -82,21 +83,33 @@ function configuration(input, env) {
     'endpoint-not-allowed',
   );
   const token = env.COOLIFY_TOKEN;
-  // Dashboard Deploy tokens cannot GET/PATCH. Prefer a separate deploy-only
-  // credential; an API-created token with all three abilities may omit it.
+  // Preserve the existing image-configuration and deployment credentials.
+  // Backups use a separate resource-scoped Read/Sensitive/Write/Deploy token.
   const deployToken = env.COOLIFY_DEPLOY_TOKEN === undefined ? token : env.COOLIFY_DEPLOY_TOKEN;
-  for (const credential of [token, deployToken])
+  const backupToken = env.COOLIFY_BACKUP_TOKEN;
+  for (const credential of [token, deployToken, backupToken])
     requireDeployment(
       typeof credential === 'string' &&
         credential.length > 0 &&
         !/[\s\x00-\x1f\x7f]/.test(credential),
       'token-required',
     );
+  const backupTaskUuid = env.COOLIFY_BACKUP_TASK_UUID;
+  requireDeployment(
+    typeof backupTaskUuid === 'string' &&
+      uuid.test(backupTaskUuid) &&
+      (input.environment === 'staging'
+        ? backupTaskUuid === stagingBackupTaskUuid
+        : backupTaskUuid !== stagingBackupTaskUuid),
+    'backup-task-invalid',
+  );
   return {
     ...input,
     resourceUuid,
     token,
     deployToken,
+    backupToken,
+    backupTaskUuid,
     tag: input.digest.replace(':', '-'),
   };
 }
@@ -149,7 +162,7 @@ function applicationIdentity(application, selected, expectedTag) {
   requireDeployment(application.health_check_enabled === true, 'healthcheck-required');
   if (expectedTag !== undefined)
     requireDeployment(application.docker_registry_image_tag === expectedTag, 'image-tag-mismatch');
-  return { id, status: application.status };
+  return { id, status: application.status, tag: application.docker_registry_image_tag };
 }
 
 /** Calls only the canonical panel API; injected dependencies make tests entirely offline. */
@@ -178,14 +191,14 @@ export async function deployCoolify(
   const started = now();
   requireDeployment(Number.isFinite(started), 'invalid-clock');
   const deadline = started + timeoutMs;
-  async function api(method, endpoint, body) {
+  async function api(method, endpoint, body, { backupCredential = false } = {}) {
     requireDeployment(now() < deadline, 'deployment-timeout');
     try {
       const response = await fetchImpl(`${coolifyOrigin}/api/v1${endpoint}`, {
         method,
         redirect: 'error',
         headers: {
-          Authorization: `Bearer ${method === 'POST' && endpoint === '/deploy' ? selected.deployToken : selected.token}`,
+          Authorization: `Bearer ${backupCredential ? selected.backupToken : method === 'POST' && endpoint === '/deploy' ? selected.deployToken : selected.token}`,
           Accept: 'application/json',
           ...(body === undefined ? {} : { 'Content-Type': 'application/json' }),
         },
@@ -203,6 +216,27 @@ export async function deployCoolify(
   }
   const applicationPath = `/applications/${selected.resourceUuid}`;
   const original = applicationIdentity(await api('GET', applicationPath), selected);
+  requireDeployment(original.status === 'running:healthy', 'backup-source-unhealthy');
+  requireDeployment(/^sha256-[a-f0-9]{64}$/.test(original.tag ?? ''), 'backup-source-unpinned');
+  let backup;
+  try {
+    backup = await runPreDeploymentBackup(
+      {
+        environment: selected.environment,
+        resourceUuid: selected.resourceUuid,
+        taskUuid: selected.backupTaskUuid,
+        sourceImageTag: original.tag,
+      },
+      { api, now, sleep, deadline, pollIntervalMs },
+    );
+  } catch (error) {
+    if (error instanceof CoolifyBackupError) throw new CoolifyDeploymentError(error.code);
+    throw error;
+  }
+  // The backup must describe the same healthy, immutable source that is replaced.
+  const backedUp = applicationIdentity(await api('GET', applicationPath), selected, original.tag);
+  consistentApplicationId(original.id, backedUp.id);
+  requireDeployment(backedUp.status === 'running:healthy', 'backup-source-unhealthy');
   await api('PATCH', applicationPath, { docker_registry_image_tag: selected.tag });
   const saved = applicationIdentity(await api('GET', applicationPath), selected, selected.tag);
   const applicationId = consistentApplicationId(original.id, saved.id);
@@ -249,6 +283,7 @@ export async function deployCoolify(
           resourceUuid: selected.resourceUuid,
           deploymentUuid,
           applicationStatus: current.status,
+          backup,
         };
     }
     const remaining = deadline - now();

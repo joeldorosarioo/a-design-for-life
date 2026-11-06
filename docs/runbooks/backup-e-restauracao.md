@@ -175,3 +175,15 @@ As provas em loopback exercitaram o SDK S3 fixado com buckets sintéticos distin
 ## Restauração HTTP em imagem local
 
 A prova com PostgreSQL, filesystem, age e tar reais iniciou a imagem 007 sobre o alvo restaurado durante sua aquisição descartável. Verificou o conteúdo PT/EN, imagem, PDF privado, login, painel e redefinição com e-mail capturado localmente. A senha e a sessão anteriores foram revogadas e o token usado foi recusado. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. A importação para bucket R2 isolado continua aberta. [Recibo](../verification/artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl).
+
+## Escopo de recuperação definido pelo operador — 06/11/2026
+
+O usuário dispensou o bucket temporário e escolheu restaurar uma cópia no mesmo PostgreSQL de homologação. O destino será um banco novo com UUID no nome, dentro do servidor já existente. O banco que atende o site fica preservado. Não serão criados outro bucket ou outro serviço de banco.
+
+Na prova HTTP, a cópia usará o R2 atual somente para leitura. Isso não é apresentado como restauração dos objetos em outro bucket: essa parte do ensaio anterior foi retirada do escopo pelo usuário. A descriptografia e a conferência dos arquivos do conjunto continuam locais, com identidade privada fora da VPS/R2. Login e redefinição de senha serão exercitados somente na cópia, com e-mail capturado localmente. A criação, o OID e a limpeza do banco de teste deverão ser comprovados antes de registrar o ensaio como concluído.
+
+## Migração manual revisada na mesma imagem
+
+O entrypoint aceita `backup` e, somente com `OPS_ALLOW_REVIEWED_MIGRATION=true` no processo operador, `migrate`. O caminho de migração usa o catálogo revisado existente e conclui um backup verificado antes do DDL. Os escritores da aplicação precisam ser previamente interrompidos pelo operador, conforme o contrato de migração controlada. O lock do job coordena backup/migração/retenção, mas não substitui essa pausa dos escritores.
+
+Não existe migração automática no startup ou no deploy. Com as 17 entradas já aplicadas, a execução revisada é idempotente e retorna `already-current`. Nenhuma migração nova é necessária nesta rodada.

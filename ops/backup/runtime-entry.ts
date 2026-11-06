@@ -79,9 +79,23 @@ export function embeddedStagingBackupEnvironment(input: {
   };
 }
 
+/** Migrations remain explicit operator actions; the reviewed runner backs up before DDL. */
+export function embeddedOperationalCommand(
+  args: readonly string[],
+  env: Partial<NodeJS.ProcessEnv>,
+) {
+  const [command] = args;
+  if (
+    args.length !== 1 ||
+    (command !== 'backup' && command !== 'migrate') ||
+    (command === 'migrate' && env.OPS_ALLOW_REVIEWED_MIGRATION !== 'true')
+  )
+    throw new Error('Embedded staging operation requires an explicit reviewed command.');
+  return command;
+}
+
 async function main() {
-  if (process.argv.length !== 3 || process.argv[2] !== 'backup')
-    throw new Error('Embedded staging entrypoint supports backup only.');
+  const command = embeddedOperationalCommand(process.argv.slice(2), process.env);
   Object.assign(
     process.env,
     embeddedStagingBackupEnvironment({
@@ -99,7 +113,7 @@ async function main() {
     }),
   );
   return runOperationalBackupJob({
-    args: ['backup'],
+    args: [command],
     tools: { ageBinary: '/opt/adfl-age/age', tarBinary: '/usr/bin/tar' },
     pgDumpBinary: '/usr/local/bin/pg_dump',
   });
