@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "kind": "r2-privacy-and-atlas-inventory-operator-confirmation",
+  "recordedAt": "2026-11-06T20:52:31.735Z",
+  "source": "explicit-operator-report",
+  "r2": {
+    "buckets": [
+      "eliana-novaes-media",
+      "eliana-novaes-media-backups"
+    ],
+    "customDomains": "no-active-domain-reported",
+    "publicDevelopmentUrl": "disabled-as-reported",
+    "independentCloudflareAccountRead": false,
+    "scope": "Confirmation supplied in response to the request covering both project buckets."
+  },
+  "atlas": {
+    "cpuCoresReported": 2,
+    "memoryReported": {
+      "value": 8,
+      "unit": "GB"
+    },
+    "diskReported": {
+      "value": 100,
+      "unit": "GB"
+    },
+    "bandwidthReported": {
+      "value": 8,
+      "unit": "TB",
+      "period": "not-specified"
+    },
+    "amountProvided": true,
+    "amountStoredInOwnerOnlyIgnoredOperatorInventory": true,
+    "billingPeriod": "not-specified",
+    "planName": "not-specified",
+    "region": "not-specified",
+    "capacityMeasured": false
+  },
+  "criterionDispositions": {
+    "E3.1.4": "completed-with-existing-runtime-proofs-and-current-operator-domain-confirmation",
+    "E3.1.1": "open-pending-measured-consumption-and-processing-peak"
+  },
+  "existingEvidence": [
+    "docs/verification/artifacts/E3-storage/r2-dev-disabled-private-probe-003.json",
+    "docs/verification/artifacts/E3-storage/e3-1-staging-evidence-reconciliation-004.json"
+  ],
+  "effects": {
+    "r2Writes": 0,
+    "dnsChanges": 0,
+    "newBuckets": 0,
+    "sshKeysGenerated": 0,
+    "deployments": 0,
+    "productionAccessed": false
+  },
+  "limitations": [
+    "Operator confirmation is not an independent Cloudflare control-plane read.",
+    "Reported plan capacity does not establish measured workload fit.",
+    "No monthly cost, renewal cost or plan name was inferred."
+  ]
+}

@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 86,7% do checklist (26/30 itens); 3/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 90,0% do checklist (27/30 itens); 3/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -10,7 +10,7 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 
 ## Acompanhamento
 
-- [ ] E3.1 Ambientes R2 e e-mail reais — 3/5 critérios.
+- [ ] E3.1 Ambientes R2 e e-mail reais — 4/5 critérios.
 - [x] E3.2 Cache, invalidação e recuperação de atualização pública — 5/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 4/5 critérios.
 - [x] E3.4 Imagem única, configuração de execução e homologação — 5/5 critérios.
@@ -23,9 +23,9 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 
 A aplicação e o CMS estão no staging, com a revisão cd74963 e o pipeline 42265240175 aprovados. Deploy automático, imagem privada, backup extra anterior às atualizações, retenção de oito semanas e recuperação no escopo autorizado foram comprovados. O responsável forneceu o fluxo GA4 G-DXFQKDH52Z, salvo apenas no .env local. Analytics permanece desativado no staging. A conta Hostinger foi autenticada via MCP; o runtime desta conversa ainda precisa receber o servidor reconectado.
 
-A contagem atual é 26/30 (86,7%), com 3/6 frentes inteiramente encerradas: E3.2, E3.4, E3.6. A métrica corresponde aos critérios integrais do checklist, sem crédito parcial. Nesta revisão, evidências já existentes resolveram marcações antigas de R2/e-mail; cache e saúde receberam provas operacionais adicionais sem provocar panes no staging.
+A contagem atual é 27/30 (90%), com 3/6 frentes inteiramente encerradas: E3.2, E3.4, E3.6. A métrica corresponde aos critérios integrais do checklist, sem crédito parcial. Nesta revisão, evidências já existentes resolveram marcações antigas de R2/e-mail; cache e saúde receberam provas operacionais adicionais sem provocar panes no staging.
 
-O custo JavaScript e o gate completo atual também foram comprovados; a correção do page_view automático e os testes estão preparados localmente, sem novo deploy. O responsável confirmou os controles da propriedade GA4 desativados, encerrando E3.3.2. Restam dimensionamento/consumo da Atlas, conferência de Custom Domains do R2, contrato completo de minimização do SDK real do GA4 e rotação efetiva dos logs. Produção e a troca dos links continuam adiadas. A3/A4 permanecem pendentes. Os registros abaixo são históricos e não revogam as configurações atuais.
+O custo JavaScript e o gate completo atual também foram comprovados; a correção do page_view automático e os testes estão preparados localmente, sem novo deploy. O responsável confirmou os controles da propriedade GA4 desativados, encerrando E3.3.2. O responsável também confirmou a configuração privada dos dois buckets R2, encerrando E3.1.4. A capacidade e o valor contratados da Atlas foram relatados, com o valor mantido no inventário privado. Restam dimensionamento/consumo medidos da Atlas, contrato completo de minimização do SDK real do GA4 e rotação efetiva dos logs. Produção e a troca dos links continuam adiadas. A3/A4 permanecem pendentes. Os registros abaixo são históricos e não revogam as configurações atuais.
 
 ## Decisões e bloqueios externos — histórico inicial
 

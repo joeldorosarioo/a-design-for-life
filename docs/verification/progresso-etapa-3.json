@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-11-06T20:34:16.976Z",
+  "updatedAt": "2026-11-06T20:52:31.735Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 26,
+  "completedItems": 27,
   "totalItems": 30,
-  "percentage": 86.7,
+  "percentage": 90,
   "closedTasks": ["E3.2", "E3.4", "E3.6"],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -14,7 +14,7 @@
       "id": "E3.1.1",
       "done": false,
       "summary": "Levantar acessos existentes; apresentar VPS/plano e custos atuais antes de contratar. Dimensionar aplicação, PostgreSQL, homologação, build quando aplicável e pico de processamento medido. Registrar domínio escolhido pelo usuário, registry, origens dos ambientes, conta/propriedade GA4, envio de e-mail e credenciais mínimas. Nenhum domínio, provedor ou preço é presumido por este plano.",
-      "evidence": "VPS Hostinger/Atlas compartilhada, Coolify com TLS, staging autenticado, GHCR privado e envio por mail.joeldorosarioo.dev configurados; develop→staging comprovado. Conta Eliana Novaes/propriedade A Design for Life e fluxo GA4 G-DXFQKDH52Z identificados. Domínio próprio de produção permanece adiado pelo responsável; origem temporária de staging documentada. Faltam inventário/custo contratado e dimensionamento por consumo/pico medidos; cotas do app não certificam capacidade total da Atlas. MCP autenticado, mas indisponível no catálogo desta conversa até recarga do servidor. [Runtime MCP](artifacts/E3-operations/hostinger-mcp-runtime-availability-001.json)."
+      "evidence": "Infraestrutura existente, origens, registry, Resend e conta/propriedade/fluxo GA4 identificados. O responsável informou2núcleos,8GBRAM,100GBdisco e8TBtransferência, além do valor contratado, guardado apenas no inventário privado ignorado. Não foi informado período do valor, região ou nome do plano; não se inferiu preço mensal nem KVM2 pelo hardware. Domínio próprio permanece adiado pelo usuário. Falta dimensionamento por consumo/pico medidos na Atlas compartilhada, com cotas atuais do app preservadas. A chave SSH existente foi localizada e seu caminho configurado no.env; ativação do agent e teste de autenticação aguardam execução interativa do usuário. [Inventário relatado](artifacts/E3-storage/r2-privacy-atlas-operator-confirmation-005.json)."
     },
     {
       "id": "E3.1.2",
@@ -30,9 +30,9 @@
     },
     {
       "id": "E3.1.4",
-      "done": false,
+      "done": true,
       "summary": "Comprovar que URL direta do objeto/derivado no R2 não é pública; revisar caminhos do otimizador e caches. Testar falha de rede no envio e impedir referência editorial apontando a upload incompleto. Artefatos de imagem recebem chaves imutáveis; alteração de arquivo gera novo recurso/revisão, facilitando recuperação consistente.",
-      "evidence": "Falha no terceiro PUT recusou a referência incompleta; repetição usou outra chave imutável. Entrega/revogação de original, derivado e otimizador/cache têm provas existentes. O objeto próprio real retornou200 via S3 assinado e401 pelo r2.dev fornecido após sua desativação; limpeza confirmada por HEAD404. Falta somente confirmar no painel se os dois buckets possuem Custom Domains ativos; credenciais S3 não enumeram essa configuração. Não é necessário criar outro bucket ou repetir as provas concluídas. [Privacidade direta](artifacts/E3-storage/r2-dev-disabled-private-probe-003.json) e [conciliação](artifacts/E3-storage/e3-1-staging-evidence-reconciliation-004.json)."
+      "evidence": "Falha de PUT, referências incompletas recusadas, novas chaves imutáveis e autorização separada dos caches/otimizador já comprovadas. No R2 real, S3 assinado retornou200 e r2.dev401 após desativação; objeto próprio limpo e HEAD404 confirmado. O responsável agora confirmou ausência de Custom Domains ativos e Public Development URL desativada, em resposta à conferência dos dois buckets do projeto. Relato do operador identificado, sem nova leitura do painel ou escrita no R2 pelo agente. [Confirmação atual](artifacts/E3-storage/r2-privacy-atlas-operator-confirmation-005.json), [probe real](artifacts/E3-storage/r2-dev-disabled-private-probe-003.json) e [conciliação](artifacts/E3-storage/e3-1-staging-evidence-reconciliation-004.json)."
     },
     {
       "id": "E3.1.5",
@@ -222,7 +222,8 @@
     "06/11/2026: revisão das evidências existentes encerrou E3.1.2/.3/.5 no escopo de staging autorizado, sem novos testes, e-mails ou operações no R2. A marcação antiga desconsiderava o ciclo real R2, o preflight de acesso cruzado e o relato do teste de e-mail. Produção permanece adiada. O responsável forneceu G-DXFQKDH52Z; ID salvo somente no .env local, sem ativar coleta no staging. MCP Hostinger configurado; autenticação em andamento.",
     "06/11/2026: E3.2.2 encerrado com persistência real da raiz confirmada entre substituições do contêiner e provas locais existentes de falha/isolamento; E3.5.2 encerrado com configuração efetiva, limite de início medido6011ms e negativa/recuperação do probe na mesma imagem local. Nenhum reinício ou pane foi provocado no staging. E3.2 é a terceira frente integralmente encerrada.",
     "06/11/2026: E3.3.5 encerrado com ausência de banner previamente comprovada, custo estático do SDK oficial e dos assets implantados, e gate completo atual exit0 (235arquivos/2306testes,3skips). A correção send_page_view=false global reproduziu RED6→GREEN5eventos com os mesmos bytes oficiais, sem encaminhar medição. E3.3.2/.3 seguem abertos pelos ajustes do painel e revisão dos dados adicionais/leituras de cookie; nenhum SDK foi ativado. Hostinger autenticado em Windows/WSL, mas suas ferramentas não estão carregadas no runtime desta conversa; nenhuma operação na VPS ocorreu via MCP.",
-    "06/11/2026: responsável confirmou que desativou Google signals, coleta granular de localização/dispositivo e dados fornecidos pelo usuário. Somado à confirmação anterior de Medição aprimorada OFF e aos controles denied/anúncios/User-ID já comprovados no código/SDK, encerra E3.3.2. Relato do operador identificado em recibo separado, sem alterar a captura histórica do SDK. E3.3.3 permanece aberto e Analytics não foi ativado; nenhuma alteração de código, novo teste de SDK ou deploy nesta atualização."
+    "06/11/2026: responsável confirmou que desativou Google signals, coleta granular de localização/dispositivo e dados fornecidos pelo usuário. Somado à confirmação anterior de Medição aprimorada OFF e aos controles denied/anúncios/User-ID já comprovados no código/SDK, encerra E3.3.2. Relato do operador identificado em recibo separado, sem alterar a captura histórica do SDK. E3.3.3 permanece aberto e Analytics não foi ativado; nenhuma alteração de código, novo teste de SDK ou deploy nesta atualização.",
+    "06/11/2026: responsável confirmou R2 sem Custom Domains ativos e Public Development URL desativada no escopo solicitado dos dois buckets; E3.1.4 encerrado com as provas anteriores de privacidade/cache/falhas. Capacidade Atlas relatada:2núcleos/8GBRAM/100GBdisco/8TBtransferência. Valor contratado guardado em inventário privado, sem presumir periodicidade. E3.1.1 permanece aberto por medição de carga/recursos. Caminho da chave existente configurado no.env, sem gerar chave, ativar serviço Windows, alterar VPS ou disparar deploy."
   ],
-  "recalculatedAt": "2026-11-06T20:34:21.607Z"
+  "recalculatedAt": "2026-11-06T20:52:35.516Z"
 }
