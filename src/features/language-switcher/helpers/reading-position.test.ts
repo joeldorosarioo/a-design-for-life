@@ -4,6 +4,7 @@ import { captureReadingAnchor, readingTarget, restoreReadingAnchor } from './rea
 afterEach(() => {
   document.body.innerHTML = '';
   document.documentElement.style.removeProperty('--portfolio-header-height');
+  vi.useRealTimers();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
   Reflect.deleteProperty(document, 'fonts');
@@ -139,3 +140,36 @@ it('can finish exact restoration after the real replacement image loads despite 
   }
   expect(await pending).toMatchObject({ timedOut: false, cancelled: false, clamped: false });
 });
+
+it.each([
+  { loading: 'lazy', top: 1400, timedOut: false },
+  { loading: 'lazy', top: 200, timedOut: true },
+  { loading: 'eager', top: 1400, timedOut: true },
+])(
+  'restores a missing card via its ancestor without waiting for an offscreen lazy image ($loading at $top)',
+  async ({ loading, top, timedOut }) => {
+    vi.useFakeTimers();
+    document.body.innerHTML =
+      '<main><section data-reading-key="cases-list">Cases<img src="/pending.png" alt="Pending" /></section></main>';
+    const image = document.querySelector('img')!;
+    rect(document.querySelector('section')!, 24, 3000);
+    rect(image, top, 300);
+    Object.defineProperty(image, 'complete', { configurable: true, value: false });
+    Object.defineProperty(image, 'loading', { configurable: true, value: loading });
+    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) =>
+      setTimeout(() => callback(0), 0),
+    );
+    vi.spyOn(window, 'scrollBy').mockImplementation(() => {});
+    const pending = restoreReadingAnchor(
+      { key: 'missing-card', top: 200, ancestors: ['cases-list'] },
+      { signal: new AbortController().signal },
+    );
+    await vi.runAllTimersAsync();
+    expect(await pending).toMatchObject({
+      adjusted: true,
+      cancelled: false,
+      clamped: false,
+      timedOut,
+    });
+  },
+);
