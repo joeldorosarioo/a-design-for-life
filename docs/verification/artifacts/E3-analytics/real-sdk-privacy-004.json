@@ -1,0 +1,1164 @@
+{
+  "version": 1,
+  "kind": "real-sdk-cross-document-privacy-inspection",
+  "checkedAt": "2026-11-06T21:40:08.491Z",
+  "activationPermitted": false,
+  "propertySettingsVerified": false,
+  "sdk": {
+    "version": 1,
+    "capturedAt": "2026-11-06T21:32:54.337Z",
+    "sourceUrl": "https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z",
+    "httpStatus": 200,
+    "contentType": "application/javascript; charset=UTF-8",
+    "byteLength": 477089,
+    "sha256": "4c1c8a92bfdde6b56befdbf90138fdec498744cc5b2a5d4b4e496b5b669dd7ac",
+    "scope": "Static official SDK download only; no collect/event endpoints requested."
+  },
+  "networkIsolation": {
+    "externalRequestsForwarded": 0,
+    "rejectingProxyConnections": 5,
+    "everyBrowserRequestRouted": true,
+    "sdkFulfilledFromPinnedBytes": true,
+    "sdkModified": false,
+    "requestsFilteredOrRewritten": false
+  },
+  "sdkRequests": 5,
+  "externalRequests": 6,
+  "unknownDestinations": [],
+  "cookieHeaderPresent": false,
+  "privateMarkerPresent": false,
+  "identifiers": {
+    "clientId": {
+      "presentInAllEvents": true,
+      "constantWithinEachDocument": true,
+      "distinctAcrossDocuments": true,
+      "equalsSeededCookieIdentifier": false
+    },
+    "sessionId": {
+      "presentInAllEvents": true,
+      "constantWithinEachDocument": true,
+      "distinctAcrossDocuments": true,
+      "equalsSeededCookieIdentifier": false
+    }
+  },
+  "cookieReadSelectors": [
+    {
+      "cookieName": "__TAG_ASSISTANT",
+      "cookiePredicate": null,
+      "functions": [
+        "wq",
+        "uq",
+        "tq",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": "__TAG_ASSISTANT",
+      "cookiePredicate": null,
+      "functions": [
+        "wq",
+        "uq",
+        "tq",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    },
+    {
+      "cookieName": null,
+      "cookiePredicate": "function(f){return f===\"AMP_TOKEN\"}",
+      "functions": [
+        "JS",
+        "LS",
+        "AT",
+        "l.Ur",
+        "",
+        "Hm",
+        "ap"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "label": "same-context-first-document",
+      "eventSequenceCheck": {
+        "expectedEvents": 5,
+        "observedEvents": 5,
+        "matches": true,
+        "violations": []
+      },
+      "observation": {
+        "cookieReads": [
+          [
+            "    at wq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:475:51)",
+            "    at uq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:306)",
+            "    at tq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:193)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1040:472",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1041:167",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1043:3"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ]
+        ],
+        "cookieWrites": [],
+        "storageCalls": [],
+        "indexedDbOpens": 0,
+        "highEntropyCalls": [
+          [
+            "platform",
+            "platformVersion",
+            "architecture",
+            "model",
+            "uaFullVersion",
+            "bitness",
+            "fullVersionList",
+            "wow64"
+          ]
+        ],
+        "localStorageLength": 0,
+        "sessionStorageLength": 0,
+        "indexedDbDatabases": 0,
+        "cacheNames": 0,
+        "windowName": ""
+      },
+      "unchangedCookies": true,
+      "cookieNames": [
+        "portfolio_locale"
+      ],
+      "storedOrigins": 0
+    },
+    {
+      "label": "same-context-new-document",
+      "eventSequenceCheck": {
+        "expectedEvents": 1,
+        "observedEvents": 1,
+        "matches": true,
+        "violations": []
+      },
+      "observation": {
+        "cookieReads": [
+          [
+            "    at wq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:475:51)",
+            "    at uq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:306)",
+            "    at tq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:193)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1040:472",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1041:167",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1043:3"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ]
+        ],
+        "cookieWrites": [],
+        "storageCalls": [],
+        "indexedDbOpens": 0,
+        "highEntropyCalls": [
+          [
+            "platform",
+            "platformVersion",
+            "architecture",
+            "model",
+            "uaFullVersion",
+            "bitness",
+            "fullVersionList",
+            "wow64"
+          ]
+        ],
+        "localStorageLength": 0,
+        "sessionStorageLength": 0,
+        "indexedDbDatabases": 0,
+        "cacheNames": 0,
+        "windowName": ""
+      },
+      "unchangedCookies": true,
+      "cookieNames": [
+        "portfolio_locale"
+      ],
+      "storedOrigins": 0
+    },
+    {
+      "label": "same-context-new-tab-locale-en",
+      "eventSequenceCheck": {
+        "expectedEvents": 1,
+        "observedEvents": 1,
+        "matches": true,
+        "violations": []
+      },
+      "observation": {
+        "cookieReads": [
+          [
+            "    at wq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:475:51)",
+            "    at uq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:306)",
+            "    at tq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:193)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1040:472",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1041:167",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1043:3"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ]
+        ],
+        "cookieWrites": [],
+        "storageCalls": [],
+        "indexedDbOpens": 0,
+        "highEntropyCalls": [
+          [
+            "platform",
+            "platformVersion",
+            "architecture",
+            "model",
+            "uaFullVersion",
+            "bitness",
+            "fullVersionList",
+            "wow64"
+          ]
+        ],
+        "localStorageLength": 0,
+        "sessionStorageLength": 0,
+        "indexedDbDatabases": 0,
+        "cacheNames": 0,
+        "windowName": ""
+      },
+      "unchangedCookies": true,
+      "cookieNames": [
+        "portfolio_locale"
+      ],
+      "storedOrigins": 0
+    },
+    {
+      "label": "same-context-locale-absent",
+      "eventSequenceCheck": {
+        "expectedEvents": 1,
+        "observedEvents": 1,
+        "matches": true,
+        "violations": []
+      },
+      "observation": {
+        "cookieReads": [
+          [
+            "    at wq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:475:51)",
+            "    at uq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:306)",
+            "    at tq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:193)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1040:472",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1041:167",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1043:3"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ]
+        ],
+        "cookieWrites": [],
+        "storageCalls": [],
+        "indexedDbOpens": 0,
+        "highEntropyCalls": [
+          [
+            "platform",
+            "platformVersion",
+            "architecture",
+            "model",
+            "uaFullVersion",
+            "bitness",
+            "fullVersionList",
+            "wow64"
+          ]
+        ],
+        "localStorageLength": 0,
+        "sessionStorageLength": 0,
+        "indexedDbDatabases": 0,
+        "cacheNames": 0,
+        "windowName": ""
+      },
+      "unchangedCookies": true,
+      "cookieNames": [],
+      "storedOrigins": 0
+    },
+    {
+      "label": "new-context-existing-analytics-cookies",
+      "eventSequenceCheck": {
+        "expectedEvents": 1,
+        "observedEvents": 1,
+        "matches": true,
+        "violations": []
+      },
+      "observation": {
+        "cookieReads": [
+          [
+            "    at wq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:475:51)",
+            "    at uq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:306)",
+            "    at tq (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:468:193)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1040:472",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1041:167",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:1043:3"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ],
+          [
+            "    at JS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:252)",
+            "    at LS (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:938:749)",
+            "    at AT (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:952:1600)",
+            "    at l.Ur (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:307)",
+            "    at https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:962:197",
+            "    at Hm (https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z:429:362)"
+          ]
+        ],
+        "cookieWrites": [],
+        "storageCalls": [],
+        "indexedDbOpens": 0,
+        "highEntropyCalls": [
+          [
+            "platform",
+            "platformVersion",
+            "architecture",
+            "model",
+            "uaFullVersion",
+            "bitness",
+            "fullVersionList",
+            "wow64"
+          ]
+        ],
+        "localStorageLength": 0,
+        "sessionStorageLength": 0,
+        "indexedDbDatabases": 0,
+        "cacheNames": 0,
+        "windowName": ""
+      },
+      "unchangedCookies": true,
+      "cookieNames": [
+        "_ga",
+        "_ga_DXFQKDH52Z",
+        "_gcl_au",
+        "portfolio_locale"
+      ],
+      "storedOrigins": 0
+    }
+  ],
+  "events": [
+    {
+      "name": "page_view",
+      "keys": [
+        "_ee",
+        "_fv",
+        "_nsi",
+        "_p",
+        "_s",
+        "_ss",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "en",
+      "pageLocation": "https://portfolio-e3.example.invalid/en",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "page_view",
+      "keys": [
+        "_ee",
+        "_et",
+        "_p",
+        "_s",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "pt",
+      "pageLocation": "https://portfolio-e3.example.invalid/pt/cases/synthetic-case",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "contact_email_click",
+      "keys": [
+        "_ee",
+        "_et",
+        "_p",
+        "_s",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "pt",
+      "pageLocation": "https://portfolio-e3.example.invalid/pt/cases/synthetic-case",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "contact_linkedin_click",
+      "keys": [
+        "_ee",
+        "_et",
+        "_p",
+        "_s",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "pt",
+      "pageLocation": "https://portfolio-e3.example.invalid/pt/cases/synthetic-case",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "resume_open",
+      "keys": [
+        "_ee",
+        "_et",
+        "_p",
+        "_s",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "pt",
+      "pageLocation": "https://portfolio-e3.example.invalid/pt/cases/synthetic-case",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "page_view",
+      "keys": [
+        "_ee",
+        "_fv",
+        "_nsi",
+        "_p",
+        "_s",
+        "_ss",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "en",
+      "pageLocation": "https://portfolio-e3.example.invalid/en",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "page_view",
+      "keys": [
+        "_ee",
+        "_fv",
+        "_nsi",
+        "_p",
+        "_s",
+        "_ss",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "en",
+      "pageLocation": "https://portfolio-e3.example.invalid/en",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "page_view",
+      "keys": [
+        "_ee",
+        "_fv",
+        "_nsi",
+        "_p",
+        "_s",
+        "_ss",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "en",
+      "pageLocation": "https://portfolio-e3.example.invalid/en",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    },
+    {
+      "name": "page_view",
+      "keys": [
+        "_ee",
+        "_fv",
+        "_nsi",
+        "_p",
+        "_s",
+        "_ss",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ir",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "sr",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "v"
+      ],
+      "locale": "en",
+      "pageLocation": "https://portfolio-e3.example.invalid/en",
+      "consentStorageCode": "G100",
+      "nonPersonalizedAds": "1",
+      "userIdPresent": false,
+      "nonemptyDeviceFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ]
+    }
+  ],
+  "decodeErrors": [],
+  "diagnosticErrors": [],
+  "limitation": "Observed relationships apply to these intact pinned bytes and synthetic Chromium documents; no server processing or reports were exercised. Raw identifiers remain only in memory.",
+  "review": {
+    "criterion": "E3.3.3",
+    "complete": false,
+    "blockedBy": "No demonstrated supported suppression or necessity for active high-entropy device collection under the approved minimal metrics contract.",
+    "propertyControls": {
+      "source": "Operator confirmation recorded separately in property-controls-operator-confirmation-003.json",
+      "enhancedMeasurement": "OFF as reported",
+      "googleSignals": "OFF as reported",
+      "granularLocationAndDevice": "OFF as reported",
+      "userProvidedData": "OFF as reported",
+      "independentUiAudit": false,
+      "newSdkCaptureAfterConfirmation": true,
+      "sdkSameAsHistoricalCapture": true
+    },
+    "approvedObservations": [
+      "Only the four approved event names across nine event occurrences; every expected sequence matched.",
+      "Public canonical path and explicit locale only; title/referrer empty; no private markers, User-ID or cookie headers.",
+      "Client and session IDs stable within each document and different across all five documents, with no preexisting synthetic analytics cookie ID reused.",
+      "Seven first-document cookie reads resolve to one exact __TAG_ASSISTANT selection and six exact AMP_TOKEN opt-out selections; language cookie not selected for identification.",
+      "No SDK cookie writes, local/session storage calls, IndexedDB databases, CacheStorage entries, window.name content or persisted storage origins observed."
+    ],
+    "deviceCollection": {
+      "activelyRequestedHints": [
+        "platform",
+        "platformVersion",
+        "architecture",
+        "model",
+        "uaFullVersion",
+        "bitness",
+        "fullVersionList",
+        "wow64"
+      ],
+      "nonemptyWireFields": [
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw"
+      ],
+      "emptyWireFields": [
+        "uam"
+      ],
+      "necessity": "These are device measurement attributes, not demonstrated necessary for page path, locale or the three approved contact actions. Presence does not itself prove fingerprinting; it is an unmet minimization acceptance criterion.",
+      "propertyToggleLimit": "Operator OFF report preserved. This isolated run cannot establish server-side retention, setting propagation or geographic enforcement. No toggles need to be requested again."
+    },
+    "supportedControlsReview": {
+      "publicGtagConfig": "screen_resolution is documented as a positive WIDTHxHEIGHT override, not an off switch. The current comprehensive configuration/privacy references do not document device_settings, a high-entropy-off option, or redact_device_info as a public gtag API. No invented flag or false device value was used.",
+      "granularUi": "The official property control says those granular data are not collected when disabled; this remains a reported account setting, not proof of absence from the intercepted outgoing browser request.",
+      "browserPolicy": "Chrome 144 documents ch-ua-high-entropy-values Permissions Policy. It restricts the browser API, not all device fields, and is not a demonstrated cross-browser solution for the complete contract. No application policy was altered.",
+      "measurementProtocol": "Officially permits server-only events with partial reporting, but is a separate architecture and documented consent object exposes ad_user_data/ad_personalization, not analytics_storage. No automatic substitution or claim of equivalent denied-mode behavior was made."
+    },
+    "dispositionForA3": "Keep loadScript=null and no collection in staging/production. Leave E3.3.3 open. Any change to the minimal data contract or transport architecture requires a specific decision and a new isolated proof; this receipt is not a waiver.",
+    "checks": {
+      "decoderUnitTests": 13,
+      "decoderUnitFiles": 1,
+      "eslint": "exit 0",
+      "standardHarnessControl": "5 expected / 5 observed, no violations, same pinned bytes",
+      "fullVerifyRun": false,
+      "applicationRuntimeCodeChanged": false,
+      "productionTouched": false,
+      "realEventsSentToGoogle": 0
+    },
+    "sources": [
+      {
+        "url": "https://developers.google.com/tag-platform/security/concepts/consent-mode",
+        "supports": "Denied analytics storage does not read/write analytics cookies; pings may contain consent state and a random per-page-load number."
+      },
+      {
+        "url": "https://support.google.com/analytics/answer/11593727?hl=en",
+        "supports": "Client ID is not stored when analytics storage is disabled through Consent Mode."
+      },
+      {
+        "url": "https://support.google.com/analytics/answer/9191807?hl=en",
+        "supports": "Session ID is generated as the session start timestamp in seconds, not a unique persistent visitor ID by itself."
+      },
+      {
+        "url": "https://developer.chrome.com/docs/privacy-security/user-agent-client-hints",
+        "supports": "Additional device values are actively accessed with getHighEntropyValues; default low-entropy hints differ from that call."
+      },
+      {
+        "url": "https://developers.google.com/analytics/devguides/collection/ga4/reference/config",
+        "supports": "Comprehensive public configuration reference, including screen_resolution positive WIDTHxHEIGHT and default screen source; no cited general device off switch."
+      },
+      {
+        "url": "https://support.google.com/analytics/answer/12002752?hl=en",
+        "supports": "Property UI granular setting and list of granular dimensions excluded when disabled."
+      },
+      {
+        "url": "https://developers.google.com/tag-platform/security/guides/privacy",
+        "supports": "Supported privacy configuration including consent and advertising/automatic page view controls."
+      },
+      {
+        "url": "https://developer.chrome.com/release-notes/144",
+        "supports": "Browser Permissions Policy ch-ua-high-entropy-values restricts the high-entropy JS API."
+      },
+      {
+        "url": "https://developers.google.com/analytics/devguides/collection/protocol/ga4",
+        "supports": "Server-only Measurement Protocol is possible with partial reporting and is not a drop-in replacement for tagging."
+      },
+      {
+        "url": "https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference",
+        "supports": "Measurement Protocol consent schema and optional device attributes; distinct transport contract."
+      }
+    ]
+  }
+}

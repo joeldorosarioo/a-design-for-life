@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "kind": "staging-native-health-probe-and-observed-startup",
+  "status": "passed",
+  "checkedAt": "2026-11-06T19:50:31.584Z",
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "applicationStatus": "running:healthy",
+  "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+  "digest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+  "workflowRunId": 42265240175,
+  "deploymentUuid": "dzeb1xlupba8kijfts6xboih",
+  "probe": {
+    "configurationSource": "GET /applications/{resourceUuid} plus immutable image Dockerfile source",
+    "type": "cmd",
+    "command": "node /app/ops/image/health-probe.mjs",
+    "enabled": true,
+    "intervalSeconds": 30,
+    "timeoutSeconds": 5,
+    "retries": 3,
+    "startPeriodSeconds": 30,
+    "internalTimeoutMs": 4000,
+    "maximumResponseBytes": 512,
+    "probeSourceSha256": "b36abf2ba8619b5928bdcbe581100b6aa79becfa6c97383031a6c0a1b5effe06",
+    "loopbackOnly": true,
+    "ambientProxyBypassed": true,
+    "postgresqlOrR2QueriedInHttpMode": false
+  },
+  "startup": {
+    "containerStartedAt": "2026-11-06T18:04:45.664900Z",
+    "healthyObservedAt": "2026-11-06T18:04:51.6745560Z",
+    "startupToObservedHealthyUpperBoundMs": 6011,
+    "measurement": "upper bound from existing Coolify new-container-started event to GitHub deployed JSON emitted only after GET running:healthy; +1ms covers timestamp truncation",
+    "withinConfiguredStartPeriod": true,
+    "controlledRestartPerformed": false,
+    "exactFirstProbeSuccessTimeClaimed": false
+  },
+  "http": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "bodyContractVerified": true,
+      "cacheControl": "no-store, max-age=0",
+      "contentType": "application/json; charset=utf-8",
+      "noindex": true,
+      "nosniff": true
+    },
+    {
+      "method": "HEAD",
+      "path": "/health",
+      "status": 200,
+      "bodyContractVerified": true,
+      "cacheControl": "no-store, max-age=0",
+      "contentType": "application/json; charset=utf-8",
+      "noindex": true,
+      "nosniff": true
+    }
+  ],
+  "readOnly": true,
+  "remoteWritesPerformed": false,
+  "sourceFailureInjected": false,
+  "rawDeploymentLogsPersisted": false,
+  "limitations": [
+    "The observed startup bound covers this completed deployment only; it is not a load or capacity guarantee.",
+    "Three failed probes and recovery were not forced on staging.",
+    "Detailed PostgreSQL/R2 diagnostics remain separate from public liveness."
+  ]
+}

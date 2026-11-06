@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "kind": "staging-recovery-in-authorized-scope",
+  "status": "passed",
+  "checkedAt": "2026-11-06T18:22:55.244Z",
+  "scope": {
+    "operatorApprovedOn": "2026-11-06",
+    "database": "fresh-UUID-copy-on-existing-staging-PostgreSQL",
+    "media": "existing-R2-read-only",
+    "newBucketRequired": false,
+    "restoredObjectsToAnotherBucket": false,
+    "originalIsolatedBucketRequirementWaived": true,
+    "email": "local-capture-on-copy-only",
+    "productionTouched": false
+  },
+  "restore": {
+    "status": "passed-staging-database-copy-only",
+    "containerToTunnelTcpVerifiedBeforeClone": true,
+    "backupId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+    "durationMs": 46378,
+    "sourceUnchanged": true,
+    "sourceDatabaseTables": 31,
+    "sourceDatabaseSha256": "2b2a1de583cd61cd47e49f1b9b5291322582cf98f1c744dd67516c13c067ce7a",
+    "backupBinding": {
+      "backupId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+      "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+      "sourceImageDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+      "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+      "executionUuid": "wjoklmi8ysyv26ysj4xlo4t6",
+      "requestedAt": "2026-11-06T18:06:09.708Z",
+      "observedAt": "2026-11-06T18:06:28.763Z",
+      "manifestSha256": "ebc6507fe32d538fa977e71ec7c813b455e43b91bd792ce53d1cf2045ec1ee14",
+      "ciphertextSha256": "2801f186e9d55399809c20f137712c08db5624d1fb0da436ad0914ff7b530a47",
+      "imageIdInManifest": "omitted-by-staging-contract",
+      "operationalReceiptMatchesVerifiedR2Set": true,
+      "receiptSha256": "a32876d5abac3d37ea0b55a04b427ab6ebd0f5b0d776a47cdb5bdc614540d049"
+    },
+    "encryptedBackup": {
+      "version": 1,
+      "kind": "real-staging-encrypted-r2-backup-readback",
+      "backupId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+      "namespace": {
+        "project": "a-design-for-life",
+        "environment": "staging",
+        "source": "staging-app"
+      },
+      "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+      "schemaSha256": "d4ed4c1a1b96e5563595d95001e2a4f2eb0a9bac530785d103a80afee3ccda75",
+      "ciphertext": {
+        "byteLength": 2898824,
+        "sha256": "2801f186e9d55399809c20f137712c08db5624d1fb0da436ad0914ff7b530a47",
+        "key": "sets/024e4eb4-53f6-4ddb-baa8-9789ec0b0f10/payload.age"
+      },
+      "manifestSha256": "ebc6507fe32d538fa977e71ec7c813b455e43b91bd792ce53d1cf2045ec1ee14",
+      "decryptedArchiveByteLength": 2897920,
+      "archiveMembers": 34,
+      "objects": 31,
+      "confirmedObjectCount": 25,
+      "rootGeneration": "69b728a7-856c-41ff-b16d-c4cbe2d04b52",
+      "rootRouteInventory": {
+        "profiles": 2,
+        "navigation": 2,
+        "caseTranslations": 4,
+        "routes": 10
+      },
+      "ciphertextHashAndSizeVerified": true,
+      "ageDecryptionVerified": true,
+      "everyArchiveMemberHashVerified": true,
+      "databaseCustomMagicVerified": true,
+      "rootReferencedFilesPresent": true,
+      "databaseRestoreVerified": true,
+      "sourceMutated": false,
+      "identityUploaded": false
+    },
+    "restoredHttp": {
+      "renderSnapshotPinPreparedBeforeReadonlyMount": true,
+      "routeCount": 10,
+      "routeHttpStatus": 200,
+      "editorialLogin": true,
+      "passwordRecovery": "captured-only-on-clone",
+      "tokenReplayRejected": true,
+      "oldCloneSessionRevoked": true,
+      "mediaRelationships": {
+        "mediaCount": 8,
+        "objectCount": 31
+      },
+      "mediaHttpRenditions": 25,
+      "everyPublicMediaHttpByteHashVerified": true,
+      "mediaObjectsRestored": false,
+      "sourceMediaAccess": "read-only-wrapper",
+      "imageDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+      "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+      "cloneDataMatchedBeforeLogin": true,
+      "cloneDatabaseTables": 31,
+      "cloneDatabaseSha256": "2b2a1de583cd61cd47e49f1b9b5291322582cf98f1c744dd67516c13c067ce7a",
+      "cloneSchemaDefinitionSha256": "3be384cc4865a3035fba446cd4d4d7b68c5bb47806035491e62158ad9def222c",
+      "cloneMigrationLedgerSha256": "e264a3b5d873615ea45464488e2ebf9d12517b686dd1cf8cc4fce34876897109"
+    },
+    "limitations": [
+      "Existing R2 media were read only; media objects were not restored to a separate bucket.",
+      "This is not evidence for the full isolated bucket criterion E3.6.5."
+    ]
+  },
+  "cleanup": {
+    "status": "passed-post-restore-cleanup-read-only",
+    "checkedAt": "2026-11-06T18:22:09.776Z",
+    "backupId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+    "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+    "sourceDatabaseUnchanged": true,
+    "sourceDatabaseTables": 31,
+    "baselineCloneDatabaseCount": 0,
+    "remainingCloneDatabaseCount": 0,
+    "remainingOwnedContainers": 0,
+    "remainingOwnedNetworks": 0,
+    "remainingNewPrivateBackupWorkspaces": 0,
+    "preexistingPrivateBackupWorkspacesPreserved": 1,
+    "ownedPlaintextQuarantineCleanup": "verified-helper-awaited-finally-removal",
+    "independentQuarantineObservation": "no-new-workspaces-in-listing-or-birthtime-and-mtime",
+    "unknownResourcesDeleted": false
+  },
+  "image": {
+    "imageId": "sha256:2d5408422711d7034d26037529eece4d57d614e596b33345fbf48de417d1e5c3",
+    "registryDigests": [
+      "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a"
+    ],
+    "platform": "linux/amd64",
+    "user": "appuser",
+    "revision": "cd74963e3e81860c99735d88133fb37206a00553",
+    "layers": 21,
+    "environmentNames": [
+      "DOCKER_PG_LLVM_DEPS",
+      "GOSU_VERSION",
+      "HOSTNAME",
+      "LANG",
+      "MEDIA_CHECKER_BINARY",
+      "NEXT_TELEMETRY_DISABLED",
+      "NODE_ENV",
+      "PATH",
+      "PGDATA",
+      "PG_MAJOR",
+      "PG_SHA256",
+      "PG_VERSION",
+      "PORT"
+    ],
+    "manifestDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a"
+  },
+  "stagingHttp": {
+    "version": 1,
+    "checkedAt": "2026-11-06T18:07:05.065Z",
+    "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+    "digest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "appStatus": "running:healthy",
+    "resourceLimitsAndHealthSettingsPreserved": true,
+    "unauthenticatedStatus": 401,
+    "checks": [
+      {
+        "route": "/pt",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptAbsent": true
+      },
+      {
+        "route": "/en",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptAbsent": true
+      },
+      {
+        "route": "/admin/login",
+        "status": 200,
+        "noindex": true,
+        "analyticsScriptAbsent": true
+      }
+    ]
+  }
+}

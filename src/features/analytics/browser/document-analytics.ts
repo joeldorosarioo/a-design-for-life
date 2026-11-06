@@ -1,3 +1,4 @@
+import { hasRestrictedDevicePolicy } from './device-policy';
 import { wasAnalyticsContactHandled } from './contact-event-ownership';
 import { canMeasure } from '../analytics-policy';
 import { analyticsTransportConfigSchema, type AnalyticsRuntime } from '../analytics-session';
@@ -174,7 +175,7 @@ function createController(
 
 /**
  * Default production behavior deliberately has NO executable Google loader.
- * Actual SDK four-event/wire/storage/property evidence is still missing; the public
+ * Activation and future SDK-byte review remain separate approvals; the public
  * release flag cannot bypass this fail-closed guard. A captured loader may be injected
  * for offline SDK inspection, never to enable Analytics in a synthetic environment.
  */
@@ -198,6 +199,11 @@ export function mountDocumentAnalytics({
     !loadScript
   ) {
     existing?.exclude();
+    return noop;
+  }
+  // Unknown/ineffective policy never reaches globals, listeners or executable script.
+  if (!hasRestrictedDevicePolicy(doc)) {
+    existing?.failClosed();
     return noop;
   }
   if (existing) {

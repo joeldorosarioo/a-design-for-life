@@ -78,7 +78,7 @@ A configuração de produção não foi criada nem ativada nesta rodada. O mapea
 
 Executar `pnpm test:deploy` para os testes offline de API, guardas por branch/schema/UUID, status de deploy, pacote privado e promoção do mesmo manifesto. `pnpm verify` também executa esses testes. Os cenários usam respostas simuladas: não substituem a primeira execução real do GitHub Actions nem um deploy autenticado no Coolify.
 
-## Backup obrigatório antes do deploy — preparação
+## Backup obrigatório antes do deploy
 
 O cliente exige um backup completo antes de alterar a tag ou solicitar o deploy. Usa `COOLIFY_BACKUP_TOKEN` para consultar a tarefa e sua saída, solicitar uma execução e aguardar o marcador completo. Os dois tokens anteriores continuam responsáveis pela imagem e pelo deploy. Falha, timeout, execução antiga ou mudança da origem impedem a atualização.
 
@@ -89,3 +89,5 @@ Salvar o token completo em `COOLIFY_BACKUP_TOKEN` no `.env` local. A configuraç
 A API do Coolify pode substituir identidades públicas no log por `<REDACTED>`. O gate confere APP_ENV e OPS_BACKUP_SOURCE reais e o comando exato da tarefa antes de aceitar essa substituição apenas no namespace conhecido. UUID, hashes, tamanhos e datas nunca aceitam redação. O recibo registra quais campos públicos foram reconstruídos.
 
 [Formulário oficial da versão 4.6.0](https://github.com/coollabsio/coolify/blob/v4.6.0/resources/views/livewire/security/partials/api-token-fields.blade.php).
+
+Ativado e comprovado pelo [pipeline 42265240175](https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42265240175): a execução da tarefa concluiu um novo conjunto antes da mudança de imagem, o deploy ficou Healthy e o marcador da imagem homologada foi registrado. [Recibo técnico](../verification/artifacts/E3-backup/staging-predeploy-backup-001.json).
