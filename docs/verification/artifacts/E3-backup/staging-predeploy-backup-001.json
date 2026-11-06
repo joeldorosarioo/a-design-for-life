@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "observedAt": "2026-11-06T18:06:40.937Z",
+  "workflowRunId": 42265240175,
+  "workflowHeadSha": "cd74963e3e81860c99735d88133fb37206a00553",
+  "sourceTree": "3d3dfd1b8a091c2b66e30390973a028e594757b5",
+  "deployJobId": 128062450301,
+  "deployStep": {
+    "startedAt": "2026-11-06T18:04:13Z",
+    "completedAt": "2026-11-06T18:04:51Z",
+    "conclusion": "success"
+  },
+  "healthyImageMarkerJobId": 128062873956,
+  "workflowConclusion": "success",
+  "status": "deployed",
+  "environment": "staging",
+  "repository": "ghcr.io/joeldorosarioo/a-design-for-life",
+  "digest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+  "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "deploymentUuid": "dzeb1xlupba8kijfts6xboih",
+  "applicationStatus": "running:healthy",
+  "backup": {
+    "status": "backed-up",
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "6imqg83htk2jtmk29ylqjyzy",
+    "sourceImageDigest": "sha256:6056c46a5a6f6f66f0b49c5cc1e83c2b21bdc88df3bee88fbf12d972eb0f0324",
+    "marker": {
+      "version": 1,
+      "id": "a427abda-c7cf-43e8-a7ba-03daba22beac",
+      "namespace": {
+        "project": "a-design-for-life",
+        "environment": "staging",
+        "source": "staging-app"
+      },
+      "createdAt": "2026-11-06T18:04:18.760Z",
+      "complete": true,
+      "completedAt": "2026-11-06T18:04:28.550Z",
+      "manifestSha256": "823cec411c229d23b0bc406eaa3efcd7d9e22a84919bef35f29a03785460ff57",
+      "ciphertext": {
+        "key": "sets/a427abda-c7cf-43e8-a7ba-03daba22beac/payload.age",
+        "byteLength": 2898824,
+        "sha256": "66c4784a52aeef07d609db6e3c559faa270496e2513afd8dc1e042a67aac21ee"
+      }
+    },
+    "redactedIdentityFields": [
+      "source"
+    ],
+    "namespaceSha256Verified": false
+  }
+}
