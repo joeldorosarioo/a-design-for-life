@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "kind": "real-staging-complete-encrypted-backup-and-isolated-restore",
+  "verifiedAt": "2026-11-06T16:21:38.827Z",
+  "fullBackupVerified": true,
+  "backupId": "3a8a9a5c-7a4d-4c32-96af-c137b08b3581",
+  "bucket": "eliana-novaes-media-backups",
+  "namespace": {
+    "project": "a-design-for-life",
+    "environment": "staging",
+    "source": "staging-app"
+  },
+  "sourceApplication": {
+    "revision": "d3e765f113c2b5831edf6d86f15d3431e2a019fc",
+    "sourceTree": "7554edd5d155fb4ad6ceb959aab6409a27a0a3f6",
+    "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+    "manifestDigest": "sha256:6056c46a5a6f6f66f0b49c5cc1e83c2b21bdc88df3bee88fbf12d972eb0f0324",
+    "schemaSha256": "d4ed4c1a1b96e5563595d95001e2a4f2eb0a9bac530785d103a80afee3ccda75",
+    "health": "running:healthy",
+    "githubRunId": 42247012924,
+    "productionJob": "skipped"
+  },
+  "execution": {
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "jtqwv9iu5pe5amoai6fcedql",
+    "trigger": "operator-execute-now-after-api-403",
+    "status": "success",
+    "durationSeconds": 20.19,
+    "startedAt": "2026-11-06T16:13:07.000000Z",
+    "finishedAt": "2026-11-06T16:13:27.000000Z",
+    "outputReadbackAvailable": false,
+    "completionProof": "independent-authenticated-R2-readback-and-isolated-restore"
+  },
+  "ciphertext": {
+    "byteLength": 2898824,
+    "sha256": "c5e23fe970185be9caa5d306b0f825b2d4ff8ce207435f7beb09899a3d5a584a",
+    "key": "sets/3a8a9a5c-7a4d-4c32-96af-c137b08b3581/payload.age"
+  },
+  "manifestSha256": "24c58c2f5ce6544d9cadf91b8962d23eaaf274e434c3523c94d0a4dbc05de30e",
+  "createdAt": "2026-11-06T16:13:09.801Z",
+  "completedAt": "2026-11-06T16:13:25.520Z",
+  "inventory": {
+    "cases": 2,
+    "media": 8,
+    "users": 1,
+    "profiles": 2,
+    "migrations": 17,
+    "navigation": 2,
+    "caseContent": 4,
+    "storedObjects": 31,
+    "archiveMembers": 34,
+    "publicRoutes": 10
+  },
+  "verification": {
+    "nativeCoordinatedBackup": true,
+    "encryptedRemoteReadback": true,
+    "ageDecryption": true,
+    "everyObjectSizeAndSha256Matched": true,
+    "allArchiveMembersValidated": true,
+    "databaseCustomDumpRestored": true,
+    "publicTables": 31,
+    "migrations": 17,
+    "foreignKeyConstraints": 54,
+    "relationshipsValidated": true,
+    "localesVerified": true,
+    "sourceComparison": {
+      "status": "exact",
+      "comparedAt": "2026-11-06T16:19:16.921Z",
+      "note": "Current source sampled after backup; legitimate concurrent changes may differ from the archived snapshot.",
+      "differingComponents": [],
+      "tableNamesMatched": true,
+      "sourceReadOnly": true
+    },
+    "sourceMutated": false,
+    "realEmailsSent": 0,
+    "privateRecoveryIdentityUploaded": false,
+    "plaintextQuarantineRemoved": true,
+    "disposableResourcesRemoved": true,
+    "restoreNetwork": "none",
+    "restoreUser": "appuser",
+    "restoreUid": 70
+  },
+  "observedDurations": {
+    "backupJobSeconds": 20.19,
+    "downloadDecryptionAndIsolatedRestoreMs": 32134
+  },
+  "schedule": {
+    "enabled": true,
+    "frequency": "0 3 * * 0",
+    "timezone": "Atlas deployment-server timezone",
+    "timeoutSeconds": 1800
+  },
+  "texture": {
+    "asset": "public/textures/paper-grain-texture.png",
+    "sha256": "88c708d8b4c8103783f4bc61e3ea13b47280654cbe1db2d4e9dc7b972a9784ab",
+    "backgroundSize": "450px 450px",
+    "mixBlendMode": "multiply",
+    "opacity": 0.3,
+    "pointerEvents": "none",
+    "desktopAndMobileVerified": true,
+    "cmsTextureAbsent": true,
+    "analyticsRequests": 0
+  },
+  "remainingAcceptance": {
+    "restoreToSeparateR2MediaBucket": false,
+    "restoredHttpLoginAndRecoveryVerified": false,
+    "remoteEightWeekRetentionEnabled": false,
+    "automaticPreUpdateBackupHookEnabled": false,
+    "A3Approved": false,
+    "A4Approved": false
+  },
+  "productionAccessed": false
+}
