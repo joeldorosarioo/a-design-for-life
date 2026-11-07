@@ -1,6 +1,6 @@
 # Progresso verificável — etapa 3
 
-**100,0%: 30/30 itens; 6/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**100,0%: 30/30 itens; 6/6 tarefas inteiramente encerradas. Aprovação registrada: A3 approved by user on 2026-11-06; E4 to start in a new chat; A4 and production remain unauthorized.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs --stage 3`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
@@ -122,6 +122,8 @@ Auditoria de comunicação do progresso em06/11/2026: 15/30 é contagem de crit�
 
 06/11/2026: candidata consolidada na PR5 e homologada pelo pipeline42304741961 (Linux2323testes/123jornadas, imagem42574c55…7189). Backup completo obrigatório precedeu a troca; usuário appuser, 1CPU/2GiB, rotação10m×3 e três volumes foram preservados. A raiz pública de52668bytes permaneceu com SHA b8351855…c32a3. Browser real passou48/48checks, header/policyPTEN aplicados, semcoleta/erros/origensexternas. Marcadorporárvore foi relido como mesma candidata sem produção. PacoteA3 integral entregue com30/30critérios/6frentes; aceiteA3/A4 continua pendente, etapa4 nãoiniciada. Evidênciafinal guardadalocalmenteparaevitardeploy redundante sóporatualizarmetadados.
 
-Estimativa: Checklist de implementação encerrado e candidata homologada; aguardando aceite A3. A etapa 4 ainda não foi iniciada.
+06/11/2026: após receber o pacote final, o usuário respondeu “Estou de acordo. Me gere um prompt para eu começar a etapa quatro em outro chat.” A3 aprovada com os limites documentados. Checklist preservado em 30/30 e 6/6 frentes. Esta atualização somente registra o aceite e a passagem: nenhuma implementação E4, novo teste, deploy, ativação de Analytics, contratação ou produção. Registros anteriores de A3 pendente são históricos; A4 e lançamento continuam sem autorização.
 
-Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.
+Estimativa: Etapa 3 concluída e A3 aprovada em 06/11/2026. E4.1–E4.3 a iniciar em outro chat; A4 e lançamento em produção permanecem pendentes.
+
+Aprovação registrada: A3 approved by user on 2026-11-06; E4 to start in a new chat; A4 and production remain unauthorized.

@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 100,0% do checklist (30/30 itens); 6/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 100,0% do checklist (30/30 itens); 6/6 tarefas inteiramente encerradas. Aprovação registrada: A3 approved by user on 2026-11-06; E4 to start in a new chat; A4 and production remain unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -17,9 +17,13 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 - [x] E3.5 Migrações, logs e verificações de saúde — 5/5 critérios.
 - [x] E3.6 Backup criptografado e restauração isolada — 5/5 critérios.
 - [x] Pacote A3 integral entregue; evidências finais em A3.md.
-- [ ] A3 aprovada explicitamente pelo usuário.
+- [x] A3 aprovada explicitamente pelo usuário em 06/11/2026; Etapa 4 a iniciar em outro chat, A4 e produção não autorizadas.
 
-## Estado atual e leitura da contagem — 06/11/2026
+## Aceite atual — 06/11/2026
+
+A3 aprovada explicitamente após a entrega do pacote final. O usuário solicitou um prompt para iniciar E4.1–E4.3 em outro chat; nenhuma execução da Etapa 4 ocorre nesta atualização. A4 e lançamento em produção permanecem sem autorização. O estado técnico abaixo e seus checkpoints conservam os registros anteriores ao aceite; a decisão mais recente está no final de [A3.md](A3.md#aceite-a3-registrado--06112026).
+
+## Estado técnico na entrega anterior ao aceite — 06/11/2026
 
 A aplicação e o CMS estão no staging, com a revisão bf47f28 e o pipeline 42304741961 aprovados. Deploy automático, imagem privada, backup extra anterior às atualizações, retenção de oito semanas e recuperação no escopo autorizado foram comprovados. O responsável forneceu o fluxo GA4 G-DXFQKDH52Z, salvo apenas no .env local. Analytics permanece desativado no staging. A conta Hostinger foi autenticada via MCP, mas suas ferramentas continuam indisponíveis neste runtime. O acesso operacional foi resolvido por SSH com a nova chave v2 criada pelo responsável.
 

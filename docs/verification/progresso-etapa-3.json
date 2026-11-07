@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T22:54:07.027Z",
+  "updatedAt": "2026-11-07T00:31:38.539Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
   "completedItems": 30,
@@ -7,8 +7,8 @@
   "percentage": 100,
   "closedTasks": ["E3.1", "E3.2", "E3.3", "E3.4", "E3.5", "E3.6"],
   "totalTasks": 6,
-  "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
-  "remainingEstimate": "Checklist de implementação encerrado e candidata homologada; aguardando aceite A3. A etapa 4 ainda não foi iniciada.",
+  "approval": "A3 approved by user on 2026-11-06; E4 to start in a new chat; A4 and production remain unauthorized",
+  "remainingEstimate": "Etapa 3 concluída e A3 aprovada em 06/11/2026. E4.1–E4.3 a iniciar em outro chat; A4 e lançamento em produção permanecem pendentes.",
   "criteria": [
     {
       "id": "E3.1.1",
@@ -227,7 +227,8 @@
     "06/11/2026: SSH nativo com a nova chave v2 do usuário autenticou em BatchMode/host key estrita; caminho no.env atualizado sem ler a chave privada nem receber sua passphrase. E3.5.3 encerrado por LogConfig real, consulta Coolify separada e rotação/restart comprovados em fixture própria no mesmo host/imagem. O app real não reiniciou, permaneceu Healthy e os recursos descartáveis foram removidos. Nenhum log bruto ou segredo foi persistido. E3.5 passa a frente integralmente encerrada.",
     "06/11/2026: E3.1.1 encerrado com inventário/custo relatados e dimensionamento medido da Atlas no escopo autorizado de staging. O app real passou19GETs, semOOM; validação/derivação de2originais sintéticos na mesma imagem/host passou com fontes iguais ao deploy cd74963. Host com folga observada, builds fora da VPS, cotas do app preservadas. Ensaios próprios foram removidos, mesmoCID/Healthy confirmado e nenhuma produção, dump novo ou escrita noR2 executados. E3.1 passa a frente integralmente encerrada; E3.3.3 é o único critério restante.",
     "06/11/2026: E3.3.3 encerrado pelo adaptador de documento real/SDK intacto, metadados minimizados por política nativa/header e contexto vazio de resolução, IDs não persistentes, ausência de storage e negativa de navegadores sem garantia da policy. Tipagem/lint/formato/2320testes/build e2/2jornadasNext reais passaram com fontes congeladas; nenhuma medição foi encaminhada aoGoogle. Omitir resolução significa suprimir seu valor real (sr vazio), sem declarar chave ausente nem garantia futura do fornecedor. Checklist30/30;releaseconsolidada ainda será homologada pelo fluxoautorizado develop→staging. A3/A4 eprodução seguemsemaceite/lançamento, e loadernull preservado.",
-    "06/11/2026: candidata consolidada na PR5 e homologada pelo pipeline42304741961 (Linux2323testes/123jornadas, imagem42574c55…7189). Backup completo obrigatório precedeu a troca; usuário appuser, 1CPU/2GiB, rotação10m×3 e três volumes foram preservados. A raiz pública de52668bytes permaneceu com SHA b8351855…c32a3. Browser real passou48/48checks, header/policyPTEN aplicados, semcoleta/erros/origensexternas. Marcadorporárvore foi relido como mesma candidata sem produção. PacoteA3 integral entregue com30/30critérios/6frentes; aceiteA3/A4 continua pendente, etapa4 nãoiniciada. Evidênciafinal guardadalocalmenteparaevitardeploy redundante sóporatualizarmetadados."
+    "06/11/2026: candidata consolidada na PR5 e homologada pelo pipeline42304741961 (Linux2323testes/123jornadas, imagem42574c55…7189). Backup completo obrigatório precedeu a troca; usuário appuser, 1CPU/2GiB, rotação10m×3 e três volumes foram preservados. A raiz pública de52668bytes permaneceu com SHA b8351855…c32a3. Browser real passou48/48checks, header/policyPTEN aplicados, semcoleta/erros/origensexternas. Marcadorporárvore foi relido como mesma candidata sem produção. PacoteA3 integral entregue com30/30critérios/6frentes; aceiteA3/A4 continua pendente, etapa4 nãoiniciada. Evidênciafinal guardadalocalmenteparaevitardeploy redundante sóporatualizarmetadados.",
+    "06/11/2026: após receber o pacote final, o usuário respondeu “Estou de acordo. Me gere um prompt para eu começar a etapa quatro em outro chat.” A3 aprovada com os limites documentados. Checklist preservado em 30/30 e 6/6 frentes. Esta atualização somente registra o aceite e a passagem: nenhuma implementação E4, novo teste, deploy, ativação de Analytics, contratação ou produção. Registros anteriores de A3 pendente são históricos; A4 e lançamento continuam sem autorização."
   ],
-  "recalculatedAt": "2026-11-06T22:58:39.268Z"
+  "recalculatedAt": "2026-11-07T00:31:50.914Z"
 }
