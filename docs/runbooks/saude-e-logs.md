@@ -1,8 +1,8 @@
 # Saúde e logs de execução
 
-## Estado desta preparação
+## Estado validado
 
-A prontidão pública e os diagnósticos estruturados foram exercitados localmente. O probe da imagem e o atendimento de cache com o PostgreSQL indisponível já têm recibos próprios. Coolify, rotação aplicada, consulta a logs do ambiente operacional e falhas reais de R2 continuam pendentes.
+O staging usa o probe Node incluído na mesma imagem privada homologada. A configuração real, GET/HEAD autenticados e o início observado foram conferidos sem reiniciar ou interromper o atendimento. Os diagnósticos estruturados e o atendimento de cache durante indisponibilidade têm provas isoladas próprias. Driver, limites e consulta separada de logs operacionais foram conferidos no app real. A rotação e a continuidade após reinício foram exercitadas em um contêiner sintético próprio no mesmo host, com a mesma imagem e configuração; o app em atendimento permaneceu intacto.
 
 ## Prontidão pública
 
@@ -10,19 +10,23 @@ A prontidão pública e os diagnósticos estruturados foram exercitados localmen
 
 A resposta indica que o processo consegue executar esse handler. Não certifica banco, mídia, publicação, cache completo, capacidade de disco ou recuperação. Não deve consultar dependências para decidir se páginas confirmadas em cache continuam servíveis. URLs, headers, cookies, credenciais e detalhes de falhas não entram no corpo público.
 
-GET/HEAD são os handlers definidos pela aplicação. As duas respostas passaram no Next e na imagem Linux local. A verificação do proxy e da configuração de homologação depende do ambiente operacional.
+GET/HEAD são os handlers definidos pela aplicação. Além das provas no Next e na imagem Linux local, as duas respostas passaram pela origem real autenticada de staging: HTTP200, corpo mínimo ou vazio, JSON, no-store, nosniff e noindex. [Recibo atual](../verification/artifacts/E3-operations/staging-health-probe-001.json).
 
-## Probe da imagem e configuração futura no Coolify
+## Probe da imagem e configuração medida no Coolify
 
-O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. A versão atual do probe usa um agente HTTP direto, independentemente do proxy de ambiente, e limita a resposta a 512 bytes. A prova Linux montou somente o arquivo atualizado sobre a imagem 004 e confirmou GET/HEAD e estado saudável com proxy inacessível. Medir o período inicial e validar o executor no Coolify com os volumes operacionais.
+O Dockerfile configura o Node com intervalo de 30 s, timeout de 5 s, início de 30 s e três falhas consecutivas. A imagem local 004 alcançou `healthy` em 6,466 s sem rede nem banco acessível. O probe embutido e GET/HEAD passaram. O tempo observado pertence ao contêiner local. A versão atual do probe usa um agente HTTP direto, independentemente do proxy de ambiente, e limita a resposta a 512 bytes. A prova Linux montou somente o arquivo atualizado sobre a imagem 004 e confirmou GET/HEAD e estado saudável com proxy inacessível. Esses resultados históricos são complementados pela observação atual da imagem por digest no Coolify, abaixo.
 
-Exemplo de comando para uma imagem cujo listener local usa a porta3000, a validar antes de configurar:
+O recurso real está com healthcheck habilitado do tipo CMD, intervalo30s, timeout5s, três tentativas e período inicial30s. Comando configurado:
 
 ```sh
-node --input-type=module -e 'try { const response = await fetch("http://127.0.0.1:3000/health", { signal: AbortSignal.timeout(4500), cache: "no-store" }); const body = await response.json(); if (response.status !== 200 || body?.status !== "ready" || Object.keys(body).length !== 1) process.exitCode = 1; } catch { process.exitCode = 1; }'
+node /app/ops/image/health-probe.mjs
 ```
 
-O comando não imprime diagnóstico. Ajustar quoting ao executor real do Coolify. Guardar o exit code e comprovar tempo limite, início, recuperação e três falhas no ambiente de homologação. O limite interno de4,5s deixa margem para o timeout externo proposto de5s; os tempos efetivos ainda precisam ser medidos.
+O probe consulta somente `http://127.0.0.1:3000/health`, ignora proxy de ambiente, limita o corpo a512bytes e usa timeout interno4s, deixando margem ao timeout externo5s. Em modo HTTP não consulta PostgreSQL ou R2. O modo PostgreSQL-only de bootstrap é separado e não é a prontidão da aplicação já em atendimento.
+
+No deploy existente `dzeb1xlupba8kijfts6xboih`, o Coolify registrou o novo contêiner iniciado em `2026-11-06T18:04:45.664900Z`. O pipeline emitiu o recibo somente após observar `running:healthy`, às `18:04:51.6745560Z`. O limite superior conservador é6011ms, incluindo1ms pela precisão dos timestamps, dentro do período inicial30s. Trata-se de um início observado, não de uma garantia de capacidade ou do instante exato do primeiro probe. A leitura usou apenas a API e o log já existente em memória; não houve novo deploy ou restart. [Recibo de configuração e início](../verification/artifacts/E3-operations/staging-health-probe-001.json).
+
+Uma fixture HTTP local, sem PostgreSQL, mídia, portas de host ou configuração privada, executou o binário embutido na mesma imagem `sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a`. HTTP200 retornou exit0; HTTP503 e timeout retornaram exit1, sem stdout/stderr; a volta a HTTP200 retornou exit0. O timeout levou4345ms. O SHA-256 do probe embutido coincidiu com a fonte revisada. Contêiner e volumes anônimos próprios foram removidos. Não se forçaram falhas no staging nem se alegou testar a contagem interna de retries do Docker. [Recibo da mesma imagem](../verification/artifacts/E3-operations/staging-image-health-probe-local-001.json).
 
 ## API de logs
 
@@ -67,20 +71,26 @@ Em homologação e produção, a configuração do Payload projeta somente diagn
 
 O diagnóstico fica em `GET /api/operations/diagnostics` e exige uma sessão Native da coleção `users`. Uma chamada anônima recebe 401 vazio antes das sondas. A resposta autenticada usa `private, no-store` e devolve somente o estado de PostgreSQL e R2. PostgreSQL usa `SELECT 1` e R2 usa `HeadBucket` no bucket configurado, com uma janela de resposta de 2 s para cada sonda. Em modo de armazenamento local, R2 aparece como `not-configured`. Dependência indisponível produz 503 apenas no diagnóstico. Se o próprio banco impedir a autenticação Native, o endpoint pode ficar indisponível junto com o painel. O probe do Coolify continua apontando exclusivamente para `/health`. [Compatibilidade de HeadBucket](https://developers.cloudflare.com/r2/api/s3/api/#implemented-bucket-level-operations)
 
-## Consulta e rotação propostas
+## Consulta e rotação verificadas no staging
 
-Proposta inicial de rotação:10MB por arquivo e três arquivos por contêiner. Confirmar no executor/log driver disponível do Coolify, aplicar na configuração de infraestrutura apropriada e ajustar ao disco contratado antes de A3. Não existe configuração aplicada por este runbook.
+Em 06/11/2026, o `HostConfig.LogConfig` do contêiner real confirmou `json-file`, `max-size=10m` e `max-file=3`, exatamente a proposta inicial. Não foi necessário mudar o Docker daemon, aplicar flags, recriar o app ou disparar deploy. A configuração efetiva foi lida diretamente por SSH, com o app Healthy e a mesma imagem privada homologada. [Recibo completo](../verification/artifacts/E3-operations/staging-log-rotation-002.json).
 
-Separar logs de implantação (build/pull/início) dos logs de execução (stdout da aplicação). Demonstrar consulta por correlação e por resultado; provocar rotação com dados técnicos sintéticos sem segredos, verificar limite de disco, retenção e continuidade após reinício. Guardar configuração efetiva e recibos da prova. Não habilitar debug que inclua headers, env, SQL com valores privados ou conteúdo editorial.
+Os logs de execução foram consultados por `GET /api/v1/applications/{uuid}/logs?lines=all&show_timestamps=true`; os de implantação, por `GET /api/v1/deployments/{deploymentUuid}` para o deploy existente e finalizado. Ambos responderam 200 e seus corpos foram tratados somente em memória. A leitura de execução encontrou 25 linhas, incluindo uma linha JSON de `payload.runtime`, resultado `failure` e UUID de correlação válido; nenhum texto bruto, dado editorial ou credencial foi incluído no recibo. São superfícies separadas no Coolify: Runtime Logs e Deployment Logs. A consulta exige a capacidade `read:sensitive`; não expor tokens nos comandos ou nos registros. [API de execução](https://coolify.io/docs/api/endpoints/applications/get-application-logs-by-uuid) · [API de implantação](https://coolify.io/docs/api/endpoints/deployments/get-deployment-by-uuid).
 
-Não adicionar monitoramento ou notificações externos. A observação pelo próprio host não comprova detecção da queda da VPS.
+A prova de rotação usou um contêiner UUID próprio no mesmo Docker host, sem banco, credenciais da aplicação, rede ou portas publicadas. A mesma imagem iniciou somente o emissor Node sintético, como UID/GID 70, com 0,1 CPU, 128 MiB de memória, até 32 processos, capabilities removidas, `no-new-privileges`, raiz somente leitura e tmpfs pequeno. O driver e os limites eram idênticos aos do app. Foram emitidos 42 MiB em 10.752 registros, em lotes de 1 MiB com pausa mínima de 500 ms. A leitura por `docker logs` comprovou 5.980 registros finais contíguos, sequências 4.772–10.751; os primeiros 4.772 foram descartados pela rotação.
+
+O `stat` apenas dos arquivos próprios registrou três arquivos e 25.067.752 bytes no total. Os dois maiores tinham cerca de 10 MB, com ultrapassagem limitada a um registro; a asserção admitiu até 8.192 bytes de margem por arquivo. O conteúdo desses arquivos não foi lido ou alterado diretamente: a consulta dos registros usou a API de logs do Docker, como orienta sua [documentação](https://docs.docker.com/engine/logging/drivers/json-file/).
+
+Somente a fixture foi reiniciada. O mesmo contêiner conservou configuração e marcador final anterior, e o marcador de início do novo processo ficou legível. O primeiro ensaio falhou porque o harness consultou o novo marcador imediatamente após `docker restart`; a nova medição comprovou sua ausência na primeira leitura e presença após 293 ms, dentro do limite de cinco segundos. A correção foi uma espera pela condição real no runner privado; o contrato não foi relaxado. A fixture e seus volumes anônimos próprios foram removidos, com zero contêineres do ensaio restantes. O app real manteve o mesmo ID, digest, horário de início e estado Healthy.
+
+Esses resultados comprovam limites e consulta atuais e o comportamento do mesmo driver/configuração sob rotação e reinício; não afirmam que o volume sintético foi produzido pelo site ou que ele foi reiniciado. O histórico de `docker logs` pertence ao contêiner e não tem garantia de persistência depois de sua remoção/substituição em um deploy. Não foi contratado ou configurado serviço externo de monitoramento, retenção ou notificações.
 
 ## Evidência ainda necessária para A3
 
-- Verificar GET/HEAD reais e outros métodos, proxy/cache, binário Node e probe dentro da mesma imagem promovível.
-- Comprovar acesso e rotação dos logs de execução separadamente dos de implantação no Coolify de homologação.
+- Preservar os recibos atuais de GET/HEAD, configuração e início do probe ao promover a imagem; métodos adicionais e alterações futuras precisam de suas provas próprias.
+- Preservar os recibos de consulta separada e rotação acima; conferir novamente o LogConfig efetivo se a configuração do executor mudar.
 - Exercitar falhas reais de PostgreSQL/R2 com páginas confirmadas em cache e provar que a prontidão não as retira indevidamente do serviço.
 - Integrar eventos seguros de publicação, cache, processamento e integrações; executar gates Native/E2E/verify no ambiente isolado coordenado.
-- Concluir migração controlada, backup e rollback em seus runbooks próprios. Esta entrega não os implementa nem certifica.
+- Consultar os recibos e limites de migração controlada, backup e rollback nos runbooks próprios; a prova de saúde não substitui essas verificações.
 
-Os testes unitários da preparação validam a linha serializada, projeção de contexto, limites/erros e os handlers diretos. Não substituem estas provas operacionais.
+Os testes unitários da preparação validam a linha serializada, projeção de contexto, limites/erros e os handlers diretos. Eles complementam os recibos operacionais de consulta e rotação, sem transformar logs brutos em dados permitidos para a aplicação.

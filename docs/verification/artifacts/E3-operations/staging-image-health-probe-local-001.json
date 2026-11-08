@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "kind": "same-image-local-native-health-probe-negative-and-recovery",
+  "status": "passed",
+  "checkedAt": "2026-11-06T19:53:57.538Z",
+  "runId": "9c05cd3a-97ca-4051-be66-4055423d9f55",
+  "imageId": "sha256:2d5408422711d7034d26037529eece4d57d614e596b33345fbf48de417d1e5c3",
+  "registryDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+  "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+  "probeSourceSha256": "b36abf2ba8619b5928bdcbe581100b6aa79becfa6c97383031a6c0a1b5effe06",
+  "user": "appuser",
+  "sourceImageHealthcheck": {
+    "Test": [
+      "CMD",
+      "node",
+      "ops/image/health-probe.mjs"
+    ],
+    "Interval": 30000000000,
+    "Timeout": 5000000000,
+    "StartPeriod": 30000000000,
+    "Retries": 3
+  },
+  "fixture": {
+    "network": "none",
+    "hostPorts": false,
+    "databaseStarted": false,
+    "mediaMounted": false,
+    "privateRuntimeConfigurationPassed": false,
+    "readonlyRootFilesystem": true,
+    "backgroundHealthcheckDisabledForDeterministicFixture": true,
+    "applicationServerStarted": false
+  },
+  "checks": [
+    {
+      "mode": "ready",
+      "exitCode": 0,
+      "durationMs": 845
+    },
+    {
+      "mode": "HTTP-503",
+      "exitCode": 1,
+      "durationMs": 408
+    },
+    {
+      "mode": "timeout",
+      "exitCode": 1,
+      "durationMs": 4345
+    },
+    {
+      "mode": "recovered-HTTP-200",
+      "exitCode": 0,
+      "durationMs": 335
+    }
+  ],
+  "stdoutAndStderrEmpty": true,
+  "containerRemoved": true,
+  "ownedAnonymousVolumesRemoved": true,
+  "stagingTouched": false,
+  "limitations": [
+    "The HTTP listener is an isolated synthetic fixture; the real application startup is evidenced separately by the already-completed staging deployment.",
+    "Docker retry counting was not reimplemented or tested; actual staging retries=3 is recorded from the Coolify configuration."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "kind": "atlas-post-verification-preservation",
+  "checkedAt": "2026-11-06T21:38:59.146Z",
+  "applicationContainerUnchanged": true,
+  "imageDigestUnchanged": true,
+  "applicationHealthy": true,
+  "httpHealth": {
+    "status": 200,
+    "body": {
+      "status": "ready"
+    }
+  },
+  "runningContainerCountBefore": 8,
+  "runningContainerCountAfter": 8,
+  "logConfig": {
+    "Config": {
+      "max-file": "3",
+      "max-size": "10m"
+    },
+    "Type": "json-file"
+  },
+  "limits": {
+    "nanoCpus": 1000000000,
+    "memoryBytes": 2147483648,
+    "memorySwapBytes": 2147483648
+  },
+  "remainingVerificationFixtures": 0,
+  "stagingRestarted": false,
+  "productionAccessed": false,
+  "application": {
+    "containerId": "a36007f90f6c",
+    "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "user": "appuser",
+    "status": "running",
+    "health": "healthy"
+  },
+  "host": {
+    "cpuCount": 2,
+    "memory": {
+      "MemAvailableKiB": 6633948,
+      "MemTotalKiB": 8131464,
+      "SwapFreeKiB": 0,
+      "SwapTotalKiB": 0
+    },
+    "disk": {
+      "availableBytes": 94885662720,
+      "totalBytes": 102888095744
+    },
+    "dockerVersion": "29.9.3",
+    "osPrettyName": "Ubuntu 24.04.5 LTS",
+    "loadAverage": [
+      0.14794921875,
+      0.10546875,
+      0.08544921875
+    ]
+  },
+  "evidenceScope": "Read-only SSH host/application inspection after all owned Docker fixtures reported cleanup; no host configuration or application restart."
+}

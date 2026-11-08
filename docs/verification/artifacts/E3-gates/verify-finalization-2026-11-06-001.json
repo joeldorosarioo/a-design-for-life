@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "kind": "isolated-current-source-full-verification",
+  "status": "passed",
+  "command": "pnpm run verify",
+  "startedAt": "2026-11-06T20:16:39.200Z",
+  "completedAt": "2026-11-06T20:24:50.498Z",
+  "durationMs": 491298,
+  "exitCode": 0,
+  "platform": "win32",
+  "node": "24.22.2",
+  "pnpm": "12.10.1",
+  "source": {
+    "baseCommit": "1194e63fe679eff270a1c79cced4f090c9c15a8a",
+    "workingTreeChangesIncluded": true,
+    "files": [
+      {
+        "path": "src/features/analytics/gtag-session.ts",
+        "sha256": "230b10b32512db90b729ed91096ab675d7896d2f3bf73f96e3e92e89e225f1b6"
+      },
+      {
+        "path": "src/features/analytics/gtag-session.test.ts",
+        "sha256": "f76abb9e3e78128adf154c614fced2790cb70c5a71d705e335004f03596e8474"
+      },
+      {
+        "path": "package.json",
+        "sha256": "2b7c70916be8cea7eb5fa1d4d844067361c66d9cfa9ded49107be25b9a71b49e"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "07c67f17617f0f41d155be2b519348d65e6704a3a82b7a779e4eaaebc2a9bbbb"
+      },
+      {
+        "path": "vitest.config.ts",
+        "sha256": "1a43660e044d3686d3863733904351eafda0c242f2380f979ff61c42f77aed83"
+      },
+      {
+        "path": "src/features/analytics/verification/google-wire.test.ts",
+        "sha256": "4032f3243080ad6d4effd1d9acaa1754feffaad271cfbfdcf834c8a1884b612d"
+      },
+      {
+        "path": "src/features/analytics/verification/capture-google-sdk.mjs",
+        "sha256": "7eeef4ce064a5a3e8945cd423fc554c121fa8b4ebf6cfe24cfce90358308fa95"
+      },
+      {
+        "path": "src/features/analytics/verification/google-wire.ts",
+        "sha256": "caa12934ba2e1ffe9951941eb52b8375ccd7eb74bbac5d76d7532ce13be387c3"
+      },
+      {
+        "path": "src/features/analytics/verification/inspect-real-sdk.mjs",
+        "sha256": "a67ba55d1dd11bba836591b919d4a4c319c6b797ddbe91f47dad539fa6fb2fed"
+      }
+    ],
+    "limit": "This gate validates the current working tree; it does not certify a later commit, deployment or production."
+  },
+  "results": {
+    "typecheck": "passed",
+    "lint": {
+      "status": "passed",
+      "existingMigrationWarnings": 8,
+      "errors": 0
+    },
+    "format": "passed-before-build",
+    "vitest": {
+      "filesPassed": 235,
+      "filesFailed": 0,
+      "testsPassed": 2306,
+      "testsFailed": 0,
+      "testsSkipped": 3,
+      "testsTotal": 2309,
+      "skips": [
+        {
+          "file": "src/helpers/storage/object-storage.test.ts",
+          "reason": "Windows symbolic-link test excluded by the existing platform condition."
+        },
+        {
+          "file": "src/helpers/payload/render-snapshot.test.ts",
+          "reason": "POSIX private-file permission test excluded on Windows."
+        },
+        {
+          "file": "src/helpers/payload/publication-writer.test.ts",
+          "reason": "Linux abstract socket and SIGSTOP/SIGCONT test excluded outside Linux."
+        }
+      ]
+    },
+    "caseStateCss": {
+      "passed": 2,
+      "failed": 0
+    },
+    "stageProgress": {
+      "passed": 36,
+      "failed": 0
+    },
+    "deploy": {
+      "passed": 83,
+      "failed": 0
+    },
+    "nextBuild": {
+      "status": "passed",
+      "version": "16.4.3",
+      "distDirectory": ".work/next-tests/79bfa311-b5fa-48a0-8029-d27490daddfd",
+      "compileSeconds": 39,
+      "warning": "No build cache found for the new isolated output."
+    },
+    "largeBrowserE2eExecuted": false
+  },
+  "isolation": {
+    "appEnvironment": "test",
+    "postgresqlHost": "127.0.0.1",
+    "postgresqlPort": 55434,
+    "postgresqlVersion": "17.11",
+    "ownedRunId": "949f2b83-99ae-4c9f-a07d-22058b7cecb4",
+    "syntheticCredentialsOnlyPassedToTestProcess": true,
+    "syntheticAgeIdentityCreatedAndRemoved": true,
+    "backupAgeExecuted": true,
+    "realDatabasePortsAccessed": [],
+    "realR2Requests": 0,
+    "realEmailsSent": 0,
+    "stagingChanged": false,
+    "productionAccessed": false
+  },
+  "cleanup": {
+    "remainingOwnedContainers": 0,
+    "remainingOwnedNetworks": 0,
+    "nextEnvPreserved": true,
+    "nextEnvSha256": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66",
+    "tsconfigPreserved": true,
+    "tsconfigSha256": "64f3c9d6863fee9d3fd8707e5543bba29487d389b2e17117e8ec2cd451eb70ce",
+    "tsconfigCleanup": "Only this build UUID added two synthetic include paths. After removing them, the complete parsed configuration matched its pre-run clean Git version; its original bytes were restored. No unowned configuration delta was discarded."
+  },
+  "startupDiagnosis": {
+    "cause": "Private runner omitted the non-secret Windows ProgramFiles environment variable, preventing Docker Compose plugin discovery.",
+    "pathHypothesisRefuted": true,
+    "evidence": "docker and git version commands resolved under the original minimal PATH. docker compose version failed there and succeeded when only ProgramFiles was restored.",
+    "originalComposeExitCode": 125,
+    "composeVersion": "v5.6.1",
+    "fixScope": "Private runner environment whitelist only; no application or dependency change.",
+    "originalErrorMaskedByViteSourceMapFormatter": true
+  },
+  "sanitization": {
+    "newBackupArtifactsReviewed": true,
+    "contents": "Disposable test IDs/database names, tool versions/arguments and integrity checksums only; no database contents, recovery identity bytes or real credentials.",
+    "safeToCommitBackupArtifacts": true,
+    "rawVerificationLogKeptPrivate": true
+  },
+  "evidence": [
+    {
+      "path": "docs/verification/artifacts/E3-backup/encrypted-native-events-949f2b83-99ae-4c9f-a07d-22058b7cecb4.jsonl",
+      "sha256": "539a83c4045a5efccfefd5053ccd7c1af3d4f13cf2d7c4a1c5516a82ad4eb82b"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/native-foundations-proof-949f2b83-99ae-4c9f-a07d-22058b7cecb4.jsonl",
+      "sha256": "8df6335986cd7eee5e946fb348a89c4b2a24051cf8cc6f04d41e0979c7b16a2f"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/native-snapshot-restore-6e9f52ff-ac48-4bd8-9501-73cc19162a45.json",
+      "sha256": "8c1920ccb28850e5250f691cc3b247f9846ab3c6f2252ec7b95e409eda1d7c4a"
+    },
+    {
+      "path": ".work/stage3-finalization-2026-11-06/verify-79bfa311-b5fa-48a0-8029-d27490daddfd/verify.log",
+      "sha256": "a14aa6697d684ec342d3c31ec015cadde15f0c1ecf8ae6ff0a3649a25efca1f3",
+      "visibility": "private-ignored"
+    },
+    {
+      "path": ".work/stage3-finalization-2026-11-06/verify-79bfa311-b5fa-48a0-8029-d27490daddfd/receipt.json",
+      "sha256": "abb635a52ec4a8a0f50c28fade90c0877b20aa9fc1e6ce557912cdaa8077f56d",
+      "visibility": "private-ignored"
+    },
+    {
+      "path": ".work/stage3-finalization-2026-11-06/verify-79bfa311-b5fa-48a0-8029-d27490daddfd/generated-files-preservation.json",
+      "sha256": "d688753f09cf3ca9adebcf6e147038e24b5bd80ca07d9b299673df27bd40a81c",
+      "visibility": "private-ignored"
+    }
+  ]
+}

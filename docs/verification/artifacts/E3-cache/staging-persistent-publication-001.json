@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "kind": "staging-persistent-publication-across-real-redeployment",
+  "status": "passed",
+  "checkedAt": "2026-11-06T19:49:37.614Z",
+  "source": {
+    "revision": "cd74963e3e81860c99735d88133fb37206a00553",
+    "digest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "workflowRunId": 42265240175,
+    "deploymentUuid": "dzeb1xlupba8kijfts6xboih",
+    "cacheEngineUnchangedAcrossDeployment": true,
+    "cacheEngineFiles": [
+      {
+        "path": "src/helpers/payload/public-root.ts",
+        "sha256": "89a26ae2930257cbd35fe305b4f217c8cc2a39043574668d911f97d60956dea0",
+        "identicalBeforeAndAfter": true
+      },
+      {
+        "path": "src/helpers/payload/public-root-directory.ts",
+        "sha256": "6997ec6add682c9fda45d6776cd484cffa14483d7caccb20b632a8815c9430de",
+        "identicalBeforeAndAfter": true
+      },
+      {
+        "path": "src/config/public-render-context.ts",
+        "sha256": "0fddfb105e90e43b5a57440caff0cdfeeebf3cdb7cb067243b937fce67420382",
+        "identicalBeforeAndAfter": true
+      }
+    ]
+  },
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "applicationStatus": "running:healthy",
+  "configuredVolumes": [
+    {
+      "uuid": "b07peznim0pfeyqida6rjc90",
+      "name": "1tiveqtdwa1kxsjfhtugcjdp-a-design-for-life-staging-postgres",
+      "mountPath": "/var/lib/postgresql/data"
+    },
+    {
+      "uuid": "iyoi3bjh5m75xlgrbrfeet9z",
+      "name": "1tiveqtdwa1kxsjfhtugcjdp-a-design-for-life-staging-publication",
+      "mountPath": "/app/.work/publication"
+    },
+    {
+      "uuid": "zintfxxxvp6dfojsb0h8hos6",
+      "name": "1tiveqtdwa1kxsjfhtugcjdp-a-design-for-life-staging-cache",
+      "mountPath": "/app/.work/next-build/cache"
+    }
+  ],
+  "before": {
+    "backupId": "a427abda-c7cf-43e8-a7ba-03daba22beac",
+    "sourceRevision": "d3e765f113c2b5831edf6d86f15d3431e2a019fc",
+    "createdAt": "2026-11-06T18:04:18.760Z",
+    "rootGeneration": "69b728a7-856c-41ff-b16d-c4cbe2d04b52",
+    "rootSha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3",
+    "rootByteLength": 52668,
+    "subjectCount": 10,
+    "archiveMembers": 34,
+    "objects": 31,
+    "ciphertextHashAndSizeVerified": true,
+    "everyArchiveMemberHashVerified": true,
+    "ageDecryptionVerified": true
+  },
+  "after": {
+    "backupId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+    "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+    "createdAt": "2026-11-06T18:06:13.008Z",
+    "rootGeneration": "69b728a7-856c-41ff-b16d-c4cbe2d04b52",
+    "rootSha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3",
+    "rootByteLength": 52668,
+    "subjectCount": 10,
+    "archiveMembers": 34,
+    "objects": 31,
+    "ciphertextHashAndSizeVerified": true,
+    "everyArchiveMemberHashVerified": true,
+    "ageDecryptionVerified": true
+  },
+  "confirmedPublicationRootPreservedByteForByte": true,
+  "confirmedGenerationPreserved": true,
+  "evidenceMethod": "read-only signed R2 GET, local age decryption and complete archive verification; comparison of captured publication/current.json before and after completed container replacement",
+  "remoteWritesPerformed": false,
+  "databaseRestorePerformed": false,
+  "sourceFailureInjected": false,
+  "containerRestartRequested": false,
+  "identityUploaded": false,
+  "plaintextWorkspacesAwaitedCleanup": true,
+  "localBehaviorEvidence": "docs/verification/artifacts/E3-cache/named-volume-001.json",
+  "limitations": [
+    "The live application was not stopped and PostgreSQL/R2 were not made unavailable.",
+    "The existing local named-volume proof covers failure/recreation and namespace rejection; this receipt supplies the actual VPS mounts and preservation across the already-completed deployment.",
+    "HTML and media bytes remain no-store or separately authorized; this is persistence of confirmed public data."
+  ]
+}

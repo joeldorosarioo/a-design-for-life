@@ -25,6 +25,10 @@ beforeEach(() => {
   frame = document.createElement('iframe');
   document.body.appendChild(frame);
   owner = frame.contentDocument!;
+  Object.defineProperty(owner, 'featurePolicy', {
+    configurable: true,
+    value: { features: () => ['ch-ua-high-entropy-values'], allowsFeature: () => false },
+  });
   host = frame.contentWindow! as AnalyticsHost;
   container = owner.createElement('div');
   owner.body.appendChild(container);

@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "kind": "bounded-authenticated-public-read-and-staging-cgroup-measurement",
+  "startedAt": "2026-11-06T21:34:21.031Z",
+  "completedAt": "2026-11-06T21:34:33.579Z",
+  "appOrigin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "concurrency": 2,
+  "measurement": {
+    "type": "measurement",
+    "containerId": "a36007f90f6c",
+    "sampleIntervalMs": 100,
+    "sampleCount": 121,
+    "durationMs": 12059,
+    "before": {
+      "monotonic": 105273.553357184,
+      "memoryCurrentBytes": 242720768,
+      "memoryPeakSinceCreationBytes": 343818240,
+      "cpu": {
+        "usage_usec": 56949473,
+        "user_usec": 39994006,
+        "system_usec": 16955467,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 4412,
+        "nr_throttled": 67,
+        "throttled_usec": 1242604,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "memoryEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "hostAvailableBytes": 6827438080
+    },
+    "after": {
+      "monotonic": 105285.612013896,
+      "memoryCurrentBytes": 292114432,
+      "memoryPeakSinceCreationBytes": 343818240,
+      "cpu": {
+        "usage_usec": 58139448,
+        "user_usec": 41022269,
+        "system_usec": 17117179,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 4442,
+        "nr_throttled": 71,
+        "throttled_usec": 1474823,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "memoryEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "hostAvailableBytes": 6802313216
+    },
+    "sampledMemoryMaxBytes": 298885120,
+    "sampledMemoryMinBytes": 242720768,
+    "minHostAvailableBytes": 6791536640,
+    "cpuUsageDeltaUsec": 1189975,
+    "oomEventsDelta": 0,
+    "oomKillEventsDelta": 0,
+    "memoryMetric": "Raw cgroup v2 memory.current including charged cache; differs from Docker CLI memory usage after its inactive_file subtraction.",
+    "lifetimePeakScope": "memory.peak since this application container was created; not reset or attributed to an individual operation."
+  },
+  "requests": {
+    "count": 19,
+    "pageReads": 13,
+    "imageReads": 6,
+    "allStatuses200": true,
+    "medianLatencyMs": 101,
+    "maxLatencyMs": 710,
+    "totalResponseBytes": 1072371
+  },
+  "scope": "Brief read-only measurement against the already deployed staging; excludes a production capacity or sustained load guarantee. Cgroup lifetime peak includes earlier operations and is not attributed to these requests.",
+  "effects": {
+    "databaseWrites": 0,
+    "mediaUploads": 0,
+    "emails": 0,
+    "analyticsRequests": 0,
+    "restarts": 0,
+    "productionAccessed": false
+  },
+  "applicationRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+  "imageDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+  "sshAccess": {
+    "keyVersion": "operator-v2",
+    "batchMode": true,
+    "identitiesOnly": true,
+    "strictHostKeyChecking": true,
+    "privateKeyReadByAgent": false,
+    "passphraseProvidedToAgent": false,
+    "configuredPathUpdatedInExistingEnv": true
+  },
+  "limitations": [
+    "Short bounded staging observation, not a sustained concurrency or production capacity guarantee.",
+    "Application cgroup counters can include unrelated activity in this same app during the window.",
+    "Host available-memory observations may include other host workloads; their services and data were not inspected."
+  ],
+  "references": [
+    "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+    "https://docs.docker.com/reference/cli/docker/container/stats/"
+  ]
+}

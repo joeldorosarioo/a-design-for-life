@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "job": {
+    "status": "backed-up",
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "wjoklmi8ysyv26ysj4xlo4t6",
+    "sourceImageDigest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a",
+    "marker": {
+      "version": 1,
+      "id": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+      "namespace": {
+        "project": "a-design-for-life",
+        "environment": "staging",
+        "source": "staging-app"
+      },
+      "createdAt": "2026-11-06T18:06:13.008Z",
+      "complete": true,
+      "completedAt": "2026-11-06T18:06:22.672Z",
+      "manifestSha256": "ebc6507fe32d538fa977e71ec7c813b455e43b91bd792ce53d1cf2045ec1ee14",
+      "ciphertext": {
+        "key": "sets/024e4eb4-53f6-4ddb-baa8-9789ec0b0f10/payload.age",
+        "byteLength": 2898824,
+        "sha256": "2801f186e9d55399809c20f137712c08db5624d1fb0da436ad0914ff7b530a47"
+      }
+    },
+    "redactedIdentityFields": [
+      "source"
+    ],
+    "namespaceSha256Verified": false,
+    "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+    "requestedAt": "2026-11-06T18:06:09.708Z",
+    "observedAt": "2026-11-06T18:06:28.763Z",
+    "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+    "retention": "enabled",
+    "removedBackupCount": 0,
+    "durationMs": 14692,
+    "sourceHealthyAndPinnedBeforeAndAfter": true
+  },
+  "remoteVerification": {
+    "version": 1,
+    "kind": "real-r2-retention-after-deploy",
+    "status": "verified",
+    "observedAt": "2026-11-06T18:09:55.992Z",
+    "bucket": "eliana-novaes-media-backups",
+    "namespace": {
+      "project": "a-design-for-life",
+      "environment": "staging",
+      "source": "staging-app"
+    },
+    "readonlyVerification": {
+      "commands": [
+        "ListObjectsV2",
+        "GetObject"
+      ],
+      "objectsCreated": 0,
+      "objectsDeleted": 0,
+      "markersSchemaValidated": true,
+      "allCiphertextsReadBackAndSha256Verified": true,
+      "namespaceAndMarkersRechecked": true,
+      "initialAndFinalListingStable": true,
+      "listPagesEach": 1,
+      "objectCount": 10
+    },
+    "deployment": {
+      "workflowRunId": 42265240175,
+      "workflowConclusion": "success",
+      "environment": "staging",
+      "digest": "sha256:c4d47bc495bc4b00c06420751c2bff4f87b8b6baa58c18e97fdff138d3b88d6a"
+    },
+    "backupExecution": {
+      "preDeployBackupId": "a427abda-c7cf-43e8-a7ba-03daba22beac",
+      "freshBackupId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+      "freshExecutionUuid": "wjoklmi8ysyv26ysj4xlo4t6",
+      "sourceRevision": "cd74963e3e81860c99735d88133fb37206a00553",
+      "sourceHealthyAndPinnedBeforeAndAfter": true,
+      "retention": "enabled",
+      "removedBackupCount": 0,
+      "durationMs": 14692
+    },
+    "retention": {
+      "days": 56,
+      "selectionDateField": "completedAt",
+      "expiresStrictlyBefore": "2026-09-11T18:08:04.860Z",
+      "checkedAt": "2026-11-06T18:08:04.860Z",
+      "completeSetCount": 3,
+      "incompleteSetCount": 0,
+      "eligibleSetIds": [],
+      "baselineSetIdsPreservedByteForByte": [
+        "3a8a9a5c-7a4d-4c32-96af-c137b08b3581"
+      ],
+      "previousSetsMissing": [],
+      "allRecentCompleteSetsPreserved": true,
+      "newestCompleteSetId": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+      "deletionBoundary": "postgresql-operational-lock-and-immutable-writers",
+      "providerConditionalDeleteClaimed": false
+    },
+    "sets": [
+      {
+        "id": "024e4eb4-53f6-4ddb-baa8-9789ec0b0f10",
+        "createdAt": "2026-11-06T18:06:13.008Z",
+        "pending": {
+          "sha256": "d0b879c10f3a55266bb1de7fbdec985d2d5011518cc1980ef7ff213cde0f7397",
+          "byteLength": 204
+        },
+        "complete": true,
+        "completedAt": "2026-11-06T18:06:22.672Z",
+        "completeMarker": {
+          "sha256": "f7b34bda2eb5d9f3f17eee4ef72427d08fd9e6a4f681412fdbde6ea3ead50f3a",
+          "byteLength": 502
+        },
+        "manifestSha256": "ebc6507fe32d538fa977e71ec7c813b455e43b91bd792ce53d1cf2045ec1ee14",
+        "application": null,
+        "ciphertext": {
+          "sha256": "2801f186e9d55399809c20f137712c08db5624d1fb0da436ad0914ff7b530a47",
+          "byteLength": 2898824
+        }
+      },
+      {
+        "id": "3a8a9a5c-7a4d-4c32-96af-c137b08b3581",
+        "createdAt": "2026-11-06T16:13:09.801Z",
+        "pending": {
+          "sha256": "0666e61fccb5ef928a9d70a60ed9da7949f3c8425c38cbb16dd0b27fe9b1bbdf",
+          "byteLength": 204
+        },
+        "complete": true,
+        "completedAt": "2026-11-06T16:13:25.520Z",
+        "completeMarker": {
+          "sha256": "4c2d26525bb48abe762cf8c60508a8dff7fab31d65d2971e5dcc518058022325",
+          "byteLength": 502
+        },
+        "manifestSha256": "24c58c2f5ce6544d9cadf91b8962d23eaaf274e434c3523c94d0a4dbc05de30e",
+        "application": null,
+        "ciphertext": {
+          "sha256": "c5e23fe970185be9caa5d306b0f825b2d4ff8ce207435f7beb09899a3d5a584a",
+          "byteLength": 2898824
+        }
+      },
+      {
+        "id": "a427abda-c7cf-43e8-a7ba-03daba22beac",
+        "createdAt": "2026-11-06T18:04:18.760Z",
+        "pending": {
+          "sha256": "37df9660ddd1937a2f9feb9777300ca3679ed7d063ffff1b498ef6aadd00020a",
+          "byteLength": 204
+        },
+        "complete": true,
+        "completedAt": "2026-11-06T18:04:28.550Z",
+        "completeMarker": {
+          "sha256": "dd2adc561c06528bf0001a7319ba298e2e1db90a7f9ebbfcb8edbbc24868e873",
+          "byteLength": 502
+        },
+        "manifestSha256": "823cec411c229d23b0bc406eaa3efcd7d9e22a84919bef35f29a03785460ff57",
+        "application": null,
+        "ciphertext": {
+          "sha256": "66c4784a52aeef07d609db6e3c559faa270496e2513afd8dc1e042a67aac21ee",
+          "byteLength": 2898824
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "path": ".work/stage3-backup-automation-2026-11-06/r2-baseline-before-deploy.json",
+        "sha256": "83e343cfd29a96c2dfb2222016d49596596a5be70283cdf45824ced71be71759"
+      },
+      {
+        "path": ".work/stage3-backup-automation-2026-11-06/r2-baseline-after-deploy.json",
+        "sha256": "32bcd67b20a588b157ccebbf5dc609e4806c9b75f2432c5d78eb5e76a92f8a0f"
+      },
+      {
+        "path": ".work/stage3-backup-automation-2026-11-06/automatic-deployment-proof.json",
+        "sha256": "c98160d75b9af7955d9bd383ec461226e29e67e4132bd128f3e8a4ec9a557848"
+      },
+      {
+        "path": ".work/stage3-backup-automation-2026-11-06/operational-backup-024e4eb4-53f6-4ddb-baa8-9789ec0b0f10.json",
+        "sha256": "a32876d5abac3d37ea0b55a04b427ab6ebd0f5b0d776a47cdb5bdc614540d049"
+      }
+    ]
+  }
+}

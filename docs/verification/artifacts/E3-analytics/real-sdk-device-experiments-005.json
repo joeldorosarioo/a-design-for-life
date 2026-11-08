@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "kind": "device-minimization-configuration-experiments",
+  "activationPermitted": false,
+  "runtimeApplicationChangedByTheseExperiments": false,
+  "sdkRewritten": false,
+  "requestsRewritten": false,
+  "experiments": {
+    "empty": {
+      "checkedAt": "2026-11-06T21:45:48.786Z",
+      "browserVersion": "156.0.8078.4",
+      "experiment": {
+        "mode": "restrict-device-empty",
+        "permissionPolicyHeader": "ch-ua-high-entropy-values=()",
+        "screenResolutionOverride": "",
+        "applicationRuntimeChanged": false,
+        "usesDocumentAdapter": false
+      },
+      "sdk": {
+        "version": 1,
+        "capturedAt": "2026-11-06T21:32:54.337Z",
+        "sourceUrl": "https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z",
+        "httpStatus": 200,
+        "contentType": "application/javascript; charset=UTF-8",
+        "byteLength": 477089,
+        "sha256": "4c1c8a92bfdde6b56befdbf90138fdec498744cc5b2a5d4b4e496b5b669dd7ac",
+        "scope": "Static official SDK download only; no collect/event endpoints requested."
+      },
+      "identifiers": {
+        "clientId": {
+          "presentInAllEvents": true,
+          "constantWithinEachDocument": true,
+          "distinctAcrossDocuments": true,
+          "equalsSeededCookieIdentifier": false
+        },
+        "sessionId": {
+          "presentInAllEvents": true,
+          "constantWithinEachDocument": true,
+          "distinctAcrossDocuments": true,
+          "equalsSeededCookieIdentifier": false
+        }
+      },
+      "networkIsolation": {
+        "externalRequestsForwarded": 0,
+        "rejectingProxyConnections": 5,
+        "everyBrowserRequestRouted": true,
+        "sdkFulfilledFromPinnedBytes": true,
+        "sdkModified": false,
+        "requestsFilteredOrRewritten": false
+      },
+      "eventOccurrences": 9,
+      "nonemptyDeviceWireFields": [
+        "uamb",
+        "uap",
+        "uaw"
+      ],
+      "nativePolicy": {
+        "featureSupported": true,
+        "featureAllowed": false
+      },
+      "nativeApiResultKeys": [
+        [
+          "brands",
+          "mobile",
+          "platform"
+        ]
+      ]
+    },
+    "null": {
+      "checkedAt": "2026-11-06T21:45:49.833Z",
+      "browserVersion": "156.0.8078.4",
+      "experiment": {
+        "mode": "restrict-device-null",
+        "permissionPolicyHeader": "ch-ua-high-entropy-values=()",
+        "screenResolutionOverride": null,
+        "applicationRuntimeChanged": false,
+        "usesDocumentAdapter": false
+      },
+      "sdk": {
+        "version": 1,
+        "capturedAt": "2026-11-06T21:32:54.337Z",
+        "sourceUrl": "https://www.googletagmanager.com/gtag/js?id=G-DXFQKDH52Z",
+        "httpStatus": 200,
+        "contentType": "application/javascript; charset=UTF-8",
+        "byteLength": 477089,
+        "sha256": "4c1c8a92bfdde6b56befdbf90138fdec498744cc5b2a5d4b4e496b5b669dd7ac",
+        "scope": "Static official SDK download only; no collect/event endpoints requested."
+      },
+      "identifiers": {
+        "clientId": {
+          "presentInAllEvents": true,
+          "constantWithinEachDocument": true,
+          "distinctAcrossDocuments": true,
+          "equalsSeededCookieIdentifier": false
+        },
+        "sessionId": {
+          "presentInAllEvents": true,
+          "constantWithinEachDocument": true,
+          "distinctAcrossDocuments": true,
+          "equalsSeededCookieIdentifier": false
+        }
+      },
+      "networkIsolation": {
+        "externalRequestsForwarded": 0,
+        "rejectingProxyConnections": 5,
+        "everyBrowserRequestRouted": true,
+        "sdkFulfilledFromPinnedBytes": true,
+        "sdkModified": false,
+        "requestsFilteredOrRewritten": false
+      },
+      "eventOccurrences": 9,
+      "nonemptyDeviceWireFields": [
+        "uamb",
+        "uap",
+        "uaw"
+      ],
+      "nativePolicy": {
+        "featureSupported": true,
+        "featureAllowed": false
+      },
+      "nativeApiResultKeys": [
+        [
+          "brands",
+          "mobile",
+          "platform"
+        ]
+      ]
+    }
+  },
+  "review": "Experimental queue used the real createGtagSession with a documented parameter name; it was not the full Document adapter. Empty/null suppression of the actual display resolution is observed for these exact SDK bytes; the sr key remains present with an empty value in all nine events of each experiment, not a documented Google OFF guarantee. The subsequent 006 receipt tests the actual Document adapter and production-source guards.",
+  "sources": [
+    "https://developers.google.com/analytics/devguides/collection/ga4/reference/config#screen_resolution",
+    "https://wicg.github.io/ua-client-hints/#ch-ua-high-entropy-values",
+    "https://developer.chrome.com/release-notes/144"
+  ]
+}

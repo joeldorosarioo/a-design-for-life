@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 53,3% do checklist (16/30 itens); 1/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 100,0% do checklist (30/30 itens); 6/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -10,22 +10,22 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 
 ## Acompanhamento
 
-- [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
-- [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 4/5 critérios.
-- [ ] E3.3 Google Analytics automático sem cookies — 2/5 critérios.
+- [x] E3.1 Ambientes R2 e e-mail reais — 5/5 critérios.
+- [x] E3.2 Cache, invalidação e recuperação de atualização pública — 5/5 critérios.
+- [x] E3.3 Google Analytics automático sem cookies — 5/5 critérios.
 - [x] E3.4 Imagem única, configuração de execução e homologação — 5/5 critérios.
-- [ ] E3.5 Migrações, logs e verificações de saúde — 3/5 critérios.
-- [ ] E3.6 Backup criptografado e restauração isolada — 2/5 critérios.
-- [ ] Pacote A3 com evidências e limitações concretas entregue.
+- [x] E3.5 Migrações, logs e verificações de saúde — 5/5 critérios.
+- [x] E3.6 Backup criptografado e restauração isolada — 5/5 critérios.
+- [ ] Pacote A3 integral entregue; checkpoints técnicos permanecem disponíveis.
 - [ ] A3 aprovada explicitamente pelo usuário.
 
 ## Estado atual e leitura da contagem — 06/11/2026
 
-A aplicação e o CMS estão implantados em staging, com deploy automático develop→staging comprovado no workflow42225045302. VPS/Coolify, GHCR privado, Resend e conta editorial já existem. O usuário confirmou o teste real de envio da recuperação; isso não é um envio adicional pelo agente. Os registros históricos abaixo não revogam essas configurações ou autorizações.
+A aplicação e o CMS estão no staging, com a revisão cd74963 e o pipeline 42265240175 aprovados. Deploy automático, imagem privada, backup extra anterior às atualizações, retenção de oito semanas e recuperação no escopo autorizado foram comprovados. O responsável forneceu o fluxo GA4 G-DXFQKDH52Z, salvo apenas no .env local. Analytics permanece desativado no staging. A conta Hostinger foi autenticada via MCP, mas suas ferramentas continuam indisponíveis neste runtime. O acesso operacional foi resolvido por SSH com a nova chave v2 criada pelo responsável.
 
-16/30 (53,3%) mede critérios de aceite integralmente comprovados; não mede linhas de código nem percentual geral da implementação. Há1/6 frente integralmente encerrada: imagem/homologação (E3.4), em5/5. Cache/publicação permanece em4/5. A contagem anterior de15/30 e0/6 descreve o checkpoint antes da verificação do conteúdo publicado.
+A contagem atual é 30/30 (100%), com 6/6 frentes inteiramente encerradas: E3.1, E3.2, E3.3, E3.4, E3.5, E3.6. A métrica corresponde aos critérios integrais do checklist, sem crédito parcial. Nesta revisão, evidências já existentes resolveram marcações antigas de R2/e-mail; cache e saúde receberam provas operacionais adicionais sem provocar panes no staging.
 
-Próximas prioridades: validar a versão implantada e seus guardas operacionais (mídia/publicação, cache/worker, saúde/logs, exclusão de indexação/Analytics); configurar e provar backup remoto agendado e restauração isolada; concluir as configurações/inspeção do SDK de Analytics e consolidar o pacote de aceite A3. Produção permanece desativada e não é pré-requisito para usar o staging. Não recontratar nem reprovisionar os recursos já existentes.
+O custo JavaScript e o gate completo atual também foram comprovados; a correção do page_view automático e os testes estão preparados localmente, sem novo deploy. O responsável confirmou os controles da propriedade GA4 desativados, encerrando E3.3.2. O responsável também confirmou a configuração privada dos dois buckets R2, encerrando E3.1.4. A capacidade e o valor contratados da Atlas foram relatados, com o valor mantido no inventário privado. A rotação e a consulta dos logs foram comprovadas sem alterar ou reiniciar o app real. O dimensionamento do staging também foi medido e registrado, sem inferir capacidade de produção futura. O contrato isolado do SDK real também foi concluído: header nativo, gate de suporte, resolução real suprimida e ausência de persistência foram comprovados com o adaptador real. Os gates atuais passaram 2.320 testes e duas jornadas Chromium, com fontes idênticas. A consolidação da candidata no fluxo develop→staging está em preparação; o loader continua null e nenhum lançamento foi autorizado. Produção e a troca dos links continuam adiadas. A3/A4 permanecem pendentes. Os registros abaixo são históricos e não revogam as configurações atuais.
 
 ## Decisões e bloqueios externos — histórico inicial
 

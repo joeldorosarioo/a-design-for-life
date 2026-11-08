@@ -1,0 +1,19 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓  unit  src/features/analytics/analytics-policy.test.ts (8 tests) 6ms
+ ✓  unit  src/features/analytics/gtag-session.test.ts (5 tests) 15ms
+ ✓  unit  src/features/analytics/analytics-session.test.ts (38 tests) 25ms
+ ✓  unit  src/features/analytics/verification/google-wire.test.ts (13 tests) 16ms
+ ✓  unit  src/features/analytics/contracts/event.schema.test.ts (60 tests) 22ms
+ ✓  unit  src/features/analytics/server/public-analytics-boundary.test.tsx (17 tests) 87ms
+ ✓  unit  src/features/analytics/browser/document-analytics.test.ts (31 tests) 411ms
+ ✓  unit  src/features/analytics/components/browser-analytics-boundary.test.tsx (4 tests) 152ms
+ ✓  unit  src/features/analytics/components/analytics-provider.test.tsx (8 tests) 211ms
+ ✓  unit  src/features/analytics/browser/native-navigation.test.tsx (3 tests) 310ms
+ ✓  unit  src/features/analytics/server/public-page-composition.test.tsx (5 tests) 15ms
+
+ Test Files  11 passed (11)
+      Tests  192 passed (192)
+   Start at  18:50:38
+   Duration  14.89s (import 53%, environment 20%, setup 15%, transform 7%, tests 4%)
