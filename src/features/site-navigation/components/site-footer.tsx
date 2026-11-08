@@ -1,5 +1,5 @@
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
-import { buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import styles from '../stylesheets/navigation.module.css';
 
 export function SiteFooter({ navigation }: { navigation: NavigationPresentation }) {
@@ -18,35 +18,32 @@ export function SiteFooter({ navigation }: { navigation: NavigationPresentation 
           className={styles.contactList}
         >
           <li>
-            <a
-              className={buttonVariants()}
-              href={`mailto:${contacts.email}`}
-              data-analytics-purpose="email"
-            >
-              {footer.emailLabel}
-            </a>
+            <Button asChild>
+              <a href={`mailto:${contacts.email}`} data-analytics-purpose="email">
+                {footer.emailLabel}
+              </a>
+            </Button>
           </li>
           <li>
-            <a
-              className={buttonVariants()}
-              href={contacts.linkedin}
-              data-analytics-purpose="linkedin"
-            >
-              {footer.linkedinLabel}
-            </a>
+            <Button asChild>
+              <a href={contacts.linkedin} data-analytics-purpose="linkedin">
+                {footer.linkedinLabel}
+              </a>
+            </Button>
           </li>
           <li>
-            <a
-              className={buttonVariants()}
-              href={navigation.items[2].destination.href}
-              data-analytics-purpose="resume"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${footer.resumeLabel} (${controls.newTabLabel})`}
-            >
-              {footer.resumeLabel}
-              <span className={styles.visuallyHidden}> ({controls.newTabLabel})</span>
-            </a>
+            <Button asChild>
+              <a
+                href={navigation.items[2].destination.href}
+                data-analytics-purpose="resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${footer.resumeLabel} (${controls.newTabLabel})`}
+              >
+                {footer.resumeLabel}
+                <span className="sr-only"> ({controls.newTabLabel})</span>
+              </a>
+            </Button>
           </li>
         </ul>
         {/* Exact approved Figma SVG; its intrinsic dimensions are preserved. */}

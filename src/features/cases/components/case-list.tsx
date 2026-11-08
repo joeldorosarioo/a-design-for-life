@@ -2,7 +2,8 @@ import type { CaseCardDTO } from '../contracts/case-dto.schema';
 import type { CaseMediaMode } from './case-image';
 import { CaseCard } from './case-card';
 import { CaseProse } from './case-text';
-import { buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import { Empty } from '@/components/ui/empty';
 import styles from '../stylesheets/cases.module.css';
 export type CaseGridProps = {
   cases: CaseCardDTO[];
@@ -27,10 +28,10 @@ export function CaseGrid({
   if (!cases.length) {
     const Heading = headingLevel === 2 ? 'h2' : 'h3';
     return (
-      <div className={styles.empty}>
+      <Empty className={styles.empty}>
         <Heading>{emptyState.title}</Heading>
         <CaseProse text={emptyState.description} />
-      </div>
+      </Empty>
     );
   }
   return (
@@ -89,9 +90,9 @@ export function CaseState({
         <ul className={styles.stateLinks}>
           {links.map((link) => (
             <li key={`${link.href}-${link.label}`}>
-              <a href={link.href} className={buttonVariants({ variant: 'secondary' })}>
-                {link.label}
-              </a>
+              <Button asChild>
+                <a href={link.href}>{link.label}</a>
+              </Button>
             </li>
           ))}
         </ul>

@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import { parsePrivatePreviewPath } from '@/helpers/payload/private-preview-path';
 import styles from '../stylesheets/language-switcher.module.css';
@@ -28,14 +28,10 @@ export function PrivateLanguageLink({
       {flag}
     </Button>
   ) : (
-    <a
-      className={buttonVariants({ variant: 'secondary', className: styles.toggle })}
-      href={href}
-      aria-label={label}
-      lang={target}
-      title={`${languageLabel}: ${label}`}
-    >
-      {flag}
-    </a>
+    <Button asChild className={styles.toggle}>
+      <a href={href} aria-label={label} lang={target} title={`${languageLabel}: ${label}`}>
+        {flag}
+      </a>
+    </Button>
   );
 }

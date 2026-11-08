@@ -178,6 +178,10 @@ for (const locale of ['pt', 'en'] as const) {
     }
     const homeResponse = await page.goto(copy.homePath);
     expect(homeResponse?.status()).toBe(200);
+    await expect(page.locator(`[data-reading-key="${portfolio.readingKeys.method}"]`)).toHaveCSS(
+      'min-block-size',
+      '266px',
+    );
     const featured = page.locator('[data-reading-key="home-projects"]');
     await expect(
       featured.getByRole('heading', { level: 3, name: first.title, exact: true }),

@@ -1,3 +1,4 @@
+import { Card, CardContent } from '@/components/ui/card';
 import type { CaseCardDTO } from '../contracts/case-dto.schema';
 import { CaseImage, type CaseMediaMode } from './case-image';
 import { CaseProse } from './case-text';
@@ -15,9 +16,9 @@ export function CaseCard({
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
   return (
-    <article className={styles.caseCard} data-reading-key={`case-card:${caseCard.caseId}`}>
+    <Card variant="flush" data-reading-key={`case-card:${caseCard.caseId}`}>
       <CaseImage image={caseCard.cover} kind="card" mediaMode={mediaMode} />
-      <div className={styles.cardCopy}>
+      <CardContent className={styles.cardCopy}>
         {caseCard.eyebrow ? <p className={styles.eyebrow}>{caseCard.eyebrow}</p> : null}
         {caseCard.title ? (
           <Heading className={styles.cardTitle}>
@@ -35,7 +36,7 @@ export function CaseCard({
             <span aria-hidden="true"> →</span>
           </a>
         ) : null}
-      </div>
-    </article>
+      </CardContent>
+    </Card>
   );
 }

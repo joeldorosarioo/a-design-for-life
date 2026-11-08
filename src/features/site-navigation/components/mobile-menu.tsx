@@ -3,7 +3,14 @@
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import styles from '../stylesheets/navigation.module.css';
 
 export type MobileMenuProps = {
@@ -46,12 +53,12 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
             }
           }}
         >
-          <div className={styles.menuHeading}>
+          <SheetHeader className={styles.menuHeading}>
             <SheetTitle className={styles.menuTitle}>{navigationLabel}</SheetTitle>
             <SheetClose asChild>
               <Button>{controls.closeMenuLabel}</Button>
             </SheetClose>
-          </div>
+          </SheetHeader>
           <nav aria-label={navigationLabel}>
             <ul className={styles.mobileNavigationList}>
               {items.map((item) => (
@@ -75,7 +82,7 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
                     >
                       {item.label}
                       {item.destination.kind === 'resume' && (
-                        <span className={styles.visuallyHidden}> ({controls.newTabLabel})</span>
+                        <span className="sr-only"> ({controls.newTabLabel})</span>
                       )}
                     </a>
                   </SheetClose>

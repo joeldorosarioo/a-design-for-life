@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ProfileDTO } from '../contracts/profile-dto.schema';
-import { buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { ProfileImage } from './profile-image';
 import styles from '../stylesheets/profile-content.module.css';
 
@@ -87,10 +88,12 @@ export function HomeContent({
           ) : null}
           <ProfileProse text={home.description} className={styles.heroDescription} />
           {home.projectsLabel ? (
-            <a href={projectsHref} className={buttonVariants({ variant: 'primary' })}>
-              {home.projectsLabel}
-              <span aria-hidden="true">→</span>
-            </a>
+            <Button asChild variant="primary">
+              <a href={projectsHref}>
+                {home.projectsLabel}
+                <span aria-hidden="true">→</span>
+              </a>
+            </Button>
           ) : null}
         </div>
         <ProfileImage image={home.portrait} kind="portrait" mediaMode={mediaMode} />
@@ -140,9 +143,10 @@ export function HomeContent({
         {methods.length > 0 ? (
           <ol className={styles.methods}>
             {methods.map((method, index) => (
-              <li
-                key={method.readingKey ?? method.title ?? method.description ?? method.keywords}
+              <Card
+                as="li"
                 className={styles.method}
+                key={method.readingKey ?? method.title ?? method.description ?? method.keywords}
                 data-reading-key={method.readingKey ?? undefined}
               >
                 <span className={styles.ordinal} aria-hidden="true">
@@ -151,7 +155,7 @@ export function HomeContent({
                 {method.title ? <h3 className={styles.itemTitle}>{method.title}</h3> : null}
                 <ProfileProse text={method.description} />
                 {method.keywords ? <p className={styles.keywords}>{method.keywords}</p> : null}
-              </li>
+              </Card>
             ))}
           </ol>
         ) : null}

@@ -25,7 +25,7 @@ export function AboutContent({
       <section className={styles.introduction} data-reading-key="about-introduction">
         <div className={styles.introductionCopy}>
           {about.introductionHeading ? (
-            <h2 className={styles.visuallyHidden}>{about.introductionHeading}</h2>
+            <h2 className="sr-only">{about.introductionHeading}</h2>
           ) : null}
           <ProfileProse text={about.introduction} className={styles.introductionProse} />
         </div>
@@ -76,9 +76,7 @@ export function AboutContent({
         data-reading-key="about-closing"
       >
         <div className={styles.closingHeading}>
-          {about.closingHeading ? (
-            <h2 className={styles.visuallyHidden}>{about.closingHeading}</h2>
-          ) : null}
+          {about.closingHeading ? <h2 className="sr-only">{about.closingHeading}</h2> : null}
         </div>
         <div className={styles.editorialBody}>
           <ProfileProse text={about.closing} />

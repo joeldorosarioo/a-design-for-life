@@ -2,6 +2,7 @@
 
 import { useLayoutEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import type { LanguageToggleProps } from '../contracts/language-control.schema';
 import { useReadingPosition } from './reading-position-provider';
 import styles from '../stylesheets/language-switcher.module.css';
@@ -33,7 +34,7 @@ export function LanguageToggle(props: LanguageToggleProps) {
         void begin(props);
       }}
     >
-      <LanguageFlag locale={locale} />
+      {pending ? <Skeleton className={styles.flagRing} /> : <LanguageFlag locale={locale} />}
     </Button>
   );
 }

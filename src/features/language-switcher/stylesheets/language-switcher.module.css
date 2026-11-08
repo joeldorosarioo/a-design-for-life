@@ -31,21 +31,3 @@
 .brazilFlag {
   transform: translateX(-7px);
 }
-.toast {
-  position: fixed;
-  z-index: 60;
-  inset-inline-end: var(--space-6);
-  inset-block-end: var(--space-6);
-  max-width: min(calc(100vw - 3rem), 32rem);
-  border: 1px solid var(--border-control);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4) var(--space-6);
-  background: var(--bg-surface);
-  color: var(--text-primary);
-  font-size: var(--text-sm);
-  line-height: var(--text-sm--line-height);
-  overflow-wrap: anywhere;
-}
-.toast p {
-  margin: 0;
-}

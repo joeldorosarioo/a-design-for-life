@@ -1,6 +1,6 @@
 # A Design for Life
 
-A bilingual Product Design and UX portfolio. Next.js serves the public site. Payload manages content and PostgreSQL stores it. The public UI uses Tailwind CSS, CVA, and an adapted shadcn Sheet. Figma defines the visual reference.
+A bilingual Product Design and UX portfolio. Next.js serves the public site. Payload manages content and PostgreSQL stores it. The public UI uses Tailwind CSS, CVA, and seven components installed from the [official shadcn registry](https://ui.shadcn.com/docs/components). Figma defines the visual reference.
 
 ## Develop locally
 

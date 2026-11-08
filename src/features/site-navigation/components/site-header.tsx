@@ -1,4 +1,10 @@
 import type { ReactNode } from 'react';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { MobileMenu } from './mobile-menu';
 import { HeaderMetrics } from './header-metrics';
@@ -19,11 +25,11 @@ export function SiteHeader({
         <a className={styles.brand} href={navigation.brand.href}>
           {navigation.brand.label}
         </a>
-        <nav aria-label={navigationLabel} className={styles.desktopNavigation}>
-          <ul className={styles.navigationList}>
+        <NavigationMenu aria-label={navigationLabel} className={styles.desktopNavigation}>
+          <NavigationMenuList className={styles.navigationList}>
             {navigation.items.map((item) => (
-              <li key={item.purpose}>
-                <a
+              <NavigationMenuItem key={item.purpose}>
+                <NavigationMenuLink
                   className={styles.navigationLink}
                   href={item.destination.href}
                   data-analytics-purpose={item.purpose === 'resume' ? 'resume' : undefined}
@@ -38,16 +44,13 @@ export function SiteHeader({
                 >
                   {item.label}
                   {item.destination.kind === 'resume' && (
-                    <span className={styles.visuallyHidden}>
-                      {' '}
-                      ({navigation.controls.newTabLabel})
-                    </span>
+                    <span className="sr-only"> ({navigation.controls.newTabLabel})</span>
                   )}
-                </a>
-              </li>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             ))}
-          </ul>
-        </nav>
+          </NavigationMenuList>
+        </NavigationMenu>
         {languageControl && <div className={styles.languageControl}>{languageControl}</div>}
         <MobileMenu
           items={navigation.items}

@@ -162,16 +162,6 @@
   gap: var(--space-6);
 }
 
-.method {
-  display: grid;
-  align-content: start;
-  gap: var(--space-6);
-  min-width: 0;
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-}
-
 .ordinal {
   color: var(--action-default);
   font-size: var(--text-sm);
@@ -423,19 +413,6 @@
     width: min(100%, 56rem);
     justify-self: center;
   }
-}
-
-/* Introduction and closing carry accessible editorial headings; the reference
-   keeps these two labels visually quiet. */
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 .about .eyebrow + .articleHeading {
