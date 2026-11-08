@@ -1,0 +1,55 @@
+$ vitest run --project unit src/features/cases/contracts/rich-text.schema.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/contracts/rich-text.schema.test.ts (2 tests | 2 failed) 19ms
+   × aceita quebra suave produzida pelo comando nativo do Lexical 16ms
+   × aceita lista aninhada serializada pelos nós nativos sem liberar estilos livres 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/contracts/rich-text.schema.test.ts > aceita quebra suave produzida pelo comando nativo do Lexical
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/cases/contracts/rich-text.schema.test.ts:13:55
+     11|  const serialized = editor.getEditorState().toJSON();
+     12|  expect(JSON.stringify(serialized)).toContain('linebreak');
+     13|  expect(richTextSchema.safeParse(serialized).success).toBe(true);
+       |                                                       ^
+     14|  unregister();
+     15| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/cases/contracts/rich-text.schema.test.ts > aceita lista aninhada serializada pelos nós nativos sem liberar estilos livres
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/cases/contracts/rich-text.schema.test.ts:21:55
+     19|  const serialized = editor.getEditorState().toJSON();
+     20|  expect(JSON.stringify(serialized)).toContain('"indent":1');
+     21|  expect(richTextSchema.safeParse(serialized).success).toBe(true);
+       |                                                       ^
+     22| });
+     23|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  00:16:36
+   Duration  544ms (setup 47%, import 40%, transform 7%, tests 5%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

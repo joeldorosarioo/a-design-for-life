@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/professional-profile/server/map-profile.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  00:02:39
+   Duration  464ms (setup 59%, import 26%, transform 12%, tests 2%, worker 1%)
+

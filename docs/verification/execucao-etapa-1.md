@@ -8,11 +8,11 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 
 - [x] Ler os quatro documentos integralmente, na ordem definida.
 - [x] Inspecionar destino, ancestrais Git e instruções locais. Destino novo; E:\AGENTS.md ausente; E:\ não é repositório.
-- [x] Criar raiz `E:\a-design-for-life`, sem pasta duplicada, na branch `feat/etapa-1-cms`.
+- [x] Criar raiz `E:\a-design-for-life`, sem pasta duplicada, com branch atual `develop` (histórico corrigido por solicitação do usuário).
 - [x] Copiar quatro referências a docs/specs e conferir SHA256.
 - [x] E1.1 Base executável e ambiente de testes — concluída; evidências e riscos em E1.1.md.
 - [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída localmente; proteção remota bloqueada por acesso, ver E1.2.md.
-- [ ] E1.3 Modelos editoriais e provisionamento idempotente.
+- [x] E1.3 Modelos editoriais e provisionamento idempotente — concluída após revisão e gate independente.
 - [ ] E1.4 Rascunho, publicação, restauração e concorrência.
 - [ ] E1.5 Slugs, reservas e resolução pública.
 - [ ] E1.6 Upload, processamento e privacidade.
@@ -63,3 +63,31 @@ O chat principal abriu consulta sobre formatos animados de imagem para E1.6. Ain
 ## E1.2 concluída — escopo e ressalvas
 
 Fronteiras de features/rotas públicas, ciclos inclusive type-only, infraestrutura genérica, runtime cliente/servidor e DTO público protegidos por testes de grafo e consumidores reais. Ver E1.2.md e docs/architecture/fronteiras.md. Verificação independente atual do coordenador: pnpm verify exit0, 49 testes em4 arquivos, checks e build. Jornadas do painel/API:2 E2E em3101, com limpeza real. Nenhuma dependência foi alterada e o verify não duplica arquitetura. BLOCK-GITHUB-BRANCH-PROTECTION permanece: workflow preparado, sem remote/executar GitHub/proteção remota. A1 e tarefas seguintes permanecem pendentes; esta tarefa não inicia E1.3.
+
+## Convenção de Git atualizada pelo usuário
+
+Usar `develop`, mensagens em inglês seguindo Conventional Commits e commits pequenos por responsabilidade. E1.1/E1.2 foram reorganizadas sem alterar suas árvores nem o trabalho em andamento. Correspondência dos marcos e provas em [history-correction.md](history-correction.md). Não usar os títulos de commit em português do plano histórico para os próximos commits.
+
+Ajuste posterior do usuário: os commits não precisam ser tão pequenos; devem ser coerentes. Priorizar unidades funcionais completas com testes, contratos e migrações relacionados, mantendo inglês, Conventional Commits e develop. Não fragmentar artificialmente por arquivo ou contagem de linhas.
+
+## Relato de progresso solicitado pelo usuário
+
+Informar a porcentagem da etapa atual em toda atualização. Critério: tarefas concluídas divididas pelo total da etapa, sem contar uma tarefa em andamento como pronta. Estado neste registro: etapa 1 em 25% (E1.1/E1.2 concluídas, 2 de 8; E1.3 em andamento). A consolidação dos commits por responsabilidade e os novos marcos equivalentes estão em history-correction.md. develop e Conventional Commits em inglês continuam obrigatórios.
+
+## E1.3 — snapshot encaminhado para revisão
+
+Etapa 1 permanece em 25% (E1.1/E1.2,2/8). O snapshot E1.3 acrescenta os índices compostos e provas de corrida real, contratos de entrada/DTOs e mapeadores mínimos, proteção de identidade/chaves de leitura e CLI explícito de provisionamento pós-migração sem conta fictícia. pnpm verify passou com107 testes/build;2 jornadas Playwright passaram em3101; caracterização adicional de reload nativo e checks finais estão em E1.3.md. O item E1.3 segue desmarcado até o gate/revisão independente do coordenador. Nenhuma tarefa seguinte ou A1 foi declarada concluída.
+
+## E1.3 — correções da primeira revisão preparadas
+
+Etapa1 permanece em25% (2/8), E1.3 desmarcada até re-review. A revisão independente de f1e6063 e o gate de108 testes foram preservados. A primeira rodada corrige exclusão órfã de identidade (guard editorial + três FKs RESTRICT geradas, incluindo versões/rotas), a ordem das FKs no rollback nativo (dca8c50) e URL interna absoluta indevidamente tratada como externa. Quinze testes focados passaram; o roundtrip das sete migrações e o provisionamento dos quatro drafts foram provados em tmpfs isolado. Tipagem/lint/formatação passaram. O coordenador fará o gate completo e a revisão dos fixes antes de concluir a tarefa; detalhes em E1.3.md e E1.3-rollback.md.
+
+## E1.3 concluída — 37,5% da etapa 1
+
+Em 30/10/2026, E1.1–E1.3 concluídas: 3 de 8 tarefas, 37,5%. Os registros anteriores de 25% descrevem seus checkpoints históricos. E1.4 é a próxima tarefa e A1 continua pendente.
+
+Snapshot de código 27f0b98: gate independente pnpm verify exit0, 21 arquivos/114 testes, tipagem, lint, formatação e build. Payload/PostgreSQL reais isolados; sete migrações aplicadas; postgres-test removido após a execução. Log em artifacts/E1.3/root-verify-after-review.txt. A re-review E1.3-round1-review.md aprovou S1 (identidade referenciada), Q1 (rollback) e S2 (destino interno tipado), sem novos achados acionáveis. Detalhes em E1.3.md e E1.3-rollback.md.
+
+Playwright 2/2 foi executado no snapshot f1e6063 antes das três correções de servidor; não foi repetido após 27f0b98. O gate atual cobre a suíte completa e build; essa distinção é mantida, sem representar a execução anterior como atual. As jornadas editoriais serão ampliadas em E1.4 e o gate integrado será repetido para A1.
+
+Permanecem os riscos de dependências documentados em E1.1 e BLOCK-GITHUB-BRANCH-PROTECTION. A consulta sobre imagens animadas segue sem resposta e não impôs restrição aos modelos. Nenhuma tarefa posterior foi contabilizada como pronta.

@@ -1,0 +1,66 @@
+$ vitest run --project integration src/config/provision-structural-bootstrap.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[00:21:49] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:21:49] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:21:50] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:21:50] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (39ms)[39m
+[00:21:50] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:21:50] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (98ms)[39m
+[00:21:50] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:21:50] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[00:21:50] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:21:50] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[00:21:50] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:21:50] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[00:21:50] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:21:50] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[00:21:50] [32mINFO[39m: [36mDone.[39m
+[00:21:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/config/provision-structural-bootstrap.integration.test.ts (1 test | 1 failed) 257ms
+   × provisiona sem conta humana somente os quatro drafts pelo contexto interno restrito 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/provision-structural-bootstrap.integration.test.ts > provisiona sem conta humana somente os quatro drafts pelo contexto interno restrito
+AssertionError: promise rejected "Forbidden: You are not allowed to perform… { …(4) }" instead of resolving
+ ❯ src/config/provision-structural-bootstrap.integration.test.ts:10:61
+      8| it('provisiona sem conta humana somente os quatro drafts pelo contexto…
+      9|  const request = () => createLocalReq({ context: { trustedStructuralPr…
+     10|  await expect(provisionStructuralDocuments(await request())).resolves.…
+       |                                                             ^
+     11|  const before = [];
+     12|  for (const collection of ['site-navigation', 'professional-profiles']…
+
+Caused by: Forbidden: You are not allowed to perform this action.
+ ❯ executeAccess node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/executeAccess.js:13:23
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:127:13
+ ❯ ensureNavigationDrafts src/features/site-navigation/server/ensure-navigation-drafts.ts:15:5
+ ❯ ensureBoth src/config/provision-structural-documents.ts:27:3
+ ❯ provisionStructuralDocuments src/config/provision-structural-documents.ts:43:7
+ ❯ src/config/provision-structural-bootstrap.integration.test.ts:10:2
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { data: null, isOperational: true, isPublic: true, status: 403 }
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  00:21:45
+   Duration  7.00s (import 80%, tests 12%, transform 4%, setup 4%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

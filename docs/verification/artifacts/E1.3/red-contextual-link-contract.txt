@@ -1,0 +1,50 @@
+$ vitest run --project unit src/features/cases/contracts/contextual-link.schema.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/contracts/contextual-link.schema.test.ts (16 tests | 8 failed) 10ms
+   ❯ destinos contextuais fechados (16)
+     × rejeita destino inválido {"destination":"page","page":"arbitrary"} 4ms
+     × rejeita destino inválido {"destination":"page","page":"home","url":"/other"} 0ms
+     × rejeita destino inválido {"destination":"resume","url":"https://example.invalid/duplicated.pdf"} 0ms
+     × rejeita destino inválido {"destination":"case","case":"translated-title"} 0ms
+     × rejeita destino inválido {"destination":"external","url":"/pt/about"} 0ms
+     × rejeita destino inválido {"destination":"external","url":"javascript:alert(1)"} 0ms
+     × rejeita destino inválido {"destination":"external","url":"data:text/html,script"} 0ms
+     × rejeita destino inválido {"destination":"external","url":"https://user:password@example.invalid"} 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"page","page":"arbitrary"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"page","page":"home","url":"/other"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"resume","url":"https://example.invalid/duplicated.pdf"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"case","case":"translated-title"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"external","url":"/pt/about"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"external","url":"javascript:alert(1)"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"external","url":"data:text/html,script"}
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"external","url":"https://user:password@example.invalid"}
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/cases/contracts/contextual-link.schema.test.ts:17:126
+     15|     { destination: 'external', url: 'javascript:alert(1)' }, { destina…
+     16|     { destination: 'external', url: 'https://user:password@example.inv…
+     17|   ])('rejeita destino inválido %j', fields => { expect(contextualLinkF…
+       |                                                                                                                              ^
+     18| });
+     19|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 8 passed (16)
+   Start at  23:55:47
+   Duration  490ms (setup 60%, import 26%, transform 9%, tests 3%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

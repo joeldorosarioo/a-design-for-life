@@ -1,0 +1,36 @@
+$ tsc --noEmit
+src/features/cases/content/collections/case-content.integration.test.ts(67,71): error TS2322: Type '{ locale: string; case?: undefined; } | { case: string; locale?: undefined; } | { case: string; locale: string; }' is not assignable to type '(Omit<CaseContent, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection"> & Partial<Pick<CaseContent, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection">>) | DraftDataFromCollectionSlug<...>'.
+  Type '{ locale: string; case?: undefined; }' is not assignable to type '(Omit<CaseContent, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection"> & Partial<Pick<CaseContent, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection">>) | DraftDataFromCollectionSlug<...>'.
+    Type '{ locale: string; case?: undefined; }' is not assignable to type 'DraftDataFromCollectionSlug<"case-content">'.
+      Type '{ locale: string; case?: undefined; }' is not assignable to type 'Partial<Omit<CaseContent, "id" | "createdAt" | "updatedAt" | "deletedAt" | "sizes" | "collection">>'.
+        Types of property 'locale' are incompatible.
+          Type 'string' is not assignable to type '"pt" | "en" | undefined'.
+src/features/cases/content/collections/case-content.integration.test.ts(85,87): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(options: ByIDOptions<"case-content", CaseContentSelect<false> | CaseContentSelect<true>>): Promise<CaseContent>', gave the following error.
+    Type '{ case: string; locale?: undefined; } | { locale: string; case?: undefined; }' is not assignable to type '{ case?: string | { id?: string | undefined; internalTitle?: string | undefined; sortOrder?: number | null | undefined; featured?: boolean | null | undefined; updatedAt?: string | undefined; createdAt?: string | undefined; } | undefined; ... 17 more ...; collection?: unknown; }'.
+      Type '{ locale: string; case?: undefined; }' is not assignable to type '{ case?: string | { id?: string | undefined; internalTitle?: string | undefined; sortOrder?: number | null | undefined; featured?: boolean | null | undefined; updatedAt?: string | undefined; createdAt?: string | undefined; } | undefined; ... 17 more ...; collection?: unknown; }'.
+        Types of property 'locale' are incompatible.
+          Type 'string' is not assignable to type '"pt" | "en" | undefined'.
+src/features/cases/content/collections/case-routes.integration.test.ts(17,101): error TS2345: Argument of type '{ collection: "case-routes"; data: { locale: "pt"; slug: string; case: string; content: string; }; overrideAccess: true; req: PayloadRequest; }' is not assignable to parameter of type 'Options<"case-routes", CaseRoutesSelect<false> | CaseRoutesSelect<true>>'.
+  Type '{ collection: "case-routes"; data: { locale: "pt"; slug: string; case: string; content: string; }; overrideAccess: true; req: PayloadRequest; }' is not assignable to type '{ data: DraftDataFromCollectionSlug<"case-routes">; draft: true; } & { collection: "case-routes"; context?: RequestContext | undefined; ... 14 more ...; user?: any; } & Pick<...>'.
+    Property 'draft' is missing in type '{ collection: "case-routes"; data: { locale: "pt"; slug: string; case: string; content: string; }; overrideAccess: true; req: PayloadRequest; }' but required in type '{ data: DraftDataFromCollectionSlug<"case-routes">; draft: true; }'.
+src/features/cases/content/collections/case-routes.integration.test.ts(20,48): error TS2345: Argument of type '{ collection: "case-routes"; data: { locale: "en"; slug: string; case: string; content: string; }; overrideAccess: true; req: PayloadRequest; }' is not assignable to parameter of type 'Options<"case-routes", CaseRoutesSelect<false> | CaseRoutesSelect<true>>'.
+  Type '{ collection: "case-routes"; data: { locale: "en"; slug: string; case: string; content: string; }; overrideAccess: true; req: PayloadRequest; }' is not assignable to type '{ data: DraftDataFromCollectionSlug<"case-routes">; draft: true; } & { collection: "case-routes"; context?: RequestContext | undefined; ... 14 more ...; user?: any; } & Pick<...>'.
+    Property 'draft' is missing in type '{ collection: "case-routes"; data: { locale: "en"; slug: string; case: string; content: string; }; overrideAccess: true; req: PayloadRequest; }' but required in type '{ data: DraftDataFromCollectionSlug<"case-routes">; draft: true; }'.
+src/features/cases/contracts/rich-text.schema.ts(8,7): error TS7022: 'listItem' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+src/features/cases/contracts/rich-text.schema.ts(9,7): error TS2502: 'children' is referenced directly or indirectly in its own type annotation.
+src/features/cases/contracts/rich-text.schema.ts(11,7): error TS7022: 'list' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+src/features/cases/contracts/rich-text.schema.ts(12,7): error TS2502: 'children' is referenced directly or indirectly in its own type annotation.
+src/features/professional-profile/content/collections/professional-profiles.integration.test.ts(195,80): error TS2322: Type '{ locale?: undefined; } | { locale: string; }' is not assignable to type '(Omit<ProfessionalProfile, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection"> & Partial<Pick<ProfessionalProfile, "id" | ... 3 more ... | "collection">>) | DraftDataFromCollectionSlug<...>'.
+  Type '{ locale: string; }' is not assignable to type '(Omit<ProfessionalProfile, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection"> & Partial<Pick<ProfessionalProfile, "id" | ... 3 more ... | "collection">>) | DraftDataFromCollectionSlug<...>'.
+    Type '{ locale: string; }' is not assignable to type 'DraftDataFromCollectionSlug<"professional-profiles">'.
+      Type '{ locale: string; }' is not assignable to type 'Partial<Omit<ProfessionalProfile, "id" | "createdAt" | "updatedAt" | "deletedAt" | "sizes" | "collection">>'.
+        Types of property 'locale' are incompatible.
+          Type 'string' is not assignable to type '"pt" | "en" | undefined'.
+src/features/site-navigation/content/collections/site-navigation.integration.test.ts(195,74): error TS2322: Type '{ locale?: undefined; } | { locale: string; }' is not assignable to type '(Omit<SiteNavigation, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection"> & Partial<Pick<SiteNavigation, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection">>) | DraftDataFromCollectionSlug<...>'.
+  Type '{ locale: string; }' is not assignable to type '(Omit<SiteNavigation, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection"> & Partial<Pick<SiteNavigation, "id" | "createdAt" | "updatedAt" | "deletedAt" | "collection">>) | DraftDataFromCollectionSlug<...>'.
+    Type '{ locale: string; }' is not assignable to type 'DraftDataFromCollectionSlug<"site-navigation">'.
+      Type '{ locale: string; }' is not assignable to type 'Partial<Omit<SiteNavigation, "id" | "createdAt" | "updatedAt" | "deletedAt" | "sizes" | "collection">>'.
+        Types of property 'locale' are incompatible.
+          Type 'string' is not assignable to type '"pt" | "en" | undefined'.
+[ELIFECYCLE] Command failed with exit code 2.

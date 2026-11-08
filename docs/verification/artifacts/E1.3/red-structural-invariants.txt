@@ -1,0 +1,331 @@
+$ vitest run --project integration src/config/provision-structural-documents.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:07:13] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:07:13] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:07:13] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:07:13] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+[23:07:13] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:07:13] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (92ms)[39m
+[23:07:13] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:07:13] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[23:07:13] [32mINFO[39m: [36mDone.[39m
+[23:07:15] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/config/provision-structural-documents.integration.test.ts (7 tests | 4 failed) 732ms
+   ❯ provisionamento estrutural real (7)
+     × bloqueia exclusão estrutural no servidor mesmo com overrideAccess: site-navigation 65ms
+     × bloqueia exclusão estrutural no servidor mesmo com overrideAccess: professional-profiles 61ms
+     × bloqueia troca de idioma sem depender de colisão do índice: site-navigation 58ms
+     × bloqueia troca de idioma sem depender de colisão do índice: professional-profiles 69ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/provision-structural-documents.integration.test.ts > provisionamento estrutural real > bloqueia exclusão estrutural no servidor mesmo com overrideAccess: site-navigation
+AssertionError: promise resolved "{ …(7) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "createdAt": "2026-10-30T02:07:15.630Z",
++   "footer": {
++     "copyright": null,
++     "description": null,
++     "emailLabel": null,
++     "eyebrow": null,
++     "linkedinLabel": null,
++     "resumeLabel": null,
++     "title": null,
++   },
++   "header": {
++     "aboutLabel": null,
++     "brandLabel": null,
++     "contactLabel": null,
++     "projectsLabel": null,
++     "resumeLabel": null,
++   },
++   "id": "65a9be3c-fa88-422e-8912-be04eb9f857e",
++   "locale": "pt",
++   "updatedAt": "2026-10-30T02:07:15.630Z",
+  }
+
+ ❯ src/config/provision-structural-documents.integration.test.ts:49:130
+     47|     await provisionStructuralDocuments(await fixture.request());
+     48|     const docs = await fixture.payload.find({ collection, where: { loc…
+     49|     await expect(fixture.payload.delete({ collection, id: docs.docs[0]…
+       |                                                                                                                                  ^
+     50|     expect((await fixture.payload.find({ collection, draft: true, req:…
+     51|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |integration| src/config/provision-structural-documents.integration.test.ts > provisionamento estrutural real > bloqueia exclusão estrutural no servidor mesmo com overrideAccess: professional-profiles
+AssertionError: promise resolved "{ …(13) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "about": {
++     "approach": null,
++     "approachHeading": null,
++     "architecturePhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "closing": null,
++     "closingHeading": null,
++     "description": null,
++     "deskPhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "editorialEmphasis": null,
++     "eyebrow": null,
++     "inMotion": null,
++     "inMotionHeading": null,
++     "introduction": null,
++     "introductionHeading": null,
++     "journey": null,
++     "journeyHeading": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++   },
++   "approach": {
++     "description": null,
++     "eyebrow": null,
++     "methods": [],
++     "title": null,
++   },
++   "contacts": {
++     "email": null,
++     "linkedin": null,
++   },
++   "createdAt": "2026-10-30T02:07:15.706Z",
++   "home": {
++     "description": null,
++     "eyebrow": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++     "titleEmphasis": null,
++   },
++   "homeAbout": {
++     "aboutLabel": null,
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++     "trajectory": [],
++   },
++   "id": "11662ffe-5ee2-48f7-bad8-b3fb00127035",
++   "identity": {
++     "name": null,
++     "role": null,
++   },
++   "locale": "pt",
++   "resume": null,
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++   },
++   "updatedAt": "2026-10-30T02:07:15.706Z",
+  }
+
+ ❯ src/config/provision-structural-documents.integration.test.ts:49:130
+     47|     await provisionStructuralDocuments(await fixture.request());
+     48|     const docs = await fixture.payload.find({ collection, where: { loc…
+     49|     await expect(fixture.payload.delete({ collection, id: docs.docs[0]…
+       |                                                                                                                                  ^
+     50|     expect((await fixture.payload.find({ collection, draft: true, req:…
+     51|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |integration| src/config/provision-structural-documents.integration.test.ts > provisionamento estrutural real > bloqueia troca de idioma sem depender de colisão do índice: site-navigation
+AssertionError: promise resolved "{ locale: 'en', header: { …(5) }, …(5) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "createdAt": "2026-10-30T02:07:15.752Z",
++   "footer": {
++     "copyright": null,
++     "description": null,
++     "emailLabel": null,
++     "eyebrow": null,
++     "linkedinLabel": null,
++     "resumeLabel": null,
++     "title": null,
++   },
++   "header": {
++     "aboutLabel": null,
++     "brandLabel": null,
++     "contactLabel": null,
++     "projectsLabel": null,
++     "resumeLabel": null,
++   },
++   "id": "9b9aab12-e7e2-41b0-9420-745567c42d3b",
++   "locale": "en",
++   "updatedAt": "2026-10-30T02:07:15.796Z",
+  }
+
+ ❯ src/config/provision-structural-documents.integration.test.ts:58:167
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |integration| src/config/provision-structural-documents.integration.test.ts > provisionamento estrutural real > bloqueia troca de idioma sem depender de colisão do índice: professional-profiles
+AssertionError: promise resolved "{ locale: 'en', …(12) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "about": {
++     "approach": null,
++     "approachHeading": null,
++     "architecturePhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "closing": null,
++     "closingHeading": null,
++     "description": null,
++     "deskPhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "editorialEmphasis": null,
++     "eyebrow": null,
++     "inMotion": null,
++     "inMotionHeading": null,
++     "introduction": null,
++     "introductionHeading": null,
++     "journey": null,
++     "journeyHeading": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++   },
++   "approach": {
++     "description": null,
++     "eyebrow": null,
++     "methods": [],
++     "title": null,
++   },
++   "contacts": {
++     "email": null,
++     "linkedin": null,
++   },
++   "createdAt": "2026-10-30T02:07:15.825Z",
++   "home": {
++     "description": null,
++     "eyebrow": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++     "titleEmphasis": null,
++   },
++   "homeAbout": {
++     "aboutLabel": null,
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++     "trajectory": [],
++   },
++   "id": "cce1b6a1-eddf-48d1-bccc-d9a241f73dd1",
++   "identity": {
++     "name": null,
++     "role": null,
++   },
++   "locale": "en",
++   "resume": null,
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++   },
++   "updatedAt": "2026-10-30T02:07:15.860Z",
+  }
+
+ ❯ src/config/provision-structural-documents.integration.test.ts:58:167
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 3 passed (7)
+   Start at  23:07:08
+   Duration  7.36s (import 66%, tests 29%, setup 3%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

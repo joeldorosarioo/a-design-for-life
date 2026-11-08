@@ -1,0 +1,7 @@
+$ node --conditions=react-server ./node_modules/payload/bin.js migrate:create case-locale-uniqueness
+[23:44:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:44:31] [32mINFO[39m: [36mStarting migration: generating UP statements...[39m
+[23:44:31] [32mINFO[39m: [36mMigration UP complete. Generating DOWN statements...[39m
+[23:44:31] [32mINFO[39m: [36mMigration DOWN statements generation complete.[39m
+[23:44:31] [32mINFO[39m: [36mMigration created at E:\a-design-for-life\src\migrations/20261030_024431_case_locale_uniqueness.ts[39m
+[23:44:31] [32mINFO[39m: [36mDone.[39m

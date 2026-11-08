@@ -1,0 +1,307 @@
+$ vitest run --project integration src/features/cases/content/collections/case-content.integration.test.ts src/features/site-navigation/content/collections/site-navigation.integration.test.ts src/features/professional-profile/content/collections/professional-profiles.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:47:29] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:47:29] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:47:29] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:47:29] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (48ms)[39m
+[23:47:29] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:47:30] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (103ms)[39m
+[23:47:30] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:47:30] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[23:47:30] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[23:47:30] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[23:47:30] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[23:47:30] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[23:47:30] [32mINFO[39m: [36mDone.[39m
+[23:47:32] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/professional-profile/content/collections/professional-profiles.integration.test.ts (3 tests | 1 failed) 418ms
+   × exige locale v�lido no rascunho estrutural incompleto: professional-profiles 54ms
+[23:47:34] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/site-navigation/content/collections/site-navigation.integration.test.ts (3 tests | 1 failed) 339ms
+   × exige locale v�lido no rascunho estrutural incompleto: site-navigation 34ms
+[23:47:36] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/case-content.integration.test.ts (3 tests | 2 failed) 346ms
+   × exige case e locale v�lidos mesmo no rascunho incompleto 20ms
+   × rejeita mudan�a de case ou idioma sem depender de colis�o 36ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/case-content.integration.test.ts > exige case e locale v�lidos mesmo no rascunho incompleto
+AssertionError: promise resolved "{ …(16) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "case": null,
++   "contextNote": null,
++   "cover": {
++     "alt": null,
++     "caption": null,
++     "decorative": false,
++     "media": null,
++   },
++   "createdAt": "2026-10-30T02:47:37.046Z",
++   "id": "88419dd9-19b6-411c-bbe7-05828b9a53bd",
++   "introduction": null,
++   "locale": "pt",
++   "role": null,
++   "scope": null,
++   "sections": [],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": null,
++   "summary": null,
++   "title": null,
++   "updatedAt": "2026-10-30T02:47:37.046Z",
+  }
+
+ ❯ src/features/cases/content/collections/case-content.integration.test.ts:34:144
+     32|   const shared = await identity();
+     33|   for (const data of [{ locale: 'pt' }, { case: shared.id }, { case: s…
+     34|     await expect(fixture.payload.create({ collection: 'case-content', …
+       |                                                                                                                                                ^
+     35|   }
+     36| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/case-content.integration.test.ts > rejeita mudan�a de case ou idioma sem depender de colis�o
+AssertionError: promise resolved "{ case: { …(6) }, locale: 'pt', …(14) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "case": {
++     "createdAt": "2026-10-30T02:47:37.065Z",
++     "featured": false,
++     "id": "f1595913-4970-4365-b082-2daa52066697",
++     "internalTitle": "Synthetic integration fixture",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T02:47:37.065Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": null,
++     "caption": null,
++     "decorative": false,
++     "media": null,
++   },
++   "createdAt": "2026-10-30T02:47:37.068Z",
++   "id": "b3e33a90-f0cc-4f80-9f73-134d9472e593",
++   "introduction": null,
++   "locale": "pt",
++   "role": null,
++   "scope": null,
++   "sections": [],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": null,
++   "summary": null,
++   "title": null,
++   "updatedAt": "2026-10-30T02:47:37.086Z",
+  }
+
+ ❯ src/features/cases/content/collections/case-content.integration.test.ts:43:160
+     41|   const content = await fixture.payload.create({ collection: 'case-con…
+     42|   for (const data of [{ case: other.id }, { locale: 'en' }]) {
+     43|     await expect(fixture.payload.update({ collection: 'case-content', …
+       |                                                                                                                                                                ^
+     44|   }
+     45|   const preserved = await fixture.payload.findByID({ collection: 'case…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |integration| src/features/site-navigation/content/collections/site-navigation.integration.test.ts > exige locale v�lido no rascunho estrutural incompleto: site-navigation
+AssertionError: promise resolved "{ …(7) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "createdAt": "2026-10-30T02:47:34.833Z",
++   "footer": {
++     "copyright": null,
++     "description": null,
++     "emailLabel": null,
++     "eyebrow": null,
++     "linkedinLabel": null,
++     "resumeLabel": null,
++     "title": null,
++   },
++   "header": {
++     "aboutLabel": null,
++     "brandLabel": null,
++     "contactLabel": null,
++     "projectsLabel": null,
++     "resumeLabel": null,
++   },
++   "id": "11a7c4ec-0c75-4f70-b823-c7e319ebb446",
++   "locale": null,
++   "updatedAt": "2026-10-30T02:47:34.834Z",
+  }
+
+ ❯ src/features/site-navigation/content/collections/site-navigation.integration.test.ts:98:147
+     96|   await clearStructuralFixture(fixture.payload);
+     97|   for (const data of [{}, { locale: 'fr' }]) {
+     98|     await expect(fixture.payload.create({ collection: 'site-navigation…
+       |                                                                                                                                                   ^
+     99|   }
+    100| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |integration| src/features/professional-profile/content/collections/professional-profiles.integration.test.ts > exige locale v�lido no rascunho estrutural incompleto: professional-profiles
+AssertionError: promise resolved "{ …(13) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "about": {
++     "approach": null,
++     "approachHeading": null,
++     "architecturePhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "closing": null,
++     "closingHeading": null,
++     "description": null,
++     "deskPhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "editorialEmphasis": null,
++     "eyebrow": null,
++     "inMotion": null,
++     "inMotionHeading": null,
++     "introduction": null,
++     "introductionHeading": null,
++     "journey": null,
++     "journeyHeading": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++   },
++   "approach": {
++     "description": null,
++     "eyebrow": null,
++     "methods": [],
++     "title": null,
++   },
++   "contacts": {
++     "email": null,
++     "linkedin": null,
++   },
++   "createdAt": "2026-10-30T02:47:32.546Z",
++   "home": {
++     "description": null,
++     "eyebrow": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++     "titleEmphasis": null,
++   },
++   "homeAbout": {
++     "aboutLabel": null,
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++     "trajectory": [],
++   },
++   "id": "31c2060a-de37-43d1-8344-0ff5328ec2dc",
++   "identity": {
++     "name": null,
++     "role": null,
++   },
++   "locale": null,
++   "resume": null,
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++   },
++   "updatedAt": "2026-10-30T02:47:32.546Z",
+  }
+
+ ❯ src/features/professional-profile/content/collections/professional-profiles.integration.test.ts:98:153
+     96|   await clearStructuralFixture(fixture.payload);
+     97|   for (const data of [{}, { locale: 'fr' }]) {
+     98|     await expect(fixture.payload.create({ collection: 'professional-pr…
+       |                                                                                                                                                         ^
+     99|   }
+    100| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  4 failed | 5 passed (9)
+   Start at  23:47:25
+   Duration  12.00s (import 78%, tests 17%, setup 3%, transform 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

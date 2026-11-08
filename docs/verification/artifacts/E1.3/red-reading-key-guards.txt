@@ -1,0 +1,178 @@
+$ vitest run --project integration src/features/cases/content/collections/case-content.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:58:18] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:58:18] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:58:18] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:58:18] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (38ms)[39m
+[23:58:18] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:58:18] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (95ms)[39m
+[23:58:18] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:58:18] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[23:58:18] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[23:58:18] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[23:58:18] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[23:58:18] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[23:58:18] [32mINFO[39m: [36mDone.[39m
+[23:58:20] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/case-content.integration.test.ts (7 tests | 2 failed) 503ms
+   × bloqueia substituir chave de leitura de linha existente 39ms
+   × bloqueia chaves repetidas entre seções e blocos do mesmo documento 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/case-content.integration.test.ts > bloqueia substituir chave de leitura de linha existente
+AssertionError: promise resolved "{ case: { …(6) }, locale: 'pt', …(14) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "case": {
++     "createdAt": "2026-10-30T02:58:21.340Z",
++     "featured": false,
++     "id": "a3b6d511-dd09-4a4b-ae77-a2787c4173b6",
++     "internalTitle": "Synthetic integration fixture",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T02:58:21.340Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": null,
++     "caption": null,
++     "decorative": false,
++     "media": null,
++   },
++   "createdAt": "2026-10-30T02:58:21.342Z",
++   "id": "f645242f-e442-43c4-9516-50ef18b9a4fc",
++   "introduction": null,
++   "locale": "pt",
++   "role": null,
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": null,
++           "id": "6ae407cd3ab33e9bbc180d12",
++           "readingKey": "faf8c509-6fa6-4c3e-b4dd-aa2909871cf6",
++         },
++       ],
++       "heading": "Synthetic section",
++       "id": "6ae407cd3ab33e9bbc180d13",
++       "readingKey": "d42b29dc-2e53-46b1-ac74-04161d94cadb",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": null,
++   "summary": null,
++   "title": null,
++   "updatedAt": "2026-10-30T02:58:21.361Z",
+  }
+
+ ❯ src/features/cases/content/collections/case-content.integration.test.ts:131:242
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/case-content.integration.test.ts > bloqueia chaves repetidas entre seções e blocos do mesmo documento
+AssertionError: promise resolved "{ …(16) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "case": {
++     "createdAt": "2026-10-30T02:58:21.378Z",
++     "featured": false,
++     "id": "49d95fbd-0ac3-4062-9608-f39bf4b5a063",
++     "internalTitle": "Synthetic integration fixture",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T02:58:21.378Z",
++   },
++   "contextNote": null,
++   "cover": {
++     "alt": null,
++     "caption": null,
++     "decorative": false,
++     "media": null,
++   },
++   "createdAt": "2026-10-30T02:58:21.382Z",
++   "id": "a854573b-a348-4954-96f6-4cdb771d9b82",
++   "introduction": null,
++   "locale": "pt",
++   "role": null,
++   "scope": null,
++   "sections": [
++     {
++       "blocks": [
++         {
++           "blockName": null,
++           "blockType": "text",
++           "content": null,
++           "id": "6ae407cd3ab33e9bbc180d14",
++           "readingKey": "d42b29dc-2e53-46b1-ac74-04161d94cadb",
++         },
++       ],
++       "heading": null,
++       "id": "6ae407cd3ab33e9bbc180d15",
++       "readingKey": "d42b29dc-2e53-46b1-ac74-04161d94cadb",
++     },
++   ],
++   "seo": {
++     "description": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "title": null,
++   },
++   "slug": null,
++   "summary": null,
++   "title": null,
++   "updatedAt": "2026-10-30T02:58:21.382Z",
+  }
+
+ ❯ src/features/cases/content/collections/case-content.integration.test.ts:136:250
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  23:58:14
+   Duration  7.40s (import 74%, tests 19%, transform 3%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

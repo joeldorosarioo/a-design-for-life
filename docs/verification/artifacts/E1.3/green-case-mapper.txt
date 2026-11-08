@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/cases/server/map-case-detail.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  00:09:40
+   Duration  507ms (setup 50%, import 28%, transform 18%, tests 2%, worker 1%)
+

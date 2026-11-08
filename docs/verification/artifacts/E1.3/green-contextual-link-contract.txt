@@ -1,0 +1,37 @@
+$ vitest run --project unit src/features/cases/contracts/contextual-link.schema.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/contracts/contextual-link.schema.test.ts (16 tests | 1 failed) 10ms
+   ❯ destinos contextuais fechados (16)
+     × rejeita destino inválido {"destination":"external","url":"/pt/about"} 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/contracts/contextual-link.schema.test.ts > destinos contextuais fechados > rejeita destino inválido {"destination":"external","url":"/pt/about"}
+TypeError: Invalid URL
+ ❯ Object.fn src/features/cases/contracts/contextual-link.schema.ts:3:15
+      1| import { z } from 'zod';
+      2| const safeURL = z.url().refine(value => {
+      3|   const url = new URL(value);
+       |               ^
+      4|   return ['https:', 'http:', 'mailto:'].includes(url.protocol) && !url…
+      5| }, 'Use um endereço HTTP(S) ou e-mail sem credenciais.');
+ ❯ inst._zod.check node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js:2614:23
+ ❯ runChecks node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js:51:35
+ ❯ inst._zod.run node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js:118:20
+ ❯ eval node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/doc.js:35:25
+ ❯ inst._zod.parse node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js:1215:23
+ ❯ inst._zod.parse node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js:1439:29
+ ❯ Module.<anonymous> node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/parse.js:43:32
+ ❯ _.safeParse node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/classic/schemas.js:141:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  23:56:05
+   Duration  443ms (setup 68%, import 24%, tests 3%, transform 3%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

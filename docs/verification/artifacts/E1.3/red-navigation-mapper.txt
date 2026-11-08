@@ -1,0 +1,74 @@
+$ vitest run --project unit src/features/site-navigation/server/map-navigation.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/server/map-navigation.test.ts (2 tests | 1 failed) 11ms
+   × deriva quatro finalidades/ordem fixas e contatos/currículo somente do Perfil publicado 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/site-navigation/server/map-navigation.test.ts > deriva quatro finalidades/ordem fixas e contatos/currículo somente do Perfil publicado
+AssertionError: expected undefined to match object { locale: 'pt', …(2) }
+
+- Expected:
+{
+  "contacts": {
+    "email": "synthetic@example.invalid",
+    "linkedin": "https://www.linkedin.com/in/synthetic",
+  },
+  "items": [
+    {
+      "destination": {
+        "href": "/pt/cases",
+        "kind": "page",
+      },
+      "label": "Synthetic projects",
+      "purpose": "projects",
+    },
+    {
+      "destination": {
+        "href": "/pt/about",
+        "kind": "page",
+      },
+      "label": "Synthetic about",
+      "purpose": "about",
+    },
+    {
+      "destination": {
+        "kind": "resume",
+        "mediaId": "900ad009-3fa9-4362-b310-a0925e8fa84a",
+        "newTab": true,
+      },
+      "purpose": "resume",
+    },
+    {
+      "destination": {
+        "anchor": "#contact",
+        "kind": "contact",
+      },
+      "purpose": "contact",
+    },
+  ],
+  "locale": "pt",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/site-navigation/server/map-navigation.test.ts:9:14
+      7| it('deriva quatro finalidades/ordem fixas e contatos/currículo somente…
+      8|  const dto = mapNavigation(navigation, profile);
+      9|  expect(dto).toMatchObject({ locale: 'pt', items: [
+       |              ^
+     10|   { purpose: 'projects', label: 'Synthetic projects', destination: { k…
+     11|   { purpose: 'about', label: 'Synthetic about', destination: { kind: '…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  00:03:21
+   Duration  491ms (setup 76%, transform 12%, import 7%, tests 4%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

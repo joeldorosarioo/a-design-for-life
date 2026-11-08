@@ -1,0 +1,44 @@
+$ vitest run --project unit src/features/professional-profile/server/map-profile.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/server/map-profile.test.ts (2 tests | 1 failed) 7ms
+   × mapeia somente conteúdo público mínimo sem metadata administrativa ou URL privada de recurso 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > mapeia somente conteúdo público mínimo sem metadata administrativa ou URL privada de recurso
+AssertionError: expected undefined to match object { locale: 'pt', …(3) }
+
+- Expected:
+{
+  "identity": {
+    "name": "Synthetic published fixture",
+  },
+  "listing": {
+    "title": "Synthetic listing",
+  },
+  "locale": "pt",
+  "resumeId": "ddab1d65-bbe3-4a7c-b59a-e43806913d8f",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:12:14
+     10| it('mapeia somente conteúdo público mínimo sem metadata administrativa…
+     11|  const dto = mapProfile(document);
+     12|  expect(dto).toMatchObject({ locale: 'pt', identity: { name: document.…
+       |              ^
+     13|  const serialized = JSON.stringify(dto);
+     14|  for (const forbidden of ['_status', 'createdAt', 'updatedAt', 'privat…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  00:02:10
+   Duration  401ms (setup 75%, transform 12%, import 9%, tests 3%, worker 2%)
+
+[ELIFECYCLE] Command failed with exit code 1.

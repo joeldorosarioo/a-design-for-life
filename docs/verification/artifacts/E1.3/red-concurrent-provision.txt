@@ -1,0 +1,55 @@
+$ vitest run --project integration src/config/provision-structural-documents.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:03:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:03:52] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:03:52] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:03:52] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[23:03:52] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:03:53] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (91ms)[39m
+[23:03:53] [32mINFO[39m: [36mDone.[39m
+[23:03:55] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/config/provision-structural-documents.integration.test.ts (3 tests | 1 failed) 467ms
+   ❯ provisionamento estrutural real (3)
+     × duas inicializações independentes concorrentes terminam nos mesmos quatro rascunhos 61ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/provision-structural-documents.integration.test.ts > provisionamento estrutural real > duas inicializações independentes concorrentes terminam nos mesmos quatro rascunhos
+AssertionError: expected 4 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 4
+
+ ❯ src/config/provision-structural-documents.integration.test.ts:42:32
+     40|     for (const collection of ['site-navigation', 'professional-profile…
+     41|       const result = await fixture.payload.find({ collection, draft: t…
+     42|       expect(result.totalDocs).toBe(2);
+       |                                ^
+     43|       expect(result.docs.map(doc => doc.locale).sort()).toEqual(['en',…
+     44|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  23:03:48
+   Duration  6.99s (import 74%, tests 20%, setup 3%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

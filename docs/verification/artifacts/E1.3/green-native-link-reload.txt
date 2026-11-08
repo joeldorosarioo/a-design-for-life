@@ -1,0 +1,59 @@
+$ vitest run --project integration src/features/cases/content/editor/contextual-link-feature.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[00:26:35] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:26:35] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:26:35] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:26:36] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+[00:26:36] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:26:36] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (88ms)[39m
+[00:26:36] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:26:36] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[00:26:36] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:26:36] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[00:26:36] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:26:36] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[00:26:36] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:26:36] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[00:26:36] [32mINFO[39m: [36mDone.[39m
+[00:26:38] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts (9 tests | 1 failed) 466ms
+   × recarrega link external→page sem URL inativa persistida e rejeita protocolo ativo perigoso 50ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > recarrega link external→page sem URL inativa persistida e rejeita protocolo ativo perigoso
+AssertionError: expected '[{"id":"6ae40e6ee0cdab99dc118a9e","re…' not to contain '"url":'
+
+Expected: ""url":"
+Received: "[{"id":"6ae40e6ee0cdab99dc118a9e","readingKey":"29e26c29-382c-4178-8be6-175fc6c16e94","heading":null,"blocks":[{"id":"6ae40e6ee0cdab99dc118a9d","readingKey":"6466a154-7158-443b-8ab9-d8a86207a599","content":{"root":{"type":"root","format":"","indent":0,"version":1,"children":[{"type":"paragraph","format":"","indent":0,"version":1,"children":[{"type":"link","fields":{"page":"about","newTab":false,"linkType":"custom","destination":"page","url":""},"format":"","indent":0,"version":3,"children":[{"mode":"normal","text":"Synthetic switched link","type":"text","style":"","detail":0,"format":0,"version":1}],"direction":null}],"direction":null}],"direction":null}},"blockName":null,"blockType":"text"}]}]"
+
+ ❯ src/features/cases/content/editor/contextual-link-feature.integration.test.ts:266:49
+    264|   });
+    265|   expect(JSON.stringify(reloaded.sections)).not.toContain(oldURL);
+    266|   expect(JSON.stringify(reloaded.sections)).not.toContain('"url":');
+       |                                                 ^
+    267|   await expect(
+    268|     fixture.payload.update({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  00:26:31
+   Duration  7.24s (import 74%, tests 20%, setup 3%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

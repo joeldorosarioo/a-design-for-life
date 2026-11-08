@@ -1,0 +1,6 @@
+remote: error: GH006: Protected branch update failed for refs/heads/develop.        
+remote: 
+remote: - Required status check "type-lint-test-architecture-build" is expected.        
+To https://github.com/joeldorosarioo/a-design-for-life.git
+ ! [remote rejected] ad720170795aafb03ccc7ac1a89aa35aa4a78837 -> develop (protected branch hook declined)
+error: failed to push some refs to 'https://github.com/joeldorosarioo/a-design-for-life.git'

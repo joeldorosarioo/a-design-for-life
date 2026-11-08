@@ -1,0 +1,5 @@
+$ node --conditions=react-server ./node_modules/payload/bin.js run .work/inspect-case-schema.ts
+[00:48:26] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+{"name":"case_content","columns":[["case",{"name":"case_id","type":"uuid","reference":{"name":"id","onDelete":"set null","table":"cases"}}]],"foreignKeys":{}}
+{"name":"_case_content_v","columns":[["version_case",{"name":"version_case_id","type":"uuid","reference":{"name":"id","onDelete":"set null","table":"cases"}}]],"foreignKeys":{}}
+{"name":"case_routes","columns":[["case",{"name":"case_id","type":"uuid","reference":{"name":"id","onDelete":"set null","table":"cases"},"notNull":true}]],"foreignKeys":{}}

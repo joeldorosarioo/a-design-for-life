@@ -1,0 +1,10 @@
+$ vitest run --project unit src/features/cases/contracts/rich-text.schema.test.ts src/features/cases/server/map-case-detail.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  2 passed (2)
+      Tests  4 passed (4)
+   Start at  00:17:35
+   Duration  522ms (setup 56%, import 31%, transform 8%, tests 3%, worker 1%)
+

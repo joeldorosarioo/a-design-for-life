@@ -1,0 +1,78 @@
+$ vitest run --project integration src/features/site-navigation/content/collections/site-navigation.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:50:42] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:50:42] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:50:42] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:50:42] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[23:50:42] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:50:42] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (95ms)[39m
+[23:50:42] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:50:42] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+[23:50:42] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[23:50:42] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[23:50:42] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[23:50:42] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[23:50:42] [32mINFO[39m: [36mDone.[39m
+[23:50:44] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/site-navigation/content/collections/site-navigation.integration.test.ts (4 tests | 1 failed) 397ms
+   × rejeita finalidade, URL livre ou currículo duplicado no header em vez de ignorar a entrada 37ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/site-navigation/content/collections/site-navigation.integration.test.ts > rejeita finalidade, URL livre ou currículo duplicado no header em vez de ignorar a entrada
+AssertionError: promise resolved "{ locale: 'pt', header: { …(5) }, …(5) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "createdAt": "2026-10-30T02:50:45.016Z",
++   "footer": {
++     "copyright": null,
++     "description": null,
++     "emailLabel": null,
++     "eyebrow": null,
++     "linkedinLabel": null,
++     "resumeLabel": null,
++     "title": null,
++   },
++   "header": {
++     "aboutLabel": null,
++     "brandLabel": null,
++     "contactLabel": null,
++     "projectsLabel": null,
++     "resumeLabel": null,
++   },
++   "id": "945e69b4-b135-48d5-94f2-b780d3bde1d9",
++   "locale": "pt",
++   "updatedAt": "2026-10-30T02:50:45.036Z",
+  }
+
+ ❯ src/features/site-navigation/content/collections/site-navigation.integration.test.ts:205:192
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  23:50:37
+   Duration  7.16s (import 77%, tests 17%, setup 3%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,60 @@
+$ vitest run --project integration src/features/cases/content/editor/contextual-link-feature.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[00:13:42] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[00:13:42] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:13:42] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:13:42] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+[00:13:42] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:13:42] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (86ms)[39m
+[00:13:42] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:13:42] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[00:13:42] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:13:42] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[00:13:42] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:13:42] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (4ms)[39m
+[00:13:42] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:13:42] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[00:13:42] [32mINFO[39m: [36mDone.[39m
+[00:13:45] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts (6 tests | 6 failed) 276ms
+   × o formulário nativo serializa destino aceito pelo servidor: {"destination":"page","page":"home"} 19ms
+   × o formulário nativo serializa destino aceito pelo servidor: {"destination":"page","page":"cases"} 1ms
+   × o formulário nativo serializa destino aceito pelo servidor: {"destination":"page","page":"about"} 1ms
+   × o formulário nativo serializa destino aceito pelo servidor: {"destination":"resume"} 1ms
+   × o formulário nativo serializa destino aceito pelo servidor: {"destination":"contact"} 1ms
+   × o formulário nativo serializa destino aceito pelo servidor: {"destination":"external","url":"https://example.invalid/synthetic"} 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > o formulário nativo serializa destino aceito pelo servidor: {"destination":"page","page":"home"}
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > o formulário nativo serializa destino aceito pelo servidor: {"destination":"page","page":"cases"}
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > o formulário nativo serializa destino aceito pelo servidor: {"destination":"page","page":"about"}
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > o formulário nativo serializa destino aceito pelo servidor: {"destination":"resume"}
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > o formulário nativo serializa destino aceito pelo servidor: {"destination":"contact"}
+ FAIL  |integration| src/features/cases/content/editor/contextual-link-feature.integration.test.ts > o formulário nativo serializa destino aceito pelo servidor: {"destination":"external","url":"https://example.invalid/synthetic"}
+TypeError: reduceFieldsToValues is not a function
+ ❯ src/features/cases/content/editor/contextual-link-feature.integration.test.ts:21:17
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  00:13:37
+   Duration  7.56s (import 80%, tests 12%, setup 4%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

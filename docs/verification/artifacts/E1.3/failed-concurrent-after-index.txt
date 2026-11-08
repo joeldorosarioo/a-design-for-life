@@ -1,0 +1,72 @@
+$ vitest run --project integration src/config/provision-structural-documents.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[23:05:26] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[23:05:26] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[23:05:26] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[23:05:26] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+[23:05:26] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[23:05:26] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (92ms)[39m
+[23:05:26] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[23:05:26] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[23:05:26] [32mINFO[39m: [36mDone.[39m
+[23:05:28] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/config/provision-structural-documents.integration.test.ts (3 tests | 1 failed) 441ms
+   ❯ provisionamento estrutural real (3)
+     × duas inicializações independentes concorrentes terminam nos mesmos quatro rascunhos 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/provision-structural-documents.integration.test.ts > provisionamento estrutural real > duas inicializações independentes concorrentes terminam nos mesmos quatro rascunhos
+ValidationError: The following field is invalid: locale
+ ❯ handleUpsertError node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/upsertRow/handleUpsertError.ts:76:11
+ ❯ handleUpsertError node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/upsertRow/index.ts:758:5
+ ❯ Object.create node_modules/.pnpm/@payloadcms+drizzle@3.92.1__7198a0185fe1e6d263e2eb02da9ec726/node_modules/@payloadcms/drizzle/src/create.ts:21:18
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:432:13
+ ❯ ensureNavigationDrafts src/features/site-navigation/server/ensure-navigation-drafts.ts:8:5
+      6|     const existing = await req.payload.find({ collection: 'site-naviga…
+      7|     if (existing.totalDocs > 0) continue;
+      8|     await req.payload.create({ collection: 'site-navigation', data: { …
+       |     ^
+      9|   }
+     10| }
+ ❯ provisionStructuralDocuments src/config/provision-structural-documents.ts:7:3
+ ❯ src/config/provision-structural-documents.integration.test.ts:39:5
+
+{
+  id: undefined,
+  collection: 'site-navigation',
+  errors: [
+    {
+      message: 'Value must be unique',
+      path: 'locale',
+      tableName: 'site_navigation'
+    }
+  ],
+  global: undefined,
+  name: 'Caused by',
+  stacks: []
+}
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { id: undefined, collection: 'site-navigation', errors: [ { message: 'Value must be unique', path: 'locale', tableName: 'site_navigation' } ], global: undefined }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  23:05:22
+   Duration  7.13s (import 74%, tests 20%, setup 3%, transform 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

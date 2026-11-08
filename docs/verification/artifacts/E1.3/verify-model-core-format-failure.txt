@@ -1,0 +1,10 @@
+$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+[warn] src/migrations/20261030_020021_editorial_models.json
+[warn] src/migrations/20261030_020521_structural_uniqueness.json
+[warn] Code style issues found in 2 files. Run Prettier with --write to fix.
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
