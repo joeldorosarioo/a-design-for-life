@@ -94,7 +94,13 @@ it('preserves the existing account, password credentials and active session acro
       req,
       overrideAccess: false,
     });
-    expect(migrated).toMatchObject({ id: user.id, email: user.email, name: null, avatar: null });
+    expect(migrated).toMatchObject({ id: user.id, email: user.email });
+    expect(migrated).not.toHaveProperty('name');
+    expect(migrated).not.toHaveProperty('avatar');
+    const legacyFields = await db.execute(sql`
+      SELECT name, avatar_id FROM users WHERE id = ${user.id}
+    `);
+    expect(legacyFields.rows).toEqual([{ name: null, avatar_id: null }]);
     const authenticatedAfter = await payload.auth({ headers: sessionHeaders(), req });
     expect(authenticatedAfter.user?.id).toBe(user.id);
   } finally {
@@ -103,43 +109,33 @@ it('preserves the existing account, password credentials and active session acro
   }
 });
 
-it('persists the optional account profile and refuses a PDF avatar through Native server validation', async () => {
+it('keeps previously stored account profile data while omitting it from native account operations', async () => {
   assertOwned();
   const { payload, user } = fixture;
   const image = await mediaMetadataFixture(payload);
-  const pdf = await mediaMetadataFixture(payload, 'pdf');
-  await payload.update({
+  const pool = payload.db.pool;
+  await pool.query('UPDATE users SET name = $1, avatar_id = $2 WHERE id = $3', [
+    'Previously saved name',
+    image.id,
+    user.id,
+  ]);
+
+  const attemptedProfileUpdate = { email: user.email, name: 'New name', avatar: null };
+  const saved = await payload.update({
     collection: 'users',
     id: user.id,
-    data: { name: 'Synthetic account display name', avatar: image.id },
+    data: attemptedProfileUpdate,
     req: await fixture.request(),
     overrideAccess: false,
   });
-  const saved = await payload.findByID({
-    collection: 'users',
-    id: user.id,
-    depth: 0,
-    req: await fixture.request(),
-    overrideAccess: false,
-  });
-  expect(saved).toMatchObject({ name: 'Synthetic account display name', avatar: image.id });
-  await expect(
-    payload.update({
-      collection: 'users',
-      id: user.id,
-      data: { avatar: pdf.id },
-      req: await fixture.request(),
-      overrideAccess: false,
-    }),
-  ).rejects.toMatchObject({ status: 400 });
-  const unchanged = await payload.findByID({
-    collection: 'users',
-    id: user.id,
-    depth: 0,
-    req: await fixture.request(),
-    overrideAccess: false,
-  });
-  expect(unchanged).toMatchObject({ name: saved.name, avatar: image.id, email: user.email });
-  const authenticated = await payload.auth({ headers: sessionHeaders() });
-  expect(authenticated.user?.id).toBe(user.id);
+  expect(saved).toMatchObject({ id: user.id, email: user.email });
+  expect(saved).not.toHaveProperty('name');
+  expect(saved).not.toHaveProperty('avatar');
+
+  const { rows } = await pool.query('SELECT name, avatar_id FROM users WHERE id = $1', [user.id]);
+  expect(rows).toEqual([{ name: 'Previously saved name', avatar_id: image.id }]);
+  const { user: authenticated } = await payload.auth({ headers: sessionHeaders() });
+  expect(authenticated?.id).toBe(user.id);
+  expect(authenticated).not.toHaveProperty('name');
+  expect(authenticated).not.toHaveProperty('avatar');
 });

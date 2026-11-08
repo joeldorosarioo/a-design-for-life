@@ -31,7 +31,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
 
   admin: {
     description:
-      'Escreva a versão de um projeto em português ou inglês. Cada idioma tem seu próprio rascunho e sua própria publicação; os campos de ajuda permanecem em português.',
+      'Edite e publique cada idioma separadamente. As duas versões usam o mesmo cadastro em Projetos.',
     components: {
       edit: { UnpublishButton: '/helpers/payload/editorial-actions#EditorialUnpublishAction' },
     },
@@ -76,7 +76,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
     {
       name: 'case',
 
-      label: 'Projeto correspondente',
+      label: 'Projeto',
 
       type: 'relationship',
 
@@ -84,7 +84,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
 
       admin: {
         description:
-          'Selecione o projeto cadastrado em Projetos. As versões em português e inglês devem apontar para o mesmo projeto. Esta escolha não pode ser alterada depois de salvar.',
+          'Selecione o mesmo projeto nas duas versões. A escolha fica fixa depois de salvar.',
       },
 
       required: true,
@@ -93,7 +93,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
     {
       name: 'locale',
 
-      label: 'Idioma deste conteúdo',
+      label: 'Idioma',
 
       type: 'select',
 
@@ -101,7 +101,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
 
       admin: {
         description:
-          'Escolha o idioma dos textos que serão exibidos no site. Esta escolha não pode ser alterada depois de salvar. Para o outro idioma, crie outro conteúdo para o mesmo projeto.',
+          'Escolha o idioma antes de salvar. Para traduzir, crie outro conteúdo para o mesmo projeto.',
       },
 
       options: [
@@ -113,77 +113,76 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
 
     {
       name: 'eyebrow',
-      label: 'Texto curto acima do título',
+      label: 'Linha acima do título',
       type: 'text',
       admin: {
         description:
-          'Identifica o tipo de projeto na abertura. Exemplo: Design de produto. Também aparece no cartão do projeto quando não houver um texto específico para ele.',
+          'Use uma categoria curta, como Design de produto. Ela também aparece no cartão quando a linha do cartão fica vazia.',
       },
     },
     {
       name: 'title',
-      label: 'Título do projeto no site',
+      label: 'Título do projeto',
       type: 'text',
       admin: {
         description:
-          'Título principal exibido na página do projeto. Se houver uma continuação em destaque, preencha-a no campo seguinte.',
+          'Se parte do título receber destaque visual, coloque essa parte no próximo campo.',
       },
     },
     ...casePresentationFields(),
     {
       name: 'cardTitle',
-      label: 'Título no cartão do projeto (opcional)',
+      label: 'Título no cartão',
       type: 'text',
       admin: {
         description:
-          'Título mais curto para os cartões da página inicial e da lista de projetos. Se ficar vazio, será usado o título completo do projeto.',
+          'Use uma versão curta para a página inicial e a lista de projetos. Em branco, o cartão usa o título completo.',
       },
     },
     {
       name: 'cardEyebrow',
-      label: 'Texto acima do título no cartão (opcional)',
+      label: 'Linha acima do título no cartão',
       type: 'text',
       admin: {
-        description:
-          'Texto curto mostrado acima do título nos cartões. Se ficar vazio, será usado o texto da abertura do projeto.',
+        description: 'Em branco, o cartão usa a linha acima do título da página do projeto.',
       },
     },
 
     {
       name: 'summary',
-      label: 'Resumo do projeto',
+      label: 'Resumo no cartão',
       type: 'textarea',
       admin: {
         description:
-          'Apresentação curta exibida no cartão do projeto. Resuma o desafio e a proposta; este texto é obrigatório para publicar.',
+          'Resuma o desafio e a proposta em poucas frases. O resumo é obrigatório para publicar.',
       },
     },
 
     {
       name: 'introduction',
-      label: 'Introdução da página do projeto',
+      label: 'Introdução',
       type: 'textarea',
       admin: {
         description:
-          'Texto de abertura apresentado na página do projeto, antes das seções do estudo. Pode ser mais detalhado que o resumo do cartão.',
+          'Apresente o projeto antes das seções. Use mais detalhes do que no resumo do cartão, se necessário.',
       },
     },
 
     {
       name: 'slug',
-      label: 'Endereço do projeto na URL',
+      label: 'Final do endereço',
       type: 'text',
       admin: {
         description:
-          'Última parte do endereço desta tradução. Exemplo: redesenho-do-aplicativo. Use letras minúsculas, números e hífens; o endereço deve estar livre neste idioma. Obrigatório para publicar.',
+          'Use um final como redesenho-do-aplicativo, com letras minúsculas sem acentos, números e hífens. Escolha um valor disponível neste idioma para publicar.',
         components: { afterInput: ['/features/cases/components/slug-suggestion#SlugSuggestion'] },
       },
     },
 
-    imageUseField('cover', 'Imagem de capa do projeto'),
+    imageUseField('cover', 'Imagem de capa'),
     {
       name: 'coverPresentation',
-      label: 'Cor de fundo da capa (opcional)',
+      label: 'Fundo da capa',
       type: 'select',
       options: [
         { label: 'Fundo cereja', value: 'contained-cherry' },
@@ -191,48 +190,47 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
       ],
       admin: {
         description:
-          'Escolha a composição da imagem na abertura do projeto. A imagem fica inteira sobre a cor selecionada; se não escolher, será usado o fundo cereja.',
+          'A imagem aparece inteira sobre o fundo. Se deixar em branco, o site usa o fundo cereja.',
       },
     },
 
     {
       name: 'role',
-      label: 'Sua função no projeto',
+      label: 'Papel no projeto',
       type: 'text',
       admin: {
-        description:
-          'Função exercida por Eliana neste trabalho. Exemplo: Designer de produto. Este campo é obrigatório para publicar.',
+        description: 'Preencha para publicar. Use uma função como Designer de produto.',
       },
     },
 
     {
       name: 'scope',
-      label: 'Atividades realizadas no projeto',
+      label: 'Responsabilidades',
       type: 'textarea',
       admin: {
         description:
-          'Descreva as responsabilidades e entregas de Eliana. Exemplo: Pesquisa com usuários, prototipação e testes de usabilidade.',
+          'Liste as atividades, como pesquisa com usuários, prototipação e testes de usabilidade.',
       },
     },
 
     {
       name: 'contextNote',
-      label: 'Informações adicionais sobre o projeto',
+      label: 'Contexto complementar',
       type: 'textarea',
       admin: {
         description:
-          'Contexto complementar exibido na abertura, como período, equipe ou condições do estudo. Preencha apenas informações que pertençam a este projeto.',
+          'Use para incluir período, equipe ou outras informações na abertura do projeto.',
       },
     },
 
     {
       name: 'sections',
 
-      label: 'Seções do estudo',
+      label: 'Seções',
       labels: { singular: 'Seção', plural: 'Seções' },
       admin: {
         description:
-          'Organize a narrativa do projeto na ordem de leitura. Cada seção pode reunir textos e imagens; o sumário é criado a partir destes títulos. Para publicar, adicione pelo menos um bloco de conteúdo.',
+          'Coloque as seções na ordem de leitura. Para publicar, adicione pelo menos um bloco de conteúdo ao projeto.',
       },
 
       type: 'array',
@@ -240,11 +238,11 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
       fields: [
         {
           name: 'readingKey',
-          label: 'Correspondência da seção entre idiomas',
+          label: 'Código da seção na tradução',
           type: 'text',
           admin: {
             description:
-              'Identificador gerado ao salvar para manter a posição de leitura na troca de idioma. Ao criar a seção equivalente na tradução, copie o identificador da seção original. Não altere o identificador de uma seção já salva.',
+              'Copie o código da seção original ao criar a tradução. O painel gera o código ao salvar, e ele permanece fixo.',
           },
         },
 
@@ -253,20 +251,18 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
           label: 'Título da seção',
           type: 'textarea',
           admin: {
-            description:
-              'Título principal desta parte do estudo. Também será usado no sumário; se ficar vazio, será usado o texto curto da seção.',
+            description: 'Aparece no sumário. Em branco, o sumário usa a linha acima do título.',
           },
         },
         ...sectionPresentationFields(),
 
         {
           name: 'blocks',
-          label: 'Textos e imagens da seção',
+          label: 'Blocos de conteúdo',
           type: 'blocks',
           blocks: caseBlocks,
           admin: {
-            description:
-              'Adicione e ordene os conteúdos desta seção: texto formatado, uma imagem ou duas imagens. Na apresentação Antes e depois, use exatamente dois blocos de texto, nessa ordem.',
+            description: 'Adicione os textos e as imagens na ordem de leitura.',
           },
         },
       ],
@@ -275,10 +271,9 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
     {
       name: 'seo',
 
-      label: 'Aparência nos buscadores e compartilhamentos',
+      label: 'Busca e compartilhamento',
       admin: {
-        description:
-          'Textos e imagem usados ao encontrar ou compartilhar a página deste projeto. Preencha no idioma deste conteúdo.',
+        description: 'Preencha os textos no idioma desta versão do projeto.',
       },
 
       type: 'group',
@@ -290,7 +285,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
           type: 'text',
           admin: {
             description:
-              'Título específico para a aba do navegador e os resultados de busca. Use este campo se quiser apresentar um texto diferente do título do projeto.',
+              'Pode aparecer na aba do navegador e nos resultados de busca. Em branco, o site usa o título do projeto.',
           },
         },
 
@@ -300,7 +295,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
           type: 'textarea',
           admin: {
             description:
-              'Resumo da página para resultados de busca e compartilhamentos. Explique em uma ou duas frases o assunto deste projeto.',
+              'Descreva o projeto em uma ou duas frases para quem o encontrar em uma busca ou receber o link.',
           },
         },
 

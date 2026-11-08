@@ -21,33 +21,44 @@ export const contextualLinkFeature = LinkFeature({
       required: true,
       defaultValue: 'external',
       options: [
-        { label: 'Endereço externo', value: 'external' },
+        { label: 'Link externo', value: 'external' },
         { label: 'Página do site', value: 'page' },
-        { label: 'Case por identidade', value: 'case' },
-        { label: 'Currículo do idioma', value: 'resume' },
+        { label: 'Projeto', value: 'case' },
+        { label: 'Currículo neste idioma', value: 'resume' },
         { label: 'Contato nesta página', value: 'contact' },
       ],
     },
     {
       name: 'url',
-      label: 'Endereço externo',
+      label: 'Endereço do link',
       type: 'text',
       defaultValue: '',
-      admin: { condition: (_data, siblings) => siblings.destination === 'external' },
+      admin: {
+        condition: (_data, siblings) => siblings.destination === 'external',
+        description:
+          'Cole um link completo, como https://exemplo.com ou mailto:contato@exemplo.com.',
+      },
     },
     {
       name: 'page',
       label: 'Página',
       type: 'select',
-      options: ['home', 'cases', 'about'],
+      options: [
+        { label: 'Página inicial', value: 'home' },
+        { label: 'Projetos', value: 'cases' },
+        { label: 'Sobre', value: 'about' },
+      ],
       admin: { condition: (_data, siblings) => siblings.destination === 'page' },
     },
     {
       name: 'case',
-      label: 'Identidade do case',
+      label: 'Projeto de destino',
       type: 'relationship',
       relationTo: 'cases',
-      admin: { condition: (_data, siblings) => siblings.destination === 'case' },
+      admin: {
+        condition: (_data, siblings) => siblings.destination === 'case',
+        description: 'O link usa a versão publicada no mesmo idioma do texto.',
+      },
     },
   ],
 });

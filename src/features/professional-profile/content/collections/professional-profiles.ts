@@ -24,7 +24,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
       edit: { UnpublishButton: '/helpers/payload/editorial-actions#NoUnpublishAction' },
     },
     description:
-      'Textos, imagens, contatos e currículo da Eliana. Há um perfil por idioma; preencha os campos no idioma do documento e publique cada versão separadamente.',
+      'Edite a apresentação, a biografia, os contatos e o currículo da Eliana. Cada idioma tem seu próprio perfil e sua própria publicação.',
     useAsTitle: 'locale',
     defaultColumns: ['locale', '_status'],
   },
@@ -113,286 +113,276 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
       ],
       admin: {
         description:
-          'Idioma desta versão do perfil. Preencha todos os textos neste idioma; ele não pode ser alterado depois.',
+          'Escreva os textos e as descrições de imagem neste idioma. O idioma fica fixo após salvar.',
       },
     },
     {
       name: 'identity',
-      label: 'Nome e atuação profissional',
+      label: 'Identificação profissional',
       type: 'group',
       admin: {
-        description:
-          'Identificação pública da Eliana, usada para apresentar a profissional no site.',
+        description: 'Dados de referência sobre a profissional apresentada no portfólio.',
       },
       fields: [
         {
           name: 'name',
           label: 'Nome profissional',
           type: 'text',
-          admin: { description: 'Nome que será apresentado no portfólio. Exemplo: Eliana.' },
+          admin: {
+            description: 'Informe o nome pelo qual a Eliana se apresenta profissionalmente.',
+          },
         },
         {
           name: 'role',
-          label: 'Cargo ou área de atuação',
+          label: 'Área de atuação',
           type: 'text',
           admin: {
-            description:
-              'Como a profissional se apresenta ao público. Exemplo: Designer de produto.',
+            description: 'Informe o cargo ou a especialidade, como designer de produto.',
           },
         },
       ],
     },
     {
       name: 'home',
-      label: 'Página inicial — apresentação principal',
+      label: 'Início — abertura',
       type: 'group',
       admin: {
-        description:
-          'Primeira seção da página inicial: apresentação, título em destaque, retrato e acesso aos projetos.',
+        description: 'Primeira seção da página inicial, com título, retrato e botão de projetos.',
       },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título',
+          label: 'Chamada acima do título',
           type: 'text',
           admin: {
-            description:
-              'Pequena chamada que identifica a apresentação antes do título principal. Exemplo: Design com propósito.',
+            description: 'Uma frase curta que prepara a leitura do título.',
           },
         },
         {
           name: 'title',
-          label: 'Título principal da apresentação',
+          label: 'Título de abertura',
           type: 'text',
-          admin: { description: 'Primeira parte do título de abertura da página inicial.' },
+          admin: { description: 'Comece com a mensagem principal da apresentação.' },
         },
         {
           name: 'titleEmphasis',
-          label: 'Trecho em destaque no título',
+          label: 'Trecho em destaque',
           type: 'textarea',
           admin: {
             description:
-              'Parte do título que recebe destaque visual e complementa o título principal.',
+              'Aparece em destaque abaixo da primeira parte do título. Pode ficar vazio.',
           },
         },
         {
           name: 'description',
-          label: 'Texto de apresentação',
+          label: 'Apresentação breve',
           type: 'textarea',
           admin: {
-            description:
-              'Parágrafo que explica quem é a Eliana e o que ela faz, exibido na abertura da página inicial.',
+            description: 'Apresente a Eliana e seu trabalho no texto abaixo do título.',
           },
         },
-        imageUseField('portrait', 'Retrato da apresentação'),
+        imageUseField('portrait', 'Retrato da abertura'),
         {
           name: 'projectsLabel',
-          label: 'Texto do link para os projetos',
+          label: 'Texto do botão de projetos',
           type: 'text',
           admin: {
             description:
-              'Texto exibido na ação que leva à lista de projetos. Exemplo: Conheça meus projetos. O destino é definido pelo site.',
+              'Escreva o que aparece no botão, como “Veja meus projetos”. Ele abre a lista de projetos.',
           },
         },
       ],
     },
     {
       name: 'homeProjects',
-      label: 'Página inicial — chamada para os projetos',
+      label: 'Início — projetos em destaque',
       type: 'group',
-      admin: { description: 'Textos que apresentam a seleção de projetos na página inicial.' },
+      admin: { description: 'Apresentação da seleção de projetos da página inicial.' },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título',
+          label: 'Chamada acima do título',
           type: 'text',
           admin: {
-            description: 'Chamada curta da seção de projetos. Exemplo: Projetos selecionados.',
+            description: 'Uma frase curta para introduzir os projetos em destaque.',
           },
         },
         {
           name: 'title',
-          label: 'Título da seção de projetos',
+          label: 'Título da seleção',
           type: 'text',
-          admin: { description: 'Título que apresenta os projetos destacados na página inicial.' },
+          admin: { description: 'Aparece acima dos cartões na página inicial.' },
         },
         {
           name: 'description',
-          label: 'Apresentação dos projetos',
+          label: 'Texto sobre a seleção',
           type: 'textarea',
           admin: {
-            description: 'Breve texto de apoio ao título da seção de projetos na página inicial.',
+            description: 'Dê contexto aos projetos escolhidos para a página inicial.',
           },
         },
       ],
     },
     {
       name: 'listing',
-      label: 'Página de projetos — abertura',
+      label: 'Página de projetos',
       type: 'group',
       admin: {
-        description:
-          'Textos de abertura da página que reúne todos os projetos disponíveis neste idioma.',
+        description: 'Abertura da página que reúne todos os projetos publicados neste idioma.',
       },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título',
+          label: 'Chamada acima do título',
           type: 'text',
-          admin: { description: 'Chamada curta exibida antes do título da lista de projetos.' },
+          admin: { description: 'Uma frase curta para introduzir a lista completa.' },
         },
         {
           name: 'title',
           label: 'Título da página de projetos',
           type: 'text',
           admin: {
-            description: 'Título principal da página que lista os projetos. Exemplo: Projetos.',
+            description: 'É o título principal da lista completa.',
           },
         },
         {
           name: 'description',
-          label: 'Apresentação da lista de projetos',
+          label: 'Introdução da lista',
           type: 'textarea',
-          admin: { description: 'Texto de apoio exibido na abertura da página de projetos.' },
+          admin: { description: 'Conte o que a pessoa encontra nesta página.' },
         },
       ],
     },
     {
       name: 'homeAbout',
-      label: 'Página inicial — sobre e trajetória',
+      label: 'Início — sobre e trajetória',
       type: 'group',
       admin: {
-        description:
-          'Resumo sobre a Eliana e os principais momentos da trajetória profissional, exibidos na página inicial.',
+        description: 'Resumo da biografia e da trajetória na página inicial.',
       },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título',
+          label: 'Chamada acima do título',
           type: 'text',
           admin: {
-            description:
-              'Chamada curta que apresenta a seção sobre a profissional. Exemplo: Um pouco sobre mim.',
+            description: 'Uma frase curta para introduzir a seção sobre a Eliana.',
           },
         },
         {
           name: 'title',
-          label: 'Título da apresentação pessoal',
+          label: 'Título do resumo',
           type: 'textarea',
-          admin: { description: 'Título da seção sobre a Eliana na página inicial.' },
+          admin: { description: 'Aparece acima do resumo da biografia na página inicial.' },
         },
         {
           name: 'description',
-          label: 'Resumo sobre a profissional',
+          label: 'Resumo da biografia',
           type: 'textarea',
           admin: {
-            description: 'Apresentação resumida que acompanha a trajetória na página inicial.',
+            description: 'Apresente a Eliana em poucas frases, antes do link para a página Sobre.',
           },
         },
         {
           name: 'trajectory',
-          label: 'Etapas da trajetória profissional',
+          label: 'Etapas da trajetória',
           type: 'array',
           labels: { singular: 'Etapa da trajetória', plural: 'Etapas da trajetória' },
           admin: {
             description:
-              'Adicione os momentos da trajetória na ordem em que devem aparecer no site.',
+              'Adicione ao menos uma etapa antes de publicar. A lista segue a ordem deste formulário.',
           },
           fields: [
             {
               name: 'readingKey',
-              label: 'Código de correspondência entre idiomas',
+              label: 'Código de leitura',
               type: 'text',
               admin: {
                 description:
-                  'Gerado ao salvar. Na tradução, use o mesmo código da etapa correspondente para manter a posição de leitura. Não altere um código já salvo.',
+                  'Gerado ao salvar. Reuse o código da etapa correspondente na tradução para manter a posição de leitura. Códigos salvos são fixos.',
               },
             },
             {
               name: 'period',
-              label: 'Período da etapa',
+              label: 'Período',
               type: 'text',
               admin: {
-                description: 'Data ou intervalo exibido junto desta etapa. Exemplo: 2020–2023.',
+                description: 'Informe uma data ou intervalo, como “2020–2023”.',
               },
             },
             {
               name: 'title',
               label: 'Título da etapa',
               type: 'text',
-              admin: { description: 'Nome da experiência, formação ou momento profissional.' },
+              admin: { description: 'Dê nome à experiência, formação ou marco profissional.' },
             },
             {
               name: 'description',
               label: 'Descrição da etapa',
               type: 'textarea',
               admin: {
-                description:
-                  'Breve explicação sobre a experiência e sua importância na trajetória.',
+                description: 'Conte o que aconteceu nesta etapa e por que foi importante.',
               },
             },
           ],
         },
         {
           name: 'aboutLabel',
-          label: 'Texto do link para a página Sobre',
+          label: 'Texto do link para Sobre',
           type: 'text',
           admin: {
-            description:
-              'Texto da ação que abre a biografia completa. Exemplo: Saiba mais sobre mim. O destino é definido pelo site.',
+            description: 'Escreva o que aparece no link que abre a biografia completa.',
           },
         },
       ],
     },
     {
       name: 'approach',
-      label: 'Página inicial — forma de trabalhar',
+      label: 'Início — como trabalho',
       type: 'group',
       admin: {
-        description:
-          'Apresenta a abordagem de trabalho da Eliana e os cartões que explicam seus métodos.',
+        description: 'Princípios de trabalho e cartões de método da página inicial.',
       },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título',
+          label: 'Chamada acima do título',
           type: 'text',
           admin: {
-            description:
-              'Chamada curta que identifica a seção de abordagem. Exemplo: Como trabalho.',
+            description: 'Uma frase curta para introduzir os métodos.',
           },
         },
         {
           name: 'title',
-          label: 'Título da seção de abordagem',
+          label: 'Título da seção de métodos',
           type: 'text',
-          admin: { description: 'Título que apresenta a forma de trabalhar na página inicial.' },
+          admin: { description: 'Aparece acima da introdução e dos cartões de método.' },
         },
         {
           name: 'description',
-          label: 'Apresentação da abordagem',
+          label: 'Introdução aos métodos',
           type: 'textarea',
           admin: {
-            description: 'Texto que resume os princípios e a forma de conduzir o trabalho.',
+            description: 'Resuma os princípios que orientam o trabalho.',
           },
         },
         {
           name: 'methods',
-          label: 'Cartões dos métodos de trabalho',
+          label: 'Métodos de trabalho',
           type: 'array',
           labels: { singular: 'Método de trabalho', plural: 'Métodos de trabalho' },
           admin: {
             description:
-              'Adicione cada método na ordem em que os cartões devem aparecer na página inicial.',
+              'Adicione ao menos um método antes de publicar. Os cartões seguem a ordem deste formulário.',
           },
           fields: [
             {
               name: 'readingKey',
-              label: 'Código de correspondência entre idiomas',
+              label: 'Código de leitura',
               type: 'text',
               admin: {
                 description:
-                  'Gerado ao salvar. Na tradução, use o mesmo código do método correspondente para manter a posição de leitura. Não altere um código já salvo.',
+                  'Gerado ao salvar. Reuse o código do método correspondente na tradução para manter a posição de leitura. Códigos salvos são fixos.',
               },
             },
             {
@@ -400,25 +390,24 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
               label: 'Nome do método',
               type: 'text',
               admin: {
-                description: 'Título do cartão que identifica esta etapa ou método de trabalho.',
+                description: 'É o título do cartão.',
               },
             },
             {
               name: 'description',
-              label: 'Explicação do método',
+              label: 'Descrição do método',
               type: 'textarea',
               admin: {
-                description:
-                  'Texto do cartão que explica como este método contribui para o trabalho.',
+                description: 'Explique como o método é usado e o que ele ajuda a resolver.',
               },
             },
             {
               name: 'keywords',
-              label: 'Palavras-chave exibidas no cartão',
+              label: 'Palavras-chave',
               type: 'text',
               admin: {
                 description:
-                  'Linha curta de termos que complementa o método. Exemplo: Pesquisa · Escuta · Experimentação.',
+                  'Aparecem no fim do cartão. Você pode usar “Pesquisa · Escuta · Experimentação”.',
               },
             },
           ],
@@ -427,67 +416,64 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
     },
     {
       name: 'about',
-      label: 'Página Sobre — biografia completa',
+      label: 'Página Sobre',
       type: 'group',
       admin: {
-        description:
-          'Conteúdo da página Sobre, organizado na sequência de seções que aparece no site.',
+        description: 'Biografia completa, na ordem em que as seções aparecem no site.',
       },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título de abertura',
+          label: 'Chamada da abertura',
           type: 'text',
           admin: {
-            description: 'Chamada que identifica a página Sobre antes do título principal.',
+            description: 'Aparece acima do título principal da página Sobre.',
           },
         },
         {
           name: 'title',
-          label: 'Título principal da página Sobre',
+          label: 'Título da página Sobre',
           type: 'textarea',
-          admin: { description: 'Título de abertura da biografia completa.' },
+          admin: { description: 'É o primeiro título da biografia.' },
         },
         {
           name: 'description',
-          label: 'Resumo de abertura da página Sobre',
+          label: 'Resumo da abertura',
           type: 'textarea',
           admin: {
-            description:
-              'Texto introdutório apresentado junto ao título principal da página Sobre.',
+            description: 'Aparece abaixo do título principal da página Sobre.',
           },
         },
         {
           name: 'introductionHeading',
-          label: 'Título da introdução para leitores de tela',
+          label: 'Título acessível da introdução',
           type: 'text',
           admin: {
-            description:
-              'Identifica a introdução para quem usa leitores de tela. Este título não aparece visualmente no site.',
+            description: 'Identifica a seção para leitores de tela e fica oculto visualmente.',
           },
         },
         {
           name: 'introduction',
-          label: 'Texto de apresentação pessoal',
+          label: 'Introdução da biografia',
           type: 'textarea',
           admin: {
             description:
-              'Apresentação mais detalhada sobre a Eliana. Separe os parágrafos com uma linha em branco.',
+              'Apresente a Eliana no texto junto ao retrato. Separe os parágrafos com uma linha em branco.',
           },
         },
-        imageUseField('portrait', 'Retrato da página Sobre'),
+        imageUseField('portrait', 'Retrato da biografia'),
         {
           name: 'journeyHeading',
-          label: 'Título da seção de trajetória',
+          label: 'Título da trajetória',
           type: 'text',
-          admin: { description: 'Título que apresenta o percurso pessoal e profissional.' },
+          admin: { description: 'Apresenta o percurso pessoal e profissional.' },
         },
         {
           name: 'journeyEyebrow',
-          label: 'Texto curto acima do título da trajetória',
+          label: 'Chamada da trajetória',
           type: 'text',
           admin: {
-            description: 'Chamada curta que identifica a seção de trajetória na página Sobre.',
+            description: 'Aparece acima do título da trajetória. Pode ficar vazia.',
           },
         },
         {
@@ -496,89 +482,86 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
           type: 'textarea',
           admin: {
             description:
-              'Relato do percurso pessoal e profissional. Separe os parágrafos com uma linha em branco.',
+              'Conte os momentos que marcaram esse percurso. Separe os parágrafos com uma linha em branco.',
           },
         },
-        imageUseField('deskPhotograph', 'Fotografia de mesa ou ambiente de trabalho'),
+        imageUseField('deskPhotograph', 'Foto do ambiente de trabalho'),
         {
           name: 'editorialEmphasis',
-          label: 'Frase em destaque entre as seções',
+          label: 'Frase em destaque',
           type: 'textarea',
           admin: {
-            description:
-              'Frase de destaque exibida após a fotografia de mesa, criando uma pausa na leitura.',
+            description: 'Aparece após a foto do ambiente de trabalho, em destaque na página.',
           },
         },
         {
           name: 'approachHeading',
-          label: 'Título da seção sobre a forma de trabalhar',
+          label: 'Título da abordagem',
           type: 'text',
-          admin: { description: 'Título da seção de abordagem na página Sobre.' },
+          admin: { description: 'Apresenta a seção sobre a forma de trabalhar.' },
         },
         {
           name: 'approachEyebrow',
-          label: 'Texto curto acima do título da abordagem',
+          label: 'Chamada da abordagem',
           type: 'text',
           admin: {
-            description: 'Chamada curta que identifica a seção sobre a forma de trabalhar.',
+            description: 'Aparece acima do título da abordagem. Pode ficar vazia.',
           },
         },
         {
           name: 'approach',
-          label: 'Texto sobre a forma de trabalhar',
+          label: 'Texto da abordagem',
           type: 'textarea',
           admin: {
             description:
-              'Explicação detalhada da abordagem profissional. Separe os parágrafos com uma linha em branco.',
+              'Explique como a Eliana trabalha. Separe os parágrafos com uma linha em branco.',
           },
         },
-        imageUseField('architecturePhotograph', 'Fotografia de arquitetura'),
+        imageUseField('architecturePhotograph', 'Foto de arquitetura'),
         {
           name: 'inMotionHeading',
-          label: 'Título da seção Em movimento',
+          label: 'Título de Em movimento',
           type: 'text',
           admin: {
-            description:
-              'Título da seção sobre interesses, atividades e aprendizados em andamento.',
+            description: 'Apresenta a seção de interesses e aprendizados atuais.',
           },
         },
         {
           name: 'inMotionEyebrow',
-          label: 'Texto curto acima do título de Em movimento',
+          label: 'Chamada de Em movimento',
           type: 'text',
-          admin: { description: 'Chamada curta que identifica a seção Em movimento.' },
+          admin: { description: 'Aparece acima do título de Em movimento. Pode ficar vazia.' },
         },
         {
           name: 'inMotion',
-          label: 'Texto da seção Em movimento',
+          label: 'Texto de Em movimento',
           type: 'textarea',
           admin: {
             description:
-              'Conte o que mantém a Eliana em movimento, como interesses e aprendizados atuais. Separe os parágrafos com uma linha em branco.',
+              'Conte o que a Eliana está explorando ou aprendendo. Separe os parágrafos com uma linha em branco.',
           },
         },
         {
           name: 'closingHeading',
-          label: 'Título do encerramento para leitores de tela',
+          label: 'Título acessível do encerramento',
           type: 'text',
           admin: {
-            description:
-              'Identifica o encerramento para quem usa leitores de tela. Este título não aparece visualmente no site.',
+            description: 'Identifica a seção para leitores de tela e fica oculto visualmente.',
           },
         },
         {
           name: 'closing',
-          label: 'Texto de encerramento da biografia',
+          label: 'Encerramento da biografia',
           type: 'textarea',
-          admin: { description: 'Mensagem final da página Sobre, antes do acesso aos projetos.' },
+          admin: { description: 'Último texto da página Sobre, antes do link para os projetos.' },
         },
         {
           name: 'projectsLabel',
-          label: 'Texto do link para os projetos',
+          label: 'Texto do link para projetos',
           type: 'text',
           admin: {
             description:
-              'Texto da ação exibida ao final da página Sobre. Exemplo: Veja meus projetos. O destino é definido pelo site.',
+              'Escreva o que aparece no link ao fim da biografia. Ele abre a lista de projetos.',
           },
         },
       ],
@@ -589,7 +572,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
       type: 'group',
       admin: {
         description:
-          'Endereços de contato usados pelo site, inclusive nos links do rodapé. Os textos desses links são definidos em Navegação.',
+          'Informe os destinos dos links do rodapé. Edite os textos dos links em Navegação.',
       },
       fields: [
         {
@@ -597,92 +580,86 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
           label: 'E-mail de contato',
           type: 'email',
           admin: {
-            description:
-              'Endereço público que recebe os contatos do portfólio. Informe apenas o e-mail, sem o prefixo mailto:.',
+            description: 'Informe apenas o endereço de e-mail. Ele será público no portfólio.',
           },
         },
         {
           name: 'linkedin',
-          label: 'Endereço do perfil no LinkedIn',
+          label: 'Link do LinkedIn',
           type: 'text',
           admin: {
-            description:
-              'URL completa e segura do perfil profissional. Exemplo: https://www.linkedin.com/in/seu-perfil/.',
+            description: 'Cole o endereço HTTPS completo do perfil profissional no LinkedIn.',
           },
         },
       ],
     },
     {
       name: 'resume',
-      label: 'Arquivo do currículo neste idioma',
+      label: 'Currículo em PDF',
       type: 'upload',
       relationTo: 'media',
       admin: {
         description:
-          'Selecione ou envie o currículo em PDF, com até 5 MB, no idioma deste documento. O mesmo arquivo é usado pelos links de currículo do site.',
+          'Selecione ou envie o PDF deste idioma, de até 5 MB. Os links de currículo desta versão usam o mesmo arquivo.',
       },
     },
     {
       name: 'seo',
-      label: 'Títulos, descrições e imagem para busca e compartilhamento',
+      label: 'Busca e compartilhamento',
       type: 'group',
       admin: {
         description:
-          'Informações usadas nas abas do navegador, resultados de busca e prévias de links. Preencha textos específicos para cada página neste idioma.',
+          'Edite os títulos da aba do navegador e as informações que podem aparecer em buscas e prévias de links.',
       },
       fields: [
         {
           name: 'homeTitle',
-          label: 'Título da página inicial nos resultados de busca',
+          label: 'Início — título para busca',
           type: 'text',
           admin: {
             description:
-              'Título da página inicial usado na aba do navegador e nos metadados de busca e compartilhamento.',
+              'Se ficar vazio, o site usa o título de abertura, incluindo o trecho em destaque.',
           },
         },
         {
           name: 'homeDescription',
-          label: 'Resumo da página inicial para busca e compartilhamento',
+          label: 'Início — resumo para busca',
           type: 'textarea',
           admin: {
-            description:
-              'Resumo da apresentação da Eliana que pode aparecer em resultados de busca e prévias de links.',
+            description: 'Se ficar vazio, o site usa a apresentação breve da página inicial.',
           },
         },
         {
           name: 'listingTitle',
-          label: 'Título da página de projetos nos resultados de busca',
+          label: 'Projetos — título para busca',
           type: 'text',
           admin: {
-            description:
-              'Título específico da lista de projetos, usado na aba do navegador e nos metadados. Exemplo: Projetos | Eliana.',
+            description: 'Se ficar vazio, o site usa o título da página de projetos.',
           },
         },
         {
           name: 'listingDescription',
-          label: 'Resumo da página de projetos para busca e compartilhamento',
+          label: 'Projetos — resumo para busca',
           type: 'textarea',
-          admin: { description: 'Resumo do conteúdo encontrado na página que reúne os projetos.' },
+          admin: { description: 'Se ficar vazio, o site usa a introdução da lista de projetos.' },
         },
         {
           name: 'aboutTitle',
-          label: 'Título da página Sobre nos resultados de busca',
+          label: 'Sobre — título para busca',
           type: 'text',
           admin: {
-            description:
-              'Título específico da biografia, usado na aba do navegador e nos metadados. Exemplo: Sobre | Eliana.',
+            description: 'Se ficar vazio, o site usa o título da página Sobre.',
           },
         },
         {
           name: 'aboutDescription',
-          label: 'Resumo da página Sobre para busca e compartilhamento',
+          label: 'Sobre — resumo para busca',
           type: 'textarea',
           admin: {
-            description:
-              'Resumo da biografia que pode aparecer em resultados de busca e prévias de links.',
+            description: 'Se ficar vazio, o site usa o resumo de abertura da página Sobre.',
           },
         },
-        imageUseField('image', 'Imagem para prévias de compartilhamento'),
+        imageUseField('image', 'Imagem de compartilhamento'),
       ],
     },
   ],

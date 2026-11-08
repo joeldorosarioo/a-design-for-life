@@ -5,11 +5,11 @@ export function casePresentationFields(): Field[] {
   return [
     {
       name: 'titleEmphasis',
-      label: 'Continuação do título em destaque (opcional)',
+      label: 'Trecho final em destaque',
       type: 'text',
       admin: {
         description:
-          'Parte final do título exibida com destaque visual. Escreva somente a continuação: ela será unida ao título principal para formar o título completo do projeto.',
+          'Escreva só a continuação. O site une os dois campos para formar o título completo.',
       },
     },
   ];
@@ -19,27 +19,26 @@ export function sectionPresentationFields(): Field[] {
   return [
     {
       name: 'presentation',
-      label: 'Como apresentar esta seção',
+      label: 'Formato da seção',
       type: 'select',
       defaultValue: 'narrative',
       options: [
-        { label: 'Texto e imagens do estudo', value: 'narrative' },
+        { label: 'Texto e imagens', value: 'narrative' },
         { label: 'Etapas do processo', value: 'process' },
-        { label: 'Antes e depois em dois textos', value: 'comparison' },
+        { label: 'Antes e depois', value: 'comparison' },
         { label: 'Aprendizados', value: 'learnings' },
       ],
       admin: {
         description:
-          'Escolha o arranjo visual desta seção. Antes e depois exige exatamente dois blocos de texto, primeiro o cenário inicial e depois a proposta. As outras opções aceitam os blocos de texto e imagem disponíveis.',
+          'Em Antes e depois, adicione exatamente dois blocos de texto. Coloque o cenário inicial primeiro e a proposta em seguida.',
       },
     },
     {
       name: 'eyebrow',
-      label: 'Texto curto acima do título da seção',
+      label: 'Linha acima do título',
       type: 'text',
       admin: {
-        description:
-          'Identificação curta exibida antes do título. Exemplo: Processo ou Aprendizados. Também identifica a seção no sumário quando não houver título.',
+        description: 'Use uma indicação curta, como Processo ou Aprendizados.',
       },
     },
     {
@@ -47,8 +46,7 @@ export function sectionPresentationFields(): Field[] {
       label: 'Introdução da seção',
       type: 'textarea',
       admin: {
-        description:
-          'Breve apresentação exibida junto ao título da seção, antes dos blocos de texto e imagem.',
+        description: 'Aparece antes dos blocos de texto e imagem.',
       },
     },
     {
@@ -56,8 +54,7 @@ export function sectionPresentationFields(): Field[] {
       label: 'Observação da seção',
       type: 'textarea',
       admin: {
-        description:
-          'Informação complementar apresentada junto à abertura da seção, como uma ressalva ou contexto curto.',
+        description: 'Use para uma ressalva ou um detalhe de contexto.',
       },
     },
   ];
