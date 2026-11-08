@@ -1,9 +1,9 @@
 import type { CaseCardDTO } from '../contracts/case-dto.schema';
 import type { CaseMediaMode } from './case-image';
 import { CaseCard } from './case-card';
-import { CaseProse } from './case-text';
-import { buttonVariants } from '@/components/ui/button';
-import styles from '../stylesheets/cases.module.css';
+import { CaseProse, caseEyebrowClass, caseTextLinkClass } from './case-text';
+import { Button } from '@/components/ui/button';
+import { Empty } from '@/components/ui/empty';
 export type CaseGridProps = {
   cases: CaseCardDTO[];
   caseLinkLabel: string | null;
@@ -27,16 +27,16 @@ export function CaseGrid({
   if (!cases.length) {
     const Heading = headingLevel === 2 ? 'h2' : 'h3';
     return (
-      <div className={styles.empty}>
-        <Heading>{emptyState.title}</Heading>
+      <Empty>
+        <Heading className="m-0 text-2xl">{emptyState.title}</Heading>
         <CaseProse text={emptyState.description} />
-      </div>
+      </Empty>
     );
   }
   return (
-    <ul className={styles.caseGrid}>
+    <ul className="m-0 grid list-none gap-8 p-0 md:grid-cols-2">
       {cases.map((caseCard) => (
-        <li key={caseCard.caseId}>
+        <li key={caseCard.caseId} className="min-w-0">
           <CaseCard
             caseCard={caseCard}
             caseLinkLabel={caseLinkLabel}
@@ -50,17 +50,21 @@ export function CaseGrid({
 }
 export function CaseList({ opening, homeHref, homeLabel, countLabel, ...grid }: CaseListProps) {
   return (
-    <div className={`portfolio-container ${styles.listing}`}>
-      <header className={styles.listingOpening} data-reading-key="cases-opening">
-        <a href={homeHref} className={styles.textLink}>
+    <div className="portfolio-container grid min-w-0 gap-12 py-6 wrap-anywhere lg:gap-28 lg:py-20">
+      <header className="grid gap-6" data-reading-key="cases-opening">
+        <a href={homeHref} className={`${caseTextLinkClass} -my-3`}>
           <span aria-hidden="true">← </span>
           {homeLabel}
         </a>
-        <div className={styles.sectionHeading}>
-          {opening.eyebrow ? <p className={styles.eyebrow}>{opening.eyebrow}</p> : null}
-          {opening.title ? <h1 className={styles.listingTitle}>{opening.title}</h1> : null}
-          <CaseProse text={opening.description} />
-          <p className={styles.count}>
+        <div className="grid min-w-0 gap-6">
+          {opening.eyebrow ? <p className={caseEyebrowClass}>{opening.eyebrow}</p> : null}
+          {opening.title ? (
+            <h1 className="m-0 font-serif text-5xl font-normal whitespace-pre-line lg:text-7xl">
+              {opening.title}
+            </h1>
+          ) : null}
+          <CaseProse text={opening.description} className="text-lg" />
+          <p className="m-0 text-sm font-semibold text-primary">
             {grid.cases.length} {countLabel}
           </p>
         </div>
@@ -82,16 +86,16 @@ export function CaseState({
   links?: { href: string; label: string }[];
 }) {
   return (
-    <section className={`portfolio-container ${styles.state}`}>
-      <h1 className={styles.sectionTitle}>{title}</h1>
+    <section className="portfolio-container grid min-w-0 gap-6 py-20 wrap-anywhere">
+      <h1 className="m-0 text-3xl font-semibold whitespace-pre-line lg:text-4xl">{title}</h1>
       <CaseProse text={description} />
       {links.length ? (
-        <ul className={styles.stateLinks}>
+        <ul className="m-0 flex list-none flex-wrap gap-4 p-0">
           {links.map((link) => (
             <li key={`${link.href}-${link.label}`}>
-              <a href={link.href} className={buttonVariants({ variant: 'secondary' })}>
-                {link.label}
-              </a>
+              <Button asChild>
+                <a href={link.href}>{link.label}</a>
+              </Button>
             </li>
           ))}
         </ul>

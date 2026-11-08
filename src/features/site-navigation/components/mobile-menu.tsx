@@ -3,8 +3,14 @@
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import styles from '../stylesheets/navigation.module.css';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 
 export type MobileMenuProps = {
   items: NavigationPresentation['items'];
@@ -28,10 +34,12 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
     return () => desktop.removeEventListener('change', dismissOnDesktop);
   }, []);
   return (
-    <div className={styles.mobileMenu}>
+    <div className="col-span-full lg:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <Button className={styles.menuTrigger}>{controls.openMenuLabel}</Button>
+          <Button className="min-h-11 px-4 py-[calc(var(--space-3)-1px)] text-sm">
+            {controls.openMenuLabel}
+          </Button>
         </SheetTrigger>
         <SheetContent
           aria-describedby={undefined}
@@ -46,19 +54,19 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
             }
           }}
         >
-          <div className={styles.menuHeading}>
-            <SheetTitle className={styles.menuTitle}>{navigationLabel}</SheetTitle>
+          <SheetHeader className="flex flex-wrap items-center justify-between gap-4">
+            <SheetTitle className="m-0 text-lg font-semibold">{navigationLabel}</SheetTitle>
             <SheetClose asChild>
               <Button>{controls.closeMenuLabel}</Button>
             </SheetClose>
-          </div>
+          </SheetHeader>
           <nav aria-label={navigationLabel}>
-            <ul className={styles.mobileNavigationList}>
+            <ul className="m-0 flex list-none flex-col gap-4 p-0">
               {items.map((item) => (
                 <li key={item.purpose}>
                   <SheetClose asChild>
                     <a
-                      className={styles.navigationLink}
+                      className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground no-underline wrap-anywhere hover:underline hover:underline-offset-[0.25em]"
                       href={item.destination.href}
                       data-analytics-purpose={item.purpose === 'resume' ? 'resume' : undefined}
                       aria-label={
@@ -75,7 +83,7 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
                     >
                       {item.label}
                       {item.destination.kind === 'resume' && (
-                        <span className={styles.visuallyHidden}> ({controls.newTabLabel})</span>
+                        <span className="sr-only"> ({controls.newTabLabel})</span>
                       )}
                     </a>
                   </SheetClose>

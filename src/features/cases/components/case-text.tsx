@@ -1,7 +1,13 @@
 import { Fragment, type ReactNode } from 'react';
+import { cn } from 'cn';
 import type { RichText } from '../contracts/rich-text.schema';
 import type { ContextualLink } from '../contracts/contextual-link.schema';
-import styles from '../stylesheets/cases.module.css';
+export const caseEyebrowClass = 'm-0 text-xs font-semibold whitespace-pre-line text-primary';
+export const caseTextLinkClass =
+  'inline-flex min-h-11 items-center justify-self-start gap-2 text-sm font-semibold text-primary no-underline [&:hover]:text-[color:var(--action-hover)] [&:hover]:underline [&:hover]:underline-offset-[0.2em]';
+const proseClass =
+  'text-base text-muted-foreground [&_p]:whitespace-pre-line [&>:not(:first-child)]:mt-6';
+
 export type ResolvedCaseLink = { href: string; newTab?: boolean };
 export type CaseLinkResolver = (link: ContextualLink) => ResolvedCaseLink | null;
 type RichNode =
@@ -10,10 +16,12 @@ export function CaseText({
   content,
   resolveLink,
   newTabLabel,
+  className,
 }: {
   content: RichText | null;
   resolveLink: CaseLinkResolver;
   newTabLabel: string;
+  className?: string;
 }) {
   function renderNode(node: RichNode): ReactNode {
     if (node.type === 'text') {
@@ -33,9 +41,11 @@ export function CaseText({
         return <li value={node.value}>{children}</li>;
       case 'list':
         return node.listType === 'number' ? (
-          <ol start={node.start}>{children}</ol>
+          <ol start={node.start} className="mb-0 ps-6 [&>li+li]:mt-2">
+            {children}
+          </ol>
         ) : (
-          <ul>{children}</ul>
+          <ul className="mb-0 ps-6 [&>li+li]:mt-2">{children}</ul>
         );
       case 'link': {
         const target = resolveLink(node.fields);
@@ -43,6 +53,7 @@ export function CaseText({
         return (
           <a
             href={target.href}
+            className="text-primary underline underline-offset-[0.2em] [&:hover]:text-[color:var(--action-hover)]"
             target={target.newTab ? '_blank' : undefined}
             rel={target.newTab ? 'noopener noreferrer' : undefined}
           >
@@ -60,7 +71,7 @@ export function CaseText({
   }
   if (!content) return null;
   return (
-    <div className={styles.prose}>
+    <div className={cn(proseClass, className)}>
       {content.root.children.map((node, index) => (
         <Fragment key={index}>{renderNode(node)}</Fragment>
       ))}
@@ -69,10 +80,10 @@ export function CaseText({
 }
 
 /** Plain editorial fields preserve authored lines and never interpret HTML. */
-export function CaseProse({ text, className = '' }: { text: string | null; className?: string }) {
+export function CaseProse({ text, className }: { text: string | null; className?: string }) {
   if (!text) return null;
   return (
-    <div className={`${styles.prose} ${className}`}>
+    <div className={cn(proseClass, className)}>
       {text
         .split(/\r?\n[\t ]*\r?\n+/)
         .filter((paragraph) => paragraph.trim())

@@ -1,7 +1,7 @@
+import { Card, CardContent } from '@/components/ui/card';
 import type { CaseCardDTO } from '../contracts/case-dto.schema';
 import { CaseImage, type CaseMediaMode } from './case-image';
-import { CaseProse } from './case-text';
-import styles from '../stylesheets/cases.module.css';
+import { CaseProse, caseEyebrowClass, caseTextLinkClass } from './case-text';
 export function CaseCard({
   caseCard,
   caseLinkLabel,
@@ -15,19 +15,24 @@ export function CaseCard({
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
   return (
-    <article className={styles.caseCard} data-reading-key={`case-card:${caseCard.caseId}`}>
+    <Card variant="flush" data-reading-key={`case-card:${caseCard.caseId}`}>
       <CaseImage image={caseCard.cover} kind="card" mediaMode={mediaMode} />
-      <div className={styles.cardCopy}>
-        {caseCard.eyebrow ? <p className={styles.eyebrow}>{caseCard.eyebrow}</p> : null}
+      <CardContent>
+        {caseCard.eyebrow ? <p className={caseEyebrowClass}>{caseCard.eyebrow}</p> : null}
         {caseCard.title ? (
-          <Heading className={styles.cardTitle}>
-            <a href={caseCard.path}>{caseCard.title}</a>
+          <Heading className="m-0 text-2xl font-semibold lg:text-3xl">
+            <a
+              href={caseCard.path}
+              className="text-inherit no-underline [&:hover]:underline [&:hover]:underline-offset-[0.15em]"
+            >
+              {caseCard.title}
+            </a>
           </Heading>
         ) : null}
         <CaseProse text={caseCard.summary} />
         {caseLinkLabel?.trim() ? (
           <a
-            className={styles.textLink}
+            className={`${caseTextLinkClass} -my-3`}
             href={caseCard.path}
             aria-label={caseCard.title ? `${caseLinkLabel}: ${caseCard.title}` : caseLinkLabel}
           >
@@ -35,7 +40,7 @@ export function CaseCard({
             <span aria-hidden="true"> →</span>
           </a>
         ) : null}
-      </div>
-    </article>
+      </CardContent>
+    </Card>
   );
 }

@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from 'react';
 import { useRouter } from 'next/navigation';
+import { Alert } from '@/components/ui/alert';
 import type {
   LanguageToggleProps,
   ReadingPage,
@@ -18,7 +19,6 @@ import type {
 } from '../contracts/language-control.schema';
 import type { ReadingAnchor } from '../contracts/reading-anchor.schema';
 import { captureReadingAnchor, restoreReadingAnchor } from '../helpers/reading-position';
-import { TranslationToast } from './translation-toast';
 
 type Transfer = {
   source: ReadingPage;
@@ -235,7 +235,16 @@ export function ReadingPositionProvider({ children }: { children: ReactNode }) {
   return (
     <ReadingContext.Provider value={value}>
       {children}
-      <TranslationToast message={notice} />
+      <Alert
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className={
+          notice ? 'fixed end-6 bottom-6 z-[60] max-w-[min(calc(100vw-3rem),32rem)]' : 'sr-only'
+        }
+      >
+        {notice && <p>{notice}</p>}
+      </Alert>
     </ReadingContext.Provider>
   );
 }

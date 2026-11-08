@@ -9,7 +9,6 @@ import { resolveContextualLink } from '@/features/cases/server';
 import { HomeContent, AboutContent } from '@/features/professional-profile/ui';
 import { SiteHeader, SiteFooter } from '@/features/site-navigation/ui';
 import { resolveNavigation } from '@/features/site-navigation/server';
-import styles from '../stylesheets/public-page.module.css';
 export type PublicPageViewProps = {
   locale: Locale;
   kind: 'home' | 'cases' | 'about' | 'case';
@@ -157,13 +156,16 @@ export function PublicPageView({
   }
   return (
     <>
-      <a className={styles.skipLink} href="#main-content">
+      <a
+        className="fixed top-2 left-2 z-100 -translate-y-[200%] bg-background px-4 py-3 text-foreground focus:translate-y-0"
+        href="#main-content"
+      >
         {english ? 'Skip to content' : 'Pular para o conteúdo'}
       </a>
       {navigation ? (
         <SiteHeader navigation={navigation} languageControl={languageControl} />
       ) : (
-        <header className={`portfolio-container ${styles.fallbackHeader}`}>
+        <header className="portfolio-container py-8">
           <a href={home}>{controls?.homeLabel ?? 'Home'}</a>
           {languageControl}
         </header>
@@ -174,11 +176,7 @@ export function PublicPageView({
       {navigation ? (
         <SiteFooter navigation={navigation} />
       ) : (
-        <footer
-          id="contact"
-          tabIndex={-1}
-          className={`portfolio-container ${styles.fallbackFooter}`}
-        >
+        <footer id="contact" tabIndex={-1} className="portfolio-container py-8">
           <a href={projects}>{english ? 'Projects' : 'Projetos'}</a>
           <p>
             {english

@@ -16,7 +16,7 @@ export default async function PublicLayout({
   const locale = localeSchema.safeParse((await params).locale);
   return (
     <html lang={locale.success ? locale.data : 'en'}>
-      <body>
+      <body className="portfolio-body portfolio-focus">
         <ReadingPositionProvider>{children}</ReadingPositionProvider>
       </body>
     </html>

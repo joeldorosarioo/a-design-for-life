@@ -1,176 +1,76 @@
 @import '../../../stylesheets/tokens.css';
 
 .case-state-document {
-  margin: 0;
-  background: var(--bg-page);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  line-height: var(--text-base--line-height);
+  @apply m-0 bg-background font-sans text-base text-foreground motion-reduce:scroll-auto;
 }
 .case-state-document * {
-  box-sizing: border-box;
+  @apply box-border;
 }
 .case-state-document a {
-  color: var(--action-default);
-  overflow-wrap: anywhere;
+  @apply text-[color:var(--action-default)] wrap-anywhere;
 }
 .case-state-document :focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring);
-  outline-offset: var(--focus-ring-offset);
+  @apply [outline:var(--focus-ring-width)_solid_var(--focus-ring)] [outline-offset:var(--focus-ring-offset)];
 }
 .case-state-container {
-  width: min(calc(100% - 2 * var(--layout-page-padding)), var(--container-portfolio));
-  margin-inline: auto;
+  @apply portfolio-container;
 }
 .case-state-skip {
-  position: absolute;
-  z-index: 40;
-  inset-inline-start: var(--space-6);
-  inset-block-start: var(--space-4);
-  transform: translateY(-200%);
-}
-.case-state-skip:focus {
-  transform: none;
-  background: var(--bg-page);
-  padding: var(--space-3);
+  @apply absolute start-6 [inset-block-start:var(--space-4)] z-40 -translate-y-[200%] focus:translate-y-0 focus:bg-background focus:p-3;
 }
 .case-state-header {
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 30;
-  max-height: 50svh;
-  overflow: auto;
-  background: var(--bg-page);
-  border-block-end: 1px solid var(--border-default);
+  @apply sticky [inset-block-start:0] z-30 max-h-[50svh] overflow-auto border-b border-border bg-background;
 }
 .case-state-header-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4) var(--space-8);
-  padding-block: var(--space-6);
+  @apply flex flex-wrap items-center justify-between gap-x-8 gap-y-4 py-6;
 }
 .case-state-brand {
-  color: var(--text-primary) !important;
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-  overflow-wrap: anywhere;
+  @apply text-xl/6 font-semibold text-foreground! no-underline wrap-anywhere;
 }
 .case-state-navigation,
 .case-state-links,
 .case-state-contacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  @apply m-0 flex list-none flex-wrap gap-x-6 gap-y-4 p-0;
 }
 .case-state-navigation a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
+  @apply inline-flex min-h-11 items-center text-sm/6 font-semibold no-underline;
+}
+.case-state-main,
+.case-state-contacts {
+  @apply [scroll-margin-block-start:calc(50svh+var(--space-8))];
 }
 .case-state-main {
-  scroll-margin-block-start: calc(50svh + var(--space-8));
-  display: grid;
-  gap: var(--space-6);
-  padding-block: var(--space-20);
+  @apply grid gap-6 py-20;
 }
 .case-state-title {
-  margin: 0;
-  font-size: var(--text-3xl);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--text-3xl--line-height);
-  white-space: pre-line;
-  overflow-wrap: anywhere;
+  @apply m-0 text-3xl font-semibold whitespace-pre-line wrap-anywhere lg:text-5xl;
 }
 .case-state-description,
 .case-state-footer-description {
-  margin: 0;
-  max-width: 68ch;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
+  @apply m-0 max-w-[68ch] whitespace-pre-line wrap-anywhere;
 }
 .case-state-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.75rem;
-  padding: var(--space-3) var(--space-6);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  background: var(--bg-surface);
-  font-weight: var(--font-weight-semibold);
-  text-align: center;
-  text-decoration: none;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg border border-border bg-card px-6 py-3 text-center font-semibold no-underline hover:bg-secondary;
 }
 .case-state-footer {
-  border-block-start: 1px solid var(--border-default);
-  padding-block: var(--space-16);
+  @apply border-t border-border py-16;
 }
 .case-state-footer-inner {
-  display: grid;
-  gap: var(--space-6);
+  @apply grid gap-6;
 }
 .case-state-footer-eyebrow,
 .case-state-copyright {
-  margin: 0;
-  color: var(--text-secondary);
+  @apply m-0 text-muted-foreground;
 }
 .case-state-footer-title {
-  margin: 0;
-  font-family: var(--font-serif);
-  font-size: var(--text-4xl);
-  line-height: var(--text-4xl--line-height);
-  font-weight: var(--font-weight-normal);
-  overflow-wrap: anywhere;
+  @apply m-0 font-serif text-4xl font-normal wrap-anywhere;
 }
 .case-state-divider {
-  display: block;
-  width: 100%;
-  height: 1px;
-  margin-block: var(--space-6);
+  @apply my-6 block h-px w-full;
 }
 .case-state-footer-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--space-4);
-}
-.case-state-contacts {
-  scroll-margin-block-start: calc(50svh + var(--space-8));
+  @apply flex flex-wrap justify-between gap-4;
 }
 .case-state-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-}
-@media (hover: hover) {
-  .case-state-action:hover {
-    background: var(--action-soft);
-  }
-}
-@media (min-width: 64rem) {
-  .case-state-title {
-    font-size: var(--text-5xl);
-    line-height: var(--text-5xl--line-height);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .case-state-document {
-    scroll-behavior: auto;
-  }
+  @apply sr-only;
 }

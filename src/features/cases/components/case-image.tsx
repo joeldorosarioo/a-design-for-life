@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { cva } from 'class-variance-authority';
 import type { ImageUseDTO } from '@/features/media-library';
 import type { CaseDetailDTO } from '../contracts/case-dto.schema';
-import styles from '../stylesheets/cases.module.css';
 export type CaseMediaMode = 'published' | 'preview';
 const dimensions = {
   cover: { width: 1280, height: 480 },
@@ -18,7 +17,7 @@ const sizes = {
   pair: '(min-width: 1328px) 488px, (min-width: 1024px) calc((100vw - 352px) / 2), (min-width: 768px) calc((100vw - 80px) / 2), calc(100vw - 48px)',
 } as const;
 function containedCoverSizes({ width, height }: NonNullable<CaseDetailDTO['coverIntrinsicSize']>) {
-  // Match the mobile and desktop slot ratios in cases.module.css. A contained
+  // Match the mobile and desktop slot ratios in imageVariants. A contained
   // portrait paints less than the width of its slot, while the slot stays fixed.
   const aspectRatio = width / height;
   const desktop = Math.min(1, (aspectRatio * dimensions.cover.height) / dimensions.cover.width);
@@ -28,13 +27,13 @@ function containedCoverSizes({ width, height }: NonNullable<CaseDetailDTO['cover
     fraction === 1 ? 'calc(100vw - 48px)' : `calc((100vw - 48px) * ${fraction.toFixed(5)})`;
   return `(min-width: 1328px) ${Math.ceil(dimensions.cover.width * desktop)}px, (min-width: 1024px) ${scaled(desktop)}, ${scaled(mobile)}`;
 }
-const imageVariants = cva(styles.image, {
+const imageVariants = cva('block h-auto w-full max-w-full rounded-xl', {
   variants: {
     kind: {
-      cover: styles.cover,
-      card: styles.card,
-      article: styles.article,
-      pair: styles.pair,
+      cover: 'aspect-[342/192] object-contain lg:aspect-[1280/480]',
+      card: 'aspect-[342/192] object-cover lg:aspect-[624/352]',
+      article: 'object-contain',
+      pair: 'object-contain',
     },
     coverPresentation: {
       'contained-cherry': null,
@@ -42,7 +41,8 @@ const imageVariants = cva(styles.image, {
     },
   },
   compoundVariants: [
-    { kind: 'cover', coverPresentation: 'contained-soft', class: styles.coverSoft },
+    { kind: 'cover', coverPresentation: 'contained-cherry', class: 'bg-primary' },
+    { kind: 'cover', coverPresentation: 'contained-soft', class: 'bg-muted' },
   ],
   defaultVariants: { kind: 'article', coverPresentation: 'contained-cherry' },
 });
@@ -63,7 +63,7 @@ export function CaseImage({
 }) {
   if (!image) return null;
   return (
-    <figure className={styles.figure}>
+    <figure className="m-0 min-w-0">
       <Image
         className={imageVariants({
           kind,
@@ -77,7 +77,11 @@ export function CaseImage({
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
       />
-      {image.caption ? <figcaption className={styles.caption}>{image.caption}</figcaption> : null}
+      {image.caption ? (
+        <figcaption className="mt-3 text-sm whitespace-pre-line text-muted-foreground">
+          {image.caption}
+        </figcaption>
+      ) : null}
     </figure>
   );
 }

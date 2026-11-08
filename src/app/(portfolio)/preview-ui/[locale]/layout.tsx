@@ -13,7 +13,7 @@ export default async function PreviewLayout({
   const locale = localeSchema.parse((await params).locale);
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body className="portfolio-body portfolio-focus">{children}</body>
     </html>
   );
 }

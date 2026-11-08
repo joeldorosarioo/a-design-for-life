@@ -72,7 +72,10 @@ it('serializes rapid manual clicks, saves only the target locale and commits lan
     </ReadingPositionProvider>,
   );
   const button = screen.getByRole('button', { name: 'English' });
+  expect(button.querySelector('[data-slot="skeleton"]')).toBeNull();
   await user.click(button);
+  expect(button).toHaveAttribute('aria-busy', 'true');
+  expect(button.querySelector('[data-slot="skeleton"]')).toHaveAttribute('aria-hidden', 'true');
   await user.click(button);
   expect(send).toHaveBeenCalledTimes(1);
   expect(send.mock.calls[0]).toMatchObject([
@@ -94,6 +97,9 @@ it('serializes rapid manual clicks, saves only the target locale and commits lan
     </ReadingPositionProvider>,
   );
   await waitFor(() => expect(screen.getByRole('button', { name: 'Português' })).toBeEnabled());
+  expect(
+    screen.getByRole('button', { name: 'Português' }).querySelector('[data-slot="skeleton"]'),
+  ).toBeNull();
   expect(document.documentElement.lang).toBe('en');
 });
 it('cancels an old pending choice on browser history navigation before its response can navigate', async () => {
