@@ -1,0 +1,17 @@
+{
+  "sourceFiles": 314,
+  "sourceDrift": [
+    "src/features/professional-profile/contracts/profile-dto.schema.ts",
+    "src/features/professional-profile/contracts/profile.schema.ts",
+    "src/features/professional-profile/index.ts",
+    "src/features/professional-profile/server/map-profile.test.ts",
+    "src/features/professional-profile/server/map-profile.ts",
+    "testing/fixtures/content.ts"
+  ],
+  "evidenceExports": 28,
+  "exportHashMismatches": [],
+  "sensitiveFieldCandidates": [],
+  "verifyExit": "0",
+  "nativeSmokeExit": "0",
+  "snapshotSHA256": "dfc5248f852784a25617f96df2c302fc8353f2370f6056809ba4b6000e389963"
+}

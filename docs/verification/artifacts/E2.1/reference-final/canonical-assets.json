@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-30",
+  "fileKey": "PXUcVZFdLuOzHQZkD5PU4b",
+  "privateArchive": "original-file/portfolio-reference.fig",
+  "archiveSha256": "2906e8c0b598cd497e70c7c2a5e323b784d943c231fceb744b90e59f83be148b",
+  "method": "Normal authenticated Figma File > Save local copy; ZIP validated before extracting exact images/hash entries",
+  "userConstraint": "One exact original per approved image. Resize/crop through CSS; optimization through Next.js Image. No new derivative image downloads. Baselines are reference only, one PNG per frame.",
+  "images": [
+    {
+      "role": "portrait",
+      "file": "original-file/images/7868c4d4ac147ed192a2be9a0bdc3fd16e1f4c60.jpg",
+      "figmaImageHash": "7868c4d4ac147ed192a2be9a0bdc3fd16e1f4c60",
+      "format": "jpeg",
+      "width": 375,
+      "height": 813,
+      "bytes": 51162,
+      "sha256": "bf5e82315903f5b88f2341a4e0e431874a97b8133982f3653b7a21293bd13c5b",
+      "nodeIds": [
+        "125:2064",
+        "125:2075"
+      ],
+      "notes": "Exact source stored in Figma, including native black bars. Do not crop/resample/create a second source file; reproduce FILL through CSS."
+    },
+    {
+      "role": "project01-cover",
+      "file": "original-file/images/de7c4ff2f231684adf7fa8a0c0f6467ea6e4f0f2.png",
+      "figmaImageHash": "de7c4ff2f231684adf7fa8a0c0f6467ea6e4f0f2",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "bytes": 15462,
+      "sha256": "3ce79b803d523ce325552f41a10f2f3bf3697308d87db4db37cc21309005a3eb",
+      "nodeIds": [
+        "123:854"
+      ],
+      "notes": "Byte-identical to prior official MCP image asset. Detail uses FIT/contain over700 background; do not substitute cover."
+    },
+    {
+      "role": "project02-cover",
+      "file": "original-file/images/9bd7dea2d013c9c73dad6b0e4a035e47d53b3f74.png",
+      "figmaImageHash": "9bd7dea2d013c9c73dad6b0e4a035e47d53b3f74",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "bytes": 20502,
+      "sha256": "5a11e36d24f58e7373529f0faa91daf0c46271fb47be3ef4fca9cdd686f923c7",
+      "nodeIds": [
+        "123:377"
+      ]
+    },
+    {
+      "role": "editorial-desk",
+      "file": "original-file/images/1ba7b7bbe3461148aee8486c6a523dc99d405775.png",
+      "figmaImageHash": "1ba7b7bbe3461148aee8486c6a523dc99d405775",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2364889,
+      "sha256": "79376b78f6a5ceba31587ac9ee944f5bc9b3ef7732d71eaf692cb90a794e1955",
+      "nodeIds": [
+        "138:13862",
+        "138:13921"
+      ]
+    },
+    {
+      "role": "editorial-architecture",
+      "file": "original-file/images/7495950c4aa27e1805fd6d5341bb12701b9c2df9.png",
+      "figmaImageHash": "7495950c4aa27e1805fd6d5341bb12701b9c2df9",
+      "format": "png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2962784,
+      "sha256": "ad8ef2240031d793eefff1163edb3bcdc0a85bad98d42f3a1d284e283851edaa",
+      "nodeIds": [
+        "138:13868",
+        "138:13927"
+      ]
+    }
+  ],
+  "vectors": [
+    {
+      "role": "language-br",
+      "file": "assets/language-br-flag-125-1888.svg",
+      "width": 46,
+      "height": 32,
+      "bytes": 2326,
+      "sha256": "b011836f5dfb27eaff14c541cc801fe97bcdbd6532d3cbae0263301cd5cb08e6",
+      "nodeIds": [
+        "I123:839;125:1888;128:9326"
+      ],
+      "source": "Existing official case PT design context asset",
+      "usage": "Intrinsic46x32 at left-7 within32x32 circular clip; interaction48x48"
+    },
+    {
+      "role": "language-en",
+      "file": "ui-exports/language-en-circular-crop-128-9416.svg",
+      "width": 32,
+      "height": 32,
+      "bytes": 6852,
+      "sha256": "1815c1028d88f55051b6056b133aaf67a6ecf4034d69c15e36d33dbc6a2bf64a",
+      "nodeIds": [
+        "128:9416"
+      ],
+      "source": "Normal Figma SVG export of selected circular crop; exact bytes inside export ZIP",
+      "usage": "Intrinsic32x32; interaction48x48"
+    },
+    {
+      "role": "case-divider",
+      "file": "assets/divider-1.svg",
+      "width": 768,
+      "height": 1,
+      "bytes": 235,
+      "sha256": "da6e2d6de73caa54dc65e0f8eaa1b11e298a5e4ee28cec459260c230a8f71e22",
+      "nodeIds": [
+        "123:880"
+      ],
+      "source": "Existing official case PT design context asset"
+    },
+    {
+      "role": "learning-divider",
+      "file": "assets/divider-2.svg",
+      "width": 261.333,
+      "height": 1,
+      "bytes": 247,
+      "sha256": "580f0465b61f3a8fe6b0050ae3258c17ad25d31b9939fd7f4bb9eea7b3d640b7",
+      "nodeIds": [
+        "123:930",
+        "123:935",
+        "123:940"
+      ],
+      "source": "Existing official case PT design context asset"
+    },
+    {
+      "role": "footer-divider",
+      "file": "assets/divider-3.svg",
+      "width": 1280,
+      "height": 1,
+      "bytes": 238,
+      "sha256": "f6c8eb8342df979e9a30e98df38bdc3cd4ae752a498a5fa9722e66a3677eb88c",
+      "nodeIds": [
+        "I123:944;123:539"
+      ],
+      "source": "Existing official case PT design context asset",
+      "usage": "Respect original root/preserveAspectRatio; mobile slot342px. Actual mobile stroke900 is same as background900."
+    }
+  ],
+  "excludedFromCanonical": [
+    "assets/case-pt-desktop-cover-123-854.png (duplicate bytes of canonical project01 source)",
+    "ui-exports/portrait-desktop-layer-125-2064.png (earlier processed crop export; superseded, do not use as a second source)",
+    "Other7 entries from private .fig archive: thumbnails/alternate materials, no approved-slot mapping; not runtime assets",
+    "All baselines: reference-only page captures, never code assets"
+  ],
+  "privateEditorialStatus": "Do not publish sample content or photographs automatically; follow draft/publication authorization."
+}

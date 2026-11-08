@@ -1,0 +1,5 @@
+import React from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { Button, buttonVariants } from '../../src/components/ui/button';
+function App() { return <main className="portfolio-container"><h1>Foundation verification</h1><Button>Open projects</Button><p><a className={buttonVariants()} href="#contact">View contact</a></p><p id="contact">Keyboard specimen</p></main>; }
+hydrateRoot(document.getElementById('root')!, <App />);

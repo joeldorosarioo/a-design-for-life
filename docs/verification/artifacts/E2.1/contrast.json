@@ -1,0 +1,35 @@
+{
+  "method": "WCAG sRGB relative luminance; concrete approved color pairings",
+  "contrasts": [
+    {
+      "use": "button and focus",
+      "foreground": "#a3122f",
+      "background": "#ffffff",
+      "ratio": 7.822
+    },
+    {
+      "use": "button hover",
+      "foreground": "#a3122f",
+      "background": "#ffc9d4",
+      "ratio": 5.422
+    },
+    {
+      "use": "body",
+      "foreground": "#16030a",
+      "background": "#ffffff",
+      "ratio": 19.971
+    },
+    {
+      "use": "secondary and inverse",
+      "foreground": "#4e0b1c",
+      "background": "#ffffff",
+      "ratio": 15.123
+    },
+    {
+      "use": "subtle border",
+      "foreground": "#ffc9d4",
+      "background": "#ffffff",
+      "ratio": 1.443
+    }
+  ]
+}

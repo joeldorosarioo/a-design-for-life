@@ -1,0 +1,1012 @@
+{
+  ".work/E2.1/browser/specimen/specimen.js": {
+    "bytes": 222281,
+    "imports": [
+      {
+        "path": ".work/E2.1/browser/specimen/chunk-PVV4VDYR.js",
+        "kind": "import-statement"
+      },
+      {
+        "path": ".work/E2.1/browser/specimen/load-features-NOMBIFOF.js",
+        "kind": "dynamic-import"
+      }
+    ],
+    "entryPoint": ".work/E2.1/specimen.tsx",
+    "modules": [
+      {
+        "path": "node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        "bytesInOutput": 3638
+      },
+      {
+        "path": "node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/index.js",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom.production.js",
+        "bytesInOutput": 3666
+      },
+      {
+        "path": "node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/index.js",
+        "bytesInOutput": 253
+      },
+      {
+        "path": "node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "bytesInOutput": 204927
+      },
+      {
+        "path": "node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/client.js",
+        "bytesInOutput": 253
+      },
+      {
+        "path": ".work/E2.1/specimen.tsx",
+        "bytesInOutput": 752
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/index.mjs",
+        "bytesInOutput": 1150
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/MotionContext/create.mjs",
+        "bytesInOutput": 203
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/MotionContext/utils.mjs",
+        "bytesInOutput": 143
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/dom/use-render.mjs",
+        "bytesInOutput": 272
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/html/use-props.mjs",
+        "bytesInOutput": 596
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/html/utils/create-render-state.mjs",
+        "bytesInOutput": 64
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/svg/use-props.mjs",
+        "bytesInOutput": 247
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/svg/utils/create-render-state.mjs",
+        "bytesInOutput": 32
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/html/use-html-visual-state.mjs",
+        "bytesInOutput": 65
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/svg/use-svg-visual-state.mjs",
+        "bytesInOutput": 65
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/utils/symbol.mjs",
+        "bytesInOutput": 43
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/utils/use-motion-ref.mjs",
+        "bytesInOutput": 378
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/utils/use-visual-element.mjs",
+        "bytesInOutput": 1879
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/utils/is-ref-object.mjs",
+        "bytesInOutput": 95
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/components/m/create.mjs",
+        "bytesInOutput": 32
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/components/m/elements.mjs",
+        "bytesInOutput": 20
+      },
+      {
+        "path": "src/helpers/motion/motion-provider.tsx",
+        "bytesInOutput": 211
+      },
+      {
+        "path": "src/helpers/motion/tokens.ts",
+        "bytesInOutput": 107
+      },
+      {
+        "path": "src/helpers/motion/presets.ts",
+        "bytesInOutput": 626
+      },
+      {
+        "path": "node_modules/.pnpm/clsx@2.1.1/node_modules/clsx/dist/clsx.mjs",
+        "bytesInOutput": 362
+      },
+      {
+        "path": "node_modules/.pnpm/class-variance-authority@0.7.1/node_modules/class-variance-authority/dist/index.mjs",
+        "bytesInOutput": 643
+      },
+      {
+        "path": "src/components/ui/button.tsx",
+        "bytesInOutput": 267
+      }
+    ]
+  },
+  ".work/E2.1/browser/specimen/load-features-NOMBIFOF.js": {
+    "bytes": 83,
+    "imports": [
+      {
+        "path": ".work/E2.1/browser/specimen/chunk-PVV4VDYR.js",
+        "kind": "import-statement"
+      }
+    ],
+    "entryPoint": "src/helpers/motion/load-features.ts",
+    "modules": [
+      {
+        "path": "src/helpers/motion/load-features.ts",
+        "bytesInOutput": 8
+      }
+    ]
+  },
+  ".work/E2.1/browser/specimen/chunk-PVV4VDYR.js": {
+    "bytes": 89493,
+    "imports": [],
+    "modules": [
+      {
+        "path": "node_modules/.pnpm/react@19.3.1/node_modules/react/cjs/react-jsx-runtime.production.js",
+        "bytesInOutput": 364
+      },
+      {
+        "path": "node_modules/.pnpm/react@19.3.1/node_modules/react/jsx-runtime.js",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/react@19.3.1/node_modules/react/cjs/react.production.js",
+        "bytesInOutput": 7942
+      },
+      {
+        "path": "node_modules/.pnpm/react@19.3.1/node_modules/react/index.js",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/array.mjs",
+        "bytesInOutput": 102
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/clamp.mjs",
+        "bytesInOutput": 29
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/global-config.mjs",
+        "bytesInOutput": 9
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/is-numerical-string.mjs",
+        "bytesInOutput": 49
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/is-object.mjs",
+        "bytesInOutput": 39
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/is-zero-value-string.mjs",
+        "bytesInOutput": 32
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/memo.mjs",
+        "bytesInOutput": 55
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/noop.mjs",
+        "bytesInOutput": 12
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/pipe.mjs",
+        "bytesInOutput": 43
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/progress.mjs",
+        "bytesInOutput": 47
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/subscription-manager.mjs",
+        "bytesInOutput": 379
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/time-conversion.mjs",
+        "bytesInOutput": 26
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/velocity-per-second.mjs",
+        "bytesInOutput": 28
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/cubic-bezier.mjs",
+        "bytesInOutput": 258
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/modifiers/mirror.mjs",
+        "bytesInOutput": 45
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/modifiers/reverse.mjs",
+        "bytesInOutput": 22
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/back.mjs",
+        "bytesInOutput": 48
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/anticipate.mjs",
+        "bytesInOutput": 64
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/circ.mjs",
+        "bytesInOutput": 55
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/ease.mjs",
+        "bytesInOutput": 57
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/utils/is-easing-array.mjs",
+        "bytesInOutput": 50
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/utils/is-bezier-definition.mjs",
+        "bytesInOutput": 50
+      },
+      {
+        "path": "node_modules/.pnpm/motion-utils@14.7.0/node_modules/motion-utils/dist/es/easing/utils/map.mjs",
+        "bytesInOutput": 286
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/frame-data.mjs",
+        "bytesInOutput": 45
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/sync-time.mjs",
+        "bytesInOutput": 171
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/sanitize.mjs",
+        "bytesInOutput": 32
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/is-css-variable.mjs",
+        "bytesInOutput": 294
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/numbers/index.mjs",
+        "bytesInOutput": 122
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/float-regex.mjs",
+        "bytesInOutput": 37
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/is-nullish.mjs",
+        "bytesInOutput": 30
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/single-color-regex.mjs",
+        "bytesInOutput": 125
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/color/utils.mjs",
+        "bytesInOutput": 291
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/color/rgba.mjs",
+        "bytesInOutput": 261
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/color/hex.mjs",
+        "bytesInOutput": 293
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/numbers/units.mjs",
+        "bytesInOutput": 250
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/color/hsla.mjs",
+        "bytesInOutput": 228
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/color/index.mjs",
+        "bytesInOutput": 280
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/color-regex.mjs",
+        "bytesInOutput": 124
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/complex/index.mjs",
+        "bytesInOutput": 1349
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/color/hsla-to-rgba.mjs",
+        "bytesInOutput": 376
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/mix/immediate.mjs",
+        "bytesInOutput": 35
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/mix/number.mjs",
+        "bytesInOutput": 26
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/mix/color.mjs",
+        "bytesInOutput": 409
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/mix/visibility.mjs",
+        "bytesInOutput": 92
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/mix/complex.mjs",
+        "bytesInOutput": 925
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/mix/index.mjs",
+        "bytesInOutput": 402
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/order.mjs",
+        "bytesInOutput": 98
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/render-step.mjs",
+        "bytesInOutput": 415
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/batcher.mjs",
+        "bytesInOutput": 748
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/frame.mjs",
+        "bytesInOutput": 103
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/drivers/frame.mjs",
+        "bytesInOutput": 136
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/utils/linear.mjs",
+        "bytesInOutput": 164
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/utils/calc-duration.mjs",
+        "bytesInOutput": 135
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/utils/create-generator-easing.mjs",
+        "bytesInOutput": 216
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/spring.mjs",
+        "bytesInOutput": 3388
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/inertia.mjs",
+        "bytesInOutput": 675
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/interpolate.mjs",
+        "bytesInOutput": 545
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/offsets/fill.mjs",
+        "bytesInOutput": 94
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/offsets/default.mjs",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/offsets/time.mjs",
+        "bytesInOutput": 38
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/keyframes.mjs",
+        "bytesInOutput": 546
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/utils/velocity.mjs",
+        "bytesInOutput": 174
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/get-final.mjs",
+        "bytesInOutput": 161
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/replace-transition-type.mjs",
+        "bytesInOutput": 121
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/resolve-start-time.mjs",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/notify-inspector.mjs",
+        "bytesInOutput": 252
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/WithPromise.mjs",
+        "bytesInOutput": 353
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/JSAnimation.mjs",
+        "bytesInOutput": 4747
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/complex/filter.mjs",
+        "bytesInOutput": 368
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/complex/mask.mjs",
+        "bytesInOutput": 155
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/int.mjs",
+        "bytesInOutput": 36
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/maps/transform.mjs",
+        "bytesInOutput": 275
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/maps/number.mjs",
+        "bytesInOutput": 843
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/maps/defaults.mjs",
+        "bytesInOutput": 220
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/animatable-none.mjs",
+        "bytesInOutput": 128
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/utils/fill-wildcards.mjs",
+        "bytesInOutput": 62
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/dom/parse-transform.mjs",
+        "bytesInOutput": 1091
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/keys-transform.mjs",
+        "bytesInOutput": 215
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/utils/unit-conversion.mjs",
+        "bytesInOutput": 918
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/KeyframesResolver.mjs",
+        "bytesInOutput": 1773
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/dom/is-css-var.mjs",
+        "bytesInOutput": 29
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/dom/style-set.mjs",
+        "bytesInOutput": 63
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/supports/flags.mjs",
+        "bytesInOutput": 10
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/supports/memo.mjs",
+        "bytesInOutput": 50
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/supports/scroll-timeline.mjs",
+        "bytesInOutput": 63
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/supports/linear-easing.mjs",
+        "bytesInOutput": 135
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/easing/cubic-bezier.mjs",
+        "bytesInOutput": 59
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/easing/supported.mjs",
+        "bytesInOutput": 209
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/easing/map-easing.mjs",
+        "bytesInOutput": 139
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/start-waapi-animation.mjs",
+        "bytesInOutput": 368
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/generators/utils/is-generator.mjs",
+        "bytesInOutput": 65
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/utils/apply-generator.mjs",
+        "bytesInOutput": 126
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/NativeAnimation.mjs",
+        "bytesInOutput": 2130
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/utils/unsupported-easing.mjs",
+        "bytesInOutput": 151
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/NativeAnimationExtended.mjs",
+        "bytesInOutput": 852
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/is-animatable.mjs",
+        "bytesInOutput": 137
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/can-animate.mjs",
+        "bytesInOutput": 284
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/make-animation-instant.mjs",
+        "bytesInOutput": 47
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/utils/accelerated-values.mjs",
+        "bytesInOutput": 60
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/utils/is-browser-color.mjs",
+        "bytesInOutput": 163
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/supports/waapi.mjs",
+        "bytesInOutput": 642
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/utils/get-as-type.mjs",
+        "bytesInOutput": 53
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/html/utils/build-transform.mjs",
+        "bytesInOutput": 484
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/transforms/groups.mjs",
+        "bytesInOutput": 19
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/waapi/transforms/TransformAnimation.mjs",
+        "bytesInOutput": 7865
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/AsyncMotionValueAnimation.mjs",
+        "bytesInOutput": 2209
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/calc-child-stagger.mjs",
+        "bytesInOutput": 163
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/index.mjs",
+        "bytesInOutput": 2838
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/resolve-transition.mjs",
+        "bytesInOutput": 84
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/get-value-transition.mjs",
+        "bytesInOutput": 68
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/default-transitions.mjs",
+        "bytesInOutput": 317
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/is-transition-defined.mjs",
+        "bytesInOutput": 207
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/interfaces/motion-value.mjs",
+        "bytesInOutput": 898
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/utils/css-variables-conversion.mjs",
+        "bytesInOutput": 329
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/resolve-variants.mjs",
+        "bytesInOutput": 262
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/resolve-dynamic-variants.mjs",
+        "bytesInOutput": 107
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/keys-position.mjs",
+        "bytesInOutput": 71
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/is-keyframes-target.mjs",
+        "bytesInOutput": 27
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/setters.mjs",
+        "bytesInOutput": 256
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/utils/is-motion-value.mjs",
+        "bytesInOutput": 30
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/will-change/is.mjs",
+        "bytesInOutput": 37
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/will-change/add-will-change.mjs",
+        "bytesInOutput": 162
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/optimized-appear/data-id.mjs",
+        "bytesInOutput": 31
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/optimized-appear/get-appear-id.mjs",
+        "bytesInOutput": 34
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/interfaces/visual-element-target.mjs",
+        "bytesInOutput": 1113
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/interfaces/visual-element-variant.mjs",
+        "bytesInOutput": 538
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/interfaces/visual-element.mjs",
+        "bytesInOutput": 221
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/auto.mjs",
+        "bytesInOutput": 39
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/test.mjs",
+        "bytesInOutput": 23
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/types/dimensions.mjs",
+        "bytesInOutput": 50
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/utils/is-none.mjs",
+        "bytesInOutput": 86
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/utils/make-none-animatable.mjs",
+        "bytesInOutput": 198
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/animation/keyframes/DOMKeyframesResolver.mjs",
+        "bytesInOutput": 1814
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/is-html-element.mjs",
+        "bytesInOutput": 74
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/scope/active.mjs",
+        "bytesInOutput": 95
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/utils/resolve-elements.mjs",
+        "bytesInOutput": 243
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/dom/utils/camel-to-dash.mjs",
+        "bytesInOutput": 69
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/html/utils/build-styles.mjs",
+        "bytesInOutput": 402
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/utils/path.mjs",
+        "bytesInOutput": 218
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/utils/build-attrs.mjs",
+        "bytesInOutput": 669
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/projection/geometry/conversion.mjs",
+        "bytesInOutput": 219
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/projection/utils/measure.mjs",
+        "bytesInOutput": 60
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/frameloop/microtask.mjs",
+        "bytesInOutput": 49
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/projection/styles/scale-correction.mjs",
+        "bytesInOutput": 10
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/value/utils/resolve-motion-value.mjs",
+        "bytesInOutput": 37
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/projection/geometry/models.mjs",
+        "bytesInOutput": 52
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/events/add-dom-event.mjs",
+        "bytesInOutput": 100
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/projection/node/root.mjs",
+        "bytesInOutput": 24
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/store.mjs",
+        "bytesInOutput": 19
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/is-animation-controls.mjs",
+        "bytesInOutput": 79
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/is-variant-label.mjs",
+        "bytesInOutput": 59
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/variant-props.mjs",
+        "bytesInOutput": 115
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/is-controlling-variants.mjs",
+        "bytesInOutput": 146
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/motion-values.mjs",
+        "bytesInOutput": 354
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/reduced-motion/state.mjs",
+        "bytesInOutput": 38
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/reduced-motion/index.mjs",
+        "bytesInOutput": 216
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/VisualElement.mjs",
+        "bytesInOutput": 6410
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/dom/DOMVisualElement.mjs",
+        "bytesInOutput": 524
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/html/utils/render.mjs",
+        "bytesInOutput": 136
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/is-forced-motion-value.mjs",
+        "bytesInOutput": 121
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/html/utils/scrape-motion-values.mjs",
+        "bytesInOutput": 168
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/html/HTMLVisualElement.mjs",
+        "bytesInOutput": 516
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/utils/is-primary-pointer.mjs",
+        "bytesInOutput": 90
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/events/event-info.mjs",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/press/utils/is-keyboard-accessible.mjs",
+        "bytesInOutput": 125
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/drag/state/is-active.mjs",
+        "bytesInOutput": 51
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/utils/setup.mjs",
+        "bytesInOutput": 121
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/hover.mjs",
+        "bytesInOutput": 681
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/utils/is-node-or-child.mjs",
+        "bytesInOutput": 50
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/press/utils/state.mjs",
+        "bytesInOutput": 19
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/press/utils/keyboard.mjs",
+        "bytesInOutput": 440
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/gestures/press/index.mjs",
+        "bytesInOutput": 771
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/Feature.mjs",
+        "bytesInOutput": 70
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/utils/camel-case-attrs.mjs",
+        "bytesInOutput": 359
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/utils/is-svg-tag.mjs",
+        "bytesInOutput": 54
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/utils/render.mjs",
+        "bytesInOutput": 104
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/utils/scrape-motion-values.mjs",
+        "bytesInOutput": 183
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/svg/SVGVisualElement.mjs",
+        "bytesInOutput": 703
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/shallow-compare.mjs",
+        "bytesInOutput": 140
+      },
+      {
+        "path": "node_modules/.pnpm/motion-dom@14.7.1/node_modules/motion-dom/dist/es/render/utils/animation-state.mjs",
+        "bytesInOutput": 2685
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/animation/index.mjs",
+        "bytesInOutput": 452
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/animation/exit.mjs",
+        "bytesInOutput": 797
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/animations.mjs",
+        "bytesInOutput": 50
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/gestures/hover.mjs",
+        "bytesInOutput": 332
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/gestures/focus.mjs",
+        "bytesInOutput": 514
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/gestures/press.mjs",
+        "bytesInOutput": 376
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/viewport/observers.mjs",
+        "bytesInOutput": 365
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/viewport/index.mjs",
+        "bytesInOutput": 970
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/gestures.mjs",
+        "bytesInOutput": 84
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/dom/create-visual-element.mjs",
+        "bytesInOutput": 101
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/svg/lowercase-elements.mjs",
+        "bytesInOutput": 211
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/dom/utils/is-svg-component.mjs",
+        "bytesInOutput": 100
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/dom/features-animation.mjs",
+        "bytesInOutput": 42
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion.mjs",
+        "bytesInOutput": 94
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs",
+        "bytesInOutput": 46
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/utils/use-constant.mjs",
+        "bytesInOutput": 110
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/utils/use-isomorphic-effect.mjs",
+        "bytesInOutput": 60
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/utils/is-browser.mjs",
+        "bytesInOutput": 25
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/PresenceContext.mjs",
+        "bytesInOutput": 48
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs",
+        "bytesInOutput": 103
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs",
+        "bytesInOutput": 402
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/LazyContext.mjs",
+        "bytesInOutput": 55
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/definitions.mjs",
+        "bytesInOutput": 492
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/features/load-features.mjs",
+        "bytesInOutput": 70
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs",
+        "bytesInOutput": 356
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/MotionContext/index.mjs",
+        "bytesInOutput": 46
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/utils/valid-prop.mjs",
+        "bytesInOutput": 631
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/render/dom/utils/filter-props.mjs",
+        "bytesInOutput": 256
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/motion/utils/use-visual-state.mjs",
+        "bytesInOutput": 775
+      },
+      {
+        "path": "node_modules/.pnpm/framer-motion@14.7.1_react-_61d517a298ca21f0e642d6faab862d3f/node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs",
+        "bytesInOutput": 46
+      }
+    ]
+  }
+}

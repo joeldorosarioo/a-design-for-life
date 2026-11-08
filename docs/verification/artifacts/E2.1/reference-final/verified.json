@@ -1,0 +1,60 @@
+{
+  "method": "Fresh independent file size, SHA256 and Sharp metadata verification; no transformations",
+  "canonicalManifestSHA256": "5c4d81e0fe3cd6a6b21f9aa75c8782c6cb878aa8f48e60b2c805623d05dda02b",
+  "archiveSha256": "2906e8c0b598cd497e70c7c2a5e323b784d943c231fceb744b90e59f83be148b",
+  "verified": [
+    {
+      "role": "portrait",
+      "bytes": 51162,
+      "sha256": "bf5e82315903f5b88f2341a4e0e431874a97b8133982f3653b7a21293bd13c5b"
+    },
+    {
+      "role": "project01-cover",
+      "bytes": 15462,
+      "sha256": "3ce79b803d523ce325552f41a10f2f3bf3697308d87db4db37cc21309005a3eb"
+    },
+    {
+      "role": "project02-cover",
+      "bytes": 20502,
+      "sha256": "5a11e36d24f58e7373529f0faa91daf0c46271fb47be3ef4fca9cdd686f923c7"
+    },
+    {
+      "role": "editorial-desk",
+      "bytes": 2364889,
+      "sha256": "79376b78f6a5ceba31587ac9ee944f5bc9b3ef7732d71eaf692cb90a794e1955"
+    },
+    {
+      "role": "editorial-architecture",
+      "bytes": 2962784,
+      "sha256": "ad8ef2240031d793eefff1163edb3bcdc0a85bad98d42f3a1d284e283851edaa"
+    },
+    {
+      "role": "language-br",
+      "bytes": 2326,
+      "sha256": "b011836f5dfb27eaff14c541cc801fe97bcdbd6532d3cbae0263301cd5cb08e6"
+    },
+    {
+      "role": "language-en",
+      "bytes": 6852,
+      "sha256": "1815c1028d88f55051b6056b133aaf67a6ecf4034d69c15e36d33dbc6a2bf64a"
+    },
+    {
+      "role": "case-divider",
+      "bytes": 235,
+      "sha256": "da6e2d6de73caa54dc65e0f8eaa1b11e298a5e4ee28cec459260c230a8f71e22"
+    },
+    {
+      "role": "learning-divider",
+      "bytes": 247,
+      "sha256": "580f0465b61f3a8fe6b0050ae3258c17ad25d31b9939fd7f4bb9eea7b3d640b7"
+    },
+    {
+      "role": "footer-divider",
+      "bytes": 238,
+      "sha256": "f6c8eb8342df979e9a30e98df38bdc3cd4ae752a498a5fa9722e66a3677eb88c"
+    }
+  ],
+  "baselineFrames": 8,
+  "duplicateJPEGs": 0,
+  "removedCopies": 9
+}

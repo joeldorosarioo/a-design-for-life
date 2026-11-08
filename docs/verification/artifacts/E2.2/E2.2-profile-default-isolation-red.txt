@@ -1,0 +1,66 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts (11 tests | 2 failed) 15ms
+   × isolates absent trajectory defaults between legacy snapshot reads 5ms
+   × isolates absent method defaults between legacy snapshot reads 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > isolates absent trajectory defaults between legacy snapshot reads
+AssertionError: expected [ { readingKey: null, …(3) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "description": "Synthetic body",
++     "period": "Synthetic period",
++     "readingKey": null,
++     "title": "Synthetic title",
++   },
++ ]
+
+ ❯ src/features/professional-profile/contracts/profile-dto.schema.test.ts:57:64
+     55|   first.homeAbout.trajectory.push({ readingKey: null, period: 'Synthet…
+     56|
+     57|   expect(profileDTOSchema.parse(profile).homeAbout.trajectory).toEqual…
+       |                                                                ^
+     58| });
+     59|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > isolates absent method defaults between legacy snapshot reads
+AssertionError: expected [ { readingKey: null, …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "description": "Synthetic body",
++     "readingKey": null,
++     "title": "Synthetic method",
++   },
++ ]
+
+ ❯ src/features/professional-profile/contracts/profile-dto.schema.test.ts:64:60
+     62|   first.approach.methods.push({ readingKey: null, title: 'Synthetic me…
+     63|
+     64|   expect(profileDTOSchema.parse(profile).approach.methods).toEqual([]);
+       |                                                            ^
+     65| });
+     66|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 9 passed (11)
+   Start at  15:08:17
+   Duration  508ms (setup 53%, import 30%, transform 12%, tests 4%, worker 1%)
+

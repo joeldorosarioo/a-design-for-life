@@ -1,0 +1,61 @@
+{
+  "archivePreserved": true,
+  "archiveSha256": "2906e8c0b598cd497e70c7c2a5e323b784d943c231fceb744b90e59f83be148b",
+  "canonicalImages": 5,
+  "removed": [
+    {
+      "file": "original-file/images/22b7daea2eedfac232c8834b4e917975465d766d.png",
+      "bytes": 228330,
+      "sha256": "f11b280d3ae8505896d0ffa55bc850b59e5bfed101e478cafe51c1e41aca266d",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "original-file/images/0f8deb88b57acd8a25dfe81d43d2ceb1532b201f.png",
+      "bytes": 220182,
+      "sha256": "a8140f999964b8d835dc542704ff5362a924b5ca73eef5f3e8e4c641dc3affc9",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "original-file/images/83630277349b8c219766bb43086b04148235158f.png",
+      "bytes": 238528,
+      "sha256": "b7d4afec567d9545f8cff7fefd223ac9bb4622a253e56d3aaf99cd910110f308",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "original-file/images/49fc0123995163ea4f6cff97f42e7e86cb1440ac.png",
+      "bytes": 24258,
+      "sha256": "e28ce0899fe89e85f5d3311428eb38e5f8250e41e737cd25afc6ebe3acd47e94",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "original-file/images/1858acd9ad7bc86eab9e5d19471dd4ef3fe4d78a.jpg",
+      "bytes": 100588,
+      "sha256": "7f352a69c433c8d49a9b2983a4aa8ec1596c773a95875cd735e72845445117ea",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "original-file/images/b0eb6c6c272497513336a457dda42170f2d1a69a.jpg",
+      "bytes": 50843,
+      "sha256": "fbbb45cf72b25787b4f431e95fcbb2b17bb2d5d74de37c58f51c8d5cad224274",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "original-file/images/6fd7569e46a372d6a01bf7a88d1daa5c62ab586b.jpg",
+      "bytes": 132191,
+      "sha256": "cc24c16fe5a94882f970f2cc87eaaac26c59e61e50049eaa12a6a1d7743beebc",
+      "reason": "Noncanonical extraction; exact original remains inside verified private .fig archive"
+    },
+    {
+      "file": "assets/case-pt-desktop-cover-123-854.png",
+      "bytes": 15462,
+      "sha256": "3ce79b803d523ce325552f41a10f2f3bf3697308d87db4db37cc21309005a3eb",
+      "reason": "Duplicate/processed image excluded by latest one-original instruction"
+    },
+    {
+      "file": "ui-exports/portrait-desktop-layer-125-2064.png",
+      "bytes": 679787,
+      "sha256": "f42338ac332e337de4b2c520f3ec7406da008b3fb69071ce207651506b958879",
+      "reason": "Duplicate/processed image excluded by latest one-original instruction"
+    }
+  ]
+}

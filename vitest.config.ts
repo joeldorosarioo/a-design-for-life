@@ -44,6 +44,8 @@ export default defineConfig({
           name: 'architecture',
           include: ['src/config/architecture.test.ts'],
           environment: 'node',
+          // Each graph analysis starts the real CLI and includes its startup cost.
+          testTimeout: 15_000,
         },
       },
     ],

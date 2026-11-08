@@ -1,0 +1,138 @@
+# E2 — mapa de referência Figma e proveniência
+
+Pesquisa em 30/10/2026. Preparação para E2.1–E2.6; não é aceite visual nem conclusão da Etapa 2. Nenhuma alteração no aplicativo, banco, build, branch ou Git foi feita por esta pesquisa. A parada A2 continua anterior à Etapa 3.
+
+## Autoridade e método
+
+- Fonte visual: arquivo `PXUcVZFdLuOzHQZkD5PU4b`, página aprovada `123:179`, **03 · Layout proposto**. Tokens `123:177`; componentes `123:178`. As páginas alternativas não substituem o layout aprovado.
+- Inventário original `E:/a-design-for-life/docs/specs/2026-10-29-portfolio-inventario-figma.md` lido integralmente. Spec original conferida nas seções 2, 3, 4.3, 7, 9.1 e 11.3; tarefas E2.1, E2.2 e E2.6 do plano conferidas. As decisões de produto permanecem fechadas.
+- Skills `figma-design-to-code` e `computer-use` lidas. O contexto oficial anterior do case PT foi reutilizado, sem confundi-lo com código de aplicação. A sessão oficial anterior é `5f969ac3-5939-4ac4-ab26-91d41435f7e0`.
+- Nova chamada `get_design_context(123:574)` foi recusada pelo limite Starter antes de retornar código ou screenshot. `whoami` confirmou plano Starter, assento Full. Não houve upgrade, nova conta, acesso a API interna ou tentativa de contornar a quota.
+- Fallback: Chrome autenticado, interface normal do Figma via CUA. Todos os 18 frames abaixo foram abertos pelos IDs documentados e seus renders reais vistos inline. Nome selecionado e dimensões foram lidos do painel acessível. Essas imagens do editor não são exports dos originais nem capturas locais arquivadas. A inspeção em zoom reduzido comprova composição geral, não transcrição final nem equivalência pixel a pixel.
+- A documentação de tokens `123:1155` foi aberta: frame 1440 × 6536, autolayout vertical, gap 64 vinculado a `spacing/16`, padding 80 vinculado a `spacing/20` e fundo `bg/page` #FFF confirmados no painel. Os demais tokens abaixo são os documentados no inventário, ainda sem reextração dos vínculos internos de cada componente.
+- Um atalho de seta usado para tentar expandir a árvore deslocou temporariamente Home PT de X160 para X161. Undo foi aplicado imediatamente; o painel confirmou X160 novamente. Nenhuma mudança permaneceu. As consultas seguintes usaram navegação direta e controles visíveis.
+
+## Frames e rotas
+
+URL de cada nó: `https://www.figma.com/design/PXUcVZFdLuOzHQZkD5PU4b/Untitled?node-id=ID`, com hífen no lugar de dois-pontos. As alturas abaixo são referência do conteúdo de exemplo, nunca uma regra CSS de altura fixa.
+
+| Tela | Idioma | Desktop | Dimensões | Mobile | Dimensões |
+|---|---|---|---|---|---|
+| Home | PT | `123:574` | 1440 × 3244 | `123:705` | 390 × 4524 |
+| Home | EN | `125:3765` | 1440 × 3244 | `125:4026` | 390 × 4388 |
+| Listagem | PT | `125:2472` | 1440 × 1638 | `125:2595` | 390 × 1770 |
+| Listagem | EN | `125:4291` | 1440 × 1638 | `125:4490` | 390 × 1730 |
+| Case | PT | `123:838` | 1440 × 4654 | `123:954` | 390 × 5848 |
+| Case | EN | `125:4693` | 1440 × 4582 | `125:4961` | 390 × 5912 |
+| Sobre | PT | `134:13116` | 1440 × 4528 | `134:13205` | 390 × 5651,88 |
+| Sobre | EN | `134:13298` | 1440 × 4544 | `134:13435` | 390 × 5435,88 |
+| Case 02 adicional | EN | `126:8101` | 1440 × 4582 | `126:8293` | 390 × 5960 |
+
+Rotas fechadas: Home `/pt` e `/en`; listagem `/pt/cases` e `/en/cases`; detalhe `/pt/cases/[slug]` e `/en/cases/[slug]`; Sobre `/pt/sobre` e `/en/about`. Case 02 não cria outro tipo de página nem rota especial. Não foi documentado equivalente PT desse exemplo adicional.
+
+## Composição conferida nos renders
+
+- Home: header branco; hero com título sans e ênfase serifada, retrato retangular à direita no desktop e após o texto no mobile; dois cards de projeto; faixa rosa de Sobre/trajetória; três itens de abordagem; footer vinho. O mobile empilha esses conteúdos e mantém a sequência editorial.
+- Listagem: retorno à Home, identificação editorial, título serifado, descrição e contagem; dois cards em duas colunas no desktop e sequência vertical no mobile; footer vinho. Contagem deriva dos cases públicos no idioma.
+- Case: retorno à lista, identificação ilustrativa, título misto sans/serif, introdução, capa e nota. Sumário lateral desktop; grupo de navegação antes da narrativa no mobile. Contexto com papel/escopo, desafio, processo, comparação de **cartões de texto**, aprendizados e footer. Não rasterizar a comparação nem inventar duas imagens para representá-la.
+- Sobre: abertura serifada, retrato e introdução; percurso; fotografia horizontal de mesa com caderno/livros; pausa editorial; fotografia vertical de arquitetura ao lado do texto no desktop; Em movimento; encerramento/acesso a cases; footer. Mobile apresenta sequência vertical. Algumas imagens carregam depois do primeiro paint do editor: branco transitório não é ausência no design.
+
+## Tokens e tradução para a implementação
+
+| Família | Valores documentados |
+|---|---|
+| Cherry Cola | 950 `#16030A`; 900 `#4E0B1C`; 700 `#A3122F`; 500 `#F0476A`; 100 `#FFC9D4` |
+| Fundos | page/surface branco; subtle/action-soft/editorial 100; inverse 900 |
+| Texto | primary 950; secondary/accent 900; inverse/on-action branco |
+| Bordas/foco | default 100; control/accent/focus-ring 700 |
+| Ações | default/background 700; hover 900 |
+| Fontes | stack sans de sistema, Segoe UI no Windows; stack serif com Georgia; sem substituição por fonte externa |
+| Tipografia tamanho/entrelinha px | xs 12/16; sm 14/20; base 16/24; lg 18/28; xl 20/28; 2xl 24/32; 3xl 30/36; 4xl 36/40; 5xl 48/48; 6xl 60/60; 7xl 72/72 |
+| Espaçamento | unidade 0,25rem; escala central 4, 8, 12, 16, 24, 32, 48, 64, 80, 96 px |
+| Raios | sm 4; md 6; lg 8; xl 12; 2xl 16 px; full só onde circular previsto |
+| Breakpoints mínimos | sm 640; md 768; lg 1024; xl 1280; 2xl 1536 px |
+| Grid | desktop 1440, máximo 1280, margem 80, gap32, seções64; mobile390, padding24, útil342 |
+
+Mapear os aliases em `stylesheets` aos tokens semânticos shadcn, sem importar tema padrão nem expor controles de estilo no CMS. Usar unidades relativas e respeitar zoom. O inventário não prova contraste em todas as combinações: verificar os usos concretos na UI implementada.
+
+Do contexto oficial anterior: Segoe UI Regular = 400, Semibold = 600; Georgia Regular = 400; espaçamento de letras documentado = 0. O case desktop usa h1 sans72/72 com ênfase Georgia72/72, títulos de seção36/40, subtítulos24/32, corpo16/24, introdução18/28 e notas14/20. Footer usa Georgia60/60. Esses valores são do case PT, não substituem a inspeção ainda pendente dos demais componentes e variantes.
+
+## Catálogo de componentes e responsabilidade
+
+| Figma | Nó | Uso e evidência |
+|---|---|---|
+| Button | `123:286` | Ações; catálogo e seis variantes inspecionados na UI normal; ver detalhe abaixo e `button-reference.json` |
+| Navigation | `123:332` | Header; contexto do case confirma padding80×24 e logo20/28; composição final segue spec abaixo |
+| Project card | `123:433` | Listagem/destaques; contexto interno novo pendente |
+| Section heading | `123:485` | Identificação, título, descrição; contexto anterior, gap16 |
+| Method card | `123:494` | Abordagem; contexto interno novo pendente |
+| Trajectory item | `123:519` | Trajetória; contexto interno novo pendente |
+| Footer | `123:553` | Footer/contact; contexto anterior confirma fundo900, padding80 topo/48 base/80 lados desktop |
+| LanguageToggle | `125:1870` | Circular48, bandeira idioma atual; estados Default/Hover/Focus documentados no contexto anterior |
+| Portrait | `125:2085` | Retrato responsivo; original/propriedades internas pendentes |
+| Case contents item | `134:12782` | Âncora, alvo44, Default/Active/Hover/Focus; contexto anterior |
+| Case contents | `134:12845` | Desktop lateral sticky; mobile links em duas colunas antes do artigo; aria-current; contexto anterior |
+| Editorial paragraph | `138:13666` | Texto editorial; contexto interno novo pendente |
+| Editorial photograph | `138:13671` | Fotos editoriais; contexto interno novo pendente |
+| Editorial emphasis | `138:13672` | Ênfase fechada; contexto interno novo pendente |
+
+A tabela não exige 14 abstrações. Quem implementar deve conferir código existente e catálogo shadcn atual antes de compor. Não foi instalado componente nem biblioteca por esta pesquisa.
+
+O painel do catálogo Button confirmou nove variantes: Primary `123:268` Default / `123:270` Hover / `123:272` Focus; Secondary `123:274` Default / `123:276` Hover / `123:278` Focus; Ghost `123:280` Default / `123:282` Hover / `123:284` Focus. As nove foram vistas juntas no render100%; seis tiveram painel interno conferido. Primary Default/Hover medem208×48, Hug; Secondary Default/Hover208×50, Hug. Todos os seis conferidos usam padding horizontal24/vertical12, gap8 e radius/lg8 vinculados a variáveis. A largura208 é exemplo, não obrigação para rótulo dinâmico. Primary Default usa action/default700 e texto inverso branco; Hover usa action/hover900 e texto branco. Secondary Default usa fundo branco/borda100Inside1px; Hover usa fundo100 e **mantém borda100Inside1px e texto700**. Não transformar esses estados em borda700/texto900 sem evidência.
+
+Primary Focus mantém root208×48 e fundo700, com strokeOutside branco2px; o render exibe anel externo vinho. Secondary Focus `123:278` também foi conferido: root208×48Hug, fillWhite, strokeOutsideWhite2px; selection colors inclui Cherry700/actionDefault700; mesmo padding24×12/gap8/radius8. Essa diferença de altura do exemplar em relação aos50px Default/Hover não justifica introduzir salto de layout ao focar no site: manter a base estável e usar ring/outline é a adaptação funcional a verificar. A geometria do anel externo não foi exposta no painel do root. A descrição antiga dos dois nós diz `Focus: ring-2 ring-violet-700 ring-offset-2 ring-offset-white. Anel de 2px com afastamento de 2px.` O nome violet é legado e conflita com a paleta Cherry Cola aprovada; **focus/ring700 do inventário prevalece**, sem criar outra paleta. Ring2/offset2 estão documentados, mas a equivalência de cada camada ainda precisa da comparação final. Ghost tem fundo transparente no render; suas propriedades internas não foram reextraídas. Não afirmar que Active/Disabled foram desenhados.
+
+## Nós úteis do case PT com contexto oficial existente
+
+| Nó | Papel / geometria observada no contexto |
+|---|---|
+| `123:850`, `123:851`, `123:852`, `123:853` | identificação, parte normal do título, ênfase serifada, introdução |
+| `123:854` | slot capa 1280 × 480, `object-contain`, fundo700, raio12; arquivo baixado1600×900,16:9. Slot8:3 e imagem16:9 são proporções diferentes: preservar o contain sobre o fundo700 observado, não forçar cover silenciosamente |
+| `123:867` | nota de contexto |
+| `134:12901` | sumário208px; indicador36×2; entradas44px |
+| `134:12915` | artigo1008px; grupo junto ao sumário forma o conteúdo1280px |
+| `123:869` | coluna de leitura768px; gap64 |
+| `124:1696`, `123:873–879` | contexto e dois cartões papel/escopo372px, padding24, gap24 |
+| `124:1698`, `123:880` | desafio e divisor768×1 |
+| `124:1701`, `123:890`, `123:894`, `123:898` | processo e três etapas textuais |
+| `123:902`, `123:907` | seção de comparação rosa, padding32; duas colunas gap32 |
+| `123:908`, `123:915` | cartões textuais Antes/Depois456px, padding32, raio12 |
+| `123:922` | nota explícita de exemplo sem resultados de teste/métricas |
+| `123:923`, `123:929`, `123:934`, `123:939` | aprendizados; três itens309,333px; gridgap40; padding24 |
+| `123:930`, `123:935`, `123:940` | divisores dos três itens,261,333×1 |
+| `123:944` | instância de footer; divisor1280×1 |
+
+Sumário deriva das seções efetivas e suas chaves estáveis; não fixar cinco títulos ou usar IDs Figma como `readingKey`. Correspondência PT/EN continua pela identidade do case e UUIDs editoriais, nunca pelo índice, texto ou posição.
+
+## Ativos preservados e pendências
+
+`assets-manifest.json` registra URL de origem temporária, nó, bytes, SHA256, dimensões e slot. Cinco arquivos exatos foram baixados pelos URLs já retornados no contexto oficial anterior; a instrução desse contexto autorizava `curl -L`. Nenhuma nova chamada de exportação Figma foi feita. O PNG foi aberto e conferido visualmente. Dos SVGs, apenas metadados/root dimensions foram inspecionados, sem extrair ou redesenhar paths.
+
+O PNG é o asset de capa retornado pelo contexto, não há prova de que seja o upload bruto original do Figma. Ainda é necessária essa distinção na aceitação de E2.1. Não usar screenshot de página como asset. Nenhum URL Figma temporário pode permanecer no runtime; estes arquivos continuam materiais privados de referência até o fluxo editorial autorizado.
+
+Pendências concretas:
+
+1. Retrato original e crop/fill internos usados em Home e Sobre, desktop/mobile, PT/EN.
+2. Fotografia original de mesa e fotografia original de arquitetura; dimensões, crops e vínculos de cada slot.
+3. Capa dos dois telefones (projeto02) e comprovação de reutilização entre cards/detalhe/idiomas.
+4. Bandeira EN e variantes dos vetores; conferir se divisores retornados têm outras variantes reais antes de generalizar.
+5. Novos contextos de alta fidelidade dos16frames e componentes acima, tokens ligados internamente e especificação de variantes/interações. A quota impediu isso; os renders de zoom reduzido não suprem essa evidência.
+6. Capturas arquivadas dos renders e comparação lado a lado com a UI implementada em390/1440, tablet, intermediárias/zoom/conteúdo longo. As capturas desta pesquisa só foram vistas inline no histórico de ferramentas.
+7. PDFs finais PT/EN e conteúdo profissional final continuam externos a esta exportação; não inventar nem publicar exemplos.
+
+A capacidade documentada `pageAssets` do navegador também foi testada em SobreEN para os recursos de imagem já observados na página. Entre nove candidatos `static.figma.com/uploads`, seis retornaram SVGs e três falharam no fetch. São recursos do editor sem vínculo comprovado aos nós aprovados; não foram adicionados ao manifesto de ativos do portfólio nem utilizados. Esse caminho não recuperou os originais faltantes e não foi repetido. O pacote temporário criado pela própria ferramenta ficou em seu diretório de artefatos, fora do aplicativo.
+
+## Diferenças já aprovadas e estados
+
+Header final tem **Projetos, Sobre, Currículo, Contato** nessa ordem, nos dois idiomas e no menu mobile. Substituir Abordagem e acrescentar Currículo é diferença aprovada do Figma. A seção Abordagem da Home permanece. Contato leva a `#contact` na página atual; footer precisa da lista real de e-mail/LinkedIn; currículo abre PDF publicado do idioma atual em nova aba com indicação acessível.
+
+O header de três links e a navegação móvel desenhada na referência não anulam esses contratos. A documentação antiga do LanguageToggle fala em PT padrão; a resolução atual segue URL explícita, cookie manual180dias, navegador e fallbackEN, conforme spec.
+
+Estados sem desenho específico devem usar primitivas/tokens aprovados: menu aberto/fechado, teclado/foco/hover/pressão, troca de idioma, toast tradução ausente, zero cases, case indisponível, falha temporária e prévia autenticada. Não afirmar que o Figma desenha todos esses estados. Motion fica limitado a botão/menu/toast, com movimento reduzido; sem animação de entrada ou rolagem por inferência.
+
+SVG permanece proibido como upload editorial no CMS. Vetores aprovados usados pelo código seguem a regra distinta. Preservar dimensões intrínsecas dos SVGs e geometria efetiva no callsite; não aplicar `width/height:100%` globalmente. Imagens informativas precisam de alt efetivo e imagens decorativas de classificação explícita. Alt não foi inventado nesta pesquisa.
+
+## Conclusão de evidência
+
+Há base documental completa de IDs/tokens e conferência visual geral dos18frames, mais cinco ativos exatos preservados. **Não há comprovação de exportação de todos os originais, de contexto novo de alta fidelidade ou de aceite E2.1/E2.6.** O trabalho independente de tokens/contratos pode continuar, mantendo essas lacunas explícitas. A2 deve reunir a evidência restante antes de aprovação; Etapa3 permanece fora deste trabalho.
+

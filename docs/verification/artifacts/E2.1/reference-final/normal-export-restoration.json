@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-30",
+  "nodeId": "128:9416",
+  "initialExportSettings": [],
+  "temporaryChanges": [
+    "Add one export setting (defaultPNG1x)",
+    "Change format to SVG",
+    "Click normal Export circular crop"
+  ],
+  "sourceDownload": "Downloads/7e6f44ca-0644-46f3-890b-4b126bef8c6b.tmp (valid ZIP)",
+  "archiveEntry": "Consolidado/Locale/Flag/circular crop.svg",
+  "exactSvgFile": "ui-exports/language-en-circular-crop-128-9416.svg",
+  "restoration": "Removed the sole temporary export row using normal UI Remove control",
+  "verifiedAfter": {
+    "exportFileTypePresent": false,
+    "addExportSettingsPresent": true,
+    "width": 32,
+    "height": 32
+  },
+  "visualDocumentChange": false,
+  "temporaryMetadataChange": true,
+  "metadataRestored": true,
+  "clipboardSvgSucceeded": false,
+  "downloadEventApiTimedOutButActualDiskDownloadSucceeded": true,
+  "rootSvgMetadataOnlyInspected": true,
+  "pathsNotRedrawnOrInlined": true
+}

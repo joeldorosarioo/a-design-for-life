@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import type { SiteNavigation } from '@/payload-types';
-import type { ProfileDTO } from '@/features/professional-profile';
+import { profileDTOSchema } from '@/features/professional-profile';
 import { mapNavigation } from './map-navigation';
 const navigation: SiteNavigation = {
   id: '581e0654-27e2-412b-b954-538354857e9c',
@@ -17,7 +17,7 @@ const navigation: SiteNavigation = {
   },
   footer: { title: 'Synthetic footer' },
 };
-const profile: ProfileDTO = {
+const profile = profileDTOSchema.parse({
   locale: 'pt',
   identity: { name: null, role: null },
   home: { eyebrow: null, title: null, titleEmphasis: null, description: null, projectsLabel: null },
@@ -35,7 +35,7 @@ const profile: ProfileDTO = {
     aboutTitle: null,
     aboutDescription: null,
   },
-};
+});
 it('deriva quatro finalidades/ordem fixas e contatos/currículo somente do Perfil publicado', () => {
   const dto = mapNavigation(navigation, profile);
   expect(dto).toMatchObject({

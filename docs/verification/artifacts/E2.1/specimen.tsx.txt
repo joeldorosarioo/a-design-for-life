@@ -1,0 +1,20 @@
+import React from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { useReducedMotion } from 'motion/react';
+import * as m from 'motion/react-m';
+import { MotionProvider } from '../../src/helpers/motion/motion-provider';
+import { resolveInteractionMotion } from '../../src/helpers/motion/presets';
+import { Button, buttonVariants } from '../../src/components/ui/button';
+
+export function App() {
+  return <main className="portfolio-container"><h1>Foundation verification</h1><Button>Open projects</Button><p><a className={buttonVariants()} href="#contact">View contact</a></p><MotionProvider><Feedback /></MotionProvider><p id="contact">Keyboard and motion specimen</p></main>;
+}
+function Feedback() {
+  const reducedMotion = useReducedMotion() ?? true;
+  const policy = resolveInteractionMotion({ kind: 'button', reducedMotion });
+  return <m.button className={buttonVariants()} {...policy}>Motion feedback</m.button>;
+}
+if (typeof document !== 'undefined') {
+  (window as unknown as { hydrationErrors: string[] }).hydrationErrors = [];
+  hydrateRoot(document.getElementById('root')!, <App />, { onRecoverableError(error) { (window as unknown as { hydrationErrors: string[] }).hydrationErrors.push(String(error)); } });
+}

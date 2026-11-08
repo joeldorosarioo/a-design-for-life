@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-30",
+  "fileKey": "PXUcVZFdLuOzHQZkD5PU4b",
+  "catalogNode": "123:286",
+  "source": "Normal authenticated Figma editor UI via CUA; real screenshots viewed inline; not a new MCP context.",
+  "variants": {
+    "primary": {
+      "default": "123:268",
+      "hover": "123:270",
+      "focus": "123:272"
+    },
+    "secondary": {
+      "default": "123:274",
+      "hover": "123:276",
+      "focus": "123:278"
+    },
+    "ghost": {
+      "default": "123:280",
+      "hover": "123:282",
+      "focus": "123:284"
+    }
+  },
+  "commonVerified": {
+    "paddingHorizontal": 24,
+    "paddingVertical": 12,
+    "gap": 8,
+    "radius": 8,
+    "exampleWidth": 208,
+    "widthIsNotRequiredForDynamicLabels": true,
+    "font": {
+      "family": "Segoe UI",
+      "weight": 600,
+      "size": 16,
+      "lineHeight": 24,
+      "source": "Previously obtained official case PT context, Secondary Default label123:275"
+    }
+  },
+  "primary": {
+    "default": {
+      "height": 48,
+      "background": "#A3122F",
+      "text": "#FFFFFF",
+      "stroke": null
+    },
+    "hover": {
+      "height": 48,
+      "background": "#4E0B1C",
+      "text": "#FFFFFF",
+      "stroke": null
+    },
+    "focus": {
+      "height": 48,
+      "background": "#A3122F",
+      "rootStroke": {
+        "color": "#FFFFFF",
+        "weight": 2,
+        "align": "Outside"
+      },
+      "outerRingPropertyNotExposedInRoot": true
+    }
+  },
+  "secondary": {
+    "default": {
+      "height": 50,
+      "background": "#FFFFFF",
+      "text": "#A3122F",
+      "stroke": {
+        "color": "#FFC9D4",
+        "weight": 1,
+        "align": "Inside"
+      }
+    },
+    "hover": {
+      "height": 50,
+      "background": "#FFC9D4",
+      "text": "#A3122F",
+      "stroke": {
+        "color": "#FFC9D4",
+        "weight": 1,
+        "align": "Inside"
+      },
+      "textEvidence": "Only selection colors were Cherry Cola100 and action/default700; fill and stroke explicitly100."
+    },
+    "focus": {
+      "height": 48,
+      "background": "#FFFFFF",
+      "rootStroke": {
+        "color": "#FFFFFF",
+        "weight": 2,
+        "align": "Outside"
+      },
+      "selectionColors": [
+        "#FFFFFF",
+        "#A3122F"
+      ],
+      "annotationSameAsPrimary": true,
+      "baseHeightDifferenceRequiresLayoutShiftCheck": true
+    }
+  },
+  "focusAnnotation": {
+    "exact": "Focus: ring-2 ring-violet-700 ring-offset-2 ring-offset-white. Anel de 2px com afastamento de 2px.",
+    "legacyColorConflict": true,
+    "approvedColor": "#A3122F",
+    "approvedColorSource": "Inventory focus/ring = cherry-cola-700",
+    "ringWidth": 2,
+    "ringOffset": 2
+  },
+  "limitations": [
+    "No internal reinspection of Ghost variants.",
+    "No Active or Disabled variants were documented in catalog.",
+    "A single screenshot does not prove accessible interaction behavior."
+  ]
+}

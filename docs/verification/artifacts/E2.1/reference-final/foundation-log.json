@@ -1,0 +1,8 @@
+{
+  "command": "pnpm exec vitest run --project unit src/helpers/motion/presets.test.ts src/components/ui/button.test.tsx",
+  "exit": 0,
+  "testsPassed": 11,
+  "original": ".work/E2.1-foundation-final-focused.txt",
+  "exported": "docs/verification/artifacts/E2.1/foundation-final-focused.txt",
+  "sha256": "2136833e229f3dfbfe1e0c5808b680fb49835a4d90c23c4fe0be27802ec2ef72"
+}

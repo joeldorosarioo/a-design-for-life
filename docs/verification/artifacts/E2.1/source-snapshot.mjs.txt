@@ -1,0 +1,7 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean).filter(path => /^(src\/|testing\/)/.test(path) || /^(package\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|.*config\.(ts|mjs|cjs)|\.prettierrc\.json|\.prettierignore|\.gitignore|\.gitattributes|compose\.local\.yaml)$/.test(path));
+const records = [...new Set(files)].sort().map(path => { const data = readFileSync(path); return { path, bytes: data.length, sha256: createHash('sha256').update(data).digest('hex') }; });
+writeFileSync('docs/verification/artifacts/E2.1/source-snapshot.json', JSON.stringify({ base: '4f72388', capturedAt: new Date().toISOString(), note: 'Source/config snapshot after repeat verify and Native smoke; all implementation sources remained frozen during these commands. Documentation finalized afterward. E2.4 is concurrent work and not part of the E2.1 commit unit.', files: records }, null, 2) + '\n');
+console.log(`${records.length} source/config files hashed`);

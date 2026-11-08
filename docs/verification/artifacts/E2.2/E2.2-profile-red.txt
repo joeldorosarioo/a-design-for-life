@@ -1,0 +1,267 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/server/map-profile.test.ts (4 tests | 2 failed) 15ms
+   × preserves published Home and About groups, row order and public image uses 7ms
+   × represents missing presentation values explicitly without inventing professional content 1ms
+ ❯ |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts (9 tests | 9 failed) 16ms
+   × rejects unsafe confirmed contact data {"email":"javascript:alert(1)"} 8ms
+   × rejects unsafe confirmed contact data {"email":"synthetic@example.invalid\r\nBcc:other@example.invalid"} 1ms
+   × rejects unsafe confirmed contact data {"email":"<a href=\"javascript:alert(1)\">x</a>"} 0ms
+   × rejects unsafe confirmed contact data {"linkedin":"javascript:alert(1)"} 0ms
+   × rejects unsafe confirmed contact data {"linkedin":"data:text/html,<script>alert(1)</script>"} 0ms
+   × rejects unsafe confirmed contact data {"linkedin":"http://www.linkedin.com/in/synthetic"} 0ms
+   × rejects unsafe confirmed contact data {"linkedin":"https://linkedin.com.evil.example/in/synthetic"} 0ms
+   × rejects unsafe confirmed contact data {"linkedin":"https://user:password@www.linkedin.com/in/synthetic"} 0ms
+   × reads older confirmed snapshots without fetching new editorial values 3ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"email":"javascript:alert(1)"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"email":"synthetic@example.invalid\r\nBcc:other@example.invalid"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"email":"<a href=\"javascript:alert(1)\">x</a>"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"linkedin":"javascript:alert(1)"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"linkedin":"data:text/html,<script>alert(1)</script>"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"linkedin":"http://www.linkedin.com/in/synthetic"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"linkedin":"https://linkedin.com.evil.example/in/synthetic"}
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > rejects unsafe confirmed contact data {"linkedin":"https://user:password@www.linkedin.com/in/synthetic"}
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/professional-profile/contracts/profile-dto.schema.test.ts:24:109
+     22|   { linkedin: 'https://user:password@www.linkedin.com/in/synthetic' },
+     23| ])('rejects unsafe confirmed contact data %j', (contact) => {
+     24|   expect(profileDTOSchema.safeParse({ ...profile, contacts: { ...profi…
+       |                                                                                                             ^
+     25| });
+     26|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  |unit| src/features/professional-profile/contracts/profile-dto.schema.test.ts > reads older confirmed snapshots without fetching new editorial values
+AssertionError: expected { locale: 'pt', …(6) } to match object { identity: { name: null }, …(6) }
+(20 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "about": {
+-     "architecturePhotograph": null,
+-     "deskPhotograph": null,
+-     "portrait": null,
+-     "title": null,
+-   },
+-   "approach": {
+-     "methods": [],
+-   },
+    "home": {
+-     "portrait": null,
+-   },
+-   "homeAbout": {
+-     "trajectory": [],
+-   },
+-   "homeProjects": {
++     "description": null,
++     "eyebrow": null,
++     "projectsLabel": null,
+      "title": null,
++     "titleEmphasis": null,
+    },
+    "identity": {
+      "name": null,
+    },
+    "seo": {
+-     "image": null,
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "listingDescription": null,
++     "listingTitle": null,
+    },
+  }
+
+ ❯ src/features/professional-profile/contracts/profile-dto.schema.test.ts:29:18
+     27| it('reads older confirmed snapshots without fetching new editorial val…
+     28|   const parsed = profileDTOSchema.parse(profile);
+     29|   expect(parsed).toMatchObject({
+       |                  ^
+     30|     identity: { name: null }, home: { portrait: null },
+     31|     homeProjects: { title: null }, homeAbout: { trajectory: [] }, appr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > preserves published Home and About groups, row order and public image uses
+AssertionError: expected { locale: 'pt', …(6) } to match object { home: { portrait: { …(4) } }, …(5) }
+(23 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "about": {
+-     "architecturePhotograph": {
+-       "alt": "Synthetic portrait",
+-       "caption": "Synthetic caption",
+-       "decorative": false,
+-       "mediaId": "10000000-0000-4000-8000-000000000001",
+-     },
+-     "closing": "Closing body",
+-     "deskPhotograph": {
+-       "alt": "Synthetic portrait",
+-       "caption": "Synthetic caption",
+-       "decorative": false,
+-       "mediaId": "10000000-0000-4000-8000-000000000001",
+-     },
+-     "editorialEmphasis": "Editorial pause",
+-     "inMotion": "In motion body",
+-     "portrait": {
+-       "alt": "Synthetic portrait",
+-       "caption": "Synthetic caption",
+-       "decorative": false,
+-       "mediaId": "10000000-0000-4000-8000-000000000001",
+-     },
+-     "title": "Synthetic About",
+-   },
+-   "approach": {
+-     "methods": [
+-       {
+-         "description": "Method body",
+-         "readingKey": "10000000-0000-4000-8000-000000000002",
+-         "title": "Synthetic method",
+-       },
+-     ],
+-   },
+    "home": {
+-     "portrait": {
+-       "alt": "Synthetic portrait",
+-       "caption": "Synthetic caption",
+-       "decorative": false,
+-       "mediaId": "10000000-0000-4000-8000-000000000001",
+-     },
+-   },
+-   "homeAbout": {
+-     "aboutLabel": "Read about",
+-     "trajectory": [
+-       {
+-         "description": "First in editorial order",
+-         "period": "2025",
+-         "readingKey": "10000000-0000-4000-8000-000000000003",
+-         "title": "Second period",
+-       },
+-       {
+-         "description": "Second in editorial order",
+-         "period": "2024",
+-         "readingKey": "10000000-0000-4000-8000-000000000002",
+-         "title": "First period",
+-       },
+-     ],
++     "description": null,
++     "eyebrow": null,
++     "projectsLabel": null,
++     "title": "Synthetic Home",
++     "titleEmphasis": null,
+    },
+-   "homeProjects": {
+-     "description": "Project description",
+-     "eyebrow": "Selected",
+-     "title": "Synthetic projects",
+-   },
+    "seo": {
+-     "image": {
+-       "alt": "Synthetic portrait",
+-       "caption": "Synthetic caption",
+-       "decorative": false,
+-       "mediaId": "10000000-0000-4000-8000-000000000001",
+-     },
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": "Synthetic SEO",
++     "listingDescription": null,
++     "listingTitle": null,
+    },
+  }
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:84:15
+     82|   });
+     83|   const publicImage = { mediaId, decorative: false, alt: 'Synthetic po…
+     84|   expect(dto).toMatchObject({
+       |               ^
+     85|     home: { portrait: publicImage },
+     86|     homeProjects: { eyebrow: 'Selected', title: 'Synthetic projects', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  |unit| src/features/professional-profile/server/map-profile.test.ts > represents missing presentation values explicitly without inventing professional content
+AssertionError: expected { locale: 'pt', …(6) } to match object { home: { portrait: null }, …(5) }
+(23 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "about": {
+-     "architecturePhotograph": null,
+-     "deskPhotograph": null,
+-     "introduction": null,
+-     "portrait": null,
+-     "title": null,
+-   },
+-   "approach": {
+-     "description": null,
+-     "eyebrow": null,
+-     "methods": [],
+-     "title": null,
+-   },
+    "home": {
+-     "portrait": null,
+-   },
+-   "homeAbout": {
+-     "aboutLabel": null,
+-     "description": null,
+-     "eyebrow": null,
+-     "title": null,
+-     "trajectory": [],
+-   },
+-   "homeProjects": {
+      "description": null,
+      "eyebrow": null,
+-     "title": null,
++     "projectsLabel": null,
++     "title": "Synthetic Home",
++     "titleEmphasis": null,
+    },
+    "seo": {
+-     "image": null,
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "listingDescription": null,
++     "listingTitle": null,
+    },
+  }
+
+ ❯ src/features/professional-profile/server/map-profile.test.ts:101:15
+     99| it('represents missing presentation values explicitly without inventin…
+    100|   const dto = mapProfile(document);
+    101|   expect(dto).toMatchObject({
+       |               ^
+    102|     home: { portrait: null },
+    103|     homeProjects: { eyebrow: null, title: null, description: null },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  11 failed | 2 passed (13)
+   Start at  15:00:22
+   Duration  601ms (setup 69%, import 19%, transform 7%, tests 4%, worker 1%)
+

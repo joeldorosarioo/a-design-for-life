@@ -1,0 +1,66 @@
+{
+  "capturedAt": "2026-10-30T18:03:38.702Z",
+  "sourceSnapshotSHA256": "dfc5248f852784a25617f96df2c302fc8353f2370f6056809ba4b6000e389963",
+  "changes": [
+    {
+      "path": "src/components/ui/button.tsx",
+      "verifiedSHA256": "98f87c7f1c22b3807b74939eebb77ab8d3a55598c9b04ff19436940972bdb3fd",
+      "currentSHA256": "308760413072ebeb23b81619864204ec6d8a854fd23274130f642b306f56bafe",
+      "classification": "Comment only, requested by coordinator after verification; runtime unchanged"
+    },
+    {
+      "path": "src/features/professional-profile/contracts/profile-dto.schema.ts",
+      "verifiedSHA256": "d1f874e5c397131f75d07697c0446a15b4638c0f35fef8c68f4e51a83832de1c",
+      "currentSHA256": "a975b355249ddc06b210326ffb35852b2a7409f7740a72212801d9322bd3d156",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/professional-profile/contracts/profile.schema.ts",
+      "verifiedSHA256": "337680664f25ba9ee8eacc0ab7076a669343c679c54e0efe9e541872c4013c3d",
+      "currentSHA256": "05e8b0c7d0b6228077cc27e0e58f763b941bc96efce7690ef17768e43a0f8804",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/professional-profile/index.ts",
+      "verifiedSHA256": "0084a94fdab2770418131866d89b12a052158882d341fd3a96d69fbc1cf2231e",
+      "currentSHA256": "e8c140cf392db0b525786ac75655806e7b822a9619657152be4dbe74e06e9f22",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/professional-profile/server/map-profile.test.ts",
+      "verifiedSHA256": "6cf90b4e60d9abdb844376cedb909df3b819ecf9ebd8fb128ae966253628339c",
+      "currentSHA256": "6ab286ccecc381e69a0b2b8ab8a7f4fb113e10a11cf51e1eb7d3bd85b5aa04b9",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/professional-profile/server/map-profile.ts",
+      "verifiedSHA256": "a1c5a5bc4cfbb0d8344241e56303a97d275a70015aee0f7140b31982544adf05",
+      "currentSHA256": "3dddcf56771822534ed5de9ee68e6468a6ab0592784ebdb5d02ef8462ba4caa0",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/site-navigation/index.ts",
+      "verifiedSHA256": "7f8c73ea26891943c8422cad67bd486cde7331980add40ce3b87417e00991c39",
+      "currentSHA256": "52c2ef1d52e88a063292ed9113e566328d6fb8f1074e6fa04fa25c403e420d2e",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/site-navigation/server.ts",
+      "verifiedSHA256": "53f2c06627679a189dd0229eea9c211784f3a361d58700516967eaea0ffcd6ed",
+      "currentSHA256": "f4032103582ac031362f04c1539fdc5f071c2a49c93d650ba69a1c74dd7dde34",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "src/features/site-navigation/server/map-navigation.test.ts",
+      "verifiedSHA256": "b1136276c9b922201d6d4dc88711a1bf7736cc8f9397b1471ce3967be7e1e758",
+      "currentSHA256": "6f3e5c01c478c3378119fc52e18cf3150d4204a79d53d0183e55399d447fbe2a",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    },
+    {
+      "path": "testing/fixtures/content.ts",
+      "verifiedSHA256": "18937b5432c05a656d895ee43702c7806c75f90912c57260f6043b583048cfc1",
+      "currentSHA256": "425d7f49d0a9932a55245b1c9b4b1d3247b7ee902da9d7c7d72bf7e218a9c312",
+      "classification": "Concurrent work after released verification window; not covered by the reported whole-repository gate"
+    }
+  ]
+}

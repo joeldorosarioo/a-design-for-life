@@ -1,0 +1,177 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/language-switcher/server/set-language-preference.test.ts (21 tests | 21 failed) 19ms
+   ❯ setLanguagePreference (21)
+     × writes only the manual pt preference with safe attributes 7ms
+     × writes only the manual en preference with safe attributes 1ms
+     × uses the supplied HTTP origin even for a redirect to HTTPS 1ms
+     × starts the 180-day deadline at each manual call 3ms
+     × rejects invalid preference "pt-BR" before changing the response 1ms
+     × rejects invalid preference "EN" before changing the response 0ms
+     × rejects invalid preference " pt " before changing the response 0ms
+     × rejects invalid preference "" before changing the response 0ms
+     × rejects invalid preference null before changing the response 0ms
+     × rejects invalid preference undefined before changing the response 0ms
+     × rejects invalid preference {"locale":"pt"} before changing the response 0ms
+     × rejects invalid origin "" before writing a cookie 0ms
+     × rejects invalid origin "not a URL" before writing a cookie 0ms
+     × rejects invalid origin "/relative" before writing a cookie 0ms
+     × rejects invalid origin "ftp://portfolio.example" before writing a cookie 0ms
+     × rejects invalid origin "javascript:alert(1)" before writing a cookie 0ms
+     × rejects invalid origin "https://portfolio.example/path" before writing a cookie 0ms
+     × rejects invalid origin "https://portfolio.example?query=1" before writing a cookie 0ms
+     × rejects invalid origin "https://portfolio.example#fragment" before writing a cookie 0ms
+     × rejects invalid origin "https://user:password@portfolio.example" before writing a cookie 0ms
+     × preserves unrelated response cookies and status 2ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 21 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > writes only the manual pt preference with safe attributes
+AssertionError: expected undefined to match object { name: 'portfolio_locale', …(6) }
+
+- Expected:
+{
+  "httpOnly": true,
+  "maxAge": 15552000,
+  "name": "portfolio_locale",
+  "path": "/",
+  "sameSite": "lax",
+  "secure": true,
+  "value": "pt",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:18:54
+     16|     setLanguagePreference(locale, response, context);
+     17|
+     18|     expect(response.cookies.get('portfolio_locale')).toMatchObject({
+       |                                                      ^
+     19|       name: 'portfolio_locale',
+     20|       value: locale,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/21]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > writes only the manual en preference with safe attributes
+AssertionError: expected undefined to match object { name: 'portfolio_locale', …(6) }
+
+- Expected:
+{
+  "httpOnly": true,
+  "maxAge": 15552000,
+  "name": "portfolio_locale",
+  "path": "/",
+  "sameSite": "lax",
+  "secure": true,
+  "value": "en",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:18:54
+     16|     setLanguagePreference(locale, response, context);
+     17|
+     18|     expect(response.cookies.get('portfolio_locale')).toMatchObject({
+       |                                                      ^
+     19|       name: 'portfolio_locale',
+     20|       value: locale,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/21]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > uses the supplied HTTP origin even for a redirect to HTTPS
+TypeError: .toMatch() expects to receive a string, but got object
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:43:52
+     41|     setLanguagePreference('en', response, { siteOrigin: 'http://127.0.…
+     42|
+     43|     expect(response.headers.get('set-cookie')).not.toMatch(/; Secure(?…
+       |                                                    ^
+     44|     expect(response.cookies.get('portfolio_locale')?.secure).toBe(fals…
+     45|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/21]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > starts the 180-day deadline at each manual call
+AssertionError: expected undefined to deeply equal 2026-06-30T00:00:00.000Z
+
+- Expected:
+2026-06-30T00:00:00.000Z
+
++ Received:
+undefined
+
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:52:60
+     50|     const first = new NextResponse();
+     51|     setLanguagePreference('pt', first, context);
+     52|     expect(first.cookies.get('portfolio_locale')?.expires).toEqual(new…
+       |                                                            ^
+     53|
+     54|     vi.setSystemTime(new Date('2026-01-02T00:00:00Z'));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/21]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference "pt-BR" before changing the response
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference "EN" before changing the response
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference " pt " before changing the response
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference "" before changing the response
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference null before changing the response
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference undefined before changing the response
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid preference {"locale":"pt"} before changing the response
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:66:70
+     64|       response.cookies.set('unrelated', 'keep');
+     65|
+     66|       expect(() => setLanguagePreference(locale, response, context)).t…
+       |                                                                      ^
+     67|       expect(response.headers.getSetCookie()).toEqual(['unrelated=keep…
+     68|     },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/21]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "not a URL" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "/relative" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "ftp://portfolio.example" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "javascript:alert(1)" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "https://portfolio.example/path" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "https://portfolio.example?query=1" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "https://portfolio.example#fragment" before writing a cookie
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > rejects invalid origin "https://user:password@portfolio.example" before writing a cookie
+AssertionError: expected [Function] to throw an error
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:84:73
+     82|     const response = new NextResponse();
+     83|
+     84|     expect(() => setLanguagePreference('pt', response, { siteOrigin })…
+       |                                                                         ^
+     85|     expect(response.headers.has('set-cookie')).toBe(false);
+     86|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/21]⎯
+
+ FAIL  |unit| src/features/language-switcher/server/set-language-preference.test.ts > setLanguagePreference > preserves unrelated response cookies and status
+AssertionError: expected [ { name: 'unrelated', …(2) } ] to have a length of 2 but got 1
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ src/features/language-switcher/server/set-language-preference.test.ts:95:39
+     93|
+     94|     expect(response.cookies.get('unrelated')?.value).toBe('keep');
+     95|     expect(response.cookies.getAll()).toHaveLength(2);
+       |                                       ^
+     96|     expect(response.status).toBe(204);
+     97|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/21]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  21 failed (21)
+   Start at  14:44:34
+   Duration  1.23s (import 71%, setup 23%, transform 4%, tests 2%)
+

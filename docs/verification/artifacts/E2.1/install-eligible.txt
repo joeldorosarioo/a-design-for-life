@@ -1,0 +1,20 @@
+✓ Lockfile passes supply-chain policies (verified 10h ago)
+.                                        | [WARN] deprecated eslint@9.39.5. 10.13.0 is not deprecated.
+[WARN] 2 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5
+Packages: +3 -3
++++---
+Progress: resolved 3, reused 607, downloaded 3, added 3, done
+.../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+.../node_modules/unrs-resolver postinstall$ node postinstall.js
+.../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+.../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+.../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+.../node_modules/unrs-resolver postinstall: Done
+
+dependencies:
+- motion 14.9.0
++ motion 14.7.1
+
+Done in 1.5s using pnpm v12.10.1

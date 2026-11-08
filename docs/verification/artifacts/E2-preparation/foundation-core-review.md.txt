@@ -1,0 +1,56 @@
+# Revisão independente — fundação E2.1 e core E2.4
+
+30/10/2026. Etapa 2: **0% (0/6 tarefas concluídas)**. Revisão estática e somente leitura da aplicação `E:/a-design-for-life`, conforme escopo do coordenador. Nenhuma aplicação foi editada; não executei Git, instalação, serviço, teste, build, browser ou requisição HTTP. A única gravação desta revisão é este relatório no workspace C:.
+
+## Parecer
+
+**Não identifiquei achados acionáveis de correção, segurança ou arquitetura nas duas unidades delimitadas.** Elas são coerentes como commits preparatórios separados: fundação E2.1 com dependências/lock/configuração/estilos/Button/Motion/testes/evidências, e core E2.4 com negociação/resolução/gravação de preferência/interfaces/testes. A decisão de integrar exige o gate atual do coordenador e a seleção exata dos arquivos; esta revisão não comprova a árvore inteira concorrente nem conclui E2.1/E2.4.
+
+E2.1 permanece parcial por originais e aceite visual; E2.4 permanece parcial por composição HTTP, acionamento manual real e jornadas. Esses limites conhecidos não são apresentados como bugs das unidades preparatórias. Não há autorização ou aceite A2/etapa 3 neste parecer.
+
+## Standards
+
+**0 achados acionáveis.** Li `AGENTS.md`, `docs/architecture/fronteiras.md`, o ledger/autorização atual e os briefs aprovados E2.1/E2.4. A busca por `AGENTS.md`, `CONTRIBUTING.md` e `CODING_STANDARDS.md` sob `src`/`docs` não encontrou instrução adicional.
+
+- UI e helpers não dependem de features. Button permanece uma primitiva nativa pequena, sem documento CMS, efeitos ou importação de Motion. CVA declara a variante Secondary fora do JSX; `type="button"` protege formulários e o submit continua explícito.
+- Provider/loader têm `use client`; os presets são puros. As duas operações de idioma são marcadas `server-only`, o `server.ts` tem marcador próprio e o `index.ts` exporta apenas tipos. O import de NextResponse na implementação do cookie também é somente tipo.
+- Dependências diretas novas estão fixadas e os importers do lock correspondem ao package.json: CVA 0.7.1, Motion 14.7.1 e Tailwind/PostCSS 4.3.3. Não há necessidade de nova abstração ou biblioteca de controles para o Button apresentado. Não fiz auditoria de vulnerabilidades nem verificação externa de registros.
+- Testes adjacentes exercitam comportamento próprio: submissão implícita, conteúdo inicial visível, redução/feedback/saída, qualidade/ordem de idioma e cookie real. Não observei teste de snapshot CSS usado como substituto do comportamento.
+
+## Spec
+
+**0 achados acionáveis.** Confrontei os briefs aprovados com spec §§3.2/7, inventário de tokens/estados e documentação de implementação.
+
+- A paleta Cherry Cola, aliases, stacks locais, tipografia relativa, espaçamento, raios, breakpoints e medidas de contêiner correspondem ao inventário. O reset do tema evita herdar os valores visuais padrão. A diferença de altura do foco e a sequência literal ainda desconhecida dos fallbacks estão explicitamente registradas no mapa Figma, sem alegação de equivalência integral.
+- Todos os presets começam em `y: 0, opacity: 1`; conteúdo SSR não depende do loader para aparecer. Redução zera os deslocamentos de inicial/animate/hover/tap/exit, preserva o fade de saída curto e o provider usa a preferência do usuário. Apenas transform/opacity recebem animação; o CSS atual não disputa essas propriedades com Motion. Não há animação elaborada de entrada/scroll.
+- `negotiateLocale` filtra idiomas/ranges e pesos malformados, aceita variantes PT/EN e q entre 0 e 1 com até três decimais, ignora q=0 e conserva a ordem em empate. O fallback é EN. A política documentada de ignorar wildcard como preferência explícita e usar EN quando não houver PT/EN positivo é compatível com a política de fallback aprovada; não constitui negociação genérica de todas as variantes HTTP.
+- `resolveEntryLocale` dá prioridade somente a cookie exatamente `pt`/`en`, depois ao cabeçalho e a EN; não grava estado. Cookie inválido não determina destino arbitrário.
+- `setLanguagePreference` valida preferência e origem HTTP(S) antes de escrever, com prazo literal de 15.552.000 segundos, Path=/, SameSite=Lax, HttpOnly, Secure conforme o protocolo da origem validada e sem Domain. Não deriva protocolo de Location/headers encaminhados. O terceiro argumento obrigatório `{ siteOrigin }` é o ajuste contratual explicitamente autorizado pelo coordenador.
+- Reutilizar a autoridade existente de rotas, em vez de criar `routes.ts` paralelo, é coerente com a arquitetura. Esta unidade não contém implementação de redirects, rotas traduzidas, endpoint manual ou troca de idioma.
+
+## Evidência observada e seus limites
+
+Li os relatórios C: de E2.1/E2.4, `docs/verification/E2.1.md`, `docs/architecture/mapeamento-figma.md`, o README dos artefatos, os resultados JSON de browser/bundle e os finais dos logs exportados de verify/smoke. Não reexecutei esses comandos.
+
+- O log histórico `verify-repeat.txt` registra 536 testes aprovados/1 skip Windows em 79 arquivos, seguido de build. O smoke histórico registra 2/2 testes Native. Não atribuo esses resultados às mudanças posteriores de Perfil/navegação ou à árvore inteira atual.
+- `browser-results.json` contém seis cenários da fixture privada, larguras 390/768/1440 × movimento normal/reduzido, sem erro de página/hidratação registrado, foco visível e ausência de overflow. Essa é evidência produzida pelo implementador, não observação HTTP/UI independente desta revisão nem aceite visual das páginas públicas.
+- O custo inicial informado confere com os bytes do JSON: 311.774 contra 225.064, delta de **86.710 bytes**, e 102.166 contra 69.884 gzip, delta de **32.282 bytes**. O loader de 83 bytes não comprova adiamento de domAnimation. A documentação trata corretamente isso como limitação, sem alegar economia de bundle Next.
+- A busca textual atual em `src` não encontrou consumidor de rota/layout de MotionProvider, globals ou funções da feature de idioma. Portanto não há, nesta unidade, biblioteca Motion nova aplicada globalmente nem prova de comportamento HTTP de idioma.
+- Os unitários reais de cookie testam serialização NextResponse e prazo por chamada; não demonstram que visitas reais deixam de renová-lo, que só a escolha manual chama a operação, nem que expiração/remoção funciona no navegador. Essas provas continuam na integração E2.4.
+
+## Identidade de fontes conferidas
+
+Hashes SHA256 lidos diretamente da aplicação durante esta revisão; os três arquivos runtime E2.4 correspondem ao snapshot congelado do relatório de implementação.
+
+| Arquivo relativo à aplicação | SHA256 |
+| --- | --- |
+| src/helpers/i18n/negotiate-locale.ts | 3219523521A8C010E57678D34C16958C72592CDEF6DF0C4D6C31C79C71E28D83 |
+| src/features/language-switcher/server/resolve-entry-locale.ts | AD82416F5D964BE779DDBCC01BFB9D4B73CBD2F125C57447D820147F7A58B152 |
+| src/features/language-switcher/server/set-language-preference.ts | FF3489ECF116BD3B3CB179C8EBB304B7C58518B6BC2975CCCBE567261A34940D |
+| src/components/ui/button.tsx | 308760413072EBEB23B81619864204EC6D8A854FD23274130F642B306F56BAFE |
+| src/stylesheets/globals.css | 5406B14198316B549B90A82DF8DC3C409E32FF258A35C8B464F3D8180E10E14C |
+| src/stylesheets/tokens.css | 70A22BCBE780956DC43BBC9BD34AC130EC71611929D784955BC01029349CDC13 |
+| src/helpers/motion/presets.ts | AFB22EB47DCE581026891990BF25DF3B46A95A38E4884DBA893D803E8ED9C9F6 |
+| src/helpers/motion/motion-provider.tsx | 0CE942B71AC708B106ECAC39DF4D4FC995DD834E67C35A543F75E8646FE0D957 |
+
+Escopo de fonte inspecionado: `src/stylesheets/**`, `src/components/ui/**`, `src/helpers/motion/**`, `postcss.config.mjs`, package.json/importers do pnpm-lock.yaml, `src/helpers/i18n/negotiate-locale.ts` e seu teste, `locale.schema.ts`, `src/features/language-switcher/**`. Nenhuma alegação sobre novos consumidores, páginas, contraste global, conformidade WCAG completa, SEO ou segurança HTTP deriva desta revisão.
