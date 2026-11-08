@@ -68,8 +68,9 @@ async function assertInvalidEffectivePublication(
     ).totalDocs,
   ).toBe(versionsBefore.totalDocs);
 }
-test('two real native editors: owner saves, other reads, distinct documents save and exit releases', async ({
+test('two native editors save independently while a visitor cannot read their drafts', async ({
   browser,
+  request: visitor,
 }) => {
   test.setTimeout(45_000);
   const second = await fixture.payload.create({
@@ -149,11 +150,12 @@ test('two real native editors: owner saves, other reads, distinct documents save
   );
   await reader.getByRole('button', { name: 'Save', exact: true }).click();
   expect((await secondSave).status()).toBe(200);
-  const translations: { id: string }[] = [];
+  const translations: { id: string; slug: string }[] = [];
+  const draftSlug = `private-editorial-${crypto.randomUUID()}`;
   for (const locale of ['pt', 'en'] as const) {
     const translated = await fixture.payload.create({
       collection: 'case-content',
-      data: { case: doc.id, locale },
+      data: { case: doc.id, locale, slug: draftSlug },
       draft: true,
       req: await fixture.request(),
       overrideAccess: false,
@@ -164,7 +166,7 @@ test('two real native editors: owner saves, other reads, distinct documents save
       translated.leaseToken!,
       await fixture.request(),
     );
-    translations.push(translated);
+    translations.push({ id: translated.id, slug: draftSlug });
   }
   await owner.goto(`/admin/collections/case-content/${translations[0].id}`);
   await reader.goto(`/admin/collections/case-content/${translations[1].id}`);
@@ -189,6 +191,30 @@ test('two real native editors: owner saves, other reads, distinct documents save
     reader.getByRole('button', { name: 'Save Draft', exact: true }).click(),
   ]);
   expect((await Promise.all(saves)).map((response) => response.status())).toEqual([200, 200]);
+  for (const [index, locale] of (['pt', 'en'] as const).entries()) {
+    const { id, slug } = translations[index];
+    const draftTitle = `Native independent ${locale.toUpperCase()}`;
+    const session = index === 0 ? owner : reader;
+    const savedDraft = await session.request.get(`/api/case-content/${id}?draft=true&depth=0`);
+    expect(savedDraft.status()).toBe(200);
+    expect(await savedDraft.json()).toMatchObject({
+      id,
+      slug,
+      locale,
+      title: draftTitle,
+      _status: 'draft',
+    });
+    const publicRoute = await visitor.get(`/${locale}/cases/${slug}`);
+    expect(publicRoute.status()).toBe(404);
+    expect(await publicRoute.text()).not.toContain(draftTitle);
+    const directDraft = await visitor.get(`/api/case-content/${id}?draft=true`);
+    expect(directDraft.status()).toBe(404);
+    expect(await directDraft.text()).not.toContain(draftTitle);
+    const preview = await visitor.get(`/preview?collection=case-content&id=${id}&locale=${locale}`);
+    expect(preview.status()).toBe(401);
+    expect(preview.headers()['cache-control']).toContain('no-store');
+    expect(await preview.text()).not.toContain(draftTitle);
+  }
   await reader.goto(`/admin/collections/cases/${other.id}`);
   await reader.locator('.doc-controls__popup button').first().click();
   await expect(reader.locator('#action-delete')).toBeHidden();

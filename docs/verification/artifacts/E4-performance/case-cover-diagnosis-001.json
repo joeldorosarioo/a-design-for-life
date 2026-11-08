@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "cause": "The browser selects the width of the full cover slot even when object-fit: contain paints a much narrower portrait. Image transfer dominates the LCP; CSS layout and optimizer authorization remain valid.",
+  "stagingRootUnchanged": true,
+  "runs": [
+    {
+      "repeat": 1,
+      "lcpMs": 2802.96,
+      "phasesMs": {
+        "timeToFirstByte": 260.9009999847412,
+        "resourceLoadDelay": 111.38800001525878,
+        "resourceLoadDuration": 2418.686,
+        "elementRenderDelay": 11.985
+      },
+      "bounds": {
+        "top": 604,
+        "bottom": 796,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "element": "case-cover-image"
+    },
+    {
+      "repeat": 2,
+      "lcpMs": 2803.06,
+      "phasesMs": {
+        "timeToFirstByte": 267.042,
+        "resourceLoadDelay": 103.516,
+        "resourceLoadDuration": 2419.843,
+        "elementRenderDelay": 12.659
+      },
+      "bounds": {
+        "top": 604,
+        "bottom": 796,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "element": "case-cover-image"
+    },
+    {
+      "repeat": 3,
+      "lcpMs": 2813.211,
+      "phasesMs": {
+        "timeToFirstByte": 264.49,
+        "resourceLoadDelay": 117.006,
+        "resourceLoadDuration": 2407.005,
+        "elementRenderDelay": 24.71
+      },
+      "bounds": {
+        "top": 604,
+        "bottom": 796,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "element": "case-cover-image"
+    }
+  ],
+  "currentSizes": "(min-width: 1328px) 1280px, calc(100vw - 48px)",
+  "mobileSlotCssPx": 342,
+  "portraitPaintedWidthCssPx": 157,
+  "dpr": 3,
+  "quality": 75,
+  "variants": [
+    {
+      "requestedWidth": 1080,
+      "encodedBytes": 144236,
+      "dimensions": [
+        1048,
+        1280
+      ]
+    },
+    {
+      "requestedWidth": 640,
+      "encodedBytes": 66582,
+      "dimensions": [
+        640,
+        782
+      ]
+    },
+    {
+      "requestedWidth": 384,
+      "encodedBytes": 29268,
+      "dimensions": [
+        384,
+        469
+      ]
+    }
+  ],
+  "variantProbe": "HTTP 200, WebP, optimizer HIT for all three. 640w covers ~471px requested by the actual contain geometry at DPR 3.",
+  "textureEncodedBytes": 470367,
+  "textureLosslessWebPExperiment": {
+    "encodedBytes": 273544,
+    "decodedRgbaPixelEquality": true,
+    "appAssetChanged": false
+  },
+  "enLcpElement": "title text; EN still loaded the same 144236-byte cover variant",
+  "network": "No third-party resources; real staging image downloaded through the read-only relay."
+}

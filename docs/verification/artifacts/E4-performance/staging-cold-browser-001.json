@@ -1,0 +1,1405 @@
+{
+  "version": 1,
+  "kind": "stage4-staging-laboratory-through-authenticated-read-only-relay",
+  "startedAt": "2026-11-07T01:54:36.297Z",
+  "completedAt": "2026-11-07T02:05:41.824Z",
+  "config": {
+    "version": 1,
+    "frozenAt": "2026-11-07T01:53:45.271185+00:00",
+    "environment": "staging",
+    "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+    "sourceSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "imageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+    "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "selection": "The payment-flexibility case has more encoded resource bytes in PT/EN and both viewports before the performance round. See case-weight-selection.json.",
+    "targets": [
+      {
+        "id": "home-pt",
+        "kind": "home",
+        "locale": "pt",
+        "path": "/pt"
+      },
+      {
+        "id": "home-en",
+        "kind": "home",
+        "locale": "en",
+        "path": "/en"
+      },
+      {
+        "id": "cases-pt",
+        "kind": "cases",
+        "locale": "pt",
+        "path": "/pt/cases"
+      },
+      {
+        "id": "cases-en",
+        "kind": "cases",
+        "locale": "en",
+        "path": "/en/cases"
+      },
+      {
+        "id": "case-pt",
+        "kind": "case",
+        "locale": "pt",
+        "path": "/pt/cases/flexibilidade-de-pagamento"
+      },
+      {
+        "id": "case-en",
+        "kind": "case",
+        "locale": "en",
+        "path": "/en/cases/payment-flexibility"
+      }
+    ]
+  },
+  "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+  "browserVersion": "156.0.8078.4",
+  "machine": {
+    "platform": "win32",
+    "cpu": "AMD Ryzen 5 5600X 6-Core Processor             ",
+    "logicalProcessors": 12,
+    "memoryBytes": 17077932032
+  },
+  "relay": {
+    "browserOrigin": "http://127.0.0.1:54045",
+    "upstreamOrigin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+    "requests": 1115,
+    "methods": [
+      "GET"
+    ],
+    "credentialExposedToBrowser": false,
+    "compressedUpstreamBytesPreserved": true
+  },
+  "performance": {
+    "runs": 36,
+    "scenarios": [
+      {
+        "target": "home-pt",
+        "profile": "mobile",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 903.023,
+            "min": 875.43,
+            "max": 922.42,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 67.1180000000004,
+            "min": 62.49999998474141,
+            "max": 67.44700000000012,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 903.023,
+            "min": 875.43,
+            "max": 922.42,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 2558,
+            "min": 2508,
+            "max": 2559,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 200
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "home-pt",
+        "profile": "desktop",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 800.962,
+            "min": 426.207,
+            "max": 831.682,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 426.207,
+            "min": 419.959,
+            "max": 478.454,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 813,
+            "min": 805,
+            "max": 851,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 150
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "home-en",
+        "profile": "mobile",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 887.052,
+            "min": 875.885,
+            "max": 909.744,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 77.91499999999996,
+            "min": 61.47699998474127,
+            "max": 83.16800000000012,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 887.052,
+            "min": 875.885,
+            "max": 909.744,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 2552,
+            "min": 2542,
+            "max": 2575,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 200
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "home-en",
+        "profile": "desktop",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 397.845,
+            "min": 393.663,
+            "max": 779.09,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 397.845,
+            "min": 393.663,
+            "max": 402.257,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 804,
+            "min": 788,
+            "max": 816,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 150
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 2383.973,
+            "min": 2326.506,
+            "max": 2403.137,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 65.45399999999972,
+            "min": 60.58199999999988,
+            "max": 68.1210000000001,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 831.465,
+            "min": 830.869,
+            "max": 839.307,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 2831,
+            "min": 2818,
+            "max": 2833,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 200
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "cases-pt",
+        "profile": "desktop",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 646.515,
+            "min": 645.506,
+            "max": 708.452,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 345.747,
+            "min": 330.407,
+            "max": 392.248,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 739,
+            "min": 736,
+            "max": 801,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 150
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 2364.904,
+            "min": 2347.871,
+            "max": 2443.706,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 61.74000000000024,
+            "min": 60.22600000000011,
+            "max": 63.83199999999988,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 849.491,
+            "min": 844.423,
+            "max": 849.972,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 2894,
+            "min": 2870,
+            "max": 2909,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 200
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "cases-en",
+        "profile": "desktop",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 659.23,
+            "min": 656.58,
+            "max": 706.188,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 347.657,
+            "min": 320.789,
+            "max": 383.932,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 752,
+            "min": 745,
+            "max": 800,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 150
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "case-pt",
+        "profile": "mobile",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 2803.06,
+            "min": 2802.96,
+            "max": 2813.211,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 60.68600000000015,
+            "min": 59.878000000000156,
+            "max": 79.7510000000002,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 912.173,
+            "min": 901.52,
+            "max": 936.293,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 2706,
+            "min": 2701,
+            "max": 2709,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 200
+        },
+        "budgetPass": false
+      },
+      {
+        "target": "case-pt",
+        "profile": "desktop",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 591.222,
+            "min": 374.868,
+            "max": 647.912,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 349.841,
+            "min": 336.054,
+            "max": 374.868,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 813,
+            "min": 790,
+            "max": 838,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 150
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "case-en",
+        "profile": "mobile",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 902.908,
+            "min": 879.156,
+            "max": 928.292,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 66.25800000000027,
+            "min": 65.47800000000007,
+            "max": 97.20100000000002,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 902.908,
+            "min": 879.156,
+            "max": 928.292,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 2728,
+            "min": 2703,
+            "max": 2730,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 200
+        },
+        "budgetPass": true
+      },
+      {
+        "target": "case-en",
+        "profile": "desktop",
+        "metrics": {
+          "largest-contentful-paint": {
+            "median": 351.645,
+            "min": 349.602,
+            "max": 353.101,
+            "runs": 3
+          },
+          "cumulative-layout-shift": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "total-blocking-time": {
+            "median": 0,
+            "min": 0,
+            "max": 0,
+            "runs": 3
+          },
+          "first-contentful-paint": {
+            "median": 351.645,
+            "min": 349.602,
+            "max": 353.101,
+            "runs": 3
+          },
+          "speed-index": {
+            "median": 801,
+            "min": 791,
+            "max": 806,
+            "runs": 3
+          }
+        },
+        "budgets": {
+          "lcpMs": 2500,
+          "cls": 0.1,
+          "tbtMs": 150
+        },
+        "budgetPass": true
+      }
+    ]
+  },
+  "analytics": {
+    "loadScript": null,
+    "googleRequestsForwarded": 0
+  },
+  "fieldInp": "unavailable-no-public-production-traffic",
+  "limitations": [
+    "Browser uses loopback relay; each request traverses real staging network and TLS upstream plus local forwarding overhead.",
+    "Browser-side Lighthouse throttling is applied to relay traffic, not to the shared VPS.",
+    "Staging has Basic Auth, private noindex policy and disabled Analytics; production is not measured.",
+    "Before/after candidate digest and publication root are independently inspected over SSH."
+  ],
+  "exitCode": 0,
+  "runs": [
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 349.602,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 349.602,
+        "speed-index": 801
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:04:57.383Z",
+      "rawLhrSha256": "c0f8afcac923bd2864880d2855e6f9cbf40f19e80211202335e002d2f056012a",
+      "scriptTransferBytes": 199439,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 351.645,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 351.645,
+        "speed-index": 806
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:05:12.874Z",
+      "rawLhrSha256": "4c06d592aed6748d7a3dfcb2eaa3c6147093ca011e86c0856b1278581925cde6",
+      "scriptTransferBytes": 199444,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 353.101,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 353.101,
+        "speed-index": 791
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:05:28.309Z",
+      "rawLhrSha256": "3f39f4e4ca0a2255bf0a592b529ee215cc7185f2f5e8242dcfbfffb5658c482e",
+      "scriptTransferBytes": 199434,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 879.156,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 66.25800000000027,
+        "first-contentful-paint": 879.156,
+        "speed-index": 2703
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:03:56.807Z",
+      "rawLhrSha256": "5e6bab10da55ee368597f69d2796b5a5e63f305314f7d0193de5e9d77be00c26",
+      "scriptTransferBytes": 199462,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 902.908,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 97.20100000000002,
+        "first-contentful-paint": 902.908,
+        "speed-index": 2728
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:04:17.206Z",
+      "rawLhrSha256": "eca87ce8db89c921f3886612d4d465becf712c7e21fa9732fc6c92d3361101ae",
+      "scriptTransferBytes": 199446,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 928.292,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 65.47800000000007,
+        "first-contentful-paint": 928.292,
+        "speed-index": 2730
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:04:37.351Z",
+      "rawLhrSha256": "e07a0d2c6b0cd7d5886cdb35e55b428feed7733fcbd38387eae2260ad216bee0",
+      "scriptTransferBytes": 199423,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 647.912,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 336.054,
+        "speed-index": 790
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:03:10.922Z",
+      "rawLhrSha256": "2791eb59dd5157eb51d27daefcbc93a2de6ac34fdf68a11782f8aa7f85ec62c9",
+      "scriptTransferBytes": 199434,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 374.868,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 374.868,
+        "speed-index": 838
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:03:26.215Z",
+      "rawLhrSha256": "8f195af94ecd89a50f19c9ca6b2fdece540d4d7b9529c3f07c3726a71e5b446d",
+      "scriptTransferBytes": 199444,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 591.222,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 349.841,
+        "speed-index": 813
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:03:41.669Z",
+      "rawLhrSha256": "c57afbc3ad19dc8b8ef60220fa35978311dd077da623d2f62ec663d1504f7a23",
+      "scriptTransferBytes": 199414,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 2802.96,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 79.7510000000002,
+        "first-contentful-paint": 936.293,
+        "speed-index": 2709
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:02:10.113Z",
+      "rawLhrSha256": "08c7653a711835c05c99abaa82d206fcbbfba041e182eb89ab7ee7d8cd63ecc9",
+      "scriptTransferBytes": 199444,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 2803.06,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 59.878000000000156,
+        "first-contentful-paint": 912.173,
+        "speed-index": 2706
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:02:30.624Z",
+      "rawLhrSha256": "7d1dbfb42f901dd9162459b3b5824731705be23e3f01c7a29111aa1704743d3b",
+      "scriptTransferBytes": 199433,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 2813.211,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 60.68600000000015,
+        "first-contentful-paint": 901.52,
+        "speed-index": 2701
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:02:50.685Z",
+      "rawLhrSha256": "66405685295e5c8e2b2fdb1092f0034663d4ff9c064c882e54f62400890c654a",
+      "scriptTransferBytes": 199431,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 659.23,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 320.789,
+        "speed-index": 752
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:01:24.305Z",
+      "rawLhrSha256": "4ffed98da27b81e3dba58a6147423bdee6c5d80b11e5a524e19921cf5af7fcaf",
+      "scriptTransferBytes": 199451,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 656.58,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 347.657,
+        "speed-index": 745
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:01:39.416Z",
+      "rawLhrSha256": "4ae9aa0d363525260cd45a77717f01e6270701b25c3013e16e8ca0c8e7954a9a",
+      "scriptTransferBytes": 199458,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 706.188,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 383.932,
+        "speed-index": 800
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:01:54.696Z",
+      "rawLhrSha256": "4d0e1b0e14f6bf74e4109c8a241d0c5cc9a74f3230a303970eded49764905bb9",
+      "scriptTransferBytes": 199450,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 2347.871,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 60.22600000000011,
+        "first-contentful-paint": 849.491,
+        "speed-index": 2870
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:00:23.958Z",
+      "rawLhrSha256": "f277b6ae1e85099a9b17389bd564da7d4575837c272971e1810454825ec2b8c6",
+      "scriptTransferBytes": 199455,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 2443.706,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 61.74000000000024,
+        "first-contentful-paint": 844.423,
+        "speed-index": 2909
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:00:44.141Z",
+      "rawLhrSha256": "d47300fb5a6969714bacd73ae3b5bef16b7f6955bb5936c6180fc0313cda7632",
+      "scriptTransferBytes": 199455,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 2364.904,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 63.83199999999988,
+        "first-contentful-paint": 849.972,
+        "speed-index": 2894
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:01:04.385Z",
+      "rawLhrSha256": "2f1c26b0db209ea5bad70f2c79321b0c5e4a0fcbefce0ed4a913cbb32d188709",
+      "scriptTransferBytes": 199416,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 646.515,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 345.747,
+        "speed-index": 736
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:59:38.047Z",
+      "rawLhrSha256": "403329067f4ddf4f20321bb6943c86bcc96a80865d2cafb8289057332c8116eb",
+      "scriptTransferBytes": 199432,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 708.452,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 392.248,
+        "speed-index": 801
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:59:53.395Z",
+      "rawLhrSha256": "bc1b60e4ad6c1f830a40d7c56fd476f25185d2722c8195df168db2fd68926d83",
+      "scriptTransferBytes": 199473,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 645.506,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 330.407,
+        "speed-index": 739
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T02:00:08.588Z",
+      "rawLhrSha256": "fa47f23287ed28a57a4bad4b30ab46025bed2840f9971ac51b14dd12c3d3a3c7",
+      "scriptTransferBytes": 199462,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 2383.973,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 65.45399999999972,
+        "first-contentful-paint": 830.869,
+        "speed-index": 2831
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:58:37.047Z",
+      "rawLhrSha256": "c22ddb06634b899b786ff8d2fb33333505d5265bd947833499d9088b2e848164",
+      "scriptTransferBytes": 199458,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 2403.137,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 68.1210000000001,
+        "first-contentful-paint": 831.465,
+        "speed-index": 2833
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:58:57.600Z",
+      "rawLhrSha256": "7e5f158b25d8e350b466905c673c29a5acaa48bc727ca91a31349b9f4d2a5e9e",
+      "scriptTransferBytes": 199427,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 2326.506,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 60.58199999999988,
+        "first-contentful-paint": 839.307,
+        "speed-index": 2818
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:59:17.867Z",
+      "rawLhrSha256": "e0613cb0a6ba79c23daa7e4717a3af613dbf18eef21827d31d393ee328275708",
+      "scriptTransferBytes": 199453,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 393.663,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 393.663,
+        "speed-index": 788
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:57:50.792Z",
+      "rawLhrSha256": "74f334f8d1511f88b79d83871f27c05d9c29e34fb69d321357604e3ef1dd202c",
+      "scriptTransferBytes": 199450,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 397.845,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 397.845,
+        "speed-index": 804
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:58:06.078Z",
+      "rawLhrSha256": "0ef94c6e5d99ef3382a981038e851b2fc69168bca02bfe2166a2357a1bf7ed60",
+      "scriptTransferBytes": 199478,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 779.09,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 402.257,
+        "speed-index": 816
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:58:21.529Z",
+      "rawLhrSha256": "c6e20816e652ab3a064f7a9abf585d252e5764a3d210b2e2bfdf03b87669c4d1",
+      "scriptTransferBytes": 199467,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 875.885,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 61.47699998474127,
+        "first-contentful-paint": 875.885,
+        "speed-index": 2552
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:56:49.077Z",
+      "rawLhrSha256": "5eff0b12de62d1f739bc06be6df0c24d41a4608a331348c0e241a59161bf356f",
+      "scriptTransferBytes": 199435,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 909.744,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 83.16800000000012,
+        "first-contentful-paint": 909.744,
+        "speed-index": 2575
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:57:09.898Z",
+      "rawLhrSha256": "673ccda8c8cb1b4dfaddaba9d6f38c8bd0b0b204204a78f2f3394f513bd94775",
+      "scriptTransferBytes": 199474,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 887.052,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 77.91499999999996,
+        "first-contentful-paint": 887.052,
+        "speed-index": 2542
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:57:30.461Z",
+      "rawLhrSha256": "0d16cf29b35d0e1b0dc5ee4b65e44794201a054002564bb02b35fcd14fc72d8d",
+      "scriptTransferBytes": 199453,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 426.207,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 426.207,
+        "speed-index": 813
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:56:02.030Z",
+      "rawLhrSha256": "ba4ef1c0715e284e99d532794dec8f2dd94d1398042d2dfb9d8cb76c4eb6013d",
+      "scriptTransferBytes": 199430,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 831.682,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 478.454,
+        "speed-index": 851
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:56:17.708Z",
+      "rawLhrSha256": "826ed672cb9ee52185e07d264a4ece4ed2b0b10b0a415e04578beb110a63cb79",
+      "scriptTransferBytes": 199409,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 800.962,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "first-contentful-paint": 419.959,
+        "speed-index": 805
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:56:33.458Z",
+      "rawLhrSha256": "41581a0100680dfe2ffbbf4bf34cb890b3037e433d9021d740da32688713dd63",
+      "scriptTransferBytes": 199478,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 1,
+      "metrics": {
+        "largest-contentful-paint": 903.023,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 62.49999998474141,
+        "first-contentful-paint": 903.023,
+        "speed-index": 2559
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:54:59.683Z",
+      "rawLhrSha256": "1bf6bbc1602732cb6af9316b01b2ac748ef2aaeaf491c89e529bb1b785fa4049",
+      "scriptTransferBytes": 199463,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 2,
+      "metrics": {
+        "largest-contentful-paint": 875.43,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 67.1180000000004,
+        "first-contentful-paint": 875.43,
+        "speed-index": 2508
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:55:20.646Z",
+      "rawLhrSha256": "bd0481d3b5e96888ff0bad5fe5b60100696d101b6cc0487c29fa1c355a22758d",
+      "scriptTransferBytes": 199456,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 3,
+      "metrics": {
+        "largest-contentful-paint": 922.42,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 67.44700000000012,
+        "first-contentful-paint": 922.42,
+        "speed-index": 2558
+      },
+      "lighthouseVersion": "13.6.0",
+      "fetchTime": "2026-11-07T01:55:41.291Z",
+      "rawLhrSha256": "977f1b2b869a3fa6ec9c59e19e7a094989382840e1adbec0bcdf747107a426b4",
+      "scriptTransferBytes": 199460,
+      "ownOriginsOnly": true,
+      "thirdPartyItems": 0
+    }
+  ],
+  "releaseBinding": {
+    "before": {
+      "version": 1,
+      "kind": "staging-release-preservation-probe",
+      "mode": "before",
+      "expectedRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+      "checkedAt": "2026-11-07T01:43:37.832Z",
+      "host": {
+        "version": 1,
+        "checkedAtEpoch": 1794015818.4803503,
+        "containerId": "e84995bd34de",
+        "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "imageId": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "imageRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "user": "appuser",
+        "status": "running",
+        "health": "healthy",
+        "startedAt": "2026-11-06T22:43:20.047020238Z",
+        "limits": {
+          "nanoCpus": 1000000000,
+          "memory": 2147483648,
+          "memorySwap": 2147483648
+        },
+        "logConfig": {
+          "Type": "json-file",
+          "Config": {
+            "max-file": "3",
+            "max-size": "10m"
+          }
+        },
+        "volumes": [
+          {
+            "destination": "/app/.work/publication",
+            "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+          },
+          {
+            "destination": "/app/.work/next-build/cache",
+            "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+          },
+          {
+            "destination": "/var/lib/postgresql/data",
+            "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+          }
+        ],
+        "confirmedPublicRoots": [
+          {
+            "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+            "bytes": 52668,
+            "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+          }
+        ],
+        "runningContainers": 8
+      }
+    },
+    "after": {
+      "version": 1,
+      "kind": "staging-release-preservation-probe",
+      "mode": "before",
+      "expectedRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+      "checkedAt": "2026-11-08T18:13:22.541Z",
+      "host": {
+        "version": 1,
+        "checkedAtEpoch": 1794161599.7004611,
+        "containerId": "e84995bd34de",
+        "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "imageId": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "imageRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "user": "appuser",
+        "status": "running",
+        "health": "healthy",
+        "startedAt": "2026-11-06T22:43:20.047020238Z",
+        "limits": {
+          "nanoCpus": 1000000000,
+          "memory": 2147483648,
+          "memorySwap": 2147483648
+        },
+        "logConfig": {
+          "Type": "json-file",
+          "Config": {
+            "max-file": "3",
+            "max-size": "10m"
+          }
+        },
+        "volumes": [
+          {
+            "destination": "/app/.work/publication",
+            "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+          },
+          {
+            "destination": "/app/.work/next-build/cache",
+            "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+          },
+          {
+            "destination": "/var/lib/postgresql/data",
+            "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+          }
+        ],
+        "confirmedPublicRoots": [
+          {
+            "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+            "bytes": 52668,
+            "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+          }
+        ],
+        "runningContainers": 8
+      }
+    },
+    "unchangedFields": [
+      "containerId",
+      "imageReference",
+      "imageId",
+      "imageRevision",
+      "user",
+      "status",
+      "health",
+      "startedAt",
+      "limits",
+      "logConfig",
+      "volumes",
+      "confirmedPublicRoots",
+      "runningContainers"
+    ]
+  },
+  "configSha256": "7c266170b29b11971e1430ff87293524776104f6bd0ab7905349a64cb92ad774",
+  "sanitizedResultsOnly": true,
+  "privateRawReports": ".work/local-audits/e4-staging-001"
+}

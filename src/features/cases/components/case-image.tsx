@@ -17,6 +17,17 @@ const sizes = {
     '(min-width: 1328px) 1008px, (min-width: 1024px) calc(100vw - 320px), calc(100vw - 48px)',
   pair: '(min-width: 1328px) 488px, (min-width: 1024px) calc((100vw - 352px) / 2), (min-width: 768px) calc((100vw - 80px) / 2), calc(100vw - 48px)',
 } as const;
+function containedCoverSizes({ width, height }: NonNullable<CaseDetailDTO['coverIntrinsicSize']>) {
+  // Match the mobile and desktop slot ratios in cases.module.css. A contained
+  // portrait paints less than the width of its slot, while the slot stays fixed.
+  const aspectRatio = width / height;
+  const desktop = Math.min(1, (aspectRatio * dimensions.cover.height) / dimensions.cover.width);
+  const mobile = Math.min(1, (aspectRatio * 192) / 342);
+  if (desktop === 1 && mobile === 1) return sizes.cover;
+  const scaled = (fraction: number) =>
+    fraction === 1 ? 'calc(100vw - 48px)' : `calc((100vw - 48px) * ${fraction.toFixed(5)})`;
+  return `(min-width: 1328px) ${Math.ceil(dimensions.cover.width * desktop)}px, (min-width: 1024px) ${scaled(desktop)}, ${scaled(mobile)}`;
+}
 const imageVariants = cva(styles.image, {
   variants: {
     kind: {
@@ -41,12 +52,14 @@ export function CaseImage({
   mediaMode = 'published',
   priority = false,
   coverPresentation,
+  intrinsicSize,
 }: {
   image: ImageUseDTO | null;
   kind?: keyof typeof dimensions;
   mediaMode?: CaseMediaMode;
   priority?: boolean;
   coverPresentation?: CaseDetailDTO['coverPresentation'] | null;
+  intrinsicSize?: CaseDetailDTO['coverIntrinsicSize'];
 }) {
   if (!image) return null;
   return (
@@ -59,7 +72,7 @@ export function CaseImage({
         src={`/${mediaMode === 'preview' ? 'preview-media' : 'media'}/${image.mediaId}/original`}
         alt={image.decorative ? '' : image.alt}
         {...dimensions[kind]}
-        sizes={sizes[kind]}
+        sizes={kind === 'cover' && intrinsicSize ? containedCoverSizes(intrinsicSize) : sizes[kind]}
         unoptimized={mediaMode === 'preview'}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
