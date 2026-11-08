@@ -1,8 +1,7 @@
 import { Button } from '@/components/ui/button';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import { parsePrivatePreviewPath } from '@/helpers/payload/private-preview-path';
-import styles from '../stylesheets/language-switcher.module.css';
-import { LanguageFlag } from './language-flag';
+import { LanguageFlag, languageButtonClass } from './language-flag';
 export function PrivateLanguageLink({
   locale,
   href,
@@ -19,7 +18,7 @@ export function PrivateLanguageLink({
   const flag = <LanguageFlag locale={locale} />;
   return href === null ? (
     <Button
-      className={styles.toggle}
+      className={languageButtonClass}
       disabled
       aria-label={label}
       lang={target}
@@ -28,7 +27,7 @@ export function PrivateLanguageLink({
       {flag}
     </Button>
   ) : (
-    <Button asChild className={styles.toggle}>
+    <Button asChild className={languageButtonClass}>
       <a href={href} aria-label={label} lang={target} title={`${languageLabel}: ${label}`}>
         {flag}
       </a>

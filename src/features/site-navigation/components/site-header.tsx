@@ -8,7 +8,6 @@ import {
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { MobileMenu } from './mobile-menu';
 import { HeaderMetrics } from './header-metrics';
-import styles from '../stylesheets/navigation.module.css';
 
 export function SiteHeader({
   navigation,
@@ -19,18 +18,21 @@ export function SiteHeader({
 }) {
   const navigationLabel = navigation.locale === 'pt' ? 'Navegação principal' : 'Main navigation';
   return (
-    <header className={styles.header} data-portfolio-header>
+    <header className="sticky [inset-block-start:0] z-30 bg-background" data-portfolio-header>
       <HeaderMetrics />
-      <div className={`portfolio-container ${styles.headerInner}`}>
-        <a className={styles.brand} href={navigation.brand.href}>
+      <div className="portfolio-container grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-8 gap-y-4 py-6 lg:flex">
+        <a
+          className="flex min-h-12 items-center text-xl font-semibold text-foreground no-underline wrap-anywhere hover:underline hover:underline-offset-[0.25em] lg:me-auto lg:min-w-0"
+          href={navigation.brand.href}
+        >
           {navigation.brand.label}
         </a>
-        <NavigationMenu aria-label={navigationLabel} className={styles.desktopNavigation}>
-          <NavigationMenuList className={styles.navigationList}>
+        <NavigationMenu aria-label={navigationLabel} className="hidden lg:block lg:min-w-0">
+          <NavigationMenuList className="m-0 flex list-none items-center gap-8 p-0 [&>li]:min-w-0">
             {navigation.items.map((item) => (
               <NavigationMenuItem key={item.purpose}>
                 <NavigationMenuLink
-                  className={styles.navigationLink}
+                  className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground no-underline wrap-anywhere hover:underline hover:underline-offset-[0.25em]"
                   href={item.destination.href}
                   data-analytics-purpose={item.purpose === 'resume' ? 'resume' : undefined}
                   aria-label={
@@ -51,7 +53,11 @@ export function SiteHeader({
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        {languageControl && <div className={styles.languageControl}>{languageControl}</div>}
+        {languageControl && (
+          <div className="col-start-2 row-start-1 min-h-12 min-w-12 lg:shrink-0">
+            {languageControl}
+          </div>
+        )}
         <MobileMenu
           items={navigation.items}
           controls={{

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import styles from '../stylesheets/cases.module.css';
 
 export type CaseContentsEntry = { readingKey: string; label: string; anchor: string };
 export function CaseContents({ entries, label }: { entries: CaseContentsEntry[]; label: string }) {
@@ -56,13 +55,19 @@ export function CaseContents({ entries, label }: { entries: CaseContentsEntry[];
 
   if (!entries.length) return null;
   return (
-    <nav aria-label={label} className={styles.contents}>
-      <p className={styles.contentsTitle}>{label}</p>
-      <ol className={styles.contentsLinks}>
+    <nav
+      aria-label={label}
+      className="min-w-0 lg:sticky lg:top-[calc(var(--portfolio-header-height,6rem)+var(--space-8))]"
+    >
+      <p className="m-0 mb-4 font-semibold after:mt-4 after:block after:h-0.5 after:w-9 after:bg-primary after:content-['']">
+        {label}
+      </p>
+      <ol className="m-0 grid list-none grid-cols-2 gap-x-4 p-0 lg:grid-cols-1">
         {entries.map((entry) => (
           <li key={entry.readingKey}>
             <a
               href={`#${entry.anchor}`}
+              className="flex min-h-11 items-center text-sm text-muted-foreground no-underline wrap-anywhere aria-[current=location]:font-semibold aria-[current=location]:text-primary [&:hover]:underline [&:hover]:underline-offset-[0.2em]"
               aria-current={current === entry.anchor ? 'location' : undefined}
               onClick={() => setActiveAnchor(entry.anchor)}
             >

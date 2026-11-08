@@ -1,38 +1,7 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source('../');
 @import './tokens.css';
 
-@layer base {
-  body {
-    margin: 0;
-    background: var(--bg-page);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--text-base--line-height);
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    background-image: url('/textures/paper-grain-texture.png');
-    background-repeat: repeat;
-    background-size: 450px 450px;
-    mix-blend-mode: multiply;
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
-  :focus-visible {
-    outline: var(--focus-ring-width) solid var(--focus-ring);
-    outline-offset: var(--focus-ring-offset);
-  }
-}
-
-@layer components {
-  .portfolio-container {
-    width: min(calc(100% - 2 * var(--layout-page-padding)), var(--container-portfolio));
-    margin-inline: auto;
-  }
+@utility portfolio-body {
+  @apply m-0 bg-background font-sans text-base text-foreground;
+  @apply before:pointer-events-none before:fixed before:inset-0 before:z-1 before:bg-[url('/textures/paper-grain-texture.png')] before:bg-size-[450px_450px] before:bg-repeat before:opacity-30 before:mix-blend-multiply;
 }

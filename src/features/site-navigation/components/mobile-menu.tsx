@@ -11,7 +11,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import styles from '../stylesheets/navigation.module.css';
 
 export type MobileMenuProps = {
   items: NavigationPresentation['items'];
@@ -35,10 +34,12 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
     return () => desktop.removeEventListener('change', dismissOnDesktop);
   }, []);
   return (
-    <div className={styles.mobileMenu}>
+    <div className="col-span-full lg:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <Button className={styles.menuTrigger}>{controls.openMenuLabel}</Button>
+          <Button className="min-h-11 px-4 py-[calc(var(--space-3)-1px)] text-sm">
+            {controls.openMenuLabel}
+          </Button>
         </SheetTrigger>
         <SheetContent
           aria-describedby={undefined}
@@ -53,19 +54,19 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
             }
           }}
         >
-          <SheetHeader className={styles.menuHeading}>
-            <SheetTitle className={styles.menuTitle}>{navigationLabel}</SheetTitle>
+          <SheetHeader className="flex flex-wrap items-center justify-between gap-4">
+            <SheetTitle className="m-0 text-lg font-semibold">{navigationLabel}</SheetTitle>
             <SheetClose asChild>
               <Button>{controls.closeMenuLabel}</Button>
             </SheetClose>
           </SheetHeader>
           <nav aria-label={navigationLabel}>
-            <ul className={styles.mobileNavigationList}>
+            <ul className="m-0 flex list-none flex-col gap-4 p-0">
               {items.map((item) => (
                 <li key={item.purpose}>
                   <SheetClose asChild>
                     <a
-                      className={styles.navigationLink}
+                      className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground no-underline wrap-anywhere hover:underline hover:underline-offset-[0.25em]"
                       href={item.destination.href}
                       data-analytics-purpose={item.purpose === 'resume' ? 'resume' : undefined}
                       aria-label={

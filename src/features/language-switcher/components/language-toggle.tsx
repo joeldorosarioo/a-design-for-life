@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import type { LanguageToggleProps } from '../contracts/language-control.schema';
 import { useReadingPosition } from './reading-position-provider';
-import styles from '../stylesheets/language-switcher.module.css';
-import { LanguageFlag } from './language-flag';
+import { LanguageFlag, flagRingClass, languageButtonClass } from './language-flag';
 
 export function LanguageToggle(props: LanguageToggleProps) {
   const { pending, begin, register } = useReadingPosition();
@@ -24,7 +23,7 @@ export function LanguageToggle(props: LanguageToggleProps) {
   return (
     <Button
       data-language-toggle
-      className={styles.toggle}
+      className={languageButtonClass}
       aria-label={label}
       lang={locale === 'pt' ? 'en' : 'pt'}
       title={`${props.labels.languageLabel}: ${label}`}
@@ -34,7 +33,7 @@ export function LanguageToggle(props: LanguageToggleProps) {
         void begin(props);
       }}
     >
-      {pending ? <Skeleton className={styles.flagRing} /> : <LanguageFlag locale={locale} />}
+      {pending ? <Skeleton className={flagRingClass} /> : <LanguageFlag locale={locale} />}
     </Button>
   );
 }

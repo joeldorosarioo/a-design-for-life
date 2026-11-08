@@ -1,10 +1,10 @@
 import type { CaseDetailDTO } from '../contracts/case-dto.schema';
 import { CaseImage, type CaseMediaMode } from './case-image';
-import styles from '../stylesheets/cases.module.css';
 type ImagePair = Extract<
   CaseDetailDTO['sections'][number]['blocks'][number],
   { type: 'image-pair' }
 >;
+const imageLabelClass = 'm-0 mb-4 text-sm font-semibold text-primary';
 export function CaseImagePair({
   block,
   mediaMode,
@@ -13,13 +13,13 @@ export function CaseImagePair({
   mediaMode?: CaseMediaMode;
 }) {
   return (
-    <div className={styles.imagePair} data-reading-key={block.readingKey}>
-      <div>
-        {block.firstLabel ? <p className={styles.imageLabel}>{block.firstLabel}</p> : null}
+    <div className="grid min-w-0 gap-8 md:grid-cols-2" data-reading-key={block.readingKey}>
+      <div className="min-w-0">
+        {block.firstLabel ? <p className={imageLabelClass}>{block.firstLabel}</p> : null}
         <CaseImage image={block.first} kind="pair" mediaMode={mediaMode} />
       </div>
-      <div>
-        {block.secondLabel ? <p className={styles.imageLabel}>{block.secondLabel}</p> : null}
+      <div className="min-w-0">
+        {block.secondLabel ? <p className={imageLabelClass}>{block.secondLabel}</p> : null}
         <CaseImage image={block.second} kind="pair" mediaMode={mediaMode} />
       </div>
     </div>
