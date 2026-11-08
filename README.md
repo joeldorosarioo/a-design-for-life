@@ -1,21 +1,19 @@
-# a-design-for-life
+# A Design for Life
 
-Portfólio bilíngue de Product Design e UX. O nome técnico faz referência à música A Design for Life, de Manic Street Preachers; aparência e conteúdo público seguem o Figma e os contratos aprovados.
+A bilingual Product Design and UX portfolio. Next.js serves the public site. Payload manages content and PostgreSQL stores it. The public UI uses Tailwind CSS, CVA, and an adapted shadcn Sheet. Figma defines the visual reference.
 
-A1 e A2 foram aprovadas; A2 mantém a pendência formal do leitor de tela. A etapa 3 foi retomada por autorização explícita em 03/11/2026 e está em desenvolvimento e validação locais. Nenhuma produção, contratação ou medição real está autorizada.
+## Develop locally
 
-- [Fontes aprovadas](docs/specs/2026-10-29-portfolio-spec-v1.md).
-- [Acompanhamento da etapa 1](docs/verification/execucao-etapa-1.md).
-- [Versões e compatibilidade](docs/decisions/001-stack-validada.md).
-- [Evidências de E1.1](docs/verification/E1.1.md).
-- [Preparação e limpeza locais](docs/runbooks/ambiente-local.md).
+Use Node 24.22.2, pnpm 12.10.1, and Docker with Linux containers. Follow the [local setup](docs/runbooks/ambiente-local.md) to configure an isolated environment, open `/pt`, `/en`, and `/admin`, and run `pnpm verify` and `pnpm test:e2e`.
 
-Requisitos desta combinação: Node 24.22.2, pnpm 12.10.1 e Docker com contêineres Linux. Não apontar testes para produção. Segredos ficam no ambiente; nenhum serviço externo ou implantação pública é criado pelos comandos locais.
+## Release status
 
-## Etapa 2 — portfólio
+A4 was approved on 8 November 2026. Launch is deferred and requires explicit authorization. The approved staging revision is `befe22b`. Any promotion of that candidate must use its exact digest. See the [A4 record](docs/verification/A4.md) and [launch runbook](docs/runbooks/lancamento.md).
 
-A implementação de E2.1–E2.6, as decisões preservadas e as evidências estão registradas no [A2](docs/verification/A2.md). O [progresso da etapa 2](docs/verification/progresso-etapa-2.json) mantém os critérios concluídos e as pendências explícitas.
+Final PT/EN content and résumés, the formal screen-reader review, and production configuration are pending. Analytics remains disabled. The A4 record lists all outstanding release gates.
 
-A verificação formal com leitor de tela permanece interrompida a pedido do usuário. O pacote A2 e seus limites devem ser revisados conforme o registro de entrega.
+## References
 
-O [progresso da etapa 3](docs/verification/progresso-etapa-3.md) registra critérios completos e pendências externas. A3/A4 continuam pendentes; a execução local não autoriza produção.
+- [Approved product spec](docs/specs/2026-10-29-portfolio-spec-v1.md) and [CMS contracts](docs/specs/2026-10-29-portfolio-contratos-cms.md)
+- [Figma inventory](docs/specs/2026-10-29-portfolio-inventario-figma.md) and [implementation plan](docs/specs/2026-10-29-portfolio-plano-implementacao.md)
+- [Editorial workflow](docs/runbooks/cms-editorial.md) and [backup and recovery](docs/runbooks/backup-e-restauracao.md)
