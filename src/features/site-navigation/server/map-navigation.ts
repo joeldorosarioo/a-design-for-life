@@ -2,11 +2,15 @@ import 'server-only';
 import type { SiteNavigation } from '@/payload-types';
 import type { ProfileDTO } from '@/features/professional-profile';
 import { navigationDTOSchema, type NavigationDTO } from '../contracts/navigation-dto.schema';
-export function mapNavigation(
-  document: SiteNavigation,
+type NavigationPresentationSource = Pick<
+  SiteNavigation,
+  'locale' | 'header' | 'footer' | 'controls' | 'messages'
+>;
+export function mapNavigationPresentation(
+  document: NavigationPresentationSource,
   profile?: ProfileDTO,
 ): NavigationDTO | undefined {
-  if (document._status !== 'published' || !profile || document.locale !== profile.locale) return;
+  if (!profile || document.locale !== profile.locale) return;
   const locale = document.locale;
   return navigationDTOSchema.parse({
     locale,
@@ -38,4 +42,12 @@ export function mapNavigation(
     messages: document.messages,
     contacts: profile.contacts,
   });
+}
+
+export function mapNavigation(
+  document: SiteNavigation,
+  profile?: ProfileDTO,
+): NavigationDTO | undefined {
+  if (document._status !== 'published') return;
+  return mapNavigationPresentation(document, profile);
 }

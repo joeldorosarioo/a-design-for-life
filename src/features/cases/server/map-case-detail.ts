@@ -1,10 +1,34 @@
 import 'server-only';
 import type { CaseContent } from '@/payload-types';
 import { mapImageUse } from '@/features/media-library/server';
-import { caseDetailDTOSchema, type CaseDetailDTO } from '../contracts/case-dto.schema';
+import {
+  caseDetailDTOSchema,
+  caseCardDTOSchema,
+  type CaseDetailDTO,
+  type CaseCardDTO,
+} from '../contracts/case-dto.schema';
 import { deriveCaseTitle } from '../helpers/derive-case-title';
-export function mapCaseDetail(document: CaseContent): CaseDetailDTO | undefined {
-  if (document._status !== 'published' || !document.slug) return;
+type CaseCardPresentationSource = Pick<
+  CaseContent,
+  'id' | 'case' | 'locale' | 'eyebrow' | 'title' | 'titleEmphasis' | 'summary' | 'cover'
+>;
+type CasePresentationSource = CaseCardPresentationSource &
+  Pick<CaseContent, 'introduction' | 'role' | 'scope' | 'contextNote' | 'sections' | 'seo'>;
+export function mapCaseCardPresentation(
+  document: CaseCardPresentationSource,
+  path: string,
+): CaseCardDTO {
+  return caseCardDTOSchema.parse({
+    caseId: typeof document.case === 'object' ? document.case.id : document.case,
+    locale: document.locale,
+    eyebrow: document.eyebrow ?? null,
+    title: deriveCaseTitle(document.title, document.titleEmphasis),
+    summary: document.summary ?? null,
+    path,
+    cover: mapImageUse(document.cover) ?? null,
+  });
+}
+export function mapCasePresentation(document: CasePresentationSource, path: string): CaseDetailDTO {
   const titleParts = {
     normal: document.title ?? null,
     emphasis: document.titleEmphasis?.trim() || null,
@@ -52,7 +76,7 @@ export function mapCaseDetail(document: CaseContent): CaseDetailDTO | undefined 
     titleParts,
     summary: document.summary ?? null,
     introduction: document.introduction ?? null,
-    path: `/${document.locale}/cases/${encodeURIComponent(document.slug)}`,
+    path,
     cover: mapImageUse(document.cover) ?? null,
     role: document.role ?? null,
     scope: document.scope ?? null,
@@ -69,4 +93,12 @@ export function mapCaseDetail(document: CaseContent): CaseDetailDTO | undefined 
       image: mapImageUse(document.seo?.image) ?? null,
     },
   });
+}
+
+export function mapCaseDetail(document: CaseContent): CaseDetailDTO | undefined {
+  if (document._status !== 'published' || !document.slug) return;
+  return mapCasePresentation(
+    document,
+    `/${document.locale}/cases/${encodeURIComponent(document.slug)}`,
+  );
 }

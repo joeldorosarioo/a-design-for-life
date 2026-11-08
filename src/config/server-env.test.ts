@@ -81,3 +81,46 @@ it('confines an explicit test media root to its isolated bucket and database nam
   const root = path.resolve('.work/private-media/adfl-test-files/adfl_test_base');
   expect(readServerEnv({ ...validInput, MEDIA_STORAGE_ROOT: root }).MEDIA_STORAGE_ROOT).toBe(root);
 });
+
+it('retains only a validated literal internal HTTP loopback origin', () => {
+  expect(
+    readServerEnv({ ...validInput, INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3100' }),
+  ).toMatchObject({ INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3100' });
+});
+it.each([
+  'https://127.0.0.1:3100',
+  'http://localhost:3100',
+  'http://public.example.invalid',
+  'http://127.0.0.1:3100/path',
+  'http://user:pass@127.0.0.1',
+  'http://127.0.0.1?url=x',
+])('rejects an unsafe internal origin: %s', (origin) => {
+  expect(() => readServerEnv({ ...validInput, INTERNAL_HTTP_ORIGIN: origin })).toThrow(
+    /INTERNAL_HTTP_ORIGIN/,
+  );
+});
+it('derives local internal HTTP origin only from trusted loopback site configuration', async () => {
+  const { resolveInternalHttpOrigin } = await import('./server-env');
+  expect(
+    resolveInternalHttpOrigin(
+      readServerEnv({ ...validInput, SITE_ORIGIN: 'http://localhost:3100' }),
+    ),
+  ).toBe('http://127.0.0.1:3100');
+  expect(
+    resolveInternalHttpOrigin(
+      readServerEnv({ ...validInput, INTERNAL_HTTP_ORIGIN: 'http://[::1]:3101' }),
+    ),
+  ).toBe('http://[::1]:3101');
+  const production = readServerEnv({
+    ...validInput,
+    NODE_ENV: 'production',
+    APP_ENV: 'production',
+    SITE_ORIGIN: 'https://public.example.invalid',
+  });
+  expect(resolveInternalHttpOrigin(production)).toBeNull();
+  expect(
+    resolveInternalHttpOrigin(
+      readServerEnv({ ...production, INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3000' }),
+    ),
+  ).toBe('http://127.0.0.1:3000');
+});

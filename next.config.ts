@@ -3,6 +3,7 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  generateEtags: false,
   serverExternalPackages: ['pdfjs-dist'],
   outputFileTracingIncludes: {
     '/api/*': [
@@ -10,9 +11,25 @@ const nextConfig: NextConfig = {
       './node_modules/.pnpm/@napi-rs+canvas*/node_modules/@napi-rs/**/*',
     ],
   },
-  images: { unoptimized: true, localPatterns: [] },
+  // Proxy reauthorizes every outer/inner request before any optimizer cache hit.
+  images: {
+    unoptimized: false,
+    localPatterns: [{ pathname: '/media/*/original', search: '' }],
+    remotePatterns: [],
+    qualities: [75],
+    dangerouslyAllowSVG: false,
+  },
   async headers() {
     return [
+      {
+        source: '/preview-ui/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'private, no-store, max-age=0' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
+      },
       {
         source: '/api/media/:path*',
         headers: [

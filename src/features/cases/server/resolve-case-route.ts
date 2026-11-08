@@ -12,12 +12,13 @@ export async function resolveCaseRoute(
   locale: Locale,
   slug: string,
   payload?: Payload,
-  generation?: PublicRoot,
+  generation?: PublicRoot | null,
 ): Promise<RouteResolution> {
   const language = localeSchema.parse(locale);
   if (!slugSchema.safeParse(slug).success) return { status: 404 };
   try {
-    const root = generation ?? (await readPublicRoot(runtimePublication().directory));
+    const root =
+      generation === undefined ? await readPublicRoot(runtimePublication().directory) : generation;
     const subjects = confirmedCases(root);
     const document = subjects.find(
       (value) => value.locale === language && value.slugs.includes(slug),

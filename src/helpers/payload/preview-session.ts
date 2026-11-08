@@ -2,6 +2,7 @@ import 'server-only';
 import { createLocalReq, type Payload, type PayloadRequest } from 'payload';
 import { z } from 'zod';
 import { runtimePayload } from './runtime';
+import { buildPrivatePreviewPath, type PrivatePreviewScope } from './private-preview-path';
 import type { Result } from './editorial-result.schema';
 
 const scopeSchema = z.object({
@@ -15,6 +16,7 @@ export type PreviewContext = PreviewScope & {
   req: PayloadRequest;
   document: Record<string, unknown>;
   returnTo: string | null;
+  page?: PrivatePreviewScope['page'];
 };
 
 function safeReturnPath(value: string | null): string | null {
@@ -51,6 +53,9 @@ export async function authorizePreview(request: Request): Promise<Result<Preview
     request.headers.get('sec-fetch-site') === 'cross-site'
   )
     return { ok: false, error: { code: 'forbidden', message: 'Preview unavailable.' } };
+  for (const key of ['collection', 'id', 'locale', 'returnTo', 'view', 'page'])
+    if (url.searchParams.getAll(key).length > 1)
+      return { ok: false, error: { code: 'invalid-input', message: 'Invalid preview scope.' } };
   const parsed = scopeSchema.safeParse(Object.fromEntries(url.searchParams));
   let returnTo: string | null;
   try {
@@ -60,6 +65,17 @@ export async function authorizePreview(request: Request): Promise<Result<Preview
   }
   if (!parsed.success || (url.searchParams.has('view') && url.searchParams.get('view') !== '1'))
     return { ok: false, error: { code: 'invalid-input', message: 'Invalid preview scope.' } };
+  let page: PrivatePreviewScope['page'] | undefined;
+  if (url.searchParams.has('page')) {
+    const value = url.searchParams.get('page')!;
+    try {
+      // The closed path builder validates the enum and collection/page matrix.
+      buildPrivatePreviewPath({ ...parsed.data, page: value as PrivatePreviewScope['page'] });
+      page = value as PrivatePreviewScope['page'];
+    } catch {
+      return { ok: false, error: { code: 'invalid-input', message: 'Invalid preview scope.' } };
+    }
+  }
   const req = await createLocalReq(
     { user: session.user, req: { headers: request.headers } },
     payload,
@@ -85,6 +101,7 @@ export async function authorizePreview(request: Request): Promise<Result<Preview
         req,
         document: document as unknown as Record<string, unknown>,
         returnTo,
+        ...(page ? { page } : {}),
       },
     };
   } catch (error) {
@@ -106,5 +123,11 @@ export function nativePreviewURL(
 ): string | null {
   const scope = scopeSchema.safeParse({ collection, id: document.id, locale: document.locale });
   if (!scope.success) return null;
-  return `/preview?${new URLSearchParams(scope.data)}`;
+  const page = collection === 'case-content' ? 'case' : 'home';
+  try {
+    buildPrivatePreviewPath({ ...scope.data, page });
+  } catch {
+    return null;
+  }
+  return `/preview?${new URLSearchParams({ ...scope.data, page })}`;
 }

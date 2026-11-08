@@ -17,6 +17,11 @@ export {
 export { getFeaturedCases } from './server/get-featured-cases';
 
 export { resolveContextualLink } from './server/resolve-contextual-link';
-
+export { renderCaseRouteResponse } from './server/case-route-response';
 export { resolveCaseTranslation } from './server/resolve-case-translation';
 export type { CaseTranslation } from './server/resolve-case-translation';
+export { getPreviewCase } from './server/get-preview-case';
+export { getPreviewCases } from './server/get-preview-cases';
+export type { PreviewCaseSelection } from './server/get-preview-cases';
+export { resolvePreviewContextualLink } from './server/resolve-preview-contextual-link';
+export type { PreviewContextualLinkInput } from './server/resolve-preview-contextual-link';

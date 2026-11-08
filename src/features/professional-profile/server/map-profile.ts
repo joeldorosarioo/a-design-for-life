@@ -3,8 +3,21 @@ import type { ProfessionalProfile } from '@/payload-types';
 import { mapImageUse } from '@/features/media-library/server';
 import { profileDTOSchema, type ProfileDTO } from '../contracts/profile-dto.schema';
 
-export function mapProfile(document: ProfessionalProfile): ProfileDTO | undefined {
-  if (document._status !== 'published') return;
+type ProfilePresentationSource = Pick<
+  ProfessionalProfile,
+  | 'locale'
+  | 'identity'
+  | 'home'
+  | 'homeProjects'
+  | 'listing'
+  | 'homeAbout'
+  | 'approach'
+  | 'about'
+  | 'contacts'
+  | 'resume'
+  | 'seo'
+>;
+export function mapProfilePresentation(document: ProfilePresentationSource): ProfileDTO {
   return profileDTOSchema.parse({
     locale: document.locale,
     identity: { name: document.identity?.name ?? null, role: document.identity?.role ?? null },
@@ -90,4 +103,9 @@ export function mapProfile(document: ProfessionalProfile): ProfileDTO | undefine
       image: mapImageUse(document.seo?.image) ?? null,
     },
   });
+}
+
+export function mapProfile(document: ProfessionalProfile): ProfileDTO | undefined {
+  if (document._status !== 'published') return;
+  return mapProfilePresentation(document);
 }
