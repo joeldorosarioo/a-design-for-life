@@ -1,4 +1,4 @@
-> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](evidence-index.md#archived-records 'bee7667:docs/verification/retomada-etapa-3.md'). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
 
 # Progresso verificável — etapa 2
 

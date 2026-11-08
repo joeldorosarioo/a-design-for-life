@@ -1,4 +1,4 @@
-> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](evidence-index.md#archived-records 'bee7667:docs/verification/retomada-etapa-3.md'). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
 
 # Execução autorizada — etapa 2
 
@@ -93,7 +93,7 @@ O usuário apontou que16,7% permaneceu estático apesar dos avanços. O acompanh
 
 ## Pausa solicitada após o item dos cards
 
-O usuário aprovou os campos opcionais/editáveis cardTitle/cardEyebrow e reforçou a edição editorial via CMS. Implementados com fallback do detalhe, migração aditiva e projeção confirmada/legada validada. RED/GREEN e38unit+6Native,tipos/lint/formato0; commitc3b4860. Verificação final do coordenador:44unit+2CSS,exit0. Nenhum fullverify/HTTP/build novo foi atribuído a esse commit. A pedido explícito, execução pausada após esse item; não iniciar outro trabalho nesta sessão. [Retomada e serviços/checkpoint](retomada-etapa-2.md).
+O usuário aprovou os campos opcionais/editáveis cardTitle/cardEyebrow e reforçou a edição editorial via CMS. Implementados com fallback do detalhe, migração aditiva e projeção confirmada/legada validada. RED/GREEN e38unit+6Native,tipos/lint/formato0; commitc3b4860. Verificação final do coordenador:44unit+2CSS,exit0. Nenhum fullverify/HTTP/build novo foi atribuído a esse commit. A pedido explícito, execução pausada após esse item; não iniciar outro trabalho nesta sessão. [Retomada e serviços/checkpoint](evidence-index.md#archived-records 'bee7667:docs/verification/retomada-etapa-2.md').
 
 ## Fechamento da retomada — candidata 008 / A2
 
@@ -103,8 +103,8 @@ Implementação `c9be4dc23c12f45fadd27cafc05a599b8b3a0c44`: gates locais 003 ver
 
 Pacote concreto `A2-review-c9be4dc-v2` revisado e entregue no chat: 181 artefatos, 18 capturas e 2 vídeos; manifesto SHA256 `3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15`. QA real exit0 às 15:26:01–15:26:10 UTC: 108 filtros/204 links por viewport, 0 overflow em 1440 e 390, 0 rede externa/erros. RED390 do token SHA e correção mínima de wrap no visualizador foram preservados, sem mudança do produto. Resumos em `artifacts/a2-current008/package-review-summary.json` e `package-red-green-summary.json`.
 
-[A2](A2.md), [visual](visual.md), [a11y](a11y.md), [performance](performance.md) e [SEO](seo.md) registram requisitos, comandos, ambiente, resultados e verificações não executadas. O commit documental, CI exato e pacote final `outputs/A2` serão vinculados no recibo externo `outputs/A2-entrega.json`, após geração/revisão reais, sem autorreferência Git. Manter develop e promoção normal protegida; sem produção, analytics ou integrações posteriores.
+[A2](A2.md), [visual](evidence-index.md#archived-records 'bee7667:docs/verification/visual.md'), [a11y](evidence-index.md#archived-records 'bee7667:docs/verification/a11y.md'), [performance](evidence-index.md#archived-records 'bee7667:docs/verification/performance.md') e [SEO](evidence-index.md#archived-records 'bee7667:docs/verification/seo.md') registram requisitos, comandos, ambiente, resultados e verificações não executadas. O commit documental, CI exato e pacote final `outputs/A2` serão vinculados no recibo externo `outputs/A2-entrega.json`, após geração/revisão reais, sem autorreferência Git. Manter develop e promoção normal protegida; sem produção, analytics ou integrações posteriores.
 
 ## Aprovação A2 e pausa posterior de E3
 
-Em03/11/2026 o usuário aprovou A2 com o leitor de tela pendente e autorizou E3. Depois pediu pausa até reunir as informações necessárias. A aprovação não altera29/30 nem converte E2.6.2 em concluída. Preparação E3 limitada a inventário/pesquisa; nenhuma implementação ou contratação. Diretriz local-first, conta R2 existente e decisão de e-mail ainda aberta em [retomada-etapa-3.md](retomada-etapa-3.md).
+Em03/11/2026 o usuário aprovou A2 com o leitor de tela pendente e autorizou E3. Depois pediu pausa até reunir as informações necessárias. A aprovação não altera29/30 nem converte E2.6.2 em concluída. Preparação E3 limitada a inventário/pesquisa; nenhuma implementação ou contratação. Diretriz local-first, conta R2 existente e decisão de e-mail ainda aberta em [retomada-etapa-3.md](evidence-index.md#archived-records 'bee7667:docs/verification/retomada-etapa-3.md').
