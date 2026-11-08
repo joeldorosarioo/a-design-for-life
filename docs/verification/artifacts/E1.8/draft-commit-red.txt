@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-draft-commit-red.txt
+Original SHA256: D7124EFF795EED2AE3550E3D9714EC8EDBDCB0441D438D6427D4056EC42BAC44
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Two real deferred PostgreSQL COMMIT failures returned200 on SaveDraft, expected503.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  2 failed (2)
+Start at  10:58:48
+Duration  7.63s (import 62%, tests 30%, transform 5%, setup 3%)

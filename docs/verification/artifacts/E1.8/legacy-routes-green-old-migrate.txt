@@ -1,0 +1,7 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-legacy-routes-green-old-migrate.txt
+Original SHA256: 56D01C978DFE0AE64BE80ED821862441EE296419A60C1C413DB587705476750E
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Exact0fa old migrations execute before seed; no new schema/outbox.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.

@@ -1,3 +1,4 @@
+import { publishedReadResponse } from '@/helpers/payload/published-read-response';
 import { synchronizeProfileMedia } from '../profile-media-usage';
 import { getPublishedProfile } from '../../server/get-published-profile';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
@@ -38,7 +39,11 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
             { status: 404 },
           );
         const result = await getPublishedProfile(parsed.data);
-        return Response.json(result, { status: result.ok ? 200 : 404 });
+        return publishedReadResponse(
+          result,
+          { collection: 'professional-profiles', where: { locale: { equals: parsed.data } } },
+          req,
+        );
       },
     },
   ],

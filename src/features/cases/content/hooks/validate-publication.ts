@@ -49,6 +49,16 @@ export const validateCasePublication = publicationGuard((raw) => {
   requireImage(errors, data.cover, 'cover');
   if (!(data.sections ?? []).some((section) => section.blocks?.length))
     errors.push({ path: 'sections', message: 'Adicione ao menos um bloco de conteúdo.' });
+  data.sections?.forEach((section, index) => {
+    if (
+      section.presentation === 'comparison' &&
+      (section.blocks?.length !== 2 || section.blocks.some((block) => block.blockType !== 'text'))
+    )
+      errors.push({
+        path: `sections.${index}.blocks`,
+        message: 'A comparação exige exatamente dois blocos de texto, na ordem antes e depois.',
+      });
+  });
   data.sections?.forEach((section, index) =>
     section.blocks?.forEach((block, blockIndex) => {
       const path = `sections.${index}.blocks.${blockIndex}`;

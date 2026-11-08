@@ -14,6 +14,7 @@
     "start": "next start --hostname 127.0.0.1",
     "payload": "node --conditions=react-server ./node_modules/payload/bin.js",
     "provision:structural": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/provision-structural-documents.cli.ts",
+    "bootstrap:publications": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/bootstrap-publications.cli.ts",
     "generate:types": "node --conditions=react-server ./node_modules/payload/bin.js generate:types",
     "generate:importmap": "node --conditions=react-server ./node_modules/payload/bin.js generate:importmap",
     "migrate:create": "node --conditions=react-server ./node_modules/payload/bin.js migrate:create",

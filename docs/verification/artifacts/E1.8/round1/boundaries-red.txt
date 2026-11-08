@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: MIXED_SETUP_FAILURE
+Observation: Initial six-case attempt included an incorrect directory cleanup that contaminated later cases. Not used as proof for affected FS/route behaviors; valid red3 supersedes it.
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  12:04:46
+   Duration  10.90s (import 45%, tests 33%, transform 19%, setup 2%, worker 1%)

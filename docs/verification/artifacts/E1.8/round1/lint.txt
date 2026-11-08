@@ -1,0 +1,5 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: Focused ESLint invocation; command line not echoed in this log.
+Observed exit code: 0
+Classification: STATIC_GREEN
+Observation: Focused ESLint passed for the five production files and the new boundary integration test.

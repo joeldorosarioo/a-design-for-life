@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-outbox-green.txt
+Original SHA256: E8E95E814E6C53D0DE4ABA9F4BF665C5C1CE40C2E17141FE0B25A9019FC2FE33
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Native target is pending/private with persisted operation.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  1 passed (1)
+Start at  09:48:06
+Duration  7.56s (import 73%, tests 18%, transform 6%, setup 3%)

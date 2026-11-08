@@ -1,0 +1,7 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ node --conditions=react-server ./node_modules/@playwright/test/cli.js test
+Observed exit code: 0
+Classification: LOCAL_GATE_GREEN
+Observation: pnpm test:e2e passed25 actual production Next/Native CMS journeys. Earlier tracked PNGs restored byte-for-byte; no UI changes in this fix round.
+
+  25 passed (1.1m)

@@ -1,0 +1,7 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-legacy-routes-verify2.txt
+Original SHA256: 825FF112488A74E711033A814299B00459C1B09F8626E81D97F102581086570F
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Actual old-source migration preserved basic data but historical routeA returned404 instead of308B.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.

@@ -1,7 +1,6 @@
 import 'server-only';
 import type { CollectionAfterChangeHook, CollectionBeforeDeleteHook } from 'payload';
 import { APIError } from 'payload';
-import { isDraftOperation } from '@/helpers/payload/editorial-revision';
 import { trackMediaUsage } from '@/features/media-library/server';
 import { extractCaseMedia } from './extract-case-media';
 export const synchronizeCaseMedia: CollectionAfterChangeHook = async ({ doc, data, req }) => {
@@ -32,21 +31,13 @@ export const synchronizeCaseMedia: CollectionAfterChangeHook = async ({ doc, dat
   if (published?.editorialRevision === revision) {
     await trackMediaUsage(
       [
-        { ...owner, state: 'confirmed', references: extractCaseMedia(published) },
+        { ...owner, state: 'pending', references: extractCaseMedia(published) },
         { ...owner, state: 'draft', references: [] },
       ],
       req,
     );
   } else {
-    await trackMediaUsage(
-      [
-        { ...owner, state: 'draft', references: extractCaseMedia(doc) },
-        ...(!isDraftOperation(req) && !published
-          ? [{ ...owner, state: 'confirmed' as const, references: [] }]
-          : []),
-      ],
-      req,
-    );
+    await trackMediaUsage([{ ...owner, state: 'draft', references: extractCaseMedia(doc) }], req);
   }
   return doc;
 };

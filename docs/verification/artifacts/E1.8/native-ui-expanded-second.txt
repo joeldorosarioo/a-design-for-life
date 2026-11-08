@@ -1,0 +1,9 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-native-ui-expanded-second.txt
+Original SHA256: 392A80DF4EB8C217E35648A4B46DD3BEECD5D5C8693A6F2EA5979C862459D7E5
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: 3 real Next Native CMS journeys: pending/reload/unsaved edits, stale retry+withdrawal, Figma private draft.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+3 passed (34.4s)

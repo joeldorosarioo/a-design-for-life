@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../testing/fixtures/confirmed-publication';
 import { afterAll, beforeAll, beforeEach, expect, it } from 'vitest';
 import {
   clearStructuralFixture,
@@ -117,6 +118,7 @@ it('invalid effective publication with draft:true preserves the previous public 
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(published, await fixture.request());
   const draft = await fixture.payload.update({
     collection: 'case-content',
     id: published.id,
@@ -246,6 +248,7 @@ it('valid explicit publication with draft:true retains the native published inte
     req: await observedRequest('case-content', created.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(published, await fixture.request());
   expect(published._status).toBe('published');
   expect(
     await fixture.payload.findByID({

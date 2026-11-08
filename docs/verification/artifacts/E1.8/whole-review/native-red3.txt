@@ -1,0 +1,10 @@
+Sanitized whole-review fix evidence; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-native-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: RED_W1
+Observation: Valid W1 RED with correct Native authenticated cookie+Origin control: three collection tests failed on anonymous list docs/totalDocs and by-ID200+pending marker instead of404/no marker. The same behavior was observed with a legacy true version marker persisted through the official adapter. W2 four tests passed.
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 4 passed (7)
+   Start at  12:53:17
+   Duration  12.02s (tests 70%, import 26%, transform 3%, setup 1%)

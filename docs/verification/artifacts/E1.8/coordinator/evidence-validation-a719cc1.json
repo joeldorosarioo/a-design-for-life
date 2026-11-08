@@ -1,0 +1,490 @@
+{
+  "target": "a719cc1a4fda619aadad45576af034cdcaa7f208",
+  "checkedAt": "2026-10-30T15:29:47.326Z",
+  "logPairs": 50,
+  "legacyPairs": 10,
+  "screenshots": 6,
+  "status": "All indexed original and exported bytes match their declared SHA-256; no behavior rerun",
+  "checked": [
+    {
+      "artifact": "verify-candidate.txt",
+      "originalBytes": 43850,
+      "exportedBytes": 780,
+      "originalSha256": "c752db50d15a0e0e4acd994a63e7ba75136eb06210ad8747526ab5f8bddf5240",
+      "exportedSha256": "5cfb7703610f6f90cb6852da40dae507aba19968cb7398022f56b37a8ecd5928",
+      "classification": "LOCAL_GATE_GREEN"
+    },
+    {
+      "artifact": "e2e-candidate.txt",
+      "originalBytes": 133552,
+      "exportedBytes": 568,
+      "originalSha256": "8fcd59c662349fb303bfcf4ed1b2d10c0376f8b951ab0e81e83a51f8f9035088",
+      "exportedSha256": "630460edf91a29bcc7d47d3a5ef419f7dd72860a6998f55f2f980626cecc2072",
+      "classification": "LOCAL_GATE_GREEN"
+    },
+    {
+      "artifact": "native-red.txt",
+      "originalBytes": 3534,
+      "exportedBytes": 593,
+      "originalSha256": "4eb3eab78293af9ef6761b277d9c60219a1599f0f68c881ce44e584e384ae411",
+      "exportedSha256": "e3ec7889a5bac0c8222134031c3dad348b27f292c784e3daa6f2937b81f19ecb",
+      "classification": "RED"
+    },
+    {
+      "artifact": "ack-pins-red.txt",
+      "originalBytes": 1515,
+      "exportedBytes": 638,
+      "originalSha256": "a719e74de985657ddcc7630928d24753809a32e9dbe67c78225088dc7f7a9d5d",
+      "exportedSha256": "043192f955f56bd71adf41c2d23df6ba1b668eb0b33cbbfaf942a715f5372963",
+      "classification": "RED"
+    },
+    {
+      "artifact": "audit-native-red.txt",
+      "originalBytes": 4905,
+      "exportedBytes": 775,
+      "originalSha256": "564b29274035c69c39a7661e55c55be9bd16030dac0617318c42697db4c5cc58",
+      "exportedSha256": "85ead0193a3da9f73cfadb55dc3035f882749394c75c63c4b43d95a53f6b6d86",
+      "classification": "MIXED_REGRESSION"
+    },
+    {
+      "artifact": "model-native-red.txt",
+      "originalBytes": 4866,
+      "exportedBytes": 631,
+      "originalSha256": "c81dd443c6da47a6d19834ae9ea720b0986169fac7517809001d4d4d8ca6ce0f",
+      "exportedSha256": "19c21cb88952fdbeba2bf62c8dc4f58831a25891cd34862af9bcd444fb6589d3",
+      "classification": "RED"
+    },
+    {
+      "artifact": "reconcile-green.txt",
+      "originalBytes": 3040,
+      "exportedBytes": 622,
+      "originalSha256": "25c34ce20472f9761549154f2df5241f3b44d1fb69835c0bcff697c44b0d407f",
+      "exportedSha256": "0670b6b1ea1479cf28d974eddba0f80d4f1d13289b4e49dc36fa7147cddb2928",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "profile-getter-native-red.txt",
+      "originalBytes": 4217,
+      "exportedBytes": 656,
+      "originalSha256": "9648f09b4e2ad8fb662193c1ef1856cad0d7d6d2abcb1f3a031fdd6429f4fd62",
+      "exportedSha256": "a306e14a45a9cd9f2d1f1667a7e5025f3750f36168c7262eb6cf10521ba516c3",
+      "classification": "RED"
+    },
+    {
+      "artifact": "os-writer-expanded.txt",
+      "originalBytes": 287,
+      "exportedBytes": 702,
+      "originalSha256": "cf5477f35233fe90e0bf25fbcae8b30c05aa4395ac0faae5a82eb87f55c97f4e",
+      "exportedSha256": "9c3b76b364ed822e6ec1bd531029ea1f8073d01bcda4d48e2c6080b69c7bfd0b",
+      "classification": "GREEN_WITH_PLATFORM_SKIP"
+    },
+    {
+      "artifact": "writer-red.txt",
+      "originalBytes": 1256,
+      "exportedBytes": 639,
+      "originalSha256": "bac9a21f8a53c6065f7612fcd39dc0de465d63ba84cd66d6121bb537ce36cf64",
+      "exportedSha256": "b95b98106c8b2f1276c19886bab322702620b00747566b9a3299e35d65dbe708",
+      "classification": "RED"
+    },
+    {
+      "artifact": "writer-green.txt",
+      "originalBytes": 199,
+      "exportedBytes": 602,
+      "originalSha256": "2cd6621349f01498ab18c1147335263588c33db25b763bfbe3f75f139219051e",
+      "exportedSha256": "634a51f586b460544186f18ca00aafd4d7f5368f6b67eff9b1053e9161081072",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "root-red.txt",
+      "originalBytes": 2913,
+      "exportedBytes": 596,
+      "originalSha256": "6fd3c2f312f976003e3dce9ca0019755ee58200055044b1c6d6a490573814fe9",
+      "exportedSha256": "849944d2aedc4323d61c8f186984fec7cfc2a70a24bc8c47ad6d6b95ebf20479",
+      "classification": "RED"
+    },
+    {
+      "artifact": "root-green.txt",
+      "originalBytes": 200,
+      "exportedBytes": 601,
+      "originalSha256": "a9212e0aaa037f3222b25544f8540f472dc6c469abd7461f2b295586dc4f291c",
+      "exportedSha256": "c6036978dbacb8d25b19b58b68b166c8335c90a8fc8d559642d6f09dc1cdc46c",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "outbox-red.txt",
+      "originalBytes": 4044,
+      "exportedBytes": 615,
+      "originalSha256": "233407c52b312b6915b4cbe46b2dfc81654e4f1b21961702082fc8e75defec04",
+      "exportedSha256": "2e8619b2a16e52ea4862083340e9e89b4033858bf9db172ef8a78e36e93531e3",
+      "classification": "RED"
+    },
+    {
+      "artifact": "outbox-green.txt",
+      "originalBytes": 3037,
+      "exportedBytes": 597,
+      "originalSha256": "e8e95e814e6c53d0de4aba9f4bf665c5c1ce40c2e17141fe0b25a9019fc2fe33",
+      "exportedSha256": "f2fde49fed1b17e28fff42e8a6ac71e74f4a8ec61f9edfce22bb669475e74409",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "pins-red.txt",
+      "originalBytes": 1728,
+      "exportedBytes": 620,
+      "originalSha256": "539527ec4c983eac803333dae0ec307b3913ccf06c56df445938155feace2c43",
+      "exportedSha256": "67438e0c92d9b33be5dd6195a80030dd9aa7e5debd4b3c9d512967bae500dab6",
+      "classification": "RED"
+    },
+    {
+      "artifact": "pins-green.txt",
+      "originalBytes": 199,
+      "exportedBytes": 603,
+      "originalSha256": "3990fb507895be8762af092f2a3db6de4e3c54531905d39bfb7de6fff9e6d80a",
+      "exportedSha256": "c9565acc085837ee0e197cad3d98707499ae3ec1dc0ee858bbb3eb01bf58da10",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "native-transport-commit-red.txt",
+      "originalBytes": 4279,
+      "exportedBytes": 635,
+      "originalSha256": "46269330893508c4790d5ef8be7a9ddbcc9f889a5f57aed6873f6435d18566a6",
+      "exportedSha256": "7c13ceef7d9a8da45fb07962c26cec8de0ee34068dc2f51086c58ad47d3fbbee",
+      "classification": "RED"
+    },
+    {
+      "artifact": "draft-commit-red.txt",
+      "originalBytes": 4627,
+      "exportedBytes": 624,
+      "originalSha256": "d7124eff795eed2ae3550e3d9714ec8edbdcb0441d438d6427d4056ec42bac44",
+      "exportedSha256": "3b66d3a267289f1e3f8bab96c7b156c7d4e77dfcf2306d23af744a1143505cfa",
+      "classification": "RED"
+    },
+    {
+      "artifact": "draft-commit-green.txt",
+      "originalBytes": 7695,
+      "exportedBytes": 649,
+      "originalSha256": "5b4e534f1b62f42c665d6b8a39b34a6c36b4d29db84a3ddaa0110cb0ab21f4be",
+      "exportedSha256": "9256a48035c0a24a7448dd53bf00970b759d95700f4437086008ee753adbe8e8",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "settlement-concurrency-green.txt",
+      "originalBytes": 7695,
+      "exportedBytes": 664,
+      "originalSha256": "c9b44c204b067e1a4647bbe81e17e7995bd8e77820f667f33f80d0185b3c5b6e",
+      "exportedSha256": "421ce724e87e117711f982a0274a014aaaaf4e9e5dc92113c4d65187fa23fb88",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "core-settlement-green2.txt",
+      "originalBytes": 9957,
+      "exportedBytes": 664,
+      "originalSha256": "51d8998f4a45b0b6a838d782e3ad16788d241c8e8919f2d2ed2e5d6d87eb9739",
+      "exportedSha256": "9fe16e88e37800e45a54b32fab255167cee78a177fe6dc28f9cfab8cc520814b",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "readers-green.txt",
+      "originalBytes": 3214,
+      "exportedBytes": 609,
+      "originalSha256": "f92aa71b3556a592d2287d49b2fa59b257922ecd42c7dddb6b493f2a58698364",
+      "exportedSha256": "ac8945cd47f9302961a8782da7004c11415b76eb123b532efa98f294819a641e",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "legacy-routes-verify2.txt",
+      "originalBytes": 1765,
+      "exportedBytes": 515,
+      "originalSha256": "825ff112488a74e711033a814299b00459c1b09f8626e81d97f102581086570f",
+      "exportedSha256": "e3e9617f189658134404257cb82112acb2f96339ef8365a2a75b7fe12720aa5b",
+      "classification": "RED"
+    },
+    {
+      "artifact": "legacy-routes-green-old-migrate.txt",
+      "originalBytes": 2048,
+      "exportedBytes": 495,
+      "originalSha256": "56d01c978dfe0ae64be80ed821862441ee296419a60c1c413db587705476750e",
+      "exportedSha256": "51e1817548e676c16d8c2bd3224c1e3684827b8b400020023a301e2ae6d69c89",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "legacy-routes-green-old-seed.txt",
+      "originalBytes": 1010,
+      "exportedBytes": 519,
+      "originalSha256": "65d13c1dc9781447f8d2643c00a180ac23a4891a95951e1310ba68de845263ee",
+      "exportedSha256": "756e76c4415f349ebd38a544f686d29778c5294a19c404b0847a4415686c78c8",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "legacy-routes-green-current-migrate.txt",
+      "originalBytes": 627,
+      "exportedBytes": 516,
+      "originalSha256": "4e399dca4d4d82e4ead3808aceae4d01fcd1eac0b91d92f45a951c35db0a3498",
+      "exportedSha256": "01f3234c15e88dd72bc1bd0302be2df4ea65d6b578fc716f748caf7fcedc71b3",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "legacy-routes-green-captured.txt",
+      "originalBytes": 256,
+      "exportedBytes": 508,
+      "originalSha256": "f73cbee74857300e5c74c85008cb67a0b2b7ec919c57e00f40a2bc625c7d9e3c",
+      "exportedSha256": "03089df5711527d1fbf9cbdb6fc30d6884a4c2bb428d1ecac782c05fbfa59fbc",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "legacy-routes-green-bootstrap.txt",
+      "originalBytes": 90,
+      "exportedBytes": 492,
+      "originalSha256": "9ee433008876cecee121c78bd2d0c6c76990d8558e43f3bb57ade803cd29188e",
+      "exportedSha256": "01e18afe00f164b2dff11ebd2896f48ec8803f24173a33b557e5614ea823f7a8",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "legacy-routes-green-verify.txt",
+      "originalBytes": 1058,
+      "exportedBytes": 544,
+      "originalSha256": "60c45dba7f4d3d9ee0e076e0c75374655c77895427f0e6510e6f0e2df20a4fd1",
+      "exportedSha256": "c2f7209889832d611c5390cce1532973501161a09b97ed02aed5ba92181b058e",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "migration-down-red.txt",
+      "originalBytes": 8532,
+      "exportedBytes": 628,
+      "originalSha256": "3b1a566e9402f57669f455838957e24abd539ebf5fde35a6597f1024fb9cf3f3",
+      "exportedSha256": "3c8488fa29b8eb41d6d4bc61aa26ecd0e5b847133b10359bab2474f7faffa663",
+      "classification": "RED"
+    },
+    {
+      "artifact": "migration-down-green.txt",
+      "originalBytes": 3126,
+      "exportedBytes": 633,
+      "originalSha256": "65185ea9fe1433785e6207c5aa718b4fb1ccd3d4bffbab05dd78af7851b9e77c",
+      "exportedSha256": "1571430ca2c1b806982a778ed31f81aa337d154ce94b4b407c2604985dfa5281",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "receipts-batch2.txt",
+      "originalBytes": 3389,
+      "exportedBytes": 676,
+      "originalSha256": "9a3478424aaf2fed904b535443fa4f1031a83d9cc4fdb15bcb588e9772b17b31",
+      "exportedSha256": "bc8bdf3fc0311ede6ba73b5683a45749d00dbd7ed45e1e3bdb623a1731861ca6",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "native-ui-expanded-first.txt",
+      "originalBytes": 5783,
+      "exportedBytes": 525,
+      "originalSha256": "e65ae7dac53a5c75719c490c2db9dcfa1f90f145da9766a93faa3b6965a9103a",
+      "exportedSha256": "8fcc239aad4a5922a9165a89ff89cde36e6d7603dc22535c497a03ffeb64074f",
+      "classification": "TYPECHECK_FAILURE"
+    },
+    {
+      "artifact": "native-ui-expanded-second.txt",
+      "originalBytes": 4737,
+      "exportedBytes": 548,
+      "originalSha256": "392a80df4eb8c217e35648a4b46dd3beecd5d5c8693a6f2ea5979c862459d7e5",
+      "exportedSha256": "32835fdb5e32c84ce2ec378335bfd57e3d6a3422e6f08e1c8ad584588cce6b28",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "verify-current4.txt",
+      "originalBytes": 45682,
+      "exportedBytes": 778,
+      "originalSha256": "7718a6aea70ba81d757f45159dbea0cb183c56325da50f7700241832f06fa94b",
+      "exportedSha256": "df6a928dbe237eb188d81e6dda4beb9ac653e9039faab0a4d065cbce5ea3656d",
+      "classification": "INCOMPLETE_GATE"
+    },
+    {
+      "artifact": "e2e-full-first.txt",
+      "originalBytes": 140785,
+      "exportedBytes": 612,
+      "originalSha256": "e8c9fcbbe29658e44941781b839a2e76be21f9dbe8c1f9b5b40b2103d6df5a3c",
+      "exportedSha256": "5970173c8da7b5de1d6a1239db1b4a5eea610dc9d5fa81281d2411867679bcb8",
+      "classification": "INCOMPLETE_GATE"
+    },
+    {
+      "artifact": "round1/boundaries-red3.txt",
+      "originalBytes": 11528,
+      "exportedBytes": 695,
+      "originalSha256": "a2271478d0a676b6acf6f30fbff47af58f520925b77576a285958a0e00573bea",
+      "exportedSha256": "1cee439afa3d426310fc29d6a231e2c4ed3c94664ffd39977e7d74be8a4911f2",
+      "classification": "RED"
+    },
+    {
+      "artifact": "round1/boundaries-green.txt",
+      "originalBytes": 3213,
+      "exportedBytes": 585,
+      "originalSha256": "2dfe246af1ce561be6bde4c49d326ec927d81bc98c5b19653007fbf98c5cd5eb",
+      "exportedSha256": "b71f993ace314deab1fc595164f8536da426af6843ad895ec65b60a908d338f5",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "round1/media-red2.txt",
+      "originalBytes": 4731,
+      "exportedBytes": 590,
+      "originalSha256": "66e6856b9d9e98935704f1f9e1a96177626db294ecd76053310a5dcf014a6134",
+      "exportedSha256": "f99d5ff8490b3d1a11d97b75190d37fef6a56105d9dfcfefc424f8f1d66b657f",
+      "classification": "RED"
+    },
+    {
+      "artifact": "round1/focused-green.txt",
+      "originalBytes": 10078,
+      "exportedBytes": 790,
+      "originalSha256": "cd748043e1c9f950328ff9864a0dfcb961a4f56b590871835c7f7d1e74bf5c46",
+      "exportedSha256": "d503b805c5383f13176879513c6b80208975ca66ff00e313b69390bab4bdfe92",
+      "classification": "GREEN"
+    },
+    {
+      "artifact": "round1/verify3.txt",
+      "originalBytes": 43849,
+      "exportedBytes": 620,
+      "originalSha256": "f524adceb62a89303c0d9722960755506403710309477dd7af416b15e0173866",
+      "exportedSha256": "d74fb923db85a6cdda6b7c182579790e4011431cd06f1618b470eb266f81d9f5",
+      "classification": "LOCAL_GATE_GREEN"
+    },
+    {
+      "artifact": "round1/e2e.txt",
+      "originalBytes": 133537,
+      "exportedBytes": 383,
+      "originalSha256": "3f76723fe8d96992392c4c59451cdadc25e3d459ca85ee09d4ef2438309132a1",
+      "exportedSha256": "a29125864dbfd6f9f2b70f501ede0363a20b9c8866df17be485ad617799185cb",
+      "classification": "LOCAL_GATE_GREEN"
+    },
+    {
+      "artifact": "round1/verify2.txt",
+      "originalBytes": 44266,
+      "exportedBytes": 707,
+      "originalSha256": "0f090731345929584111182cc2bee69337d763289b6432ab004aead81e8d6b42",
+      "exportedSha256": "aabd8d521d9d9ffa3055efe6f88b7200998f20661e1168dffc5eec441680f731",
+      "classification": "FIXTURE_FAILURE"
+    },
+    {
+      "artifact": "round1/verify.txt",
+      "originalBytes": 748,
+      "exportedBytes": 331,
+      "originalSha256": "69e2f26dfd88a1193711eb808c6482fae4bcb2f37e56a824f4f16463adabc0c2",
+      "exportedSha256": "1b8419cbe2212c06917b323bb24bc3cf6a1e36b221f55dbd43c8ed03e0273547",
+      "classification": "TYPECHECK_FAILURE"
+    },
+    {
+      "artifact": "round1/boundaries-red.txt",
+      "originalBytes": 13021,
+      "exportedBytes": 569,
+      "originalSha256": "4ad48b2d375973a73f5311911746df058b1964d9fb4fa25aed7e954e367693c7",
+      "exportedSha256": "d86c50af584c4ab0ad4fd078cc569b4c07006aca3cedc890748e3301af6e85e3",
+      "classification": "MIXED_SETUP_FAILURE"
+    },
+    {
+      "artifact": "round1/boundaries-red2.txt",
+      "originalBytes": 13614,
+      "exportedBytes": 529,
+      "originalSha256": "0bc04e5baa355f307a971275f154920ca9a0d36649db871c67eda3e64d87482b",
+      "exportedSha256": "eb7c71906783adc9eb56aa25e9c731a0b8ce32bdce01256d8fc4402d7f9fed42",
+      "classification": "PARTIAL_RED"
+    },
+    {
+      "artifact": "round1/media-red.txt",
+      "originalBytes": 7626,
+      "exportedBytes": 549,
+      "originalSha256": "aee7431d53d4ce1e07311dc9e2fb78032b67f64eb35b54e0af4b25e6bd571509",
+      "exportedSha256": "5bed483db304cb7f8f010c55526d7bb487a9be164276ba75a6c0d577ec9a10d2",
+      "classification": "SETUP_FAILURE"
+    },
+    {
+      "artifact": "round1/typecheck2.txt",
+      "originalBytes": 16,
+      "exportedBytes": 223,
+      "originalSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSha256": "8d9a51d964dee3808a529f8865dea0215f4f6ba050f251d599f49934c2503cdd",
+      "classification": "STATIC_GREEN"
+    },
+    {
+      "artifact": "round1/lint.txt",
+      "originalBytes": 0,
+      "exportedBytes": 292,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e7b5bb840d9afa8b7fffffd2766fe5bbe2409f50dc65967f481a26b2fa2b0fc9",
+      "classification": "STATIC_GREEN"
+    },
+    {
+      "artifact": "legacy-harness/guard.cjs.txt",
+      "originalBytes": 1948,
+      "exportedBytes": 1947,
+      "originalSha256": "476a4b8d1c0ee2ccf2799aed00f5b1333f72c7a5e24c215c1c4cd3be51bc3da0",
+      "exportedSha256": "c6f4efe67a79a91fbe891c6d2eff0d395f6d1582a4edf2ef873227a3e4b351f5",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/run.cjs.txt",
+      "originalBytes": 2646,
+      "exportedBytes": 2645,
+      "originalSha256": "bdaa6c75f63736a02f567dcbe91e48bcd00a877740d063d4a188efa731ea1c89",
+      "exportedSha256": "932f178547346b9d82945e33c48dfe09841a53fc251ba55daca20f7f5673b7f0",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/seed.ts.txt",
+      "originalBytes": 10998,
+      "exportedBytes": 10912,
+      "originalSha256": "53d34e7146c491e52274ec48e2197c894ea449b12cdaf1af3d0c30e0d766de6e",
+      "exportedSha256": "d560f2f4a087f57c0f33c27dc65da3923da93f1f1e96cc31bdeacc89e73aeb2f",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/verify.ts.txt",
+      "originalBytes": 11477,
+      "exportedBytes": 11353,
+      "originalSha256": "29896c417edbf07c0c904ee97b43378a26bb6c9f32581ab1a40290801044ba66",
+      "exportedSha256": "58cfa2768473f9145cc08d47990c69606153f629d848a9acf0c3bf2a251a9fdc",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/check-syntax.cjs.txt",
+      "originalBytes": 669,
+      "exportedBytes": 668,
+      "originalSha256": "b9712446a36ead13988a1e8e60b3f8a0e38cef9e24083e6699e41d277abec051",
+      "exportedSha256": "ab3b1ac9c79b1a53847c8bf31c3bc1b540703ce609de70ef98d465533852abe5",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/resolve-aliases.cjs.txt",
+      "originalBytes": 1002,
+      "exportedBytes": 1001,
+      "originalSha256": "b5c098a532259f021639feecffdd7110460f854034e46be113a0e8a9256a1692",
+      "exportedSha256": "0a1f63f830fc1fddcb55ac3d87485c5ad1069fbbd3b85aeeb26374dc72bbb43c",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/expected.json",
+      "originalBytes": 2629,
+      "exportedBytes": 2630,
+      "originalSha256": "7209f06416f0b93e43c2a2aa5d6bd4941a4b7dbbb1c4ab60cfc235573af60d2a",
+      "exportedSha256": "750a9ee2ed89d3695e732876f215061978f6b9e3fe6ad2762750a7d93d065384",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/captured.json",
+      "originalBytes": 293,
+      "exportedBytes": 294,
+      "originalSha256": "3278e2f7ecc43d2cee424fd723f2d1b6e09758efced196c768f8c3a63f132ae7",
+      "exportedSha256": "514a76038b8e83f0adc9dd33a7b47f0bb340675352283523397d14413a7b2c4d",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/verified.json",
+      "originalBytes": 1307,
+      "exportedBytes": 1308,
+      "originalSha256": "a3f772b46de5f500098b0a201765aa6bcf819d202cacde5db8ceda0af26a7937",
+      "exportedSha256": "832e61520945cc09022b1d4e5d78e7d124c65613c98efa18eaf700411a2f11f1",
+      "classification": "LEGACY_HARNESS"
+    },
+    {
+      "artifact": "legacy-harness/owner.ts.txt",
+      "originalBytes": 1253,
+      "exportedBytes": 1248,
+      "originalSha256": "e2b269c41a004ed55f54a3414f13a18418ca7d42f178397b391aea32dab545c9",
+      "exportedSha256": "d20ac41a9762f6ac87548ccbf555aca1cfc726c9e4e6a6635270178d3adc8b2e",
+      "classification": "LEGACY_HARNESS"
+    }
+  ]
+}

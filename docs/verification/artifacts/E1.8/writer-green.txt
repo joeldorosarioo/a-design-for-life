@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-writer-green.txt
+Original SHA256: 2CD6621349F01498AB18C1147335263588C33DB25B763BFBE3F75F139219051E
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Cross-process writer exclusion and release verified.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  2 passed (2)
+Start at  09:42:27
+Duration  525ms (setup 49%, tests 41%, transform 5%, import 4%, worker 1%)

@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-audit-native-red.txt
+Original SHA256: 564B29274035C69C39A7661E55C55BE9BD16030DAC0617318C42697DB4C5CC58
+Observed command exit code: 1
+Classification: MIXED_REGRESSION
+Behavior/limit: R2 validRED: root-public route ownership disappeared after superseding failed ACK, count0 expected1. R1 in this run used invalid auth fixture and is NOT its validRED; use native-transport-commit-red instead.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  2 failed | 10 skipped (12)
+Start at  10:18:45
+Duration  7.62s (import 65%, tests 26%, transform 5%, setup 3%)

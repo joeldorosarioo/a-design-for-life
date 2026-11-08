@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-pins-green.txt
+Original SHA256: 3990FB507895BE8762AF092F2A3DB6DE4E3C54531905D39BFB7DE6FFF9E6D80A
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Pending revisions accumulate until safe reconciliation.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  6 passed (6)
+Start at  09:50:11
+Duration  442ms (setup 62%, import 26%, transform 8%, tests 2%, worker 1%)

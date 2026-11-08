@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../../testing/fixtures/confirmed-publication';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
@@ -53,6 +54,15 @@ import {
 import { clearStructuralFixture } from '../../../../../testing/fixtures/editorial-payload';
 it('navigation publication is independent and normal draft save preserves the published document', async () => {
   await clearStructuralFixture(fixture.payload);
+  const image = await mediaMetadataFixture(fixture.payload);
+  const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');
+  const profile = await fixture.payload.create({
+    collection: 'professional-profiles',
+    data: { ...profilePublicationFixture(image.id, pdf.id), locale: 'pt', _status: 'published' },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  await confirmTestPublication(profile, await fixture.request());
   const pt = await fixture.payload.create({
     collection: 'site-navigation',
     data: { locale: 'pt' },
@@ -67,13 +77,14 @@ it('navigation publication is independent and normal draft save preserves the pu
     overrideAccess: false,
     req: await fixture.request(),
   });
-  await fixture.payload.update({
+  const navigationPublished = await fixture.payload.update({
     collection: 'site-navigation',
     id: pt.id,
     data: { ...navigationFixture(), _status: 'published' },
     req: await observedRequest('site-navigation', pt.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(navigationPublished, await fixture.request());
   const publicDocs = await fixture.payload.find({
     collection: 'site-navigation',
     draft: false,
@@ -150,6 +161,7 @@ it('case PT publishes independently, draft and invalid publication preserve publ
     req: await observedRequest('case-content', pt.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(firstPublication, await fixture.request());
   const publicDocs = await fixture.payload.find({
     collection: 'case-content',
     where: { case: { equals: shared.id } },
@@ -223,20 +235,22 @@ it('case PT publishes independently, draft and invalid publication preserve publ
       })
     ).title,
   ).toBe('Synthetic title');
-  await fixture.payload.update({
+  const englishPublication = await fixture.payload.update({
     collection: 'case-content',
     id: en.id,
     data: { ...casePublicationFixture(media.id), _status: 'published' } as never,
     req: await observedRequest('case-content', en.id, await fixture.request()),
     overrideAccess: false,
   });
-  await fixture.payload.update({
+  await confirmTestPublication(englishPublication, await fixture.request());
+  const withdrawn = await fixture.payload.update({
     collection: 'case-content',
     id: pt.id,
     data: { _status: 'draft' },
     req: await observedRequest('case-content', pt.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(withdrawn, await fixture.request());
   expect(
     (
       await fixture.payload.find({
@@ -285,13 +299,14 @@ it('restores old published and draft versions only as new drafts without changin
     req: await fixture.request(),
     overrideAccess: false,
   });
-  await fixture.payload.update({
+  const initialPublication = await fixture.payload.update({
     collection: 'case-content',
     id: doc.id,
     data: { ...casePublicationFixture(media.id), _status: 'published' } as never,
     req: await observedRequest('case-content', doc.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(initialPublication, await fixture.request());
   const versions = await fixture.payload.findVersions({
     collection: 'case-content',
     where: { parent: { equals: doc.id } },
@@ -303,13 +318,14 @@ it('restores old published and draft versions only as new drafts without changin
   });
   const oldDraft = versions.docs.find((v) => v.version._status === 'draft')!;
   const oldPublished = versions.docs.find((v) => v.version._status === 'published')!;
-  await fixture.payload.update({
+  const latestPublication = await fixture.payload.update({
     collection: 'case-content',
     id: doc.id,
     data: { title: 'Latest public title', _status: 'published' },
     req: await observedRequest('case-content', doc.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(latestPublication, await fixture.request());
   for (const version of [oldPublished, oldDraft]) {
     const req = await observedRequest('case-content', doc.id, await fixture.request());
     const expectedRevision = req.headers.get('x-editorial-revision')!;
@@ -624,8 +640,16 @@ it('profile publications, drafts, permanent structural publication and recovery 
   );
   expect(result).toMatchObject({
     ok: true,
-    value: { contentId: pt.id, locale: 'pt', status: 'published', revision: expect.any(String) },
+    value: {
+      contentId: pt.id,
+      locale: 'pt',
+      state: 'public',
+      operationId: expect.any(String),
+      targetRevision: expect.any(String),
+      revision: expect.any(String),
+    },
   });
+  if (result.ok) expect(result.value.targetRevision).toBe(result.value.revision);
   const versions = await fixture.payload.findVersions({
     collection: 'professional-profiles',
     where: { parent: { equals: pt.id } },
@@ -742,4 +766,54 @@ it('normalizes only the native empty row count for arrays while draft/publicatio
       overrideAccess: false,
     }),
   ).rejects.toMatchObject({ status: 400 });
+});
+
+import { createLocalReq } from 'payload';
+import { readPublicRoot } from '@/helpers/payload/public-root';
+import { runtimePublication } from '@/helpers/payload/publication-runtime';
+import { resolveMediaAccess } from '@/features/media-library/server';
+it('test structural cleanup pairs SQL and confirmed subjects while preserving unrelated owners and revoking old profile grants', async () => {
+  await clearStructuralFixture(fixture.payload);
+  const image = await mediaMetadataFixture(fixture.payload);
+  const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');
+  const saved = await fixture.payload.create({
+    collection: 'professional-profiles',
+    data: { ...profilePublicationFixture(image.id, pdf.id), locale: 'pt', _status: 'published' },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  await confirmTestPublication(saved, await fixture.request());
+  const media = async () =>
+    resolveMediaAccess(
+      { mediaId: image.id, variant: 'original', preview: false },
+      await createLocalReq({}, fixture.payload),
+    );
+  expect((await media()).ok).toBe(true);
+  const before = (await readPublicRoot(runtimePublication().directory))!;
+  const unrelated = Object.fromEntries(
+    Object.entries(before.subjects).filter(
+      ([key]) => !key.startsWith('professional-profiles/') && !key.startsWith('site-navigation/'),
+    ),
+  );
+  await clearStructuralFixture(fixture.payload);
+  expect((await readPublicRoot(runtimePublication().directory))?.subjects).toEqual(unrelated);
+  expect(
+    (
+      await fixture.payload.find({
+        collection: 'professional-profiles',
+        draft: true,
+        overrideAccess: true,
+      })
+    ).totalDocs,
+  ).toBe(0);
+  expect(
+    (
+      await fixture.payload.find({
+        collection: 'site-navigation',
+        draft: true,
+        overrideAccess: true,
+      })
+    ).totalDocs,
+  ).toBe(0);
+  expect(await media()).toEqual({ ok: false, status: 404 });
 });

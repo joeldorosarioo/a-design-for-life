@@ -1,0 +1,10 @@
+Sanitized whole-review fix evidence; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-native-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: MIXED_SETUP_FAILURE
+Observation: W2 four real physical root failures returned404 without no-store instead of503. W1 stopped at reversed wrapper arguments; excluded from W1 proof.
+
+ Test Files  1 failed (1)
+      Tests  7 failed (7)
+   Start at  12:49:08
+   Duration  36.57s (tests 66%, import 20%, transform 13%, setup 1%)

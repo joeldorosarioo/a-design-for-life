@@ -13,8 +13,11 @@ export function changeMediaUsage(usages: MediaUsage[], input: MediaUsageChange):
       usage.collection === change.collection &&
       usage.documentId === change.documentId &&
       usage.locale === change.locale;
+    if (sameOwner && change.reconcilePending && usage.state === 'pending')
+      return { ...usage, state: 'retained' as const };
     if (
       sameOwner &&
+      change.state !== 'pending' &&
       usage.state === change.state &&
       (!change.referenced || usage.revision !== change.revision)
     )

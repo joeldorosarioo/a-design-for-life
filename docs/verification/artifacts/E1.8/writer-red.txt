@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-writer-red.txt
+Original SHA256: BAC9A21F8A53C6065F7612FCD39DC0DE465D63BA84CD66D6121BB537CE36CF64
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Real second writer entered while first owned global writer; required OS exclusion.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed | 1 passed (2)
+Start at  09:42:14
+Duration  552ms (setup 46%, tests 42%, import 6%, transform 6%, worker 1%)

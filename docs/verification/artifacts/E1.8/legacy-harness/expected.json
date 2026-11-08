@@ -1,0 +1,59 @@
+{
+  "routes": {
+    "slugA": "legacy-53733c01-a461-4439-b423-b56d3146a873-a",
+    "slugB": "legacy-53733c01-a461-4439-b423-b56d3146a873-b",
+    "slugC": "legacy-53733c01-a461-4439-b423-b56d3146a873-c"
+  },
+  "withdrawn": {
+    "id": "f2ab6dd6-15ed-424e-9bb7-703b287ec4ea",
+    "caseId": "df42daca-f9fc-4493-a0d4-7a1f734a90c5",
+    "slug": "legacy-53733c01-a461-4439-b423-b56d3146a873-withdrawn",
+    "revision": "86d234cb-17a1-4037-92d0-a5a463ceaf68",
+    "publicTitle": "Legacy formerly public withdrawn case",
+    "mediaId": "d6949a57-c367-4693-a000-42ba4c17c17f",
+    "mediaOriginalHash": "b3366971a24cf823fd8c92d162ad21017cf275481081a12b835b8199e91cf7dd",
+    "versionIds": [
+      "3d19bb2f-60d5-4256-b95d-6a39df28d696",
+      "82c02fbd-451d-4083-9e0a-034fc4e2ae63",
+      "3c4d4057-a7ad-4b89-8d18-43603dc78ce9"
+    ]
+  },
+  "neverPublic": {
+    "id": "d8294f92-a8a8-4981-b92b-8bfc2b8be6f8",
+    "caseId": "7aa68049-5f3e-4f87-bd40-09a2b0f7d1d9",
+    "slug": "legacy-53733c01-a461-4439-b423-b56d3146a873-never-public",
+    "mediaId": "2e63f794-33c1-47ca-8869-427a32b2cc47",
+    "mediaOriginalHash": "65dd52c778a5173ec0abf8b8d098997e2a0e1dd0f2548cfae2a0a795e471fe6d"
+  },
+  "baseline": "0fa495864cfefcf3489856d66444b81fdf1f730e",
+  "fingerprint": "792334b6273b57504bb94abd4f3750392546e29ecfc42700306f2ab6aade4fa9",
+  "oldPhysicalAbsent": true,
+  "editorId": "b220101f-6f1a-49dd-852a-d02f34b6c850",
+  "caseId": "3c7dae80-28da-49d0-aa3e-459ba2eb426a",
+  "mediaId": "78ce6d74-571d-4a14-a27c-85e7d2d68bfd",
+  "mediaOriginalHash": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+  "pt": {
+    "id": "e07e6194-6da7-40bd-960a-cf8c0577c378",
+    "slug": "legacy-53733c01-a461-4439-b423-b56d3146a873-b",
+    "title": "Legado PT público atual",
+    "summary": "Resumo público anterior ao upgrade",
+    "revision": "ad42917f-4ece-4867-a295-b2bc3ff61978",
+    "keysHash": "986ac390e0c470e0862ba46f8d90c8cbbab17c72e2de34cfb4073153c89e650b"
+  },
+  "en": {
+    "id": "16e97b3c-d1ae-43bb-95c3-97d0e8a17d07",
+    "slug": "synthetic-9556d576-3a90-47a1-86f6-094461380737",
+    "title": "Legacy EN public unchanged",
+    "revision": "7b1a74eb-4778-4fa1-8078-051dba12d84a",
+    "keysHash": "986ac390e0c470e0862ba46f8d90c8cbbab17c72e2de34cfb4073153c89e650b"
+  },
+  "privateRevision": "5ec199d3-66c0-4952-b6ca-ea10d51df784",
+  "restoreVersionId": "06386525-c5f8-4bc6-84f7-aa693fdd1cfd",
+  "restoreTitle": "Legado PT histórico",
+  "versionIds": [
+    "87425e02-95a0-4c0e-a6d1-1a44b158f36a",
+    "74df08a2-3fa1-4c7f-9f74-2c93b4efdc60",
+    "06386525-c5f8-4bc6-84f7-aa693fdd1cfd",
+    "9b58db92-888b-4c51-be20-7474823b9375"
+  ]
+}

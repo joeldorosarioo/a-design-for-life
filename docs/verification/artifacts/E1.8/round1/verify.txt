@@ -1,0 +1,5 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+Observed exit code: 2
+Classification: TYPECHECK_FAILURE
+Observation: First verify stopped at generic passthrough test wrapper typing. No functional gate or behavioral RED claimed.

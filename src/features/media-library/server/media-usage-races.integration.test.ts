@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { afterAll, beforeAll, expect, it, vi } from 'vitest';
 import { createLocalReq } from 'payload';
 import { sql } from '@payloadcms/db-postgres';
@@ -47,13 +48,15 @@ async function draft(mediaId: string, locale: 'pt' | 'en' = 'pt', caseId?: strin
   });
 }
 async function publish(id: string) {
-  return fixture.payload.update({
+  const saved = await fixture.payload.update({
     collection: 'case-content',
     id,
     data: { _status: 'published' },
     req: await observedRequest('case-content', id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(saved, await fixture.request());
+  return saved;
 }
 async function publicMedia(id: string) {
   return resolveMediaAccess(
@@ -290,9 +293,15 @@ async function publishCrossSwap(
     overrideAccess: false,
   });
 }
-function publicationOutcome(operation: ReturnType<typeof publishCrossSwap>) {
+function publicationOutcome(
+  operation: ReturnType<typeof publishCrossSwap>,
+  committed: Awaited<ReturnType<typeof publishCrossSwap>>[],
+) {
   return operation.then(
-    (doc) => ({ status: 'fulfilled', publication: doc._status }),
+    (doc) => {
+      committed.push(doc);
+      return { status: 'fulfilled', publication: doc._status };
+    },
     (error: unknown) => {
       // Export only the PostgreSQL code, never the native request/lease or SQL parameters.
       let cause = error as { code?: string; cause?: unknown } | undefined;
@@ -344,10 +353,11 @@ it.each([
       return update(args);
     });
     const publications: ReturnType<typeof publicationOutcome>[] = [];
+    const committed: Awaited<ReturnType<typeof publishCrossSwap>>[] = [];
     try {
-      publications.push(publicationOutcome(publishCrossSwap(first, y.id)));
+      publications.push(publicationOutcome(publishCrossSwap(first, y.id), committed));
       await held.promise;
-      publications.push(publicationOutcome(publishCrossSwap(second, x.id)));
+      publications.push(publicationOutcome(publishCrossSwap(second, x.id), committed));
       await secondAttempt.promise;
       const deadline = Date.now() + 5000;
       let blocked = false;
@@ -373,6 +383,9 @@ it.each([
         { status: 'fulfilled', publication: 'published' },
         { status: 'fulfilled', publication: 'published' },
       ]);
+      // Both Native transactions and their real lock race have completed. Only
+      // now confirm each immutable public intent; never run retry inside them.
+      for (const saved of committed) await confirmTestPublication(saved, await fixture.request());
       for (const [owner, newId, oldId] of [
         [first, y.id, x.id],
         [second, x.id, y.id],

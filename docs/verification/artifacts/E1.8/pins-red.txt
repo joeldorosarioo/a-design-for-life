@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-pins-red.txt
+Original SHA256: 539527EC4C983EAC803333DAE0EC307B3913CCF06C56DF445938155FEACE2C43
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Prior pending media pin was retired before public reconciliation.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  1 failed | 5 passed (6)
+Start at  09:50:02
+Duration  430ms (setup 61%, import 25%, transform 8%, tests 4%, worker 1%)

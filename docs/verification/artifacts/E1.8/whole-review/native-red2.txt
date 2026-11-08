@@ -1,0 +1,10 @@
+Sanitized whole-review fix evidence; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-native-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: RED_W2_PARTIAL_W1
+Observation: W2 valid RED: missing/corrupt/EISDIR/missing-profile-dependency root returned404 instead of503 in both Native endpoints, with no-store absent. W1 anonymous leak observed, but its authenticated control lacked the required Origin header; final red3 supersedes W1 proof.
+
+ Test Files  1 failed (1)
+      Tests  7 failed (7)
+   Start at  12:50:30
+   Duration  12.76s (tests 74%, import 23%, transform 2%, setup 1%)

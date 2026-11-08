@@ -1,5 +1,6 @@
 import { EditorialRevisionField as EditorialRevisionField_5c9633eb4e7dff2b224658b5719bb0f8 } from '../../../helpers/payload/editorial-fields'
 import { EditorialLeaseField as EditorialLeaseField_5c9633eb4e7dff2b224658b5719bb0f8 } from '../../../helpers/payload/editorial-fields'
+import { PublicationStatus as PublicationStatus_109b7ddfc0e9471189c1a199eb09d4cd } from '../../../helpers/payload/publication-status'
 import { EditorialDeleteAction as EditorialDeleteAction_00baafdf6a8d464fc886a28aea6a3627 } from '../../../helpers/payload/editorial-actions'
 import { EditorialVersionAction as EditorialVersionAction_10c1624ea31d46224b68dcbbb897fe2f } from '../../../helpers/payload/editorial-version-action'
 import { SlugSuggestion as SlugSuggestion_cf2c7cd95d6a11fc56f1fb578c03d18b } from '../../../features/cases/components/slug-suggestion'
@@ -21,6 +22,7 @@ import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } f
 export const importMap = {
   "/helpers/payload/editorial-fields#EditorialRevisionField": EditorialRevisionField_5c9633eb4e7dff2b224658b5719bb0f8,
   "/helpers/payload/editorial-fields#EditorialLeaseField": EditorialLeaseField_5c9633eb4e7dff2b224658b5719bb0f8,
+  "/helpers/payload/publication-status#PublicationStatus": PublicationStatus_109b7ddfc0e9471189c1a199eb09d4cd,
   "/helpers/payload/editorial-actions#EditorialDeleteAction": EditorialDeleteAction_00baafdf6a8d464fc886a28aea6a3627,
   "/helpers/payload/editorial-version-action#EditorialVersionAction": EditorialVersionAction_10c1624ea31d46224b68dcbbb897fe2f,
   "/features/cases/components/slug-suggestion#SlugSuggestion": SlugSuggestion_cf2c7cd95d6a11fc56f1fb578c03d18b,

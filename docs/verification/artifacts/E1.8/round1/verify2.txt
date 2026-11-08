@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+Observed exit code: 1
+Classification: FIXTURE_FAILURE
+Observation: 454 passed,1 failed,1 skipped. clearStructuralFixture left confirmed structural media usages after deleting their owner/root; correct503 exposed inconsistent test cleanup. Test support now retires only removed structural usages;404 cleanup assertion unchanged. Not a production TDD RED.
+
+ Test Files  1 failed | 72 passed (73)
+      Tests  1 failed | 454 passed | 1 skipped (456)
+   Start at  12:14:48
+   Duration  159.59s (tests 39%, import 30%, environment 18%, setup 12%, transform 1%)

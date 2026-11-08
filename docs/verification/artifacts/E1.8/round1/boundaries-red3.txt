@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: RED
+Observation: Six real behavioral failures: revoked Native session returned201 instead of503; SQL first reads rejected rather than safe fulfilled results; dependency SQL error escaped; both Native and Local FS failures rejected instead of preserving proven pending; missing/incomplete roots returned404 for known public routes instead of503.
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  12:06:24
+   Duration  9.74s (tests 58%, import 37%, transform 4%, setup 2%)

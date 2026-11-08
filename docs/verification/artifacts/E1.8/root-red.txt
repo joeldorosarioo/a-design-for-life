@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-root-red.txt
+Original SHA256: 6FD3C2F312F976003E3DCE9CA0019755EE58200055044B1C6D6A490573814FE9
+Observed command exit code: 1
+Classification: RED
+Behavior/limit: Durable public root behavior before implementation.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 failed (1)
+Tests  3 failed (3)
+Start at  09:43:03
+Duration  382ms (setup 72%, import 10%, transform 10%, tests 6%, worker 2%)

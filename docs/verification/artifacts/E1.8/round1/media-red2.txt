@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: RED
+Observation: Two real media boundary failures: SQL confirmed usages were asserted, but absent/incomplete root coverage returned404 instead of503. Eight other tests passed. Covered withdrawal with failed SQL ACK remains404.
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 8 passed (10)
+   Start at  12:12:30
+   Duration  11.07s (tests 67%, import 29%, transform 3%, setup 1%)

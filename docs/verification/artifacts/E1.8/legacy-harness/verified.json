@@ -1,0 +1,45 @@
+{
+  "stage": "BOOTSTRAP_AND_RESTORE",
+  "routeChecks": {
+    "a": {
+      "status": 308,
+      "location": "/pt/cases/legacy-53733c01-a461-4439-b423-b56d3146a873-b"
+    },
+    "b": {
+      "status": 200,
+      "locale": "pt",
+      "slug": "legacy-53733c01-a461-4439-b423-b56d3146a873-b",
+      "case": {
+        "id": "3c7dae80-28da-49d0-aa3e-459ba2eb426a",
+        "title": "Legado PT público atual",
+        "summary": "Resumo público anterior ao upgrade"
+      }
+    },
+    "c": {
+      "status": 404
+    },
+    "withdrawn": {
+      "status": 410,
+      "locale": "pt"
+    },
+    "never": {
+      "status": 404
+    }
+  },
+  "withdrawnMediaRevoked": true,
+  "neverPublicMediaPrivate": true,
+  "publicHistoryAndGrantsUnchangedByRestore": true,
+  "publicPT": "Legado PT público atual",
+  "publicEN": "Legacy EN public unchanged",
+  "historicalIdsPreserved": [
+    "87425e02-95a0-4c0e-a6d1-1a44b158f36a",
+    "74df08a2-3fa1-4c7f-9f74-2c93b4efdc60",
+    "06386525-c5f8-4bc6-84f7-aa693fdd1cfd",
+    "9b58db92-888b-4c51-be20-7474823b9375"
+  ],
+  "restoredVersionId": "06386525-c5f8-4bc6-84f7-aa693fdd1cfd",
+  "restoredAsDraftOnly": true,
+  "nullMetadataFallback": true,
+  "publicGenerationUnchangedByRestore": true,
+  "originalMediaHash": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741"
+}

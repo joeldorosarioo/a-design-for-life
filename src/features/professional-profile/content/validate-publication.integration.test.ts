@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { afterAll, beforeAll, beforeEach, expect, it } from 'vitest';
 import {
   clearStructuralFixture,
@@ -43,6 +44,7 @@ it.each([
       req: await fixture.request(),
       overrideAccess: false,
     });
+    await confirmTestPublication(published, await fixture.request());
     const draft = await fixture.payload.update({
       collection: 'professional-profiles',
       id: published.id,
@@ -133,12 +135,12 @@ it.each([
 it('does not require the optional profile SEO image before publication', async () => {
   const image = await mediaMetadataFixture(fixture.payload);
   const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');
-  await expect(
-    fixture.payload.create({
-      collection: 'professional-profiles',
-      data: { ...profilePublicationFixture(image.id, pdf.id), locale: 'pt', _status: 'published' },
-      req: await fixture.request(),
-      overrideAccess: false,
-    }),
-  ).resolves.toMatchObject({ locale: 'pt', _status: 'published' });
+  const published = await fixture.payload.create({
+    collection: 'professional-profiles',
+    data: { ...profilePublicationFixture(image.id, pdf.id), locale: 'pt', _status: 'published' },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  expect(published).toMatchObject({ locale: 'pt', _status: 'published' });
+  await confirmTestPublication(published, await fixture.request());
 });

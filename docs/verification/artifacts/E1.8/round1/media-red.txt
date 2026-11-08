@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ vitest run --project integration src/config/publication-failure-boundaries.integration.test.ts
+Observed exit code: 1
+Classification: SETUP_FAILURE
+Observation: Eight passed and two failed in test setup: PostgreSQL DDL did not support the supplied bind parameter. Not a R-MEDIA behavioral RED; media-red2 supersedes it.
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 8 passed (10)
+   Start at  12:11:53
+   Duration  10.67s (tests 65%, import 30%, transform 3%, setup 1%)

@@ -1,0 +1,86 @@
+{
+  "baseline": "0fa495864cfefcf3489856d66444b81fdf1f730e",
+  "sourceArchiveSHA256": "CFCEC6FAEB3CC4D008CCC45BDBE351C35B2404A360DE8C17508A7658F29F4DFB",
+  "status": "Executed actual old migrations/seed then current migration/capture/bootstrap/verify: PASS. Independent E1.8/A1 gate pending.",
+  "files": [
+    {
+      "artifact": "legacy-harness/guard.cjs.txt",
+      "exportedSHA256": "C6F4EFE67A79A91FBE891C6D2EFF0D395F6D1582A4EDF2EF873227A3E4B351F5",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/guard.cjs",
+      "transformation": "Content-preserving copy with .txt suffix; executable only after deliberate copy into guarded .work harness layout. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "476A4B8D1C0EE2CCF2799AED00F5B1333F72C7A5E24C215C1C4CD3BE51BC3DA0"
+    },
+    {
+      "artifact": "legacy-harness/run.cjs.txt",
+      "exportedSHA256": "932F178547346B9D82945E33C48DFE09841A53FC251BA55DACA20F7F5673B7F0",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/run.cjs",
+      "transformation": "Content-preserving copy with .txt suffix; executable only after deliberate copy into guarded .work harness layout. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "BDAA6C75F63736A02F567DCBE91E48BCD00A877740D063D4A188EFA731EA1C89"
+    },
+    {
+      "artifact": "legacy-harness/seed.ts.txt",
+      "exportedSHA256": "D560F2F4A087F57C0F33C27DC65DA3923DA93F1F1E96CC31BDEACC89E73AEB2F",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/seed.ts",
+      "transformation": "Content-preserving copy with .txt suffix; executable only after deliberate copy into guarded .work harness layout. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "53D34E7146C491E52274EC48E2197C894EA449B12CDAF1AF3D0C30E0D766DE6E"
+    },
+    {
+      "artifact": "legacy-harness/verify.ts.txt",
+      "exportedSHA256": "58CFA2768473F9145CC08D47990C69606153F629D848A9ACF0C3BF2A251A9FDC",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/verify.ts",
+      "transformation": "Content-preserving copy with .txt suffix; executable only after deliberate copy into guarded .work harness layout. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "29896C417EDBF07C0C904EE97B43378A26BB6C9F32581AB1A40290801044BA66"
+    },
+    {
+      "artifact": "legacy-harness/check-syntax.cjs.txt",
+      "exportedSHA256": "AB3B1AC9C79B1A53847C8BF31C3BC1B540703CE609DE70EF98D465533852ABE5",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/check-syntax.cjs",
+      "transformation": "Content-preserving copy with .txt suffix; executable only after deliberate copy into guarded .work harness layout. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "B9712446A36EAD13988A1E8E60B3F8A0E38CEF9E24083E6699E41D277ABEC051"
+    },
+    {
+      "artifact": "legacy-harness/resolve-aliases.cjs.txt",
+      "exportedSHA256": "0A1F63F830FC1FDDCB55AC3D87485C5AD1069FBBD3B85AEEB26374DC72BBB43C",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/resolve-aliases.cjs",
+      "transformation": "Content-preserving copy with .txt suffix; executable only after deliberate copy into guarded .work harness layout. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "B5C098A532259F021639FEECFFDD7110460F854034E46BE113A0E8A9256A1692"
+    },
+    {
+      "artifact": "legacy-harness/expected.json",
+      "exportedSHA256": "750A9EE2ED89D3695E732876F215061978F6B9E3FE6AD2762750A7D93D065384",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/expected.json",
+      "transformation": "Content-preserving synthetic IDs/public values only; no auth cookie, lease token or environment secrets. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "7209F06416F0B93E43C2A2AA5D6BD4941A4B7DBBB1C4AB60CFC235573AF60D2A"
+    },
+    {
+      "artifact": "legacy-harness/captured.json",
+      "exportedSHA256": "514A76038B8E83F0ADC9DD33A7B47F0BB340675352283523397D14413A7B2C4D",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/captured.json",
+      "transformation": "Content-preserving synthetic IDs/public values only; no auth cookie, lease token or environment secrets. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "3278E2F7ECC43D2CEE424FD723F2D1B6E09758EFCED196C768F8C3A63F132AE7"
+    },
+    {
+      "artifact": "legacy-harness/verified.json",
+      "exportedSHA256": "832E61520945CC09022B1D4E5D78E7D124C65613C98EFA18EAF700411A2F11F1",
+      "source": ".work/e1.8-legacy-routes-green-0fa4958-20261030/verified.json",
+      "transformation": "Content-preserving synthetic IDs/public values only; no auth cookie, lease token or environment secrets. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "A3F772B46DE5F500098B0A201765AA6BCF819D202CACDE5DB8CEDA0AF26A7937"
+    },
+    {
+      "artifact": "legacy-harness/owner.ts.txt",
+      "exportedSHA256": "D20AC41A9762F6AC87548CCBF555ACA1CFC726C9E4E6A6635270178D3ADC8B2E",
+      "source": ".work/e1.8-legacy-routes-green-owner.ts",
+      "transformation": "Content-preserving .txt archival copy; test-only lifecycle guards, synthetic unused service placeholder; no real credentials. Export normalized to LF and trailing whitespace removed; original bytes and SHA retained under .work.",
+      "originalSHA256": "E2B269C41A004ED55F54A3414F13A18418CA7D42F178397B391AEA32DAB545C9"
+    }
+  ],
+  "excluded": [
+    "baseline.tar",
+    "source/",
+    "node_modules/",
+    ".env",
+    "browser traces",
+    "cookies",
+    "lease tokens"
+  ]
+}

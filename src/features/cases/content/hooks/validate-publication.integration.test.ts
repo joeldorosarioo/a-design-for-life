@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../../testing/fixtures/confirmed-publication';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
 import {
@@ -88,6 +89,7 @@ it.each([
       req: await fixture.request(),
       overrideAccess: false,
     });
+    await confirmTestPublication(published, await fixture.request());
     const draft = await fixture.payload.update({
       collection: 'case-content',
       id: published.id,
@@ -209,6 +211,7 @@ it('publishes meaningful text inside lists and typed links without trimming the 
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(published, await fixture.request());
   const publicDoc = await fixture.payload.findByID({
     collection: 'case-content',
     id: published.id,
@@ -245,6 +248,7 @@ it('publishes a case with a valid single image block and no text block', async (
     req: await fixture.request(),
     overrideAccess: false,
   });
+  await confirmTestPublication(published, await fixture.request());
   expect(
     await fixture.payload.findByID({
       collection: 'case-content',

@@ -1,1 +1,1 @@
-export { suggestSlug } from '../lib/suggest-slug';
+export { suggestSlug } from '../helpers/suggest-slug';

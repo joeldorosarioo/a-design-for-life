@@ -1,3 +1,5 @@
+import { readPublicRoot } from '@/helpers/payload/public-root';
+import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createLocalReq } from 'payload';
 import {
@@ -16,6 +18,7 @@ afterAll(async () => {
 it('provisiona sem conta humana somente os quatro drafts pelo contexto interno restrito', async () => {
   const request = () =>
     createLocalReq({ context: { trustedStructuralProvisioning: true } }, fixture.payload);
+  const confirmedBefore = await readPublicRoot(runtimePublication().directory);
   await expect(provisionStructuralDocuments(await request())).resolves.toBeUndefined();
   const before = [];
   for (const collection of ['site-navigation', 'professional-profiles'] as const) {
@@ -26,6 +29,7 @@ it('provisiona sem conta humana somente os quatro drafts pelo contexto interno r
       overrideAccess: false,
       sort: 'locale',
     });
+    expect(result.totalDocs).toBe(2);
     expect(
       result.docs
         .map((doc) => [doc.locale, doc._status])
@@ -59,6 +63,7 @@ it('provisiona sem conta humana somente os quatro drafts pelo contexto interno r
     expect((await fixture.payload.find({ collection, overrideAccess: false })).totalDocs).toBe(0);
   }
   expect(after).toEqual(before);
+  expect(await readPublicRoot(runtimePublication().directory)).toEqual(confirmedBefore);
   await expect(
     fixture.payload.create({
       collection: 'cases',

@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-os-writer-expanded.txt
+Original SHA256: CF5477F35233FE90E0BF25FBCAE8B30C05AA4395AC0FAAE5A82EB87F55C97F4E
+Observed command exit code: 0
+Classification: GREEN_WITH_PLATFORM_SKIP
+Behavior/limit: Real Windows exclusion/exit/crash tests pass; LinuxSIGSTOP explicitly skipped onWindows and requires actualLinuxCI.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  3 passed | 1 skipped (4)
+Start at  10:33:29
+Duration  584ms (tests 49%, setup 41%, transform 5%, import 4%, worker 1%)

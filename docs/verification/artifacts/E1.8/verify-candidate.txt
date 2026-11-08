@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-verify-candidate.txt
+Original SHA256: C752DB50D15A0E0E4ACD994A63E7BA75136EB06210AD8747526AB5F8BDDF5240
+Observed command exit code: 0
+Classification: LOCAL_GATE_GREEN
+Behavior/limit: pnpm verify:445PASS/72files,1WindowsLinux-onlyskip;typecheck/lint/format/architecture/NextbuildPASS. Four historical lint warnings and pgclient.query deprecation retained; not warning-free.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  72 passed (72)
+Tests  445 passed | 1 skipped (446)
+Start at  11:41:24
+Duration  157.43s (tests 45%, import 36%, setup 12%, environment 5%, transform 1%)

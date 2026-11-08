@@ -1,3 +1,4 @@
+import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 import {
   createEditorialPayloadFixture,
@@ -430,6 +431,15 @@ test('native version comparison restores a draft; native Save Draft and Publish 
 }) => {
   test.setTimeout(45_000);
   await clearStructuralFixture(fixture.payload);
+  const image = await mediaMetadataFixture(fixture.payload);
+  const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');
+  const profile = await fixture.payload.create({
+    collection: 'professional-profiles',
+    data: { ...profilePublicationFixture(image.id, pdf.id), locale: 'pt', _status: 'published' },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  await confirmTestPublication(profile, await fixture.request());
   const doc = await fixture.payload.create({
     collection: 'site-navigation',
     data: { locale: 'pt' },
@@ -437,13 +447,14 @@ test('native version comparison restores a draft; native Save Draft and Publish 
     overrideAccess: false,
     req: await fixture.request(),
   });
-  await fixture.payload.update({
+  const initial = await fixture.payload.update({
     collection: 'site-navigation',
     id: doc.id,
     data: { ...navigationFixture(), _status: 'published' },
     req: await observedRequest('site-navigation', doc.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(initial, await fixture.request());
   const versions = await fixture.payload.findVersions({
     collection: 'site-navigation',
     where: { parent: { equals: doc.id } },
@@ -453,13 +464,14 @@ test('native version comparison restores a draft; native Save Draft and Publish 
     overrideAccess: false,
   });
   const old = versions.docs.find((v) => v.version._status === 'published')!;
-  await fixture.payload.update({
+  const latest = await fixture.payload.update({
     collection: 'site-navigation',
     id: doc.id,
     data: { header: { brandLabel: 'Latest public navigation' }, _status: 'published' },
     req: await observedRequest('site-navigation', doc.id, await fixture.request()),
     overrideAccess: false,
   });
+  await confirmTestPublication(latest, await fixture.request());
   await login(page, fixture.user.email);
   await page.goto(`/admin/collections/site-navigation/${doc.id}/versions/${old.id}`);
   await expect(page.locator('.view-version')).toBeVisible();

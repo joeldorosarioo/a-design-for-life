@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-readers-green.txt
+Original SHA256: F92AA71B3556A592D2287D49B2FA59B257922ECD42C7DDDB6B493F2A58698364
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: 3 Native profile/navigation/aggregate tests read one confirmed root.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  2 passed (2)
+Tests  3 passed (3)
+Start at  10:31:14
+Duration  11.39s (import 59%, tests 35%, transform 3%, setup 3%)

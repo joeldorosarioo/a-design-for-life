@@ -1,0 +1,627 @@
+{
+  "environment": {
+    "os": "Windows",
+    "ownedPort": 55433,
+    "payload": "3.92.1",
+    "postgres": "17.11",
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "drizzleOrm": "0.45.2",
+    "postgresAdapter": "3.92.1"
+  },
+  "status": "E1.8 and A1 pending independent gate",
+  "createdUTC": "2026-10-30T14:47:33.1736485Z",
+  "stage1Percent": 87.5,
+  "evidence": [
+    {
+      "observation": "pnpm verify:445PASS/72files,1WindowsLinux-onlyskip;typecheck/lint/format/architecture/NextbuildPASS. Four historical lint warnings and pgclient.query deprecation retained; not warning-free.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "verify-candidate.txt",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "exportedSHA256": "5CFB7703610F6F90CB6852DA40DAE507ABA19968CB7398022F56B37A8ECD5928",
+      "originalSHA256": "C752DB50D15A0E0E4ACD994A63E7BA75136EB06210AD8747526AB5F8BDDF5240",
+      "source": ".work/e1.8-verify-candidate.txt"
+    },
+    {
+      "observation": "pnpm test:e2e --reporter=list:25PASS, actualNextproduction/CMS2editors/restoration/retry/withdrawal/FigmaDraft/storageSQLfaults.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "e2e-candidate.txt",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "exportedSHA256": "630460EDF91A29BCC7D47D3A5EF419F7DD72860A6998F55F2F980626CECC2072",
+      "originalSHA256": "8FCD59C662349FB303BFCF4ED1B2D10C0376F8B951AB0E81E83A51F8F9035088",
+      "source": ".work/e1.8-e2e-candidate.txt"
+    },
+    {
+      "observation": "Anonymous Native query exposed1 pending target, expected0.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "native-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "E3EC7889A5BAC0C8222134031C3DAD348B27F292C784E3DAA6F2937B81F19ECB",
+      "originalSHA256": "4EB3EAB78293AF9EF6761B277D9C60219A1599F0F68C881CE44E584E384AE411",
+      "source": ".work/e1.8-native-red.txt"
+    },
+    {
+      "observation": "Pending media pins were retired without explicit confirmed-root reconciliation.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "ack-pins-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "043192F955F56BD71ADF41C2D23DF6BA1B668EB0B33CBBFAF942A715F5372963",
+      "originalSHA256": "A719E74DE985657DDCC7630928D24753809A32E9DBE67C78225088DC7F7A9D5D",
+      "source": ".work/e1.8-ack-pins-red.txt"
+    },
+    {
+      "observation": "R2 validRED: root-public route ownership disappeared after superseding failed ACK, count0 expected1. R1 in this run used invalid auth fixture and is NOT its validRED; use native-transport-commit-red instead.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "audit-native-red.txt",
+      "exitCode": 1,
+      "classification": "MIXED_REGRESSION",
+      "exportedSHA256": "85EAD0193A3DA9F73CFADB55DC3035F882749394C75C63C4B43D95A53F6B6D86",
+      "originalSHA256": "564B29274035C69C39A7661E55C55BE9BD16030DAC0617318C42697DB4C5CC58",
+      "source": ".work/e1.8-audit-native-red.txt"
+    },
+    {
+      "observation": "Real Native persistence omitted new title/section/text metadata before field registration.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "model-native-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "19C21CB88952FDBEBA2BF62C8DC4F58831A25891CD34862AF9BCD444FB6589D3",
+      "originalSHA256": "C81DD443C6DA47A6D19834AE9EA720B0986169FAC7517809001D4D4D8CA6CE0F",
+      "source": ".work/e1.8-model-native-red.txt"
+    },
+    {
+      "observation": "15 Native tests include11 model cases plus4 publication/reconciliation cases.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "reconcile-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "0670B6B1EA1479CF28D974EDDBA0F80D4F1D13289B4E49DC36FA7147CDDB2928",
+      "originalSHA256": "25C34CE20472F9761549154F2DF5241F3B44D1FB69835C0BCFF697C44B0D407F",
+      "source": ".work/e1.8-reconcile-green.txt"
+    },
+    {
+      "observation": "Profile getter ignored explicit confirmed generation and returned unavailable after a newer Native target.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "profile-getter-native-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "A306E14A45A9CD9F2D1F1667A7E5025F3750F36168C7262EB6CF10521BA516C3",
+      "originalSHA256": "9648F09B4E2AD8FB662193C1EF1856CAD0D7D6D2ABCB1F3A031FDD6429F4FD62",
+      "source": ".work/e1.8-profile-getter-native-red.txt"
+    },
+    {
+      "observation": "Real Windows exclusion/exit/crash tests pass; LinuxSIGSTOP explicitly skipped onWindows and requires actualLinuxCI.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "os-writer-expanded.txt",
+      "exitCode": 0,
+      "classification": "GREEN_WITH_PLATFORM_SKIP",
+      "exportedSHA256": "9C3B76B364ED822E6EC1BD531029EA1F8073D01BCDA4D48E2C6080B69C7BFD0B",
+      "originalSHA256": "CF5477F35233FE90E0BF25FBCAE8B30C05AA4395AC0FAAE5A82EB87F55C97F4E",
+      "source": ".work/e1.8-os-writer-expanded.txt"
+    },
+    {
+      "observation": "Real second writer entered while first owned global writer; required OS exclusion.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "writer-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "B95B98106C8B2F1276C19886BAB322702620B00747566B9A3299E35D65DBE708",
+      "originalSHA256": "BAC9A21F8A53C6065F7612FCD39DC0DE465D63BA84CD66D6121BB537CE36CF64",
+      "source": ".work/e1.8-writer-red.txt"
+    },
+    {
+      "observation": "Cross-process writer exclusion and release verified.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "writer-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "634A51F586B460544186F18CA00AAFD4D7F5368F6B67EFF9B1053E9161081072",
+      "originalSHA256": "2CD6621349F01498AB18C1147335263588C33DB25B763BFBE3F75F139219051E",
+      "source": ".work/e1.8-writer-green.txt"
+    },
+    {
+      "observation": "Durable public root behavior before implementation.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "root-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "849944D2AEDC4323D61C8F186984FEC7CFC2A70A24BC8C47AD6D6B95EBF20479",
+      "originalSHA256": "6FD3C2F312F976003E3DCE9CA0019755EE58200055044B1C6D6A490573814FE9",
+      "source": ".work/e1.8-root-red.txt"
+    },
+    {
+      "observation": "Atomic persisted root behavior after implementation.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "root-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "C6036978DBACB8D25B19B58B68B166C8335C90A8FC8D559642D6F09DC1CDC46C",
+      "originalSHA256": "A9212E0AAA037F3222B25544F8540F472DC6C469ABD7461F2B295586DC4F291C",
+      "source": ".work/e1.8-root-green.txt"
+    },
+    {
+      "observation": "Expected one persisted publication operation after Native commit; observed zero.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "outbox-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "2E8619B2A16E52EA4862083340E9E89B4033858BF9DB172EF8A78E36E93531E3",
+      "originalSHA256": "233407C52B312B6915B4CBE46B2DFC81654E4F1B21961702082FC8E75DEFEC04",
+      "source": ".work/e1.8-outbox-red.txt"
+    },
+    {
+      "observation": "Native target is pending/private with persisted operation.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "outbox-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "F2FDE49FED1B17E28FFF42E8A6AC71E74F4A8EC61F9EDFCE22BB669475E74409",
+      "originalSHA256": "E8E95E814E6C53D0DE4ABA9F4BF665C5C1CE40C2E17141FE0B25A9019FC2FE33",
+      "source": ".work/e1.8-outbox-green.txt"
+    },
+    {
+      "observation": "Prior pending media pin was retired before public reconciliation.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "pins-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "67438E0C92D9B33BE5DD6195A80030DD9AA7E5DEBD4B3C9D512967BAE500DAB6",
+      "originalSHA256": "539527EC4C983EAC803333DAE0EC307B3913CCF06C56DF445938155FEACE2C43",
+      "source": ".work/e1.8-pins-red.txt"
+    },
+    {
+      "observation": "Pending revisions accumulate until safe reconciliation.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "pins-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "C9565ACC085837EE0E197CAD3D98707499AE3EC1DC0EE858BBB3EB01BF58DA10",
+      "originalSHA256": "3990FB507895BE8762AF092F2A3DB6DE4E3C54531905D39BFB7DE6FFF9E6D80A",
+      "source": ".work/e1.8-pins-green.txt"
+    },
+    {
+      "observation": "Valid real-auth Native COMMIT-loss response returned201, expected503.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "native-transport-commit-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "7C13CEEF7D9A8DA45FB07962C26CEC8DE0EE34068DC2F51086C58AD47D3FBBEE",
+      "originalSHA256": "46269330893508C4790D5EF8BE7A9DDBCC9F889A5F57AED6873F6435D18566A6",
+      "source": ".work/e1.8-native-transport-commit-red.txt"
+    },
+    {
+      "observation": "Two real deferred PostgreSQL COMMIT failures returned200 on SaveDraft, expected503.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "draft-commit-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "3B66D3A267289F1E3F8BAB96C7B156C7D4E77DFCF2306D23AF744A1143505CFA",
+      "originalSHA256": "D7124EFF795EED2AE3550E3D9714EC8EDBDCB0441D438D6427D4056EC42BAC44",
+      "source": ".work/e1.8-draft-commit-red.txt"
+    },
+    {
+      "observation": "Both draft COMMIT failures return503 without persisted head/version/outbox changes; healthy control200.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "draft-commit-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "9256A48035C0A24A7448DD53BF00970B759D95700F4437086008EE753ADBE8E8",
+      "originalSHA256": "5B4E534F1B62F42C665D6B8A39B34A6C36B4D29DB84A3DDAA0110CB0AB21F4BE",
+      "source": ".work/e1.8-draft-commit-green.txt"
+    },
+    {
+      "observation": "Independent external transactions: A COMMIT rejects, B commits, C rolls back; no outcome cross-contamination.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "settlement-concurrency-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "421CE724E87E117711F982A0274A014AAAAF4E9E5DC92113C4D65187FA23FB88",
+      "originalSHA256": "C9B44C204B067E1A4647BBE81E17E7995BD8E77820F667F33F80D0185B3C5B6E",
+      "source": ".work/e1.8-settlement-concurrency-green.txt"
+    },
+    {
+      "observation": "19 Native tests across3files including public transaction/pin failures, restart/SQL outage and draft settlement.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "core-settlement-green2.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "9FE16E88E37800E45A54B32FAB255167CEE78A177FE6DC28F9CFAB8CC520814B",
+      "originalSHA256": "51D8998F4A45B0B6A838D782E3AD16788D241C8E8919F2D2ED2E5D6D87EB9739",
+      "source": ".work/e1.8-core-settlement-green2.txt"
+    },
+    {
+      "observation": "3 Native profile/navigation/aggregate tests read one confirmed root.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "readers-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "AC8945CD47F9302961A8782DA7004C11415B76EB123B532EFA98F294819A641E",
+      "originalSHA256": "F92AA71B3556A592D2287D49B2FA59B257922ECD42C7DDDB6B493F2A58698364",
+      "source": ".work/e1.8-readers-green.txt"
+    },
+    {
+      "observation": "Actual old-source migration preserved basic data but historical routeA returned404 instead of308B.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-verify2.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "E3E9617F189658134404257CB82112ACB2F96339EF8365A2A75B7FE12720AA5B",
+      "originalSHA256": "825FF112488A74E711033A814299B00459C1B09F8626E81D97F102581086570F",
+      "source": ".work/e1.8-legacy-routes-verify2.txt"
+    },
+    {
+      "observation": "Exact0fa old migrations execute before seed; no new schema/outbox.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-green-old-migrate.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "51E1817548E676C16D8C2BD3224C1E3684827B8B400020023A301E2AE6D69C89",
+      "originalSHA256": "56D01C978DFE0AE64BE80ED821862441EE296419A60C1C413DB587705476750E",
+      "source": ".work/e1.8-legacy-routes-green-old-migrate.txt"
+    },
+    {
+      "observation": "Old Native created public A/B, privateC, withdrawn and never-public controls with real media.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-green-old-seed.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "756E76C4415F349EBD38A544F686D29778C5294A19C404B0847A4415686C78C8",
+      "originalSHA256": "65D13C1DC9781447F8D2643C00A180AC23A4891A95951E1310BA68DE845263EE",
+      "source": ".work/e1.8-legacy-routes-green-old-seed.txt"
+    },
+    {
+      "observation": "Current additive migration captures canonical legacy intentions in its transaction.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-green-current-migrate.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "01F3234C15E88DD72BC1BD0302BE2DF4EA65D6B578FC716F748CAF7FCEDC71B3",
+      "originalSHA256": "4E399DCA4D4D82E4EAD3808ACEAE4D01FCD1EAC0B91D92F45A951C35DB0A3498",
+      "source": ".work/e1.8-legacy-routes-green-current-migrate.txt"
+    },
+    {
+      "observation": "Canonical body/revision captured, private latest draft and old versions preserved.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-green-captured.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "03089DF5711527D1FBF9CBDB6FC30D6884A4C2BB428D1ECAC782C05FBFA59FBC",
+      "originalSHA256": "F73CBEE74857300E5C74C85008CB67A0B2B7EC919C57E00F40A2BC625C7D9E3C",
+      "source": ".work/e1.8-legacy-routes-green-captured.txt"
+    },
+    {
+      "observation": "Standard persisted bootstrap confirms captured legacy intentions.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-green-bootstrap.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "01E18AFE00F164B2DFF11EBD2896F48EC8803F24173A33B557E5614EA823F7A8",
+      "originalSHA256": "9EE433008876CECEE121C78BD2D0C6C76990D8558E43F3BB57ADE803CD29188E",
+      "source": ".work/e1.8-legacy-routes-green-bootstrap.txt"
+    },
+    {
+      "observation": "A308B/B200/C404/withdraw410/never404; private media revoked, original public SHA retained; restore onlydraft keeps root.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "legacy-routes-green-verify.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "C2F7209889832D611C5390CCE1532973501161A09B97ED02AED5BA92181B058E",
+      "originalSHA256": "60C45DBA7F4D3D9EE0E076E0C75374655C77895427F0E6510E6F0E2DF20A4FD1",
+      "source": ".work/e1.8-legacy-routes-green-verify.txt"
+    },
+    {
+      "observation": "PostgreSQL42704: generated down tried to drop FK after DROP TABLE CASCADE removed it.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "migration-down-red.txt",
+      "exitCode": 1,
+      "classification": "RED",
+      "exportedSHA256": "3C8488FA29B8EB41D6D4BC61AA26ECD0E5B847133B10359BAB2474F7FAFFA663",
+      "originalSHA256": "3B1A566E9402F57669F455838957E24ABD539EBF5FDE35A6597F1024FB9CF3F3",
+      "source": ".work/e1.8-migration-down-red.txt"
+    },
+    {
+      "observation": "Real transaction reverses and reapplies publication migration after FK drop reordered.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "migration-down-green.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "1571430CA2C1B806982A778ED31F81AA337D154CE94B4B407C2604985DFA5281",
+      "originalSHA256": "65185EA9FE1433785E6207C5AA718B4FB1CCD3D4BFFBAB05DD78AF7851B9E77C",
+      "source": ".work/e1.8-migration-down-green.txt"
+    },
+    {
+      "observation": "22 Native tests: route generations and bootstrap regressions plus all3 public commands healthy/pending/external-COMMIT/idempotence.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "receipts-batch2.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "BC8BDF3FC0311EDE6BA73B5683A45749D00DBD7ED45E1E3BDB623A1731861CA6",
+      "originalSHA256": "9A3478424AAF2FED904B535443FA4F1031A83D9CC4FDB15BCB588E9772B17B31",
+      "source": ".work/e1.8-receipts-batch2.txt"
+    },
+    {
+      "observation": "Build stopped on fixture CaseInput nullablecover TypeScript mismatch; not a behavioral RED.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "native-ui-expanded-first.txt",
+      "exitCode": 1,
+      "classification": "TYPECHECK_FAILURE",
+      "exportedSHA256": "8FCC239AAD4A5922A9165A89FF89CDE36E6D7603DC22535C497A03FFEB64074F",
+      "originalSHA256": "E65AE7DAC53A5C75719C490C2DB9DCFA1F90F145DA9766A93FAA3B6965A9103A",
+      "source": ".work/e1.8-native-ui-expanded-first.txt"
+    },
+    {
+      "observation": "3 real Next Native CMS journeys: pending/reload/unsaved edits, stale retry+withdrawal, Figma private draft.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "native-ui-expanded-second.txt",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "exportedSHA256": "32835FDB5E32C84CE2EC378335BFD57E3D6A3422E6F08E1C8AD584588CCE6B28",
+      "originalSHA256": "392A80DF4EB8C217E35648A4B46DD3BEECD5D5C8693A6F2EA5979C862459D7E5",
+      "source": ".work/e1.8-native-ui-expanded-second.txt"
+    },
+    {
+      "observation": "Typecheck/lint/format passed;440tests passed,2 old DTO.slug expectations failed,1 Linux-only skip onWindows. Later focused22 fixed expectations passed; not finalgate.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "verify-current4.txt",
+      "exitCode": 1,
+      "classification": "INCOMPLETE_GATE",
+      "exportedSHA256": "DF6A928DBE237EB188D81E6DDA4BEB9AC653E9039FAAB0A4D065CBCE5EA3656D",
+      "originalSHA256": "7718A6AEA70BA81D757F45159DBEA0CB183C56325DA50F7700241832F06FA94B",
+      "source": ".work/e1.8-verify-current4.txt"
+    },
+    {
+      "observation": "18passed7failed; previous Local publication fixtures require explicit confirmation and origin-failure expectations require confirmed-root semantics. Not finalgate.",
+      "transformation": "Curated assertion description and anchored test summary extraction; no raw payload/SQL/stack/auth data. Export normalized to LF and trailing whitespace removed; original unchanged.",
+      "artifact": "e2e-full-first.txt",
+      "exitCode": 1,
+      "classification": "INCOMPLETE_GATE",
+      "exportedSHA256": "5970173C8DA7B5DE1D6A1239DB1B4A5EEA610DC9D5FA81281D2411867679BCB8",
+      "originalSHA256": "E8C9FCBBE29658E44941781B839A2E76BE21F9DBE8C1F9B5B40B2103D6DF5A3C",
+      "source": ".work/e1.8-e2e-full-first.txt"
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-red3.txt",
+      "artifact": "round1/boundaries-red3.txt",
+      "originalSHA256": "A2271478D0A676B6ACF6F30FBFF47AF58F520925B77576A285958A0E00573BEA",
+      "exportedSHA256": "1CEE439AFA3D426310FC29D6A231E2C4ED3C94664FFD39977E7D74BE8A4911F2",
+      "exitCode": 1,
+      "classification": "RED",
+      "observation": "Six real behavioral failures: revoked Native session returned201 instead of503; SQL first reads rejected rather than safe fulfilled results; dependency SQL error escaped; both Native and Local FS failures rejected instead of preserving proven pending; missing/incomplete roots returned404 for known public routes instead of503.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-green.txt",
+      "artifact": "round1/boundaries-green.txt",
+      "originalSHA256": "2DFE246AF1CE561BE6BDE4C49D326EC927D81BC98C5B19653007FBF98C5CD5EB",
+      "exportedSHA256": "B71F993ACE314DEAB1FC595164F8536DA426AF6843AD895EC65B60A908D338F5",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "21 tests in2files passed: initial six boundary cases and15 existing route lifecycle tests, including held-request generation consistency.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-media-red2.txt",
+      "artifact": "round1/media-red2.txt",
+      "originalSHA256": "66E6856B9D9E98935704F1F9E1A96177626DB294ECD76053310A5DCF014A6134",
+      "exportedSHA256": "F99D5FF8490B3D1A11D97B75190D37FEF6A56105D9DFCFEFC424F8F1D66B657F",
+      "exitCode": 1,
+      "classification": "RED",
+      "observation": "Two real media boundary failures: SQL confirmed usages were asserted, but absent/incomplete root coverage returned404 instead of503. Eight other tests passed. Covered withdrawal with failed SQL ACK remains404.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-focused-green.txt",
+      "artifact": "round1/focused-green.txt",
+      "originalSHA256": "CD748043E1C9F950328FF9864A0DFCB961A4F56B590871835C7F7D1E74BF5C46",
+      "exportedSHA256": "D503B805C5383F13176879513C6B80208975CA66FF00E313B69390BAB4BDFE92",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "46 tests in5files passed:10 new boundary tests, R1/R2 actual failure protections, D1 actual COMMIT settlement, Local command receipts and15 route lifecycle regressions.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-verify3.txt",
+      "artifact": "round1/verify3.txt",
+      "originalSHA256": "F524ADCEB62A89303C0D9722960755506403710309477DD7AF416B15E0173866",
+      "exportedSHA256": "D74FB923DB85A6CDDA6B7C182579790E4011431CD06F1618B470EB266F81D9F5",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "pnpm verify passed:455 tests in73files plus1 Linux-only Windows skip; typecheck, lint, format, architecture and production Next build passed. Four historical lint warnings and pg concurrent client.query deprecation remain.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-e2e.txt",
+      "artifact": "round1/e2e.txt",
+      "originalSHA256": "3F76723FE8D96992392C4C59451CDADC25E3D459CA85EE09D4EF2438309132A1",
+      "exportedSHA256": "A29125864DBFD6F9F2B70F501EDE0363A20B9C8866DF17BE485AD617799185CB",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "pnpm test:e2e passed25 actual production Next/Native CMS journeys. Earlier tracked PNGs restored byte-for-byte; no UI changes in this fix round.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-verify2.txt",
+      "artifact": "round1/verify2.txt",
+      "originalSHA256": "0F090731345929584111182CC2BEE69337D763289B6432AB004AEAD81E8D6B42",
+      "exportedSHA256": "AABD8D521D9D9FFA3055EFE6F88B7200998F20661E1168DFFC5EEC441680F731",
+      "exitCode": 1,
+      "classification": "FIXTURE_FAILURE",
+      "observation": "454 passed,1 failed,1 skipped. clearStructuralFixture left confirmed structural media usages after deleting their owner/root; correct503 exposed inconsistent test cleanup. Test support now retires only removed structural usages;404 cleanup assertion unchanged. Not a production TDD RED.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-verify.txt",
+      "artifact": "round1/verify.txt",
+      "originalSHA256": "69E2F26DFD88A1193711EB808C6482FAE4BCB2F37E56A824F4F16463ADABC0C2",
+      "exportedSHA256": "1B8419CBE2212C06917B323BB24BC3CF6A1E36B221F55DBD43C8ED03E0273547",
+      "exitCode": 2,
+      "classification": "TYPECHECK_FAILURE",
+      "observation": "First verify stopped at generic passthrough test wrapper typing. No functional gate or behavioral RED claimed.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-red.txt",
+      "artifact": "round1/boundaries-red.txt",
+      "originalSHA256": "4AD48B2D375973A73F5311911746DF058B1964D9FB4FA25AED7E954E367693C7",
+      "exportedSHA256": "D86C50AF584C4AB0AD4FD078CC569B4C07006ACA3CEDC890748E3301AF6E85E3",
+      "exitCode": 1,
+      "classification": "MIXED_SETUP_FAILURE",
+      "observation": "Initial six-case attempt included an incorrect directory cleanup that contaminated later cases. Not used as proof for affected FS/route behaviors; valid red3 supersedes it.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-boundaries-red2.txt",
+      "artifact": "round1/boundaries-red2.txt",
+      "originalSHA256": "0BC04E5BAA355F307A971275F154920CA9A0D36649DB871C67EDA3E64D87482B",
+      "exportedSHA256": "EB7C71906783ADC9EB56AA25E9C731A0B8CE32BDCE01256D8FC4402D7F9FED42",
+      "exitCode": 1,
+      "classification": "PARTIAL_RED",
+      "observation": "Six-case rerun corrected directory cleanup, but the first rejected Native promise preempted the Local assertion. Final red3 observes both via allSettled.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-media-red.txt",
+      "artifact": "round1/media-red.txt",
+      "originalSHA256": "AEE7431D53D4CE1E07311DC9E2FB78032B67F64EB35B54E0AF4B25E6BD571509",
+      "exportedSHA256": "5BED483DB304CB7F8F010C55526D7BB487A9BE164276BA75A6C0D577EC9A10D2",
+      "exitCode": 1,
+      "classification": "SETUP_FAILURE",
+      "observation": "Eight passed and two failed in test setup: PostgreSQL DDL did not support the supplied bind parameter. Not a R-MEDIA behavioral RED; media-red2 supersedes it.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-typecheck2.txt",
+      "artifact": "round1/typecheck2.txt",
+      "originalSHA256": "5A3973F79ED9BECD5F23C4FEFF467513814DE7EA381D75A4D2E339AA8B8EDCA9",
+      "exportedSHA256": "8D9A51D964DEE3808A529F8865DEA0215F4F6BA050F251D599F49934C2503CDD",
+      "exitCode": 0,
+      "classification": "STATIC_GREEN",
+      "observation": "pnpm typecheck passed after test wrapper generic typing was corrected.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-round1-lint.txt",
+      "artifact": "round1/lint.txt",
+      "originalSHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "exportedSHA256": "E7B5BB840D9AFA8B7FFFFFD2766FE5BBE2409F50DC65967F481A26B2FA2B0FC9",
+      "exitCode": 0,
+      "classification": "STATIC_GREEN",
+      "observation": "Focused ESLint passed for the five production files and the new boundary integration test.",
+      "transformation": "Curated assertion/command/exit description and anchored test summary only; raw SQL, stacks, request bodies, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-red.txt",
+      "artifact": "whole-review/native-red.txt",
+      "originalSHA256": "58E3E5DEB47D98ADB933269AC6A0A2EB4DAA1871D03B37DD34D4EFE0722A17A2",
+      "exportedSHA256": "A135720ABD59D0662669E3466B7AA6508F55685A6BC6A654F3EB086C75F8D901",
+      "exitCode": 1,
+      "classification": "MIXED_SETUP_FAILURE",
+      "observation": "W2 four real physical root failures returned404 without no-store instead of503. W1 stopped at reversed wrapper arguments; excluded from W1 proof.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-red2.txt",
+      "artifact": "whole-review/native-red2.txt",
+      "originalSHA256": "CF0EA337BFAAE0CBBEE1561908744CA28F8ED67BDFCDA6E0B2737C9159CF9265",
+      "exportedSHA256": "80C2C77AD05B2A6515FD683D14893FF6E24082C05F8FB00D2CAF545072034355",
+      "exitCode": 1,
+      "classification": "RED_W2_PARTIAL_W1",
+      "observation": "W2 valid RED: missing/corrupt/EISDIR/missing-profile-dependency root returned404 instead of503 in both Native endpoints, with no-store absent. W1 anonymous leak observed, but its authenticated control lacked the required Origin header; final red3 supersedes W1 proof.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-green.txt",
+      "artifact": "whole-review/native-green.txt",
+      "originalSHA256": "64E202D25C1AFF8A49C38F7FDC555EC9CD94A1323CB23E79AAFBB9072719C07C",
+      "exportedSHA256": "9843EC45FCE39D43FD294EC3ACEEC972A610D33B92ACD975E284FDABB4DADFAA",
+      "exitCode": 1,
+      "classification": "AUTH_FIXTURE_FAILURE",
+      "observation": "W2 four tests passed after production fix. Three W1 tests stopped at authenticated GET expected200/actual404 because cookie requests lacked Origin; not a new production RED.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-red3.txt",
+      "artifact": "whole-review/native-red3.txt",
+      "originalSHA256": "479D9AE65A537128B310625ABB1BF64011C700366E81138FA833D2639DE1F7BB",
+      "exportedSHA256": "D81AC11DAB2CC181AE6C5503D7356382A771FCB1E749E40ABF11DD417F50F14A",
+      "exitCode": 1,
+      "classification": "RED_W1",
+      "observation": "Valid W1 RED with correct Native authenticated cookie+Origin control: three collection tests failed on anonymous list docs/totalDocs and by-ID200+pending marker instead of404/no marker. The same behavior was observed with a legacy true version marker persisted through the official adapter. W2 four tests passed.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-native-green2.txt",
+      "artifact": "whole-review/native-green2.txt",
+      "originalSHA256": "5FC09A8E5C6235C30DE3A906CD1A4818F1BE21CE7FC6D08B80B7C3A18344A34D",
+      "exportedSHA256": "5D70C69D47ACFA14C748445C68088FB1580F05413C29ADB12453225AC4A2A244",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "Seven real Native/PostgreSQL/FS tests passed: three W1 republication and persisted-legacy-marker cases, four W2 physical root failures plus EN absent/private404 and recovery200.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-slug-green.txt",
+      "artifact": "whole-review/slug-green.txt",
+      "originalSHA256": "7D33A33248D5522DD40E1E2E205918F7383A3C37D7A24CB28EF00E15E1F94669",
+      "exportedSHA256": "F1837828DE9BB8B2B1BDDF6E5EC1A32CCC65B285C8F9AE2CB27404BFC1B3E0EA",
+      "exitCode": 0,
+      "classification": "STRUCTURAL_GREEN",
+      "observation": "Three tests in two files passed after moving suggestSlug and adjacent test to helpers and updating component/server imports. No invented import-failure TDD RED.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-focused-green.txt",
+      "artifact": "whole-review/focused-green.txt",
+      "originalSHA256": "55A1C9393D07E56E0DE9473E399381450794F750A7FE5C331EADFDFA3BB29409",
+      "exportedSHA256": "BA4BDDD7F714AC722F2E2E1D361200E9E5BE2E86AB71C3184552ADD46997A6D7",
+      "exitCode": 0,
+      "classification": "GREEN",
+      "observation": "53 tests in6files passed, covering W1/W2 plus I1/I2/I3/R-MEDIA/R1/R2/D1, Local receipts and held-generation route regressions.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-typecheck.txt",
+      "artifact": "whole-review/typecheck.txt",
+      "originalSHA256": "5A3973F79ED9BECD5F23C4FEFF467513814DE7EA381D75A4D2E339AA8B8EDCA9",
+      "exportedSHA256": "BBA1EF1E8CC2F1A361ED11976BA144D23F6E1AC112FE41D7AA40EDAF557FDC87",
+      "exitCode": 0,
+      "classification": "STATIC_GREEN",
+      "observation": "pnpm typecheck passed.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-verify.txt",
+      "artifact": "whole-review/verify.txt",
+      "originalSHA256": "E520EA53E7327245FC998E2D5682F5210CB190B11AB9DBF8B53AFE97C6F16479",
+      "exportedSHA256": "B865D738087422E31D7FC6143990FF6E3E9C9C23646433AD58C1A2023CB5E70B",
+      "exitCode": 1,
+      "classification": "RUNNER_TIMEOUT",
+      "observation": "461 passed,1 failed,1 skipped. Only the first architecture graph fixture exceeded the existing5000ms test timeout (6750ms); no graph assertion failed. No timeout, rule or source was changed before repeating the full gate. Not a production TDD RED.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-verify2.txt",
+      "artifact": "whole-review/verify2.txt",
+      "originalSHA256": "1978836F9DBDA12FB6DD78D0F38B56C170DB78CA1FBCF7A89CCCDA01CA83CD11",
+      "exportedSHA256": "A3AB9C86A83B2B6C0E51947A951DCF845B4152535FB38BB40016ABBD392A9FB8",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "Unmodified pnpm verify repeat passed462tests/74files plus1 Linux-only Windows skip, typecheck/lint/format/architecture and Next production build. Historical four lint warnings and pg concurrent-query deprecation remain.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    },
+    {
+      "source": ".work/e1.8-whole-e2e.txt",
+      "artifact": "whole-review/e2e.txt",
+      "originalSHA256": "136BC73B8F9A2163143E1EA6E336994A26C624DF40FBBE4EB9EF76BA01EA59DE",
+      "exportedSHA256": "062446BBF69BC92C12E8022119A783E8A0F6DD8A38CBF104EF970BC17B698D75",
+      "exitCode": 0,
+      "classification": "LOCAL_GATE_GREEN",
+      "observation": "pnpm test:e2e passed25 actual production Next/CMS journeys. No UI behavior change;27tracked historical PNGs restored exactly.",
+      "transformation": "Curated assertion/command/exit description and anchored summaries only; raw content, SQL, stacks, requests, cookies and leases omitted. UTF-8 LF export; original unchanged."
+    }
+  ]
+}

@@ -17,9 +17,9 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] E1.5 Slugs, reservas e resolução pública — revisões e CI atual aprovados.
 - [x] E1.6 Upload, processamento e privacidade — revisão corrigida e CI atual aprovados.
 - [x] E1.7 Contas, prévias e recuperação nativa — revisões e CI atual aprovados.
-- [ ] E1.8 Coordenação e demonstração dos contratos.
-- [ ] Pacote A1 verificado e entregue.
-- [ ] A1 aprovada pelo usuário — não iniciar etapa 2 antes disso.
+- [x] E1.8 Coordenação e demonstração dos contratos — revisões e CI do código exato aprovadas.
+- [x] Pacote A1 verificado e preparado para entrega; dossiê A1.md e artefatos rastreados.
+- [x] A1 aprovada explicitamente pelo usuário em 30/10/2026; E2.1–E2.6 autorizadas.
 
 ## Fontes preservadas
 
@@ -125,3 +125,17 @@ Código 0fa495864cfefcf3489856d66444b81fdf1f730e: revisão SPEC inicial sem acha
 CI independente atual run 41055328780/job 124061294601 Ubuntu24.04 success: 350 testes/49 arquivos, checks/build e 22 jornadas. Mesmo SHA promovido normalmente para develop protegida, sem force ou implantação. Ver E1.6.md e artifacts/E1.6/{github-ci-final.json,github-job-final.txt,review1-quality-0fa4958.md,coordinator-milestone-provenance.json}.
 
 Políticas de animação e senha de abertura PDF foram aprovadas explicitamente e estão em ../decisions/2026-10-30-media-policy.md. Riscos de dependências e limites operacionais/R2/recursos permanecem nomeados. A confirmação pública durável/cache/retry pertence à E1.8 seguinte; essa tarefa e o pacote A1 não foram antecipados.
+
+## E1.8 concluída — 100% da etapa 1
+
+Oito tarefas concluídas, com código d4fd9fbee3dc7c189276f362df56c1b2f320ab4a. CI exata run41087348560/job124171879510: 463testes/74arquivos, zero skips, checks/build e25jornadas. Revisão ampla e re-review W1/W2/W3 aprovadas; I1/I2/I3/R-MEDIA já aprovados. Provas Native/PostgreSQL/FS, upgrade real e hashes em A1.md/E1.8.md e artifacts/E1.8/coordinator.
+
+Task E1.8: fix round1/5 (4 addressed, 0 open — I1/I2/I3/R-MEDIA; a78b2dd..a719cc1). Whole-branch fix wave (W1/W2/W3 addressed; a719cc1..d4fd9fb). Task E1.8: complete (0f3aa94..d4fd9fb, reviews clean of blockers).
+
+Task E1.8: minor (deferred): I4 attempts não conta falhas revertidas; diagnóstico incompleto, sem uso decisório observado. Task E1.8: minor (deferred): I5 warnings lint/pg/reporter mantidos, sem supressão. Timeout Windows5000ms observado; execução integral sem alteração passou eCI atual passou; sem garantia de ausência de recorrência.
+
+A1 permanece NÃO aprovada. A entrega documental/ZIP não inicia etapa2. Etapas2–4, serviços reais e lançamento não foram autorizados por este marco.
+
+## Atualização de autorização — A1 aprovada, etapa 2 autorizada
+
+Em 30/10/2026 o usuário aprovou A1 e autorizou somente E2.1–E2.6. Manter develop e commits coerentes em inglês, seguindo Conventional Commits. Estimativa inicial de 18–28 horas informada antes da implementação; atualizar diante de bloqueio concreto. Progresso da etapa 2 em execucao-etapa-2.md. Registros anteriores de A1 pendente são históricos. A2/A3/A4 não concedidas; parar antes da etapa 3. O pacote A1 já entregue permanece imutável em outputs.

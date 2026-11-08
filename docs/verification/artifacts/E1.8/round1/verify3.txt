@@ -1,0 +1,10 @@
+Sanitized round1 evidence extract; original retained unchanged.
+Command: $ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+Observed exit code: 0
+Classification: LOCAL_GATE_GREEN
+Observation: pnpm verify passed:455 tests in73files plus1 Linux-only Windows skip; typecheck, lint, format, architecture and production Next build passed. Four historical lint warnings and pg concurrent client.query deprecation remain.
+
+ Test Files  73 passed (73)
+      Tests  455 passed | 1 skipped (456)
+   Start at  12:19:09
+   Duration  155.12s (tests 48%, import 39%, setup 9%, environment 2%, transform 1%)

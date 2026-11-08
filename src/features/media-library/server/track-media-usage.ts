@@ -38,7 +38,7 @@ export async function trackMediaUsage(input: MediaUsageCommand[], req: PayloadRe
             use.collection === command.collection &&
             use.documentId === command.documentId &&
             use.locale === command.locale &&
-            use.state === command.state,
+            (use.state === command.state || (command.reconcilePending && use.state === 'pending')),
         ),
       )
     )
@@ -73,6 +73,7 @@ export async function trackMediaUsage(input: MediaUsageCommand[], req: PayloadRe
           revision: command.revision,
           state: command.state,
           referenced: references.has(id),
+          reconcilePending: command.reconcilePending,
         });
       }
       const updated = await req.payload.db.updateOne({

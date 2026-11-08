@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-reconcile-green.txt
+Original SHA256: 25C34CE20472F9761549154F2DF5241F3B44D1FB69835C0BCFF697C44B0D407F
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: 15 Native tests include11 model cases plus4 publication/reconciliation cases.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  2 passed (2)
+Tests  15 passed (15)
+Start at  10:03:34
+Duration  13.52s (import 52%, tests 42%, transform 3%, setup 2%)

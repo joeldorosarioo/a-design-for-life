@@ -1,0 +1,12 @@
+SANITIZED EVIDENCE EXTRACT — NOT THE COMPLETE ORIGINAL LOG
+Original: .work/e1.8-draft-commit-green.txt
+Original SHA256: 5B4E534F1B62F42C665D6B8A39B34A6C36B4D29DB84A3DDAA0110CB0AB21F4BE
+Observed command exit code: 0
+Classification: GREEN
+Behavior/limit: Both draft COMMIT failures return503 without persisted head/version/outbox changes; healthy control200.
+Transformation: only anchored test-run summary lines retained; all raw stacks, SQL, request data, tokens and credentials omitted. Original preserved unchanged.
+
+Test Files  1 passed (1)
+Tests  2 passed (2)
+Start at  10:59:18
+Duration  11.00s (import 53%, tests 41%, transform 4%, setup 2%)

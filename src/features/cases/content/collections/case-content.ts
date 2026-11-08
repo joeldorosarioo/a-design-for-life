@@ -1,3 +1,7 @@
+import {
+  casePresentationFields,
+  sectionPresentationFields,
+} from '../fields/case-presentation-fields';
 import { synchronizeCaseMedia, retainDeletedCaseMedia } from '../hooks/case-media-usage';
 import { synchronizeCaseRoutes, protectContentRouteDeletion } from '../hooks/case-routes';
 import { protectEditorialCollection } from '@/helpers/payload/editorial-revision';
@@ -95,6 +99,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
 
     { name: 'eyebrow', label: 'Identificação editorial do estudo', type: 'text' },
     { name: 'title', label: 'Título público', type: 'text' },
+    ...casePresentationFields(),
 
     { name: 'summary', label: 'Resumo', type: 'textarea' },
 
@@ -128,6 +133,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
         { name: 'readingKey', label: 'Chave estável da seção', type: 'text' },
 
         { name: 'heading', label: 'Título da seção', type: 'text' },
+        ...sectionPresentationFields(),
 
         { name: 'blocks', label: 'Blocos', type: 'blocks', blocks: caseBlocks },
       ],

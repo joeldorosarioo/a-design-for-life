@@ -1,0 +1,144 @@
+{
+  "target": "d4fd9fbee3dc7c189276f362df56c1b2f320ab4a",
+  "checkedAt": "2026-10-30T16:20:16.923Z",
+  "stage1Percent": 100,
+  "completedTasks": 8,
+  "userA1Approved": false,
+  "ciRun": 41087348560,
+  "ciJob": "124171879510",
+  "tests": 463,
+  "testFiles": 74,
+  "e2e": 25,
+  "candidateLogPairs": 61,
+  "legacyPairs": 10,
+  "screenshots": 6,
+  "copies": [
+    {
+      "source": "stage1-briefs/E1.8-core-pre-review.md",
+      "artifact": "core-review.md",
+      "bytes": 12289,
+      "sha256": "6ff4ef80dfec5e14080356e427107c65523d2718c1db40868966eb4e074e4d97",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/E1.8-core-pre-review-fix-check.md",
+      "artifact": "core-fix-review.md",
+      "bytes": 6637,
+      "sha256": "3b85cec7d34c0ba32407dfb03d6c14b96d831d4b50f704e0368518c11854b5b5",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/E1.8-draft-commit-pre-review.md",
+      "artifact": "draft-commit-review.md",
+      "bytes": 10571,
+      "sha256": "0cbe7ce0fa3e932f54e150a9bdd41198e39ac4e8eda984503328cd1143670979",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/E1.8-draft-commit-fix-check.md",
+      "artifact": "draft-commit-fix-review.md",
+      "bytes": 7077,
+      "sha256": "33311b9d139dec5b7799901ec315625e4ba1749f90740ce116cb659e0a31f53a",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/E1.8-task-review-a78b2dd.md",
+      "artifact": "task-review-a78b2dd.md",
+      "bytes": 17078,
+      "sha256": "54b414181696fcd58da30f961b6fe2b394b8eecc91c5d4da6eb187af9d9b828a",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/E1.8-round1-review-a719cc1.md",
+      "artifact": "task-fix-review-a719cc1.md",
+      "bytes": 10667,
+      "sha256": "b9dffb72428640549292cc34630741e65d50dc507aeabb10389540b505a95e9e",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/stage1-final-review-a719cc1.md",
+      "artifact": "whole-review-a719cc1.md",
+      "bytes": 22125,
+      "sha256": "e89021b66f6eb6a91a8b9a1c5a8c5464e4e7ccd17455e461a1c0cd7b3cab0fda",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "stage1-briefs/stage1-final-fix-review-d4fd9fb.md",
+      "artifact": "whole-fix-review-d4fd9fb.md",
+      "bytes": 11320,
+      "sha256": "6a88c41c0220c6c8966501b9889392074b0417d9356bcc5ae48157b808590134",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "e1-8-evidence-validation-a78b2dd.json",
+      "artifact": "evidence-validation-a78b2dd.json",
+      "bytes": 16031,
+      "sha256": "52952ae98851a0773f3d5050b35939ba68bea6d5e4d5669631c7b5eb9fffdf03",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "e1-8-evidence-validation-a719cc1.json",
+      "artifact": "evidence-validation-a719cc1.json",
+      "bytes": 20391,
+      "sha256": "f42f12a1effe6f910acc4ea93a3cc6538c8da8e1c5c840fcf0136086741f5a4b",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "e1-8-evidence-validation-d4fd9fb.json",
+      "artifact": "evidence-validation-d4fd9fb.json",
+      "bytes": 24166,
+      "sha256": "ee76f4bc580546a90ccd95419bfc72e59cce92f8c08df8394fe30bd028dfd4aa",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-ci-a78b2dd-status.json",
+      "artifact": "github-ci-a78b2dd.json",
+      "bytes": 3200,
+      "sha256": "ce9747df7ca2c533afef8ddbd9fb5625137bb13a168391763d8f15c896161b15",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-job-124130479700.txt",
+      "artifact": "github-job-a78b2dd.txt",
+      "bytes": 367728,
+      "sha256": "ae44fa0ed91c23ef86fdc0dd2a264dc08197c2b4983506d32015013eb348bd76",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-ci-a719cc1-status.json",
+      "artifact": "github-ci-a719cc1.json",
+      "bytes": 3207,
+      "sha256": "698ec42e775aa5631b974c56aa6afe9f39763b3e4272759799335353f5514a3e",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-job-124150437696.txt",
+      "artifact": "github-job-a719cc1.txt",
+      "bytes": 372499,
+      "sha256": "d6ee36c77ba2781874052322cffebf2194707fac3a38d91e4d7ec60e75a8c4b5",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-ci-d4fd9fb-status.json",
+      "artifact": "github-ci-code-final.json",
+      "bytes": 3208,
+      "sha256": "aef69b24b980dbab59dcf087f73c08dd4e1b60678024ac2d2794dec4b6694839",
+      "transformation": "none; byte-identical"
+    },
+    {
+      "source": "github-job-124171879510.txt",
+      "artifact": "github-job-code-final.txt",
+      "bytes": 379794,
+      "sha256": "9f1a035b542b0e7204134be8691b787c19402091e776ec7836c80ab3928fe119",
+      "transformation": "none; byte-identical"
+    }
+  ],
+  "sensitivePatternScan": {
+    "jwt": false,
+    "githubCredential": false,
+    "resetTokenUrl": false,
+    "privateKey": false
+  },
+  "scope": "Coordinator additions only; prior evidence-index remains sealed. No production source changed. Documentation delivery commit receives its own protected CI.",
+  "observedDevelopBeforeFinalDelivery": "a719cc1a4fda619aadad45576af034cdcaa7f208"
+}

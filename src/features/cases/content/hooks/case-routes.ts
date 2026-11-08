@@ -58,6 +58,7 @@ export const protectRouteDelete: CollectionBeforeDeleteHook = async ({ id, req }
   });
   if (
     route.everPublished ||
+    (await pendingRouteSlugs(scope.contentId, req)).has(route.slug) ||
     idOf(route.case) !== scope.caseId ||
     idOf(route.content) !== scope.contentId ||
     route.locale !== scope.locale
@@ -135,8 +136,8 @@ export const synchronizeCaseRoutes: CollectionAfterChangeHook = async ({ doc, re
               slug: selected,
               case: scope.caseId,
               content: scope.contentId,
-              everPublished: doc._status === 'published',
-              state: doc._status === 'published' ? 'current' : 'draft',
+              everPublished: false,
+              state: 'draft',
             },
             req,
             overrideAccess: true,
@@ -146,32 +147,14 @@ export const synchronizeCaseRoutes: CollectionAfterChangeHook = async ({ doc, re
           if (uniqueSlug(error, req)) throw new SlugConflict();
           throw error;
         }
-      } else if (doc._status === 'published') {
-        await req.payload.update({
-          collection: 'case-routes',
-          id: existing.id,
-          data: { everPublished: true, state: 'current' },
-          req,
-          overrideAccess: true,
-          depth: 0,
-        });
       }
     }
     for (const route of own) {
       if (route.slug === selected) continue;
-      if (!route.everPublished)
+      if (!route.everPublished && !(await pendingRouteSlugs(scope.contentId, req)).has(route.slug))
         await req.payload.delete({
           collection: 'case-routes',
           id: route.id,
-          req,
-          overrideAccess: true,
-          depth: 0,
-        });
-      else if (doc._status === 'published' && route.state !== 'historical')
-        await req.payload.update({
-          collection: 'case-routes',
-          id: route.id,
-          data: { state: 'historical' },
           req,
           overrideAccess: true,
           depth: 0,
@@ -182,7 +165,10 @@ export const synchronizeCaseRoutes: CollectionAfterChangeHook = async ({ doc, re
 };
 export const protectContentRouteDeletion: CollectionBeforeDeleteHook = async ({ id, req }) => {
   const routes = await contentRoutes(String(id), req);
-  if (routes.some((route) => route.everPublished))
+  if (
+    routes.some((route) => route.everPublished) ||
+    (await pendingRouteSlugs(String(id), req)).size > 0
+  )
     throw new APIError(
       'Este conteúdo possui endereços que já foram públicos. Retire a publicação para preservar o histórico.',
       409,
@@ -212,3 +198,62 @@ export const protectContentRouteDeletion: CollectionBeforeDeleteHook = async ({ 
     },
   );
 };
+
+async function pendingRouteSlugs(contentId: string, req: PayloadRequest) {
+  const operations = await req.payload.find({
+    collection: 'publication-updates',
+    where: {
+      and: [
+        { subjectCollection: { equals: 'case-content' } },
+        { subjectId: { equals: contentId } },
+        { state: { equals: 'update-pending' } },
+      ],
+    },
+    pagination: false,
+    limit: 0,
+    depth: 0,
+    overrideAccess: true,
+    req,
+  });
+  return new Set(
+    operations.docs.flatMap((operation) => {
+      const target = operation.target as { slug?: unknown };
+      return typeof target.slug === 'string' ? [target.slug] : [];
+    }),
+  );
+}
+export async function acknowledgeCaseRoutes(
+  snapshot: { contentId: string; slug: string | null; slugs: string[] },
+  req: PayloadRequest,
+) {
+  const routes = await contentRoutes(snapshot.contentId, req);
+  const draft = await req.payload.findByID({
+    collection: 'case-content',
+    id: snapshot.contentId,
+    draft: true,
+    depth: 0,
+    overrideAccess: true,
+    req,
+  });
+  const pinned = await pendingRouteSlugs(snapshot.contentId, req);
+  for (const route of routes) {
+    if (snapshot.slugs.includes(route.slug)) {
+      await req.payload.db.updateOne({
+        collection: 'case-routes',
+        req,
+        options: { atomic: true },
+        where: { id: { equals: route.id } },
+        data: {
+          everPublished: true,
+          state: route.slug === snapshot.slug ? 'current' : 'historical',
+        },
+      });
+    } else if (!route.everPublished && route.slug !== draft.slug && !pinned.has(route.slug)) {
+      await req.payload.db.deleteOne({
+        collection: 'case-routes',
+        req,
+        where: { id: { equals: route.id } },
+      });
+    }
+  }
+}

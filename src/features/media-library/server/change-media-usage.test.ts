@@ -56,3 +56,22 @@ it('is idempotent for a repeated owner/revision transition', () => {
     usage({ revision: nextRevision, state: 'pending' }),
   ]);
 });
+it('accumulates pending revision pins until the public-root acknowledgement reconciles them', () => {
+  const priorPending = usage({ state: 'pending' });
+  expect(changeMediaUsage([priorPending], change({ state: 'pending' }))).toEqual([
+    priorPending,
+    usage({ revision: nextRevision, state: 'pending' }),
+  ]);
+  expect(changeMediaUsage([priorPending], change({ state: 'pending', referenced: false }))).toEqual(
+    [priorPending],
+  );
+});
+it('only explicit confirmed-root reconciliation retires accumulated pending pins', () => {
+  const pending = usage({ state: 'pending' });
+  expect(
+    changeMediaUsage([pending], {
+      ...change({ state: 'confirmed', referenced: false }),
+      reconcilePending: true,
+    }),
+  ).toEqual([usage({ state: 'retained' })]);
+});
