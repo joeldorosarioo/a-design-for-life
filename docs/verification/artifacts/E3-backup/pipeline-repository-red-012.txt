@@ -1,0 +1,348 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/repository.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/repository.test.ts (14 tests | 14 failed) 44ms
+   × publishes a complete marker only after ciphertext upload and verified readback 13ms
+   × can reopen the same persisted namespace without overwriting completed history 3ms
+   × never overwrites a set or ciphertext even with the same identity 3ms
+   × refuses completion if destination ciphertext differs from the proposed marker 2ms
+   × refuses completion with a mismatched private manifest 3ms
+   × does not permit retention using a forged completion proof 1ms
+   × does not permit a completion proof issued by another repository 2ms
+   × deletes only old complete sets after a verified current replacement, keeping recent and incomplete history 3ms
+   × rechecks the replacement ciphertext before deleting any old complete set 3ms
+   × fails closed for foreign or malformed markers without deleting valid history 3ms
+   × stages an integrity-checked old completed ciphertext for later isolated restore 2ms
+   × refuses to stage an incomplete or corrupted ciphertext 2ms
+   × refuses a foreign repository path before adopting existing data 1ms
+   × refuses an injected repository instead of returning a trusted physical scope 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > publishes a complete marker only after ciphertext upload and verified readback
+AssertionError: expected [] to deeply equal [ ObjectContaining{…} ]
+
+- Expected
++ Received
+
+- [
+-   ObjectContaining {
+-     "complete": false,
+-     "id": "618e7ca9-6635-4776-91d3-34a2c78be09d",
+-   },
+- ]
++ []
+
+ ❯ ops/backup/repository.test.ts:19:33
+     17| it('publishes a complete marker only after ciphertext upload and verif…
+     18|  const data=await setup();const set=await upload(data);
+     19|  expect(await data.repo.list()).toEqual([expect.objectContaining({id:s…
+       |                                 ^
+     20|  const completion=await data.repo.complete(set.marker,set.manifest,now…
+     21|  expect(completion.marker).toEqual(set.marker);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > can reopen the same persisted namespace without overwriting completed history
+AssertionError: expected [] to deeply equal [ { version: 1, …(7) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "ciphertext": {
+-       "byteLength": 65,
+-       "key": "sets/d9f2f090-a8f6-48a6-8e9c-c09739f0a59f/payload.age",
+-       "sha256": "6919341e8657e38264cddb58be5c7f3e341b482c149fc85ced3c06e4831d46a3",
+-     },
+-     "complete": true,
+-     "completedAt": "2026-12-01T00:00:00.000Z",
+-     "createdAt": "2026-12-01T00:00:00.000Z",
+-     "id": "d9f2f090-a8f6-48a6-8e9c-c09739f0a59f",
+-     "manifestSha256": "4cc3f98b7ca44077eec99432e753d40ebaff379a8bd541343f3aa952adee4732",
+-     "namespace": {
+-       "environment": "test",
+-       "project": "a-design-for-life",
+-       "source": "unit-6910004b-f635-4143-9aa5-be9cb4500e35",
+-     },
+-     "version": 1,
+-   },
+- ]
++ []
+
+ ❯ ops/backup/repository.test.ts:28:109
+     26| it('can reopen the same persisted namespace without overwriting comple…
+     27|  const data=await setup();const set=await upload(data);await data.repo…
+     28|  const reopened=await createLocalBackupRepository({namespace:data.name…
+       |                                                                                                             ^
+     29| });
+     30| it('never overwrites a set or ciphertext even with the same identity',…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > never overwrites a set or ciphertext even with the same identity
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/repository.test.ts:32:57
+     30| it('never overwrites a set or ciphertext even with the same identity',…
+     31|  const data=await setup();const set=await upload(data);
+     32|  await expect(data.repo.begin(set.id,now.toISOString())).rejects.toThr…
+       |                                                         ^
+     33|  await expect(data.repo.upload(set.id,set.source)).rejects.toThrow();
+     34|  expect(await readFile(path.join(data.repo.root,'sets',set.id,'payload…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > refuses completion if destination ciphertext differs from the proposed marker
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\backup-sets\54711d7c1e1cfe737db981a2e7c004bb4c6e165222d8d7162decc35ea517097c\sets\a9bd6cc8-2c0e-4088-9853-cc21debebb82\payload.age'
+ ❯ ops/backup/repository.test.ts:37:56
+     35| });
+     36| it('refuses completion if destination ciphertext differs from the prop…
+     37|  const data=await setup();const set=await upload(data);await writeFile…
+       |                                                        ^
+     38|  await expect(data.repo.complete(set.marker,set.manifest,now)).rejects…
+     39|  expect(await data.repo.list()).toEqual([expect.objectContaining({comp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > refuses completion with a mismatched private manifest
+AssertionError: promise resolved "{ marker: { version: 1, …(7) }, …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "marker": {
++     "ciphertext": {
++       "byteLength": 65,
++       "key": "sets/0def3f07-12e2-4dc4-963b-f99589962adb/payload.age",
++       "sha256": "8386224a5b34461d1ac961f45f814359fbcf87d50b026352cc6e8ea39b336157",
++     },
++     "complete": true,
++     "completedAt": "2026-12-01T00:00:00.000Z",
++     "createdAt": "2026-12-01T00:00:00.000Z",
++     "id": "0def3f07-12e2-4dc4-963b-f99589962adb",
++     "manifestSha256": "5564a16268bef47090c8d85fc547a85f50ff22e448d1510ab614c9e5749030da",
++     "namespace": {
++       "environment": "test",
++       "project": "a-design-for-life",
++       "source": "unit-f30c36aa-2926-4f94-9b18-e1906bbaf7ad",
++     },
++     "version": 1,
++   },
++   "proof": {},
+  }
+
+ ❯ ops/backup/repository.test.ts:43:84
+     41| it('refuses completion with a mismatched private manifest',async()=>{
+     42|  const data=await setup();const set=await upload(data);
+     43|  await expect(data.repo.complete(set.marker,Buffer.from('corrupted man…
+       |                                                                                    ^
+     44|  expect(await data.repo.list()).toEqual([expect.objectContaining({comp…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > does not permit retention using a forged completion proof
+AssertionError: promise resolved "[]" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+[]
+
+ ❯ ops/backup/repository.test.ts:47:95
+     45| });
+     46| it('does not permit retention using a forged completion proof',async()…
+     47|  const data=await setup();await expect(data.repo.applyRetention({verif…
+       |                                                                                               ^
+     48| });
+     49| it('does not permit a completion proof issued by another repository',a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > does not permit a completion proof issued by another repository
+AssertionError: promise resolved "[]" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+[]
+
+ ❯ ops/backup/repository.test.ts:51:62
+     49| it('does not permit a completion proof issued by another repository',a…
+     50|  const data=await setup();const other=await setup();const set=await up…
+     51|  await expect(data.repo.applyRetention(completion.proof,now)).rejects.…
+       |                                                              ^
+     52| });
+     53| it('deletes only old complete sets after a verified current replacemen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > deletes only old complete sets after a verified current replacement, keeping recent and incomplete history
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   "3779032a-5358-437b-8788-3757cd7a0372",
+- ]
++ []
+
+ ❯ ops/backup/repository.test.ts:58:63
+     56|  const partial=await upload(data,'2026-01-01T00:00:00.000Z');
+     57|  const latest=await upload(data);const completion=await data.repo.comp…
+     58|  expect(await data.repo.applyRetention(completion.proof,now)).toEqual(…
+       |                                                               ^
+     59|  expect((await data.repo.list()).map(marker=>(marker as {id:string}).i…
+     60| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > rechecks the replacement ciphertext before deleting any old complete set
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\backup-sets\dd8f64c44d5803da4ac05d151cdf254d698ac3cd9ef9e15f9d6c1e85e084ea1b\sets\c0d30041-f7a3-448d-8e5a-3c1bb91e16c5\payload.age'
+ ❯ ops/backup/repository.test.ts:63:111
+     61| it('rechecks the replacement ciphertext before deleting any old comple…
+     62|  const data=await setup();const old=await upload(data,'2026-01-01T00:0…
+     63|  const latest=await upload(data);const completion=await data.repo.comp…
+       |                                                                                                               ^
+     64|  await expect(data.repo.applyRetention(completion.proof,now)).rejects.…
+     65|  expect(await readFile(path.join(data.repo.root,'sets',old.id,'payload…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > fails closed for foreign or malformed markers without deleting valid history
+Error: ENOENT: no such file or directory, open 'E:\a-design-for-life\.work\backup-sets\e8a633c9d35cfcac255690ac9050324c6409c56d194ebc778cc7ce50676e4aad\sets\d7c910ec-ddd4-4ee0-886b-d2ead7d6b403\complete.json'
+ ❯ ops/backup/repository.test.ts:69:111
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > stages an integrity-checked old completed ciphertext for later isolated restore
+AssertionError: expected {} to deeply equal { version: 1, …(7) }
+
+- Expected
++ Received
+
+- {
+-   "ciphertext": {
+-     "byteLength": 65,
+-     "key": "sets/1144f3b5-45d4-469b-b7b4-63e5f50f1ded/payload.age",
+-     "sha256": "4c0e79490dcab267ce065bd8c520d089903ccae40551692199e0b693593de525",
+-   },
+-   "complete": true,
+-   "completedAt": "2026-01-01T00:00:00.000Z",
+-   "createdAt": "2026-01-01T00:00:00.000Z",
+-   "id": "1144f3b5-45d4-469b-b7b4-63e5f50f1ded",
+-   "manifestSha256": "66b5ca1253050297afd34a0696717e8feccd0a00b6849898e703b5989d295692",
+-   "namespace": {
+-     "environment": "test",
+-     "project": "a-design-for-life",
+-     "source": "unit-7c9c7106-59ad-4ac5-843f-dcbe96bd42d7",
+-   },
+-   "version": 1,
+- }
++ {}
+
+ ❯ ops/backup/repository.test.ts:75:123
+     73| it('stages an integrity-checked old completed ciphertext for later iso…
+     74|  const data=await setup();const set=await upload(data,'2026-01-01T00:0…
+     75|  const destination=path.join(data.privateRoot,'staged.age');expect(awa…
+       |                                                                                                                           ^
+     76| });
+     77| it('refuses to stage an incomplete or corrupted ciphertext',async()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > refuses to stage an incomplete or corrupted ciphertext
+AssertionError: promise resolved "{}" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ {}
+
+ ❯ ops/backup/repository.test.ts:79:92
+     77| it('refuses to stage an incomplete or corrupted ciphertext',async()=>{
+     78|  const data=await setup();const set=await upload(data);
+     79|  await expect(data.repo.stageCompletedSet(set.id,path.join(data.privat…
+       |                                                                                            ^
+     80| });
+     81| it('refuses a foreign repository path before adopting existing data',a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > refuses a foreign repository path before adopting existing data
+AssertionError: promise resolved "{ …(8) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "applyRetention": [Function applyRetention],
++   "begin": [Function begin],
++   "complete": [Function complete],
++   "list": [Function list],
++   "namespace": {
++     "environment": "test",
++     "project": "a-design-for-life",
++     "source": "different-source",
++   },
++   "root": "E:\\a-design-for-life\\.work\\backup-sets\\22a822d0d89740b737dc7af9f99e9e6f002b88b1326ed13dfbf2e5117d2466db",
++   "stageCompletedSet": [Function stageCompletedSet],
++   "upload": [Function upload],
+  }
+
+ ❯ ops/backup/repository.test.ts:82:147
+     80| });
+     81| it('refuses a foreign repository path before adopting existing data',a…
+     82|  const data=await setup();await expect(createLocalBackupRepository({na…
+       |                                                                                                                                                   ^
+     83| });
+     84| it('refuses an injected repository instead of returning a trusted phys…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/14]⎯
+
+ FAIL  |unit| ops/backup/repository.test.ts > refuses an injected repository instead of returning a trusted physical scope
+AssertionError: expected [Function] to throw an error
+ ❯ ops/backup/repository.test.ts:85:107
+     83| });
+     84| it('refuses an injected repository instead of returning a trusted phys…
+     85|  expect(()=>localBackupRepositoryScope({root:path.resolve('.work/priva…
+       |                                                                                                           ^
+     86| });
+     87|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/14]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  14 failed (14)
+   Start at  22:30:02
+   Duration  444ms (setup 65%, tests 15%, transform 10%, import 9%, worker 1%)
+
+EXIT_CODE: 1

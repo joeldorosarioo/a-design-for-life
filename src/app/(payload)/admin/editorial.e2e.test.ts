@@ -108,11 +108,11 @@ test('two real native editors: owner saves, other reads, distinct documents save
   await reader.locator('#document-locked-view-read-only').click();
   await expect(reader.locator('#field-internalTitle')).toBeDisabled();
   await reader.screenshot({
-    path: 'docs/verification/artifacts/E1.4/native-reader.png',
+    path: test.info().outputPath('native-reader.png'),
     fullPage: true,
   });
   await owner.screenshot({
-    path: 'docs/verification/artifacts/E1.4/native-owner.png',
+    path: test.info().outputPath('native-owner.png'),
     fullPage: true,
   });
   await firstField.fill('Saved by native owner');
@@ -476,7 +476,7 @@ test('native version comparison restores a draft; native Save Draft and Publish 
   await page.goto(`/admin/collections/site-navigation/${doc.id}/versions/${old.id}`);
   await expect(page.locator('.view-version')).toBeVisible();
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.4/native-version-diff.png',
+    path: test.info().outputPath('native-version-diff.png'),
     fullPage: true,
   });
   await expect(page.locator('.restore-version')).toBeHidden();
@@ -599,7 +599,7 @@ test('an old native tab keeps its observed revision through focus and reacquisit
     .toBeLessThanOrEqual(720);
 
   await page.screenshot({
-    path: 'docs/verification/artifacts/E1.4/native-stale-conflict.png',
+    path: test.info().outputPath('native-stale-conflict.png'),
     fullPage: true,
   });
   expect(

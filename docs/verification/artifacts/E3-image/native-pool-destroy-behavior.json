@@ -1,0 +1,7 @@
+{
+  "package": "@payloadcms/drizzle",
+  "version": "3.92.1",
+  "destroySourceSha256": "0d0167db3779b53ff27647037956133e067d037b9b408dee9fe303a02399626e",
+  "nativeDestroyClosesPool": false,
+  "harnessCleanup": "await Payload.destroy(); await capturedOwnPool.end(); no force exit"
+}

@@ -15,7 +15,11 @@ beforeAll(async () => {
 afterAll(async () => {
   await fixture?.payload.destroy();
 });
-import { fork, spawnSync, type ChildProcess } from 'node:child_process';
+import { fork, type ChildProcess } from 'node:child_process';
+import {
+  inspectOwnedTestDatabase,
+  setOwnedTestDatabaseNetwork,
+} from '../../../testing/setup/owned-test-database';
 import { once } from 'node:events';
 it('survives a writer-process crash before SQL ack and serves confirmed HTTP bytes in a fresh process with PostgreSQL unreachable', async () => {
   const parent = await fixture.payload.create({
@@ -53,21 +57,7 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
     children.push(child);
     return child;
   };
-  const docker = (args: string[]) => {
-    const result = spawnSync('docker', args, { windowsHide: true, encoding: 'utf8' });
-    if (result.status !== 0) throw new Error('Owned test database network lifecycle failed.');
-    return result.stdout.trim();
-  };
-  const container = 'a-design-for-life-local-postgres-test-1';
-  const inspected = JSON.parse(docker(['inspect', container])) as {
-    NetworkSettings: { Networks: Record<string, unknown> };
-  }[];
-  const networks = Object.keys(inspected[0]!.NetworkSettings.Networks);
-  if (networks.length !== 1 || !networks[0]!.startsWith('a-design-for-life-local_'))
-    throw new Error('Unexpected owned test network.');
-  const network = networks[0]!;
-  const compose = (action: 'stop' | 'up') =>
-    docker(['network', action === 'stop' ? 'disconnect' : 'connect', network, container]);
+  inspectOwnedTestDatabase();
   let stopped = false;
   try {
     const writer = start();
@@ -100,7 +90,7 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
     }
     await fixture.payload.destroy();
     if (native !== fixture.payload) await native.destroy();
-    compose('stop');
+    setOwnedTestDatabaseNetwork('disconnect');
     stopped = true;
     const reader = start();
     const ready = once(reader, 'message');
@@ -127,7 +117,7 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
         child.kill();
         await done;
       }
-    if (stopped) compose('up');
+    if (stopped) setOwnedTestDatabaseNetwork('connect');
     fixture = await createEditorialPayloadFixture(`e1.8-after-outage-${randomUUID()}`);
   }
   expect(

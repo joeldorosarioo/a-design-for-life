@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (4 tests | 1 failed) 31ms
+   × gets captured bytes through the transport boundary without exposing its root 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > gets captured bytes through the transport boundary without exposing its root
+AssertionError: expected undefined to deeply equal Uint8Array[ 3, 1, 4 ]
+
+- Expected:
+Uint8Array [
+  3,
+  1,
+  4,
+]
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-storage.test.ts:57:41
+     55|     get?: (reference: typeof object) => Promise<Uint8Array>;
+     56|   };
+     57|   expect(await transport.get?.(object)).toEqual(new Uint8Array([3, 1, …
+       |                                         ^
+     58| });
+     59|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  20:14:22
+   Duration  4.74s (setup 97%, transform 2%, tests 1%, worker 1%)
+

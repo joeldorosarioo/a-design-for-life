@@ -1,0 +1,134 @@
+StartedUTC=2026-11-04T00:34:52.2470416Z
+Scope=local Linux draft only; no registry publication or application/DB service
+Command=docker build --platform linux/amd64 --build-arg SOURCE_REVISION=draft-e3-local --tag adfl:e3-local-draft --progress plain .
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.41kB done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.6s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/node:24.22.2-trixie-slim@sha256:54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 1.04kB done
+#5 DONE 0.0s
+
+#6 [base 1/2] FROM docker.io/library/node:24.22.2-trixie-slim@sha256:54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 59.52kB 2.8s done
+#7 DONE 2.8s
+
+#8 [dependencies 1/4] RUN test "amd64" = "amd64"
+#8 CACHED
+
+#9 [dependencies 2/4] RUN corepack enable && corepack prepare pnpm@12.10.1 --activate && test "$(pnpm --version)" = "12.10.1"
+#9 CACHED
+
+#10 [dependencies 3/4] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+#10 CACHED
+
+#11 [dependencies 4/4] RUN pnpm install --frozen-lockfile
+#11 CACHED
+
+#12 [base 2/2] WORKDIR /app
+#12 CACHED
+
+#13 [builder 1/4] RUN apt-get update && apt-get install --yes --no-install-recommends ca-certificates unzip && rm -rf /var/lib/apt/lists/*
+#13 CACHED
+
+#14 [builder 2/4] COPY . .
+#14 DONE 0.2s
+
+#15 [builder 3/4] RUN node testing/setup/install-qpdf.mjs
+#15 1.036 Installed verified QPDF 12.4.2 (linux-x64)
+#15 DONE 1.1s
+
+#16 [builder 4/4] RUN APP_ENV=test     SITE_ORIGIN=http://127.0.0.1:3000     PAYLOAD_SECRET=synthetic-image-build-only-not-a-runtime-secret     DATABASE_URI=postgres://synthetic:synthetic@127.0.0.1:9/adfl_test_image_build     MEDIA_BUCKET=adfl-test-image-build     pnpm build && node ops/image/assemble-standalone.mjs . .work/next-build/standalone
+#16 0.605 $ node scripts/emit-case-state-css.mjs && next build
+#16 1.115 ▲ Next.js 16.4.3 (Turbopack)
+#16 1.157 ✓ Running next.config.ts took 41ms
+#16 1.166 - Experiments (use with caution):
+#16 1.166   ⨯ turbopackServerFastRefresh
+#16 1.166 
+#16 1.189   Creating an optimized production build ...
+#16 32.49 ✓ Compiled successfully in 31.3s
+#16 32.56   Running TypeScript ...
+#16 42.69   Finished TypeScript in 10.1s ...
+#16 42.70   Collecting page data using 11 workers ...
+#16 44.26   Generating static pages using 11 workers (0/3) ...
+#16 44.42 ✓ Generating static pages using 11 workers (3/3) in 160ms
+#16 44.43   Finalizing page optimization ...
+#16 45.29 
+#16 45.30 Route (app)
+#16 45.30 ┌ ƒ /
+#16 45.30 ├ ○ /_not-found
+#16 45.30 ├ ƒ /[locale]
+#16 45.30 ├ ƒ /[locale]/[...unmatched]
+#16 45.30 ├ ƒ /[locale]/[about]
+#16 45.30 ├ ƒ /[locale]/cases
+#16 45.30 ├ ƒ /[locale]/cases/[slug]
+#16 45.30 ├ ƒ /admin/[[...segments]]
+#16 45.30 ├ ƒ /api/[...slug]
+#16 45.30 ├ ƒ /health
+#16 45.30 ├ ƒ /language-preference
+#16 45.30 ├ ƒ /media/[id]/[variant]
+#16 45.30 ├ ƒ /preview
+#16 45.30 ├ ƒ /preview-media/[id]/[variant]
+#16 45.30 ├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+#16 45.30 ├ ƒ /robots.txt
+#16 45.30 └ ƒ /sitemap.xml
+#16 45.30 
+#16 45.30 
+#16 45.30 ƒ Proxy (Middleware)
+#16 45.30 
+#16 45.30 ○  (Static)   prerendered as static content
+#16 45.30 ƒ  (Dynamic)  server-rendered on demand
+#16 45.30 
+#16 45.64 {"link":"node_modules/.pnpm/pdfjs-dist@6.4.299/node_modules/@napi-rs/canvas","target":"../../../@napi-rs+canvas@1.0.13/node_modules/@napi-rs/canvas","status":"created"}
+#16 DONE 45.8s
+
+#17 [runtime 1/8] RUN groupadd --gid 10001 app && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin app
+#17 CACHED
+
+#18 [runtime 2/8] COPY --from=builder --chown=10001:10001 /app/.work/next-build/standalone ./
+#18 DONE 0.7s
+
+#19 [runtime 3/8] COPY --from=builder --chown=10001:10001 /app/.work/next-build/static ./.work/next-build/static
+#19 DONE 0.0s
+
+#20 [runtime 4/8] COPY --from=builder --chown=10001:10001 /app/public ./public
+#20 DONE 0.0s
+
+#21 [runtime 5/8] COPY --from=builder /app/.toolchain/qpdf-12.4.2-linux-x64 /opt/qpdf
+#21 DONE 0.0s
+
+#22 [runtime 6/8] COPY --chown=10001:10001 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ./ops/image/
+#22 DONE 0.0s
+
+#23 [runtime 7/8] RUN mkdir -p .work/publication .work/private-media .work/editorial-mail .work/next-build/cache && chown -R 10001:10001 .work
+#23 DONE 1.4s
+
+#24 [runtime 8/8] RUN /opt/qpdf/bin/qpdf --version
+#24 0.391 qpdf version 12.4.2
+#24 0.391 Run qpdf --copyright to see copyright and license information.
+#24 DONE 0.4s
+
+#25 exporting to image
+#25 exporting layers
+#25 exporting layers 0.6s done
+#25 writing image sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441 done
+#25 naming to docker.io/library/adfl:e3-local-draft done
+#25 DONE 0.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/xudr5kc4eqtkq4g4qzi2fbur6
+FinishedUTC=2026-11-04T00:35:53.9376510Z
+EXIT_CODE=0

@@ -1,0 +1,988 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+·················································xxxxxxxxxxxxx·························xxxxxxxxxxxxx
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 26 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/admin regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/admin",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/admin",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/admin",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/admin",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case en /en/cases/api regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/api",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en/cases/api",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en/cases/api",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en/cases/api",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/draft regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/draft",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/draft",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/draft",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/draft",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case en /en/cases/drafts regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/drafts",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en/cases/drafts",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en/cases/drafts",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en/cases/drafts",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/preview regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/preview",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/preview",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/preview",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/preview",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case en /en/cases/preview-ui regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/preview-ui",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en/cases/preview-ui",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en/cases/preview-ui",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en/cases/preview-ui",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/preview-media regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/preview-media",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/preview-media",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/preview-media",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/preview-media",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case en /en/cases/private regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/private",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en/cases/private",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en/cases/private",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en/cases/private",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/login regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/login",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/login",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/login",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/login",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case en /en/cases/logout regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/logout",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en/cases/logout",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en/cases/logout",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en/cases/logout",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/reset regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/reset",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/reset",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/reset",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/reset",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case en /en/cases/reset-password regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/reset-password",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_email_click",
+-     "pagePath": "/en/cases/reset-password",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/en/cases/reset-password",
+-   },
+-   {
+-     "locale": "en",
+-     "name": "resume_open",
+-     "pagePath": "/en/cases/reset-password",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/26]⎯
+
+ FAIL  |unit| src/features/analytics/analytics-session.test.ts > measures the confirmed public case pt /pt/cases/forgot-password regardless of its slug words
+AssertionError: expected [] to deeply equal [ { name: 'page_view', …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/forgot-password",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_email_click",
+-     "pagePath": "/pt/cases/forgot-password",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "contact_linkedin_click",
+-     "pagePath": "/pt/cases/forgot-password",
+-   },
+-   {
+-     "locale": "pt",
+-     "name": "resume_open",
+-     "pagePath": "/pt/cases/forgot-password",
+-   },
+- ]
++ []
+
+ ❯ src/features/analytics/analytics-session.test.ts:204:22
+    202|       session.trackContact('linkedin', context);
+    203|       session.trackContact('resume', context);
+    204|       expect(events).toEqual([
+       |                      ^
+    205|         { name: 'page_view', locale, pagePath },
+    206|         { name: 'contact_email_click', locale, pagePath },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/admin
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/admin",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case en /en/cases/api
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/api",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/draft
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/draft",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case en /en/cases/drafts
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/drafts",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/preview
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/preview",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case en /en/cases/preview-ui
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/preview-ui",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/preview-media
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/preview-media",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case en /en/cases/private
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/private",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/login
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/login",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case en /en/cases/logout
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/logout",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/reset
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/reset",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case en /en/cases/reset-password
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "en",
+-     "name": "page_view",
+-     "pagePath": "/en/cases/reset-password",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/26]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > keeps approved events for the confirmed public case pt /pt/cases/forgot-password
+AssertionError: expected { success: false, …(1) } to deeply equal { success: true, data: { …(3) } }
+
+- Expected
++ Received
+
+  {
+-   "data": {
+-     "locale": "pt",
+-     "name": "page_view",
+-     "pagePath": "/pt/cases/forgot-password",
++   "error": ZodError {
++     "message": "[
++   {
++     \"code\": \"custom\",
++     \"path\": [],
++     \"message\": \"A canonical public portfolio path matching the locale is required\"
++   }
++ ]",
++     "name": "ZodError",
+    },
+-   "success": true,
++   "success": false,
+  }
+
+ ❯ src/features/analytics/contracts/event.schema.test.ts:107:64
+    105|       for (const name of ['page_view', 'contact_email_click', 'contact…
+    106|         const event = { name, ...context };
+    107|         expect(portfolioAnalyticsEventSchema.safeParse(event)).toEqual…
+       |                                                                ^
+    108|       }
+    109|       expect(publicAnalyticsContextSchema.safeParse(context)).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/26]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  26 failed | 74 passed (100)
+   Start at  21:09:22
+   Duration  524ms (setup 65%, import 23%, tests 7%, transform 3%, worker 1%)
+

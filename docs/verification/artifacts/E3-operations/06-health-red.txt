@@ -1,0 +1,77 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > returns only minimal process readiness with no-store and nosniff 23ms
+   → expected 503 to be 200 // Object.is equality
+ × |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > provides an empty HEAD response with the same public status and safety headers 1ms
+   → expected 503 to be 200 // Object.is equality
+ × |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > stays available with unusable dependency configuration and network disabled 1ms
+   → expected 503 to be 200 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > returns only minimal process readiness with no-store and nosniff
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/app/(portfolio)/health/route.test.ts:17:29
+     15|     }));
+     16|
+     17|     expect(response.status).toBe(200);
+       |                             ^
+     18|     expect(await response.json()).toEqual({ status: 'ready' });
+     19|     expect(response.headers.get('Cache-Control')).toContain('no-store'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > provides an empty HEAD response with the same public status and safety headers
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/app/(portfolio)/health/route.test.ts:30:25
+     28|     const head = HEAD();
+     29|
+     30|     expect(head.status).toBe(200);
+       |                         ^
+     31|     expect(await head.text()).toBe('');
+     32|     expect([...head.headers]).toEqual([...get.headers]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > stays available with unusable dependency configuration and network disabled
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/app/(portfolio)/health/route.test.ts:43:29
+     41|     const response = GET();
+     42|
+     43|     expect(response.status).toBe(200);
+       |                             ^
+     44|     expect(await response.text()).toBe('{"status":"ready"}');
+     45|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  20:52:03
+   Duration  415ms (setup 72%, transform 11%, tests 9%, import 7%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:52:02.7150715Z EXIT=1 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/app/(portfolio)/health/route.test.ts --reporter verbose

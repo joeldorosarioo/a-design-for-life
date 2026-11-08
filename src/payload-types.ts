@@ -75,6 +75,7 @@ export interface Config {
     'professional-profiles': ProfessionalProfile;
     media: Media;
     'publication-updates': PublicationUpdate;
+    'publication-retries': PublicationRetry;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     'professional-profiles': ProfessionalProfilesSelect<false> | ProfessionalProfilesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'publication-updates': PublicationUpdatesSelect<false> | PublicationUpdatesSelect<true>;
+    'publication-retries': PublicationRetriesSelect<false> | PublicationRetriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -599,6 +601,20 @@ export interface PublicationUpdate {
   state: 'update-pending' | 'public' | 'superseded';
   attempts: number;
   diagnostic?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publication-retries".
+ */
+export interface PublicationRetry {
+  id: string;
+  operationId: string;
+  retryUserId?: string | null;
+  startedAttemptsVersion: number;
+  automaticAttempts: number;
+  nextAttemptAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1136,6 +1152,19 @@ export interface PublicationUpdatesSelect<T extends boolean = true> {
   state?: T;
   attempts?: T;
   diagnostic?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publication-retries_select".
+ */
+export interface PublicationRetriesSelect<T extends boolean = true> {
+  operationId?: T;
+  retryUserId?: T;
+  startedAttemptsVersion?: T;
+  automaticAttempts?: T;
+  nextAttemptAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

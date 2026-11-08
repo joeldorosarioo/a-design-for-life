@@ -14,9 +14,29 @@ export const publicationAdapters = {
   'professional-profiles': profilePublicationAdapter,
   'site-navigation': navigationPublicationAdapter,
 };
-export function portfolioPublicationCoordinator(directory: string) {
+export function portfolioPublicationCoordinator(
+  directory: string,
+  observation?: { internalOrigin: string; siteOrigin: string },
+) {
   return createPublicationCoordinator({
     directory,
+    verify:
+      observation &&
+      (async (root, operation) => {
+        const [{ planPublicationObservations }, { assertServedPublication }] = await Promise.all([
+          import('./portfolio-publication-observation'),
+          import('@/helpers/payload/publication-http-verification'),
+        ]);
+        await assertServedPublication({
+          origin: observation.internalOrigin,
+          generation: root.generation,
+          observations: await planPublicationObservations({
+            root,
+            operation,
+            siteOrigin: observation.siteOrigin,
+          }),
+        });
+      }),
     reconcile: async (root, operation, req, options) =>
       publicationAdapters[operation.subjectCollection].reconcile?.(root, operation, req, options),
     compose: async (root, operation) => {

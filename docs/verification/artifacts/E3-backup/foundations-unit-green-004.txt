@@ -1,0 +1,11 @@
+COMMAND: pnpm exec vitest run --project unit src/helpers/storage/restore-object.test.ts src/features/media-library/server/backup-inventory.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  2 passed (2)
+      Tests  23 passed (23)
+   Start at  21:48:25
+   Duration  461ms (setup 63%, import 15%, tests 12%, transform 8%, worker 1%)
+
+EXIT_CODE: 0

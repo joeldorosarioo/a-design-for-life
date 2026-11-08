@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (6 tests | 1 failed) 74ms
+   × heads remote metadata and verifies body integrity before confirming the reference 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > heads remote metadata and verifies body integrity before confirming the reference
+AssertionError: expected undefined to deeply equal { …(3) }
+
+- Expected:
+{
+  "byteLength": 3,
+  "key": "afd13b63cffd6611a65496410dd22f988f57bba9cf4a1baa45fc1c99a0c2738b",
+  "sha256": "9ceed0d818acc42d0318974c548e2251f888f8512bc5c4c70378aa969a883cad",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/r2-storage.test.ts:107:41
+    105|   const { adapter, requests } = await boundary();
+    106|   const object = await adapter!.put(new Uint8Array([3, 1, 4]));
+    107|   expect(await adapter?.head?.(object)).toEqual(object);
+       |                                         ^
+    108|   expect(requests.map((request) => request.method)).toEqual(['PUT', 'H…
+    109| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  20:20:40
+   Duration  516ms (setup 48%, import 25%, tests 19%, transform 7%, worker 1%)
+

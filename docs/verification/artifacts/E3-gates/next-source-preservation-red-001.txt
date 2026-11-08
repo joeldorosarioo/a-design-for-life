@@ -1,0 +1,82 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| testing/setup/preserve-next-generated-files.test.ts (5 tests | 4 failed) 56ms
+   × restores original bytes after the known Next type-path mutation and keeps a checkpoint outside the build 7ms
+   × refuses a concurrent compiler option edit without restoring either file 27ms
+   × refuses a concurrent type declaration edit without restoring either file 14ms
+   × refuses a public output namespace before changing source files 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/preserve-next-generated-files.test.ts > restores original bytes after the known Next type-path mutation and keeps a checkpoint outside the build
+Error: ENOENT: no such file or directory, open ''
+ ❯ testing/setup/preserve-next-generated-files.test.ts:31:33
+     29|   await workspace(async (root) => {
+     30|     const saved = await preserveNextGeneratedFiles({ root, distDir });
+     31|     const snapshot = JSON.parse(await readFile(saved.checkpoint, 'utf8…
+       |                                 ^
+     32|     expect(snapshot.files.map((file: { name: string }) => file.name)).…
+     33|     expect(Buffer.from(snapshot.files[1].base64, 'base64').toString())…
+ ❯ workspace testing/setup/preserve-next-generated-files.test.ts:15:5
+ ❯ testing/setup/preserve-next-generated-files.test.ts:29:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| testing/setup/preserve-next-generated-files.test.ts > refuses a concurrent compiler option edit without restoring either file
+ FAIL  |unit| testing/setup/preserve-next-generated-files.test.ts > refuses a concurrent type declaration edit without restoring either file
+AssertionError: promise resolved "'unchanged'" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"unchanged"
+
+ ❯ testing/setup/preserve-next-generated-files.test.ts:61:34
+     59|     }
+     60|     const current = await Promise.all(['next-env.d.ts', 'tsconfig.json…
+     61|     await expect(saved.restore()).rejects.toThrow('changed unexpectedl…
+       |                                  ^
+     62|     expect(await Promise.all(['next-env.d.ts', 'tsconfig.json'].map((f…
+     63|   });
+ ❯ workspace testing/setup/preserve-next-generated-files.test.ts:15:5
+ ❯ testing/setup/preserve-next-generated-files.test.ts:50:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| testing/setup/preserve-next-generated-files.test.ts > refuses a public output namespace before changing source files
+AssertionError: promise resolved "{ checkpoint: '', …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "checkpoint": "",
++   "restore": [Function restore],
+  }
+
+ ❯ testing/setup/preserve-next-generated-files.test.ts:67:80
+     65| it('refuses a public output namespace before changing source files', a…
+     66|   await workspace(async (root) => {
+     67|     await expect(preserveNextGeneratedFiles({ root, distDir: 'public/b…
+       |                                                                                ^
+     68|     expect(await readFile(path.join(root, 'tsconfig.json'), 'utf8')).t…
+     69|   });
+ ❯ workspace testing/setup/preserve-next-generated-files.test.ts:15:11
+ ❯ testing/setup/preserve-next-generated-files.test.ts:66:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 1 passed (5)
+   Start at  22:30:39
+   Duration  431ms (setup 65%, tests 19%, transform 9%, import 6%, worker 1%)
+
+
+EXIT_CODE=1

@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: Transform failed with 8 errors:
+C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\generate-publication-retries.ts:7:29: ERROR: Top-level await is currently not supported with the "cjs" output format
+C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\generate-publication-retries.ts:8:31: ERROR: Top-level await is currently not supported with the "cjs" output format
+C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\generate-publication-retries.ts:9:17: ERROR: Top-level await is currently not supported with the "cjs" output format
+C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\generate-publication-retries.ts:19:16: ERROR: Top-level await is currently not supported with the "cjs" output format
+C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\generate-publication-retries.ts:21:2: ERROR: Top-level await is currently not supported with the "cjs" output format
+...
+    at failureErrorWithLog (E:\a-design-for-life\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1752:15)
+    at E:\a-design-for-life\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1019:50
+    at responseCallbacks.<computed> (E:\a-design-for-life\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:886:9)
+    at handleIncomingPacket (E:\a-design-for-life\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:941:12)
+    at Socket.readFromStdout (E:\a-design-for-life\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:864:7)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:569:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:520:3)
+    at Readable.push (node:internal/streams/readable:400:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:194:23) {
+  name: 'TransformError'
+}
+
+Node.js v24.22.2

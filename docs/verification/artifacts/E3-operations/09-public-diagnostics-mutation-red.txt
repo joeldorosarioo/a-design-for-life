@@ -1,0 +1,41 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > returns only minimal process readiness with no-store and nosniff 25ms
+   → expected { status: 'ready', …(1) } to deeply equal { status: 'ready' }
+ ↓ |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > provides an empty HEAD response with the same public status and safety headers
+ ↓ |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > stays available with unusable dependency configuration and network disabled
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/health/route.test.ts > minimal public readiness > returns only minimal process readiness with no-store and nosniff
+AssertionError: expected { status: 'ready', …(1) } to deeply equal { status: 'ready' }
+
+- Expected
++ Received
+
+  {
++   "diagnostics": {
++     "config": "PRIVATE_SENTINEL",
++   },
+    "status": "ready",
+  }
+
+ ❯ src/app/(portfolio)/health/route.test.ts:18:35
+     16|
+     17|     expect(response.status).toBe(200);
+     18|     expect(await response.json()).toEqual({ status: 'ready' });
+       |                                   ^
+     19|     expect(response.headers.get('Cache-Control')).toContain('no-store'…
+     20|     expect(response.headers.get('X-Content-Type-Options')).toBe('nosni…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 skipped (3)
+   Start at  20:53:58
+   Duration  370ms (setup 75%, tests 11%, transform 7%, import 5%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:53:58.4633496Z EXIT=1 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/app/(portfolio)/health/route.test.ts --testNamePattern 'returns only minimal process readiness' --reporter verbose; MUTATION=add synthetic public diagnostic field

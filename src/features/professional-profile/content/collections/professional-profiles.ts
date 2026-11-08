@@ -1,4 +1,7 @@
-import { publishedReadResponse } from '@/helpers/payload/published-read-response';
+import {
+  capturePublishedReadRoot,
+  publishedReadResponse,
+} from '@/helpers/payload/published-read-response';
 import { synchronizeProfileMedia } from '../profile-media-usage';
 import { getPublishedProfile } from '../../server/get-published-profile';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
@@ -39,11 +42,13 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
             },
             { status: 404 },
           );
-        const result = await getPublishedProfile(parsed.data);
+        const root = await capturePublishedReadRoot();
+        const result = await getPublishedProfile(parsed.data, undefined, root);
         return publishedReadResponse(
           result,
           { collection: 'professional-profiles', where: { locale: { equals: parsed.data } } },
           req,
+          root,
         );
       },
     },

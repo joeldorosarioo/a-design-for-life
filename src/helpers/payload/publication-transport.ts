@@ -66,7 +66,7 @@ export function publicationEndpoints(collection: CollectionSlug): Endpoint[] {
         });
         if (!selected)
           return Response.json({ error: 'Publication unavailable' }, { status: 404, headers });
-        const result = await retryPublicationUpdate(operationId, req);
+        const result = await retryPublicationUpdate(operationId, req, { mode: 'manual' });
         return Response.json(result, { status: result.ok ? 200 : 503, headers });
       },
     },
@@ -105,7 +105,7 @@ export async function confirmNativePublication(
       targetRevision: operation.targetRevision,
       state: 'update-pending',
     };
-    const result = await retryPublicationUpdate(operation.operationId, req);
+    const result = await retryPublicationUpdate(operation.operationId, req, { mode: 'immediate' });
     if (result.ok) receipt = result.value;
   } catch {
     // A proven committed intent can safely be retried. Without that proof,

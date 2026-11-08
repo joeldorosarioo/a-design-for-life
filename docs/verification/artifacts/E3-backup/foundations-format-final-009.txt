@@ -1,0 +1,4 @@
+COMMAND: pnpm exec prettier --check src/helpers/storage/restore-object.ts src/helpers/storage/restore-object.test.ts src/helpers/payload/backup-snapshot.ts src/helpers/payload/backup-snapshot.integration.test.ts src/features/media-library/server/backup-inventory.ts src/features/media-library/server/backup-inventory.test.ts src/features/media-library/server/backup-inventory.integration.test.ts src/features/media-library/server.ts docs/runbooks/backup-e-restauracao.md
+Checking formatting...
+All matched files use Prettier code style!
+EXIT_CODE: 0

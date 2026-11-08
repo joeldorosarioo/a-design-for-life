@@ -1,0 +1,225 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[00:42:40] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (47ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (102ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (4ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (11ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (9ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (9ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (5ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (43ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (1ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (3ms)[39m
+[00:42:40] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[00:42:40] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (6ms)[39m
+[00:42:40] [32mINFO[39m: [36mDone.[39m
+stdout | src/helpers/payload/publication-retries.integration.test.ts
+Native retry provenance {
+  runId: 'edac2db9-10f9-4b33-ae2f-b0495949a28c',
+  containerId: 'f5ac106453c1781f08c4b1675198e6d6d587d239fb825173d55c84b90280e9cc',
+  networkId: 'fa7ac1ff1ecdd7c33b28b78fb232b0aaa1701b9a86113dbbbbf51026133b89b9',
+  image: 'postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b',
+  postgres: '17.11',
+  node: '24.22.2',
+  enabled: 'true',
+  databasePort: '55434'
+}
+
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > persists retry actor and due time in the same Native editorial transaction while remaining invisible before COMMIT 59ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > rolls back execution metadata with its actual editorial intention and cannot independently claim uncommitted work 30ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > gives two Native CAS claimers reading the same persisted version exactly one winner 36ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > retains a durably started version despite real filesystem failure without double-incrementing legacy coordinator attempts 53ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > skips stale and future outcome versions after a newer manual attempt without replacing its schedule 47ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > records only independently confirmed core outcomes and never turns execution metadata into public authority 69ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > routes a newer native intention to existing stale reconciliation without allocating the old target another attempt 67ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps the approved immutable intention claimable after a real newer private draft changes editorialRevision 258ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps a legacy NULL actor manual-only and rebinds solely to the real authorized manual editor 43ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > denies anonymous helper access and keeps the Native technical metadata API private even to editors 24ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > refuses a provisional attempt claim inside a caller-owned editorial transaction 22ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > routes a genuinely missing native head to safe existing reconciliation without allocating another version 28ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > keeps real withdrawal execution safe through approved media trash without reviving the mutable draft 338ms
+ ✓ |integration| src/helpers/payload/publication-retries.integration.test.ts > replays the original Native capture with the later retry table absent and restores only additive execution schema 137ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > does not return undifferentiated Native success after the real session is revoked between save and confirmation 392ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > returns safe unavailability from Native transport, Result and coordinator when the first independent SQL proof cannot run 232ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > returns a persistent Native pending receipt when a real dependency SQL read fails after committed-intent proof 495ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > preserves Native and Local command pending receipts on an actual filesystem read failure after COMMIT 1030ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > reports503 for current, historical and withdrawn routes without missing root coverage, but404 for unknown/private 850ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > reports503 for current, historical and withdrawn routes without incomplete root coverage, but404 for unknown/private 783ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > keeps a proven pending receipt when the coordinator second SQL read becomes unavailable 66ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > returns a safe Local command Result when SQL becomes unavailable immediately after its real owned COMMIT 442ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > classifies SQL-confirmed media without missing root coverage as503, while a covered withdrawal revokes despite an unacked SQL grant 601ms
+ ✓ |integration| src/config/publication-failure-boundaries.integration.test.ts > classifies SQL-confirmed media without incomplete root coverage as503, while a covered withdrawal revokes despite an unacked SQL grant 600ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > keeps a committed native target private until public publication is confirmed 284ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > publishes the committed immutable target and persists its confirmation receipt 44ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > keeps the confirmed canonical body while a newer native title and slug are pending 326ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > retains confirmed bytes through pending withdrawal and releases publication pins after confirmation 340ms
+[00:42:56] [31mERROR[39m: [36mA gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.[39m
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async createOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:421:13)
+              at async createHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/create.js:11:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/config/publication-updates.integration.test.ts:386:29
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@opentelemetry_6fca08af00d22767684ee0892f4e2cec/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+ ✓ |integration| src/config/publication-updates.integration.test.ts > cannot consume an uncommitted external transaction and rollback leaves no executable intent 77ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > rejects the installed adapter missing-session autocommit fallback before a publication fence 1ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > characterizes a real deferred PostgreSQL COMMIT failure and never treats the saved response as public 213ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > does not let an old in-flight attempt overwrite a newer confirmed generation 95ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > publishes the intended immutable body after a newer private draft without exposing the draft 326ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > preserves media and route ownership across a real SQL acknowledgement rejection after root publication 498ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > does not retire root route ownership when a failed acknowledgement is superseded by a pending withdrawal 572ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > reports feature publication pending while the global writer is busy, then confirms only after real promotion 439ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > keeps internal shared-case edits private without replacing the latest publication intent 101ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > releases a never-public cancelled intent only after withdrawal reconciliation and allows deletion and slug reuse 451ms
+ ✓ |integration| src/config/publication-updates.integration.test.ts > ignores forged Native public metadata and hides a committed pending target from anonymous where, sort and count 129ms
+ ✓ |integration| src/config/publication-command-receipts.integration.test.ts > case-content command returns truthful healthy, blocked-writer and externally-owned receipts 1249ms
+ ✓ |integration| src/config/publication-command-receipts.integration.test.ts > professional-profiles command returns truthful healthy, blocked-writer and externally-owned receipts 927ms
+ ✓ |integration| src/config/publication-command-receipts.integration.test.ts > site-navigation command returns truthful healthy, blocked-writer and externally-owned receipts 840ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures legacy structural publications before future nullable columns exist and keeps private versions intact 966ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures the canonical previously published body while preserving a newer private draft 539ms
+stdout | src/config/publication-worker.integration.test.ts
+Native worker provenance {
+  runId: 'edac2db9-10f9-4b33-ae2f-b0495949a28c',
+  containerId: 'f5ac106453c1781f08c4b1675198e6d6d587d239fb825173d55c84b90280e9cc',
+  networkId: 'fa7ac1ff1ecdd7c33b28b78fb232b0aaa1701b9a86113dbbbbf51026133b89b9',
+  node: '24.22.2',
+  workerEnabled: 'false',
+  databasePort: '55434'
+}
+
+ × |integration| src/config/publication-worker.integration.test.ts > maintains terminal due metadata including version0 so it cannot starve later pending work 138ms
+   → expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > maintains null-actor due metadata including version0 so it cannot starve later pending work 84ms
+   → expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > maintains missing-account due metadata including version0 so it cannot starve later pending work 72ms
+   → expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+ × |integration| src/config/publication-worker.integration.test.ts > maintains stale due metadata including version0 so it cannot starve later pending work 163ms
+   → expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+ ✓ |integration| src/config/publication-worker.integration.test.ts > does not allocate another immediate post-write attempt while a real pending one waits, but permits explicit manual reset 65ms
+ × |integration| src/config/publication-worker.integration.test.ts > advances a bounded cursor past a genuinely Native access-denied pending row without claiming or publishing it 132ms
+   → expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+ ✓ |integration| src/config/publication-worker.integration.test.ts > rechecks a terminal public receipt through the existing coordinator when current.json becomes unavailable 78ms
+ × |integration| src/config/publication-worker.integration.test.ts > drains a due Native intention with its recorded real actor and exactly one durable automatic claim 125ms
+   → expected { …(12) } to match object { state: 'public', attempts: 1, …(1) }
+(13 matching properties omitted from actual)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains terminal due metadata including version0 so it cannot starve later pending work
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains null-actor due metadata including version0 so it cannot starve later pending work
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains missing-account due metadata including version0 so it cannot starve later pending work
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > maintains stale due metadata including version0 so it cannot starve later pending work
+AssertionError: expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "state": "public",
++   "state": "update-pending",
+  }
+
+ ❯ src/config/publication-worker.integration.test.ts:114:7
+    112|         where: { operationId: { equals: later.latestPublicationIntent …
+    113|       }),
+    114|     ).toMatchObject({ state: 'public' });
+       |       ^
+    115|     expect(
+    116|       await fixture.payload.db.findOne<PublicationUpdate>({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > advances a bounded cursor past a genuinely Native access-denied pending row without claiming or publishing it
+AssertionError: expected { …(12) } to match object { state: 'public' }
+(15 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "state": "public",
++   "state": "update-pending",
+  }
+
+ ❯ src/config/publication-worker.integration.test.ts:179:7
+    177|         where: { operationId: { equals: later.latestPublicationIntent …
+    178|       }),
+    179|     ).toMatchObject({ state: 'public' });
+       |       ^
+    180|     expect(
+    181|       await readPublicationRetry(blocked.latestPublicationIntent!, awa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |integration| src/config/publication-worker.integration.test.ts > drains a due Native intention with its recorded real actor and exactly one durable automatic claim
+AssertionError: expected { …(12) } to match object { state: 'public', attempts: 1, …(1) }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "attempts": 1,
+-   "state": "public",
++   "attempts": 0,
++   "state": "update-pending",
+    "targetRevision": "042f06da-ad5c-4673-828f-048c255cd086",
+  }
+
+ ❯ src/config/publication-worker.integration.test.ts:251:5
+    249|       where: { operationId: { equals: operationId } },
+    250|     }),
+    251|   ).toMatchObject({ state: 'public', attempts: 1, targetRevision: subj…
+       |     ^
+    252|   expect(await readPublicationRetry(operationId, await fixture.request…
+    253|     retryUserId: fixture.user.id,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  6 failed | 46 passed (52)
+   Start at  00:42:33
+   Duration  39.46s (tests 58%, import 39%, setup 2%, transform 2%)
+

@@ -1,0 +1,13 @@
+COMMAND: [private config path only via ADFL_TEST_BACKUP_TOOLS_CONFIG] .toolchain/node-v24.22.2-win-x64/node.exe node_modules/vitest/vitest.mjs run --project unit testing/setup/install-age.test.ts testing/setup/configure-backup-tools.test.ts ops/backup/age.test.ts ops/backup/archive.test.ts
+START_UTC: 2026-11-04T02:17:59.6441203Z
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  4 passed (4)
+      Tests  52 passed (52)
+   Start at  23:18:00
+   Duration  1.46s (tests 55%, setup 40%, import 2%, transform 2%, worker 1%)
+
+EXIT_CODE: 0
+END_UTC: 2026-11-04T02:18:01.6890042Z

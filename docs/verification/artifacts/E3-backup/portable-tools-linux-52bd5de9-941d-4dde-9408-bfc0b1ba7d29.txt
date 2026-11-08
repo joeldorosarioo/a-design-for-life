@@ -1,0 +1,4 @@
+{"ok":false,"runId":"52bd5de9-941d-4dde-9408-bfc0b1ba7d29","failedStage":"verified Linux installation","errorCode":"consumer-assertion-failed","preIdentityToolFailure":"Verified age executable could not report its version","diagnostic":{"tmpMountFlags":"rw,nosuid,nodev,noexec,relatime","tmpSuperOptions":"tmpfs tmpfs rw","binaryMode":"755","nativeVersionErrorCode":"EACCES","nativeVersionStatus":null},"privateDetailsOmitted":true}
+
+EXIT_CODE: 1
+CONTAINER_REMOVAL_VERIFIED: true

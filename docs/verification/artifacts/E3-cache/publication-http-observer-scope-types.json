@@ -1,0 +1,7 @@
+{
+  "command": "& 'E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe' '.\\node_modules\\typescript\\lib\\tsc.js' '--project' 'C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\publication-http-observer-e2e.tsconfig.json' '--noEmit' '--pretty' 'false'",
+  "startedAt": "2026-11-04T04:06:41.7332043+00:00",
+  "finishedAt": "2026-11-04T04:06:47.5609538+00:00",
+  "exitCode": 0,
+  "log": "publication-http-observer-scope-types.txt"
+}

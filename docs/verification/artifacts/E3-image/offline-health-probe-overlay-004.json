@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-04T04:54:38.873Z",
+  "runId": "e3a0d42b-1d47-4c42-9f0e-3f858c9e29fa",
+  "imageId": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "containerId": "2d3664b51b5781291a69f58c623b0da6d32abdfdc8628b606ab4807f10064226",
+  "hostPorts": false,
+  "network": "none",
+  "database": "unreachable container loopback port9",
+  "probeOverlaySha256": "6b023f8568ef95de0f095754835c8ee02dd6b50fd6334ad4d20254978184c8e2",
+  "ambientProxy": "unreachable container loopback port9",
+  "checks": [
+    {
+      "method": "GET",
+      "status": 200,
+      "bodyBytes": 18
+    },
+    {
+      "method": "HEAD",
+      "status": 200,
+      "bodyBytes": 0
+    }
+  ],
+  "health": "healthy",
+  "healthyAfterMs": 6470,
+  "embeddedProbeExit": 0,
+  "containerRemoved": true
+}

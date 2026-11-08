@@ -1,0 +1,172 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/run.test.ts; explicit private tool fixture configured (no identity contents)
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/run.test.ts (7 tests | 7 failed) 71ms
+   × refuses unregistered injected source storage before capture or repository changes 22ms
+   × refuses source bytes in the backup repository physical namespace before capture 9ms
+   × refuses a draft without source fingerprint before a source operation 8ms
+   × creates an actual age encrypted complete set from exact captured bytes under a source deletion fence 9ms
+   × does not delete the previous valid set when a later ciphertext upload fails 8ms
+   × retains recent history and removes old encrypted sets only after the new complete set is verified 7ms
+   × rejects a non-custom database dump before any completion marker 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > refuses unregistered injected source storage before capture or repository changes
+AssertionError: promise resolved "{ marker: {}, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "durationMs": 0,
++   "marker": {},
++   "removedBackupIds": [],
+  }
+
+ ❯ ops/backup/run.test.ts:26:32
+     24| it('refuses unregistered injected source storage before capture or rep…
+     25|  const data=await setup();const input=options(data);input.source={...d…
+     26|  await expect(runBackup(input)).rejects.toThrow(/registered|retention/…
+       |                                ^
+     27| });
+     28| it('refuses source bytes in the backup repository physical namespace b…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > refuses source bytes in the backup repository physical namespace before capture
+AssertionError: promise resolved "{ marker: {}, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "durationMs": 0,
++   "marker": {},
++   "removedBackupIds": [],
+  }
+
+ ❯ ops/backup/run.test.ts:30:32
+     28| it('refuses source bytes in the backup repository physical namespace b…
+     29|  const data=await setup();const input=options(data);input.source={...d…
+     30|  await expect(runBackup(input)).rejects.toThrow(/distinct|disjoint/i);…
+       |                                ^
+     31| });
+     32| it('refuses a draft without source fingerprint before a source operati…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > refuses a draft without source fingerprint before a source operation
+AssertionError: promise resolved "{ marker: {}, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "durationMs": 0,
++   "marker": {},
++   "removedBackupIds": [],
+  }
+
+ ❯ ops/backup/run.test.ts:33:150
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > creates an actual age encrypted complete set from exact captured bytes under a source deletion fence
+AssertionError: expected undefined to be true // Object.is equality
+
+- Expected:
+true
+
++ Received:
+undefined
+
+ ❯ ops/backup/run.test.ts:38:79
+     36|  const data=await setup();const capture=data.source.capture;
+     37|  data.source.capture=async consume=>{await expect(data.source.storage.…
+     38|  const receipt=await runBackup(options(data));expect(receipt.marker.co…
+       |                                                                               ^
+     39|  const directory=path.join(data.repository.root,'sets',receipt.marker.…
+     40|  expect(ciphertext.subarray(0,22).toString()).toBe('age-encryption.org…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > does not delete the previous valid set when a later ciphertext upload fails
+AssertionError: promise resolved "{ marker: {}, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "durationMs": 0,
++   "marker": {},
++   "removedBackupIds": [],
+  }
+
+ ❯ ops/backup/run.test.ts:47:59
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > retains recent history and removes old encrypted sets only after the new complete set is verified
+AssertionError: expected [] to deeply equal [ undefined ]
+
+- Expected
++ Received
+
+- [
+-   undefined,
+- ]
++ []
+
+ ❯ ops/backup/run.test.ts:53:78
+     51| toolProof('retains recent history and removes old encrypted sets only …
+     52|  const data=await setup();const old=await runBackup({...options(data),…
+     53|  const latest=await runBackup(options(data));expect(latest.removedBack…
+       |                                                                              ^
+     54| });
+     55| it('rejects a non-custom database dump before any completion marker',a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  |unit| ops/backup/run.test.ts > rejects a non-custom database dump before any completion marker
+AssertionError: promise resolved "{ marker: {}, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "durationMs": 0,
++   "marker": {},
++   "removedBackupIds": [],
+  }
+
+ ❯ ops/backup/run.test.ts:57:40
+     55| it('rejects a non-custom database dump before any completion marker',a…
+     56|  const data=await setup();data.source.capture=async consume=>consume({…
+     57|  await expect(runBackup(options(data))).rejects.toThrow(/dump/i);expec…
+       |                                        ^
+     58| });
+     59|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed (7)
+   Start at  22:39:50
+   Duration  534ms (setup 47%, import 25%, tests 18%, transform 9%, worker 1%)
+
+EXIT_CODE: 1

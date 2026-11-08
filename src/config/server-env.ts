@@ -6,6 +6,15 @@ const serverEnvSchema = z
   .object({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     APP_ENV: z.enum(['local', 'test', 'staging', 'production']).default('local'),
+    // Absence is OFF. Enable only after the additive metadata migration is applied.
+    PUBLICATION_RETRIES_ENABLED: z.enum(['true', 'false']).optional(),
+    PUBLICATION_RETRY_WORKER_ENABLED: z.enum(['true', 'false']).optional(),
+    PUBLICATION_HTTP_VERIFICATION_ENABLED: z.enum(['true', 'false']).optional(),
+    PUBLIC_SITE_ENABLED: z.enum(['true', 'false']).optional(),
+    GA4_MEASUREMENT_ID: z
+      .string()
+      .regex(/^G-[A-Z0-9]{4,32}$/)
+      .optional(),
     PAYLOAD_SECRET: z.string().min(32),
     DATABASE_URI: z
       .url()
@@ -55,6 +64,46 @@ const serverEnvSchema = z
     MEDIA_CHECKER_BINARY: z.string().min(1).optional(),
   })
   .superRefine((env, context) => {
+    if (
+      env.PUBLICATION_RETRY_WORKER_ENABLED === 'true' &&
+      env.PUBLICATION_RETRIES_ENABLED !== 'true'
+    )
+      context.addIssue({
+        code: 'custom',
+        path: ['PUBLICATION_RETRY_WORKER_ENABLED'],
+        message: 'Publication retry worker requires enabled migrated retry metadata.',
+      });
+    if (env.PUBLICATION_HTTP_VERIFICATION_ENABLED === 'true') {
+      const database = URL.parse(env.DATABASE_URI);
+      if (
+        env.APP_ENV !== 'test' ||
+        !env.INTERNAL_HTTP_ORIGIN ||
+        database?.hostname !== '127.0.0.1' ||
+        database.port !== '55434' ||
+        database.pathname !== '/adfl_test_runner' ||
+        env.MEDIA_BUCKET !== 'adfl-test-runner'
+      )
+        context.addIssue({
+          code: 'custom',
+          path: ['PUBLICATION_HTTP_VERIFICATION_ENABLED'],
+          message:
+            'HTTP verification requires the isolated test runner and an explicit loopback origin.',
+        });
+    }
+    if (env.APP_ENV === 'production' && env.PUBLIC_SITE_ENABLED === 'true') {
+      if (!env.GA4_MEASUREMENT_ID)
+        context.addIssue({
+          code: 'custom',
+          path: ['GA4_MEASUREMENT_ID'],
+          message: 'Public production requires its approved measurement configuration',
+        });
+      if (!URL.canParse(env.SITE_ORIGIN) || new URL(env.SITE_ORIGIN).protocol !== 'https:')
+        context.addIssue({
+          code: 'custom',
+          path: ['SITE_ORIGIN'],
+          message: 'Public production requires HTTPS',
+        });
+    }
     if (env.NODE_ENV !== 'test' && env.APP_ENV !== 'test') return;
     if (env.APP_ENV !== 'test') {
       context.addIssue({

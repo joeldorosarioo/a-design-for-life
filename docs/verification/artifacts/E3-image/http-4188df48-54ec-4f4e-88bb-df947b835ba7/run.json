@@ -1,0 +1,345 @@
+{
+  "runId": "4188df48-54ec-4f4e-88bb-df947b835ba7",
+  "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+  "startedUTC": "2026-11-04T01:10:30.756Z",
+  "httpOnly": true,
+  "datasets": [
+    {
+      "key": "a",
+      "database": "adfl_test_image_a_4188df4854ec4f4e88bbdf947b835ba7",
+      "bucket": "adfl-test-image-a-4188df4854ec4f4e88bbdf947b835ba7",
+      "origin": "http://127.0.0.1:3103",
+      "port": 3001,
+      "fixture": {
+        "namespace": "public-96fad21d",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-96fad21d",
+            "brand": "Synthetic PT public-96fad21d portfolio",
+            "projects": "Synthetic PT public-96fad21d projects",
+            "about": "Synthetic PT public-96fad21d about",
+            "resume": "Synthetic PT public-96fad21d resume",
+            "contact": "Synthetic PT public-96fad21d contact",
+            "openMenu": "Synthetic PT public-96fad21d open menu",
+            "closeMenu": "Synthetic PT public-96fad21d close menu",
+            "newTab": "Synthetic PT public-96fad21d opens a new tab",
+            "contents": "Synthetic PT public-96fad21d contents",
+            "readCase": "Synthetic PT public-96fad21d read case",
+            "homeTitle": "Synthetic PT public-96fad21d home",
+            "homeEmphasis": "Synthetic PT public-96fad21d editorial emphasis",
+            "aboutTitle": "Synthetic PT public-96fad21d about page",
+            "listingTitle": "Synthetic PT public-96fad21d case list",
+            "contextHeading": "Synthetic PT public-96fad21d context heading",
+            "comparisonHeading": "Synthetic PT public-96fad21d comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "e6a1bfa4-5cf4-4e82-9679-df5f7da5060f",
+            "resumeHref": "/media/e6a1bfa4-5cf4-4e82-9679-df5f7da5060f/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-96fad21d",
+            "brand": "Synthetic EN public-96fad21d portfolio",
+            "projects": "Synthetic EN public-96fad21d projects",
+            "about": "Synthetic EN public-96fad21d about",
+            "resume": "Synthetic EN public-96fad21d resume",
+            "contact": "Synthetic EN public-96fad21d contact",
+            "openMenu": "Synthetic EN public-96fad21d open menu",
+            "closeMenu": "Synthetic EN public-96fad21d close menu",
+            "newTab": "Synthetic EN public-96fad21d opens a new tab",
+            "contents": "Synthetic EN public-96fad21d contents",
+            "readCase": "Synthetic EN public-96fad21d read case",
+            "homeTitle": "Synthetic EN public-96fad21d home",
+            "homeEmphasis": "Synthetic EN public-96fad21d editorial emphasis",
+            "aboutTitle": "Synthetic EN public-96fad21d about page",
+            "listingTitle": "Synthetic EN public-96fad21d case list",
+            "contextHeading": "Synthetic EN public-96fad21d context heading",
+            "comparisonHeading": "Synthetic EN public-96fad21d comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "82146113-2bb7-45b5-9b63-032ee884e399",
+            "resumeHref": "/media/82146113-2bb7-45b5-9b63-032ee884e399/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "0d2a3011-075d-41c2-b600-872fedf808d9",
+            "locales": {
+              "pt": {
+                "contentId": "8ca8e3c5-c596-4922-9598-1d09ac8acc09",
+                "slug": "public-96fad21d-second-pt",
+                "path": "/pt/cases/public-96fad21d-second-pt",
+                "title": "Synthetic PT public-96fad21d second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "e58c040e-a433-4d42-9964-88a3a36deb22",
+                "slug": "public-96fad21d-second-en",
+                "path": "/en/cases/public-96fad21d-second-en",
+                "title": "Synthetic EN public-96fad21d second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "18616d49-402f-444a-a7fe-fc37866da82f",
+            "locales": {
+              "pt": {
+                "contentId": "0bbb7031-be81-4d06-a92f-6b8d45619270",
+                "slug": "public-96fad21d-first-pt",
+                "path": "/pt/cases/public-96fad21d-first-pt",
+                "title": "Synthetic PT public-96fad21d first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "5b6c9516-5408-4289-a768-bd2eb047a475",
+                "slug": "public-96fad21d-first-en",
+                "path": "/en/cases/public-96fad21d-first-en",
+                "title": "Synthetic EN public-96fad21d first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "4f0b12e8-3ee9-4b6d-b2e0-e2f7f9ef48c7",
+            "locales": {
+              "pt": {
+                "contentId": "d37cb17e-bfc9-4504-81f0-e43b559926eb",
+                "slug": "public-96fad21d-ptonly-pt",
+                "path": "/pt/cases/public-96fad21d-ptonly-pt",
+                "title": "Synthetic PT public-96fad21d ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "2bfa619f-1ec3-405e-bba0-70311bf60166",
+                "slug": "public-96fad21d-ptonly-en",
+                "path": "/en/cases/public-96fad21d-ptonly-en",
+                "title": "Synthetic EN public-96fad21d ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "3ad7c689-926b-462a-a6d0-55a736884e12",
+          "email": "editor-4af97a61-1770-493f-a213-711fa4f9cdc1@example.invalid"
+        },
+        "image": {
+          "id": "22db4f1c-74e8-4751-8091-c7e015f0404b",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "e6a1bfa4-5cf4-4e82-9679-df5f7da5060f",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "e432c922-e2bd-4e6e-ab51-b720745a6e7b",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "3311a22397e4f2aa3c8c457c84eacfb8d75bd6e053691eaa3e0fabf7393e3693",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-a-4188df4854ec4f4e88bbdf947b835ba7\\adfl_test_image_a_4188df4854ec4f4e88bbdf947b835ba7",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\3311a22397e4f2aa3c8c457c84eacfb8d75bd6e053691eaa3e0fabf7393e3693",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\4188df48-54ec-4f4e-88bb-df947b835ba7\\a\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\4188df48-54ec-4f4e-88bb-df947b835ba7\\a\\optimizer",
+      "captureHash": "7e4efa2678f792c6",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-a-4188df4854ec4f4e88bbdf947b835ba7/adfl_test_image_a_4188df4854ec4f4e88bbdf947b835ba7",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    },
+    {
+      "key": "b",
+      "database": "adfl_test_image_b_4188df4854ec4f4e88bbdf947b835ba7",
+      "bucket": "adfl-test-image-b-4188df4854ec4f4e88bbdf947b835ba7",
+      "origin": "http://127.0.0.1:3104",
+      "port": 3002,
+      "fixture": {
+        "namespace": "public-d4025365",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-d4025365",
+            "brand": "Synthetic PT public-d4025365 portfolio",
+            "projects": "Synthetic PT public-d4025365 projects",
+            "about": "Synthetic PT public-d4025365 about",
+            "resume": "Synthetic PT public-d4025365 resume",
+            "contact": "Synthetic PT public-d4025365 contact",
+            "openMenu": "Synthetic PT public-d4025365 open menu",
+            "closeMenu": "Synthetic PT public-d4025365 close menu",
+            "newTab": "Synthetic PT public-d4025365 opens a new tab",
+            "contents": "Synthetic PT public-d4025365 contents",
+            "readCase": "Synthetic PT public-d4025365 read case",
+            "homeTitle": "Synthetic PT public-d4025365 home",
+            "homeEmphasis": "Synthetic PT public-d4025365 editorial emphasis",
+            "aboutTitle": "Synthetic PT public-d4025365 about page",
+            "listingTitle": "Synthetic PT public-d4025365 case list",
+            "contextHeading": "Synthetic PT public-d4025365 context heading",
+            "comparisonHeading": "Synthetic PT public-d4025365 comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "3cebdd1d-a69b-443f-9a3b-ea7f21765b72",
+            "resumeHref": "/media/3cebdd1d-a69b-443f-9a3b-ea7f21765b72/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-d4025365",
+            "brand": "Synthetic EN public-d4025365 portfolio",
+            "projects": "Synthetic EN public-d4025365 projects",
+            "about": "Synthetic EN public-d4025365 about",
+            "resume": "Synthetic EN public-d4025365 resume",
+            "contact": "Synthetic EN public-d4025365 contact",
+            "openMenu": "Synthetic EN public-d4025365 open menu",
+            "closeMenu": "Synthetic EN public-d4025365 close menu",
+            "newTab": "Synthetic EN public-d4025365 opens a new tab",
+            "contents": "Synthetic EN public-d4025365 contents",
+            "readCase": "Synthetic EN public-d4025365 read case",
+            "homeTitle": "Synthetic EN public-d4025365 home",
+            "homeEmphasis": "Synthetic EN public-d4025365 editorial emphasis",
+            "aboutTitle": "Synthetic EN public-d4025365 about page",
+            "listingTitle": "Synthetic EN public-d4025365 case list",
+            "contextHeading": "Synthetic EN public-d4025365 context heading",
+            "comparisonHeading": "Synthetic EN public-d4025365 comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "cc2bcb22-e5b7-48f8-abd2-81ff05ddde94",
+            "resumeHref": "/media/cc2bcb22-e5b7-48f8-abd2-81ff05ddde94/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "31eeedb0-bfc5-4f2f-b589-e77cb92c61c4",
+            "locales": {
+              "pt": {
+                "contentId": "c1b73611-cb1f-40d8-87e4-8ba9d2e55d42",
+                "slug": "public-d4025365-second-pt",
+                "path": "/pt/cases/public-d4025365-second-pt",
+                "title": "Synthetic PT public-d4025365 second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "3850fbc1-9cb2-4e89-9954-71607723db03",
+                "slug": "public-d4025365-second-en",
+                "path": "/en/cases/public-d4025365-second-en",
+                "title": "Synthetic EN public-d4025365 second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "ef689aca-dd5a-4b5e-8bf6-41f26a769a70",
+            "locales": {
+              "pt": {
+                "contentId": "64d1513b-a8f4-4eb3-9fce-e9bd6629dfb6",
+                "slug": "public-d4025365-first-pt",
+                "path": "/pt/cases/public-d4025365-first-pt",
+                "title": "Synthetic PT public-d4025365 first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "ccb3cbe1-088b-4608-96a4-5c88ea1e1f1b",
+                "slug": "public-d4025365-first-en",
+                "path": "/en/cases/public-d4025365-first-en",
+                "title": "Synthetic EN public-d4025365 first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "707fe601-7f56-42cd-8845-32cc02b55851",
+            "locales": {
+              "pt": {
+                "contentId": "8c7babc5-fe36-41dd-a5e5-06d508ee2fab",
+                "slug": "public-d4025365-ptonly-pt",
+                "path": "/pt/cases/public-d4025365-ptonly-pt",
+                "title": "Synthetic PT public-d4025365 ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "0b100eda-8749-4d6f-b671-2e51781dc78f",
+                "slug": "public-d4025365-ptonly-en",
+                "path": "/en/cases/public-d4025365-ptonly-en",
+                "title": "Synthetic EN public-d4025365 ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "cbb7cf7d-146e-47d8-ab01-3724a0c55503",
+          "email": "editor-a97aa764-be4e-44c6-9c45-b9062c522481@example.invalid"
+        },
+        "image": {
+          "id": "331a0df9-cc97-419b-89fa-303649d94707",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "3cebdd1d-a69b-443f-9a3b-ea7f21765b72",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "9685b090-4ed1-4ead-ace8-4229b97b8ef9",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "f3a9adcea48cc0c480d8a1f59f56f5a694be3a8a58378d4ca3ee974b8c58ea73",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-b-4188df4854ec4f4e88bbdf947b835ba7\\adfl_test_image_b_4188df4854ec4f4e88bbdf947b835ba7",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\f3a9adcea48cc0c480d8a1f59f56f5a694be3a8a58378d4ca3ee974b8c58ea73",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\4188df48-54ec-4f4e-88bb-df947b835ba7\\b\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\4188df48-54ec-4f4e-88bb-df947b835ba7\\b\\optimizer",
+      "captureHash": "27be2be1a1a7fbdf",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-b-4188df4854ec4f4e88bbdf947b835ba7/adfl_test_image_b_4188df4854ec4f4e88bbdf947b835ba7",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    }
+  ],
+  "containers": [
+    {
+      "id": "734d8f615711f1ff47bce810b912fe1a9f1f2a8c229285d128089deb7ff58f52",
+      "dataset": "a",
+      "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+      "user": "10001:10001",
+      "networkMode": "container:9e87514c82aefa306284b4e241639f518567bc78ecda8e4ed758901bde450efd",
+      "portsPublished": false,
+      "labels": {
+        "runId": "4188df48-54ec-4f4e-88bb-df947b835ba7",
+        "purpose": "image-local-verification"
+      }
+    },
+    {
+      "id": "32413348b104d2397980547cc7375f7e90d2d8efa92a30a980f79aef2253e7ef",
+      "dataset": "b",
+      "imageId": "sha256:2be04b50f02eaf14415787b051b219ee0a62d858ec74f9858096ada2d23f1441",
+      "user": "10001:10001",
+      "networkMode": "container:9e87514c82aefa306284b4e241639f518567bc78ecda8e4ed758901bde450efd",
+      "portsPublished": false,
+      "labels": {
+        "runId": "4188df48-54ec-4f4e-88bb-df947b835ba7",
+        "purpose": "image-local-verification"
+      }
+    }
+  ],
+  "status": "passed-http-consumer",
+  "databaseContainerId": "9e87514c82aefa306284b4e241639f518567bc78ecda8e4ed758901bde450efd",
+  "databaseNetworkId": "2f2bb08831ca40982b45a8cc4cee78f90c72c12212d6d80770d740ef890e2028",
+  "databaseHostPort": 55434,
+  "cleanup": [
+    {
+      "id": "32413348b104d2397980547cc7375f7e90d2d8efa92a30a980f79aef2253e7ef",
+      "stoppedAndRemoved": true
+    },
+    {
+      "id": "734d8f615711f1ff47bce810b912fe1a9f1f2a8c229285d128089deb7ff58f52",
+      "stoppedAndRemoved": true
+    }
+  ],
+  "databaseStoppedAndRemoved": true,
+  "finishedUTC": "2026-11-04T01:11:11.950Z",
+  "fullBrowserImageE2E": "pending"
+}

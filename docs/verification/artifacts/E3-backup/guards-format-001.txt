@@ -1,0 +1,4 @@
+COMMAND: pnpm exec prettier --check ops/backup/contracts.ts ops/backup/retention.ts ops/backup/retention.test.ts ops/backup/restore-target.ts ops/backup/restore-target.test.ts
+Checking formatting...
+All matched files use Prettier code style!
+EXIT_CODE: 0

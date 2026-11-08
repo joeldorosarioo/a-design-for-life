@@ -14,6 +14,7 @@ export type PublicationCoordinatorOptions = {
     options: { retirePending: boolean },
   ) => Promise<void>;
   beforePromote?: (operation: PublicationUpdate) => Promise<void>;
+  verify?: (root: PublicRoot, operation: PublicationUpdate) => Promise<void>;
 };
 export async function requirePublicationTransaction(req: PayloadRequest) {
   const transactionID = await req.transactionID;
@@ -150,6 +151,8 @@ export function createPublicationCoordinator(options: PublicationCoordinatorOpti
                   data: { state: 'superseded' },
                 });
               await options.reconcile?.(confirmed, operation, fresh, { retirePending: true });
+              // A failed observation leaves the durable root recoverable and SQL pending.
+              await options.verify?.(confirmed, operation);
               await req.payload.db.updateOne({
                 collection: operation.subjectCollection,
                 req: fresh,

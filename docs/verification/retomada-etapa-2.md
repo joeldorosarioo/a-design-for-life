@@ -1,3 +1,5 @@
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada. E3 autorizada e depois pausada até reunir as informações necessárias. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). O relatório abaixo preserva o snapshot anterior à aprovação.
+
 > **Aviso histórico — atualização de 03/11/2026.** A pausa descrita abaixo foi encerrada pela autorização expressa de retomada de E2.1–E2.6. O texto antigo permanece como histórico; o estado atual está em [A2](A2.md) e no [progresso da etapa 2](progresso-etapa-2.json). A etapa 3 continua aguardando aprovação expressa de A2.
 >
 > A fixture privada V5 teve restauração ensaiada e restore real pós-gates 003, com 10 rascunhos, 7 mídias Native, Root nulo, 0 operações públicas e dados/objetos conferidos. O percurso atual inclui gates locais, CI Linux aprovado, capturas/auditorias V9, manual 008, desempenho 008 e smoke 008/004; não se reutilizam os snapshots antigos como se fossem atuais.

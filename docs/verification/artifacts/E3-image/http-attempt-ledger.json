@@ -1,0 +1,47 @@
+[
+  {
+    "receiptSha256": "702b469720c26af6c0eb5b2039f67f5f5dd4251accd54182d4dd35bb13e9c6cc",
+    "appCount": 0,
+    "failure": "Isolated native child failed: a-seed-private.log",
+    "allAppsRemoved": true,
+    "ownedDatabaseRemoved": true,
+    "runId": "a1912477-8ed7-4405-aac3-25a2da4a5bac",
+    "status": "failed"
+  },
+  {
+    "receiptSha256": "2145ee80cc3e3e67e7cc07d0f6250b67054e4a0090312958d0bb8f2804314a12",
+    "appCount": 0,
+    "failure": "Isolated native child failed: a-seed-private.log",
+    "allAppsRemoved": true,
+    "ownedDatabaseRemoved": true,
+    "runId": "cd1d3b95-55e5-415c-b8b8-4c32fd50c622",
+    "status": "failed"
+  },
+  {
+    "receiptSha256": "ac1fdd14a7e0eb684ae2a2441f97ae2662a30936f106fbe79cd3e7260e97786c",
+    "appCount": 0,
+    "failure": "Isolated native child failed: a-seed-private.log",
+    "allAppsRemoved": true,
+    "ownedDatabaseRemoved": true,
+    "runId": "2779258b-708a-42e6-8e1a-fbb10ce16141",
+    "status": "failed"
+  },
+  {
+    "receiptSha256": "28d32e4b4c419e65b013550baec4309b10cf497434095e336a500579feed19c4",
+    "appCount": 0,
+    "failure": "Isolated native child failed: a-seed-private.log",
+    "allAppsRemoved": true,
+    "ownedDatabaseRemoved": true,
+    "runId": "2c198b0c-c44a-4f48-bef5-e10e63f29dca",
+    "status": "failed"
+  },
+  {
+    "receiptSha256": "bb553a3ba743cf97414ec2f386b84a2c3665cc557e103e0b5bca72ca6ed77f6c",
+    "appCount": 2,
+    "failure": "HTTP consumer failed: a/initial",
+    "allAppsRemoved": true,
+    "ownedDatabaseRemoved": true,
+    "runId": "37a4425a-2469-4c88-bcdc-33794be2b872",
+    "status": "failed"
+  }
+]

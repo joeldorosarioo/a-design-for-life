@@ -1,0 +1,9 @@
+COMMAND: pnpm exec eslint ops/backup/contracts.ts ops/backup/contracts.test.ts ops/backup/retention.ts ops/backup/repository.ts ops/backup/repository.test.ts ops/backup/run.ts ops/backup/run.test.ts ops/backup/restore.ts ops/backup/restore.test.ts ops/backup/local-target.ts ops/backup/local-target.test.ts src/helpers/storage/object-retention.ts src/helpers/storage/object-retention.test.ts src/helpers/storage/object-storage.ts src/helpers/storage/r2-storage.ts
+
+E:\a-design-for-life\ops\backup\local-target.test.ts
+  2:10  warning  'mkdir' is defined but never used    @typescript-eslint/no-unused-vars
+  2:17  warning  'mkdtemp' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+EXIT_CODE: 0

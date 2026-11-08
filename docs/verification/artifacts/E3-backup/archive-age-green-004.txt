@@ -1,0 +1,11 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/tools.test.ts ops/backup/archive.test.ts ops/backup/age.test.ts (actual tool fixture v2 configured)
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  3 passed (3)
+      Tests  29 passed (29)
+   Start at  22:32:19
+   Duration  1.53s (tests 67%, setup 27%, transform 3%, import 3%, worker 1%)
+
+EXIT_CODE: 0

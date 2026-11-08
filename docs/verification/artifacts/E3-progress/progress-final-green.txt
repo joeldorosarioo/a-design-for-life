@@ -1,0 +1,49 @@
+Command: pnpm test:stage-progress
+Node: 24.22.2; pnpm: 12.10.1
+Exit: 0
+
+$ node --test scripts/recalculate-stage-progress.test.mjs
+✔ explicit stage 3 writes its own plan counts, ledger and independent approval without changing stage 2 (260.1411ms)
+✔ default stage 2 retains 29/30, accepted A2 text and its authorization notice independently of incomplete work (201.2922ms)
+✔ stage 2 --check accepts current counts without any write (95.4792ms)
+✔ stage 3 --check accepts current counts without any write (108.5959ms)
+✔ --check rejects stale completedItems without writing (129.9084ms)
+✔ --check rejects stale totalItems without writing (117.8763ms)
+✔ --check rejects stale percentage without writing (108.8907ms)
+✔ --check rejects stale closedTasks without writing (112.6927ms)
+✔ --check rejects stale totalTasks without writing (127.5813ms)
+✔ rejects missing criterion before any write (106.7123ms)
+✔ rejects duplicate criterion before any write (111.5576ms)
+✔ rejects foreign criterion before any write (115.3471ms)
+✔ rejects nonboolean completion before any write (104.4263ms)
+✔ rejects completed without evidence before any write (99.411ms)
+✔ rejects nonstrings as evidence before any write (93.7878ms)
+✔ rejects missing summary before any write (101.2868ms)
+✔ rejects missing approval before any write (117.8139ms)
+✔ rejects wrong stage before any write (102.9679ms)
+✔ rejects malformed arguments ["--stage"] without writing (93.1204ms)
+✔ rejects malformed arguments ["--stage","4"] without writing (92.1365ms)
+✔ rejects malformed arguments ["--stage","03"] without writing (90.6997ms)
+✔ rejects malformed arguments ["--stage","2x"] without writing (93.5942ms)
+✔ rejects malformed arguments ["--stage=3"] without writing (88.9075ms)
+✔ rejects malformed arguments ["--stage","3","--stage","2"] without writing (90.1112ms)
+✔ rejects malformed arguments ["--check","--check"] without writing (93.1516ms)
+✔ rejects malformed arguments ["--unknown"] without writing (85.076ms)
+✔ rejects malformed arguments ["3"] without writing (85.1904ms)
+✔ rejects malformed arguments ["--stage","--check"] without writing (83.4827ms)
+✔ rejects malformed arguments ["--root",".."] without writing (82.5403ms)
+✔ rejects plan with duplicate task before writing (93.7997ms)
+✔ rejects plan with missing task before writing (98.7558ms)
+✔ rejects plan with missing original criterion before writing (92.9975ms)
+✔ missing input docs/verification/progresso-etapa-3.json cannot cause partial updates (85.2978ms)
+✔ missing input docs/verification/execucao-etapa-3.md cannot cause partial updates (85.9198ms)
+✔ missing ledger progress marker cannot cause partial updates (85.3175ms)
+✔ all completed criteria still leave input A3 approval pending (190.1197ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3998.8558

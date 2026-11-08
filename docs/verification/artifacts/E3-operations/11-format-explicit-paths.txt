@@ -1,0 +1,9 @@
+src/helpers/logger/index.ts 26ms (unchanged)
+src/helpers/logger/logger.test.ts 47ms (unchanged)
+src/helpers/logger/logger.ts 16ms (unchanged)
+src/helpers/logger/redact.ts 5ms (unchanged)
+src/app/(portfolio)/health/route.ts 2ms (unchanged)
+src/app/(portfolio)/health/route.test.ts 5ms
+docs/runbooks/saude-e-logs.md 43ms (unchanged)
+
+RECEIPT UTC=2026-11-03T23:55:26.0354854Z EXIT=0 COMMAND=pinned-node node_modules/prettier/bin/prettier.cjs --write explicit-seven-scoped-files

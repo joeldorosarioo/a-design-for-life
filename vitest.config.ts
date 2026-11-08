@@ -15,7 +15,7 @@ export default defineConfig({
         resolve: { alias: aliases },
         test: {
           name: 'unit',
-          include: ['src/**/*.test.{ts,tsx}'],
+          include: ['src/**/*.test.{ts,tsx}', 'testing/setup/**/*.test.ts', 'ops/**/*.test.ts'],
           exclude: [
             'src/**/*.integration.test.*',
             'src/**/*.e2e.test.*',

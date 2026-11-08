@@ -1,0 +1,2 @@
+COMMAND: pnpm exec tsc --noEmit --incremental false; no Native runner started
+EXIT_CODE: 0

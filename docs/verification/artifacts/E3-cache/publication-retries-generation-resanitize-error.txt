@@ -1,0 +1,19 @@
+E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\config\sanitize.ts:267
+      throw new DuplicateCollection('slug', config.collections![i]!.slug)
+            ^
+
+DuplicateCollection: Collection slug already in use: "payload-kv"
+    at sanitizeConfig (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\config\sanitize.ts:267:13)
+    at async buildConfig (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\config\build.ts:19:10)
+    at async BasePayload.init (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\index.ts:840:19)
+    at async getPayload (E:\a-design-for-life\node_modules\.pnpm\payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0\node_modules\payload\src\index.ts:1226:22)
+    at async <anonymous> (C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\generate-publication-retries.mts:16:17) {
+  data: null,
+  isOperational: true,
+  isPublic: false,
+  status: 500,
+  payloadInitError: true,
+  [cause]: null
+}
+
+Node.js v24.22.2

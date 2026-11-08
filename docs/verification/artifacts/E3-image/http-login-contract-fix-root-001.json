@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-04T01:08:07.827Z",
+  "node": "24.22.2",
+  "cause": "Temporary verifier required a JWT body field; approved users.collection intentionally has auth.removeTokenFromResponses=true.",
+  "correction": "Require absent response token, expected HttpOnly/SameSite session cookie, and actual users/me matching through that cookie; never print/persist cookie/token.",
+  "productChanged": false,
+  "previousHTTPAttempt": "006",
+  "rerunExecuted": false
+}

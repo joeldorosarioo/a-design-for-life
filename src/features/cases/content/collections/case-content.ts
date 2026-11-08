@@ -22,6 +22,7 @@ import { imageUseField } from '@/features/media-library/server';
 import { stableReadingKeys } from '../hooks/stable-reading-keys';
 import { rejectSameOriginExternalLinks } from '../hooks/reject-same-origin-external-links';
 import { caseBlocks } from '../blocks/case-blocks';
+import { publishedCaseAggregateEndpoint } from '../../server/published-case-aggregate';
 
 export const CaseContent: CollectionConfig = protectEditorialCollection({
   slug: 'case-content',
@@ -37,6 +38,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
   },
 
   versions: { drafts: true },
+  endpoints: [publishedCaseAggregateEndpoint],
 
   indexes: [{ fields: ['case', 'locale'], unique: true }],
 

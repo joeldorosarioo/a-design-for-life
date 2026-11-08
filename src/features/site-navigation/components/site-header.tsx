@@ -26,6 +26,7 @@ export function SiteHeader({
                 <a
                   className={styles.navigationLink}
                   href={item.destination.href}
+                  data-analytics-purpose={item.purpose === 'resume' ? 'resume' : undefined}
                   aria-label={
                     item.destination.kind === 'resume'
                       ? `${item.label} (${navigation.controls.newTabLabel})`

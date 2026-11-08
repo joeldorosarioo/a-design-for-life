@@ -2,19 +2,25 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import * as payloadModule from 'payload';
 import type { PayloadRequest } from 'payload';
 import { installPayloadProvider } from '@/helpers/payload/runtime';
+import { logger } from '@/helpers/logger';
 import { mediaResponse, nativeMediaFile, serveMedia } from './media-response';
 
 const origin = 'http://127.0.0.1:3101';
 const mediaId = 'd6f3fa80-cb87-4dc4-8ecb-01b084343ee1';
 
 beforeEach(() => {
-  vi.spyOn(console, 'error').mockImplementation(() => undefined);
+  vi.spyOn(logger, 'error').mockReturnValue({ written: true, correlationId: mediaId });
 });
 afterEach(() => {
   vi.restoreAllMocks();
 });
 
 async function expectUnavailable(response: Response) {
+  expect(logger.error).toHaveBeenCalledExactlyOnceWith({
+    operation: 'media.delivery',
+    result: 'unavailable',
+    context: { statusCode: 503, errorCode: 'unavailable' },
+  });
   expect(response.status).toBe(503);
   expect(response.headers.get('cache-control')).toBe('private, no-store');
   expect(response.headers.get('x-content-type-options')).toBe('nosniff');

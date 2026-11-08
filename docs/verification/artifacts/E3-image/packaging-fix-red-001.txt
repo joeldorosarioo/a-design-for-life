@@ -1,0 +1,182 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/next-dist-value.test.ts (12 tests | 12 failed) 11ms
+   × selects the ordinary output and the exact owned UUID test namespace 3ms
+   × refuses an unowned output namespace:  3ms
+   × refuses an unowned output namespace: .next 0ms
+   × refuses an unowned output namespace: public/build 1ms
+   × refuses an unowned output namespace: .work/../.next 0ms
+   × refuses an unowned output namespace: ../outside 0ms
+   × refuses an unowned output namespace: /tmp/build 0ms
+   × refuses an unowned output namespace: .work/next-tests/../../public 0ms
+   × refuses an unowned output namespace: .work/next-tests/not-a-run 0ms
+   × refuses an unowned output namespace: .work/next-tests/443F2F55-41C5-499A-9C24-A038128133F7 0ms
+   × refuses an unowned output namespace: .work/next-tests/443f2f55-41c5-199a-9c24-a038128133f7 0ms
+   × refuses an unowned output namespace: .work/next-tests/443f2f55-41c5-499a-1c24-a038128133f7 0ms
+ ❯ |unit| ops/image/assemble-standalone.test.ts (4 tests | 4 failed) 89ms
+   × restores the optional dependency graph so the real module loader resolves traced canvas 28ms
+   × refuses an installed optional dependency outside the workspace 19ms
+   × refuses missing traced destination files rather than copying unbounded dependencies 16ms
+   × refuses a destination parent link that escapes the standalone root 24ms
+ ❯ |unit| src/features/media-library/server/media-runtime-build-boundary.test.ts (2 tests | 2 failed) 8ms
+   × configures private media when workspace traversal is unavailable 6ms
+   × still refuses media inside the isolated static output without filesystem traversal 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/image/assemble-standalone.test.ts > restores the optional dependency graph so the real module loader resolves traced canvas
+Error: Not implemented
+ ❯ assembleOptionalCanvas ops/image/assemble-standalone.mjs:2:9
+      1| export async function assembleOptionalCanvas() {
+      2|   throw new Error('Not implemented');
+       |         ^
+      3| }
+      4|
+ ❯ ops/image/assemble-standalone.test.ts:53:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  |unit| ops/image/assemble-standalone.test.ts > refuses an installed optional dependency outside the workspace
+AssertionError: expected [Function] to throw error matching /outside/i but got 'Not implemented'
+
+- Expected:
+/outside/i
+
++ Received:
+"Not implemented"
+
+ ❯ ops/image/assemble-standalone.test.ts:64:75
+     62| it('refuses an installed optional dependency outside the workspace', a…
+     63|   const selected = await fixture({ externalCanvas: true });
+     64|   await expect(assembleOptionalCanvas(selected.root, selected.standalo…
+       |                                                                           ^
+     65| });
+     66|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+ FAIL  |unit| ops/image/assemble-standalone.test.ts > refuses missing traced destination files rather than copying unbounded dependencies
+AssertionError: expected [Function] to throw error matching /missing/i but got 'Not implemented'
+
+- Expected:
+/missing/i
+
++ Received:
+"Not implemented"
+
+ ❯ ops/image/assemble-standalone.test.ts:69:75
+     67| it('refuses missing traced destination files rather than copying unbou…
+     68|   const selected = await fixture({ missingTarget: true });
+     69|   await expect(assembleOptionalCanvas(selected.root, selected.standalo…
+       |                                                                           ^
+     70| });
+     71|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/18]⎯
+
+ FAIL  |unit| ops/image/assemble-standalone.test.ts > refuses a destination parent link that escapes the standalone root
+AssertionError: expected [Function] to throw error matching /outside/i but got 'Not implemented'
+
+- Expected:
+/outside/i
+
++ Received:
+"Not implemented"
+
+ ❯ ops/image/assemble-standalone.test.ts:74:75
+     72| it('refuses a destination parent link that escapes the standalone root…
+     73|   const selected = await fixture({ escapedDestination: true });
+     74|   await expect(assembleOptionalCanvas(selected.root, selected.standalo…
+       |                                                                           ^
+     75| });
+     76|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/18]⎯
+
+ FAIL  |unit| src/config/next-dist-value.test.ts > selects the ordinary output and the exact owned UUID test namespace
+Error: Not implemented
+ ❯ selectNextDistDir src/config/next-dist-value.ts:2:9
+      1| export function selectNextDistDir(_input: Partial<NodeJS.ProcessEnv>):…
+      2|   throw new Error('Not implemented');
+       |         ^
+      3| }
+      4|
+ ❯ src/config/next-dist-value.test.ts:5:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/18]⎯
+
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: 
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .next
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: public/build
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .work/../.next
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: ../outside
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: /tmp/build
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .work/next-tests/../../public
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .work/next-tests/not-a-run
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .work/next-tests/443F2F55-41C5-499A-9C24-A038128133F7
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .work/next-tests/443f2f55-41c5-199a-9c24-a038128133f7
+ FAIL  |unit| src/config/next-dist-value.test.ts > refuses an unowned output namespace: .work/next-tests/443f2f55-41c5-499a-1c24-a038128133f7
+AssertionError: expected [Function] to throw error matching /build output/i but got 'Not implemented'
+
+- Expected:
+/build output/i
+
++ Received:
+"Not implemented"
+
+ ❯ src/config/next-dist-value.test.ts:17:69
+     15|   '.work/next-tests/443f2f55-41c5-499a-1c24-a038128133f7',
+     16| ])('refuses an unowned output namespace: %s', (selected) => {
+     17|   expect(() => selectNextDistDir({ NEXT_TEST_DIST_DIR: selected })).to…
+       |                                                                     ^
+     18| });
+     19|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/18]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-runtime-build-boundary.test.ts > configures private media when workspace traversal is unavailable
+AssertionError: expected [Function] to not throw an error but 'Error: Linked Next build output ances…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Linked Next build output ancestor refused."
+
+ ❯ src/features/media-library/server/media-runtime-build-boundary.test.ts:19:11
+     17|     root: path.resolve('.work/private-media/runtime-boundary'),
+     18|     checkerBinary: '/synthetic/qpdf',
+     19|   })).not.toThrow();
+       |           ^
+     20|   expect(lstatSync).not.toHaveBeenCalled();
+     21|   expect(realpathSync).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/18]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-runtime-build-boundary.test.ts > still refuses media inside the isolated static output without filesystem traversal
+AssertionError: expected [Function] to throw error matching /public|static/i but got 'Linked Next build output ancestor ref…'
+
+- Expected:
+/public|static/i
+
++ Received:
+"Linked Next build output ancestor refused."
+
+ ❯ src/features/media-library/server/media-runtime-build-boundary.test.ts:27:123
+     25|   const selected = '.work/next-tests/443f2f55-41c5-499a-9c24-a03812813…
+     26|   vi.stubEnv('NEXT_TEST_DIST_DIR', selected);
+     27|   expect(() => installMediaRuntime({ root: path.resolve(selected, 'sta…
+       |                                                                                                                           ^
+     28|   expect(lstatSync).not.toHaveBeenCalled();
+     29|   expect(realpathSync).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/18]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  18 failed (18)
+   Start at  21:29:09
+   Duration  533ms (setup 63%, transform 18%, tests 10%, import 7%, worker 1%)
+
+EXIT_CODE=1

@@ -1,0 +1,38 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/tools.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/tools.test.ts (6 tests | 2 failed) 10206ms
+   × streams real input to an exclusive output file 5018ms
+   × refuses failed process output without exposing stderr or retaining a partial destination 5011ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > streams real input to an exclusive output file
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ ops/backup/tools.test.ts:12:1
+     10|   expect(result.stdout).toBe('literal $() ; & value');
+     11| });
+     12| it('streams real input to an exclusive output file', async () => {
+       | ^
+     13|   const root = await scratch(), input = path.join(root, 'input'), outp…
+     14|   await writeFile(input, Buffer.alloc(200_000, 7));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| ops/backup/tools.test.ts > refuses failed process output without exposing stderr or retaining a partial destination
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ ops/backup/tools.test.ts:25:1
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 4 passed (6)
+   Start at  22:25:46
+   Duration  10.57s (tests 98%, setup 2%)
+
+EXIT_CODE: 1

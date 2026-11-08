@@ -1,0 +1,167 @@
+{
+  "config": {
+    "argv": [
+      "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+      "E:\\a-design-for-life\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "src/config/publication-worker.e2e.test.ts",
+      "--project=chromium",
+      "--workers=1",
+      "--reporter=list,json"
+    ],
+    "configFile": "E:\\a-design-for-life\\playwright.config.ts",
+    "rootDir": "E:/a-design-for-life/src",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "E:\\a-design-for-life\\testing\\setup\\playwright.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/a-design-for-life/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "E:/a-design-for-life/src",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.e2e.test.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "E:\\a-design-for-life\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "E:\\a-design-for-life\\src",
+        "snapshotDir": "E:\\a-design-for-life\\src",
+        "testIgnore": [],
+        "testMatch": "**/*.e2e.test.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3101",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "config\\publication-worker.e2e.test.ts",
+      "file": "config/publication-worker.e2e.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "starts the opted-in production Next worker during origin outage and drains the persisted intention after recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "buffer": "KG5vZGU6NzI4OCkgV2FybmluZzogVGhlICdOT19DT0xPUicgZW52IGlzIGlnbm9yZWQgZHVlIHRvIHRoZSAnRk9SQ0VfQ09MT1InIGVudiBiZWluZyBzZXQuCihVc2UgYG5vZGUgLS10cmFjZS13YXJuaW5ncyAuLi5gIHRvIHNob3cgd2hlcmUgdGhlIHdhcm5pbmcgd2FzIGNyZWF0ZWQpCg=="
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-04T03:46:17.435Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "E3-publication-worker-startup.json",
+                      "contentType": "application/json",
+                      "body": "eyJydW5JZCI6Ijg3YTE1MzQ1LTM3YWUtNDZiNy05ZDdkLTRmMWYzOWYxMDkwNyIsImNvbnRhaW5lcklkIjoiZTEyMjM3ODUwYTMxNjk2MGIzOWMyODM1MmE3N2FkNTA5OWUxMmM1NWM4MmVmYWIzMjAyNGIyNDk4Y2U3MDJmZCIsIm5ldHdvcmtJZCI6IjFhMGZkNTAwNTIwMDBmMjliNzI1YWYyMWNjY2RlNjc2MGVjYTEyZDlhZjMwZDkzNGY4YWU1MzFiNGE5ZGIwODYiLCJub2RlIjoiMjQuMjIuMiIsImJ1aWxkSWQiOiJwY19Qd3UzSFgtemJEODhqTDlvLUMiLCJvcmlnaW4iOiJodHRwOi8vMTI3LjAuMC4xOjMxMDIiLCJoZWFsdGhEdXJpbmdPdXRhZ2UiOjIwMCwiY29uZmlybWVkRHVyaW5nT3V0YWdlIjoyMDAsInN0YXJ0ZWRWZXJzaW9uIjoxLCJnZW5lcmF0aW9uQmVmb3JlIjoiMzBmZTI1YjQtOGI5Zi00NzM2LTk4ZDQtOThlNzRmNTIwMzBiIiwiZ2VuZXJhdGlvbkFmdGVyIjoiNmMxNjE1N2ItMDFjZC00NmI0LWIxNmUtYzNiNmE0ZjQ0NjdlIiwib2JzZXJ2ZWRXb3JrZXJFdmVudCI6dHJ1ZSwib2JzZXJ2ZWROYXRpdmVDb25uZWN0aW9uRXJyb3IiOmZhbHNlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1dc836dd5c6f71c535a6-21ed47516526b2a61d44",
+          "file": "config/publication-worker.e2e.test.ts",
+          "line": 16,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T03:44:49.844Z",
+    "duration": 98637.891,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

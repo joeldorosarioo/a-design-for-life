@@ -1,0 +1,39 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (7 tests | 1 failed) 81ms
+   × reports only a missing remote object as absent and preserves access-denied failures 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > reports only a missing remote object as absent and preserves access-denied failures
+AssertionError: promise rejected "NotFound: UnknownError { …(4) }" instead of resolving
+ ❯ src/helpers/storage/r2-storage.test.ts:113:38
+    111|   const { adapter, state } = await boundary();
+    112|   const absent = { key: 'a'.repeat(64), byteLength: 0, sha256: 'b'.rep…
+    113|   await expect(adapter!.head(absent)).resolves.toBeNull();
+       |                                      ^
+    114|   state.readStatus = 403;
+    115|   await expect(adapter!.head(absent)).rejects.toThrow();
+
+Caused by: NotFound: UnknownError
+ ❯ S3RestXmlProtocol.handleError node_modules/.pnpm/@aws-sdk+core@3.979.1/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:1398:27
+ ❯ S3RestXmlProtocol.deserializeResponse node_modules/.pnpm/@smithy+core@3.38.1/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:410:13
+ ❯ node_modules/.pnpm/@smithy+core@3.38.1/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24
+ ❯ node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.85/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:380:20
+ ❯ node_modules/.pnpm/@smithy+core@3.38.1/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:179:50
+ ❯ node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.85/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28
+ ❯ node_modules/.pnpm/@aws-sdk+middleware-sdk-s3@3.972.85/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20
+ ❯ node_modules/.pnpm/@aws-sdk+core@3.979.1/node_modules/@aws-sdk/core/dist-cjs/submodules/client/index.js:127:26
+ ❯ Object.head src/helpers/storage/r2-storage.ts:44:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { '$fault': 'client', '$response': { statusCode: 404, reason: 'Not Found', headers: [Object], body: [Object], constructor: 'Function<HttpResponse>' }, '$retryable': undefined, '$metadata': { httpStatusCode: 404, requestId: undefined, extendedRequestId: undefined, cfId: undefined, attempts: 1, totalRetryDelay: 0 } }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  20:21:21
+   Duration  527ms (setup 47%, import 25%, tests 20%, transform 7%, worker 1%)
+

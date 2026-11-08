@@ -1,0 +1,11 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/tools.test.ts ops/backup/archive.test.ts ops/backup/age.test.ts (external tool fixture not configured; skips recorded, not realtool proof)
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed | 6 skipped (30)
+   Start at  22:35:35
+   Duration  1.04s (tests 52%, setup 43%, import 2%, transform 2%, worker 1%)
+
+EXIT_CODE: 0

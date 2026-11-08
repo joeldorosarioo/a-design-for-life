@@ -1,0 +1,119 @@
+COMMAND: pnpm exec vitest run --project integration src/helpers/payload/backup-snapshot.integration.test.ts src/features/media-library/server/backup-inventory.integration.test.ts
+START_UTC: 2026-11-04T00:58:10.6909815Z
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+[21:58:17] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (106ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (6ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (8ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (34ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (2ms)[39m
+[21:58:17] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[21:58:17] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[21:58:17] [32mINFO[39m: [36mDone.[39m
+stdout | src/features/media-library/server/backup-inventory.integration.test.ts > exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B
+{"event":"backup-proof-tool","containerId":"02c7050acaaef5acdbd1efb5aadf48a19b6fe6daf542b623de4f09e37d63203a","tool":"rm","args":["--force","--","/tmp/adfl-backup-96ef1a90-c01a-416d-a65c-97726dbf59ee.dump"],"exitCode":1,"stdout":"","stderr":"rm: unrecognized option: force\nBusyBox v1.37.0 (2026-01-10 15:38:28 UTC) multi-call binary.\n\nUsage: rm [-irf] FILE...\n\nRemove (unlink) FILEs\n\n\t-i\tAlways prompt before removing\n\t-f\tNever prompt\n\t-R,-r\tRecurse\n"}
+
+stdout | src/features/media-library/server/backup-inventory.integration.test.ts
+{"event":"backup-proof-owned-resource","containerId":"02c7050acaaef5acdbd1efb5aadf48a19b6fe6daf542b623de4f09e37d63203a","networkId":"a8bfd78dcb78b0446bc31ecac32a8c6dbcae7a7eb1fadb451056aee6cea96b48","runId":"a0297d06-12dd-440f-9d72-733646e5796e"}
+
+ ❯ |integration| src/features/media-library/server/backup-inventory.integration.test.ts (2 tests | 2 failed) 2478ms
+   × exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B 1549ms
+   × refuses an inventory read outside the owned native backup snapshot 6ms
+stdout | src/helpers/payload/backup-snapshot.integration.test.ts
+{"event":"backup-proof-owned-resource","containerId":"02c7050acaaef5acdbd1efb5aadf48a19b6fe6daf542b623de4f09e37d63203a","networkId":"a8bfd78dcb78b0446bc31ecac32a8c6dbcae7a7eb1fadb451056aee6cea96b48","runId":"a0297d06-12dd-440f-9d72-733646e5796e"}
+
+ ❯ |integration| src/helpers/payload/backup-snapshot.integration.test.ts (2 tests | 1 failed) 950ms
+   × enforces native read-only access and rolls back after a rejected write 40ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/backup-snapshot.integration.test.ts > enforces native read-only access and rolls back after a rejected write
+AssertionError: promise resolved "'unexpected'" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+"unexpected"
+
+ ❯ src/helpers/payload/backup-snapshot.integration.test.ts:108:4
+    106|       async () => 'unexpected',
+    107|     ),
+    108|   ).rejects.toMatchObject({ code: '25006' });
+       |    ^
+    109|   expect(
+    110|     await fixture.payload.db.findOne({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |integration| src/features/media-library/server/backup-inventory.integration.test.ts > exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B
+Error: Owned rm proof failed (exit 1)
+ ❯ postgresTool src/features/media-library/server/backup-inventory.integration.test.ts:131:13
+    129|     );
+    130|     if (result.error || result.status !== 0)
+    131|       throw new Error(`Owned ${tool} proof failed (exit ${result.statu…
+       |             ^
+    132|     return result.stdout.trim();
+    133|   }
+ ❯ src/features/media-library/server/backup-inventory.integration.test.ts:329:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |integration| src/features/media-library/server/backup-inventory.integration.test.ts > refuses an inventory read outside the owned native backup snapshot
+AssertionError: promise resolved "{ mediaIds: [], objects: [] }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "mediaIds": [],
++   "objects": [],
+  }
+
+ ❯ src/features/media-library/server/backup-inventory.integration.test.ts:342:4
+    340|   await expect(
+    341|     captureBackupMediaInventory({ req: await fixture.request(), root: …
+    342|   ).rejects.toThrow();
+       |    ^
+    343| });
+    344|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 1 passed (4)
+   Start at  21:58:11
+   Duration  14.17s (import 49%, tests 46%, transform 2%, setup 2%)
+
+EXIT_CODE: 1
+END_UTC: 2026-11-04T00:58:28.0725536Z

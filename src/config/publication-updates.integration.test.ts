@@ -94,7 +94,8 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { createPublicationCoordinator } from '../helpers/payload/publication-coordinator';
-import { readPublicRoot } from '../helpers/payload/public-root';
+import { readPublicRoot, type PublicRoot } from '../helpers/payload/public-root';
+import type { PublicationUpdate } from '@/payload-types';
 it('publishes the committed immutable target and persists its confirmation receipt', async () => {
   const directory = await mkdtemp(path.join(tmpdir(), 'publication-native-'));
   try {
@@ -932,4 +933,73 @@ it('ignores forged Native public metadata and hides a committed pending target f
       await fixture.request(),
     ),
   ).toMatchObject({ ok: false, status: 404 });
+});
+it('acknowledges the durable root only after the observer proves the revision and retries that same root', async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'publication-observation-native-'));
+  try {
+    const parent = await fixture.payload.create({
+      collection: 'cases',
+      data: { internalTitle: 'Native receipt observation' },
+      req: await fixture.request(),
+      overrideAccess: false,
+    });
+    const operationId = parent.latestPublicationIntent!;
+    const readReceipt = async () =>
+      (
+        await fixture.payload.find({
+          collection: 'publication-updates',
+          where: { operationId: { equals: operationId } },
+          overrideAccess: true,
+        })
+      ).docs[0]!;
+    const seen: { generation: string; operation: string; state: string }[] = [];
+    let fail = true;
+    const coordinator = createPublicationCoordinator({
+      directory,
+      compose: async (root, update) => ({
+        generation: randomUUID(),
+        subjects: {
+          ...root?.subjects,
+          [`${update.subjectCollection}/${update.subjectId}`]: {
+            operationId: update.operationId,
+            targetRevision: update.targetRevision,
+            value: z.json().parse(update.target),
+          },
+        },
+      }),
+      verify: async (root: PublicRoot, operation: PublicationUpdate) => {
+        const persisted = await readPublicRoot(directory);
+        expect(persisted).toEqual(root);
+        seen.push({
+          generation: root.generation,
+          operation: operation.operationId,
+          state: (await readReceipt()).state,
+        });
+        if (fail) throw new Error('Synthetic response mismatch');
+      },
+    });
+    expect(await coordinator.retry(operationId, await fixture.request())).toMatchObject({
+      operationId,
+      state: 'update-pending',
+    });
+    expect((await readReceipt()).state).toBe('update-pending');
+    const failedRoot = await readPublicRoot(directory);
+    expect(failedRoot?.subjects[`cases/${parent.id}`]?.operationId).toBe(operationId);
+    fail = false;
+    expect(await coordinator.retry(operationId, await fixture.request())).toMatchObject({
+      operationId,
+      state: 'public',
+    });
+    expect((await readReceipt()).state).toBe('public');
+    expect(seen).toEqual(
+      Array.from({ length: 2 }, () => ({
+        generation: failedRoot?.generation,
+        operation: operationId,
+        state: 'update-pending',
+      })),
+    );
+    expect(await readPublicRoot(directory)).toEqual(failedRoot);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
 });

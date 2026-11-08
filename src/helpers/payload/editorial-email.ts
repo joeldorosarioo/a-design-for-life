@@ -3,6 +3,13 @@ import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, open, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { PayloadEmailAdapter } from 'payload';
+import { resendAdapter } from '@payloadcms/email-resend';
+
+export type EditorialResendConfiguration = {
+  apiKey: string;
+  fromAddress: string;
+  fromName: string;
+};
 
 export class EditorialEmailUnavailable extends Error {
   constructor() {
@@ -24,11 +31,35 @@ async function captureLock(directory: string) {
   // Never steal a live/stale lock: fail closed until local cleanup after stopping the process.
   throw new EditorialEmailUnavailable();
 }
-// Only local/test capture is implemented in E1.7. Never fall back to the console adapter.
+// Local/test always capture privately. Remote delivery uses Payload's official adapter.
 export function editorialEmailAdapter(
   environment: string,
   databaseURI: string,
+  resend?: EditorialResendConfiguration,
 ): PayloadEmailAdapter {
+  if (resend && (environment === 'staging' || environment === 'production')) {
+    return (context) => {
+      const transport = resendAdapter({
+        apiKey: resend.apiKey,
+        defaultFromAddress: resend.fromAddress,
+        defaultFromName: resend.fromName,
+      })(context);
+      return {
+        ...transport,
+        async sendEmail(message) {
+          try {
+            return await transport.sendEmail({
+              ...message,
+              from: { address: resend.fromAddress, name: resend.fromName },
+            });
+          } catch {
+            // Provider errors can include a recipient or reset URL. Keep them out of Payload logs.
+            throw new EditorialEmailUnavailable();
+          }
+        },
+      };
+    };
+  }
   return () => ({
     name: 'editorial-local-capture',
     defaultFromAddress: 'editorial@example.invalid',

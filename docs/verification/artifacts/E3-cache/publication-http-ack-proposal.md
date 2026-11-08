@@ -1,0 +1,51 @@
+# Next boundary proposal: HTTP revision acknowledgement
+
+Read-only proposal for root. No coordinator, Proxy, feature endpoint, public context, or root authority change is implemented here. Main spec §8 / E3.2.2–4 prevails: a public verification must confirm the served revision, failures remain pending, and withdrawal cannot be reported complete while a controlled public resource remains available. 60 seconds and 1/5/15 seconds remain A3 proposals.
+
+## Current exact gaps
+
+`src/helpers/payload/publication-coordinator.ts` already serializes a canonical root writer, holds the actual Native subject-head CAS, atomically publishes current.json, reconciles route/media ownership, writes outbox public, COMMITs, then independently rereads the receipt. It has no HTTP verification between promotion and public acknowledgement. Its root→SQL interruption is deliberately recoverable: an HTTP failure after root promotion must preserve that protocol, not roll current back or declare public from a stale SQL receipt.
+
+`src/config/public-render-context.ts` selects current once, validates public projections, pins the exact root, and signs an internal request context. `src/config/public-page-request.ts` verifies that signature/pin and shares the captured root with body and metadata via request-local React.cache. The public response has no observable generation marker. Direct 404/410/503 case-state responses and historical 308 responses leave before the ordinary signed-context return, so adding a header only to the ordinary SSR branch would miss withdrawal/history.
+
+Existing Native profile/navigation `/published/:locale` handlers currently call a getter which independently captures root and then `publishedReadResponse`. A later reread merely to stamp a header could label one body with another generation. They must capture once and pass that same root to the getter. Cases has no existing equivalent public DTO aggregate endpoint: shared `cases` Native reads are editorial-only. Initial shared order and the first profile/navigation publication can precede a renderable Home, so requiring full Home200 for each bootstrap step creates a dependency deadlock.
+
+## Minimal marker and observer contract
+
+Prefer a public opaque `X-Portfolio-Generation: <root.generation>` UUID. It reveals no editorial target/body, is not a credential, and elects no root. The caller cannot request a chosen generation. Derive it from the already selected root/pin in the actual response path. The existing signed internal context remains the mechanism that binds SSR body and metadata to that root. Do not add a new HMAC challenge or authentication endpoint.
+
+Add generation to the closed `PublicRenderDecision` variants where an actual root was captured, including direct case state and redirect. Proxy writes it from that decision; there is no extra root read. Invalid/unknown paths or errors without a captured valid root carry no marker. For ordinary SSR, request context pin and public header must share the exact generation. A hostile incoming marker must never override the server output; no request header chooses a pin.
+
+The observer receives immutable `{ root, operation }`, builds its expected public projections from that root through feature callbacks in `config/`, and issues strictly read-only HTTP requests. It compares status, final completed response/body, generation and public projection. An HTTP200 header alone is insufficient: stream read rejection, error-boundary output, truncation, HTML500, wrong content type, wrong generation or mismatched public DTO fails. HEAD alone cannot confirm a body. Redirects are handled manually and checked against the expected route; never follow an arbitrary Location.
+
+## Bootstrap mapping requiring explicit root review
+
+Keep existing profile/navigation published DTO endpoints, but capture root exactly once and pass it to the getter and marker. Preserve current invalid-locale404 and unavailable404/503 classification; do not turn loader errors into empty success. Verify a completed strict JSON Result with the existing feature DTO schema against the expected projection from the supplied root.
+
+The smallest missing observable read surface is a feature-owned anonymous cases aggregate DTO endpoint, for example `/api/case-content/published/:locale`, using existing `getPublishedCases`, `getFeaturedCases`, and published-route getters with one captured root. Return only already public card/route projections, never a shared internal title, unpublished case identity, or Native body. An initial confirmed order with zero public translations legitimately produces strict empty public arrays; absent/corrupt root remains unavailable, not fabricated empty success. This confirms the public empty/list/order projection without exposing a private shared case and avoids adding a raw scheduling/root inspection API.
+
+This is an explicit addition/mapping, not a claim that such an endpoint already exists. Root should review it before feature changes. It is preferable to silently bypassing HTTP for shared order or inventing a first public body. As structural dependencies become available, each publication verifies every newly renderable affected SSR surface as well. The bootstrap DTO proof is not counted as a completed SSR outage/build proof; existing real Next evidence and the later integrated gate remain required.
+
+## Callback placement and failure semantics
+
+Proposed optional generic coordinator option: `verify?: (root: PublicRoot, operation: PublicationUpdate) => Promise<void>`. `config/publication.ts` supplies it for operational composition after the observer is proven. It imports feature projections; the generic coordinator does not.
+
+Invoke it after the selected root is durable and route/media reconciliation is prepared, but **before** writing that operation's outbox state public. Keep the existing root writer and actual Native head fence until the bounded probes finish. No public callback writes, no reentrant publication, and no callback holding another writer are allowed. On verification failure, rollback the Native acknowledgement transaction and retain the existing pending receipt/diagnostic; the already promoted root remains recoverable. Retry the same operation, which can recognize its existing root and recheck HTTP. A newer native head continues to use the existing stale reconciliation/media-pin path instead of publishing the old target.
+
+The observer must not read uncommitted SQL state or acquire the held row locks. Positive public reads use the captured filesystem root. Independently visible old SQL may classify an absence, but cannot grant body/media in conflict with a covered withdrawal. Actual Native tests must prove probes do not deadlock on the held transaction, including root-before-ACK media revocation. Do not enable this callback for offline migration capture; no server exists there. Legacy capture continues to skip later retry-table access. Bootstrap is a separate explicit server-available phase, or remains visibly pending.
+
+## Bounded transport
+
+Use existing validated `INTERNAL_HTTP_ORIGIN`, literal `http://127.0.0.1[:port]` or `[::1]`, and a fixed server-side allowlist. Preserve SITE_ORIGIN separately for canonical URLs; accept no visitor URL, userinfo, fragments, request cookies, Authorization, arbitrary query, external host, or redirect hop. The worker runs inside the same Next process/container/network namespace as the A1 socket fence. No sidecar or external callback can substitute for this local proof.
+
+Propose a small total probe deadline (e.g. 5 seconds, subject to measurement) with one AbortController covering fetch **and bounded complete body consumption**, plus maximum response bytes and maximum paths per operation. Cancel readers on rejection/overflow and clear/unref the timer. All probes are GET/HEAD reads; do not race an uncancelled publication write or launch a replacement writer after timeout. Probe failure logs only a static operation/result and safe counts/correlation, never URI, body, SQL or raw Error.
+
+## Affected projections and behavioral gates
+
+Case content: current detail200 or withdrawn410; all historical308/410 paths; locale list/cards/featured/count; relevant Home; canonical/alternates and index projection. Shared order/featured: both locale lists/Home and anonymous cases aggregate; no translation becomes public. Profile/navigation: own completed DTO and, when structurally renderable, Home/list/About/header/footer/contacts/resume and index projections. Sitemap in test/staging is intentionally non-indexable, so do not call an empty test sitemap proof of the production sitemap contract.
+
+Keep media authorization/bytes checks separate: shared reference still allows; last grant removal denies GET/HEAD/conditional/range and already cached Next optimizer bytes. A generation marker is never media permission. A stale optimizer HIT is not a successful withdrawal. Runtime observer probes should cover controlled grant routes safely within the total budget; the existing exhaustive media E2E remains the full contract evidence.
+
+TDD order for the later slice: public marker uses the same already selected root under a deliberate concurrent current advance; spoofed visitor marker cannot change selection; profile/nav/aggregate capture once; strict observer rejects wrong generation/status/body/stream/truncation/oversize/redirect/deadline; Native callback failure keeps outbox pending after root promotion; restart retries same operation; old in-flight intention cannot overwrite a newer one; held head/ownership transaction has no read-probe deadlock; real Next confirms served revision before CMS public receipt; root→SQL ACK interruption remains recoverable; final media revocation cannot falsely acknowledge.
+
+Candidate paths after separate root authorization: `src/helpers/payload/publication-coordinator.ts` (one callback only), new generic `publication-http-verification.ts`/tests, `src/config/publication.ts` and feature observer composition, `src/config/public-render-context.ts`, `src/proxy.ts`, the two existing published structural handlers, one feature-owned cases DTO read handler, and focused Native/Next tests. No source change in this proposal is currently authorized or implemented merely by this document.

@@ -1,0 +1,77 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/media-runtime.test.ts (11 tests | 4 failed) 17ms
+   × rejects media inside the selected Next build static output: .work/next-build/static 4ms
+   × rejects media inside the selected Next build static output: .work/next-build/static/private-assets 0ms
+   × rejects private media beneath the current isolated test static output 1ms
+   × uses an explicitly injected byte transport while preserving the legacy root option 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects media inside the selected Next build static output: .work/next-build/static
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects media inside the selected Next build static output: .work/next-build/static/private-assets
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/media-library/server/media-runtime.test.ts:32:47
+     30|   '.work/next-build/static/private-assets',
+     31| ])('rejects media inside the selected Next build static output: %s', (…
+     32|   expect(() => configure(path.resolve(root))).toThrow(/public|static/i…
+       |                                               ^
+     33| });
+     34| it('rejects private media beneath the current isolated test static out…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects private media beneath the current isolated test static output
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/media-library/server/media-runtime.test.ts:37:71
+     35|   const dist = '.work/next-tests/11111111-1111-4111-8111-111111111111';
+     36|   vi.stubEnv('NEXT_TEST_DIST_DIR', dist);
+     37|   expect(() => configure(path.resolve(dist, 'static/private-media'))).…
+       |                                                                       ^
+     38| });
+     39| it('uses an explicitly injected byte transport while preserving the le…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > uses an explicitly injected byte transport while preserving the legacy root option
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   "c5f1c1f272dbcac99f45fcbf5548bf9479966787be5a79db46c56fb17afe823f",
+- ]
++ []
+
+ ❯ src/features/media-library/server/media-runtime.test.ts:53:41
+     51|     installMediaRuntime(options);
+     52|     const object = await mediaRuntime().storage.put(new Uint8Array([3,…
+     53|     expect(await readdir(injectedRoot)).toEqual([object.key]);
+       |                                         ^
+     54|     expect(await mediaRuntime().storage.read(object)).toEqual(new Uint…
+     55|   } finally {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 7 passed (11)
+   Start at  20:24:06
+   Duration  426ms (setup 76%, transform 9%, import 7%, tests 6%, worker 2%)
+

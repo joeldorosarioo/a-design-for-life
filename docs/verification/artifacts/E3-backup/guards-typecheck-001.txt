@@ -1,0 +1,3 @@
+COMMAND: pnpm exec tsc --noEmit --strict --skipLibCheck --module esnext --moduleResolution bundler --target ES2022 --types node --esModuleInterop ops/backup/contracts.ts ops/backup/retention.ts ops/backup/retention.test.ts ops/backup/restore-target.ts ops/backup/restore-target.test.ts
+error TS5112: tsconfig.json is present but will not be loaded if files are specified on commandline. Use '--ignoreConfig' to skip this error.
+EXIT_CODE: 1

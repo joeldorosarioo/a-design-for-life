@@ -1,0 +1,39 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| ops/backup/restore-target.test.ts (27 tests | 1 failed | 26 skipped) 17ms
+   × refuses an ownership observation that predates resource acquisition before any restore effect 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| ops/backup/restore-target.test.ts > refuses an ownership observation that predates resource acquisition before any restore effect
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ ops/backup/restore-target.test.ts:194:10
+    192|       const permit = await boundary.acquire(target, now);
+    193|       return boundary.run(permit, now, async () => writeFile(file, 'un…
+    194|     })()).rejects.toThrow();
+       |          ^
+    195|     await expect(readFile(file)).rejects.toMatchObject({ code: 'ENOENT…
+    196|   });
+ ❯ withOutput ops/backup/restore-target.test.ts:39:11
+ ❯ ops/backup/restore-target.test.ts:190:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 26 skipped (27)
+   Start at  22:05:57
+   Duration  503ms (setup 59%, import 26%, transform 9%, tests 5%, worker 1%)
+
+
+EXIT_CODE=1

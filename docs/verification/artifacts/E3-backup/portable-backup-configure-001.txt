@@ -1,0 +1,5 @@
+COMMAND: [explicit APP_ENV=test and synthetic loopback adfl_test_tools/adfl-test-tools namespace] .toolchain/node-v24.22.2-win-x64/node.exe testing/setup/configure-backup-tools.mjs
+START_UTC: 2026-11-04T02:17:23.8989694Z
+E:\a-design-for-life\.work\test-tool-identities\2c3113fd-90fa-4fe8-84b9-7208d1c1d788\tools-config.json
+EXIT_CODE: 0
+END_UTC: 2026-11-04T02:17:24.2141264Z

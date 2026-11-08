@@ -1,0 +1,5 @@
+COMMAND: pnpm exec prettier --check ops/backup src/helpers/storage/object-retention.ts src/helpers/storage/object-retention.test.ts src/helpers/storage/object-storage.ts src/helpers/storage/r2-storage.ts src/features/media-library/server/backup-set.integration.test.ts docs/runbooks/backup-e-restauracao.md
+Checking formatting...
+[warn] ops/backup/restore.ts
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.
+EXIT_CODE: 1

@@ -1,0 +1,55 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/config/publication-worker.test.ts > does no application initialization when the operational worker flag is off 3ms
+ × |unit| src/config/publication-worker.test.ts > refuses worker registration without migrated metadata before initializing the application 4ms
+   → expected [Function] to throw an error
+ × |unit| src/config/publication-worker.test.ts > returns from opt-in registration before any detached application initialization 2ms
+   → expected +0 to be 1 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/publication-worker.test.ts > refuses worker registration without migrated metadata before initializing the application
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/publication-worker.test.ts:24:7
+     22|     metadataEnabled: false,
+     23|     drain: async () => { initialized++; return { selected: 0, processe…
+     24|   })).toThrow('Publication retry worker requires enabled retry metadat…
+       |       ^
+     25|   expect(initialized).toBe(0);
+     26| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/config/publication-worker.test.ts > returns from opt-in registration before any detached application initialization
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/config/publication-worker.test.ts:39:23
+     37|   expect(initialized).toBe(0);
+     38|   await vi.advanceTimersByTimeAsync(0);
+     39|   expect(initialized).toBe(1);
+       |                       ^
+     40|   await worker?.stop();
+     41| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  23:17:13
+   Duration  382ms (setup 77%, transform 10%, import 8%, tests 4%, worker 2%)
+

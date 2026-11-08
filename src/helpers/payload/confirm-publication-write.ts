@@ -14,7 +14,7 @@ export async function confirmPublicationWrite(
   // The caller still owns this native transaction. Its intent cannot be read
   // independently until the caller commits it; never promote uncommitted data.
   if (req.transactionID) return pending;
-  const result = await retryPublicationUpdate(pending.operationId, req);
+  const result = await retryPublicationUpdate(pending.operationId, req, { mode: 'immediate' });
   if (!result.ok)
     throw new APIError(
       'Não foi possível confirmar a gravação. Recarregue o documento.',

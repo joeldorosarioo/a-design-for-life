@@ -4,6 +4,13 @@ import 'server-only';
 import { randomUUID } from 'node:crypto';
 import { APIError, Forbidden, type PayloadRequest, type Where } from 'payload';
 import { z } from 'zod';
+import {
+  claimPublicationRetry,
+  recordPublicationRetryOutcome,
+  schedulePublicationRetry,
+} from './publication-retries';
+import { executePublicationRetry } from './publication-retry-execution';
+import type { PublicationRetryClock } from './publication-retry-policy';
 export const publicationSubjectSchema = z.object({
   collection: z.enum(['cases', 'case-content', 'site-navigation', 'professional-profiles']),
   id: z.uuid(),
@@ -48,6 +55,7 @@ export async function enqueuePublicationUpdate(
     target: z.infer<ReturnType<typeof z.json>>;
   },
   req: PayloadRequest,
+  options: { scheduleRetry?: false; clock?: PublicationRetryClock } = {},
 ): Promise<{ operationId: string }> {
   if (!req.user || req.user.collection !== 'users') throw new Forbidden(req.t);
   if (!req.transactionID)
@@ -78,6 +86,13 @@ export async function enqueuePublicationUpdate(
     data: { latestPublicationIntent: operationId, publicConfirmed: false, updatedAt: null },
   });
   if (!head) throw new APIError('Publication subject unavailable.', 503);
+  // Default-OFF runtime registration preserves existing unmigrated environments.
+  // Historical capture explicitly skips all access to the later metadata table.
+  if (
+    options.scheduleRetry !== false &&
+    Object.hasOwn(req.payload.collections, 'publication-retries')
+  )
+    await schedulePublicationRetry(operationId, req, options.clock ?? (() => new Date()));
   return { operationId };
 }
 
@@ -89,6 +104,10 @@ import { readPublicRoot } from './public-root';
 export async function retryPublicationUpdate(
   operationId: string,
   req: PayloadRequest,
+  options: {
+    mode?: 'immediate' | 'automatic' | 'manual';
+    clock?: PublicationRetryClock;
+  } = {},
 ): Promise<Result<PublicReceipt>> {
   if (!req.user || req.user.collection !== 'users')
     return {
@@ -111,23 +130,47 @@ export async function retryPublicationUpdate(
     // Only this independent read proves that an immutable intent committed.
     // Later dependency/root/second-read failures retain its recoverable receipt.
     pending = { operationId, targetRevision: operation.targetRevision, state: 'update-pending' };
+    if (await req.transactionID) return { ok: true, value: pending };
     const coordinator = runtimePublication();
     // Initial ordering is a distinct approved shared-case intent. Confirming it
     // never publishes any translation or reads an unpublished content body.
-    if (operation.subjectCollection === 'case-content') {
-      const target = operation.target as { caseId?: string };
-      const root = await readPublicRoot(coordinator.directory);
-      if (target.caseId && !root?.subjects[`cases/${target.caseId}`]) {
-        const shared = (await req.payload.db.findOne({
-          collection: 'cases',
-          where: { id: { equals: target.caseId } },
-          req: fresh,
-        })) as Case | null;
-        if (shared?.latestPublicationIntent)
-          await coordinator.retry(String(shared.latestPublicationIntent), fresh);
+    const execute = async () => {
+      if (operation.subjectCollection === 'case-content') {
+        const target = operation.target as { caseId?: string };
+        const root = await readPublicRoot(coordinator.directory);
+        if (target.caseId && !root?.subjects[`cases/${target.caseId}`]) {
+          const shared = (await req.payload.db.findOne({
+            collection: 'cases',
+            where: { id: { equals: target.caseId } },
+            req: fresh,
+          })) as Case | null;
+          if (shared?.latestPublicationIntent) {
+            const prerequisite = await retryPublicationUpdate(
+              String(shared.latestPublicationIntent),
+              fresh,
+              options,
+            );
+            if (!prerequisite.ok || prerequisite.value.state !== 'public') return pending!;
+          }
+        }
       }
-    }
-    const receipt = await coordinator.retry(operationId, fresh);
+      return coordinator.retry(operationId, fresh);
+    };
+    const receipt = Object.hasOwn(req.payload.collections, 'publication-retries')
+      ? await executePublicationRetry({
+          current: { ...pending, state: operation.state },
+          claim: () =>
+            claimPublicationRetry(
+              operationId,
+              { mode: options.mode ?? 'manual' },
+              fresh,
+              options.clock ?? (() => new Date()),
+            ),
+          execute,
+          record: (attempt, confirmed) =>
+            recordPublicationRetryOutcome({ attempt, receipt: confirmed }, fresh),
+        })
+      : await execute();
     return { ok: true, value: receipt ?? pending };
   } catch {
     return pending ? { ok: true, value: pending } : unavailable();

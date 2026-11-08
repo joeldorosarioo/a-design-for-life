@@ -1,0 +1,263 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > writes one JSON line with required metadata and preserves a valid correlation 3ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > emits only validated technical context, omitting secrets and private content 1ms
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > redacts unknown values and nested cycles without evaluating getters 0ms
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: publication.confirm
+PRIVATE_SENTINEL 4ms
+   → expected '{"dateISO":"2026-11-03T23:50:29.449Z"…' not to contain 'PRIVATE_SENTINEL'
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: https://private.invalid/reset?token=PRIVATE_SENTINEL 1ms
+   → expected '{"dateISO":"2026-11-03T23:50:29.453Z"…' not to contain 'PRIVATE_SENTINEL'
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: PRIVATE_SENTINEL@private.invalid 1ms
+   → expected '{"dateISO":"2026-11-03T23:50:29.454Z"…' not to contain 'PRIVATE_SENTINEL'
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 1ms
+   → expected '{"dateISO":"2026-11-03T23:50:29.454Z"…' not to contain 'PRIVATE_SENTINEL'
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > accepts hostile event objects without evaluating accessors 2ms
+   → expected [Function] to not throw an error but 'Error: PRIVATE_SENTINEL' was thrown
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > returns an honest failure receipt when the writer throws without logging the error 0ms
+   → expected [Function] to not throw an error but 'Error: PRIVATE_SENTINEL' was thrown
+ ✓ |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: false 0ms
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: undefined 1ms
+   → expected { written: undefined, …(1) } to deeply equal { written: false, …(1) }
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: Promise {} 0ms
+   → expected { written: Promise{…}, …(1) } to deeply equal { written: false, …(1) }
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > falls back to a valid timestamp if the clock fails 0ms
+   → expected [Function] to not throw an error but 'RangeError: Invalid time value' was thrown
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > falls back to a valid timestamp if the clock fails 0ms
+   → expected [Function] to not throw an error but 'Error: PRIVATE_SENTINEL' was thrown
+ × |unit| src/helpers/logger/logger.test.ts > safe operational logger > drops malformed and unbounded technical values rather than coercing them 0ms
+   → expected { durationMs: 86400001 } to deeply equal {}
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: publication.confirm
+PRIVATE_SENTINEL
+AssertionError: expected '{"dateISO":"2026-11-03T23:50:29.449Z"…' not to contain 'PRIVATE_SENTINEL'
+
+- Expected
++ Received
+
+- PRIVATE_SENTINEL
++ {"dateISO":"2026-11-03T23:50:29.449Z","level":"error","operation":"publication.confirm\nPRIVATE_SENTINEL","result":"PRIVATE_SENTINEL","correlationId":"PRIVATE_SENTINEL","context":"[REDACTED]"}
++
+
+ ❯ src/helpers/logger/logger.test.ts:130:24
+    128|     });
+    129|
+    130|     expect(output).not.toContain('PRIVATE_SENTINEL');
+       |                        ^
+    131|     expect(JSON.parse(output)).toMatchObject({ operation: 'invalid-ope…
+    132|     expect(receipt.correlationId).toMatch(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: https://private.invalid/reset?token=PRIVATE_SENTINEL
+AssertionError: expected '{"dateISO":"2026-11-03T23:50:29.453Z"…' not to contain 'PRIVATE_SENTINEL'
+
+- Expected
++ Received
+
+- PRIVATE_SENTINEL
++ {"dateISO":"2026-11-03T23:50:29.453Z","level":"error","operation":"https://private.invalid/reset?token=PRIVATE_SENTINEL","result":"PRIVATE_SENTINEL","correlationId":"PRIVATE_SENTINEL","context":"[REDACTED]"}
++
+
+ ❯ src/helpers/logger/logger.test.ts:130:24
+    128|     });
+    129|
+    130|     expect(output).not.toContain('PRIVATE_SENTINEL');
+       |                        ^
+    131|     expect(JSON.parse(output)).toMatchObject({ operation: 'invalid-ope…
+    132|     expect(receipt.correlationId).toMatch(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: PRIVATE_SENTINEL@private.invalid
+AssertionError: expected '{"dateISO":"2026-11-03T23:50:29.454Z"…' not to contain 'PRIVATE_SENTINEL'
+
+- Expected
++ Received
+
+- PRIVATE_SENTINEL
++ {"dateISO":"2026-11-03T23:50:29.454Z","level":"error","operation":"PRIVATE_SENTINEL@private.invalid","result":"PRIVATE_SENTINEL","correlationId":"PRIVATE_SENTINEL","context":"[REDACTED]"}
++
+
+ ❯ src/helpers/logger/logger.test.ts:130:24
+    128|     });
+    129|
+    130|     expect(output).not.toContain('PRIVATE_SENTINEL');
+       |                        ^
+    131|     expect(JSON.parse(output)).toMatchObject({ operation: 'invalid-ope…
+    132|     expect(receipt.correlationId).toMatch(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > replaces malformed metadata instead of serializing it: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+AssertionError: expected '{"dateISO":"2026-11-03T23:50:29.454Z"…' not to contain 'PRIVATE_SENTINEL'
+
+- Expected
++ Received
+
+- PRIVATE_SENTINEL
++ {"dateISO":"2026-11-03T23:50:29.454Z","level":"error","operation":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","result":"PRIVATE_SENTINEL","correlationId":"PRIVATE_SENTINEL","context":"[REDACTED]"}
++
+
+ ❯ src/helpers/logger/logger.test.ts:130:24
+    128|     });
+    129|
+    130|     expect(output).not.toContain('PRIVATE_SENTINEL');
+       |                        ^
+    131|     expect(JSON.parse(output)).toMatchObject({ operation: 'invalid-ope…
+    132|     expect(receipt.correlationId).toMatch(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > accepts hostile event objects without evaluating accessors
+AssertionError: expected [Function] to not throw an error but 'Error: PRIVATE_SENTINEL' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: PRIVATE_SENTINEL"
+
+ ❯ src/helpers/logger/logger.test.ts:155:43
+    153|     };
+    154|
+    155|     expect(() => logger.error(event)).not.toThrow();
+       |                                           ^
+    156|     expect(JSON.parse(output)).toMatchObject({ operation: 'invalid-ope…
+    157|     expect(output).not.toContain('PRIVATE_SENTINEL');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > returns an honest failure receipt when the writer throws without logging the error
+AssertionError: expected [Function] to not throw an error but 'Error: PRIVATE_SENTINEL' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: PRIVATE_SENTINEL"
+
+ ❯ src/helpers/logger/logger.test.ts:164:102
+    162|     const logger = createLogger({ write: () => { throw new Error('PRIV…
+    163|
+    164|     expect(() => logger.error({ operation: 'cache.refresh', result: 'f…
+       |                                                                                                      ^
+    165|     expect(logger.error({ operation: 'cache.refresh', result: 'failure…
+    166|       written: false,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: undefined
+AssertionError: expected { written: undefined, …(1) } to deeply equal { written: false, …(1) }
+
+- Expected
++ Received
+
+  {
+    "correlationId": "f073d942-e73d-47eb-a5a2-a389c61c154e",
+-   "written": false,
++   "written": undefined,
+  }
+
+ ❯ src/helpers/logger/logger.test.ts:174:88
+    172|   it.each([false, undefined, Promise.resolve(true)])('requires the wri…
+    173|     const logger = createLogger({ write: (() => acknowledgement) as ()…
+    174|     expect(logger.info({ operation: 'cache.read', result: 'success', c…
+       |                                                                                        ^
+    175|       written: false,
+    176|       correlationId,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > requires the writer to acknowledge synchronously: Promise {}
+AssertionError: expected { written: Promise{…}, …(1) } to deeply equal { written: false, …(1) }
+
+- Expected
++ Received
+
+  {
+    "correlationId": "f073d942-e73d-47eb-a5a2-a389c61c154e",
+-   "written": false,
++   "written": Promise {},
+  }
+
+ ❯ src/helpers/logger/logger.test.ts:174:88
+    172|   it.each([false, undefined, Promise.resolve(true)])('requires the wri…
+    173|     const logger = createLogger({ write: (() => acknowledgement) as ()…
+    174|     expect(logger.info({ operation: 'cache.read', result: 'success', c…
+       |                                                                                        ^
+    175|       written: false,
+    176|       correlationId,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > falls back to a valid timestamp if the clock fails
+AssertionError: expected [Function] to not throw an error but 'RangeError: Invalid time value' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"RangeError: Invalid time value"
+
+ ❯ src/helpers/logger/logger.test.ts:188:98
+    186|     const logger = createLogger({ now, write: (line) => { output += li…
+    187|
+    188|     expect(() => logger.info({ operation: 'cache.read', result: 'succe…
+       |                                                                                                  ^
+    189|     expect(JSON.parse(output).dateISO).toMatch(/^\d{4}-\d{2}-\d{2}T\d{…
+    190|     expect(output).not.toContain('PRIVATE_SENTINEL');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > falls back to a valid timestamp if the clock fails
+AssertionError: expected [Function] to not throw an error but 'Error: PRIVATE_SENTINEL' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: PRIVATE_SENTINEL"
+
+ ❯ src/helpers/logger/logger.test.ts:188:98
+    186|     const logger = createLogger({ now, write: (line) => { output += li…
+    187|
+    188|     expect(() => logger.info({ operation: 'cache.read', result: 'succe…
+       |                                                                                                  ^
+    189|     expect(JSON.parse(output).dateISO).toMatch(/^\d{4}-\d{2}-\d{2}T\d{…
+    190|     expect(output).not.toContain('PRIVATE_SENTINEL');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  |unit| src/helpers/logger/logger.test.ts > safe operational logger > drops malformed and unbounded technical values rather than coercing them
+AssertionError: expected { durationMs: 86400001 } to deeply equal {}
+
+- Expected
++ Received
+
+- {}
++ {
++   "durationMs": 86400001,
++ }
+
+ ❯ src/helpers/logger/logger.test.ts:201:9
+    199|       dependency: ['r2'],
+    200|       errorCode: { toString: () => 'timeout' },
+    201|     })).toEqual({});
+       |         ^
+    202|   });
+    203| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed | 4 passed (15)
+   Start at  20:50:29
+   Duration  436ms (setup 74%, transform 10%, import 8%, tests 7%, worker 2%)
+
+
+RECEIPT UTC=2026-11-03T23:50:28.6251228Z EXIT=1 COMMAND=pinned-node node_modules/vitest/vitest.mjs run --project unit src/helpers/logger/logger.test.ts --reporter verbose

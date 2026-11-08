@@ -1,0 +1,12 @@
+COMMAND: pnpm exec vitest run --project unit ops/backup/retention.test.ts ops/backup/restore-target.test.ts
+NODE: 24.22.2; scoped unit tests after formatting; no Docker/PG/cloud
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  2 passed (2)
+      Tests  50 passed (50)
+   Start at  21:32:12
+   Duration  978ms (setup 56%, import 29%, transform 8%, tests 6%, worker 2%)
+
+EXIT_CODE: 0

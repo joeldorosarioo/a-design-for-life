@@ -1,0 +1,4 @@
+COMMAND: pnpm exec prettier --check <eight source files and backup runbook>
+Checking formatting...
+All matched files use Prettier code style!
+EXIT_CODE: 0

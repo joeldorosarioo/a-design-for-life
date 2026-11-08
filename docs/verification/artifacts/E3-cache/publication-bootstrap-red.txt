@@ -1,0 +1,91 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ × |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > marks the anonymous profile JSON with the generation that supplies its public fields 33ms
+   → expected null to be 'ef0ddba2-f482-40fd-b2d8-57798fb71dec' // Object.is equality
+ ✓ |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > keeps invalid locale at 404 and unavailable coverage at 503 without a generation marker 2ms
+ × |unit| src/features/cases/content/collections/case-content.published.test.ts > returns only confirmed locale cards and featured cards from one captured generation while current.json advances 10ms
+   → expected undefined to be defined
+ × |unit| src/features/cases/content/collections/case-content.published.test.ts > distinguishes confirmed empty cards from a missing, empty or corrupt root 1ms
+   → expected undefined to be defined
+ × |unit| src/features/site-navigation/content/collections/site-navigation.published.test.ts > marks navigation JSON from the same root as its confirmed profile dependency 32ms
+   → expected null to be 'a33f2213-fb83-45de-8d22-a72f6758618b' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/content/collections/case-content.published.test.ts > returns only confirmed locale cards and featured cards from one captured generation while current.json advances
+AssertionError: expected undefined to be defined
+ ❯ src/features/cases/content/collections/case-content.published.test.ts:32:21
+     30|   await withPublishedEndpointRoot(async ({ current, write, selections …
+     31|     const handler = publishedLocaleHandler(CaseContent);
+     32|     expect(handler).toBeDefined();
+       |                     ^
+     33|     const a = randomUUID();
+     34|     const b = randomUUID();
+ ❯ Module.withPublishedEndpointRoot testing/fixtures/published-root-endpoint.ts:38:11
+ ❯ src/features/cases/content/collections/case-content.published.test.ts:30:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/cases/content/collections/case-content.published.test.ts > distinguishes confirmed empty cards from a missing, empty or corrupt root
+AssertionError: expected undefined to be defined
+ ❯ src/features/cases/content/collections/case-content.published.test.ts:74:21
+     72|   await withPublishedEndpointRoot(async ({ current, write }) => {
+     73|     const handler = publishedLocaleHandler(CaseContent);
+     74|     expect(handler).toBeDefined();
+       |                     ^
+     75|     const request = publicEndpointRequest('pt');
+     76|     const missing = await handler!(request);
+ ❯ Module.withPublishedEndpointRoot testing/fixtures/published-root-endpoint.ts:38:11
+ ❯ src/features/cases/content/collections/case-content.published.test.ts:72:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/collections/professional-profiles.published.test.ts > marks the anonymous profile JSON with the generation that supplies its public fields
+AssertionError: expected null to be 'ef0ddba2-f482-40fd-b2d8-57798fb71dec' // Object.is equality
+
+- Expected:
+"ef0ddba2-f482-40fd-b2d8-57798fb71dec"
+
++ Received:
+null
+
+ ❯ src/features/professional-profile/content/collections/professional-profiles.published.test.ts:26:60
+     24|     expect(response.status).toBe(200);
+     25|     expect(response.headers.get('cache-control')).toBe('no-store');
+     26|     expect(response.headers.get('x-portfolio-generation')).toBe(genera…
+       |                                                            ^
+     27|     expect(await response.json()).toMatchObject({ ok: true, value: { i…
+     28|     expect(selections()).toBe(1);
+ ❯ withPublishedEndpointRoot testing/fixtures/published-root-endpoint.ts:38:5
+ ❯ src/features/professional-profile/content/collections/professional-profiles.published.test.ts:13:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |unit| src/features/site-navigation/content/collections/site-navigation.published.test.ts > marks navigation JSON from the same root as its confirmed profile dependency
+AssertionError: expected null to be 'a33f2213-fb83-45de-8d22-a72f6758618b' // Object.is equality
+
+- Expected:
+"a33f2213-fb83-45de-8d22-a72f6758618b"
+
++ Received:
+null
+
+ ❯ src/features/site-navigation/content/collections/site-navigation.published.test.ts:29:60
+     27|     expect(response.status).toBe(200);
+     28|     expect(response.headers.get('cache-control')).toBe('no-store');
+     29|     expect(response.headers.get('x-portfolio-generation')).toBe(genera…
+       |                                                            ^
+     30|     expect(await response.json()).toMatchObject({ ok: true, value: { c…
+     31|     expect(selections()).toBe(1);
+ ❯ withPublishedEndpointRoot testing/fixtures/published-root-endpoint.ts:38:5
+ ❯ src/features/site-navigation/content/collections/site-navigation.published.test.ts:13:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  4 failed | 1 passed (5)
+   Start at  00:53:40
+   Duration  3.06s (import 81%, transform 9%, setup 9%, tests 1%)
+

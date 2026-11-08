@@ -1,0 +1,253 @@
+Pinned Node: E:\a-design-for-life\.toolchain\node-v24.22.2-win-x64\node.exe
+Scope: owned analytics only; synthetic/captured outbound boundary; no Google loader/request.
+Exit code: 1
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits local/public preview=false to false 2ms
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits test/public preview=false to false 0ms
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits staging/public preview=false to false 0ms
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits preview/public preview=false to false 0ms
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/admin preview=false to false 0ms
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/private preview=false to false 0ms
+ ✓ |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/public preview=true to false 0ms
+ × |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/public preview=false to true 5ms
+   → expected false to be true // Object.is equality
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal page_view payload 3ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal contact_email_click payload 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal contact_linkedin_click payload 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal resume_open payload 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra email field rather than silently stripping it 1ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra href field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra label field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra personName field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra token field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra user_id field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra content field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects an extra client_id field rather than silently stripping it 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved scroll event 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved file_download event 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved click event 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved login event 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects the unapproved user_engagement event 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en?email=synthetic@example.invalid" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en#token" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "//other.invalid/en" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "https://other.invalid/en" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/admin" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/admin" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/api/users/reset-password/token" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/preview-ui/en/cases/example" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/preview-media/secret/original" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/private/en" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/private" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/reset-password" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/../../private" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/token/123" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/cases/[case]?token=secret" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/pt/about" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/sobre" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en/%61dmin" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en\\admin" 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects unsafe or unapproved page path "/en\n" 0ms
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt/cases 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt/sobre 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt/cases/synthetic-project 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en/cases 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en/about 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ × |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en/cases/synthetic-project 0ms
+   → [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects a locale/path mismatch 0ms
+ ✓ |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > rejects extra public context fields 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/analytics/analytics-policy.test.ts > canMeasure > limits production/public preview=false to true
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/analytics/analytics-policy.test.ts:16:56
+     14|     ['production', 'public', false, true],
+     15|   ])('limits %s/%s preview=%s to %s', (environment, area, preview, exp…
+     16|     expect(canMeasure({ environment, area, preview })).toBe(expected);
+       |                                                        ^
+     17|   });
+     18| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal page_view payload
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal contact_email_click payload
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal contact_linkedin_click payload
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > accepts only the minimal resume_open payload
+ZodError: [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ ❯ src/features/analytics/contracts/event.schema.test.ts:11:44
+      9|     'accepts only the minimal %s payload',
+     10|     (name) => {
+     11|       expect(portfolioAnalyticsEventSchema.parse({ name, ...page })).t…
+       |                                            ^
+     12|     },
+     13|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { _zod: { def: [ { expected: 'never', code: 'invalid_type', path: [], message: 'Invalid input: expected never, received object' } ], constr: 'Function<ZodError>', traits: { constructor: 'Function<Set>', has: 'Function<has>', add: 'Function<add>', delete: 'Function<delete>', difference: 'Function<difference>', clear: 'Function<clear>', entries: 'Function<entries>', forEach: 'Function<forEach>', intersection: 'Function<intersection>', isSubsetOf: 'Function<isSubsetOf>', isSupersetOf: 'Function<isSupersetOf>', isDisjointFrom: 'Function<isDisjointFrom>', size: 2, symmetricDifference: 'Function<symmetricDifference>', union: 'Function<union>', values: 'Function<values>', keys: 'Function<values>' }, message: '[
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]' }, issues: [ { expected: 'never', code: 'invalid_type', path: [], message: 'Invalid input: expected never, received object' } ], format: 'Function<anonymous>', flatten: 'Function<anonymous>', addIssue: 'Function<anonymous>', addIssues: 'Function<anonymous>', isEmpty: false }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt/cases
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt/sobre
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public pt route template /pt/cases/synthetic-project
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en/cases
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en/about
+ FAIL  |unit| src/features/analytics/contracts/event.schema.test.ts > closed analytics payload > permits only the known public en route template /en/cases/synthetic-project
+ZodError: [
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]
+ ❯ src/features/analytics/contracts/event.schema.test.ts:48:41
+     46|     ['en', '/en'], ['en', '/en/cases'], ['en', '/en/about'], ['en', '/…
+     47|   ])('permits only the known public %s route template %s', (locale, pa…
+     48|     expect(publicAnalyticsContextSchema.parse({ locale, pagePath })).t…
+       |                                         ^
+     49|   });
+     50|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { _zod: { def: [ { expected: 'never', code: 'invalid_type', path: [], message: 'Invalid input: expected never, received object' } ], constr: 'Function<ZodError>', traits: { constructor: 'Function<Set>', has: 'Function<has>', add: 'Function<add>', delete: 'Function<delete>', difference: 'Function<difference>', clear: 'Function<clear>', entries: 'Function<entries>', forEach: 'Function<forEach>', intersection: 'Function<intersection>', isSubsetOf: 'Function<isSubsetOf>', isSupersetOf: 'Function<isSupersetOf>', isDisjointFrom: 'Function<isDisjointFrom>', size: 2, symmetricDifference: 'Function<symmetricDifference>', union: 'Function<union>', values: 'Function<values>', keys: 'Function<values>' }, message: '[
+  {
+    "expected": "never",
+    "code": "invalid_type",
+    "path": [],
+    "message": "Invalid input: expected never, received object"
+  }
+]' }, issues: [ { expected: 'never', code: 'invalid_type', path: [], message: 'Invalid input: expected never, received object' } ], format: 'Function<anonymous>', flatten: 'Function<anonymous>', addIssue: 'Function<anonymous>', addIssues: 'Function<anonymous>', isEmpty: false }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  13 failed | 43 passed (56)
+   Start at  20:46:23
+   Duration  535ms (setup 68%, import 19%, transform 9%, tests 3%, worker 1%)
+

@@ -1,0 +1,678 @@
+Command: node --test scripts/recalculate-stage-progress.test.mjs
+Node: 24.22.2; pnpm: 12.10.1
+Exit: 1
+
+✖ explicit stage 3 writes its own plan counts, ledger and independent approval without changing stage 2 (872.4863ms)
+✖ default stage 2 retains 29/30, accepted A2 text and its authorization notice independently of incomplete work (271.8067ms)
+✔ stage 2 --check accepts current counts without any write (114.5553ms)
+✖ stage 3 --check accepts current counts without any write (95.9627ms)
+✖ --check rejects stale completedItems without writing (95.7934ms)
+✖ --check rejects stale totalItems without writing (104.4766ms)
+✖ --check rejects stale percentage without writing (103.6251ms)
+✖ --check rejects stale closedTasks without writing (117.0598ms)
+✖ --check rejects stale totalTasks without writing (106.9111ms)
+✖ rejects missing criterion before any write (218.9519ms)
+✖ rejects duplicate criterion before any write (207.6497ms)
+✖ rejects foreign criterion before any write (218.4612ms)
+✖ rejects nonboolean completion before any write (305.4451ms)
+✖ rejects completed without evidence before any write (358.2328ms)
+✖ rejects nonstrings as evidence before any write (320.9312ms)
+✖ rejects missing summary before any write (327.1477ms)
+✖ rejects missing approval before any write (195.0501ms)
+✖ rejects wrong stage before any write (199.9682ms)
+✖ rejects malformed arguments ["--stage"] without writing (202.5586ms)
+✖ rejects malformed arguments ["--stage","4"] without writing (239.7628ms)
+✖ rejects malformed arguments ["--stage","03"] without writing (227.9428ms)
+✖ rejects malformed arguments ["--stage","2x"] without writing (204.3243ms)
+✖ rejects malformed arguments ["--stage=3"] without writing (195.1706ms)
+✖ rejects malformed arguments ["--stage","3","--stage","2"] without writing (201.5894ms)
+✖ rejects malformed arguments ["--check","--check"] without writing (98.0576ms)
+✖ rejects malformed arguments ["--unknown"] without writing (219.8567ms)
+✖ rejects malformed arguments ["3"] without writing (200.278ms)
+✖ rejects malformed arguments ["--stage","--check"] without writing (94.6408ms)
+✖ rejects malformed arguments ["--root",".."] without writing (197.5065ms)
+✖ rejects plan with duplicate task before writing (200.767ms)
+✖ rejects plan with missing task before writing (223.6658ms)
+✖ rejects plan with missing original criterion before writing (243.7567ms)
+✖ missing input docs/verification/progresso-etapa-3.json cannot cause partial updates (201.5289ms)
+✖ missing input docs/verification/execucao-etapa-3.md cannot cause partial updates (191.8625ms)
+✖ missing ledger progress marker cannot cause partial updates (199.0415ms)
+✖ all completed criteria still leave input A3 approval pending (211.0197ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 1
+ℹ fail 35
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7880.4211
+
+✖ failing tests:
+
+test at scripts\recalculate-stage-progress.test.mjs:86:1
+✖ explicit stage 3 writes its own plan counts, ledger and independent approval without changing stage 2 (872.4863ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  
+  29 !== 7
+  
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:92:67
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:87:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 29,
+    expected: 7,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:107:1
+✖ default stage 2 retains 29/30, accepted A2 text and its authorization notice independently of incomplete work (271.8067ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /A2 approved with screen-reader work outstanding/. Input:
+  
+  '# Progresso verificável — etapa 2\n' +
+    '\n' +
+    '**96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. A2 pendente.**\n' +
+    '\n' +
+    'Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.\n' +
+    '\n' +
+    'A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. A caixa de preparação do primeiro RED pode estar concluída com a implementação ainda aberta nas seguintes (E2.5.1). Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis.\n' +
+    '\n' +
+    '| Tarefa | Itens | Estado       |\n' +
+    '| ------ | ----- | ------------ |\n' +
+    '| E2.1   | 5/5   | Encerrada    |\n' +
+    '| E2.2   | 5/5   | Encerrada    |\n' +
+    '| E2.3   | 5/5   | Encerrada    |\n' +
+    '| E2.4   | 5/5   | Encerrada    |\n' +
+    '| E2.5   | 5/5   | Encerrada    |\n' +
+    '| E2.6   | 4/5   | Em andamento |\n' +
+    '\n' +
+    '## Checklist e evidências\n' +
+    '\n' +
+    '- [x] **E2.1.1** Original criterion E2.1.1. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.1.2** Original criterion E2.1.2. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.1.3** Original criterion E2.1.3. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.1.4** Original criterion E2.1.4. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.1.5** Original criterion E2.1.5. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.2.1** Original criterion E2.2.1. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.2.2** Original criterion E2.2.2. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.2.3** Original criterion E2.2.3. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.2.4** Original criterion E2.2.4. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.2.5** Original criterion E2.2.5. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.3.1** Original criterion E2.3.1. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.3.2** Original criterion E2.3.2. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.3.3** Original criterion E2.3.3. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.3.4** Original criterion E2.3.4. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.3.5** Original criterion E2.3.5. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.4.1** Original criterion E2.4.1. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.4.2** Original criterion E2.4.2. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.4.3** Original criterion E2.4.3. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.4.4** Original criterion E2.4.4. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.4.5** Original criterion E2.4.5. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.5.1** Original criterion E2.5.1. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.5.2** Original criterion E2.5.2. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.5.3** Original criterion E2.5.3. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.5.4** Original criterion E2.5.4. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.5.5** Original criterion E2.5.5. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.6.1** Original criterion E2.6.1. Evidência/pendência: fixture evidence\n' +
+    '- [ ] **E2.6.2** Original criterion E2.6.2. Evidência/pendência: Pending full proof\n' +
+    '- [x] **E2.6.3** Original criterion E2.6.3. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.6.4** Original criterion E2.6.4. Evidência/pendência: fixture evidence\n' +
+    '- [x] **E2.6.5** Original criterion E2.6.5. Evidência/pendência: fixture evidence\n' +
+    '\n' +
+    '## Gates e limites\n' +
+    '\n' +
+    'Independent approval is never derived from completion.\n' +
+    '\n' +
+    'Estimativa: 24–40 horas, excluindo esperas externas.\n' +
+    '\n' +
+    'A2 pendente; etapa3 depende da aprovação explícita do usuário.\n'
+  
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:116:14
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:108:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '# Progresso verificável — etapa 2\n\n**96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. A2 pendente.**\n\nAntes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.\n\nA métrica conta as trinta caixas do plano original, cinco por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. A caixa de preparação do primeiro RED pode estar concluída com a implementação ainda aberta nas seguintes (E2.5.1). Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis.\n\n| Tarefa | Itens | Estado       |\n| ------ | ----- | ------------ |\n| E2.1   | 5/5   | Encerrada    |\n| E2.2   | 5/5   | Encerrada    |\n| E2.3   | 5/5   | Encerrada    |\n| E2.4   | 5/5   | Encerrada    |\n| E2.5   | 5/5   | Encerrada    |\n| E2.6   | 4/5   | Em andamento |\n\n## Checklist e evidências\n\n- [x] **E2.1.1** Original criterion E2.1.1. Evidência/pendência: fixture evidence\n- [x] **E2.1.2** Original criterion E2.1.2. Evidência/pendência: fixture evidence\n- [x] **E2.1.3** Original criterion E2.1.3. Evidência/pendência: fixture evidence\n- [x] **E2.1.4** Original criterion E2.1.4. Evidência/pendência: fixture evidence\n- [x] **E2.1.5** Original criterion E2.1.5. Evidência/pendência: fixture evidence\n- [x] **E2.2.1** Original criterion E2.2.1. Evidência/pendência: fixture evidence\n- [x] **E2.2.2** Original criterion E2.2.2. Evidência/pendência: fixture evidence\n- [x] **E2.2.3** Original criterion E2.2.3. Evidência/pendência: fixture evidence\n- [x] **E2.2.4** Original criterion E2.2.4. Evidência/pendência: fixture evidence\n- [x] **E2.2.5** Original criterion E2.2.5. Evidência/pendência: fixture evidence\n- [x] **E2.3.1** Original criterion E2.3.1. Evidência/pendência: fixture evidence\n- [x] **E2.3.2** Original criterion E2.3.2. Evidência/pendência: fixture evidence\n- [x] **E2.3.3** Original criterion E2.3.3. Evidência/pendência: fixture evidence\n- [x] **E2.3.4** Original criterion E2.3.4. Evidência/pendência: fixture evidence\n- [x] **E2.3.5** Original criterion E2.3.5. Evidência/pendência: fixture evidence\n- [x] **E2.4.1** Original criterion E2.4.1. Evidência/pendência: fixture evidence\n- [x] **E2.4.2** Original criterion E2.4.2. Evidência/pendência: fixture evidence\n- [x] **E2.4.3** Original criterion E2.4.3. Evidência/pendência: fixture evidence\n- [x] **E2.4.4** Original criterion E2.4.4. Evidência/pendência: fixture evidence\n- [x] **E2.4.5** Original criterion E2.4.5. Evidência/pendência: fixture evidence\n- [x] **E2.5.1** Original criterion E2.5.1. Evidência/pendência: fixture evidence\n- [x] **E2.5.2** Original criterion E2.5.2. Evidência/pendência: fixture evidence\n- [x] **E2.5.3** Original criterion E2.5.3. Evidência/pendência: fixture evidence\n- [x] **E2.5.4** Original criterion E2.5.4. Evidência/pendência: fixture evidence\n- [x] **E2.5.5** Original criterion E2.5.5. Evidência/pendência: fixture evidence\n- [x] **E2.6.1** Original criterion E2.6.1. Evidência/pendência: fixture evidence\n- [ ] **E2.6.2** Original criterion E2.6.2. Evidência/pendência: Pending full proof\n- [x] **E2.6.3** Original criterion E2.6.3. Evidência/pendência: fixture evidence\n- [x] **E2.6.4** Original criterion E2.6.4. Evidência/pendência: fixture evidence\n- [x] **E2.6.5** Original criterion E2.6.5. Evidência/pendência: fixture evidence\n\n## Gates e limites\n\nIndependent approval is never derived from completion.\n\nEstimativa: 24–40 horas, excluindo esperas externas.\n\nA2 pendente; etapa3 depende da aprovação explícita do usuário.\n',
+    expected: /A2 approved with screen-reader work outstanding/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:124:29
+✖ stage 3 --check accepts current counts without any write (95.9627ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  29 !== 7
+  
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:129:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:125:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 29,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:135:3
+✖ --check rejects stale completedItems without writing (95.7934ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:140:14
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:136:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:135:3
+✖ --check rejects stale totalItems without writing (104.4766ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:140:14
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:136:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:135:3
+✖ --check rejects stale percentage without writing (103.6251ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:140:14
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:136:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:135:3
+✖ --check rejects stale closedTasks without writing (117.0598ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:140:14
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:136:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:135:3
+✖ --check rejects stale totalTasks without writing (106.9111ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:140:14
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:136:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects missing criterion before any write (218.9519ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects duplicate criterion before any write (207.6497ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects foreign criterion before any write (218.4612ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects nonboolean completion before any write (305.4451ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects completed without evidence before any write (358.2328ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects nonstrings as evidence before any write (320.9312ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects missing summary before any write (327.1477ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects missing approval before any write (195.0501ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:157:4
+✖ rejects wrong stage before any write (199.9682ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:162:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:158:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage"] without writing (202.5586ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage","4"] without writing (239.7628ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage","03"] without writing (227.9428ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage","2x"] without writing (204.3243ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage=3"] without writing (195.1706ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage","3","--stage","2"] without writing (201.5894ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--check","--check"] without writing (98.0576ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--unknown"] without writing (219.8567ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["3"] without writing (200.278ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--stage","--check"] without writing (94.6408ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:171:4
+✖ rejects malformed arguments ["--root",".."] without writing (197.5065ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:175:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:172:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:185:4
+✖ rejects plan with duplicate task before writing (200.767ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:191:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:186:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:185:4
+✖ rejects plan with missing task before writing (223.6658ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:191:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:186:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:185:4
+✖ rejects plan with missing original criterion before writing (243.7567ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:191:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:186:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:196:51
+✖ missing input docs/verification/progresso-etapa-3.json cannot cause partial updates (201.5289ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:200:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:197:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:196:51
+✖ missing input docs/verification/execucao-etapa-3.md cannot cause partial updates (191.8625ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:200:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:197:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:205:1
+✖ missing ledger progress marker cannot cause partial updates (199.0415ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:209:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:206:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts\recalculate-stage-progress.test.mjs:214:1
+✖ all completed criteria still leave input A3 approval pending (211.0197ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  96.7 !== 100
+  
+      at file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:220:12
+      at async fixture (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:59:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/recalculate-stage-progress.test.mjs:215:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 96.7,
+    expected: 100,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

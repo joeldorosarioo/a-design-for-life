@@ -1,0 +1,4 @@
+COMMAND=& '.\.toolchain\node-v24.22.2-win-x64\node.exe' '.\node_modules\eslint\bin\eslint.js' testing/setup/test-environment.ts testing/setup/test-environment.test.ts testing/setup/vitest.ts
+EXIT_CODE=0
+OUTPUT=(none)
+RECEIPT=The original executed process completion was observed as exit0 with no stdout/stderr. Tee-Object did not create a file for an empty stream; this explicit receipt records that authoritative completion. No ESLint rerun was needed to reconstruct this receipt.

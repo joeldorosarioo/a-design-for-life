@@ -1,6 +1,8 @@
+> **Atualização de 03/11/2026:** A2 aprovada pelo usuário com a pendência do leitor de tela registrada; E3 explicitamente retomada após a pausa histórica. Estado atual em [retomada-etapa-3.md](retomada-etapa-3.md). Critérios e logs abaixo preservam as evidências históricas; contagens atuais não certificam novamente a suíte.
+
 # Execução autorizada — etapa 2
 
-**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. A2 pendente.**
+**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 
@@ -102,3 +104,7 @@ Implementação `c9be4dc23c12f45fadd27cafc05a599b8b3a0c44`: gates locais 003 ver
 Pacote concreto `A2-review-c9be4dc-v2` revisado e entregue no chat: 181 artefatos, 18 capturas e 2 vídeos; manifesto SHA256 `3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15`. QA real exit0 às 15:26:01–15:26:10 UTC: 108 filtros/204 links por viewport, 0 overflow em 1440 e 390, 0 rede externa/erros. RED390 do token SHA e correção mínima de wrap no visualizador foram preservados, sem mudança do produto. Resumos em `artifacts/a2-current008/package-review-summary.json` e `package-red-green-summary.json`.
 
 [A2](A2.md), [visual](visual.md), [a11y](a11y.md), [performance](performance.md) e [SEO](seo.md) registram requisitos, comandos, ambiente, resultados e verificações não executadas. O commit documental, CI exato e pacote final `outputs/A2` serão vinculados no recibo externo `outputs/A2-entrega.json`, após geração/revisão reais, sem autorreferência Git. Manter develop e promoção normal protegida; sem produção, analytics ou integrações posteriores.
+
+## Aprovação A2 e pausa posterior de E3
+
+Em03/11/2026 o usuário aprovou A2 com o leitor de tela pendente e autorizou E3. Depois pediu pausa até reunir as informações necessárias. A aprovação não altera29/30 nem converte E2.6.2 em concluída. Preparação E3 limitada a inventário/pesquisa; nenhuma implementação ou contratação. Diretriz local-first, conta R2 existente e decisão de e-mail ainda aberta em [retomada-etapa-3.md](retomada-etapa-3.md).

@@ -1,0 +1,151 @@
+{
+  "ok": false,
+  "phase": "initial",
+  "dataset": "a",
+  "failure": "Native synthetic login failed",
+  "results": [
+    {
+      "name": "health",
+      "status": 200,
+      "bytes": 18,
+      "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+      "cacheControl": "no-store, max-age=0"
+    },
+    {
+      "name": "pt/home",
+      "status": 200,
+      "bytes": 50369,
+      "sha256": "3e48ea3342e772253f713e619ded303024280fae827fcb6c5748d8d999dd9373",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3103/pt",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3103/pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3103/en"
+        }
+      ]
+    },
+    {
+      "name": "pt/list",
+      "status": 200,
+      "bytes": 40205,
+      "sha256": "47fe65fafa38868a1cac81a90a962b4b2f6afce6f91323e83d7615bfd10fd34b",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3103/pt/cases",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3103/pt/cases"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3103/en/cases"
+        }
+      ]
+    },
+    {
+      "name": "pt/detail",
+      "status": 200,
+      "bytes": 47712,
+      "sha256": "556e6e1aecf529bb24a129d9a4ce39144a0d9bd48b5907a456600fcc195ad5bf",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3103/pt/cases/public-8943b030-first-pt",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3103/pt/cases/public-8943b030-first-pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3103/en/cases/public-8943b030-first-en"
+        }
+      ]
+    },
+    {
+      "name": "en/home",
+      "status": 200,
+      "bytes": 60315,
+      "sha256": "f019114cb273a90ce268c0f5947f700bc2d636f10addeaaa948cd6b05cfa4623",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3103/en",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3103/pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3103/en"
+        }
+      ]
+    },
+    {
+      "name": "en/list",
+      "status": 200,
+      "bytes": 35997,
+      "sha256": "77453b8d57eae9348df0033aee74bd7ef62f4d2b68c0b7059373602c9441b8fb",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3103/en/cases",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3103/pt/cases"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3103/en/cases"
+        }
+      ]
+    },
+    {
+      "name": "en/detail",
+      "status": 200,
+      "bytes": 53403,
+      "sha256": "75d4dfd682b6597be8c2771d68de076b81687923f8779f7dd5ba414de162fc01",
+      "cacheControl": "no-store, max-age=0",
+      "canonical": "http://127.0.0.1:3103/en/cases/public-8943b030-first-en",
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "http://127.0.0.1:3103/pt/cases/public-8943b030-first-pt"
+        },
+        {
+          "locale": "en",
+          "href": "http://127.0.0.1:3103/en/cases/public-8943b030-first-en"
+        }
+      ]
+    },
+    {
+      "name": "private-draft",
+      "status": 404,
+      "bytes": 2993,
+      "sha256": "f77c080b84a385fc70604d729f3768b8c5a72d1a53c0b66b9c5aaa8d1ccfee4a",
+      "cacheControl": "no-store, max-age=0"
+    },
+    {
+      "name": "admin/login",
+      "status": 200,
+      "bytes": 49059,
+      "sha256": "5fc298eeb20163d12820e55a3af3644df0c56c5dc1df2767fb60b3360986b5f7",
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+    },
+    {
+      "name": "static-asset",
+      "status": 200,
+      "bytes": 265,
+      "sha256": "0e77b0c8ebeac207c4f59dbfa0eb9b4cddbcbbda818bf071f8ba8042e6c57c6e",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "anonymous-native-api",
+      "status": 403,
+      "bytes": 70,
+      "sha256": "9eaaefa4f97d1e7a53c0c004b88e2013f7a962ae702e4edaa8281ac1efa06dd8",
+      "cacheControl": null
+    }
+  ]
+}

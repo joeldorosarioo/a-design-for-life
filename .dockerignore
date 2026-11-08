@@ -1,0 +1,52 @@
+# Closed build-context allowlist. No host build, secrets, data or reports enter layers.
+**
+!Dockerfile
+!.dockerignore
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!next.config.ts
+!next-env.d.ts
+!tsconfig.json
+!postcss.config.mjs
+!src/
+!src/**
+!public/
+!public/**
+!scripts/emit-case-state-css.mjs
+# Adjacent source tests participate in Next TypeScript validation. Only code support,
+# never binary fixtures, is sent; no repository typecheck exclusions are weakened.
+!testing/fixtures/**/*.ts
+!testing/setup/**/*.ts
+!testing/setup/install-qpdf.mjs
+!testing/setup/install-age.mjs
+!testing/setup/configure-backup-tools.mjs
+# Native backup integration tests import these modules during type checking.
+!ops/backup/age.ts
+!ops/backup/archive.ts
+!ops/backup/contracts.ts
+!ops/backup/local-target.ts
+!ops/backup/repository.ts
+!ops/backup/restore-target.ts
+!ops/backup/restore.ts
+!ops/backup/retention.ts
+!ops/backup/run.ts
+!ops/backup/tools.ts
+!ops/image/health-probe.mjs
+!ops/image/runtime-smoke.mjs
+!ops/image/assemble-standalone.mjs
+# Defense in depth if a private file is ever put below an allowed source directory.
+**/.env
+**/.env.*
+**/.git
+**/.git/**
+**/.work
+**/.work/**
+**/.next
+**/.next/**
+**/.toolchain
+**/.toolchain/**
+**/node_modules
+**/node_modules/**
+**/*.tsbuildinfo
+public/_portfolio/case-state.css

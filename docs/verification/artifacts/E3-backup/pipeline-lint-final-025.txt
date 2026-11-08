@@ -1,0 +1,2 @@
+COMMAND: pnpm exec eslint --max-warnings 0 ops/backup src/helpers/storage/object-retention.ts src/helpers/storage/object-retention.test.ts src/helpers/storage/object-storage.ts src/helpers/storage/r2-storage.ts src/features/media-library/server/backup-set.integration.test.ts
+EXIT_CODE: 0

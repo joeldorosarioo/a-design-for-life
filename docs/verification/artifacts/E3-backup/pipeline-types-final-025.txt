@@ -1,0 +1,7 @@
+COMMAND: pnpm exec tsc --noEmit --incremental false
+testing/setup/configure-backup-tools.test.ts(17,45): error TS2741: Property 'NODE_ENV' is missing in type '{ APP_ENV: string | undefined; DATABASE_URI: string; MEDIA_BUCKET: string; SITE_ORIGIN: string; }' but required in type 'ProcessEnv'.
+testing/setup/configure-backup-tools.test.ts(28,45): error TS2322: Type '{ DATABASE_URI: string; MEDIA_BUCKET: string; SITE_ORIGIN: string; APP_ENV: string; } | { MEDIA_BUCKET: string; DATABASE_URI: string; SITE_ORIGIN: string; APP_ENV: string; } | { SITE_ORIGIN: string; DATABASE_URI: string; MEDIA_BUCKET: string; APP_ENV: string; }' is not assignable to type 'ProcessEnv | undefined'.
+  Property 'NODE_ENV' is missing in type '{ DATABASE_URI: string; MEDIA_BUCKET: string; SITE_ORIGIN: string; APP_ENV: string; }' but required in type 'ProcessEnv'.
+testing/setup/configure-backup-tools.test.ts(33,45): error TS2741: Property 'NODE_ENV' is missing in type '{ APP_ENV: string; DATABASE_URI: string; MEDIA_BUCKET: string; SITE_ORIGIN: string; }' but required in type 'ProcessEnv'.
+testing/setup/configure-backup-tools.test.ts(39,45): error TS2741: Property 'NODE_ENV' is missing in type '{ APP_ENV: string; DATABASE_URI: string; MEDIA_BUCKET: string; SITE_ORIGIN: string; }' but required in type 'ProcessEnv'.
+EXIT_CODE: 2

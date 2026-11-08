@@ -1,0 +1,120 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > executes only a bounded sequential batch and preserves progress after one execution fails 2ms
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 0 6ms
+   → promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: -1 1ms
+   → promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 1.5 1ms
+   → promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: NaN 0ms
+   → promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 101 0ms
+   → promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an invalid injected instant before loading due Native work 0ms
+   → promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > detaches the first drain, never overlaps a running drain, and stops future scheduling 2ms
+   → expected +0 to be 1 // Object.is equality
+ × |unit| src/helpers/payload/publication-retry-worker.test.ts > contains detached drain failures, logs no raw errors, and tries a later bounded drain 1ms
+   → expected +0 to be 2 // Object.is equality
+ ✓ |unit| src/helpers/payload/publication-retry-worker.test.ts > can stop before the detached callback without touching the application Payload pool 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 0
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: -1
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 1.5
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: NaN
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an unbounded or invalid batch size before loading work: 101
+AssertionError: promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "failed": 0,
++   "processed": 0,
++   "selected": 0,
+  }
+
+ ❯ src/helpers/payload/publication-retry-worker.test.ts:51:4
+     49|       process: async () => {},
+     50|     }),
+     51|   ).rejects.toThrow('Invalid publication retry batch.');
+       |    ^
+     52|   expect(loaded).toBe(false);
+     53| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > refuses an invalid injected instant before loading due Native work
+AssertionError: promise resolved "{ selected: +0, processed: +0, …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "failed": 0,
++   "processed": 0,
++   "selected": 0,
+  }
+
+ ❯ src/helpers/payload/publication-retry-worker.test.ts:67:4
+     65|       process: async () => {},
+     66|     }),
+     67|   ).rejects.toThrow('Invalid publication retry clock.');
+       |    ^
+     68|   expect(loaded).toBe(false);
+     69| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > detaches the first drain, never overlaps a running drain, and stops future scheduling
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/helpers/payload/publication-retry-worker.test.ts:86:18
+     84|   expect(drains).toBe(0);
+     85|   await vi.advanceTimersByTimeAsync(0);
+     86|   expect(drains).toBe(1);
+       |                  ^
+     87|   await vi.advanceTimersByTimeAsync(200);
+     88|   expect(drains).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |unit| src/helpers/payload/publication-retry-worker.test.ts > contains detached drain failures, logs no raw errors, and tries a later bounded drain
+AssertionError: expected +0 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 0
+
+ ❯ src/helpers/payload/publication-retry-worker.test.ts:116:18
+    114|   await vi.advanceTimersByTimeAsync(20);
+    115|   await supervisor.stop();
+    116|   expect(drains).toBe(2);
+       |                  ^
+    117|   expect(lines.map((line) => JSON.parse(line).result)).toEqual(['unava…
+    118|   expect(lines.join('')).not.toMatch(/private-user|private-token|priva…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 2 passed (10)
+   Start at  23:04:18
+   Duration  451ms (setup 65%, transform 16%, import 12%, tests 5%, worker 1%)
+

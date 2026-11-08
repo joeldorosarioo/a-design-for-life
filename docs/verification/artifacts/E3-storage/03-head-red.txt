@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (5 tests | 1 failed) 25ms
+   × heads a real object only when its bytes satisfy the complete reference 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > heads a real object only when its bytes satisfy the complete reference
+AssertionError: expected undefined to deeply equal { …(3) }
+
+- Expected:
+{
+  "byteLength": 3,
+  "key": "ebe045111d803b5d94ee91a1410403d718765c92f2081eabd202e68ca93eda82",
+  "sha256": "9ceed0d818acc42d0318974c548e2251f888f8512bc5c4c70378aa969a883cad",
+}
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/object-storage.test.ts:65:42
+     63|     head?: (reference: typeof object) => Promise<typeof object | null>;
+     64|   };
+     65|   expect(await transport.head?.(object)).toEqual(object);
+       |                                          ^
+     66| });
+     67|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  20:15:06
+   Duration  411ms (setup 74%, transform 9%, tests 9%, import 6%, worker 2%)
+

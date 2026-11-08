@@ -1,0 +1,8 @@
+src/helpers/logger/index.ts 25ms (unchanged)
+src/helpers/logger/logger.test.ts 51ms
+src/helpers/logger/logger.ts 17ms
+src/helpers/logger/redact.ts 9ms
+[error] No files matching the pattern were found: "src/app/(portfolio)/health/*.ts".
+docs/runbooks/saude-e-logs.md 49ms
+
+RECEIPT UTC=2026-11-03T23:55:10.5908373Z EXIT=2 COMMAND=pinned-node node_modules/prettier/bin/prettier.cjs --write src/helpers/logger/*.ts src/app/(portfolio)/health/*.ts docs/runbooks/saude-e-logs.md

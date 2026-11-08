@@ -1,0 +1,42 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ↓ |unit| testing/setup/test-environment.test.ts > allocates the dedicated runner namespace rather than the preserved visual database
+ × |unit| testing/setup/test-environment.test.ts > opts retry metadata into only the exact owned Native test namespace 10ms
+   → expected undefined to be 'true' // Object.is equality
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects an inherited database outside the exact owned runner namespace
+ ↓ |unit| testing/setup/test-environment.test.ts > replaces inherited storage and internal origin and clears integration credentials
+ ↓ |unit| testing/setup/test-environment.test.ts > rejects inherited bucket mismatches before configuring the runtime
+ ↓ |unit| testing/setup/test-environment.test.ts > keeps an absent optional checker absent across repeated configuration and child process environment
+ ↓ |unit| testing/setup/test-environment.test.ts > preserves an explicitly configured PDF checker executable
+ ↓ |unit| testing/setup/test-environment.test.ts > normalizes a supported localhost test origin only for the literal internal HTTP transport
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| testing/setup/test-environment.test.ts > opts retry metadata into only the exact owned Native test namespace
+AssertionError: expected undefined to be 'true' // Object.is equality
+
+- Expected:
+"true"
+
++ Received:
+undefined
+
+ ❯ testing/setup/test-environment.test.ts:30:43
+     28|   process.env.PUBLICATION_RETRIES_ENABLED = 'false';
+     29|   const env = configureTestEnvironment();
+     30|   expect(env.PUBLICATION_RETRIES_ENABLED).toBe('true');
+       |                                           ^
+     31|   expect(process.env.PUBLICATION_RETRIES_ENABLED).toBe('true');
+     32|   expect(new URL(env.DATABASE_URI).port).toBe('55434');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 9 skipped (10)
+   Start at  22:26:30
+   Duration  454ms (setup 57%, import 29%, transform 10%, tests 3%, worker 1%)
+

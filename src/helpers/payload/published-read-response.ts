@@ -1,6 +1,17 @@
 import 'server-only';
 import { createLocalReq, type CollectionSlug, type PayloadRequest, type Where } from 'payload';
 import type { Result } from './editorial-result.schema';
+import { publicGenerationHeader } from './public-generation-header';
+import { readPublicRoot, type PublicRoot } from './public-root';
+import { runtimePublication } from './publication-runtime';
+
+export async function capturePublishedReadRoot(): Promise<PublicRoot | null> {
+  try {
+    return await readPublicRoot(runtimePublication().directory);
+  } catch {
+    return null;
+  }
+}
 
 // SQL may establish absence only; an intent never grants a public body.
 export async function publishedReadStatus<T>(
@@ -30,7 +41,10 @@ export async function publishedReadResponse<T>(
   result: Result<T>,
   subject: { collection: CollectionSlug; where: Where },
   req: PayloadRequest,
+  root?: PublicRoot | null,
 ): Promise<Response> {
   const status = await publishedReadStatus(result, subject, req.payload);
-  return Response.json(result, { status, headers: { 'Cache-Control': 'no-store' } });
+  const headers = new Headers({ 'Cache-Control': 'no-store' });
+  if (status === 200 && root) headers.set(publicGenerationHeader, root.generation);
+  return Response.json(result, { status, headers });
 }

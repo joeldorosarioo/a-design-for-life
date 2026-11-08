@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/r2-storage.test.ts (2 tests | 1 failed) 49ms
+   × downloads the accepted bytes through get and legacy read with response integrity checked 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/r2-storage.test.ts > downloads the accepted bytes through get and legacy read with response integrity checked
+AssertionError: expected undefined to deeply equal Uint8Array[ 3, 1, 4 ]
+
+- Expected:
+Uint8Array [
+  3,
+  1,
+  4,
+]
+
++ Received:
+undefined
+
+ ❯ src/helpers/storage/r2-storage.test.ts:93:40
+     91|   const { adapter } = await boundary();
+     92|   const object = await adapter!.put(new Uint8Array([3, 1, 4]));
+     93|   expect(await adapter?.get?.(object)).toEqual(new Uint8Array([3, 1, 4…
+       |                                        ^
+     94|   expect(await adapter?.read?.(object)).toEqual(new Uint8Array([3, 1, …
+     95| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  20:19:40
+   Duration  490ms (setup 51%, import 28%, tests 13%, transform 7%, worker 1%)
+

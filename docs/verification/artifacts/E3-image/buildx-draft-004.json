@@ -1,0 +1,65 @@
+{
+  "buildx.build.provenance": {
+    "builder": {
+      "id": ""
+    },
+    "buildType": "https://mobyproject.org/buildkit@v1",
+    "materials": [
+      {
+        "uri": "pkg:docker/docker/dockerfile@1",
+        "digest": {
+          "sha256": "4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e"
+        }
+      },
+      {
+        "uri": "pkg:docker/node@24.22.2-trixie-slim?digest=sha256:54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446\u0026platform=linux%2Famd64",
+        "digest": {
+          "sha256": "54f84b4cf8432b21aaffd5d3ce8d41e12cea0d10d33c09d2f3c9879d49d6b446"
+        }
+      }
+    ],
+    "invocation": {
+      "configSource": {
+        "entryPoint": "Dockerfile"
+      },
+      "parameters": {
+        "frontend": "gateway.v0",
+        "args": {
+          "build-arg:SOURCE_REVISION": "draft-e3-local-004",
+          "cmdline": "docker/dockerfile:1",
+          "source": "docker/dockerfile:1"
+        },
+        "locals": [
+          {
+            "name": "context"
+          },
+          {
+            "name": "dockerfile"
+          }
+        ],
+        "root": {
+          "configSource": {
+            "path": "Dockerfile"
+          },
+          "request": {
+            "args": {
+              "build-arg:SOURCE_REVISION": "draft-e3-local-004",
+              "vcs:localdir:context": ".",
+              "vcs:localdir:dockerfile": ".",
+              "vcs:revision": "60314d2a095b178f16ddc3972e384d153ba031b5",
+              "vcs:source": "https://github.com/joeldorosarioo/a-design-for-life.git"
+            }
+          }
+        },
+        "compatibilityVersion": 30
+      },
+      "environment": {
+        "platform": "linux/amd64"
+      }
+    }
+  },
+  "buildx.build.ref": "desktop-linux/desktop-linux/jl2ypkkomunr3d4xo6lwhbujo",
+  "containerimage.config.digest": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "containerimage.digest": "sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36",
+  "image.name": "docker.io/library/adfl:e3-local-draft-004"
+}
