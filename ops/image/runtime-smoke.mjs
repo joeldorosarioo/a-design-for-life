@@ -15,6 +15,15 @@ assert.match(execFileSync('postgres', ['--version'], { encoding: 'utf8' }), / 17
 assert.equal(process.getuid(), 70);
 assert.equal(process.getgid(), 70);
 assert.equal(userInfo().username, 'appuser');
+assert.equal(
+  execFileSync('/opt/adfl-age/age', ['--version'], { encoding: 'utf8' }).trim(),
+  'v1.3.2',
+);
+assert.match(
+  execFileSync('/usr/bin/tar', ['--version'], { encoding: 'utf8' }),
+  /^tar \(GNU tar\) 1\.35(?:\r?\n|$)/,
+);
+await access('/app/src/backup-runtime.mjs');
 const checker = process.env.MEDIA_CHECKER_BINARY ?? '/opt/qpdf/bin/qpdf';
 assert.match(execFileSync(checker, ['--version'], { encoding: 'utf8' }), /^qpdf version 12\.4\.2/);
 const require = createRequire(import.meta.url);
@@ -78,5 +87,5 @@ try {
   await rm(directory, { recursive: true, force: true });
 }
 console.log(
-  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas and PDF.js resources.',
+  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas, PDF.js resources, age 1.3.2, GNU tar 1.35 and backup entrypoint.',
 );

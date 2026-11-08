@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 3
 
-**Etapa 3: 50,0% do checklist (15/30 itens); 0/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
+**Etapa 3: 53,3% do checklist (16/30 itens); 1/6 tarefas inteiramente encerradas. Aprovação registrada: A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized.**
 
 Fonte: plano original aprovado em `../specs/2026-10-29-portfolio-plano-implementacao.md`, E3.1–E3.6. A métrica preserva as trinta caixas originais, cinco por tarefa e sem crédito parcial. Contagens/evidências em [progresso-etapa-3.md](progresso-etapa-3.md); autorização e histórico da pausa em [retomada-etapa-3.md](retomada-etapa-3.md).
 
@@ -13,13 +13,21 @@ Estimativa inicial: **24–40 horas de trabalho**, excluindo esperas externas. R
 - [ ] E3.1 Ambientes R2 e e-mail reais — 0/5 critérios.
 - [ ] E3.2 Cache, invalidação e recuperação de atualização pública — 4/5 critérios.
 - [ ] E3.3 Google Analytics automático sem cookies — 2/5 critérios.
-- [ ] E3.4 Imagem única, configuração de execução e homologação — 4/5 critérios.
-- [ ] E3.5 Migrações, logs e verificações de saúde — 1/5 critérios.
+- [x] E3.4 Imagem única, configuração de execução e homologação — 5/5 critérios.
+- [ ] E3.5 Migrações, logs e verificações de saúde — 3/5 critérios.
 - [ ] E3.6 Backup criptografado e restauração isolada — 2/5 critérios.
 - [ ] Pacote A3 com evidências e limitações concretas entregue.
 - [ ] A3 aprovada explicitamente pelo usuário.
 
-## Decisões e bloqueios externos
+## Estado atual e leitura da contagem — 06/11/2026
+
+A aplicação e o CMS estão implantados em staging, com deploy automático develop→staging comprovado no workflow42225045302. VPS/Coolify, GHCR privado, Resend e conta editorial já existem. O usuário confirmou o teste real de envio da recuperação; isso não é um envio adicional pelo agente. Os registros históricos abaixo não revogam essas configurações ou autorizações.
+
+16/30 (53,3%) mede critérios de aceite integralmente comprovados; não mede linhas de código nem percentual geral da implementação. Há1/6 frente integralmente encerrada: imagem/homologação (E3.4), em5/5. Cache/publicação permanece em4/5. A contagem anterior de15/30 e0/6 descreve o checkpoint antes da verificação do conteúdo publicado.
+
+Próximas prioridades: validar a versão implantada e seus guardas operacionais (mídia/publicação, cache/worker, saúde/logs, exclusão de indexação/Analytics); configurar e provar backup remoto agendado e restauração isolada; concluir as configurações/inspeção do SDK de Analytics e consolidar o pacote de aceite A3. Produção permanece desativada e não é pré-requisito para usar o staging. Não recontratar nem reprovisionar os recursos já existentes.
+
+## Decisões e bloqueios externos — histórico inicial
 
 Uma conta Resend; `mail.joeldorosarioo.dev` como subdomínio de envio; uma chave de envio por projeto. Ambos os portfólios usam e-mail apenas na recuperação nativa de senha e não precisam de caixa de entrada. Nenhum envio real autorizado. Não registrar tokens/senhas em chat, logs ou repositório.
 
@@ -134,3 +142,7 @@ O sitemap indexável do Next serviu as URLs atuais e alternates PT/EN da mesma g
 ### Cache confirmado em volume Docker
 
 Prova Docker local de 04/11/2026 com a imagem 008 e PostgreSQL descartável. Depois de remover o banco e recriar o contêiner com o mesmo volume nomeado, Home e listagem PT/EN mantiveram 200, a mesma geração e o mesmo SHA-256 de current.json. Caminho sem cobertura passou de 404 com banco disponível para 503 com no-store e Retry-After. Uma origem distinta montando o mesmo volume recebeu 503 sem geração. Montagem e isolamento comprovados localmente, com ativação em VPS ainda pendente. [Recibo do volume nomeado](artifacts/E3-cache/named-volume-001.json).
+
+## Conteúdo implantado e primeira frente concluída — 06/11/2026
+
+A publicação do conteúdo da Eliana e a validação de noindex/Analytics desativado encerraram E3.4.4. E3.4 está em5/5; o total passa a16/30 critérios e1/6 frentes integralmente encerradas, sem aprovação A3/A4. Ver [recibo](artifacts/E3-operations/eliana-content-staging-001.json).

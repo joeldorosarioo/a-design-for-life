@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-11-06",
-  "status": "staging-activation-configured-awaiting-protected-ci",
+  "status": "staging-autodeploy-active-first-pipeline-verified",
   "operatorAuthorized": true,
   "target": {
     "repository": "joeldorosarioo/a-design-for-life",
@@ -71,9 +71,98 @@
     "enabled": false,
     "touched": false
   },
-  "pending": [
-    "Publish the integration branch, pass required CI and merge normally into develop.",
-    "Observe the automatic private image publication and staging deployment to Healthy."
-  ],
-  "secretValuesPrinted": false
+  "pending": [],
+  "secretValuesPrinted": false,
+  "pullRequest": {
+    "number": 1,
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/pull/1",
+    "mergeRevision": "8cf1d83ad599768c06d2e8154294493cb0345dae",
+    "normalProtectedMerge": true,
+    "adminBypassUsed": false
+  },
+  "workflow": {
+    "runId": 42225045302,
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42225045302",
+    "conclusion": "success",
+    "revision": "8cf1d83ad599768c06d2e8154294493cb0345dae",
+    "jobs": {
+      "verification": "success",
+      "imageBuildAndPrivatePublication": "success",
+      "stagingDeployAndHealth": "success",
+      "healthyImageMarker": "success",
+      "productionResolve": "skipped",
+      "productionDeploy": "skipped"
+    }
+  },
+  "verification": {
+    "vitestFilesPassed": 229,
+    "vitestTestsPassed": 2208,
+    "deployTestsPassed": 65,
+    "cssTestsPassed": 2,
+    "progressTestsPassed": 36,
+    "chromiumJourneysPassed": 123
+  },
+  "image": {
+    "repository": "ghcr.io/joeldorosarioo/a-design-for-life",
+    "visibility": "private",
+    "manifestDigest": "sha256:1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838",
+    "imageId": "sha256:32be519ac14743477707701dd7dd848d470c87b1bab587bab2436ec73ca70b7a",
+    "sourceTree": "aa0974c239211d0f771a4d772b4b3fbad471e3b7",
+    "revision": "8cf1d83ad599768c06d2e8154294493cb0345dae",
+    "digestAliasVerifiedBeforeDeploy": true,
+    "healthyMarker": "staging-tested-tree-aa0974c239211d0f771a4d772b4b3fbad471e3b7"
+  },
+  "independentReadback": {
+    "kind": "activated-staging-readonly-verification",
+    "verified": true,
+    "expectedDigest": "sha256:1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838",
+    "application": {
+      "uuid": "1tiveqtdwa1kxsjfhtugcjdp",
+      "status": "running:healthy",
+      "image": "ghcr.io/joeldorosarioo/a-design-for-life",
+      "tag": "sha256-1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838"
+    },
+    "deployment": {
+      "uuid": "wjqycy6e1wuluwzajzn8hceu",
+      "status": "finished",
+      "applicationUuid": "1tiveqtdwa1kxsjfhtugcjdp"
+    },
+    "limits": {
+      "cpus": "1",
+      "memory": "2g",
+      "memoryAndSwap": "2g"
+    },
+    "protections": {
+      "healthcheckEnabled": true,
+      "basicAuthEnabledInConfiguration": true,
+      "unauthenticatedAccessDenied": true,
+      "basicChallengeObserved": true,
+      "consistentContainerNameEnabled": true
+    },
+    "readOnly": true,
+    "apiSecretsEndpointQueried": false,
+    "apiMutationPerformed": false,
+    "verifiedAt": "2026-11-06T13:40:33.945Z",
+    "additionalDockerOptions": "Not returned by the scoped application API; not independently inspected."
+  },
+  "promotionCandidateReadback": {
+    "sameDigestVerified": true,
+    "sourceTree": "aa0974c239211d0f771a4d772b4b3fbad471e3b7",
+    "readOnly": true,
+    "simulatedMainReference": true,
+    "productionApiCalled": false,
+    "registryWritePerformed": false
+  },
+  "activation": {
+    "stagingRepositoryVariable": true,
+    "githubEnvironments": [
+      "staging"
+    ],
+    "productionActivationVariablePresent": false
+  },
+  "stageThreeApproval": "pending",
+  "sourceCodePublished": true,
+  "newServicesPurchased": false,
+  "realEmailSent": false,
+  "completedAt": "2026-11-06T13:42:52.541131+00:00"
 }

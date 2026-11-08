@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-04T00:31:46.830Z",
+  "updatedAt": "2026-11-06T14:35:35.637841+00:00",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 15,
+  "completedItems": 16,
   "totalItems": 30,
-  "percentage": 50,
-  "closedTasks": [],
+  "percentage": 53.3,
+  "closedTasks": ["E3.4"],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
   "remainingEstimate": "24–40 horas de trabalho, excluindo esperas externas; revisar diante de bloqueio concreto.",
@@ -14,7 +14,7 @@
       "id": "E3.1.1",
       "done": false,
       "summary": "Levantar acessos existentes; apresentar VPS/plano e custos atuais antes de contratar. Dimensionar aplicação, PostgreSQL, homologação, build quando aplicável e pico de processamento medido. Registrar domínio escolhido pelo usuário, registry, origens dos ambientes, conta/propriedade GA4, envio de e-mail e credenciais mínimas. Nenhum domínio, provedor ou preço é presumido por este plano.",
-      "evidence": "Opções e preços oficiais documentados para VPS/Coolify, R2, Resend e registry, com hipótese de 8 GiB inicial e build externo. O usuário confirmou que as escolhas de domínio, VPS/Coolify e registry ainda estão indefinidas. [Proposta](E3-infra-proposta.md)."
+      "evidence": "VPS Hostinger/Atlas, Coolify com TLS, origem autenticada de staging, GHCR privado e envio por mail.joeldorosarioo.dev já foram configurados. O deploy automático develop→staging foi comprovado. Falta consolidar dimensionamento/medições e decisões restantes de domínio público e propriedade GA4; esses itens não impedem o uso do staging. [Estado implantado](artifacts/E3-operations/github-coolify-activation-001.json)."
     },
     {
       "id": "E3.1.2",
@@ -38,7 +38,7 @@
       "id": "E3.1.5",
       "done": false,
       "summary": "Validar configuração real de e-mail com conta editorial autorizada e autorização específica para envio de teste; usar captura local até essa autorização. Não enviar mensagens a outras pessoas. Rodar integração, `pnpm verify` e registrar evidências sem segredos; commit `feat: integrar armazenamento e envio editorial`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial. O usuário escolheu captura local de e-mail em 05/11. A recuperação Native na cópia restaurada produziu uma captura, revogou sessão/senha anteriores e recusou a reutilização do token. [Recibo local](artifacts/E3-backup/local-portfolio-backup-restore-003.json)."
+      "evidence": "Resend foi configurado e o usuário confirmou criação/login da conta editorial e teste real de envio da recuperação no staging. Isso é evidência relatada pelo operador; o agente não enviou nova mensagem real nem registrou confirmação independente da entrega e uso do token nesse ambiente. O fluxo completo de captura local passou, e o CI atual aprovou 2.208 testes e 123 jornadas. [Registro do operador e gates](A3.md)."
     },
     {
       "id": "E3.2.1",
@@ -120,9 +120,9 @@
     },
     {
       "id": "E3.4.4",
-      "done": false,
+      "done": true,
       "summary": "Construir a imagem identificada pelo commit, publicar no registry autorizado e implantar somente em homologação autenticada, sem indexação e sem Analytics. Registrar digest, configuração sem segredos e evidência de que a candidata a produção tem exatamente o mesmo digest. A promoção real fica para depois de A4.",
-      "evidence": "Workflow manual de preflight constrói a revisão exata, inspeciona a imagem Linux e roda smoke offline. Domínio, registry e VPS/Coolify ainda indefinidos. Faltam digest do registry e implantação autenticada de homologação. [Build e promoção](../runbooks/build-e-promocao.md)."
+      "evidence": "Encerrado em06/11/2026: build/publicação privada/deploy do commit8cf1d83 e marcador da mesma candidata foram comprovados no workflow42225045302, com manifesto1c2f679d5fad931fda701bf1fbd109cce24ea2ed596f32dee9b732aa242fc838 e Finished/Healthy. A importação editorial posterior permitiu verificar dez páginas reais PT/EN: todas200 com noindex e sem SDK Analytics, sete arquivos com SHA-256 exato e acesso anônimo401. Sete navegações Chromium em desktop/celular não fizeram requisições Analytics. Produção não foi criada/promovida. [Deploy e candidata](artifacts/E3-operations/github-coolify-activation-001.json) · [Conteúdo e exclusões operacionais](artifacts/E3-operations/eliana-content-staging-001.json)."
     },
     {
       "id": "E3.4.5",
@@ -140,7 +140,7 @@
       "id": "E3.5.2",
       "done": false,
       "summary": "Implementar endpoint leve sem consulta pesada a dependências. Verificar no Coolify o probe disponível na imagem; proposta inicial: intervalo 30 s, timeout 5 s, três falhas consecutivas, com período de início medido. Usar um probe com Node ou disponibilizar o binário necessário, sem assumir ferramenta ausente na imagem mínima.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "A imagem atual inclui o probe Node, e a primeira implantação automática foi concluída com healthcheck habilitado e estado running:healthy no Coolify, confirmado por leitura independente. O critério integral ainda requer consolidar parâmetros efetivos, tempo de início e comportamento de falha/recuperação do probe operacional. [Recibo atual](artifacts/E3-operations/github-coolify-activation-001.json)."
     },
     {
       "id": "E3.5.3",
@@ -212,7 +212,10 @@
     "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos.",
     "Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsum, auditar as páginas e validar o R2 existente. Escolheu captura local de e-mail e backup criptografado em filesystem. As provas locais dessa rodada estão em A3 e web-quality.md; os critérios integrais de homologação mantêm suas dependências.",
     "05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md.",
-    "05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json."
+    "05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json.",
+    "06/11/2026: deploy automático develop→staging ativado e primeiro pipeline integral GREEN, com publicação privada, digest imutável, Finished/Healthy, autenticação e marcador confirmados. Produção continua ausente/desativada; o resolver da candidata foi exercitado somente em leitura com referência main simulada. A3/A4 não concedidas. Ver github-coolify-activation-001.json.",
+    "Auditoria de comunicação do progresso em06/11/2026: 15/30 é contagem de critérios integrais de aceite, não porcentagem de código implementado. 0/6 significa nenhuma das seis frentes com todos os cinco critérios encerrados; cache/publicação e imagem/homologação estão em4/5 cada. Descrições antigas de infraestrutura indisponível não representam o staging já implantado. Próximas prioridades: validação operacional do staging, backup remoto agendado/restauração isolada, configuração e inspeção do SDK de Analytics e consolidação para aceite A3. Não repetir provisionamento já concluído nem ativar produção.",
+    "06/11/2026: textos do site eliananovaes.com reescritos emPT/EN e Abordagem complementada com o export do Figma por autorização explícita. Publicados2perfis,2navegações,2projetos/4traduções;5imagens originais e2PDFs em branco autorizados. Dez páginas/sete arquivos e sete navegações reais passaram. E3.4.4 encerrado pela comprovação operacional de noindex/Analytics desativado, somada ao deploy/digest anterior. E3.4 é a primeira frente integralmente encerrada; A3/A4 continuam pendentes."
   ],
-  "recalculatedAt": "2026-11-05T18:02:28.507Z"
+  "recalculatedAt": "2026-11-06T14:39:07.774Z"
 }

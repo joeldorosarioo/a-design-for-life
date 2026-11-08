@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "kind": "staging-full-backup-preparation",
+  "observedAt": "2026-11-06T15:00:16.074Z",
+  "fullBackupVerified": false,
+  "scheduleEnabled": false,
+  "productionAccessed": false,
+  "databaseSafetyCopy": {
+    "encrypted": true,
+    "isolatedRestoreVerified": true,
+    "sourceReadOnly": true,
+    "counts": {
+      "cases": 2,
+      "media": 8,
+      "users": 1,
+      "profiles": 2,
+      "migrations": 17,
+      "navigation": 2,
+      "caseContent": 4
+    },
+    "ciphertext": {
+      "byteLength": 197098,
+      "sha256": "af587130e4f6b14fcd21e0abc42831a6d9a257e0cc345f3e67c094d11d314d54"
+    },
+    "restoreNetwork": "none",
+    "allPublicTableRowsMatched": true,
+    "schemaMetadataMatched": true,
+    "accountAndSessionsMatched": true,
+    "plaintextFilesCreated": 0,
+    "cleanupVerified": true
+  },
+  "r2": {
+    "version": 1,
+    "kind": "real-r2-backup-access-preflight",
+    "startedAt": "2026-11-06T14:57:52.234Z",
+    "backupBucket": "eliana-novaes-media-backups",
+    "sourceMediaBucket": "eliana-novaes-media",
+    "verified": true,
+    "productionAccessed": false,
+    "mediaObjectsModified": false,
+    "backupExecuted": false,
+    "backupBucketAccessible": true,
+    "backupCredentialCannotAccessMedia": true,
+    "mediaCredentialCannotAccessBackups": true,
+    "uploadAndReadbackMatched": true,
+    "unsignedS3Status": 400,
+    "unsignedS3ErrorCode": "InvalidArgument",
+    "publicDevelopmentUrlInspected": false,
+    "customDomainsInspected": false,
+    "status": "access-and-readback-verified",
+    "ownProbeRemoved": true,
+    "completedAt": "2026-11-06T14:57:54.486Z"
+  },
+  "remaining": [
+    "Execute coordinated native backup in the staging application network and publication namespace.",
+    "Download the encrypted remote set and verify an isolated restore including media.",
+    "Enable and verify the approved weekly operational schedule and pre-update backups.",
+    "Remote complete-set retention and restore to a separate R2 media bucket remain separate acceptance criteria."
+  ]
+}
