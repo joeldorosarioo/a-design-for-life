@@ -52,7 +52,7 @@ As tarefas acrescentam comandos, códigos de saída, RED/GREEN e limitações em
 
 ## E1.1 concluída — escopo e ressalvas
 
-Ver [E1.1](E1.1.md), [combinação validada](../decisions/001-stack-validada.md) e [pesquisa de segurança](E1.1-security-research.md). Verificação atual: 16 testes Vitest, 2 jornadas Playwright, tipagem, lint, formatação e build offline; o coordenador repetiu os checks e a jornada em porta alternativa 3101 com sucesso.
+Ver [E1.1](evidence-index.md#archived-records 'bee7667:docs/verification/E1.1.md'), [combinação validada](../../README.md#develop-locally) e [pesquisa de segurança](evidence-index.md#archived-records 'bee7667:docs/verification/E1.1-security-research.md'). Verificação atual: 16 testes Vitest, 2 jornadas Playwright, tipagem, lint, formatação e build offline; o coordenador repetiu os checks e a jornada em porta alternativa 3101 com sucesso.
 
 Riscos mantidos por nome: SEC-DOMPURIFY-VENDOR, SEC-HAPPY-DOM, SEC-DEEPMERGE, SEC-ESBUILD-TOOLING, AUDIT-GRAPHQL-SCALARS-DISCREPANCY e TOOLING-ESLINT9. Transporte capturado de e-mail/recuperação pertence a E1.7; regras de arquitetura/CI pertencem a E1.2. A1 permanece pendente. Não houve contratação, recurso externo ou implantação pública.
 
@@ -66,7 +66,7 @@ Fronteiras de features/rotas públicas, ciclos inclusive type-only, infraestrutu
 
 ## Convenção de Git atualizada pelo usuário
 
-Usar `develop`, mensagens em inglês seguindo Conventional Commits e commits pequenos por responsabilidade. E1.1/E1.2 foram reorganizadas sem alterar suas árvores nem o trabalho em andamento. Correspondência dos marcos e provas em [history-correction.md](history-correction.md). Não usar os títulos de commit em português do plano histórico para os próximos commits.
+Usar `develop`, mensagens em inglês seguindo Conventional Commits e commits pequenos por responsabilidade. E1.1/E1.2 foram reorganizadas sem alterar suas árvores nem o trabalho em andamento. Correspondência dos marcos e provas em [history-correction.md](evidence-index.md#archived-records 'bee7667:docs/verification/history-correction.md'). Não usar os títulos de commit em português do plano histórico para os próximos commits.
 
 Ajuste posterior do usuário: os commits não precisam ser tão pequenos; devem ser coerentes. Priorizar unidades funcionais completas com testes, contratos e migrações relacionados, mantendo inglês, Conventional Commits e develop. Não fragmentar artificialmente por arquivo ou contagem de linhas.
 
