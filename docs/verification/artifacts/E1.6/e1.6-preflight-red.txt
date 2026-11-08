@@ -1,0 +1,251 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/preflight-upload.test.ts (12 tests | 9 failed) 2327ms
+   ❯ upload byte screening (not integrity validation) (12)
+     × rejects SVG disguised as PNG before any decoder 7ms
+     × rejects a fabricated PDF and empty input 1ms
+     × uses the real jpeg signature despite an incorrect name/type 4ms
+     × uses the real webp signature despite an incorrect name/type 1ms
+     × uses the real avif signature despite an incorrect name/type 17ms
+     × rejects images at 10,000,001 bytes using actual bytes 709ms
+     × allows PDF screening at 4999999 bytes 654ms
+     × allows PDF screening at 5000000 bytes 591ms
+     × rejects PDFs at 5,000,001 bytes 338ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > rejects SVG disguised as PNG before any decoder
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: false, …(1) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "invalid-input",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:16:8
+     14|   it('rejects SVG disguised as PNG before any decoder', () => {
+     15|     expect(preflightUpload(input(new TextEncoder().encode('<svg xmlns=…
+     16|       .toMatchObject({ ok: false, error: { code: 'invalid-input' } });
+       |        ^
+     17|   });
+     18|   it('rejects a fabricated PDF and empty input', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > rejects a fabricated PDF and empty input
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: false, …(1) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "invalid-input",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:20:64
+     18|   it('rejects a fabricated PDF and empty input', () => {
+     19|     for (const bytes of [new Uint8Array(), new TextEncoder().encode('p…
+     20|       expect(preflightUpload(input(bytes, 'application/pdf'))).toMatch…
+       |                                                                ^
+     21|   });
+     22|   it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > uses the real jpeg signature despite an incorrect name/type
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: true, value: { …(2) } }
+(271 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "byteLength": 268,
+-     "type": "image/jpeg",
++     "type": "image/png",
+    },
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:27:8
+     25|     const bytes = await sharp({ create: { width: 2, height: 3, channel…
+     26|     expect(preflightUpload({ bytes, name: 'incorrect.pdf', declaredTyp…
+     27|       .toMatchObject({ ok: true, value: { type, byteLength: bytes.byte…
+       |        ^
+     28|   });
+     29|   it.each([9_999_999, 10_000_000])('allows image screening at %i bytes…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > uses the real webp signature despite an incorrect name/type
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: true, value: { …(2) } }
+(67 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "byteLength": 64,
+-     "type": "image/webp",
++     "type": "image/png",
+    },
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:27:8
+     25|     const bytes = await sharp({ create: { width: 2, height: 3, channel…
+     26|     expect(preflightUpload({ bytes, name: 'incorrect.pdf', declaredTyp…
+     27|       .toMatchObject({ ok: true, value: { type, byteLength: bytes.byte…
+       |        ^
+     28|   });
+     29|   it.each([9_999_999, 10_000_000])('allows image screening at %i bytes…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > uses the real avif signature despite an incorrect name/type
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: true, value: { …(2) } }
+(289 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+      "byteLength": 286,
+-     "type": "image/avif",
++     "type": "image/png",
+    },
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:27:8
+     25|     const bytes = await sharp({ create: { width: 2, height: 3, channel…
+     26|     expect(preflightUpload({ bytes, name: 'incorrect.pdf', declaredTyp…
+     27|       .toMatchObject({ ok: true, value: { type, byteLength: bytes.byte…
+       |        ^
+     28|   });
+     29|   it.each([9_999_999, 10_000_000])('allows image screening at %i bytes…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > rejects images at 10,000,001 bytes using actual bytes
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: false, …(1) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "invalid-input",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:34:8
+     32|   it('rejects images at 10,000,001 bytes using actual bytes', async ()…
+     33|     expect(preflightUpload(input(padded(await png(), 10_000_001))))
+     34|       .toMatchObject({ ok: false, error: { code: 'invalid-input' } });
+       |        ^
+     35|   });
+     36|   it.each([4_999_999, 5_000_000])('allows PDF screening at %i bytes', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > allows PDF screening at 4999999 bytes
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: true, …(1) }
+(5000003 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+-     "type": "application/pdf",
++     "type": "image/png",
+    },
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:38:8
+     36|   it.each([4_999_999, 5_000_000])('allows PDF screening at %i bytes', …
+     37|     expect(preflightUpload(input(padded(new TextEncoder().encode('%PDF…
+     38|       .toMatchObject({ ok: true, value: { type: 'application/pdf' } });
+       |        ^
+     39|   });
+     40|   it('rejects PDFs at 5,000,001 bytes', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > allows PDF screening at 5000000 bytes
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: true, …(1) }
+(5000004 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+    "value": {
+-     "type": "application/pdf",
++     "type": "image/png",
+    },
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:38:8
+     36|   it.each([4_999_999, 5_000_000])('allows PDF screening at %i bytes', …
+     37|     expect(preflightUpload(input(padded(new TextEncoder().encode('%PDF…
+     38|       .toMatchObject({ ok: true, value: { type: 'application/pdf' } });
+       |        ^
+     39|   });
+     40|   it('rejects PDFs at 5,000,001 bytes', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  |unit| src/features/media-library/server/preflight-upload.test.ts > upload byte screening (not integrity validation) > rejects PDFs at 5,000,001 bytes
+AssertionError: expected { ok: true, value: { …(5) } } to match object { ok: false, …(1) }
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": {
+-     "code": "invalid-input",
+-   },
+-   "ok": false,
++   "ok": true,
+  }
+
+ ❯ src/features/media-library/server/preflight-upload.test.ts:42:8
+     40|   it('rejects PDFs at 5,000,001 bytes', () => {
+     41|     expect(preflightUpload(input(padded(new TextEncoder().encode('%PDF…
+     42|       .toMatchObject({ ok: false, error: { code: 'invalid-input' } });
+       |        ^
+     43|   });
+     44| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 3 passed (12)
+   Start at  04:11:09
+   Duration  2.77s (tests 89%, setup 8%, import 3%, transform 1%)
+

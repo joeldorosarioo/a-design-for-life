@@ -1,0 +1,182 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/change-media-usage.test.ts (5 tests | 5 failed) 11ms
+   × adds a new draft without revoking confirmed publication or another locale/document 6ms
+   × replaces only one owner publication and retains the former immutable revision for recovery 1ms
+   × keeps confirmed assets protected while the next publication is pending 1ms
+   × withdraws only the selected owner publication, leaving shared publication available 1ms
+   × is idempotent for a repeated owner/revision transition 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/change-media-usage.test.ts > adds a new draft without revoking confirmed publication or another locale/document
+AssertionError: expected [ { …(5) }, { …(5) } ] to deeply equal [ { …(5) }, { …(5) }, { …(5) } ]
+
+- Expected
++ Received
+
+@@ -11,13 +11,6 @@
+      "documentId": "10000000-0000-4000-8000-000000000002",
+      "locale": "en",
+      "revision": "20000000-0000-4000-8000-000000000001",
+      "state": "draft",
+    },
+-   {
+-     "collection": "case-content",
+-     "documentId": "10000000-0000-4000-8000-000000000001",
+-     "locale": "pt",
+-     "revision": "20000000-0000-4000-8000-000000000002",
+-     "state": "draft",
+-   },
+  ]
+
+ ❯ src/features/media-library/server/change-media-usage.test.ts:14:18
+     12|   const privateEN = usage({ documentId: other, locale: 'en', state: 'd…
+     13|   const result = changeMediaUsage([publicPT, privateEN], change());
+     14|   expect(result).toEqual([publicPT, privateEN, usage({ revision: nextR…
+       |                  ^
+     15| });
+     16| it('replaces only one owner publication and retains the former immutab…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/change-media-usage.test.ts > replaces only one owner publication and retains the former immutable revision for recovery
+AssertionError: expected [ { …(5) }, { …(5) } ] to deeply equal [ { …(5) }, { …(5) }, { …(5) } ]
+
+- Expected
++ Received
+
+@@ -2,22 +2,15 @@
+    {
+      "collection": "case-content",
+      "documentId": "10000000-0000-4000-8000-000000000001",
+      "locale": "pt",
+      "revision": "20000000-0000-4000-8000-000000000001",
+-     "state": "retained",
++     "state": "confirmed",
+    },
+    {
+      "collection": "case-content",
+      "documentId": "10000000-0000-4000-8000-000000000002",
+      "locale": "en",
+      "revision": "20000000-0000-4000-8000-000000000001",
+-     "state": "confirmed",
+-   },
+-   {
+-     "collection": "case-content",
+-     "documentId": "10000000-0000-4000-8000-000000000001",
+-     "locale": "pt",
+-     "revision": "20000000-0000-4000-8000-000000000002",
+      "state": "confirmed",
+    },
+  ]
+
+ ❯ src/features/media-library/server/change-media-usage.test.ts:18:82
+     16| it('replaces only one owner publication and retains the former immutab…
+     17|   const unrelated = usage({ documentId: other, locale: 'en' });
+     18|   expect(changeMediaUsage([usage(), unrelated], change({ state: 'confi…
+       |                                                                                  ^
+     19|     usage({ state: 'retained' }), unrelated, usage({ revision: nextRev…
+     20|   ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/change-media-usage.test.ts > keeps confirmed assets protected while the next publication is pending
+AssertionError: expected [ Array(1) ] to deeply equal [ { …(5) }, { …(5) } ]
+
+- Expected
++ Received
+
+@@ -4,13 +4,6 @@
+      "documentId": "10000000-0000-4000-8000-000000000001",
+      "locale": "pt",
+      "revision": "20000000-0000-4000-8000-000000000001",
+      "state": "confirmed",
+    },
+-   {
+-     "collection": "case-content",
+-     "documentId": "10000000-0000-4000-8000-000000000001",
+-     "locale": "pt",
+-     "revision": "20000000-0000-4000-8000-000000000002",
+-     "state": "pending",
+-   },
+  ]
+
+ ❯ src/features/media-library/server/change-media-usage.test.ts:23:69
+     21| });
+     22| it('keeps confirmed assets protected while the next publication is pen…
+     23|   expect(changeMediaUsage([usage()], change({ state: 'pending' }))).to…
+       |                                                                     ^
+     24|     usage(), usage({ revision: nextRevision, state: 'pending' }),
+     25|   ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/change-media-usage.test.ts > withdraws only the selected owner publication, leaving shared publication available
+AssertionError: expected [ { …(5) }, { …(5) } ] to deeply equal [ { …(5) }, { …(5) } ]
+
+- Expected
++ Received
+
+@@ -2,11 +2,11 @@
+    {
+      "collection": "case-content",
+      "documentId": "10000000-0000-4000-8000-000000000001",
+      "locale": "pt",
+      "revision": "20000000-0000-4000-8000-000000000001",
+-     "state": "retained",
++     "state": "confirmed",
+    },
+    {
+      "collection": "case-content",
+      "documentId": "10000000-0000-4000-8000-000000000002",
+      "locale": "en",
+
+ ❯ src/features/media-library/server/change-media-usage.test.ts:29:101
+     27| it('withdraws only the selected owner publication, leaving shared publ…
+     28|   const unrelated = usage({ documentId: other, locale: 'en' });
+     29|   expect(changeMediaUsage([usage(), unrelated], change({ state: 'confi…
+       |                                                                                                     ^
+     30|     usage({ state: 'retained' }), unrelated,
+     31|   ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/change-media-usage.test.ts > is idempotent for a repeated owner/revision transition
+AssertionError: expected [ Array(1) ] to deeply equal [ { …(5) }, { …(5) } ]
+
+- Expected
++ Received
+
+@@ -4,13 +4,6 @@
+      "documentId": "10000000-0000-4000-8000-000000000001",
+      "locale": "pt",
+      "revision": "20000000-0000-4000-8000-000000000001",
+      "state": "confirmed",
+    },
+-   {
+-     "collection": "case-content",
+-     "documentId": "10000000-0000-4000-8000-000000000001",
+-     "locale": "pt",
+-     "revision": "20000000-0000-4000-8000-000000000002",
+-     "state": "pending",
+-   },
+  ]
+
+ ❯ src/features/media-library/server/change-media-usage.test.ts:36:43
+     34|   const command = change({ state: 'pending' });
+     35|   const once = changeMediaUsage([usage()], command);
+     36|   expect(changeMediaUsage(once, command)).toEqual([usage(), usage({ re…
+       |                                           ^
+     37| });
+     38|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  04:17:18
+   Duration  399ms (setup 76%, transform 10%, import 8%, tests 4%, worker 2%)
+

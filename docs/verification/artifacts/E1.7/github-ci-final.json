@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-10-30T09:27:23.858Z",
+  "repository": "joeldorosarioo/a-design-for-life",
+  "public": true,
+  "defaultBranch": "develop",
+  "develop": "e38226528017eebb609c23fda0d936c989f7d899",
+  "target": "e8e97d72ff9d88f3fb7c4dc6ac58f01da6903232",
+  "runBranch": "ci/e1-7-verification-e8e97d7",
+  "runs": [
+    {
+      "id": 41033031988,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/41033031988",
+      "head": "e8e97d72ff9d88f3fb7c4dc6ac58f01da6903232"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "type-lint-test-architecture-build",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/41033031988/job/123987096667",
+      "runnerLabels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "pnpm",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install from lockfile",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install verified local PDF checker",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check isolated container tooling",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Chromium headless shell",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Browser journeys",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post pnpm",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "type-lint-test-architecture-build",
+      "status": "completed",
+      "conclusion": "success",
+      "app": "github-actions",
+      "appId": 15368,
+      "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/41033031988/job/123987096667"
+    }
+  ],
+  "protection": {
+    "strict": true,
+    "checks": [
+      {
+        "context": "type-lint-test-architecture-build",
+        "app_id": 15368
+      }
+    ],
+    "enforceAdmins": true,
+    "allowForcePushes": false,
+    "allowDeletions": false
+  }
+}

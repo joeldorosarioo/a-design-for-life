@@ -1,0 +1,68 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/storage/object-storage.test.ts (3 tests | 3 failed) 11ms
+   × persists real bytes privately under an opaque key with integrity metadata 6ms
+   × preserves bytes captured before caller mutation and never overwrites a previous object 1ms
+   × rejects traversal and an object whose persisted bytes no longer match its manifest 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > persists real bytes privately under an opaque key with integrity metadata
+AssertionError: expected 'E:\a-design-for-life\.work\media-stor…' to match /^[a-f0-9]{64}$/
+
+- Expected:
+/^[a-f0-9]{64}$/
+
++ Received:
+"E:\\a-design-for-life\\.work\\media-storage-VW4QOg"
+
+ ❯ src/helpers/storage/object-storage.test.ts:24:22
+     22|   const bytes = new TextEncoder().encode('private synthetic bytes');
+     23|   const object = await adapter.put(bytes);
+     24|   expect(object.key).toMatch(/^[a-f0-9]{64}$/);
+       |                      ^
+     25|   expect(object).toMatchObject({ byteLength: 23, sha256: createHash('s…
+     26|   expect(await readdir(root)).toEqual([object.key]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > preserves bytes captured before caller mutation and never overwrites a previous object
+AssertionError: expected 'E:\a-design-for-life\.work\media-stor…' not to be 'E:\a-design-for-life\.work\media-stor…' // Object.is equality
+ ❯ src/helpers/storage/object-storage.test.ts:37:26
+     35|   const first = await firstWrite;
+     36|   const second = await adapter.put(input);
+     37|   expect(second.key).not.toBe(first.key);
+       |                          ^
+     38|   expect(await adapter.read(first)).toEqual(new Uint8Array([1, 2, 3]));
+     39|   expect(await adapter.read(second)).toEqual(new Uint8Array([9, 9, 9])…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/helpers/storage/object-storage.test.ts > rejects traversal and an object whose persisted bytes no longer match its manifest
+AssertionError: promise resolved "Uint8Array[]" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ Uint8Array []
+
+ ❯ src/helpers/storage/object-storage.test.ts:43:79
+     41| it('rejects traversal and an object whose persisted bytes no longer ma…
+     42|   const { root, adapter } = await storage();
+     43|   await expect(adapter.read({ key: '../private', byteLength: 0, sha256…
+       |                                                                               ^
+     44|   const object = await adapter.put(new Uint8Array([1, 2, 3]));
+     45|   await writeFile(path.join(root, object.key), new Uint8Array([9, 2, 3…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  3 failed | 12 passed (15)
+   Start at  04:11:48
+   Duration  437ms (setup 70%, import 15%, transform 7%, tests 6%, worker 2%)
+

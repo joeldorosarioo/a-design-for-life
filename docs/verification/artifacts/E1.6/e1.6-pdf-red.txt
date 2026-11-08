@@ -1,0 +1,128 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/inspect-pdf.test.ts (5 tests | 5 failed) 10ms
+   × rejects a fabricated PDF that satisfies native prefix/trailer markers 6ms
+   × loads all pages and preserves original input bytes 1ms
+   × examines an invalid intermediate page, not only the first and last 1ms
+   × examines page streams, not only page count 0ms
+   × honors request cancellation before starting a parser 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > rejects a fabricated PDF that satisfies native prefix/trailer markers
+AssertionError: expected { kind: 'valid', pages: 1 } to deeply equal { kind: 'invalid' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "invalid",
++   "kind": "valid",
++   "pages": 1,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:28:35
+     26| it('rejects a fabricated PDF that satisfies native prefix/trailer mark…
+     27|   const bytes = new TextEncoder().encode('%PDF-1.7\nnot a document\nxr…
+     28|   expect(await inspectPdf(bytes)).toEqual({ kind: 'invalid' });
+       |                                   ^
+     29| });
+     30| it('loads all pages and preserves original input bytes', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > loads all pages and preserves original input bytes
+AssertionError: expected { kind: 'valid', pages: 1 } to deeply equal { kind: 'valid', pages: 3 }
+
+- Expected
++ Received
+
+  {
+    "kind": "valid",
+-   "pages": 3,
++   "pages": 1,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:33:35
+     31|   const bytes = document();
+     32|   const original = bytes.slice();
+     33|   expect(await inspectPdf(bytes)).toEqual({ kind: 'valid', pages: 3 });
+       |                                   ^
+     34|   expect(bytes).toEqual(original);
+     35| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > examines an invalid intermediate page, not only the first and last
+AssertionError: expected { kind: 'valid', pages: 1 } to deeply equal { kind: 'invalid' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "invalid",
++   "kind": "valid",
++   "pages": 1,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:37:63
+     35| });
+     36| it('examines an invalid intermediate page, not only the first and last…
+     37|   expect(await inspectPdf(document({ middleInvalid: true }))).toEqual(…
+       |                                                               ^
+     38| });
+     39| it('examines page streams, not only page count', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > examines page streams, not only page count
+AssertionError: expected { kind: 'valid', pages: 1 } to deeply equal { kind: 'invalid' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "invalid",
++   "kind": "valid",
++   "pages": 1,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:40:62
+     38| });
+     39| it('examines page streams, not only page count', async () => {
+     40|   expect(await inspectPdf(document({ brokenStream: true }))).toEqual({…
+       |                                                              ^
+     41| });
+     42| it('honors request cancellation before starting a parser', async () =>…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > honors request cancellation before starting a parser
+AssertionError: expected { kind: 'valid', pages: 1 } to deeply equal { kind: 'cancelled' }
+
+- Expected
++ Received
+
+  {
+-   "kind": "cancelled",
++   "kind": "valid",
++   "pages": 1,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:43:61
+     41| });
+     42| it('honors request cancellation before starting a parser', async () =>…
+     43|   expect(await inspectPdf(document(), AbortSignal.abort())).toEqual({ …
+       |                                                             ^
+     44| });
+     45|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  04:14:57
+   Duration  400ms (setup 76%, transform 11%, import 8%, tests 4%, worker 2%)
+

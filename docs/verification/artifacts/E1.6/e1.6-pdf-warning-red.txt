@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/inspect-pdf.test.ts (10 tests | 1 failed) 1494ms
+   × reports recoverable checker warnings explicitly instead of calling them clean integrity 174ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/inspect-pdf.test.ts > reports recoverable checker warnings explicitly instead of calling them clean integrity
+AssertionError: expected { kind: 'valid', pages: 3 } to deeply equal { kind: 'warnings', pages: 3 }
+
+- Expected
++ Received
+
+  {
+-   "kind": "warnings",
++   "kind": "valid",
+    "pages": 3,
+  }
+
+ ❯ src/features/media-library/server/inspect-pdf.test.ts:44:84
+     42| it('reports recoverable checker warnings explicitly instead of calling…
+     43|   const recovered = new TextDecoder().decode(pdfUploadFixture()).repla…
+     44|   expect(await inspectPdf(new TextEncoder().encode(recovered), { check…
+       |                                                                                    ^
+     45| });
+     46| it('distinguishes unavailable checker infrastructure from invalid user…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 9 passed (10)
+   Start at  04:26:58
+   Duration  1.92s (tests 83%, setup 11%, import 4%, transform 1%)
+

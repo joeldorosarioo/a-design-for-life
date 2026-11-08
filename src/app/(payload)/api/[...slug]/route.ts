@@ -1,5 +1,9 @@
 // Maintained application facade around native Payload REST transports.
 import config from '@payload-config';
+import {
+  isEditorialAuthTransport,
+  limitEditorialAuthTransport,
+} from '@/helpers/payload/auth-transport';
 import '@payloadcms/next/css';
 import {
   REST_DELETE,
@@ -19,7 +23,33 @@ export const POST: ReturnType<typeof REST_POST> = async (request, args) => {
       { errors: [{ code: 'locked', message: 'Use the document editing lease.' }] },
       { status: 409 },
     );
-  return nativePost(request, args);
+  const limited = limitEditorialAuthTransport(slug);
+  if (limited) return limited;
+  if (isEditorialAuthTransport(slug)) {
+    const origin = request.headers.get('origin');
+    if (
+      (origin && origin !== (await config).serverURL) ||
+      request.headers.get('sec-fetch-site') === 'cross-site'
+    ) {
+      return Response.json(
+        { errors: [{ message: 'Authentication request unavailable.' }] },
+        {
+          status: 403,
+          headers: { 'Cache-Control': 'no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow' },
+        },
+      );
+    }
+  }
+  const response = await nativePost(request, args);
+  if (!isEditorialAuthTransport(slug)) return response;
+  const headers = new Headers(response.headers);
+  headers.set('Cache-Control', 'no-store, max-age=0');
+  headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
 };
 const nativeDelete = REST_DELETE(config);
 export const DELETE: ReturnType<typeof REST_DELETE> = async (request, args) => {

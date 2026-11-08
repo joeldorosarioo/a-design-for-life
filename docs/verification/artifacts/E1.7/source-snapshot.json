@@ -1,0 +1,71 @@
+{
+  "baseCommit": "518bdb207b1ee40fea1c5b313494c9a84c04a8c2",
+  "verification": "27-verify-final.txt: exit0, 235 tests/40 files + build",
+  "e2e": "28-e2e-final.txt: exit0, 16 tests",
+  "files": [
+    {
+      "path": "next.config.ts",
+      "sha256": "A770B7C7DB4336523E61364095B4DFDDCDECD881DCDCB9C03E30D71B61A2486F"
+    },
+    {
+      "path": "src/app/(payload)/api/[...slug]/route.ts",
+      "sha256": "532CFE69A28EE415D1B1ACE7455B5351AE73487AE5326816ED9480D7E76CEED7"
+    },
+    {
+      "path": "src/app/(portfolio)/preview/route.ts",
+      "sha256": "1497D4F2B6ABF773A5F54E9425B1684A0FC7C215BAF4C0B4DFAD101D4885F31C"
+    },
+    {
+      "path": "src/helpers/payload/users.collection.ts",
+      "sha256": "8582C3AF80C8CF2F98CECF234D45BF67CA74A5748B0D9DB1F5C13A3C1B17CAAE"
+    },
+    {
+      "path": "src/helpers/payload/users.collection.integration.test.ts",
+      "sha256": "8E305BA94C470C4FE056D409E109D02BD707B12902F0773EBEBA50C952FDE0D0"
+    },
+    {
+      "path": "src/helpers/payload/editorial-email.ts",
+      "sha256": "0F4CCC703DD5F4E3320095735CD3160A407FEE1D322653C19A3203F61D290463"
+    },
+    {
+      "path": "src/helpers/payload/auth-transport.ts",
+      "sha256": "9AAFC4EEA96B03D93A9E7073D7DD0111E9D120D2D2A5C14798184064B78101CC"
+    },
+    {
+      "path": "src/helpers/payload/password-reset-guard.ts",
+      "sha256": "4B00DE5D5A8CF4CFF8AA08BD95AFA03225C87ED40B0E19558CBAF55CD6F5C819"
+    },
+    {
+      "path": "src/helpers/payload/password-reset.integration.test.ts",
+      "sha256": "2344401E39671B735899A508915790B8005D6500014BBFCBD69F8674F2AB8788"
+    },
+    {
+      "path": "src/helpers/payload/preview-session.ts",
+      "sha256": "E20E1C8BD993588D8EB4AF8AEB10C23F4DDA28AC5227F75725175F409043CB01"
+    },
+    {
+      "path": "src/helpers/payload/preview-session.integration.test.ts",
+      "sha256": "63B9D72A8073223AE48109FA52339925973EFE15A2B54CD99634781CCBAF7E85"
+    },
+    {
+      "path": "src/helpers/payload/preview.e2e.test.ts",
+      "sha256": "C38962E22E892A67769E8F29C9B2D94C9FDD62F6A7001916D09A1B44C9912BCE"
+    },
+    {
+      "path": "src/helpers/payload/password-reset.e2e.test.ts",
+      "sha256": "6899A2804646E2F0443CE74EBAB33289F280E1BBF76DC2ACE1DD5B729FD20AF7"
+    },
+    {
+      "path": "src/payload.config.ts",
+      "sha256": "DD4F13743BD9CFDE1E978963F9957D1EE275B36FB9D3A7FCD9876AAD39F11F09"
+    },
+    {
+      "path": "testing/fixtures/editorial-auth.ts",
+      "sha256": "6485441A72CC17DBD8D9EDE6ED19AF68EB1B73202BA10456AFB06DAC5FF08E0F"
+    },
+    {
+      "path": "testing/fixtures/native-recovery-browser.ts",
+      "sha256": "3EF007FA0AD02379E2B205582BD1006C2FC536A56B11F87CB69B1207121E8DA1"
+    }
+  ]
+}

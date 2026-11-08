@@ -1,0 +1,139 @@
+{
+  "redactedFiles": [],
+  "rawFailedAttemptLogsPreserved": true,
+  "reviewedKeywordHits": "Test names/errors, package paths, and explicitly synthetic test-fixture text only; no environment credentials, cookies, tokens or serialized leases found",
+  "files": [
+    {
+      "file": "dependency-audit.json",
+      "sha256": "C7767FB1D1FADE6B5436581E76B6C285B4CF0A9B7B1E3469F981A873500DD05C"
+    },
+    {
+      "file": "e1.6-checker-guard-lint.txt",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "file": "e1.6-checker-idempotent-after-guard.txt",
+      "sha256": "3B6533F6012316775D493F38FC7B54C2890417AEABB32ACA525902F3838FC906"
+    },
+    {
+      "file": "e1.6-checker-idempotent.txt",
+      "sha256": "3B6533F6012316775D493F38FC7B54C2890417AEABB32ACA525902F3838FC906"
+    },
+    {
+      "file": "e1.6-checker-setup.txt",
+      "sha256": "6053570B85ADE55ACBF6994E9562804A58C320C7C385A76CB0FB040D9998E5D8"
+    },
+    {
+      "file": "e1.6-format-check-final.txt",
+      "sha256": "F20510A9DA4717C51C4CFFEE6D0DD88D6C9A723D0A83711D01216F5B48961283"
+    },
+    {
+      "file": "e1.6-format-final.txt",
+      "sha256": "DA07CC89F95FB58196EE977891EF2B58EA4F32A5FDB617A939EFFAB45D1EFE2E"
+    },
+    {
+      "file": "e1.6-format-move-guard.txt",
+      "sha256": "F8FAA8B7F3B599E3860A4A72556FC81755B3E52FF3D52B12B1E2ACD1C9C9730E"
+    },
+    {
+      "file": "e1.6-format-schema.txt",
+      "sha256": "21DAAB8BFA4C198DF09E938507F51F28F79182A014A9D956841A07E185FAE350"
+    },
+    {
+      "file": "e1.6-format.txt",
+      "sha256": "B342F1A08056EFBA9FA7169C105CA9DCE39A8EFE437D8AC7CBDCD0AD2001B3ED"
+    },
+    {
+      "file": "e1.6-gate-red.txt",
+      "sha256": "C54C66EC8E72EC5AF5415BB05C646ADD6EAD9BD241AD0E2B93AE1FE8C720F3CA"
+    },
+    {
+      "file": "e1.6-independent-green.txt",
+      "sha256": "123033D039E4C80906B7EB78AFEBEA6111BAF9D6F97B32FD49237A8136CC2625"
+    },
+    {
+      "file": "e1.6-lint-final.txt",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "file": "e1.6-lint.txt",
+      "sha256": "B5A2F85759574BF9A22602865D7C344B457394163AE61CFBF722B7047514504C"
+    },
+    {
+      "file": "e1.6-pdf-buffer-red.txt",
+      "sha256": "2797D9F29ECEFCE528FE6B859F2CDE5723AEEFA10F76025CCC3EC2DA5599E45D"
+    },
+    {
+      "file": "e1.6-pdf-capture-red.txt",
+      "sha256": "1FC987A136B27201A93CEF158DF8BC792C3A632F9122F457FB03698E19AB3AF9"
+    },
+    {
+      "file": "e1.6-pdf-green-attempt.txt",
+      "sha256": "41C42E54C549100CD8744AC6F505CCC246BB519CA4C8C599F5126323134EE508"
+    },
+    {
+      "file": "e1.6-pdf-integrity-green.txt",
+      "sha256": "DF2AA70ABDF876689A7BA24681584D94D50F4890F5D877368F1A66DBC41294DB"
+    },
+    {
+      "file": "e1.6-pdf-password-red.txt",
+      "sha256": "729E61B48512CD3B42E446161DA4DBA818932F3A7F1AC755F0F862D3AC9783BB"
+    },
+    {
+      "file": "e1.6-pdf-red.txt",
+      "sha256": "03FB219CBBC1C22FF336DC37EC3ABB2006B8ADB892FA6CD6655BE32EA5B8DEAB"
+    },
+    {
+      "file": "e1.6-pdf-warning-red.txt",
+      "sha256": "1F51AB69A67E90D443397DD5005515182354C99B577C20E09CB6FDD256EB4D39"
+    },
+    {
+      "file": "e1.6-preflight-red.txt",
+      "sha256": "FC29D3216E663E7379746A92D1431FF8EF159FC4960965482A506A2B29654DD1"
+    },
+    {
+      "file": "e1.6-storage-red.txt",
+      "sha256": "D7436998675554297A3FF199F7DE2B4B4101A1853E618D867BC11FE30A2BCFA9"
+    },
+    {
+      "file": "e1.6-typecheck-final.txt",
+      "sha256": "5A3973F79ED9BECD5F23C4FEFF467513814DE7EA381D75A4D2E339AA8B8EDCA9"
+    },
+    {
+      "file": "e1.6-typecheck-green.txt",
+      "sha256": "77385E89FFA4444595AF33D7A5392D7C1F61AA1282E19BED8CF3DF6D3F6F935D"
+    },
+    {
+      "file": "e1.6-typecheck.txt",
+      "sha256": "EDA823456611FF73874DB6CAFD780546C2014C730E5A4C83048F116DEAA8B69A"
+    },
+    {
+      "file": "e1.6-unit-architecture-final.txt",
+      "sha256": "4FA0188070E760C53EE9E959F8033DF6024B4E53154AC2A461C0D7ADC3590FCC"
+    },
+    {
+      "file": "e1.6-unit-architecture-green.txt",
+      "sha256": "B317C92E6F69CADDB952F30FAC9BDD72E4962E399B92814477C4E8404BE35BFD"
+    },
+    {
+      "file": "e1.6-usage-green.txt",
+      "sha256": "309A359DBB9F696B04FD2DAFF581DADEF3B6165B78FAAB65CB0698DE00AEC9AF"
+    },
+    {
+      "file": "e1.6-usage-red.txt",
+      "sha256": "756401027DD17B71B1D64FF82ED52F4029AB0361A6E5D49B0EA5191D1BCE93EC"
+    },
+    {
+      "file": "qpdf-final-clean-control.txt",
+      "sha256": "9C5280E77F6D119E3B2AAAB24FD5160D2BA7106FFAD9315B59353A228B99D964"
+    },
+    {
+      "file": "qpdf-initial-probe.txt",
+      "sha256": "C8ABECB22389571A8EA955A569A9AED11EF5CA9B641AD6C2D4442BAD4C880152"
+    },
+    {
+      "file": "shared-gate-provenance.json",
+      "sha256": "62EA259FB5683EB263205F55D70D8C6044693153568750A9C101283DD680EB2C"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+Sanitized fixture values; raw original retained only under ignored .work/E1.7/raw-evidence. Original SHA256: e804cd92dcae3b5d4202bf7366e23e7df70f41fad8b8e8496ebc53463162568c
+$ vitest run --project integration src/helpers/payload/password-reset.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[04:02:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[04:02:31] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (43ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (90ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[04:02:31] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[04:02:31] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[04:02:31] [32mINFO[39m: [36mDone.[39m
+[04:02:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[04:02:34] [31mERROR[39m: [36mThis user is locked due to having too many failed login attempts.[39m
+    err: {
+      "type": "LockedAuth",
+      "message": "This user is locked due to having too many failed login attempts.",
+      "stack":
+          LockedAuth: This user is locked due to having too many failed login attempts.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:27:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:18:18
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_0ac922b400229d67057c41b4cc16c0f0/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "LockedAuth"
+    }
+[04:02:34] [31mERROR[39m: [36mThe email or password provided is incorrect.[39m
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:24:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:19:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_0ac922b400229d67057c41b4cc16c0f0/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[04:02:34] [32mINFO[39m: [36mEmail attempted without being configured. To: '[REDACTED_SYNTHETIC_FIXTURE_VALUE]', Subject: 'Reset Your Password'[39m
+ ❯ |integration| src/helpers/payload/password-reset.integration.test.ts (3 tests | 3 failed) 371ms
+   × allows an authenticated editor to provision another equal native editor without public signup 5ms
+   × does not distinguish locked native accounts from unknown accounts in outward login errors 20ms
+   × delivers the native reset link to a private local capture and consumes it through the native endpoint 113ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/password-reset.integration.test.ts > allows an authenticated editor to provision another equal native editor without public signup
+Forbidden: You are not allowed to perform this action.
+ ❯ executeAccess node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/auth/executeAccess.ts:30:15
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:231:7
+ ❯ src/helpers/payload/password-reset.integration.test.ts:10:18
+
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |integration| src/helpers/payload/password-reset.integration.test.ts > does not distinguish locked native accounts from unknown accounts in outward login errors
+AssertionError: expected { Object (errors) } to deeply equal { Object (errors) }
+
+- Expected
++ Received
+
+  {
+    "errors": [
+      {
+-       "message": "The email or password provided is incorrect.",
++       "message": "This user is locked due to having too many failed login attempts.",
+      },
+    ],
+  }
+
+ ❯ src/helpers/payload/password-reset.integration.test.ts:22:31
+     20|   expect(locked.status).toBe(401);
+     21|   expect(unknown.status).toBe(401);
+     22|   expect(await locked.json()).toEqual(await unknown.json());
+       |                               ^
+     23| });
+     24|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |integration| src/helpers/payload/password-reset.integration.test.ts > delivers the native reset link to a private local capture and consumes it through the native endpoint
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/helpers/payload/password-reset.integration.test.ts:30:27
+     28|   expect(forgot.status).toBe(200);
+     29|   const messages = await capturedMessages(user.email);
+     30|   expect(messages.length).toBe(1);
+       |                           ^
+     31|   const token = capturedResetToken(messages[0].html);
+     32|   const reset = await authHTTP('reset-password', { token, password: `$…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  04:02:27
+   Duration  7.13s (import 76%, tests 17%, transform 4%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.
