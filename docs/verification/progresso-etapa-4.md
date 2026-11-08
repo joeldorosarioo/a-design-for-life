@@ -1,6 +1,6 @@
 # Progresso verificável — etapa 4
 
-**87,5%: 14/16 itens; 1/3 tarefas inteiramente encerradas. Aprovação registrada: A3 aprovada em 06/11/2026; A4 pendente e lançamento sem autorização.**
+**87,5%: 14/16 itens; 1/3 tarefas inteiramente encerradas. Aprovação registrada: A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs --stage 4`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
@@ -29,7 +29,7 @@ A métrica conta as 16 caixas do plano original, distribuídas em 5/6/5 por tare
 - [x] **E4.3.2** Verificar branch protegida/checks obrigatórios, imagem/digest, segredos externos, isolamento, migrações, backup/restauração, logs/saúde e documentação de uso do CMS. Preparar operação de implantação com responsáveis, ordem, verificações e recuperação. Evidência/pendência: Revisão operacional em docs/verification/artifacts/E4-operations/operational-readiness-001.json e github-protection-001.json: proteção/check do develop, revisão/digest/árvores, contexto sem arquivos privados, isolamento/cotas/volumes, catálogo, backup/recuperação A3 e saúde/logs. Runbook de lançamento vincula operação do CMS, responsáveis, ordem e recuperação. Controles de produção continuam como pré-condições não autorizadas.
 - [x] **E4.3.3** Documentar sequência **posterior à aprovação A4**: confirmar autorização de lançamento → backup prévio → migração controlada necessária → promover digest já homologado → validar saúde/TLS/origem/URLs/conteúdo → verificar configuração pública sem enviar medições enquanto o acesso estiver privado → liberar acesso público e medição automática conforme a autorização. Sem rebuild ou migração destrutiva implícita; Analytics só inicializa quando a produção estiver efetivamente pública. Evidência/pendência: Runbook docs/runbooks/lancamento.md descreve confirmação de autorização, backup verificável, migração controlada, promoção do manifesto homologado, verificações privadas e abertura autorizada. Guarda do digest, árvore de fonte e condições de produção registradas.
 - [x] **E4.3.4** Separar verificações manuais pontuais de produção de testes automatizados: visitantes/testes sintéticos não devem enviar eventos ao Google. A demonstração dos relatórios reais respeita o bloqueio identificado em E3.3; se não for tecnicamente possível antes da ativação, apresentar ao usuário a condição exata que requer decisão, mantendo a política sem cookies e sem banner. Evidência/pendência: Runbook docs/runbooks/lancamento.md separa gates sintéticos e verificações pontuais de produção. A4 mantém loadScript=null, analytics_storage: denied, ausência de cookies/banner e BLOCK-GA4-REPORT-LIMITATION com condição para decisão.
-- [x] **E4.3.5** Registrar evidências frescas de `pnpm verify`, E2E, auditorias e digest. Entregar pacote final com procedimento de rollback da imagem e recuperação de dados; encerrar como **aguardando aprovação A4 e autorização explícita para lançar**. Evidência/pendência: Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 e autorização explícita de lançamento continuam pendentes.
+- [x] **E4.3.5** Registrar evidências frescas de `pnpm verify`, E2E, auditorias e digest. Entregar pacote final com procedimento de rollback da imagem e recuperação de dados; encerrar como **aguardando aprovação A4 e autorização explícita para lançar**. Evidência/pendência: Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 aprovada em 08/11/2026. Lançamento adiado até autorização explícita.
 
 ## Gates e limites
 
@@ -41,4 +41,4 @@ Candidata befe22bc saudável no staging, pipeline 42512917835, 2335 testes Linux
 
 Estimativa: Os dois critérios restantes dependem de currículos e revisão editorial finais e da autorização para a inspeção formal com leitor de tela. O lançamento tem pré-requisitos próprios em A4.md.
 
-Aprovação registrada: A3 aprovada em 06/11/2026; A4 pendente e lançamento sem autorização.
+Aprovação registrada: A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização.

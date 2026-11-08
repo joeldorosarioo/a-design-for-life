@@ -1,6 +1,6 @@
 {
   "stage": 4,
-  "approval": "A3 aprovada em 06/11/2026; A4 pendente e lançamento sem autorização",
+  "approval": "A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização",
   "remainingEstimate": "Os dois critérios restantes dependem de currículos e revisão editorial finais e da autorização para a inspeção formal com leitor de tela. O lançamento tem pré-requisitos próprios em A4.md.",
   "notes": [
     "A3 aprovada explicitamente pelo usuário em 06/11/2026; E4.1–E4.3 autorizadas, sem lançamento de produção nem serviços pagos.",
@@ -102,7 +102,7 @@
       "id": "E4.3.5",
       "done": true,
       "summary": "Registrar evidências frescas de `pnpm verify`, E2E, auditorias e digest. Entregar pacote final com procedimento de rollback da imagem e recuperação de dados; encerrar como **aguardando aprovação A4 e autorização explícita para lançar**.",
-      "evidence": "Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 e autorização explícita de lançamento continuam pendentes."
+      "evidence": "Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 aprovada em 08/11/2026. Lançamento adiado até autorização explícita."
     }
   ],
   "completedItems": 14,
@@ -110,5 +110,5 @@
   "percentage": 87.5,
   "closedTasks": ["E4.3"],
   "totalTasks": 3,
-  "recalculatedAt": "2026-11-08T19:37:43.267Z"
+  "recalculatedAt": "2026-11-08T21:19:18.225Z"
 }

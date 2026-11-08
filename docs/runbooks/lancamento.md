@@ -1,6 +1,6 @@
 # Lançamento do portfólio
 
-**Estado atual: aguardando aprovação A4 e autorização explícita de lançamento.** Este procedimento descreve a operação futura. Domínio, configuração e executor de backup de produção permanecem pendentes. A candidata identificada abaixo é a referência em revisão no [A4](../verification/A4.md).
+**A4 aprovada em 08/11/2026. Lançamento adiado, com autorização de produção pendente.** Domínio, configuração e executor de backup de produção permanecem pendentes. A candidata identificada abaixo é a referência aprovada no [A4](../verification/A4.md).
 
 ## Candidata em homologação
 

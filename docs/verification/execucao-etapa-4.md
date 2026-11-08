@@ -2,7 +2,7 @@
 
 Autorização explícita recebida em 06/11/2026: A3 aprovada e execução integral de E4.1–E4.3. A aprovação A4 e a autorização de lançamento permanecem pendentes.
 
-**Etapa 4: 87,5% do checklist (14/16 itens); 1/3 tarefas inteiramente encerradas. Aprovação registrada: A3 aprovada em 06/11/2026; A4 pendente e lançamento sem autorização.**
+**Etapa 4: 87,5% do checklist (14/16 itens); 1/3 tarefas inteiramente encerradas. Aprovação registrada: A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização.**
 
 Estado inicial conferido: develop, HEAD 7331e34c7ed52e9be44fa1e4fa3247f4820d64b3; alteração preexistente em next-env.d.ts preservada.
 
@@ -31,4 +31,4 @@ A auditoria visual comparou as 18 referências na imagem inicial e repetiu os de
 
 Os critérios E4.1.3 e E4.2.1 continuam abertos pelo material editorial final e pela inspeção formal com leitor de tela. Os currículos PT/EN em branco são temporários, e NVDA permanece desativado. Domínio, configuração de produção, backup do alvo de produção, atualização de avisos e `BLOCK-GA4-REPORT-LIMITATION` estão no dossiê. O dossiê local é posterior à imagem e não é o identificador da promoção. [A4](A4.md) · [Runbook de lançamento](../runbooks/lancamento.md)
 
-**Aguardando aprovação A4 e autorização explícita de lançamento.**
+Em 08/11/2026, o usuário aprovou A4 e adiou o lançamento. A aprovação se refere ao dossiê e ao manifesto homologado no [A4](A4.md). A autorização explícita de lançamento permanece pendente.
