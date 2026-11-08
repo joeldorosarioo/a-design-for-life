@@ -1,3 +1,5 @@
+> **Atualização de 06/11/2026:** Etapa 3 entregue com 30/30 critérios e 6/6 frentes; A3 aprovada explicitamente pelo usuário. E4.1–E4.3 serão iniciadas em outro chat. A4, ativação de Analytics e produção permanecem não autorizadas. Estado atual em [A3.md](A3.md#aceite-a3-registrado--06112026). O texto abaixo preserva a retomada e as decisões históricas de 03/11/2026; não revoga as configurações e os aceites posteriores.
+
 # Retomada da etapa 3 — execução local reautorizada
 
 Atualização de 03/11/2026: o usuário retomou explicitamente E3 após consolidar as decisões de e-mail. Essa retomada supera a pausa registrada abaixo. Não é necessário repetir a aprovação de retomada. O registro histórico permanece preservado e não descreve mais o estado atual.
