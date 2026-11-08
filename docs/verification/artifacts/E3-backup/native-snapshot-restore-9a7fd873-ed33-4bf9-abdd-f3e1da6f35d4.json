@@ -1,0 +1,11 @@
+{
+  "source": "owned disposable runner",
+  "database": "adfl_test_restore_9a7fd873ed334bf9abddf3e1da6f35d4",
+  "containerId": "5094839df6d65bdf7088e523e1d9c85ced1e15924b0f6380f1af7d4c860fac6f",
+  "networkId": "5e4a6658b341ce26bd0cfd271d3b073ae864b13f2e4c61f4d5ae69d6ca474770",
+  "runId": "4ca18455-ebcc-421e-9a15-4e5a1d9e3ff7",
+  "observation": "dump+inventory A; source changed to B; restored A; PT/EN, trashed PDF, immutable object bytes and >100 media records verified",
+  "durationMs": 4430,
+  "ageExecuted": false,
+  "remoteR2Executed": false
+}

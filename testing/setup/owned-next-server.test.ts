@@ -49,10 +49,11 @@ function controlledRuntime() {
         true,
       );
       const child = new ChildProcess();
-      child.kill = () => {
+      Object.defineProperty(child, 'pid', { value: 10_000 + children.length });
+      child.kill = (signal = 'SIGTERM') => {
         killed.push(child);
-        Object.defineProperty(child, 'signalCode', { value: 'SIGTERM', configurable: true });
-        child.emit('exit', null, 'SIGTERM');
+        Object.defineProperty(child, 'signalCode', { value: signal, configurable: true });
+        child.emit('exit', null, signal);
         return true;
       };
       launchedEnvironments.push({ ...env });
@@ -270,4 +271,36 @@ it('propagates a child launch error instead of mistaking another HTTP response f
     /launch failure/,
   );
   expect(control.children).toHaveLength(1);
+});
+
+it('kills only the owned process and waits for its abrupt exit before returning', async () => {
+  const control = controlledRuntime();
+  const server = await startOwnedNextServer({ env: environment() }, control.runtime);
+  const child = control.children[0]!;
+  expect(server.crash).toEqual(expect.any(Function));
+  const exit = once(child, 'exit');
+  const finishKill = child.kill;
+  let recordSignal!: (signal: NodeJS.Signals | number | undefined) => void;
+  const requested = new Promise<NodeJS.Signals | number | undefined>((resolve) => {
+    recordSignal = resolve;
+  });
+  child.kill = (signal) => {
+    recordSignal(signal);
+    return true;
+  };
+  const crash = server.crash();
+  await expect(requested).resolves.toBe('SIGKILL');
+  let completed = false;
+  void crash.then(() => {
+    completed = true;
+  });
+  await Promise.resolve();
+  expect(completed).toBe(false);
+  finishKill('SIGKILL');
+  await expect(crash).resolves.toEqual({ pid: child.pid, signal: 'SIGKILL' });
+  await expect(exit).resolves.toEqual([null, 'SIGKILL']);
+  expect(control.killed).toEqual([child]);
+  await expect(server.restart()).rejects.toThrow('Owned Next server is stopped.');
+  await server.stop();
+  expect(control.killed).toEqual([child]);
 });

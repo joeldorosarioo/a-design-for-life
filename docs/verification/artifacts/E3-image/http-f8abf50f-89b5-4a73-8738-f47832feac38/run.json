@@ -1,0 +1,676 @@
+{
+  "runId": "f8abf50f-89b5-4a73-8738-f47832feac38",
+  "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+  "provenance": {
+    "revision": "draft-e3-local-008",
+    "node": "v24.22.2",
+    "source": {
+      "phase": "image-draft-008-before",
+      "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+      "files": 627,
+      "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+    },
+    "harness": {
+      "image-http-browser-run-by-id.mjs": "7ac98f8bd513d7af0c0951d1d1f6436c5b8d6eb36d9223c4afba327e633e543d",
+      "image-http-seed.mjs": "bd1a3ebcf54b0f99e29f770e26cc09bd7a556e043a096abde0f73e1fea1719f3",
+      "image-http-verify.mjs": "dc25f0106dee834a7a1df3dc943b5022195c1ebac384718b9c757fd80daa2b6f",
+      "source-snapshot.mjs": "1326dd0e04371a603df6174fc11445e66516b0271256023dce6c2e8b9633c1f7",
+      "image-browser-journey.mjs": "b1add0ec7bf871f6cb436571627707984763f3b775d8575e008a510d55873550"
+    },
+    "buildReceipt": {
+      "path": "E3-image/docker-draft-build-008.json",
+      "sha256": "c37c4801c6a675b4d7908558fe4d68521ca0f659a9c0c47ae0f75fd65776ce8b"
+    },
+    "fullVerificationReceipt": {
+      "path": "E3-gates/verify-010-result.json",
+      "sha256": "a5a280e213c7cc087f79d3792f03345474e46f387e48bc5b5c36e2563200fb9b"
+    },
+    "image": {
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "registryDigests": [],
+      "platform": "linux/amd64",
+      "user": "10001:10001",
+      "revision": "draft-e3-local-008",
+      "layers": 14,
+      "environmentNames": [
+        "HOSTNAME",
+        "MEDIA_CHECKER_BINARY",
+        "NEXT_TELEMETRY_DISABLED",
+        "NODE_ENV",
+        "NODE_VERSION",
+        "PATH",
+        "PORT",
+        "YARN_VERSION"
+      ]
+    },
+    "dockerContext": "desktop-linux",
+    "consumerBefore": {
+      "phase": "image-http-f8abf50f-89b5-4a73-8738-f47832feac38-before",
+      "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+      "files": 627,
+      "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+    },
+    "browser": {
+      "playwrightVersion": "1.64.1",
+      "chromiumVersion": "156.0.8078.4"
+    },
+    "consumerAfter": {
+      "phase": "image-http-f8abf50f-89b5-4a73-8738-f47832feac38-after",
+      "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+      "files": 627,
+      "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+    }
+  },
+  "startedUTC": "2026-11-04T06:19:28.494Z",
+  "httpOnly": false,
+  "datasets": [
+    {
+      "key": "a",
+      "database": "adfl_test_image_a_f8abf50f89b54a738738f47832feac38",
+      "bucket": "adfl-test-image-a-f8abf50f89b54a738738f47832feac38",
+      "origin": "http://127.0.0.1:3103",
+      "port": 3001,
+      "fixture": {
+        "namespace": "public-1ad50903",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-1ad50903",
+            "brand": "Synthetic PT public-1ad50903 portfolio",
+            "projects": "Synthetic PT public-1ad50903 projects",
+            "about": "Synthetic PT public-1ad50903 about",
+            "resume": "Synthetic PT public-1ad50903 resume",
+            "contact": "Synthetic PT public-1ad50903 contact",
+            "openMenu": "Synthetic PT public-1ad50903 open menu",
+            "closeMenu": "Synthetic PT public-1ad50903 close menu",
+            "newTab": "Synthetic PT public-1ad50903 opens a new tab",
+            "contents": "Synthetic PT public-1ad50903 contents",
+            "readCase": "Synthetic PT public-1ad50903 read case",
+            "homeTitle": "Synthetic PT public-1ad50903 home",
+            "homeEmphasis": "Synthetic PT public-1ad50903 editorial emphasis",
+            "aboutTitle": "Synthetic PT public-1ad50903 about page",
+            "listingTitle": "Synthetic PT public-1ad50903 case list",
+            "contextHeading": "Synthetic PT public-1ad50903 context heading",
+            "comparisonHeading": "Synthetic PT public-1ad50903 comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "0f47dd4c-1125-4c6b-87aa-796fa0b650e9",
+            "resumeHref": "/media/0f47dd4c-1125-4c6b-87aa-796fa0b650e9/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-1ad50903",
+            "brand": "Synthetic EN public-1ad50903 portfolio",
+            "projects": "Synthetic EN public-1ad50903 projects",
+            "about": "Synthetic EN public-1ad50903 about",
+            "resume": "Synthetic EN public-1ad50903 resume",
+            "contact": "Synthetic EN public-1ad50903 contact",
+            "openMenu": "Synthetic EN public-1ad50903 open menu",
+            "closeMenu": "Synthetic EN public-1ad50903 close menu",
+            "newTab": "Synthetic EN public-1ad50903 opens a new tab",
+            "contents": "Synthetic EN public-1ad50903 contents",
+            "readCase": "Synthetic EN public-1ad50903 read case",
+            "homeTitle": "Synthetic EN public-1ad50903 home",
+            "homeEmphasis": "Synthetic EN public-1ad50903 editorial emphasis",
+            "aboutTitle": "Synthetic EN public-1ad50903 about page",
+            "listingTitle": "Synthetic EN public-1ad50903 case list",
+            "contextHeading": "Synthetic EN public-1ad50903 context heading",
+            "comparisonHeading": "Synthetic EN public-1ad50903 comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "18e35a51-1b5c-4e6b-981f-091df08b3e9d",
+            "resumeHref": "/media/18e35a51-1b5c-4e6b-981f-091df08b3e9d/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "57dba179-059a-4bc7-a8f6-cc0b17619ef5",
+            "locales": {
+              "pt": {
+                "contentId": "5ea7d541-77b6-46f5-944f-e4f06a4e4ff6",
+                "slug": "public-1ad50903-second-pt",
+                "path": "/pt/cases/public-1ad50903-second-pt",
+                "title": "Synthetic PT public-1ad50903 second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "0212ff5b-4823-4164-a50d-633377497271",
+                "slug": "public-1ad50903-second-en",
+                "path": "/en/cases/public-1ad50903-second-en",
+                "title": "Synthetic EN public-1ad50903 second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "bd7e2646-6b8d-459b-93e1-77807fa2c563",
+            "locales": {
+              "pt": {
+                "contentId": "91c6dfdb-c498-4fb7-ac2d-ecf69079cf5d",
+                "slug": "public-1ad50903-first-pt",
+                "path": "/pt/cases/public-1ad50903-first-pt",
+                "title": "Synthetic PT public-1ad50903 first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "58ba7773-9ec9-404b-a5e8-ff292e296d44",
+                "slug": "public-1ad50903-first-en",
+                "path": "/en/cases/public-1ad50903-first-en",
+                "title": "Synthetic EN public-1ad50903 first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "a2c0fd73-4ed5-4e50-851a-743aabcba048",
+            "locales": {
+              "pt": {
+                "contentId": "22f71119-d149-426b-8a39-8e7ab8935472",
+                "slug": "public-1ad50903-ptonly-pt",
+                "path": "/pt/cases/public-1ad50903-ptonly-pt",
+                "title": "Synthetic PT public-1ad50903 ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "76ec18ff-abd2-421a-9ee2-9c208b5f1703",
+                "slug": "public-1ad50903-ptonly-en",
+                "path": "/en/cases/public-1ad50903-ptonly-en",
+                "title": "Synthetic EN public-1ad50903 ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "f12181a7-be4b-407d-bb5e-c73eeb8363c6",
+          "email": "editor-ed1a487b-83e6-4eb5-ac27-148cb142e218@example.invalid"
+        },
+        "image": {
+          "id": "75e02602-19cd-46ee-8848-85a56fa006be",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "0f47dd4c-1125-4c6b-87aa-796fa0b650e9",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "5cda706c-246c-4ce5-b1c2-07211a8d83f4",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "c6c814944b58ada31bd546526cb2dd0743ad5a768da83b89b2e430b6cb76669f",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-a-f8abf50f89b54a738738f47832feac38\\adfl_test_image_a_f8abf50f89b54a738738f47832feac38",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\c6c814944b58ada31bd546526cb2dd0743ad5a768da83b89b2e430b6cb76669f",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\f8abf50f-89b5-4a73-8738-f47832feac38\\a\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\f8abf50f-89b5-4a73-8738-f47832feac38\\a\\optimizer",
+      "captureHash": "1876a3ec63c7095b",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-a-f8abf50f89b54a738738f47832feac38/adfl_test_image_a_f8abf50f89b54a738738f47832feac38",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    },
+    {
+      "key": "b",
+      "database": "adfl_test_image_b_f8abf50f89b54a738738f47832feac38",
+      "bucket": "adfl-test-image-b-f8abf50f89b54a738738f47832feac38",
+      "origin": "http://127.0.0.1:3104",
+      "port": 3002,
+      "fixture": {
+        "namespace": "public-155c0a93",
+        "locales": {
+          "pt": {
+            "locale": "pt",
+            "prefix": "Synthetic PT public-155c0a93",
+            "brand": "Synthetic PT public-155c0a93 portfolio",
+            "projects": "Synthetic PT public-155c0a93 projects",
+            "about": "Synthetic PT public-155c0a93 about",
+            "resume": "Synthetic PT public-155c0a93 resume",
+            "contact": "Synthetic PT public-155c0a93 contact",
+            "openMenu": "Synthetic PT public-155c0a93 open menu",
+            "closeMenu": "Synthetic PT public-155c0a93 close menu",
+            "newTab": "Synthetic PT public-155c0a93 opens a new tab",
+            "contents": "Synthetic PT public-155c0a93 contents",
+            "readCase": "Synthetic PT public-155c0a93 read case",
+            "homeTitle": "Synthetic PT public-155c0a93 home",
+            "homeEmphasis": "Synthetic PT public-155c0a93 editorial emphasis",
+            "aboutTitle": "Synthetic PT public-155c0a93 about page",
+            "listingTitle": "Synthetic PT public-155c0a93 case list",
+            "contextHeading": "Synthetic PT public-155c0a93 context heading",
+            "comparisonHeading": "Synthetic PT public-155c0a93 comparison heading",
+            "homePath": "/pt",
+            "aboutPath": "/pt/sobre",
+            "listingPath": "/pt/cases",
+            "resumeId": "af66cfaa-26be-4534-baac-9989cba5d92c",
+            "resumeHref": "/media/af66cfaa-26be-4534-baac-9989cba5d92c/original"
+          },
+          "en": {
+            "locale": "en",
+            "prefix": "Synthetic EN public-155c0a93",
+            "brand": "Synthetic EN public-155c0a93 portfolio",
+            "projects": "Synthetic EN public-155c0a93 projects",
+            "about": "Synthetic EN public-155c0a93 about",
+            "resume": "Synthetic EN public-155c0a93 resume",
+            "contact": "Synthetic EN public-155c0a93 contact",
+            "openMenu": "Synthetic EN public-155c0a93 open menu",
+            "closeMenu": "Synthetic EN public-155c0a93 close menu",
+            "newTab": "Synthetic EN public-155c0a93 opens a new tab",
+            "contents": "Synthetic EN public-155c0a93 contents",
+            "readCase": "Synthetic EN public-155c0a93 read case",
+            "homeTitle": "Synthetic EN public-155c0a93 home",
+            "homeEmphasis": "Synthetic EN public-155c0a93 editorial emphasis",
+            "aboutTitle": "Synthetic EN public-155c0a93 about page",
+            "listingTitle": "Synthetic EN public-155c0a93 case list",
+            "contextHeading": "Synthetic EN public-155c0a93 context heading",
+            "comparisonHeading": "Synthetic EN public-155c0a93 comparison heading",
+            "homePath": "/en",
+            "aboutPath": "/en/about",
+            "listingPath": "/en/cases",
+            "resumeId": "a8f8ec84-c3fb-4cc1-80c4-528979d745a2",
+            "resumeHref": "/media/a8f8ec84-c3fb-4cc1-80c4-528979d745a2/original"
+          }
+        },
+        "cases": {
+          "second": {
+            "caseId": "30890116-5ff1-4aa1-ba2d-b143c52ef8dd",
+            "locales": {
+              "pt": {
+                "contentId": "304015ad-54ad-4a0f-9c69-365e57f1527a",
+                "slug": "public-155c0a93-second-pt",
+                "path": "/pt/cases/public-155c0a93-second-pt",
+                "title": "Synthetic PT public-155c0a93 second published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "b34565c6-69b8-4909-9349-ca42f848edb0",
+                "slug": "public-155c0a93-second-en",
+                "path": "/en/cases/public-155c0a93-second-en",
+                "title": "Synthetic EN public-155c0a93 second published study",
+                "published": true
+              }
+            }
+          },
+          "first": {
+            "caseId": "40192295-0643-43be-8ad1-46626810eab8",
+            "locales": {
+              "pt": {
+                "contentId": "e4f35c0c-00e5-4f7c-94ff-f420f8a7c736",
+                "slug": "public-155c0a93-first-pt",
+                "path": "/pt/cases/public-155c0a93-first-pt",
+                "title": "Synthetic PT public-155c0a93 first published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "7dd2ed16-1ba8-4459-b0e0-d44e4199ef9a",
+                "slug": "public-155c0a93-first-en",
+                "path": "/en/cases/public-155c0a93-first-en",
+                "title": "Synthetic EN public-155c0a93 first published study",
+                "published": true
+              }
+            }
+          },
+          "ptOnly": {
+            "caseId": "f506563c-0e53-4131-8771-600db2241c5e",
+            "locales": {
+              "pt": {
+                "contentId": "3e867336-b228-43ea-aaf4-5891cbc55f57",
+                "slug": "public-155c0a93-ptonly-pt",
+                "path": "/pt/cases/public-155c0a93-ptonly-pt",
+                "title": "Synthetic PT public-155c0a93 ptOnly published study",
+                "published": true
+              },
+              "en": {
+                "contentId": "28131ead-8aec-4ced-82a8-81ec6306e002",
+                "slug": "public-155c0a93-ptonly-en",
+                "path": "/en/cases/public-155c0a93-ptonly-en",
+                "title": "Synthetic EN public-155c0a93 ptOnly PRIVATE translation",
+                "published": false
+              }
+            }
+          }
+        },
+        "user": {
+          "id": "7345f025-a7c6-4ffb-be83-e4d677ee6137",
+          "email": "editor-ce609997-5560-4ac2-9521-f73125fc1b21@example.invalid"
+        },
+        "image": {
+          "id": "14a00a98-7407-4650-8f71-262a28c67f7a",
+          "sha256": "9d7125b0baa5b3ae7dff60de478c8201c5e5a0fa67e6405dc0df744c0522f741",
+          "byteLength": 102,
+          "variant": "w16"
+        },
+        "pdf": {
+          "id": "af66cfaa-26be-4534-baac-9989cba5d92c",
+          "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9",
+          "byteLength": 710
+        },
+        "privateMediaId": "b2ab9b2b-0c12-4355-b2f7-357d611c8602",
+        "fixtureDestroyCalled": false
+      },
+      "publicationHash": "c97f2e0c9d4a82c28b9d3b5e45edd360fb88f5112abdb2da2ba0d745a751b1b7",
+      "hostMedia": "E:\\a-design-for-life\\.work\\private-media\\adfl-test-image-b-f8abf50f89b54a738738f47832feac38\\adfl_test_image_b_f8abf50f89b54a738738f47832feac38",
+      "publication": "E:\\a-design-for-life\\.work\\publication\\c97f2e0c9d4a82c28b9d3b5e45edd360fb88f5112abdb2da2ba0d745a751b1b7",
+      "capture": "E:\\a-design-for-life\\.work\\E3-image-http\\f8abf50f-89b5-4a73-8738-f47832feac38\\b\\mail",
+      "optimizer": "E:\\a-design-for-life\\.work\\E3-image-http\\f8abf50f-89b5-4a73-8738-f47832feac38\\b\\optimizer",
+      "captureHash": "e5550981bf49449c",
+      "runtimeMedia": "/app/.work/private-media/adfl-test-image-b-f8abf50f89b54a738738f47832feac38/adfl_test_image_b_f8abf50f89b54a738738f47832feac38",
+      "childMigrationExitCode": 0,
+      "childSeedExitCode": 0
+    }
+  ],
+  "containers": [
+    {
+      "id": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "dataset": "a",
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "user": "10001:10001",
+      "networkMode": "container:76e22fe89037980d4ac0f12bc7a6584315c5c8d4cf771ca221a3f500a37adca4",
+      "portsPublished": false,
+      "labels": {
+        "runId": "f8abf50f-89b5-4a73-8738-f47832feac38",
+        "purpose": "image-local-verification"
+      }
+    },
+    {
+      "id": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "dataset": "b",
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "user": "10001:10001",
+      "networkMode": "container:76e22fe89037980d4ac0f12bc7a6584315c5c8d4cf771ca221a3f500a37adca4",
+      "portsPublished": false,
+      "labels": {
+        "runId": "f8abf50f-89b5-4a73-8738-f47832feac38",
+        "purpose": "image-local-verification"
+      }
+    }
+  ],
+  "readiness": [
+    {
+      "id": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "dataset": "a",
+      "phase": "initial",
+      "startedAt": "2026-11-04T06:19:43.406014414Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T06:19:48.471048076Z",
+      "automaticProbeFinishedAt": "2026-11-04T06:19:48.654368434Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    },
+    {
+      "id": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "dataset": "b",
+      "phase": "initial",
+      "startedAt": "2026-11-04T06:19:58.963315638Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T06:20:04.024813918Z",
+      "automaticProbeFinishedAt": "2026-11-04T06:20:04.194882901Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    },
+    {
+      "id": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "dataset": "a",
+      "phase": "restart",
+      "startedAt": "2026-11-04T06:20:10.584773739Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T06:20:15.638548648Z",
+      "automaticProbeFinishedAt": "2026-11-04T06:20:15.807650212Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    },
+    {
+      "id": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "dataset": "b",
+      "phase": "restart",
+      "startedAt": "2026-11-04T06:20:26.336086332Z",
+      "state": "healthy",
+      "automaticProbeExitCode": 0,
+      "automaticProbeStartedAt": "2026-11-04T06:20:31.394572415Z",
+      "automaticProbeFinishedAt": "2026-11-04T06:20:31.563955619Z",
+      "embeddedProbeExitCode": 0,
+      "transport": {
+        "GET": {
+          "status": 200,
+          "bytes": 18,
+          "headersMatched": true
+        },
+        "HEAD": {
+          "status": 200,
+          "bytes": 0,
+          "headersMatched": true
+        }
+      }
+    }
+  ],
+  "browserJourneys": [
+    {
+      "dataset": "a",
+      "phase": "initial",
+      "origin": "http://127.0.0.1:3103",
+      "containerId": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "checks": [
+        "pt-home",
+        "pt-list-detail",
+        "en-locale-and-detail",
+        "image-and-pdf",
+        "anonymous-denials",
+        "admin-browser-login",
+        "external-network"
+      ],
+      "interceptedExternalAttempts": 0,
+      "interceptedWebSocketAttempts": 0,
+      "relayConnections": 6,
+      "playwrightVersion": "1.64.1",
+      "chromiumVersion": "156.0.8078.4",
+      "imageDecoded": true,
+      "pdf": {
+        "status": 200,
+        "bytes": 710,
+        "type": "application/pdf",
+        "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+      },
+      "nativeHttpOnlySession": true
+    },
+    {
+      "dataset": "a",
+      "phase": "restart",
+      "origin": "http://127.0.0.1:3103",
+      "containerId": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "checks": [
+        "pt-home",
+        "pt-list-detail",
+        "en-locale-and-detail",
+        "image-and-pdf",
+        "anonymous-denials",
+        "admin-browser-login",
+        "external-network"
+      ],
+      "interceptedExternalAttempts": 0,
+      "interceptedWebSocketAttempts": 0,
+      "relayConnections": 7,
+      "playwrightVersion": "1.64.1",
+      "chromiumVersion": "156.0.8078.4",
+      "imageDecoded": true,
+      "pdf": {
+        "status": 200,
+        "bytes": 710,
+        "type": "application/pdf",
+        "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+      },
+      "nativeHttpOnlySession": true
+    },
+    {
+      "dataset": "b",
+      "phase": "initial",
+      "origin": "http://127.0.0.1:3104",
+      "containerId": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "checks": [
+        "pt-home",
+        "pt-list-detail",
+        "en-locale-and-detail",
+        "image-and-pdf",
+        "anonymous-denials",
+        "admin-browser-login",
+        "external-network"
+      ],
+      "interceptedExternalAttempts": 0,
+      "interceptedWebSocketAttempts": 0,
+      "relayConnections": 7,
+      "playwrightVersion": "1.64.1",
+      "chromiumVersion": "156.0.8078.4",
+      "imageDecoded": true,
+      "pdf": {
+        "status": 200,
+        "bytes": 710,
+        "type": "application/pdf",
+        "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+      },
+      "nativeHttpOnlySession": true
+    },
+    {
+      "dataset": "b",
+      "phase": "restart",
+      "origin": "http://127.0.0.1:3104",
+      "containerId": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "checks": [
+        "pt-home",
+        "pt-list-detail",
+        "en-locale-and-detail",
+        "image-and-pdf",
+        "anonymous-denials",
+        "admin-browser-login",
+        "external-network"
+      ],
+      "interceptedExternalAttempts": 0,
+      "interceptedWebSocketAttempts": 0,
+      "relayConnections": 7,
+      "playwrightVersion": "1.64.1",
+      "chromiumVersion": "156.0.8078.4",
+      "imageDecoded": true,
+      "pdf": {
+        "status": 200,
+        "bytes": 710,
+        "type": "application/pdf",
+        "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+      },
+      "nativeHttpOnlySession": true
+    }
+  ],
+  "processProofs": [
+    {
+      "id": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "dataset": "a",
+      "phase": "initial",
+      "startedAt": "2026-11-04T06:19:43.406014414Z",
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "pid": 1,
+      "ppid": 0,
+      "uid": 10001,
+      "gid": 10001,
+      "executable": "node",
+      "cwd": "/app",
+      "processKind": "next-server",
+      "effectiveCapabilities": 0
+    },
+    {
+      "id": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "dataset": "a",
+      "phase": "restart",
+      "startedAt": "2026-11-04T06:20:10.584773739Z",
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "pid": 1,
+      "ppid": 0,
+      "uid": 10001,
+      "gid": 10001,
+      "executable": "node",
+      "cwd": "/app",
+      "processKind": "next-server",
+      "effectiveCapabilities": 0
+    },
+    {
+      "id": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "dataset": "b",
+      "phase": "initial",
+      "startedAt": "2026-11-04T06:19:58.963315638Z",
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "pid": 1,
+      "ppid": 0,
+      "uid": 10001,
+      "gid": 10001,
+      "executable": "node",
+      "cwd": "/app",
+      "processKind": "next-server",
+      "effectiveCapabilities": 0
+    },
+    {
+      "id": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "dataset": "b",
+      "phase": "restart",
+      "startedAt": "2026-11-04T06:20:26.336086332Z",
+      "imageId": "sha256:f554359cc82ceef66a11e00178eb122042c5556634055c8b86c6b64ec3b0502c",
+      "pid": 1,
+      "ppid": 0,
+      "uid": 10001,
+      "gid": 10001,
+      "executable": "node",
+      "cwd": "/app",
+      "processKind": "next-server",
+      "effectiveCapabilities": 0
+    }
+  ],
+  "status": "passed-http-and-browser-consumer",
+  "databaseContainerId": "76e22fe89037980d4ac0f12bc7a6584315c5c8d4cf771ca221a3f500a37adca4",
+  "databaseNetworkId": "9028b554d5e08982f7cf0256b14ff80bc61cffa611d9e627126c0aa1d03f7730",
+  "databaseHostPort": 55434,
+  "cleanup": [
+    {
+      "id": "b9096f32c87e9eeb2bc4472cf8a480b7b79f47391e88efbc97cabea15f83d9d9",
+      "stoppedAndRemoved": true
+    },
+    {
+      "id": "e658114e9cb929123e1a53d4baccaaff9b2bb632b0269f0bf29682fa4e85f777",
+      "stoppedAndRemoved": true
+    }
+  ],
+  "databaseStoppedAndRemoved": true,
+  "finishedUTC": "2026-11-04T06:20:41.787Z",
+  "imageBrowserE2E": "targeted journeys passed",
+  "fullPlaywrightSuiteAgainstImage": false
+}

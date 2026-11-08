@@ -1,0 +1,96 @@
+[03:06:14] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (87ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (35ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (2ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (2ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[03:06:14] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[03:06:14] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (4ms)[39m
+[03:06:14] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 39ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 20.4s
+  Running TypeScript ...
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.work/next-tests/4685c770-4709-4adf-a482-89a1aeed43dc/types/**/*.ts'
+  	- include was updated to add '.work/next-tests/4685c770-4709-4adf-a482-89a1aeed43dc/dev/types/**/*.ts'
+
+  Finished TypeScript in 10.7s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 146ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /health
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+├ ƒ /robots.txt
+└ ƒ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 198ms
+✓ Running next.config.ts took 62ms
+⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 1 test using 1 worker
+
+(node:16048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\config\publication-worker.e2e.test.ts:151:1 › automatically acknowledges the same promoted generation after the owned Next worker is killed (8.7s)
+
+  1 passed (1.1m)

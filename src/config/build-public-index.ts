@@ -39,8 +39,10 @@ function staticPath(locale: Locale, page: 'home' | 'cases' | 'about') {
       ? `/${locale}/cases`
       : `/${locale}/${locale === 'pt' ? 'sobre' : 'about'}`;
 }
+type SitemapEntry = { url: string; alternates: { languages: Record<string, string> } };
+
 /** Projects only current confirmed paths; its caller owns publication selection. */
-export function buildPublicSitemap(input: PublicIndexInput): MetadataRoute.Sitemap {
+export function buildPublicSitemap(input: PublicIndexInput): SitemapEntry[] {
   const source = inputSchema.parse(input);
   const origin = configuredOrigin(source.origin);
   const identities = new Set<string>();
@@ -61,7 +63,7 @@ export function buildPublicSitemap(input: PublicIndexInput): MetadataRoute.Sitem
   }
   if (!source.indexable) return [];
   const absolute = (pathname: string) => new URL(pathname, origin).toString();
-  const entries: MetadataRoute.Sitemap = [];
+  const entries: SitemapEntry[] = [];
   for (const locale of locales) {
     if (!source.pages[locale]) continue;
     for (const page of ['home', 'cases', 'about'] as const) {
@@ -94,6 +96,34 @@ export function buildPublicSitemap(input: PublicIndexInput): MetadataRoute.Sitem
   }
   return entries;
 }
+function escapeXml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
+
+export function renderPublicSitemap(entries: readonly SitemapEntry[]): string {
+  const root = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
+  const languages = ' xmlns:xhtml="http://www.w3.org/1999/xhtml"';
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    root + (entries.length ? languages : '') + '>',
+  ];
+  // Entries contain only absolute HTTP(S) origins and fixed or validated slug paths.
+  for (const { url, alternates } of entries) {
+    lines.push('<url>', `<loc>${escapeXml(url)}</loc>`);
+    for (const [language, href] of Object.entries(alternates.languages)) {
+      lines.push(
+        `<xhtml:link rel="alternate" hreflang="${escapeXml(language)}" href="${escapeXml(href)}" />`,
+      );
+    }
+    lines.push('</url>');
+  }
+  return [...lines, '</urlset>', ''].join('\n');
+}
+
 export function buildRobots(
   input: Pick<PublicIndexInput, 'origin' | 'indexable'>,
 ): MetadataRoute.Robots {

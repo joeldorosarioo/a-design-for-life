@@ -1,0 +1,16 @@
+=== r2-backup-wiring-types-002.txt ===
+v24.22.2
+& $node 'node_modules\typescript\bin\tsc' --project (Join-Path $artifact 'r2-backup-repository-tsconfig.json')
+Exit: 0
+
+=== r2-backup-wiring-lint-002.txt ===
+v24.22.2
+& $node 'node_modules\eslint\bin\eslint.js' 'ops/backup/r2-repository.ts' 'ops/backup/r2-repository.test.ts' 'ops/backup/repository.ts' 'ops/backup/run.ts' 'ops/backup/restore.ts'
+Exit: 0
+
+=== r2-backup-wiring-format-002.txt ===
+v24.22.2
+& $node 'node_modules\prettier\bin\prettier.cjs' --check 'ops/backup/r2-repository.ts' 'ops/backup/r2-repository.test.ts' 'ops/backup/repository.ts' 'ops/backup/run.ts' 'ops/backup/restore.ts'
+Checking formatting...
+All matched files use Prettier code style!
+Exit: 0

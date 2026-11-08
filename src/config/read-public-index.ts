@@ -1,4 +1,5 @@
 import 'server-only';
+import { buildPublicSitemap, renderPublicSitemap } from './build-public-index';
 import { z } from 'zod';
 import { getPublishedCaseRoutes, publishedCaseRouteSchema } from '@/features/cases/server';
 import { getPublishedProfile } from '@/features/professional-profile/server';
@@ -108,4 +109,16 @@ export async function readPublicIndex(root: PublicRoot): Promise<PublicIndex> {
     // at the metadata route. Never replace it with a plausible empty sitemap.
     throw new Error('Confirmed public index unavailable.');
   }
+}
+
+export async function readPublicSitemap(root: PublicRoot, origin: string): Promise<string> {
+  const index = await readPublicIndex(root);
+  return renderPublicSitemap(
+    buildPublicSitemap({
+      origin,
+      indexable: true,
+      pages: index.pages,
+      cases: index.cases.map(({ caseId, locale, path }) => ({ caseId, locale, path })),
+    }),
+  );
 }

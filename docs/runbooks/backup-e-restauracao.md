@@ -1,6 +1,16 @@
 # Backup e restauração — preparação local E3.6
 
-Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline local de conjuntos criptografados e restauração isolada está implementado e comprovado; job operacional, R2 real e agendamento ainda não foram entregues.
+Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job Linux de execução separada está disponível. A ativação do agendamento e a validação com o bucket de homologação continuam pendentes.
+
+## Job Linux de backup
+
+Construa `ops/backup/Dockerfile` a partir do commit da aplicação e registre a revisão e o ID da imagem antes de habilitar o job. O entrypoint roda com UID 10001 e usa Node 24.22.2, pnpm 12.10.1, o cliente PostgreSQL 17.11 e age 1.3.2. A imagem usa um contexto próprio que inclui código e lockfile. Guarde a identidade privada do age fora da VPS. Injete somente o recipient público em `OPS_BACKUP_RECIPIENT`.
+
+O comando `backup` usa a raiz da mesma origem, banco e ambiente da aplicação. Mantenha `SITE_ORIGIN`, `DATABASE_URI` e `MEDIA_BUCKET` coerentes com o alvo aprovado. Na homologação, confirme o destino com `OPS_STAGING_DATABASE_TARGET` no formato `host:porta/banco` e use um identificador técnico em `OPS_BACKUP_SOURCE`. A conexão aceita parâmetros TCP explícitos e, quando aplicável, somente `sslmode` como opção da URI. Forneça `OPS_BACKUP_BUCKET`, `OPS_BACKUP_ACCESS_KEY_ID` e `OPS_BACKUP_SECRET_ACCESS_KEY` do bucket privado exclusivo pelo mecanismo de segredos do executor. Os acessos de mídia seguem a configuração R2 da aplicação. Consulte o marcador de conclusão somente após a releitura do conjunto.
+
+Ao executar backup com a aplicação em serviço, compartilhe o namespace de rede do processo que publica e remove objetos. Monte o volume de publicação no mesmo caminho absoluto `/app/.work/publication`; o socket abstrato que protege snapshot e objetos pertence a esse namespace de rede. A exclusão entre jobs usa um advisory lock do PostgreSQL na mesma conexão dedicada por todo o backup ou migração. Confirme os dois mecanismos no executor de homologação antes de agendar o comando `backup` semanalmente. A execução extra anterior à atualização deve concluir e registrar seu marcador antes da troca de imagem. A migração `migrate` cria e verifica o seu próprio conjunto antes de executar DDL. [Migração controlada](migracoes.md).
+
+Em teste, o job exige banco UUID próprio, porta interna 25434 em loopback e volume descartável. O modo de homologação exige revisão Git completa e alvo declarado. Produção, tentativas automáticas, verificação pública e comandos destrutivos são recusados pelo entrypoint desta etapa.
 
 ## Guardas disponíveis
 
@@ -88,4 +98,18 @@ Unidades atuais do escopo: `pipeline-unit-current-023.txt`, **192 passaram / 1 s
 
 O criador suporta somente engines/versionamentos comprovados: bsdtar3.8.9 e GNUtar1.35. A variante GNU foi comprovada em Node Linux da imagem003, sem rede/mounts/portas, com arquivo de200KB, conforme `archive-gnu-linux-f4bcac05-661a-42b7-9bd6-5cf476230fff.json`. O instalador de age 1.3.2 também passou em contêiner Linux isolado, sem rede, com teste de ida e volta e rejeição de identidade errada em `portable-tools-linux-4bed9120-df6d-4480-bc70-b1278ecee5a0.json`. Falta executar o job operacional completo.
 
-Continuam pendentes: bucket privado R2 real/credenciais próprias e readback remoto, job Linux completo com age e coordenação de namespace/volumes, agenda semanal e pré-migração, restauração HTTP/painel/login/recuperação da aplicação, gates completos e CI atualizados. E3.6.2 tem prova de recusa de alvo, retenção de recentes, readback antes da conclusão e preservação do último conjunto válido sob upload parcial. As condições acima mantêm os demais critérios E3.6 abertos.
+Continuam pendentes o bucket privado R2 com credenciais próprias e readback remoto, o job Linux completo com age e coordenação de volumes, a agenda semanal e pré-migração, a restauração em bucket R2 isolado e a execução no CI remoto. E3.6.2 tem prova de recusa de alvo, retenção de recentes, readback antes da conclusão e preservação do último conjunto válido sob upload parcial. As condições acima mantêm os demais critérios E3.6 abertos.
+
+## Repositório R2 e leitor de recuperação
+
+O escritor usa bucket exclusivo e grava namespace, pendência, ciphertext e conclusão por operações condicionais. A chamada de conclusão consome todos os bytes baixados e verifica manifesto e SHA-256 antes do marcador, depois relê o próprio marcador. O manifesto privado permanece no conjunto criptografado. Perda do recibo de escrita deixa o resultado sem confirmação e uma tentativa duplicada preserva os bytes existentes.
+
+`runBackup` confere a identidade do armazenamento de origem registrada na factory enquanto mantém o fence de retenção. O bucket de mídia precisa corresponder à origem admitida e ser distinto do bucket de backup. As mesmas referências registradas atendem a leitura de bytes. A saída R2 informa retenção desabilitada. A exclusão remota fica pendente até comprovar listagem, identidade física e exclusão mútua do job operacional.
+
+`restoreBackup` aceita o leitor registrado de recuperação. O leitor verifica o namespace, o marcador e todo o ciphertext antes de preparar o arquivo privado. A descriptografia e a validação do arquivo acontecem antes de adquirir o destino PostgreSQL e de mídia isolado. A primeira prova de composição usa destino local. A importação em bucket R2 novo e a jornada HTTP de login e recuperação seguem pendentes.
+
+As provas em loopback exercitaram o SDK S3 fixado com buckets sintéticos distintos. A última execução usou as ferramentas age e tar reais da fixture e passou 145 testes unitários sem skips. O callback PostgreSQL da prova de composição R2 é sintético. O dump e a restauração PostgreSQL reais pertencem às provas Native do pipeline local e da migração controlada. [Recibos de backup](../verification/artifacts/E3-backup/)
+
+## Restauração HTTP em imagem local
+
+A prova com PostgreSQL, filesystem, age e tar reais iniciou a imagem 007 sobre o alvo restaurado durante sua aquisição descartável. Verificou o conteúdo PT/EN, imagem, PDF privado, login, painel e redefinição com e-mail capturado localmente. A senha e a sessão anteriores foram revogadas e o token usado foi recusado. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. A importação para bucket R2 isolado continua aberta. [Recibo](../verification/artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl).

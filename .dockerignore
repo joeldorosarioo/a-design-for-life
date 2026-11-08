@@ -26,12 +26,15 @@
 !ops/backup/archive.ts
 !ops/backup/contracts.ts
 !ops/backup/local-target.ts
+!ops/backup/native-source.ts
 !ops/backup/repository.ts
+!ops/backup/r2-repository.ts
 !ops/backup/restore-target.ts
 !ops/backup/restore.ts
 !ops/backup/retention.ts
 !ops/backup/run.ts
 !ops/backup/tools.ts
+!ops/migrations/controlled.ts
 !ops/image/health-probe.mjs
 !ops/image/runtime-smoke.mjs
 !ops/image/assemble-standalone.mjs

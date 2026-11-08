@@ -124,7 +124,42 @@ it('checks the exact expected redirect and never follows it', async () => {
   expect(requests).toEqual(['/pt/cases/former', '/pt/cases/former']);
 });
 
+it('observes only the exact public sitemap path with the selected generation', async () => {
+  const requests: (string | undefined)[] = [];
+  const xml = '<urlset><url><loc>https://portfolio.example.invalid/pt</loc></url></urlset>';
+  await withServer(
+    (request, response) => {
+      requests.push(request.url);
+      response.writeHead(200, {
+        [publicGenerationHeader]: generation,
+        'Content-Type': 'application/xml',
+      });
+      response.end(xml);
+    },
+    async (origin) => {
+      await expect(
+        assertServedPublication({
+          origin,
+          generation,
+          observations: [
+            {
+              path: '/sitemap.xml',
+              status: 200,
+              matches: (bytes, headers) =>
+                headers.get('content-type') === 'application/xml' &&
+                Buffer.from(bytes).toString() === xml,
+            },
+          ],
+        }),
+      ).resolves.toBeUndefined();
+    },
+  );
+  expect(requests).toEqual(['/sitemap.xml']);
+});
+
 it.each([
+  '/private.xml',
+  '/sitemap.xml?draft=1',
   '//foreign.test/pt',
   '/pt/../private',
   '/pt%2fprivate',
@@ -344,4 +379,163 @@ it('counts time spent validating the final completed projection against the same
     },
   );
   expect(matched).toBe(true);
+});
+
+const testMediaId = 'd6f3fa80-cb87-4dc4-8ecb-01b084343ee1';
+const testMediaPath = `/media/${testMediaId}/original`;
+const testOptimizerPath = `/_next/image?url=${encodeURIComponent(testMediaPath)}&w=64&q=75`;
+
+it('issues only the closed anonymous media and optimizer methods and headers', async () => {
+  const requests: unknown[] = [];
+  const observations: PublicObservation[] = [
+    ...(['get', 'head', 'range'] as const).map((mode) => ({
+      path: testMediaPath,
+      status: 404,
+      media: { kind: 'direct' as const, mode, maxBodyBytes: 0 },
+      matches: (bytes: Uint8Array) => bytes.byteLength === 0,
+    })),
+    {
+      path: testOptimizerPath,
+      status: 200,
+      media: { kind: 'optimizer', mode: 'get', maxBodyBytes: 8 },
+      matches: (bytes) => Buffer.from(bytes).toString() === 'image',
+    },
+  ];
+  await withServer(
+    (request, response) => {
+      requests.push([
+        request.method,
+        request.url,
+        request.headers.range,
+        request.headers.accept,
+        request.headers.cookie,
+        request.headers.authorization,
+      ]);
+      const optimized = request.url === testOptimizerPath;
+      response.writeHead(optimized ? 200 : 404, { [publicGenerationHeader]: generation });
+      response.end(optimized ? 'image' : undefined);
+    },
+    (origin) => assertServedPublication({ origin, generation, observations }),
+  );
+  expect(requests).toEqual([
+    ['GET', testMediaPath, undefined, undefined, undefined, undefined],
+    ['HEAD', testMediaPath, undefined, undefined, undefined, undefined],
+    ['GET', testMediaPath, 'bytes=0-15', undefined, undefined, undefined],
+    ['GET', testOptimizerPath, undefined, 'image/webp', undefined, undefined],
+  ]);
+});
+
+it.each([
+  testOptimizerPath + '&q=75',
+  testOptimizerPath.replace('w=64', 'w=640'),
+  testOptimizerPath.replace('%2Fmedia', 'https%3A%2F%2Funtrusted.invalid%2Fmedia'),
+  testOptimizerPath.replace('%2Foriginal', '%2Fw16'),
+  testOptimizerPath.replace('%2Fmedia', '%252Fmedia'),
+])('rejects a noncanonical optimizer target before requesting any path', async (path) => {
+  let requests = 0;
+  await withServer(
+    (_request, response) => {
+      requests++;
+      response.end();
+    },
+    async (origin) => {
+      await expect(
+        assertServedPublication({
+          origin,
+          generation,
+          observations: [
+            observation,
+            {
+              path,
+              status: 404,
+              media: { kind: 'optimizer', mode: 'range', maxBodyBytes: 0 },
+              matches: () => true,
+            },
+          ],
+        }),
+      ).rejects.toThrow('Unsafe public HTTP verification plan.');
+    },
+  );
+  expect(requests).toBe(0);
+});
+
+it.each([206, 304, 503, 404])(
+  'rejects unproven media denial status/body/generation for %i',
+  async (status) => {
+    await withServer(
+      (_request, response) => {
+        response.writeHead(status, {
+          [publicGenerationHeader]: status === 404 ? 'wrong-generation' : generation,
+        });
+        response.end();
+      },
+      async (origin) => {
+        await expect(
+          assertServedPublication({
+            origin,
+            generation,
+            observations: [
+              {
+                path: testMediaPath,
+                status: 404,
+                media: { kind: 'direct', mode: 'range', maxBodyBytes: 0 },
+                matches: () => true,
+              },
+            ],
+          }),
+        ).rejects.toThrow('Public HTTP verification failed.');
+      },
+    );
+  },
+);
+
+it('allows a valid large original without relaxing the ordinary projection limit', async () => {
+  const bytes = Buffer.alloc(2 * 1024 * 1024 + 1, 0x20);
+  await withServer(
+    (_request, response) => {
+      response.writeHead(200, { [publicGenerationHeader]: generation });
+      response.end(bytes);
+    },
+    async (origin) => {
+      const large: PublicObservation = {
+        path: testMediaPath,
+        status: 200,
+        media: { kind: 'direct', mode: 'get', maxBodyBytes: bytes.byteLength },
+        matches: (body) => body.byteLength === bytes.byteLength,
+      };
+      await assertServedPublication({ origin, generation, observations: [large] });
+      await expect(
+        assertServedPublication({
+          origin,
+          generation,
+          observations: [{ path: '/pt', status: 200, matches: () => true }],
+        }),
+      ).rejects.toThrow('Public HTTP verification failed.');
+    },
+  );
+});
+
+it('refuses any bytes in an expected media denial, independently of the matcher', async () => {
+  await withServer(
+    (_request, response) => {
+      response.writeHead(404, { [publicGenerationHeader]: generation });
+      response.end('unauthorized bytes');
+    },
+    async (origin) => {
+      await expect(
+        assertServedPublication({
+          origin,
+          generation,
+          observations: [
+            {
+              path: testMediaPath,
+              status: 404,
+              media: { kind: 'direct', mode: 'get', maxBodyBytes: 0 },
+              matches: () => true,
+            },
+          ],
+        }),
+      ).rejects.toThrow('Public HTTP verification failed.');
+    },
+  );
 });

@@ -3,7 +3,13 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { afterEach, expect, it } from 'vitest';
 import { createLocalObjectStorage } from '../../src/helpers/storage/object-storage';
-import { createLocalBackupRepository, localBackupRepositoryDirectory } from './repository';
+import { decryptBackupArchive } from './age';
+import { extractValidatedBackupArchive } from './archive';
+import {
+  createLocalBackupRepository,
+  localBackupRepositoryDirectory,
+  withPrivateBackupWorkspace,
+} from './repository';
 import { runBackup, type BackupSource } from './run';
 const fixturePath = process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG;
 const config = fixturePath
@@ -187,6 +193,41 @@ toolProof(
     expect(await data.repository.list()).toEqual([latest.marker]);
   },
 );
+toolProof('recovers archived media after physically deleting its source object', async () => {
+  const data = await setup();
+  const original = await data.source.storage.get(data.object);
+  const { marker } = await runBackup(options(data));
+  expect(await data.repository.list()).toEqual([marker]);
+
+  await data.source.storage.delete(data.object);
+  expect(await data.source.storage.head(data.object)).toBeNull();
+  expect(await data.repository.list()).toEqual([marker]);
+
+  await withPrivateBackupWorkspace('restore', async (directory) => {
+    const ciphertext = path.join(directory, 'payload.age');
+    expect(await data.repository.stageCompletedSet(marker.id, ciphertext)).toEqual(marker);
+    const decrypted = await decryptBackupArchive({
+      sourcePath: ciphertext,
+      destination: path.join(directory, 'payload.tar'),
+      identityPath: config!.identityPath,
+      ageBinary: config!.ageBinary,
+    });
+    const destination = path.join(directory, 'validated');
+    const archive = await extractValidatedBackupArchive({
+      archivePath: decrypted.path,
+      destination,
+    });
+    const objectName = `objects/${data.object.key}`;
+    expect(archive.entries).toContainEqual(
+      expect.objectContaining({
+        name: objectName,
+        byteLength: data.object.byteLength,
+        sha256: data.object.sha256,
+      }),
+    );
+    expect(await readFile(path.join(destination, objectName))).toEqual(Buffer.from(original));
+  });
+});
 it('rejects a non-custom database dump before any completion marker', async () => {
   const data = await setup();
   data.source.capture = async (consume) =>

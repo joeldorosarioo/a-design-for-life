@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-11-04T06:09:59.6506505+00:00",
+  "finishedAt": "2026-11-04T06:11:38.2597485+00:00",
+  "command": "node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/config/publication-http-observation.e2e.test.ts src/config/publication-worker.e2e.test.ts --project=chromium --workers=1 --reporter=list,json --output=<new private run directory>",
+  "exitCode": 0,
+  "trackedImages": 41,
+  "trackedImageChanges": [],
+  "sourceUnchanged": true,
+  "sourceBefore": {
+    "phase": "e2e-004-before",
+    "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+    "files": 627,
+    "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+  },
+  "sourceAfter": {
+    "phase": "e2e-004-after",
+    "head": "b45f309259a550fef8ca6ef706e9c04007cb8880",
+    "files": 627,
+    "digest": "8fac48b612a95f5eba12a329fc1be57cbc8a160e5a75e40878cd9c348fa6256d"
+  },
+  "fontSha256": "EDFBD22A3D088FC2F5D7C79B8C9C732DF6DC878A60F0A80BE0F92A3C7A634404"
+}

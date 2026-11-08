@@ -1,0 +1,131 @@
+Vitest unit media ACK wire RED
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/publication-media-provenance.test.ts (6 tests | 1 failed) 38ms
+   × does not replace a historical unacknowledged media root without removal provenance 6ms
+ ❯ |unit| src/config/portfolio-publication-observation.test.ts (5 tests | 2 failed) 40ms
+   × cannot acknowledge public withdrawal through the HTTP plan while the revoked asset still returns bytes 22ms
+   × does not treat historical missing provenance on a promoted pending case as proof of no removals 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > cannot acknowledge public withdrawal through the HTTP plan while the revoked asset still returns bytes
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/config/portfolio-publication-observation.test.ts:207:27
+    205|       });
+    206|     // RED today: the first attempt resolves after the JSON projection…
+    207|     await expect(verify()).rejects.toThrow('Public HTTP verification f…
+       |                           ^
+    208|     expect(requests).toEqual([
+    209|       ['GET', '/api/case-content/published/pt', undefined],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/config/portfolio-publication-observation.test.ts > does not treat historical missing provenance on a promoted pending case as proof of no removals
+AssertionError: promise resolved "[ { …(3) } ]" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+[
+  {
+    "matches": [Function matches],
+    "path": "/api/case-content/published/pt",
+    "status": 200,
+  },
+]
+
+ ❯ src/config/portfolio-publication-observation.test.ts:234:56
+    232| it('does not treat historical missing provenance on a promoted pending…
+    233|   const historical = mediaWithdrawal();
+    234|   await expect(planPublicationObservations(historical)).rejects.toThro…
+       |                                                        ^
+    235|     'Public media observation provenance unavailable.',
+    236|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/config/publication-media-provenance.test.ts > does not replace a historical unacknowledged media root without removal provenance
+AssertionError: promise resolved "{ …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "generation": "3f8ebf5f-cde5-49a0-9771-1d452391b4fb",
++   "subjects": {
++     "case-content/8c7a3f58-728b-4d53-af97-567550314394": {
++       "operationId": "4b4ae941-2c90-4c11-bcd3-5a335758a8fe",
++       "targetRevision": "1c769e9d-3b5f-475d-b0c3-b50fc65c2220",
++       "value": {
++         "caseId": "22fc038d-20f0-47a5-8005-bb5b04a95b26",
++         "contentId": "8c7a3f58-728b-4d53-af97-567550314394",
++         "detail": null,
++         "kind": "case",
++         "locale": "pt",
++         "media": [],
++         "mediaObservation": {
++           "removed": [
++             {
++               "mediaId": "f80cf88f-c58d-4f7f-9096-96802424e9c6",
++               "variant": "original",
++             },
++             {
++               "mediaId": "f80cf88f-c58d-4f7f-9096-96802424e9c6",
++               "variant": "w16",
++             },
++             {
++               "mediaId": "f80cf88f-c58d-4f7f-9096-96802424e9c6",
++               "optimizer": true,
++             },
++           ],
++         },
++         "slug": null,
++         "slugs": [],
++       },
++     },
++     "cases/22fc038d-20f0-47a5-8005-bb5b04a95b26": {
++       "operationId": "f00e0392-f25f-44c0-b62c-93f5c077db7a",
++       "targetRevision": "ed7f8296-c6c5-42b7-a8d4-9a96e1d324ea",
++       "value": {
++         "caseId": "22fc038d-20f0-47a5-8005-bb5b04a95b26",
++         "featured": false,
++         "kind": "case-order",
++         "sortOrder": 0,
++       },
++     },
++   },
+  }
+
+ ❯ src/config/publication-media-provenance.test.ts:216:74
+    214|   const compose = composition('unused-by-pure-composition');
+    215|   // RED today: composition treats missing prior evidence as no earlie…
+    216|   await expect(compose(root, operation, { previousAcknowledged: false …
+       |                                                                          ^
+    217|     'Prior public media observation provenance unavailable.',
+    218|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 8 passed (11)
+   Start at  02:27:33
+   Duration  1.66s (import 65%, transform 18%, setup 14%, tests 3%)
+
+EXIT 1

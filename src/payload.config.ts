@@ -26,11 +26,12 @@ import {
   FixedToolbarFeature,
 } from '@payloadcms/richtext-lexical';
 import { installPayloadProvider } from './helpers/payload/runtime';
-import { getPayload, buildConfig } from 'payload';
+import { getPayload, buildConfig, type PayloadRequest } from 'payload';
 import { installMediaRuntime } from './features/media-library/server/media-runtime';
 import { readServerEnv, resolveInternalHttpOrigin } from './config/server-env';
 import { payloadRuntimeLoggerOptions } from './helpers/logger';
 import { readIntegrationEnv } from './config/integration-env';
+import { dependencyDiagnostics } from './config/dependency-diagnostics';
 import { createR2ObjectStorage } from './helpers/storage/r2-storage';
 import { usersCollection } from './helpers/payload/users.collection';
 import { editorialEmailAdapter } from './helpers/payload/editorial-email';
@@ -48,6 +49,8 @@ import { Media } from './features/media-library/content/collections/media';
 loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
 const integrations = readIntegrationEnv(process.env, env);
+const r2Storage =
+  integrations.storage.driver === 'r2' ? createR2ObjectStorage(integrations.storage) : undefined;
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const Users = usersCollection(env.SITE_ORIGIN);
 const publicationDirectory = publicRootDirectory(env);
@@ -62,8 +65,8 @@ installPublicationProvider(() =>
   ),
 );
 installMediaRuntime({
-  ...(integrations.storage.driver === 'r2'
-    ? { storage: createR2ObjectStorage(integrations.storage) }
+  ...(r2Storage
+    ? { storage: r2Storage }
     : {
         root:
           env.MEDIA_STORAGE_ROOT ??
@@ -87,6 +90,7 @@ const config = buildConfig({
   hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
+    avatar: 'default',
     user: Users.slug,
     importMap: { baseDir: sourceDirectory },
   },
@@ -100,6 +104,19 @@ const config = buildConfig({
       disableCreateDatabase: true,
     }),
   ),
+  endpoints: [
+    {
+      path: '/operations/diagnostics',
+      method: 'get',
+      handler: dependencyDiagnostics<PayloadRequest>({
+        postgresql: async (req) => {
+          const query = { text: 'SELECT 1', query_timeout: 1_500 };
+          await req.payload.db.pool.query(query);
+        },
+        r2: r2Storage?.checkBucket,
+      }),
+    },
+  ],
   collections: [
     Users,
     publicationFields(Cases, caseOrderPublicationAdapter),

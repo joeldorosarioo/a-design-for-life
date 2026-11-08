@@ -30,6 +30,12 @@ Executar primeiro o smoke sem rede descrito em [build e promoção](build-e-prom
 5. Inspecionar rede/cookies/storage: nenhum pedido real ao Google/Resend/R2 e nenhuma medição no ambiente local. Comparar o campo ID local dos dois containers; ambos devem apontar ao mesmo ID, sem rebuild.
 6. Reiniciar cada container e repetir conteúdo confirmado/persistência e isolamento. Guardar recibos por configuração, imagem e dataset. Não declarar prova real de homologação ou encerrar E3.4 por esses resultados locais.
 
+## Ensaio local observado
+
+A imagem 004 passou 82 verificações HTTP em dois bancos descartáveis com `APP_ENV=test` e origens canônicas distintas. Os processos usaram redes e montagens do runner isolado. As origens 3103 e 3104 eram metadados e os contêineres de aplicação ficaram sem portas publicadas no host. As verificações foram repetidas depois de reiniciar cada instância com o mesmo ID de imagem. Painel, API, imagens, PDF e rotas confirmadas PT/EN passaram. Os quatro inícios tiveram estado saudável e probe embutido com saída 0. [Recibo do ensaio](../verification/artifacts/E3-image/http-973f5053-f16b-4c9a-b183-8470d9719ebf/run.json)
+
+O Playwright local teve 116 testes aprovados com o Next compilado para produção. A prova do navegador usando a imagem Linux é uma execução própria. Os snapshots e resultados de cada consumidor seguem em seus recibos.
+
 ## Homologação real pendente
 
 Depois de serviços/custos apresentados e recursos autorizados: TLS, acesso autenticado antes da aplicação, sem indexação nem Analytics, origem real própria e URL privada do painel. Health de loopback deve continuar acessível ao probe interno sem expor diagnósticos detalhados. Confirmar regra de autenticação para HTTP/E2E e ausência de vazamento de conteúdo antes de liberar qualquer acesso externo.

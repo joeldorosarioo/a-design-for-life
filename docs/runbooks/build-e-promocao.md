@@ -13,7 +13,7 @@ Escopo atual: preparação e validação **locais**, E3.4. A3/A4 continuam pende
 
 ## Build local coordenado
 
-Executar na raiz, após proteção dos serviços e gates pelo responsável. Nenhum destes comandos foi executado como parte da preparação dos arquivos.
+Executar na raiz, após proteger os serviços e congelar a fonte. O ensaio 004 usou Buildx no builder desktop-linux com o lockfile congelado, inspeção pelo ID imutável e smoke sem rede. Os recibos preservam o snapshot de fonte e o vínculo com as provas HTTP. [Verificação da imagem 004](../verification/artifacts/E3-image/docker-draft-build-004.json)
 
 ```powershell
 # Rascunho honesto para fonte ainda não commitada. Não é candidata aprovada.
@@ -48,6 +48,8 @@ Registrar comandos, versões Docker/buildx, plataforma, SHA do commit, status li
 O ID local `sha256:...` é o digest da configuração da imagem. **Ele não é o digest de manifesto do registry.** Um build sem publicação pode não ter `RepoDigests`; esse vazio é esperado na prova local e não encerra a promoção real. A inspeção de metadados também não prova que todos os arquivos/camadas estejam livres de segredos. Antes de qualquer publicação autorizada, revisar o contexto efetivo e os arquivos de cada camada em exportação local controlada, além dos bundles/HTML; nunca anexar arquivos privados ou exportação bruta ao dossiê público.
 
 ## Publicação e promoção futuras
+
+O [workflow manual de preflight](../../.github/workflows/release.yml) confere o SHA exato de `develop`, compila para Linux amd64, inspeciona a imagem pelo ID e roda o smoke nativo sem rede. O executor usa acesso de leitura ao repositório. O resultado é evidência de empacotamento local ao executor, separada do manifesto que o registry emitirá.
 
 Sem registry escolhido, não há workflow com push automático nem publicação externa habilitada. Após escolha/autorização, publicar a candidata validada e registrar seu digest de manifesto. Homologação e candidata de produção devem referenciar exatamente o mesmo `repository@sha256:...`; `ops/verify-image.ts` compara os digests bem formados. Tag, inclusive tag de commit, não substitui digest. Não usar `latest`; não reconstruir durante promoção.
 

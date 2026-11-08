@@ -1,5 +1,5 @@
 import 'server-only';
-import { get, type IncomingMessage } from 'node:http';
+import { request, type IncomingMessage } from 'node:http';
 
 import { publicGenerationHeader } from './public-generation-header';
 
@@ -7,6 +7,11 @@ export type PublicObservation = {
   path: string;
   status: number;
   matches: (bytes: Uint8Array, headers: Headers) => boolean;
+  media?: {
+    kind: 'direct' | 'optimizer';
+    mode: 'get' | 'head' | 'range';
+    maxBodyBytes: number;
+  };
 };
 
 export type PublicVerification = {
@@ -19,9 +24,20 @@ export type PublicVerification = {
 
 const totalDeadlineMs = 5_000;
 const responseLimit = 2 * 1024 * 1024;
+const mediaResponseLimit = 16 * 1024 * 1024;
 const maxObservations = 64;
 const generationPattern = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/;
 const pathPattern = /^\/(?:[a-z0-9_-]+(?:\/[a-z0-9_-]+)*)?$/;
+const uuidPath = '[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}';
+const directPath = new RegExp(`^/media/${uuidPath}/(?:original|w[1-9]\\d{0,7})$`);
+const optimizerQuery = '&w=64&q=75';
+const optimizerPath = new RegExp(
+  `^/_next/image\\?url=%2Fmedia%2F${uuidPath}%2Foriginal${optimizerQuery}$`,
+);
+
+export function publicOptimizerObservationPath(mediaId: string): string {
+  return `/_next/image?url=${encodeURIComponent(`/media/${mediaId}/original`)}${optimizerQuery}`;
+}
 
 function isLoopbackOrigin(origin: string): boolean {
   return (
@@ -30,15 +46,58 @@ function isLoopbackOrigin(origin: string): boolean {
   );
 }
 
-function readLocalResponse(url: string, signal: AbortSignal): Promise<IncomingMessage> {
+function prepareObservation(
+  { path, status, matches, media }: PublicObservation,
+  bodyLimit: number,
+) {
+  if (path.length > 512 || path.trim() !== path)
+    throw new Error('Unsafe public HTTP verification plan.');
+
+  const headers: Record<string, string> = { 'Cache-Control': 'no-cache' };
+  if (!media) {
+    if (path !== '/sitemap.xml' && !pathPattern.test(path))
+      throw new Error('Unsafe public HTTP verification plan.');
+    return { path, status, matches, method: 'GET', headers, bodyLimit };
+  }
+
+  const { kind, mode, maxBodyBytes } = media;
+  if (
+    !(
+      (kind === 'direct' && directPath.test(path)) ||
+      (kind === 'optimizer' && optimizerPath.test(path))
+    ) ||
+    !['get', 'head', 'range'].includes(mode) ||
+    !Number.isSafeInteger(maxBodyBytes) ||
+    !(
+      (status === 404 && maxBodyBytes === 0) ||
+      (status === 200 && mode === 'get' && maxBodyBytes > 0 && maxBodyBytes <= mediaResponseLimit)
+    )
+  ) {
+    throw new Error('Unsafe public HTTP verification plan.');
+  }
+  if (mode === 'range') headers.Range = 'bytes=0-15';
+  if (kind === 'optimizer') headers.Accept = 'image/webp';
+  return {
+    path,
+    status,
+    matches,
+    method: mode === 'head' ? 'HEAD' : 'GET',
+    headers,
+    bodyLimit: maxBodyBytes,
+  };
+}
+
+function readLocalResponse(
+  url: string,
+  signal: AbortSignal,
+  method: string,
+  headers: Record<string, string>,
+): Promise<IncomingMessage> {
   return new Promise((resolve, reject) => {
     // A one-off direct HTTP agent excludes ambient proxy settings and never follows redirects.
-    const request = get(
-      url,
-      { agent: false, signal, headers: { 'Cache-Control': 'no-cache' } },
-      resolve,
-    );
-    request.on('error', reject);
+    const outgoing = request(url, { agent: false, signal, method, headers }, resolve);
+    outgoing.on('error', reject);
+    outgoing.end();
   });
 }
 
@@ -84,9 +143,7 @@ export async function assertServedPublication({
     throw new Error('Unsafe public HTTP verification plan.');
   }
 
-  const plan = observations.map(({ path, status, matches }) => ({ path, status, matches }));
-  if (plan.some(({ path }) => path.length > 512 || !pathPattern.test(path)))
-    throw new Error('Unsafe public HTTP verification plan.');
+  const plan = observations.map((observation) => prepareObservation(observation, maxBodyBytes));
 
   const deadline = performance.now() + timeoutMs;
   const controller = new AbortController();
@@ -95,7 +152,12 @@ export async function assertServedPublication({
   try {
     for (const observation of plan) {
       if (performance.now() >= deadline) throw new Error('Public observation deadline exceeded.');
-      const response = await readLocalResponse(`${origin}${observation.path}`, controller.signal);
+      const response = await readLocalResponse(
+        `${origin}${observation.path}`,
+        controller.signal,
+        observation.method,
+        observation.headers,
+      );
       try {
         const headers = responseHeaders(response);
         if (
@@ -103,7 +165,7 @@ export async function assertServedPublication({
           headers.get(publicGenerationHeader) !== generation
         )
           throw new Error('Unexpected public response metadata.');
-        const bytes = await readCompleteBody(response, maxBodyBytes);
+        const bytes = await readCompleteBody(response, observation.bodyLimit);
         if (observation.matches(bytes, headers) !== true)
           throw new Error('Unexpected public response projection.');
       } finally {

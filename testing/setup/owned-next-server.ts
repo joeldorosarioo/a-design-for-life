@@ -104,14 +104,21 @@ async function waitForExit(state: OwnedChild) {
 
 /** Owns only its returned child handle; never adopts, discovers or kills a PID/port. */
 export async function startOwnedNextServer(
-  options: { env: NodeJS.ProcessEnv; port?: number; publicationObserverListener?: Server },
+  options: {
+    env: NodeJS.ProcessEnv;
+    port?: number;
+    publicationObserverListener?: Server;
+    indexableSitemap?: true;
+  },
   runtime: OwnedNextServerRuntime = systemRuntime,
 ): Promise<{
   origin: string;
+  siteOrigin: string;
   buildId: string;
   distDirectory: string;
   logs: () => string;
   restart: () => Promise<void>;
+  crash: () => Promise<{ pid: number; signal: 'SIGKILL' }>;
   stop: () => Promise<void>;
 }> {
   const env = { ...options.env };
@@ -163,6 +170,27 @@ export async function startOwnedNextServer(
     INTERNAL_HTTP_ORIGIN: internalOrigin,
     MEDIA_STORAGE_DRIVER: 'local',
   });
+  if (options.indexableSitemap) {
+    if (options.publicationObserverListener)
+      throw new Error('Indexable reader cannot run the publisher.');
+    delete env.GA4_MEASUREMENT_ID;
+    // The process only binds to loopback and reads the owned test DB. These inert
+    // values satisfy deployed configuration shape; the sitemap uses no providers.
+    Object.assign(env, {
+      APP_ENV: 'production',
+      SITE_ORIGIN: `https://sitemap-${env.ADFL_TEST_RUN_ID}.example.invalid`,
+      PUBLIC_SITE_ENABLED: 'false',
+      PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false',
+      PUBLICATION_RETRY_WORKER_ENABLED: 'false',
+      MEDIA_STORAGE_DRIVER: 'r2',
+      R2_ENDPOINT: 'https://00000000000000000000000000000000.r2.cloudflarestorage.com',
+      R2_ACCESS_KEY_ID: 'synthetic-inert-access-key',
+      R2_SECRET_ACCESS_KEY: 'synthetic-inert-secret-key',
+      RESEND_API_KEY: 'synthetic-inert-resend-key',
+      EDITORIAL_EMAIL_FROM_ADDRESS: 'synthetic@mail.joeldorosarioo.dev',
+      EDITORIAL_EMAIL_FROM_NAME: 'Synthetic read-only sitemap proof',
+    });
+  }
   const distDirectory = path.resolve(dist);
   const buildId = (await runtime.readBuildId(distDirectory)).trim();
   if (!/^[A-Za-z0-9_-]+$/.test(buildId))
@@ -222,9 +250,12 @@ export async function startOwnedNextServer(
       await runtime.wait();
     }
   }
-  function sequential(operation: () => Promise<void>) {
+  function sequential<T>(operation: () => Promise<T>) {
     const result = queue.then(operation);
-    queue = result.catch(() => {});
+    queue = result.then(
+      () => undefined,
+      () => undefined,
+    );
     return result;
   }
   try {
@@ -235,6 +266,7 @@ export async function startOwnedNextServer(
   }
   return {
     origin,
+    siteOrigin: env.SITE_ORIGIN!,
     buildId,
     distDirectory,
     logs: () => logs,
@@ -250,6 +282,19 @@ export async function startOwnedNextServer(
           await stopCurrent();
           throw error;
         }
+      }),
+    crash: () =>
+      sequential(async () => {
+        const state = current;
+        const pid = state?.child.pid;
+        if (closed || !state || state.terminal || !pid || !state.child.kill('SIGKILL'))
+          throw new Error('Owned Next child is not available for abrupt termination.');
+        await waitForExit(state);
+        if (state.child.signalCode !== 'SIGKILL')
+          throw new Error('Owned Next child did not report an abrupt exit.');
+        current = undefined;
+        closed = true;
+        return { pid, signal: state.child.signalCode };
       }),
     stop: () => {
       closed = true;

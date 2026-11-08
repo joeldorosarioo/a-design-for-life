@@ -3,6 +3,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import {
   DeleteObjectCommand,
   GetObjectCommand,
+  HeadBucketCommand,
   HeadObjectCommand,
   PutObjectCommand,
   S3Client,
@@ -18,7 +19,9 @@ export type R2StorageOptions = {
   secretAccessKey: string;
 };
 
-export function createR2ObjectStorage(options: R2StorageOptions): ObjectStorage {
+type R2ObjectStorage = ObjectStorage & { checkBucket: (signal: AbortSignal) => Promise<void> };
+
+export function createR2ObjectStorage(options: R2StorageOptions): R2ObjectStorage {
   let endpoint: URL;
   try {
     endpoint = new URL(options.endpoint);
@@ -68,7 +71,10 @@ export function createR2ObjectStorage(options: R2StorageOptions): ObjectStorage 
       throw new Error('Object integrity failure');
     return bytes;
   };
-  const adapter: ObjectStorage = {
+  const adapter: R2ObjectStorage = {
+    async checkBucket(signal) {
+      await client.send(new HeadBucketCommand({ Bucket: bucket }), { abortSignal: signal });
+    },
     get,
     read: get,
     async delete(object) {

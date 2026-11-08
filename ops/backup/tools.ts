@@ -12,6 +12,7 @@ export type BackupToolOptions = {
   inputFile?: string;
   outputFile?: string;
   timeoutMs?: number;
+  env?: Record<string, string>;
 };
 export async function assertUnlinkedBackupPath(selected: string): Promise<void> {
   if (!path.isAbsolute(selected) || path.dirname(selected) === selected)
@@ -117,6 +118,7 @@ export async function runBackupTool(
     }
     const child = spawn(options.binary, [...options.args], {
       shell: false,
+      env: options.env as NodeJS.ProcessEnv | undefined,
       windowsHide: true,
       stdio: ['pipe', 'pipe', 'pipe'],
     });

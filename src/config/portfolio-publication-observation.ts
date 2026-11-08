@@ -3,12 +3,18 @@ import { isDeepStrictEqual } from 'node:util';
 import type { PublicationUpdate } from '@/payload-types';
 import type { PublicRoot } from '@/helpers/payload/public-root';
 import { type PublicObservation } from '@/helpers/payload/publication-http-verification';
-import { getPublishedCaseAggregate } from '@/features/cases/server';
+import {
+  getPublishedCaseAggregate,
+  renderCaseRouteResponse,
+  selectCaseStatePresentation,
+} from '@/features/cases/server';
 import { casePublicSnapshotSchema, confirmedCases } from '@/features/cases/server/case-publication';
 import { getPublishedProfile } from '@/features/professional-profile/server';
 import { getPublishedNavigation } from '@/features/site-navigation/server';
+import { planPublicMediaObservations } from '@/features/media-library/server/publication-media-observation';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import { readPublishedPortfolio } from './read-published-portfolio';
+import { readPublicSitemap } from './read-public-index';
 import { matchesPublicPage, type PublicPageObservation } from './publication-page-observation';
 
 const locales = ['pt', 'en'] as const;
@@ -28,6 +34,23 @@ function html(path: string, status: number, expected: PublicPageObservation): Pu
     path,
     status,
     matches: (body, headers) => matchesPublicPage(body, headers, expected),
+  };
+}
+
+async function withdrawnCase(
+  locale: Locale,
+  root: PublicRoot,
+): Promise<Omit<PublicObservation, 'path'>> {
+  const presentation = await selectCaseStatePresentation({ locale, status: 410, root });
+  const expected = renderCaseRouteResponse({ status: 410, locale }, locale, presentation);
+  const expectedBody = Buffer.from(await expected.arrayBuffer());
+  const robots = expected.headers.get('x-robots-tag');
+  return {
+    status: expected.status,
+    matches: (body, headers) =>
+      headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() === 'text/html' &&
+      headers.get('x-robots-tag') === robots &&
+      expectedBody.equals(body),
   };
 }
 
@@ -62,10 +85,12 @@ export async function planPublicationObservations({
   root,
   operation,
   siteOrigin,
+  indexable = false,
 }: {
   root: PublicRoot;
   operation: PublicationUpdate;
   siteOrigin: string;
+  indexable?: boolean;
 }): Promise<PublicObservation[]> {
   const key = operation.subjectCollection + '/' + operation.subjectId;
   const subject = root.subjects[key];
@@ -75,6 +100,13 @@ export async function planPublicationObservations({
     subject.targetRevision !== operation.targetRevision
   )
     throw new Error('Publication observation requires the selected operation.');
+  const media = planPublicMediaObservations(
+    root,
+    key,
+    operation.state === 'update-pending' &&
+      (operation.subjectCollection === 'case-content' ||
+        operation.subjectCollection === 'professional-profiles'),
+  );
   const result = new Map<string, PublicObservation>();
   const add = (observation: PublicObservation) => result.set(observation.path, observation);
 
@@ -162,6 +194,7 @@ export async function planPublicationObservations({
           }),
         );
       }
+      let withdrawn: Omit<PublicObservation, 'path'> | undefined;
       for (const slug of item.slugs) {
         if (slug === item.slug) continue;
         const path = '/' + item.locale + '/cases/' + slug;
@@ -182,16 +215,21 @@ export async function planPublicationObservations({
             },
           });
         } else {
-          const expected = html(path, 410, { locale: item.locale });
-          add({
-            ...expected,
-            matches: (body, headers) =>
-              headers.get('x-robots-tag') === 'noindex, nofollow' &&
-              expected.matches(body, headers),
-          });
+          withdrawn ??= await withdrawnCase(item.locale, root);
+          add({ path, ...withdrawn });
         }
       }
     }
   }
-  return [...result.values()];
+  if (indexable) {
+    const expected = Buffer.from(await readPublicSitemap(root, siteOrigin));
+    add({
+      path: '/sitemap.xml',
+      status: 200,
+      matches: (body, headers) =>
+        headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() === 'application/xml' &&
+        expected.equals(body),
+    });
+  }
+  return [...result.values(), ...media];
 }

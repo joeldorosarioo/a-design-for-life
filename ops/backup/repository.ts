@@ -65,7 +65,7 @@ export function localBackupRepositoryDirectory(input: unknown): string {
     createHash('sha256').update(JSON.stringify(namespace)).digest('hex'),
   );
 }
-export function localBackupRepositoryScope(repository: LocalBackupRepository) {
+export function localBackupRepositoryScope(repository: object) {
   const scope = scopes.get(repository);
   if (!scope) throw new Error('Unregistered backup repository');
   return { root: scope.root, namespace: structuredClone(scope.namespace) };

@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/payload.config.test.ts > uses the built-in local avatar in the sanitized Payload admin configuration
+AssertionError: expected 'gravatar' to be 'default' // Object.is equality
+
+Expected: "default"
+Received: "gravatar"
+
+ ❯ src/payload.config.test.ts:24:31
+     22|
+     23|   const config = await (await import('./payload.config')).default;
+     24|   expect(config.admin.avatar).toBe('default');
+       |                               ^
+     25| });
+     26|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  02:26:45
+   Duration  7.36s (setup 57%, tests 42%, worker 1%, transform 1%)
+
+EXIT_CODE=1

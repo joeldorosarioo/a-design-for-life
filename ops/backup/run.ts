@@ -25,6 +25,7 @@ import {
 } from './repository';
 import { createBackupArchive } from './archive';
 import { encryptBackupArchive } from './age';
+import { r2BackupWriterScope, type R2BackupRepository } from './r2-repository';
 export type BackupSourceSnapshot = {
   root: PublicRoot | null;
   objects: StoredObject[];
@@ -43,6 +44,15 @@ export type RunBackupOptions = {
   tools: { ageBinary: string; tarBinary: string };
   now?: () => Date;
 };
+type RunR2BackupOptions = Omit<RunBackupOptions, 'repository'> & {
+  repository: R2BackupRepository;
+};
+type BackupResult = {
+  marker: CompleteBackupMarker;
+  removedBackupIds: string[];
+  durationMs: number;
+};
+type R2BackupResult = BackupResult & { retention: 'disabled' };
 function overlap(first: string, second: string) {
   const relative = path.relative(first, second);
   return (
@@ -50,31 +60,44 @@ function overlap(first: string, second: string) {
     (relative !== '..' && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative))
   );
 }
+export function runBackup(options: RunR2BackupOptions): Promise<R2BackupResult>;
+export function runBackup(options: RunBackupOptions): Promise<BackupResult>;
 export async function runBackup(
-  options: RunBackupOptions,
-): Promise<{ marker: CompleteBackupMarker; removedBackupIds: string[]; durationMs: number }> {
+  options: RunBackupOptions | RunR2BackupOptions,
+): Promise<BackupResult | R2BackupResult> {
   const started = performance.now();
   const namespace = backupNamespaceSchema.parse(options.namespace);
   const application = backupApplicationSchema.parse(options.application);
-  const repository = localBackupRepositoryScope(options.repository);
-  if (!sameNamespace(namespace, repository.namespace))
+  const { repository, source } = options;
+  const storage = source.storage;
+  const repositoryScope =
+    'retention' in repository
+      ? r2BackupWriterScope(repository)
+      : localBackupRepositoryScope(repository);
+  if (!sameNamespace(namespace, repositoryScope.namespace))
     throw new Error('Source and backup namespaces differ');
   const clock = options.now ?? (() => new Date());
   const createdAt = new Date(checkedClock(clock())).toISOString();
   const id = randomUUID();
   return withPrivateBackupWorkspace('run', async (directory) => {
-    const captured = await withObjectStorageRetention(options.source.storage, async (scope) => {
-      if (scope.identity.startsWith('object-storage:local:')) {
+    const captured = await withObjectStorageRetention(storage, async (scope) => {
+      if ('sourceMediaIdentity' in repositoryScope) {
+        if (scope.identity !== repositoryScope.sourceMediaIdentity)
+          throw new Error(
+            'Backup R2 destination differs from its registered source media identity',
+          );
+      } else if (scope.identity.startsWith('object-storage:local:')) {
         const source = scope.identity.slice('object-storage:local:'.length);
         if (
-          [repository.root, path.resolve('.work/backup-private')].some(
+          [repositoryScope.root, path.resolve('.work/backup-private')].some(
             (destination) => overlap(source, destination) || overlap(destination, source),
           )
         )
           throw new Error('Backup source and destinations must be physically disjoint');
       }
-      await options.repository.begin(id, createdAt);
-      return options.source.capture(async (snapshot) => {
+      const readObject = storage.get.bind(storage);
+      await repository.begin(id, createdAt);
+      return source.capture(async (snapshot) => {
         const references = new Map<string, StoredObject>();
         for (const reference of snapshot.objects) {
           assertObjectReference(reference);
@@ -121,7 +144,7 @@ export async function runBackup(
           assertPrivateBackupWorkPath(objectDirectory);
           await mkdir(objectDirectory, { mode: 0o700 });
           for (const reference of objects) {
-            const bytes = await options.source.storage.get(reference);
+            const bytes = await readObject(reference);
             if (
               bytes.byteLength !== reference.byteLength ||
               createHash('sha256').update(bytes).digest('hex') !== reference.sha256
@@ -175,7 +198,7 @@ export async function runBackup(
       recipient: options.recipient,
       ageBinary: options.tools.ageBinary,
     });
-    const uploaded = await options.repository.upload(id, encrypted.path);
+    const uploaded = await repository.upload(id, encrypted.path);
     if (uploaded.byteLength !== encrypted.byteLength || uploaded.sha256 !== encrypted.sha256)
       throw new Error('Backup upload differs from encrypted source');
     const marker = {
@@ -192,8 +215,16 @@ export async function runBackup(
         sha256: uploaded.sha256,
       },
     };
-    const completion = await options.repository.complete(marker, manifestBytes, clock());
-    const removedBackupIds = await options.repository.applyRetention(completion.proof, clock());
+    if ('retention' in repository) {
+      return {
+        marker: await repository.complete(marker, manifestBytes, clock()),
+        removedBackupIds: [],
+        durationMs: Math.round(performance.now() - started),
+        retention: repository.retention,
+      };
+    }
+    const completion = await repository.complete(marker, manifestBytes, clock());
+    const removedBackupIds = await repository.applyRetention(completion.proof, clock());
     return {
       marker: completion.marker,
       removedBackupIds,

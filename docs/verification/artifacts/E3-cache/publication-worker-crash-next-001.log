@@ -1,0 +1,116 @@
+[03:03:40] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:03:40] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:03:40] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (95ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (7ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (37ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (2ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261030_201024_e2_reading_position_adjusted[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261030_201024_e2_reading_position_adjusted (1ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261031_011109_e2_case_card_copy[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261031_011109_e2_case_card_copy (2ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261103_095414_e2_cover_presentation_and_return_copy[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)[39m
+[03:03:41] [32mINFO[39m: [36mMigrating: 20261104_012603_publication_retry_metadata[39m
+[03:03:41] [32mINFO[39m: [36mMigrated:  20261104_012603_publication_retry_metadata (4ms)[39m
+[03:03:41] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 39ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 22.9s
+  Running TypeScript ...
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.work/next-tests/bc050f50-20bd-4c0e-a508-6d6d0d14264f/types/**/*.ts'
+  	- include was updated to add '.work/next-tests/bc050f50-20bd-4c0e-a508-6d6d0d14264f/dev/types/**/*.ts'
+
+  Finished TypeScript in 26.2s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 139ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /health
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+├ ƒ /robots.txt
+└ ƒ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 179ms
+✓ Running next.config.ts took 46ms
+⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 1 test using 1 worker
+
+(node:22020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › src\config\publication-worker.e2e.test.ts:151:1 › automatically acknowledges the same promoted generation after the owned Next worker is killed (2.4s)
+
+
+  1) [chromium] › src\config\publication-worker.e2e.test.ts:151:1 › automatically acknowledges the same promoted generation after the owned Next worker is killed 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 401
+
+      266 |     });
+      267 |     expect(metadata?.nextAttemptAt).toBeTruthy();
+    > 268 |     expect(status.status()).toBe(200);
+          |                             ^
+      269 |     expect(await status.json()).toEqual({ receipt: pendingReceipt });
+      270 |     const beforeKillMs = Date.now() - blocked.at;
+      271 |     expect(beforeKillMs).toBeLessThan(4_500);
+        at E:\a-design-for-life\src\config\publication-worker.e2e.test.ts:268:29
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-11-03\quero-retomar-e-concluir-a-etapa\work\E3-execution\publication-worker-crash-next-001-results\config-publication-worker.-fda03-owned-Next-worker-is-killed-chromium\error-context.md
+
+  1 failed
+    [chromium] › src\config\publication-worker.e2e.test.ts:151:1 › automatically acknowledges the same promoted generation after the owned Next worker is killed 

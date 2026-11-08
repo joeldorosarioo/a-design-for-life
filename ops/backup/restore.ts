@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { publicRootSchema } from '../../src/helpers/payload/public-root';
 import { sameNamespace, validateBackupArchiveManifest } from './contracts';
 import { localBackupRepositoryScope, withPrivateBackupWorkspace } from './repository';
+import { r2BackupReaderScope, type R2BackupReader } from './r2-repository';
 import { decryptBackupArchive } from './age';
 import { extractValidatedBackupArchive } from './archive';
 import {
@@ -17,7 +18,7 @@ import {
 } from './local-target';
 export type RestoreBackupOptions = {
   backupId: string;
-  repository: LocalBackupRepository;
+  repository: LocalBackupRepository | R2BackupReader;
   identityPath: string;
   ageBinary: string;
   target: LocalRestoreTargetOptions;
@@ -31,11 +32,12 @@ export async function restoreBackup(options: RestoreBackupOptions): Promise<{
 }> {
   const started = performance.now();
   validateLocalRestoreTargetOptions(options.target);
-  const scope = localBackupRepositoryScope(options.repository);
-  z.uuid().parse(options.backupId);
+  const { repository } = options;
+  const scope = r2BackupReaderScope(repository) ?? localBackupRepositoryScope(repository);
+  const backupId = z.uuid().parse(options.backupId);
   return withPrivateBackupWorkspace('restore', async (directory) => {
     const ciphertext = path.join(directory, 'payload.age');
-    const marker = await options.repository.stageCompletedSet(options.backupId, ciphertext);
+    const marker = await repository.stageCompletedSet(backupId, ciphertext);
     const decrypted = await decryptBackupArchive({
       sourcePath: ciphertext,
       destination: path.join(directory, 'payload.tar'),

@@ -271,3 +271,85 @@ it('drains a due Native intention with its recorded real actor and exactly one d
     nextAttemptAt: null,
   });
 });
+
+it('stops after three durable automatic retries and rearms the same operation on a manual retry', async () => {
+  const subject = await pendingOrder();
+  const operationId = subject.latestPublicationIntent!;
+  const request = await fixture.request();
+  const origin = Date.parse('2000-01-01T01:00:00.000Z');
+  let elapsed = 0;
+  const clock = () => new Date(origin + elapsed);
+  const createDrain = () =>
+    createPublicationRetryDrain({ payload: async () => fixture.payload, directory, clock });
+  let drain = createDrain();
+  const execution = () => readPublicationRetry(operationId, request);
+  const receipt = () =>
+    fixture.payload.db.findOne<PublicationUpdate>({
+      collection: 'publication-updates',
+      where: { operationId: { equals: operationId } },
+    });
+
+  await withPublicRootWriter(directory, async () => {
+    expect(
+      await retryPublicationUpdate(operationId, request, { mode: 'immediate', clock }),
+    ).toMatchObject({ ok: true, value: { state: 'update-pending' } });
+    expect(await execution()).toMatchObject({
+      startedAttemptsVersion: 1,
+      automaticAttempts: 0,
+      nextAttemptAt: '2000-01-01T01:00:01.000Z',
+    });
+
+    for (const [due, attempts, nextAttemptAt] of [
+      [1_000, 1, '2000-01-01T01:00:06.000Z'],
+      [6_000, 2, '2000-01-01T01:00:21.000Z'],
+      [21_000, 3, null],
+    ] as const) {
+      elapsed = due - 1;
+      expect(await drain()).toEqual({ selected: 0, processed: 0, failed: 0 });
+      elapsed = due;
+      expect(await drain()).toEqual({ selected: 1, processed: 1, failed: 0 });
+      expect(await execution()).toMatchObject({
+        startedAttemptsVersion: attempts + 1,
+        automaticAttempts: attempts,
+        nextAttemptAt,
+      });
+      expect(await receipt()).toMatchObject({
+        state: 'update-pending',
+        targetRevision: subject.editorialRevision,
+      });
+      // A fresh drain must recover the persisted schedule without an in-memory cursor.
+      drain = createDrain();
+    }
+
+    elapsed = 60_000;
+    expect(await drain()).toEqual({ selected: 0, processed: 0, failed: 0 });
+    expect(await execution()).toMatchObject({
+      startedAttemptsVersion: 4,
+      automaticAttempts: 3,
+      nextAttemptAt: null,
+    });
+    expect(
+      await retryPublicationUpdate(operationId, request, { mode: 'manual', clock }),
+    ).toMatchObject({ ok: true, value: { operationId, state: 'update-pending' } });
+    expect(await execution()).toMatchObject({
+      startedAttemptsVersion: 5,
+      automaticAttempts: 0,
+      nextAttemptAt: '2000-01-01T01:01:01.000Z',
+    });
+  });
+
+  elapsed = 61_000;
+  expect(await drain()).toEqual({ selected: 1, processed: 1, failed: 0 });
+  expect(await receipt()).toMatchObject({
+    operationId,
+    state: 'public',
+    targetRevision: subject.editorialRevision,
+  });
+  expect(await execution()).toMatchObject({
+    startedAttemptsVersion: 6,
+    automaticAttempts: 1,
+    nextAttemptAt: null,
+  });
+  elapsed = 120_000;
+  expect(await drain()).toEqual({ selected: 0, processed: 0, failed: 0 });
+});

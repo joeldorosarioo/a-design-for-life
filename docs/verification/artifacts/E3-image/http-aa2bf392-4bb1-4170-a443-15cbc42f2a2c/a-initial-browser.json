@@ -1,0 +1,29 @@
+{
+  "imageId": "sha256:623e6eac85a24212695da3522467cc4fb94c6466b517d561019994d6f8220983",
+  "dataset": "a",
+  "phase": "initial",
+  "origin": "http://127.0.0.1:3103",
+  "containerId": "1d4a5e233709649983ce1e872fce3ca3971ec537ae514e0466f5b3cdd4050f99",
+  "checks": [
+    "pt-home",
+    "pt-list-detail",
+    "en-locale-and-detail",
+    "image-and-pdf",
+    "anonymous-denials",
+    "admin-browser-login",
+    "external-network"
+  ],
+  "interceptedExternalAttempts": 0,
+  "interceptedWebSocketAttempts": 0,
+  "relayConnections": 6,
+  "playwrightVersion": "1.64.1",
+  "chromiumVersion": "156.0.8078.4",
+  "imageDecoded": true,
+  "pdf": {
+    "status": 200,
+    "bytes": 710,
+    "type": "application/pdf",
+    "sha256": "ba2cda40c37df3591171f7ad1c3a6dc913df3e652c83ddce33e0d256c71463b9"
+  },
+  "nativeHttpOnlySession": true
+}

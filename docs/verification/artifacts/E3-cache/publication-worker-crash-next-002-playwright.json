@@ -1,0 +1,166 @@
+{
+  "config": {
+    "argv": [
+      "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+      "E:\\a-design-for-life\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "src/config/publication-worker.e2e.test.ts",
+      "-g",
+      "automatically acknowledges the same promoted generation",
+      "--project=chromium",
+      "--workers=1",
+      "--reporter=list,json",
+      "--output=C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\publication-worker-crash-next-002-results"
+    ],
+    "configFile": "E:\\a-design-for-life\\playwright.config.ts",
+    "rootDir": "E:/a-design-for-life/src",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "E:\\a-design-for-life\\testing\\setup\\playwright.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/joeld/Documents/Codex/2026-11-03/quero-retomar-e-concluir-a-etapa/work/E3-execution/publication-worker-crash-next-002-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "E:/a-design-for-life/src",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.e2e.test.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\joeld\\Documents\\Codex\\2026-11-03\\quero-retomar-e-concluir-a-etapa\\work\\E3-execution\\publication-worker-crash-next-002-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "E:\\a-design-for-life\\src",
+        "snapshotDir": "E:\\a-design-for-life\\src",
+        "testIgnore": [],
+        "testMatch": "**/*.e2e.test.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3101",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "config\\publication-worker.e2e.test.ts",
+      "file": "config/publication-worker.e2e.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "automatically acknowledges the same promoted generation after the owned Next worker is killed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T06:07:02.762Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "E3-publication-worker-crash.json",
+                      "contentType": "application/json",
+                      "body": "eyJydW5JZCI6IjQ2ODVjNzcwLTQ3MDktNGFkZi1hNDgyLTg5YTFhZWVkNDNkYyIsImNvbnRhaW5lcklkIjoiNTBhYWUyMDFiNDQ1MzVmOTFlZjAzMDEyNWU4NzJjN2JiNjFlMDQ3ZDllNDZjNjc3Yzk1YWI2NWYwYTU4OTkwZCIsIm5ldHdvcmtJZCI6IjI2NGM2ZjEzZTgwM2UyMzdmZTA3YzNhYjgxNDY1ZmE4MTMwYmJiZjhjMmZhYWFiMTIwMWYzMzlkMDNmODEwY2MiLCJub2RlIjoiMjQuMjIuMiIsImZpcnN0Q2hpbGQiOnsib3JpZ2luIjoiaHR0cDovLzEyNy4wLjAuMTozMTAyIiwiYnVpbGRJZCI6ImlGeUpOTWlIMlNKc0R6Y2cxQmdqTiIsImRpc3REaXJlY3RvcnkiOiJFOlxcYS1kZXNpZ24tZm9yLWxpZmVcXC53b3JrXFxuZXh0LXRlc3RzXFw0Njg1Yzc3MC00NzA5LTRhZGYtYTQ4Mi04OWExYWVlZDQzZGMifSwiYmxvY2tlZCI6eyJyZWNlaXB0Ijp7Im9wZXJhdGlvbklkIjoiNjZhMGZkMzEtNmU4Yi00MDdiLTk5ODYtNDcwMTE2NzA1MDI2IiwidGFyZ2V0UmV2aXNpb24iOiIwZGEzMjFmMy0yOTM5LTRmNDYtOWJhOS0yYmJmYWNiNjJmODMiLCJzdGF0ZSI6InVwZGF0ZS1wZW5kaW5nIn0sImdlbmVyYXRpb24iOiJiNjY2MzNkYy0yYjI1LTRiZjItYjgzYi0zNzFjYjUzMjRmMmQiLCJzaGEyNTYiOiI4MGYyZWJiNGQ0MTg0Yzg0MTZjNzAyMTZlN2IxMGE5OGMyNmI5NDY1NThmMGE2Y2VkZThhN2M4MTgwMGQwOTRjIiwib2JzZXJ2ZXIiOiIvYXBpL2Nhc2UtY29udGVudC9wdWJsaXNoZWQvcHQiLCJiZWZvcmVLaWxsTXMiOjEwNywibmV4dEF0dGVtcHRBdCI6IjIwMjYtMTEtMDRUMDY6MDc6MTAuMDExWiIsInN0YXJ0ZWRWZXJzaW9uIjoxfSwidGVybWluYXRlZCI6eyJwaWQiOjM2NDQ4LCJzaWduYWwiOiJTSUdLSUxMIn0sInJlY292ZXJlZCI6eyJyZWNlaXB0Ijp7Im9wZXJhdGlvbklkIjoiNjZhMGZkMzEtNmU4Yi00MDdiLTk5ODYtNDcwMTE2NzA1MDI2IiwidGFyZ2V0UmV2aXNpb24iOiIwZGEzMjFmMy0yOTM5LTRmNDYtOWJhOS0yYmJmYWNiNjJmODMiLCJzdGF0ZSI6InB1YmxpYyJ9LCJidWlsZElkIjoiaUZ5Sk5NaUgyU0pzRHpjZzFCZ2pOIiwib3JpZ2luIjoiaHR0cDovLzEyNy4wLjAuMTozMTAyIiwiZ2VuZXJhdGlvbiI6ImI2NjYzM2RjLTJiMjUtNGJmMi1iODNiLTM3MWNiNTMyNGYyZCIsInNoYTI1NiI6IjgwZjJlYmI0ZDQxODRjODQxNmM3MDIxNmU3YjEwYTk4YzI2Yjk0NjU1OGYwYTZjZWRlOGE3YzgxODAwZDA5NGMiLCJzdGFydGVkVmVyc2lvbiI6MiwiYXV0b21hdGljQXR0ZW1wdHMiOjIsIm9ic2VydmVkV29ya2VyRXZlbnQiOnRydWV9fQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1dc836dd5c6f71c535a6-30eec918306c44d2f58c",
+          "file": "config/publication-worker.e2e.test.ts",
+          "line": 151,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T06:06:07.642Z",
+    "duration": 66552.927,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

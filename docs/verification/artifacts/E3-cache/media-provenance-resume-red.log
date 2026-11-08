@@ -1,0 +1,119 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/publication-media-provenance.test.ts (5 tests | 1 failed | 4 skipped) 15ms
+   × records a removed resume route without exposing the proof in the unchanged profile DTO 14ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/publication-media-provenance.test.ts > records a removed resume route without exposing the proof in the unchanged profile DTO
+AssertionError: expected { kind: 'profile', locale: 'pt', …(2) } to match object { mediaObservation: { …(1) } }
+(15 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "mediaObservation": {
+-     "removed": [
+-       {
+-         "mediaId": "14f6cd7a-745b-4ec7-8e35-8960d30da926",
+-         "variant": "original",
++   "kind": "profile",
++   "locale": "pt",
++   "media": [],
++   "profile": {
++     "about": {
++       "approach": null,
++       "approachEyebrow": null,
++       "approachHeading": null,
++       "architecturePhotograph": null,
++       "closing": null,
++       "closingHeading": null,
++       "description": null,
++       "deskPhotograph": null,
++       "editorialEmphasis": null,
++       "eyebrow": null,
++       "inMotion": null,
++       "inMotionEyebrow": null,
++       "inMotionHeading": null,
++       "introduction": null,
++       "introductionHeading": null,
++       "journey": null,
++       "journeyEyebrow": null,
++       "journeyHeading": null,
++       "portrait": null,
++       "projectsLabel": null,
++       "title": null,
++     },
++     "approach": {
++       "description": null,
++       "eyebrow": null,
++       "methods": [],
++       "title": null,
+      },
+-     ],
++     "contacts": {
++       "email": null,
++       "linkedin": null,
++     },
++     "home": {
++       "description": null,
++       "eyebrow": null,
++       "portrait": null,
++       "projectsLabel": null,
++       "title": null,
++       "titleEmphasis": null,
++     },
++     "homeAbout": {
++       "aboutLabel": null,
++       "description": null,
++       "eyebrow": null,
++       "title": null,
++       "trajectory": [],
++     },
++     "homeProjects": {
++       "description": null,
++       "eyebrow": null,
++       "title": null,
++     },
++     "identity": {
++       "name": "Confirmed profile",
++       "role": null,
++     },
++     "listing": {
++       "description": null,
++       "eyebrow": null,
++       "title": null,
++     },
++     "locale": "pt",
++     "resumeId": null,
++     "seo": {
++       "aboutDescription": null,
++       "aboutTitle": null,
++       "homeDescription": null,
++       "homeTitle": null,
++       "image": null,
++       "listingDescription": null,
++       "listingTitle": null,
++     },
+    },
+  }
+
+ ❯ src/config/publication-media-provenance.test.ts:194:41
+    192|     { previousAcknowledged: true },
+    193|   );
+    194|   expect(next.subjects[subject]?.value).toMatchObject({
+       |                                         ^
+    195|     mediaObservation: { removed: [{ mediaId, variant: 'original' }] },
+    196|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 skipped (5)
+   Start at  01:55:39
+   Duration  1.31s (import 73%, setup 18%, transform 8%, tests 1%)
+
+EXIT 1

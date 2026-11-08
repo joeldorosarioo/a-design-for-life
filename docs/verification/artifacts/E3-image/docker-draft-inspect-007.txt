@@ -1,0 +1,18 @@
+{
+  "imageId": "sha256:623e6eac85a24212695da3522467cc4fb94c6466b517d561019994d6f8220983",
+  "registryDigests": [],
+  "platform": "linux/amd64",
+  "user": "10001:10001",
+  "revision": "draft-e3-local-007",
+  "layers": 14,
+  "environmentNames": [
+    "HOSTNAME",
+    "MEDIA_CHECKER_BINARY",
+    "NEXT_TELEMETRY_DISABLED",
+    "NODE_ENV",
+    "NODE_VERSION",
+    "PATH",
+    "PORT",
+    "YARN_VERSION"
+  ]
+}

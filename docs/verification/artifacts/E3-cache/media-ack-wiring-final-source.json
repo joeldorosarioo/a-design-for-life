@@ -1,0 +1,39 @@
+{
+  "head": "e430e6e42ebea4f57cfd475840572f59d1f05880",
+  "sourceDigest": "8301103718128617d004a2c3ab1f1483456d5e8d880689869be640c30dadcd84",
+  "sourceCount": 632,
+  "files": [
+    {
+      "path": "next-env.d.ts",
+      "sha256": "ec8fe87b409db846858ae7d48e4aa144f2ebcfebcb623c34da86d7688bb67d95"
+    },
+    {
+      "path": "src/config/portfolio-publication-observation.test.ts",
+      "sha256": "8d2c8fee6709eed8f8657ab7764189b65d59d0cba0a2f6d02f9e7b18191a3868"
+    },
+    {
+      "path": "src/config/portfolio-publication-observation.ts",
+      "sha256": "360a3577b5cd4fd55fb71395ba1781172d47025c2212a3a6e89807a8f278e4f1"
+    },
+    {
+      "path": "src/config/publication-http-observation.e2e.test.ts",
+      "sha256": "df8ea37bd3e2a84029934e4a9aac459d626b7585f03f2fc33fdc6f3ecc09f30e"
+    },
+    {
+      "path": "src/config/publication-media-provenance.test.ts",
+      "sha256": "ed4dbb2fdd2016bb17ea6a54dc28a9938cb267ea49ab47e4d67d45d21fca633e"
+    },
+    {
+      "path": "src/config/publication-updates.integration.test.ts",
+      "sha256": "a6355dca0bb6c14c2b295a4ab6cd8fb63d7237be6f7d72e2c204d35472265a01"
+    },
+    {
+      "path": "src/features/media-library/server/publication-media-observation.ts",
+      "sha256": "670590b5fa2ff19a18f28be2b59149644d608074ea214ddd14e258ebd3a736d4"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "64f3c9d6863fee9d3fd8707e5543bba29487d389b2e17117e8ec2cd451eb70ce"
+    }
+  ]
+}

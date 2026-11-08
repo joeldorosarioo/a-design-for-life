@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-04T05:11:37.6138797+00:00",
+  "finishedAt": "2026-11-04T05:19:02.5822963+00:00",
+  "command": "pnpm verify",
+  "node": "24.22.2",
+  "pnpm": "12.10.1",
+  "isolatedBuildDatabase": "127.0.0.1:9/adfl_test_build",
+  "testDatabasePort": 55434,
+  "syntheticAgeFixtureConfigured": true,
+  "exitCode": 0,
+  "snapshotExit": 0,
+  "sourceUnchanged": true,
+  "before": {
+    "phase": "verify-007-before",
+    "head": "5ddf6abeb79cd58464d5b63ee9b0133aa6c349f3",
+    "files": 626,
+    "digest": "065c471bd08cad8a81720b057d6545349f637bb2ae093450173b23bf6fc85b92"
+  },
+  "after": {
+    "phase": "verify-007-after",
+    "head": "5ddf6abeb79cd58464d5b63ee9b0133aa6c349f3",
+    "files": 626,
+    "digest": "065c471bd08cad8a81720b057d6545349f637bb2ae093450173b23bf6fc85b92"
+  }
+}

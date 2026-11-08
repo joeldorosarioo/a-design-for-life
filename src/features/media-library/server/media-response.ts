@@ -2,7 +2,8 @@ import 'server-only';
 import { logger } from '@/helpers/logger';
 import { createLocalReq, type PayloadRequest } from 'payload';
 import { runtimePayload } from '@/helpers/payload/runtime';
-import { resolveMediaAccess } from './resolve-media-access';
+import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
+import { resolveMediaDelivery } from './resolve-media-access';
 
 const privateHeaders = {
   'Cache-Control': 'private, no-store',
@@ -25,19 +26,18 @@ export async function mediaResponse(
   req?: PayloadRequest,
   head = false,
 ) {
-  const result = await resolveMediaAccess(input, req);
-  if (!result.ok) return new Response(null, { status: result.status, headers: privateHeaders });
-  return new Response(head ? null : Uint8Array.from(result.value.bytes), {
-    status: 200,
-    headers: {
-      ...privateHeaders,
-      'Cache-Control': input.preview ? 'private, no-store' : 'no-store',
-      'Content-Type': result.value.type,
-      'Content-Length': String(result.value.bytes.byteLength),
-      'Content-Disposition':
-        result.value.type === 'application/pdf' ? 'inline; filename="resume.pdf"' : 'inline',
-    },
-  });
+  const { access: result, generation } = await resolveMediaDelivery(input, req);
+  const headers = new Headers(privateHeaders);
+  if (generation) headers.set(publicGenerationHeader, generation);
+  if (!result.ok) return new Response(null, { status: result.status, headers });
+  headers.set('Cache-Control', input.preview ? 'private, no-store' : 'no-store');
+  headers.set('Content-Type', result.value.type);
+  headers.set('Content-Length', String(result.value.bytes.byteLength));
+  headers.set(
+    'Content-Disposition',
+    result.value.type === 'application/pdf' ? 'inline; filename="resume.pdf"' : 'inline',
+  );
+  return new Response(head ? null : Uint8Array.from(result.value.bytes), { status: 200, headers });
 }
 
 export async function serveMedia(

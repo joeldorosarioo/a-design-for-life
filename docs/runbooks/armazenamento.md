@@ -26,6 +26,16 @@ O cliente seleciona cálculo/validação de checksum do SDK `WHEN_REQUIRED`; a v
 
 As provas locais exercitam requests/responses HTTP reais com o SDK e servidor S3 controlado em 127.0.0.1, credenciais sintéticas e portas efêmeras. Não simulam Payload/PostgreSQL nem comprovam privacidade de uma conta R2 real.
 
+## Prova do fluxo editorial com transporte S3 local
+
+Em 04/11/2026, o teste de [entrega pelo adaptador R2](../../src/features/media-library/server/r2-delivery.integration.test.ts) passou com Payload e PostgreSQL reais e o SDK S3 conectado a um servidor de loopback. O terceiro PUT do upload perdeu a conexão, o CMS devolveu 503 e o banco conservou a contagem de mídias. Dois objetos anteriores ficaram órfãos no servidor sintético. A repetição criou a mídia íntegra com novas chaves. A prévia autenticada entregou o original antes da publicação. A entrega anônima só disponibilizou original e derivado de 640 px após confirmação do case e voltou a 404 após retirada.
+
+A fixture verifica a composição da aplicação e do transporte S3. A privacidade no provedor, a URL direta e as políticas do bucket permanecem para o ensaio R2 real.
+
+```powershell
+node ./node_modules/vitest/vitest.mjs run --project integration src/features/media-library/server/r2-delivery.integration.test.ts
+```
+
 ## Pendências antes do aceite real
 
 - Configurar bucket privado de homologação e credencial limitada ao bucket; produção e backups permanecem separados, com credenciais distintas.
