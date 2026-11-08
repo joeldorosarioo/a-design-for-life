@@ -1,5 +1,6 @@
 import 'server-only';
 import { z } from 'zod';
+import { isR2KeyPrefix } from '@/helpers/storage/r2-key-prefix';
 import type { ServerEnv } from './server-env';
 import type { EditorialResendConfiguration } from '@/helpers/payload/editorial-email';
 
@@ -26,6 +27,7 @@ const storageSchema = z.object({
     .min(3)
     .max(63)
     .regex(/^[a-z0-9][a-z0-9-]*[a-z0-9]$/),
+  keyPrefix: z.string().refine(isR2KeyPrefix).optional(),
   accessKeyId: secret,
   secretAccessKey: secret,
 });
@@ -67,7 +69,8 @@ export function readIntegrationEnv(
   if (driver === 'r2') {
     const parsed = storageSchema.safeParse({
       endpoint: input.R2_ENDPOINT,
-      bucket: env.MEDIA_BUCKET,
+      bucket: input.R2_BUCKET ?? env.MEDIA_BUCKET,
+      ...(input.R2_MEDIA_PREFIX === undefined ? {} : { keyPrefix: input.R2_MEDIA_PREFIX }),
       accessKeyId: input.R2_ACCESS_KEY_ID,
       secretAccessKey: input.R2_SECRET_ACCESS_KEY,
     });

@@ -1,0 +1,106 @@
+{
+  "scope": "Local Docker Linux and PostgreSQL 17.11 with synthetic data, no published ports, isolated loopback only",
+  "verifiedDate": "2026-11-04",
+  "result": "passed",
+  "exitCode": 0,
+  "predecessor": {
+    "revision": "60314d2a095b178f16ddc3972e384d153ba031b5",
+    "gitBlobsMatched": 487,
+    "externalWrapperFiles": [
+      "Dockerfile"
+    ],
+    "imageUser": "10001:10001"
+  },
+  "candidate": {
+    "revision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+    "imageUser": "70:70"
+  },
+  "fixtureNote": "Initial HTTP harness omitted the trusted Origin on the cookie-authenticated request. The corrected run used the trusted Origin and Host for every request, compared the authenticated user ID, and required an HttpOnly Payload session cookie and no login-response token.",
+  "cleanup": {
+    "labeledContainersRemaining": 0,
+    "labeledVolumesRemaining": 0,
+    "protectedPreviewBuildIdSha256": "f741ec913bffbbff219279ac71f347ee65e9e0f6c2f6c9e3a6dd7aa10abfa3a1"
+  },
+  "runId": "19749b0f-0de9-4e6b-8f51-5eeb8f6aa1fc",
+  "databaseId": "b494098874e2822a72558b5dead2876c63807be544c18e24d9848c8952a03179",
+  "events": [
+    {
+      "phase": "exact-predecessor",
+      "imageId": "sha256:93538f9e64354de601943023fefeadcd523a9372d8aa72b43add37469733c509",
+      "catalog": [
+        "16384",
+        "15",
+        "54ec18a4515989ba9791a158f1ec68b6"
+      ],
+      "http": {
+        "loginPage": 200,
+        "anonymousMe": 200,
+        "nativeLogin": 200,
+        "authenticatedMe": 200,
+        "robots": 200,
+        "missingCase": 404
+      }
+    },
+    {
+      "phase": "migration",
+      "imageId": "sha256:339f67c14fc9365db052fb127bbb7fa095939d5f2116242da7a239d57d27bc88",
+      "backup": {
+        "version": 1,
+        "id": "939f5aa4-959b-4fd8-9882-e2fff409e7b5",
+        "namespace": {
+          "project": "a-design-for-life",
+          "environment": "test",
+          "source": "ops-19749b0f-0de9-4e6b-8f51-5eeb8f6aa1fc"
+        },
+        "createdAt": "2026-11-04T16:27:54.957Z",
+        "complete": true,
+        "completedAt": "2026-11-04T16:27:55.875Z",
+        "manifestSha256": "fd67e0048afcc8797ae17f537d6a220727570a8ea467c2454d64d0ad8a79ba7a",
+        "ciphertext": {
+          "byteLength": 153832,
+          "sha256": "a0e00119e490f76d55bf17e38e82458c8af9cde18809979c3b2ae8da349a328c",
+          "key": "sets/939f5aa4-959b-4fd8-9882-e2fff409e7b5/payload.age"
+        }
+      },
+      "catalog": [
+        "16384",
+        "16",
+        "06bccff0f555ecd052c2c8e118f44f40"
+      ]
+    },
+    {
+      "phase": "current",
+      "imageId": "sha256:73cc9ef9646e20ac2463630678f1fc52ad2227dec450753d4d6478e04efbbf41",
+      "catalog": [
+        "16384",
+        "16",
+        "06bccff0f555ecd052c2c8e118f44f40"
+      ],
+      "http": {
+        "loginPage": 200,
+        "anonymousMe": 200,
+        "nativeLogin": 200,
+        "authenticatedMe": 200,
+        "robots": 200,
+        "missingCase": 404
+      }
+    },
+    {
+      "phase": "exact-predecessor-rollback",
+      "imageId": "sha256:93538f9e64354de601943023fefeadcd523a9372d8aa72b43add37469733c509",
+      "catalog": [
+        "16384",
+        "16",
+        "06bccff0f555ecd052c2c8e118f44f40"
+      ],
+      "http": {
+        "loginPage": 200,
+        "anonymousMe": 200,
+        "nativeLogin": 200,
+        "authenticatedMe": 200,
+        "robots": 200,
+        "missingCase": 404
+      }
+    }
+  ]
+}

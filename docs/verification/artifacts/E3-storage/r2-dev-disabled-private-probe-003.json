@@ -1,0 +1,32 @@
+{
+  "runId": "e98b3a38-cd1b-45e7-b5c1-a2eec0941efe",
+  "checkedAt": "2026-11-05T15:37:33.027Z",
+  "publicBase": "https://pub-fc5df8b0648f4fc38c4d5fbeeee55d3a.r2.dev",
+  "scope": "One new harmless synthetic object under a uniquely owned prefix. Existing media and databases were outside the probe.",
+  "checks": {
+    "signedS3": {
+      "status": 200,
+      "sha256Matched": true,
+      "byteLength": 102
+    },
+    "unsignedPublic": {
+      "status": 401,
+      "contentType": "text/html",
+      "cacheControl": null,
+      "cfCacheStatus": null
+    }
+  },
+  "confirmedPublicAccess": false,
+  "completed": true,
+  "cleanup": {
+    "ownedObjectsDeleted": 1,
+    "signedHeadAfterDelete": 404,
+    "existingObjectsTargeted": 0
+  },
+  "operatorState": "User reported r2.dev disabled immediately before this probe.",
+  "interpretation": "The exact newly created object was readable through signed S3 and denied through the supplied public development URL at the recorded time.",
+  "limits": [
+    "This probe records the current state after disablement. It does not establish exposure during the earlier enabled interval.",
+    "Only the supplied r2.dev origin and the newly owned object were requested. Other custom domains were not tested."
+  ]
+}

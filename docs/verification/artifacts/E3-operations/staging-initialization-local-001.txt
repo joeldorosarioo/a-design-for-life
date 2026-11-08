@@ -1,0 +1,57 @@
+.work/staging-ready-2026-11-05/focused-unit-final.log
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓  unit  ops/image/inspect-local-image.test.ts (30 tests) 13ms
+ ✓  unit  ops/staging/seed-http.test.ts (29 tests) 41ms
+ ✓  unit  ops/staging/initialize-config.test.ts (34 tests) 16ms
+ ✓  unit  ops/image/start-local-stack.test.ts (14 tests) 229ms
+ ✓  unit  ops/image/health-probe.test.ts (6 tests) 642ms
+
+ Test Files  5 passed (5)
+      Tests  113 passed (113)
+   Start at  17:50:31
+   Duration  1.22s (setup 54%, tests 32%, import 7%, transform 5%, worker 1%)
+
+
+.work/staging-ready-2026-11-05/native-initialization-final.log
+[17:52:00] INFO: Migrating: 20261030_124550_publication_coordination
+[17:52:00] INFO: Migrated:  20261030_124550_publication_coordination (35ms)
+[17:52:00] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[17:52:00] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (2ms)
+[17:52:00] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[17:52:00] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[17:52:00] INFO: Migrating: 20261031_011109_e2_case_card_copy
+[17:52:00] INFO: Migrated:  20261031_011109_e2_case_card_copy (2ms)
+[17:52:00] INFO: Migrating: 20261103_095414_e2_cover_presentation_and_return_copy
+[17:52:00] INFO: Migrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)
+[17:52:00] INFO: Migrating: 20261104_012603_publication_retry_metadata
+[17:52:00] INFO: Migrated:  20261104_012603_publication_retry_metadata (3ms)
+[17:52:00] INFO: Done.
+ ✓  integration  src/config/staging-initialization.integration.test.ts (4 tests) 9676ms
+   ✓ initializes sixteen Native migrations and one editor/four drafts, then preserves credentials/content on rerun 2075ms
+   ✓ refuses an empty verify, foreign tables and partial migration ledgers without modifying them 2095ms
+   ✓ refuses a concurrent initialization owner before running schema changes 727ms
+   ✓ rolls back the first editor and all structural drafts together after a real PostgreSQL constraint failure 2122ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  17:51:54
+   Duration  18.50s (tests 82%, import 15%, transform 2%, setup 1%)
+
+
+.work/staging-seed-http-proof-2026-11-05/native-http-proof-004.log
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 183ms
+✓ Running next.config.ts took 49ms
+⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 1 test using 1 worker
+
+  ok 1 [chromium] › ops\staging\seed-http.e2e.ts:115:1 › seeds a fresh owned target through Native HTTP, confirms ten routes and replays without content mutations (50.8s)
+
+  1 passed (1.7m)

@@ -1,6 +1,10 @@
 import { createHash } from 'node:crypto';
 import { expect, it } from 'vitest';
-import { selectExpiredBackups, verifyCompletedBackup } from './retention';
+import {
+  selectExpiredBackups,
+  verifyCompletedBackup,
+  verifyCompletedBackupStream,
+} from './retention';
 
 const now = new Date('2026-12-01T00:00:00.000Z');
 const namespace = {
@@ -186,4 +190,31 @@ it('does not trust mutations to original input after verification', () => {
 });
 it('refuses an invalid clock', () => {
   expect(() => select([old.marker, replacement.marker], {}, new Date(NaN))).toThrow();
+});
+
+it('binds both completion verification paths to the application identity in the encrypted manifest', async () => {
+  const application = {
+    imageId: 'sha256:' + '9'.repeat(64),
+    revision: 'draft-local-alpine3.24',
+    schemaSha256: 'b'.repeat(64),
+  };
+  const manifest = Buffer.from(
+    JSON.stringify({ ...JSON.parse(replacement.manifest.toString()), application }),
+  );
+  const marker = { ...replacement.marker, application, manifestSha256: hash(manifest) };
+  const chunks = async function* () {
+    yield ciphertext;
+  };
+  expect(() => verifyCompletedBackup({ marker, manifest, ciphertext, now })).not.toThrow();
+  await expect(
+    verifyCompletedBackupStream({ marker, manifest, ciphertext: chunks(), now }),
+  ).resolves.toBeTruthy();
+  const changed = {
+    ...marker,
+    application: { ...application, imageId: 'sha256:' + '8'.repeat(64) },
+  };
+  expect(() => verifyCompletedBackup({ marker: changed, manifest, ciphertext, now })).toThrow();
+  await expect(
+    verifyCompletedBackupStream({ marker: changed, manifest, ciphertext: chunks(), now }),
+  ).rejects.toThrow();
 });

@@ -1,5 +1,6 @@
 import { writeSync } from 'node:fs';
 import { getPayload, type Payload } from 'payload';
+import { readIntegrationEnv } from '../../src/config/integration-env';
 import { readServerEnv } from '../../src/config/server-env';
 import { mediaRuntime } from '../../src/features/media-library/server/media-runtime';
 import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory';
@@ -55,22 +56,22 @@ function stagingBackupRepository(
   settings: ReturnType<typeof selectBackupJob>,
   env: ReturnType<typeof readServerEnv>,
 ) {
-  const { OPS_BACKUP_BUCKET, OPS_BACKUP_ACCESS_KEY_ID, OPS_BACKUP_SECRET_ACCESS_KEY, R2_ENDPOINT } =
-    process.env;
+  const { storage } = readIntegrationEnv(process.env, env);
+  if (storage.driver !== 'r2') throw new Error('Remote source storage configuration is required.');
+  const { OPS_BACKUP_BUCKET, OPS_BACKUP_ACCESS_KEY_ID, OPS_BACKUP_SECRET_ACCESS_KEY } = process.env;
   if (
     !OPS_BACKUP_BUCKET ||
     !OPS_BACKUP_ACCESS_KEY_ID ||
     !OPS_BACKUP_SECRET_ACCESS_KEY ||
-    !R2_ENDPOINT ||
-    OPS_BACKUP_ACCESS_KEY_ID === process.env.R2_ACCESS_KEY_ID ||
-    OPS_BACKUP_SECRET_ACCESS_KEY === process.env.R2_SECRET_ACCESS_KEY
+    OPS_BACKUP_ACCESS_KEY_ID === storage.accessKeyId ||
+    OPS_BACKUP_SECRET_ACCESS_KEY === storage.secretAccessKey
   )
     throw new Error('Dedicated backup storage credentials are required.');
   return createR2BackupRepository({
     namespace: settings.namespace,
-    endpoint: R2_ENDPOINT,
+    endpoint: storage.endpoint,
     bucket: OPS_BACKUP_BUCKET,
-    sourceMediaBucket: env.MEDIA_BUCKET,
+    sourceMediaBucket: storage.bucket,
     accessKeyId: OPS_BACKUP_ACCESS_KEY_ID,
     secretAccessKey: OPS_BACKUP_SECRET_ACCESS_KEY,
   });
@@ -118,7 +119,7 @@ async function main() {
           source,
           tools,
         };
-        if (settings.namespace.environment === 'test')
+        if (settings.namespace.environment === 'local' || settings.namespace.environment === 'test')
           return runBackup({
             ...options,
             repository: await createLocalBackupRepository({ namespace: settings.namespace }),

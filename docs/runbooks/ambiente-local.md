@@ -12,21 +12,40 @@ pnpm install --frozen-lockfile
 if (-not (Test-Path -LiteralPath '.env')) { Copy-Item -LiteralPath '.env.example' -Destination '.env' }
 ```
 
-Preencher .env localmente antes de iniciar: PAYLOAD_SECRET aleatório com pelo menos 32 caracteres, LOCAL_POSTGRES_PASSWORD aleatório e o mesmo valor na credencial de DATABASE_URI, além de SITE_ORIGIN e MEDIA_BUCKET locais. Não imprimir/copiar esses valores para logs ou relatórios. Nesta execução os valores foram gerados criptograficamente e salvos apenas no .env ignorado. Nenhum segredo real está no exemplo.
+Preencha o `.env` ignorado pelo Git com `PAYLOAD_SECRET` de pelo menos 32 caracteres e `DATABASE_URI` do banco de desenvolvimento na porta 5432. Para usar o bucket real, configure as variáveis R2 do modelo. O volume PostgreSQL existente chama-se `a-design-for-life-rebuild-postgres-data`. Em uma máquina nova, crie esse volume com `docker volume create a-design-for-life-rebuild-postgres-data`.
+
+A consolidação de 05/11/2026 reutilizou o volume PostgreSQL existente no serviço `portfolio`. Para iniciar o ambiente de uso diário, execute o Compose.
 
 ```powershell
-docker compose -f compose.local.yaml up -d --wait postgres-local
-pnpm migrate
-pnpm dev
+docker compose -f compose.local.yaml up -d --no-build --wait
 ```
 
-Abrir http://127.0.0.1:3000/admin. O PostgreSQL do projeto usa 55432 e volume próprio. Não modificar o container alheio na porta 5432. `push:false` evita alteração automática do schema; as migrações são executadas explicitamente pelo mecanismo nativo.
+Em uma máquina sem a imagem `adfl:local-alpine3.24`, use `--build` no lugar de `--no-build`.
 
-## Conta sintética local
+O serviço `portfolio` reúne Next/Payload e PostgreSQL em um contêiner Alpine 3.24 com UID/GID 70, sem capabilities Linux adicionais. O Node é o PID 1 e encaminha o encerramento para os dois processos. A aplicação e o banco ficam acessíveis em loopback, respectivamente nas portas 3000 e 5432. Os dados do PostgreSQL e as raízes e caches do aplicativo ficam em volumes próprios.
 
-O primeiro cadastro público é bloqueado também no hook, pois o endpoint nativo first-register ignora access.create. A conta sintética usada na prova foi provisionada pela Local API em processo controlado, com contexto trustedAccountProvisioning explícito. O login real usa o fluxo nativo; não existe autenticação paralela.
+A imagem define `USER appuser`, associado ao UID/GID70 já proprietário dos volumes. O Compose mantém a identidade numérica `70:70`. O nome do usuário de sistema não altera a conta SQL configurada no `.env`.
 
-Para reproduzir a preparação local, definir LOCAL_EDITOR_EMAIL e LOCAL_EDITOR_PASSWORD somente no .env ignorado, usar domínio .invalid para dados sintéticos e executar a mesma Local API em contexto de operador. Não passar senhas como argumentos ou registrá-las no relatório. O provisionamento de duas contas editoriais e recuperação completa é entregue em E1.7; esta base não promete esse fluxo completo.
+O Compose limita esse contêiner a **1CPU e 2GiB de RAM**, sem swap adicional. São limites iniciais para uso local e validação, não uma medição de capacidade de produção. Para ajustar sem editar o Compose, defina `PORTFOLIO_CPU_LIMIT` e `PORTFOLIO_MEMORY_LIMIT` no `.env`; o limite total de memória e swap acompanha a RAM. Recrie somente o serviço `portfolio` para aplicar valores alterados. Em uma VPS compartilhada, dimensione cotas por projeto depois de verificar recursos disponíveis e carga; o nome de um environment não aplica esses limites automaticamente.
+
+Em um banco recém-inicializado, execute `pnpm migrate` no host antes de provisionar conteúdo. O runtime inicia o PostgreSQL e o Next e preserva o histórico de migrações existente. Use `pnpm provision:structural` para criar os perfis e a navegação iniciais como rascunhos. A publicação exige conteúdo editorial e uma conta provisionada.
+
+As páginas públicas ficam em `http://localhost:3000/pt` e `http://localhost:3000/en`. O painel fica em `http://localhost:3000/admin`. Um banco sem perfil e navegação publicados devolve 404 nas páginas públicas. Durante o desenvolvimento do código, `pnpm dev` pode ser usado com o Next do contêiner parado e um PostgreSQL disponível na porta do `.env`.
+
+## Conta editorial e conteúdo local
+
+Defina `LOCAL_EDITOR_EMAIL` e `LOCAL_EDITOR_PASSWORD` somente no `.env` ignorado pelo Git. O comando abaixo cria a conta pela Local API autorizada. Uma conta com o mesmo e-mail preserva a senha e o registro existentes.
+
+```powershell
+$env:APP_ENV = 'local'
+pnpm provision:editor
+```
+
+O painel em `http://localhost:3000/admin` usa essa conta e a autenticação nativa do Payload. O primeiro cadastro público segue bloqueado pelo hook editorial.
+
+Por autorização do usuário em 05/11/2026, o ambiente recebeu Lorem ipsum, dois cases em PT/EN, as cinco imagens originais do layout e dois PDFs demonstrativos. Contatos e currículos são exemplos temporários. O conteúdo pode ser substituído pelo painel. [Registro da preparação local](../verification/artifacts/E3-local/local-runtime-lorem-001.json)
+
+O e-mail usa captura local. O backup criptografado do ambiente pode ser gerado com `pnpm backup:local`. Os conjuntos ficam em `.work/backup-sets`; a identidade de recuperação fica separada em `.work/backup-keys/local.agekey`. O procedimento e a prova de restauração estão no [runbook de backup](backup-e-restauracao.md).
 
 ## Verificação
 
@@ -43,7 +62,7 @@ pnpm format:check
 pnpm build
 ```
 
-Vitest separa unidade, integração e arquitetura; não descobre arquivos Playwright. O lifecycle de integração agora usa somente `compose.test.yaml`, projeto `adfl-isolated-tests-<UUIDv4>`, serviço `postgres-isolated`, PostgreSQL real em tmpfs e bind exclusivo `127.0.0.1:55434`. O banco é exatamente `adfl_test_runner`; bucket `adfl-test-runner` e root `.work/private-media/adfl-test-runner/adfl_test_runner` devem corresponder. O compose local e o PostgreSQL visual em 55433 ficam preservados.
+Vitest separa unidade, integração e arquitetura; não descobre arquivos Playwright. Execute a suíte completa com `VITEST_MAX_WORKERS` ausente. No Vitest 5, essa variável substitui a configuração serial do projeto de integração, cujos testes compartilham banco e diretórios descartáveis. O lifecycle de integração agora usa somente `compose.test.yaml`, projeto `adfl-isolated-tests-<UUIDv4>`, serviço `postgres-isolated`, PostgreSQL real em tmpfs e bind exclusivo `127.0.0.1:55434`. O banco é exatamente `adfl_test_runner`; bucket `adfl-test-runner` e root `.work/private-media/adfl-test-runner/adfl_test_runner` devem corresponder. O compose local e o PostgreSQL visual em 55433 ficam preservados.
 
 Antes de qualquer consulta Docker, o runner adquire um lease exclusivo da porta55434 no diretório temporário do usuário, compartilhado entre checkouts e UUIDs. Mantém esse lease durante preflight, tentativa de criação, cleanup de início falho e teardown. Recusa projeto/container/rede existentes e verifica a disponibilidade da porta. O escopo é o mesmo usuário do sistema operacional nesta máquina, com diretório temporário compartilhado; não coordena outros usuários ou hosts que compartilhem um daemon Docker. `--project-name` e arquivo compose são explícitos: `COMPOSE_PROJECT_NAME` herdado não pode selecionar o ambiente visual. Um `TEST_DATABASE_URI` ou `TEST_MEDIA_BUCKET` diferente do namespace exato é recusado. Não apontar testes para outro PostgreSQL de loopback. O ambiente substitui storage/origem interna herdados e limpa configuração/credenciais externas de mídia, e-mail e Analytics antes de iniciar subprocessos.
 
@@ -56,11 +75,10 @@ Playwright constrói Next em `NODE_ENV=production`/`APP_ENV=test` em `.work/next
 ## Parada e limpeza
 
 ```powershell
-# Ctrl+C encerra o servidor Next iniciado no terminal.
-docker compose -f compose.local.yaml stop postgres-local
+docker compose -f compose.local.yaml stop portfolio
 ```
 
-Os testes encerram o processo HTTP próprio antes do callback de limpeza do banco. Uma execução interrompida pode deixar recursos/lease compartilhado da porta55434; inspecionar o UUID, checkout, token do lease, labels e IDs e resolver a interrupção de forma explícita antes de repetir. Não executar `compose.local.yaml rm postgres-test`: esse serviço contém a base visual preservada em 55433. Não executar `down --volumes`, drop de banco compartilhado ou limpeza global do Docker. O volume local persistente permanece preservado. Segredos, downloads e caches em `.env`/`.work`/`.toolchain` não são versionados. Serviços reais de e-mail/R2, homologação e produção exigem as autorizações da etapa correspondente.
+Os testes encerram o processo HTTP próprio antes do callback de limpeza do banco. Uma execução interrompida pode deixar recursos/lease compartilhado da porta55434; inspecionar o UUID, checkout, token do lease, labels e IDs e resolver a interrupção de forma explícita antes de repetir. A base visual histórica na porta 55433 permanece fora do Compose local atual. Não executar `down --volumes`, drop de banco compartilhado ou limpeza global do Docker. O volume local persistente permanece preservado. Segredos, downloads e caches em `.env`/`.work`/`.toolchain` não são versionados. Serviços reais de e-mail/R2, homologação e produção exigem as autorizações da etapa correspondente.
 
 ## Verificação E2: fonte real e preservação da prévia
 
@@ -77,4 +95,4 @@ pnpm test:e2e
 
 Em Linux, selecionar uma TrueType legível instalada e registrar seu hash. A CI faz essa seleção com Fontconfig depois de instalar as dependências oficiais do Chromium; falha explicitamente caso não encontre um arquivo .ttf legível. A origem da seleção é a [documentação de padrões do Fontconfig](https://fontconfig.pages.freedesktop.org/fontconfig/fontconfig-user.html). Não há download de fonte pelo produto.
 
-O risco histórico de reconstruir `.next` e remover `postgres-test`/55433 motivou o isolamento E3 descrito acima. Os runners atuais usam recursos novos próprios e output Next separado; não é necessário parar a prévia 008 para esses runners. A preservação continua obrigatória antes de qualquer comando externo que escreva em `.next` ou manipule o compose local. Manter 5432/55432/55433 intactos e não substituir originais/checkpoints/capturas históricos por evidência nova. Ver `artifacts/E3-isolation` para a evidência técnica e distinguir units de validação real PostgreSQL/Next.
+O risco histórico de reconstruir `.next` e remover `postgres-test`/55433 motivou o isolamento E3 descrito acima. Os runners atuais usam recursos novos próprios e output Next separado; não é necessário parar a prévia 008 para esses runners. A preservação continua obrigatória antes de qualquer comando externo que escreva em `.next` ou manipule o compose local. Preservar a instância de desenvolvimento na porta 5432 e a base visual histórica na porta 55433 durante os testes. Guarde originais, checkpoints e capturas históricas com seus recibos. Ver `artifacts/E3-isolation` para a evidência técnica e distinguir units de validação real PostgreSQL/Next.

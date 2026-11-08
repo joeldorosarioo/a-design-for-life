@@ -102,3 +102,22 @@ it.each([
     },
   );
 });
+
+it('rejects database-only readiness in production without contacting the web listener', async () => {
+  let requests = 0;
+  await withServer(
+    (_request, response) => {
+      requests++;
+      response.end('unexpected');
+    },
+    async (port) => {
+      const result = await probe(port, {
+        APP_ENV: 'production',
+        PUBLIC_SITE_ENABLED: 'false',
+        STAGING_DATABASE_ONLY: 'true',
+      });
+      expect(result).toEqual({ status: 1, stdout: '', stderr: '' });
+      expect(requests).toBe(0);
+    },
+  );
+});

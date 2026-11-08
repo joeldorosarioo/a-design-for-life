@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Repeatable local laboratory measurements of the public portfolio",
+  "repetitions": 3,
+  "performanceKinds": ["home", "cases", "case"],
+  "locales": ["pt", "en"],
+  "browserWidths": [390, 820, 1440],
+  "browserHeight": 900,
+  "cache": "cold browser profile for each measurement, warm server",
+  "throttlingMethod": "devtools",
+  "networkMapping": "DevTools requestLatencyMs uses the proposed RTT value. Download and upload throughput use the proposed Kbit/s values directly.",
+  "profiles": [
+    {
+      "id": "mobile",
+      "formFactor": "mobile",
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 3,
+      "rttMs": 150,
+      "downloadKbps": 1600,
+      "uploadKbps": 750,
+      "cpuSlowdownMultiplier": 4,
+      "budgets": { "lcpMs": 2500, "cls": 0.1, "tbtMs": 200 }
+    },
+    {
+      "id": "desktop",
+      "formFactor": "desktop",
+      "width": 1440,
+      "height": 900,
+      "deviceScaleFactor": 1,
+      "rttMs": 40,
+      "downloadKbps": 10000,
+      "uploadKbps": 5000,
+      "cpuSlowdownMultiplier": 1,
+      "budgets": { "lcpMs": 2500, "cls": 0.1, "tbtMs": 150 }
+    }
+  ]
+}

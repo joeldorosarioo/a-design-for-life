@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-04T00:31:46.830Z",
   "stage": 3,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
-  "completedItems": 10,
+  "completedItems": 15,
   "totalItems": 30,
-  "percentage": 33.3,
+  "percentage": 50,
   "closedTasks": [],
   "totalTasks": 6,
   "approval": "A3 pending; E3 local execution explicitly resumed on 2026-11-03; production remains unauthorized",
@@ -14,7 +14,7 @@
       "id": "E3.1.1",
       "done": false,
       "summary": "Levantar acessos existentes; apresentar VPS/plano e custos atuais antes de contratar. Dimensionar aplicação, PostgreSQL, homologação, build quando aplicável e pico de processamento medido. Registrar domínio escolhido pelo usuário, registry, origens dos ambientes, conta/propriedade GA4, envio de e-mail e credenciais mínimas. Nenhum domínio, provedor ou preço é presumido por este plano.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Opções e preços oficiais documentados para VPS/Coolify, R2, Resend e registry, com hipótese de 8 GiB inicial e build externo. O usuário confirmou que as escolhas de domínio, VPS/Coolify e registry ainda estão indefinidas. [Proposta](E3-infra-proposta.md)."
     },
     {
       "id": "E3.1.2",
@@ -26,19 +26,19 @@
       "id": "E3.1.3",
       "done": false,
       "summary": "Escrever integração real com bucket de homologação: upload válido, publicação, entrega autorizada, derivados, remoção de referência e acesso privado. Primeiro observar falha contratual com cenário controlado; implementar o adaptador mínimo e obter GREEN. Testes não apontam para o bucket de produção.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Payload/PostgreSQL reais e transporte S3 controlado em loopback provaram upload, publicação, original/derivado, privacidade de prévia e revogação após retirada. Vitest 1/1. Falta repetir com bucket R2 autorizado. [Runbook](../runbooks/armazenamento.md). O R2 real também recebeu uma imagem sintética e quatro derivados pelo Payload/PostgreSQL local, com prévia autenticada e SHA-256 verificado. Publicação e retirada no bucket de homologação ainda pendentes. [Recibo](artifacts/E3-storage/r2-development-prefix-001.json). Em 05/11, o ciclo Native em prefixo próprio do R2 real confirmou upload, prévia autenticada, original e derivado publicados, SHA-256 e revogação após retirada. Os cinco objetos do ensaio foram removidos. [Recibo atual](artifacts/E3-storage/r2-native-publication-withdrawal-002.json)."
     },
     {
       "id": "E3.1.4",
       "done": false,
       "summary": "Comprovar que URL direta do objeto/derivado no R2 não é pública; revisar caminhos do otimizador e caches. Testar falha de rede no envio e impedir referência editorial apontando a upload incompleto. Artefatos de imagem recebem chaves imutáveis; alteração de arquivo gera novo recurso/revisão, facilitando recuperação consistente.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "A desconexão no terceiro PUT assinado devolveu 503 sem criar referência de mídia. A repetição criou outra chave imutável e comprovou entrega e revogação. A negação no endpoint direto de um bucket R2 real segue pendente. [Runbook](../runbooks/armazenamento.md). No prefixo R2 de desenvolvimento, os GETs sem assinatura ao endpoint S3 retornaram 400 para o original e o derivado. Falta a prova completa de URLs/domínios, cache e falha controlada no ambiente autorizado. [Recibo](artifacts/E3-storage/r2-development-prefix-001.json). Após o usuário desativar r2.dev, um objeto próprio existente retornou 200 via S3 assinado e 401 pela URL r2.dev sem credenciais. O objeto foi removido e HEAD assinado confirmou 404. A evidência cobre a URL fornecida. [Privacidade atual](artifacts/E3-storage/r2-dev-disabled-private-probe-003.json)."
     },
     {
       "id": "E3.1.5",
       "done": false,
       "summary": "Validar configuração real de e-mail com conta editorial autorizada e autorização específica para envio de teste; usar captura local até essa autorização. Não enviar mensagens a outras pessoas. Rodar integração, `pnpm verify` e registrar evidências sem segredos; commit `feat: integrar armazenamento e envio editorial`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial. O usuário escolheu captura local de e-mail em 05/11. A recuperação Native na cópia restaurada produziu uma captura, revogou sessão/senha anteriores e recusou a reutilização do token. [Recibo local](artifacts/E3-backup/local-portfolio-backup-restore-003.json)."
     },
     {
       "id": "E3.2.1",
@@ -72,33 +72,33 @@
     },
     {
       "id": "E3.3.1",
-      "done": false,
+      "done": true,
       "summary": "Escrever RED para ambientes/áreas excluídos, campos não permitidos e duplicação de page view. Implementar schema fechado, inicialização única e envio por navegação pública concluída; não contabilizar navegação cancelada nem enviar endereço de e-mail/LinkedIn como rótulo/URL do evento.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "RED/GREEN de contratos, exclusão e deduplicação preservados. Chromium verificou as transições concluídas, ignorou navegação cancelada e duplicada e conferiu destinos sensíveis ausentes nos comandos. A jornada Next confirmou exclusão em sete superfícies reais, incluindo painel, caso inédito e prévia autenticada. [Recibo Chromium](artifacts/E3-analytics/chromium-local-001.json)."
     },
     {
       "id": "E3.3.2",
       "done": false,
       "summary": "Configurar GA4 com `analytics_storage: denied` antes de qualquer medição e sem mudança posterior para habilitar armazenamento. Desativar publicidade/remarketing, User-ID e medição automática ampliada de rolagem, busca, cliques externos e downloads que extrapole os eventos aprovados. Não instalar gerenciador de tags ou outro produto de analytics sem necessidade aprovada.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "O adaptador local ordena consentimento denied antes de config/event e desliga publicidade e page_view automático nos comandos. Faltam inspeção interceptada do SDK real e configurações efetivas de propriedade/stream. [Relatório](analytics.md)."
     },
     {
       "id": "E3.3.3",
       "done": false,
       "summary": "Testar contrato do transporte em ambiente isolado, sem enviar dados reais ao Google: somente eventos aprovados, locale, caminho público sanitizado e dados técnicos indispensáveis do protocolo; sem nomes, e-mails, tokens, conteúdo privado ou identificadores persistentes alternativos. Evento `resume_open` confirma o acionamento, não o download/leitura. Inspecionar cookies e storage; o cookie funcional de idioma não pode ser lido para identificar visitantes.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Captura Chromium offline provou os quatro tipos aprovados, contexto sanitizado, zero requisições externas e ausência de novos cookies/storage. Falta comprovar a saída e o armazenamento do SDK real interceptado. [Recibo Chromium](artifacts/E3-analytics/chromium-local-001.json)."
     },
     {
       "id": "E3.3.4",
-      "done": false,
+      "done": true,
       "summary": "Documentar quais relatórios GA4 são efetivamente disponíveis sob essa política. Enviar ping não comprova disponibilidade de relatório. A demonstração não pode ativar Analytics em homologação/testes nem presumir os requisitos de modelagem atendidos. Se a prova exigir tráfego público de produção, identificar antes da ativação a evidência que falta e o conflito de sequência no pacote A3/A4; não declarar medição validada por um teste de transporte e não flexibilizar a política para contornar o limite.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "A disposição prevista pelo plano foi registrada em A3: nenhum relatório demonstrado, tráfego granted exigido para modelagem, conflito entre demonstrar com tráfego público e a autorização posterior de A4. A limitação BLOCK-GA4-REPORT-LIMITATION continua ativa e a medição permanece desativada. [Pacote A3](A3.md#relatórios-ga4-e-sequência-de-aceite)."
     },
     {
       "id": "E3.3.5",
       "done": false,
       "summary": "Provar que não existe banner/modal/escolha de aceite ou recusa. Rodar testes, `pnpm verify` e comparar custo de JavaScript; commit `feat: integrar medicao publica sem cookies`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Chromium confirmou ausência de controles de consentimento e comparou o tamanho de dois bundles sintéticos. A comparação com o SDK real e a carga da versão implantada seguem pendentes. [Relatório](analytics.md)."
     },
     {
       "id": "E3.4.1",
@@ -110,7 +110,7 @@
       "id": "E3.4.2",
       "done": true,
       "summary": "Criar Docker multistage com dependências/lockfile fixados, usuário sem privilégios e artefatos estritamente necessários. Segredos somente na execução; build sem consultar conteúdo de produção. Não usar `NEXT_PUBLIC_*` para valores que variam entre homologação/produção; não pré-renderizar metadados absolutos com origem do ambiente de build.",
-      "evidence": "Build local 004 linux/amd64, exit 0, digest local sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36. Fonte estável antes e depois. Docker multistage com base Node 24.22.2 por digest, pnpm 12.10.1 e lockfile congelado. Inspeção exit 0 confirmou UID/GID 10001 e somente nomes de configuração runtime esperados. Smoke nativo offline exit 0. Contexto sintético BuildKit 21 permitidos/28 excluídos. Auditoria de 14 camadas e 11046 entradas sem caminhos vedados, e 88 estáticos/manifestos sem marcadores sintéticos de segredo, origem ou banco de build. Rotas editoriais e metadados dependentes de origem continuam dinâmicos. Recibos docker-draft-{build,inspect}-004, native-smoke-draft-004, layers-draft-004 e static-manifest-marker-scan-004 em artifacts/E3-image. O ID local da configuração ainda não é digest de manifesto publicado."
+      "evidence": "Build local 004 linux/amd64, exit 0, digest local sha256:d3d6c3abb546d7d3825f9631b26d38fe24687bf58c3485b4bebbfb633729fb36. Fonte estável antes e depois. Docker multistage com base Node 24.22.2 por digest, pnpm 12.10.1 e lockfile congelado. Inspeção exit 0 confirmou UID/GID 10001 e somente nomes de configuração runtime esperados. Smoke nativo offline exit 0. Contexto sintético BuildKit 21 permitidos/28 excluídos. Auditoria de 14 camadas e 11046 entradas sem caminhos vedados, e 88 estáticos/manifestos sem marcadores sintéticos de segredo, origem ou banco de build. Rotas editoriais e metadados dependentes de origem continuam dinâmicos. Recibos docker-draft-{build,inspect}-004, native-smoke-draft-004, layers-draft-004 e static-manifest-marker-scan-004 em artifacts/E3-image. O ID local da configuração ainda não é digest de manifesto publicado. Novo build local em Alpine 3.24.3 com UID/GID 70, inspeção da imagem, smoke nativo e prévia isolada. [Recibo](artifacts/E3-image/local-alpine-preview-001.json)."
     },
     {
       "id": "E3.4.3",
@@ -122,13 +122,13 @@
       "id": "E3.4.4",
       "done": false,
       "summary": "Construir a imagem identificada pelo commit, publicar no registry autorizado e implantar somente em homologação autenticada, sem indexação e sem Analytics. Registrar digest, configuração sem segredos e evidência de que a candidata a produção tem exatamente o mesmo digest. A promoção real fica para depois de A4.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Workflow manual de preflight constrói a revisão exata, inspeciona a imagem Linux e roda smoke offline. Domínio, registry e VPS/Coolify ainda indefinidos. Faltam digest do registry e implantação autenticada de homologação. [Build e promoção](../runbooks/build-e-promocao.md)."
     },
     {
       "id": "E3.4.5",
       "done": true,
       "summary": "Rodar `pnpm verify`, E2E contra a imagem e inspeção de usuário/processo/camadas; commit `build: preparar imagem unica e homologacao isolada`.",
-      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados."
+      "evidence": "Verify-010 exit 0 e imagem local imutável 008 vinculados à mesma fonte. 82 verificações HTTP e quatro jornadas Chromium em duas configurações isoladas antes/depois dos reinícios. Conteúdo PT/EN, mídia/PDF, negação de rascunho e mídia privada, login e sessão. Zero destinos externos ou WebSockets. PID 1 Node/Next, UID/GID 10001 e zero capabilities efetivas. Auditoria de 14 camadas e 88 estáticos/manifestos. Recibos em artifacts/E3-image/http-f8abf50f-89b5-4a73-8738-f47832feac38/run.json. Suíte completa do Chromium no Next local e provas anteriores mantêm seus snapshots próprios. Registry e homologação são critérios separados. Após trocar a base, a imagem Alpine passou 29 testes direcionados, inspeção e prova HTTP sintética. [Recibo](artifacts/E3-image/local-alpine-preview-001.json). A repetição serial encerrou com pnpm verify e Playwright completos. O build Alpine da revisão exata fb7935f passou 82 verificações HTTP, quatro jornadas Chromium e inspeção de usuário, processos, 20 camadas e 88 estáticos e manifestos. [Suítes](artifacts/E3-operations/alpine-local-gates-002.json) · [Imagem](artifacts/E3-image/local-alpine-image-proof-002.json). Em 05/11, o novo pnpm verify passou em 218 arquivos, 2.026 testes e três skips, com build concluído. [Gate atual](artifacts/E3-local/local-final-gate-001.json)."
     },
     {
       "id": "E3.5.1",
@@ -150,21 +150,21 @@
     },
     {
       "id": "E3.5.4",
-      "done": false,
+      "done": true,
       "summary": "Executar migração em etapa controlada separada da inicialização, com backup prévio. Testar migração da versão anterior e rollback de imagem com schema compatível; impedir execução concorrente. Migração destrutiva só com aprovação explícita e recuperação preparada. Não executar reversão automática de dados para acompanhar rollback de imagem.",
-      "evidence": "Migração Native com catálogo de 15 registros, backup criptografado relido antes do up, recusa de concorrência, repetição segura e restauração técnica isolada. O ensaio local 004 → 007 → 004 passou 60 verificações HTTP e preservou OID, 16 registros e o hash do catálogo após o rollback. A 004 já inclui o arquivo aditivo. Faltam o job operacional e a comprovação da versão exata de 60314d2 empacotada. Recibos em artifacts/E3-operations/migration-image-rollback-6f5d6bd2-0067-4c90-8c2c-71a7f5bbcecb/run.json."
+      "evidence": "Job Linux separou backup e migração, preservou o catálogo anterior sob lock de sessão e lock transacional, releu o backup criptografado antes de aplicar a migração e retornou already-current na repetição. O rollback local anterior cobre as imagens 004/007 e existe prova separada da migração atual. O ensaio com o commit exato do predecessor segue em andamento. [Prova do job](artifacts/E3-operations/linux-operational-job-proof.json). Em Docker sem portas publicadas, a sequência da revisão exata 60314d2 para fb7935f em Alpine e de volta para 60314d2 validou login nativo e rotas HTTP antes e depois da migração 15→16. O OID e o hash do catálogo após migração foram preservados durante o rollback de imagem. [Recibo](artifacts/E3-operations/exact-predecessor-alpine-rollback-001.json)."
     },
     {
       "id": "E3.5.5",
-      "done": false,
+      "done": true,
       "summary": "Demonstrar falhas de PostgreSQL/R2 sem retirar por engano a aplicação que ainda serve cache; rodar testes, E2E operacional e `pnpm verify`; commit `chore: preparar migracoes diagnosticos e operacao`.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": " O Next real preservou páginas confirmadas durante a indisponibilidade do PostgreSQL, inclusive após reinício. No ensaio TLS S3 em loopback, a mídia devolveu 200→503→200 enquanto as quatro páginas PT/EN em cache e /health continuaram 200 com a mesma geração. O diagnóstico autenticado e as suítes pnpm verify e Playwright passaram. [Falha de armazenamento](artifacts/E3-operations/r2-loopback-warm-readiness-001.json) · [Suítes](artifacts/E3-operations/alpine-local-gates-002.json)."
     },
     {
       "id": "E3.6.1",
-      "done": false,
+      "done": true,
       "summary": "Usar `pg_dump` em formato apropriado à restauração integral, cópia dos objetos necessários e manifesto de integridade/referências; criptografia com `age`, versão validada no job operacional. Chave pública de criptografia pode estar no job; identidade privada de recuperação fica separada da VPS e do bucket. Não criar criptografia própria.",
-      "evidence": "Pendente: critério original integral ainda sem prova; preparação local não recebe crédito parcial."
+      "evidence": "Job Linux separado executou pg_dump 17.11 com snapshot Native, GNU tar e age 1.3.2 sob UID 10001. O fluxo releu os conjuntos criptografados e seus marcadores antes de concluir. O job recebe a chave pública e a identidade privada fica no destino separado de recuperação. A cópia e verificação de mídias têm prova Native em E3.6.2. [Prova do job](artifacts/E3-operations/linux-operational-job-proof.json)."
     },
     {
       "id": "E3.6.2",
@@ -188,7 +188,7 @@
       "id": "E3.6.5",
       "done": false,
       "summary": "Restaurar um conjunto de verdade em banco/bucket isolados, descriptografar com a identidade separada e verificar conteúdos PT/EN, versões/rotas, arquivos e login/recuperação necessários. Registrar duração e resultado como observações, sem inventar RPO/RTO contratados. Entregar A3 e commit `ops: comprovar backup e recuperacao isolada`.",
-      "evidence": "Conjunto criptografado real recuperado em PostgreSQL e filesystem descartáveis. A imagem 007 verificou conteúdo PT/EN, versões/rotas/mídias, login, painel, revogação da sessão anterior, senha nova e token de reset de uso único com uma mensagem capturada. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. Faltam restauração no bucket R2 isolado e entrega do pacote A3. Recibos em artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl."
+      "evidence": "Conjunto criptografado real recuperado em PostgreSQL e filesystem descartáveis. A imagem 007 verificou conteúdo PT/EN, versões/rotas/mídias, login, painel, revogação da sessão anterior, senha nova e token de reset de uso único com uma mensagem capturada. Backup de 848 ms, restauração de 25832 ms, incluindo 11758 ms da prova HTTP da imagem 007. Tempos observados neste ensaio sintético. Faltam restauração no bucket R2 isolado e entrega do pacote A3. Recibos em artifacts/E3-backup/encrypted-native-events-1a557ee1-e967-410a-930d-66f8be47abab.jsonl. O job com UID/GID 70 leu volumes da imagem Alpine em modo somente leitura, releu o conjunto criptografado de 256.248 bytes em 1.507 ms e restaurou em PostgreSQL descartável em 902 ms, com raiz e quatro objetos verificados por SHA-256. O destino de mídia desta prova foi local. [Recibo](artifacts/E3-backup/alpine-rootless-backup-restore.json). O banco local atual com um editor, dois perfis, duas navegações, dois cases e sete mídias foi restaurado em destino isolado. Foram conferidos 28 objetos e dez páginas PT/EN, com recuperação Native capturada. O manifesto e o marcador guardam a imagem exata da aplicação. O destino de mídia foi filesystem por escolha do usuário. [Prova atual](artifacts/E3-backup/local-portfolio-backup-restore-003.json)."
     }
   ],
   "notes": [
@@ -208,7 +208,11 @@
     "E3.4.1 encerrado depois de provar o RED de defaults indevidos sob nomes já permitidos e reinspecionar a imagem 004. A prova HTTP de dois ambientes permanece vinculada ao snapshot da imagem 004.",
     "E3.4.5 encerrado com gate, jornadas Chromium e inspeção na mesma imagem 007. As execuções 005 que bloquearam Gravatar foram preservadas como RED operacional.",
     "E3.2.4 encerrado após prova de SIGKILL e recuperação automática, defesa contra corpo 410 antigo e execução Next real. E3.2.2 e E3.2.3 mantêm as provas operacionais e de sitemap próprias.",
-    "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3."
+    "E3.2.3 encerrado em 04/11/2026 com a prova local do sitemap servido e do limite de novas tentativas. O worker roda no processo Next. A ativação operacional e o prazo normal proposto de 60 s seguem para A3.",
+    "04/11/2026. A execução foi estendida a toda a etapa 3. O responsável confirmou que domínio, VPS/Coolify e registry ainda não estão definidos. O pacote parcial A3 separa prova local, condição de aceite e bloqueios externos.",
+    "Em 05/11/2026, o usuário autorizou consolidar o ambiente local, usar Lorem ipsum, auditar as páginas e validar o R2 existente. Escolheu captura local de e-mail e backup criptografado em filesystem. As provas locais dessa rodada estão em A3 e web-quality.md; os critérios integrais de homologação mantêm suas dependências.",
+    "05/11/2026: appuser preservando UID/GID70, cotas locais1CPU/2GiB,35testes focados, smoke nativo/PG e12respostas HTTP200 na imagem atual. Backups antes/depois preservaram o hash de schema; nove segredos conhecidos ausentes das camadas exportadas. VPS Hostinger/Coolify Atlas com TLS e environment staging foram configurados pelo usuário; GHCR privado e credenciais separados foram disponibilizados. Publicação por digest, configuração/validação real de staging e manutenção do host continuam provas separadas. Ver docker-best-practices-local-2026-11-05.json e A3.md.",
+    "05/11/2026: candidata do commit196bfad publicada no GHCR privado, digest de manifesto69725221daf7ab017fe5c31c736de8b76b81392a9bd50645eec2c49c690c77fa. Readback, negação anônima e pull somente-leitura passaram; imagem do commit exato validada localmente com appuser, cotas e12respostas200. E3.4.4 permanece aberto até consumo/validação no Coolify de homologação. Código não foi enviado ao GitHub e aplicação não foi implantada na VPS. Ver ghcr-private-candidate-196bfad-001.json."
   ],
-  "recalculatedAt": "2026-11-04T12:24:24.391Z"
+  "recalculatedAt": "2026-11-05T18:02:28.507Z"
 }

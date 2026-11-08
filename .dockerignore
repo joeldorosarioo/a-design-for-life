@@ -35,8 +35,13 @@
 !ops/backup/run.ts
 !ops/backup/tools.ts
 !ops/migrations/controlled.ts
+# Explicit staging initialization tests import these source-only operator modules.
+!ops/staging/initialize.ts
+!ops/staging/initialize-config.mjs
 !ops/image/health-probe.mjs
 !ops/image/runtime-smoke.mjs
+!ops/image/start-local-stack.mjs
+!ops/image/staging-mode.mjs
 !ops/image/assemble-standalone.mjs
 # Defense in depth if a private file is ever put below an allowed source directory.
 **/.env

@@ -197,3 +197,30 @@ it('round trips an empty object without confusing zero bytes with absence', asyn
   expect(await adapter.head(object)).toEqual(object);
   expect(await adapter.get(object)).toEqual(new Uint8Array());
 });
+
+it('scopes upload, read, head and delete while keeping manifest keys bare', async () => {
+  const { options, objects, requests } = await boundary();
+  const adapter = createR2ObjectStorage({ ...options, keyPrefix: 'development/rebuild/media/' });
+  const bytes = new Uint8Array([3, 1, 4]);
+  const object = await adapter.put(bytes);
+  expect(object.key).toMatch(/^[a-f0-9]{64}$/);
+  objects.set(object.key, { bytes: Buffer.from([1]), sha256: 'a'.repeat(64) });
+  expect(await adapter.get(object)).toEqual(bytes);
+  expect(await adapter.head(object)).toEqual(object);
+  await adapter.delete(object);
+  expect(requests.map(({ method, key }) => [method, key])).toEqual(
+    ['PUT', 'GET', 'HEAD', 'GET', 'GET', 'DELETE'].map((method) => [
+      method,
+      `development/rebuild/media/${object.key}`,
+    ]),
+  );
+  expect([...objects.keys()]).toEqual([object.key]);
+});
+
+it('rejects a traversal prefix before creating a transport', async () => {
+  const { options, requests } = await boundary();
+  expect(() => createR2ObjectStorage({ ...options, keyPrefix: 'media/../shared' })).toThrow(
+    'Invalid R2 configuration',
+  );
+  expect(requests).toEqual([]);
+});

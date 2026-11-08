@@ -2,13 +2,33 @@
 
 Política aprovada: backups semanais e extras antes de migrações/atualizações, oito semanas de histórico, banco completo e arquivos necessários, criptografia age, bucket R2 privado exclusivo e credenciais próprias. Identidade privada de recuperação fica separada da VPS e do bucket. O pipeline de conjuntos criptografados e restauração isolada foi comprovado localmente. O repositório R2 passou em loopback com o SDK fixado. O job Linux de execução separada está disponível. A ativação do agendamento e a validação com o bucket de homologação continuam pendentes.
 
+## Backup do portfólio local
+
+Com o serviço `portfolio` do Compose local em execução, use o comando abaixo na raiz do projeto.
+
+```powershell
+pnpm backup:local
+```
+
+O helper lê o `.env` existente e confere sua correspondência com o contêiner local. Ele deriva a confirmação `OPS_LOCAL_DATABASE_TARGET`, identifica os volumes e executa a imagem `adfl:backup-local` como UID/GID 70:70. A origem é montada somente para leitura. Quando a mídia está no R2, o job lê os objetos referenciados com a configuração da aplicação. O modo `APP_ENV=local` aceita somente `backup` e exige um alvo PostgreSQL de loopback confirmado exatamente.
+
+Os conjuntos criptografados ficam em `.work/backup-sets`. A identidade age permanece separada em `.work/backup-keys/local.agekey`, com o recipient público em `local-recipient.txt`. O helper reutiliza essa identidade nas execuções seguintes e valida tamanho e SHA-256 do arquivo persistido antes de informar sucesso. O marcador persistido e o manifesto criptografado registram a imagem imutável da aplicação, sua revisão inspecionada e o hash do schema. O helper exige que o marcador devolvido corresponda à imagem e à revisão observadas antes de informar sucesso. Para armazenamento local com `MEDIA_STORAGE_ROOT` explícito, ele valida o caminho dentro de `/app/.work/private-media` e o encaminha ao job. A imagem operacional deve ser construída a partir da fonte verificada com seu fingerprint antes da primeira execução.
+
+Em 05/11/2026, o banco local com uma conta editorial, dois perfis, duas navegações, dois cases, quatro traduções e sete registros de mídia gerou um conjunto de 6.719.272 bytes em 7.537 ms. A restauração em PostgreSQL independente levou 17.544 ms, incluindo a verificação de 28 objetos por SHA-256, dez páginas PT/EN com HTTP 200 e a jornada nativa de recuperação com captura privada. Na cópia restaurada, a senha nova funcionou, a senha e a sessão anteriores foram recusadas e o token usado foi rejeitado. O banco de origem conservou suas contagens e a senha da conta principal. [Recibo do backup local](../verification/artifacts/E3-backup/local-portfolio-backup-restore-003.json)
+
 ## Job Linux de backup
 
-Construa `ops/backup/Dockerfile` a partir do commit da aplicação e registre a revisão e o ID da imagem antes de habilitar o job. O entrypoint roda com UID 10001 e usa Node 24.22.2, pnpm 12.10.1, o cliente PostgreSQL 17.11 e age 1.3.2. A imagem usa um contexto próprio que inclui código e lockfile. Guarde a identidade privada do age fora da VPS. Injete somente o recipient público em `OPS_BACKUP_RECIPIENT`.
+Construa `ops/backup/Dockerfile` a partir do commit da aplicação e registre a revisão e o ID da imagem antes de habilitar o job. A imagem usa UID/GID 10001:10001 por padrão e inclui Node 24.22.2, pnpm 12.10.1, o cliente PostgreSQL 17.11 e age 1.3.2. A imagem usa um contexto próprio que inclui código e lockfile. Guarde a identidade privada do age fora da VPS. Injete somente o recipient público em `OPS_BACKUP_RECIPIENT`.
 
 O comando `backup` usa a raiz da mesma origem, banco e ambiente da aplicação. Mantenha `SITE_ORIGIN`, `DATABASE_URI` e `MEDIA_BUCKET` coerentes com o alvo aprovado. Na homologação, confirme o destino com `OPS_STAGING_DATABASE_TARGET` no formato `host:porta/banco` e use um identificador técnico em `OPS_BACKUP_SOURCE`. A conexão aceita parâmetros TCP explícitos e, quando aplicável, somente `sslmode` como opção da URI. Forneça `OPS_BACKUP_BUCKET`, `OPS_BACKUP_ACCESS_KEY_ID` e `OPS_BACKUP_SECRET_ACCESS_KEY` do bucket privado exclusivo pelo mecanismo de segredos do executor. Os acessos de mídia seguem a configuração R2 da aplicação. Consulte o marcador de conclusão somente após a releitura do conjunto.
 
 Ao executar backup com a aplicação em serviço, compartilhe o namespace de rede do processo que publica e remove objetos. Monte o volume de publicação no mesmo caminho absoluto `/app/.work/publication`; o socket abstrato que protege snapshot e objetos pertence a esse namespace de rede. A exclusão entre jobs usa um advisory lock do PostgreSQL na mesma conexão dedicada por todo o backup ou migração. Confirme os dois mecanismos no executor de homologação antes de agendar o comando `backup` semanalmente. A execução extra anterior à atualização deve concluir e registrar seu marcador antes da troca de imagem. A migração `migrate` cria e verifica o seu próprio conjunto antes de executar DDL. [Migração controlada](migracoes.md).
+
+Na imagem Alpine da aplicação, o proprietário dos volumes é 70:70. Inicie o job separado com `--user 70:70 --cap-drop ALL --security-opt no-new-privileges`. Monte a publicação e, quando o armazenamento for local, os objetos privados como somente leitura nos mesmos caminhos absolutos da aplicação. A publicação precisa ter seu diretório de namespace criado pela aplicação antes da montagem somente leitura. Em volumes Docker nomeados, use `volume-nocopy` nas montagens do job para preservar a propriedade já inicializada. Use um scratch próprio do job, por exemplo `--tmpfs /app/.work/backup-private:rw,noexec,nosuid,nodev,uid=70,gid=70,mode=0700`. Para conjuntos de teste gravados no filesystem, monte também um volume próprio com proprietário 70:70 em `/app/.work/backup-sets`. Assim o job lê os arquivos privados com as permissões originais e grava somente em seu espaço de trabalho.
+
+O job comprovou a criação de dois conjuntos criptografados e a recuperação independente do catálogo anterior à migração. [Evidência do job](../verification/artifacts/E3-operations/linux-operational-job-report.md).
+
+No ensaio Alpine isolado, o job padrão recebeu `EACCES` ao ler a raiz privada. Com UID/GID 70:70, o job criou e releu um conjunto age de 256.248 bytes em 1.507 ms. A restauração em PostgreSQL 17.11 separado conferiu as contagens do catálogo, o SHA-256 da raiz e os quatro objetos originais em 902 ms. Os arquivos da origem permaneceram intactos. Os recursos descartáveis foram removidos. [Recibo Alpine](../verification/artifacts/E3-backup/alpine-rootless-backup-restore.json).
 
 Em teste, o job exige banco UUID próprio, porta interna 25434 em loopback e volume descartável. O modo de homologação exige revisão Git completa e alvo declarado. Produção, tentativas automáticas, verificação pública e comandos destrutivos são recusados pelo entrypoint desta etapa.
 

@@ -1,0 +1,47 @@
+{
+  "sourceRevision": "fb7935f9be78769c42f2088d95219ea0c7486325",
+  "node": "24.22.2",
+  "pnpm": "12.10.1",
+  "next": "16.4.3",
+  "verify": {
+    "startedAt": "2026-11-04T16:52:15.262Z",
+    "finishedAt": "2026-11-04T16:58:36.834Z",
+    "exitCode": 0,
+    "distDir": ".work/next-tests/fc0b6294-dffd-4068-862b-0242e114e035",
+    "source": "restored",
+    "protectedPreviewBuildUnchanged": true,
+    "command": "pnpm verify",
+    "vitest": {
+      "filesPassed": 214,
+      "passed": 1991,
+      "skipped": 3,
+      "failed": 0
+    },
+    "lintWarnings": 4,
+    "build": "passed",
+    "integrationFileParallelism": false
+  },
+  "playwright": {
+    "startTime": "2026-11-04T16:46:24.028Z",
+    "duration": 323593.716,
+    "expected": 121,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "command": "pnpm test:e2e --reporter=list,json",
+    "exitCode": 0,
+    "loopbackPort": 3119,
+    "isolatedPostgresPort": 55434,
+    "operationalScenarios": {
+      "config/dependency-diagnostics.e2e.test.ts": 1,
+      "config/public-cache.e2e.test.ts": 1,
+      "config/publication-sitemap.e2e.test.ts": 1,
+      "config/publication-worker.e2e.test.ts": 2
+    }
+  },
+  "setupRecovery": [
+    "Archived an abandoned fixed-port lease after checking Windows listeners and Docker ownership labels.",
+    "Removed a global worker override after it superseded serial integration execution.",
+    "Regenerated dependency links in the original checkout using the frozen lockfile and the existing offline pnpm store."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "verifiedDate": "2026-11-05",
+  "scope": "User-authorized local single-container setup and Lorem ipsum content",
+  "runtime": {
+    "startedAt": "2026-11-05T14:34:15.813Z",
+    "database": "a_design_for_life_rebuild",
+    "postgresVolume": "a-design-for-life-rebuild-postgres-data",
+    "sourceContainerId": "14d8dbcb70f51a5e9ddf98669beaa16afb45baf5a57d544186a537dd3b4a4ddc",
+    "before": {
+      "migrations": 16,
+      "users": 0,
+      "profiles": 0,
+      "navigation": 0,
+      "cases": 0,
+      "media": 0
+    },
+    "snapshot": {
+      "format": "PostgreSQL custom",
+      "bytes": 155334,
+      "sha256": "73351df95d28be45216afa1d1b2a6b749dd47a59e527d707477fd57d452d375e"
+    },
+    "after": {
+      "migrations": 16,
+      "users": 0,
+      "profiles": 0,
+      "navigation": 0,
+      "cases": 0,
+      "media": 0
+    },
+    "containerId": "dc555b021c01a5d11e0e4c4c99404aff4ff755e0ace9c5711f17f11ba3d4d8f7",
+    "imageId": "sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81",
+    "user": "70:70",
+    "databasePreserved": true,
+    "completedAt": "2026-11-05T14:34:24.835Z"
+  },
+  "content": {
+    "completedAt": "2026-11-05T14:50:29.079Z",
+    "origin": "http://localhost:3000",
+    "content": "user-authorized Lorem ipsum placeholders",
+    "media": 7,
+    "caseIdentities": 2,
+    "documents": 8,
+    "routes": {
+      "pt": "/pt/cases/lorem-ipsum-01",
+      "en": "/en/cases/lorem-ipsum-01"
+    },
+    "editorialTransport": "Native HTTP session, leases and confirmed publication"
+  },
+  "editorialCredentials": "Provided by the user in the ignored project .env; values omitted",
+  "contactsAndResumes": "Temporary demonstration contacts and two sample PDFs",
+  "transport": "Native HTTP login, media upload, editorial leases and confirmed publication",
+  "delivery": "R2 configured by the user; original five reference images preserved by SHA-256",
+  "publicRoutes200": [
+    "/pt",
+    "/en",
+    "/pt/cases",
+    "/en/cases",
+    "/pt/sobre",
+    "/en/about",
+    "/pt/cases/lorem-ipsum-01",
+    "/en/cases/lorem-ipsum-01"
+  ]
+}

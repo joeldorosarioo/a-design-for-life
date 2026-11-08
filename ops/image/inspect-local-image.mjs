@@ -6,8 +6,13 @@ const sourceRevision = /^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/;
 // Values inherited from the pinned base and the Dockerfile's static runtime defaults.
 const allowedEnvironment = new Set([
   'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-  'NODE_VERSION=24.22.2',
-  'YARN_VERSION=1.22.22',
+  'GOSU_VERSION=1.19',
+  'LANG=en_US.utf8',
+  'PG_MAJOR=17',
+  'PG_VERSION=17.11',
+  'PG_SHA256=dd27f2b3c59e73ed14aa3324901242bf69a032a6347805f274e6260322d42979',
+  'DOCKER_PG_LLVM_DEPS=llvm21-dev \t\tclang21',
+  'PGDATA=/var/lib/postgresql/data',
   'NODE_ENV=production',
   'NEXT_TELEMETRY_DISABLED=1',
   'PORT=3000',
@@ -21,7 +26,17 @@ export function inspectLocalImage(record, expected) {
   if (record?.Id !== expected.imageId) throw new Error('Unexpected local image identity.');
   if (record?.Os !== 'linux' || record?.Architecture !== 'amd64')
     throw new Error('Only the verified linux/amd64 image is supported.');
-  if (record?.Config?.User !== '10001:10001') throw new Error('Unexpected runtime user.');
+  if (record?.Config?.User !== 'appuser') throw new Error('Unexpected runtime user.');
+  const { Entrypoint, Cmd, StopSignal } = record.Config;
+  if (
+    (Entrypoint != null && (!Array.isArray(Entrypoint) || Entrypoint.length !== 0)) ||
+    !Array.isArray(Cmd) ||
+    Cmd.length !== 2 ||
+    Cmd[0] !== 'node' ||
+    Cmd[1] !== 'server.js' ||
+    StopSignal !== 'SIGTERM'
+  )
+    throw new Error('Unexpected container startup configuration.');
   if (record?.Config?.Labels?.['org.opencontainers.image.revision'] !== expected.revision)
     throw new Error('Unexpected source revision.');
   if (!Array.isArray(record.Config.Env)) throw new Error('Missing environment metadata.');

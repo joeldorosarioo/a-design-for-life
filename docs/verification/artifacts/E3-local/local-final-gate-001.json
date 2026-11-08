@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-05",
+  "command": "pnpm verify",
+  "runtime": {
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "next": "16.4.3"
+  },
+  "gate": {
+    "startedAt": "2026-11-05T15:33:24.748Z",
+    "finishedAt": "2026-11-05T15:42:21.263Z",
+    "exitCode": 0,
+    "distDir": ".work/next-tests/1275010e-ad9f-40d1-abb9-1ff28b7c2e2f",
+    "source": "restored",
+    "protectedPreviewBuildUnchanged": true
+  },
+  "vitest": {
+    "filesPassed": 218,
+    "testsPassed": 2026,
+    "testsSkipped": 3,
+    "testsFailed": 0
+  },
+  "sourceBaseRevision": "05301601170dbf16bae9fa80cd4d8f35cc8fe21e",
+  "validatedCodeSha256": "37a891eb2df65821a064f307fae46719911b5266bfdfc8a7f6dc7626f9b836fa",
+  "validatedCodeFiles": [
+    {
+      "path": "ops/backup/contracts.test.ts",
+      "sha256": "91cd3c6edb68e67a1eb5479265897ca34d3309a670637d631f9df48e4f1d3472"
+    },
+    {
+      "path": "ops/backup/contracts.ts",
+      "sha256": "a2e2f6405b5e871dce5a73eeac31f886bf2e4225dfc733833e4932614df97863"
+    },
+    {
+      "path": "ops/backup/job-settings.test.ts",
+      "sha256": "8320d018717a89bd9b6a07a31496f62a76048ba5646a1c43bd877e6bc2c2ae59"
+    },
+    {
+      "path": "ops/backup/job-settings.ts",
+      "sha256": "505eec110152d9994b667a268b45a6e890e147142faa8269b00f3d65f27da866"
+    },
+    {
+      "path": "ops/backup/job.ts",
+      "sha256": "8b78c16cf1c238d8513810f62e0a921e51529f2f0b9e583c4db7969cf327742b"
+    },
+    {
+      "path": "ops/backup/local.mjs",
+      "sha256": "585122a6ec3c0d48edd8db59de2d992063f4a28d9792238950546de28475e529"
+    },
+    {
+      "path": "ops/backup/local.test.ts",
+      "sha256": "d84498378eb254e5a50bc21947fb26492880ed1f32805ab2bef41398043ebc04"
+    },
+    {
+      "path": "ops/backup/restore.test.ts",
+      "sha256": "19d45e094b785b490f48913c945b6e043e80fc611c61e7719b62549a8f92628c"
+    },
+    {
+      "path": "ops/backup/restore.ts",
+      "sha256": "596a891903f9e2276ed795915d6b3453903d08b3a69753ae1226f21870ffb427"
+    },
+    {
+      "path": "ops/backup/retention.test.ts",
+      "sha256": "cf04170e1575130f17505a47780ea7ecadddee89143434533d0d8d8cf4400ed8"
+    },
+    {
+      "path": "ops/backup/retention.ts",
+      "sha256": "f1742344a00133ead0bf4594ca2b2720f09c715be739ebf7e0c0fc664bc646b4"
+    },
+    {
+      "path": "ops/backup/run.ts",
+      "sha256": "3ec6afcd8da7ad822da94d4891aad17eaca8c3400dde76d7b04f50745217b7d0"
+    },
+    {
+      "path": "ops/performance/profiles.json",
+      "sha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c"
+    },
+    {
+      "path": "ops/performance/run-local-audit.mjs",
+      "sha256": "6858ec96c0b4cd89283f18e5005081d0d099486d90d485db28c70fac2bb285c1"
+    },
+    {
+      "path": "ops/performance/run-local-audit.test.ts",
+      "sha256": "899272e7160990fed016aa437e1cd3c8b060d991b65684d1e94cf4036edac16c"
+    },
+    {
+      "path": "package.json",
+      "sha256": "f9eea64531723689159bc2a4c61e4f9407bfd81a358de1d37f416e37f2d7c020"
+    },
+    {
+      "path": "src/config/provision-local-editor.cli.ts",
+      "sha256": "490d711fa3d77610489fe86431d01a39223cdae71ab3374cb36bf23bcde31773"
+    },
+    {
+      "path": "src/config/provision-local-editor.integration.test.ts",
+      "sha256": "71f440a033a2e905d8de043c68adae9f1e9ee613d2449bf199720dacd51a1357"
+    },
+    {
+      "path": "src/config/provision-local-editor.test.ts",
+      "sha256": "628638da627f25c7576f455b0033bd984ac86ef8159b90a3293bcc61ed88ce73"
+    },
+    {
+      "path": "src/config/provision-local-editor.ts",
+      "sha256": "3e414728d7934f15c355b8bcaa60722200d8f819022aec1a82b4c79538987198"
+    }
+  ],
+  "scope": "Local operational commands, compatible archive contracts and reusable audit tooling; existing application image and its HTTP journeys remain separately evidenced."
+}

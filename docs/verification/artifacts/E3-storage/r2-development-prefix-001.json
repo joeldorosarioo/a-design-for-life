@@ -1,0 +1,18 @@
+{
+  "database": "adfl_local",
+  "nativeMedia": 1,
+  "objectsCreated": 5,
+  "originalHashVerified": true,
+  "authenticatedVariantWidth": 640,
+  "anonymousAppStatus": 404,
+  "directUnsignedOriginalAndDerivative": [
+    400,
+    400
+  ],
+  "originalSha256": "d21fd67d05f98cb5f007f960ae98a04562dc58402cc06ce1005a115387b8448e",
+  "migrationsApplied": 16,
+  "localAccountsPreserved": 1,
+  "projectTables": 31,
+  "objectsRemovedWithinPrefix": 6,
+  "objectsOutsidePrefixTargeted": 0
+}
