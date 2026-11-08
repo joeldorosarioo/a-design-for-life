@@ -126,7 +126,7 @@ function ready(element: HTMLElement | null, signal: AbortSignal, timeoutMs: numb
     return (
       !image.complete &&
       rect.top < (element?.getBoundingClientRect().bottom ?? window.innerHeight) &&
-      (image.loading !== 'lazy' || rect.bottom > readingLine())
+      (image.loading !== 'lazy' || (rect.bottom > readingLine() && rect.top < window.innerHeight))
     );
   });
   const resources = new AbortController();

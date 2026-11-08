@@ -1,4 +1,5 @@
 import { prepareTestLifecycle } from './test-lifecycle-lock';
+import { beginOwnedDatabaseOutage, finishOwnedDatabaseOutage } from './owned-database-outage';
 import { spawnSync } from 'node:child_process';
 import { createServer } from 'node:net';
 import { fileURLToPath } from 'node:url';
@@ -64,8 +65,22 @@ export function inspectOwnedTestDatabase(attached: boolean | 'cleanup' = true, e
 
 export function setOwnedTestDatabaseNetwork(action: 'disconnect' | 'connect') {
   const owned = inspectOwnedTestDatabase(action === 'disconnect');
-  docker(['network', action, owned.networkId, owned.containerId], process.env);
-  inspectOwnedTestDatabase(action === 'connect');
+  if (action === 'disconnect') beginOwnedDatabaseOutage(owned);
+  try {
+    docker(['network', action, owned.networkId, owned.containerId], process.env);
+    const verified = inspectOwnedTestDatabase(action === 'connect');
+    if (action === 'connect') finishOwnedDatabaseOutage(verified);
+  } catch (error) {
+    // Either command may fail after restoring the attachment. Close only
+    // after verifying that exact connection; uncertain recovery keeps scope.
+    try {
+      const attached = inspectOwnedTestDatabase();
+      finishOwnedDatabaseOutage(attached);
+    } catch {
+      // Keep the scoped outage until a verified reconnect succeeds.
+    }
+    throw error;
+  }
 }
 
 export async function startOwnedTestDatabase() {

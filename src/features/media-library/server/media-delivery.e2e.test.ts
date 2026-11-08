@@ -189,7 +189,9 @@ test('native media UI creates an immutable asset and shows its private thumbnail
   await page
     .locator('input[type=file]')
     .setInputFiles({ name: 'synthetic-ui.png', mimeType: 'image/png', buffer: bytes });
-  await page.getByLabel('Identificação interna', { exact: true }).fill('Synthetic native media UI');
+  await page
+    .getByLabel('Nome para encontrar o arquivo na biblioteca', { exact: true })
+    .fill('Synthetic native media UI');
   const created = page.waitForResponse(
     (response) =>
       new URL(response.url()).pathname === '/api/media' && response.request().method() === 'POST',
@@ -201,9 +203,9 @@ test('native media UI creates an immutable asset and shows its private thumbnail
   expect(doc.label).toBe('Synthetic native media UI');
   await expect(page).toHaveURL(new RegExp('/admin/collections/media/' + doc.id + '(?:[?].*)?$'));
   await page.reload();
-  await expect(page.getByLabel('Identificação interna', { exact: true })).toHaveValue(
-    'Synthetic native media UI',
-  );
+  await expect(
+    page.getByLabel('Nome para encontrar o arquivo na biblioteca', { exact: true }),
+  ).toHaveValue('Synthetic native media UI');
   const thumbnail = await page.request.get(`/preview-media/${doc.id}/w80`);
   expect(thumbnail.status()).toBe(200);
   await page.screenshot({
