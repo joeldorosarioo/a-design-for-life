@@ -1,0 +1,916 @@
+{
+  "revision": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+  "imageDigest": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+  "candidateOrigin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "startedAt": "2026-11-08T19:18:44.144Z",
+  "finishedAt": "2026-11-08T19:19:05.355Z",
+  "browser": {
+    "browser": "156.0.8078.4",
+    "node": "24.22.2",
+    "playwright": "1.64.1",
+    "axe": "4.14.0",
+    "requests": {
+      "GET": 266,
+      "HEAD": 0,
+      "blocked": 0,
+      "backgroundRejected": 0
+    },
+    "externalAttempts": [],
+    "browserErrors": []
+  },
+  "totals": {
+    "caseLayouts": 12,
+    "axeStates": 20,
+    "axeViolations": 0,
+    "skipLinks": 12,
+    "menus": 8,
+    "tabAndReverseTab": 96,
+    "escapeReturnedVisibleFocus": 8,
+    "incompleteDecorativeContrastNodes": 20,
+    "minimumMeasuredContrast": 7.82159101344156,
+    "incompleteAriaHiddenFocusNodes": 48,
+    "overflows": 0,
+    "brokenImages": 0,
+    "reducedMotionScrollAuto": 12,
+    "identicalFullPageDimensions": 12,
+    "identicalPixelsOutsideCover": 12,
+    "figmaFramesCompared": 6,
+    "ssrPages": 10,
+    "ssrExpectedStates": 9
+  },
+  "interactions": [
+    {
+      "locale": "pt",
+      "width": 390,
+      "tocFocus": {
+        "tag": "A",
+        "hash": "#section-03ce1991-d93b-4c3c-b6a8-cbc2632240e8",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "tocCurrent": "location",
+      "tocMs": 13,
+      "contactFocus": {
+        "tag": "A",
+        "hash": "#contact",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "contactMs": 7,
+      "contact": {
+        "pathname": "/pt/cases/flexibilidade-de-pagamento",
+        "hash": "#contact",
+        "targetFocused": true,
+        "headerBottom": 156,
+        "targetTop": 595,
+        "targetBottom": 711,
+        "viewportHeight": 844,
+        "openDialog": false
+      },
+      "video": {
+        "file": "page@041f84f3601e164d7f496bec0f2d8a9b.webm",
+        "sha256": "f6fc8e078e1afa9f4f7aa53f3d443512e3f0245dd18568217e6bb46eea125dd8"
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "tocFocus": {
+        "tag": "A",
+        "hash": "#section-03ce1991-d93b-4c3c-b6a8-cbc2632240e8",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "tocCurrent": "location",
+      "tocMs": 17,
+      "contactFocus": {
+        "tag": "A",
+        "hash": "#contact",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "contactMs": 2,
+      "contact": {
+        "pathname": "/en/cases/payment-flexibility",
+        "hash": "#contact",
+        "targetFocused": true,
+        "headerBottom": 96,
+        "targetTop": 661,
+        "targetBottom": 711,
+        "viewportHeight": 844,
+        "openDialog": false
+      },
+      "video": {
+        "file": "page@fa9aa7d957f6daf93cc0e1d14bf7ed0b.webm",
+        "sha256": "23b75e4a94bdce7a1bbc3a73afcecc070a6031276d4091aa5035bc97c61ca681"
+      }
+    }
+  ],
+  "covers": [
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "viewport": [
+        390,
+        844
+      ],
+      "screenshotBefore": {
+        "file": "case-pt-390.png",
+        "sha256": "25f2ee0d35002621c1c0c6c88c773e892bbd8c454c0abb615d74129beeafa8fa",
+        "bytes": 359517
+      },
+      "screenshotAfter": {
+        "file": "case-pt-390.png",
+        "sha256": "c9145e6109f79f2a621994301eedb319ffd981ce5c10fa372773e38a55c7adec",
+        "bytes": 355318
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        390,
+        3223
+      ],
+      "cover": {
+        "box": [
+          24,
+          604,
+          342,
+          192
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 640,
+        "encodedBodySize": 66632,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 29536,
+      "changedBounds": [
+        116,
+        604,
+        273,
+        795
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "viewport": [
+        820,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-pt-820.png",
+        "sha256": "44783c95964124971d84b89ecf854b8843b8a1b30d4d3762ace907602e039b03",
+        "bytes": 663636
+      },
+      "screenshotAfter": {
+        "file": "case-pt-820.png",
+        "sha256": "09600b1595c4c6f6e3a972f143f77567d18cf1132fab7cfd31367f87c925f3aa",
+        "bytes": 654151
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        820,
+        2846
+      ],
+      "cover": {
+        "box": [
+          24,
+          528,
+          772,
+          433.390625
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 384,
+        "encodedBodySize": 29298,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 150640,
+      "changedBounds": [
+        233,
+        528,
+        586,
+        960
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "viewport": [
+        1440,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-pt-1440.png",
+        "sha256": "832df9102e8b11fa031b4535f4c6b782ba475beae9af020090daae781c74cf3c",
+        "bytes": 833174
+      },
+      "screenshotAfter": {
+        "file": "case-pt-1440.png",
+        "sha256": "e2efa0b76227c0ee7170d011b6dbf3c21c534fecc15b566029830db9eaa56f91",
+        "bytes": 834186
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        1440,
+        3099
+      ],
+      "cover": {
+        "box": [
+          80,
+          624,
+          1280,
+          480
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 640,
+        "encodedBodySize": 66632,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 182810,
+      "changedBounds": [
+        524,
+        624,
+        916,
+        1103
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "viewport": [
+        390,
+        844
+      ],
+      "screenshotBefore": {
+        "file": "case-en-390.png",
+        "sha256": "c9df9faebd7ba7d191d865095942a1469729d6e62dc7342fed76a98010886970",
+        "bytes": 351284
+      },
+      "screenshotAfter": {
+        "file": "case-en-390.png",
+        "sha256": "91bffed7c72c0c561bb053f3f94273f720179198b9d55bec4a4d1282107933d4",
+        "bytes": 347212
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        390,
+        3155
+      ],
+      "cover": {
+        "box": [
+          24,
+          604,
+          342,
+          192
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 640,
+        "encodedBodySize": 66632,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 29536,
+      "changedBounds": [
+        116,
+        604,
+        273,
+        795
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "viewport": [
+        820,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-en-820.png",
+        "sha256": "16a07f3f8cc2bd8ff84d1af43e95b2d9cfc8b2df7e3b25d37296b9c917f8b83d",
+        "bytes": 655629
+      },
+      "screenshotAfter": {
+        "file": "case-en-820.png",
+        "sha256": "584be50a1da9a583af7d5682d0e07c1e0bb7b9cf1fe919d421e4f39cedfca7ce",
+        "bytes": 646251
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        820,
+        2846
+      ],
+      "cover": {
+        "box": [
+          24,
+          528,
+          772,
+          433.390625
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 384,
+        "encodedBodySize": 29298,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 150640,
+      "changedBounds": [
+        233,
+        528,
+        586,
+        960
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "viewport": [
+        1440,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-en-1440.png",
+        "sha256": "15dcbaac0c112ab4d9e7a1c7748842a4d947626adf8c4c0d3041017bf99ff769",
+        "bytes": 825288
+      },
+      "screenshotAfter": {
+        "file": "case-en-1440.png",
+        "sha256": "7d97fc79a16b48f5fb07c4ee1da7b02ee3d926ebbcbb4ad5e7842c6637f3f67f",
+        "bytes": 826438
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        1440,
+        3075
+      ],
+      "cover": {
+        "box": [
+          80,
+          624,
+          1280,
+          480
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 640,
+        "encodedBodySize": 66632,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 182810,
+      "changedBounds": [
+        524,
+        624,
+        916,
+        1103
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "viewport": [
+        390,
+        844
+      ],
+      "screenshotBefore": {
+        "file": "case-2-pt-390.png",
+        "sha256": "9c9d21caf0d01ea1030959d3b7c5d37ec8613e8d04146201be3d4aab76474d48",
+        "bytes": 324111
+      },
+      "screenshotAfter": {
+        "file": "case-2-pt-390.png",
+        "sha256": "9c9d21caf0d01ea1030959d3b7c5d37ec8613e8d04146201be3d4aab76474d48",
+        "bytes": 324111
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        390,
+        3335
+      ],
+      "cover": {
+        "box": [
+          24,
+          604,
+          342,
+          192
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 1080,
+        "encodedBodySize": 46732,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 0,
+      "changedBounds": null,
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "viewport": [
+        820,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-2-pt-820.png",
+        "sha256": "813d4be523e7f9cf8d67dd12a8a8d5ad72da0e1ef125c41f3de2ee2d9b56658b",
+        "bytes": 500280
+      },
+      "screenshotAfter": {
+        "file": "case-2-pt-820.png",
+        "sha256": "813d4be523e7f9cf8d67dd12a8a8d5ad72da0e1ef125c41f3de2ee2d9b56658b",
+        "bytes": 500280
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        820,
+        2818
+      ],
+      "cover": {
+        "box": [
+          24,
+          500,
+          772,
+          433.390625
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 828,
+        "encodedBodySize": 28760,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 0,
+      "changedBounds": null,
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "viewport": [
+        1440,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-2-pt-1440.png",
+        "sha256": "ede4707d33039ae4b0599a0a6cd05d4c5702ffa43b6f661e73e47a6516c73226",
+        "bytes": 718704
+      },
+      "screenshotAfter": {
+        "file": "case-2-pt-1440.png",
+        "sha256": "01b78849bd37de21a35711e83f2c057df179cf222f1d5f40151b8c03f261c12e",
+        "bytes": 732415
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        1440,
+        3099
+      ],
+      "cover": {
+        "box": [
+          80,
+          624,
+          1280,
+          480
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 1080,
+        "encodedBodySize": 46732,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 168719,
+      "changedBounds": [
+        217,
+        624,
+        1222,
+        1103
+      ],
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "viewport": [
+        390,
+        844
+      ],
+      "screenshotBefore": {
+        "file": "case-2-en-390.png",
+        "sha256": "b94da016443cf29967094bd40005470ef31c2138466358a8ea7ca8187753ce3a",
+        "bytes": 322339
+      },
+      "screenshotAfter": {
+        "file": "case-2-en-390.png",
+        "sha256": "b94da016443cf29967094bd40005470ef31c2138466358a8ea7ca8187753ce3a",
+        "bytes": 322339
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        390,
+        3331
+      ],
+      "cover": {
+        "box": [
+          24,
+          604,
+          342,
+          192
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 1080,
+        "encodedBodySize": 46732,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 0,
+      "changedBounds": null,
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "viewport": [
+        820,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-2-en-820.png",
+        "sha256": "c5fd997489e9c6fcf624d62720ba3a5717bc005f9a10a1ba4155c8b69a52703a",
+        "bytes": 501614
+      },
+      "screenshotAfter": {
+        "file": "case-2-en-820.png",
+        "sha256": "c5fd997489e9c6fcf624d62720ba3a5717bc005f9a10a1ba4155c8b69a52703a",
+        "bytes": 501614
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        820,
+        2846
+      ],
+      "cover": {
+        "box": [
+          24,
+          528,
+          772,
+          433.390625
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 828,
+        "encodedBodySize": 28760,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 0,
+      "changedBounds": null,
+      "changedPixelsOutsideCover": 0
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "viewport": [
+        1440,
+        900
+      ],
+      "screenshotBefore": {
+        "file": "case-2-en-1440.png",
+        "sha256": "1911975b96ff20fb314b717a1083b4a14e6609d9c2e3c839d64a68881a910b3f",
+        "bytes": 723625
+      },
+      "screenshotAfter": {
+        "file": "case-2-en-1440.png",
+        "sha256": "131645e3894edd5519155f5e1d7a2e44f44155da9acbb1b707ac47d119036055",
+        "bytes": 739916
+      },
+      "sameDimensions": true,
+      "dimensions": [
+        1440,
+        3075
+      ],
+      "cover": {
+        "box": [
+          80,
+          624,
+          1280,
+          480
+        ],
+        "sameOrigin": true,
+        "imageOptimizerPath": true,
+        "requestedWidth": 1080,
+        "encodedBodySize": 46732,
+        "format": "image/webp",
+        "fit": "contain"
+      },
+      "changedPixels": 168719,
+      "changedBounds": [
+        217,
+        624,
+        1222,
+        1103
+      ],
+      "changedPixelsOutsideCover": 0
+    }
+  ],
+  "comparisons": [
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "device": "desktop",
+      "frameId": "123:838",
+      "originalFile": "case-pt-desktop-123-838.png",
+      "originalSha256": "09da573eb201cd1da34d56d15a7ca81f1d7bdf87560b336da9d71d818f9bf3e2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4654
+      ],
+      "capture": "case-pt-1440.png",
+      "captureSha256": "e2efa0b76227c0ee7170d011b6dbf3c21c534fecc15b566029830db9eaa56f91",
+      "captureCssDimensions": [
+        1440,
+        3099
+      ]
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "device": "mobile",
+      "frameId": "123:954",
+      "originalFile": "case-pt-mobile-123-954.png",
+      "originalSha256": "19a3a6cd1fca6208ce2a43611147f039748289e913f1a7cf1d37a4f771ed1629",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5848
+      ],
+      "capture": "case-pt-390.png",
+      "captureSha256": "c9145e6109f79f2a621994301eedb319ffd981ce5c10fa372773e38a55c7adec",
+      "captureCssDimensions": [
+        390,
+        3223
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "device": "desktop",
+      "frameId": "125:4693",
+      "originalFile": "case-en-desktop-125-4693.png",
+      "originalSha256": "816832dff588834a28f692b67b4743b54b919426182b16fd7614adb5b76cfdff",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-en-1440.png",
+      "captureSha256": "7d97fc79a16b48f5fb07c4ee1da7b02ee3d926ebbcbb4ad5e7842c6637f3f67f",
+      "captureCssDimensions": [
+        1440,
+        3075
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "device": "mobile",
+      "frameId": "125:4961",
+      "originalFile": "case-en-mobile-125-4961.png",
+      "originalSha256": "5973ae8ef45373e55d84d6f6e7f555d4095d9f77871e24814b9681cb859a50be",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5912
+      ],
+      "capture": "case-en-390.png",
+      "captureSha256": "91bffed7c72c0c561bb053f3f94273f720179198b9d55bec4a4d1282107933d4",
+      "captureCssDimensions": [
+        390,
+        3155
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "device": "desktop",
+      "frameId": "126:8101",
+      "originalFile": "case02-en-desktop-126-8101.png",
+      "originalSha256": "98a623ea64083f06e3b9145c707831e6ef9d34d4883f1720ef7c1c85270e5b45",
+      "priorOriginalHashMatched": false,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-2-en-1440.png",
+      "captureSha256": "131645e3894edd5519155f5e1d7a2e44f44155da9acbb1b707ac47d119036055",
+      "captureCssDimensions": [
+        1440,
+        3075
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "device": "mobile",
+      "frameId": "126:8293",
+      "originalFile": "case02-en-mobile-126-8293.png",
+      "originalSha256": "5d0903d705cac5723664d98866b09164fbb6740ffb505d9fd5096fc27a3005f8",
+      "priorOriginalHashMatched": false,
+      "originalCssDimensions": [
+        390,
+        5960
+      ],
+      "capture": "case-2-en-390.png",
+      "captureSha256": "b94da016443cf29967094bd40005470ef31c2138466358a8ea7ca8187753ce3a",
+      "captureCssDimensions": [
+        390,
+        3331
+      ]
+    }
+  ],
+  "visualSheets": [
+    {
+      "target": "case-pt",
+      "file": "case-pt.jpg",
+      "sha256": "e0068c957c58154d868a891ffbecb614743eeb7c576e8eb76035d64e8aef1695",
+      "dimensions": [
+        1138,
+        2014
+      ]
+    },
+    {
+      "target": "case-en",
+      "file": "case-en.jpg",
+      "sha256": "543efe909d5254d8101afc749caecc0417b2a9a126ac2c8008c33cf5670ea7a5",
+      "dimensions": [
+        1138,
+        2036
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "file": "case-2-en.jpg",
+      "sha256": "ee35f679f3f77ed61d1c2aeb7fc9380afaf834e0868458ffbda261d8b84ea75b",
+      "dimensions": [
+        1138,
+        2052
+      ]
+    }
+  ],
+  "zoom": {
+    "startedAt": "2026-11-08T19:19:51.797Z",
+    "finishedAt": "2026-11-08T19:19:53.361Z",
+    "sourceSha": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+    "imageDigest": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+    "chrome": "Chrome/156.0.8078.80",
+    "protocol": "Default page zoom via Chrome settingsPrivate on the browser-owned settings page of an isolated profile, headless full Chrome; observed CSS viewport and DPR. No CSS zoom or pinch emulation.",
+    "before": {
+      "chromeZoom": 1,
+      "innerWidth": 1424,
+      "innerHeight": 805,
+      "dpr": 1,
+      "visualViewportScale": 1,
+      "overflow": 0,
+      "scrollHeight": 3099
+    },
+    "at200": {
+      "chromeZoom": 2,
+      "innerWidth": 712,
+      "innerHeight": 402,
+      "dpr": 2,
+      "visualViewportScale": 1,
+      "overflow": 0,
+      "scrollHeight": 2942
+    },
+    "restored": {
+      "chromeZoom": 1,
+      "innerWidth": 1424,
+      "innerHeight": 805,
+      "dpr": 1,
+      "visualViewportScale": 1,
+      "overflow": 0,
+      "scrollHeight": 3099
+    },
+    "inDialog": true,
+    "escapeReturnedVisibleFocus": true,
+    "contact": {
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "hash": "#contact",
+      "focus": "contact",
+      "headerBottom": 156,
+      "top": 219.265625,
+      "bottom": 269.265625,
+      "viewport": 402
+    },
+    "evidence": [
+      {
+        "file": "menu-zoom200.png",
+        "sha256": "9f2a99350bae6a4c73e72563029501b07e8c9bf1cea0d9ec8869268f9d3f61db",
+        "dimensions": [
+          1424,
+          805
+        ]
+      },
+      {
+        "file": "contact-zoom200.png",
+        "sha256": "7f847eeae48d7301744e2f0072b09e57c698a851e0047b501942e5153821fe37",
+        "dimensions": [
+          1424,
+          805
+        ]
+      }
+    ],
+    "requests": {
+      "GET": 19,
+      "HEAD": 0,
+      "blocked": 0,
+      "backgroundRejected": 14,
+      "backgroundPeerDisconnected": 1
+    },
+    "externalAttempts": []
+  },
+  "rawEvidence": [
+    {
+      "path": ".work/stage4-2026-11-06/quality-003/browser-summary.json",
+      "sha256": "e19a5eee25a3ed267edca9931111c04c406c95efb5d3d0be861a00a57d43979d"
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-003/ssr.json",
+      "sha256": "7b3051b923f8404e70dc3428b8652cec09519b5b6b95c7d2ae11c398fd9e1a43"
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-003/pixel-differences.json",
+      "sha256": "6b296d2f409b48907b676f97b3232d2313a7e16c8c6aaac874cfcd6dd103f1a8"
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-comparison-003/comparison.json",
+      "sha256": "4be60c6d686729453c05eea5bd986f8abc3beff6295cb1ae3e04504437f53323"
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-zoom-004/zoom.json",
+      "sha256": "5b7defdad4800e79459a894937cb2a7ff0a851ad143270962042314261027533"
+    }
+  ],
+  "runners": [
+    {
+      "path": ".work/stage4-2026-11-06/quality-audit-final.mjs",
+      "sha256": "6190f3998bae89af880e7815564c276b5eaaee45c6ed9eb5acab19fbd8fd2475",
+      "exitCode": 0
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-comparison-final.mjs",
+      "sha256": "ea0ae579886d6c58c52ac54df3afe9b3cbcbb55bf4cba93376cc87fda5db354e",
+      "exitCode": 0
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-pixels-final.mjs",
+      "sha256": "f1b8576a3af82da3b83bfaf228024608290d8ca062a635ed748476c4e3965cba",
+      "exitCode": 0
+    },
+    {
+      "path": ".work/stage4-2026-11-06/quality-zoom-final.mjs",
+      "sha256": "4420fbdbb7e92a4ee78d398204e57bd09e06252a5cb0db82d2b0fb5f0469ab6c",
+      "exitCode": 0
+    }
+  ],
+  "ssrMetadataAndHttpPolicyUnchanged": true,
+  "formalScreenReader": "pending",
+  "preservedZoomAttempt": {
+    "run": "003",
+    "exitCode": 1,
+    "observation": "Browser background proxy CONNECT was already rejected. Its client reset the socket during shutdown; the observer did not handle ECONNRESET. The retry counts peer disconnects on the rejecting proxy and uses a new profile."
+  },
+  "scope": "New staging candidate, no editorial login, GET/HEAD only and external traffic blocked. The health and digest binding are recorded by the coordinator."
+}

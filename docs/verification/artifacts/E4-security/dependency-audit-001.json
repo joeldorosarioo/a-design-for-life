@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "kind": "stage4-pnpm-lockfile-dependency-advisories",
+  "checkedOn": "2026-11-08",
+  "sourceCommit": "7331e34c7ed52e9be44fa1e4fa3247f4820d64b3",
+  "node": "24.22.2",
+  "pnpm": "12.10.1",
+  "commands": ["pnpm audit --json", "pnpm audit --prod --json"],
+  "lockfileSha256": "07c67f17617f0f41d155be2b519348d65e6704a3a82b7a779e4eaaebc2a9bbbb",
+  "registryAudits": [
+    {
+      "scope": "all",
+      "exitCode": 1,
+      "rawPrivateLog": ".work/stage4-2026-11-06/dependency-audit-001.json",
+      "sha256": "a48e0b9cdcd2ff8117808864db5204904f3b6a0bafc18f947f5bf063a1fcf1e1",
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 1,
+          "moderate": 3,
+          "high": 2,
+          "critical": 0
+        },
+        "dependencies": 458,
+        "devDependencies": 525,
+        "optionalDependencies": 232,
+        "totalDependencies": 1120
+      },
+      "advisories": [
+        {
+          "id": "GHSA-67mh-4wv8-2f99",
+          "package": "esbuild",
+          "severity": "moderate",
+          "version": ["0.18.20"],
+          "affected": "<=0.24.2",
+          "patched": ">=0.25.0",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "dependencyPathCount": 1,
+          "representativePaths": [
+            ".>@payloadcms/db-postgres>drizzle-kit>@esbuild-kit/esm-loader>@esbuild-kit/core-utils>esbuild"
+          ]
+        },
+        {
+          "id": "GHSA-834v-8h66-3h79",
+          "package": "happy-dom",
+          "severity": "high",
+          "version": ["20.14.6"],
+          "affected": ">=17.0.0 <=21.0.3",
+          "patched": ">=21.0.4",
+          "url": "https://github.com/advisories/GHSA-834v-8h66-3h79",
+          "dependencyPathCount": 3,
+          "representativePaths": [
+            ".>@payloadcms/richtext-lexical>@lexical/headless>happy-dom",
+            ".>@testing-library/jest-dom>vitest>happy-dom",
+            ".>vitest>happy-dom"
+          ]
+        },
+        {
+          "id": "GHSA-gcqx-w48m-w2h4",
+          "package": "deepmerge",
+          "severity": "low",
+          "version": ["4.3.1"],
+          "affected": ">=4.2.0 <=4.3.1",
+          "patched": null,
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "dependencyPathCount": 13,
+          "representativePaths": [
+            ".>@payloadcms/db-postgres>@payloadcms/drizzle>payload>deepmerge",
+            ".>@payloadcms/db-postgres>payload>deepmerge",
+            ".>@payloadcms/email-resend>payload>deepmerge",
+            ".>@payloadcms/next>@payloadcms/graphql>payload>deepmerge",
+            ".>@payloadcms/next>@payloadcms/ui>payload>deepmerge"
+          ]
+        },
+        {
+          "id": "GHSA-c8p4-j97h-3vg8",
+          "package": "happy-dom",
+          "severity": "high",
+          "version": ["20.14.6"],
+          "affected": "<=20.14.6",
+          "patched": ">=21.0.0",
+          "url": "https://github.com/advisories/GHSA-c8p4-j97h-3vg8",
+          "dependencyPathCount": 3,
+          "representativePaths": [
+            ".>@payloadcms/richtext-lexical>@lexical/headless>happy-dom",
+            ".>@testing-library/jest-dom>vitest>happy-dom",
+            ".>vitest>happy-dom"
+          ]
+        },
+        {
+          "id": "GHSA-3g3m-2fjr-6pw4",
+          "package": "glob",
+          "severity": "moderate",
+          "version": ["13.0.6"],
+          "affected": ">=9.0.0 <=14.0.1",
+          "patched": ">=14.0.2",
+          "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+          "dependencyPathCount": 1,
+          "representativePaths": [".>lighthouse>@sentry/node>@sentry/bundler-plugins>glob"]
+        },
+        {
+          "id": "GHSA-g3hv-75wg-m249",
+          "package": "minimatch",
+          "severity": "moderate",
+          "version": ["10.2.6"],
+          "affected": ">=7.0.0 <11.0.1",
+          "patched": ">=11.0.1",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "dependencyPathCount": 12,
+          "representativePaths": [
+            ".>eslint-config-next>eslint-import-resolver-typescript>eslint-plugin-import>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+            ".>eslint-config-next>eslint-import-resolver-typescript>eslint-plugin-import>eslint-module-utils>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+            ".>eslint-config-next>eslint-plugin-import>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+            ".>eslint-config-next>eslint-plugin-import>eslint-module-utils>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+            ".>eslint-config-next>typescript-eslint>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch"
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "prod",
+      "exitCode": 1,
+      "rawPrivateLog": ".work/stage4-2026-11-06/dependency-audit-prod-001.json",
+      "sha256": "45311d37877334a9a16fe3926cb69b03148190054269f7173ab27e448763b45a",
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 1,
+          "moderate": 1,
+          "high": 2,
+          "critical": 0
+        },
+        "dependencies": 437,
+        "devDependencies": 0,
+        "optionalDependencies": 158,
+        "totalDependencies": 595
+      },
+      "advisories": [
+        {
+          "id": "GHSA-67mh-4wv8-2f99",
+          "package": "esbuild",
+          "severity": "moderate",
+          "version": ["0.18.20"],
+          "affected": "<=0.24.2",
+          "patched": ">=0.25.0",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "dependencyPathCount": 1,
+          "representativePaths": [
+            ".>@payloadcms/db-postgres>drizzle-kit>@esbuild-kit/esm-loader>@esbuild-kit/core-utils>esbuild"
+          ]
+        },
+        {
+          "id": "GHSA-834v-8h66-3h79",
+          "package": "happy-dom",
+          "severity": "high",
+          "version": ["20.14.6"],
+          "affected": ">=17.0.0 <=21.0.3",
+          "patched": ">=21.0.4",
+          "url": "https://github.com/advisories/GHSA-834v-8h66-3h79",
+          "dependencyPathCount": 1,
+          "representativePaths": [".>@payloadcms/richtext-lexical>@lexical/headless>happy-dom"]
+        },
+        {
+          "id": "GHSA-gcqx-w48m-w2h4",
+          "package": "deepmerge",
+          "severity": "low",
+          "version": ["4.3.1"],
+          "affected": ">=4.2.0 <=4.3.1",
+          "patched": null,
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "dependencyPathCount": 13,
+          "representativePaths": [
+            ".>@payloadcms/db-postgres>@payloadcms/drizzle>payload>deepmerge",
+            ".>@payloadcms/db-postgres>payload>deepmerge",
+            ".>@payloadcms/email-resend>payload>deepmerge",
+            ".>@payloadcms/next>@payloadcms/graphql>payload>deepmerge",
+            ".>@payloadcms/next>@payloadcms/ui>payload>deepmerge"
+          ]
+        },
+        {
+          "id": "GHSA-c8p4-j97h-3vg8",
+          "package": "happy-dom",
+          "severity": "high",
+          "version": ["20.14.6"],
+          "affected": "<=20.14.6",
+          "patched": ">=21.0.0",
+          "url": "https://github.com/advisories/GHSA-c8p4-j97h-3vg8",
+          "dependencyPathCount": 1,
+          "representativePaths": [".>@payloadcms/richtext-lexical>@lexical/headless>happy-dom"]
+        }
+      ]
+    }
+  ],
+  "limit": "Registry flags the package tree. Separate upstream notices and reachability review in seguranca.md."
+}

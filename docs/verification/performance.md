@@ -78,3 +78,7 @@ O executor reutilizável exige Node 24.22.2 e as ferramentas já instaladas no p
 node ops/performance/run-local-audit.mjs --config .work/local-audits/2026-11-05-final-config.json --output .work/local-audits/nova-rodada
 node ops/performance/run-local-audit.mjs --config .work/local-audits/2026-11-05-final-config.json --output .work/local-audits/nova-rodada --run
 ```
+
+## Etapa 4 — candidata de homologação
+
+A rodada atual de staging, o diagnóstico e os recibos estão no [relatório E4.2](E4.2-performance.md). Os resultados anteriores nesta página se referem às suas imagens, origens e conjuntos de conteúdo próprios.

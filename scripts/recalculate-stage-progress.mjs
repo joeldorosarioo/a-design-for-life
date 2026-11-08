@@ -8,12 +8,12 @@ let stageSpecified = false;
 const args = process.argv.slice(2);
 for (let index = 0; index < args.length; index++) {
   if (args[index] === '--check' && !check) check = true;
-  else if (args[index] === '--stage' && !stageSpecified && /^[23]$/.test(args[index + 1] ?? '')) {
+  else if (args[index] === '--stage' && !stageSpecified && /^[234]$/.test(args[index + 1] ?? '')) {
     stage = Number(args[++index]);
     stageSpecified = true;
   } else
     throw new Error(
-      'Invalid arguments. Usage: node scripts/recalculate-stage-progress.mjs [--stage 2|3] [--check]',
+      'Invalid arguments. Usage: node scripts/recalculate-stage-progress.mjs [--stage 2|3|4] [--check]',
     );
 }
 
@@ -32,19 +32,26 @@ const headings = [...plan.matchAll(/^### (E\d+\.\d+) [^\r\n]+/gm)];
 const tasks = headings
   .filter((heading) => heading[1].startsWith(`E${stage}.`))
   .map((heading) => {
-    const end = headings.find((next) => next.index > heading.index)?.index ?? plan.length;
+    const nextTask = headings.find((next) => next.index > heading.index)?.index ?? plan.length;
+    const sectionOffset = plan.slice(heading.index).search(/^## /m);
+    const nextSection = sectionOffset < 0 ? plan.length : heading.index + sectionOffset;
+    const end = Math.min(nextTask, nextSection);
     const count = [...plan.slice(heading.index, end).matchAll(/^- \[ \] /gm)].length;
     return {
       id: heading[1],
       items: Array.from({ length: count }, (_, index) => `${heading[1]}.${index + 1}`),
     };
   });
+const expectedTaskSizes = stage === 4 ? [5, 6, 5] : [5, 5, 5, 5, 5, 5];
 if (
-  tasks.length !== 6 ||
-  tasks.some((task, index) => task.id !== `E${stage}.${index + 1}` || task.items.length !== 5)
+  tasks.length !== expectedTaskSizes.length ||
+  tasks.some(
+    (task, index) =>
+      task.id !== `E${stage}.${index + 1}` || task.items.length !== expectedTaskSizes[index],
+  )
 )
   throw new Error(
-    `Stage ${stage} must account for the original six tasks and thirty checklist items.`,
+    `Stage ${stage} must account for its original tasks and checklist items (${expectedTaskSizes.join('/')}).`,
   );
 
 const data = JSON.parse(input);
@@ -98,10 +105,9 @@ if (check) {
   // Preserve the existing authorization notice above the generated heading.
   const notice = existingMarkdown.match(/^([\s\S]*?)(?=^# )/m)?.[1] ?? '';
   let md = `${notice}# Progresso verificável — etapa ${stage}\n\n**${percent}%: ${completedItems}/${ids.length} itens; ${closedTasks.length}/${tasks.length} tarefas inteiramente encerradas. Aprovação registrada: ${approval}.**\n\n`;
-  const command = `node scripts/recalculate-stage-progress.mjs${stage === 2 ? '' : ' --stage 3'}`;
+  const command = `node scripts/recalculate-stage-progress.mjs${stage === 2 ? '' : ` --stage ${stage}`}`;
   md += `Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar \`${command}\`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. \`--check\` confere sem escrever.\n\n`;
-  md +=
-    'A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis. Aprovação do usuário é independente da contagem.\n\n';
+  md += `A métrica conta as ${ids.length} caixas do plano original, distribuídas em ${expectedTaskSizes.join('/')} por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis. Aprovação do usuário é independente da contagem.\n\n`;
   if (stage === 2)
     md +=
       'A caixa de preparação do primeiro RED pode estar concluída com a implementação ainda aberta nas seguintes (E2.5.1).\n\n';

@@ -1,0 +1,375 @@
+{
+  "version": 1,
+  "kind": "deployed-staging-native-device-policy-browser-audit",
+  "status": "passed",
+  "startedAt": "2026-11-08T19:21:56.916Z",
+  "checkedAt": "2026-11-08T19:21:59.030Z",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "deploymentReference": {
+    "imageDigest": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+    "sourceSha": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+    "source": "Coordinator supplied after SSH image/source inspection; browser audit does not inspect Docker itself."
+  },
+  "browserVersion": "156.0.8078.4",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "credentials": {
+    "source": "local ignored .env, Basic Auth only",
+    "persistedInEvidence": false,
+    "cmsLoginPerformed": false
+  },
+  "networkIsolation": {
+    "approvedOrigin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+    "allOtherContextRequestsAborted": true,
+    "browserProxyRejectsNonStagingHosts": true,
+    "rejectedBackgroundProxyConnections": 0,
+    "externalAttempts": []
+  },
+  "analyticsEnabled": false,
+  "googleScriptRequestsExecuted": 0,
+  "javascriptBudget": {
+    "capturedAt": "2026-11-08T19:21:58.151Z",
+    "source": "Initial PT response HTML script src values; authenticated same-origin static GETs only, no bodies persisted or executed by budget capture.",
+    "assetCount": 11,
+    "decodedBytes": 753376,
+    "gzipRecompressedBytes": 233236,
+    "inlineScriptBytes": 31054,
+    "assets": [
+      {
+        "path": "/_next/static/chunks/1z05fqwv8e3u1.js",
+        "decodedBytes": 30762,
+        "gzipRecompressedBytes": 8452,
+        "sha256": "e753f19d14a84e280992bce49e270bb5c58050f56842ae0b4ab059751cf6a3ce"
+      },
+      {
+        "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+        "decodedBytes": 229724,
+        "gzipRecompressedBytes": 71982,
+        "sha256": "0e24d2830a0856965d336882cd4dabdfaa64c63d612707916179a8a441e18cea"
+      },
+      {
+        "path": "/_next/static/chunks/1_ihjdo5r2mpa.js",
+        "decodedBytes": 158997,
+        "gzipRecompressedBytes": 44227,
+        "sha256": "98f2776ce41e1efde7079b20f0834fcb79ec24ba2275485a3142a838edb347c1"
+      },
+      {
+        "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+        "decodedBytes": 11255,
+        "gzipRecompressedBytes": 4390,
+        "sha256": "b5f9b5199b99ab6c141f4540f0b7d0fe803c4ecf6956849ecb6e59d3d439272e"
+      },
+      {
+        "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+        "decodedBytes": 13885,
+        "gzipRecompressedBytes": 3541,
+        "sha256": "22526e228ca421bdd870c0959ea05d230618810837023e96f60d85b444347ca4"
+      },
+      {
+        "path": "/_next/static/chunks/0jfbhqsanl1_0.js",
+        "decodedBytes": 10234,
+        "gzipRecompressedBytes": 4046,
+        "sha256": "699a09cb65be393ddfb2927d9df7115033658722a06d46a27e8e3dd716d797f3"
+      },
+      {
+        "path": "/_next/static/chunks/2qafaj4md7r27.js",
+        "decodedBytes": 105599,
+        "gzipRecompressedBytes": 30298,
+        "sha256": "5a86b5dc45851890528a2e39866b83d8a9211c8804305cd63e6a0897615bc17b"
+      },
+      {
+        "path": "/_next/static/chunks/2luk8ze6aa3ff.js",
+        "decodedBytes": 21141,
+        "gzipRecompressedBytes": 7935,
+        "sha256": "74b878ba565c9818fe1a333547683e46059243e094f310f7961cd67626928aad"
+      },
+      {
+        "path": "/_next/static/chunks/3pm-yo4th9yz1.js",
+        "decodedBytes": 45643,
+        "gzipRecompressedBytes": 14973,
+        "sha256": "29772db2bdfad0d7bb4aba74d2af8083f96feb4156a343b8ffa71dc38c8ca5d7"
+      },
+      {
+        "path": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+        "decodedBytes": 112594,
+        "gzipRecompressedBytes": 39627,
+        "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+      },
+      {
+        "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+        "decodedBytes": 13542,
+        "gzipRecompressedBytes": 3765,
+        "sha256": "573172c9c47549337608d4bd1324060a6b9919ebd1e067938034fca9c7c02f4f"
+      }
+    ],
+    "googleSdkRequested": false,
+    "vendorReference": {
+      "source": "Existing pinned static SDK evidence 002/006; no new Google GET.",
+      "decodedBytes": 477089,
+      "gzipRecompressedBytes": 163252,
+      "sha256": "4c1c8a92bfdde6b56befdbf90138fdec498744cc5b2a5d4b4e496b5b669dd7ac"
+    },
+    "comparisonLimit": "Decoded and locally recompressed gzip byte counts, not measured network transfer size or latency. Dormant app build and separate unexecuted vendor reference; no production analytics activated."
+  },
+  "pages": [
+    {
+      "locale": "pt",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "noindexHeader": true,
+      "networkSettled": true,
+      "policyRecognized": true,
+      "policyAllowed": false,
+      "analyticsGlobalsPresent": false,
+      "googleScripts": 0,
+      "scriptCount": 11,
+      "documentLanguage": "pt",
+      "mainCount": 1,
+      "h1Count": 1,
+      "noindexMeta": true,
+      "imageCount": 5,
+      "expectedImageCount": 3,
+      "incompleteExpectedImages": 0,
+      "brokenExpectedImages": 0,
+      "homeLinkPresent": true,
+      "internalPathCount": 6,
+      "consentControls": 0,
+      "cookieNames": []
+    },
+    {
+      "locale": "en",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "noindexHeader": true,
+      "networkSettled": true,
+      "policyRecognized": true,
+      "policyAllowed": false,
+      "analyticsGlobalsPresent": false,
+      "googleScripts": 0,
+      "scriptCount": 11,
+      "documentLanguage": "en",
+      "mainCount": 1,
+      "h1Count": 1,
+      "noindexMeta": true,
+      "imageCount": 5,
+      "expectedImageCount": 3,
+      "incompleteExpectedImages": 0,
+      "brokenExpectedImages": 0,
+      "homeLinkPresent": true,
+      "internalPathCount": 6,
+      "consentControls": 0,
+      "cookieNames": []
+    }
+  ],
+  "adminLogin": {
+    "status": 200,
+    "publicDevicePolicyPresent": false,
+    "cmsFormSubmitted": false
+  },
+  "requests": {
+    "sameOrigin": 38,
+    "methods": [
+      "GET"
+    ],
+    "failedRequests": [],
+    "browserErrors": [],
+    "consoleErrors": []
+  },
+  "checks": [
+    {
+      "name": "pt-html-200",
+      "pass": true
+    },
+    {
+      "name": "pt-final-origin",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-origins-owned",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-0",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-1",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-2",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-3",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-4",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-5",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-6",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-7",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-8",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-9",
+      "pass": true
+    },
+    {
+      "name": "pt-static-script-200-10",
+      "pass": true
+    },
+    {
+      "name": "pt-http-policy",
+      "pass": true
+    },
+    {
+      "name": "pt-native-policy-recognized",
+      "pass": true
+    },
+    {
+      "name": "pt-native-policy-denied",
+      "pass": true
+    },
+    {
+      "name": "pt-analytics-globals-absent",
+      "pass": true
+    },
+    {
+      "name": "pt-google-script-absent",
+      "pass": true
+    },
+    {
+      "name": "pt-analytics-cookies-absent",
+      "pass": true
+    },
+    {
+      "name": "pt-noindex",
+      "pass": true
+    },
+    {
+      "name": "pt-language",
+      "pass": true
+    },
+    {
+      "name": "pt-public-content",
+      "pass": true
+    },
+    {
+      "name": "pt-visible-images-complete",
+      "pass": true
+    },
+    {
+      "name": "pt-images-not-broken",
+      "pass": true
+    },
+    {
+      "name": "pt-no-consent-controls",
+      "pass": true
+    },
+    {
+      "name": "en-html-200",
+      "pass": true
+    },
+    {
+      "name": "en-final-origin",
+      "pass": true
+    },
+    {
+      "name": "en-http-policy",
+      "pass": true
+    },
+    {
+      "name": "en-native-policy-recognized",
+      "pass": true
+    },
+    {
+      "name": "en-native-policy-denied",
+      "pass": true
+    },
+    {
+      "name": "en-analytics-globals-absent",
+      "pass": true
+    },
+    {
+      "name": "en-google-script-absent",
+      "pass": true
+    },
+    {
+      "name": "en-analytics-cookies-absent",
+      "pass": true
+    },
+    {
+      "name": "en-noindex",
+      "pass": true
+    },
+    {
+      "name": "en-language",
+      "pass": true
+    },
+    {
+      "name": "en-public-content",
+      "pass": true
+    },
+    {
+      "name": "en-visible-images-complete",
+      "pass": true
+    },
+    {
+      "name": "en-images-not-broken",
+      "pass": true
+    },
+    {
+      "name": "en-no-consent-controls",
+      "pass": true
+    },
+    {
+      "name": "admin-login-readable-without-cms-login",
+      "pass": true
+    },
+    {
+      "name": "admin-policy-outside-public-scope",
+      "pass": true
+    },
+    {
+      "name": "admin-no-google-script",
+      "pass": true
+    },
+    {
+      "name": "external-browser-requests-absent",
+      "pass": true
+    },
+    {
+      "name": "google-browser-requests-absent",
+      "pass": true
+    },
+    {
+      "name": "browser-runtime-errors-absent",
+      "pass": true
+    },
+    {
+      "name": "same-origin-request-failures-absent",
+      "pass": true
+    },
+    {
+      "name": "no-form-or-email-mutation",
+      "pass": true
+    }
+  ],
+  "scope": "Read-only PT/EN and login HTML after deployment. No CMS login, recovery request, mail, DB mutation, production access, SDK loading or collection. The dynamic source/digest association is supplied by the independent coordinator SSH proof."
+}

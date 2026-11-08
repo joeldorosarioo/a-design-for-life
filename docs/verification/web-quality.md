@@ -15,3 +15,11 @@ O diagnóstico encontrou títulos temporários repetidos entre Sobre e Case. A c
 O conjunto completo tem 48 medições, incluindo 12 de Case01 que foram preservadas como históricas após escolher o Case02 mais pesado. As três medições faltantes do primeiro processo interrompido foram concluídas separadamente com os mesmos perfis. Os resultados atuais acompanham 24 capturas e 16 referências originais do Figma identificadas por SHA-256.
 
 O conteúdo definitivo, a revisão formal com leitor de tela e os dados de campo mantêm seus próprios aceites. O diagnóstico local permite revisar o template com os dados temporários escolhidos pelo usuário. [Recibo consolidado](artifacts/E4-local-audit/local-placeholder-audit-2026-11-05.json)
+
+## Etapa 4
+
+As auditorias finais, gates e pendências para aprovação estão reunidos no dossiê. O relatório de performance identifica a candidata, as condições de cache e as metas por cenário. [Dossiê A4](A4.md) · [Performance em staging](E4.2-performance.md) · [Rastreabilidade](rastreabilidade-etapa-4.md)
+
+## Etapa 4 — verificação integrada
+
+A rodada de homologação, comparação visual e inspeções de acessibilidade/SEO estão registradas no [relatório E4.2 de qualidade](E4.2-quality.md). O [relatório de performance](E4.2-performance.md) registra as medianas por cenário, o diagnóstico separado de cache aquecido e os limites do ambiente. A matriz e os gates finais acompanham o [dossiê A4](A4.md).

@@ -1,0 +1,77 @@
+{
+  "startedAt": "2026-11-08T18:17:49.644Z",
+  "finishedAt": "2026-11-08T18:17:52.308Z",
+  "sourceSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+  "imageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+  "chrome": "Chrome/156.0.8078.80",
+  "protocol": "Default page zoom via Chrome settingsPrivate on the browser-owned settings page of an isolated profile, headless full Chrome; observed CSS viewport and DPR. No CSS zoom or pinch emulation.",
+  "before": {
+    "chromeZoom": 1,
+    "innerWidth": 1424,
+    "innerHeight": 805,
+    "dpr": 1,
+    "visualViewportScale": 1,
+    "overflow": 0,
+    "scrollHeight": 4050
+  },
+  "at200": {
+    "chromeZoom": 2,
+    "innerWidth": 712,
+    "innerHeight": 402,
+    "dpr": 2,
+    "visualViewportScale": 1,
+    "overflow": 0,
+    "scrollHeight": 3868
+  },
+  "restored": {
+    "chromeZoom": 1,
+    "innerWidth": 1424,
+    "innerHeight": 805,
+    "dpr": 1,
+    "visualViewportScale": 1,
+    "overflow": 0,
+    "scrollHeight": 4050
+  },
+  "inDialog": true,
+  "escapeReturnedVisibleFocus": true,
+  "contact": {
+    "path": "/pt/sobre",
+    "hash": "#contact",
+    "focus": "contact",
+    "headerBottom": 156,
+    "top": 219.5,
+    "bottom": 269.5,
+    "viewport": 402
+  },
+  "evidence": [
+    {
+      "file": "menu-zoom200.png",
+      "sha256": "19857eb2a333779905191f7f18f1f6a9b1824ed6fe139b598721de1611f56ad5",
+      "dimensions": [
+        1424,
+        805
+      ]
+    },
+    {
+      "file": "contact-zoom200.png",
+      "sha256": "7f847eeae48d7301744e2f0072b09e57c698a851e0047b501942e5153821fe37",
+      "dimensions": [
+        1424,
+        805
+      ]
+    }
+  ],
+  "requests": {
+    "GET": 20,
+    "HEAD": 0,
+    "blocked": 0,
+    "backgroundRejected": 14
+  },
+  "externalAttempts": [],
+  "runner": {
+    "path": ".work/stage4-2026-11-06/quality-zoom.mjs",
+    "sha256": "91ac056b3417c5845904ef16a66a7669a5f3d75cf06e6d4409ecf1f7522c4e6a",
+    "exitCode": 0
+  },
+  "capturesDirectory": ".work/stage4-2026-11-06/quality-zoom-002"
+}

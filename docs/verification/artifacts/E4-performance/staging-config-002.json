@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "frozenAt": "2026-11-08T19:21:59.942480+00:00",
+  "environment": "staging",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sourceSha": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+  "imageDigest": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+  "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+  "selection": "Payment flexibility remained the heaviest case by encoded resources for both devices and languages in the successor precheck. The frozen scenario paths, profiles, cache and metrics match round 001.",
+  "targets": [
+    {
+      "id": "home-pt",
+      "kind": "home",
+      "locale": "pt",
+      "path": "/pt"
+    },
+    {
+      "id": "home-en",
+      "kind": "home",
+      "locale": "en",
+      "path": "/en"
+    },
+    {
+      "id": "cases-pt",
+      "kind": "cases",
+      "locale": "pt",
+      "path": "/pt/cases"
+    },
+    {
+      "id": "cases-en",
+      "kind": "cases",
+      "locale": "en",
+      "path": "/en/cases"
+    },
+    {
+      "id": "case-pt",
+      "kind": "case",
+      "locale": "pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento"
+    },
+    {
+      "id": "case-en",
+      "kind": "case",
+      "locale": "en",
+      "path": "/en/cases/payment-flexibility"
+    }
+  ]
+}

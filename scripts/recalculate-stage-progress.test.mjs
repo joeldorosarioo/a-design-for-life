@@ -27,16 +27,35 @@ const counts3 = {
   closedTasks: ['E3.1'],
   totalTasks: 6,
 };
+const counts4 = {
+  completedItems: 6,
+  totalItems: 16,
+  percentage: 37.5,
+  closedTasks: ['E4.1'],
+  totalTasks: 3,
+};
 function input(stage) {
   return {
     stage,
-    ...(stage === 2 ? counts2 : counts3),
-    approval: stage === 2 ? 'A2 approved with screen-reader work outstanding' : 'A3 pending',
+    ...(stage === 2 ? counts2 : stage === 3 ? counts3 : counts4),
+    approval:
+      stage === 2
+        ? 'A2 approved with screen-reader work outstanding'
+        : stage === 3
+          ? 'A3 pending'
+          : 'A4 pending',
     remainingEstimate: '24–40 horas, excluindo esperas externas.',
     notes: ['Independent approval is never derived from completion.'],
-    criteria: Array.from({ length: 30 }, (_, index) => {
-      const id = `E${stage}.${Math.floor(index / 5) + 1}.${(index % 5) + 1}`;
-      const done = stage === 2 ? id !== 'E2.6.2' : index < 7;
+    criteria: Array.from({ length: stage === 4 ? 16 : 30 }, (_, index) => {
+      const id =
+        stage === 4
+          ? index < 5
+            ? `E4.1.${index + 1}`
+            : index < 11
+              ? `E4.2.${index - 4}`
+              : `E4.3.${index - 10}`
+          : `E${stage}.${Math.floor(index / 5) + 1}.${(index % 5) + 1}`;
+      const done = stage === 2 ? id !== 'E2.6.2' : index < (stage === 4 ? 6 : 7);
       return {
         id,
         done,
@@ -62,7 +81,7 @@ async function fixture(operation) {
       path.join(root, 'node_modules'),
       'junction',
     );
-    for (const stage of [2, 3]) {
+    for (const stage of [2, 3, 4]) {
       const [json, md, ledger] = files(stage);
       await writeFile(path.join(root, json), JSON.stringify(input(stage)));
       await writeFile(
@@ -91,7 +110,7 @@ function run(root, args = []) {
 }
 async function snapshot(root) {
   return Promise.all(
-    [planPath, ...files(2), ...files(3)].map(async (file) => ({
+    [planPath, ...files(2), ...files(3), ...files(4)].map(async (file) => ({
       file,
       text: await readFile(path.join(root, file), 'utf8').catch(() => null),
       modified: (await stat(path.join(root, file)).catch(() => null))?.mtimeMs,
@@ -157,13 +176,16 @@ test('default stage 2 retains 29/30, accepted A2 text and its authorization noti
   });
 });
 
-for (const stage of [2, 3])
+for (const stage of [2, 3, 4])
   test(`stage ${stage} --check accepts current counts without any write`, async () => {
     await fixture(async (root) => {
       const before = await snapshot(root);
       const result = run(root, ['--check', '--stage', String(stage)]);
       assertSuccess(result);
-      assert.equal(JSON.parse(result.stdout).completedItems, stage === 2 ? 29 : 7);
+      assert.equal(
+        JSON.parse(result.stdout).completedItems,
+        stage === 2 ? 29 : stage === 3 ? 7 : 6,
+      );
       assert.deepEqual(await snapshot(root), before);
     });
   });
@@ -252,7 +274,7 @@ for (const [name, change] of [
 
 for (const args of [
   ['--stage'],
-  ['--stage', '4'],
+  ['--stage', '5'],
   ['--stage', '03'],
   ['--stage', '2x'],
   ['--stage=3'],
@@ -325,5 +347,54 @@ test('all completed criteria still leave input A3 approval pending', async () =>
     assert.equal(output.percentage, 100);
     assert.equal(output.closedTasks.length, 6);
     assert.match(await readFile(path.join(root, files(3)[1]), 'utf8'), /A3 pending/);
+  });
+});
+
+test('stage 4 uses all sixteen original criteria in the 5/6/5 task structure without changing older ledgers', async () => {
+  await fixture(async (root) => {
+    const before = (await snapshot(root)).filter((entry) => !files(4).includes(entry.file));
+    const result = run(root, ['--stage', '4']);
+    assertSuccess(result);
+    for (const [key, expected] of Object.entries(counts4))
+      assert.deepEqual(JSON.parse(result.stdout)[key], expected);
+    const markdown = await readFile(path.join(root, files(4)[1]), 'utf8');
+    assert.match(markdown, /37,5%: 6\/16 itens; 1\/3 tarefas/);
+    assert.match(markdown, /\| E4\.1\s*\| 5\/5\s*\| Encerrada/);
+    assert.match(markdown, /\| E4\.2\s*\| 1\/6/);
+    assert.match(markdown, /\| E4\.3\s*\| 0\/5/);
+    assert.match(markdown, /--stage 4/);
+    assert.doesNotMatch(markdown, /trinta caixas|cinco por tarefa/);
+    assert.match(markdown, /A4 pending/);
+    assert.deepEqual(
+      (await snapshot(root)).filter((entry) => !files(4).includes(entry.file)),
+      before,
+    );
+  });
+});
+
+test('stage 4 rejects a plan missing its sixth audit criterion before any write', async () => {
+  await fixture(async (root) => {
+    const plan = path.join(root, planPath);
+    await writeFile(
+      plan,
+      (await readFile(plan, 'utf8')).replace(
+        '- [ ] Identificar diferenças de origem/cache/Analytics',
+        '- Identificar diferenças de origem/cache/Analytics',
+      ),
+    );
+    const before = await snapshot(root);
+    assert.notEqual(run(root, ['--stage', '4']).status, 0);
+    assert.deepEqual(await snapshot(root), before);
+  });
+});
+
+test('stage 4 rejects thirty-item ledger copied from another stage before any write', async () => {
+  await fixture(async (root) => {
+    await edit(root, 4, (data) => {
+      data.criteria = input(3).criteria;
+    });
+    const before = await snapshot(root);
+    assert.notEqual(run(root, ['--stage', '4']).status, 0);
+    assert.deepEqual(await snapshot(root), before);
   });
 });

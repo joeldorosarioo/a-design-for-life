@@ -1,0 +1,606 @@
+{
+  "startedAt": "2026-11-08T18:13:58.022Z",
+  "finishedAt": "2026-11-08T18:14:46.341Z",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sourceSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+  "imageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+  "browser": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "axe": "4.14.0",
+  "node": "24.22.2",
+  "protocol": {
+    "layouts": 30,
+    "lazyImages": "eager only for complete review capture",
+    "reducedMotion": "reduce",
+    "untrustedNetwork": "rejected by browser route and loopback proxy"
+  },
+  "requests": {
+    "GET": 602,
+    "HEAD": 0,
+    "blocked": 0,
+    "backgroundRejected": 0
+  },
+  "interactions": [
+    {
+      "locale": "pt",
+      "width": 390,
+      "tocFocus": {
+        "tag": "A",
+        "hash": "#section-03ce1991-d93b-4c3c-b6a8-cbc2632240e8",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "tocCurrent": "location",
+      "tocMs": 17,
+      "contactFocus": {
+        "tag": "A",
+        "hash": "#contact",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "contactMs": 8,
+      "contact": {
+        "pathname": "/pt/cases/flexibilidade-de-pagamento",
+        "hash": "#contact",
+        "targetFocused": true,
+        "headerBottom": 156,
+        "targetTop": 595,
+        "targetBottom": 711,
+        "viewportHeight": 844,
+        "openDialog": false
+      },
+      "video": {
+        "file": "page@ef374518b55e20146d776b17cec15e62.webm",
+        "sha256": "bd683d2d493a2df73e2dcd1f18a08e79e60d788bc91014eb0244ade73be8ae6c"
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "tocFocus": {
+        "tag": "A",
+        "hash": "#section-03ce1991-d93b-4c3c-b6a8-cbc2632240e8",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "tocCurrent": "location",
+      "tocMs": 16,
+      "contactFocus": {
+        "tag": "A",
+        "hash": "#contact",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgb(163, 18, 47)",
+        "outlineOffset": "2px",
+        "centerVisible": true
+      },
+      "contactMs": 3,
+      "contact": {
+        "pathname": "/en/cases/payment-flexibility",
+        "hash": "#contact",
+        "targetFocused": true,
+        "headerBottom": 96,
+        "targetTop": 661,
+        "targetBottom": 711,
+        "viewportHeight": 844,
+        "openDialog": false
+      },
+      "video": {
+        "file": "page@75348bdd33f8f98afa77a03dff5fa978.webm",
+        "sha256": "40915ef7a443770ea922daed8dc2897eecd272191a462b51a6ccafacefa1bd32"
+      }
+    }
+  ],
+  "externalAttempts": [],
+  "browserErrors": [],
+  "findings": [],
+  "raw": {
+    "path": ".work/stage4-2026-11-06/quality-002/browser-summary.json",
+    "sha256": "165d0fa3437dc73ea00bcccbe65211fdcab60951f6cd37603364bf0eab3f9342"
+  },
+  "runner": {
+    "path": ".work/stage4-2026-11-06/quality-audit.mjs",
+    "sha256": "024ea7be890a3f05c482915c77caffda2f65703474b67d721f22c64e11619844",
+    "exitCode": 0
+  },
+  "preservedFirstAttempt": {
+    "path": ".work/stage4-2026-11-06/quality-001/browser-summary.json",
+    "sha256": "e06a1cc168fad06bf5931f77249f403789a39b7f2777005a85494bfd6902fe01",
+    "exitCode": 1,
+    "observation": "Asynchronous Radix close autofocus had not finished at immediate assertion. Wait for the trigger to become visibly focused. No application change.",
+    "findings": [
+      "home-pt-820 menu keyboard focus/trap/return",
+      "cases-pt-390 menu keyboard focus/trap/return",
+      "cases-pt-820 menu keyboard focus/trap/return",
+      "case-pt-390 menu keyboard focus/trap/return",
+      "case-pt-820 menu keyboard focus/trap/return",
+      "case-en-820 menu keyboard focus/trap/return",
+      "case-2-pt-390 menu keyboard focus/trap/return",
+      "case-2-en-820 menu keyboard focus/trap/return"
+    ]
+  },
+  "totals": {
+    "layouts": 30,
+    "axeStates": 50,
+    "axeViolations": 0,
+    "skipLinksFocusedMain": 30,
+    "openMenus": 20,
+    "escapeReturnedFocus": 20,
+    "tabAndReverseTab": 240,
+    "focusInsideVisibleUnobscured": 240,
+    "allMenuFocusSamplesWithTwoPixelOutline": true,
+    "colorContrastIncompleteDecorativeNamed": 100,
+    "minimumMeasuredGlyphContrast": 5.421983103795719,
+    "ariaHiddenFocusIncomplete": 120,
+    "overflows": 0,
+    "duplicateIds": 0,
+    "brokenImages": 0,
+    "reducedMotionScrollAuto": 30
+  },
+  "layouts": [
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "home-pt-390.png",
+        "sha256": "14250a471a310a78bb5e4b31391959ec97ba930630cd73a3dc1215c3cceab4f7",
+        "bytes": 725213
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "home-pt-820.png",
+        "sha256": "6f79b859eaef64b22a16e0408c0b16d2a48ff0c76e04d13500a3990fcbae3b6a",
+        "bytes": 985228
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "home-pt-1440.png",
+        "sha256": "6e96bd9a4b89b62454bd2dac6ad52a92a8bb9b413a7148b8de61b82cf79d0b43",
+        "bytes": 1380909
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "home-en-390.png",
+        "sha256": "2e47eed12830ea68f3648cfb786508a6deac4395677a40dff84bb950b551ca33",
+        "bytes": 688950
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "home-en-820.png",
+        "sha256": "ab44fee1ba75b105f47f2d53d5dfe22cac0b872fbf5202b015f0dd196359766f",
+        "bytes": 960981
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "home-en-1440.png",
+        "sha256": "dab63879d96b6d73c7d534c9cf9e910583fc6adb9985495b1c19784a65f21b01",
+        "bytes": 1349319
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "cases-pt-390.png",
+        "sha256": "9b537742e94faaaf415494d2d24fa227a8b6705a0d1e4eab6367f1d0bd55f92a",
+        "bytes": 380223
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "cases-pt-820.png",
+        "sha256": "0d814e5f2af761be4951fc54b402dbacbc67250ac2e62c0a6e0550ee2b7925b9",
+        "bytes": 484511
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "cases-pt-1440.png",
+        "sha256": "eb7c5c18326b33d8448ef2fb3e43bc35be446bfa08a3440486f4b6e6e01e13bc",
+        "bytes": 811215
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "cases-en-390.png",
+        "sha256": "369bb4398c9cd6dc09142f3e8e05e41b8d0b784d03c909dc671436859f2947f7",
+        "bytes": 372769
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "cases-en-820.png",
+        "sha256": "72925cc6a87e04957c132829836b04829ae60784386ff1152e84b0f43632edc1",
+        "bytes": 471704
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "cases-en-1440.png",
+        "sha256": "b0fe3393ca0416790596ade8dd46a59358b72cc051057fb62c1822908d2bcc88",
+        "bytes": 798025
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "case-pt-390.png",
+        "sha256": "25f2ee0d35002621c1c0c6c88c773e892bbd8c454c0abb615d74129beeafa8fa",
+        "bytes": 359517
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-pt-820.png",
+        "sha256": "44783c95964124971d84b89ecf854b8843b8a1b30d4d3762ace907602e039b03",
+        "bytes": 663636
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-pt-1440.png",
+        "sha256": "832df9102e8b11fa031b4535f4c6b782ba475beae9af020090daae781c74cf3c",
+        "bytes": 833174
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "case-en-390.png",
+        "sha256": "c9df9faebd7ba7d191d865095942a1469729d6e62dc7342fed76a98010886970",
+        "bytes": 351284
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-en-820.png",
+        "sha256": "16a07f3f8cc2bd8ff84d1af43e95b2d9cfc8b2df7e3b25d37296b9c917f8b83d",
+        "bytes": 655629
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-en-1440.png",
+        "sha256": "15dcbaac0c112ab4d9e7a1c7748842a4d947626adf8c4c0d3041017bf99ff769",
+        "bytes": 825288
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "about-pt-390.png",
+        "sha256": "f6245cfe103944e062ec72ef0edea0e0b64aacef85377b7e87e364aad00f0e2f",
+        "bytes": 654045
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "about-pt-820.png",
+        "sha256": "46faee8e1747a999e564ea485ffcf80c3a697d9f0c5c7e511e250b825fc1d579",
+        "bytes": 1184189
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "about-pt-1440.png",
+        "sha256": "ee169ce368432a3e2d7e8374a6ed0380b1db25b27f186707f820f6bd69565c68",
+        "bytes": 1694766
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "about-en-390.png",
+        "sha256": "31c21fa7049f7aec842c64d9f2900462f1f15b177b7c42e5be57aba51cb3a55c",
+        "bytes": 639578
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "about-en-820.png",
+        "sha256": "a51c7dbd86ea4a9ed13ff659b3cf69356c41072ba18c37d69a97765d7f1254de",
+        "bytes": 1176102
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "about-en-1440.png",
+        "sha256": "0aadde961c2b90b07dee8b60b981c757a4400dde19206ad20252aebd11325ae4",
+        "bytes": 1680307
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "case-2-pt-390.png",
+        "sha256": "9c9d21caf0d01ea1030959d3b7c5d37ec8613e8d04146201be3d4aab76474d48",
+        "bytes": 324111
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-2-pt-820.png",
+        "sha256": "813d4be523e7f9cf8d67dd12a8a8d5ad72da0e1ef125c41f3de2ee2d9b56658b",
+        "bytes": 500280
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-2-pt-1440.png",
+        "sha256": "ede4707d33039ae4b0599a0a6cd05d4c5702ffa43b6f661e73e47a6516c73226",
+        "bytes": 718704
+      },
+      "menuExercised": false
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "screenshot": {
+        "file": "case-2-en-390.png",
+        "sha256": "b94da016443cf29967094bd40005470ef31c2138466358a8ea7ca8187753ce3a",
+        "bytes": 322339
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "viewport": [
+        820,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-2-en-820.png",
+        "sha256": "c5fd997489e9c6fcf624d62720ba3a5717bc005f9a10a1ba4155c8b69a52703a",
+        "bytes": 501614
+      },
+      "menuExercised": true
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "screenshot": {
+        "file": "case-2-en-1440.png",
+        "sha256": "1911975b96ff20fb314b717a1083b4a14e6609d9c2e3c839d64a68881a910b3f",
+        "bytes": 723625
+      },
+      "menuExercised": false
+    }
+  ],
+  "scope": "Staging only, Basic Auth in memory, visitor without editorial session. Local protected screenshots and videos are outside the Git tree. Formal screen reader pending."
+}

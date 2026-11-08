@@ -1,0 +1,457 @@
+{
+  "figmaFile": "PXUcVZFdLuOzHQZkD5PU4b",
+  "pageNode": "123:179",
+  "sourceSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+  "imageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+  "browserRun": "002",
+  "mappings": [
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "device": "desktop",
+      "frameId": "123:574",
+      "originalFile": "home-pt-desktop-123-574.png",
+      "originalSha256": "e02474e4cb20bf58f8f8f2ab96403f7328b3a25388920b14d19ff32de76b8162",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        3244
+      ],
+      "capture": "home-pt-1440.png",
+      "captureSha256": "6e96bd9a4b89b62454bd2dac6ad52a92a8bb9b413a7148b8de61b82cf79d0b43",
+      "captureCssDimensions": [
+        1440,
+        3182
+      ]
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "device": "mobile",
+      "frameId": "123:705",
+      "originalFile": "home-pt-mobile-123-705.png",
+      "originalSha256": "3d0da0cadaf5fdfc6d3bc1039dee209154b17d43d44b81d2db6797d3a6e8f0f2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        4524
+      ],
+      "capture": "home-pt-390.png",
+      "captureSha256": "14250a471a310a78bb5e4b31391959ec97ba930630cd73a3dc1215c3cceab4f7",
+      "captureCssDimensions": [
+        390,
+        4624
+      ]
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "device": "desktop",
+      "frameId": "125:3765",
+      "originalFile": "home-en-desktop-125-3765.png",
+      "originalSha256": "1dbb77748cd8755f09c4dd0462d23da2edcc70488708b32f14b7f9cf486ca017",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        3244
+      ],
+      "capture": "home-en-1440.png",
+      "captureSha256": "dab63879d96b6d73c7d534c9cf9e910583fc6adb9985495b1c19784a65f21b01",
+      "captureCssDimensions": [
+        1440,
+        3182
+      ]
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "device": "mobile",
+      "frameId": "125:4026",
+      "originalFile": "home-en-mobile-125-4026.png",
+      "originalSha256": "fb2d18a75a7f4236eb3f0e73cf3c0d2fd5bcf83d1271dde04a57156724f46b07",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        4388
+      ],
+      "capture": "home-en-390.png",
+      "captureSha256": "2e47eed12830ea68f3648cfb786508a6deac4395677a40dff84bb950b551ca33",
+      "captureCssDimensions": [
+        390,
+        4540
+      ]
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "device": "desktop",
+      "frameId": "134:13116",
+      "originalFile": "about-pt-desktop-134-13116.png",
+      "originalSha256": "4e9a6f051f765f625bb9008153ccce7add81f9d0b1c7921414217dcd08470e43",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4528
+      ],
+      "capture": "about-pt-1440.png",
+      "captureSha256": "ee169ce368432a3e2d7e8374a6ed0380b1db25b27f186707f820f6bd69565c68",
+      "captureCssDimensions": [
+        1440,
+        4050
+      ]
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "device": "mobile",
+      "frameId": "134:13205",
+      "originalFile": "about-pt-mobile-134-13205.png",
+      "originalSha256": "06d36f7ddee471fe67b1d239e5a4dbbf31f37555958522e01f7056cc5fd55ef6",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5651.88
+      ],
+      "capture": "about-pt-390.png",
+      "captureSha256": "f6245cfe103944e062ec72ef0edea0e0b64aacef85377b7e87e364aad00f0e2f",
+      "captureCssDimensions": [
+        390,
+        3921
+      ]
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "device": "desktop",
+      "frameId": "134:13298",
+      "originalFile": "about-en-desktop-134-13298.png",
+      "originalSha256": "6d35ae12188c5312649906892670d810ab5a92ddb1a5366d737688ae346678b1",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4544
+      ],
+      "capture": "about-en-1440.png",
+      "captureSha256": "0aadde961c2b90b07dee8b60b981c757a4400dde19206ad20252aebd11325ae4",
+      "captureCssDimensions": [
+        1440,
+        3990
+      ]
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "device": "mobile",
+      "frameId": "134:13435",
+      "originalFile": "about-en-mobile-134-13435.png",
+      "originalSha256": "23377bc774046d610f5cc822bda869df4087654f8e4d24ceda8341f4b650cb97",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5435.88
+      ],
+      "capture": "about-en-390.png",
+      "captureSha256": "31c21fa7049f7aec842c64d9f2900462f1f15b177b7c42e5be57aba51cb3a55c",
+      "captureCssDimensions": [
+        390,
+        3853
+      ]
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "device": "desktop",
+      "frameId": "125:4291",
+      "originalFile": "cases-en-desktop-125-4291.png",
+      "originalSha256": "f78b859d869a6f897d56ca7e16c081273d141adc3daf69cfb74fa39258059436",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        1638
+      ],
+      "capture": "cases-en-1440.png",
+      "captureSha256": "b0fe3393ca0416790596ade8dd46a59358b72cc051057fb62c1822908d2bcc88",
+      "captureCssDimensions": [
+        1440,
+        1603
+      ]
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "device": "mobile",
+      "frameId": "125:4490",
+      "originalFile": "cases-en-mobile-125-4490.png",
+      "originalSha256": "c918978ece513526c251404cf7906c536c0161ef139f37035edf94548ed80172",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        1730
+      ],
+      "capture": "cases-en-390.png",
+      "captureSha256": "369bb4398c9cd6dc09142f3e8e05e41b8d0b784d03c909dc671436859f2947f7",
+      "captureCssDimensions": [
+        390,
+        1845
+      ]
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "device": "desktop",
+      "frameId": "125:2472",
+      "originalFile": "cases-pt-desktop-125-2472.png",
+      "originalSha256": "3e83e24ce40a346b81a805b2235d545af47ac5443f9b6555edffb6f1e4ba5584",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        1638
+      ],
+      "capture": "cases-pt-1440.png",
+      "captureSha256": "eb7c5c18326b33d8448ef2fb3e43bc35be446bfa08a3440486f4b6e6e01e13bc",
+      "captureCssDimensions": [
+        1440,
+        1603
+      ]
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "device": "mobile",
+      "frameId": "125:2595",
+      "originalFile": "cases-pt-mobile-125-2595.png",
+      "originalSha256": "58c4b2f422d1bbf232e084ff2b47c0658c042f5b3ab8e428e6468a62e735a888",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        1770
+      ],
+      "capture": "cases-pt-390.png",
+      "captureSha256": "9b537742e94faaaf415494d2d24fa227a8b6705a0d1e4eab6367f1d0bd55f92a",
+      "captureCssDimensions": [
+        390,
+        1877
+      ]
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "device": "desktop",
+      "frameId": "123:838",
+      "originalFile": "case-pt-desktop-123-838.png",
+      "originalSha256": "09da573eb201cd1da34d56d15a7ca81f1d7bdf87560b336da9d71d818f9bf3e2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4654
+      ],
+      "capture": "case-pt-1440.png",
+      "captureSha256": "832df9102e8b11fa031b4535f4c6b782ba475beae9af020090daae781c74cf3c",
+      "captureCssDimensions": [
+        1440,
+        3099
+      ]
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "device": "mobile",
+      "frameId": "123:954",
+      "originalFile": "case-pt-mobile-123-954.png",
+      "originalSha256": "19a3a6cd1fca6208ce2a43611147f039748289e913f1a7cf1d37a4f771ed1629",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5848
+      ],
+      "capture": "case-pt-390.png",
+      "captureSha256": "25f2ee0d35002621c1c0c6c88c773e892bbd8c454c0abb615d74129beeafa8fa",
+      "captureCssDimensions": [
+        390,
+        3223
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "device": "desktop",
+      "frameId": "125:4693",
+      "originalFile": "case-en-desktop-125-4693.png",
+      "originalSha256": "816832dff588834a28f692b67b4743b54b919426182b16fd7614adb5b76cfdff",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-en-1440.png",
+      "captureSha256": "15dcbaac0c112ab4d9e7a1c7748842a4d947626adf8c4c0d3041017bf99ff769",
+      "captureCssDimensions": [
+        1440,
+        3075
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "device": "mobile",
+      "frameId": "125:4961",
+      "originalFile": "case-en-mobile-125-4961.png",
+      "originalSha256": "5973ae8ef45373e55d84d6f6e7f555d4095d9f77871e24814b9681cb859a50be",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5912
+      ],
+      "capture": "case-en-390.png",
+      "captureSha256": "c9df9faebd7ba7d191d865095942a1469729d6e62dc7342fed76a98010886970",
+      "captureCssDimensions": [
+        390,
+        3155
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "device": "desktop",
+      "frameId": "126:8101",
+      "originalFile": "case02-en-desktop-126-8101.png",
+      "originalSha256": "98a623ea64083f06e3b9145c707831e6ef9d34d4883f1720ef7c1c85270e5b45",
+      "priorOriginalHashMatched": false,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-2-en-1440.png",
+      "captureSha256": "1911975b96ff20fb314b717a1083b4a14e6609d9c2e3c839d64a68881a910b3f",
+      "captureCssDimensions": [
+        1440,
+        3075
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "device": "mobile",
+      "frameId": "126:8293",
+      "originalFile": "case02-en-mobile-126-8293.png",
+      "originalSha256": "5d0903d705cac5723664d98866b09164fbb6740ffb505d9fd5096fc27a3005f8",
+      "priorOriginalHashMatched": false,
+      "originalCssDimensions": [
+        390,
+        5960
+      ],
+      "capture": "case-2-en-390.png",
+      "captureSha256": "b94da016443cf29967094bd40005470ef31c2138466358a8ea7ca8187753ce3a",
+      "captureCssDimensions": [
+        390,
+        3331
+      ]
+    }
+  ],
+  "sheets": [
+    {
+      "target": "home-pt",
+      "file": "home-pt.jpg",
+      "sha256": "c93d42f21c09cfb34370bbb0db03a2d9e8f36d3e2ed77f782cd664d35ceeb7cd",
+      "dimensions": [
+        1138,
+        1603
+      ]
+    },
+    {
+      "target": "home-en",
+      "file": "home-en.jpg",
+      "sha256": "dee5449bf311bd1f611a33339e8c0a841aaa6aee689986a961f83db97bceb700",
+      "dimensions": [
+        1138,
+        1575
+      ]
+    },
+    {
+      "target": "about-pt",
+      "file": "about-pt.jpg",
+      "sha256": "6571e93a6ec0b51a7d44a4e14e175554b6bd669f131f485b2589ab711996d0c2",
+      "dimensions": [
+        1138,
+        1948
+      ]
+    },
+    {
+      "target": "about-en",
+      "file": "about-en.jpg",
+      "sha256": "1c1ba86bf7a6ccbb71ce5103e3d2ae037c3e61319d65f998cb0396cee5b6384f",
+      "dimensions": [
+        1138,
+        1876
+      ]
+    },
+    {
+      "target": "cases-en",
+      "file": "cases-en.jpg",
+      "sha256": "9947b1521d6af216cfdecb1db191afe190326a8489e0dc039d89c167327c779b",
+      "dimensions": [
+        1138,
+        670
+      ]
+    },
+    {
+      "target": "cases-pt",
+      "file": "cases-pt.jpg",
+      "sha256": "a5a392bd014b2bf30d2f416d2b2cbc5c5b1f14dfc862e0f7ac28f5234a865f5d",
+      "dimensions": [
+        1138,
+        680
+      ]
+    },
+    {
+      "target": "case-pt",
+      "file": "case-pt.jpg",
+      "sha256": "6f3db5405e908d1ee6a426d8a4f9e4ce163247158b33575a58a482fa56c9c091",
+      "dimensions": [
+        1138,
+        2014
+      ]
+    },
+    {
+      "target": "case-en",
+      "file": "case-en.jpg",
+      "sha256": "a0942c6d8f4198eb0fb05f75f6be622b056ddecbcbfcf8cd679d698cffd4026b",
+      "dimensions": [
+        1138,
+        2036
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "file": "case-2-en.jpg",
+      "sha256": "e4a2f804df4042fc2e2a30fd43fa0fc67efd443a9c92ffc1ca750dd8c2c19146",
+      "dimensions": [
+        1138,
+        2052
+      ]
+    }
+  ],
+  "limits": "Full-page browser captures and verified local exports, paired by page type and responsive layout. Candidate content and approved modifications differ from editorial template; contact sheets resize only for comparison.",
+  "reviewedSheets": [
+    "home-pt",
+    "home-en",
+    "about-pt",
+    "about-en",
+    "cases-en",
+    "cases-pt",
+    "case-pt",
+    "case-en",
+    "case-2-en"
+  ],
+  "reviewedTabletSamples": [
+    "home-pt-820.png",
+    "case-en-820.png"
+  ],
+  "capturesDirectory": ".work/stage4-2026-11-06/quality-002",
+  "sheetsDirectory": ".work/stage4-2026-11-06/quality-comparison-002",
+  "runner": {
+    "path": ".work/stage4-2026-11-06/quality-comparison.mjs",
+    "sha256": "37839271ffca16363d02f9479e5a2f7e9de97f1b9051a843ab8096212c667dac",
+    "exitCode": 0
+  }
+}

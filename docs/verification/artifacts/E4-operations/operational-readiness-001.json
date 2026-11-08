@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "kind": "stage4-staging-operational-readiness-review",
+  "checkedAt": "2026-11-08T18:15:45.887Z",
+  "candidate": {
+    "revision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "manifestDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+    "sourceTree": "f038eee88541a7439de88fb3022d04d29de85485",
+    "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+    "pipeline": 42304741961
+  },
+  "deployedReadback": {
+    "checkedAt": "2026-11-07T01:43:37.832Z",
+    "source": ".work/stage4-2026-11-06/release-before.json",
+    "sha256": "d6baefab8490ebc59552f00cb51fb4421ff0828ced07088abc84e8c375e6d877",
+    "revision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "reference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+    "user": "appuser",
+    "health": "healthy",
+    "limits": {
+      "nanoCpus": 1000000000,
+      "memory": 2147483648,
+      "memorySwap": 2147483648
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "volumes": 3
+  },
+  "localGit": {
+    "initialRevision": "7331e34c7ed52e9be44fa1e4fa3247f4820d64b3",
+    "initialDeltaFromCandidate": "eight docs/verification files only",
+    "candidateTreeMatches": true,
+    "migrationTreeMatches": true,
+    "ignoredFiles": [
+      ".env",
+      ".work"
+    ]
+  },
+  "build": {
+    "runtimeUser": "appuser",
+    "dockerContextAllowlist": true,
+    "privateFilesExcluded": true,
+    "buildUsesSyntheticConfiguration": true,
+    "actualSecretsRecorded": false
+  },
+  "acceptedA3": {
+    "release": "docs/verification/artifacts/E3-operations/stage3-final-staging-release-001.json",
+    "retention": "docs/verification/artifacts/E3-backup/staging-retention-operation-001.json",
+    "restore": "docs/verification/artifacts/E3-backup/staging-recovery-copy-001.json",
+    "samePostgresSeparateCopy": true,
+    "existingMediaReadOnly": true
+  },
+  "currentGitHub": "docs/verification/artifacts/E4-operations/github-protection-001.json",
+  "production": {
+    "mainBranchHttpStatus": 404,
+    "githubEnvironments": [
+      "staging"
+    ],
+    "productionAutodeployFlagHttpStatus": 404,
+    "embeddedBackupSupportsProduction": false,
+    "launchAuthorized": false,
+    "deployed": false
+  },
+  "operationsPerformed": {
+    "gitHubWrites": 0,
+    "stagingWrites": 0,
+    "newBackups": 0,
+    "newBuckets": 0,
+    "productionActions": 0
+  }
+}
