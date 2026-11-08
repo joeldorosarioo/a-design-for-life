@@ -1,18 +1,20 @@
 import type { ReactNode } from 'react';
-import type { ResolvedNavigationDTO } from '../contracts/resolved-navigation-dto.schema';
+import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { MobileMenu } from './mobile-menu';
+import { HeaderMetrics } from './header-metrics';
 import styles from '../stylesheets/navigation.module.css';
 
 export function SiteHeader({
   navigation,
   languageControl,
 }: {
-  navigation: ResolvedNavigationDTO;
+  navigation: NavigationPresentation;
   languageControl?: ReactNode;
 }) {
   const navigationLabel = navigation.locale === 'pt' ? 'Navegação principal' : 'Main navigation';
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-portfolio-header>
+      <HeaderMetrics />
       <div className={`portfolio-container ${styles.headerInner}`}>
         <a className={styles.brand} href={navigation.brand.href}>
           {navigation.brand.label}
