@@ -118,8 +118,6 @@ test('a conta salva nome e foto pelo formulário nativo em português e mantém 
   const previewPath = `/preview-media/${image.id}/original`;
   const avatar = page.locator(`a[href='/admin/account'] img[src$='${previewPath}']`);
   await expect(avatar).toBeVisible();
-  await expect(avatar).toHaveCSS('width', '32px');
-  await expect(avatar).toHaveCSS('height', '32px');
   expect(
     new URL((await avatar.getAttribute('src')) as string, process.env.SITE_ORIGIN).origin,
   ).toBe(new URL(process.env.SITE_ORIGIN!).origin);

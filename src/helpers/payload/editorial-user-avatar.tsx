@@ -34,7 +34,20 @@ export function EditorialUserAvatar() {
   return (
     <span
       aria-hidden="true"
-      className="tw:inline-flex tw:size-[32px] tw:shrink-0 tw:items-center tw:justify-center tw:overflow-hidden tw:rounded-full tw:bg-[var(--theme-elevation-150)] tw:text-[12px] tw:font-semibold tw:text-[color:var(--theme-text)]"
+      style={{
+        display: 'inline-flex',
+        width: 32,
+        height: 32,
+        flexShrink: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        borderRadius: '50%',
+        background: 'var(--theme-elevation-150)',
+        color: 'var(--theme-text)',
+        fontSize: 12,
+        fontWeight: 600,
+      }}
     >
       {source && source !== failedSource ? (
         <Image
@@ -44,7 +57,7 @@ export function EditorialUserAvatar() {
           height={32}
           unoptimized
           onError={() => setFailedSource(source)}
-          className="tw:size-[32px] tw:object-cover"
+          style={{ width: 32, height: 32, objectFit: 'cover' }}
         />
       ) : initials ? (
         initials
