@@ -1,0 +1,73 @@
+.work/staging-ready-2026-11-05/browser-first-access-focused-unit.log
+
+ ✓  unit  src/helpers/payload/first-user-response.test.ts (5 tests) 43ms
+ ✓  unit  ops/staging/seed-http.test.ts (29 tests) 44ms
+ ✓  unit  ops/staging/initialize-config.test.ts (37 tests) 22ms
+ ✓  unit  src/config/server-env.test.ts (38 tests) 32ms
+ ✓  unit  ops/staging/initialize-receipt.test.ts (5 tests) 9ms
+ ✓  unit  testing/setup/test-environment.test.ts (17 tests) 54ms
+ ✓  unit  src/helpers/payload/editorial-first-access.test.ts (28 tests) 17ms
+
+ Test Files  7 passed (7)
+      Tests  159 passed (159)
+   Start at  23:44:08
+   Duration  2.48s (setup 47%, import 43%, transform 5%, tests 4%, worker 1%)
+
+
+.work/staging-ready-2026-11-05/browser-first-access-architecture.log
+   ✓ rejects ui.ts runtime capability @payloadcms/db-postgres 723ms
+   ✓ keeps the contract entry independent of presentation modules required by Native CLI 762ms
+
+ Test Files  1 passed (1)
+      Tests  34 passed (34)
+   Start at  23:44:03
+   Duration  25.90s (tests 98%, import 1%)
+
+
+.work/staging-ready-2026-11-05/browser-first-access-initializer-native-001.log
+[23:34:34] INFO: Migrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)
+[23:34:34] INFO: Migrating: 20261104_012603_publication_retry_metadata
+[23:34:34] INFO: Migrated:  20261104_012603_publication_retry_metadata (3ms)
+[23:34:34] INFO: Done.
+ ✓  integration  src/config/staging-initialization.integration.test.ts (5 tests) 21521ms
+   ✓ initializes sixteen Native migrations and one editor/four drafts, then preserves credentials/content on rerun 4101ms
+   ✓ refuses an empty verify, foreign tables and partial migration ledgers without modifying them 4928ms
+   ✓ refuses a concurrent initialization owner before running schema changes 1354ms
+   ✓ rolls back the first editor and all structural drafts together after a real PostgreSQL constraint failure 4382ms
+   ✓ prepares only the schema for browser-first access without accepting editor credentials or adopting existing accounts 3734ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  23:34:25
+   Duration  33.09s (tests 90%, import 8%, transform 1%)
+
+
+.work/browser-first-access-native-2026-11-05/native-first-access-003.log
+[23:51:28] INFO: Migrated:  20261103_095414_e2_cover_presentation_and_return_copy (3ms)
+[23:51:28] INFO: Migrating: 20261104_012603_publication_retry_metadata
+[23:51:28] INFO: Migrated:  20261104_012603_publication_retry_metadata (10ms)
+[23:51:28] INFO: Done.
+ ✓  integration  src/helpers/payload/editorial-first-access.integration.test.ts (3 tests) 11382ms
+   ✓ uses Native first registration, commits one editor/four drafts and a cookie session, then closes public account creation 5390ms
+   ✓ serializes two Native first-register requests that both observed no account with a real PostgreSQL transaction lock 2179ms
+   ✓ rolls back the Native editor and all four structural drafts when a real PostgreSQL constraint rejects the last draft 2059ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  23:51:22
+   Duration  20.61s (tests 84%, import 14%, transform 2%, setup 1%)
+
+
+.work/staging-ready-2026-11-05/browser-first-access-http-003.log
+✓ Ready in 205ms
+✓ Running next.config.ts took 55ms
+⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 1 test using 1 worker
+
+[00:02:03] INFO: You are not allowed to perform this action.
+[00:02:03] INFO: You are not allowed to perform this action.
+  ok 1 [chromium] › ops\staging\browser-first-access.e2e.ts:45:1 › creates the first account through Native UI once, with four private drafts and no mail flow (2.9s)
+
+  1 passed (1.5m)

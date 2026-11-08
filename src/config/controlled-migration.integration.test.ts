@@ -58,7 +58,7 @@ async function closeOwnPayload(payload: Payload) {
 }
 
 native(
-  'backs up the real predecessor, refuses a competing job and applies the reviewed Native up once',
+  'backs up schema16, refuses a competing job and applies only the reviewed Native schema17 up once',
   async () => {
     const tools = JSON.parse(await readFile(toolsConfigPath!, 'utf8')) as ToolConfig;
     const owned = inspectOwnedTestDatabase();
@@ -138,11 +138,29 @@ native(
       }
     }
     const application = {
-      revision: '60314d2a095b178f16ddc3972e384d153ba031b5',
+      revision: '434ee5c92dc71f1c8147831bd38dea7c244af386',
       schemaSha256: schema.digest('hex'),
     };
-    async function initialize(databaseUri = uri.href) {
+    async function initialize(
+      databaseUri = uri.href,
+      schema: 'predecessor' | 'current' = 'current',
+    ) {
       const config = await (await import('../payload.config')).default;
+      const collections = config.collections
+        .filter(({ slug }) => slug !== 'publication-retries')
+        .map((collection) => {
+          if (schema !== 'predecessor' || collection.slug !== 'users') return collection;
+          // Before schema17, Native account reads/writes must not select its new
+          // columns. Drizzle builds tables from flattenedFields, while Native
+          // document operations also consume the original sanitized fields.
+          const existedBefore = (field: { name?: string; type: string }) =>
+            !['name', 'avatar'].includes(field.name ?? '');
+          return {
+            ...collection,
+            fields: collection.fields.filter(existedBefore),
+            flattenedFields: collection.flattenedFields.filter(existedBefore),
+          };
+        });
       const payload = await getPayload({
         config: {
           ...config,
@@ -156,7 +174,7 @@ native(
               disableCreateDatabase: true,
             }),
           },
-          collections: config.collections.filter(({ slug }) => slug !== 'publication-retries'),
+          collections,
           typescript: { ...config.typescript, autoGenerate: false },
         },
         disableDBConnect: true,
@@ -177,7 +195,7 @@ native(
           throw new Error('Controlled migration requested a different owned database.');
         assertOwned();
       },
-      initialize: () => initialize(),
+      initialize: () => initialize(uri.href, 'predecessor'),
       backup: {
         application,
         recipient: tools.recipient,
@@ -204,13 +222,13 @@ native(
       vi.stubEnv('PUBLICATION_RETRIES_ENABLED', 'false');
       await invoke({ tool: 'createdb', args: ['--username=adfl_test', database] });
       created = true;
-      const old = await initialize();
+      const old = await initialize(uri.href, 'predecessor');
       await old.db.connect!();
       // Payload's generic type uses unknown arguments. This owned test invokes
       // the real Postgres adapter with the preceding Native Postgres catalog.
       await old.db.migrate({ migrations: previous as Migration[] });
       const predecessor = await history(old);
-      expect(predecessor).toHaveLength(15);
+      expect(predecessor).toHaveLength(16);
       const record = await old.create({
         collection: 'users',
         overrideAccess: true,
@@ -255,11 +273,29 @@ native(
         throw new Error('Expected the controlled Native migration to apply.');
       expect(result.backup.complete).toBe(true);
       expect((await history(old)).map(({ name }) => name)).toContain(
-        '20261104_012603_publication_retry_metadata',
+        '20261106_035830_cms_user_profile',
       );
-      expect(await history(old)).toHaveLength(16);
+      expect(await history(old)).toHaveLength(17);
+      const upgraded = await initialize();
+      await upgraded.db.connect!();
       expect(
-        await old.findByID({ collection: 'users', id: record.id, overrideAccess: true }),
+        await upgraded.findByID({ collection: 'users', id: record.id, overrideAccess: true }),
+      ).toMatchObject({
+        id: record.id,
+        email: record.email,
+        name: null,
+        avatar: null,
+      });
+      expect(
+        (
+          await upgraded.login({
+            collection: 'users',
+            data: {
+              email: record.email,
+              password: 'Synthetic-migration-test-only-987!',
+            },
+          })
+        ).user,
       ).toMatchObject({ id: record.id });
       expect(await readPublicRoot(publication)).toEqual(root);
       await expect(
@@ -312,11 +348,22 @@ native(
           ],
           inputFile: dump.path,
         });
-        const recovery = await initialize(recoveryUri.href);
+        const recovery = await initialize(recoveryUri.href, 'predecessor');
         await recovery.db.connect!();
         expect(planControlledMigration(await history(recovery))).toBe('pending');
         expect(
           await recovery.findByID({ collection: 'users', id: record.id, overrideAccess: true }),
+        ).toMatchObject({ id: record.id, email: record.email });
+        expect(
+          (
+            await recovery.login({
+              collection: 'users',
+              data: {
+                email: record.email,
+                password: 'Synthetic-migration-test-only-987!',
+              },
+            })
+          ).user,
         ).toMatchObject({ id: record.id });
         await withPublicRootWriter(recoveryPublication, (_current, commit) => commit(restoredRoot));
         expect(await readPublicRoot(recoveryPublication)).toEqual(root);
@@ -330,8 +377,10 @@ native(
           backupId: result.backup.id,
           ciphertextSha256: result.backup.ciphertext.sha256,
           schemaSha256: application.schemaSha256,
-          predecessorRows: 15,
-          currentRows: 16,
+          predecessorRows: 16,
+          currentRows: 17,
+          existingAccountLoginVerified: true,
+          restoredAccountLoginVerified: true,
           competingJobRefused: true,
           preMigrationRestoreVerified: true,
         }) + '\n',

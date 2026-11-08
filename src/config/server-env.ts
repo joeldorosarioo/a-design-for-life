@@ -11,6 +11,7 @@ const serverEnvSchema = z
     PUBLICATION_RETRY_WORKER_ENABLED: z.enum(['true', 'false']).optional(),
     PUBLICATION_HTTP_VERIFICATION_ENABLED: z.enum(['true', 'false']).optional(),
     PUBLIC_SITE_ENABLED: z.enum(['true', 'false']).optional(),
+    EDITORIAL_FIRST_ACCESS_ENABLED: z.enum(['true', 'false']).optional(),
     GA4_MEASUREMENT_ID: z
       .string()
       .regex(/^G-[A-Z0-9]{4,32}$/)
@@ -64,6 +65,26 @@ const serverEnvSchema = z
     MEDIA_CHECKER_BINARY: z.string().min(1).optional(),
   })
   .superRefine((env, context) => {
+    if (env.EDITORIAL_FIRST_ACCESS_ENABLED === 'true') {
+      const database = URL.parse(env.DATABASE_URI);
+      const staging =
+        env.APP_ENV === 'staging' && URL.parse(env.SITE_ORIGIN)?.protocol === 'https:';
+      const isolatedTest =
+        env.APP_ENV === 'test' &&
+        database?.hostname === '127.0.0.1' &&
+        database.port === '55434' &&
+        database.pathname === '/adfl_test_runner' &&
+        database.username === 'adfl_test' &&
+        database.password === 'synthetic-local-test-only' &&
+        env.MEDIA_BUCKET === 'adfl-test-runner';
+      if (env.PUBLIC_SITE_ENABLED !== 'false' || (!staging && !isolatedTest))
+        context.addIssue({
+          code: 'custom',
+          path: ['EDITORIAL_FIRST_ACCESS_ENABLED'],
+          message:
+            'Browser first access requires explicit private HTTPS staging or the exact isolated test runner.',
+        });
+    }
     if (
       env.PUBLICATION_RETRY_WORKER_ENABLED === 'true' &&
       env.PUBLICATION_RETRIES_ENABLED !== 'true'

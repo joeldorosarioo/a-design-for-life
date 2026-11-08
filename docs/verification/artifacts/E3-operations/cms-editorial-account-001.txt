@@ -1,0 +1,71 @@
+unit-green-001
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓  unit  ops/staging/seed-http.test.ts (30 tests) 33ms
+ ✓  unit  ops/staging/initialize-receipt.test.ts (6 tests) 9ms
+ ✓  unit  src/helpers/payload/editorial-user-avatar.test.tsx (11 tests) 78ms
+ ✓  unit  src/payload.config.test.ts (1 test) 4205ms
+   ✓ uses the private account avatar and Portuguese admin with English available 4204ms
+
+ Test Files  4 passed (4)
+      Tests  48 passed (48)
+   Start at  01:01:04
+   Duration  4.78s (tests 60%, setup 17%, environment 15%, import 5%, transform 3%)
+
+
+migration-unit-green-001
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ✓  unit  ops/migrations/controlled.test.ts (7 tests) 10ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  01:07:35
+   Duration  23.04s (import 73%, setup 25%, transform 2%)
+
+
+native-recheck-green-001
+[01:10:10] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[01:10:10] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[01:10:10] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (1ms)
+[01:10:10] INFO: Migrating: 20261031_011109_e2_case_card_copy
+[01:10:10] INFO: Migrated:  20261031_011109_e2_case_card_copy (2ms)
+[01:10:10] INFO: Migrating: 20261103_095414_e2_cover_presentation_and_return_copy
+[01:10:10] INFO: Migrated:  20261103_095414_e2_cover_presentation_and_return_copy (2ms)
+[01:10:10] INFO: Migrating: 20261104_012603_publication_retry_metadata
+[01:10:10] INFO: Migrated:  20261104_012603_publication_retry_metadata (4ms)
+[01:10:13] INFO: Migrating: 20261106_035830_cms_user_profile
+[01:10:13] INFO: Migrated:  20261106_035830_cms_user_profile (7ms)
+{"runId":"925bedd8-d96c-4b12-bf52-222b8e578a83","database":"adfl_test_migration_2ed89beab12a40e29ad6e1ebdcad6c02","databaseContainerId":"d8fb5048d8ea20fbbee83716b68ecfb5b0bd6b4c6c96aa6563cc2ca528eb18a9","databaseNetworkId":"257fa2d5e967697dc16a37b4f52116906849badd16f7eb111a4bdd1acdf881a5","backupId":"30cf12cf-9dd0-431b-adb2-20b14546dd8b","ciphertextSha256":"5ed35e4502cba6182de40bc9bf28f206c1f4f26c23241f244f0c52bad5634e94","schemaSha256":"6605edeae15fab046d359b62a89b0794d15a16ca7224317a7d51a13565f7c3d8","predecessorRows":16,"currentRows":17,"existingAccountLoginVerified":true,"restoredAccountLoginVerified":true,"competingJobRefused":true,"preMigrationRestoreVerified":true}
+ ✓  integration  src/config/controlled-migration.integration.test.ts (1 test) 9570ms
+   ✓ backs up schema16, refuses a competing job and applies only the reviewed Native schema17 up once 9569ms
+
+ Test Files  3 passed (3)
+      Tests  6 passed (6)
+   Start at  01:09:51
+   Duration  26.83s (tests 64%, import 32%, transform 2%, setup 2%)
+
+
+browser-green-002
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 197ms
+✓ Running next.config.ts took 47ms
+⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 4 tests using 1 worker
+
+[01:14:17] INFO: O campo a seguir está inválido: Foto de perfil da conta
+  ok 1 [chromium] › src\app\(payload)\admin\account-profile.e2e.test.ts:47:1 › a conta salva nome e foto pelo formulário nativo em português e mantém os bytes da foto privados (3.1s)
+  ok 2 [chromium] › src\app\(payload)\admin\account-profile.e2e.test.ts:142:1 › os campos de navegação têm nomes e ajuda em português mesmo no conteúdo inglês (872ms)
+  ok 3 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (492ms)
+[01:14:20] INFO: Você não tem permissão para realizar essa ação.
+  ok 4 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (30ms)
+
+  4 passed (1.5m)

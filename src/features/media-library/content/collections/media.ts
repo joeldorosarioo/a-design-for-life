@@ -7,7 +7,8 @@ export const Media: CollectionConfig = {
   labels: { singular: 'Mídia', plural: 'Mídias' },
   admin: {
     useAsTitle: 'filename',
-    description: 'Arquivos são imutáveis. Para trocar uma imagem ou PDF, envie uma nova mídia.',
+    description:
+      'Biblioteca de imagens e currículos: JPEG, PNG, WebP ou AVIF até 10 MB e PDF até 5 MB. Para trocar um arquivo, envie uma nova mídia. As descrições das imagens são preenchidas nos campos do conteúdo em que forem usadas.',
   },
   trash: true,
   disableDuplicate: true,
@@ -38,7 +39,15 @@ export const Media: CollectionConfig = {
     handlers: [async (req, { params }) => nativeMediaFile(req, params.filename)],
   },
   fields: [
-    { name: 'label', label: 'Identificação interna', type: 'text' },
+    {
+      name: 'label',
+      label: 'Nome para encontrar o arquivo na biblioteca',
+      type: 'text',
+      admin: {
+        description:
+          'Identificação de uso interno, sem alterar o nome do arquivo nem o texto exibido no site. Exemplo: Retrato da Eliana ou Currículo em português.',
+      },
+    },
     ...(['manifest', 'usages'] as const).map((name) => ({
       name,
       type: 'json' as const,

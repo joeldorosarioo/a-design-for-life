@@ -17,13 +17,14 @@ const predecessor = [
   '20261030_201024_e2_reading_position_adjusted',
   '20261031_011109_e2_case_card_copy',
   '20261103_095414_e2_cover_presentation_and_return_copy',
+  '20261104_012603_publication_retry_metadata',
 ].map((name) => ({ name, batch: 1 }));
 
 it('recognizes the reviewed predecessor and the already-current native history', () => {
   expect(planControlledMigration(predecessor)).toBe('pending');
   expect(
     planControlledMigration([
-      { name: '20261104_012603_publication_retry_metadata', batch: 2 },
+      { name: '20261106_035830_cms_user_profile', batch: 2 },
       ...predecessor,
     ]),
   ).toBe('already-current');
@@ -31,6 +32,7 @@ it('recognizes the reviewed predecessor and the already-current native history',
 
 it.each([
   ['empty', []],
+  ['older predecessor', predecessor.slice(0, -1)],
   ['gapped', predecessor.filter((_, index) => index !== 2)],
   ['duplicate', [...predecessor, predecessor[0]]],
   ['unknown', [...predecessor, { name: 'unknown_migration', batch: 2 }]],

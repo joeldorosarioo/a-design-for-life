@@ -48,7 +48,7 @@ const receipt = () => ({
   database: 'seed_stage',
   origin,
   editorId,
-  migrations: 16,
+  migrations: 17,
   freshProvisioning: true,
   structural: ['professional-profiles', 'site-navigation'].flatMap((collection, index) =>
     ['pt', 'en'].map((locale, second) => ({
@@ -148,6 +148,11 @@ describe('staging seed preflight', () => {
         { ...receipt(), origin: 'https://foreign.example.invalid' },
         'seed_stage',
       ),
+    ).toThrow('initialization-receipt-required');
+  });
+  it('refuses an initialization receipt from the previous migration catalog', () => {
+    expect(() =>
+      stagingSeedSettings(runtime(), editor(), { ...receipt(), migrations: 16 }, 'seed_stage'),
     ).toThrow('initialization-receipt-required');
   });
   it('requires an explicit complete staging editor pair when either override is selected', () => {

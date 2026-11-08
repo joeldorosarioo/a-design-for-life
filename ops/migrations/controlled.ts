@@ -11,9 +11,9 @@ import { createNativeBackupSource } from '../backup/native-source';
 import { runBackup, type RunBackupOptions } from '../backup/run';
 
 type MigrationRecord = { name?: string | null; batch?: number | null };
-const migrationName = '20261104_012603_publication_retry_metadata';
-// SHA-256 of the ordered, newline-delimited migration names in 60314d2.
-const predecessorSha256 = 'a7caa3319f3ea3c4290c54f6a64e621ee239d7d3396f18f3c65e6ea28b9e25d2';
+const migrationName = '20261106_035830_cms_user_profile';
+// SHA-256 of the sixteen ordered, newline-delimited migration names in 434ee5c.
+const predecessorSha256 = 'd2923bddb2698729ede60e37703a6deac4eae5cdcd0e5a41dab6c5ee7a787735';
 
 function reviewedMigration() {
   const current = migrations.at(-1);

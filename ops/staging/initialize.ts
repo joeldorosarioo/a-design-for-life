@@ -5,33 +5,52 @@ import { migrations } from '../../src/migrations';
 import { provisionStructuralDocuments } from '../../src/config/provision-structural-documents';
 import { planStagingCatalog } from './initialize-config.mjs';
 
-export type StagingInitializationOptions = {
+type StagingInitializationTarget = {
   databaseUri: string;
   database: string;
   role: string;
   origin: string;
+};
+export type EditorialStagingInitializationOptions = StagingInitializationTarget & {
   mode: 'initialize' | 'verify';
   editor: { email: string; password: string };
 };
-export type StagingInitializationReceipt = {
+export type FirstAccessStagingInitializationOptions = StagingInitializationTarget & {
+  mode: 'prepare-first-access';
+  editor?: never;
+};
+export type StagingInitializationOptions =
+  EditorialStagingInitializationOptions | FirstAccessStagingInitializationOptions;
+type StructuralBaseline = {
+  collection: 'professional-profiles' | 'site-navigation';
+  locale: string;
+  id: string;
+  updatedAt: string;
+};
+type StagingReceiptBase = {
   version: 1;
   environment: 'staging';
   database: string;
   origin: string;
-  editorId: string;
   migrations: number;
   migrationLedgerSha256: string;
-  structuralDocuments: number;
-  structural: {
-    collection: 'professional-profiles' | 'site-navigation';
-    locale: string;
-    id: string;
-    updatedAt: string;
-  }[];
-  freshProvisioning: boolean;
-  status: 'initialized' | 'verified';
+  structural: StructuralBaseline[];
   completedAt: string;
 };
+export type InitializedStagingReceipt = StagingReceiptBase & {
+  editorId: string;
+  structuralDocuments: number;
+  freshProvisioning: boolean;
+  status: 'initialized' | 'verified';
+};
+export type PendingFirstAccessStagingReceipt = StagingReceiptBase & {
+  editorId: null;
+  structuralDocuments: 0;
+  freshProvisioning: false;
+  status: 'pending-first-access';
+};
+export type StagingInitializationReceipt =
+  InitializedStagingReceipt | PendingFirstAccessStagingReceipt;
 type CatalogObject = { schema: string; name: string; kind: string };
 type Connection = InstanceType<NonNullable<Payload['db']['pg']>['Client']>;
 const migrationNames = migrations.map(({ name }) => name);
@@ -52,7 +71,8 @@ function assertTarget(payload: Payload, options: StagingInitializationOptions) {
     target.hash ||
     !/^[a-z_][a-z0-9_]{0,62}$/i.test(options.database) ||
     ['postgres', 'template0', 'template1', 'adfl_local'].includes(options.database.toLowerCase()) ||
-    !['initialize', 'verify'].includes(options.mode) ||
+    !['initialize', 'verify', 'prepare-first-access'].includes(options.mode) ||
+    (options.mode === 'prepare-first-access' ? options.editor !== undefined : !options.editor) ||
     new URL(options.origin).protocol !== 'https:' ||
     payload.db.name !== 'postgres' ||
     !payload.db.pg ||
@@ -118,10 +138,25 @@ async function structuralDocuments(payload: Payload) {
   );
 }
 
+async function assertEmptyApplicationData(client: Connection, expectedTables: string[]) {
+  for (const table of expectedTables) {
+    if (table === 'payload_migrations') continue;
+    if (!/^[a-z_][a-z0-9_]*$/i.test(table)) throw refused();
+    if (
+      (
+        await client.query<{ present: boolean }>(
+          `SELECT EXISTS(SELECT 1 FROM public."${table}" LIMIT 1) AS present`,
+        )
+      ).rows[0]?.present !== false
+    )
+      throw refused();
+  }
+}
+
 async function provision(
   payload: Payload,
   client: Connection,
-  options: StagingInitializationOptions,
+  options: EditorialStagingInitializationOptions,
   expectedTables: string[],
 ) {
   const users = await payload.find({
@@ -137,18 +172,7 @@ async function provision(
   if (options.mode === 'verify' || users.totalDocs !== 0) throw refused();
   // A complete migration catalog without an account is recoverable only while every
   // application table is empty. No partial or foreign editorial data is adopted.
-  for (const table of expectedTables) {
-    if (table === 'payload_migrations') continue;
-    if (!/^[a-z_][a-z0-9_]*$/i.test(table)) throw refused();
-    if (
-      (
-        await client.query<{ present: boolean }>(
-          `SELECT EXISTS(SELECT 1 FROM public."${table}" LIMIT 1) AS present`,
-        )
-      ).rows[0]?.present !== false
-    )
-      throw refused();
-  }
+  await assertEmptyApplicationData(client, expectedTables);
   const req = await createLocalReq(
     { context: { trustedAccountProvisioning: true, trustedStructuralProvisioning: true } },
     payload,
@@ -177,6 +201,18 @@ async function provision(
 }
 
 /** Explicit operator action, never imported by application startup or an HTTP route. */
+export function initializeStaging(
+  payload: Payload,
+  options: EditorialStagingInitializationOptions,
+): Promise<InitializedStagingReceipt>;
+export function initializeStaging(
+  payload: Payload,
+  options: FirstAccessStagingInitializationOptions,
+): Promise<PendingFirstAccessStagingReceipt>;
+export function initializeStaging(
+  payload: Payload,
+  options: StagingInitializationOptions,
+): Promise<StagingInitializationReceipt>;
 export async function initializeStaging(
   payload: Payload,
   options: StagingInitializationOptions,
@@ -223,7 +259,7 @@ export async function initializeStaging(
       expectedTables,
       expectedEnums,
     );
-    if (phase === 'empty' && options.mode !== 'initialize') throw refused();
+    if (phase === 'empty' && options.mode === 'verify') throw refused();
     await payload.db.connect!();
     if (phase === 'empty') {
       const guarded = migrations.map((migration, index) => ({
@@ -267,6 +303,23 @@ export async function initializeStaging(
       'current'
     )
       throw refused();
+    if (options.mode === 'prepare-first-access') {
+      await assertEmptyApplicationData(client, expectedTables);
+      return {
+        version: 1,
+        environment: 'staging',
+        database: options.database,
+        origin: options.origin,
+        editorId: null,
+        migrations: migrationNames.length,
+        migrationLedgerSha256: createHash('sha256').update(migrationNames.join('\n')).digest('hex'),
+        structuralDocuments: 0,
+        structural: [],
+        freshProvisioning: false,
+        status: 'pending-first-access',
+        completedAt: new Date().toISOString(),
+      };
+    }
     const result = await provision(payload, client, options, expectedTables);
     return {
       version: 1,

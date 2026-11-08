@@ -14,6 +14,7 @@ import * as migration_20261030_201024_e2_reading_position_adjusted from './20261
 import * as migration_20261031_011109_e2_case_card_copy from './20261031_011109_e2_case_card_copy';
 import * as migration_20261103_095414_e2_cover_presentation_and_return_copy from './20261103_095414_e2_cover_presentation_and_return_copy';
 import * as migration_20261104_012603_publication_retry_metadata from './20261104_012603_publication_retry_metadata';
+import * as migration_20261106_035830_cms_user_profile from './20261106_035830_cms_user_profile';
 
 export const migrations = [
   {
@@ -95,5 +96,10 @@ export const migrations = [
     up: migration_20261104_012603_publication_retry_metadata.up,
     down: migration_20261104_012603_publication_retry_metadata.down,
     name: '20261104_012603_publication_retry_metadata',
+  },
+  {
+    up: migration_20261106_035830_cms_user_profile.up,
+    down: migration_20261106_035830_cms_user_profile.down,
+    name: '20261106_035830_cms_user_profile',
   },
 ];

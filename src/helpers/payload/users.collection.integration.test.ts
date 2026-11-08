@@ -19,7 +19,7 @@ describe('bootstrap editorial mínimo', () => {
         data: { email: 'unauthorized@example.invalid', password: 'Synthetic-test-password-123!' },
         overrideAccess: true,
       }),
-    ).rejects.toThrow(/(forbidden|proib|não permit|not allowed)/i);
+    ).rejects.toMatchObject({ status: 403 });
   });
 });
 

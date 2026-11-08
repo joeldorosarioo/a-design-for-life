@@ -182,3 +182,53 @@ it('allows public HTTP receipt verification only in an explicit isolated test ru
     }),
   ).toHaveProperty(selected, 'true');
 });
+
+describe('explicit browser first access', () => {
+  const firstAccess = {
+    ...validInput,
+    DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+    MEDIA_BUCKET: 'adfl-test-runner',
+    PUBLIC_SITE_ENABLED: 'false',
+    EDITORIAL_FIRST_ACCESS_ENABLED: 'true',
+  } satisfies NodeJS.ProcessEnv;
+  it('keeps browser first access off by default and retains its explicit isolated opt-in', () => {
+    expect(readServerEnv(validInput).EDITORIAL_FIRST_ACCESS_ENABLED).toBeUndefined();
+    expect(readServerEnv(firstAccess).EDITORIAL_FIRST_ACCESS_ENABLED).toBe('true');
+    expect(
+      readServerEnv({ ...firstAccess, EDITORIAL_FIRST_ACCESS_ENABLED: 'false' })
+        .EDITORIAL_FIRST_ACCESS_ENABLED,
+    ).toBe('false');
+  });
+  it('allows explicit first access only for private HTTPS staging or the exact isolated test runner', () => {
+    expect(
+      readServerEnv({
+        ...firstAccess,
+        NODE_ENV: 'production',
+        APP_ENV: 'staging',
+        SITE_ORIGIN: 'https://staging.example.invalid',
+        DATABASE_URI: 'postgres://stage:synthetic@127.0.0.1:5432/staging',
+        MEDIA_BUCKET: 'stage-media',
+      }).EDITORIAL_FIRST_ACCESS_ENABLED,
+    ).toBe('true');
+  });
+  it.each([
+    { APP_ENV: 'production', NODE_ENV: 'production', SITE_ORIGIN: 'https://site.example.invalid' },
+    { APP_ENV: 'local', NODE_ENV: 'production' },
+    { PUBLIC_SITE_ENABLED: 'true' },
+    { PUBLIC_SITE_ENABLED: undefined },
+    { APP_ENV: 'staging', NODE_ENV: 'production', SITE_ORIGIN: 'http://staging.example.invalid' },
+    {
+      DATABASE_URI:
+        'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55433/adfl_test_other',
+    },
+    { MEDIA_BUCKET: 'adfl-test-other' },
+    { EDITORIAL_FIRST_ACCESS_ENABLED: 'yes' },
+  ] satisfies Partial<NodeJS.ProcessEnv>[])(
+    'refuses a first-access opt-in outside its private setup scope: %j',
+    (override) => {
+      expect(() => readServerEnv({ ...firstAccess, ...override })).toThrow(
+        /EDITORIAL_FIRST_ACCESS_ENABLED/,
+      );
+    },
+  );
+});
