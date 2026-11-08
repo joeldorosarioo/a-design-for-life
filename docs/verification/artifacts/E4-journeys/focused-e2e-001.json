@@ -1,0 +1,712 @@
+{
+  "version": 1,
+  "kind": "stage4-e41-isolated-focused-browser-journeys",
+  "startedAt": "2026-11-08T18:12:35.619Z",
+  "completedAt": "2026-11-08T18:18:40.004Z",
+  "runId": "789827c4-bca0-4d95-86f9-871e5c893e79",
+  "status": "passed",
+  "steps": [
+    {
+      "name": "focused-e2e",
+      "exitCode": 0,
+      "durationMs": 363666,
+      "logPath": ".work\\stage4-2026-11-06\\e41-journeys-789827c4-bca0-4d95-86f9-871e5c893e79\\focused-e2e.log",
+      "logSha256": "8ce7bdc180463d99a5fce37feb60b6a0f7aac13bad77852e4f100b6cb7f6e968"
+    }
+  ],
+  "failure": null,
+  "source": [
+    {
+      "path": "src/app/(payload)/admin/editorial.e2e.test.ts",
+      "sha256": "ff66ffa2eb6ea0e09f97af6af08dd09c277bcc14c50373a00f8f8750b141c415"
+    },
+    {
+      "path": "src/features/cases/server/get-published-case.test.ts",
+      "sha256": "b8854f55e36e4f861f47084a8e48d0ec947ce3e257ee1b7f56a30ee2e740c2d7"
+    },
+    {
+      "path": "package.json",
+      "sha256": "2b7c70916be8cea7eb5fa1d4d844067361c66d9cfa9ded49107be25b9a71b49e"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "07c67f17617f0f41d155be2b519348d65e6704a3a82b7a779e4eaaebc2a9bbbb"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "1a43660e044d3686d3863733904351eafda0c242f2380f979ff61c42f77aed83"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "9ad3ffd4ee9ac66fec17b75f3bd34c22dce4d51db96acccdd8ccafc835713ed0"
+    }
+  ],
+  "sourceUnchanged": true,
+  "nextEnvPreserved": true,
+  "nextEnvBeforeSha256": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66",
+  "tsconfigPreserved": true,
+  "tsconfigBeforeSha256": "64f3c9d6863fee9d3fd8707e5543bba29487d389b2e17117e8ec2cd451eb70ce",
+  "backupFixtureRemoved": true,
+  "privateCredentialsPassedToProcess": false,
+  "stagingChanged": false,
+  "productionAccessed": false,
+  "basisHead": "7331e34c7ed52e9be44fa1e4fa3247f4820d64b3",
+  "runtimeSourceRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+  "node": "24.22.2",
+  "pnpm": "12.10.1",
+  "os": "Windows native toolchain",
+  "browser": "Playwright 1.64.1 Chromium headless shell",
+  "database": "Isolated postgres-isolated, PostgreSQL 17.11 on 127.0.0.1:55434",
+  "server": "Production Next.js 16.4.3 build, APP_ENV=test, isolated loopback:3101",
+  "command": "pnpm test:e2e editorial.e2e.test.ts publication.e2e.test.ts publication-http-observation.e2e.test.ts publication-worker.e2e.test.ts publication-sitemap.e2e.test.ts resolve-case-route.e2e.test.ts public-pages.e2e.test.ts negative-cases.e2e.test.ts preview.e2e.test.ts private-pages.e2e.test.ts password-reset.e2e.test.ts account-profile.e2e.test.ts media-delivery.e2e.test.ts public-image.e2e.test.ts public-cache.e2e.test.ts reading-position.e2e.test.ts reading-position-expanded.e2e.test.ts page.e2e.test.ts admin.e2e.test.ts --reporter=list (exact package-script entry invoked through the portable Node binary)",
+  "counts": {
+    "passed": 107,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sourceScope": "Receipt hashes test/entry changes tracked by private wrapper, not a complete application source manifest. Build finished before application changes elsewhere in E4.",
+  "tests": [
+    {
+      "number": 1,
+      "test": "src/app/(payload)/admin/account-profile.e2e.test.ts:47:1",
+      "title": "a conta salva nome e foto pelo formulário nativo em português e mantém os bytes da foto privados",
+      "elapsed": "3.1s"
+    },
+    {
+      "number": 2,
+      "test": "src/app/(payload)/admin/account-profile.e2e.test.ts:142:1",
+      "title": "os campos de navegação têm nomes e ajuda em português mesmo no conteúdo inglês",
+      "elapsed": "971ms"
+    },
+    {
+      "number": 3,
+      "test": "src/app/(portfolio)/[locale]/negative-cases.e2e.test.ts:170:3",
+      "title": "pt: unknown and real private reservations have identical editorial404 bytes for HTML,HEAD,conditionals and RSC",
+      "elapsed": "258ms"
+    },
+    {
+      "number": 4,
+      "test": "src/app/(portfolio)/[locale]/negative-cases.e2e.test.ts:170:3",
+      "title": "en: unknown and real private reservations have identical editorial404 bytes for HTML,HEAD,conditionals and RSC",
+      "elapsed": "194ms"
+    },
+    {
+      "number": 5,
+      "test": "src/app/(portfolio)/[locale]/negative-cases.e2e.test.ts:200:1",
+      "title": "real PT withdrawal retains410 editorial state while the confirmed EN detail stays200",
+      "elapsed": "445ms"
+    },
+    {
+      "number": 6,
+      "test": "src/app/(portfolio)/[locale]/negative-cases.e2e.test.ts:235:1",
+      "title": "missing root coverage for a real Native public intent is503 with retry and editorial structure, never a live body",
+      "elapsed": "128ms"
+    },
+    {
+      "number": 7,
+      "test": "src/app/(portfolio)/[locale]/negative-cases.e2e.test.ts:283:1",
+      "title": "compiled CSS serves200 and keeps current contact visible/focused below sticky desktop/mobile headers, including text scaling",
+      "elapsed": "441ms"
+    },
+    {
+      "number": 8,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:135:1",
+      "title": "denies anonymous HTML, HEAD and Flight before any private document can stream",
+      "elapsed": "46ms"
+    },
+    {
+      "number": 9,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:158:3",
+      "title": "pt: renders all four saved draft pages without JavaScript or public media destinations",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 10,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:158:3",
+      "title": "en: renders all four saved draft pages without JavaScript or public media destinations",
+      "elapsed": "1.0s"
+    },
+    {
+      "number": 11,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:209:1",
+      "title": "keeps authorized document, HEAD and Flight private and omits Native credentials from their bodies",
+      "elapsed": "474ms"
+    },
+    {
+      "number": 12,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:246:1",
+      "title": "delivers private image/PDF bytes only through authenticated preview-media and rejects optimizer bypasses",
+      "elapsed": "132ms"
+    },
+    {
+      "number": 13,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:275:1",
+      "title": "rejects foreign origins, forged scopes, duplicated parameters and writes before the private Page",
+      "elapsed": "135ms"
+    },
+    {
+      "number": 14,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:299:1",
+      "title": "reads a newly saved draft on the same URL without mutating its confirmed public generation",
+      "elapsed": "367ms"
+    },
+    {
+      "number": 15,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:321:1",
+      "title": "chooses the counterpart private document and keeps the public preference cookie untouched",
+      "elapsed": "624ms"
+    },
+    {
+      "number": 16,
+      "test": "src/app/(portfolio)/preview-ui/private-pages.e2e.test.ts:353:1",
+      "title": "revokes the same session for document, HEAD, Flight and original draft media",
+      "elapsed": "238ms"
+    },
+    {
+      "number": 17,
+      "test": "src/config/public-cache.e2e.test.ts:43:1",
+      "title": "serves confirmed PT/EN data and shared media across full origin outage and same-build Next restart, then denies cached bytes after final revocation",
+      "elapsed": "1.4m"
+    },
+    {
+      "number": 18,
+      "test": "src/config/publication-http-observation.e2e.test.ts:142:1",
+      "title": "confirms an HTTP-observed generation and retries the same durable root after an observer 503",
+      "elapsed": "16.7s"
+    },
+    {
+      "number": 19,
+      "test": "src/config/publication-sitemap.e2e.test.ts:23:1",
+      "title": "serves the indexable sitemap from the selected generation and defers acknowledgement if its XML is stale",
+      "elapsed": "6.4s"
+    },
+    {
+      "number": 20,
+      "test": "src/config/publication-worker.e2e.test.ts:24:1",
+      "title": "starts the opted-in production Next worker during origin outage and drains the persisted intention after recovery",
+      "elapsed": "6.8s"
+    },
+    {
+      "number": 21,
+      "test": "src/config/publication-worker.e2e.test.ts:151:1",
+      "title": "automatically acknowledges the same promoted generation after the owned Next worker is killed",
+      "elapsed": "8.7s"
+    },
+    {
+      "number": 22,
+      "test": "src/features/media-library/server/media-delivery.e2e.test.ts:44:1",
+      "title": "native production multipart decodes four static formats and PDF, then protects every byte path",
+      "elapsed": "737ms"
+    },
+    {
+      "number": 23,
+      "test": "src/features/media-library/server/media-delivery.e2e.test.ts:113:1",
+      "title": "approved public original and derivative revoke immediately after withdrawal including HEAD and conditionals",
+      "elapsed": "474ms"
+    },
+    {
+      "number": 24,
+      "test": "src/features/media-library/server/media-delivery.e2e.test.ts:178:1",
+      "title": "native media UI creates an immutable asset and shows its private thumbnail after reload",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 25,
+      "test": "src/features/media-library/server/media-delivery.e2e.test.ts:217:1",
+      "title": "real storage loss stays503 while SQL loss preserves confirmed public bytes and returns503 for private or uncached paths",
+      "elapsed": "653ms"
+    },
+    {
+      "number": 26,
+      "test": "src/features/media-library/server/media-delivery.e2e.test.ts:385:1",
+      "title": "native HTTP applies approved animation/password policy and rejects disguised, corrupt, and oversized uploads",
+      "elapsed": "868ms"
+    },
+    {
+      "number": 27,
+      "test": "src/features/media-library/server/media-delivery.e2e.test.ts:481:1",
+      "title": "native animated WebP keeps every frame, timing, loop and responsive dimensions in private and approved delivery",
+      "elapsed": "390ms"
+    },
+    {
+      "number": 28,
+      "test": "src/helpers/payload/password-reset.e2e.test.ts:19:1",
+      "title": "native admin security headers preserve the real login form and its resources",
+      "elapsed": "268ms"
+    },
+    {
+      "number": 29,
+      "test": "src/helpers/payload/password-reset.e2e.test.ts:31:1",
+      "title": "real native forgot and reset forms use captured delivery and the native session cookie",
+      "elapsed": "5.8s"
+    },
+    {
+      "number": 30,
+      "test": "src/helpers/payload/preview.e2e.test.ts:13:1",
+      "title": "anonymous preview is rejected without exposing a draft or redirecting",
+      "elapsed": "17ms"
+    },
+    {
+      "number": 31,
+      "test": "src/helpers/payload/preview.e2e.test.ts:26:1",
+      "title": "malformed reset requests consume the outer transport abuse budget",
+      "elapsed": "275ms"
+    },
+    {
+      "number": 32,
+      "test": "src/helpers/payload/preview.e2e.test.ts:66:1",
+      "title": "native session follows a safe private redirect and can see only the requested draft locale",
+      "elapsed": "191ms"
+    },
+    {
+      "number": 33,
+      "test": "src/helpers/payload/preview.e2e.test.ts:122:1",
+      "title": "rejects an untrusted Origin on sensitive native authentication transports including native case variants",
+      "elapsed": "13ms"
+    },
+    {
+      "number": 34,
+      "test": "src/app/(payload)/admin/admin.e2e.test.ts:3:1",
+      "title": "o painel nativo é renderizado pelo build de produção local",
+      "elapsed": "367ms"
+    },
+    {
+      "number": 35,
+      "test": "src/app/(payload)/admin/admin.e2e.test.ts:9:1",
+      "title": "cadastro inicial anônimo não cria conta pela API HTTP nativa",
+      "elapsed": "22ms"
+    },
+    {
+      "number": 36,
+      "test": "src/app/(payload)/admin/editorial.e2e.test.ts:71:1",
+      "title": "two native editors save independently while a visitor cannot read their drafts",
+      "elapsed": "5.5s"
+    },
+    {
+      "number": 37,
+      "test": "src/app/(payload)/admin/editorial.e2e.test.ts:229:1",
+      "title": "anonymous HTTP sees only each independently published locale/group and protected native restore stays draft",
+      "elapsed": "1.9s"
+    },
+    {
+      "number": 38,
+      "test": "src/app/(payload)/admin/editorial.e2e.test.ts:444:1",
+      "title": "native version comparison restores a draft; native Save Draft and Publish send the observed revision",
+      "elapsed": "2.4s"
+    },
+    {
+      "number": 39,
+      "test": "src/app/(payload)/admin/editorial.e2e.test.ts:535:1",
+      "title": "an old native tab keeps its observed revision through focus and reacquisition and shows a save conflict",
+      "elapsed": "5.8s"
+    },
+    {
+      "number": 40,
+      "test": "src/app/(portfolio)/[locale]/public-pages.e2e.test.ts:57:3",
+      "title": "pt: published Home, About, listing and case are complete in SSR without JavaScript",
+      "elapsed": "1.7s"
+    },
+    {
+      "number": 41,
+      "test": "src/app/(portfolio)/[locale]/public-pages.e2e.test.ts:137:3",
+      "title": "pt: listing count/order and Home highlights use only published current-locale translations",
+      "elapsed": "532ms"
+    },
+    {
+      "number": 42,
+      "test": "src/app/(portfolio)/[locale]/public-pages.e2e.test.ts:200:3",
+      "title": "pt: mobile keyboard opens/closes the menu and Contact returns focus to this page footer",
+      "elapsed": "594ms"
+    },
+    {
+      "number": 43,
+      "test": "src/app/(portfolio)/[locale]/public-pages.e2e.test.ts:57:3",
+      "title": "en: published Home, About, listing and case are complete in SSR without JavaScript",
+      "elapsed": "1.4s"
+    },
+    {
+      "number": 44,
+      "test": "src/app/(portfolio)/[locale]/public-pages.e2e.test.ts:137:3",
+      "title": "en: listing count/order and Home highlights use only published current-locale translations",
+      "elapsed": "521ms"
+    },
+    {
+      "number": 45,
+      "test": "src/app/(portfolio)/[locale]/public-pages.e2e.test.ts:200:3",
+      "title": "en: mobile keyboard opens/closes the menu and Contact returns focus to this page footer",
+      "elapsed": "529ms"
+    },
+    {
+      "number": 46,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:18:3",
+      "title": "language entry and manual preference over production HTTP › negotiates each root request privately without creating a cookie",
+      "elapsed": "39ms"
+    },
+    {
+      "number": 47,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:45:3",
+      "title": "language entry and manual preference over production HTTP › ignores external redirect hints and forwarded hosts",
+      "elapsed": "10ms"
+    },
+    {
+      "number": 48,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:62:3",
+      "title": "language entry and manual preference over production HTTP › saves manually, preserves the deadline during visits, and renews on another choice",
+      "elapsed": "45ms"
+    },
+    {
+      "number": 49,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:113:5",
+      "title": "language entry and manual preference over production HTTP › resumes the browser preference after a cookie is expired",
+      "elapsed": "15ms"
+    },
+    {
+      "number": 50,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:113:5",
+      "title": "language entry and manual preference over production HTTP › resumes the browser preference after a cookie is removed",
+      "elapsed": "14ms"
+    },
+    {
+      "number": 51,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:138:3",
+      "title": "language entry and manual preference over production HTTP › does not negotiate or renew on explicit locale paths",
+      "elapsed": "94ms"
+    },
+    {
+      "number": 52,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:157:3",
+      "title": "language entry and manual preference over production HTTP › keeps the crossed About paths as real 404 responses",
+      "elapsed": "27ms"
+    },
+    {
+      "number": 53,
+      "test": "src/app/(portfolio)/page.e2e.test.ts:166:3",
+      "title": "language entry and manual preference over production HTTP › rejects invalid or foreign manual requests without changing a cookie",
+      "elapsed": "31ms"
+    },
+    {
+      "number": 54,
+      "test": "src/config/public-image.e2e.test.ts:19:1",
+      "title": "optimizes one original through Next, rechecks cache hits and denies every byte after withdrawal",
+      "elapsed": "613ms"
+    },
+    {
+      "number": 55,
+      "test": "src/config/publication.e2e.test.ts:37:1",
+      "title": "Native CMS persists pending shared and localized updates through reload and retries without resetting unsaved edits",
+      "elapsed": "4.3s"
+    },
+    {
+      "number": 56,
+      "test": "src/config/publication.e2e.test.ts:139:1",
+      "title": "Native CMS rejects a stale retry and keeps withdrawal pending until the public root changes",
+      "elapsed": "4.4s"
+    },
+    {
+      "number": 57,
+      "test": "src/config/publication.e2e.test.ts:237:1",
+      "title": "Native CMS edits the illustrative Figma model only as a private draft",
+      "elapsed": "3.6s"
+    },
+    {
+      "number": 58,
+      "test": "src/features/cases/server/resolve-case-route.e2e.test.ts:66:1",
+      "title": "real HTTP statuses, private404 equivalence, native REST conflict/guards and conditional error requests",
+      "elapsed": "1.5s"
+    },
+    {
+      "number": 59,
+      "test": "src/features/cases/server/resolve-case-route.e2e.test.ts:195:1",
+      "title": "one real browser can reverse a previous permanent redirect by reusing owned history without a cached loop",
+      "elapsed": "1.4s"
+    },
+    {
+      "number": 60,
+      "test": "src/features/cases/server/resolve-case-route.e2e.test.ts:276:1",
+      "title": "native Payload suggestion is explicit and title edits preserve manual slug",
+      "elapsed": "2.1s"
+    },
+    {
+      "number": 61,
+      "test": "src/features/cases/server/resolve-case-route.e2e.test.ts:317:1",
+      "title": "confirmed routes survive a real PostgreSQL outage while unknown routes return503 and recover",
+      "elapsed": "502ms"
+    },
+    {
+      "number": 62,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix desktop home: shared identity survives both language directions",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 63,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix desktop about: shared identity survives both language directions",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 64,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix desktop list: shared identity survives both language directions",
+      "elapsed": "1.0s"
+    },
+    {
+      "number": 65,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix desktop detail: shared identity survives both language directions",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 66,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix mobile home: shared identity survives both language directions",
+      "elapsed": "1.0s"
+    },
+    {
+      "number": 67,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix mobile about: shared identity survives both language directions",
+      "elapsed": "874ms"
+    },
+    {
+      "number": 68,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix mobile list: shared identity survives both language directions",
+      "elapsed": "962ms"
+    },
+    {
+      "number": 69,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:78:5",
+      "title": "@matrix mobile detail: shared identity survives both language directions",
+      "elapsed": "921ms"
+    },
+    {
+      "number": 70,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:145:3",
+      "title": "@equivalence pt→en: entire missing case opens the target list and does not replay its notice",
+      "elapsed": "876ms"
+    },
+    {
+      "number": 71,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:181:3",
+      "title": "@equivalence pt→en: missing block uses only its explicit ancestor and target-locale partial notice",
+      "elapsed": "1.0s"
+    },
+    {
+      "number": 72,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:219:3",
+      "title": "@equivalence pt→en: absent section has no shared ancestor and uses the same page top",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 73,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:250:3",
+      "title": "@equivalence pt→en: missing list card stays on the translated list and uses its explicit list ancestor",
+      "elapsed": "721ms"
+    },
+    {
+      "number": 74,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:145:3",
+      "title": "@equivalence en→pt: entire missing case opens the target list and does not replay its notice",
+      "elapsed": "910ms"
+    },
+    {
+      "number": 75,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:181:3",
+      "title": "@equivalence en→pt: missing block uses only its explicit ancestor and target-locale partial notice",
+      "elapsed": "1.0s"
+    },
+    {
+      "number": 76,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:219:3",
+      "title": "@equivalence en→pt: absent section has no shared ancestor and uses the same page top",
+      "elapsed": "1.1s"
+    },
+    {
+      "number": 77,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:250:3",
+      "title": "@equivalence en→pt: missing list card stays on the translated list and uses its explicit list ancestor",
+      "elapsed": "759ms"
+    },
+    {
+      "number": 78,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:264:1",
+      "title": "@equivalence missing featured card uses the Home projects ancestor rather than an unrelated card",
+      "elapsed": "703ms"
+    },
+    {
+      "number": 79,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:277:1",
+      "title": "@lifecycle Back and Forward retain native reading positions without another manual preference",
+      "elapsed": "838ms"
+    },
+    {
+      "number": 80,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:303:1",
+      "title": "@lifecycle direct entry and refresh do not invent a missing-translation notice or renew preference",
+      "elapsed": "465ms"
+    },
+    {
+      "number": 81,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:336:1",
+      "title": "@lifecycle keyboard language choice does not focus the reading text or toast and keeps Tab usable",
+      "elapsed": "688ms"
+    },
+    {
+      "number": 82,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:357:1",
+      "title": "@lifecycle rapid real double click produces one POST and one language navigation",
+      "elapsed": "689ms"
+    },
+    {
+      "number": 83,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:383:1",
+      "title": "@lifecycle browser Back cancels a pending preference before its delayed response can navigate",
+      "elapsed": "947ms"
+    },
+    {
+      "number": 84,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:420:1",
+      "title": "@lifecycle user scroll during delayed Flight cancels restoration without claiming to cancel the accepted navigation",
+      "elapsed": "834ms"
+    },
+    {
+      "number": 85,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:449:1",
+      "title": "@resource actual delayed Next image completes before exact reading restoration is certified",
+      "elapsed": "624ms"
+    },
+    {
+      "number": 86,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:478:1",
+      "title": "@resource user scroll while the destination image is pending prevents later observer corrections",
+      "elapsed": "759ms"
+    },
+    {
+      "number": 87,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:521:3",
+      "title": "@resource real FontFace loading delays completion until actual font settlement",
+      "elapsed": "866ms"
+    },
+    {
+      "number": 88,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:521:3",
+      "title": "@resource real FontFace deadline reports failure and late loading cannot resume correction",
+      "elapsed": "9.2s"
+    },
+    {
+      "number": 89,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:592:3",
+      "title": "@anchors desktop: native contact and case TOC targets stay below the measured sticky Header",
+      "elapsed": "791ms"
+    },
+    {
+      "number": 90,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:592:3",
+      "title": "@anchors mobile: native contact and case TOC targets stay below the measured sticky Header",
+      "elapsed": "819ms"
+    },
+    {
+      "number": 91,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop pt home: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "486ms"
+    },
+    {
+      "number": 92,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop pt about: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "456ms"
+    },
+    {
+      "number": 93,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop pt list: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "500ms"
+    },
+    {
+      "number": 94,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop pt detail: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "476ms"
+    },
+    {
+      "number": 95,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop en home: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "491ms"
+    },
+    {
+      "number": 96,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop en about: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "671ms"
+    },
+    {
+      "number": 97,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop en list: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "612ms"
+    },
+    {
+      "number": 98,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact desktop en detail: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "518ms"
+    },
+    {
+      "number": 99,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile pt home: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "689ms"
+    },
+    {
+      "number": 100,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile pt about: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "526ms"
+    },
+    {
+      "number": 101,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile pt list: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "549ms"
+    },
+    {
+      "number": 102,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile pt detail: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "537ms"
+    },
+    {
+      "number": 103,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile en home: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "512ms"
+    },
+    {
+      "number": 104,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile en about: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "439ms"
+    },
+    {
+      "number": 105,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile en list: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "464ms"
+    },
+    {
+      "number": 106,
+      "test": "src/features/language-switcher/components/reading-position-expanded.e2e.test.ts:669:7",
+      "title": "@contact mobile en detail: current-page contact is below the Header and mobile dialog restores contact focus",
+      "elapsed": "472ms"
+    },
+    {
+      "number": 107,
+      "test": "src/features/language-switcher/components/reading-position.e2e.test.ts:22:1",
+      "title": "keeps the visible Home section at the same viewport position when switching PT to EN",
+      "elapsed": "857ms"
+    }
+  ]
+}

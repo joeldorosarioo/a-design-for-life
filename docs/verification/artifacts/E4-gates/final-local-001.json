@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "kind": "stage4-local-gates-with-retained-attempts",
+  "status": "passed",
+  "environment": {
+    "platform": "win32",
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "next": "16.4.3",
+    "chromium": "156.0.8078.4",
+    "postgres": "17.11",
+    "testDatabase": "owned tmpfs on loopback 55434",
+    "browserOrigin": "http://127.0.0.1:3101"
+  },
+  "verify": {
+    "command": "pnpm run verify",
+    "source": "Runtime source at 353921735a96e081e6913760712265a1f28e1417 plus local Stage 4 progress and documentation",
+    "results": {
+      "typecheck": "passed",
+      "lintErrors": 0,
+      "existingMigrationWarnings": 8,
+      "format": "passed",
+      "vitestFilesPassed": 237,
+      "vitestPassed": 2332,
+      "windowsPlatformSkips": 3,
+      "caseStateCssPassed": 2,
+      "stageProgressPassed": 40,
+      "deployPassed": 83,
+      "build": "passed"
+    },
+    "name": "verify",
+    "exitCode": 0,
+    "durationMs": 466203,
+    "logPath": ".work/stage4-2026-11-06/final-gates-b2a9bf56-ab50-437a-ac64-1e73bbf7a2a4/verify.log",
+    "logSha256": "e62a57425a2fa0c50ea10ded282edc49a8b04c4488f00e778a3d9dd50612b71d"
+  },
+  "browser": {
+    "command": "pnpm run test:e2e --reporter=list",
+    "testSource": "c70d1b716f6aa8b43349b75ba62190a0961a5cfe",
+    "passed": 123,
+    "failed": 0,
+    "twoEditorsAndVisitorPassed": true,
+    "name": "full-e2e",
+    "exitCode": 0,
+    "durationMs": 291898,
+    "logPath": ".work/stage4-2026-11-06/final-e2e-d6ca534a-aac1-4a2b-bd0b-76d96f1202bc/full-e2e.log",
+    "logSha256": "808342c4df90edb83a750da2c77a72f19461e9aeaad64daedf263f300a5a6b16"
+  },
+  "priorAttempts": [
+    {
+      "step": {
+        "name": "verify",
+        "exitCode": 1,
+        "durationMs": 67008,
+        "logPath": ".work/stage4-2026-11-06/final-gates-a511723d-0f16-4b5b-8bbf-26372bfbcd33/verify.log",
+        "logSha256": "ee38372418c3619f44072dbec632a752ac7e7ceaa0bfd17a1ebfc88077bd4107"
+      },
+      "failure": "Prettier found the Stage 4 traceability report while the documentation was being edited. The aggregate stopped before tests or build."
+    },
+    {
+      "step": {
+        "name": "full-e2e",
+        "exitCode": 1,
+        "durationMs": 305648,
+        "logPath": ".work/stage4-2026-11-06/final-gates-b2a9bf56-ab50-437a-ac64-1e73bbf7a2a4/full-e2e.log",
+        "logSha256": "46d3f80cb1b8ed1bb25de1eb2a5ab579132bd80afe9fa67f948cb25fb3314427"
+      },
+      "passed": 122,
+      "failed": 1,
+      "failure": "Authenticated GET fixture sent cookie without Origin/Sec-Fetch-Site, so Payload read it anonymously and returned 404. Private trace checked header presence only. Added trusted Origin to the test readback and kept all application guards."
+    }
+  ],
+  "preservation": {
+    "nextEnvSha256": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66",
+    "nextEnvPreserved": true,
+    "tsconfigPreserved": true,
+    "sourceFilesUnchangedDuringGates": true,
+    "backupFixturesRemoved": true,
+    "productionAccessed": false,
+    "stagingChangedByLocalTests": false
+  },
+  "receipts": [
+    {
+      "path": ".work/stage4-2026-11-06/final-gates-a511723d-0f16-4b5b-8bbf-26372bfbcd33/receipt.json",
+      "sha256": "07d8acd86593251cc2b9e4c2b726f53e0362120c525bb9bdd59beaa9f182e29f"
+    },
+    {
+      "path": ".work/stage4-2026-11-06/final-gates-b2a9bf56-ab50-437a-ac64-1e73bbf7a2a4/receipt.json",
+      "sha256": "176386ef9e2739e5e16247ab0e776a55ccdf48a32d1b5cb38e14f2ca8700859c"
+    },
+    {
+      "path": ".work/stage4-2026-11-06/final-e2e-d6ca534a-aac1-4a2b-bd0b-76d96f1202bc/receipt.json",
+      "sha256": "f23c3681f67643f389a6c5d813700c3c38efe70f0a751ece6bb8c0b144a373fd"
+    }
+  ],
+  "exactFinalLinuxCi": {
+    "status": "passed",
+    "run": 42512917835,
+    "revision": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+    "receipt": "docs/verification/artifacts/E4-operations/stage4-staging-release-001.json"
+  },
+  "nativeSyntheticArtifacts": [
+    {
+      "privatePath": ".work/stage4-2026-11-06/final-gates-b2a9bf56-ab50-437a-ac64-1e73bbf7a2a4/native-artifacts/encrypted-native-events-4850b2a2-964b-4420-9f90-402f8de599fe.jsonl",
+      "sha256": "36b856249bc1c05a07473fdbfac889421ea04f50cff09fcf4e09e7cd5588e9fb",
+      "originalRunnerOutput": "docs/verification/artifacts/E3-backup/encrypted-native-events-4850b2a2-964b-4420-9f90-402f8de599fe.jsonl"
+    },
+    {
+      "privatePath": ".work/stage4-2026-11-06/final-gates-b2a9bf56-ab50-437a-ac64-1e73bbf7a2a4/native-artifacts/native-foundations-proof-4850b2a2-964b-4420-9f90-402f8de599fe.jsonl",
+      "sha256": "984baae630b9bc7318be46950570f2671fd1d9d49aceafe3d74495c0010fec5c",
+      "originalRunnerOutput": "docs/verification/artifacts/E3-backup/native-foundations-proof-4850b2a2-964b-4420-9f90-402f8de599fe.jsonl"
+    },
+    {
+      "privatePath": ".work/stage4-2026-11-06/final-gates-b2a9bf56-ab50-437a-ac64-1e73bbf7a2a4/native-artifacts/native-snapshot-restore-6d7bf84c-2123-4314-9271-d087b5634d90.json",
+      "sha256": "8af9d4bc245a5072c4f77257abc82146276b1ffefe64f55c57a9c9401f78b2cf",
+      "originalRunnerOutput": "docs/verification/artifacts/E3-backup/native-snapshot-restore-6d7bf84c-2123-4314-9271-d087b5634d90.json"
+    }
+  ]
+}

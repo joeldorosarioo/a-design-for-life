@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "kind": "stage4-progress-cli-red-green",
+  "runtime": "Node 24.22.2 Windows",
+  "red": {
+    "command": "node --test --test-name-pattern=\"stage 4 uses\" scripts/recalculate-stage-progress.test.mjs",
+    "exitCode": 1,
+    "failed": 1,
+    "reason": "CLI rejected --stage 4 with Invalid arguments.",
+    "log": ".work/stage4-2026-11-06/progress-red-001.log",
+    "sha256": "8c866518002903da35447ab5127f3623fc60a8c8dbd5e8f14d70afa3b172b5fd"
+  },
+  "green": {
+    "command": "node --test scripts/recalculate-stage-progress.test.mjs",
+    "exitCode": 0,
+    "passed": 40,
+    "failed": 0,
+    "log": ".work/stage4-2026-11-06/progress-green-001.log",
+    "sha256": "4056026d68aa5a2dca053dc50dbb62a05a5f2eb84f2874599c65c5d0543dcedf"
+  },
+  "originalTaskSizes": [
+    5,
+    6,
+    5
+  ],
+  "originalCriteria": 16,
+  "priorLedgersPreserved": true,
+  "approvalIndependent": true
+}

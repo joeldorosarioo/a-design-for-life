@@ -29,3 +29,7 @@ BuildID `XCwWNaSVVZ2kr6jeLy4Aa`, fonte local de 500 arquivos/digest `f49bfee1960
 As páginas auditadas apresentaram título, descrição, idioma, canonical próprio, duas alternates, um main e um h1. O diagnóstico identificou títulos temporários repetidos entre Sobre e Case. Após as medições, uma atualização somente de metadados produziu títulos e descrições únicos nas 10 URLs. Os fingerprints do texto visível das oito páginas iniciais permaneceram iguais.
 
 O ambiente local devolveu robots com Disallow geral e sitemap sem URLs, conforme sua política. Rotas desconhecidas PT/EN responderam 404 com noindex e sem canonical. O login do painel manteve cache privado e noindex. O recibo associa a geração usada nas medições à revisão posterior dos metadados. [Resultados e vínculos](artifacts/E4-local-audit/local-placeholder-audit-2026-11-05.json)
+
+## Etapa 4 — HTTP e SSR em homologação
+
+A auditoria verificou canonical, alternates, título, descrição e Open Graph nas dez páginas PT/EN. Em staging, Basic Auth, noindex, robots e sitemap vazio preservam a exclusão de indexação. As respostas 410 e 503 foram verificadas com dados isolados. O domínio e o runtime de produção continuam pendentes. Consulte os resultados por rota no [relatório visual e de qualidade E4.2](E4.2-quality.md).

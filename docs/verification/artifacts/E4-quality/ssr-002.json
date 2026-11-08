@@ -1,0 +1,482 @@
+{
+  "startedAt": "2026-11-08T18:13:58.022Z",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sourceSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+  "imageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+  "rows": [
+    {
+      "path": "/pt",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "b94e5070fb19ddb4a16d4abce804c39823f04d11eaec1e8e22aee537036d724e",
+      "lang": "pt",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "719b40a6f29616dd19af5e2f8436a084c510604ae54b85d91f41f7405cba4df7",
+      "descriptionSha256": "e925ff1cfed2c1255f60bdde9ace170be69ca65364dc2bb84d55d1f609f83265",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/en",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "980575deb288d2c53569a1fe63b2fa21ccf8739ce7a6ab58166757168735fe72",
+      "lang": "en",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "369034d554844ab0bdfb1adb8b41fcf857eaf5511cd1b3cc80b85557b2826968",
+      "descriptionSha256": "bb217471d934ac62361749c588134a5a03d08e631f896ae149f40ac806805944",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/pt/cases",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "5102305d8b0843c177213a6322d113d77c38c26490fd20a9ebb2dfe99e5dadcd",
+      "lang": "pt",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "b3c15dc8e342e2f957b6edefaf928de84830fd7227e91368dabc852a4f0751dc",
+      "descriptionSha256": "1d2628fecd06fe5af0c5edb382ba0a7cccad87331ac1c330d77274fa19f7179c",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/en/cases",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "4b9cceff4cc5cafba4e1dc2c014db155f237de5cb2dfb8f7f861786d45e79ce5",
+      "lang": "en",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "acd7299628dc130bbf9777696ccb3ce1efd7a60236e21d951bb73a384169902d",
+      "descriptionSha256": "9f6c0707286abb2f9b0fef7206f150b4e2c793f885d03b83c5115086d377312d",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "a7622e362a11a8f0f37620da4d6101d6773e009c6c91160b18f155a78b171ebe",
+      "lang": "pt",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "5ffb13bfdfff43136aeea5636b4cbee23e325424fe4a14b14aaabe56d1fe51d1",
+      "descriptionSha256": "7e00efdf29dca1f19e17b07eaf0573adc59f78ac11e3d71447ca00dd18f00e97",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/flexibilidade-de-pagamento"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/flexibilidade-de-pagamento"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/payment-flexibility"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/flexibilidade-de-pagamento"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/en/cases/payment-flexibility",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "ab0407caf0cadbeff3b34b64a8371bd27e4242fc290f27122dc2f4fb2901e443",
+      "lang": "en",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "cd46cedcff814993c3a3eb6637a0b57adb1577c252fb821696a19482bcc3f45c",
+      "descriptionSha256": "1480851322c4f42c236e89df3b0237bd44ed836c8d2034b87396bf9c81cd96d6",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/payment-flexibility"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/flexibilidade-de-pagamento"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/payment-flexibility"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/payment-flexibility"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/pt/sobre",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "7108f0e34bee696658f623823e504581c3c86c577e4aa2869f75fb9be6cd4128",
+      "lang": "pt",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "427dffe4b5bd98721005357920650d5e56e020e14fa0ff6f1266086836de4191",
+      "descriptionSha256": "be06e05026c53ad3243b8393415eb454f20531965b2254a32915409826525b57",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/sobre"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/sobre"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/about"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/sobre"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/en/about",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "c8ca352c84c8889835ad9aed01a9d028e4cbb2b1fb7677eb843f9c91ab89ffa9",
+      "lang": "en",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "ddb74d0813ce8999b295e4f8627e046e672603daef98c14d061fff9d57ec1b42",
+      "descriptionSha256": "abb63d2e802a80dfd2bc6a67cc37001c16bc43c5bf4a34188c18f3e48dab2e24",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/about"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/sobre"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/about"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/about"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/pt/cases/modelo-de-financiamento",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "94169f122a004d4def0db82f5c535bb6d8a2158a8f8a7092a77f4430f0ea1939",
+      "lang": "pt",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "9c37da85c6a68be92541160b3b66dc32709863264febf87ecde82e4c656db615",
+      "descriptionSha256": "76f32cbb60b2ee8d84f21818bf7e987b565e106236db3a732a596f5337f9dda2",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/modelo-de-financiamento"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/modelo-de-financiamento"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/financing-model"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/modelo-de-financiamento"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    },
+    {
+      "path": "/en/cases/financing-model",
+      "status": 200,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "bodySha256": "b67c982207971c1dd880dd0d17a3cdf894396cb6302ca58b203c588a6d6b1fa1",
+      "lang": "en",
+      "mainCount": 1,
+      "mainHeadingCount": 1,
+      "titleSha256": "d8de7496e1bee6d68237cc8553c596bb648b91b136f49b2544095dd4570b8e0e",
+      "descriptionSha256": "b3ef34aea07276c63e2046df70bd3e3ec4df1d93fa6889a75571f0ff755b479e",
+      "canonicals": [
+        "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/financing-model"
+      ],
+      "alternates": [
+        {
+          "locale": "pt",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/pt/cases/modelo-de-financiamento"
+        },
+        {
+          "locale": "en",
+          "href": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/financing-model"
+        }
+      ],
+      "openGraph": {
+        "url": [
+          "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io/en/cases/financing-model"
+        ],
+        "titlePresent": true,
+        "descriptionPresent": true
+      },
+      "robotsMeta": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": 0
+    }
+  ],
+  "states": [
+    {
+      "path": "/robots.txt",
+      "acceptLanguage": null,
+      "status": 200,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "setsCookie": false,
+      "disallowAll": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "acceptLanguage": null,
+      "status": 200,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "setsCookie": false,
+      "urlCount": 0
+    },
+    {
+      "path": "/pt/cases/e4-missing-93ac41",
+      "acceptLanguage": null,
+      "status": 404,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "setsCookie": false,
+      "canonicalCount": 0,
+      "alternateCount": 0,
+      "robotsMeta": [
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "path": "/en/cases/e4-missing-93ac41",
+      "acceptLanguage": null,
+      "status": 404,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "setsCookie": false,
+      "canonicalCount": 0,
+      "alternateCount": 0,
+      "robotsMeta": [
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "path": "/pt/about",
+      "acceptLanguage": null,
+      "status": 404,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "setsCookie": false,
+      "canonicalCount": 0,
+      "alternateCount": 0,
+      "robotsMeta": [
+        "noindex",
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "path": "/en/sobre",
+      "acceptLanguage": null,
+      "status": 404,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "no-store, max-age=0",
+      "setsCookie": false,
+      "canonicalCount": 0,
+      "alternateCount": 0,
+      "robotsMeta": [
+        "noindex",
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "path": "/admin/login",
+      "acceptLanguage": null,
+      "status": 200,
+      "locationPath": null,
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "setsCookie": false,
+      "canonicalCount": 0,
+      "alternateCount": 0,
+      "robotsMeta": [
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "path": "/",
+      "acceptLanguage": "pt-BR, en;q=0.8",
+      "status": 307,
+      "locationPath": "/pt",
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "private, no-store",
+      "setsCookie": false
+    },
+    {
+      "path": "/",
+      "acceptLanguage": "fr, es;q=0.8",
+      "status": 307,
+      "locationPath": "/en",
+      "robotsHeader": "noindex, nofollow",
+      "cacheControl": "private, no-store",
+      "setsCookie": false
+    }
+  ],
+  "anonymousStatus": 401,
+  "findings": []
+}

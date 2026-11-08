@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "kind": "stage4-read-only-github-protection-and-candidate-checks",
+  "checkedAt": "2026-11-07T01:58:40.183Z",
+  "repository": "joeldorosarioo/a-design-for-life",
+  "developProtection": {
+    "requiredStatusChecks": {
+      "url": "https://api.github.com/repos/joeldorosarioo/a-design-for-life/branches/develop/protection/required_status_checks",
+      "strict": true,
+      "contexts": [
+        "type-lint-test-architecture-build"
+      ],
+      "contexts_url": "https://api.github.com/repos/joeldorosarioo/a-design-for-life/branches/develop/protection/required_status_checks/contexts",
+      "checks": [
+        {
+          "context": "type-lint-test-architecture-build",
+          "app_id": 15368
+        }
+      ]
+    },
+    "enforceAdmins": {
+      "url": "https://api.github.com/repos/joeldorosarioo/a-design-for-life/branches/develop/protection/enforce_admins",
+      "enabled": true
+    },
+    "allowForcePushes": {
+      "enabled": false
+    },
+    "allowDeletions": {
+      "enabled": false
+    },
+    "requiredConversationResolution": {
+      "enabled": false
+    }
+  },
+  "mainProtection": {
+    "status": "unavailable",
+    "exitCode": 1
+  },
+  "stagingPipeline": {
+    "id": 42304741961,
+    "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961"
+  },
+  "candidateChecks": {
+    "total": 6,
+    "checks": [
+      {
+        "name": "Record the healthy staging image",
+        "status": "completed",
+        "conclusion": "success",
+        "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961/job/128198619843"
+      },
+      {
+        "name": "Deploy staging and wait for health",
+        "status": "completed",
+        "conclusion": "success",
+        "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961/job/128197851247"
+      },
+      {
+        "name": "Promote the tested image to production",
+        "status": "completed",
+        "conclusion": "skipped",
+        "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961/job/128196680754"
+      },
+      {
+        "name": "Resolve the image already tested in staging",
+        "status": "completed",
+        "conclusion": "skipped",
+        "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961/job/128196678817"
+      },
+      {
+        "name": "Build private staging image / image-preflight",
+        "status": "completed",
+        "conclusion": "success",
+        "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961/job/128196677283"
+      },
+      {
+        "name": "type-lint-test-architecture-build",
+        "status": "completed",
+        "conclusion": "success",
+        "headSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42304741961/job/128191108583"
+      }
+    ]
+  },
+  "mutations": 0,
+  "mainBranch": {
+    "checkedAt": "2026-11-08T18:12:17.128Z",
+    "exitCode": 1,
+    "httpStatus": 404,
+    "exists": false
+  },
+  "environments": {
+    "checkedAt": "2026-11-08T18:14:32.499Z",
+    "httpStatus": 200,
+    "exitCode": 0,
+    "names": [
+      "staging"
+    ]
+  },
+  "productionAutodeployFlag": {
+    "checkedAt": "2026-11-08T18:14:32.863Z",
+    "httpStatus": 404,
+    "exitCode": 1
+  }
+}

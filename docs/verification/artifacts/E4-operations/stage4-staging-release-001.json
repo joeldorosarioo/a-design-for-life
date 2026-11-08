@@ -1,0 +1,376 @@
+{
+  "version": 1,
+  "kind": "stage4-successor-staging-release",
+  "status": "deployed-healthy",
+  "approval": "A4 and explicit production authorization pending",
+  "pr": {
+    "number": 6,
+    "checkedHead": "c70d1b716f6aa8b43349b75ba62190a0961a5cfe",
+    "requiredCheckRun": 42511728187,
+    "protectedMerge": true
+  },
+  "pipeline": {
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/42512917835",
+    "jobs": [
+      {
+        "name": "type-lint-test-architecture-build",
+        "databaseId": 128829665917,
+        "conclusion": "success"
+      },
+      {
+        "name": "Build private staging image / image-preflight",
+        "databaseId": 128832329336,
+        "conclusion": "success"
+      },
+      {
+        "name": "Resolve the image already tested in staging",
+        "databaseId": 128832330060,
+        "conclusion": "skipped"
+      },
+      {
+        "name": "Promote the tested image to production",
+        "databaseId": 128832330483,
+        "conclusion": "skipped"
+      },
+      {
+        "name": "Deploy staging and wait for health",
+        "databaseId": 128833308851,
+        "conclusion": "success"
+      },
+      {
+        "name": "Record the healthy staging image",
+        "databaseId": 128833765791,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "image": {
+    "manifestDigest": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+    "registryConfigDigest": "sha256:6091f5c0b43994ee062ee55290fcc0255fe21cfcab3f88c52c97cc8246aa37bc",
+    "revision": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+    "sourceTree": "e96ee4338b8640d6c5208e36be1240885e9f248f",
+    "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+    "registryMarkerReadback": {
+      "version": 1,
+      "kind": "read-only-tested-image-marker-resolution",
+      "checkedAt": "2026-11-08T19:18:18.468Z",
+      "sourceTree": "e96ee4338b8640d6c5208e36be1240885e9f248f",
+      "marker": "staging-tested-tree-e96ee4338b8640d6c5208e36be1240885e9f248f",
+      "result": {
+        "digest": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+        "revision": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+        "imageid": "sha256:6091f5c0b43994ee062ee55290fcc0255fe21cfcab3f88c52c97cc8246aa37bc"
+      },
+      "requests": 5,
+      "allRegistryOperationsReadOnly": true,
+      "branchContextSimulatedForResolver": true,
+      "actualMainBranchChanged": false,
+      "productionResourcesAccessed": false,
+      "productionDeployed": false
+    },
+    "deploymentUuid": "ssbztba8bkvgns7l4mtbxwaz",
+    "applicationStatus": "running:healthy"
+  },
+  "tests": {
+    "linuxCi": {
+      "vitestFiles": 237,
+      "vitestPassed": 2335,
+      "chromiumPassed": 123
+    },
+    "localGateReceipt": "docs/verification/artifacts/E4-gates/final-local-001.json"
+  },
+  "preDeployBackup": {
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "rypyurtmkz8srzlynpqowknb",
+    "sourceImageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+    "marker": {
+      "version": 1,
+      "id": "04d7933e-18f4-437b-99f6-04db4bac80a9",
+      "namespace": {
+        "project": "a-design-for-life",
+        "environment": "staging",
+        "source": "staging-app"
+      },
+      "createdAt": "2026-11-08T19:15:53.122Z",
+      "complete": true,
+      "completedAt": "2026-11-08T19:16:02.476Z",
+      "manifestSha256": "bf96302c222f2b42a7e2699a96325e3b299c16ea226cb0f53f70ae014348bb5c",
+      "ciphertext": {
+        "key": "sets/04d7933e-18f4-437b-99f6-04db4bac80a9/payload.age",
+        "byteLength": 2898824,
+        "sha256": "e4c7d872d63e2648ac964e6c4d9fe3ac2ac2a00eb1a6cc06b51a8d973862af07"
+      }
+    },
+    "completedBeforeNewContainerStarted": true,
+    "newContainerStartedAt": "2026-11-08T19:16:24.153625691Z",
+    "observedGapMs": 21678,
+    "orderingLimit": "Marker completion preceded new container start. The authorized client enforces backup completion before image-tag PATCH."
+  },
+  "preservation": {
+    "before": {
+      "version": 1,
+      "kind": "staging-release-preservation-probe",
+      "mode": "predeploy",
+      "expectedRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+      "checkedAt": "2026-11-08T19:01:37.490Z",
+      "host": {
+        "version": 1,
+        "checkedAtEpoch": 1794164494.732089,
+        "containerId": "e84995bd34de",
+        "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "imageId": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+        "imageRevision": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+        "user": "appuser",
+        "status": "running",
+        "health": "healthy",
+        "startedAt": "2026-11-06T22:43:20.047020238Z",
+        "limits": {
+          "nanoCpus": 1000000000,
+          "memory": 2147483648,
+          "memorySwap": 2147483648
+        },
+        "logConfig": {
+          "Type": "json-file",
+          "Config": {
+            "max-file": "3",
+            "max-size": "10m"
+          }
+        },
+        "volumes": [
+          {
+            "destination": "/app/.work/publication",
+            "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+          },
+          {
+            "destination": "/app/.work/next-build/cache",
+            "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+          },
+          {
+            "destination": "/var/lib/postgresql/data",
+            "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+          }
+        ],
+        "confirmedCoverDimensions": [
+          {
+            "locale": "pt",
+            "slug": "modelo-de-financiamento",
+            "width": 1691,
+            "height": 807,
+            "type": "image/png"
+          },
+          {
+            "locale": "en",
+            "slug": "financing-model",
+            "width": 1691,
+            "height": 807,
+            "type": "image/png"
+          },
+          {
+            "locale": "pt",
+            "slug": "flexibilidade-de-pagamento",
+            "width": 1048,
+            "height": 1280,
+            "type": "image/jpeg"
+          },
+          {
+            "locale": "en",
+            "slug": "payment-flexibility",
+            "width": 1048,
+            "height": 1280,
+            "type": "image/jpeg"
+          }
+        ],
+        "confirmedPublicRoots": [
+          {
+            "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+            "bytes": 52668,
+            "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+          }
+        ],
+        "runningContainers": 8
+      }
+    },
+    "after": {
+      "version": 1,
+      "kind": "staging-release-preservation-probe",
+      "mode": "after",
+      "expectedRevision": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+      "checkedAt": "2026-11-08T19:20:12.888Z",
+      "host": {
+        "version": 1,
+        "checkedAtEpoch": 1794165610.1692612,
+        "containerId": "920a2cb07157",
+        "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+        "imageId": "sha256:557ba0fbcdc8bd8bb2e225d84846c90271bdf7d0489e180796ee2d7a7f18d5aa",
+        "imageRevision": "befe22bc711d88f43f134983d151d0f87f6c7af2",
+        "user": "appuser",
+        "status": "running",
+        "health": "healthy",
+        "startedAt": "2026-11-08T19:16:24.153625691Z",
+        "limits": {
+          "nanoCpus": 1000000000,
+          "memory": 2147483648,
+          "memorySwap": 2147483648
+        },
+        "logConfig": {
+          "Type": "json-file",
+          "Config": {
+            "max-file": "3",
+            "max-size": "10m"
+          }
+        },
+        "volumes": [
+          {
+            "destination": "/app/.work/next-build/cache",
+            "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+          },
+          {
+            "destination": "/app/.work/publication",
+            "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+          },
+          {
+            "destination": "/var/lib/postgresql/data",
+            "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+          }
+        ],
+        "confirmedPublicRoots": [
+          {
+            "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+            "bytes": 52668,
+            "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+          }
+        ],
+        "runningContainers": 8
+      },
+      "http": [
+        {
+          "route": "/pt",
+          "status": 200,
+          "permissionsPolicy": "ch-ua-high-entropy-values=()",
+          "googleScriptPresent": false,
+          "noindex": "noindex, nofollow"
+        },
+        {
+          "route": "/en",
+          "status": 200,
+          "permissionsPolicy": "ch-ua-high-entropy-values=()",
+          "googleScriptPresent": false,
+          "noindex": "noindex, nofollow"
+        },
+        {
+          "route": "/pt/cases",
+          "status": 200,
+          "permissionsPolicy": "ch-ua-high-entropy-values=()",
+          "googleScriptPresent": false,
+          "noindex": "noindex, nofollow"
+        },
+        {
+          "route": "/en/cases",
+          "status": 200,
+          "permissionsPolicy": "ch-ua-high-entropy-values=()",
+          "googleScriptPresent": false,
+          "noindex": "noindex, nofollow"
+        },
+        {
+          "route": "/admin/login",
+          "status": 200,
+          "permissionsPolicy": null,
+          "googleScriptPresent": false,
+          "noindex": "noindex, nofollow"
+        },
+        {
+          "route": "/health",
+          "status": 200,
+          "permissionsPolicy": null,
+          "googleScriptPresent": false,
+          "noindex": "noindex, nofollow"
+        }
+      ],
+      "anonymousStatus": 401,
+      "publicRootsAndVolumesPreserved": true,
+      "productionAccessed": false
+    },
+    "threeVolumeIdentitiesUnchanged": true,
+    "confirmedPublicRootsUnchanged": true,
+    "appUserQuotasAndLogRotationUnchanged": true,
+    "schemaMigrationTreeUnchanged": true,
+    "migrationExecuted": false,
+    "runningContainerCountUnchanged": true
+  },
+  "http": [
+    {
+      "route": "/pt",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/en",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/pt/cases",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/en/cases",
+      "status": 200,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()",
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/admin/login",
+      "status": 200,
+      "permissionsPolicy": null,
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    },
+    {
+      "route": "/health",
+      "status": 200,
+      "permissionsPolicy": null,
+      "googleScriptPresent": false,
+      "noindex": "noindex, nofollow"
+    }
+  ],
+  "anonymousStatus": 401,
+  "scope": {
+    "onlyStagingApplicationDeployed": true,
+    "productionJobsSkipped": true,
+    "newPaidServices": 0,
+    "newRestoreBuckets": 0,
+    "stagingDatabaseReplaced": false,
+    "runtimeCredentialChanges": 0,
+    "cmsContentMutations": 0,
+    "analyticsLoader": null,
+    "googleMeasurementRequests": 0
+  },
+  "stagingBrowser": {
+    "checksPassed": 48,
+    "externalAttempts": 0,
+    "googleRequests": 0,
+    "analyticsEnabled": false,
+    "receipt": "docs/verification/artifacts/E4-operations/staging-device-policy-browser-001.json",
+    "sha256": "c060ba02165438be9308bf1410bf62a3a886870ebb9382b713e18971694fc573",
+    "qualityReceipt": "docs/verification/artifacts/E4-quality/candidate-quality-003.json",
+    "ssrReceipt": "docs/verification/artifacts/E4-quality/candidate-ssr-003.json"
+  },
+  "performance": {
+    "runs": 36,
+    "scenariosPassed": 12,
+    "scenariosTotal": 12,
+    "receipt": "docs/verification/artifacts/E4-performance/staging-cold-browser-002.json",
+    "sha256": "d802c0a5c2a7a16e0cbc7d3ad1284de5235fdf6bdb68fa6b481da91296f33715",
+    "sameImageAndPublicRootAcrossWindow": true
+  }
+}

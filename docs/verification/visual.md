@@ -48,3 +48,7 @@ O primeiro snapshot revisado é `A2-review-c9be4dc-v2`, com QA real aprovada. A 
 A imagem Alpine `sha256:ca39cfdd72d4cf67c8278839989a76ebfc68d34de6b75a732d746deb89066b81` serviu oito páginas PT/EN em 390, 820 e 1440 px. Foram capturadas 24 telas e mapeadas 16 referências originais do Figma por frame e SHA-256. A amostra inspecionada inclui Home PT desktop/móvel, Case01 PT móvel e Sobre EN desktop. A hierarquia, os recortes dos originais e o fluxo das seções renderizaram sem sobreposição ou overflow nesses alvos.
 
 Os textos temporários foram autorizados pelo usuário e identificam a demonstração local. As capturas atuais e as referências têm conteúdos editoriais distintos. A comparação de pixels e o aceite do conteúdo definitivo ficam associados à sua revisão posterior. [Recibo e mapeamento](artifacts/E4-local-audit/local-placeholder-audit-2026-11-05.json)
+
+## Etapa 4 — comparação em homologação
+
+A Etapa 4 comparou 18 frames aprovados com capturas do conteúdo de homologação em celular e desktop. Foram verificadas dez páginas em três larguras, incluindo tablet, e registradas as diferenças de composição e material editorial. As pranchas, hashes, gravações e identidade da candidata estão no [relatório visual e de qualidade E4.2](E4.2-quality.md).
