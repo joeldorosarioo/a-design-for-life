@@ -50,3 +50,53 @@ it('retorna o detalhe completo confirmado e não inventa ausência para idioma/s
       error: { code: 'unavailable' },
     });
 });
+
+it('supplies the confirmed cover dimensions from the selected generation', async () => {
+  const mediaId = randomUUID();
+  const detail = mapCaseDetail({
+    id: contentId,
+    case: id,
+    locale: 'pt',
+    _status: 'published',
+    slug: 'current',
+    title: 'Confirmed portrait cover',
+    cover: { media: mediaId, decorative: false, alt: 'Portrait cover' },
+    createdAt: '',
+    updatedAt: '',
+  });
+  const root = {
+    generation: randomUUID(),
+    subjects: {
+      [`cases/${id}`]: entry({ kind: 'case-order', caseId: id, sortOrder: 0, featured: false }),
+      [`case-content/${contentId}`]: entry({
+        kind: 'case',
+        caseId: id,
+        contentId,
+        locale: 'pt',
+        slug: 'current',
+        detail,
+        media: [
+          {
+            id: mediaId,
+            manifest: {
+              revision: randomUUID(),
+              kind: 'image',
+              variants: [],
+              original: {
+                variant: 'original',
+                type: 'image/png',
+                width: 1048,
+                height: 1280,
+                object: { key: 'a'.repeat(64), byteLength: 200, sha256: 'b'.repeat(64) },
+              },
+            },
+          },
+        ],
+      }),
+    },
+  };
+  expect(await getPublishedCase('pt', 'current', root)).toMatchObject({
+    ok: true,
+    value: { cover: { mediaId }, coverIntrinsicSize: { width: 1048, height: 1280 } },
+  });
+});

@@ -35,6 +35,9 @@ export const caseDetailDTOSchema = z.object({
   introduction: text,
   path: z.string(),
   cover: imageUseDTOSchema.nullable(),
+  coverIntrinsicSize: z
+    .object({ width: z.number().int().positive(), height: z.number().int().positive() })
+    .optional(),
   coverPresentation: caseCoverPresentationSchema
     .nullish()
     .transform((value) => value ?? 'contained-cherry'),
