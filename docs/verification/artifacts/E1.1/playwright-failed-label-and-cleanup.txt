@@ -1,0 +1,415 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test
+[WebServer] $ next build
+[WebServer] $ next start --hostname 127.0.0.1 --port 3100
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[21:45:45] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[21:45:45] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[21:45:45] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[21:45:45] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+[21:45:45] [32mINFO[39m: [36mDone.[39m
+
+Running 2 tests using 1 worker
+
+  x  1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (6.1s)
+  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (36ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[WebServer] error: terminating connection due to administrator command
+[WebServer]     at ignore-listed frames {
+[WebServer]   length: 116,
+[WebServer]   severity: 'FATAL',
+[WebServer]   code: '57P01',
+[WebServer]   detail: undefined,
+[WebServer]   hint: undefined,
+[WebServer]   position: undefined,
+[WebServer]   internalPosition: undefined,
+[WebServer]   internalQuery: undefined,
+[WebServer]   where: undefined,
+[WebServer]   schema: undefined,
+[WebServer]   table: undefined,
+[WebServer]   column: undefined,
+[WebServer]   dataType: undefined,
+[WebServer]   constraint: undefined,
+[WebServer]   file: 'postgres.c',
+[WebServer]   line: '3316',
+[WebServer]   routine: 'ProcessInterrupts',
+[WebServer]   client: Client {
+[WebServer]     _events: [Object: null prototype] { error: [Function (anonymous)] },
+[WebServer]     _eventsCount: 1,
+[WebServer]     _maxListeners: undefined,
+[WebServer]     connectionParameters: ConnectionParameters {
+[WebServer]       user: 'adfl_test',
+[WebServer]       database: 'adfl_test_base',
+[WebServer]       port: 55433,
+[WebServer]       host: '127.0.0.1',
+[WebServer]       binary: false,
+[WebServer]       options: undefined,
+[WebServer]       ssl: false,
+[WebServer]       client_encoding: '',
+[WebServer]       replication: undefined,
+[WebServer]       isDomainSocket: false,
+[WebServer]       application_name: undefined,
+[WebServer]       fallback_application_name: undefined,
+[WebServer]       statement_timeout: false,
+[WebServer]       lock_timeout: false,
+[WebServer]       idle_in_transaction_session_timeout: false,
+[WebServer]       query_timeout: false,
+[WebServer]       connect_timeout: 0
+[WebServer]     },
+[WebServer]     user: 'adfl_test',
+[WebServer]     database: 'adfl_test_base',
+[WebServer]     port: 55433,
+[WebServer]     host: '127.0.0.1',
+[WebServer]     replication: undefined,
+[WebServer]     _Promise: [Function: Promise],
+[WebServer]     _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+[WebServer]     _ending: true,
+[WebServer]     _ended: false,
+[WebServer]     _connecting: false,
+[WebServer]     _connected: true,
+[WebServer]     _connectionError: false,
+[WebServer]     _queryable: false,
+[WebServer]     _activeQuery: null,
+[WebServer]     enableChannelBinding: false,
+[WebServer]     connection: Connection {
+[WebServer]       _events: [Object: null prototype],
+[WebServer]       _eventsCount: 23,
+[WebServer]       _maxListeners: undefined,
+[WebServer]       stream: [Socket],
+[WebServer]       _keepAlive: false,
+[WebServer]       _keepAliveInitialDelayMillis: 0,
+[WebServer]       parsedStatements: {},
+[WebServer]       ssl: false,
+[WebServer]       _ending: true,
+[WebServer]       _emitMessage: false,
+[WebServer]       _connecting: true,
+[WebServer]       Symbol(shapeMode): false,
+[WebServer]       Symbol(kCapture): false
+[WebServer]     },
+[WebServer]     _queryQueue: [],
+[WebServer]     binary: false,
+[WebServer]     processID: 100,
+[WebServer]     secretKey: [REDACTED_EPHEMERAL_TEST_KEY],
+[WebServer]     ssl: false,
+[WebServer]     _connectionTimeoutMillis: 0,
+[WebServer]     _connectionCallback: null,
+[WebServer]     saslSession: null,
+[WebServer]     release: [Function (anonymous)],
+[WebServer]     readyForQuery: true,
+[WebServer]     hasExecuted: true,
+[WebServer]     _poolUseCount: 1,
+[WebServer]     Symbol(shapeMode): false,
+[WebServer]     Symbol(kCapture): false
+[WebServer]   }
+[WebServer] }
+[WebServer] ⨯ uncaughtException:  error: terminating connection due to administrator command
+[WebServer]     at ignore-listed frames {
+[WebServer]   length: 116,
+[WebServer]   severity: 'FATAL',
+[WebServer]   code: '57P01',
+[WebServer]   detail: undefined,
+[WebServer]   hint: undefined,
+[WebServer]   position: undefined,
+[WebServer]   internalPosition: undefined,
+[WebServer]   internalQuery: undefined,
+[WebServer]   where: undefined,
+[WebServer]   schema: undefined,
+[WebServer]   table: undefined,
+[WebServer]   column: undefined,
+[WebServer]   dataType: undefined,
+[WebServer]   constraint: undefined,
+[WebServer]   file: 'postgres.c',
+[WebServer]   line: '3316',
+[WebServer]   routine: 'ProcessInterrupts',
+[WebServer]   client: Client {
+[WebServer]     _events: [Object: null prototype] { error: [Function (anonymous)] },
+[WebServer]     _eventsCount: 1,
+[WebServer]     _maxListeners: undefined,
+[WebServer]     connectionParameters: ConnectionParameters {
+[WebServer]       user: 'adfl_test',
+[WebServer]       database: 'adfl_test_base',
+[WebServer]       port: 55433,
+[WebServer]       host: '127.0.0.1',
+[WebServer]       binary: false,
+[WebServer]       options: undefined,
+[WebServer]       ssl: false,
+[WebServer]       client_encoding: '',
+[WebServer]       replication: undefined,
+[WebServer]       isDomainSocket: false,
+[WebServer]       application_name: undefined,
+[WebServer]       fallback_application_name: undefined,
+[WebServer]       statement_timeout: false,
+[WebServer]       lock_timeout: false,
+[WebServer]       idle_in_transaction_session_timeout: false,
+[WebServer]       query_timeout: false,
+[WebServer]       connect_timeout: 0
+[WebServer]     },
+[WebServer]     user: 'adfl_test',
+[WebServer]     database: 'adfl_test_base',
+[WebServer]     port: 55433,
+[WebServer]     host: '127.0.0.1',
+[WebServer]     replication: undefined,
+[WebServer]     _Promise: [Function: Promise],
+[WebServer]     _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+[WebServer]     _ending: true,
+[WebServer]     _ended: false,
+[WebServer]     _connecting: false,
+[WebServer]     _connected: true,
+[WebServer]     _connectionError: false,
+[WebServer]     _queryable: false,
+[WebServer]     _activeQuery: null,
+[WebServer]     enableChannelBinding: false,
+[WebServer]     connection: Connection {
+[WebServer]       _events: [Object: null prototype],
+[WebServer]       _eventsCount: 23,
+[WebServer]       _maxListeners: undefined,
+[WebServer]       stream: [Socket],
+[WebServer]       _keepAlive: false,
+[WebServer]       _keepAliveInitialDelayMillis: 0,
+[WebServer]       parsedStatements: {},
+[WebServer]       ssl: false,
+[WebServer]       _ending: true,
+[WebServer]       _emitMessage: false,
+[WebServer]       _connecting: true,
+[WebServer]       Symbol(shapeMode): false,
+[WebServer]       Symbol(kCapture): false
+[WebServer]     },
+[WebServer]     _queryQueue: [],
+[WebServer]     binary: false,
+[WebServer]     processID: 100,
+[WebServer]     secretKey: [REDACTED_EPHEMERAL_TEST_KEY],
+[WebServer]     ssl: false,
+[WebServer]     _connectionTimeoutMillis: 0,
+[WebServer]     _connectionCallback: null,
+[WebServer]     saslSession: null,
+[WebServer]     release: [Function (anonymous)],
+[WebServer]     readyForQuery: true,
+[WebServer]     hasExecuted: true,
+[WebServer]     _poolUseCount: 1,
+[WebServer]     Symbol(shapeMode): false,
+[WebServer]     Symbol(kCapture): false
+[WebServer]   }
+[WebServer] }
+[WebServer] error: terminating connection due to administrator command
+[WebServer]     at ignore-listed frames {
+[WebServer]   length: 116,
+[WebServer]   severity: 'FATAL',
+[WebServer]   code: '57P01',
+[WebServer]   detail: undefined,
+[WebServer]   hint: undefined,
+[WebServer]   position: undefined,
+[WebServer]   internalPosition: undefined,
+[WebServer]   internalQuery: undefined,
+[WebServer]   where: undefined,
+[WebServer]   schema: undefined,
+[WebServer]   table: undefined,
+[WebServer]   column: undefined,
+[WebServer]   dataType: undefined,
+[WebServer]   constraint: undefined,
+[WebServer]   file: 'postgres.c',
+[WebServer]   line: '3316',
+[WebServer]   routine: 'ProcessInterrupts',
+[WebServer]   client: Client {
+[WebServer]     _events: [Object: null prototype] { error: [Function (anonymous)] },
+[WebServer]     _eventsCount: 1,
+[WebServer]     _maxListeners: undefined,
+[WebServer]     connectionParameters: ConnectionParameters {
+[WebServer]       user: 'adfl_test',
+[WebServer]       database: 'adfl_test_base',
+[WebServer]       port: 55433,
+[WebServer]       host: '127.0.0.1',
+[WebServer]       binary: false,
+[WebServer]       options: undefined,
+[WebServer]       ssl: false,
+[WebServer]       client_encoding: '',
+[WebServer]       replication: undefined,
+[WebServer]       isDomainSocket: false,
+[WebServer]       application_name: undefined,
+[WebServer]       fallback_application_name: undefined,
+[WebServer]       statement_timeout: false,
+[WebServer]       lock_timeout: false,
+[WebServer]       idle_in_transaction_session_timeout: false,
+[WebServer]       query_timeout: false,
+[WebServer]       connect_timeout: 0
+[WebServer]     },
+[WebServer]     user: 'adfl_test',
+[WebServer]     database: 'adfl_test_base',
+[WebServer]     port: 55433,
+[WebServer]     host: '127.0.0.1',
+[WebServer]     replication: undefined,
+[WebServer]     _Promise: [Function: Promise],
+[WebServer]     _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+[WebServer]     _ending: true,
+[WebServer]     _ended: false,
+[WebServer]     _connecting: false,
+[WebServer]     _connected: true,
+[WebServer]     _connectionError: false,
+[WebServer]     _queryable: false,
+[WebServer]     _activeQuery: null,
+[WebServer]     enableChannelBinding: false,
+[WebServer]     connection: Connection {
+[WebServer]       _events: [Object: null prototype],
+[WebServer]       _eventsCount: 23,
+[WebServer]       _maxListeners: undefined,
+[WebServer]       stream: [Socket],
+[WebServer]       _keepAlive: false,
+[WebServer]       _keepAliveInitialDelayMillis: 0,
+[WebServer]       parsedStatements: {},
+[WebServer]       ssl: false,
+[WebServer]       _ending: true,
+[WebServer]       _emitMessage: false,
+[WebServer]       _connecting: true,
+[WebServer]       Symbol(shapeMode): false,
+[WebServer]       Symbol(kCapture): false
+[WebServer]     },
+[WebServer]     _queryQueue: [],
+[WebServer]     binary: false,
+[WebServer]     processID: 101,
+[WebServer]     secretKey: [REDACTED_EPHEMERAL_TEST_KEY],
+[WebServer]     ssl: false,
+[WebServer]     _connectionTimeoutMillis: 0,
+[WebServer]     _connectionCallback: null,
+[WebServer]     saslSession: null,
+[WebServer]     release: [Function (anonymous)],
+[WebServer]     readyForQuery: true,
+[WebServer]     hasExecuted: true,
+[WebServer]     _poolUseCount: 3,
+[WebServer]     Symbol(shapeMode): false,
+[WebServer]     Symbol(kCapture): false
+[WebServer]   }
+[WebServer] }
+[WebServer] ⨯ uncaughtException:  error: terminating connection due to administrator command
+[WebServer]     at ignore-listed frames {
+[WebServer]   length: 116,
+[WebServer]   severity: 'FATAL',
+[WebServer]   code: '57P01',
+[WebServer]   detail: undefined,
+[WebServer]   hint: undefined,
+[WebServer]   position: undefined,
+[WebServer]   internalPosition: undefined,
+[WebServer]   internalQuery: undefined,
+[WebServer]   where: undefined,
+[WebServer]   schema: undefined,
+[WebServer]   table: undefined,
+[WebServer]   column: undefined,
+[WebServer]   dataType: undefined,
+[WebServer]   constraint: undefined,
+[WebServer]   file: 'postgres.c',
+[WebServer]   line: '3316',
+[WebServer]   routine: 'ProcessInterrupts',
+[WebServer]   client: Client {
+[WebServer]     _events: [Object: null prototype] { error: [Function (anonymous)] },
+[WebServer]     _eventsCount: 1,
+[WebServer]     _maxListeners: undefined,
+[WebServer]     connectionParameters: ConnectionParameters {
+[WebServer]       user: 'adfl_test',
+[WebServer]       database: 'adfl_test_base',
+[WebServer]       port: 55433,
+[WebServer]       host: '127.0.0.1',
+[WebServer]       binary: false,
+[WebServer]       options: undefined,
+[WebServer]       ssl: false,
+[WebServer]       client_encoding: '',
+[WebServer]       replication: undefined,
+[WebServer]       isDomainSocket: false,
+[WebServer]       application_name: undefined,
+[WebServer]       fallback_application_name: undefined,
+[WebServer]       statement_timeout: false,
+[WebServer]       lock_timeout: false,
+[WebServer]       idle_in_transaction_session_timeout: false,
+[WebServer]       query_timeout: false,
+[WebServer]       connect_timeout: 0
+[WebServer]     },
+[WebServer]     user: 'adfl_test',
+[WebServer]     database: 'adfl_test_base',
+[WebServer]     port: 55433,
+[WebServer]     host: '127.0.0.1',
+[WebServer]     replication: undefined,
+[WebServer]     _Promise: [Function: Promise],
+[WebServer]     _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+[WebServer]     _ending: true,
+[WebServer]     _ended: false,
+[WebServer]     _connecting: false,
+[WebServer]     _connected: true,
+[WebServer]     _connectionError: false,
+[WebServer]     _queryable: false,
+[WebServer]     _activeQuery: null,
+[WebServer]     enableChannelBinding: false,
+[WebServer]     connection: Connection {
+[WebServer]       _events: [Object: null prototype],
+[WebServer]       _eventsCount: 23,
+[WebServer]       _maxListeners: undefined,
+[WebServer]       stream: [Socket],
+[WebServer]       _keepAlive: false,
+[WebServer]       _keepAliveInitialDelayMillis: 0,
+[WebServer]       parsedStatements: {},
+[WebServer]       ssl: false,
+[WebServer]       _ending: true,
+[WebServer]       _emitMessage: false,
+[WebServer]       _connecting: true,
+[WebServer]       Symbol(shapeMode): false,
+[WebServer]       Symbol(kCapture): false
+[WebServer]     },
+[WebServer]     _queryQueue: [],
+[WebServer]     binary: false,
+[WebServer]     processID: 101,
+[WebServer]     secretKey: [REDACTED_EPHEMERAL_TEST_KEY],
+[WebServer]     ssl: false,
+[WebServer]     _connectionTimeoutMillis: 0,
+[WebServer]     _connectionCallback: null,
+[WebServer]     saslSession: null,
+[WebServer]     release: [Function (anonymous)],
+[WebServer]     readyForQuery: true,
+[WebServer]     hasExecuted: true,
+[WebServer]     _poolUseCount: 3,
+[WebServer]     Symbol(shapeMode): false,
+[WebServer]     Symbol(kCapture): false
+[WebServer]   }
+[WebServer] }
+
+
+  1) [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByLabel('Email', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByLabel('Email', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Email', { exact: true })
+
+
+      4 |   const response = await page.goto('/admin/login');
+      5 |   expect(response?.status()).toBe(200);
+    > 6 |   await expect(page.getByLabel('Email', { exact: true })).toBeVisible();
+        |                                                           ^
+      7 | });
+      8 |
+      9 | test('cadastro inicial anônimo não cria conta pela API HTTP nativa', async ({ request }) => {
+        at E:\a-design-for-life\src\app\(payload)\admin\admin.e2e.test.ts:6:59
+
+    Error Context: test-results\app-(payload)-admin-admin.-c30d4-elo-build-de-produção-local-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\app-(payload)-admin-admin.-c30d4-elo-build-de-produção-local-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\app-(payload)-admin-admin.-c30d4-elo-build-de-produção-local-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local 
+  1 passed (23.5s)
+[ELIFECYCLE] Command failed with exit code 1.

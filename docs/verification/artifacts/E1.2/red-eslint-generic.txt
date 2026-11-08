@@ -1,0 +1,31 @@
+$ vitest run --project architecture -t ESLint
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (16 tests | 2 failed | 13 skipped) 1521ms
+   ❯ fronteiras do grafo real (16)
+     × ESLint rejeita feature em src/helpers/log.ts 22ms
+     × ESLint rejeita feature em src/components/ui/button.ts 12ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita feature em src/helpers/log.ts
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita feature em src/components/ui/button.ts
+AssertionError: expected [] to include 'architecture/import-boundaries'
+ ❯ src/config/architecture.test.ts:167:62
+    165|     const eslint = new ESLint({ cwd: path.resolve('.') });
+    166|     const [result] = await eslint.lintText("import '@/features/cases';…
+    167|     expect(result.messages.map((message) => message.ruleId)).toContain…
+       |                                                              ^
+    168|   });
+    169| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed | 13 skipped (16)
+   Start at  22:22:41
+   Duration  2.08s (tests 78%, import 18%, transform 3%)
+
+[ELIFECYCLE] Command failed with exit code 1.

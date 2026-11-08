@@ -1,0 +1,11 @@
+engineStrict: true
+strictPeerDependencies: true
+saveExact: true
+storeDir: .work/pnpm-store
+cacheDir: .work/pnpm-cache
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+
+overrides:
+  dompurify: 3.4.17

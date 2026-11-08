@@ -1,0 +1,263 @@
+{
+  "advisories": {
+    "1102341": {
+      "findings": [
+        {
+          "version": "0.18.20",
+          "paths": [
+            ".>@payloadcms/db-postgres>drizzle-kit>@esbuild-kit/esm-loader>@esbuild-kit/core-utils>esbuild"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1102341,
+      "title": "esbuild enables any website to send any requests to the development server and read the response",
+      "module_name": "esbuild",
+      "vulnerable_versions": "<=0.24.2",
+      "patched_versions": ">=0.25.0",
+      "severity": "moderate",
+      "cwe": "CWE-346",
+      "github_advisory_id": "GHSA-67mh-4wv8-2f99",
+      "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99"
+    },
+    "1240621": {
+      "findings": [
+        {
+          "version": "3.4.15",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/richtext-lexical>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1240621,
+      "title": "DOMPurify: IN_PLACE: node-removing afterSanitize hook leaves detached subtree event handlers armed, causing DOM XSS",
+      "module_name": "dompurify",
+      "vulnerable_versions": ">=3.4.13 <=3.4.15",
+      "patched_versions": ">=3.4.16",
+      "severity": "low",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-p98j-92pf-mc4p",
+      "url": "https://github.com/advisories/GHSA-p98j-92pf-mc4p"
+    },
+    "1241204": {
+      "findings": [
+        {
+          "version": "3.4.15",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/richtext-lexical>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1241204,
+      "title": "DOMPurify: IN_PLACE returns a force-removed rawtext root whose text carries attacker markup — pure HTML reparse executes",
+      "module_name": "dompurify",
+      "vulnerable_versions": "<=3.4.15",
+      "patched_versions": ">=3.4.16",
+      "severity": "low",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-6688-9rhm-gjv2",
+      "url": "https://github.com/advisories/GHSA-6688-9rhm-gjv2"
+    },
+    "1242880": {
+      "findings": [
+        {
+          "version": "3.4.15",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/richtext-lexical>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1242880,
+      "title": "DOMPurify SAFE_FOR_TEMPLATES bypass: split template expressions survive in attached shadow root content on DOM output modes",
+      "module_name": "dompurify",
+      "vulnerable_versions": ">=3.4.4 <=3.4.16",
+      "patched_versions": ">=3.4.17",
+      "severity": "critical",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-cg2g-xh64-v4q7",
+      "url": "https://github.com/advisories/GHSA-cg2g-xh64-v4q7"
+    },
+    "1242881": {
+      "findings": [
+        {
+          "version": "3.4.15",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/richtext-lexical>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1242881,
+      "title": "DOMPurify IN_PLACE: hook that removes a parent or sibling leaves the detached subtree's event handlers armed (incomplete fix for GHSA-p98j-92pf-mc4p)",
+      "module_name": "dompurify",
+      "vulnerable_versions": "<=3.4.16",
+      "patched_versions": ">=3.4.17",
+      "severity": "high",
+      "cwe": "CWE-79, CWE-693",
+      "github_advisory_id": "GHSA-mrv2-3pqr-j5jr",
+      "url": "https://github.com/advisories/GHSA-mrv2-3pqr-j5jr"
+    },
+    "1242882": {
+      "findings": [
+        {
+          "version": "3.4.15",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/richtext-lexical>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify",
+            ".>@payloadcms/next>@payloadcms/ui>@monaco-editor/react>monaco-editor>dompurify"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1242882,
+      "title": "DOMPurify: SMIL attributeName=href guard is skipped when PARSER_MEDIA_TYPE is application/xhtml+xml",
+      "module_name": "dompurify",
+      "vulnerable_versions": "<=3.4.16",
+      "patched_versions": ">=3.4.17",
+      "severity": "low",
+      "cwe": "CWE-79",
+      "github_advisory_id": "GHSA-c6gr-qvv4-5v3f",
+      "url": "https://github.com/advisories/GHSA-c6gr-qvv4-5v3f"
+    },
+    "1243084": {
+      "findings": [
+        {
+          "version": "20.14.6",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@lexical/headless>happy-dom",
+            ".>vitest>happy-dom",
+            ".>@testing-library/jest-dom>vitest>happy-dom"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243084,
+      "title": "Happy DOM: Incomplete fix for CVE-2026-33943: unsanitized import alias leads to host code execution",
+      "module_name": "happy-dom",
+      "vulnerable_versions": ">=17.0.0 <=21.0.3",
+      "patched_versions": ">=21.0.4",
+      "severity": "high",
+      "cwe": "CWE-94",
+      "github_advisory_id": "GHSA-834v-8h66-3h79",
+      "url": "https://github.com/advisories/GHSA-834v-8h66-3h79"
+    },
+    "1243505": {
+      "findings": [
+        {
+          "version": "4.3.1",
+          "paths": [
+            ".>@payloadcms/db-postgres>payload>deepmerge",
+            ".>@payloadcms/db-postgres>@payloadcms/drizzle>payload>deepmerge",
+            ".>@payloadcms/richtext-lexical>payload>deepmerge",
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/ui>payload>deepmerge",
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/graphql>payload>deepmerge",
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>payload>deepmerge",
+            ".>@payloadcms/richtext-lexical>@payloadcms/ui>payload>deepmerge",
+            ".>payload>deepmerge",
+            ".>@payloadcms/next>@payloadcms/ui>payload>deepmerge",
+            ".>@payloadcms/next>@payloadcms/graphql>payload>deepmerge",
+            ".>@payloadcms/next>payload>deepmerge"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243505,
+      "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+      "module_name": "deepmerge",
+      "vulnerable_versions": ">=4.2.0 <=4.3.1",
+      "patched_versions": null,
+      "patched_versions_unpublished": true,
+      "severity": "low",
+      "cwe": "CWE-1321",
+      "github_advisory_id": "GHSA-gcqx-w48m-w2h4",
+      "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4"
+    },
+    "1243618": {
+      "findings": [
+        {
+          "version": "1.22.2",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@payloadcms/next>@payloadcms/graphql>graphql-scalars",
+            ".>@payloadcms/next>@payloadcms/graphql>graphql-scalars"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243618,
+      "title": "graphql-scalars PhoneNumber scalar is vulnerable to regular expression denial of service",
+      "module_name": "graphql-scalars",
+      "vulnerable_versions": "<=2.0.0",
+      "patched_versions": ">=2.0.1",
+      "severity": "high",
+      "cwe": "CWE-1333",
+      "github_advisory_id": "GHSA-x8rm-f576-gq67",
+      "url": "https://github.com/advisories/GHSA-x8rm-f576-gq67"
+    },
+    "1243623": {
+      "findings": [
+        {
+          "version": "20.14.6",
+          "paths": [
+            ".>@payloadcms/richtext-lexical>@lexical/headless>happy-dom",
+            ".>vitest>happy-dom",
+            ".>@testing-library/jest-dom>vitest>happy-dom"
+          ],
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1243623,
+      "title": "Happy DOM: SSRF via iframe and link stylesheet when parsing untrusted HTML",
+      "module_name": "happy-dom",
+      "vulnerable_versions": "<=20.14.6",
+      "patched_versions": ">=21.0.0",
+      "severity": "high",
+      "cwe": "CWE-918",
+      "github_advisory_id": "GHSA-c8p4-j97h-3vg8",
+      "url": "https://github.com/advisories/GHSA-c8p4-j97h-3vg8"
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 4,
+      "moderate": 1,
+      "high": 4,
+      "critical": 1
+    },
+    "dependencies": 399,
+    "devDependencies": 390,
+    "optionalDependencies": 178,
+    "totalDependencies": 914
+  }
+}

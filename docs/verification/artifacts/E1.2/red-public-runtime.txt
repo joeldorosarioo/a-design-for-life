@@ -1,0 +1,31 @@
+$ vitest run --project unit src/config/public-runtime.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/public-runtime.test.ts (1 test | 1 failed) 9ms
+   × não entrega o segredo do CMS ao navegador 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/public-runtime.test.ts > não entrega o segredo do CMS ao navegador
+AssertionError: expected '{"NODE_ENV":"test","APP_ENV":"test","…' not to contain 'synthetic-private-secret-never-for-pu…'
+
+Expected: "synthetic-private-secret-never-for-public-runtime"
+Received: "{"NODE_ENV":"test","APP_ENV":"test","PAYLOAD_SECRET":"synthetic-private-secret-never-for-public-runtime","DATABASE_URI":"postgres://synthetic:local-only@127.0.0.1:55433/adfl_test_fixture","SITE_ORIGIN":"http://127.0.0.1:3100","MEDIA_BUCKET":"adfl-test-fixture"}"
+
+ ❯ src/config/public-runtime.test.ts:10:38
+      8|     PAYLOAD_SECRET: 'synthetic-private-secret-never-for-public-runtime…
+      9|   }));
+     10|   expect(JSON.stringify(config)).not.toContain('synthetic-private-secr…
+       |                                      ^
+     11| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  22:21:00
+   Duration  489ms (setup 60%, import 28%, transform 8%, tests 3%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

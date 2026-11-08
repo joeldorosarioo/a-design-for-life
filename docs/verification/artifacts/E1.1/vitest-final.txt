@@ -1,0 +1,27 @@
+$ vitest run
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[21:42:18] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[21:42:18] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[21:42:18] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[21:42:18] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[21:42:18] [32mINFO[39m: [36mDone.[39m
+[21:42:21] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  21:42:13
+   Duration  7.55s (import 78%, setup 14%, tests 6%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

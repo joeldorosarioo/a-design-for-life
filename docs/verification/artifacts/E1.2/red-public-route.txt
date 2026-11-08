@@ -1,0 +1,40 @@
+$ vitest run --project architecture -t 'rota pública'
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (22 tests | 1 failed | 21 skipped) 722ms
+   ❯ fronteiras do grafo real (22)
+     × rejeita rota pública importando consulta privada de feature 721ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita rota pública importando consulta privada de feature
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/app/(portfolio)/[locale]/page.ts",
+  "rule": "portfolio-public-entry-only",
+  "to": "src/features/cases/server/query.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:222:44
+    220|       'src/features/cases/server/query.ts': 'export const query = () =…
+    221|     });
+    222|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+    223|       rule: 'portfolio-public-entry-only',
+    224|       from: 'src/app/(portfolio)/[locale]/page.ts',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 21 skipped (22)
+   Start at  22:41:42
+   Duration  1.28s (tests 63%, import 31%, transform 6%)
+
+[ELIFECYCLE] Command failed with exit code 1.

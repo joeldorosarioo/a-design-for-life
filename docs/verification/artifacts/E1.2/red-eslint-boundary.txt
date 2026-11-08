@@ -1,0 +1,29 @@
+$ vitest run --project architecture -t ESLint
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (14 tests | 1 failed | 13 skipped) 1629ms
+   ❯ fronteiras do grafo real (14)
+     × ESLint rejeita import relativo privado entre features 1628ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita import relativo privado entre features
+AssertionError: expected [] to include 'architecture/import-boundaries'
+ ❯ src/config/architecture.test.ts:162:62
+    160|       filePath: 'src/features/cases/components/card.ts',
+    161|     });
+    162|     expect(result.messages.map((message) => message.ruleId)).toContain…
+       |                                                              ^
+    163|   });
+    164| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 skipped (14)
+   Start at  22:21:44
+   Duration  2.21s (tests 79%, import 18%, transform 3%)
+
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,10 @@
+$ vitest run --project unit src/config/public-runtime.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  22:24:41
+   Duration  432ms (setup 64%, import 25%, transform 7%, tests 2%, worker 1%)
+

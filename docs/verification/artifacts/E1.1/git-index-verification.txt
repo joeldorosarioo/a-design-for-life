@@ -1,0 +1,57 @@
+Global command: git diff --cached --check
+Global exit code: 2
+Global findings: 1816, all in captured output artifacts
+Source command: git diff --cached --check -- . :(exclude)docs/verification/artifacts/**
+Source exit code: 0
+Whitespace attributes: no whitespace check disabled
+References: 4 indexed blobs match original byte streams
+Raw artifact indexed blobs match worktree byte streams: 49
+Excluded from index: .env, .toolchain, node_modules, .work, playwright-report, test-results
+Affected raw output paths:
+docs/verification/artifacts/E1.1/build-initial.txt
+docs/verification/artifacts/E1.1/build-offline.txt
+docs/verification/artifacts/E1.1/failed-build-types.txt
+docs/verification/artifacts/E1.1/failed-database-config.txt
+docs/verification/artifacts/E1.1/format-before-commit.txt
+docs/verification/artifacts/E1.1/format-final.txt
+docs/verification/artifacts/E1.1/green-bootstrap-access.txt
+docs/verification/artifacts/E1.1/green-clean-compose-config.txt
+docs/verification/artifacts/E1.1/green-database-config.txt
+docs/verification/artifacts/E1.1/green-missing-secret.txt
+docs/verification/artifacts/E1.1/green-production-test-isolation.txt
+docs/verification/artifacts/E1.1/green-test-http-protocol.txt
+docs/verification/artifacts/E1.1/green-test-isolation.txt
+docs/verification/artifacts/E1.1/green-test-origin.txt
+docs/verification/artifacts/E1.1/http-native-login.txt
+docs/verification/artifacts/E1.1/lint-final.txt
+docs/verification/artifacts/E1.1/lint.txt
+docs/verification/artifacts/E1.1/local-provision-login.txt
+docs/verification/artifacts/E1.1/migration-after-whitespace-cleanup.txt
+docs/verification/artifacts/E1.1/migration-create.txt
+docs/verification/artifacts/E1.1/migration-local.txt
+docs/verification/artifacts/E1.1/peers-final.txt
+docs/verification/artifacts/E1.1/playwright-failed-label-and-cleanup.txt
+docs/verification/artifacts/E1.1/playwright-failed-setup-types.txt
+docs/verification/artifacts/E1.1/playwright-final.txt
+docs/verification/artifacts/E1.1/playwright-install.txt
+docs/verification/artifacts/E1.1/playwright-setup-failure.txt
+docs/verification/artifacts/E1.1/red-bootstrap-access.txt
+docs/verification/artifacts/E1.1/red-clean-compose-config.txt
+docs/verification/artifacts/E1.1/red-database-config.txt
+docs/verification/artifacts/E1.1/red-missing-secret.txt
+docs/verification/artifacts/E1.1/red-production-test-isolation.txt
+docs/verification/artifacts/E1.1/red-test-http-protocol.txt
+docs/verification/artifacts/E1.1/red-test-isolation.txt
+docs/verification/artifacts/E1.1/red-test-origin.txt
+docs/verification/artifacts/E1.1/root-build-offline.txt
+docs/verification/artifacts/E1.1/root-format.txt
+docs/verification/artifacts/E1.1/root-lint.txt
+docs/verification/artifacts/E1.1/root-playwright-alternate-port.txt
+docs/verification/artifacts/E1.1/root-typecheck.txt
+docs/verification/artifacts/E1.1/root-vitest.txt
+docs/verification/artifacts/E1.1/setup-failure-migration.txt
+docs/verification/artifacts/E1.1/typecheck-final.txt
+docs/verification/artifacts/E1.1/typecheck.txt
+docs/verification/artifacts/E1.1/vitest-before-commit.txt
+docs/verification/artifacts/E1.1/vitest-final.txt
+docs/verification/artifacts/E1.1/vitest-without-env.txt

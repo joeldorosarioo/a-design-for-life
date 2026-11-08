@@ -1,0 +1,1499 @@
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:7: trailing whitespace.
++      Tests  13 passed (13)
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:8: trailing whitespace.
++   Start at  22:20:00
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:9: trailing whitespace.
++   Duration  9.76s (tests 97%, import 2%, transform 1%)
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-allowed-and-live.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:7: trailing whitespace.
++      Tests  20 passed (20)
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:8: trailing whitespace.
++   Start at  22:27:32
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:9: trailing whitespace.
++   Duration  11.39s (tests 96%, import 3%, transform 1%)
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/architecture-complete-initial.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (2 tests | 1 failed) 1423ms
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (2)
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:7: trailing whitespace.
++     × rejeita dependência circular dentro da mesma feature 708ms
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita dependência circular dentro da mesma feature
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:12: trailing whitespace.
++AssertionError: expected [ { rule: 'no-cycles', …(2) } ] to deep equally contain { rule: 'no-cycles', …(2) }
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:13: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:14: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:15: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:16: trailing whitespace.
++  "from": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:17: trailing whitespace.
++  "rule": "no-cycles",
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:18: trailing whitespace.
++  "to": "src/features/cases/content/value.ts",
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:19: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:21: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:22: trailing whitespace.
++[
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:23: trailing whitespace.
++  {
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:24: trailing whitespace.
++    "from": "src/features/cases/content/value.ts",
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:25: trailing whitespace.
++    "rule": "no-cycles",
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:26: trailing whitespace.
++    "to": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:27: trailing whitespace.
++  },
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:28: trailing whitespace.
++]
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:29: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:30: trailing whitespace.
++ ❯ src/config/architecture.test.ts:53:44
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:31: trailing whitespace.
++     51|       'src/features/cases/content/value.ts': "import '../index'; expor…
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:32: trailing whitespace.
++     52|     });
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:33: trailing whitespace.
++     53|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:34: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:35: trailing whitespace.
++     54|       rule: 'no-cycles',
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:36: trailing whitespace.
++     55|       from: 'src/features/cases/index.ts',
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:37: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:38: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:40: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:41: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:42: trailing whitespace.
++      Tests  1 failed | 1 passed (2)
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:43: trailing whitespace.
++   Start at  22:11:46
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:44: trailing whitespace.
++   Duration  1.58s (tests 99%, import 1%)
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:45: trailing whitespace.
++
+docs/verification/artifacts/E1.2/failed-cycle-representative.txt:46: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/format-final.txt:1: trailing whitespace.
++$ prettier --check .
+docs/verification/artifacts/E1.2/format-final.txt:2: trailing whitespace.
++Checking formatting...
+docs/verification/artifacts/E1.2/format-final.txt:3: trailing whitespace.
++All matched files use Prettier code style!
+docs/verification/artifacts/E1.2/green-client-transitive.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-client-transitive.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-client-transitive.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-client-transitive.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-client-transitive.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-client-transitive.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-client-transitive.txt:7: trailing whitespace.
++      Tests  5 passed (5)
+docs/verification/artifacts/E1.2/green-client-transitive.txt:8: trailing whitespace.
++   Start at  22:14:20
+docs/verification/artifacts/E1.2/green-client-transitive.txt:9: trailing whitespace.
++   Duration  3.97s (tests 93%, import 5%, transform 2%)
+docs/verification/artifacts/E1.2/green-client-transitive.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-client-transitive.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-cross-feature.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-cross-feature.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cross-feature.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-cross-feature.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cross-feature.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cross-feature.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-cross-feature.txt:7: trailing whitespace.
++      Tests  1 passed (1)
+docs/verification/artifacts/E1.2/green-cross-feature.txt:8: trailing whitespace.
++   Start at  22:10:56
+docs/verification/artifacts/E1.2/green-cross-feature.txt:9: trailing whitespace.
++   Duration  878ms (tests 97%, import 1%, transform 1%, worker 1%)
+docs/verification/artifacts/E1.2/green-cross-feature.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cross-feature.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-cycles.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-cycles.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cycles.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-cycles.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cycles.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cycles.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-cycles.txt:7: trailing whitespace.
++      Tests  2 passed (2)
+docs/verification/artifacts/E1.2/green-cycles.txt:8: trailing whitespace.
++   Start at  22:12:26
+docs/verification/artifacts/E1.2/green-cycles.txt:9: trailing whitespace.
++   Duration  1.59s (tests 97%, import 1%, transform 1%)
+docs/verification/artifacts/E1.2/green-cycles.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-cycles.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:1: trailing whitespace.
++$ vitest run --project architecture -t ESLint
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:7: trailing whitespace.
++      Tests  1 passed | 13 skipped (14)
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:8: trailing whitespace.
++   Start at  22:22:27
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:9: trailing whitespace.
++   Duration  2.03s (tests 78%, import 19%, transform 3%)
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-boundary.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:1: trailing whitespace.
++$ vitest run --project architecture -t ESLint
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:7: trailing whitespace.
++      Tests  3 passed | 13 skipped (16)
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:8: trailing whitespace.
++   Start at  22:22:57
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:9: trailing whitespace.
++   Duration  2.00s (tests 79%, import 18%, transform 3%)
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-eslint-generic.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:7: trailing whitespace.
++      Tests  9 passed (9)
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:8: trailing whitespace.
++   Start at  22:17:12
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:9: trailing whitespace.
++   Duration  6.88s (tests 96%, import 3%, transform 1%)
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-exclusive-directories.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-generic-features.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-generic-features.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-generic-features.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-generic-features.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-generic-features.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-generic-features.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-generic-features.txt:7: trailing whitespace.
++      Tests  4 passed (4)
+docs/verification/artifacts/E1.2/green-generic-features.txt:8: trailing whitespace.
++   Start at  22:13:00
+docs/verification/artifacts/E1.2/green-generic-features.txt:9: trailing whitespace.
++   Duration  3.00s (tests 99%)
+docs/verification/artifacts/E1.2/green-generic-features.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-generic-features.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-public-runtime.txt:1: trailing whitespace.
++$ vitest run --project unit src/config/public-runtime.test.ts
+docs/verification/artifacts/E1.2/green-public-runtime.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-public-runtime.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-public-runtime.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-public-runtime.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-public-runtime.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-public-runtime.txt:7: trailing whitespace.
++      Tests  1 passed (1)
+docs/verification/artifacts/E1.2/green-public-runtime.txt:8: trailing whitespace.
++   Start at  22:21:08
+docs/verification/artifacts/E1.2/green-public-runtime.txt:9: trailing whitespace.
++   Duration  428ms (setup 64%, import 25%, transform 8%, worker 2%, tests 1%)
+docs/verification/artifacts/E1.2/green-public-runtime.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-public-runtime.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-server-entry.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-server-entry.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-server-entry.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-server-entry.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-server-entry.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-server-entry.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-server-entry.txt:7: trailing whitespace.
++      Tests  6 passed (6)
+docs/verification/artifacts/E1.2/green-server-entry.txt:8: trailing whitespace.
++   Start at  22:15:44
+docs/verification/artifacts/E1.2/green-server-entry.txt:9: trailing whitespace.
++   Duration  4.76s (tests 95%, import 4%, transform 1%)
+docs/verification/artifacts/E1.2/green-server-entry.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-server-entry.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/green-shared-entry.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/green-shared-entry.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-shared-entry.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/green-shared-entry.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-shared-entry.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-shared-entry.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/green-shared-entry.txt:7: trailing whitespace.
++      Tests  7 passed (7)
+docs/verification/artifacts/E1.2/green-shared-entry.txt:8: trailing whitespace.
++   Start at  22:16:30
+docs/verification/artifacts/E1.2/green-shared-entry.txt:9: trailing whitespace.
++   Duration  5.40s (tests 95%, import 4%, transform 1%)
+docs/verification/artifacts/E1.2/green-shared-entry.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/green-shared-entry.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/lint-after-identifier.txt:1: trailing whitespace.
++$ eslint .
+docs/verification/artifacts/E1.2/playwright-final.txt:1: trailing whitespace.
++$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test
+docs/verification/artifacts/E1.2/playwright-final.txt:2: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.2/playwright-final.txt:3: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.2/playwright-final.txt:4: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.2/playwright-final.txt:5: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.2/playwright-final.txt:6: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.2/playwright-final.txt:7: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.2/playwright-final.txt:8: trailing whitespace.
++[22:35:40] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:9: trailing whitespace.
++[22:35:40] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:10: trailing whitespace.
++[22:35:40] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:11: trailing whitespace.
++[22:35:40] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (44ms)[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:12: trailing whitespace.
++[22:35:40] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:13: trailing whitespace.
++▲ Next.js 16.4.3 (Turbopack)
+docs/verification/artifacts/E1.2/playwright-final.txt:14: trailing whitespace.
++- Environments: .env
+docs/verification/artifacts/E1.2/playwright-final.txt:15: trailing whitespace.
++✓ Running next.config.ts took 38ms
+docs/verification/artifacts/E1.2/playwright-final.txt:16: trailing whitespace.
++- Experiments (use with caution):
+docs/verification/artifacts/E1.2/playwright-final.txt:17: trailing whitespace.
++  ⨯ turbopackServerFastRefresh
+docs/verification/artifacts/E1.2/playwright-final.txt:18: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:19: trailing whitespace.
++  Creating an optimized production build ...
+docs/verification/artifacts/E1.2/playwright-final.txt:20: trailing whitespace.
++✓ Compiled successfully in 2.2s
+docs/verification/artifacts/E1.2/playwright-final.txt:21: trailing whitespace.
++  Running TypeScript ...
+docs/verification/artifacts/E1.2/playwright-final.txt:22: trailing whitespace.
++  Finished TypeScript in 3.0s ...
+docs/verification/artifacts/E1.2/playwright-final.txt:23: trailing whitespace.
++  Collecting page data using 5 workers ...
+docs/verification/artifacts/E1.2/playwright-final.txt:24: trailing whitespace.
++  Generating static pages using 5 workers (0/2) ...
+docs/verification/artifacts/E1.2/playwright-final.txt:25: trailing whitespace.
++✓ Generating static pages using 5 workers (2/2) in 379ms
+docs/verification/artifacts/E1.2/playwright-final.txt:26: trailing whitespace.
++  Finalizing page optimization ...
+docs/verification/artifacts/E1.2/playwright-final.txt:27: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:28: trailing whitespace.
++Route (app)
+docs/verification/artifacts/E1.2/playwright-final.txt:29: trailing whitespace.
++┌ ○ /_not-found
+docs/verification/artifacts/E1.2/playwright-final.txt:30: trailing whitespace.
++├ ƒ /admin/[[...segments]]
+docs/verification/artifacts/E1.2/playwright-final.txt:31: trailing whitespace.
++└ ƒ /api/[...slug]
+docs/verification/artifacts/E1.2/playwright-final.txt:32: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:33: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:34: trailing whitespace.
++○  (Static)   prerendered as static content
+docs/verification/artifacts/E1.2/playwright-final.txt:35: trailing whitespace.
++ƒ  (Dynamic)  server-rendered on demand
+docs/verification/artifacts/E1.2/playwright-final.txt:36: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:37: trailing whitespace.
++▲ Next.js 16.4.3
+docs/verification/artifacts/E1.2/playwright-final.txt:38: trailing whitespace.
++- Local:         http://127.0.0.1:3101
+docs/verification/artifacts/E1.2/playwright-final.txt:39: trailing whitespace.
++- Network:       http://127.0.0.1:3101
+docs/verification/artifacts/E1.2/playwright-final.txt:40: trailing whitespace.
++✓ Ready in 258ms
+docs/verification/artifacts/E1.2/playwright-final.txt:41: trailing whitespace.
++✓ Running next.config.ts took 43ms
+docs/verification/artifacts/E1.2/playwright-final.txt:42: trailing whitespace.
++[22:35:48] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:43: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:44: trailing whitespace.
++Running 2 tests using 1 worker
+docs/verification/artifacts/E1.2/playwright-final.txt:45: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:46: trailing whitespace.
++(node:30784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+docs/verification/artifacts/E1.2/playwright-final.txt:47: trailing whitespace.
++(Use `node --trace-warnings ...` to show where the warning was created)
+docs/verification/artifacts/E1.2/playwright-final.txt:48: trailing whitespace.
++  ok 1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (617ms)
+docs/verification/artifacts/E1.2/playwright-final.txt:49: trailing whitespace.
++[22:35:50] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+docs/verification/artifacts/E1.2/playwright-final.txt:50: trailing whitespace.
++  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (31ms)
+docs/verification/artifacts/E1.2/playwright-final.txt:51: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.2/playwright-final.txt:52: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.2/playwright-final.txt:53: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.2/playwright-final.txt:54: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.2/playwright-final.txt:55: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.2/playwright-final.txt:56: trailing whitespace.
++
+docs/verification/artifacts/E1.2/playwright-final.txt:57: trailing whitespace.
++  2 passed (15.6s)
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:1: trailing whitespace.
++$ vitest run --project unit src/config/public-runtime.test.ts
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:7: trailing whitespace.
++      Tests  5 passed (5)
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:8: trailing whitespace.
++   Start at  22:24:41
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:9: trailing whitespace.
++   Duration  432ms (setup 64%, import 25%, transform 7%, tests 2%, worker 1%)
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/public-runtime-environments.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/red-client-transitive.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-client-transitive.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-client-transitive.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (5 tests | 1 failed) 3582ms
+docs/verification/artifacts/E1.2/red-client-transitive.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (5)
+docs/verification/artifacts/E1.2/red-client-transitive.txt:7: trailing whitespace.
++     × rejeita cliente transitivo a server-only sem depender do nome do arquivo 771ms
+docs/verification/artifacts/E1.2/red-client-transitive.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-client-transitive.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente transitivo a server-only sem depender do nome do arquivo
+docs/verification/artifacts/E1.2/red-client-transitive.txt:12: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-client-transitive.txt:13: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:14: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-client-transitive.txt:15: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-client-transitive.txt:16: trailing whitespace.
++  "from": "src/features/cases/components/reader.tsx",
+docs/verification/artifacts/E1.2/red-client-transitive.txt:17: trailing whitespace.
++  "rule": "client-cannot-reach-server",
+docs/verification/artifacts/E1.2/red-client-transitive.txt:18: trailing whitespace.
++  "to": "src/features/cases/server/database.ts",
+docs/verification/artifacts/E1.2/red-client-transitive.txt:19: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-client-transitive.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:21: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-client-transitive.txt:22: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-client-transitive.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:24: trailing whitespace.
++ ❯ src/config/architecture.test.ts:77:44
+docs/verification/artifacts/E1.2/red-client-transitive.txt:25: trailing whitespace.
++     75|       'src/features/cases/server/database.ts': "import 'server-only'; …
+docs/verification/artifacts/E1.2/red-client-transitive.txt:26: trailing whitespace.
++     76|     });
+docs/verification/artifacts/E1.2/red-client-transitive.txt:27: trailing whitespace.
++     77|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-client-transitive.txt:28: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-client-transitive.txt:29: trailing whitespace.
++     78|       rule: 'client-cannot-reach-server',
+docs/verification/artifacts/E1.2/red-client-transitive.txt:30: trailing whitespace.
++     79|       from: 'src/features/cases/components/reader.tsx',
+docs/verification/artifacts/E1.2/red-client-transitive.txt:31: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:32: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-client-transitive.txt:33: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:35: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-client-transitive.txt:36: trailing whitespace.
++      Tests  1 failed | 4 passed (5)
+docs/verification/artifacts/E1.2/red-client-transitive.txt:37: trailing whitespace.
++   Start at  22:13:45
+docs/verification/artifacts/E1.2/red-client-transitive.txt:38: trailing whitespace.
++   Duration  3.76s (tests 99%, import 1%, transform 1%)
+docs/verification/artifacts/E1.2/red-client-transitive.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-client-transitive.txt:40: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-cross-feature.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-cross-feature.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-cross-feature.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (1 test | 1 failed) 3530ms
+docs/verification/artifacts/E1.2/red-cross-feature.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (1)
+docs/verification/artifacts/E1.2/red-cross-feature.txt:7: trailing whitespace.
++     × rejeita import interno de outra feature, por caminho relativo 3528ms
+docs/verification/artifacts/E1.2/red-cross-feature.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-cross-feature.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita import interno de outra feature, por caminho relativo
+docs/verification/artifacts/E1.2/red-cross-feature.txt:12: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-cross-feature.txt:13: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:14: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-cross-feature.txt:15: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-cross-feature.txt:16: trailing whitespace.
++  "from": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/red-cross-feature.txt:17: trailing whitespace.
++  "rule": "feature-public-entry-only",
+docs/verification/artifacts/E1.2/red-cross-feature.txt:18: trailing whitespace.
++  "to": "src/features/site-navigation/content/private.ts",
+docs/verification/artifacts/E1.2/red-cross-feature.txt:19: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-cross-feature.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:21: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-cross-feature.txt:22: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-cross-feature.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:24: trailing whitespace.
++ ❯ src/config/architecture.test.ts:41:44
+docs/verification/artifacts/E1.2/red-cross-feature.txt:25: trailing whitespace.
++     39|       'src/features/site-navigation/content/private.ts': 'export const…
+docs/verification/artifacts/E1.2/red-cross-feature.txt:26: trailing whitespace.
++     40|     });
+docs/verification/artifacts/E1.2/red-cross-feature.txt:27: trailing whitespace.
++     41|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-cross-feature.txt:28: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-cross-feature.txt:29: trailing whitespace.
++     42|       rule: 'feature-public-entry-only',
+docs/verification/artifacts/E1.2/red-cross-feature.txt:30: trailing whitespace.
++     43|       from: 'src/features/cases/index.ts',
+docs/verification/artifacts/E1.2/red-cross-feature.txt:31: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:32: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-cross-feature.txt:33: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:35: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-cross-feature.txt:36: trailing whitespace.
++      Tests  1 failed (1)
+docs/verification/artifacts/E1.2/red-cross-feature.txt:37: trailing whitespace.
++   Start at  22:10:33
+docs/verification/artifacts/E1.2/red-cross-feature.txt:38: trailing whitespace.
++   Duration  3.73s (tests 98%, transform 1%, import 1%)
+docs/verification/artifacts/E1.2/red-cross-feature.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cross-feature.txt:40: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-cycles.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-cycles.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-cycles.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (2 tests | 1 failed) 1426ms
+docs/verification/artifacts/E1.2/red-cycles.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (2)
+docs/verification/artifacts/E1.2/red-cycles.txt:7: trailing whitespace.
++     × rejeita dependência circular dentro da mesma feature 711ms
+docs/verification/artifacts/E1.2/red-cycles.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-cycles.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita dependência circular dentro da mesma feature
+docs/verification/artifacts/E1.2/red-cycles.txt:12: trailing whitespace.
++AssertionError: expected [] to deep equally contain { rule: 'no-cycles', …(2) }
+docs/verification/artifacts/E1.2/red-cycles.txt:13: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:14: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-cycles.txt:15: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-cycles.txt:16: trailing whitespace.
++  "from": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/red-cycles.txt:17: trailing whitespace.
++  "rule": "no-cycles",
+docs/verification/artifacts/E1.2/red-cycles.txt:18: trailing whitespace.
++  "to": "src/features/cases/content/value.ts",
+docs/verification/artifacts/E1.2/red-cycles.txt:19: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-cycles.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:21: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-cycles.txt:22: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-cycles.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:24: trailing whitespace.
++ ❯ src/config/architecture.test.ts:53:44
+docs/verification/artifacts/E1.2/red-cycles.txt:25: trailing whitespace.
++     51|       'src/features/cases/content/value.ts': "import '../index'; expor…
+docs/verification/artifacts/E1.2/red-cycles.txt:26: trailing whitespace.
++     52|     });
+docs/verification/artifacts/E1.2/red-cycles.txt:27: trailing whitespace.
++     53|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-cycles.txt:28: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-cycles.txt:29: trailing whitespace.
++     54|       rule: 'no-cycles',
+docs/verification/artifacts/E1.2/red-cycles.txt:30: trailing whitespace.
++     55|       from: 'src/features/cases/index.ts',
+docs/verification/artifacts/E1.2/red-cycles.txt:31: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:32: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-cycles.txt:33: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:35: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-cycles.txt:36: trailing whitespace.
++      Tests  1 failed | 1 passed (2)
+docs/verification/artifacts/E1.2/red-cycles.txt:37: trailing whitespace.
++   Start at  22:11:36
+docs/verification/artifacts/E1.2/red-cycles.txt:38: trailing whitespace.
++   Duration  1.61s (tests 97%, import 1%, transform 1%)
+docs/verification/artifacts/E1.2/red-cycles.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-cycles.txt:40: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:1: trailing whitespace.
++$ vitest run --project architecture -t ESLint
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (14 tests | 1 failed | 13 skipped) 1629ms
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (14)
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:7: trailing whitespace.
++     × ESLint rejeita import relativo privado entre features 1628ms
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita import relativo privado entre features
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:12: trailing whitespace.
++AssertionError: expected [] to include 'architecture/import-boundaries'
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:13: trailing whitespace.
++ ❯ src/config/architecture.test.ts:162:62
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:14: trailing whitespace.
++    160|       filePath: 'src/features/cases/components/card.ts',
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:15: trailing whitespace.
++    161|     });
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:16: trailing whitespace.
++    162|     expect(result.messages.map((message) => message.ruleId)).toContain…
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:17: trailing whitespace.
++       |                                                              ^
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:18: trailing whitespace.
++    163|   });
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:19: trailing whitespace.
++    164| });
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:21: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:22: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:24: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:25: trailing whitespace.
++      Tests  1 failed | 13 skipped (14)
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:26: trailing whitespace.
++   Start at  22:21:44
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:27: trailing whitespace.
++   Duration  2.21s (tests 79%, import 18%, transform 3%)
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:28: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-boundary.txt:29: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:1: trailing whitespace.
++$ vitest run --project architecture -t ESLint
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (16 tests | 2 failed | 13 skipped) 1521ms
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (16)
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:7: trailing whitespace.
++     × ESLint rejeita feature em src/helpers/log.ts 22ms
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:8: trailing whitespace.
++     × ESLint rejeita feature em src/components/ui/button.ts 12ms
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:9: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:10: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:11: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:12: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita feature em src/helpers/log.ts
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:13: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > ESLint rejeita feature em src/components/ui/button.ts
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:14: trailing whitespace.
++AssertionError: expected [] to include 'architecture/import-boundaries'
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:15: trailing whitespace.
++ ❯ src/config/architecture.test.ts:167:62
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:16: trailing whitespace.
++    165|     const eslint = new ESLint({ cwd: path.resolve('.') });
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:17: trailing whitespace.
++    166|     const [result] = await eslint.lintText("import '@/features/cases';…
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:18: trailing whitespace.
++    167|     expect(result.messages.map((message) => message.ruleId)).toContain…
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:19: trailing whitespace.
++       |                                                              ^
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:20: trailing whitespace.
++    168|   });
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:21: trailing whitespace.
++    169| });
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:22: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:23: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:24: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:25: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:26: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:27: trailing whitespace.
++      Tests  2 failed | 1 passed | 13 skipped (16)
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:28: trailing whitespace.
++   Start at  22:22:41
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:29: trailing whitespace.
++   Duration  2.08s (tests 78%, import 18%, transform 3%)
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:30: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-eslint-generic.txt:31: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (9 tests | 2 failed) 6790ms
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (9)
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:7: trailing whitespace.
++     × rejeita cliente para server/query.ts mesmo sem marcador 724ms
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:8: trailing whitespace.
++     × rejeita cliente para content/collection.ts mesmo sem marcador 770ms
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:9: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:10: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:11: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:12: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente para server/query.ts mesmo sem marcador
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:13: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:14: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:15: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:16: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:17: trailing whitespace.
++  "from": "src/features/cases/components/reader.tsx",
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:18: trailing whitespace.
++  "rule": "client-cannot-reach-server",
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:19: trailing whitespace.
++  "to": "src/features/cases/server/query.ts",
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:20: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:21: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:22: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:23: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:24: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:25: trailing whitespace.
++ ❯ src/config/architecture.test.ts:112:44
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:26: trailing whitespace.
++    110|       [`src/features/cases/${target}`]: 'export const privateValue = 1…
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:27: trailing whitespace.
++    111|     });
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:28: trailing whitespace.
++    112|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:29: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:30: trailing whitespace.
++    113|       rule: 'client-cannot-reach-server',
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:31: trailing whitespace.
++    114|       from: 'src/features/cases/components/reader.tsx',
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:32: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:33: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:35: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente para content/collection.ts mesmo sem marcador
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:36: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:37: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:38: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:39: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:40: trailing whitespace.
++  "from": "src/features/cases/components/reader.tsx",
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:41: trailing whitespace.
++  "rule": "client-cannot-reach-server",
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:42: trailing whitespace.
++  "to": "src/features/cases/content/collection.ts",
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:43: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:44: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:45: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:46: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:47: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:48: trailing whitespace.
++ ❯ src/config/architecture.test.ts:112:44
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:49: trailing whitespace.
++    110|       [`src/features/cases/${target}`]: 'export const privateValue = 1…
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:50: trailing whitespace.
++    111|     });
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:51: trailing whitespace.
++    112|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:52: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:53: trailing whitespace.
++    113|       rule: 'client-cannot-reach-server',
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:54: trailing whitespace.
++    114|       from: 'src/features/cases/components/reader.tsx',
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:55: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:56: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:57: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:58: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:59: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:60: trailing whitespace.
++      Tests  2 failed | 7 passed (9)
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:61: trailing whitespace.
++   Start at  22:16:54
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:62: trailing whitespace.
++   Duration  7.19s (tests 96%, import 3%, transform 1%)
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:63: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-exclusive-directories.txt:64: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-generic-features.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-generic-features.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-generic-features.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (4 tests | 2 failed) 2883ms
+docs/verification/artifacts/E1.2/red-generic-features.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (4)
+docs/verification/artifacts/E1.2/red-generic-features.txt:7: trailing whitespace.
++     × rejeita helpers/log.ts dependendo de feature por ponte 726ms
+docs/verification/artifacts/E1.2/red-generic-features.txt:8: trailing whitespace.
++     × rejeita components/ui/button.ts dependendo de feature por ponte 720ms
+docs/verification/artifacts/E1.2/red-generic-features.txt:9: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:10: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-generic-features.txt:11: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:12: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita helpers/log.ts dependendo de feature por ponte
+docs/verification/artifacts/E1.2/red-generic-features.txt:13: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-generic-features.txt:14: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:15: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-generic-features.txt:16: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-generic-features.txt:17: trailing whitespace.
++  "from": "src/helpers/log.ts",
+docs/verification/artifacts/E1.2/red-generic-features.txt:18: trailing whitespace.
++  "rule": "generic-does-not-reach-features",
+docs/verification/artifacts/E1.2/red-generic-features.txt:19: trailing whitespace.
++  "to": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/red-generic-features.txt:20: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-generic-features.txt:21: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:22: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-generic-features.txt:23: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-generic-features.txt:24: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:25: trailing whitespace.
++ ❯ src/config/architecture.test.ts:64:44
+docs/verification/artifacts/E1.2/red-generic-features.txt:26: trailing whitespace.
++     62|       'src/features/cases/index.ts': 'export const title = "synthetic"…
+docs/verification/artifacts/E1.2/red-generic-features.txt:27: trailing whitespace.
++     63|     });
+docs/verification/artifacts/E1.2/red-generic-features.txt:28: trailing whitespace.
++     64|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-generic-features.txt:29: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-generic-features.txt:30: trailing whitespace.
++     65|       rule: 'generic-does-not-reach-features',
+docs/verification/artifacts/E1.2/red-generic-features.txt:31: trailing whitespace.
++     66|       from: `src/${entry}`,
+docs/verification/artifacts/E1.2/red-generic-features.txt:32: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:33: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+docs/verification/artifacts/E1.2/red-generic-features.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:35: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita components/ui/button.ts dependendo de feature por ponte
+docs/verification/artifacts/E1.2/red-generic-features.txt:36: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-generic-features.txt:37: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:38: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-generic-features.txt:39: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-generic-features.txt:40: trailing whitespace.
++  "from": "src/components/ui/button.ts",
+docs/verification/artifacts/E1.2/red-generic-features.txt:41: trailing whitespace.
++  "rule": "generic-does-not-reach-features",
+docs/verification/artifacts/E1.2/red-generic-features.txt:42: trailing whitespace.
++  "to": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/red-generic-features.txt:43: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-generic-features.txt:44: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:45: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-generic-features.txt:46: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-generic-features.txt:47: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:48: trailing whitespace.
++ ❯ src/config/architecture.test.ts:64:44
+docs/verification/artifacts/E1.2/red-generic-features.txt:49: trailing whitespace.
++     62|       'src/features/cases/index.ts': 'export const title = "synthetic"…
+docs/verification/artifacts/E1.2/red-generic-features.txt:50: trailing whitespace.
++     63|     });
+docs/verification/artifacts/E1.2/red-generic-features.txt:51: trailing whitespace.
++     64|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-generic-features.txt:52: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-generic-features.txt:53: trailing whitespace.
++     65|       rule: 'generic-does-not-reach-features',
+docs/verification/artifacts/E1.2/red-generic-features.txt:54: trailing whitespace.
++     66|       from: `src/${entry}`,
+docs/verification/artifacts/E1.2/red-generic-features.txt:55: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:56: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+docs/verification/artifacts/E1.2/red-generic-features.txt:57: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:58: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:59: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-generic-features.txt:60: trailing whitespace.
++      Tests  2 failed | 2 passed (4)
+docs/verification/artifacts/E1.2/red-generic-features.txt:61: trailing whitespace.
++   Start at  22:12:48
+docs/verification/artifacts/E1.2/red-generic-features.txt:62: trailing whitespace.
++   Duration  3.07s (tests 98%, import 1%, transform 1%)
+docs/verification/artifacts/E1.2/red-generic-features.txt:63: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-generic-features.txt:64: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-public-runtime.txt:1: trailing whitespace.
++$ vitest run --project unit src/config/public-runtime.test.ts
+docs/verification/artifacts/E1.2/red-public-runtime.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-public-runtime.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:5: trailing whitespace.
++ ❯ |unit| src/config/public-runtime.test.ts (1 test | 1 failed) 9ms
+docs/verification/artifacts/E1.2/red-public-runtime.txt:6: trailing whitespace.
++   × não entrega o segredo do CMS ao navegador 8ms
+docs/verification/artifacts/E1.2/red-public-runtime.txt:7: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:8: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-public-runtime.txt:9: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:10: trailing whitespace.
++ FAIL  |unit| src/config/public-runtime.test.ts > não entrega o segredo do CMS ao navegador
+docs/verification/artifacts/E1.2/red-public-runtime.txt:11: trailing whitespace.
++AssertionError: expected '{"NODE_ENV":"test","APP_ENV":"test","…' not to contain 'synthetic-private-secret-never-for-pu…'
+docs/verification/artifacts/E1.2/red-public-runtime.txt:12: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:13: trailing whitespace.
++Expected: "synthetic-private-secret-never-for-public-runtime"
+docs/verification/artifacts/E1.2/red-public-runtime.txt:14: trailing whitespace.
++Received: "{"NODE_ENV":"test","APP_ENV":"test","PAYLOAD_SECRET":"synthetic-private-secret-never-for-public-runtime","DATABASE_URI":"postgres://synthetic:local-only@127.0.0.1:55433/adfl_test_fixture","SITE_ORIGIN":"http://127.0.0.1:3100","MEDIA_BUCKET":"adfl-test-fixture"}"
+docs/verification/artifacts/E1.2/red-public-runtime.txt:15: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:16: trailing whitespace.
++ ❯ src/config/public-runtime.test.ts:10:38
+docs/verification/artifacts/E1.2/red-public-runtime.txt:17: trailing whitespace.
++      8|     PAYLOAD_SECRET: 'synthetic-private-secret-never-for-public-runtime…
+docs/verification/artifacts/E1.2/red-public-runtime.txt:18: trailing whitespace.
++      9|   }));
+docs/verification/artifacts/E1.2/red-public-runtime.txt:19: trailing whitespace.
++     10|   expect(JSON.stringify(config)).not.toContain('synthetic-private-secr…
+docs/verification/artifacts/E1.2/red-public-runtime.txt:20: trailing whitespace.
++       |                                      ^
+docs/verification/artifacts/E1.2/red-public-runtime.txt:21: trailing whitespace.
++     11| });
+docs/verification/artifacts/E1.2/red-public-runtime.txt:22: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:23: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-public-runtime.txt:24: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:25: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:26: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-public-runtime.txt:27: trailing whitespace.
++      Tests  1 failed (1)
+docs/verification/artifacts/E1.2/red-public-runtime.txt:28: trailing whitespace.
++   Start at  22:21:00
+docs/verification/artifacts/E1.2/red-public-runtime.txt:29: trailing whitespace.
++   Duration  489ms (setup 60%, import 28%, transform 8%, tests 3%, worker 1%)
+docs/verification/artifacts/E1.2/red-public-runtime.txt:30: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-public-runtime.txt:31: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-server-entry.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-server-entry.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-server-entry.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (6 tests | 1 failed) 4298ms
+docs/verification/artifacts/E1.2/red-server-entry.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (6)
+docs/verification/artifacts/E1.2/red-server-entry.txt:7: trailing whitespace.
++     × rejeita entrada server.ts sem marcador server-only 702ms
+docs/verification/artifacts/E1.2/red-server-entry.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-server-entry.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita entrada server.ts sem marcador server-only
+docs/verification/artifacts/E1.2/red-server-entry.txt:12: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-server-entry.txt:13: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:14: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-server-entry.txt:15: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-server-entry.txt:16: trailing whitespace.
++  "from": "src/features/cases/server.ts",
+docs/verification/artifacts/E1.2/red-server-entry.txt:17: trailing whitespace.
++  "rule": "server-entry-needs-marker",
+docs/verification/artifacts/E1.2/red-server-entry.txt:18: trailing whitespace.
++  "to": "server-only",
+docs/verification/artifacts/E1.2/red-server-entry.txt:19: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-server-entry.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:21: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-server-entry.txt:22: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-server-entry.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:24: trailing whitespace.
++ ❯ src/config/architecture.test.ts:88:44
+docs/verification/artifacts/E1.2/red-server-entry.txt:25: trailing whitespace.
++     86|       'src/features/cases/server.ts': 'export const query = () => "pri…
+docs/verification/artifacts/E1.2/red-server-entry.txt:26: trailing whitespace.
++     87|     });
+docs/verification/artifacts/E1.2/red-server-entry.txt:27: trailing whitespace.
++     88|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-server-entry.txt:28: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-server-entry.txt:29: trailing whitespace.
++     89|       rule: 'server-entry-needs-marker',
+docs/verification/artifacts/E1.2/red-server-entry.txt:30: trailing whitespace.
++     90|       from: 'src/features/cases/server.ts',
+docs/verification/artifacts/E1.2/red-server-entry.txt:31: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:32: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-server-entry.txt:33: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:35: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-server-entry.txt:36: trailing whitespace.
++      Tests  1 failed | 5 passed (6)
+docs/verification/artifacts/E1.2/red-server-entry.txt:37: trailing whitespace.
++   Start at  22:14:57
+docs/verification/artifacts/E1.2/red-server-entry.txt:38: trailing whitespace.
++   Duration  4.69s (tests 94%, import 4%, transform 1%)
+docs/verification/artifacts/E1.2/red-server-entry.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-server-entry.txt:40: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/red-shared-entry.txt:1: trailing whitespace.
++$ vitest run --project architecture
+docs/verification/artifacts/E1.2/red-shared-entry.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/red-shared-entry.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:5: trailing whitespace.
++ ❯ |architecture| src/config/architecture.test.ts (7 tests | 1 failed) 5095ms
+docs/verification/artifacts/E1.2/red-shared-entry.txt:6: trailing whitespace.
++   ❯ fronteiras do grafo real (7)
+docs/verification/artifacts/E1.2/red-shared-entry.txt:7: trailing whitespace.
++     × rejeita index.ts compartilhável que reexporta operação de servidor 721ms
+docs/verification/artifacts/E1.2/red-shared-entry.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:9: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+docs/verification/artifacts/E1.2/red-shared-entry.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:11: trailing whitespace.
++ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita index.ts compartilhável que reexporta operação de servidor
+docs/verification/artifacts/E1.2/red-shared-entry.txt:12: trailing whitespace.
++AssertionError: expected [] to deep equally contain { …(3) }
+docs/verification/artifacts/E1.2/red-shared-entry.txt:13: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:14: trailing whitespace.
++- Expected:
+docs/verification/artifacts/E1.2/red-shared-entry.txt:15: trailing whitespace.
++{
+docs/verification/artifacts/E1.2/red-shared-entry.txt:16: trailing whitespace.
++  "from": "src/features/cases/index.ts",
+docs/verification/artifacts/E1.2/red-shared-entry.txt:17: trailing whitespace.
++  "rule": "shared-entry-cannot-reach-server",
+docs/verification/artifacts/E1.2/red-shared-entry.txt:18: trailing whitespace.
++  "to": "src/features/cases/server/query.ts",
+docs/verification/artifacts/E1.2/red-shared-entry.txt:19: trailing whitespace.
++}
+docs/verification/artifacts/E1.2/red-shared-entry.txt:20: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:21: trailing whitespace.
+++ Received:
+docs/verification/artifacts/E1.2/red-shared-entry.txt:22: trailing whitespace.
++[]
+docs/verification/artifacts/E1.2/red-shared-entry.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:24: trailing whitespace.
++ ❯ src/config/architecture.test.ts:100:44
+docs/verification/artifacts/E1.2/red-shared-entry.txt:25: trailing whitespace.
++     98|       'src/features/cases/server/query.ts': "import 'server-only'; exp…
+docs/verification/artifacts/E1.2/red-shared-entry.txt:26: trailing whitespace.
++     99|     });
+docs/verification/artifacts/E1.2/red-shared-entry.txt:27: trailing whitespace.
++    100|     expect(analyzeArchitecture(directory)).toContainEqual({
+docs/verification/artifacts/E1.2/red-shared-entry.txt:28: trailing whitespace.
++       |                                            ^
+docs/verification/artifacts/E1.2/red-shared-entry.txt:29: trailing whitespace.
++    101|       rule: 'shared-entry-cannot-reach-server',
+docs/verification/artifacts/E1.2/red-shared-entry.txt:30: trailing whitespace.
++    102|       from: 'src/features/cases/index.ts',
+docs/verification/artifacts/E1.2/red-shared-entry.txt:31: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:32: trailing whitespace.
++⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+docs/verification/artifacts/E1.2/red-shared-entry.txt:33: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:34: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:35: trailing whitespace.
++ Test Files  1 failed (1)
+docs/verification/artifacts/E1.2/red-shared-entry.txt:36: trailing whitespace.
++      Tests  1 failed | 6 passed (7)
+docs/verification/artifacts/E1.2/red-shared-entry.txt:37: trailing whitespace.
++   Start at  22:16:14
+docs/verification/artifacts/E1.2/red-shared-entry.txt:38: trailing whitespace.
++   Duration  5.49s (tests 95%, import 4%, transform 1%)
+docs/verification/artifacts/E1.2/red-shared-entry.txt:39: trailing whitespace.
++
+docs/verification/artifacts/E1.2/red-shared-entry.txt:40: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/type-only-cycle.txt:1: trailing whitespace.
++$ vitest run --project architecture -t 'ciclo só de tipos'
+docs/verification/artifacts/E1.2/type-only-cycle.txt:2: trailing whitespace.
++
+docs/verification/artifacts/E1.2/type-only-cycle.txt:3: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/type-only-cycle.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/type-only-cycle.txt:5: trailing whitespace.
++
+docs/verification/artifacts/E1.2/type-only-cycle.txt:6: trailing whitespace.
++ Test Files  1 passed (1)
+docs/verification/artifacts/E1.2/type-only-cycle.txt:7: trailing whitespace.
++      Tests  1 passed | 20 skipped (21)
+docs/verification/artifacts/E1.2/type-only-cycle.txt:8: trailing whitespace.
++   Start at  22:28:33
+docs/verification/artifacts/E1.2/type-only-cycle.txt:9: trailing whitespace.
++   Duration  1.29s (tests 63%, import 31%, transform 6%)
+docs/verification/artifacts/E1.2/type-only-cycle.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/type-only-cycle.txt:10: new blank line at EOF.
+docs/verification/artifacts/E1.2/typecheck-after-fixture.txt:1: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.2/typecheck-initial.txt:1: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.2/typecheck-initial.txt:2: trailing whitespace.
++src/config/public-runtime.test.ts(7,51): error TS2345: Argument of type '{ PAYLOAD_SECRET: string; }' is not assignable to parameter of type 'ProcessEnv'.
+docs/verification/artifacts/E1.2/typecheck-initial.txt:3: trailing whitespace.
++  Property 'NODE_ENV' is missing in type '{ PAYLOAD_SECRET: string; }' but required in type 'ProcessEnv'.
+docs/verification/artifacts/E1.2/typecheck-initial.txt:4: trailing whitespace.
++testing/fixtures/content.ts(3,32): error TS2741: Property 'NODE_ENV' is missing in type '{}' but required in type 'ProcessEnv'.
+docs/verification/artifacts/E1.2/typecheck-initial.txt:5: trailing whitespace.
++testing/fixtures/content.ts(5,5): error TS2783: 'NODE_ENV' is specified more than once, so this usage will be overwritten.
+docs/verification/artifacts/E1.2/typecheck-initial.txt:6: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 2.
+docs/verification/artifacts/E1.2/verify-final.txt:1: trailing whitespace.
++$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+docs/verification/artifacts/E1.2/verify-final.txt:2: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.2/verify-final.txt:3: trailing whitespace.
++$ eslint .
+docs/verification/artifacts/E1.2/verify-final.txt:4: trailing whitespace.
++$ prettier --check .
+docs/verification/artifacts/E1.2/verify-final.txt:5: trailing whitespace.
++Checking formatting...
+docs/verification/artifacts/E1.2/verify-final.txt:6: trailing whitespace.
++All matched files use Prettier code style!
+docs/verification/artifacts/E1.2/verify-final.txt:7: trailing whitespace.
++$ vitest run
+docs/verification/artifacts/E1.2/verify-final.txt:8: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:9: trailing whitespace.
++ RUN  v5.0.5 E:/a-design-for-life
+docs/verification/artifacts/E1.2/verify-final.txt:10: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:11: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Creating 
+docs/verification/artifacts/E1.2/verify-final.txt:12: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Created 
+docs/verification/artifacts/E1.2/verify-final.txt:13: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Starting 
+docs/verification/artifacts/E1.2/verify-final.txt:14: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Started 
+docs/verification/artifacts/E1.2/verify-final.txt:15: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Waiting 
+docs/verification/artifacts/E1.2/verify-final.txt:16: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Healthy 
+docs/verification/artifacts/E1.2/verify-final.txt:17: trailing whitespace.
++[22:33:22] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.2/verify-final.txt:18: trailing whitespace.
++[22:33:22] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+docs/verification/artifacts/E1.2/verify-final.txt:19: trailing whitespace.
++[22:33:23] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+docs/verification/artifacts/E1.2/verify-final.txt:20: trailing whitespace.
++[22:33:23] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (149ms)[39m
+docs/verification/artifacts/E1.2/verify-final.txt:21: trailing whitespace.
++[22:33:23] [32mINFO[39m: [36mDone.[39m
+docs/verification/artifacts/E1.2/verify-final.txt:22: trailing whitespace.
++[22:33:40] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+docs/verification/artifacts/E1.2/verify-final.txt:23: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:24: trailing whitespace.
++ Test Files  4 passed (4)
+docs/verification/artifacts/E1.2/verify-final.txt:25: trailing whitespace.
++      Tests  42 passed (42)
+docs/verification/artifacts/E1.2/verify-final.txt:26: trailing whitespace.
++   Start at  22:33:00
+docs/verification/artifacts/E1.2/verify-final.txt:27: trailing whitespace.
++   Duration  39.46s (tests 66%, setup 23%, import 10%, transform 1%)
+docs/verification/artifacts/E1.2/verify-final.txt:28: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:29: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopping 
+docs/verification/artifacts/E1.2/verify-final.txt:30: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Stopped 
+docs/verification/artifacts/E1.2/verify-final.txt:31: trailing whitespace.
++Going to remove a-design-for-life-local-postgres-test-1
+docs/verification/artifacts/E1.2/verify-final.txt:32: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removing 
+docs/verification/artifacts/E1.2/verify-final.txt:33: trailing whitespace.
++ Container a-design-for-life-local-postgres-test-1 Removed 
+docs/verification/artifacts/E1.2/verify-final.txt:34: trailing whitespace.
++$ next build
+docs/verification/artifacts/E1.2/verify-final.txt:35: trailing whitespace.
++▲ Next.js 16.4.3 (Turbopack)
+docs/verification/artifacts/E1.2/verify-final.txt:36: trailing whitespace.
++- Environments: .env
+docs/verification/artifacts/E1.2/verify-final.txt:37: trailing whitespace.
++✓ Running next.config.ts took 444ms
+docs/verification/artifacts/E1.2/verify-final.txt:38: trailing whitespace.
++- Experiments (use with caution):
+docs/verification/artifacts/E1.2/verify-final.txt:39: trailing whitespace.
++  ⨯ turbopackServerFastRefresh
+docs/verification/artifacts/E1.2/verify-final.txt:40: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:41: trailing whitespace.
++  Creating an optimized production build ...
+docs/verification/artifacts/E1.2/verify-final.txt:42: trailing whitespace.
++✓ Compiled successfully in 10.5s
+docs/verification/artifacts/E1.2/verify-final.txt:43: trailing whitespace.
++  Running TypeScript ...
+docs/verification/artifacts/E1.2/verify-final.txt:44: trailing whitespace.
++  Finished TypeScript in 3.7s ...
+docs/verification/artifacts/E1.2/verify-final.txt:45: trailing whitespace.
++  Collecting page data using 5 workers ...
+docs/verification/artifacts/E1.2/verify-final.txt:46: trailing whitespace.
++  Generating static pages using 5 workers (0/2) ...
+docs/verification/artifacts/E1.2/verify-final.txt:47: trailing whitespace.
++✓ Generating static pages using 5 workers (2/2) in 438ms
+docs/verification/artifacts/E1.2/verify-final.txt:48: trailing whitespace.
++  Finalizing page optimization ...
+docs/verification/artifacts/E1.2/verify-final.txt:49: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:50: trailing whitespace.
++Route (app)
+docs/verification/artifacts/E1.2/verify-final.txt:51: trailing whitespace.
++┌ ○ /_not-found
+docs/verification/artifacts/E1.2/verify-final.txt:52: trailing whitespace.
++├ ƒ /admin/[[...segments]]
+docs/verification/artifacts/E1.2/verify-final.txt:53: trailing whitespace.
++└ ƒ /api/[...slug]
+docs/verification/artifacts/E1.2/verify-final.txt:54: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:55: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:56: trailing whitespace.
++○  (Static)   prerendered as static content
+docs/verification/artifacts/E1.2/verify-final.txt:57: trailing whitespace.
++ƒ  (Dynamic)  server-rendered on demand
+docs/verification/artifacts/E1.2/verify-final.txt:58: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-final.txt:58: new blank line at EOF.
+docs/verification/artifacts/E1.2/verify-initial.txt:1: trailing whitespace.
++$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+docs/verification/artifacts/E1.2/verify-initial.txt:2: trailing whitespace.
++$ tsc --noEmit
+docs/verification/artifacts/E1.2/verify-initial.txt:3: trailing whitespace.
++$ eslint .
+docs/verification/artifacts/E1.2/verify-initial.txt:4: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-initial.txt:5: trailing whitespace.
++E:\a-design-for-life\src\config\architecture.ts
+docs/verification/artifacts/E1.2/verify-initial.txt:6: trailing whitespace.
++  61:8  error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+docs/verification/artifacts/E1.2/verify-initial.txt:7: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-initial.txt:8: trailing whitespace.
++✖ 1 problem (1 error, 0 warnings)
+docs/verification/artifacts/E1.2/verify-initial.txt:9: trailing whitespace.
++
+docs/verification/artifacts/E1.2/verify-initial.txt:10: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.
+docs/verification/artifacts/E1.2/verify-initial.txt:11: trailing whitespace.
++[ELIFECYCLE] Command failed with exit code 1.

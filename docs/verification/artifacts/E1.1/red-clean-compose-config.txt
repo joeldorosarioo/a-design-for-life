@@ -1,0 +1,1 @@
+error while interpolating services.postgres-local.environment.POSTGRES_PASSWORD: required variable LOCAL_POSTGRES_PASSWORD is missing a value: Configure LOCAL_POSTGRES_PASSWORD em .env

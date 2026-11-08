@@ -1,0 +1,35 @@
+$ next build
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 40ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.6s
+  Running TypeScript ...
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.next/dev/types/**/*.ts'
+
+src/app/(payload)/admin/[[...segments]]/not-found.tsx(7,27): error TS7016: Could not find a declaration file for module '../importMap'. 'E:/a-design-for-life/src/app/(payload)/admin/importMap.js' implicitly has an 'any' type.
+src/app/(payload)/admin/[[...segments]]/page.tsx(7,27): error TS7016: Could not find a declaration file for module '../importMap'. 'E:/a-design-for-life/src/app/(payload)/admin/importMap.js' implicitly has an 'any' type.
+src/app/(payload)/layout.tsx(9,27): error TS7016: Could not find a declaration file for module './admin/importMap.js'. 'E:/a-design-for-life/src/app/(payload)/admin/importMap.js' implicitly has an 'any' type.
+src/config/server-env.test.ts(24,32): error TS2345: Argument of type '{ DATABASE_URI: string | undefined; PAYLOAD_SECRET: string; NODE_ENV: string; APP_ENV: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to parameter of type 'ProcessEnv'.
+  Types of property 'NODE_ENV' are incompatible.
+    Type 'string' is not assignable to type '"development" | "test" | "production"'.
+src/config/server-env.test.ts(28,26): error TS2345: Argument of type '{ UNRELATED: string; PAYLOAD_SECRET: string; DATABASE_URI: string; NODE_ENV: string; APP_ENV: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to parameter of type 'ProcessEnv'.
+  Types of property 'NODE_ENV' are incompatible.
+    Type 'string' is not assignable to type '"development" | "test" | "production"'.
+src/config/server-env.test.ts(40,32): error TS2345: Argument of type '{ APP_ENV: string; PAYLOAD_SECRET: string; DATABASE_URI: string; NODE_ENV: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; } | { DATABASE_URI: string; PAYLOAD_SECRET: string; NODE_ENV: string; APP_ENV: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; } | { ...; }' is not assignable to parameter of type 'ProcessEnv'.
+  Type '{ APP_ENV: string; PAYLOAD_SECRET: string; DATABASE_URI: string; NODE_ENV: string; SITE_ORIGIN: string; MEDIA_BUCKET: string; }' is not assignable to type 'ProcessEnv'.
+    Types of property 'NODE_ENV' are incompatible.
+      Type 'string' is not assignable to type '"development" | "test" | "production"'.
+src/config/server-env.test.ts(44,32): error TS2345: Argument of type '{ SITE_ORIGIN: string; PAYLOAD_SECRET: string; DATABASE_URI: string; NODE_ENV: string; APP_ENV: string; MEDIA_BUCKET: string; }' is not assignable to parameter of type 'ProcessEnv'.
+  Types of property 'NODE_ENV' are incompatible.
+    Type 'string' is not assignable to type '"development" | "test" | "production"'.
+Failed to type check.
+
+[ELIFECYCLE] Command failed with exit code 1.

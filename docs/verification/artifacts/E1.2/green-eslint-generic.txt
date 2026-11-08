@@ -1,0 +1,10 @@
+$ vitest run --project architecture -t ESLint
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed | 13 skipped (16)
+   Start at  22:22:57
+   Duration  2.00s (tests 79%, import 18%, transform 3%)
+

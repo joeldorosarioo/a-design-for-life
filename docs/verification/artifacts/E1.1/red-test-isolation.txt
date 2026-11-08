@@ -1,0 +1,66 @@
+$ vitest run --project unit src/config/server-env.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (12 tests | 7 failed) 12ms
+   ❯ isolamento do ambiente de testes (7)
+     × recusa recurso de teste não isolado: {"APP_ENV":"production"} 3ms
+     × recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@db.example.com/adfl_test_base"} 0ms
+     × recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@127.0.0.1:55433/adfl_production"} 0ms
+     × recusa recurso de teste não isolado: {"MEDIA_BUCKET":"adfl-production-media"} 0ms
+     × recusa origem não HTTP(S) ou com dados extras: ftp://files.example.com 1ms
+     × recusa origem não HTTP(S) ou com dados extras: https://site.example.com/path 0ms
+     × recusa origem não HTTP(S) ou com dados extras: https://user:pass@site.example.com 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"APP_ENV":"production"}
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@db.example.com/adfl_test_base"}
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"DATABASE_URI":"postgres://test:local@127.0.0.1:55433/adfl_production"}
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa recurso de teste não isolado: {"MEDIA_BUCKET":"adfl-production-media"}
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:40:65
+     38|     [{ MEDIA_BUCKET: 'adfl-production-media' }, /MEDIA_BUCKET/],
+     39|   ])('recusa recurso de teste não isolado: %j', (override, field) => {
+     40|     expect(() => readServerEnv({ ...validInput, ...override })).toThro…
+       |                                                                 ^
+     41|   });
+     42|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: ftp://files.example.com
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://site.example.com/path
+ FAIL  |unit| src/config/server-env.test.ts > isolamento do ambiente de testes > recusa origem não HTTP(S) ou com dados extras: https://user:pass@site.example.com
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:44:73
+     42|
+     43|   it.each(['ftp://files.example.com', 'https://site.example.com/path',…
+     44|     expect(() => readServerEnv({ ...validInput, SITE_ORIGIN: origin })…
+       |                                                                         ^
+     45|   });
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 5 passed (12)
+   Start at  21:27:56
+   Duration  481ms (setup 62%, import 24%, transform 8%, tests 4%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

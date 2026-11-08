@@ -1,0 +1,66 @@
+$ vitest run --project unit src/config/server-env.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (5 tests | 4 failed) 12ms
+   ❯ readServerEnv (5)
+     × recusa conexão que não é PostgreSQL: undefined 3ms
+     × recusa conexão que não é PostgreSQL:  0ms
+     × recusa conexão que não é PostgreSQL: https://database.example.com/adfl 0ms
+     × entrega configuração tipada ao adaptador e descarta variáveis estranhas 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: undefined
+ FAIL  |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: 
+ FAIL  |unit| src/config/server-env.test.ts > readServerEnv > recusa conexão que não é PostgreSQL: https://database.example.com/adfl
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:24:76
+     22|   // A malformed/missing connection would otherwise reach the database…
+     23|   it.each([undefined, '', 'https://database.example.com/adfl'])('recus…
+     24|     expect(() => readServerEnv({ ...validInput, DATABASE_URI: database…
+       |                                                                            ^
+     25|   });
+     26|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > readServerEnv > entrega configuração tipada ao adaptador e descarta variáveis estranhas
+AssertionError: expected { Object (PAYLOAD_SECRET) } to deeply equal { …(6) }
+
+- Expected
++ Received
+
+  {
+-   "APP_ENV": "test",
+-   "DATABASE_URI": "postgres://adfl:local@127.0.0.1:55433/adfl_test_base",
+-   "MEDIA_BUCKET": "adfl-test-files",
+-   "NODE_ENV": "test",
+    "PAYLOAD_SECRET": "synthetic-test-secret-at-least-thirty-two-characters",
+-   "SITE_ORIGIN": "http://127.0.0.1:3000",
+  }
+
+ ❯ src/config/server-env.test.ts:28:68
+     26|
+     27|   it('entrega configuração tipada ao adaptador e descarta variáveis es…
+     28|     expect(readServerEnv({ ...validInput, UNRELATED: 'ignored' })).toE…
+       |                                                                    ^
+     29|   });
+     30| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 1 passed (5)
+   Start at  21:26:59
+   Duration  465ms (setup 61%, import 26%, transform 8%, tests 4%, worker 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

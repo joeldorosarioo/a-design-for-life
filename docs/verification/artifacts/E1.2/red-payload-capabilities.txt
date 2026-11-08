@@ -1,0 +1,68 @@
+$ vitest run --project architecture -t 'rejeita capacidade'
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (26 tests | 4 failed | 22 skipped) 2888ms
+   ❯ fronteiras do grafo real (26)
+     × rejeita capacidade components/reader.tsx → payload 762ms
+     × rejeita capacidade components/reader.tsx → @payloadcms/db-postgres 721ms
+     × rejeita capacidade index.ts → payload 703ms
+     × rejeita capacidade index.ts → @payloadcms/db-postgres 702ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade components/reader.tsx → payload
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade components/reader.tsx → @payloadcms/db-postgres
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/components/reader.tsx",
+  "rule": "client-cannot-reach-server",
+  "to": "src/features/cases/components/reader.tsx",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:241:44
+    239|         : `'use client'; import '${capability}';`,
+    240|     });
+    241|     expect(analyzeArchitecture(directory)).toContainEqual({ rule, from…
+       |                                            ^
+    242|   });
+    243| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade index.ts → payload
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita capacidade index.ts → @payloadcms/db-postgres
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/index.ts",
+  "rule": "shared-entry-cannot-reach-server",
+  "to": "src/features/cases/index.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:241:44
+    239|         : `'use client'; import '${capability}';`,
+    240|     });
+    241|     expect(analyzeArchitecture(directory)).toContainEqual({ rule, from…
+       |                                            ^
+    242|   });
+    243| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 22 skipped (26)
+   Start at  22:43:09
+   Duration  3.46s (tests 87%, import 11%, transform 2%)
+
+[ELIFECYCLE] Command failed with exit code 1.

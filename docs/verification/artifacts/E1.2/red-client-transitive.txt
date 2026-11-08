@@ -1,0 +1,40 @@
+$ vitest run --project architecture
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (5 tests | 1 failed) 3582ms
+   ❯ fronteiras do grafo real (5)
+     × rejeita cliente transitivo a server-only sem depender do nome do arquivo 771ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente transitivo a server-only sem depender do nome do arquivo
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/components/reader.tsx",
+  "rule": "client-cannot-reach-server",
+  "to": "src/features/cases/server/database.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:77:44
+     75|       'src/features/cases/server/database.ts': "import 'server-only'; …
+     76|     });
+     77|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+     78|       rule: 'client-cannot-reach-server',
+     79|       from: 'src/features/cases/components/reader.tsx',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  22:13:45
+   Duration  3.76s (tests 99%, import 1%, transform 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

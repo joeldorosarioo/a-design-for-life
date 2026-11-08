@@ -1,0 +1,64 @@
+$ vitest run --project architecture
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |architecture| src/config/architecture.test.ts (9 tests | 2 failed) 6790ms
+   ❯ fronteiras do grafo real (9)
+     × rejeita cliente para server/query.ts mesmo sem marcador 724ms
+     × rejeita cliente para content/collection.ts mesmo sem marcador 770ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente para server/query.ts mesmo sem marcador
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/components/reader.tsx",
+  "rule": "client-cannot-reach-server",
+  "to": "src/features/cases/server/query.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:112:44
+    110|       [`src/features/cases/${target}`]: 'export const privateValue = 1…
+    111|     });
+    112|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+    113|       rule: 'client-cannot-reach-server',
+    114|       from: 'src/features/cases/components/reader.tsx',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |architecture| src/config/architecture.test.ts > fronteiras do grafo real > rejeita cliente para content/collection.ts mesmo sem marcador
+AssertionError: expected [] to deep equally contain { …(3) }
+
+- Expected:
+{
+  "from": "src/features/cases/components/reader.tsx",
+  "rule": "client-cannot-reach-server",
+  "to": "src/features/cases/content/collection.ts",
+}
+
++ Received:
+[]
+
+ ❯ src/config/architecture.test.ts:112:44
+    110|       [`src/features/cases/${target}`]: 'export const privateValue = 1…
+    111|     });
+    112|     expect(analyzeArchitecture(directory)).toContainEqual({
+       |                                            ^
+    113|       rule: 'client-cannot-reach-server',
+    114|       from: 'src/features/cases/components/reader.tsx',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 7 passed (9)
+   Start at  22:16:54
+   Duration  7.19s (tests 96%, import 3%, transform 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.
