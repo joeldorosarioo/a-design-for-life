@@ -195,7 +195,9 @@ test('two native editors save independently while a visitor cannot read their dr
     const { id, slug } = translations[index];
     const draftTitle = `Native independent ${locale.toUpperCase()}`;
     const session = index === 0 ? owner : reader;
-    const savedDraft = await session.request.get(`/api/case-content/${id}?draft=true&depth=0`);
+    const savedDraft = await session.request.get(`/api/case-content/${id}?draft=true&depth=0`, {
+      headers: { Origin: process.env.SITE_ORIGIN! },
+    });
     expect(savedDraft.status()).toBe(200);
     expect(await savedDraft.json()).toMatchObject({
       id,
