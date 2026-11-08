@@ -1,0 +1,8 @@
+$ tsc --noEmit
+src/features/cases/content/collections/route-lifecycle.integration.test.ts(558,9): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(options: ByIDOptions<"case-routes", CaseRoutesSelect<false> | CaseRoutesSelect<true>>): Promise<CaseRoute>', gave the following error.
+    Type '{ slug: string; everPublished?: undefined; state?: undefined; case?: undefined; locale?: undefined; } | { everPublished: boolean; slug?: undefined; state?: undefined; case?: undefined; locale?: undefined; } | { ...; } | { ...; } | { ...; }' is not assignable to type '{ locale?: "pt" | "en" | undefined; slug?: string | undefined; case?: string | { id?: string | undefined; internalTitle?: string | undefined; sortOrder?: number | null | undefined; featured?: boolean | ... 1 more ... | undefined; ... 6 more ...; createdAt?: string | undefined; } | undefined; ... 7 more ...; collecti...'.
+      Type '{ state: string; slug?: undefined; everPublished?: undefined; case?: undefined; locale?: undefined; }' is not assignable to type '{ locale?: "pt" | "en" | undefined; slug?: string | undefined; case?: string | { id?: string | undefined; internalTitle?: string | undefined; sortOrder?: number | null | undefined; featured?: boolean | ... 1 more ... | undefined; ... 6 more ...; createdAt?: string | undefined; } | undefined; ... 7 more ...; collecti...'.
+        Types of property 'state' are incompatible.
+          Type 'string' is not assignable to type '"draft" | "current" | "historical" | undefined'.
+[ELIFECYCLE] Command failed with exit code 2.

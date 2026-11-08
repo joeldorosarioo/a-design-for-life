@@ -1,0 +1,189 @@
+Evidence copy: synthetic ephemeral fixture lease identifiers redacted; original retained only in ignored .work/e1.5-raw-diagnostic-evidence. No environment values were printed.
+
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[03:11:25] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:11:25] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (97ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (9ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[03:11:25] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:11:25] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (8ms)[39m
+[03:11:25] [32mINFO[39m: [36mDone.[39m
+[03:11:27] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts (4 tests | 4 failed) 550ms
+   × reserves supplied draft slugs and leaves title changes and missing slugs alone 76ms
+   × the database chooses one concurrent owner, reports explicit conflict and rolls back loser content/head/versions 120ms
+   × releases only never-public old drafts; publishes history, reuses its own history and treats effective draft=true publication as publication 82ms
+   × denies raw privileged Local API registry creation without an internal transaction capability 44ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > reserves supplied draft slugs and leaves title changes and missing slugs alone
+AssertionError: expected [] to match object [ { …(3) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "everPublished": false,
+-     "slug": "route-85b09213-c1c5-46b5-ae17-d5811dcc910c",
+-     "state": "draft",
+-   },
+- ]
++ []
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:28:32
+     26|   const first = slug();
+     27|   const doc = await draft(first);
+     28|   expect(await routes(doc.id)).toMatchObject([{ slug: first, everPubli…
+       |                                ^
+     29|   await save(doc.id, { title: 'Different title', _status: 'draft' });
+     30|   expect((await routes(doc.id)).map(row => row.slug)).toEqual([first]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > the database chooses one concurrent owner, reports explicit conflict and rolls back loser content/head/versions
+AssertionError: expected [ { status: 'fulfilled', …(1) }, …(1) ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:42:67
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > releases only never-public old drafts; publishes history, reuses its own history and treats effective draft=true publication as publication
+AssertionError: expected [] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+- [
+-   "route-714fa5f1-5f2d-4884-813c-23c0d28541bc",
+- ]
++ []
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:55:55
+     53|   const doc = await draft(a);
+     54|   await save(doc.id, { slug: b, _status: 'draft' });
+     55|   expect((await routes(doc.id)).map(row => row.slug)).toEqual([b]);
+       |                                                       ^
+     56|   await publish(doc.id, b);
+     57|   await save(doc.id, { slug: c, _status: 'draft' });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > denies raw privileged Local API registry creation without an internal transaction capability
+AssertionError: promise resolved "{ …(9) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "case": {
++     "createdAt": "2026-10-30T06:11:28.376Z",
++     "editorialRevision": "c290c618-4b89-4593-81cf-4798663091c6",
++     "featured": false,
++     "id": "42186192-ec76-48c6-a744-ccaf77330d7a",
++     "internalTitle": "Synthetic route owner",
++     "leaseToken": "[redacted-synthetic-lease]",
++     "sortOrder": 0,
++     "updatedAt": "2026-10-30T06:11:28.376Z",
++   },
++   "content": {
++     "_status": "draft",
++     "case": {
++       "createdAt": "2026-10-30T06:11:28.376Z",
++       "editorialRevision": "c290c618-4b89-4593-81cf-4798663091c6",
++       "featured": false,
++       "id": "42186192-ec76-48c6-a744-ccaf77330d7a",
++       "internalTitle": "Synthetic route owner",
++       "leaseToken": "[redacted-synthetic-lease]",
++       "sortOrder": 0,
++       "updatedAt": "2026-10-30T06:11:28.376Z",
++     },
++     "contextNote": null,
++     "cover": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "createdAt": "2026-10-30T06:11:28.385Z",
++     "editorialRevision": "08b0ba45-8ea0-432f-9391-f68ae3b53820",
++     "eyebrow": null,
++     "id": "e12191cf-94ba-4749-aa4b-a583a635ebf6",
++     "introduction": null,
++     "leaseToken": "[redacted-synthetic-lease]",
++     "locale": "pt",
++     "role": null,
++     "scope": null,
++     "sections": [],
++     "seo": {
++       "description": null,
++       "image": {
++         "alt": null,
++         "caption": null,
++         "decorative": false,
++         "media": null,
++       },
++       "title": null,
++     },
++     "slug": null,
++     "summary": null,
++     "title": null,
++     "updatedAt": "2026-10-30T06:11:28.385Z",
++   },
++   "createdAt": "2026-10-30T06:11:28.407Z",
++   "everPublished": true,
++   "id": "332d1c2f-ae65-4a02-9dcc-7aff6692a27c",
++   "locale": "pt",
++   "slug": "route-8d427482-d9cc-4a09-b09f-602ba4cb57cb",
++   "state": "current",
++   "updatedAt": "2026-10-30T06:11:28.407Z",
+  }
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:69:242
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  03:11:21
+   Duration  7.33s (import 70%, tests 23%, transform 4%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

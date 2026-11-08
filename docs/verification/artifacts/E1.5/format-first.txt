@@ -1,0 +1,48 @@
+src/features/cases/components/slug-suggestion.tsx 40ms
+src/features/cases/content/blocks/case-blocks.ts 8ms (unchanged)
+src/features/cases/content/collections/case-content.integration.test.ts 38ms (unchanged)
+src/features/cases/content/collections/case-content.ts 11ms
+src/features/cases/content/collections/case-routes.integration.test.ts 10ms
+src/features/cases/content/collections/case-routes.ts 3ms
+src/features/cases/content/collections/cases.integration.test.ts 16ms (unchanged)
+src/features/cases/content/collections/cases.ts 2ms (unchanged)
+src/features/cases/content/collections/editorial-lifecycle.integration.test.ts 43ms (unchanged)
+src/features/cases/content/collections/route-lifecycle.integration.test.ts 35ms
+src/features/cases/content/editor/contextual-link-feature.integration.test.ts 18ms (unchanged)
+src/features/cases/content/editor/contextual-link-feature.ts 3ms (unchanged)
+src/features/cases/content/hooks/case-routes.ts 11ms
+src/features/cases/content/hooks/protect-case-deletion.ts 3ms (unchanged)
+src/features/cases/content/hooks/reject-same-origin-external-links.ts 4ms (unchanged)
+src/features/cases/content/hooks/stable-reading-keys.ts 3ms (unchanged)
+src/features/cases/content/hooks/validate-publication.integration.test.ts 14ms (unchanged)
+src/features/cases/content/hooks/validate-publication.ts 6ms
+src/features/cases/content/schema/protect-case-identity.ts 2ms (unchanged)
+src/features/cases/contracts/case-dto.schema.ts 5ms (unchanged)
+src/features/cases/contracts/case-identity.schema.ts 1ms (unchanged)
+src/features/cases/contracts/case.schema.ts 4ms
+src/features/cases/contracts/contextual-link-switch.schema.test.ts 2ms (unchanged)
+src/features/cases/contracts/contextual-link.schema.test.ts 3ms (unchanged)
+src/features/cases/contracts/contextual-link.schema.ts 5ms (unchanged)
+src/features/cases/contracts/editorial-conflict.schema.ts 1ms (unchanged)
+src/features/cases/contracts/rich-text.schema.test.ts 3ms (unchanged)
+src/features/cases/contracts/rich-text.schema.ts 6ms (unchanged)
+src/features/cases/contracts/route-resolution.schema.ts 2ms
+src/features/cases/contracts/slug.schema.test.ts 3ms
+src/features/cases/contracts/slug.schema.ts 2ms
+src/features/cases/index.ts 1ms
+src/features/cases/lib/suggest-slug.ts 1ms
+src/features/cases/server.ts 1ms
+src/features/cases/server/case-result.ts 4ms
+src/features/cases/server/case-route-response.test.ts 4ms
+src/features/cases/server/case-route-response.ts 5ms
+src/features/cases/server/map-case-detail.test.ts 3ms (unchanged)
+src/features/cases/server/map-case-detail.ts 5ms (unchanged)
+src/features/cases/server/publish-case.ts 2ms
+src/features/cases/server/reserve-case-route.ts 3ms
+src/features/cases/server/resolve-case-route.ts 4ms
+src/features/cases/server/restore-case-draft.ts 1ms
+src/features/cases/server/suggest-slug.ts 0ms
+src/features/cases/server/translate-case-conflict.ts 2ms
+src/instrumentation.ts 1ms
+src/app/(portfolio)/[locale]/cases/[slug]/route.ts 1ms
+testing/fixtures/editorial-lifecycle.ts 6ms

@@ -1,3 +1,8 @@
+import {
+  protectRouteOperation,
+  protectRouteChange,
+  protectRouteDelete,
+} from '../hooks/case-routes';
 import 'server-only';
 import type { CollectionConfig } from 'payload';
 
@@ -5,6 +10,11 @@ export const CaseRoutes: CollectionConfig = {
   slug: 'case-routes',
   labels: { singular: 'Endereço de case', plural: 'Endereços de cases' },
   admin: { hidden: true },
+  hooks: {
+    beforeOperation: [protectRouteOperation],
+    beforeChange: [protectRouteChange],
+    beforeDelete: [protectRouteDelete],
+  },
   indexes: [{ fields: ['locale', 'slug'], unique: true }],
   access: { create: () => false, read: () => false, update: () => false, delete: () => false },
   fields: [

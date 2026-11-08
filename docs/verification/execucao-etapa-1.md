@@ -11,10 +11,10 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] Criar raiz `E:\a-design-for-life`, sem pasta duplicada, com branch atual `develop` (histórico corrigido por solicitação do usuário).
 - [x] Copiar quatro referências a docs/specs e conferir SHA256.
 - [x] E1.1 Base executável e ambiente de testes — concluída; evidências e riscos em E1.1.md.
-- [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída localmente; proteção remota bloqueada por acesso, ver E1.2.md.
+- [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída; CI e proteção remota comprovadas em E1.2-remote.md.
 - [x] E1.3 Modelos editoriais e provisionamento idempotente — concluída após revisão e gate independente.
 - [x] E1.4 Rascunho, publicação, restauração e concorrência — revisão e CI atual aprovados.
-- [ ] E1.5 Slugs, reservas e resolução pública.
+- [x] E1.5 Slugs, reservas e resolução pública — revisões e CI atual aprovados.
 - [ ] E1.6 Upload, processamento e privacidade.
 - [ ] E1.7 Contas, prévias e recuperação nativa.
 - [ ] E1.8 Coordenação e demonstração dos contratos.
@@ -99,3 +99,11 @@ Em 30/10/2026, E1.1–E1.4 concluídas: quatro de oito tarefas, 50%. E1.5 é a p
 Snapshot de código d43891e4a07f96ac23ec4b4bf013f014bb440142: revisão final e três re-reviews aprovadas, com regressões reais de imagens SEO, draft=true/publicação efetiva e blocos de texto vazios. O gate final independente executado pelo GitHub Actions em ubuntu-24.04 terminou success: pnpm verify com 28 arquivos/149 testes, tipagem, lint, formatação, arquitetura e build; pnpm test:e2e com seis jornadas reais. Run41011551929/job123918342074, logs completos e configuração em artifacts/E1.4/github-*. Os testes usam PostgreSQL17.11 real isolado e Node24.22.2/pnpm12.10.1. O marco passou pelo check protegido e develop remota avançou normalmente para o mesmo SHA, sem force ou implantação.
 
 BLOCK-GITHUB-BRANCH-PROTECTION está resolvido; E1.2-remote.md contém CI inicial, configuração administrativa relida e rejeição GH006 de commit sem check. Os avisos anteriores de ausência de remoto são históricos. Mantêm-se riscos de dependências E1.1 e limites PAYLOAD-LEGACY-ACTION-SELECTORS, LEASE-UNLOAD-BEST-EFFORT, MEDIA-METADATA-FIXTURE-ONLY e PUBLICATION-COORDINATION-E1.8. A consulta de mídia foi refinada por prova real: WebP animado funciona; APNG e AVIF animados têm limitações demonstradas. A política proposta ainda aguarda resposta; nenhuma restrição foi aplicada ao stub fechado.
+
+## E1.5 concluída — 62,5% da etapa 1
+
+Em 30/10/2026, E1.1–E1.5 concluídas: cinco de oito tarefas, 62,5%. E1.7 está em execução independente; E1.6 aguarda a decisão pendente sobre animações para o comportamento afetado. E1.8 depende de mídia e acesso verificados. A1 permanece pendente e nenhuma etapa 2 foi iniciada.
+
+Commit de código e evidências e38226528017eebb609c23fda0d936c989f7d899: revisões de especificação e qualidade PASS, sem achados acionáveis. O CI independente atual em ubuntu-24.04 passou pnpm verify com 33 arquivos/184 testes, checks e build, seguido de dez jornadas Playwright reais. Run41017050616/job123935646634; Node24.22.2, pnpm12.10.1 e PostgreSQL17.11 isolado. Logs completos e metadados seguros em artifacts/E1.5/github-*. O mesmo SHA avançou normalmente para develop protegida, sem force ou implantação.
+
+Ver E1.5.md, E1.5-spec-review.md, E1.5-quality-review.md e ../architecture/rotas-e-reservas.md. Permanecem os riscos de dependências e os limites nomeados PUBLIC-HTTP-CONTRACT-ONLY, PUBLICATION-COORDINATION-E1.8, ORIGIN-RELATION-FAILURE-ONLY e MEDIA-METADATA-FIXTURE-ONLY. A correção de ordem de locks foi provada por deadlock PostgreSQL40P01 antes e corrida transacional válida depois; as regressões da E1.4 também passaram.

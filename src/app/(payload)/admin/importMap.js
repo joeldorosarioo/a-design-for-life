@@ -2,6 +2,7 @@ import { EditorialRevisionField as EditorialRevisionField_5c9633eb4e7dff2b224658
 import { EditorialLeaseField as EditorialLeaseField_5c9633eb4e7dff2b224658b5719bb0f8 } from '../../../helpers/payload/editorial-fields'
 import { EditorialDeleteAction as EditorialDeleteAction_00baafdf6a8d464fc886a28aea6a3627 } from '../../../helpers/payload/editorial-actions'
 import { EditorialVersionAction as EditorialVersionAction_10c1624ea31d46224b68dcbbb897fe2f } from '../../../helpers/payload/editorial-version-action'
+import { SlugSuggestion as SlugSuggestion_cf2c7cd95d6a11fc56f1fb578c03d18b } from '../../../features/cases/components/slug-suggestion'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -22,6 +23,7 @@ export const importMap = {
   "/helpers/payload/editorial-fields#EditorialLeaseField": EditorialLeaseField_5c9633eb4e7dff2b224658b5719bb0f8,
   "/helpers/payload/editorial-actions#EditorialDeleteAction": EditorialDeleteAction_00baafdf6a8d464fc886a28aea6a3627,
   "/helpers/payload/editorial-version-action#EditorialVersionAction": EditorialVersionAction_10c1624ea31d46224b68dcbbb897fe2f,
+  "/features/cases/components/slug-suggestion#SlugSuggestion": SlugSuggestion_cf2c7cd95d6a11fc56f1fb578c03d18b,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,

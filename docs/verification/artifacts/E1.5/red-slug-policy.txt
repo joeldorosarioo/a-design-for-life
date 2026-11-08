@@ -1,0 +1,63 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/contracts/slug.schema.test.ts (13 tests | 7 failed) 14ms
+   ❯ explicit case slug policy (13)
+     × suggests without accents, silently deciding no conflicts 6ms
+     × rejects an invalid supplied slug even in a draft: INVALID 3ms
+     × rejects an invalid supplied slug even in a draft: com espaço 0ms
+     × rejects an invalid supplied slug even in a draft: ação 0ms
+     × rejects an invalid supplied slug even in a draft: a/b 0ms
+     × rejects an invalid supplied slug even in a draft: a_b 0ms
+     × rejects an invalid supplied slug even in a draft: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > suggests without accents, silently deciding no conflicts
+AssertionError: expected '' to be 'aplicativo-de-financas' // Object.is equality
+
+- Expected
++ Received
+
+- aplicativo-de-financas
+
+ ❯ src/features/cases/contracts/slug.schema.test.ts:7:51
+      5| describe('explicit case slug policy', () => {
+      6|   it('suggests without accents, silently deciding no conflicts', () =>…
+      7|     expect(suggestSlug('Aplicativo de Finanças')).toBe('aplicativo-de-…
+       |                                                   ^
+      8|     expect(suggestSlug('  UX & Pesquisa — 2026!  ')).toBe('ux-pesquisa…
+      9|     expect(suggestSlug('A'.repeat(100))).toBe('a'.repeat(80));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > rejects an invalid supplied slug even in a draft: INVALID
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > rejects an invalid supplied slug even in a draft: com espaço
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > rejects an invalid supplied slug even in a draft: ação
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > rejects an invalid supplied slug even in a draft: a/b
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > rejects an invalid supplied slug even in a draft: a_b
+ FAIL  |unit| src/features/cases/contracts/slug.schema.test.ts > explicit case slug policy > rejects an invalid supplied slug even in a draft: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/features/cases/contracts/slug.schema.test.ts:15:67
+     13|   it.each(['INVALID', 'com espaço', 'ação', 'a/b', 'a_b', 'a'.repeat(8…
+     14|     'rejects an invalid supplied slug even in a draft: %s',
+     15|     (slug) => expect(caseInputSchema.safeParse({ slug }).success).toBe…
+       |                                                                   ^
+     16|   );
+     17|   it.each([undefined, null, '', 'a', 'a-12', '-a--'])('allows missing …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 6 passed (13)
+   Start at  03:11:20
+   Duration  501ms (setup 59%, import 26%, transform 10%, tests 4%, worker 1%)
+

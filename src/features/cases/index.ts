@@ -2,3 +2,5 @@ export { caseDetailDTOSchema, caseCardDTOSchema } from './contracts/case-dto.sch
 export type { CaseDetailDTO, CaseCardDTO } from './contracts/case-dto.schema';
 export { contextualLinkFieldsSchema } from './contracts/contextual-link.schema';
 export type { ContextualLink } from './contracts/contextual-link.schema';
+export { slugSchema } from './contracts/slug.schema';
+export type { RouteResolution } from './contracts/route-resolution.schema';

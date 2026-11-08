@@ -1,0 +1,118 @@
+Evidence copy: synthetic ephemeral fixture lease identifiers redacted; original retained only in ignored .work/e1.5-raw-diagnostic-evidence. No environment values were printed.
+
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[03:30:15] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:30:15] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (43ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (87ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[03:30:15] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:30:15] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[03:30:15] [32mINFO[39m: [36mDone.[39m
+[03:30:17] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+stdout | src/features/cases/content/collections/route-lifecycle.integration.test.ts > delete and save claim the editorial head before changing routes, avoiding opposite lock order
+Observed real delete/save lock ordering: [
+  'success',
+  'Failed query: update "case_content" set "editorial_revision" = $1, "updated_at" = $2 where ("case_content"."id" = $3 and "case_content"."editorial_revision" = $4 and "case_content"."lease_owner" = $5 and "case_content"."lease_token" = $6 and "case_content"."lease_expires_at" > $7) returning "id", "case_id", "locale", "eyebrow", "title", "summary", "introduction", "slug", "cover_media_id", "cover_decorative", "cover_alt", "cover_caption", "role", "scope", "context_note", "seo_title", "seo_description", "seo_image_media_id", "seo_image_decorative", "seo_image_alt", "seo_image_caption", "editorial_revision", "content_revision", "lease_token", "lease_owner", "lease_expires_at", "updated_at", "created_at", "_status"\n' +
+    'params: [redacted-synthetic-uuid],2026-10-30T06:30:21.153Z,[redacted-synthetic-uuid],[redacted-synthetic-uuid],[redacted-synthetic-uuid],[redacted-synthetic-uuid],2026-10-30T06:30:21.153Z'
+]
+
+ ❯ |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts (14 tests | 1 failed) 4393ms
+   × delete and save claim the editorial head before changing routes, avoiding opposite lock order 1103ms
+[03:30:24] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:30:26] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:30:29] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > delete and save claim the editorial head before changing routes, avoiding opposite lock order
+AssertionError: expected { ok: false, …(1) } to match object { ok: false, …(1) }
+(21 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "ok": false,
+-   "reason": {
+-     "code": "stale-revision",
++   "reason": DrizzleQueryError {
++     "message": "Failed query: update \"case_content\" set \"editorial_revision\" = $1, \"updated_at\" = $2 where (\"case_content\".\"id\" = $3 and \"case_content\".\"editorial_revision\" = $4 and \"case_content\".\"lease_owner\" = $5 and \"case_content\".\"lease_token\" = $6 and \"case_content\".\"lease_expires_at\" > $7) returning \"id\", \"case_id\", \"locale\", \"eyebrow\", \"title\", \"summary\", \"introduction\", \"slug\", \"cover_media_id\", \"cover_decorative\", \"cover_alt\", \"cover_caption\", \"role\", \"scope\", \"context_note\", \"seo_title\", \"seo_description\", \"seo_image_media_id\", \"seo_image_decorative\", \"seo_image_alt\", \"seo_image_caption\", \"editorial_revision\", \"content_revision\", \"lease_token\", \"lease_owner\", \"lease_expires_at\", \"updated_at\", \"created_at\", \"_status\"
++ params: [redacted-synthetic-uuid],2026-10-30T06:30:21.153Z,[redacted-synthetic-uuid],[redacted-synthetic-uuid],[redacted-synthetic-uuid],[redacted-synthetic-uuid],2026-10-30T06:30:21.153Z",
++     "cause": error {
++       "message": "deadlock detected",
++       "length": 322,
++       "name": "error",
++       "severity": "ERROR",
++       "code": "40P01",
++       "detail": "Process 107 waits for ShareLock on transaction 901; blocked by process 129.
++ Process 129 waits for ShareLock on transaction 902; blocked by process 107.",
++       "hint": "See server log for query details.",
++       "position": undefined,
++       "internalPosition": undefined,
++       "internalQuery": undefined,
++       "where": "while updating tuple (1,4) in relation \"case_content\"",
++       "schema": undefined,
++       "table": undefined,
++       "column": undefined,
++       "dataType": undefined,
++       "constraint": undefined,
++       "file": "deadlock.c",
++       "line": "1130",
++       "routine": "DeadLockReport",
++     },
++     "query": "update \"case_content\" set \"editorial_revision\" = $1, \"updated_at\" = $2 where (\"case_content\".\"id\" = $3 and \"case_content\".\"editorial_revision\" = $4 and \"case_content\".\"lease_owner\" = $5 and \"case_content\".\"lease_token\" = $6 and \"case_content\".\"lease_expires_at\" > $7) returning \"id\", \"case_id\", \"locale\", \"eyebrow\", \"title\", \"summary\", \"introduction\", \"slug\", \"cover_media_id\", \"cover_decorative\", \"cover_alt\", \"cover_caption\", \"role\", \"scope\", \"context_note\", \"seo_title\", \"seo_description\", \"seo_image_media_id\", \"seo_image_decorative\", \"seo_image_alt\", \"seo_image_caption\", \"editorial_revision\", \"content_revision\", \"lease_token\", \"lease_owner\", \"lease_expires_at\", \"updated_at\", \"created_at\", \"_status\"",
++     "params": [
++       "[redacted-synthetic-uuid]",
++       "2026-10-30T06:30:21.153Z",
++       "[redacted-synthetic-uuid]",
++       "[redacted-synthetic-uuid]",
++       "[redacted-synthetic-uuid]",
++       "[redacted-synthetic-uuid]",
++       "2026-10-30T06:30:21.153Z",
++     ],
+    },
+  }
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:647:25
+    645|     );
+    646|     expect(outcomes[0]).toMatchObject({ ok: true });
+    647|     expect(outcomes[1]).toMatchObject({ ok: false, reason: { code: 'st…
+       |                         ^
+    648|     expect(await routes(doc.id)).toHaveLength(0);
+    649|   } finally {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 28 passed (29)
+   Start at  03:30:10
+   Duration  18.51s (import 51%, tests 45%, setup 2%, transform 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

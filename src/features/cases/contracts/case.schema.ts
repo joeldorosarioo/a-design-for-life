@@ -1,3 +1,4 @@
+import { draftSlugSchema } from './slug.schema';
 import { nativeArray } from '@/helpers/payload/native-array.schema';
 import { z } from 'zod';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
@@ -33,7 +34,7 @@ export const caseInputSchema = z.strictObject({
   title: text,
   summary: text,
   introduction: text,
-  slug: text,
+  slug: draftSlugSchema,
   cover: imageUseInputSchema.nullish(),
   role: text,
   scope: text,

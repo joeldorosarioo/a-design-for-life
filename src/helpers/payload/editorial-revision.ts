@@ -269,7 +269,16 @@ async function claimRevision(
   return { revision, head };
 }
 const restoreScope = Symbol('safe-editorial-restore');
-const writeScope = Symbol('observed-editorial-write');
+const claimedWrites = new WeakMap<
+  PayloadRequest,
+  {
+    id: string;
+    collection: CollectionSlug;
+    transactionID: PayloadRequest['transactionID'];
+    revision: string;
+    head: Awaited<ReturnType<typeof editorialHead>>;
+  }
+>();
 const draftScope = Symbol('native-draft-operation');
 export function isDraftOperation(req: PayloadRequest) {
   return req.context[draftScope as unknown as string] === true;
@@ -464,11 +473,24 @@ export function protectEditorialCollection(config: CollectionConfig): Collection
           }
           if (['create', 'update', 'restoreVersion'].includes(operation))
             req.context[draftScope as unknown as string] = 'draft' in args && args.draft === true;
-          if (operation === 'update' && 'data' in args) {
-            req.context[writeScope as unknown as string] = {
-              expected: args.data?.editorialRevision,
-              token: args.data?.leaseToken,
-            };
+          if (['create', 'update', 'delete', 'restoreVersion'].includes(operation))
+            claimedWrites.delete(req);
+          if (operation === 'update' && 'data' in args && 'id' in args && args.id) {
+            // Native update clears its lock mirror before beforeChange. Claim the
+            // authoritative head first so save/delete/lease use one lock order.
+            const claimed = await claimRevision(
+              slug,
+              String(args.id),
+              args.data?.editorialRevision ?? req.headers.get('x-editorial-revision'),
+              req.headers.get('x-editorial-lease') ?? args.data?.leaseToken,
+              req,
+            );
+            claimedWrites.set(req, {
+              ...claimed,
+              collection: slug,
+              id: String(args.id),
+              transactionID: req.transactionID,
+            });
           }
           if (operation === 'restoreVersion' && (!('draft' in args) || args.draft !== true))
             throw new APIError('Version recovery must create a draft.', 400);
@@ -499,18 +521,26 @@ export function protectEditorialCollection(config: CollectionConfig): Collection
             const restoring = req.context[restoreScope as unknown as string];
             if (req.context.isRestoringVersion && !restoring)
               throw new APIError('Use protected draft recovery.', 400);
-            const observed = req.context[writeScope as unknown as string] as
-              { expected?: unknown; token?: unknown } | undefined;
-            const expected =
-              restoring ?? observed?.expected ?? req.headers.get('x-editorial-revision');
-            const token = req.headers.get('x-editorial-lease') ?? observed?.token;
-            const { revision, head } = await claimRevision(
-              slug,
-              String(originalDoc.id),
-              expected,
-              token,
-              req,
-            );
+            const claimed = claimedWrites.get(req);
+            if (['create', 'update', 'delete', 'restoreVersion'].includes(operation))
+              claimedWrites.delete(req);
+            if (
+              !restoring &&
+              (!claimed ||
+                claimed.collection !== slug ||
+                claimed.id !== String(originalDoc.id) ||
+                claimed.transactionID !== req.transactionID)
+            )
+              throw new APIError('Editorial updates require their own transaction claim.', 400);
+            const { revision, head } = restoring
+              ? await claimRevision(
+                  slug,
+                  String(originalDoc.id),
+                  restoring,
+                  req.headers.get('x-editorial-lease'),
+                  req,
+                )
+              : claimed!;
             data.editorialRevision = revision;
             data.contentRevision = revision;
             data.leaseToken = head.leaseToken;
@@ -523,7 +553,6 @@ export function protectEditorialCollection(config: CollectionConfig): Collection
         ...(hooks.beforeChange ?? []),
       ],
       beforeDelete: [
-        ...(hooks.beforeDelete ?? []),
         async ({ id, req }) => {
           await claimRevision(
             slug,
@@ -533,6 +562,7 @@ export function protectEditorialCollection(config: CollectionConfig): Collection
             req,
           );
         },
+        ...(hooks.beforeDelete ?? []),
       ],
       afterChange: [
         ...(hooks.afterChange ?? []),

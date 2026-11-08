@@ -5,15 +5,14 @@ import {
   publicationReceiptSchema,
   type PublicationReceipt,
   type EditorialCommand,
-  type Result,
 } from '@/helpers/payload/editorial-result.schema';
-import { editorialResult } from '@/helpers/payload/editorial-result';
+import { caseResult, type CaseResult } from './case-result';
 import { validateInput } from '@/helpers/payload/validate-input';
 export async function publishCase(
   input: EditorialCommand,
   req: PayloadRequest,
-): Promise<Result<PublicationReceipt>> {
-  return editorialResult(async () => {
+): Promise<CaseResult<PublicationReceipt>> {
+  return caseResult(async () => {
     const command = validateInput(editorialCommandSchema, input, 'case-content', req);
     const draft = await req.payload.findByID({
       collection: 'case-content',

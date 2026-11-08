@@ -46,7 +46,7 @@ export function casePublicationFixture(mediaId: string) {
   return {
     title: 'Synthetic title',
     summary: 'Synthetic summary',
-    slug: 'synthetic-case',
+    slug: `synthetic-${crypto.randomUUID()}`,
     role: 'Synthetic role',
     cover: { media: mediaId, decorative: false, alt: 'Synthetic cover' },
     sections: [
@@ -60,14 +60,14 @@ export function casePublicationFixture(mediaId: string) {
                 type: 'root',
                 version: 1,
                 direction: null,
-                format: '',
+                format: '' as const,
                 indent: 0,
                 children: [
                   {
                     type: 'paragraph',
                     version: 1,
                     direction: null,
-                    format: '',
+                    format: '' as const,
                     indent: 0,
                     children: [
                       {

@@ -1,0 +1,91 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[03:13:28] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[03:13:28] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[03:13:28] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (44ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (94ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[03:13:29] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[03:13:29] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (8ms)[39m
+[03:13:29] [32mINFO[39m: [36mDone.[39m
+[03:13:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ❯ |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts (4 tests | 3 failed) 462ms
+   × reserves supplied draft slugs and leaves title changes and missing slugs alone 53ms
+   × the database chooses one concurrent owner, reports explicit conflict and rolls back loser content/head/versions 124ms
+   × releases only never-public old drafts; publishes history, reuses its own history and treats effective draft=true publication as publication 26ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > reserves supplied draft slugs and leaves title changes and missing slugs alone
+Forbidden: You are not allowed to perform this action.
+ ❯ protectRouteChange src/features/cases/content/hooks/case-routes.ts:23:403
+
+ ❯ hook node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:317:18
+ ❯ src/features/cases/content/hooks/case-routes.ts:53:15
+ ❯ scoped src/features/cases/content/hooks/case-routes.ts:35:16
+ ❯ synchronizeCaseRoutes src/features/cases/content/hooks/case-routes.ts:46:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:27:15
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > the database chooses one concurrent owner, reports explicit conflict and rolls back loser content/head/versions
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:42:67
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |integration| src/features/cases/content/collections/route-lifecycle.integration.test.ts > releases only never-public old drafts; publishes history, reuses its own history and treats effective draft=true publication as publication
+Forbidden: You are not allowed to perform this action.
+ ❯ protectRouteChange src/features/cases/content/hooks/case-routes.ts:23:403
+
+ ❯ hook node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:317:18
+ ❯ src/features/cases/content/hooks/case-routes.ts:53:15
+ ❯ scoped src/features/cases/content/hooks/case-routes.ts:35:16
+ ❯ synchronizeCaseRoutes src/features/cases/content/hooks/case-routes.ts:46:3
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:543:11
+ ❯ src/features/cases/content/collections/route-lifecycle.integration.test.ts:53:15
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  03:13:24
+   Duration  7.41s (import 73%, tests 20%, transform 4%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

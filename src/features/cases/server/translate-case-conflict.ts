@@ -1,3 +1,4 @@
+import { SlugConflict } from './case-result';
 import 'server-only';
 
 import { ValidationError, type AfterErrorHook, type PayloadRequest } from 'payload';
@@ -8,6 +9,8 @@ export function translateCaseConflict(
   error: unknown,
   req: PayloadRequest,
 ): CaseEditorialConflict | undefined {
+  if (error instanceof SlugConflict)
+    return { code: 'slug-conflict', field: 'slug', message: error.message };
   if (!(error instanceof ValidationError) || error.data?.collection !== 'case-content') return;
 
   if (
