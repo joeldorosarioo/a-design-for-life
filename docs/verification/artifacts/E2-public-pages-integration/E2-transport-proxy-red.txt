@@ -1,0 +1,163 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/proxy.test.ts (10 tests | 10 failed) 39ms
+   × passes a signed404 through Next.next while replacing forged incoming context 11ms
+   × passes safe503 to the Page when no healthy Native origin can classify missing coverage 1ms
+   × leaves an excluded API path outside the public render transport 1ms
+   × denies unsupported HTML methods without emitting a render token 1ms
+   × fails closed without a token if server configuration cannot authenticate context 1ms
+   × returns the image helper refusal directly instead of entering the optimizer 1ms
+   × passes only a valid signed and root-authorized inner image request to Next 8ms
+   × does not strip image authentication and turn a forged inner request into an outer fetch 4ms
+   × preserves the final external no-store wrapper from the image helper using a synthetic HTTP origin 8ms
+   × requires an explicit trusted internal origin in production regardless of Host/forwarded headers 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > passes a signed404 through Next.next while replacing forged incoming context
+AssertionError: expected 503 to be 404 // Object.is equality
+
+- Expected
++ Received
+
+- 404
++ 503
+
+ ❯ src/proxy.test.ts:33:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > passes safe503 to the Page when no healthy Native origin can classify missing coverage
+AssertionError: expected null to be '1' // Object.is equality
+
+- Expected:
+"1"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:39:145
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > leaves an excluded API path outside the public render transport
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/proxy.test.ts:42:76
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > denies unsupported HTML methods without emitting a render token
+AssertionError: expected 503 to be 405 // Object.is equality
+
+- Expected
++ Received
+
+- 405
++ 503
+
+ ❯ src/proxy.test.ts:45:85
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > fails closed without a token if server configuration cannot authenticate context
+AssertionError: expected null to be '60' // Object.is equality
+
+- Expected:
+"60"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:48:219
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > returns the image helper refusal directly instead of entering the optimizer
+AssertionError: expected 503 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 503
+
+ ❯ src/proxy.test.ts:51:120
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > passes only a valid signed and root-authorized inner image request to Next
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/proxy.test.ts:55:179
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > does not strip image authentication and turn a forged inner request into an outer fetch
+AssertionError: expected 503 to be 404 // Object.is equality
+
+- Expected
++ Received
+
+- 404
++ 503
+
+ ❯ src/proxy.test.ts:58:162
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > preserves the final external no-store wrapper from the image helper using a synthetic HTTP origin
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ src/proxy.test.ts:63:181
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯
+
+ FAIL  |unit| src/proxy.test.ts > requires an explicit trusted internal origin in production regardless of Host/forwarded headers
+AssertionError: expected null to be 'private, no-store' // Object.is equality
+
+- Expected:
+"private, no-store"
+
++ Received:
+null
+
+ ❯ src/proxy.test.ts:66:370
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  10 failed (10)
+   Start at  17:00:52
+   Duration  1.37s (import 73%, setup 15%, transform 8%, tests 3%)
+

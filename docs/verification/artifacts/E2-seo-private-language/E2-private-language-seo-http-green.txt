@@ -1,0 +1,111 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test private-pages.e2e.test.ts metadata.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[20:47:58] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[20:47:59] INFO: Migrating: 20261030_003022_initial_base
+[20:47:59] INFO: Migrated:  20261030_003022_initial_base (39ms)
+[20:47:59] INFO: Migrating: 20261030_020021_editorial_models
+[20:47:59] INFO: Migrated:  20261030_020021_editorial_models (87ms)
+[20:47:59] INFO: Migrating: 20261030_020521_structural_uniqueness
+[20:47:59] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[20:47:59] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[20:47:59] INFO: Migrated:  20261030_024431_case_locale_uniqueness (4ms)
+[20:47:59] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[20:47:59] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[20:47:59] INFO: Migrating: 20261030_030036_global_editorial_copy
+[20:47:59] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[20:47:59] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[20:47:59] INFO: Migrated:  20261030_035306_protect_case_identity_references (7ms)
+[20:47:59] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[20:47:59] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (5ms)
+[20:47:59] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[20:47:59] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (6ms)
+[20:47:59] INFO: Migrating: 20261030_093430_private_media_manifests
+[20:47:59] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[20:47:59] INFO: Migrating: 20261030_124550_publication_coordination
+[20:47:59] INFO: Migrated:  20261030_124550_publication_coordination (33ms)
+[20:47:59] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[20:47:59] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[20:47:59] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[20:47:59] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[20:47:59] INFO: Done.
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 37ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 11.7s
+  Running TypeScript ...
+  Finished TypeScript in 4.4s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 120ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...unmatched]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+├ ƒ /preview-media/[id]/[variant]
+├ ƒ /preview-ui/[locale]/[collection]/[id]/[page]
+├ ƒ /robots.txt
+└ ƒ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+✓ Ready in 154ms
+✓ Running next.config.ts took 43ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 13 tests using 1 worker
+
+(node:35980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › src\app\(portfolio)\[locale]\metadata.e2e.test.ts:15:3 › pt: emits its own canonical and only confirmed alternates in server HTML (853ms)
+  ok  2 [chromium] › src\app\(portfolio)\[locale]\metadata.e2e.test.ts:15:3 › en: emits its own canonical and only confirmed alternates in server HTML (462ms)
+  ok  3 [chromium] › src\app\(portfolio)\[locale]\metadata.e2e.test.ts:60:1 › does not advertise a private English case translation through HTML metadata (347ms)
+  ok  4 [chromium] › src\app\(portfolio)\[locale]\metadata.e2e.test.ts:85:1 › keeps nonproduction robots and sitemap closed even when synthetic public pages exist (36ms)
+(node:39060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:135:1 › denies anonymous HTML, HEAD and Flight before any private document can stream (62ms)
+  ok  6 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:158:3 › pt: renders all four saved draft pages without JavaScript or public media destinations (1.2s)
+  ok  7 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:158:3 › en: renders all four saved draft pages without JavaScript or public media destinations (857ms)
+  ok  8 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:209:1 › keeps authorized document, HEAD and Flight private and omits Native credentials from their bodies (432ms)
+  ok  9 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:246:1 › delivers private image/PDF bytes only through authenticated preview-media and rejects optimizer bypasses (132ms)
+  ok 10 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:275:1 › rejects foreign origins, forged scopes, duplicated parameters and writes before the private Page (131ms)
+  ok 11 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:299:1 › reads a newly saved draft on the same URL without mutating its confirmed public generation (334ms)
+  ok 12 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:321:1 › chooses the counterpart private document and keeps the public preference cookie untouched (541ms)
+  ok 13 [chromium] › src\app\(portfolio)\preview-ui\private-pages.e2e.test.ts:353:1 › revokes the same session for document, HEAD, Flight and original draft media (198ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+  13 passed (41.1s)

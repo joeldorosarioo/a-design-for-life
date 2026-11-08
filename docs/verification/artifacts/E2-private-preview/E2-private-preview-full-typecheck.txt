@@ -1,0 +1,5 @@
+$ tsc --noEmit
+src/config/build-public-index.ts(55,36): error TS2550: Property 'toSorted' does not exist on type '{ caseId: string; locale: "pt" | "en"; path: string; }[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2023' or later.
+src/config/build-public-index.ts(55,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/build-public-index.ts(55,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+[ELIFECYCLE] Command failed with exit code 2.

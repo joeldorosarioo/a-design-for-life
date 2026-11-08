@@ -1,0 +1,106 @@
+
+Running 4 tests using 1 worker
+
+(node:37980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"width":1440,"textScale":100,"headerBottom":93,"headingTop":80,"headingBottom":128,"viewportHeight":900}
+  x  1 src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 1440px/100%: keyboard skip focuses main and keeps its heading below the sticky header (283ms)
+(node:41576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"width":1440,"textScale":200,"headerBottom":185,"headingTop":160,"headingBottom":256,"viewportHeight":900}
+  x  2 src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 1440px/200%: keyboard skip focuses main and keeps its heading below the sticky header (159ms)
+(node:18844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"width":390,"textScale":100,"headerBottom":133,"headingTop":80,"headingBottom":116,"viewportHeight":900}
+  x  3 src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 390px/100%: keyboard skip focuses main and keeps its heading below the sticky header (143ms)
+(node:39100) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"width":390,"textScale":200,"headerBottom":385,"headingTop":160,"headingBottom":304,"viewportHeight":900}
+  x  4 src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 390px/200%: keyboard skip focuses main and keeps its heading below the sticky header (182ms)
+
+
+  1) src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 1440px/100%: keyboard skip focuses main and keeps its heading below the sticky header 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 92
+    Received:    80
+
+      60 |     });
+      61 |     console.log(JSON.stringify({ width, textScale, ...geometry }));
+    > 62 |     expect(geometry.headingTop).toBeGreaterThanOrEqual(geometry.headerBottom - 1);
+         |                                 ^
+      63 |     expect(geometry.headingTop).toBeLessThan(geometry.viewportHeight);
+      64 |   });
+      65 | }
+        at E:\a-design-for-life\src\features\cases\server\case-state-document.e2e.test.ts:62:33
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-14-b13d0-ing-below-the-sticky-header\error-context.md
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-14-b13d0-ing-below-the-sticky-header\error-context.md
+
+  2) src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 1440px/200%: keyboard skip focuses main and keeps its heading below the sticky header 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 184
+    Received:    160
+
+      60 |     });
+      61 |     console.log(JSON.stringify({ width, textScale, ...geometry }));
+    > 62 |     expect(geometry.headingTop).toBeGreaterThanOrEqual(geometry.headerBottom - 1);
+         |                                 ^
+      63 |     expect(geometry.headingTop).toBeLessThan(geometry.viewportHeight);
+      64 |   });
+      65 | }
+        at E:\a-design-for-life\src\features\cases\server\case-state-document.e2e.test.ts:62:33
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-14-46014-ing-below-the-sticky-header\error-context.md
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-14-46014-ing-below-the-sticky-header\error-context.md
+
+  3) src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 390px/100%: keyboard skip focuses main and keeps its heading below the sticky header 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 132
+    Received:    80
+
+      60 |     });
+      61 |     console.log(JSON.stringify({ width, textScale, ...geometry }));
+    > 62 |     expect(geometry.headingTop).toBeGreaterThanOrEqual(geometry.headerBottom - 1);
+         |                                 ^
+      63 |     expect(geometry.headingTop).toBeLessThan(geometry.viewportHeight);
+      64 |   });
+      65 | }
+        at E:\a-design-for-life\src\features\cases\server\case-state-document.e2e.test.ts:62:33
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-39-11a5c-ing-below-the-sticky-header\error-context.md
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-39-11a5c-ing-below-the-sticky-header\error-context.md
+
+  4) src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 390px/200%: keyboard skip focuses main and keeps its heading below the sticky header 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 384
+    Received:    160
+
+      60 |     });
+      61 |     console.log(JSON.stringify({ width, textScale, ...geometry }));
+    > 62 |     expect(geometry.headingTop).toBeGreaterThanOrEqual(geometry.headerBottom - 1);
+         |                                 ^
+      63 |     expect(geometry.headingTop).toBeLessThan(geometry.viewportHeight);
+      64 |   });
+      65 | }
+        at E:\a-design-for-life\src\features\cases\server\case-state-document.e2e.test.ts:62:33
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-39-ee11b-ing-below-the-sticky-header\error-context.md
+
+    Error Context: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-briefs\E2-negative-skiplink\test-results\case-state-document.e2e-39-ee11b-ing-below-the-sticky-header\error-context.md
+
+  4 failed
+    src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 1440px/100%: keyboard skip focuses main and keeps its heading below the sticky header 
+    src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 1440px/200%: keyboard skip focuses main and keeps its heading below the sticky header 
+    src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 390px/100%: keyboard skip focuses main and keeps its heading below the sticky header 
+    src\features\cases\server\case-state-document.e2e.test.ts:45:3 › 390px/200%: keyboard skip focuses main and keeps its heading below the sticky header 

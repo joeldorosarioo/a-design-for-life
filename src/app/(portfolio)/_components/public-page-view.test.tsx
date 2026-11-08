@@ -177,6 +177,67 @@ it('keeps a confirmed case readable before structural content has ever been publ
   expect(screen.getByText('Synthetic confirmed summary')).toBeVisible();
   expect(screen.queryByText('Synthetic identity')).toBeNull();
 });
+
+it('renders the independent CMS return label without changing the list count noun', () => {
+  const changed = navigationDTOSchema.parse({
+    ...navigation,
+    controls: {
+      ...navigation.controls,
+      casesLabel: 'Synthetic count noun',
+      backToProjectsLabel: 'Synthetic return action',
+    },
+  });
+  const { unmount } = render(
+    <PublicPageView
+      kind="case"
+      locale="pt"
+      portfolio={{ ...portfolio, navigation: changed }}
+      detail={detail}
+    />,
+  );
+  expect(
+    within(screen.getByRole('main')).getByRole('link', { name: 'Synthetic return action' }),
+  ).toHaveAttribute('href', '/pt/cases');
+  unmount();
+  render(
+    <PublicPageView kind="cases" locale="pt" portfolio={{ ...portfolio, navigation: changed }} />,
+  );
+  expect(screen.getByText('1 Synthetic count noun')).toBeVisible();
+});
+
+it.each([
+  ['pt', undefined, 'Voltar aos projetos'],
+  ['pt', null, 'Voltar aos projetos'],
+  ['en', '', 'Back to projects'],
+  ['en', '  ', 'Back to projects'],
+] as const)(
+  'uses its own %s fallback when the optional return label is %s',
+  (locale, label, expected) => {
+    const changed = navigationDTOSchema.parse({
+      ...navigation,
+      controls: {
+        ...navigation.controls,
+        casesLabel: 'Count noun only',
+        backToProjectsLabel: label,
+      },
+    });
+    render(
+      <PublicPageView
+        kind="case"
+        locale={locale}
+        portfolio={{ ...portfolio, navigation: changed }}
+        detail={detail}
+      />,
+    );
+    expect(within(screen.getByRole('main')).getByRole('link', { name: expected })).toHaveAttribute(
+      'href',
+      `/${locale}/cases`,
+    );
+    expect(
+      within(screen.getByRole('main')).queryByRole('link', { name: 'Count noun only' }),
+    ).toBeNull();
+  },
+);
 it('renders safe state copy without case content and retains the current footer contact', () => {
   render(
     <PublicPageView kind="about" locale="pt" portfolio={portfolio} status={404} detail={detail} />,

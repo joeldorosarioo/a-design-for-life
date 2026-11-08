@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/public-render-context.test.ts (31 tests | 1 failed) 226ms
+   × returns503 before rendering when a legacy required shell label cannot resolve 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > returns503 before rendering when a legacy required shell label cannot resolve
+AssertionError: expected 200 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 200
+
+ ❯ src/config/public-render-context.test.ts:106:101
+    104|  }}
+    105|  await withPublicRootWriter(directory,async(_,commit)=>commit(a));
+    106|  const prepared=await preparePublicRenderRequest(request('/pt'),option…
+       |                                                                                                     ^
+    107| });
+    108|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 30 passed (31)
+   Start at  16:59:30
+   Duration  1.48s (import 62%, tests 17%, setup 14%, transform 7%)
+

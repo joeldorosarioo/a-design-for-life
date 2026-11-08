@@ -1,0 +1,191 @@
+{
+  "capturedAt": "2026-10-31T01:16:25.230Z",
+  "scope": "User-approved editable optional cardTitle/cardEyebrow and detail fallback. Unit38/38, Native6/6, types/lint/format0. No current full verify/HTTP/build; visual fixture migration/mapping/rebuild deferred at user request.",
+  "environment": {
+    "node": "24.22.2",
+    "next": "16.4.3",
+    "payload": "3.92.1"
+  },
+  "sources": [
+    {
+      "path": "src/features/cases/contracts/case.schema.ts",
+      "sha256": "934ed84d94d4af9a12f9baa3d237b74f7fbc512419a52fb4138a7f4db6b3c783"
+    },
+    {
+      "path": "src/features/cases/content/collections/case-content.ts",
+      "sha256": "51499e77688dd26de786be62a1b747fffc0bc2c194925c687f4f71ecc5ca3cd5"
+    },
+    {
+      "path": "src/features/cases/server/map-case-detail.ts",
+      "sha256": "487dc4cde5d7e2c2ea63a0ce534174efba6df33ac034ea8cc47df674f7407ba6"
+    },
+    {
+      "path": "src/features/cases/server/get-preview-cases.ts",
+      "sha256": "6a9bff906bc3db4bcef2e1ebf415ca302e0ffc9375969c9f637807a1cc73b0fc"
+    },
+    {
+      "path": "src/features/cases/server/case-publication.ts",
+      "sha256": "be7f6ca8c99114f5908eba9f9762bc68c341982bbdb44eec283cc8cdeb3080c2"
+    },
+    {
+      "path": "src/features/cases/server/get-published-cases.ts",
+      "sha256": "745ce6f58bdc999cca2b31fe3bd088d70937168a6a2fe153f818aba95f2136be"
+    },
+    {
+      "path": "src/features/cases/server/get-featured-cases.ts",
+      "sha256": "12472aaa257997e3a7157293ac43b1889bd0315651cba18d7b7603688ee10b60"
+    },
+    {
+      "path": "src/features/cases/server/map-case-card-copy.test.ts",
+      "sha256": "7d11d16821fcf7b4bbc32d6b6f3395c2f0b9b4c7efeaf358bcb77e8438e396ab"
+    },
+    {
+      "path": "src/features/cases/server/card-copy.integration.test.ts",
+      "sha256": "e97188d317d54dca7953ffdb38e17af7169f74018f1a70a602b4f62d2556e275"
+    },
+    {
+      "path": "src/migrations/20261031_011109_e2_case_card_copy.ts",
+      "sha256": "90efc729515d1fc59a5c816e2720f60d8c8cc2560a4665c4bb2590544b6ca7fa"
+    },
+    {
+      "path": "src/migrations/index.ts",
+      "sha256": "faef8f0f53d6a67cf1986a43211816c4ea0d34cb9f00f4aa5beef76ee9cb6a51"
+    },
+    {
+      "path": "src/migrations/20261031_011109_e2_case_card_copy.json",
+      "sha256": "b21c49c2eeb53ec79d16caeaca00fc8139d402a16e452c507edb1f96bce84484"
+    },
+    {
+      "path": "src/payload-types.ts",
+      "sha256": "abe24394e475f8a331e4632f8e0747b80a1c8e0131f44be9049f37c5768ecfc3"
+    }
+  ],
+  "exports": [
+    {
+      "file": "evidence.json",
+      "originalSha256": "92b44e6d4901ea39618b653ab6a6e39b86752f45d2421976a442202c74b44cb3",
+      "exportedSha256": "92b44e6d4901ea39618b653ab6a6e39b86752f45d2421976a442202c74b44cb3",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "format-final.log",
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "format-migration.log",
+      "originalSha256": "30494a638f4d5f8b7dc804e7df50ab76e06d8f12a019d7e7bded33d6b6b6f605",
+      "exportedSha256": "30494a638f4d5f8b7dc804e7df50ab76e06d8f12a019d7e7bded33d6b6b6f605",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "format.log",
+      "originalSha256": "38fc6732e374e4bfdddd946d0fe35d9b18eae4a19940bf582101d301a7eea8ba",
+      "exportedSha256": "38fc6732e374e4bfdddd946d0fe35d9b18eae4a19940bf582101d301a7eea8ba",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "generate-types.log",
+      "originalSha256": "654d17188fa2d3bdff518cca0b3f296dfe56c6693b97ff46f1908d91e8da0be4",
+      "exportedSha256": "5ce156347e6c309416ca3d044280f039f534757c32ff78fe5321dbab940635df",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "lint-final.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "lint.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-generate-result.json",
+      "originalSha256": "7f3176e4cb0aa7b9980ffe94773544807987e937b6a261b256afb6fe95dbd050",
+      "exportedSha256": "7f3176e4cb0aa7b9980ffe94773544807987e937b6a261b256afb6fe95dbd050",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-generate.log",
+      "originalSha256": "e4617cfd9b8ab25754d314b1488b3ddd4452f25c9f3cb4175a7844bed8eba343",
+      "exportedSha256": "1beeb2e3459e675fde23878f53e31d66025662f7275efd8a44336f45f8e8ad7b",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-green-result.json",
+      "originalSha256": "95508673819188cb631bd0e70c4dba6883c911073df7013be081222d76192289",
+      "exportedSha256": "95508673819188cb631bd0e70c4dba6883c911073df7013be081222d76192289",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-green.log",
+      "originalSha256": "559764ce849e4ea0f1218a335da2ec6b6b6d08517df2e2b66e0a452953dceb99",
+      "exportedSha256": "559764ce849e4ea0f1218a335da2ec6b6b6d08517df2e2b66e0a452953dceb99",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-red-result.json",
+      "originalSha256": "0c177a6a2913629c5c279959fad15e9e28e4935e90e6db57fbd5d9cdc9a0546a",
+      "exportedSha256": "0c177a6a2913629c5c279959fad15e9e28e4935e90e6db57fbd5d9cdc9a0546a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-red.log",
+      "originalSha256": "d162432bd1f8a27737d8e936de0110426e877182d86ae60930184dd7895aa5c9",
+      "exportedSha256": "d162432bd1f8a27737d8e936de0110426e877182d86ae60930184dd7895aa5c9",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-setup-result.json",
+      "originalSha256": "ebfd141c7683570b30f2d200c872ea22d934da110be8b6d2967d180928480f0a",
+      "exportedSha256": "ebfd141c7683570b30f2d200c872ea22d934da110be8b6d2967d180928480f0a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "native-setup.log",
+      "originalSha256": "7e917d246b6f6d12d8359f7f81d16293af6c69e775e6c46188bc3e5c7a92f0a4",
+      "exportedSha256": "0b837dba743e241c8b5c38eae7523fe066f9a5102d41dc55b233f136e4911d08",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "report.md",
+      "originalSha256": "33458a3862adc08dbd1a4ef235b9a2fde1cfd9a6136e7bac7f9a717382842d35",
+      "exportedSha256": "33458a3862adc08dbd1a4ef235b9a2fde1cfd9a6136e7bac7f9a717382842d35",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "types-final.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "types.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "unit-final.log",
+      "originalSha256": "018a68105c95e59ecb240cac598e4c78a35ec8cc65af003af0096969bb033b2f",
+      "exportedSha256": "018a68105c95e59ecb240cac598e4c78a35ec8cc65af003af0096969bb033b2f",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "unit-green.log",
+      "originalSha256": "38821c881de788457bf55600296a7c0932de51fb681a4c83b060628b5efadeff",
+      "exportedSha256": "38821c881de788457bf55600296a7c0932de51fb681a4c83b060628b5efadeff",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    },
+    {
+      "file": "unit-red.log",
+      "originalSha256": "02aed64752679eb2d62e3743c4b3b333508c314cfda62572d0a42632908210bc",
+      "exportedSha256": "02aed64752679eb2d62e3743c4b3b333508c314cfda62572d0a42632908210bc",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Originals retained privately."
+    }
+  ]
+}

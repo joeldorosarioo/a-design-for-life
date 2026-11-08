@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Fresh current capture integrity and exact-byte parity to explicitly historical reviewed pixels",
+  "layouts": 18,
+  "geometryAssertionsReported": 982,
+  "geometryFailures": 0,
+  "currentCaptureHashesMatch": 18,
+  "currentByteIdenticalToReviewed007": 18,
+  "changedRegionsPending": 0,
+  "parityLimit": "Current18 captures were produced on008. Exact byte/pixel equality explicitly reuses prior007 complete visual review; it is not a new human comparison of every pixel.",
+  "a2ApprovalGranted": false,
+  "evidence": [
+    {
+      "label": "visual-qa-v9.json",
+      "sha256": "a97e0885c5d90da33b10224c1eb228fcb0d840fe020cd6005c3d8a7e0bb17c4c"
+    },
+    {
+      "label": "visual-geometry-v9.json",
+      "sha256": "77e8db1a23f550de133f2e332647d4746cfe297d94b4a3ad6a548de79590ff86"
+    },
+    {
+      "label": "visual-closure-v9.json",
+      "sha256": "9c777cf38b00fecb29d0ca393c29e9e73ae5e6fee8013a24c66564bdc6a58385"
+    }
+  ]
+}

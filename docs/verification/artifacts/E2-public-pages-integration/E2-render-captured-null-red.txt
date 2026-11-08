@@ -1,0 +1,79 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[16:52:14] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[16:52:14] INFO: Migrating: 20261030_003022_initial_base
+[16:52:14] INFO: Migrated:  20261030_003022_initial_base (52ms)
+[16:52:14] INFO: Migrating: 20261030_020021_editorial_models
+[16:52:14] INFO: Migrated:  20261030_020021_editorial_models (98ms)
+[16:52:14] INFO: Migrating: 20261030_020521_structural_uniqueness
+[16:52:14] INFO: Migrated:  20261030_020521_structural_uniqueness (7ms)
+[16:52:14] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[16:52:14] INFO: Migrated:  20261030_024431_case_locale_uniqueness (4ms)
+[16:52:14] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[16:52:14] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (3ms)
+[16:52:14] INFO: Migrating: 20261030_030036_global_editorial_copy
+[16:52:14] INFO: Migrated:  20261030_030036_global_editorial_copy (8ms)
+[16:52:14] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[16:52:14] INFO: Migrated:  20261030_035306_protect_case_identity_references (9ms)
+[16:52:14] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[16:52:14] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (7ms)
+[16:52:14] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[16:52:14] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[16:52:14] INFO: Migrating: 20261030_093430_private_media_manifests
+[16:52:14] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[16:52:14] INFO: Migrating: 20261030_124550_publication_coordination
+[16:52:14] INFO: Migrated:  20261030_124550_publication_coordination (48ms)
+[16:52:14] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[16:52:14] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[16:52:14] INFO: Done.
+ ❯ |integration| src/features/cases/server/resolve-case-route.integration.test.ts (1 test | 1 failed) 485ms
+   × does not reselect current when the caller captured no root before a real route publication 242ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/server/resolve-case-route.integration.test.ts > does not reselect current when the caller captured no root before a real route publication
+AssertionError: expected { status: 200, locale: 'pt', …(2) } to deeply equal { status: 503, locale: 'pt' }
+
+- Expected
++ Received
+
+  {
++   "case": {
++     "id": "9108dd79-df25-452b-8b07-604a4ff4dcb9",
++     "summary": "Synthetic summary",
++     "title": "Synthetic title",
++   },
+    "locale": "pt",
+-   "status": 503,
++   "slug": "synthetic-898c64e4-0ddb-44aa-9517-279a5834bc91",
++   "status": 200,
+  }
+
+ ❯ src/features/cases/server/resolve-case-route.integration.test.ts:45:88
+     43|   await expect(resolveCaseRoute('pt', published.slug!, fixture.payload…
+     44|   // The pre-fix implementation incorrectly substitutes the now-curren…
+     45|   await expect(resolveCaseRoute('pt', published.slug!, fixture.payload…
+       |                                                                                        ^
+     46|   expect(await readPublicRoot(directory)).toEqual(current);
+     47|   await expect(resolveCaseRoute('pt', published.slug!, fixture.payload…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  16:52:09
+   Duration  7.90s (import 71%, tests 18%, transform 7%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

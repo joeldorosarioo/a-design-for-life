@@ -1,0 +1,107 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/components/mobile-menu.test.tsx (7 tests | 1 failed) 712ms
+   × dismisses the mobile overlay when the viewport switches to desktop 64ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > dismisses the mobile overlay when the viewport switches to desktop
+Error: expect(element).not.toBeInTheDocument()
+
+expected document not to contain element, found <div
+  aria-labelledby="radix-_r_j_"
+  class="_content_938635"
+  data-state="open"
+  id="radix-_r_i_"
+  role="dialog"
+  style="pointer-events: auto;"
+  tabindex="-1"
+>
+  <div
+    class="_menuHeading_af062d"
+  >
+    <h2
+      class="_menuTitle_af062d"
+      id="radix-_r_j_"
+    >
+      Navegação principal
+    </h2>
+    <button
+      class="ui-button ui-button-secondary"
+      type="button"
+    >
+      Fechar menu
+    </button>
+  </div>
+  <nav
+    aria-label="Navegação principal"
+  >
+    <ul
+      class="_mobileNavigationList_af062d"
+    >
+      <li>
+        <a
+          class="_navigationLink_af062d"
+          href="/pt/cases"
+          type="button"
+        >
+          Projetos
+        </a>
+      </li>
+      <li>
+        <a
+          class="_navigationLink_af062d"
+          href="/pt/sobre"
+          type="button"
+        >
+          Sobre
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Currículo (abre em nova aba)"
+          class="_navigationLink_af062d"
+          href="/media/00000000-0000-4000-8000-000000000001/original"
+          rel="noopener noreferrer"
+          target="_blank"
+          type="button"
+        >
+          Currículo
+          <span
+            class="_visuallyHidden_af062d"
+          >
+             (
+            abre em nova aba
+            )
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="_navigationLink_af062d"
+          href="#contact"
+          type="button"
+        >
+          Contato
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div> instead
+ ❯ src/features/site-navigation/components/mobile-menu.test.tsx:96:44
+     94|     query.dispatchEvent(new Event('change'));
+     95|   });
+     96|   expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+       |                                            ^
+     97| });
+     98|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  15:27:47
+   Duration  2.73s (environment 42%, tests 28%, import 15%, setup 13%, transform 2%)
+

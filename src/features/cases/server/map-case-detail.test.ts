@@ -198,12 +198,16 @@ it('preserva identificação, manchete e notas, e deriva sumário das seções r
     },
   ]);
   expect(dto?.contents).toEqual([
-    { readingKey: secondKey, label: 'COMPARAÇÃO ILUSTRATIVA', anchor: `section-${secondKey}` },
-    { readingKey: firstKey, label: 'Processo', anchor: `section-${firstKey}` },
+    {
+      readingKey: secondKey,
+      label: 'Uma mudança na ordem de leitura.',
+      anchor: `section-${secondKey}`,
+    },
+    { readingKey: firstKey, label: 'Da leitura à proposta', anchor: `section-${firstKey}` },
   ]);
   const removed = mapCaseDetail({
     ...document,
-    sections: [{ ...process, eyebrow: 'Processo revisto' }],
+    sections: [{ ...process, heading: '  ', eyebrow: 'Processo revisto' }],
   });
   expect(removed?.contents).toEqual([
     { readingKey: firstKey, label: 'Processo revisto', anchor: `section-${firstKey}` },

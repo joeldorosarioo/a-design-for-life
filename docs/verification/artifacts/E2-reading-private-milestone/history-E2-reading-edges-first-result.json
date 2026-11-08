@@ -1,0 +1,9 @@
+{
+  "sourceManifest": "716DEF53B0270148557DD28F848AAF42D75295288C080535D9610B405AE1BDB4",
+  "node": "24.22.2",
+  "buildId": "ncLHR8frZ9T4mwTM8v-9z",
+  "exitCode": 1,
+  "recordedAt": "2026-10-30T22:30:47.3798865Z",
+  "startedAt": "2026-10-30T22:29:44.4693087Z",
+  "command": "pnpm test:e2e reading-position-expanded.e2e.test.ts --grep '@equivalence|@lifecycle|@resource|@anchors|@contact' --max-failures=1"
+}

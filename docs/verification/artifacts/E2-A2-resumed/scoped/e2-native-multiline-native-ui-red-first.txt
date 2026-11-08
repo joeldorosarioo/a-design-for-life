@@ -1,0 +1,87 @@
+
+Running 3 tests using 1 worker
+
+(node:33540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › src\config\editorial-multiline.e2e.test.ts:43:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview (5.3s)
+(node:15988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › src\config\editorial-multiline.e2e.test.ts:59:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview (1.9s)
+(node:30632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 [chromium] › src\config\editorial-multiline.e2e.test.ts:70:1 › Native Case section heading retains authored line breaks through Save Draft and preview (2.0s)
+
+
+  1) [chromium] › src\config\editorial-multiline.e2e.test.ts:43:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      37 |   expect((await response).status()).toBe(200);
+      38 |   const reread=await page.request.get(`/api/${collection}/${id}?draft=true&depth=0`);
+    > 39 |   expect(reread.status()).toBe(200);
+         |                           ^
+      40 |   return reread.json();
+      41 | }
+      42 |
+        at save (E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:39:27)
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:50:16
+
+    Error Context: test-results\editorial-multiline.e2e-Na-1f29a-raft-and-Home-About-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-1f29a-raft-and-Home-About-preview-chromium\error-context.md
+
+  2) [chromium] › src\config\editorial-multiline.e2e.test.ts:59:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      37 |   expect((await response).status()).toBe(200);
+      38 |   const reread=await page.request.get(`/api/${collection}/${id}?draft=true&depth=0`);
+    > 39 |   expect(reread.status()).toBe(200);
+         |                           ^
+      40 |   return reread.json();
+      41 | }
+      42 |
+        at save (E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:39:27)
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:64:16
+
+    Error Context: test-results\editorial-multiline.e2e-Na-a650b-ough-Save-Draft-and-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-a650b-ough-Save-Draft-and-preview-chromium\error-context.md
+
+  3) [chromium] › src\config\editorial-multiline.e2e.test.ts:70:1 › Native Case section heading retains authored line breaks through Save Draft and preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      37 |   expect((await response).status()).toBe(200);
+      38 |   const reread=await page.request.get(`/api/${collection}/${id}?draft=true&depth=0`);
+    > 39 |   expect(reread.status()).toBe(200);
+         |                           ^
+      40 |   return reread.json();
+      41 | }
+      42 |
+        at save (E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:39:27)
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:75:16
+
+    Error Context: test-results\editorial-multiline.e2e-Na-b2fa8-ough-Save-Draft-and-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-b2fa8-ough-Save-Draft-and-preview-chromium\error-context.md
+
+  3 failed
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:43:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview 
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:59:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview 
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:70:1 › Native Case section heading retains authored line breaks through Save Draft and preview 

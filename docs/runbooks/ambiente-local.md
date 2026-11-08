@@ -61,3 +61,20 @@ Remove-Item Env:\LOCAL_POSTGRES_PASSWORD
 ```
 
 O último bloco afeta somente postgres-test deste compose. Não executar down --volumes, drop de banco compartilhado ou limpeza global do Docker. O volume local persistente permanece preservado. Segredos, downloads e caches em .env/.work/.toolchain não são versionados. Serviços reais de e-mail/R2, homologação e produção pertencem às etapas posteriores.
+
+## Verificação E2: fonte real e preservação da prévia
+
+As jornadas `@resource` exercitam FontFace com bytes reais de uma fonte TrueType já instalada. Definir `READING_E2E_FONT_FILE` antes de `pnpm test:e2e`; sua ausência é falha de preparação, nunca RED comportamental. Nenhuma fonte é incorporada à aplicação ou copiada para `public`.
+
+No Windows desta máquina, com o runtime portátil 24.22.2 já selecionado:
+
+```powershell
+$env:READING_E2E_FONT_FILE = 'C:\Windows\Fonts\arial.ttf'
+Test-Path -LiteralPath $env:READING_E2E_FONT_FILE -PathType Leaf
+Get-FileHash -LiteralPath $env:READING_E2E_FONT_FILE -Algorithm SHA256
+pnpm test:e2e
+```
+
+Em Linux, selecionar uma TrueType legível instalada e registrar seu hash. A CI faz essa seleção com Fontconfig depois de instalar as dependências oficiais do Chromium; falha explicitamente caso não encontre um arquivo .ttf legível. A origem da seleção é a [documentação de padrões do Fontconfig](https://fontconfig.pages.freedesktop.org/fontconfig/fontconfig-user.html). Não há download de fonte pelo produto.
+
+Os runners completos recriam `.next` e removem o container `postgres-test`/tmpfs em 55433, incluindo quaisquer outras bases visuais nesse mesmo container. Antes de executar, parar as prévias próprias 3100/3101, preservar checkpoints verificados e seus objetos privados, e planejar a restauração somente após todos os teardowns. Manter os serviços 5432/55432 intactos. Os 12 PNGs históricos A1 precisam de cópia conferida antes do runner: guardar as novas capturas separadamente e devolver os originais byte a byte. Esses passos não autorizam limpar bases desconhecidas nem substituir originais.

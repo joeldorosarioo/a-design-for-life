@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T00:53:39.5529579Z",
+  "status": "automated-axe-completed-manual-pending",
+  "node": "24.22.2",
+  "installedPackages": {
+    "axe-core": "4.14.0",
+    "@axe-core/playwright": "4.14.0",
+    "lighthouse": "13.6.0"
+  },
+  "installation": {
+    "packageSHA256": "AFA8E6DE7E9FD081518CE1BA11989D90D4F0FA9C840E32BD5E2A0368E6454927",
+    "exitCode": 0,
+    "otherPackagePropertiesPreserved": true,
+    "nodeModulesLeaseReturned": true,
+    "lockSHA256": "A41E6E5F8C4B8150ECA8F6EA381D6038E02DA83C8199E9BD64106A7CF22D621F"
+  },
+  "checks": {
+    "actualAuditRuns": 1,
+    "headedLaunches": 0,
+    "securityTestsPassed": 6,
+    "manualReaderInteractions": 0,
+    "syntaxExitCode": 0,
+    "securityTestsFailed": 0,
+    "syntaxFiles": 6,
+    "installedAPITestsPassed": 1,
+    "totalTestsPassed": 7,
+    "actualAxe": {
+      "pages": 18,
+      "analyses": 27,
+      "violations": 0,
+      "incomplete": 36,
+      "exitCode": 0,
+      "manualReviewRequired": true,
+      "wcagConformanceCertified": false
+    }
+  },
+  "nvda": {
+    "creationEvidence": "../../tooling/nvda-2026.3/portable-creation.json",
+    "candidateSignature": "Valid NV Access Limited",
+    "candidateSHA256": "A8A87CB823DA0C62CFBAE4A444AE5AE238D54DC82AD6D46D3FDB3FEF082799B2",
+    "portableLaunched": false,
+    "portableExecutableSHA256": "EEDBC28BA638B99023FCAF82EC107CE881AF7D40F17B3E2F14F7B35D8D0DDA8C",
+    "creatorExitCode": null,
+    "version": "2026.3",
+    "portableFilesObserved": 1878
+  },
+  "auth": {
+    "rawLighthouseAssetsExported": false,
+    "cookieCLIArgument": false,
+    "plaintextStateFileWritten": false,
+    "source": "Root current-user DPAPI helper",
+    "decryptedDuringPreparation": false,
+    "environmentFingerprintBoundBeforeDPAPI": true,
+    "driverOriginEqualsSiteOrigin": true,
+    "installedPlaywrightAPIVerifiedBeforeAuth": true,
+    "decryptedInMemoryForAuthorizedAxe": true
+  },
+  "futurePrerequisites": [
+    "Root current actual Native result/targets and protected auth",
+    "Root isolated Next visual server and explicit execution window",
+    "Root approved exact headed window and CUA for manual UI",
+    "Existing Playwright Chromium path or explicit verified browser executable"
+  ],
+  "limitations": [
+    "Private unoptimized photo transport differs from public optimized image transport",
+    "Initial loopback lab metrics are not public performance acceptance, field Core Web Vitals or P12 approval",
+    "Speech Viewer text alone does not prove audible output heard",
+    "Automated axe completed; incomplete review, native screen reader and Lighthouse still pending"
+  ]
+}

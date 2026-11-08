@@ -1,0 +1,64 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-contents.test.tsx (3 tests | 3 failed) 31ms
+   × renders received anchors in editorial order and honors direct hash entry 23ms
+   × updates current location from visible sections and removes a stale current entry 5ms
+   × follows history hash changes and omits empty navigation 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-contents.test.tsx > renders received anchors in editorial order and honors direct hash entry
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-contents.test.tsx:17:71
+     15|   window.history.replaceState(null, '', `/#${entries[1].anchor}`);
+     16|   render(<CaseContents entries={entries} label="In this study" />);
+     17|   expect(screen.queryByRole('navigation', { name: 'In this study' })).…
+       |                                                                       ^
+     18|   expect(screen.getAllByRole('link').map(link => link.getAttribute('hr…
+     19|     '#section-00000000-0000-4000-8000-000000000002', '#section-0000000…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/features/cases/components/case-contents.test.tsx > updates current location from visible sections and removes a stale current entry
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-contents.test.tsx:36:63
+     34|   const { rerender } = render(<><CaseContents entries={entries} label=…
+     35|   act(() => notify([{ target: document.getElementById(entries[1].ancho…
+     36|   expect(screen.queryByRole('link', { name: 'First topic' })).toHaveAt…
+       |                                                               ^
+     37|   rerender(<CaseContents entries={[entries[0]]} label="Contents" />);
+     38|   expect(screen.getByRole('link', { name: 'Second topic' })).toHaveAtt…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/features/cases/components/case-contents.test.tsx > follows history hash changes and omits empty navigation
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-contents.test.tsx:46:63
+     44|   window.history.replaceState(null, '', `/#${entries[1].anchor}`);
+     45|   fireEvent(window, new HashChangeEvent('hashchange'));
+     46|   expect(screen.queryByRole('link', { name: 'First topic' })).toHaveAt…
+       |                                                               ^
+     47|   rerender(<CaseContents entries={[]} label="Contents" />);
+     48|   expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  16:51:52
+   Duration  1.44s (environment 72%, setup 19%, import 4%, transform 2%, tests 2%)
+

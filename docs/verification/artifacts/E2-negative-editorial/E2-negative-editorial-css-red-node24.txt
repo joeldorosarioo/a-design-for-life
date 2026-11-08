@@ -1,0 +1,398 @@
+✖ emits browser-ready tokens and negative shell CSS at the fixed public path without source directives (13.9964ms)
+✖ rebuilds from the canonical token source instead of a frozen copied palette (10.3996ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.6463
+
+✖ failing tests:
+
+test at scripts\emit-case-state-css.test.mjs:27:1
+✖ emits browser-ready tokens and negative shell CSS at the fixed public path without source directives (13.9964ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /@(?:import|theme|tailwind)\b/. Input:
+  
+  "@import '../../../stylesheets/tokens.css';\n" +
+    '\n' +
+    '.case-state-document {\n' +
+    '  margin: 0;\n' +
+    '  background: var(--bg-page);\n' +
+    '  color: var(--text-primary);\n' +
+    '  font-family: var(--font-sans);\n' +
+    '  font-size: var(--text-base);\n' +
+    '  line-height: var(--text-base--line-height);\n' +
+    '}\n' +
+    '.case-state-document * {\n' +
+    '  box-sizing: border-box;\n' +
+    '}\n' +
+    '.case-state-document a {\n' +
+    '  color: var(--action-default);\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-document :focus-visible {\n' +
+    '  outline: var(--focus-ring-width) solid var(--focus-ring);\n' +
+    '  outline-offset: var(--focus-ring-offset);\n' +
+    '}\n' +
+    '.case-state-container {\n' +
+    '  width: min(calc(100% - 2 * var(--layout-page-padding)), var(--container-portfolio));\n' +
+    '  margin-inline: auto;\n' +
+    '}\n' +
+    '.case-state-skip {\n' +
+    '  position: absolute;\n' +
+    '  z-index: 40;\n' +
+    '  inset-inline-start: var(--space-6);\n' +
+    '  inset-block-start: var(--space-4);\n' +
+    '  transform: translateY(-200%);\n' +
+    '}\n' +
+    '.case-state-skip:focus {\n' +
+    '  transform: none;\n' +
+    '  background: var(--bg-page);\n' +
+    '  padding: var(--space-3);\n' +
+    '}\n' +
+    '.case-state-header {\n' +
+    '  position: sticky;\n' +
+    '  inset-block-start: 0;\n' +
+    '  z-index: 30;\n' +
+    '  max-height: 50svh;\n' +
+    '  overflow: auto;\n' +
+    '  background: var(--bg-page);\n' +
+    '  border-block-end: 1px solid var(--border-default);\n' +
+    '}\n' +
+    '.case-state-header-inner {\n' +
+    '  display: flex;\n' +
+    '  flex-wrap: wrap;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: var(--space-4) var(--space-8);\n' +
+    '  padding-block: var(--space-6);\n' +
+    '}\n' +
+    '.case-state-brand {\n' +
+    '  color: var(--text-primary) !important;\n' +
+    '  font-size: var(--text-xl);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  text-decoration: none;\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-navigation,\n' +
+    '.case-state-links,\n' +
+    '.case-state-contacts {\n' +
+    '  display: flex;\n' +
+    '  flex-wrap: wrap;\n' +
+    '  gap: var(--space-4) var(--space-6);\n' +
+    '  list-style: none;\n' +
+    '  padding: 0;\n' +
+    '  margin: 0;\n' +
+    '}\n' +
+    '.case-state-navigation a {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  min-height: 2.75rem;\n' +
+    '  font-size: var(--text-sm);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  text-decoration: none;\n' +
+    '}\n' +
+    '.case-state-main {\n' +
+    '  display: grid;\n' +
+    '  gap: var(--space-6);\n' +
+    '  padding-block: var(--space-20);\n' +
+    '}\n' +
+    '.case-state-title {\n' +
+    '  margin: 0;\n' +
+    '  font-size: var(--text-3xl);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  line-height: var(--text-3xl--line-height);\n' +
+    '  white-space: pre-line;\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-description,\n' +
+    '.case-state-footer-description {\n' +
+    '  margin: 0;\n' +
+    '  max-width: 68ch;\n' +
+    '  white-space: pre-line;\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-action {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  min-height: 2.75rem;\n' +
+    '  padding: var(--space-3) var(--space-6);\n' +
+    '  border: 1px solid var(--border-default);\n' +
+    '  border-radius: var(--radius-lg);\n' +
+    '  background: var(--bg-surface);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  text-align: center;\n' +
+    '  text-decoration: none;\n' +
+    '}\n' +
+    '.case-state-footer {\n' +
+    '  border-block-start: 1px solid var(--border-default);\n' +
+    '  padding-block: var(--space-16);\n' +
+    '}\n' +
+    '.case-state-footer-inner {\n' +
+    '  display: grid;\n' +
+    '  gap: var(--space-6);\n' +
+    '}\n' +
+    '.case-state-footer-eyebrow,\n' +
+    '.case-state-copyright {\n' +
+    '  margin: 0;\n' +
+    '  color: var(--text-secondary);\n' +
+    '}\n' +
+    '.case-state-footer-title {\n' +
+    '  margin: 0;\n' +
+    '  font-family: var(--font-serif);\n' +
+    '  font-size: var(--text-4xl);\n' +
+    '  line-height: var(--text-4xl--line-height);\n' +
+    '  font-weight: var(--font-weight-normal);\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-divider {\n' +
+    '  display: block;\n' +
+    '  width: 100%;\n' +
+    '  height: 1px;\n' +
+    '  margin-block: var(--space-6);\n' +
+    '}\n' +
+    '.case-state-footer-meta {\n' +
+    '  display: flex;\n' +
+    '  flex-wrap: wrap;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: var(--space-4);\n' +
+    '}\n' +
+    '.case-state-contacts {\n' +
+    '  scroll-margin-block-start: calc(50svh + var(--space-8));\n' +
+    '}\n' +
+    '.case-state-sr-only {\n' +
+    '  position: absolute;\n' +
+    '  width: 1px;\n' +
+    '  height: 1px;\n' +
+    '  padding: 0;\n' +
+    '  margin: -1px;\n' +
+    '  overflow: hidden;\n' +
+    '  clip-path: inset(50%);\n' +
+    '  white-space: nowrap;\n' +
+    '  border: 0;\n' +
+    '}\n' +
+    '@media (hover: hover) {\n' +
+    '  .case-state-action:hover {\n' +
+    '    background: var(--action-soft);\n' +
+    '  }\n' +
+    '}\n' +
+    '@media (min-width: 64rem) {\n' +
+    '  .case-state-title {\n' +
+    '    font-size: var(--text-5xl);\n' +
+    '    line-height: var(--text-5xl--line-height);\n' +
+    '  }\n' +
+    '}\n' +
+    '@media (prefers-reduced-motion: reduce) {\n' +
+    '  .case-state-document {\n' +
+    '    scroll-behavior: auto;\n' +
+    '  }\n' +
+    '}\n'
+  
+      at file:///E:/a-design-for-life/scripts/emit-case-state-css.test.mjs:33:12
+      at async fixture (file:///E:/a-design-for-life/scripts/emit-case-state-css.test.mjs:19:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/emit-case-state-css.test.mjs:28:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "@import '../../../stylesheets/tokens.css';\n\n.case-state-document {\n  margin: 0;\n  background: var(--bg-page);\n  color: var(--text-primary);\n  font-family: var(--font-sans);\n  font-size: var(--text-base);\n  line-height: var(--text-base--line-height);\n}\n.case-state-document * {\n  box-sizing: border-box;\n}\n.case-state-document a {\n  color: var(--action-default);\n  overflow-wrap: anywhere;\n}\n.case-state-document :focus-visible {\n  outline: var(--focus-ring-width) solid var(--focus-ring);\n  outline-offset: var(--focus-ring-offset);\n}\n.case-state-container {\n  width: min(calc(100% - 2 * var(--layout-page-padding)), var(--container-portfolio));\n  margin-inline: auto;\n}\n.case-state-skip {\n  position: absolute;\n  z-index: 40;\n  inset-inline-start: var(--space-6);\n  inset-block-start: var(--space-4);\n  transform: translateY(-200%);\n}\n.case-state-skip:focus {\n  transform: none;\n  background: var(--bg-page);\n  padding: var(--space-3);\n}\n.case-state-header {\n  position: sticky;\n  inset-block-start: 0;\n  z-index: 30;\n  max-height: 50svh;\n  overflow: auto;\n  background: var(--bg-page);\n  border-block-end: 1px solid var(--border-default);\n}\n.case-state-header-inner {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4) var(--space-8);\n  padding-block: var(--space-6);\n}\n.case-state-brand {\n  color: var(--text-primary) !important;\n  font-size: var(--text-xl);\n  font-weight: var(--font-weight-semibold);\n  text-decoration: none;\n  overflow-wrap: anywhere;\n}\n.case-state-navigation,\n.case-state-links,\n.case-state-contacts {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--space-4) var(--space-6);\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.case-state-navigation a {\n  display: inline-flex;\n  align-items: center;\n  min-height: 2.75rem;\n  font-size: var(--text-sm);\n  font-weight: var(--font-weight-semibold);\n  text-decoration: none;\n}\n.case-state-main {\n  display: grid;\n  gap: var(--space-6);\n  padding-block: var(--space-20);\n}\n.case-state-title {\n  margin: 0;\n  font-size: var(--text-3xl);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--text-3xl--line-height);\n  white-space: pre-line;\n  overflow-wrap: anywhere;\n}\n.case-state-description,\n.case-state-footer-description {\n  margin: 0;\n  max-width: 68ch;\n  white-space: pre-line;\n  overflow-wrap: anywhere;\n}\n.case-state-action {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 2.75rem;\n  padding: var(--space-3) var(--space-6);\n  border: 1px solid var(--border-default);\n  border-radius: var(--radius-lg);\n  background: var(--bg-surface);\n  font-weight: var(--font-weight-semibold);\n  text-align: center;\n  text-decoration: none;\n}\n.case-state-footer {\n  border-block-start: 1px solid var(--border-default);\n  padding-block: var(--space-16);\n}\n.case-state-footer-inner {\n  display: grid;\n  gap: var(--space-6);\n}\n.case-state-footer-eyebrow,\n.case-state-copyright {\n  margin: 0;\n  color: var(--text-secondary);\n}\n.case-state-footer-title {\n  margin: 0;\n  font-family: var(--font-serif);\n  font-size: var(--text-4xl);\n  line-height: var(--text-4xl--line-height);\n  font-weight: var(--font-weight-normal);\n  overflow-wrap: anywhere;\n}\n.case-state-divider {\n  display: block;\n  width: 100%;\n  height: 1px;\n  margin-block: var(--space-6);\n}\n.case-state-footer-meta {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  gap: var(--space-4);\n}\n.case-state-contacts {\n  scroll-margin-block-start: calc(50svh + var(--space-8));\n}\n.case-state-sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n  border: 0;\n}\n@media (hover: hover) {\n  .case-state-action:hover {\n    background: var(--action-soft);\n  }\n}\n@media (min-width: 64rem) {\n  .case-state-title {\n    font-size: var(--text-5xl);\n    line-height: var(--text-5xl--line-height);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .case-state-document {\n    scroll-behavior: auto;\n  }\n}\n",
+    expected: /@(?:import|theme|tailwind)\b/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at scripts\emit-case-state-css.test.mjs:49:1
+✖ rebuilds from the canonical token source instead of a frozen copied palette (10.3996ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /--color-cherry-cola-700:\s*#123456/. Input:
+  
+  "@import '../../../stylesheets/tokens.css';\n" +
+    '\n' +
+    '.case-state-document {\n' +
+    '  margin: 0;\n' +
+    '  background: var(--bg-page);\n' +
+    '  color: var(--text-primary);\n' +
+    '  font-family: var(--font-sans);\n' +
+    '  font-size: var(--text-base);\n' +
+    '  line-height: var(--text-base--line-height);\n' +
+    '}\n' +
+    '.case-state-document * {\n' +
+    '  box-sizing: border-box;\n' +
+    '}\n' +
+    '.case-state-document a {\n' +
+    '  color: var(--action-default);\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-document :focus-visible {\n' +
+    '  outline: var(--focus-ring-width) solid var(--focus-ring);\n' +
+    '  outline-offset: var(--focus-ring-offset);\n' +
+    '}\n' +
+    '.case-state-container {\n' +
+    '  width: min(calc(100% - 2 * var(--layout-page-padding)), var(--container-portfolio));\n' +
+    '  margin-inline: auto;\n' +
+    '}\n' +
+    '.case-state-skip {\n' +
+    '  position: absolute;\n' +
+    '  z-index: 40;\n' +
+    '  inset-inline-start: var(--space-6);\n' +
+    '  inset-block-start: var(--space-4);\n' +
+    '  transform: translateY(-200%);\n' +
+    '}\n' +
+    '.case-state-skip:focus {\n' +
+    '  transform: none;\n' +
+    '  background: var(--bg-page);\n' +
+    '  padding: var(--space-3);\n' +
+    '}\n' +
+    '.case-state-header {\n' +
+    '  position: sticky;\n' +
+    '  inset-block-start: 0;\n' +
+    '  z-index: 30;\n' +
+    '  max-height: 50svh;\n' +
+    '  overflow: auto;\n' +
+    '  background: var(--bg-page);\n' +
+    '  border-block-end: 1px solid var(--border-default);\n' +
+    '}\n' +
+    '.case-state-header-inner {\n' +
+    '  display: flex;\n' +
+    '  flex-wrap: wrap;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: var(--space-4) var(--space-8);\n' +
+    '  padding-block: var(--space-6);\n' +
+    '}\n' +
+    '.case-state-brand {\n' +
+    '  color: var(--text-primary) !important;\n' +
+    '  font-size: var(--text-xl);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  text-decoration: none;\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-navigation,\n' +
+    '.case-state-links,\n' +
+    '.case-state-contacts {\n' +
+    '  display: flex;\n' +
+    '  flex-wrap: wrap;\n' +
+    '  gap: var(--space-4) var(--space-6);\n' +
+    '  list-style: none;\n' +
+    '  padding: 0;\n' +
+    '  margin: 0;\n' +
+    '}\n' +
+    '.case-state-navigation a {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  min-height: 2.75rem;\n' +
+    '  font-size: var(--text-sm);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  text-decoration: none;\n' +
+    '}\n' +
+    '.case-state-main {\n' +
+    '  display: grid;\n' +
+    '  gap: var(--space-6);\n' +
+    '  padding-block: var(--space-20);\n' +
+    '}\n' +
+    '.case-state-title {\n' +
+    '  margin: 0;\n' +
+    '  font-size: var(--text-3xl);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  line-height: var(--text-3xl--line-height);\n' +
+    '  white-space: pre-line;\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-description,\n' +
+    '.case-state-footer-description {\n' +
+    '  margin: 0;\n' +
+    '  max-width: 68ch;\n' +
+    '  white-space: pre-line;\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-action {\n' +
+    '  display: inline-flex;\n' +
+    '  align-items: center;\n' +
+    '  justify-content: center;\n' +
+    '  min-height: 2.75rem;\n' +
+    '  padding: var(--space-3) var(--space-6);\n' +
+    '  border: 1px solid var(--border-default);\n' +
+    '  border-radius: var(--radius-lg);\n' +
+    '  background: var(--bg-surface);\n' +
+    '  font-weight: var(--font-weight-semibold);\n' +
+    '  text-align: center;\n' +
+    '  text-decoration: none;\n' +
+    '}\n' +
+    '.case-state-footer {\n' +
+    '  border-block-start: 1px solid var(--border-default);\n' +
+    '  padding-block: var(--space-16);\n' +
+    '}\n' +
+    '.case-state-footer-inner {\n' +
+    '  display: grid;\n' +
+    '  gap: var(--space-6);\n' +
+    '}\n' +
+    '.case-state-footer-eyebrow,\n' +
+    '.case-state-copyright {\n' +
+    '  margin: 0;\n' +
+    '  color: var(--text-secondary);\n' +
+    '}\n' +
+    '.case-state-footer-title {\n' +
+    '  margin: 0;\n' +
+    '  font-family: var(--font-serif);\n' +
+    '  font-size: var(--text-4xl);\n' +
+    '  line-height: var(--text-4xl--line-height);\n' +
+    '  font-weight: var(--font-weight-normal);\n' +
+    '  overflow-wrap: anywhere;\n' +
+    '}\n' +
+    '.case-state-divider {\n' +
+    '  display: block;\n' +
+    '  width: 100%;\n' +
+    '  height: 1px;\n' +
+    '  margin-block: var(--space-6);\n' +
+    '}\n' +
+    '.case-state-footer-meta {\n' +
+    '  display: flex;\n' +
+    '  flex-wrap: wrap;\n' +
+    '  justify-content: space-between;\n' +
+    '  gap: var(--space-4);\n' +
+    '}\n' +
+    '.case-state-contacts {\n' +
+    '  scroll-margin-block-start: calc(50svh + var(--space-8));\n' +
+    '}\n' +
+    '.case-state-sr-only {\n' +
+    '  position: absolute;\n' +
+    '  width: 1px;\n' +
+    '  height: 1px;\n' +
+    '  padding: 0;\n' +
+    '  margin: -1px;\n' +
+    '  overflow: hidden;\n' +
+    '  clip-path: inset(50%);\n' +
+    '  white-space: nowrap;\n' +
+    '  border: 0;\n' +
+    '}\n' +
+    '@media (hover: hover) {\n' +
+    '  .case-state-action:hover {\n' +
+    '    background: var(--action-soft);\n' +
+    '  }\n' +
+    '}\n' +
+    '@media (min-width: 64rem) {\n' +
+    '  .case-state-title {\n' +
+    '    font-size: var(--text-5xl);\n' +
+    '    line-height: var(--text-5xl--line-height);\n' +
+    '  }\n' +
+    '}\n' +
+    '@media (prefers-reduced-motion: reduce) {\n' +
+    '  .case-state-document {\n' +
+    '    scroll-behavior: auto;\n' +
+    '  }\n' +
+    '}\n'
+  
+      at file:///E:/a-design-for-life/scripts/emit-case-state-css.test.mjs:55:12
+      at async fixture (file:///E:/a-design-for-life/scripts/emit-case-state-css.test.mjs:19:12)
+      at async TestContext.<anonymous> (file:///E:/a-design-for-life/scripts/emit-case-state-css.test.mjs:50:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "@import '../../../stylesheets/tokens.css';\n\n.case-state-document {\n  margin: 0;\n  background: var(--bg-page);\n  color: var(--text-primary);\n  font-family: var(--font-sans);\n  font-size: var(--text-base);\n  line-height: var(--text-base--line-height);\n}\n.case-state-document * {\n  box-sizing: border-box;\n}\n.case-state-document a {\n  color: var(--action-default);\n  overflow-wrap: anywhere;\n}\n.case-state-document :focus-visible {\n  outline: var(--focus-ring-width) solid var(--focus-ring);\n  outline-offset: var(--focus-ring-offset);\n}\n.case-state-container {\n  width: min(calc(100% - 2 * var(--layout-page-padding)), var(--container-portfolio));\n  margin-inline: auto;\n}\n.case-state-skip {\n  position: absolute;\n  z-index: 40;\n  inset-inline-start: var(--space-6);\n  inset-block-start: var(--space-4);\n  transform: translateY(-200%);\n}\n.case-state-skip:focus {\n  transform: none;\n  background: var(--bg-page);\n  padding: var(--space-3);\n}\n.case-state-header {\n  position: sticky;\n  inset-block-start: 0;\n  z-index: 30;\n  max-height: 50svh;\n  overflow: auto;\n  background: var(--bg-page);\n  border-block-end: 1px solid var(--border-default);\n}\n.case-state-header-inner {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4) var(--space-8);\n  padding-block: var(--space-6);\n}\n.case-state-brand {\n  color: var(--text-primary) !important;\n  font-size: var(--text-xl);\n  font-weight: var(--font-weight-semibold);\n  text-decoration: none;\n  overflow-wrap: anywhere;\n}\n.case-state-navigation,\n.case-state-links,\n.case-state-contacts {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--space-4) var(--space-6);\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.case-state-navigation a {\n  display: inline-flex;\n  align-items: center;\n  min-height: 2.75rem;\n  font-size: var(--text-sm);\n  font-weight: var(--font-weight-semibold);\n  text-decoration: none;\n}\n.case-state-main {\n  display: grid;\n  gap: var(--space-6);\n  padding-block: var(--space-20);\n}\n.case-state-title {\n  margin: 0;\n  font-size: var(--text-3xl);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--text-3xl--line-height);\n  white-space: pre-line;\n  overflow-wrap: anywhere;\n}\n.case-state-description,\n.case-state-footer-description {\n  margin: 0;\n  max-width: 68ch;\n  white-space: pre-line;\n  overflow-wrap: anywhere;\n}\n.case-state-action {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 2.75rem;\n  padding: var(--space-3) var(--space-6);\n  border: 1px solid var(--border-default);\n  border-radius: var(--radius-lg);\n  background: var(--bg-surface);\n  font-weight: var(--font-weight-semibold);\n  text-align: center;\n  text-decoration: none;\n}\n.case-state-footer {\n  border-block-start: 1px solid var(--border-default);\n  padding-block: var(--space-16);\n}\n.case-state-footer-inner {\n  display: grid;\n  gap: var(--space-6);\n}\n.case-state-footer-eyebrow,\n.case-state-copyright {\n  margin: 0;\n  color: var(--text-secondary);\n}\n.case-state-footer-title {\n  margin: 0;\n  font-family: var(--font-serif);\n  font-size: var(--text-4xl);\n  line-height: var(--text-4xl--line-height);\n  font-weight: var(--font-weight-normal);\n  overflow-wrap: anywhere;\n}\n.case-state-divider {\n  display: block;\n  width: 100%;\n  height: 1px;\n  margin-block: var(--space-6);\n}\n.case-state-footer-meta {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  gap: var(--space-4);\n}\n.case-state-contacts {\n  scroll-margin-block-start: calc(50svh + var(--space-8));\n}\n.case-state-sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n  border: 0;\n}\n@media (hover: hover) {\n  .case-state-action:hover {\n    background: var(--action-soft);\n  }\n}\n@media (min-width: 64rem) {\n  .case-state-title {\n    font-size: var(--text-5xl);\n    line-height: var(--text-5xl--line-height);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .case-state-document {\n    scroll-behavior: auto;\n  }\n}\n",
+    expected: /--color-cherry-cola-700:\s*#123456/,
+    operator: 'match',
+    diff: 'simple'
+  }

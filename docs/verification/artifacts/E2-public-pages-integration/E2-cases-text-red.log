@@ -1,0 +1,81 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-text.test.tsx (4 tests | 4 failed) 38ms
+   × renders escaped text, all emphasis combinations, soft breaks and nested lists 26ms
+   × uses the supplied resolved link and indicates its new-tab behavior 7ms
+   × keeps unavailable targets as formatted nonclickable text 2ms
+   × preserves same-tab links without extra new-tab copy 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-text.test.tsx > renders escaped text, all emphasis combinations, soft breaks and nested lists
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-text.test.tsx:21:58
+     19|     ] },
+     20|   ])} />);
+     21|   expect(screen.queryByText('<script>literal</script>')).toBeInTheDocu…
+       |                                                          ^
+     22|   expect(container.querySelector('script')).toBeNull();
+     23|   expect(container.querySelector('br')).toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/cases/components/case-text.test.tsx > uses the supplied resolved link and indicates its new-tab behavior
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-text.test.tsx:38:16
+     36|   ])])} />);
+     37|   const link = screen.queryByRole('link', { name: 'Read resume opens a…
+     38|   expect(link).toHaveAttribute('href', '/media/00000000-0000-4000-8000…
+       |                ^
+     39|   expect(link).toHaveAttribute('target', '_blank');
+     40|   expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/features/cases/components/case-text.test.tsx > keeps unavailable targets as formatted nonclickable text
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-text.test.tsx:48:51
+     46|     { ...element, type: 'link', version: 3, fields: { linkType: 'custo…
+     47|   ])])} />);
+     48|   expect(screen.queryByText('Unavailable study')).toBeInTheDocument();
+       |                                                   ^
+     49|   expect(container.querySelector('strong')).toHaveTextContent('Unavail…
+     50|   expect(screen.queryByRole('link')).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |unit| src/features/cases/components/case-text.test.tsx > preserves same-tab links without extra new-tab copy
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-text.test.tsx:57:59
+     55|     { ...element, type: 'link', version: 3, fields: { linkType: 'custo…
+     56|   ])])} />);
+     57|   expect(screen.queryByRole('link', { name: 'Contact' })).toHaveAttrib…
+       |                                                           ^
+     58|   expect(screen.getByRole('link')).not.toHaveAttribute('target');
+     59| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  16:53:10
+   Duration  1.36s (environment 65%, setup 16%, import 12%, transform 4%, tests 3%)
+

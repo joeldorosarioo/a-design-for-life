@@ -7,7 +7,12 @@ import { pinPublicRoot, readPinnedPublicRoot } from '@/helpers/payload/render-sn
 import { runtimePayload } from '@/helpers/payload/runtime';
 import { publishedReadStatus } from '@/helpers/payload/published-read-response';
 import { slugSchema } from '@/features/cases';
-import { getPublishedCase, resolveCaseRoute } from '@/features/cases/server';
+import {
+  getPublishedCase,
+  resolveCaseRoute,
+  selectCaseStatePresentation,
+  type CaseStatePresentation,
+} from '@/features/cases/server';
 import { getPublishedProfile } from '@/features/professional-profile/server';
 import { getPublishedNavigation, resolveNavigation } from '@/features/site-navigation/server';
 import { readPublishedPortfolio } from './read-published-portfolio';
@@ -17,7 +22,11 @@ export type PublicRenderOptions = { publicationDirectory: string; secret: string
 export type PublicRenderDecision =
   | { status: 308; location: string }
   | { status: 405 }
-  | { status: 404 | 410 | 503; caseStateLocale: Locale }
+  | {
+      status: 404 | 410 | 503;
+      caseStateLocale: Locale;
+      caseStatePresentation?: CaseStatePresentation;
+    }
   | { status: 200 | 404 | 410 | 503; requestHeaders: Headers };
 type PublicRoute = {
   locale: Locale;
@@ -148,6 +157,21 @@ async function structuralFailure(locale: Locale, root: PublicRoot | null): Promi
   }
 }
 
+async function directCaseState(
+  status: 404 | 410 | 503,
+  locale: Locale,
+  root: PublicRoot | null,
+): Promise<PublicRenderDecision> {
+  // Presentation cannot elect a new root or change an authoritative status.
+  const presentation = await selectCaseStatePresentation({ status, locale, root }).catch(
+    () => null,
+  );
+  return {
+    status,
+    caseStateLocale: locale,
+    ...(presentation ? { caseStatePresentation: presentation } : {}),
+  };
+}
 /** Select current exactly once; a pin transports that selection, never elects a generation. */
 export async function preparePublicRenderRequest(
   request: Request,
@@ -156,8 +180,15 @@ export async function preparePublicRenderRequest(
   const route = publicRoute(new URL(request.url).pathname);
   if (!route) return null;
   if (request.method !== 'GET' && request.method !== 'HEAD') return { status: 405 };
-  if (route.kind === 'invalid' && /^\/(?:pt|en)\/cases\/.+/.test(route.pathname))
-    return { status: 404, caseStateLocale: route.locale };
+  if (route.kind === 'invalid' && /^\/(?:pt|en)\/cases\/.+/.test(route.pathname)) {
+    let captured: PublicRoot | null = null;
+    try {
+      captured = await readPublicRoot(options.publicationDirectory);
+    } catch {
+      /* Preserve the closed path404 and A1 fallback. */
+    }
+    return directCaseState(404, route.locale, captured);
+  }
   let root: PublicRoot | null = null;
   let status: PublicRenderContext['status'] = route.kind === 'invalid' ? 404 : 503;
   let pin: PublicRenderContext['pin'] = null;
@@ -175,7 +206,7 @@ export async function preparePublicRenderRequest(
         status = usablePortfolio(portfolio) ? 200 : await structuralFailure(route.locale, root);
       }
       if (route.kind === 'detail' && status !== 200)
-        return { status, caseStateLocale: route.locale };
+        return directCaseState(status, route.locale, root);
       if (root) pin = await pinPublicRoot(options.publicationDirectory, root);
     } catch {
       root = null;
@@ -183,7 +214,7 @@ export async function preparePublicRenderRequest(
       status = 503;
     }
   }
-  if (route.kind === 'detail' && status !== 200) return { status, caseStateLocale: route.locale };
+  if (route.kind === 'detail' && status !== 200) return directCaseState(status, route.locale, root);
   const context = contextSchema.parse({
     v: 1,
     method: request.method,

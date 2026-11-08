@@ -1,0 +1,5 @@
+{
+  "recordedAt": "2026-10-30T23:29:36.6517035Z",
+  "exitCode": 0,
+  "command": "pnpm exec vitest run --project integration resolve-private-language-target.integration.test.ts"
+}

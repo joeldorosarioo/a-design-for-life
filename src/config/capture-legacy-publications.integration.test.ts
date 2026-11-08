@@ -98,7 +98,29 @@ it('captures legacy structural publications before future nullable columns exist
   const db = (fixture.payload.db as unknown as PostgresAdapter).sessions[String(transaction)]!.db;
   try {
     await editorialFieldsMigration.down({ db, payload: fixture.payload, req });
-    expect(await captureLegacyPublications(req)).toBe(2);
+    const operationsBeforeCapture = new Set(
+      (
+        await fixture.payload.db.find<PublicationUpdate>({
+          collection: 'publication-updates',
+          select: { id: true },
+          pagination: false,
+          limit: 0,
+          req,
+        })
+      ).docs.map((operation) => operation.id),
+    );
+    const captured = await captureLegacyPublications(req);
+    const allOperations = await fixture.payload.db.find<PublicationUpdate>({
+      collection: 'publication-updates',
+      select: { id: true },
+      pagination: false,
+      limit: 0,
+      req,
+    });
+    // The migration also captures eligible cases left by unrelated feature suites.
+    expect(
+      allOperations.docs.filter((operation) => !operationsBeforeCapture.has(operation.id)),
+    ).toHaveLength(captured);
     const operations = await fixture.payload.db.find<PublicationUpdate>({
       collection: 'publication-updates',
       where: { subjectId: { in: ids } },

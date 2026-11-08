@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project integration src/config/capture-legacy-publications.integration.test.ts src/features/cases/server/get-preview-case.integration.test.ts --sequence.shuffle.files --sequence.seed=1 --reporter verbose",
+  "exitCode": 1,
+  "recordedAt": "2026-10-30T21:59:36.3531566Z"
+}

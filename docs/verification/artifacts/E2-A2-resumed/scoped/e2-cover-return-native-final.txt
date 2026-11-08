@@ -1,0 +1,13 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  06:58:20
+   Duration  6.77s (import 57%, tests 36%, transform 5%, setup 2%)
+
+     Import  |integration| 161 modules were evaluated 277 times · 3.72s total, 57% of tracked time
+             ~1.56s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { imageUseDTOSchema } from '@/features/media-library';
 import { richTextSchema } from './rich-text.schema';
-import { caseSectionPresentationSchema } from './case.schema';
+import { caseSectionPresentationSchema, caseCoverPresentationSchema } from './case.schema';
 const text = z.string().nullable();
 const readingKey = z.uuid();
 const block = z.discriminatedUnion('type', [
@@ -35,6 +35,9 @@ export const caseDetailDTOSchema = z.object({
   introduction: text,
   path: z.string(),
   cover: imageUseDTOSchema.nullable(),
+  coverPresentation: caseCoverPresentationSchema
+    .nullish()
+    .transform((value) => value ?? 'contained-cherry'),
   role: text,
   scope: text,
   contextNote: text,

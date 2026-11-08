@@ -1,0 +1,823 @@
+{
+  "capturedAt": "2026-10-30T22:26:16.724Z",
+  "sourceSnapshotSha256": "4c32e141442f9a545f8bb4d0287de1b15244eafeafabe2110329fbc829f8481e",
+  "progress": {
+    "completedItems": 17,
+    "totalItems": 30,
+    "percentage": 56.7,
+    "closedTasks": [
+      "E2.1"
+    ],
+    "totalTasks": 6
+  },
+  "environment": {
+    "platform": "win32",
+    "node": "v24.22.2",
+    "pnpm": "12.10.1",
+    "next": "16.4.3",
+    "payload": "3.92.1",
+    "react": "19.3.1",
+    "postgres": "17.11 isolated test service55433/tmpfs; cleanup observed"
+  },
+  "results": [
+    {
+      "scope": "whole verify before private transport/pages",
+      "command": "pnpm verify",
+      "exitCode": 1,
+      "passed": 970,
+      "failed": 1,
+      "skipped": 2,
+      "files": 124,
+      "reason": "Private list integration test assumed empty shared DB. Focused isolation corrected; current whole-suite rerun pending."
+    },
+    {
+      "scope": "private frame",
+      "red": {
+        "exitCode": 1,
+        "failed": 7,
+        "passed": 10,
+        "reason": "Public hrefs/PDF used instead of supplied private destinations."
+      },
+      "green": {
+        "exitCode": 0,
+        "passed": 17
+      },
+      "related": {
+        "exitCode": 0,
+        "passed": 46
+      }
+    },
+    {
+      "scope": "private transport and model",
+      "unit": {
+        "exitCode": 0,
+        "passed": 20
+      },
+      "native": {
+        "exitCode": 0,
+        "passed": 50,
+        "files": 6
+      },
+      "note": "Native50 includes transport39. A later test-only selector typing fix has passed getter7/7; repeat together with the correct legacy file remains pending."
+    },
+    {
+      "scope": "private Proxy",
+      "unit": {
+        "redFailed": 4,
+        "redPassed": 31,
+        "greenPassed": 35
+      },
+      "native": {
+        "redExpected": 503,
+        "redActual": 200,
+        "redExitCode": 1,
+        "greenExitCode": 0,
+        "passed": 1
+      },
+      "note": "Final Native batch reported8/8: private Proxy1 and getter7. The mistakenly specified helpers legacy path was not discovered; no three-file/legacy rerun is claimed."
+    },
+    {
+      "scope": "private HTTP Pages",
+      "command": "pnpm test:e2e private-pages.e2e.test.ts",
+      "red": {
+        "exitCode": 1,
+        "passed": 1,
+        "failed": 1,
+        "notRun": 6,
+        "expected": 200,
+        "actual": 404
+      },
+      "green": {
+        "exitCode": 0,
+        "passed": 8,
+        "duration": "27.4s",
+        "buildId": "HqSsC4h2NmoWBbjHU3mLo"
+      },
+      "limitations": [
+        "Initial full-path filter found no tests; not behavior RED.",
+        "First post-implementation run failed a fixture that had omitted portrait groups. Corrected only fixture, no image requirement weakened.",
+        "Second run passed all four pages PT/EN but confused prefetch segment response with complete Flight. Split both protocols; final eight assertions include full navigation Flight and prefetch headers/privacy.",
+        "No private language selector yet; saved drafts are previewed via their own closed locale URLs.",
+        "Private Page reauth failure after a successful Proxy decision fails closed via a generic server error; no universal post-stream503 guarantee.",
+        "This is a focused private HTTP gate, not full current public/browser/Figma/a11y acceptance."
+      ]
+    },
+    {
+      "scope": "pure SEO index and localized metadata",
+      "red": {
+        "exitCode": 1,
+        "failed": 16,
+        "passed": 1
+      },
+      "green": {
+        "exitCode": 0,
+        "passed": 63
+      },
+      "note": "Sitemap/robots App routes and real source/HTTP integration remain pending."
+    }
+  ],
+  "exports": [
+    {
+      "source": "E:/a-design-for-life/.work/E2-observer-fixture-lint-green.txt",
+      "file": "E2-observer-fixture-lint-green.txt",
+      "originalBytes": 205,
+      "originalSha256": "8713e3c04926a5b7865099793fc7ce12b887a61b2277a78761b9f5d709a27602",
+      "exportedBytes": 205,
+      "exportedSha256": "8713e3c04926a5b7865099793fc7ce12b887a61b2277a78761b9f5d709a27602",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-preview-isolation-green-seed1-result.json",
+      "file": "E2-preview-isolation-green-seed1-result.json",
+      "originalBytes": 316,
+      "originalSha256": "aa187d558db27c5a8cb8efc5a456732a3faff9b15a44769ae3f7f8553922a2b3",
+      "exportedBytes": 316,
+      "exportedSha256": "aa187d558db27c5a8cb8efc5a456732a3faff9b15a44769ae3f7f8553922a2b3",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-preview-isolation-green-seed1.txt",
+      "file": "E2-preview-isolation-green-seed1.txt",
+      "originalBytes": 5075,
+      "originalSha256": "9aa63f1c8d91009604f731f952fdc837908bfb4dd232dfa74a8035809a79659c",
+      "exportedBytes": 4515,
+      "exportedSha256": "67b7d3f1a29c621fb2b2b40d315ea9e9690d12fdbab00bfd6153fea874c2f61b",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-preview-isolation-red-seed1-result.json",
+      "file": "E2-preview-isolation-red-seed1-result.json",
+      "originalBytes": 316,
+      "originalSha256": "6ba4637a525a65627355aad5deed0d04fbd224a315bcf7a6e6ea77e7a96a19b2",
+      "exportedBytes": 316,
+      "exportedSha256": "6ba4637a525a65627355aad5deed0d04fbd224a315bcf7a6e6ea77e7a96a19b2",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-preview-isolation-red-seed1.txt",
+      "file": "E2-preview-isolation-red-seed1.txt",
+      "originalBytes": 7912,
+      "originalSha256": "c145798ae34d6988100474f399cb353e9bf6a74d037b62f11fab734fad252119",
+      "exportedBytes": 7352,
+      "exportedSha256": "e35ff6f0057229bcd84c636ee8265d25157f7e17c497a4a5aa1d015a5ebad2d1",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-preview-isolation-reproduce-result.json",
+      "file": "E2-preview-isolation-reproduce-result.json",
+      "originalBytes": 273,
+      "originalSha256": "9442061428209297af7763c1244478ddfdd0642f8bdc284e15108987ac0cfda6",
+      "exportedBytes": 273,
+      "exportedSha256": "9442061428209297af7763c1244478ddfdd0642f8bdc284e15108987ac0cfda6",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-preview-isolation-reproduce.txt",
+      "file": "E2-preview-isolation-reproduce.txt",
+      "originalBytes": 5049,
+      "originalSha256": "1962af8600f62f3bd51bf37f3a701b9cd1506e4c7186601146673e190b4c23b4",
+      "exportedBytes": 4489,
+      "exportedSha256": "a8a8e5012465edc1279750ed9a1b36283f6d2cbc1705450d0b8619dbfcdea2b8",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-format.txt",
+      "file": "E2-private-frame-format.txt",
+      "originalBytes": 558,
+      "originalSha256": "23cf28af240bab0de52db6d55b067fee4036e1b4e91545e6285d80e214fdf045",
+      "exportedBytes": 558,
+      "exportedSha256": "23cf28af240bab0de52db6d55b067fee4036e1b4e91545e6285d80e214fdf045",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-green-result.json",
+      "file": "E2-private-frame-green-result.json",
+      "originalBytes": 185,
+      "originalSha256": "b17fceb7e057b783f54a69feea785a5041b7a2daa7d9278b9b63f6f07eb54b89",
+      "exportedBytes": 185,
+      "exportedSha256": "b17fceb7e057b783f54a69feea785a5041b7a2daa7d9278b9b63f6f07eb54b89",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-green.txt",
+      "file": "E2-private-frame-green.txt",
+      "originalBytes": 207,
+      "originalSha256": "59bfa2902ee1678462fc4ff50f2568dce6e8b0ee2129b85e268668cd58ebbbd3",
+      "exportedBytes": 207,
+      "exportedSha256": "59bfa2902ee1678462fc4ff50f2568dce6e8b0ee2129b85e268668cd58ebbbd3",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-lint.txt",
+      "file": "E2-private-frame-lint.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-red-result.json",
+      "file": "E2-private-frame-red-result.json",
+      "originalBytes": 185,
+      "originalSha256": "b82947fd412e7e1bb3b98d381047a715c8ab1829bf46ec9e58c334abd6ac153b",
+      "exportedBytes": 185,
+      "exportedSha256": "b82947fd412e7e1bb3b98d381047a715c8ab1829bf46ec9e58c334abd6ac153b",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-red.txt",
+      "file": "E2-private-frame-red.txt",
+      "originalBytes": 6435,
+      "originalSha256": "a0949563c5ce4ec374210f97f07ec3173795e5d2ddc5d52cbad1cb1d80394ba5",
+      "exportedBytes": 6435,
+      "exportedSha256": "a0949563c5ce4ec374210f97f07ec3173795e5d2ddc5d52cbad1cb1d80394ba5",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-related-green-result.json",
+      "file": "E2-private-frame-related-green-result.json",
+      "originalBytes": 161,
+      "originalSha256": "72b77c616c4fb2f969013dc0575bd594122e7f1e4d37717628596086ffc81903",
+      "exportedBytes": 161,
+      "exportedSha256": "72b77c616c4fb2f969013dc0575bd594122e7f1e4d37717628596086ffc81903",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-frame-related-green.txt",
+      "file": "E2-private-frame-related-green.txt",
+      "originalBytes": 208,
+      "originalSha256": "7f3db16c8256b7e1c341e063fe258f4f1aa90e417f30300e41f454d579696aba",
+      "exportedBytes": 208,
+      "exportedSha256": "7f3db16c8256b7e1c341e063fe258f4f1aa90e417f30300e41f454d579696aba",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-http-fixture-format.txt",
+      "file": "E2-private-http-fixture-format.txt",
+      "originalBytes": 63,
+      "originalSha256": "1ebb3cbdfeebb2df1329b717efb7105b1c7eb1c9d16548271844d0984d5d88cb",
+      "exportedBytes": 63,
+      "exportedSha256": "1ebb3cbdfeebb2df1329b717efb7105b1c7eb1c9d16548271844d0984d5d88cb",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-http-flight-format.txt",
+      "file": "E2-private-http-flight-format.txt",
+      "originalBytes": 76,
+      "originalSha256": "c49373789499a2d8d482c2935a9b0662604312cd69efbb9b75441594de7599a2",
+      "exportedBytes": 76,
+      "exportedSha256": "c49373789499a2d8d482c2935a9b0662604312cd69efbb9b75441594de7599a2",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-http-prepare-format.txt",
+      "file": "E2-private-http-prepare-format.txt",
+      "originalBytes": 117,
+      "originalSha256": "37414afdb2aa5055ca296e1a5185db496cff998834c77854d49d7e15b26c1beb",
+      "exportedBytes": 117,
+      "exportedSha256": "37414afdb2aa5055ca296e1a5185db496cff998834c77854d49d7e15b26c1beb",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-http-prepare-typecheck-result.json",
+      "file": "E2-private-http-prepare-typecheck-result.json",
+      "originalBytes": 128,
+      "originalSha256": "6a1913201735b01b033b76f7a90da175554a2d9e065c18b07cd665a2bbc6b916",
+      "exportedBytes": 128,
+      "exportedSha256": "6a1913201735b01b033b76f7a90da175554a2d9e065c18b07cd665a2bbc6b916",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-http-prepare-typecheck.txt",
+      "file": "E2-private-http-prepare-typecheck.txt",
+      "originalBytes": 16,
+      "originalSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedBytes": 16,
+      "exportedSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-index-typecheck-result.json",
+      "file": "E2-private-index-typecheck-result.json",
+      "originalBytes": 104,
+      "originalSha256": "5302f6636d304be22eb919c021513f78e03021c3427b06cc7f0f9cf85dc27147",
+      "exportedBytes": 104,
+      "exportedSha256": "5302f6636d304be22eb919c021513f78e03021c3427b06cc7f0f9cf85dc27147",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-index-typecheck.txt",
+      "file": "E2-private-index-typecheck.txt",
+      "originalBytes": 16,
+      "originalSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedBytes": 16,
+      "exportedSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-page-model-native-green-result.json",
+      "file": "E2-private-page-model-native-green-result.json",
+      "originalBytes": 553,
+      "originalSha256": "a288d54879bce47f7d2a84dd681cf0d808bcb3dc51e945eaa13718643d790a91",
+      "exportedBytes": 553,
+      "exportedSha256": "a288d54879bce47f7d2a84dd681cf0d808bcb3dc51e945eaa13718643d790a91",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-page-model-native-green.txt",
+      "file": "E2-private-page-model-native-green.txt",
+      "originalBytes": 12066,
+      "originalSha256": "aedc47c862b963a35c2c5e3a2e22d99c7acece5020e8d35d0e50818b8499ecbf",
+      "exportedBytes": 11506,
+      "exportedSha256": "68822bab8b01ba86890164540317222835d64e21b5e6258288f74a694c68a5cd",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-page-model-native-red-result.json",
+      "file": "E2-private-page-model-native-red-result.json",
+      "originalBytes": 206,
+      "originalSha256": "396df5928378370eeed71134a08ec41bd10adeedfe2b346733508eb3b8a1a64d",
+      "exportedBytes": 206,
+      "exportedSha256": "396df5928378370eeed71134a08ec41bd10adeedfe2b346733508eb3b8a1a64d",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-page-model-native-red.txt",
+      "file": "E2-private-page-model-native-red.txt",
+      "originalBytes": 11607,
+      "originalSha256": "e71d9cc9ba366c0de402e9f37c286306205ddea55e0b21e0128622e0b9d4104f",
+      "exportedBytes": 11047,
+      "exportedSha256": "a8e261c298a4e2b8c606dfc25b169959bb298c902a8b488b82f6fb2a7f5e8b43",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-format.txt",
+      "file": "E2-private-pages-format.txt",
+      "originalBytes": 177,
+      "originalSha256": "6cac4a97b8861c53acb2f8c02b0c54107e253de534e0faff2f9e2dde1d0ea247",
+      "exportedBytes": 177,
+      "exportedSha256": "6cac4a97b8861c53acb2f8c02b0c54107e253de534e0faff2f9e2dde1d0ea247",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-green-final-result.json",
+      "file": "E2-private-pages-http-green-final-result.json",
+      "originalBytes": 129,
+      "originalSha256": "e4967ee0a10c6d11fd9ed147b5862bbf08d298c2447cac6939bfa17b66f0eb6d",
+      "exportedBytes": 129,
+      "exportedSha256": "e4967ee0a10c6d11fd9ed147b5862bbf08d298c2447cac6939bfa17b66f0eb6d",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-green-final.txt",
+      "file": "E2-private-pages-http-green-final.txt",
+      "originalBytes": 6496,
+      "originalSha256": "f112d807e198688cc77e475f2d53803f25f6a089200729bf112869ffd80806f7",
+      "exportedBytes": 5936,
+      "exportedSha256": "bdad233b6aa185d9031770a1c9ce38babe8a6e80b16a4514b9b14826c70c503f",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-green-repeat-result.json",
+      "file": "E2-private-pages-http-green-repeat-result.json",
+      "originalBytes": 129,
+      "originalSha256": "a4bbe564769dff99e50f0ae1ea96ac3c01c69020164960961705d7218816374a",
+      "exportedBytes": 129,
+      "exportedSha256": "a4bbe564769dff99e50f0ae1ea96ac3c01c69020164960961705d7218816374a",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-green-repeat.txt",
+      "file": "E2-private-pages-http-green-repeat.txt",
+      "originalBytes": 8620,
+      "originalSha256": "77a8cfefe3eb1930b6c247515909514050faca9210efefa7fb48cffcbffb53c4",
+      "exportedBytes": 8060,
+      "exportedSha256": "99bed7b284e1c903dff36fd69766ea65595d3c1e01726c1a1050d9a959f6d559",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-green-result.json",
+      "file": "E2-private-pages-http-green-result.json",
+      "originalBytes": 129,
+      "originalSha256": "2aed4d661b81e3a0f845f4c13552da979fc210093a544bd4b8f7691adbf23171",
+      "exportedBytes": 129,
+      "exportedSha256": "2aed4d661b81e3a0f845f4c13552da979fc210093a544bd4b8f7691adbf23171",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-green.txt",
+      "file": "E2-private-pages-http-green.txt",
+      "originalBytes": 7783,
+      "originalSha256": "6e515c2584aabc1fd0e848fea7ad2746aad864d53212c03b1fdce0ef49462eaf",
+      "exportedBytes": 7223,
+      "exportedSha256": "188d03e242c9c5322635ecef1d77b7666928593c1727a1a012467b5f5d71fe5c",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-red-repeat-result.json",
+      "file": "E2-private-pages-http-red-repeat-result.json",
+      "originalBytes": 129,
+      "originalSha256": "4df2c889d3920627b6e6dfefc06cc6c363e5fe9fdc4850288057acbe9d934ad2",
+      "exportedBytes": 129,
+      "exportedSha256": "4df2c889d3920627b6e6dfefc06cc6c363e5fe9fdc4850288057acbe9d934ad2",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-red-repeat.txt",
+      "file": "E2-private-pages-http-red-repeat.txt",
+      "originalBytes": 7762,
+      "originalSha256": "b99bf67785fea3466349f25e3146653a95c88428483e0469791ce4541fb57fa2",
+      "exportedBytes": 7202,
+      "exportedSha256": "66eaab44116c7c5f95fb3261607877ff95058bd454c931abf933bd7617a10a17",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-red-result.json",
+      "file": "E2-private-pages-http-red-result.json",
+      "originalBytes": 160,
+      "originalSha256": "3e10b06324e264efa7235de2fd76f80688c023f42e1d64fb06f2d2627c827bc8",
+      "exportedBytes": 160,
+      "exportedSha256": "3e10b06324e264efa7235de2fd76f80688c023f42e1d64fb06f2d2627c827bc8",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-http-red.txt",
+      "file": "E2-private-pages-http-red.txt",
+      "originalBytes": 4801,
+      "originalSha256": "2453b2f5c88a85fc51e6aad74d8a9262a811543a2163738b14b6548008704d9f",
+      "exportedBytes": 4241,
+      "exportedSha256": "fe5395be403bab2e1723df71d5554f861467f38f3a7e2251deb12ec597c422ad",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-typecheck-result.json",
+      "file": "E2-private-pages-typecheck-result.json",
+      "originalBytes": 135,
+      "originalSha256": "ad38b595fd501ef3a09ee759a9fba26a0fe9cd5a9d18e55321b9341360915849",
+      "exportedBytes": 135,
+      "exportedSha256": "ad38b595fd501ef3a09ee759a9fba26a0fe9cd5a9d18e55321b9341360915849",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-pages-typecheck.txt",
+      "file": "E2-private-pages-typecheck.txt",
+      "originalBytes": 16,
+      "originalSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedBytes": 16,
+      "exportedSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-focused-checks-final-result.json",
+      "file": "E2-private-preview-focused-checks-final-result.json",
+      "originalBytes": 103,
+      "originalSha256": "d5b28d7f4f5252e2508cfe19547d3e7c57bd81b9de71ac41d5fe60526ec51fba",
+      "exportedBytes": 103,
+      "exportedSha256": "d5b28d7f4f5252e2508cfe19547d3e7c57bd81b9de71ac41d5fe60526ec51fba",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-focused-checks-final.txt",
+      "file": "E2-private-preview-focused-checks-final.txt",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-focused-checks-result.json",
+      "file": "E2-private-preview-focused-checks-result.json",
+      "originalBytes": 103,
+      "originalSha256": "ab483250c2f61f317a2a78663d7a5b2a7ad8c705cbf2371514487c6b72fdd021",
+      "exportedBytes": 103,
+      "exportedSha256": "ab483250c2f61f317a2a78663d7a5b2a7ad8c705cbf2371514487c6b72fdd021",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-focused-checks.txt",
+      "file": "E2-private-preview-focused-checks.txt",
+      "originalBytes": 290,
+      "originalSha256": "0ed5d8320113db35c29132643a31cabca6fcfa79f5f5e7e81e350af819c16e68",
+      "exportedBytes": 290,
+      "exportedSha256": "0ed5d8320113db35c29132643a31cabca6fcfa79f5f5e7e81e350af819c16e68",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-focused-tsconfig.json",
+      "file": "E2-private-preview-focused-tsconfig.json",
+      "originalBytes": 719,
+      "originalSha256": "d92ea28462df767790dc3b03053c1f4577a737a245ad76237d6d9a617b6328f8",
+      "exportedBytes": 719,
+      "exportedSha256": "d92ea28462df767790dc3b03053c1f4577a737a245ad76237d6d9a617b6328f8",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-full-typecheck-result.json",
+      "file": "E2-private-preview-full-typecheck-result.json",
+      "originalBytes": 104,
+      "originalSha256": "aaf4c5d19d89733cd360b7465c3494af53e6f5618dae1bababd86c74400d06d9",
+      "exportedBytes": 104,
+      "exportedSha256": "aaf4c5d19d89733cd360b7465c3494af53e6f5618dae1bababd86c74400d06d9",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-full-typecheck.txt",
+      "file": "E2-private-preview-full-typecheck.txt",
+      "originalBytes": 526,
+      "originalSha256": "d109eeeeaf3ec9b5bf9e2fecd19a4e361deb16a644fd7b35a8df30e9b93675c8",
+      "exportedBytes": 526,
+      "exportedSha256": "d109eeeeaf3ec9b5bf9e2fecd19a4e361deb16a644fd7b35a8df30e9b93675c8",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-native-green-final-result.json",
+      "file": "E2-private-preview-native-green-final-result.json",
+      "originalBytes": 195,
+      "originalSha256": "65b4351d3332f01c991bf61810597b7717f8048c03bb30ef61fc90541245ce51",
+      "exportedBytes": 195,
+      "exportedSha256": "65b4351d3332f01c991bf61810597b7717f8048c03bb30ef61fc90541245ce51",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-native-green-final.txt",
+      "file": "E2-private-preview-native-green-final.txt",
+      "originalBytes": 3433,
+      "originalSha256": "1be9ec942d59eb89a7ea76219ec181b9ccbb36a53cec4c9e7d5cb8659ebbfab5",
+      "exportedBytes": 2873,
+      "exportedSha256": "8472da1bf763f54c934f0d0781ba1ac9400c69155260fcf4dde52b3e92a7cd23",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-native-red-repeat-result.json",
+      "file": "E2-private-preview-native-red-repeat-result.json",
+      "originalBytes": 195,
+      "originalSha256": "ee7323521f9272013423fd394911bc42cba8dab01ada42cf7f098b20b6992939",
+      "exportedBytes": 195,
+      "exportedSha256": "ee7323521f9272013423fd394911bc42cba8dab01ada42cf7f098b20b6992939",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-preview-native-red-repeat.txt",
+      "file": "E2-private-preview-native-red-repeat.txt",
+      "originalBytes": 10025,
+      "originalSha256": "98762ec7dbe1b75fb8c78d5af78b4768032c357f3a9e7ab5ee99de9ccf5d2bbf",
+      "exportedBytes": 9465,
+      "exportedSha256": "d78d8bd5bc442bcc4681f7634cdd2b9ccdd1d096f4bddcb81f19152f92ee160d",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-green-result.json",
+      "file": "E2-private-proxy-green-result.json",
+      "originalBytes": 143,
+      "originalSha256": "bcb69f0c7ca06a3c0f4f1fa79e48e8a170c1f18ffa1c4d85b525d6b509e90f76",
+      "exportedBytes": 143,
+      "exportedSha256": "bcb69f0c7ca06a3c0f4f1fa79e48e8a170c1f18ffa1c4d85b525d6b509e90f76",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-green.txt",
+      "file": "E2-private-proxy-green.txt",
+      "originalBytes": 190,
+      "originalSha256": "ada85fe9f7b5fc747fe6e449cf6a8dcfc1f52ba2b63ff94b348b4ae3f2b4fe00",
+      "exportedBytes": 190,
+      "exportedSha256": "ada85fe9f7b5fc747fe6e449cf6a8dcfc1f52ba2b63ff94b348b4ae3f2b4fe00",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-isolation-native-green-result.json",
+      "file": "E2-private-proxy-isolation-native-green-result.json",
+      "originalBytes": 213,
+      "originalSha256": "bb630dc0f8ac958329f8f8a16d27956e1b418618197afc368d41ecdc4df755f7",
+      "exportedBytes": 213,
+      "exportedSha256": "bb630dc0f8ac958329f8f8a16d27956e1b418618197afc368d41ecdc4df755f7",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-isolation-native-green.txt",
+      "file": "E2-private-proxy-isolation-native-green.txt",
+      "originalBytes": 3469,
+      "originalSha256": "a01e0597343ccfb8eb3109fff7010598fc64cd85323b6b314d95142b6cff3b4c",
+      "exportedBytes": 2909,
+      "exportedSha256": "ce33b47932374f914cb40fd5031d9a8b223b83d428b9a83928cc6b07d40d4331",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-native-red-result.json",
+      "file": "E2-private-proxy-native-red-result.json",
+      "originalBytes": 162,
+      "originalSha256": "fda0dd733dbcbc4d4978e61ce8e3cd89c2c7219571a7dbad7b6c1d3398a382d7",
+      "exportedBytes": 162,
+      "exportedSha256": "fda0dd733dbcbc4d4978e61ce8e3cd89c2c7219571a7dbad7b6c1d3398a382d7",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-native-red.txt",
+      "file": "E2-private-proxy-native-red.txt",
+      "originalBytes": 4411,
+      "originalSha256": "95348ae7aa504ffa68501a3e08de061917c9371aee8b8d02258fe155763eaaff",
+      "exportedBytes": 3851,
+      "exportedSha256": "1e2cb3d281791d265066f3d5f138608d41fd50b58a8d1fd8ac484c05d629752c",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-red-result.json",
+      "file": "E2-private-proxy-red-result.json",
+      "originalBytes": 143,
+      "originalSha256": "f1849fc1fd684838dc959d3e2a5751237a4521b4b2e496ca621eb6cb13171c07",
+      "exportedBytes": 143,
+      "exportedSha256": "f1849fc1fd684838dc959d3e2a5751237a4521b4b2e496ca621eb6cb13171c07",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-proxy-red.txt",
+      "file": "E2-private-proxy-red.txt",
+      "originalBytes": 1835,
+      "originalSha256": "f4cc22fc0959218bdfc11724dca388ded60b14ea0e8a6b932c7de49f91f26490",
+      "exportedBytes": 1835,
+      "exportedSha256": "f4cc22fc0959218bdfc11724dca388ded60b14ea0e8a6b932c7de49f91f26490",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-native-green-result.json",
+      "file": "E2-private-transport-native-green-result.json",
+      "originalBytes": 498,
+      "originalSha256": "181058d7ea8d502fc68955ba0affe5cd13e81b29f1c6c6c738e4d49047a96a6c",
+      "exportedBytes": 498,
+      "exportedSha256": "181058d7ea8d502fc68955ba0affe5cd13e81b29f1c6c6c738e4d49047a96a6c",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-native-green.txt",
+      "file": "E2-private-transport-native-green.txt",
+      "originalBytes": 10230,
+      "originalSha256": "f7f68a7ae9ac83dc67869cd79bbad749c5bddd1709dc04a97326b5980293cf56",
+      "exportedBytes": 9670,
+      "exportedSha256": "ee5e885039ff0af7ec0c4f62efddbd43fbfdd668d3c8c2d542f57782512443b0",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-native-red-result.json",
+      "file": "E2-private-transport-native-red-result.json",
+      "originalBytes": 277,
+      "originalSha256": "355e3594968ff498d0897a8ec2a37aa4fb8e70e7ff0f3938e393f1407220daa1",
+      "exportedBytes": 277,
+      "exportedSha256": "355e3594968ff498d0897a8ec2a37aa4fb8e70e7ff0f3938e393f1407220daa1",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-native-red.txt",
+      "file": "E2-private-transport-native-red.txt",
+      "originalBytes": 29426,
+      "originalSha256": "9f16eeeae8e61ed8ccfce07dada04f43f8adc64b490d915f7a5c1d3eff2663bb",
+      "exportedBytes": 28866,
+      "exportedSha256": "88e32466d979c0be0d7dd63767b1aa7251f996204760145ec97a72711d22ece5",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-unit-green-result.json",
+      "file": "E2-private-transport-unit-green-result.json",
+      "originalBytes": 229,
+      "originalSha256": "2dad4c4f57ad554275e30b55ecb664d6e8c469f95f26ce8cb387bca78f22dadc",
+      "exportedBytes": 229,
+      "exportedSha256": "2dad4c4f57ad554275e30b55ecb664d6e8c469f95f26ce8cb387bca78f22dadc",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-unit-green.txt",
+      "file": "E2-private-transport-unit-green.txt",
+      "originalBytes": 201,
+      "originalSha256": "f628d2a5109344be91f57c2363ff4107b8fc89d30889da3c12a0868bb118ce2e",
+      "exportedBytes": 201,
+      "exportedSha256": "f628d2a5109344be91f57c2363ff4107b8fc89d30889da3c12a0868bb118ce2e",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-unit-red-result.json",
+      "file": "E2-private-transport-unit-red-result.json",
+      "originalBytes": 180,
+      "originalSha256": "64bbd2e05a094d9aa4aca8448b2a302d0874d6b25018b2c10a4be0b4de589bf8",
+      "exportedBytes": 180,
+      "exportedSha256": "64bbd2e05a094d9aa4aca8448b2a302d0874d6b25018b2c10a4be0b4de589bf8",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-private-transport-unit-red.txt",
+      "file": "E2-private-transport-unit-red.txt",
+      "originalBytes": 3559,
+      "originalSha256": "6d086a2455505b165706e0d9c33de0d4cf272db8f1a33996c54ca0ccb0d5f802",
+      "exportedBytes": 3559,
+      "exportedSha256": "6d086a2455505b165706e0d9c33de0d4cf272db8f1a33996c54ca0ccb0d5f802",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-index-green-result.json",
+      "file": "E2-public-index-green-result.json",
+      "originalBytes": 207,
+      "originalSha256": "7961ee556356443a977f430a00da30ec05d08dcdd394ee90e328b988bd3cd624",
+      "exportedBytes": 207,
+      "exportedSha256": "7961ee556356443a977f430a00da30ec05d08dcdd394ee90e328b988bd3cd624",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-index-green.txt",
+      "file": "E2-public-index-green.txt",
+      "originalBytes": 201,
+      "originalSha256": "ca931f01941969ce4d1126f03218e0d4d3d50fd020cb1e053eeaa457a79483c0",
+      "exportedBytes": 201,
+      "exportedSha256": "ca931f01941969ce4d1126f03218e0d4d3d50fd020cb1e053eeaa457a79483c0",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-index-red-result.json",
+      "file": "E2-public-index-red-result.json",
+      "originalBytes": 163,
+      "originalSha256": "d979badc1c0f43d333f21e4c273b8c088babae2ec0844c6bc7819b123490f80f",
+      "exportedBytes": 163,
+      "exportedSha256": "d979badc1c0f43d333f21e4c273b8c088babae2ec0844c6bc7819b123490f80f",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-index-red.txt",
+      "file": "E2-public-index-red.txt",
+      "originalBytes": 10012,
+      "originalSha256": "73334e0abdc27021e7a8f5471d33f20884d9fcaafbad6dc4a63ab5b3ef77190a",
+      "exportedBytes": 9996,
+      "exportedSha256": "a0d28a080c2f02871756870d5cb7e512fc17d0838be4683c88179abbefbeaed3",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-reading-verify-final-attempt-result.json",
+      "file": "E2-public-reading-verify-final-attempt-result.json",
+      "originalBytes": 101,
+      "originalSha256": "10e965e6df5f3b68432a0a5ff78daa61305add01e791c689c48051c0e536b245",
+      "exportedBytes": 101,
+      "exportedSha256": "10e965e6df5f3b68432a0a5ff78daa61305add01e791c689c48051c0e536b245",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-reading-verify-final-attempt.txt",
+      "file": "E2-public-reading-verify-final-attempt.txt",
+      "originalBytes": 84469,
+      "originalSha256": "ddea709f3ec0ae346ee953a76e23d8e31680727bbbf3cc1f9b565a10e49bfce7",
+      "exportedBytes": 83289,
+      "exportedSha256": "ee86a2efa5c763977d45d16b64526736173ba056739090bd2548730f648fbe1a",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-reading-verify-repeat-result.json",
+      "file": "E2-public-reading-verify-repeat-result.json",
+      "originalBytes": 101,
+      "originalSha256": "22bbe24ecb635fec91c2b51a14adfec19eb4ec26bb36871547a6a2f1cb1afe0e",
+      "exportedBytes": 101,
+      "exportedSha256": "22bbe24ecb635fec91c2b51a14adfec19eb4ec26bb36871547a6a2f1cb1afe0e",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-reading-verify-repeat.txt",
+      "file": "E2-public-reading-verify-repeat.txt",
+      "originalBytes": 896,
+      "originalSha256": "76567c36a57744036c80234c090242c435dfdd12fe5aa06b4175be56f8a801ac",
+      "exportedBytes": 896,
+      "exportedSha256": "76567c36a57744036c80234c090242c435dfdd12fe5aa06b4175be56f8a801ac",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-reading-verify-result.json",
+      "file": "E2-public-reading-verify-result.json",
+      "originalBytes": 101,
+      "originalSha256": "ec222e16a67309f4c2d3988004d7c5c4ed245cff801b6310903bf0b143a7b97d",
+      "exportedBytes": 101,
+      "exportedSha256": "ec222e16a67309f4c2d3988004d7c5c4ed245cff801b6310903bf0b143a7b97d",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "E:/a-design-for-life/.work/E2-public-reading-verify.txt",
+      "file": "E2-public-reading-verify.txt",
+      "originalBytes": 860,
+      "originalSha256": "b9793f35f87ee0b0e26fc6cf21c8c522d6ca2ad908f066e71c7f293d5d6347fa",
+      "exportedBytes": 860,
+      "exportedSha256": "b9793f35f87ee0b0e26fc6cf21c8c522d6ca2ad908f066e71c7f293d5d6347fa",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "C:/Users/joeld/Documents/Codex/2026-10-29/quero-iniciar-a-implementa-o-do/work/stage2-briefs/E2-private-preview-transport-model-report.md",
+      "file": "backend-report.md",
+      "originalBytes": 8551,
+      "originalSha256": "c533fb2723312fb8476b0d19a6aeabdbb7308af0d5dfc67b0a93a65498e07c4f",
+      "exportedBytes": 8551,
+      "exportedSha256": "c533fb2723312fb8476b0d19a6aeabdbb7308af0d5dfc67b0a93a65498e07c4f",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    },
+    {
+      "source": "C:/Users/joeld/Documents/Codex/2026-10-29/quero-iniciar-a-implementa-o-do/work/stage2-briefs/preview-frame-source/README.md",
+      "file": "frame-authoring-and-tdd.md",
+      "originalBytes": 6172,
+      "originalSha256": "2bf72db32bd81bbb0a237ecb5fa8f27713cebfec52739103bde704f64b7d518e",
+      "exportedBytes": 6172,
+      "exportedSha256": "2bf72db32bd81bbb0a237ecb5fa8f27713cebfec52739103bde704f64b7d518e",
+      "transformation": "ANSI stripped; JWT, DB URLs and emails redacted when present. Raw originals retained privately."
+    }
+  ]
+}

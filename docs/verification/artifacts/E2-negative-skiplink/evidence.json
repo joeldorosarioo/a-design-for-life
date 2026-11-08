@@ -1,0 +1,45 @@
+{
+  "node": "24.22.2",
+  "red": {
+    "exit": 1,
+    "failed": 4,
+    "passed": 0,
+    "failure": "Actual H1 geometry under sticky header after keyboard skip; renderer/CSS/focus preconditions passed"
+  },
+  "green": {
+    "exit": 0,
+    "passed": 4,
+    "failed": 0
+  },
+  "focusedChecks": {
+    "cssEmitter": 0,
+    "typescript": 0,
+    "prettier": 0,
+    "eslint": 0
+  },
+  "dbAccessed": false,
+  "dockerInvoked": false,
+  "nextStarted": false,
+  "port3100Touched": false,
+  "buildRun": false,
+  "dependencyInstall": false,
+  "referenceScreenshotsTouched": false,
+  "listener": "Own ephemeral127.0.0.1:0; explicit closeAllConnections+close in afterAll",
+  "sources": [
+    {
+      "bytes": 4140,
+      "sha256": "9A38D2FF65A85098B65F46FB8B34039C83584A85A449C226BF48044F5E68C41B",
+      "path": "E:\\a-design-for-life\\src\\features\\cases\\server\\case-state-document.e2e.test.ts"
+    },
+    {
+      "bytes": 4103,
+      "sha256": "B9393AB9C699732CE3EC01E4E279CB6844A63F681ED229CF7EEE91EA3326B128",
+      "path": "E:\\a-design-for-life\\src\\features\\cases\\stylesheets\\case-state-document.css"
+    },
+    {
+      "bytes": 6080,
+      "sha256": "D167C3FA956561E293C8058CE06A374F367ED3518625620E6BCD686E0F0C9CC6",
+      "path": "E:\\a-design-for-life\\public\\_portfolio\\case-state.css"
+    }
+  ]
+}

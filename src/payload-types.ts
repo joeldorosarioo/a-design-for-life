@@ -188,6 +188,14 @@ export interface CaseContent {
    * Sufixo opcional do título. O título completo é derivado das duas partes.
    */
   titleEmphasis?: string | null;
+  /**
+   * Se vazio, o card usa o título completo do estudo.
+   */
+  cardTitle?: string | null;
+  /**
+   * Se vazio, o card usa a identificação editorial do estudo.
+   */
+  cardEyebrow?: string | null;
   summary?: string | null;
   introduction?: string | null;
   slug?: string | null;
@@ -197,6 +205,10 @@ export interface CaseContent {
     alt?: string | null;
     caption?: string | null;
   };
+  /**
+   * Duas composições fixas da referência. Se vazio, mantém a capa contida em cereja.
+   */
+  coverPresentation?: ('contained-cherry' | 'contained-soft') | null;
   role?: string | null;
   scope?: string | null;
   contextNote?: string | null;
@@ -387,6 +399,10 @@ export interface SiteNavigation {
     caseLinkLabel?: string | null;
     homeLabel?: string | null;
     casesLabel?: string | null;
+    /**
+     * Ação de retorno no detalhe, independente do nome usado na contagem de cases.
+     */
+    backToProjectsLabel?: string | null;
     contentsLabel?: string | null;
     previousSectionLabel?: string | null;
     nextSectionLabel?: string | null;
@@ -735,6 +751,8 @@ export interface CaseContentSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
   titleEmphasis?: T;
+  cardTitle?: T;
+  cardEyebrow?: T;
   summary?: T;
   introduction?: T;
   slug?: T;
@@ -746,6 +764,7 @@ export interface CaseContentSelect<T extends boolean = true> {
         alt?: T;
         caption?: T;
       };
+  coverPresentation?: T;
   role?: T;
   scope?: T;
   contextNote?: T;
@@ -887,6 +906,7 @@ export interface SiteNavigationSelect<T extends boolean = true> {
         caseLinkLabel?: T;
         homeLabel?: T;
         casesLabel?: T;
+        backToProjectsLabel?: T;
         contentsLabel?: T;
         previousSectionLabel?: T;
         nextSectionLabel?: T;

@@ -4,7 +4,8 @@ import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { afterEach, beforeEach, expect, it } from 'vitest';
 import { z } from 'zod';
-import { mapCaseDetail } from '@/features/cases/server';
+import { mapCaseDetail, renderCaseRouteResponse } from '@/features/cases/server';
+import type { CaseStatePresentation } from '@/features/cases/server';
 import { mapProfile } from '@/features/professional-profile/server';
 import { withPublicRootWriter, type PublicRoot } from '@/helpers/payload/public-root';
 import { installPayloadProvider } from '@/helpers/payload/runtime';
@@ -243,7 +244,7 @@ it('fails closed to503 before rendering when snapshot storage is unavailable', a
   expect((await readPublicRenderContext(headers(prepared), options())).root).toBeNull();
 });
 it.each(['/pt/about', '/en/sobre', '/pt/cases/a/b', '/pt/cases/a%2Fb', '/pt/cases/UPPER'])(
-  'keeps invalid explicit routes404 without reading a corrupt root: %s',
+  'keeps invalid explicit routes404 despite a corrupt root: %s',
   async (pathname) => {
     await writeFile(path.join(directory, 'current.json'), '{broken');
     const prepared = await preparePublicRenderRequest(request(pathname), options());
@@ -321,6 +322,11 @@ it('returns308 directly from confirmed history without preparing a render pin', 
 });
 it('keeps410 for a confirmed tombstone independently of missing shell coverage', async () => {
   const a = snapshot();
+  a.subjects = Object.fromEntries(
+    Object.entries(a.subjects).filter(
+      ([key]) => !key.startsWith('professional-profiles/') && !key.startsWith('site-navigation/'),
+    ),
+  );
   for (const subject of Object.values(a.subjects)) {
     const value = subject.value;
     if (value && typeof value === 'object' && !Array.isArray(value) && value.kind === 'case') {
@@ -379,5 +385,108 @@ it('preserves an independently published detail200 when structural profile/navig
   const prepared = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
   expect(prepared?.status).toBe(200);
   expect((await readPublicRenderContext(headers(prepared), options())).root).toEqual(a);
+  expect(nativeCalls).toBe(0);
+});
+
+function negativeSnapshot(status: 404 | 410 | 503, marker = 'A'): PublicRoot {
+  const root = snapshot(`CASE BODY ${marker}`);
+  if (status === 503)
+    root.subjects = Object.fromEntries(
+      Object.entries(root.subjects).filter(([key]) => !key.startsWith('cases/')),
+    );
+  for (const subject of Object.values(root.subjects)) {
+    const value = subject.value;
+    if (!value || typeof value !== 'object' || Array.isArray(value)) continue;
+    if (value.kind === 'case') {
+      if (status === 410) {
+        value.detail = null;
+        value.slug = null;
+      }
+    }
+    if (value.kind === 'profile')
+      (value.profile as { contacts: { email: string } }).contacts.email =
+        `${marker.toLowerCase()}@example.invalid`;
+    if (value.kind === 'navigation') {
+      const navigation = value.navigation as {
+        messages: Record<string, string>;
+        footer: Record<string, string>;
+      };
+      navigation.messages = {
+        notFoundTitle: `${marker} EDITORIAL404`,
+        notFoundDescription: `${marker} ABSENCE`,
+        caseUnavailableTitle: `${marker} EDITORIAL410`,
+        caseUnavailableDescription: `${marker} WITHDRAWAL`,
+        temporaryFailureTitle: `${marker} EDITORIAL503`,
+        temporaryFailureDescription: `${marker} FAILURE`,
+      };
+      navigation.footer.title = `${marker} CURRENT CONTACT`;
+    }
+  }
+  return root;
+}
+function casePresentation(decision: PublicRenderDecision | null): CaseStatePresentation | null {
+  return decision && 'caseStatePresentation' in decision
+    ? (decision.caseStatePresentation as CaseStatePresentation)
+    : null;
+}
+it.each([404, 410, 503] as const)(
+  'composes editorial case%s from the same captured root without Native body or a pin',
+  async (status) => {
+    await withPublicRootWriter(directory, async (_current, commit) =>
+      commit(negativeSnapshot(status)),
+    );
+    const prepared = await preparePublicRenderRequest(
+      request(status === 404 ? '/pt/cases/INVALID-CASE' : '/pt/cases/publico', {
+        headers: { [PUBLIC_RENDER_CONTEXT_HEADER]: 'FORGED PRIVATE TOKEN', rsc: '1' },
+      }),
+      options(),
+    );
+    expect(prepared?.status).toBe(status);
+    expect(casePresentation(prepared)).toMatchObject({
+      locale: 'pt',
+      status,
+      title: `A EDITORIAL${status}`,
+      navigation: {
+        contacts: { email: 'a@example.invalid' },
+        footer: { title: 'A CURRENT CONTACT' },
+      },
+    });
+    expect(prepared && 'requestHeaders' in prepared).toBe(false);
+    expect(JSON.stringify(prepared)).not.toMatch(/FORGED PRIVATE TOKEN|INVALID-CASE|CASE BODY/);
+    expect(await readdir(directory)).toEqual(['current.json']);
+    expect(nativeCalls).toBe(0);
+  },
+);
+it('keeps the prepared negative body on captured A after current B is promoted, then uses B for the next request', async () => {
+  await withPublicRootWriter(directory, async (_current, commit) =>
+    commit(negativeSnapshot(410, 'A')),
+  );
+  const a = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
+  expect(a?.status).toBe(410);
+  expect(casePresentation(a)?.title).toBe('A EDITORIAL410');
+  await withPublicRootWriter(directory, async (_current, commit) =>
+    commit(negativeSnapshot(410, 'B')),
+  );
+  const response = renderCaseRouteResponse(
+    { status: 410, locale: 'pt' },
+    'pt',
+    casePresentation(a),
+  );
+  expect(await response.text()).toContain('a@example.invalid');
+  const b = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
+  expect(casePresentation(b)?.title).toBe('B EDITORIAL410');
+  expect(nativeCalls).toBe(0);
+});
+it('preserves410 and the exact technical fallback when no confirmed structural presentation exists', async () => {
+  const root = negativeSnapshot(410);
+  root.subjects = Object.fromEntries(
+    Object.entries(root.subjects).filter(
+      ([key]) => !key.startsWith('professional-profiles/') && !key.startsWith('site-navigation/'),
+    ),
+  );
+  await withPublicRootWriter(directory, async (_current, commit) => commit(root));
+  const prepared = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
+  expect(prepared).toEqual({ status: 410, caseStateLocale: 'pt' });
+  expect(casePresentation(prepared)).toBeNull();
   expect(nativeCalls).toBe(0);
 });

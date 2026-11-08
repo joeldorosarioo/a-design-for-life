@@ -265,3 +265,27 @@ it('restores the captured key through a locale layout provider remount', async (
   await waitFor(() => expect(screen.getByRole('button', { name: 'Português' })).toBeEnabled());
   expect(screen.getByRole('status')).toBeEmptyDOMElement();
 });
+
+// A target-locale flag misidentifies the current language while the action stays translated.
+it.each([
+  ['pt', '/pt', '/en', 'English', '/figma/language-br.svg'],
+  ['en', '/en', '/pt', 'Português', '/figma/language-en.svg'],
+] as const)(
+  'identifies current %s visually while naming the target language',
+  (locale, pathname, href, label, flag) => {
+    render(
+      <ReadingPositionProvider>
+        <LanguageToggle
+          {...props}
+          locale={locale}
+          pathname={pathname}
+          destination={{ kind: 'equivalent', href }}
+        />
+      </ReadingPositionProvider>,
+    );
+    const control = screen.getByRole('button', { name: label });
+    expect(control.querySelector('img')).toHaveAttribute('src', flag);
+    expect(control.querySelector('img')).toHaveAttribute('alt', '');
+    expect(control).toHaveAttribute('lang', locale === 'pt' ? 'en' : 'pt');
+  },
+);

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Explicit reviewed sanitized evidence staging; no tests/services/application/Git/CI run by this exporter.",
+  "generatedAt": "2026-11-03T14:58:19.811Z",
+  "snapshot": {
+    "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+    "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+    "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44"
+  },
+  "exportsCount": 2,
+  "exports": [
+    {
+      "id": "ci-proof",
+      "kind": "json",
+      "file": "ci-proof.json",
+      "sourceLabel": "CI Ubuntu24.04 — exact commit proof",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "Official exact-SHA GitHub Actions CI; local source digest recorded separately; CI did not emit that inventory.",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+        "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44"
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Official read-only GitHub metadata and downloaded-log recomputation; not a separate test execution."
+      },
+      "originalBytes": 4602,
+      "exportedBytes": 4602,
+      "originalSha256": "aacfdd1cce27d7e596fbda5cf08f1331c49eebc7b129f515bc689703ce45ffcd",
+      "exportedSha256": "aacfdd1cce27d7e596fbda5cf08f1331c49eebc7b129f515bc689703ce45ffcd",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "ci-required-job",
+      "kind": "log",
+      "file": "ci-required-job.txt",
+      "sourceLabel": "CI Ubuntu24.04 — official complete required job log; success status from GitHub without continue-on-error",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "Official exact-SHA GitHub Actions CI; local source digest recorded separately; CI did not emit that inventory.",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+        "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44"
+      },
+      "execution": {
+        "type": "executed-command",
+        "command": "GitHub Actions type-lint-test-architecture-build: pnpm verify and pnpm test:e2e",
+        "exitCode": 0,
+        "startedAt": "2026-11-03T14:38:50Z",
+        "completedAt": "2026-11-03T14:47:40Z"
+      },
+      "originalBytes": 427138,
+      "exportedBytes": 406560,
+      "originalSha256": "d815667296e053f757aa5f114ff0274e1efcac34813689a28e2d125aa01a78b5",
+      "exportedSha256": "9688b4afec12416c6d319d6b43437f91fb2db528535c8e3ff387e6b39c6a6bb4",
+      "redactions": {
+        "ansi-csi": 4291
+      },
+      "metadataRedactions": {}
+    }
+  ],
+  "limits": [
+    "Original command outcomes, timestamps and snapshot limits remain actual; export does not imply gate success.",
+    "Secret redaction counts are recorded; coordinator must review these projections before repository/package copy.",
+    "No photos/assets/private plans/receipts/authenticated state/DPAPI files/dumps/SQL/storage/rawLHR/trace/HAR/NetLog are copied."
+  ]
+}

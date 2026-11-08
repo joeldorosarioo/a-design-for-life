@@ -11,6 +11,8 @@ import * as migration_20261030_093430_private_media_manifests from './20261030_0
 import * as migration_20261030_124550_publication_coordination from './20261030_124550_publication_coordination';
 import * as migration_20261030_190345_e2_editorial_presentation_fields from './20261030_190345_e2_editorial_presentation_fields';
 import * as migration_20261030_201024_e2_reading_position_adjusted from './20261030_201024_e2_reading_position_adjusted';
+import * as migration_20261031_011109_e2_case_card_copy from './20261031_011109_e2_case_card_copy';
+import * as migration_20261103_095414_e2_cover_presentation_and_return_copy from './20261103_095414_e2_cover_presentation_and_return_copy';
 
 export const migrations = [
   {
@@ -77,5 +79,15 @@ export const migrations = [
     up: migration_20261030_201024_e2_reading_position_adjusted.up,
     down: migration_20261030_201024_e2_reading_position_adjusted.down,
     name: '20261030_201024_e2_reading_position_adjusted',
+  },
+  {
+    up: migration_20261031_011109_e2_case_card_copy.up,
+    down: migration_20261031_011109_e2_case_card_copy.down,
+    name: '20261031_011109_e2_case_card_copy',
+  },
+  {
+    up: migration_20261103_095414_e2_cover_presentation_and_return_copy.up,
+    down: migration_20261103_095414_e2_cover_presentation_and_return_copy.down,
+    name: '20261103_095414_e2_cover_presentation_and_return_copy',
   },
 ];

@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "include": [
+    "../src/config/public-render-context.test.ts",
+    "../src/proxy.test.ts",
+    "../src/app/(portfolio)/[locale]/negative-cases.e2e.test.ts"
+  ],
+  "exclude": [
+    "../node_modules"
+  ]
+}

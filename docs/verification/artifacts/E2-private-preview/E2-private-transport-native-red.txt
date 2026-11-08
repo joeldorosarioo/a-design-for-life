@@ -1,0 +1,499 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[19:02:07] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[19:02:07] INFO: Migrating: 20261030_003022_initial_base
+[19:02:07] INFO: Migrated:  20261030_003022_initial_base (39ms)
+[19:02:07] INFO: Migrating: 20261030_020021_editorial_models
+[19:02:07] INFO: Migrated:  20261030_020021_editorial_models (86ms)
+[19:02:07] INFO: Migrating: 20261030_020521_structural_uniqueness
+[19:02:07] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[19:02:07] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[19:02:07] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[19:02:07] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[19:02:07] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (4ms)
+[19:02:07] INFO: Migrating: 20261030_030036_global_editorial_copy
+[19:02:07] INFO: Migrated:  20261030_030036_global_editorial_copy (8ms)
+[19:02:07] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[19:02:07] INFO: Migrated:  20261030_035306_protect_case_identity_references (8ms)
+[19:02:07] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[19:02:07] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[19:02:07] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[19:02:07] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[19:02:07] INFO: Migrating: 20261030_093430_private_media_manifests
+[19:02:07] INFO: Migrated:  20261030_093430_private_media_manifests (4ms)
+[19:02:07] INFO: Migrating: 20261030_124550_publication_coordination
+[19:02:08] INFO: Migrated:  20261030_124550_publication_coordination (35ms)
+[19:02:08] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[19:02:08] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (2ms)
+[19:02:08] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[19:02:08] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[19:02:08] INFO: Done.
+ ✓ |integration| src/config/prepare-private-preview-request.integration.test.ts > has a real Native control for cookie CSRF metadata before testing the new transport 12ms
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > passes only an authenticated authorized direct GET to the private App Page 6ms
+   → expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > passes only an authenticated authorized direct HEAD to the private App Page 1ms
+   → expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > accepts a direct browser navigation without Origin when Native Sec-Fetch-Site is none 1ms
+   → expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > does not accept a non-browser cookie without Origin or Fetch Metadata 1ms
+   → expected 503 to be 401 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > denies anonymous valid, malformed and duplicated scopes before revealing scope errors 1ms
+   → expected 503 to be 401 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > keeps foreign-Origin cookie rejection and authenticated cross-site rejection separate 0ms
+   → expected 503 to be 401 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > does not use Host or forwarded origin headers to authorize a foreign origin 1ms
+   → expected 503 to be 401 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > validates source collection/page/locale and never returns a Native document to the caller 0ms
+   → expected 503 to be 400 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > rejects duplicate returnTo and query attempts to override a path scope after Native authentication 0ms
+   → expected 503 to be 400 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > allows a safe return path and framework RSC marker without making either an authority selector 1ms
+   → expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > denies unsupported methods before Next and does not parse a request body as preview scope 0ms
+   → expected null to be 'GET, HEAD' // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > never returns null for a path outside its owned private surface 0ms
+   → expected 503 to be 404 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > does not read a document for a duplicated authenticated query or trust a forged public context 0ms
+   → expected 503 to be 400 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > keeps anonymous HEAD empty and fails closed for an invalid configured logical origin 0ms
+   → expected 503 to be 401 // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > returns Native context only through the server-only Page reauthorization API 0ms
+   → expected false to be true // Object.is equality
+ × |integration| src/config/prepare-private-preview-request.integration.test.ts > rejects the same Native session after revocation before the private Page runs 3ms
+   → expected 503 to be 401 // Object.is equality
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > preserves the explicit no-page legacy307 and escaped view1 HTML/return link 20ms
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > preserves anonymous401, mismatched locale403 and unsafe return400 without a redirect 14ms
+ × |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual home to a closed private scope 12ms
+   → expected '/preview' to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+ × |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual about to a closed private scope 9ms
+   → expected '/preview' to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+ × |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual cases to a closed private scope 10ms
+   → expected '/preview' to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+ × |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > supports a navigation draft visual scope and a case visual scope without requiring public slugs 7ms
+   → expected '/preview' to be '/preview-ui/pt/site-navigation/cc83cc…' // Object.is equality
+ × |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > rejects an unsupported collection/page combination and preserves auth-first behavior 10ms
+   → expected 307 to be 400 // Object.is equality
+ × |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > rejects duplicate controlled parameters before any ambiguous document lookup, after Native auth 12ms
+   → expected 307 to be 400 // Object.is equality
+ ✓ |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > does not follow visitor Host/Forwarded values or external return data when selecting visual destinations 11ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 22 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > passes only an authenticated authorized direct GET to the private App Page
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > passes only an authenticated authorized direct HEAD to the private App Page
+AssertionError: expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+
+- Expected:
+null
+
++ Received:
+Response {}
+
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:121:6
+    119|     await expect(
+    120|       preparePrivatePreviewRequest(request(privatePath(), { method }),…
+    121|     ).resolves.toBeNull();
+       |      ^
+    122|   },
+    123| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > accepts a direct browser navigation without Origin when Native Sec-Fetch-Site is none
+AssertionError: expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+
+- Expected:
+null
+
++ Received:
+Response {}
+
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:128:66
+    126|   incoming.headers.delete('origin');
+    127|   incoming.headers.set('sec-fetch-site', 'none');
+    128|   await expect(preparePrivatePreviewRequest(incoming, options())).reso…
+       |                                                                  ^
+    129| });
+    130| it('does not accept a non-browser cookie without Origin or Fetch Metad…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > does not accept a non-browser cookie without Origin or Fetch Metadata
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:134:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > denies anonymous valid, malformed and duplicated scopes before revealing scope errors
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:138:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > keeps foreign-Origin cookie rejection and authenticated cross-site rejection separate
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:145:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > does not use Host or forwarded origin headers to authorize a foreign origin
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:165:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > validates source collection/page/locale and never returns a Native document to the caller
+AssertionError: expected 503 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:186:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > rejects duplicate returnTo and query attempts to override a path scope after Native authentication
+AssertionError: expected 503 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:211:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > allows a safe return path and framework RSC marker without making either an authority selector
+AssertionError: expected Response { status: 503, statusText: '', headers: Headers { 'Cache-Control': 'private, no-store, max-age=0', 'X-Robots-Tag': 'noindex, nofollow', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' }, body: null, bodyUsed: false, ok: false, redirected: false, type: 'default', url: '' } to be null
+
+- Expected:
+null
+
++ Received:
+Response {}
+
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:224:4
+    222|       options(),
+    223|     ),
+    224|   ).resolves.toBeNull();
+       |    ^
+    225|   await denied(
+    226|     await preparePrivatePreviewRequest(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > denies unsupported methods before Next and does not parse a request body as preview scope
+AssertionError: expected null to be 'GET, HEAD' // Object.is equality
+
+- Expected:
+"GET, HEAD"
+
++ Received:
+null
+
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:239:44
+    237|       options(),
+    238|     );
+    239|     expect(response?.headers.get('allow')).toBe('GET, HEAD');
+       |                                            ^
+    240|     await denied(response, 405);
+    241|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > never returns null for a path outside its owned private surface
+AssertionError: expected 503 to be 404 // Object.is equality
+
+- Expected
++ Received
+
+- 404
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:251:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > does not read a document for a duplicated authenticated query or trust a forged public context
+AssertionError: expected 503 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:258:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > keeps anonymous HEAD empty and fails closed for an invalid configured logical origin
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:277:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > returns Native context only through the server-only Page reauthorization API
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:293:21
+    291| it('returns Native context only through the server-only Page reauthori…
+    292|   const result = await authorizePrivatePreviewRequest(request(), optio…
+    293|   expect(result.ok).toBe(true);
+       |                     ^
+    294|   if (!result.ok) throw new Error('Expected independently authorized p…
+    295|   expect(result.value.scope).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/22]⎯
+
+ FAIL  |integration| src/config/prepare-private-preview-request.integration.test.ts > rejects the same Native session after revocation before the private Page runs
+AssertionError: expected 503 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 503
+
+ ❯ denied src/config/prepare-private-preview-request.integration.test.ts:39:28
+     37| async function denied(response: Response | null, status: number) {
+     38|   expect(response).not.toBeNull();
+     39|   expect(response!.status).toBe(status);
+       |                            ^
+     40|   expect(response!.headers.get('cache-control')).toContain('private');
+     41|   expect(response!.headers.get('cache-control')).toContain('no-store');
+ ❯ src/config/prepare-private-preview-request.integration.test.ts:312:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/22]⎯
+
+ FAIL  |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual home to a closed private scope
+AssertionError: expected '/preview' to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+
+Expected: "/preview-ui/pt/professional-profiles/85a52e2e-8f40-4efc-bb97-af820ca29b18/home"
+Received: "/preview"
+
+ ❯ src/helpers/payload/preview-visual-upgrade.integration.test.ts:151:29
+    149|     const target = new URL(response.headers.get('location')!);
+    150|     expect(target.origin).toBe(new URL(origin()).origin);
+    151|     expect(target.pathname).toBe(`/preview-ui/pt/professional-profiles…
+       |                             ^
+    152|     expect(target.searchParams.get('returnTo')).toBe('/pt');
+    153|     expect([...target.searchParams.keys()]).toEqual(['returnTo']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/22]⎯
+
+ FAIL  |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual about to a closed private scope
+AssertionError: expected '/preview' to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+
+Expected: "/preview-ui/pt/professional-profiles/85a52e2e-8f40-4efc-bb97-af820ca29b18/about"
+Received: "/preview"
+
+ ❯ src/helpers/payload/preview-visual-upgrade.integration.test.ts:151:29
+    149|     const target = new URL(response.headers.get('location')!);
+    150|     expect(target.origin).toBe(new URL(origin()).origin);
+    151|     expect(target.pathname).toBe(`/preview-ui/pt/professional-profiles…
+       |                             ^
+    152|     expect(target.searchParams.get('returnTo')).toBe('/pt');
+    153|     expect([...target.searchParams.keys()]).toEqual(['returnTo']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/22]⎯
+
+ FAIL  |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > redirects an authorized profile visual cases to a closed private scope
+AssertionError: expected '/preview' to be '/preview-ui/pt/professional-profiles/…' // Object.is equality
+
+Expected: "/preview-ui/pt/professional-profiles/85a52e2e-8f40-4efc-bb97-af820ca29b18/cases"
+Received: "/preview"
+
+ ❯ src/helpers/payload/preview-visual-upgrade.integration.test.ts:151:29
+    149|     const target = new URL(response.headers.get('location')!);
+    150|     expect(target.origin).toBe(new URL(origin()).origin);
+    151|     expect(target.pathname).toBe(`/preview-ui/pt/professional-profiles…
+       |                             ^
+    152|     expect(target.searchParams.get('returnTo')).toBe('/pt');
+    153|     expect([...target.searchParams.keys()]).toEqual(['returnTo']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/22]⎯
+
+ FAIL  |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > supports a navigation draft visual scope and a case visual scope without requiring public slugs
+AssertionError: expected '/preview' to be '/preview-ui/pt/site-navigation/cc83cc…' // Object.is equality
+
+Expected: "/preview-ui/pt/site-navigation/cc83ccba-0bb6-47c3-a5fc-d5557ae86339/home"
+Received: "/preview"
+
+ ❯ src/helpers/payload/preview-visual-upgrade.integration.test.ts:168:29
+    166|     expect(response.status).toBe(307);
+    167|     const target = new URL(response.headers.get('location')!);
+    168|     expect(target.pathname).toBe(`/preview-ui/pt/${collection}/${id}/$…
+       |                             ^
+    169|     expect(target.search).toBe('');
+    170|     expect(await response.text()).toBe('');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/22]⎯
+
+ FAIL  |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > rejects an unsupported collection/page combination and preserves auth-first behavior
+AssertionError: expected 307 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 307
+
+ ❯ safeFailure src/helpers/payload/preview-visual-upgrade.integration.test.ts:28:27
+     26| }
+     27| async function safeFailure(response: Response, status: number) {
+     28|   expect(response.status).toBe(status);
+       |                           ^
+     29|   expect(response.headers.get('cache-control')).toContain('no-store');
+     30|   expect(response.headers.get('x-robots-tag')).toContain('noindex');
+ ❯ src/helpers/payload/preview-visual-upgrade.integration.test.ts:180:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/22]⎯
+
+ FAIL  |integration| src/helpers/payload/preview-visual-upgrade.integration.test.ts > rejects duplicate controlled parameters before any ambiguous document lookup, after Native auth
+AssertionError: expected 307 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 307
+
+ ❯ safeFailure src/helpers/payload/preview-visual-upgrade.integration.test.ts:28:27
+     26| }
+     27| async function safeFailure(response: Response, status: number) {
+     28|   expect(response.status).toBe(status);
+       |                           ^
+     29|   expect(response.headers.get('cache-control')).toContain('no-store');
+     30|   expect(response.headers.get('x-robots-tag')).toContain('noindex');
+ ❯ src/helpers/payload/preview-visual-upgrade.integration.test.ts:195:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/22]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  22 failed | 4 passed (26)
+   Start at  19:02:01
+   Duration  11.33s (import 72%, tests 21%, transform 4%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

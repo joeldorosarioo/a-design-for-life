@@ -1,0 +1,376 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/server/select-case-state-presentation.test.ts (8 tests | 7 failed) 50ms
+   × selects editable pt/404 copy and current contacts exclusively from its supplied confirmed root 15ms
+   × selects editable pt/410 copy and current contacts exclusively from its supplied confirmed root 2ms
+   × selects editable pt/503 copy and current contacts exclusively from its supplied confirmed root 2ms
+   × selects editable en/404 copy and current contacts exclusively from its supplied confirmed root 1ms
+   × selects editable en/410 copy and current contacts exclusively from its supplied confirmed root 1ms
+   × selects editable en/503 copy and current contacts exclusively from its supplied confirmed root 1ms
+   × keeps a captured real filesystem root A after current is promoted to B, and allows the next selection to use B 25ms
+ ❯ |unit| src/features/cases/server/case-route-response.editorial.test.ts (11 tests | 7 failed) 54ms
+   × renders confirmed pt/404 copy, four destinations and current footer contact without an App Page 25ms
+   × renders confirmed pt/410 copy, four destinations and current footer contact without an App Page 5ms
+   × renders confirmed pt/503 copy, four destinations and current footer contact without an App Page 4ms
+   × renders confirmed en/404 copy, four destinations and current footer contact without an App Page 4ms
+   × renders confirmed en/410 copy, four destinations and current footer contact without an App Page 4ms
+   × renders confirmed en/503 copy, four destinations and current footer contact without an App Page 3ms
+   × escapes all editorial text and attribute boundaries, including header/footer labels 5ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > renders confirmed pt/404 copy, four destinations and current footer contact without an App Page
+AssertionError: expected 'Case não encontrado' to be 'pt EDITORIAL 404' // Object.is equality
+
+Expected: "pt EDITORIAL 404"
+Received: "Case não encontrado"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:37:62
+     35|       const document = new DOMParser().parseFromString(html, 'text/htm…
+     36|       expect(document.documentElement.lang).toBe(locale);
+     37|       expect(document.querySelector('main h1')?.textContent).toBe(valu…
+       |                                                              ^
+     38|       expect(document.querySelector('main p')?.textContent).toBe(value…
+     39|       expect(document.querySelector('link[rel="stylesheet"]')?.getAttr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > renders confirmed pt/410 copy, four destinations and current footer contact without an App Page
+AssertionError: expected 'Case indisponível' to be 'pt EDITORIAL 410' // Object.is equality
+
+Expected: "pt EDITORIAL 410"
+Received: "Case indisponível"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:37:62
+     35|       const document = new DOMParser().parseFromString(html, 'text/htm…
+     36|       expect(document.documentElement.lang).toBe(locale);
+     37|       expect(document.querySelector('main h1')?.textContent).toBe(valu…
+       |                                                              ^
+     38|       expect(document.querySelector('main p')?.textContent).toBe(value…
+     39|       expect(document.querySelector('link[rel="stylesheet"]')?.getAttr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/14]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > renders confirmed pt/503 copy, four destinations and current footer contact without an App Page
+AssertionError: expected 'Case indisponível' to be 'pt EDITORIAL 503' // Object.is equality
+
+Expected: "pt EDITORIAL 503"
+Received: "Case indisponível"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:37:62
+     35|       const document = new DOMParser().parseFromString(html, 'text/htm…
+     36|       expect(document.documentElement.lang).toBe(locale);
+     37|       expect(document.querySelector('main h1')?.textContent).toBe(valu…
+       |                                                              ^
+     38|       expect(document.querySelector('main p')?.textContent).toBe(value…
+     39|       expect(document.querySelector('link[rel="stylesheet"]')?.getAttr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/14]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > renders confirmed en/404 copy, four destinations and current footer contact without an App Page
+AssertionError: expected 'Case not found' to be 'en EDITORIAL 404' // Object.is equality
+
+Expected: "en EDITORIAL 404"
+Received: "Case not found"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:37:62
+     35|       const document = new DOMParser().parseFromString(html, 'text/htm…
+     36|       expect(document.documentElement.lang).toBe(locale);
+     37|       expect(document.querySelector('main h1')?.textContent).toBe(valu…
+       |                                                              ^
+     38|       expect(document.querySelector('main p')?.textContent).toBe(value…
+     39|       expect(document.querySelector('link[rel="stylesheet"]')?.getAttr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/14]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > renders confirmed en/410 copy, four destinations and current footer contact without an App Page
+AssertionError: expected 'Case unavailable' to be 'en EDITORIAL 410' // Object.is equality
+
+Expected: "en EDITORIAL 410"
+Received: "Case unavailable"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:37:62
+     35|       const document = new DOMParser().parseFromString(html, 'text/htm…
+     36|       expect(document.documentElement.lang).toBe(locale);
+     37|       expect(document.querySelector('main h1')?.textContent).toBe(valu…
+       |                                                              ^
+     38|       expect(document.querySelector('main p')?.textContent).toBe(value…
+     39|       expect(document.querySelector('link[rel="stylesheet"]')?.getAttr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/14]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > renders confirmed en/503 copy, four destinations and current footer contact without an App Page
+AssertionError: expected 'Case unavailable' to be 'en EDITORIAL 503' // Object.is equality
+
+Expected: "en EDITORIAL 503"
+Received: "Case unavailable"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:37:62
+     35|       const document = new DOMParser().parseFromString(html, 'text/htm…
+     36|       expect(document.documentElement.lang).toBe(locale);
+     37|       expect(document.querySelector('main h1')?.textContent).toBe(valu…
+       |                                                              ^
+     38|       expect(document.querySelector('main p')?.textContent).toBe(value…
+     39|       expect(document.querySelector('link[rel="stylesheet"]')?.getAttr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/14]⎯
+
+ FAIL  |unit| src/features/cases/server/case-route-response.editorial.test.ts > escapes all editorial text and attribute boundaries, including header/footer labels
+AssertionError: expected 'Case não encontrado' to be '<script>PRIVATE TITLE</script>' // Object.is equality
+
+Expected: "<script>PRIVATE TITLE</script>"
+Received: "Case não encontrado"
+
+ ❯ src/features/cases/server/case-route-response.editorial.test.ts:89:53
+     87|   const document = new DOMParser().parseFromString(html, 'text/html');
+     88|   expect(document.querySelector('script,[onclick],[onerror]')).toBeNul…
+     89|   expect(document.querySelector('h1')?.textContent).toBe(value.title);
+       |                                                     ^
+     90|   expect(document.querySelector('main p')?.textContent).toBe(value.des…
+     91|   expect(document.querySelector('footer h2')?.textContent).toBe(value.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > selects editable pt/404 copy and current contacts exclusively from its supplied confirmed root
+AssertionError: expected null to match object { locale: 'pt', status: 404, …(3) }
+
+- Expected:
+{
+  "description": "A404 DESCRIPTION",
+  "locale": "pt",
+  "navigation": {
+    "brand": {
+      "label": "A BRAND",
+    },
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A FOOTER",
+    },
+  },
+  "status": 404,
+  "title": "A pt404",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:100:24
+     98|         root: snapshot('A', locale),
+     99|       });
+    100|       expect(selected).toMatchObject({
+       |                        ^
+    101|         locale,
+    102|         status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > selects editable pt/410 copy and current contacts exclusively from its supplied confirmed root
+AssertionError: expected null to match object { locale: 'pt', status: 410, …(3) }
+
+- Expected:
+{
+  "description": "A410 DESCRIPTION",
+  "locale": "pt",
+  "navigation": {
+    "brand": {
+      "label": "A BRAND",
+    },
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A FOOTER",
+    },
+  },
+  "status": 410,
+  "title": "A pt410",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:100:24
+     98|         root: snapshot('A', locale),
+     99|       });
+    100|       expect(selected).toMatchObject({
+       |                        ^
+    101|         locale,
+    102|         status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > selects editable pt/503 copy and current contacts exclusively from its supplied confirmed root
+AssertionError: expected null to match object { locale: 'pt', status: 503, …(3) }
+
+- Expected:
+{
+  "description": "A503 DESCRIPTION",
+  "locale": "pt",
+  "navigation": {
+    "brand": {
+      "label": "A BRAND",
+    },
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A FOOTER",
+    },
+  },
+  "status": 503,
+  "title": "A pt503",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:100:24
+     98|         root: snapshot('A', locale),
+     99|       });
+    100|       expect(selected).toMatchObject({
+       |                        ^
+    101|         locale,
+    102|         status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > selects editable en/404 copy and current contacts exclusively from its supplied confirmed root
+AssertionError: expected null to match object { locale: 'en', status: 404, …(3) }
+
+- Expected:
+{
+  "description": "A404 DESCRIPTION",
+  "locale": "en",
+  "navigation": {
+    "brand": {
+      "label": "A BRAND",
+    },
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A FOOTER",
+    },
+  },
+  "status": 404,
+  "title": "A en404",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:100:24
+     98|         root: snapshot('A', locale),
+     99|       });
+    100|       expect(selected).toMatchObject({
+       |                        ^
+    101|         locale,
+    102|         status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > selects editable en/410 copy and current contacts exclusively from its supplied confirmed root
+AssertionError: expected null to match object { locale: 'en', status: 410, …(3) }
+
+- Expected:
+{
+  "description": "A410 DESCRIPTION",
+  "locale": "en",
+  "navigation": {
+    "brand": {
+      "label": "A BRAND",
+    },
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A FOOTER",
+    },
+  },
+  "status": 410,
+  "title": "A en410",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:100:24
+     98|         root: snapshot('A', locale),
+     99|       });
+    100|       expect(selected).toMatchObject({
+       |                        ^
+    101|         locale,
+    102|         status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > selects editable en/503 copy and current contacts exclusively from its supplied confirmed root
+AssertionError: expected null to match object { locale: 'en', status: 503, …(3) }
+
+- Expected:
+{
+  "description": "A503 DESCRIPTION",
+  "locale": "en",
+  "navigation": {
+    "brand": {
+      "label": "A BRAND",
+    },
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A FOOTER",
+    },
+  },
+  "status": 503,
+  "title": "A en503",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:100:24
+     98|         root: snapshot('A', locale),
+     99|       });
+    100|       expect(selected).toMatchObject({
+       |                        ^
+    101|         locale,
+    102|         status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/14]⎯
+
+ FAIL  |unit| src/features/cases/server/select-case-state-presentation.test.ts > keeps a captured real filesystem root A after current is promoted to B, and allows the next selection to use B
+AssertionError: expected null to match object { title: 'A pt404', …(1) }
+
+- Expected:
+{
+  "navigation": {
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+  },
+  "title": "A pt404",
+}
+
++ Received:
+null
+
+ ❯ src/features/cases/server/select-case-state-presentation.test.ts:123:5
+    121|   expect(
+    122|     await selectCaseStatePresentation({ locale: 'pt', status: 404, roo…
+    123|   ).toMatchObject({ title: 'A pt404', navigation: { contacts: { email:…
+       |     ^
+    124|   expect(
+    125|     await selectCaseStatePresentation({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/14]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  14 failed | 11 passed (25)
+   Start at  20:32:38
+   Duration  2.14s (import 51%, environment 23%, setup 17%, transform 6%, tests 3%)
+

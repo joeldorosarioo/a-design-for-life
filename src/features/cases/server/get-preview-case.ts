@@ -16,6 +16,7 @@ const select = {
   summary: true,
   introduction: true,
   cover: true,
+  coverPresentation: true,
   role: true,
   scope: true,
   contextNote: true,

@@ -43,6 +43,8 @@ export async function getPreviewCases(
         eyebrow: true,
         title: true,
         titleEmphasis: true,
+        cardTitle: true,
+        cardEyebrow: true,
         summary: true,
         cover: true,
       },

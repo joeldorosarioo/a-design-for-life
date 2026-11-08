@@ -114,7 +114,7 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
       type: 'group',
       fields: [
         { name: 'eyebrow', label: 'Identificação editorial', type: 'text' },
-        { name: 'title', label: 'Título', type: 'text' },
+        { name: 'title', label: 'Título', type: 'textarea' },
         { name: 'description', label: 'Descrição', type: 'textarea' },
         { name: 'emailLabel', label: 'Rótulo de e-mail', type: 'text' },
         { name: 'linkedinLabel', label: 'Rótulo de LinkedIn', type: 'text' },
@@ -130,6 +130,15 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
         { name: 'caseLinkLabel', label: 'Rótulo da ação para abrir um card de case', type: 'text' },
         { name: 'homeLabel', type: 'text' },
         { name: 'casesLabel', type: 'text' },
+        {
+          name: 'backToProjectsLabel',
+          label: 'Rótulo de retorno aos projetos (opcional)',
+          type: 'text',
+          admin: {
+            description:
+              'Ação de retorno no detalhe, independente do nome usado na contagem de cases.',
+          },
+        },
         { name: 'contentsLabel', type: 'text' },
         { name: 'previousSectionLabel', type: 'text' },
         { name: 'nextSectionLabel', type: 'text' },

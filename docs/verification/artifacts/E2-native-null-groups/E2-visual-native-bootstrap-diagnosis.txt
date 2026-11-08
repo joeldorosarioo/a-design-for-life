@@ -1,0 +1,4 @@
+{"ok":false,"code":"private-visual-fixture-failed","stage":"first-loader","category":"child","sensitiveDetailsOmitted":true,"child":{"ok":false,"code":"private-visual-fixture-failed","stage":"draft-write","category":"native","sensitiveDetailsOmitted":true}}
+Error running script: C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-reference\private-visual-fixture\technical-test\bootstrap-technical.cli.mjs
+Error: Technical visual fixture failed; private state retained for review.
+    at <anonymous> (C:\Users\joeld\Documents\Codex\2026-10-29\quero-iniciar-a-implementa-o-do\work\stage2-reference\private-visual-fixture\technical-test\bootstrap-technical.cli.mjs:524:9)

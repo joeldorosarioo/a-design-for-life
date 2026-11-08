@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "node": "24.22.2",
+  "command": "pnpm exec vitest run --project unit src/config/public-render-context.test.ts src/proxy.test.ts",
+  "recordedAt": "2026-10-31T00:01:28.4094864Z"
+}

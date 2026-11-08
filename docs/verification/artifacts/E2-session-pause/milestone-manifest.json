@@ -1,0 +1,94 @@
+{
+  "recordedAt": "2026-10-31T01:24:33.231Z",
+  "currentItemCommit": "c3b4860ce10af98e69e80a21335130ad413dda88",
+  "branch": "develop",
+  "userRequestedPause": true,
+  "stage2Complete": false,
+  "a2Delivered": false,
+  "focusedCurrentUnit": {
+    "passed": 44,
+    "files": 6,
+    "exitCode": 0
+  },
+  "css": {
+    "passed": 2,
+    "exitCode": 0
+  },
+  "cardNative": {
+    "passed": 6,
+    "exitCode": 0,
+    "scope": "Separate real Payload/PostgreSQL database; exact thirteen frozen sources verified before commit"
+  },
+  "axe": {
+    "analyses": 27,
+    "pages": 18,
+    "violations": 0,
+    "incomplete": 36,
+    "manualComplete": false
+  },
+  "failures": [
+    "First axe wrapper failed before browser launch because dynamic import of the CJS Playwright entry did not expose chromium; loader corrected, real27 analyses succeeded. This is not product RED.",
+    "Computer Use app access approval timed out; no manual screen-reader inspection occurred.",
+    "Headed session intentionally interrupted when pausing; shell exit1, no owned browser left."
+  ],
+  "services": {
+    "nextListeners3100": 0,
+    "ownedBrowsersRemaining": 0,
+    "testContainerPaused": true
+  },
+  "checkpoint": {
+    "bytes": 178810,
+    "sha256": "BCA1308A60326F38828616D5549FFF6B8B81519ED52E98CEB620014DB82BDD1D",
+    "catalogReadable": true,
+    "restoreTestExecuted": false
+  },
+  "pending": [
+    "Fresh aggregate pnpm verify/full browser regression/LinuxCI",
+    "Apply additive card migration and approved private fixture mapping, then rebuild",
+    "Visual corrections and affected captures",
+    "Manual accessibility including actual screen reader",
+    "Initial performance diagnostic and final A2 packet"
+  ],
+  "exports": [
+    {
+      "file": "E2-session-pause-unit-current.txt",
+      "originalSha256": "135b4df610ea7d3707d8524ecc0184ba7e96808ac90da099590e5456c5620776",
+      "exportedSha256": "135b4df610ea7d3707d8524ecc0184ba7e96808ac90da099590e5456c5620776"
+    },
+    {
+      "file": "E2-session-pause-unit-current-result.json",
+      "originalSha256": "11a539a04a80fb029e32dc6be7bc185784a4a58283b106e647366d8c006e08f4",
+      "exportedSha256": "11a539a04a80fb029e32dc6be7bc185784a4a58283b106e647366d8c006e08f4"
+    },
+    {
+      "file": "E2-session-pause-css-current.txt",
+      "originalSha256": "3219354b76b93fe76c5918a4287b3bae44a881e6203d543f23edbade1f2649a0",
+      "exportedSha256": "3219354b76b93fe76c5918a4287b3bae44a881e6203d543f23edbade1f2649a0"
+    },
+    {
+      "file": "E2-session-pause-css-current-result.json",
+      "originalSha256": "d03afa7e427704da3a62b31fbaeec797f157b4982d93e0df5ead8c687e76dfd8",
+      "exportedSha256": "d03afa7e427704da3a62b31fbaeec797f157b4982d93e0df5ead8c687e76dfd8"
+    },
+    {
+      "file": "E2-private-axe-first.txt",
+      "originalSha256": "50b2b4172ca33dca06974c26cd84d4008ff63c93d323eb29b1f25813be540765",
+      "exportedSha256": "50b2b4172ca33dca06974c26cd84d4008ff63c93d323eb29b1f25813be540765"
+    },
+    {
+      "file": "E2-private-axe-first-result.json",
+      "originalSha256": "982fb36fe5ecff34efc6fec94696434f47ee6a5c602f79a9d32f3d006515ec80",
+      "exportedSha256": "982fb36fe5ecff34efc6fec94696434f47ee6a5c602f79a9d32f3d006515ec80"
+    },
+    {
+      "file": "axe-actual-first.log",
+      "originalSha256": "188e4578f269b62e0d99449a75057d75fa37518479022c0ca4e181f557ce637f",
+      "exportedSha256": "188e4578f269b62e0d99449a75057d75fa37518479022c0ca4e181f557ce637f"
+    },
+    {
+      "file": "axe-actual-first-result.json",
+      "originalSha256": "432decbb9775c91bb39c5a6cd13df3ef7621c1a4599e94be0f06bf1dc24f710d",
+      "exportedSha256": "432decbb9775c91bb39c5a6cd13df3ef7621c1a4599e94be0f06bf1dc24f710d"
+    }
+  ]
+}

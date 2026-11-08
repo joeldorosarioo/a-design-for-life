@@ -1,0 +1,59 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-image.test.tsx (3 tests | 3 failed) 26ms
+   × uses only the protected original, dimensions, sizes and literal caption 21ms
+   × bypasses the anonymous optimizer for protected previews and honors decorative classification 2ms
+   × keeps paired images and labels in editorial order with stable reading identity 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-image.test.tsx > uses only the protected original, dimensions, sizes and literal caption
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-image.test.tsx:14:15
+     12|   const { container } = render(<CaseImage image={image} kind="cover" /…
+     13|   const img = screen.queryByRole('img', { name: 'Localized first image…
+     14|   expect(img).toBeInTheDocument();
+       |               ^
+     15|   const source = new URL(img!.getAttribute('src')!, 'http://localhost'…
+     16|   expect(source.searchParams.get('url') ?? source.pathname).toBe('/med…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |unit| src/features/cases/components/case-image.test.tsx > bypasses the anonymous optimizer for protected previews and honors decorative classification
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-image.test.tsx:26:42
+     24| it('bypasses the anonymous optimizer for protected previews and honors…
+     25|   const { container } = render(<CaseImage image={{ ...image, decorativ…
+     26|   expect(container.querySelector('img')).toHaveAttribute('src', '/prev…
+       |                                          ^
+     27|   expect(container.querySelector('img')).toHaveAttribute('alt', '');
+     28|   expect(container.querySelector('img')).not.toHaveAttribute('srcset');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |unit| src/features/cases/components/case-image.test.tsx > keeps paired images and labels in editorial order with stable reading identity
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-image.test.tsx:34:72
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  16:54:18
+   Duration  1.27s (environment 71%, setup 18%, import 6%, transform 3%, tests 2%)
+

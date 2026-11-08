@@ -34,6 +34,7 @@ export const caseSectionPresentationSchema = z.enum([
   'comparison',
   'learnings',
 ]);
+export const caseCoverPresentationSchema = z.enum(['contained-cherry', 'contained-soft']);
 export const caseSectionInputSchema = z.strictObject({
   ...row,
   presentation: caseSectionPresentationSchema.nullish(),
@@ -50,10 +51,13 @@ export const caseInputSchema = z.strictObject({
   eyebrow: text,
   title: text,
   titleEmphasis: text,
+  cardTitle: text,
+  cardEyebrow: text,
   summary: text,
   introduction: text,
   slug: draftSlugSchema,
   cover: imageUseInputSchema.nullish(),
+  coverPresentation: caseCoverPresentationSchema.nullish(),
   role: text,
   scope: text,
   contextNote: text,

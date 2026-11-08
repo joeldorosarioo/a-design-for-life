@@ -1,0 +1,12 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+
+ Test Files  20 passed (20)
+      Tests  163 passed (163)
+   Start at  17:12:18
+   Duration  5.96s (import 35%, environment 29%, setup 24%, tests 9%, transform 2%)
+
+    Isolate  20 workers spawned · ~906ms startup each (spawn + environment, per file)
+             at least ~741ms faster with isolate: false — reuses workers across files instead of one per file
+

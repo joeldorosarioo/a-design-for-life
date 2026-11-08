@@ -1,0 +1,22 @@
+{
+  "extends": "E:/a-design-for-life/tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "noEmit": true
+  },
+  "include": [
+    "E:/a-design-for-life/src/config/public-render-context.ts",
+    "E:/a-design-for-life/src/config/public-render-context.test.ts",
+    "E:/a-design-for-life/src/config/public-render-context.integration.test.ts",
+    "E:/a-design-for-life/src/proxy.ts",
+    "E:/a-design-for-life/src/proxy.test.ts",
+    "E:/a-design-for-life/src/config/server-env.ts",
+    "E:/a-design-for-life/src/config/server-env.test.ts",
+    "E:/a-design-for-life/src/helpers/payload/published-read-response.ts",
+    "E:/a-design-for-life/src/helpers/payload/published-read-response.test.ts",
+    "E:/a-design-for-life/src/features/cases/server/resolve-case-route.ts",
+    "E:/a-design-for-life/src/features/cases/server/resolve-case-route.integration.test.ts",
+    "E:/a-design-for-life/src/features/cases/server.ts",
+    "E:/a-design-for-life/next-env.d.ts"
+  ]
+}

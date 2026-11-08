@@ -16,9 +16,20 @@ export function CaseContents({ entries, label }: { entries: CaseContentsEntry[];
       if (entries.some((entry) => entry.anchor === anchor)) setActiveAnchor(anchor);
     };
     followHash();
+    const resetBeforeArticle = () => {
+      const first = entries[0];
+      const section = first && document.getElementById(first.anchor);
+      if (first && section && section.getBoundingClientRect().top > 0)
+        setActiveAnchor(first.anchor);
+    };
     window.addEventListener('hashchange', followHash);
+    // Both footer and opening can be outside every observed article section.
+    window.addEventListener('scroll', resetBeforeArticle, { passive: true });
     if (typeof IntersectionObserver === 'undefined')
-      return () => window.removeEventListener('hashchange', followHash);
+      return () => {
+        window.removeEventListener('hashchange', followHash);
+        window.removeEventListener('scroll', resetBeforeArticle);
+      };
     const visible = new Map<string, number>();
     const observer = new IntersectionObserver(
       (changes) => {
@@ -28,6 +39,7 @@ export function CaseContents({ entries, label }: { entries: CaseContentsEntry[];
         }
         const closest = [...visible].sort((a, b) => Math.abs(a[1]) - Math.abs(b[1]))[0];
         if (closest) setActiveAnchor(closest[0]);
+        else resetBeforeArticle();
       },
       { rootMargin: '-10% 0px -65% 0px', threshold: 0 },
     );
@@ -37,6 +49,7 @@ export function CaseContents({ entries, label }: { entries: CaseContentsEntry[];
     }
     return () => {
       window.removeEventListener('hashchange', followHash);
+      window.removeEventListener('scroll', resetBeforeArticle);
       observer.disconnect();
     };
   }, [entries]);

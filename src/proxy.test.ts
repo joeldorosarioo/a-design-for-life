@@ -1,9 +1,14 @@
+import { z } from 'zod';
+import { mapCaseDetail, renderCaseRouteResponse } from '@/features/cases/server';
+import { mapProfile } from '@/features/professional-profile/server';
+import type { PublicRoot } from '@/helpers/payload/public-root';
 import { createHmac, randomUUID } from 'node:crypto';
 import { createServer, type Server } from 'node:http';
 import { rm } from 'node:fs/promises';
 import path from 'node:path';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { NextRequest } from 'next/server';
+import { NextURL } from 'next/dist/server/web/next-url';
 import { unstable_doesMiddlewareMatch } from 'next/experimental/testing/server';
 import { readServerEnv } from './config/server-env';
 import { publicRootDirectory } from './helpers/payload/public-root-directory';
@@ -93,6 +98,76 @@ afterEach(async () => {
   await rm(resolved, { recursive: true, force: true });
   vi.unstubAllEnvs();
 });
+it.each(['GET', 'HEAD'] as const)(
+  'emits a confirmed historical %s redirect consumable by Next on the configured origin despite forged Host headers',
+  async (method) => {
+    configure({
+      NODE_ENV: 'production',
+      APP_ENV: 'production',
+      SITE_ORIGIN: 'https://portfolio.example.invalid',
+    });
+    const caseId = randomUUID();
+    const contentId = randomUUID();
+    await withPublicRootWriter(directory, async (_current, commit) =>
+      commit({
+        generation: randomUUID(),
+        subjects: {
+          [`case-content/${contentId}`]: {
+            operationId: randomUUID(),
+            targetRevision: randomUUID(),
+            value: z.json().parse({
+              kind: 'case',
+              caseId,
+              contentId,
+              locale: 'pt',
+              slug: 'current-case',
+              slugs: ['historical-case', 'current-case'],
+              detail: mapCaseDetail({
+                id: contentId,
+                case: caseId,
+                locale: 'pt',
+                slug: 'current-case',
+                title: 'Confirmed case',
+                summary: 'Confirmed summary',
+                _status: 'published',
+                createdAt: '',
+                updatedAt: '',
+              }),
+            }),
+          },
+        },
+      }),
+    );
+    const incoming = request('/pt/cases/historical-case?generation=FORGED', {
+      method,
+      headers: {
+        host: 'forged-host.invalid',
+        'x-forwarded-host': 'forged-forwarded.invalid',
+        'x-forwarded-proto': 'http',
+        forwarded: 'host=forged-forwarded.invalid;proto=http',
+      },
+    });
+    const response = await proxy(incoming);
+    expect(response.status).toBe(308);
+    const location = response.headers.get('location')!;
+    // Next's redirect adapter consumes Location without a base URL.
+    expect(
+      () =>
+        new NextURL(location, {
+          forceLocale: false,
+          headers: Object.fromEntries(incoming.headers),
+        }),
+    ).not.toThrow();
+    expect(location).toBe('https://portfolio.example.invalid/pt/cases/current-case');
+    expect(response.headers.get('cache-control')).toBe('no-store, max-age=0');
+    expect(response.headers.get('x-middleware-next')).toBeNull();
+    expect(response.headers.has('x-middleware-override-headers')).toBe(false);
+    expect(response.headers.has(PUBLIC_RENDER_CONTEXT_HEADER)).toBe(false);
+    expect(response.headers.get('set-cookie')).toBeNull();
+    expect(await response.text()).toBe('');
+    expect(nativeCalls).toBe(0);
+  },
+);
 it('passes a signed404 through Next.next while replacing forged incoming context', async () => {
   const response = await proxy(
     request('/pt/about', {
@@ -369,4 +444,150 @@ it('fails closed before Next when private authentication is unavailable and igno
   expect(response.headers.get('set-cookie')).toBeNull();
   expect(await response.text()).toBe('');
   expect(nativeCalls).toBe(1);
+});
+
+// Missing case-order coverage makes getPublishedCase unavailable for503; no fake Native classification.
+function editorialNegativeRoot(status: 404 | 410 | 503): PublicRoot {
+  const caseId = randomUUID(),
+    contentId = randomUUID();
+  const entry = (value: unknown) => ({
+    operationId: randomUUID(),
+    targetRevision: randomUUID(),
+    value: z.json().parse(value),
+  });
+  return {
+    generation: randomUUID(),
+    subjects: {
+      [`case-content/${contentId}`]: entry({
+        kind: 'case',
+        caseId,
+        contentId,
+        locale: 'pt',
+        slug: status === 410 ? null : 'current-case',
+        slugs: ['current-case'],
+        detail:
+          status === 410
+            ? null
+            : mapCaseDetail({
+                id: contentId,
+                case: caseId,
+                locale: 'pt',
+                slug: 'current-case',
+                title: 'CASE BODY PRIVATE MARKER',
+                summary: 'Confirmed summary',
+                _status: 'published',
+                createdAt: '',
+                updatedAt: '',
+              }),
+      }),
+      [`professional-profiles/${randomUUID()}`]: entry({
+        kind: 'profile',
+        locale: 'pt',
+        profile: mapProfile({
+          id: randomUUID(),
+          locale: 'pt',
+          _status: 'published',
+          contacts: {
+            email: 'current@example.invalid',
+            linkedin: 'https://www.linkedin.com/in/confirmed',
+          },
+          resume: mediaId,
+          createdAt: '',
+          updatedAt: '',
+        }),
+      }),
+      [`site-navigation/${randomUUID()}`]: entry({
+        kind: 'navigation',
+        locale: 'pt',
+        navigation: {
+          locale: 'pt',
+          header: {
+            brandLabel: 'EDITORIAL BRAND',
+            projectsLabel: 'Projects',
+            aboutLabel: 'About',
+            resumeLabel: 'Resume',
+            contactLabel: 'Contact',
+          },
+          footer: {
+            title: 'CURRENT FOOTER',
+            emailLabel: 'Email',
+            linkedinLabel: 'LinkedIn',
+            resumeLabel: 'Resume',
+          },
+          controls: {
+            newTabLabel: 'New tab',
+            openMenuLabel: 'Open',
+            closeMenuLabel: 'Close',
+            languageLabel: 'Language',
+          },
+          messages: {
+            notFoundTitle: 'EDITORIAL404',
+            caseUnavailableTitle: 'EDITORIAL410',
+            temporaryFailureTitle: 'EDITORIAL503',
+          },
+        },
+      }),
+    },
+  };
+}
+it.each([404, 410, 503] as const)(
+  'renders current editorial case%s directly, preserving HEAD/conditionals and excluding request identity',
+  async (status) => {
+    await withPublicRootWriter(directory, async (_current, commit) =>
+      commit(editorialNegativeRoot(status)),
+    );
+    const slug = status === 404 ? 'UPPER-PRIVATE' : 'current-case';
+    const get = await proxy(
+      request(`/pt/cases/${slug}?generation=FORGED`, {
+        headers: {
+          rsc: '1',
+          'next-url': `/pt/cases/${slug}`,
+          [PUBLIC_RENDER_CONTEXT_HEADER]: 'FORGED SECRET',
+        },
+      }),
+    );
+    expect(get.status).toBe(status);
+    expect(get.headers.get('x-middleware-next')).toBeNull();
+    expect(get.headers.get('cache-control')).toBe('no-store, max-age=0');
+    expect(get.headers.get('x-robots-tag')).toBe('noindex, nofollow');
+    if (status === 503) expect(get.headers.get('retry-after')).toBe('60');
+    const html = await get.text();
+    expect(html).toContain(`EDITORIAL${status}`);
+    expect(html).toContain('CURRENT FOOTER');
+    expect(html).toContain('mailto:current@example.invalid');
+    expect(html).toContain(`href="/media/${mediaId}/original"`);
+    expect(html).toContain('id="contact"');
+    expect(html).not.toMatch(
+      /CASE BODY PRIVATE MARKER|UPPER-PRIVATE|current-case|FORGED|x-portfolio-render/,
+    );
+    const head = await proxy(
+      request(`/pt/cases/${slug}`, {
+        method: 'HEAD',
+        headers: { 'if-none-match': '*', 'if-modified-since': 'Thu, 01 Jan 2099 00:00:00 GMT' },
+      }),
+    );
+    expect(head.status).toBe(status);
+    expect([...head.headers]).toEqual([...get.headers]);
+    expect(await head.text()).toBe('');
+    expect(nativeCalls).toBe(0);
+  },
+);
+it('makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure', async () => {
+  const root = editorialNegativeRoot(404);
+  await withPublicRootWriter(directory, async (_current, commit) => commit(root));
+  const a = await proxy(request('/pt/cases/UPPER-PRIVATE'));
+  const b = await proxy(request('/pt/cases/UPPER-UNKNOWN'));
+  const html = await a.text();
+  expect(html).toContain('EDITORIAL404');
+  expect(await b.text()).toBe(html);
+  expect([...a.headers]).toEqual([...b.headers]);
+  root.subjects = Object.fromEntries(
+    Object.entries(root.subjects).filter(([key]) => key.startsWith('case-content/')),
+  );
+  await withPublicRootWriter(directory, async (_current, commit) => commit(root));
+  const fallback = await proxy(request('/pt/cases/UPPER-PRIVATE'));
+  const original = renderCaseRouteResponse({ status: 404 }, 'pt');
+  expect(await fallback.text()).toBe(await original.text());
+  expect([...fallback.headers]).toEqual([...original.headers]);
+  expect(nativeCalls).toBe(0);
 });

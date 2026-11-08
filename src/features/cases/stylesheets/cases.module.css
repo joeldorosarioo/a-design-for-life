@@ -1,4 +1,4 @@
-/* Original Figma Case 123:838. Fluid intermediate geometry awaits composed-page A2 comparison. */
+/* Case and listing geometry follows the preserved Figma references and A2 comparison evidence. */
 .detail,
 .listing,
 .caseCard,
@@ -41,7 +41,8 @@
 }
 .count {
   margin: 0;
-  color: var(--text-secondary);
+  color: var(--action-default);
+  font-weight: var(--font-weight-semibold);
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
 }
@@ -61,7 +62,11 @@
 }
 .cardCopy {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
+}
+.cardCopy > .textLink {
+  /* Keep the 44px target around the reference 20px editorial action line. */
+  margin-block: calc(-1 * var(--space-3));
 }
 .cardTitle {
   margin: 0;
@@ -79,6 +84,7 @@
 }
 .textLink {
   display: inline-flex;
+  gap: var(--space-2);
   align-items: center;
   justify-self: start;
   min-height: 2.75rem;
@@ -125,8 +131,14 @@
   margin: 0;
   white-space: pre-line;
 }
-.prose > * + * {
+.prose > :not(:first-child) {
   margin-block-start: var(--space-6);
+}
+.narrativeBlocks .prose {
+  color: var(--text-primary);
+}
+.narrativeBlocks .prose > :not(:first-child) {
+  margin-block-start: var(--space-4);
 }
 .prose ul,
 .prose ol {
@@ -160,8 +172,11 @@
   object-fit: contain;
   background: var(--action-background);
 }
+.coverSoft {
+  background: var(--bg-subtle);
+}
 .card {
-  aspect-ratio: 624 / 352;
+  aspect-ratio: 342 / 192;
   object-fit: cover;
 }
 .article,
@@ -195,7 +210,14 @@
   gap: var(--space-8);
   padding-block: var(--space-6);
 }
+.detailOpening > .textLink,
+.listingOpening > .textLink {
+  /* Keep the 44px hit area around the reference's 20px text line. */
+  margin-block: calc(-1 * var(--space-3));
+}
 .detailTitle {
+  display: grid;
+  gap: var(--space-8);
   margin: 0;
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-5xl);
@@ -221,12 +243,19 @@
   display: grid;
   align-items: start;
   gap: var(--space-12);
-  padding-block: var(--space-12);
+  padding-block: var(--space-12) var(--space-6);
 }
 .articleBody {
   display: grid;
-  gap: var(--space-16);
+  gap: var(--space-6);
   min-width: 0;
+}
+.articleBody > .caseSection + .caseSection {
+  margin-block-start: calc(var(--space-8) + var(--space-2));
+}
+.articleBody > .caseSection + .comparison,
+.articleBody > .comparison + .caseSection {
+  margin-block-start: 0;
 }
 .caseSection {
   display: grid;
@@ -240,6 +269,10 @@
   font-size: var(--text-3xl);
   line-height: var(--text-3xl--line-height);
   white-space: pre-line;
+}
+.caseSection .sectionTitle {
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
 }
 .narrative > .sectionHeading,
 .narrativeBlocks > .textBlock,
@@ -294,15 +327,17 @@
 }
 .comparison {
   gap: var(--space-8);
+  margin-inline: calc(-1 * var(--layout-page-padding));
   padding: var(--space-6);
   background: var(--accent-editorial);
 }
 .comparisonBlocks {
+  align-items: start;
   gap: var(--space-8);
 }
 .comparisonBlocks > .textBlock {
   gap: var(--space-6);
-  padding: var(--space-6);
+  padding: var(--space-8);
   border-radius: var(--radius-xl);
 }
 .comparisonBlocks > .textBlock:first-child {
@@ -316,10 +351,17 @@
   color: var(--text-primary);
 }
 .learnings {
-  gap: var(--space-12);
+  gap: var(--space-8);
 }
 .learningsBlocks {
-  gap: calc(var(--space-8) + var(--space-2));
+  gap: var(--space-6);
+}
+.learningsBlocks > .textBlock > .eyebrow {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+}
+.learningsBlocks > .textBlock > .divider {
+  width: 100%;
 }
 .learningsBlocks > .textBlock {
   padding: var(--space-6);
@@ -327,7 +369,9 @@
 .divider {
   display: block;
   max-width: 100%;
-  height: auto;
+  height: 1px;
+  margin-block-start: -1px;
+  object-fit: cover;
 }
 .contents {
   min-width: 0;
@@ -379,12 +423,17 @@
   }
 }
 @media (min-width: 64rem) {
-  .listing {
-    gap: var(--space-16);
-    padding-block: var(--space-20);
+  .card {
+    aspect-ratio: 624 / 352;
   }
-  .listingOpening {
-    gap: var(--space-12);
+  .cardTitle {
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
+  }
+  .listing {
+    /* Opening bottom padding 80px + list top padding 32px in node 125:2569. */
+    gap: calc(var(--space-20) + var(--space-8));
+    padding-block: var(--space-20);
   }
   .listingTitle {
     font-size: var(--text-7xl);
@@ -395,6 +444,7 @@
     padding-block: var(--space-20);
   }
   .detailTitle {
+    gap: var(--space-12);
     font-size: var(--text-7xl);
     line-height: var(--text-7xl--line-height);
   }
@@ -407,24 +457,36 @@
     padding-block: var(--space-20);
   }
   .articleBody {
-    gap: var(--space-20);
+    gap: var(--space-16);
+  }
+  .articleBody > .caseSection + .caseSection {
+    margin-block-start: var(--space-4);
+  }
+  .articleBody > :is(.narrative, .process) + :is(.narrative, .process) {
+    margin-block-start: 0;
   }
   .sectionTitle {
     font-size: var(--text-4xl);
     line-height: var(--text-4xl--line-height);
   }
   .comparison {
+    margin-inline: 0;
     gap: var(--space-12);
     padding: var(--space-8);
   }
-  .comparison .sectionTitle {
+  .comparison .sectionTitle,
+  .learnings .sectionTitle {
     font-size: var(--text-5xl);
     line-height: var(--text-5xl--line-height);
   }
   .comparisonBlocks > .textBlock {
     padding: var(--space-8);
   }
+  .learnings {
+    gap: var(--space-12);
+  }
   .learningsBlocks {
+    gap: calc(var(--space-8) + var(--space-2));
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .contents {

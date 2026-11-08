@@ -1,0 +1,120 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/config/public-image.e2e.test.ts
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[17:19:27] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[17:19:27] INFO: Migrating: 20261030_003022_initial_base
+[17:19:27] INFO: Migrated:  20261030_003022_initial_base (40ms)
+[17:19:27] INFO: Migrating: 20261030_020021_editorial_models
+[17:19:27] INFO: Migrated:  20261030_020021_editorial_models (92ms)
+[17:19:27] INFO: Migrating: 20261030_020521_structural_uniqueness
+[17:19:27] INFO: Migrated:  20261030_020521_structural_uniqueness (9ms)
+[17:19:27] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[17:19:27] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[17:19:27] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[17:19:27] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (3ms)
+[17:19:27] INFO: Migrating: 20261030_030036_global_editorial_copy
+[17:19:27] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[17:19:27] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[17:19:27] INFO: Migrated:  20261030_035306_protect_case_identity_references (7ms)
+[17:19:27] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[17:19:27] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[17:19:27] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[17:19:27] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (6ms)
+[17:19:27] INFO: Migrating: 20261030_093430_private_media_manifests
+[17:19:27] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[17:19:27] INFO: Migrating: 20261030_124550_publication_coordination
+[17:19:27] INFO: Migrated:  20261030_124550_publication_coordination (35ms)
+[17:19:27] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[17:19:27] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[17:19:27] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[17:19:27] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (2ms)
+[17:19:27] INFO: Done.
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 16.4s
+  Running TypeScript ...
+  Finished TypeScript in 30.4s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/3) ...
+✓ Generating static pages using 11 workers (3/3) in 146ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[about]
+├ ƒ /[locale]/cases
+├ ƒ /[locale]/cases/[slug]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /language-preference
+├ ƒ /media/[id]/[variant]
+├ ƒ /preview
+└ ƒ /preview-media/[id]/[variant]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+✓ Ready in 273ms
+✓ Running next.config.ts took 46ms
+Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe 404
+
+Running 1 test using 1 worker
+
+(node:34132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › src\config\public-image.e2e.test.ts:19:1 › optimizes one original through Next, rechecks cache hits and denies every byte after withdrawal (347ms)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\config\public-image.e2e.test.ts:19:1 › optimizes one original through Next, rechecks cache hits and denies every byte after withdrawal 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      45 |   };
+      46 |   const first = await request.get(url, options);
+    > 47 |   expect(first.status()).toBe(200);
+         |                          ^
+      48 |   expect(first.headers()['content-type']).toContain('image/webp');
+      49 |   expect(first.headers()['cache-control']).toContain('private');
+      50 |   expect(first.headers()['cache-control']).toContain('no-store');
+        at E:\a-design-for-life\src\config\public-image.e2e.test.ts:47:26
+
+    Error Context: test-results\config-public-image.e2e-op-18547-every-byte-after-withdrawal-chromium\error-context.md
+
+    Error Context: test-results\config-public-image.e2e-op-18547-every-byte-after-withdrawal-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\config-public-image.e2e-op-18547-every-byte-after-withdrawal-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\config-public-image.e2e-op-18547-every-byte-after-withdrawal-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › src\config\public-image.e2e.test.ts:19:1 › optimizes one original through Next, rechecks cache hits and denies every byte after withdrawal 
+[ELIFECYCLE] Command failed with exit code 1.

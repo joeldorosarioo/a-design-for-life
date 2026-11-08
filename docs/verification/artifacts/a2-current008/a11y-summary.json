@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Automated observations and incomplete interpretation only",
+  "axe": {
+    "layouts": 18,
+    "states": 27,
+    "violations": 0,
+    "incompleteGroups": 36
+  },
+  "observations": {
+    "layouts": 18,
+    "colorGlyphNodes": 34,
+    "modalDuplicateGlyphNodes": 17,
+    "minimumGlyphContrast": 7.82159101344156,
+    "focusSamples": 183,
+    "focusRatios": [
+      7.82159101344156,
+      10.483645578165937
+    ],
+    "dialogs": 9,
+    "forwardSamples": 144,
+    "reverseSamples": 72,
+    "hiddenNodes": 54,
+    "hiddenFocusEscapes": 0,
+    "underlayGlyphs": 17,
+    "targetCount": 251,
+    "smallTargets": 18,
+    "minimumSmallTargetDistance": 75,
+    "failures": {
+      "glyphFailures": 0,
+      "backgroundsNeedingOtherAnalysis": 0,
+      "focusFailures": 0,
+      "modalFocusEscapes": 0,
+      "modalReverseEscapes": 0,
+      "modalReturnFailures": 0,
+      "modalOutlineFailures": 0,
+      "smallTargetFailures": 0
+    }
+  },
+  "commandsExitZero": true,
+  "screenReaderExecuted": false,
+  "formalScreenReaderStatus": "Incomplete; interrupted at user request",
+  "wcagConformanceCertified": false,
+  "evidence": [
+    {
+      "label": "a11y-summary-v9.json",
+      "sha256": "cb4f64d579ce055f8b99039807fa607bd1ae1394e629ba51d8290e95f8daf11b"
+    },
+    {
+      "label": "a11y-data-1-v9.json",
+      "sha256": "1f23087f9768594fd25ba37d8f56f076ee0c8067f17318d112f9cb6a297598b7"
+    },
+    {
+      "label": "a11y-data-2-v9.json",
+      "sha256": "0261ca8d8aa08af9229ed2e946663c84e76c238f37abb653ceeedac0819044ad"
+    }
+  ]
+}

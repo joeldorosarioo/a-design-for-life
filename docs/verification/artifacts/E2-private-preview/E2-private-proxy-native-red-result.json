@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project integration src/proxy.integration.test.ts",
+  "recordedAt": "2026-10-30T22:12:33.2659577Z",
+  "exitCode": 1
+}

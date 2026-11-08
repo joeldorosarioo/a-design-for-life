@@ -1,0 +1,421 @@
+{
+  "capturedAt": "2026-10-30T19:50:46.718Z",
+  "head": "4c76b4c3b0c62dcc6850a494d72b87b3c183377d",
+  "stage2Percent": 16.7,
+  "verify": {
+    "command": "pnpm verify",
+    "exitCode": 0,
+    "files": 95,
+    "testsPassed": 729,
+    "platformSkips": 2,
+    "testTotal": 731,
+    "lintErrors": 0,
+    "inheritedLintWarnings": 4,
+    "build": "Next 16.4.3 production build passed"
+  },
+  "browser": {
+    "command": "pnpm test:e2e",
+    "passed": 33,
+    "logReportsFailure": false,
+    "exitCode": null,
+    "limitation": "Original PTY completion result was truncated and closed; log records 33 passed and owned DB cleanup. Do not infer a captured shell exit; immutable CI must supply it."
+  },
+  "failures": [
+    "First verify: four test typing errors; no tests/build executed.",
+    "Second verify: forbidden Native Local API collection read in legacy test; 728 passed, one failed, two skips; build not executed.",
+    "Use typed native adapter selection for the denied technical collection; focused real PostgreSQL regression 2/2, then final full verify succeeded."
+  ],
+  "exports": [
+    {
+      "source": ".work/E2-ui-transport-verify.txt",
+      "file": "verify-type-failure.txt",
+      "originalBytes": 1407,
+      "originalSha256": "975c4212cadc5710cbf02147de4f2b6218bf42d06c8d14b23e49f07f9a8955c9",
+      "exportedBytes": 1407,
+      "exportedSha256": "975c4212cadc5710cbf02147de4f2b6218bf42d06c8d14b23e49f07f9a8955c9",
+      "commandExitCode": 2,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": ".work/E2-ui-transport-verify-repeat.txt",
+      "file": "verify-native-read-failure.txt",
+      "originalBytes": 44733,
+      "originalSha256": "5f02c3e0c0d1b3ec5b8fa2483f358513fedea57f729d69b44f8f983d8ef0ea71",
+      "exportedBytes": 43593,
+      "exportedSha256": "1a58f5ff47006b3e1febe0caf56a802b40a2fbf625e1f2fe044632e8e25165ab",
+      "commandExitCode": 1,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": ".work/E2-ui-transport-capture-typed-green.txt",
+      "file": "native-capture-typed-green.txt",
+      "originalBytes": 3239,
+      "originalSha256": "57894d05f59e990779585939f005ab930862057bfd2aba33e3a63dac5756d422",
+      "exportedBytes": 2719,
+      "exportedSha256": "19a950e05fefebbe112fbb0359cc3660e8724c185991723f6a7adef34aa65d25",
+      "commandExitCode": 0,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": ".work/E2-ui-transport-verify-final.txt",
+      "file": "verify-final.txt",
+      "originalBytes": 44090,
+      "originalSha256": "1b546ea6545cd0f363c0cdfdd612418afd6079225df06f09de0fc194e437cc16",
+      "exportedBytes": 42950,
+      "exportedSha256": "84455bcb905c5aa63ddd04ba3f51bffbf387424608086151b4a7517c008be821",
+      "commandExitCode": 0,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": ".work/E2-ui-transport-e2e.txt",
+      "file": "e2e-final.txt",
+      "originalBytes": 136204,
+      "originalSha256": "9d9a5d788d29c9807fee45e2da90b98c99afeb47c024635b6a0258663e0024d5",
+      "exportedBytes": 133924,
+      "exportedSha256": "8517ddd4268908e8ab1fc726c2f1839d2057993c02c64992f78c7955622ac726",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "render-snapshot-red-contracts.txt",
+      "file": "render-snapshot-red.txt",
+      "originalBytes": 7374,
+      "originalSha256": "de7a6044f2c69d5cc85d6141916c0e1f4136c3f4b8ec606aab4326d34985156e",
+      "exportedBytes": 7374,
+      "exportedSha256": "de7a6044f2c69d5cc85d6141916c0e1f4136c3f4b8ec606aab4326d34985156e",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "render-snapshot-green-final.txt",
+      "file": "render-snapshot-green.txt",
+      "originalBytes": 214,
+      "originalSha256": "4bfdffcbe3c9dd8a84cbf554f68fff6f7f8b648418aeb7779f119565bed0cb60",
+      "exportedBytes": 214,
+      "exportedSha256": "4bfdffcbe3c9dd8a84cbf554f68fff6f7f8b648418aeb7779f119565bed0cb60",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "render-snapshot-implementation.md",
+      "file": "render-snapshot-report.txt",
+      "originalBytes": 2900,
+      "originalSha256": "58997f3038f07263239e2840b7d2e4b2f8168b9a1bad84be54d21e4a93e5377a",
+      "exportedBytes": 2900,
+      "exportedSha256": "58997f3038f07263239e2840b7d2e4b2f8168b9a1bad84be54d21e4a93e5377a",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-home-about-ui-red.log",
+      "file": "home-about-red.txt",
+      "originalBytes": 9377,
+      "originalSha256": "8209cee0c4e0ef248277997de28f660adba10d0920fb4d45f80b701690d94441",
+      "exportedBytes": 9377,
+      "exportedSha256": "8209cee0c4e0ef248277997de28f660adba10d0920fb4d45f80b701690d94441",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-home-about-ui-eyebrows-red.log",
+      "file": "home-about-eyebrows-red.txt",
+      "originalBytes": 1431,
+      "originalSha256": "326fe292e20fdad73268d2ad2f3175ab1168746dda6e7c0bd994f97e4d3f5174",
+      "exportedBytes": 1431,
+      "exportedSha256": "326fe292e20fdad73268d2ad2f3175ab1168746dda6e7c0bd994f97e4d3f5174",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-home-about-ui-unit-green.log",
+      "file": "home-about-green.txt",
+      "originalBytes": 405,
+      "originalSha256": "5d5e7f3ce11640aade1eb26954edd11f2771ee41083aab5866eac11108db7d5e",
+      "exportedBytes": 405,
+      "exportedSha256": "5d5e7f3ce11640aade1eb26954edd11f2771ee41083aab5866eac11108db7d5e",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-home-about-ui-report.md",
+      "file": "home-about-report.txt",
+      "originalBytes": 7217,
+      "originalSha256": "b18b9b39e8c088af5785aeb84f30a2d1e986fea7300e4b48be0d453373158c34",
+      "exportedBytes": 7217,
+      "exportedSha256": "b18b9b39e8c088af5785aeb84f30a2d1e986fea7300e4b48be0d453373158c34",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2.2-shell-result.md",
+      "file": "navigation-shell-report.txt",
+      "originalBytes": 3534,
+      "originalSha256": "84e000b93076a39dc67f15086bf89919740b683d57387cf6c7ed7d010055855a",
+      "exportedBytes": 3534,
+      "exportedSha256": "84e000b93076a39dc67f15086bf89919740b683d57387cf6c7ed7d010055855a",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2.4-http-implementation-report.md",
+      "file": "language-http-report.txt",
+      "originalBytes": 8068,
+      "originalSha256": "d1fbb43c5f7f6a4f56e0b642ebb6a7a3cd5c198b1e2032cb7a538fd14e195f76",
+      "exportedBytes": 8068,
+      "exportedSha256": "d1fbb43c5f7f6a4f56e0b642ebb6a7a3cd5c198b1e2032cb7a538fd14e195f76",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-next-image-contract.md",
+      "file": "next-image-contract.txt",
+      "originalBytes": 12426,
+      "originalSha256": "4617f5f59da373d9bd234eb03e1e01f489b8c7d91dd84f5906b5c48dba369ca0",
+      "exportedBytes": 12426,
+      "exportedSha256": "4617f5f59da373d9bd234eb03e1e01f489b8c7d91dd84f5906b5c48dba369ca0",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-next-image-helper.md",
+      "file": "next-image-helper-report.txt",
+      "originalBytes": 7216,
+      "originalSha256": "1e664523aa9c1180d8e249af0b7034558f8e95cd21a1d2683ba683a6dce8a426",
+      "exportedBytes": 7216,
+      "exportedSha256": "1e664523aa9c1180d8e249af0b7034558f8e95cd21a1d2683ba683a6dce8a426",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-next-image-P2-fix.md",
+      "file": "next-image-p2-fix.txt",
+      "originalBytes": 6659,
+      "originalSha256": "7a4ccc2c06a27cb18fbc0e288d072e786db0723cdd47220a0d27ac1edce3379a",
+      "exportedBytes": 6659,
+      "exportedSha256": "7a4ccc2c06a27cb18fbc0e288d072e786db0723cdd47220a0d27ac1edce3379a",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-helpers-review.md",
+      "file": "transport-helper-review.txt",
+      "originalBytes": 16222,
+      "originalSha256": "ffc180883f6d390699df9038c0d2d5f98a83d3050a46e437451e767e65c753f9",
+      "exportedBytes": 16222,
+      "exportedSha256": "ffc180883f6d390699df9038c0d2d5f98a83d3050a46e437451e767e65c753f9",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; credentials/database URLs/reset tokens/emails redacted when present. Original retained privately."
+    },
+    {
+      "source": ".work/E2.2-shell/red-assertions.log",
+      "file": "shell-red.txt",
+      "originalBytes": 10051,
+      "originalSha256": "6d6f96c71990d10e9ac05088dccbfb26205695aea44221e90101609241b89b29",
+      "exportedBytes": 10051,
+      "exportedSha256": "6d6f96c71990d10e9ac05088dccbfb26205695aea44221e90101609241b89b29",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": ".work/E2.2-shell/viewport-red.log",
+      "file": "shell-viewport-red.txt",
+      "originalBytes": 2724,
+      "originalSha256": "19888479f27e725aa948b457e5a0ea9d5647760f65b072a9939da8956ab1e269",
+      "exportedBytes": 2724,
+      "exportedSha256": "19888479f27e725aa948b457e5a0ea9d5647760f65b072a9939da8956ab1e269",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": ".work/E2.2-shell/viewport-green.log",
+      "file": "shell-viewport-green.txt",
+      "originalBytes": 208,
+      "originalSha256": "cf47fb3374fc4e36f8aca750325505310bde6284916b1b06b0b885b3be9945ac",
+      "exportedBytes": 208,
+      "exportedSha256": "cf47fb3374fc4e36f8aca750325505310bde6284916b1b06b0b885b3be9945ac",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": ".work/E2.2-shell/final-focused-green.log",
+      "file": "shell-focused-green.txt",
+      "originalBytes": 207,
+      "originalSha256": "c6db260529e59b1096fa376ac0f226b0599d0a8c6df65412b9ffeaee79ec39a2",
+      "exportedBytes": 207,
+      "exportedSha256": "c6db260529e59b1096fa376ac0f226b0599d0a8c6df65412b9ffeaee79ec39a2",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": ".work/E2.4-http-red.log",
+      "file": "language-http-red.txt",
+      "originalBytes": 15137,
+      "originalSha256": "5b987aa6ddf570176e3ce680d18f92307c190bb42b0c1ead1633b849e4ef6ad8",
+      "exportedBytes": 15137,
+      "exportedSha256": "5b987aa6ddf570176e3ce680d18f92307c190bb42b0c1ead1633b849e4ef6ad8",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": ".work/E2.4-http-green-final.log",
+      "file": "language-http-green.txt",
+      "originalBytes": 201,
+      "originalSha256": "28fc49601a4212a58ecadd1301fd395d57bda86899fc44507d94ba91e998e1f6",
+      "exportedBytes": 201,
+      "exportedSha256": "28fc49601a4212a58ecadd1301fd395d57bda86899fc44507d94ba91e998e1f6",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": "stage2-briefs/image-probe/helper-red.log",
+      "file": "image-helper-red.txt",
+      "originalBytes": 13021,
+      "originalSha256": "a119d9e279b4e46563848d806cf326d054756a1343d135da48e1763f5406814c",
+      "exportedBytes": 13021,
+      "exportedSha256": "a119d9e279b4e46563848d806cf326d054756a1343d135da48e1763f5406814c",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": "stage2-briefs/image-probe/helper-green-final.log",
+      "file": "image-helper-green.txt",
+      "originalBytes": 202,
+      "originalSha256": "1574b966337d69caf53e941946e9aad824b066d44099755158f2378280635c52",
+      "exportedBytes": 202,
+      "exportedSha256": "1574b966337d69caf53e941946e9aad824b066d44099755158f2378280635c52",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": "stage2-briefs/image-probe/helper-coverage-red-unit.log",
+      "file": "image-coverage-red.txt",
+      "originalBytes": 1317,
+      "originalSha256": "9c0c9e049133fe535f4176c0e7933e289414fe8f899590fdbed1068e6eeb5a10",
+      "exportedBytes": 1317,
+      "exportedSha256": "9c0c9e049133fe535f4176c0e7933e289414fe8f899590fdbed1068e6eeb5a10",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": "stage2-briefs/image-probe/helper-coverage-green-unit.log",
+      "file": "image-coverage-green.txt",
+      "originalBytes": 202,
+      "originalSha256": "20b25c3f4c060ab9e91350f88c34aada948d29047f37dda086f00c775fe609fb",
+      "exportedBytes": 202,
+      "exportedSha256": "20b25c3f4c060ab9e91350f88c34aada948d29047f37dda086f00c775fe609fb",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": "stage2-briefs/image-probe/helper-focused-regression-approved.log",
+      "file": "image-native-regression-green.txt",
+      "originalBytes": 202,
+      "originalSha256": "d4af9a614ec7e6a1b18b3a05f6e3c037354155064568087f620a8af167127ef8",
+      "exportedBytes": 202,
+      "exportedSha256": "d4af9a614ec7e6a1b18b3a05f6e3c037354155064568087f620a8af167127ef8",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    },
+    {
+      "source": "stage2-briefs/image-probe/helper-production-probe.log",
+      "file": "image-production-probe.txt",
+      "originalBytes": 3408,
+      "originalSha256": "4a551d17d7527940ca40d1e619043fc8691ceeddf47fcd8757c7af381dbb4d88",
+      "exportedBytes": 3408,
+      "exportedSha256": "4a551d17d7527940ca40d1e619043fc8691ceeddf47fcd8757c7af381dbb4d88",
+      "commandExitCode": null,
+      "transformation": "ANSI removed; database URLs/emails redacted when present. See full report/log for command and result."
+    }
+  ],
+  "restoredHistoricalScreenshots": [
+    {
+      "path": "docs/verification/artifacts/E1.4/native-owner.png",
+      "generatedFile": "browser-regression-native-owner.png",
+      "generatedSha256": "ce82924f8b6bc5a7072f5c1411795e26d061add67745b704ee8add9c424af399",
+      "restoredSha256": "8e252957a6f85c8f397ed9188bdccf71fd2c1b7e2bf62781d460699a5f712159",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.4/native-reader.png",
+      "generatedFile": "browser-regression-native-reader.png",
+      "generatedSha256": "ce008c927d6cdfab3d4a6591bf3b799c467ca31ddad971efc41d6d5e69bd8daa",
+      "restoredSha256": "aabb290ac8ebf3d086ca68b17959ff62ed7ca1e0d28a5218d3b888ff81402005",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.4/native-stale-conflict.png",
+      "generatedFile": "browser-regression-native-stale-conflict.png",
+      "generatedSha256": "d6b12e8a8ed8dbf520f62b980e9eb4a7b6b4a6fae798486e618a02cd2d475b2b",
+      "restoredSha256": "4d444acd9f1b38cd861ef5779c49a1c18c9f6b4e3dae817481b278a71f1d8789",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.4/native-version-diff.png",
+      "generatedFile": "browser-regression-native-version-diff.png",
+      "generatedSha256": "ea5f50701e5181142e9b41706a29c62921da3410be10c56a257b23ff9d1cc1de",
+      "restoredSha256": "43202318f137f0430c706795061f617005ec3e9f0c28603fb3a7244652591807",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.5/native-slug-suggestion.png",
+      "generatedFile": "browser-regression-native-slug-suggestion.png",
+      "generatedSha256": "4b54d552c6764c3d8717f85e558b2499e8a189eff888461d4ca92a54101e26f6",
+      "restoredSha256": "f1d26898a26f97ff90c20058d6298f722b140f4659d78f76e16320a5dd08dd0c",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/native-media-ui.png",
+      "generatedFile": "browser-regression-native-media-ui.png",
+      "generatedSha256": "8d4fb261312fba0b678faab2264c802c652e3475adcf0c34cc5f06e1bbff9b93",
+      "restoredSha256": "ce768b0765db3b4e848f8e15219ff00ba6fad8b49ec92bc038c229a2c9fc8124",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.8/native-case-confirmed.png",
+      "generatedFile": "browser-regression-native-case-confirmed.png",
+      "generatedSha256": "a8514d78312db88763c2b7b759393e481a16454d8d58b17c6a27f895113e96dc",
+      "restoredSha256": "399c35fcdf18ac343d9b7fed7f71f3651528886d0f47562fae3f82024962cf18",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.8/native-case-pending.png",
+      "generatedFile": "browser-regression-native-case-pending.png",
+      "generatedSha256": "9bcd473dd1d528e48e7963e3069eb56d7cfa3b287d7d957df43e003b65dccc18",
+      "restoredSha256": "183a86b620163905e3711b39cbb2f9e0698ef3b1ee7b173f28e24a37db77f07d",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.8/native-figma-draft.png",
+      "generatedFile": "browser-regression-native-figma-draft.png",
+      "generatedSha256": "15eb8741319d153e427210cf59950f90a31ae5eabcf4b0555b204c24a95633b6",
+      "restoredSha256": "784330f677a60da079175c80a60021da3118425ddb7885ace6ce962173d7a119",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.8/native-shared-pending.png",
+      "generatedFile": "browser-regression-native-shared-pending.png",
+      "generatedSha256": "5df3739fd7f73a9695fbc83dc2072b213355196c590fb0697ff90ea5194d4db4",
+      "restoredSha256": "5ce64597e9f03af297eb1a2f5cc3988af02fdb0dc813efe5c1c865dd510cebfc",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.8/native-stale-retry.png",
+      "generatedFile": "browser-regression-native-stale-retry.png",
+      "generatedSha256": "085e6b995d927b78f097a1e514562cffe000443ab7e629609bdfc959abdd9642",
+      "restoredSha256": "dabbb9bdaa4afe7ffba94899967e285039b7acb6c9674157ad12198a9294dfb2",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    },
+    {
+      "path": "docs/verification/artifacts/E1.8/native-withdraw-pending.png",
+      "generatedFile": "browser-regression-native-withdraw-pending.png",
+      "generatedSha256": "556b665f8e2528398f956da5bd79e3e02ae6305ccdea808f005a65bc6e534191",
+      "restoredSha256": "9e8a742a4c81982b9ce9245fc51fae62461a199c469b85153f3cc6bbf92c3f86",
+      "reason": "Stage 2 E2E reused legacy screenshot output paths. Preserve new run separately and restore immutable A1 artifact bytes."
+    }
+  ],
+  "limitations": [
+    "Public Home/About/list App Pages and active optimizer not yet wired.",
+    "Component unit coverage does not replace actual browser/Figma acceptance.",
+    "E2.2/E2.3/E2.4/E2.5/E2.6 remain incomplete."
+  ]
+}

@@ -1,0 +1,100 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx (11 tests | 7 failed) 239ms
+   × keeps the home header/footer destinations and resume entirely inside private presentation 123ms
+   × keeps the about header/footer destinations and resume entirely inside private presentation 18ms
+   × keeps the cases header/footer destinations and resume entirely inside private presentation 15ms
+   × keeps the case header/footer destinations and resume entirely inside private presentation 18ms
+   × uses private Home projects/About CTAs and featured card paths without adding publication metadata 17ms
+   × uses private About projects and list Home/card destinations 10ms
+   × passes the supplied server contextual resolver into CaseDetail rather than resolving a public page 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > keeps the home header/footer destinations and resume entirely inside private presentation
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > keeps the about header/footer destinations and resume entirely inside private presentation
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > keeps the cases header/footer destinations and resume entirely inside private presentation
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > keeps the case header/footer destinations and resume entirely inside private presentation
+AssertionError: expected [ '/pt/cases', '/pt/sobre', …(2) ] to deeply equal [ …(4) ]
+
+- Expected
++ Received
+
+  [
+-   "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases",
+-   "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/about",
+-   "/preview-media/00000000-0000-4000-8000-000000000001/original",
++   "/pt/cases",
++   "/pt/sobre",
++   "/media/00000000-0000-4000-8000-000000000001/original",
+    "#contact",
+  ]
+
+ ❯ src/app/(portfolio)/_components/public-page-view.preview.test.tsx:167:58
+    165|     const header = screen.getAllByRole('banner').find(element => !elem…
+    166|     const links = within(within(header).getByRole('navigation')).getAl…
+    167|     expect(links.map(link => link.getAttribute('href'))).toEqual([
+       |                                                          ^
+    168|       targets.cases, targets.about, `/preview-media/${privateProfile.r…
+    169|     ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > uses private Home projects/About CTAs and featured card paths without adding publication metadata
+Error: expect(element).toHaveAttribute("href", "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases") // element.getAttribute("href") === "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases"
+
+Expected the element to have attribute:
+  href="/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases"
+Received:
+  href="/pt/cases"
+ ❯ src/app/(portfolio)/_components/public-page-view.preview.test.tsx:184:60
+    182|   const { container } = render(<PublicPageView {...privateProps} kind=…
+    183|   const main = within(screen.getByRole('main'));
+    184|   expect(main.getByRole('link', { name: /See projects/ })).toHaveAttri…
+       |                                                            ^
+    185|   expect(main.getByRole('link', { name: /About draft author/ })).toHav…
+    186|   expect(main.getByRole('link', { name: 'Read synthetic case: Syntheti…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > uses private About projects and list Home/card destinations
+Error: expect(element).toHaveAttribute("href", "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases") // element.getAttribute("href") === "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases"
+
+Expected the element to have attribute:
+  href="/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases"
+Received:
+  href="/pt/cases"
+ ❯ src/app/(portfolio)/_components/public-page-view.preview.test.tsx:192:89
+    190| it('uses private About projects and list Home/card destinations', () =…
+    191|   const about = render(<PublicPageView {...privateProps} kind="about" …
+    192|   expect(within(screen.getByRole('main')).getByRole('link', { name: /M…
+       |                                                                                         ^
+    193|   expectNoPublicLocaleLinks(about.container);
+    194|   about.unmount();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.preview.test.tsx > passes the supplied server contextual resolver into CaseDetail rather than resolving a public page
+Error: expect(element).toHaveAttribute("href", "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases") // element.getAttribute("href") === "/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases"
+
+Expected the element to have attribute:
+  href="/preview-ui/pt/professional-profiles/00000000-0000-4000-8000-000000000020/cases"
+Received:
+  href="/pt/cases"
+ ❯ src/app/(portfolio)/_components/public-page-view.preview.test.tsx:204:53
+    202|   const { container } = render(<PublicPageView {...privateProps} kind=…
+    203|   const main = within(screen.getByRole('main'));
+    204|   expect(main.getByRole('link', { name: /Cases/ })).toHaveAttribute('h…
+       |                                                     ^
+    205|   expect(main.getByRole('link', { name: 'Private contextual destinatio…
+    206|   expectNoPublicLocaleLinks(container);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  7 failed | 10 passed (17)
+   Start at  19:00:33
+   Duration  2.69s (import 45%, environment 33%, tests 9%, setup 8%, transform 5%)
+

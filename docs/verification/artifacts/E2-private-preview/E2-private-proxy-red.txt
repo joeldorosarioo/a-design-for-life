@@ -1,0 +1,51 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/proxy.test.ts (35 tests | 4 failed) 118ms
+   × runs the private pre-stream authorization boundary for /preview-ui 3ms
+   × runs the private pre-stream authorization boundary for /preview-ui/invalid 1ms
+   × runs the private pre-stream authorization boundary for /preview-ui/pt/case-content/11111111-1111-4111-8111-111111111111/case 1ms
+   × fails closed before Next when private authentication is unavailable and ignores forged public authority 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/invalid
+ FAIL  |unit| src/proxy.test.ts > runs the private pre-stream authorization boundary for /preview-ui/pt/case-content/11111111-1111-4111-8111-111111111111/case
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/proxy.test.ts:363:6
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/proxy.test.ts > fails closed before Next when private authentication is unavailable and ignores forged public authority
+AssertionError: expected 200 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 200
+
+ ❯ src/proxy.test.ts:377:52
+    361|   expect(await response.text()).toBe('');
+    362|   expect(nativeCalls).toBe(1);
+    363| });
+       |    ^
+    364|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 31 passed (35)
+   Start at  19:05:28
+   Duration  1.66s (import 71%, setup 12%, transform 8%, tests 8%)
+

@@ -1,0 +1,129 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/helpers/payload/render-snapshot.test.ts (16 tests | 8 failed | 1 skipped) 10740ms
+   × keeps captured A readable after current advances to B, without selecting A for the next request 21ms
+   × reuses the immutable generation without replacing its file or changing current 1ms
+   × rejects a different body for an already pinned generation without overwriting it 1ms
+   × does not fall back to current when the pinned file is missing 1ms
+   × rejects a modified snapshot even when it remains valid JSON 1ms
+   × rejects a root whose generation differs from its pin even with a matching digest 1ms
+   × publishes only one complete candidate when different bodies race for one generation 3ms
+   × pins the same complete root concurrently across independent Node processes 10668ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > keeps captured A readable after current advances to B, without selecting A for the next request
+AssertionError: promise rejected "Error: Render snapshot not implemented." instead of resolving
+ ❯ src/helpers/payload/render-snapshot.test.ts:37:8
+     35|     await withPublicRootWriter(dir, async (_, commit) => commit(b));
+     36|     return { pinned: await readPinnedPublicRoot(dir, pin), current: aw…
+     37|   })()).resolves.toEqual({ pinned: a, current: b });
+       |        ^
+     38| });
+     39|
+
+Caused by: Error: Render snapshot not implemented.
+ ❯ pinPublicRoot src/helpers/payload/render-snapshot.ts:4:9
+ ❯ src/helpers/payload/render-snapshot.test.ts:34:23
+ ❯ src/helpers/payload/render-snapshot.test.ts:37:4
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > reuses the immutable generation without replacing its file or changing current
+Error: Render snapshot not implemented.
+ ❯ pinPublicRoot src/helpers/payload/render-snapshot.ts:4:9
+      2| import type { PublicRoot } from './public-root';
+      3| export async function pinPublicRoot(_directory: string, _root: PublicR…
+      4|   throw new Error('Render snapshot not implemented.');
+       |         ^
+      5| }
+      6| export async function readPinnedPublicRoot(_directory: string, _pin: {…
+ ❯ src/helpers/payload/render-snapshot.test.ts:43:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > rejects a different body for an already pinned generation without overwriting it
+Error: Render snapshot not implemented.
+ ❯ pinPublicRoot src/helpers/payload/render-snapshot.ts:4:9
+      2| import type { PublicRoot } from './public-root';
+      3| export async function pinPublicRoot(_directory: string, _root: PublicR…
+      4|   throw new Error('Render snapshot not implemented.');
+       |         ^
+      5| }
+      6| export async function readPinnedPublicRoot(_directory: string, _pin: {…
+ ❯ src/helpers/payload/render-snapshot.test.ts:56:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > does not fall back to current when the pinned file is missing
+Error: Render snapshot not implemented.
+ ❯ pinPublicRoot src/helpers/payload/render-snapshot.ts:4:9
+      2| import type { PublicRoot } from './public-root';
+      3| export async function pinPublicRoot(_directory: string, _root: PublicR…
+      4|   throw new Error('Render snapshot not implemented.');
+       |         ^
+      5| }
+      6| export async function readPinnedPublicRoot(_directory: string, _pin: {…
+ ❯ src/helpers/payload/render-snapshot.test.ts:88:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > rejects a modified snapshot even when it remains valid JSON
+Error: Render snapshot not implemented.
+ ❯ pinPublicRoot src/helpers/payload/render-snapshot.ts:4:9
+      2| import type { PublicRoot } from './public-root';
+      3| export async function pinPublicRoot(_directory: string, _root: PublicR…
+      4|   throw new Error('Render snapshot not implemented.');
+       |         ^
+      5| }
+      6| export async function readPinnedPublicRoot(_directory: string, _pin: {…
+ ❯ src/helpers/payload/render-snapshot.test.ts:97:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > rejects a root whose generation differs from its pin even with a matching digest
+Error: Render snapshot not implemented.
+ ❯ pinPublicRoot src/helpers/payload/render-snapshot.ts:4:9
+      2| import type { PublicRoot } from './public-root';
+      3| export async function pinPublicRoot(_directory: string, _root: PublicR…
+      4|   throw new Error('Render snapshot not implemented.');
+       |         ^
+      5| }
+      6| export async function readPinnedPublicRoot(_directory: string, _pin: {…
+ ❯ src/helpers/payload/render-snapshot.test.ts:104:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > publishes only one complete candidate when different bodies race for one generation
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/helpers/payload/render-snapshot.test.ts:127:67
+    125|   const roots = [root('Candidate A', generation), root('Candidate B', …
+    126|   const results = await Promise.allSettled(roots.map((value) => pinPub…
+    127|   expect(results.filter((value) => value.status === 'fulfilled')).toHa…
+       |                                                                   ^
+    128|   expect(results.filter((value) => value.status === 'rejected')).toHav…
+    129|   const index = results.findIndex((value) => value.status === 'fulfill…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  |unit| src/helpers/payload/render-snapshot.test.ts > pins the same complete root concurrently across independent Node processes
+AbortError: The operation was aborted
+Caused by: TimeoutError: The operation was aborted due to timeout
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 23, INDEX_SIZE_ERR: 1, DOMSTRING_SIZE_ERR: 2, HIERARCHY_REQUEST_ERR: 3, WRONG_DOCUMENT_ERR: 4, INVALID_CHARACTER_ERR: 5, NO_DATA_ALLOWED_ERR: 6, NO_MODIFICATION_ALLOWED_ERR: 7, NOT_FOUND_ERR: 8, NOT_SUPPORTED_ERR: 9, INUSE_ATTRIBUTE_ERR: 10, INVALID_STATE_ERR: 11, SYNTAX_ERR: 12, INVALID_MODIFICATION_ERR: 13, NAMESPACE_ERR: 14, INVALID_ACCESS_ERR: 15, VALIDATION_ERR: 16, TYPE_MISMATCH_ERR: 17, SECURITY_ERR: 18, NETWORK_ERR: 19, ABORT_ERR: 20, URL_MISMATCH_ERR: 21, QUOTA_EXCEEDED_ERR: 22, TIMEOUT_ERR: 23, INVALID_NODE_TYPE_ERR: 24, DATA_CLONE_ERR: 25 }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 7 passed | 1 skipped (16)
+   Start at  15:47:05
+   Duration  11.18s (tests 97%, setup 2%, import 1%)
+

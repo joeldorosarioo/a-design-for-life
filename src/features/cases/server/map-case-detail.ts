@@ -10,10 +10,22 @@ import {
 import { deriveCaseTitle } from '../helpers/derive-case-title';
 type CaseCardPresentationSource = Pick<
   CaseContent,
-  'id' | 'case' | 'locale' | 'eyebrow' | 'title' | 'titleEmphasis' | 'summary' | 'cover'
+  | 'id'
+  | 'case'
+  | 'locale'
+  | 'eyebrow'
+  | 'title'
+  | 'titleEmphasis'
+  | 'cardTitle'
+  | 'cardEyebrow'
+  | 'summary'
+  | 'cover'
 >;
 type CasePresentationSource = CaseCardPresentationSource &
-  Pick<CaseContent, 'introduction' | 'role' | 'scope' | 'contextNote' | 'sections' | 'seo'>;
+  Pick<
+    CaseContent,
+    'introduction' | 'role' | 'scope' | 'contextNote' | 'sections' | 'seo' | 'coverPresentation'
+  >;
 export function mapCaseCardPresentation(
   document: CaseCardPresentationSource,
   path: string,
@@ -21,8 +33,10 @@ export function mapCaseCardPresentation(
   return caseCardDTOSchema.parse({
     caseId: typeof document.case === 'object' ? document.case.id : document.case,
     locale: document.locale,
-    eyebrow: document.eyebrow ?? null,
-    title: deriveCaseTitle(document.title, document.titleEmphasis),
+    eyebrow: document.cardEyebrow?.trim() ? document.cardEyebrow : (document.eyebrow ?? null),
+    title: document.cardTitle?.trim()
+      ? document.cardTitle
+      : deriveCaseTitle(document.title, document.titleEmphasis),
     summary: document.summary ?? null,
     path,
     cover: mapImageUse(document.cover) ?? null,
@@ -78,13 +92,14 @@ export function mapCasePresentation(document: CasePresentationSource, path: stri
     introduction: document.introduction ?? null,
     path,
     cover: mapImageUse(document.cover) ?? null,
+    coverPresentation: document.coverPresentation ?? 'contained-cherry',
     role: document.role ?? null,
     scope: document.scope ?? null,
     contextNote: document.contextNote ?? null,
     sections,
     contents: sections.map((section) => ({
       readingKey: section.readingKey,
-      label: section.eyebrow?.trim() ? section.eyebrow : section.heading,
+      label: section.heading?.trim() ? section.heading : section.eyebrow,
       anchor: `section-${section.readingKey}`,
     })),
     seo: {

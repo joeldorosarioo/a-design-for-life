@@ -1,0 +1,186 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/site-navigation/components/site-footer.test.tsx (3 tests | 3 failed) 30ms
+   × provides a labeled, programmatically focusable contact list 25ms
+   × uses the published pt contacts and resume 2ms
+   × uses the published en contacts and resume 1ms
+ ❯ |unit| src/features/site-navigation/components/site-header.test.tsx (4 tests | 4 failed) 31ms
+   × keeps four ordered destinations and contact on the current page 23ms
+   × opens only the pt resume in another tab 3ms
+   × opens only the en resume in another tab 2ms
+   × renders the supplied language control once 2ms
+ ❯ |unit| src/features/site-navigation/components/mobile-menu.test.tsx (6 tests | 6 failed) 118ms
+   × opens from the keyboard with four normal navigation links 48ms
+   × returns focus to the trigger after escape 2ms
+   × returns focus to the trigger after close button 1ms
+   × keeps keyboard focus inside the open menu 61ms
+   × closes contact navigation and focuses the contact target 4ms
+   × keeps the English PDF and new-tab indication in the mobile menu 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > opens from the keyboard with four normal navigation links
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/mobile-menu.test.tsx:16:64
+     14|   render(<MobileMenu items={navigationPtFixture.items} controls={navig…
+     15|   await user.tab();
+     16|   expect(screen.queryByRole('button', { name: 'Abrir menu' })).toBeInT…
+       |                                                                ^
+     17|   expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveFoc…
+     18|   await user.keyboard('{Enter}');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > returns focus to the trigger after escape
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > returns focus to the trigger after close button
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/mobile-menu.test.tsx:30:63
+     28|   const user = userEvent.setup();
+     29|   render(<MobileMenu items={navigationEnFixture.items} controls={navig…
+     30|   expect(screen.queryByRole('button', { name: 'Open menu' })).toBeInTh…
+       |                                                               ^
+     31|   const trigger = screen.getByRole('button', { name: 'Open menu' });
+     32|   await user.click(trigger);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > keeps keyboard focus inside the open menu
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/mobile-menu.test.tsx:43:64
+     41|   const user = userEvent.setup();
+     42|   render(<><MobileMenu items={navigationPtFixture.items} controls={nav…
+     43|   expect(screen.queryByRole('button', { name: 'Abrir menu' })).toBeInT…
+       |                                                                ^
+     44|   await user.click(screen.getByRole('button', { name: 'Abrir menu' }));
+     45|   const dialog = screen.getByRole('dialog');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > closes contact navigation and focuses the contact target
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/mobile-menu.test.tsx:56:64
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/mobile-menu.test.tsx > keeps the English PDF and new-tab indication in the mobile menu
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/mobile-menu.test.tsx:67:63
+     65|   const user = userEvent.setup();
+     66|   render(<MobileMenu items={navigationEnFixture.items} controls={navig…
+     67|   expect(screen.queryByRole('button', { name: 'Open menu' })).toBeInTh…
+       |                                                               ^
+     68|   await user.click(screen.getByRole('button', { name: 'Open menu' }));
+     69|   const link = screen.getByRole('link', { name: 'Resume (opens in a ne…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/site-footer.test.tsx > provides a labeled, programmatically focusable contact list
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/site-footer.test.tsx:13:59
+     11| it('provides a labeled, programmatically focusable contact list', () =…
+     12|   render(<SiteFooter navigation={navigationPtFixture} />);
+     13|   expect(screen.queryByRole('list', { name: 'Contato' })).toBeInTheDoc…
+       |                                                           ^
+     14|   const contacts = screen.getByRole('list', { name: 'Contato' });
+     15|   expect(contacts).toHaveAttribute('id', 'contact');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/site-footer.test.tsx > uses the published pt contacts and resume
+ FAIL  |unit| src/features/site-navigation/components/site-footer.test.tsx > uses the published en contacts and resume
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/site-footer.test.tsx:28:54
+     26| ])('uses the published $navigation.locale contacts and resume', ({ nav…
+     27|   render(<SiteFooter navigation={navigation} />);
+     28|   expect(screen.queryByRole('list', { name: list })).toBeInTheDocument…
+       |                                                      ^
+     29|   const contacts = within(screen.getByRole('list', { name: list }));
+     30|   const emailLink = contacts.getByRole('link', { name: email });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/site-header.test.tsx > keeps four ordered destinations and contact on the current page
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/site-header.test.tsx:13:77
+     11| it('keeps four ordered destinations and contact on the current page', …
+     12|   render(<SiteHeader navigation={navigationPtFixture} />);
+     13|   expect(screen.queryByRole('navigation', { name: 'Navegação principal…
+       |                                                                             ^
+     14|   const links = within(screen.getByRole('navigation', { name: 'Navegaç…
+     15|   expect(links.map((link) => link.getAttribute('href'))).toEqual([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/site-header.test.tsx > opens only the pt resume in another tab
+ FAIL  |unit| src/features/site-navigation/components/site-header.test.tsx > opens only the en resume in another tab
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/site-header.test.tsx:30:56
+     28| ])('opens only the $navigation.locale resume in another tab', ({ navig…
+     29|   render(<SiteHeader navigation={navigation} />);
+     30|   expect(screen.queryByRole('link', { name: resume })).toBeInTheDocume…
+       |                                                        ^
+     31|   const resumeLink = screen.getByRole('link', { name: resume });
+     32|   expect(resumeLink).toHaveAttribute('href', pdf);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  |unit| src/features/site-navigation/components/site-header.test.tsx > renders the supplied language control once
+Error: expect(received).toBeInTheDocument()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/site-navigation/components/site-header.test.tsx:43:69
+     41| it('renders the supplied language control once', () => {
+     42|   render(<SiteHeader navigation={navigationEnFixture} languageControl=…
+     43|   expect(screen.queryByRole('button', { name: 'Switch language' })).to…
+       |                                                                     ^
+     44|   expect(screen.getAllByRole('button', { name: 'Switch language' })).t…
+     45| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  13 failed (13)
+   Start at  15:24:30
+   Duration  2.26s (environment 63%, setup 20%, import 11%, tests 3%, transform 2%)
+

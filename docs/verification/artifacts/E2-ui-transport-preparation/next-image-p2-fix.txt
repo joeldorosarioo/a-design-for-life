@@ -1,0 +1,52 @@
+# E2 — correção P2 da classificação de mídia ausente
+
+30/10/2026. Etapa 2: **16,7% (1/6)**. Correção técnica do achado em `E2-transport-helpers-review.md`; a composição do Proxy e o aceite A2 continuam com o coordenador.
+
+## Mudança
+
+`classify-missing-public-media.ts` extrai, sem alterar a regra A1, a classificação que existia dentro de `resolveMediaAccess`. Os dois caminhos agora usam essa mesma capacidade interna:
+
+```ts
+classifyMissingPublicMedia(mediaId, capturedRoot: PublicRoot | null, req?): Promise<404 | 503>
+```
+
+O helper usa uma requisição Native fresca para ler somente metadados/usos. Um uso SQL `confirmed` cujo proprietário não está coberto na raiz recebida produz503; um proprietário coberto com `media: []` produz404, inclusive com ACK SQL antigo. Mídia privada/nunca publicada e ID desconhecido saudáveis continuam indistinguíveis como404. Erros da classificação sobem aos dois chamadores, que retornam503 vazio sem cache. SQL nunca devolve bytes, manifesto autorizado ou permissão de passagem para Next.
+
+A raiz é o argumento capturado pelo chamador, sem nova leitura de `current.json` no classificador. `resolveMediaAccess` conserva prévias, variantes, leitura de objeto e status anteriores. `handleNextImage` separa `!manifest` (classificação) de PDF/outro manifesto positivamente recusado (404). Raiz ausente também é classificada conforme A1; raiz ilegível/corrompida continua503. O caminho positivo com manifesto confirmado não consulta Native. A importação de `createLocalReq`/Payload ocorre apenas dentro do classificador, depois de obter o provider; o caminho público conhecido não carrega essa dependência para classificar.
+
+Nenhuma mudança de API pública `handleNextImage`, app/proxy, configuração Next, ambiente, dependências, lock, commit ou banco foi feita por este agente. Os testes PostgreSQL foram executados pelo agente que detinha exclusivamente55433, sem concorrência com outro lifecycle.
+
+## RED e GREEN
+
+| Evidência | Resultado observado |
+| --- | --- |
+| `image-probe/helper-coverage-red-unit.log` | Novo caso com origem Native indisponível: esperado503/recebido404; 1 falha/40 pass |
+| `E2-editorial-fields-enqueue-image-red-fresh.log` | **RED Native real**: publicação/uso confirmado em PostgreSQL; original503, otimizador404 na ausência de cobertura do proprietário. Novo arquivo:1 falha/1 pass. O mesmo run também continha duas falhas do arquivo `publication-enqueue` sob o outro agente; elas não são omitidas nem contadas como aprovação |
+| `image-probe/helper-coverage-green-unit.log` | **54/54 em três arquivos**: helper41, media-response e public-root |
+| `E2-editorial-fields-native-green-final.log` | **25/25 em sete arquivos**, incluindo novos dois casos Native de imagens e quatro casos A1 de `resolveMediaAccess`; exit0, migrações atuais aplicadas e container do próprio runner removido |
+| `image-probe/helper-coverage-typecheck.log` | Tipagem focada incluindo integração: exit0 |
+| `image-probe/helper-coverage-lint.log` | ESLint cinco arquivos da correção: exit0, sem saída |
+| Prettier cinco arquivos da correção | exit0, todos formatados |
+
+O RED Native e o GREEN Native foram executados pelo agente `/root/e2_editorial_presentation_fields`; este agente leu os logs completos/relevantes e recebeu o comando exato do executor. Não executei um segundo lifecycle desnecessário. O comando GREEN foi:
+
+```text
+pnpm exec vitest run --project integration src/features/professional-profile/content/collections/professional-profiles.integration.test.ts src/features/site-navigation/content/collections/site-navigation.integration.test.ts src/features/professional-profile/server/get-published-profile.integration.test.ts src/config/capture-legacy-publications.integration.test.ts src/helpers/payload/publication-enqueue.integration.test.ts src/features/media-library/server/next-image-proxy.integration.test.ts src/features/media-library/server/resolve-media-access.integration.test.ts
+```
+
+Node24.22.2 no PATH; Next16.4.3 e Payload/PostgreSQL instalados atuais. A execução aplica as12 migrações atuais no banco isolado. O agente de banco informou liberação definitiva de55433 após seu upgrade final também aprovado e remoção do container.
+
+## O que os novos casos Native provam
+
+- Publicação real confirma uso SQL. Remover o proprietário da raiz ou manter proprietário sem campo de cobertura `media` faz as entradas original e otimizador retornarem503. O otimizador é exercitado tanto em chamada externa quanto em chamada interna HMAC válida.
+- Retirada real produz cobertura `media: []`. Recolocar deliberadamente os usos SQL confirmados anteriores pelo adaptador Native — fixture de ACK antigo — não concede bytes e mantém404 nas duas entradas.
+- Classificação direta com raiz capturada coberta mantém404 quando o arquivo atual é posteriormente trocado por raiz sem proprietário; classificação com raiz capturada sem proprietário mantém503 depois de restaurar no disco a cobertura. Isso demonstra ausência de seleção de raiz nova pelo classificador.
+- Upload privado real e UUID inexistente recebem o mesmo404 saudável. Nenhum fetch do otimizador deveria ocorrer nesses casos: a origem interna é um loopback sem serviço e o resultado503 distinguiria uma tentativa indevida de fetch.
+
+Nenhum classifier callback foi simulado. Os testes unitários de origem indisponível usam um provider que falha para demonstrar503; eles não alegam404 de retirada ou privacidade saudável sem Native real. Os dois casos unitários antigos que usavam somente root passaram a esperar503 quando a classificação Native não pode executar; sua alegação anterior de404 foi substituída pelos casos PostgreSQL acima, após RED Native comprovado.
+
+## Arquivos e limites
+
+Produção: `classify-missing-public-media.ts`, `resolve-media-access.ts` e `next-image-proxy.ts`. Testes: `next-image-proxy.test.ts` e `next-image-proxy.integration.test.ts`, todos em `src/features/media-library/server/`. O export público existente não precisou mudar. Hashes finais em `image-probe/helper-coverage-source-hashes.json`.
+
+A prova Next real MISS/HIT com resposta no-store da entrega anterior é histórica: não foi repetida após esta extração. A validação A2 deve exercitar o Proxy composto com provider Native disponível no seu runtime, cache aquecido, publicar/retirar e status do corpo/headers. Se esse provider não existir no grafo/runtime do Proxy, o fallback seguro é503; isso não comprova o404 saudável exigido. Consumo de memória do buffer, concorrência, CDN/R2/implantação continuam fora deste aceite.

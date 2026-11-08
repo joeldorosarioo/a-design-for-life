@@ -1,0 +1,185 @@
+
+Running 3 tests using 1 worker
+
+(node:31692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › src\config\editorial-multiline.e2e.test.ts:46:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview (2.5s)
+(node:11716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › src\config\editorial-multiline.e2e.test.ts:62:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview (2.1s)
+(node:31880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 [chromium] › src\config\editorial-multiline.e2e.test.ts:73:1 › Native Case section heading retains authored line breaks through Save Draft and preview (2.2s)
+
+
+  1) [chromium] › src\config\editorial-multiline.e2e.test.ts:46:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic Home About first line
+    - Synthetic Home About second line
+    + Synthetic Home About first line Synthetic Home About second line
+
+      52 |   await page.locator('#field-about__title').fill(about);
+      53 |   const reread=await save(page,'professional-profiles',profileId);
+    > 54 |   expect.soft(reread.homeAbout.title).toBe(homeAbout);
+         |                                       ^
+      55 |   expect.soft(reread.about.title).toBe(about);
+      56 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'professional-profiles',id:profileId,page:'home'}));
+      57 |   expect.soft(await page.locator('[data-reading-key="home-about"] h2').textContent()).toBe(homeAbout);
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:54:39
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic About first line
+    - Synthetic About second line
+    + Synthetic About first line Synthetic About second line
+
+      53 |   const reread=await save(page,'professional-profiles',profileId);
+      54 |   expect.soft(reread.homeAbout.title).toBe(homeAbout);
+    > 55 |   expect.soft(reread.about.title).toBe(about);
+         |                                   ^
+      56 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'professional-profiles',id:profileId,page:'home'}));
+      57 |   expect.soft(await page.locator('[data-reading-key="home-about"] h2').textContent()).toBe(homeAbout);
+      58 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'professional-profiles',id:profileId,page:'about'}));
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:55:35
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic Home About first line
+    - Synthetic Home About second line
+    + Synthetic Home About first line Synthetic Home About second line
+
+      55 |   expect.soft(reread.about.title).toBe(about);
+      56 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'professional-profiles',id:profileId,page:'home'}));
+    > 57 |   expect.soft(await page.locator('[data-reading-key="home-about"] h2').textContent()).toBe(homeAbout);
+         |                                                                                       ^
+      58 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'professional-profiles',id:profileId,page:'about'}));
+      59 |   expect.soft(await page.locator('main h1').textContent()).toBe(about);
+      60 | });
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:57:87
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic About first line
+    - Synthetic About second line
+    + Synthetic About first line Synthetic About second line
+
+      57 |   expect.soft(await page.locator('[data-reading-key="home-about"] h2').textContent()).toBe(homeAbout);
+      58 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'professional-profiles',id:profileId,page:'about'}));
+    > 59 |   expect.soft(await page.locator('main h1').textContent()).toBe(about);
+         |                                                            ^
+      60 | });
+      61 |
+      62 | test('Native Navigation footer title retains authored line breaks through Save Draft and preview',async({page})=>{
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:59:60
+
+    Error Context: test-results\editorial-multiline.e2e-Na-1f29a-raft-and-Home-About-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-1f29a-raft-and-Home-About-preview-chromium\error-context.md
+
+  2) [chromium] › src\config\editorial-multiline.e2e.test.ts:62:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic footer first line
+    - Synthetic footer second line
+    + Synthetic footer first line Synthetic footer second line
+
+      66 |   await page.locator('#field-footer__title').fill(title);
+      67 |   const reread=await save(page,'site-navigation',navigationId);
+    > 68 |   expect.soft(reread.footer.title).toBe(title);
+         |                                    ^
+      69 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'site-navigation',id:navigationId,page:'home'}));
+      70 |   expect.soft(await page.locator('footer h2').textContent()).toBe(title);
+      71 | });
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:68:36
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic footer first line
+    - Synthetic footer second line
+    + Synthetic footer first line Synthetic footer second line
+
+      68 |   expect.soft(reread.footer.title).toBe(title);
+      69 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'site-navigation',id:navigationId,page:'home'}));
+    > 70 |   expect.soft(await page.locator('footer h2').textContent()).toBe(title);
+         |                                                              ^
+      71 | });
+      72 |
+      73 | test('Native Case section heading retains authored line breaks through Save Draft and preview',async({page})=>{
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:70:62
+
+    Error Context: test-results\editorial-multiline.e2e-Na-a650b-ough-Save-Draft-and-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-a650b-ough-Save-Draft-and-preview-chromium\error-context.md
+
+  3) [chromium] › src\config\editorial-multiline.e2e.test.ts:73:1 › Native Case section heading retains authored line breaks through Save Draft and preview 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic section first line
+    - Synthetic section second line
+    + Synthetic section first line Synthetic section second line
+
+      77 |   await page.locator('#field-sections__0__heading').fill(heading);
+      78 |   const reread=await save(page,'case-content',contentId);
+    > 79 |   expect.soft(reread.sections[0].heading).toBe(heading);
+         |                                           ^
+      80 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'case-content',id:contentId,page:'case'}));
+      81 |   expect.soft(await page.locator('[id^="section-"] h2').first().textContent()).toBe(heading);
+      82 | });
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:79:43
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    - Expected  - 2
+    + Received  + 1
+
+    - Synthetic section first line
+    - Synthetic section second line
+    + Synthetic section first line Synthetic section second line
+
+      79 |   expect.soft(reread.sections[0].heading).toBe(heading);
+      80 |   await page.goto(buildPrivatePreviewPath({locale:'pt',collection:'case-content',id:contentId,page:'case'}));
+    > 81 |   expect.soft(await page.locator('[id^="section-"] h2').first().textContent()).toBe(heading);
+         |                                                                                ^
+      82 | });
+      83 |
+        at E:\a-design-for-life\src\config\editorial-multiline.e2e.test.ts:81:80
+
+    Error Context: test-results\editorial-multiline.e2e-Na-b2fa8-ough-Save-Draft-and-preview-chromium\error-context.md
+
+    Error Context: test-results\editorial-multiline.e2e-Na-b2fa8-ough-Save-Draft-and-preview-chromium\error-context.md
+
+  3 failed
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:46:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview 
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:62:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview 
+    [chromium] › src\config\editorial-multiline.e2e.test.ts:73:1 › Native Case section heading retains authored line breaks through Save Draft and preview 

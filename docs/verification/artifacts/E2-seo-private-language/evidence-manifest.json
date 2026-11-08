@@ -1,0 +1,165 @@
+{
+  "capturedAt": "2026-10-30T23:55:54.423Z",
+  "sourceCount": 494,
+  "sourceSnapshotSha256": "34a16e2714c1a658b760fb60fb58da959438fcfce97486c4792ba9916ae2b3a1",
+  "environment": {
+    "node": "24.22.2",
+    "next": "16.4.3",
+    "payload": "3.92.1",
+    "postgres": "17.11 real isolated55433,tmpfs;cleanup observed"
+  },
+  "http": {
+    "exitCode": 0,
+    "recordedAt": "2026-10-30T23:48:35.4116176Z",
+    "command": "pnpm test:e2e private-pages.e2e.test.ts metadata.e2e.test.ts",
+    "passed": 13,
+    "seo": 4,
+    "private": 9,
+    "buildId": "1UzIWSnmq-P8k51Gq_2G1"
+  },
+  "nativePrivateLanguage": {
+    "recordedAt": "2026-10-30T23:29:36.6517035Z",
+    "exitCode": 0,
+    "command": "pnpm exec vitest run --project integration resolve-private-language-target.integration.test.ts",
+    "passed": 9
+  },
+  "nativeSEO": {
+    "passed": 6,
+    "scope": "See native-execution evidence; real Root/Native, no mocked publication."
+  },
+  "unitPrivateLanguage": 5,
+  "limitations": [
+    "Full combined verify/oldA1browser/currentLinuxCI after these additions remain pending.",
+    "Production sitemap selection is proven with real Native Root fixtures and pure formatter; HTTP on this isolated APP_ENV=test intentionally advertises an empty sitemap and disallows all robots. No production/staging host was accessed.",
+    "Private language navigates between authorized saved draft documents without writing public language preference.",
+    "Card-specific fields still require the pending user response; Figma Native visual fixture and complete a11y/visual/performance acceptance remain open."
+  ],
+  "exports": [
+    {
+      "file": "E2-private-language-ui-red.txt",
+      "originalSha256": "49d112ac56314bc5a1c2365ddc5f724f20360e2026edfcf976b5a7f905affa6d",
+      "exportedSha256": "49d112ac56314bc5a1c2365ddc5f724f20360e2026edfcf976b5a7f905affa6d",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-ui-red-result.json",
+      "originalSha256": "c2410c083d0c219643d79b70ee874a6f4a236e47eff7bcb54fc884734cd6c086",
+      "exportedSha256": "c2410c083d0c219643d79b70ee874a6f4a236e47eff7bcb54fc884734cd6c086",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-ui-green.txt",
+      "originalSha256": "53aa70e07bf32e1a54768469ba1037b1056538ff4f656b45cd41a026368eb695",
+      "exportedSha256": "53aa70e07bf32e1a54768469ba1037b1056538ff4f656b45cd41a026368eb695",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-ui-green-result.json",
+      "originalSha256": "84532c70695fc6fcc908493bdc97e18605103e71e4aca6bfc32aa4ddab08088b",
+      "exportedSha256": "84532c70695fc6fcc908493bdc97e18605103e71e4aca6bfc32aa4ddab08088b",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-native-red.txt",
+      "originalSha256": "828cf423d1d7bd1f80e60df6f2b99c5bc23d90055e46feda242a7b883fb5fb1f",
+      "exportedSha256": "ca2dfd157c1e77e86e76c2cf78e31727338ea16df74708ad60f2bd38d79fcd93",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-native-red-result.json",
+      "originalSha256": "a844d867ab7ae917ec075ea86b709bd858ff062a0d9bed4697215a1377a5a92b",
+      "exportedSha256": "a844d867ab7ae917ec075ea86b709bd858ff062a0d9bed4697215a1377a5a92b",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-native-red-bidirectional.txt",
+      "originalSha256": "a63b506f988aabab50e3ff584e422f5babbdb11d0cffe8e057241aa586ded3f4",
+      "exportedSha256": "b775a09029a76f5ac98a5e7f0a463abb69065dd119d8628cafb43bda956fd0a5",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-native-red-bidirectional-result.json",
+      "originalSha256": "08163b1d9ac9601a826b59dff3cc0e7c296c71dc4f07fd4818481c208edc1126",
+      "exportedSha256": "08163b1d9ac9601a826b59dff3cc0e7c296c71dc4f07fd4818481c208edc1126",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-native-green.txt",
+      "originalSha256": "e20ac370b512321918579e86dc1044f9f3ceffcc4ab18bb0fe61b8d7666b7961",
+      "exportedSha256": "c9c85a128ac65cdce8a83418b24a5065feccda832e77628aa52c5f642f1e6a91",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-native-green-result.json",
+      "originalSha256": "4d9a8f316d56071de18a589268944672da4bd13a165d5a8bdc38bba110ede4e4",
+      "exportedSha256": "4d9a8f316d56071de18a589268944672da4bd13a165d5a8bdc38bba110ede4e4",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-seo-http-red.txt",
+      "originalSha256": "6ff273a60a3f7ef3b540b87f5e236f8e54c47dd4da146fee919e1b9147827172",
+      "exportedSha256": "b6f4c9e8d92b3bf098fe928989e3a78bea806653d4bc554f4e2c86814982400d",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-seo-http-red-result.json",
+      "originalSha256": "c2fb9b5a7be3acb3830d826cbdc8d37e73a5132e7fee8755d4593e61709295c5",
+      "exportedSha256": "c2fb9b5a7be3acb3830d826cbdc8d37e73a5132e7fee8755d4593e61709295c5",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-seo-http-green.txt",
+      "originalSha256": "e3d1969b0d4133b060dd2f644ed51bd33b7b81b2a49ee817d17b3e8523b3d1e0",
+      "exportedSha256": "47acb0d2219d01299e2dc4001f8c9662a0840cbb443a90b1ee6779598e2268da",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-seo-http-green-result.json",
+      "originalSha256": "19baaa0f789add36db3f87168040a312ec39d4ecb55e8270d46aae11fd4762e6",
+      "exportedSha256": "19baaa0f789add36db3f87168040a312ec39d4ecb55e8270d46aae11fd4762e6",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-composition-typecheck.txt",
+      "originalSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "exportedSha256": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "E2-private-language-composition-typecheck-result.json",
+      "originalSha256": "72b1d6f05c42e97ceacaa4e33ddd9a68a9ae5268213ced5882a1a235d34a83a2",
+      "exportedSha256": "72b1d6f05c42e97ceacaa4e33ddd9a68a9ae5268213ced5882a1a235d34a83a2",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "native-execution-report.md",
+      "originalSha256": "1c557e47fd97dfc80ad5fc254d9e6322efec1d39e375932b2f6df11a55bcd6d4",
+      "exportedSha256": "1c557e47fd97dfc80ad5fc254d9e6322efec1d39e375932b2f6df11a55bcd6d4",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "native-execution-evidence.json",
+      "originalSha256": "47c3267e7216bddcf3f0ea662c6f22dcb8bbdb4b4a082c5f57ee4b6994745caa",
+      "exportedSha256": "47c3267e7216bddcf3f0ea662c6f22dcb8bbdb4b4a082c5f57ee4b6994745caa",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "metadata-root-move-diagnosis.md",
+      "originalSha256": "1518788d3491c76159d24b8fabff2c0d73840e71002e4462f23ee071bd4967c7",
+      "exportedSha256": "1518788d3491c76159d24b8fabff2c0d73840e71002e4462f23ee071bd4967c7",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "metadata-root-move-evidence.json",
+      "originalSha256": "14b6f4dcf0e1331283fc277140dddaeaa2192d803ad717b9431d70aa8d22f562",
+      "exportedSha256": "14b6f4dcf0e1331283fc277140dddaeaa2192d803ad717b9431d70aa8d22f562",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    },
+    {
+      "file": "metadata-file-matcher-proof.log",
+      "originalSha256": "f4f3536af29303937bc61485e0e5c78655fa82b9a12d35f36c292bf78159502f",
+      "exportedSha256": "f4f3536af29303937bc61485e0e5c78655fa82b9a12d35f36c292bf78159502f",
+      "transformation": "ANSI stripped,JWT/database URLs/emails redacted when present; raw originals private."
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-03T15:29:30.966Z",
+  "scope": "Actual offline local package viewer RED, causal probe, minimal tool-only correction and rebuilt artifact GREEN. Not portfolio/WCAG/A2 user approval.",
+  "originalRed": {
+    "packageLabel": "A2-review-c9be4dc",
+    "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44",
+    "manifestSha256": "e9b414eb5914328caa67997d344b202ac16fba8dd199caa190d39f0e2e89313a",
+    "startedAt": "2026-11-03T15:18:24.306Z",
+    "finishedAt": "2026-11-03T15:18:34.277Z",
+    "exitCode": 1,
+    "failedStage": "overflow-screenshot-390",
+    "viewport": 390,
+    "documentWidth": 626,
+    "overflow": 236,
+    "helperSha256": "bc59bd0c21c8345d4bf297687998514f28d079644befd997a449bd6710c32db1",
+    "classification": "Confirmed viewer UI overflow from an unbreakable integrity token in the limits list",
+    "receiptSha256": "10974b1f135e6b9e8204d443be2ded6b7a3ffbe849a66f7c57160a745c518a51",
+    "resultSha256": "cbe0435546c7c0493b3f48cf5c4f2c17a6e8f5399024d011014769b85478e58b"
+  },
+  "causalProbe": {
+    "startedAt": "2026-11-03T15:21:44.835Z",
+    "finishedAt": "2026-11-03T15:21:46.817Z",
+    "temporaryCSS": ".limits { overflow-wrap: anywhere; }",
+    "before": {
+      "viewport": 390,
+      "documentWidth": 626,
+      "overflow": 236
+    },
+    "after": {
+      "viewport": 390,
+      "documentWidth": 390,
+      "overflow": 0
+    },
+    "temporaryDOMOnly": true,
+    "rebuiltGreen": false,
+    "evidenceSha256": "f3bcf566ecd427d7043c01a85413f3bea930a482c0df92bf093d7dbf75220b13"
+  },
+  "minimalCorrection": {
+    "originalGenerator": "generate-a2-package.mjs",
+    "originalSha256": "49d8c7e2752dc7fd42df27c135fc3729a37ce9744cbbd40d4d065a1065efc967",
+    "generator": "generate-a2-package-v2.mjs",
+    "generatorSha256": "10eaf7c1840b00496d4e0e7d641d619084bb0e0de279887ee119a2a4a50e8f35",
+    "exactRule": {
+      "before": ".limits{max-width:85ch;padding-left:24px}",
+      "after": ".limits{max-width:85ch;padding-left:24px;overflow-wrap:anywhere}"
+    },
+    "originalGeneratorPreserved": true,
+    "inputManifestSha256": "a9be0359e8b7a01aca06f0578d58c22424339d14b6bfe7668bc2e6f751a11411",
+    "changeProofSha256": "0e404a616907da52f290e3e2f68937239cefd4df3695dc500928aa18a9d1d062"
+  },
+  "rebuiltGreen": {
+    "packageLabel": "A2-review-c9be4dc-v2",
+    "commit": "c9be4dc23c12f45fadd27cafc05a599b8b3a0c44",
+    "manifestSha256": "3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15",
+    "indexSha256": "02b8fb1aaa7189a5efe4f1fed4911301220afe171612cdf2b2a8ddbb63611f8e",
+    "startedAt": "2026-11-03T15:26:01.065Z",
+    "finishedAt": "2026-11-03T15:26:10.945Z",
+    "exitCode": 0,
+    "helperSha256": "8a863f14a1550441b60902b84ffa99ddba83cedc9148dcd133045846d14d7961",
+    "generator": {
+      "file": "generate-a2-package-v2.mjs",
+      "sha256": "10eaf7c1840b00496d4e0e7d641d619084bb0e0de279887ee119a2a4a50e8f35"
+    },
+    "artifactHashesVerified": 181,
+    "allHashesAndBytesMatch": true,
+    "filterCombinationsPassed": 108,
+    "views": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "filterCombinationsPassed": 54,
+        "capturesDecoded": 18,
+        "keyboard": {
+          "nativeTabThroughFilters": true,
+          "localeChangedByArrowKey": true,
+          "captureSpaceEnterToggle": true,
+          "reportEnterSpaceToggle": true,
+          "reportPreviewFocusable": true
+        },
+        "geometry": {
+          "viewportWidth": 1440,
+          "documentWidth": 1440,
+          "overflow": 0
+        },
+        "localLinks": {
+          "references": 204,
+          "uniqueTargets": 182,
+          "allLocalAndExisting": true,
+          "all181ArtifactsLinked": true
+        },
+        "screenshot": {
+          "file": "qa-desktop-1440.png",
+          "sha256": "60741174f6330b5afcb6f91eda1caa691bba982f41e1a3f219f9b407ddfaf7c9"
+        }
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "filterCombinationsPassed": 54,
+        "capturesDecoded": 18,
+        "keyboard": {
+          "nativeTabThroughFilters": true,
+          "localeChangedByArrowKey": true,
+          "captureSpaceEnterToggle": true,
+          "reportEnterSpaceToggle": true,
+          "reportPreviewFocusable": true
+        },
+        "geometry": {
+          "viewportWidth": 390,
+          "documentWidth": 390,
+          "overflow": 0
+        },
+        "localLinks": {
+          "references": 204,
+          "uniqueTargets": 182,
+          "allLocalAndExisting": true,
+          "all181ArtifactsLinked": true
+        },
+        "screenshot": {
+          "file": "qa-mobile-390.png",
+          "sha256": "a1c6b7247cc5046a3a9394acca19c26a3bf9f486e7068cd8a4af42483ab8c8b3"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "demonstrations/mobile-pt-en.webm",
+        "duration": 14.08,
+        "width": 390,
+        "height": 844,
+        "paused": true,
+        "autoplay": false,
+        "playedRanges": 0,
+        "metadataProbe": "metadata-only"
+      },
+      {
+        "file": "demonstrations/desktop-en.webm",
+        "duration": 10.48,
+        "width": 1440,
+        "height": 900,
+        "paused": true,
+        "autoplay": false,
+        "playedRanges": 0,
+        "metadataProbe": "metadata-only"
+      }
+    ],
+    "externalRequests": 0,
+    "browserErrors": 0,
+    "browserClosed": true,
+    "receiptSha256": "050bf080f7f46f6cc42096370a11cc59c2f636449af7f561c11b18fdf6e4d97a",
+    "resultSha256": "e4fa51372540e20af073d590677833b67b6ea922218e685f696de697e0829cd2"
+  },
+  "applicationDatabaseGitTouched": false,
+  "authenticationRead": false,
+  "screenReaderExecuted": false,
+  "originalArtifactsPreserved": true,
+  "finalDeliveryLimit": "This GREEN covers the preliminary rebuilt c9be4dc-v2 package only. The eventual final outputs/A2 and commitB require their own actual package hash and QA receipt."
+}

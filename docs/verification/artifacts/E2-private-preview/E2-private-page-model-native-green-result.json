@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project integration src/config/read-private-page-model.integration.test.ts src/config/prepare-private-preview-request.integration.test.ts src/helpers/payload/preview-visual-upgrade.integration.test.ts src/helpers/payload/preview-session.integration.test.ts src/features/cases/server/get-preview-case.integration.test.ts src/config/capture-legacy-publications.integration.test.ts --sequence.shuffle.files --sequence.seed=1 --reporter verbose",
+  "exitCode": 0,
+  "recordedAt": "2026-10-30T22:07:36.2668303Z"
+}

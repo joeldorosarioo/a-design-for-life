@@ -1,0 +1,9 @@
+$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+$ tsc --noEmit
+src/config/capture-legacy-publications.integration.test.ts(109,58): error TS2339: Property 'subjectId' does not exist on type 'TypeWithID'.
+src/config/capture-legacy-publications.integration.test.ts(120,53): error TS2339: Property 'subjectId' does not exist on type 'TypeWithID'.
+src/config/capture-legacy-publications.integration.test.ts(125,72): error TS2339: Property 'target' does not exist on type 'TypeWithID'.
+src/features/site-navigation/server/map-navigation.test.ts(95,43): error TS2322: Type '{} | null | undefined' is not assignable to type '{ caseLinkLabel?: string | null | undefined; homeLabel?: string | null | undefined; casesLabel?: string | null | undefined; contentsLabel?: string | null | undefined; previousSectionLabel?: string | ... 1 more ... | undefined; ... 6 more ...; scopeLabel?: string | ... 1 more ... | undefined; } | undefined'.
+  Type 'null' is not assignable to type '{ caseLinkLabel?: string | null | undefined; homeLabel?: string | null | undefined; casesLabel?: string | null | undefined; contentsLabel?: string | null | undefined; previousSectionLabel?: string | ... 1 more ... | undefined; ... 6 more ...; scopeLabel?: string | ... 1 more ... | undefined; } | undefined'.
+[ELIFECYCLE] Command failed with exit code 2.
+[ELIFECYCLE] Command failed with exit code 2.

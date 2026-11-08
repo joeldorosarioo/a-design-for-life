@@ -128,7 +128,11 @@ export function PublicPageView({
         caseDetail={detail}
         projectsHref={projects}
         labels={{
-          back: controls?.casesLabel ?? (english ? 'Projects' : 'Projetos'),
+          back: controls?.backToProjectsLabel?.trim()
+            ? controls.backToProjectsLabel
+            : english
+              ? 'Back to projects'
+              : 'Voltar aos projetos',
           contents: controls?.contentsLabel ?? (english ? 'Contents' : 'Sumário'),
           role: controls?.roleLabel ?? (english ? 'Role' : 'Papel'),
           scope: controls?.scopeLabel ?? (english ? 'Scope' : 'Escopo'),

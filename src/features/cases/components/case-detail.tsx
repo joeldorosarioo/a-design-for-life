@@ -27,7 +27,7 @@ export function CaseDetail({
       section.blocks.length,
   );
   const entries = sections.flatMap((section) => {
-    const label = section.eyebrow?.trim() || section.heading?.trim();
+    const label = section.heading?.trim() || section.eyebrow?.trim();
     return label
       ? [{ readingKey: section.readingKey, label, anchor: `section-${section.readingKey}` }]
       : [];
@@ -76,7 +76,13 @@ export function CaseDetail({
           text={caseDetail.introduction ?? caseDetail.summary}
           className={styles.openingIntroduction}
         />
-        <CaseImage image={caseDetail.cover} kind="cover" mediaMode={mediaMode} priority />
+        <CaseImage
+          image={caseDetail.cover}
+          kind="cover"
+          coverPresentation={caseDetail.coverPresentation}
+          mediaMode={mediaMode}
+          priority
+        />
         <CaseProse text={caseDetail.contextNote} className={styles.note} />
       </header>
       <div className={`portfolio-container ${styles.readingLayout}`}>
@@ -91,6 +97,10 @@ export function CaseDetail({
                   newTabLabel={labels.newTab}
                   mediaMode={mediaMode}
                   facts={index === 0 ? facts : null}
+                  dividerBefore={
+                    section.presentation === 'process' ||
+                    (section.presentation === 'narrative' && index > 0)
+                  }
                 />
               ))
             : facts}

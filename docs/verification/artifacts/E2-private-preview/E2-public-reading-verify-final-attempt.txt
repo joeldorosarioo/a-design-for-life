@@ -1,0 +1,1599 @@
+$ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build
+$ tsc --noEmit
+$ eslint .
+
+E:\a-design-for-life\src\migrations\20261030_093430_private_media_manifests.ts
+   3:32  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+   3:41  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+  15:34  warning  'payload' is defined but never used  @typescript-eslint/no-unused-vars
+  15:43  warning  'req' is defined but never used      @typescript-eslint/no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[18:46:11] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[18:46:11] INFO: Migrating: 20261030_003022_initial_base
+[18:46:11] INFO: Migrated:  20261030_003022_initial_base (46ms)
+[18:46:11] INFO: Migrating: 20261030_020021_editorial_models
+[18:46:11] INFO: Migrated:  20261030_020021_editorial_models (99ms)
+[18:46:11] INFO: Migrating: 20261030_020521_structural_uniqueness
+[18:46:11] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[18:46:11] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[18:46:11] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[18:46:11] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[18:46:11] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (2ms)
+[18:46:11] INFO: Migrating: 20261030_030036_global_editorial_copy
+[18:46:11] INFO: Migrated:  20261030_030036_global_editorial_copy (6ms)
+[18:46:11] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[18:46:11] INFO: Migrated:  20261030_035306_protect_case_identity_references (7ms)
+[18:46:11] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[18:46:11] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (5ms)
+[18:46:11] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[18:46:11] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[18:46:11] INFO: Migrating: 20261030_093430_private_media_manifests
+[18:46:11] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[18:46:11] INFO: Migrating: 20261030_124550_publication_coordination
+[18:46:11] INFO: Migrated:  20261030_124550_publication_coordination (34ms)
+[18:46:11] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[18:46:11] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (3ms)
+[18:46:11] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[18:46:11] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (1ms)
+[18:46:11] INFO: Done.
+[18:47:14] INFO: Not Found
+[18:47:14] INFO: Not Found
+[18:47:15] INFO: Not Found
+[18:47:15] INFO: Not Found
+[18:47:15] INFO: Not Found
+[18:47:15] INFO: Not Found
+[18:47:20] ERROR: This user is locked due to having too many failed login attempts.
+    err: {
+      "type": "LockedAuth",
+      "message": "This user is locked due to having too many failed login attempts.",
+      "stack":
+          LockedAuth: This user is locked due to having too many failed login attempts.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:27:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:84:18
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "LockedAuth"
+    }
+[18:47:20] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:24:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:85:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:21] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:110:11
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:21] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at reserveNativePasswordReset (E:/a-design-for-life/src/helpers/payload/password-reset-guard.ts:29:24)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async buildBeforeOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32)
+              at async resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:27:16)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:114:6
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[18:47:21] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at reserveNativePasswordReset (E:/a-design-for-life/src/helpers/payload/password-reset-guard.ts:29:24)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async buildBeforeOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32)
+              at async resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:27:16)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:143:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[18:47:21] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:54:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:144:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[18:47:21] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:54:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at async Promise.all (index 1)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:159:21
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[18:47:21] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:169:6
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:21] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:171:11
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:21] ERROR: Token is either invalid or has expired.
+    err: {
+      "type": "APIError",
+      "message": "Token is either invalid or has expired.",
+      "stack":
+          APIError: Token is either invalid or has expired.
+              at reserveNativePasswordReset (E:/a-design-for-life/src/helpers/payload/password-reset-guard.ts:29:24)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async buildBeforeOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32)
+              at async resetPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/resetPassword.js:27:16)
+              at async resetPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/resetPassword.js:10:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:175:6
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[18:47:22] ERROR: Editorial email delivery is unavailable.
+    err: {
+      "type": "EditorialEmailUnavailable",
+      "message": "Editorial email delivery is unavailable.",
+      "stack":
+          EditorialEmailUnavailable: Editorial email delivery is unavailable.
+              at Object.sendEmail (E:/a-design-for-life/src/helpers/payload/editorial-email.ts:84:15)
+              at async forgotPasswordOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/forgotPassword.js:193:13)
+              at async forgotPasswordHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/forgotPassword.js:14:5)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:182:28
+              at withUnavailableCapturedDelivery (E:/a-design-for-life/testing/fixtures/editorial-auth.ts:89:12)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:181:3
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "name": "EditorialEmailUnavailable"
+    }
+[18:47:22] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:22] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:22] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:22] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:22] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:185:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:198:13
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:22] ERROR: This user is locked due to having too many failed login attempts.
+    err: {
+      "type": "LockedAuth",
+      "message": "This user is locked due to having too many failed login attempts.",
+      "stack":
+          LockedAuth: This user is locked due to having too many failed login attempts.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:27:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:201:18
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "LockedAuth"
+    }
+[18:47:22] ERROR: The email or password provided is incorrect.
+    err: {
+      "type": "AuthenticationError",
+      "message": "The email or password provided is incorrect.",
+      "stack":
+          AuthenticationError: The email or password provided is incorrect.
+              at checkLoginPermission (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:24:15)
+              at loginOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/operations/login.js:156:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async loginHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/auth/endpoints/login.js:19:20)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/helpers/payload/password-reset.integration.test.ts:202:19
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 401,
+      "name": "AuthenticationError"
+    }
+[18:47:22] INFO: The following field is invalid: password
+[18:47:44] ERROR: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async createOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:421:13)
+              at async createHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/create.js:11:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at E:/a-design-for-life/src/config/publication-updates.integration.test.ts:386:29
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+[18:48:00] ERROR: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async updateByIDOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/updateByID.js:226:13)
+              at async updateByIDHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/updateByID.js:9:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at nativeDraft (E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:61:35)
+              at E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:109:24
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+[18:48:00] ERROR: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+    err: {
+      "type": "APIError",
+      "message": "A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.",
+      "stack":
+          APIError: A gravação não foi confirmada no COMMIT. Recarregue o documento antes de tentar novamente.
+              at Object.adapter.commitTransaction (E:/a-design-for-life/src/helpers/payload/transaction-settlement.ts:65:19)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async commitTransaction (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/commitTransaction.js:5:5)
+              at async updateByIDOperation (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/updateByID.js:226:13)
+              at async updateByIDHandler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/endpoints/updateByID.js:9:17)
+              at async endpoint.handler (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/wrapInternalEndpoints.js:15:28)
+              at async handleEndpoints (file:///E:/a-design-for-life/node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/utilities/handleEndpoints.js:200:26)
+              at nativeDraft (E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:61:35)
+              at E:/a-design-for-life/src/helpers/payload/transaction-settlement.integration.test.ts:109:24
+              at async file:///E:/a-design-for-life/node_modules/.pnpm/vitest@5.0.5_@types+node@24_645e9468bf28b07ce5b590fda4e4568b/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:20
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 503,
+      "name": "APIError"
+    }
+ ❯ |integration| src/features/cases/server/get-preview-case.integration.test.ts (7 tests | 1 failed) 1279ms
+   × orders and features only same-locale authorized drafts with private content-ID paths and exact count 172ms
+[18:49:11] INFO: You are not allowed to perform this action.
+[18:49:11] INFO: You are not allowed to perform this action.
+[18:49:11] INFO: You are not allowed to perform this action.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/cases/server/get-preview-case.integration.test.ts > orders and features only same-locale authorized drafts with private content-ID paths and exact count
+AssertionError: expected { ok: true, value: { …(4) } } to match object { ok: true, value: { count: 2, …(2) } }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,19 +1,1082 @@
+  {
+    "ok": true,
+    "value": {
+      "cases": [
+        {
++         "caseId": "01af1ebb-5f81-4f58-a7de-e73e90c2bce9",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/d277a975-ad35-4c11-a718-d3c209942183/case",
++         "summary": null,
++         "title": "Uma jornada mais simples.",
++       },
++       {
++         "caseId": "03893252-2567-4b15-8cca-f39ea278d316",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "bd1efd67-01e5-4e21-aedf-9a7972ca521c",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/d375f5b5-a557-4973-b01f-9e286b290b9c/case",
++         "summary": "Synthetic summary",
++         "title": "New private draft",
++       },
++       {
++         "caseId": "0b6e10cb-4718-4959-8036-dd1e254177b7",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/73cc7b9e-d39e-4049-b6d5-2117020b57fb/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "0c76d624-c305-47bc-82e2-84aebf107042",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "7d4734fb-c169-48c7-a869-845f3a8c0eed",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/5ee7ac20-4501-4abe-8d90-39d518f06b57/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "0d7409ff-b960-47fd-aa3c-1391140de987",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/fa918fe8-1cd6-48ae-b681-4c9a1a78d124/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "0f8fd21d-d70f-4456-bbde-7b0ec9e3cca7",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "ae2a597a-3354-4de2-ba86-72eca47090e3",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/9f3a850c-3d7f-4897-9a9c-d2983f8deaf3/case",
++         "summary": "Synthetic summary",
++         "title": "Normal draft really commits",
++       },
++       {
++         "caseId": "10720b40-defe-4a90-83fb-95d9f248ba05",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/11ae5292-acd9-47ef-87d4-71b045b9726e/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "10e14bab-7f8d-4bc8-9a93-d67adc0997ff",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "f82abbc6-06f6-4948-8e67-e14e806310c3",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/2da96d10-6fbd-49b6-b3db-a30446bb30e7/case",
++         "summary": "",
++         "title": "Private incomplete case",
++       },
++       {
++         "caseId": "133454e6-8644-4f5e-b060-47c989897d7d",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "2b0a8f73-5601-4668-8af5-88a90412a116",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/6dff3ee9-b330-4ab5-9e70-0a202f185b0c/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "17f28dbc-a671-4128-b772-d23b8047dacb",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/9b15a0cc-0e23-477b-bbbe-834e5461fb52/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "18109f89-d588-434f-b626-541bdaab78e5",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "4368ba07-9511-416b-a085-de9b753d4873",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/7c2e8457-55b6-471e-a1b4-ae9804f9263c/case",
++         "summary": "Synthetic summary",
++         "title": "Never reconstruct this draft",
++       },
++       {
++         "caseId": "1aa0adf6-c0fb-4814-b6e8-4f02c42a9bd4",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "f7e107cc-9349-445e-9c53-0c95153bc0e0",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/beef0f78-cbbd-4997-bfb8-097cde13bc25/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "1d9140c8-6b5c-4089-82ac-bd0a22961efc",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/78136ba6-c1cf-4f01-b07f-3b6f78d50b40/case",
++         "summary": null,
++         "title": "Still incomplete draft",
++       },
++       {
++         "caseId": "2041c2ac-3d8c-4746-8147-8bf78cb094ea",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "3be8ac4e-d591-4578-8573-153f510aa078",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c61c45bb-b6d5-4967-841f-985bf21b597c/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "20f9929d-0424-4f47-9c02-6af3089eb15d",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/f7281940-1f92-436d-b01f-e828f0199635/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "243c9693-7a29-4be3-b9f8-0c9572147bb6",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "7f652b95-68bf-4892-a18f-356c0a34bbf4",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/48ff6c4f-201a-446a-9446-a171883415e9/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "2575f244-99c4-44fc-8d48-95a1632a5d19",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "14f78579-3904-467a-890a-51eb7df6dffe",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/35567b57-8289-4b0e-9ee8-6ead1f78d80a/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "27975a10-b4e5-43c2-98fa-ab2c648fc8b8",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "f672b30a-ddc8-46f5-a023-41ae3e0bb81a",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/fd011938-f16e-4a85-b38f-77e9e7304aef/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "29ff66de-2084-401e-bcac-d57285eb4cc1",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/8b6f6c12-f880-4519-ba53-ee5597b8fa39/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "2c26e8fd-cecf-4caf-8b56-d6f40ccc2d51",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "95b2ec55-c56d-47b5-8400-f68aaf094065",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/14404859-66c3-4ffb-905e-e34c7b866368/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "2cda6dc8-8cb9-45aa-9dc7-155ccd7115bb",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/a4e8959c-f449-44fa-b476-2fce47484c0f/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "2f314b76-2ee3-43e6-a0fd-03730ca90a95",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "76fb3ced-4e36-47f5-8137-2d58c3c33acd",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/fcc06dd8-82e5-4434-b607-67f8ebe782f6/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "2fcfe5ae-24c5-4617-8e43-2935c29fa3d9",
++         "cover": {
++           "alt": "Synthetic swapped cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "01246388-3f15-466f-b83a-5cc102959670",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/8c28c3dd-4321-440a-accb-f4d0d49810db/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "31ce6748-123a-49e6-94b7-46776287d93d",
++         "cover": {
++           "alt": "Synthetic replacement image",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "f3e964af-5a25-4b87-8e8e-8afa28b314a4",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/06e4ebed-621f-4ed1-b5cb-9c6fc44e2558/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "34b429a1-d24a-4510-b8f5-7563d57ed643",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/7ac56b43-a135-4877-a917-5d6dc861affa/case",
++         "summary": null,
++         "title": "Durable draft",
++       },
++       {
++         "caseId": "35e058d3-8a3b-4351-8fd5-44cb922d641a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "0d1c7ed9-79e2-48c1-afd1-7f4066189dc1",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c2041fd7-5630-42b4-9064-aa8736b16050/case",
++         "summary": "Synthetic summary",
++         "title": "Private pending searchable title",
++       },
++       {
++         "caseId": "3d2e00fc-58a1-4103-b191-ebaf4500e4b1",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "3bc699b3-b5e7-4f23-9457-a7a087371769",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/bcbd7a9a-b3ef-4e5d-a54a-37781ccc1415/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "3f7d6c5c-e6df-4dc8-b47c-4c8769f988ea",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "0fb29730-eabc-4af8-8d94-edd9ad20f0f5",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/bdd912d2-d192-4776-a714-3fd05b754244/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "4c3e325f-bf6b-46a6-bac3-c1299acd9c0a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "7afe2b2f-799c-4ae9-8d74-d34d1d9e210e",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/6b6041fb-328c-4093-8c65-7bf352edcaa6/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "4f4c0c19-e160-465c-819c-78c318adefd6",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/a0b5ff80-7153-4dfa-8dd7-d9e169145510/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "4f683f77-ccdc-4dee-a149-75c305c7a867",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/f22d1518-4682-4cfa-bcf3-ea398ef31a59/case",
++         "summary": null,
++         "title": "Different title",
++       },
++       {
++         "caseId": "5d7167b7-e630-4ff0-8fa9-bda726d1c2bc",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/5f6a56a5-e011-47aa-9c3c-a3237a1cf72f/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "5d78fc0a-ad88-491b-bcc6-0139966a5d28",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "a1063bca-e30a-49b3-a088-a9c8095f49a1",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/2fb56dfd-cf77-42aa-9f79-a99e271feff1/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "64ba3e4b-b026-40d3-8bbe-eda7c7b538d3",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "91e550e7-c27b-4961-9b3e-e7b95c00b22a",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/407609e4-a305-49a0-a541-fd7bf2e909bc/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "67735b57-3432-4a00-ad48-f541c6585e56",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "ced70913-57d5-43dd-90f9-18dcbe6e686e",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/db603f67-025d-4da6-8684-0472d3af235b/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "68fd016b-bbfe-49e5-a472-1df93a364fa3",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "7ed250a9-2af2-4f05-a270-662c33097267",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/73598c5d-4361-4b55-b53a-89c58a4aebc4/case",
++         "summary": "Synthetic summary",
++         "title": "Survives real process restart",
++       },
++       {
++         "caseId": "6faf1de9-2c9a-439e-bd1d-d2db6b42b61f",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "1f0eb42e-38ed-450d-9625-992c3b19c8a3",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/feeb1eae-c527-418c-ad41-d52ebf04b206/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "7001df28-82ec-4a73-9e02-c56bf7df7b3f",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "adf1dd99-9c37-44cd-bda2-ac0ab440f87e",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/e9d3d5d9-01ab-4164-82e5-706bb8a2a76d/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "704b1c8a-01c8-47de-ae34-47b8cc925e56",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "14e539a5-6c0f-41b8-bd76-bb0d88d43714",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/b7c03f0b-363d-4382-a2af-980aa934d453/case",
++         "summary": "Synthetic summary",
++         "title": "Previously public then withdrawn",
++       },
++       {
++         "caseId": "71aee396-cb70-4cfb-9989-597fb068b33b",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "43337db0-11ec-4074-a1b6-20c741c0cf64",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/2e307d73-de7d-4088-958c-055fab4d6e1f/case",
++         "summary": "Synthetic summary",
++         "title": "Private empty narrative",
++       },
++       {
++         "caseId": "7247182c-b3ea-4126-893a-3c533979ec5a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "fc648ad7-c2f8-4964-9e2c-ab1f07e081a1",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/6d4475e1-fe13-4246-9453-bc13ceaebef1/case",
++         "summary": "Synthetic summary",
++         "title": "Known root before FS fault",
++       },
++       {
++         "caseId": "7d35e38a-564a-42ed-8982-8f0ea2efa116",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "ced70913-57d5-43dd-90f9-18dcbe6e686e",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c665427b-f962-4ba4-a244-f74bfddad658/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "7de6c80a-ffcf-44d0-9422-ec174818242a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "28f0a124-1a73-44f3-8e9f-15455bb9b5b9",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/038f3c66-69c6-4cc7-9b0b-cd69d97ddc0a/case",
++         "summary": "Synthetic summary",
++         "title": "Confirmed media coverage",
++       },
++       {
++         "caseId": "83242e0b-d878-4787-a105-7749d6346002",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "3fcd352a-421e-4bfa-8991-99c8cf1e75ee",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/a44af3d2-a413-41fb-9493-c650774a57a8/case",
++         "summary": "Synthetic summary",
++         "title": "Legacy complete title",
++       },
++       {
++         "caseId": "83f4856a-dab7-43a0-8b66-f393887e6926",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "62073efb-01ad-42c6-99ad-8db3f6232125",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/105740aa-f205-46b5-8f08-7a778d2641a9/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "87d5962b-6a02-4d8c-9026-70d5895eb1a5",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "6dbad6f7-009d-43f1-ab20-91a53e2e86a1",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/eed8e215-e8d5-4597-b8aa-b70f82b90617/case",
++         "summary": "Synthetic summary",
++         "title": "Private empty narrative",
++       },
++       {
++         "caseId": "883a75f8-4460-482b-a668-ff3f861d0b6c",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c0976719-5090-4bfd-be75-377b4cf07cca/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "901254a2-c080-4719-a065-4d0324d42b81",
++         "cover": {
++           "alt": "Synthetic new",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "0d24fd6a-0016-43a1-a4e4-b678a4f47583",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c6d9bcbf-3eb2-40f4-88d8-0d4d8bf640fe/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "905ff6ab-7220-4d74-9b1d-6fa24aa83c60",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "52c6a4a9-54ee-4fc3-8168-0484f04954a4",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/d2533979-4ee3-42fe-8325-04de98cd1cbf/case",
++         "summary": "Synthetic summary",
++         "title": "Confirmed second body",
++       },
++       {
++         "caseId": "932bd250-db7c-44b6-b315-5be27f147012",
++         "cover": null,
++         "eyebrow": "CASE ILUSTRATIVO · PROJETO MODELO 01",
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/be41c92a-228f-4fdb-98a4-aeb0b8a7d6da/case",
++         "summary": null,
++         "title": "Uma jornada ênfase revisada",
++       },
++       {
++         "caseId": "9453198a-dc34-4f5c-a896-9f47e2df1ad1",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/4ce7d4d1-6cb8-40f4-8354-7e082a78c9ab/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "95a45c69-c652-4292-8b4e-f35e4b793b7d",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "544c7a70-0a93-4350-90a0-304a49237b27",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/1265d5f9-177d-4e64-b86c-fdd00531f679/case",
++         "summary": "Synthetic summary",
++         "title": "Confirmed media coverage",
++       },
++       {
++         "caseId": "9995c3a9-8671-448f-b000-4874efc2b300",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "e5d9fcbd-72e8-47ec-b537-a65d04e07a7f",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/fba3a29b-f585-4004-9a95-09c426beb10d/case",
++         "summary": "Synthetic summary",
++         "title": "Media revoked before SQL ACK",
++       },
++       {
++         "caseId": "9fc3a0ff-1e07-4837-9bba-9453e3e79ad9",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "7b5bd472-75ba-4ba1-a2a5-a07d0723e524",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c325e5e4-1af6-46af-955c-334bda2c83aa/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "a2576539-a411-4acb-81cf-944eb237eede",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "6048a3b8-0378-4bb6-b11f-c01ed00265bd",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/978b6b7d-e0f9-4aa7-b66f-5c21dda43144/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "a36f8f5e-6b4c-4dd4-aa9d-8b8497dd8881",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "d6319907-6a03-4748-b32f-8f8568fd5644",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/5beb34f7-63d4-4a2a-9b5f-39704024a2b5/case",
++         "summary": "Synthetic summary",
++         "title": "Never reconstruct this draft",
++       },
++       {
++         "caseId": "b0abf4f3-9b9f-41ad-a5c0-5a77d51ff229",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "5164bb91-9b5d-455b-a9f8-7ade5e494f82",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/2a65a28e-c6a7-48e3-b08d-e1abd5da445f/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "b193434e-5883-43d4-a6f9-3150486a0447",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "cd5f0061-b3b5-4ff7-82cc-ae6f9ce401c8",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/63e10844-e948-47ae-bb48-349c49be5119/case",
++         "summary": "Synthetic summary",
++         "title": "Previously public then withdrawn",
++       },
++       {
++         "caseId": "b219573d-008b-4b38-9e98-c8869c2688b2",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "42c5e580-50f6-44fa-af83-464700ed8922",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/9fdfea48-8791-4cda-bed3-93a275a0bf51/case",
++         "summary": "Synthetic summary",
++         "title": "Root committed without SQL ack",
++       },
++       {
++         "caseId": "b62d9391-ede8-4395-b81a-26b23e3a509a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "58e5f527-40b2-41d6-ac05-5951445752e5",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/dd15ad5d-4753-46fe-a57c-62f0ed5fd002/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "b7de77af-fc7a-48aa-822f-01ae05938356",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c19afd22-9fc9-4c85-9e28-be2a3ce6925b/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "ba41bd2f-443c-4001-ade0-45fc63a56deb",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "6d0c4e92-114d-4350-9787-a61fcacbf4c3",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/6ed315ce-e0fa-4a0b-aa86-d5810ab3bffa/case",
++         "summary": "Synthetic summary",
++         "title": "Normal draft really commits",
++       },
++       {
++         "caseId": "bbb006cb-5b63-4d8a-b260-6bec1c0432d1",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "020a22c4-7d42-4c24-b63d-2fed3732ab22",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/c8af628d-303c-485a-be36-159d04e47f38/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "bd9d65c7-7511-47d5-b531-9834c7585892",
++         "cover": {
++           "alt": "Synthetic swapped cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "3e5e0adc-9b55-4f35-9293-ea76b6a45d4c",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/a3f2fe36-e93a-4295-8ee4-3b4b8a036f55/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "bde270bc-a30d-4619-8db5-0776b6446f0d",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "c7cb8db3-6bdb-4406-9a55-8b7377a17f94",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/12358e5f-b690-43a7-a3fd-bd37e7bf8ae1/case",
++         "summary": "Synthetic summary",
++         "title": "Media revoked before SQL ACK",
++       },
++       {
++         "caseId": "c94a221a-0abd-4609-a7da-0f38924f13ce",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/2b927907-5b99-4698-9d6f-bfe7c9cee938/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "cead8873-c612-4125-9804-dfcd3ff4fbfc",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "47fd8270-f2a8-4468-8eeb-0f8e1ab9bf41",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/8310c9d6-8617-43e9-a506-61bf735c97e7/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "cfefbf16-d6a3-4645-8fc8-c41e981caa59",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "63c657e9-b929-436b-985c-379be4b2c1cd",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/d818819a-6d5e-4eb2-8609-3dc891c52b4f/case",
++         "summary": "Synthetic summary",
++         "title": "Committed Local target awaiting proof",
++       },
++       {
++         "caseId": "e38d4c8d-93ce-4f5c-a748-1d496c123d1a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "40b85d47-cb08-4b7a-8bb3-828e0537be77",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/73675ab7-60c6-43c3-a60b-0b68c9404dff/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "e5892505-2fc3-4135-899c-44f7b9841ad0",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "08bcc45c-6dfd-4617-9b2b-3b71e71eca12",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/b503ab4c-f21e-48d1-910f-7fb906db2ac9/case",
++         "summary": "Synthetic summary",
++         "title": "PRIVATE-PENDING-a55c8944-b3f0-4f04-ba90-5d7a8f96494f",
++       },
++       {
++         "caseId": "e5a3808c-c46d-4394-a9c3-7ca03e1809e2",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/b8ddb4ce-9b53-466a-87a5-6321a73f1b79/case",
++         "summary": null,
++         "title": null,
++       },
++       {
++         "caseId": "f26acd1d-16f9-4f58-9363-c8527802b2c5",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/f5071ebb-5778-44ec-acfd-bc148ec4e6ce/case",
++         "summary": null,
++         "title": "Draft winner 0",
++       },
++       {
++         "caseId": "f38699d6-1271-4ce0-8153-4c4746ea67fc",
++         "cover": null,
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/b5a4aba2-a4b7-4a1e-8543-bbcb06a23a92/case",
++         "summary": null,
++         "title": "PRIVATE Portuguese draft",
++       },
++       {
++         "caseId": "f8e95ff9-49c6-4ead-9697-870f5765af1e",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "d6fd3786-0a58-4f1c-9fdb-167f711f9160",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/03e32636-8fc3-4d82-819f-5593ecfad23e/case",
++         "summary": "",
++         "title": "Incomplete draft",
++       },
++       {
++         "caseId": "f95140a2-be06-409c-a9e5-8f780e7cb4b4",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "102605be-c277-41ca-a119-7200df880229",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/55a8449f-20f2-44e3-a689-278f92d22e0d/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic title",
++       },
++       {
++         "caseId": "fd08cac2-62e5-44fa-9353-4b95cccfcc56",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "b561f3fd-fb6a-4bb7-a4ea-a89259298192",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/85349bdc-9e23-49f7-92ec-10741c409087/case",
++         "summary": "Synthetic summary",
++         "title": "Confirmed replacement A",
++       },
++       {
++         "caseId": "fe951772-4b23-46e9-a761-a7fcb31595de",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "4192daf3-cee0-4f27-88f6-fd0220572200",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/63b41c19-a126-48c8-857c-3b21de83f598/case",
++         "summary": "Synthetic summary",
++         "title": "Pending private title",
++       },
++       {
++         "caseId": "fea7ca7b-0728-4f38-af8e-40f7532b90db",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "5c54b5d1-4f98-4c77-b9e5-81ac9f385ffb",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/0ae0e97e-97c2-4952-8240-7b69a8c810bb/case",
++         "summary": "Synthetic summary",
++         "title": "Synthetic valid comparison",
++       },
++       {
++         "caseId": "fec588ba-0158-4b51-a91e-a8401f22bcdf",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "4b3d1ccc-4ae8-4ea0-8137-d570f280e188",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/e6d87342-b826-449d-bb94-93d1d96e59fa/case",
++         "summary": "Synthetic summary",
++         "title": "Confirmed second body",
++       },
++       {
++         "caseId": "ffd39c47-86fc-4c48-bbbf-1b1d228b58de",
++         "cover": {
++           "alt": "Mídia sintética de teste; não é um resultado profissional",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "03f064d0-2f9b-4904-8065-a7c4426efdf6",
++         },
++         "eyebrow": "CASE ILUSTRATIVO · PROJETO MODELO 01",
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/179e0163-d660-4cbe-be31-e2f82b9bd814/case",
++         "summary": null,
++         "title": "Uma jornada mais simples.",
++       },
++       {
++         "caseId": "c2999a62-34bf-4c00-88e4-ffe319f8e8da",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "b561f3fd-fb6a-4bb7-a4ea-a89259298192",
++         },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/819e8a04-9e48-4968-b89b-a997cb44391e/case",
++         "summary": "Synthetic summary",
++         "title": "Confirmed B",
++       },
++       {
++         "caseId": "c2e43f8f-370f-4ae2-bb8c-91192c6254ab",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "9132657e-3755-4c6f-94a8-669bb151f235",
++         },
++         "eyebrow": null,
++         "locale": "pt",
+          "path": "/preview-ui/pt/case-content/41184fe6-4f17-4915-a42f-1faa41cca719/case",
++         "summary": "Synthetic summary",
+          "title": "PRIVATE FIRST",
+        },
+        {
++         "caseId": "d6c34eaf-342a-42a8-a99c-e3eef586e75a",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "9132657e-3755-4c6f-94a8-669bb151f235",
++         },
++         "eyebrow": null,
++         "locale": "pt",
+          "path": "/preview-ui/pt/case-content/dea28725-cd85-46e7-b4e4-d0ac43d577e5/case",
++         "summary": "Synthetic summary",
+          "title": "PRIVATE SECOND",
++       },
++       {
++         "caseId": "bd58973b-a4c0-4196-9666-e53c4981f3bb",
++         "cover": {
++           "alt": "Synthetic cover",
++           "caption": null,
++           "decorative": false,
++           "mediaId": "85c3ced6-6811-4161-8ea7-f092c8104767",
+          },
++         "eyebrow": null,
++         "locale": "pt",
++         "path": "/preview-ui/pt/case-content/d32061ba-ec7b-4ff4-8a29-8b2454edcafb/case",
++         "summary": "Synthetic summary",
++         "title": "Newer private baseline draft",
++       },
+      ],
+-     "count": 2,
++     "count": 84,
+      "featured": [
+        {
+          "title": "PRIVATE SECOND",
+        },
+      ],
+
+ ❯ src/features/cases/server/get-preview-case.integration.test.ts:219:18
+    217| it('orders and features only same-locale authorized drafts with privat…
+    218|   const result = await getPreviewCases('pt', await actorRequest());
+    219|   expect(result).toMatchObject({
+       |                  ^
+    220|     ok: true,
+    221|     value: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 123 passed (124)
+      Tests  1 failed | 970 passed | 2 skipped (973)
+   Start at  18:46:06
+   Duration  196.78s (tests 40%, import 38%, setup 11%, environment 9%, transform 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Test failed. See above for more details.
+[ELIFECYCLE] Command failed with exit code 1.

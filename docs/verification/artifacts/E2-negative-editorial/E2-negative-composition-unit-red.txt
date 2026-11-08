@@ -1,0 +1,221 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+stderr | src/config/public-render-context.test.ts > composes editorial case503 from the same captured root without Native body or a pin
+Case route origin unavailable { correlationId: 'cf0581bf-b675-45cc-908f-94db5d17e40e' }
+
+ ❯ |unit| src/config/public-render-context.test.ts (43 tests | 5 failed) 307ms
+   × returns503 before rendering when a legacy required shell label cannot resolve 17ms
+   × composes editorial case404 from the same captured root without Native body or a pin 6ms
+   × composes editorial case410 from the same captured root without Native body or a pin 13ms
+   × composes editorial case503 from the same captured root without Native body or a pin 11ms
+   × keeps the prepared negative body on captured A after current B is promoted, then uses B for the next request 10ms
+ ❯ |unit| src/proxy.test.ts (39 tests | 4 failed) 152ms
+   × renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity 13ms
+   × renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity 11ms
+   × renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity 13ms
+   × makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case404 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected '<!doctype html><html lang="pt"><head>…' to contain 'EDITORIAL404'
+
+Expected: "EDITORIAL404"
+Received: "<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Case não encontrado</title><meta name="robots" content="noindex, nofollow"></head><body><main><h1>Case não encontrado</h1><nav aria-label="Continue navegando"><a href="/pt/cases">Projetos</a> <a href="/pt#contact">Contato</a></nav></main></body></html>"
+
+ ❯ src/proxy.test.ts:490:41
+    490|     );
+    491|     const head = await proxy(
+    492|       request(`/pt/cases/${slug}`, {
+       |    ^
+    493|         method: 'HEAD',
+    494|         headers: { 'if-none-match': '*', 'if-modified-since': 'Thu, 01…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case410 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected '<!doctype html><html lang="pt"><head>…' to contain 'EDITORIAL410'
+
+Expected: "EDITORIAL410"
+Received: "<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Case indisponível</title><meta name="robots" content="noindex, nofollow"></head><body><main><h1>Case indisponível</h1><nav aria-label="Continue navegando"><a href="/pt/cases">Projetos</a> <a href="/pt#contact">Contato</a></nav></main></body></html>"
+
+ ❯ src/proxy.test.ts:490:41
+    490|     );
+    491|     const head = await proxy(
+    492|       request(`/pt/cases/${slug}`, {
+       |    ^
+    493|         method: 'HEAD',
+    494|         headers: { 'if-none-match': '*', 'if-modified-since': 'Thu, 01…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  |unit| src/proxy.test.ts > renders current editorial case503 directly, preserving HEAD/conditionals and excluding request identity
+AssertionError: expected '<!doctype html><html lang="pt"><head>…' to contain 'EDITORIAL503'
+
+Expected: "EDITORIAL503"
+Received: "<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Case indisponível</title><meta name="robots" content="noindex, nofollow"></head><body><main><h1>Case indisponível</h1><nav aria-label="Continue navegando"><a href="/pt/cases">Projetos</a> <a href="/pt#contact">Contato</a></nav></main></body></html>"
+
+ ❯ src/proxy.test.ts:490:41
+    490|     );
+    491|     const head = await proxy(
+    492|       request(`/pt/cases/${slug}`, {
+       |    ^
+    493|         method: 'HEAD',
+    494|         headers: { 'if-none-match': '*', 'if-modified-since': 'Thu, 01…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  |unit| src/proxy.test.ts > makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure
+AssertionError: expected '<!doctype html><html lang="pt"><head>…' to contain 'EDITORIAL404'
+
+Expected: "EDITORIAL404"
+Received: "<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Case não encontrado</title><meta name="robots" content="noindex, nofollow"></head><body><main><h1>Case não encontrado</h1><nav aria-label="Continue navegando"><a href="/pt/cases">Projetos</a> <a href="/pt#contact">Contato</a></nav></main></body></html>"
+
+ ❯ src/proxy.test.ts:514:41
+    513|     Object.entries(root.subjects).filter(([key]) => key.startsWith('ca…
+    514|   );
+    515|   await withPublicRootWriter(directory, async (_current, commit) => co…
+       |                                    ^
+    516|   const fallback = await proxy(request('/pt/cases/UPPER-PRIVATE'));
+    517|   const original = renderCaseRouteResponse({ status: 404 }, 'pt');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > returns503 before rendering when a legacy required shell label cannot resolve
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/config/public-render-context.test.ts:380:23
+    378|   const prepared = await preparePublicRenderRequest(request('/pt'), op…
+    379|   expect(prepared?.status).toBe(503);
+    380|   expect(nativeCalls).toBe(0);
+       |                       ^
+    381| });
+    382| it('preserves an independently published detail200 when structural pro…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > composes editorial case404 from the same captured root without Native body or a pin
+AssertionError: expected null to match object { locale: 'pt', status: 404, …(2) }
+
+- Expected:
+{
+  "locale": "pt",
+  "navigation": {
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A CURRENT CONTACT",
+    },
+  },
+  "status": 404,
+  "title": "A EDITORIAL404",
+}
+
++ Received:
+null
+
+ ❯ src/config/public-render-context.test.ts:447:40
+    445|     );
+    446|     expect(prepared?.status).toBe(status);
+    447|     expect(casePresentation(prepared)).toMatchObject({
+       |                                        ^
+    448|       locale: 'pt',
+    449|       status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > composes editorial case410 from the same captured root without Native body or a pin
+AssertionError: expected null to match object { locale: 'pt', status: 410, …(2) }
+
+- Expected:
+{
+  "locale": "pt",
+  "navigation": {
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A CURRENT CONTACT",
+    },
+  },
+  "status": 410,
+  "title": "A EDITORIAL410",
+}
+
++ Received:
+null
+
+ ❯ src/config/public-render-context.test.ts:447:40
+    445|     );
+    446|     expect(prepared?.status).toBe(status);
+    447|     expect(casePresentation(prepared)).toMatchObject({
+       |                                        ^
+    448|       locale: 'pt',
+    449|       status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > composes editorial case503 from the same captured root without Native body or a pin
+AssertionError: expected null to match object { locale: 'pt', status: 503, …(2) }
+
+- Expected:
+{
+  "locale": "pt",
+  "navigation": {
+    "contacts": {
+      "email": "[REDACTED_EMAIL]",
+    },
+    "footer": {
+      "title": "A CURRENT CONTACT",
+    },
+  },
+  "status": 503,
+  "title": "A EDITORIAL503",
+}
+
++ Received:
+null
+
+ ❯ src/config/public-render-context.test.ts:447:40
+    445|     );
+    446|     expect(prepared?.status).toBe(status);
+    447|     expect(casePresentation(prepared)).toMatchObject({
+       |                                        ^
+    448|       locale: 'pt',
+    449|       status,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  |unit| src/config/public-render-context.test.ts > keeps the prepared negative body on captured A after current B is promoted, then uses B for the next request
+AssertionError: expected undefined to be 'A EDITORIAL410' // Object.is equality
+
+- Expected:
+"A EDITORIAL410"
+
++ Received:
+undefined
+
+ ❯ src/config/public-render-context.test.ts:468:38
+    466|   const a = await preparePublicRenderRequest(request('/pt/cases/public…
+    467|   expect(a?.status).toBe(410);
+    468|   expect(casePresentation(a)?.title).toBe('A EDITORIAL410');
+       |                                      ^
+    469|   await withPublicRootWriter(directory, async (_current, commit) =>
+    470|     commit(negativeSnapshot(410, 'B')),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  9 failed | 73 passed (82)
+   Start at  21:00:43
+   Duration  4.95s (setup 59%, import 25%, transform 11%, tests 5%)
+

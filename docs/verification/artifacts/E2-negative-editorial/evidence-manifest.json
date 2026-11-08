@@ -1,0 +1,259 @@
+{
+  "capturedAt": "2026-10-31T00:17:52.054Z",
+  "sourceCount": 495,
+  "sourceSnapshotSha256": "a2fb8c2dd277ddf3b28405d012d71df4b6cbeca04679353f8fcf1831b88c1cd3",
+  "environment": {
+    "node": "24.22.2",
+    "next": "16.4.3",
+    "payload": "3.92.1",
+    "postgres": "17.11, isolated tmpfs loopback55433, removed after test"
+  },
+  "http": {
+    "command": "pnpm test:e2e negative-cases.e2e.test.ts",
+    "node": "24.22.2",
+    "exitCode": 0,
+    "recordedAt": "2026-10-31T00:15:43.4906188Z",
+    "passed": 5,
+    "buildId": "xAv0xWu583U-tm8mDJkdf"
+  },
+  "cleanup": {
+    "listeners": [],
+    "portsFree": true,
+    "buildId": "xAv0xWu583U-tm8mDJkdf",
+    "recordedAt": "2026-10-31T00:16:44.6371284Z"
+  },
+  "generatedCss": {
+    "path": "public/_portfolio/case-state.css",
+    "sha256": "fe7c3aa9fec1c76b88f801b56ae0703058c964529d89109c1daae03b496d1557"
+  },
+  "limitations": [
+    "Focused HTTP and unit gates only; current aggregate verify, full old A1 browser regression and Linux CI remain pending.",
+    "Technical synthetic published fixtures only. No Figma example, professional data or production/staging service was published.",
+    "Negative pages use static escaped HTML and the canonical compiled token stylesheet to preserve indistinguishable private/unknown404 bytes; they do not mount the public reading provider or mobile dialog.",
+    "Full visual, manual accessibility and initial performance acceptance remain open."
+  ],
+  "exports": [
+    {
+      "file": "E2-negative-composition-503-diagnostic.txt",
+      "originalSha256": "2059339f5fdc9857d718498a55712d74ff0041c3e3ed151a399983d93b3662dc",
+      "exportedSha256": "2059339f5fdc9857d718498a55712d74ff0041c3e3ed151a399983d93b3662dc",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-focused-checks-final-result.json",
+      "originalSha256": "5a1c547734c780754a6057e3ddd624d2847f8b05c5a9265cd67e700491fa0212",
+      "exportedSha256": "5a1c547734c780754a6057e3ddd624d2847f8b05c5a9265cd67e700491fa0212",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-focused-checks-final.txt",
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-focused-checks-result.json",
+      "originalSha256": "e7405cf8b0dfd2b3d16505549f67a16527247b31263e0729182e8614e357cecd",
+      "exportedSha256": "e7405cf8b0dfd2b3d16505549f67a16527247b31263e0729182e8614e357cecd",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-focused-checks.txt",
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-green-repeat-result.json",
+      "originalSha256": "b206b541080c4ed68ee3229134d7f65dac1c758df1289abc1345e8a3503b80a1",
+      "exportedSha256": "b206b541080c4ed68ee3229134d7f65dac1c758df1289abc1345e8a3503b80a1",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-green-repeat.txt",
+      "originalSha256": "fb5fcd5d13fa0e1189ae67c894188a2d613275acf391168902e69d7a635aacb0",
+      "exportedSha256": "fb5fcd5d13fa0e1189ae67c894188a2d613275acf391168902e69d7a635aacb0",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-green-result.json",
+      "originalSha256": "f93a337ccb9ff0d19e75d94514e780450e3a86612a81b5d1894907ffac4d05c8",
+      "exportedSha256": "f93a337ccb9ff0d19e75d94514e780450e3a86612a81b5d1894907ffac4d05c8",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-green.txt",
+      "originalSha256": "7a364b46c82668f918e68788de3da6c9d12ce0c66019c6bc5b29dffd47842a15",
+      "exportedSha256": "7a364b46c82668f918e68788de3da6c9d12ce0c66019c6bc5b29dffd47842a15",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-red-repeat-result.json",
+      "originalSha256": "5e4e0fbf6df2eb22c898b20cfb66db8f42e048f918a94d6858e24c0640d1b2b7",
+      "exportedSha256": "5e4e0fbf6df2eb22c898b20cfb66db8f42e048f918a94d6858e24c0640d1b2b7",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-red-repeat.txt",
+      "originalSha256": "936d2948ffb67fec7e5829d69e425066c3b857ad5294cd08fe16e9fdddd66e27",
+      "exportedSha256": "c009ddd93d33cfc4b2ea3752c39c1e76fefae5accd200b40049d8a28e74d76f0",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-red-result.json",
+      "originalSha256": "8c0212a929f0005245517cbd3ee5c80646238004a6173f5ba2b9010614d44a24",
+      "exportedSha256": "8c0212a929f0005245517cbd3ee5c80646238004a6173f5ba2b9010614d44a24",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-composition-unit-red.txt",
+      "originalSha256": "cfa96a5899dbaf1f5eea39b5e3b6eed63d3b22977692bc43503b7168dfc2fccd",
+      "exportedSha256": "6ccc0049c8d04ab255553b3621da15edbec574375ad320e8885716f63aeb3f63",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-css-green-result.json",
+      "originalSha256": "6fc01ecd66c12b5d8c77366ec449e33783140115ae37f95edba30c9a9d44dbea",
+      "exportedSha256": "6fc01ecd66c12b5d8c77366ec449e33783140115ae37f95edba30c9a9d44dbea",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-css-green.txt",
+      "originalSha256": "c95f3aa9952dff897269f26e1cc633c928ce9879ea968f402991ce018ec82345",
+      "exportedSha256": "c95f3aa9952dff897269f26e1cc633c928ce9879ea968f402991ce018ec82345",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-css-red-node24.txt",
+      "originalSha256": "8fcce0941db6e446745abe6ac347e5409b1c94a1844b1f093bd1a6993c541689",
+      "exportedSha256": "8fcce0941db6e446745abe6ac347e5409b1c94a1844b1f093bd1a6993c541689",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-css-red-result.json",
+      "originalSha256": "0a70b77f377a4d1a8d096a75f11c9990f1f1ca70c6f2007f906cf5f9c931250a",
+      "exportedSha256": "0a70b77f377a4d1a8d096a75f11c9990f1f1ca70c6f2007f906cf5f9c931250a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-css-red.txt",
+      "originalSha256": "244293de6649fba5f5a666eefaf4b20cb2602bcebf473f69a779831ceb1b80fb",
+      "exportedSha256": "244293de6649fba5f5a666eefaf4b20cb2602bcebf473f69a779831ceb1b80fb",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-dependency-install-node24-result.json",
+      "originalSha256": "3e38b492388e363b3b256ffbb7a75f89f1f008d0114f0737fb0caf32c38fc85d",
+      "exportedSha256": "3e38b492388e363b3b256ffbb7a75f89f1f008d0114f0737fb0caf32c38fc85d",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-dependency-install-node24.txt",
+      "originalSha256": "b99c9c8198fa805396542cab1ff3ed947080669c1b8d43dc25b4ab6c8422adbe",
+      "exportedSha256": "b99c9c8198fa805396542cab1ff3ed947080669c1b8d43dc25b4ab6c8422adbe",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-dependency-install-result.json",
+      "originalSha256": "62307711f32da190ab8daaaef309107440b902334a0764de7fec01e4a4d90a9f",
+      "exportedSha256": "62307711f32da190ab8daaaef309107440b902334a0764de7fec01e4a4d90a9f",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-dependency-install.txt",
+      "originalSha256": "a1d627d275604322756615567902c2da89ac78197c0ffb8478baaaf251fcbf35",
+      "exportedSha256": "a1d627d275604322756615567902c2da89ac78197c0ffb8478baaaf251fcbf35",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-focused-checks-result.json",
+      "originalSha256": "f9847654da6795297cf9ab429f0ad1e0f0dce030ec6c08f8a496c5ce23bdd7fb",
+      "exportedSha256": "f9847654da6795297cf9ab429f0ad1e0f0dce030ec6c08f8a496c5ce23bdd7fb",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-focused-checks.txt",
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-focused-tsconfig.json",
+      "originalSha256": "26637a1df5eb96b190b8d62fa41a92f41ccf150bdfd032fd3195928e8529ac6b",
+      "exportedSha256": "26637a1df5eb96b190b8d62fa41a92f41ccf150bdfd032fd3195928e8529ac6b",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-http-green-cleanup.json",
+      "originalSha256": "11d57aa28875f1dc0f67ec2e68f02a08920b8f1fc5b81897e19547e557f7a20a",
+      "exportedSha256": "11d57aa28875f1dc0f67ec2e68f02a08920b8f1fc5b81897e19547e557f7a20a",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-http-green-result.json",
+      "originalSha256": "c48fa5ed3dcc6b5a529006ae2e5d383d47b75e37acd0d3e1b02ceed7f3253191",
+      "exportedSha256": "c48fa5ed3dcc6b5a529006ae2e5d383d47b75e37acd0d3e1b02ceed7f3253191",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-http-green.txt",
+      "originalSha256": "079c56d9180f73dc9d1b15f53916713008be1335885264c743c6c20be6cee97b",
+      "exportedSha256": "44a04dd794e0068b41ea74a6b927f82e70bf76975efad947bf32535787b680b6",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-http-red-result.json",
+      "originalSha256": "629a4e6f1907dcbe7f0a8b6012be81b6a7083c5d79c71fc3582fee28f6fae784",
+      "exportedSha256": "629a4e6f1907dcbe7f0a8b6012be81b6a7083c5d79c71fc3582fee28f6fae784",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-http-red.txt",
+      "originalSha256": "9a3e114d2e6af520b86aa2e292c0d0edb079d7593610629ff29f9ac702810591",
+      "exportedSha256": "ce8a2e652f6d2c8d17e73c25ffb0e7d7eb345303f08d5ff884b4558f4aacbea4",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-red-node24-result.json",
+      "originalSha256": "35e143803be2e7ebfdc1707867cd6e6e3615c892a55ede41dcf87ab91c4fccbb",
+      "exportedSha256": "35e143803be2e7ebfdc1707867cd6e6e3615c892a55ede41dcf87ab91c4fccbb",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-unit-green-result.json",
+      "originalSha256": "b09012ade5e82680e60a1b62a5c9cf489501c0b5ea13448313f2820e7a2fbe3e",
+      "exportedSha256": "b09012ade5e82680e60a1b62a5c9cf489501c0b5ea13448313f2820e7a2fbe3e",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-unit-green.txt",
+      "originalSha256": "51bae9348ac4d17b90584685b9b680bf9908dc765c2cf463dddd2e09db51024c",
+      "exportedSha256": "51bae9348ac4d17b90584685b9b680bf9908dc765c2cf463dddd2e09db51024c",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-unit-red-node24.txt",
+      "originalSha256": "07c7c9f60113a17b32280f758a66ad74e7e46ac746f221d8451780f69ad1f3d4",
+      "exportedSha256": "a4db823f71b139e655c8f4f46686bd4a4da508f5d30468335c9ffdaffea0c0cb",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-unit-red-result.json",
+      "originalSha256": "a4a8ba57a6ff3803d0252940fff9a6994a067fa718ac58fc4393f1bd52bd7261",
+      "exportedSha256": "a4a8ba57a6ff3803d0252940fff9a6994a067fa718ac58fc4393f1bd52bd7261",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-editorial-unit-red.txt",
+      "originalSha256": "ffa0cc0e60e586f6dabd75ec573730b0d18fe78113705e9b790acf08de382ffa",
+      "exportedSha256": "ccf818df4ab9b5919f08df59867eedbd2dbbe4d1e9c954060d9925735b6646ed",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    },
+    {
+      "file": "E2-negative-http-red-tsconfig.json",
+      "originalSha256": "78def0d48ede74368937684a2b22700283dda343febf641d69cf223ab5a27db8",
+      "exportedSha256": "78def0d48ede74368937684a2b22700283dda343febf641d69cf223ab5a27db8",
+      "transformation": "ANSI stripped; JWT/database URLs/emails redacted when present. Raw originals remain private."
+    }
+  ]
+}

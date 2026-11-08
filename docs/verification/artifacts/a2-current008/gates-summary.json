@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Current complete local gate, with explicitly historical earlier failed attempts",
+  "commands": [
+    {
+      "command": "pnpm verify",
+      "exitCode": 0,
+      "startedAt": "2026-11-03T14:02:31.7828113Z",
+      "finishedAt": "2026-11-03T14:06:51.4877909Z"
+    },
+    {
+      "command": "pnpm test:e2e",
+      "exitCode": 0,
+      "startedAt": "2026-11-03T14:06:51.4906476Z",
+      "finishedAt": "2026-11-03T14:09:09.5806530Z"
+    }
+  ],
+  "verification": {
+    "passedFiles": 144,
+    "passedTests": 1164,
+    "skippedTests": 2,
+    "totalTests": 1166,
+    "caseStateCssTestsPassed": 2,
+    "buildPassed": true
+  },
+  "e2e": {
+    "passedTests": 113,
+    "exitCode": 0
+  },
+  "sourceUnchanged": true,
+  "historicalA1ImagesRestored": 12,
+  "earlierAttempts": [
+    {
+      "attempt": "final-001",
+      "verifyExit": 1,
+      "scope": "Shared-state test assertion failures preserved separately; not current success"
+    },
+    {
+      "attempt": "final-002",
+      "verifyExit": 0,
+      "e2eExit": 1,
+      "scope": "Two real redirect failures and two font prerequisite errors; prerequisites are not behavior RED"
+    }
+  ],
+  "gateExportManifestSha256": "e412eacb6cffcfd4e4a5515a7ee176ebfa065403e7b03cfc60ae1954d65b858c",
+  "limits": [
+    "Skipped tests remain explicitly skipped.",
+    "CI result and final commit SHA are separate.",
+    "No stage3 deployment or A2 approval inferred."
+  ]
+}

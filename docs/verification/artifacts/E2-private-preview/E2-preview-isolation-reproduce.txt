@@ -1,0 +1,57 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[18:58:50] INFO: Reading migration files from E:\a-design-for-life\src\migrations
+[18:58:50] INFO: Migrating: 20261030_003022_initial_base
+[18:58:50] INFO: Migrated:  20261030_003022_initial_base (44ms)
+[18:58:50] INFO: Migrating: 20261030_020021_editorial_models
+[18:58:50] INFO: Migrated:  20261030_020021_editorial_models (89ms)
+[18:58:50] INFO: Migrating: 20261030_020521_structural_uniqueness
+[18:58:50] INFO: Migrated:  20261030_020521_structural_uniqueness (6ms)
+[18:58:50] INFO: Migrating: 20261030_024431_case_locale_uniqueness
+[18:58:50] INFO: Migrated:  20261030_024431_case_locale_uniqueness (3ms)
+[18:58:50] INFO: Migrating: 20261030_024640_route_locale_slug_uniqueness
+[18:58:50] INFO: Migrated:  20261030_024640_route_locale_slug_uniqueness (3ms)
+[18:58:50] INFO: Migrating: 20261030_030036_global_editorial_copy
+[18:58:50] INFO: Migrated:  20261030_030036_global_editorial_copy (7ms)
+[18:58:50] INFO: Migrating: 20261030_035306_protect_case_identity_references
+[18:58:50] INFO: Migrated:  20261030_035306_protect_case_identity_references (6ms)
+[18:58:50] INFO: Migrating: 20261030_040829_editorial_revision_and_leases
+[18:58:50] INFO: Migrated:  20261030_040829_editorial_revision_and_leases (6ms)
+[18:58:50] INFO: Migrating: 20261030_042607_editorial_snapshot_revision
+[18:58:50] INFO: Migrated:  20261030_042607_editorial_snapshot_revision (7ms)
+[18:58:50] INFO: Migrating: 20261030_093430_private_media_manifests
+[18:58:50] INFO: Migrated:  20261030_093430_private_media_manifests (3ms)
+[18:58:50] INFO: Migrating: 20261030_124550_publication_coordination
+[18:58:50] INFO: Migrated:  20261030_124550_publication_coordination (37ms)
+[18:58:50] INFO: Migrating: 20261030_190345_e2_editorial_presentation_fields
+[18:58:50] INFO: Migrated:  20261030_190345_e2_editorial_presentation_fields (2ms)
+[18:58:50] INFO: Migrating: 20261030_201024_e2_reading_position_adjusted
+[18:58:50] INFO: Migrated:  20261030_201024_e2_reading_position_adjusted (1ms)
+[18:58:50] INFO: Done.
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > projects only the actor-selected saved draft profile and refuses a selected foreign locale 24ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > projects the actor-selected draft navigation with its own profile and refuses cross-locale IDs 13ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > orders and features only same-locale authorized drafts with private content-ID paths and exact count 22ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > renders a saved case draft without a public slug and refuses a selected foreign-locale document 19ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > keeps Native anonymous access denied and all getters refuse a real request without a session 4ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > never publishes a draft, advances public root or returns account/storage data 41ms
+ ✓ |integration| src/features/cases/server/get-preview-case.integration.test.ts > refuses the same cookie after its Native session is revoked 6ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures legacy structural publications before future nullable columns exist and keeps private versions intact 614ms
+ ✓ |integration| src/config/capture-legacy-publications.integration.test.ts > captures the canonical previously published body while preserving a newer private draft 396ms
+
+ Test Files  2 passed (2)
+      Tests  9 passed (9)
+   Start at  18:58:44
+   Duration  13.08s (import 56%, tests 38%, transform 3%, setup 2%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

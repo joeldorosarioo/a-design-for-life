@@ -15,3 +15,6 @@ coverage
 
 # Preserve exact designer-exported vector bytes; provenance is verified by SHA256.
 public/figma/*.svg
+
+# Generated from canonical tokens before Next build/dev.
+/public/_portfolio/case-state.css

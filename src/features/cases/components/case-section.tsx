@@ -11,6 +11,7 @@ export type CaseSectionProps = {
   newTabLabel: string;
   mediaMode?: CaseMediaMode;
   facts?: ReactNode;
+  dividerBefore?: boolean;
 };
 export function CaseSection({
   section,
@@ -18,6 +19,7 @@ export function CaseSection({
   newTabLabel,
   mediaMode,
   facts,
+  dividerBefore = section.presentation === 'process',
 }: CaseSectionProps) {
   return (
     <section
@@ -26,7 +28,7 @@ export function CaseSection({
       className={`${styles.caseSection} ${styles[section.presentation]}`}
       aria-labelledby={section.heading ? `heading-${section.readingKey}` : undefined}
     >
-      {section.presentation === 'process' ? (
+      {dividerBefore ? (
         <Image
           unoptimized
           src="/figma/case-divider.svg"
@@ -46,48 +48,50 @@ export function CaseSection({
         <CaseProse text={section.description} />
       </div>
       {facts}
-      <div className={`${styles.sectionBlocks} ${styles[`${section.presentation}Blocks`]}`}>
-        {section.blocks.map((block) => {
-          if (block.type === 'image-pair')
-            return <CaseImagePair key={block.readingKey} block={block} mediaMode={mediaMode} />;
-          if (block.type === 'image')
+      {section.blocks.length ? (
+        <div className={`${styles.sectionBlocks} ${styles[`${section.presentation}Blocks`]}`}>
+          {section.blocks.map((block) => {
+            if (block.type === 'image-pair')
+              return <CaseImagePair key={block.readingKey} block={block} mediaMode={mediaMode} />;
+            if (block.type === 'image')
+              return (
+                <div
+                  key={block.readingKey}
+                  data-reading-key={block.readingKey}
+                  className={styles.imageBlock}
+                >
+                  <CaseImage image={block.image} mediaMode={mediaMode} />
+                </div>
+              );
             return (
               <div
                 key={block.readingKey}
                 data-reading-key={block.readingKey}
-                className={styles.imageBlock}
+                className={styles.textBlock}
               >
-                <CaseImage image={block.image} mediaMode={mediaMode} />
+                {section.presentation === 'learnings' ? (
+                  <Image
+                    unoptimized
+                    src="/figma/learning-divider.svg"
+                    alt=""
+                    width={261.333}
+                    height={1}
+                    className={styles.divider}
+                  />
+                ) : null}
+                {block.eyebrow ? <p className={styles.eyebrow}>{block.eyebrow}</p> : null}
+                {block.heading ? <h3 className={styles.blockTitle}>{block.heading}</h3> : null}
+                <CaseText
+                  content={block.content}
+                  resolveLink={resolveLink}
+                  newTabLabel={newTabLabel}
+                />
+                <CaseProse text={block.note} className={styles.note} />
               </div>
             );
-          return (
-            <div
-              key={block.readingKey}
-              data-reading-key={block.readingKey}
-              className={styles.textBlock}
-            >
-              {section.presentation === 'learnings' ? (
-                <Image
-                  unoptimized
-                  src="/figma/learning-divider.svg"
-                  alt=""
-                  width={261.333}
-                  height={1}
-                  className={styles.divider}
-                />
-              ) : null}
-              {block.eyebrow ? <p className={styles.eyebrow}>{block.eyebrow}</p> : null}
-              {block.heading ? <h3 className={styles.blockTitle}>{block.heading}</h3> : null}
-              <CaseText
-                content={block.content}
-                resolveLink={resolveLink}
-                newTabLabel={newTabLabel}
-              />
-              <CaseProse text={block.note} className={styles.note} />
-            </div>
-          );
-        })}
-      </div>
+          })}
+        </div>
+      ) : null}
       <CaseProse text={section.note} className={styles.note} />
     </section>
   );

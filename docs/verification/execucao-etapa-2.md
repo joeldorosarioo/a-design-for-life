@@ -1,6 +1,6 @@
 # Execução autorizada — etapa 2
 
-**Etapa 2: 56,7% do checklist (17/30 itens); 1/6 tarefas inteiramente encerradas. A2 pendente.**
+**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. A2 pendente.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 
@@ -9,12 +9,12 @@ A1 aprovada explicitamente em 30/10/2026. Autorizadas somente E2.1–E2.6 na rai
 ## Acompanhamento
 
 - [x] E2.1 Tokens, primitivas e fundação de movimento — código, originais e evidências conferidos.
-- [ ] E2.2 Header, footer, Home e Sobre.
-- [ ] E2.3 Listagem, detalhe e apresentações editoriais.
-- [ ] E2.4 Resolução inicial e cookie funcional de idioma.
-- [ ] E2.5 Troca de idioma preservando a leitura.
+- [x] E2.2 Header, footer, Home e Sobre.
+- [x] E2.3 Listagem, detalhe e apresentações editoriais.
+- [x] E2.4 Resolução inicial e cookie funcional de idioma.
+- [x] E2.5 Troca de idioma preservando a leitura.
 - [ ] E2.6 SEO, acessibilidade, responsividade e aceite visual.
-- [ ] Pacote A2 verificado e entregue.
+- [x] Pacote A2 verificado e entregue.
 - [ ] A2 aprovada pelo usuário — não iniciar etapa 3 antes disso.
 
 ## Contratos e limites preservados
@@ -88,3 +88,17 @@ Em 30/10/2026, produção local Next16.4.3/Node24.22.2/PG17.11 tmpfs55433: `pnpm
 ## Acompanhamento refinado após a observação do usuário
 
 O usuário apontou que16,7% permaneceu estático apesar dos avanços. O acompanhamento passa a usar16/30itens verificados (53,3%), com1/6tarefas encerradas informado separadamente. O escopo, os critérios finais, as evidências exigidas e a parada A2 permanecem os mesmos. Estimativa de trabalho restante informada ao usuário:12–18horas. Os registros históricos e logs não foram reescritos para sugerir progresso ou sucesso anterior.
+
+## Pausa solicitada após o item dos cards
+
+O usuário aprovou os campos opcionais/editáveis cardTitle/cardEyebrow e reforçou a edição editorial via CMS. Implementados com fallback do detalhe, migração aditiva e projeção confirmada/legada validada. RED/GREEN e38unit+6Native,tipos/lint/formato0; commitc3b4860. Verificação final do coordenador:44unit+2CSS,exit0. Nenhum fullverify/HTTP/build novo foi atribuído a esse commit. A pedido explícito, execução pausada após esse item; não iniciar outro trabalho nesta sessão. [Retomada e serviços/checkpoint](retomada-etapa-2.md).
+
+## Fechamento da retomada — candidata 008 / A2
+
+Progresso recalculado em 03/11/2026, 15:27:25.641 UTC: **96,7%, 29/30 critérios; E2.1–E2.5 inteiramente encerradas**. E2.6 permanece aberta exclusivamente por E2.6.2: inspeção formal com leitor de tela interrompida a pedido do usuário. NVDA encerrado e não reaberto; não há substituição automática ou declaração WCAG. A2 aguarda aprovação expressa e a etapa 3 não foi iniciada.
+
+Implementação `c9be4dc23c12f45fadd27cafc05a599b8b3a0c44`: gates locais 003 verify exit0 (1.164 passes/2 skips Windows e 2 CSS) e E2E 113/113; CI Linux run41655739795 SUCCESS (1.166 sem skips, 2 CSS e 113 E2E). Fonte500/digestf49 e Build008 estáveis. Restore real003 e smoke008/004 preservaram os modelos privados e originais; 5432/55432 não foram alteradas.
+
+Pacote concreto `A2-review-c9be4dc-v2` revisado e entregue no chat: 181 artefatos, 18 capturas e 2 vídeos; manifesto SHA256 `3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15`. QA real exit0 às 15:26:01–15:26:10 UTC: 108 filtros/204 links por viewport, 0 overflow em 1440 e 390, 0 rede externa/erros. RED390 do token SHA e correção mínima de wrap no visualizador foram preservados, sem mudança do produto. Resumos em `artifacts/a2-current008/package-review-summary.json` e `package-red-green-summary.json`.
+
+[A2](A2.md), [visual](visual.md), [a11y](a11y.md), [performance](performance.md) e [SEO](seo.md) registram requisitos, comandos, ambiente, resultados e verificações não executadas. O commit documental, CI exato e pacote final `outputs/A2` serão vinculados no recibo externo `outputs/A2-entrega.json`, após geração/revisão reais, sem autorreferência Git. Manter develop e promoção normal protegida; sem produção, analytics ou integrações posteriores.

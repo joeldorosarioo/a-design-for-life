@@ -1,0 +1,81 @@
+# E2 — contrato de imagem única, CSS e Next Image
+
+30/10/2026. Etapa 2: **0% (0/6 tarefas concluídas)**. Investigação delegada; nenhuma conclusão de E2.1–E2.6 ou autorização de etapa 3. App `E:/a-design-for-life`, develop. Fontes/configuração/dependências/lock/Git/banco da aplicação não foram modificados. Somente relatório e provas isoladas.
+
+## Resultado
+
+Uma origem canônica por ativo, layout/corte visual por CSS e otimização real pelo componente `next/image` são compatíveis. **Habilitar o otimizador padrão apenas com `localPatterns` e `Proxy.next()` não preserva as garantias atuais.** O cache do otimizador serve bytes depois da revogação da origem e sobrescreve `Cache-Control: private, no-store` colocado pelo Proxy. Ambos foram reproduzidos com build de produção do Next instalado.
+
+Foi comprovada uma solução técnica mínima usando o otimizador padrão: guarda no Proxy antes de qualquer cache, chamada interna autenticada para o próprio otimizador e encapsulamento da resposta externa com `private, no-store`. O protótipo comprova o mecanismo, **não é código pronto para a aplicação**: o token sintético e a origem fixa usados na prova devem ser substituídos pelos contratos de servidor/testes abaixo. Não requer trocar o otimizador por derivados do CMS, importar APIs privadas do Next ou implantar infraestrutura da etapa 3.
+
+## Autoridade e significado da instrução recente
+
+Última instrução informada pelo coordenador: “Baixe uma única versão de imagem”; “O redimensionamento deve acontecer por meio de CSS e a otimização via Image do next.js”. Interpretação executável: baixar/exportar uma única imagem canônica por ativo; não produzir/exportar manualmente tamanhos ou recortes para desktop/mobile. Os tamanhos de resposta gerados automaticamente pelo Next fazem parte da otimização solicitada. Dimensões intrínsecas reservam o espaço; CSS determina o tamanho visual, a proporção do contêiner e `object-fit`/`object-position`; `sizes` descreve esse layout ao navegador. Usar `Image` com `unoptimized` para fotos estáticas não comprova a otimização solicitada.
+
+O plano E1.6 antigo exige derivados responsivos de larguras determinadas. Esses derivados existentes também integram validação, manifests, referências publicadas, entrega autenticada e testes aprovados em A1. A instrução recente elimina variantes manuais na aquisição/apresentação da etapa 2; não autoriza silenciosamente remover esses contratos de segurança ou migrar manifests. Recomenda-se consumir somente `manifest.original` no `src` público de E2 e registrar os derivados existentes como legado interno não usado para layout. Se a intenção for também suprimir sua geração no CMS, essa mudança material precisa constar de revisão explícita do contrato, com regressões de A1 preservadas.
+
+## Fontes e estado conferidos
+
+Lidos: `AGENTS.md`; spec v1 P08/P09 e seção de upload; complemento de contratos CMS sobre entrega/cache/revogação; plano E1.6 e E2.1–E2.6; configuração Next; `media-response.ts`, `resolve-media-access.ts`, `public-media.ts`, `public-root.ts` e testes HTTP de entrega/otimizador. O runtime atual entrega originais e variantes por autorização da geração confirmada em `current.json`, sem aceitar SQL antigo como autorização. A origem pública responde `no-store`; a prévia responde `private, no-store`. O teste atual do otimizador prova bloqueio de `/preview-media`, com `images.unoptimized: true` e `localPatterns: []`; não prova habilitação segura do otimizador.
+
+Versões efetivamente executadas: **Node 24.22.2, Next 16.4.3, React 19.3.1**, Sharp instalado 0.35.5. Sem instalação/atualização.
+
+Documentação primária consultada:
+
+- [Next Image](https://nextjs.org/docs/app/api-reference/components/image): API de `sizes`, dimensões e CSS; `unoptimized` entrega a origem; TTL usa o maior valor entre configuração e origem; cache não tem invalidação automática; formatos animados mantêm a origem.
+- [Next Proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy): intercepta `/_next/image`, usa Node e pode retornar resposta própria. Em produção o ambiente deve suportar esse Proxy.
+
+Fontes primárias instaladas, mais precisas para este snapshot:
+
+| Arquivo no pacote Next | Observação | SHA-256 |
+| --- | --- | --- |
+| `dist/server/next-server.js` | `handleNextImageRequest`, linhas 207–233: cache antes da função que busca a origem; depois chama `sendResponse` | `72F5DF7026B69CA6D6F278081C13F36823865B161203172C32856909F65A9303` |
+| `dist/server/image-optimizer.js` | `validateParams`, `fetchInternalImage`, `setResponseHeaders`; linha 844 escreve `public, max-age=..., must-revalidate` incondicionalmente | `B599E7D1483E6DF7D941CA23C45A00C2B3DB3903869180E1384AB4558AF644BA` |
+| `dist/server/image-optimizer/transform.js` | `imageOptimizerTransform`: TTL máximo; transformação real; imagem animada devolvida sem transformação | `7234AEDAD279BACD68855DFE629BFB5C50B6AFE4CC58221543673D28C50A9455` |
+
+Não há opção pública de `images` encontrada que impeça essa escrita do header da resposta. `minimumCacheTTL: 0` não substitui autorização antes de hits nem equivale a `no-store`; desativar cache de disco também não cria essa garantia.
+
+## Provas executadas
+
+Evidências em `work/stage2-briefs/image-probe/`. Fixture runtime independente em `E:/a-design-for-life/.work/e2-image-probe`, dependências instaladas por junction, `.next` próprio, sem banco ou acesso às fotos do usuário. Porta 3104 estava livre; cada processo foi parado em `finally`; checagem final não encontrou listener. Os únicos bytes de imagem foram PNG sintético 80×60 gerado para a prova e saída automática do Next.
+
+1. `direct-probe.mjs` / `direct-probe.log`: usa as funções reais do pacote instalado. PNG 248 bytes foi transformado pelo Next em WebP **84 bytes, 64×48**. Origem `no-store` produziu `maxAge: 14400`; header previamente `private, no-store` foi sobrescrito por `public, max-age=14400, must-revalidate`. Validação aceitou `/media/{id}/original` e recusou prévia, variante `/w640`, URL externa e query de prévia.
+2. `production-build.log`, `production-server.log`, `http-probe.mjs` / `http-probe.log`: build de produção com Proxy real, sem wrapper.
+
+| Requisição | Resultado real |
+| --- | --- |
+| Público inicial | 200, MISS, WebP 84 bytes, cache público 14400s |
+| Público repetido | 200, HIT, mesmos bytes |
+| Origem revogada, guarda desligada | **200, HIT, bytes ainda entregues** |
+| Origem revogada, guarda ligada, GET | 404, zero bytes, `private, no-store` |
+| Origem revogada, guarda ligada, HEAD/If-None-Match | 404, zero bytes, `private, no-store` |
+| Público novamente, guarda ligada | 200, HIT, **header do Proxy novamente sobrescrito** |
+| URL de prévia com guarda pública | 400, `private, no-store` |
+
+O log da origem contém uma única leitura para toda a sequência; o log do Proxy contém oito chamadas, incluindo hits, HEAD e condicional. Assim, a execução do Proxy antes de hits foi comprovada; a revogação representada por arquivo na fixture não é prova da integração com `publicRoot` real.
+
+3. `wrapper-proxy.js`, `wrapper-production-build.log`, `wrapper-production-server.log`, `wrapper-http-probe.mjs` / `wrapper-http-probe.log`: segundo build, mantendo o cache anterior. Proxy externo consulta estado, faz fetch autenticado para origem loopback fixa; chamada interna consulta estado e passa ao Next padrão; resposta externa usa novo `Response` com `private, no-store`.
+
+| Requisição | Resultado real |
+| --- | --- |
+| Público com wrapper, duas vezes | 200, HIT do Next, WebP 84 bytes, **`private, no-store` final** |
+| Revogado GET/HEAD | 404, zero bytes, `private, no-store` |
+| Revogado com tentativa de header interno falso | 404, zero bytes, `private, no-store` |
+
+O log mostra dois pares outer/internal para os dois hits e somente outer nas três recusas. PIDs próprios 10232 e 30960 encerrados. O protótipo usa token literal sintético conhecido nos artefatos; ele comprova o fluxo, não confidencialidade do token real, resistência a replay ou validação completa de entradas.
+
+Tentativa anterior de fixture em C: não compilou por resolução do Next entre discos (`./E:/...`); `build.log` preserva essa falha. Não foi considerada evidência de comportamento HTTP. A fixture em E: compilou duas vezes com exit 0 e foi usada nas provas de produção acima.
+
+## Recomendação mínima para implementar E2
+
+1. `Image` com loader padrão, `src=/media/{UUID}/original`, dimensões originais conhecidas, alternativa do uso editorial e `sizes` ligado ao grid real. CSS reserva layout e aplica recorte visual quando a referência exige. Nenhum download adicional por breakpoint; nenhuma imagem privada vai para `public/` ou import estático. Preload somente da imagem principal pertinente. Animações WebP aprovadas continuam preservadas; o Next faz bypass de transformação para elas, não se deve anunciar redução/recodificação que não aconteceu.
+2. Abrir `images.unoptimized` somente junto das guardas aprovadas e testadas. `localPatterns: [{ pathname: '/media/*/original', search: '' }]`, `remotePatterns: []` como segunda barreira; o glob não valida UUID, conteúdo ou publicação. Guarda própria exige caminho canônico exato, um único `url`, `w`/`q` suportados, UUID e origem tipo imagem dentro do manifest confirmado. Rejeitar prévia/API/PDF/derivados, URL absoluta/protocolo relativo, escapes ambíguos e queries no `src`.
+3. Proxy específico para `/_next/image` (não excluí-lo no matcher global existente/futuro). Ler a geração confirmada em cada requisição, incluindo hit, HEAD e condicional. Helper pequeno só de autorização/manifest da feature, sem importar todo Payload/consulta SQL para conceder acesso. Falha de leitura/schema/storage indisponível resulta em 503 vazio `private, no-store`; revogação confirmada resulta em 404 vazio. Nunca transformar erro em permissão.
+4. Encapsular efetivamente a resposta, conforme o mecanismo comprovado. Origem interna deve ser configuração confiável da execução local e nunca `Host`, `X-Forwarded-Host` ou URL arbitrária recebida. Autenticação interna deve usar segredo exclusivamente servidor, comparação constante e, preferivelmente, assinatura curta vinculada a URL canônica/método/Accept. Nenhum segredo em HTML/srcset/log ou header devolvido. Chamada interna também revalida root; header público falso não pode escolher caminho de bypass. Timeouts/abort e erro de fetch produzem 503 no-store. Evitar copiar `Content-Length`/`Content-Encoding` se o fetch tiver decodificado a resposta; encaminhar somente os headers de representação necessários. O corpo pode ser stream, sem criar uma segunda transformação ou armazenar bytes em cache público. A configuração final de container/rede/R2 continua em E3; aqui basta o contrato local provado.
+5. Testes reais sobre a aplicação antes do aceite: privado desde início em todas as entradas; publish→MISS→HIT→withdraw→GET/HEAD/conditional recusados; cache já aquecido em disco; retirada com SQL ACK antigo; root ausente/corrompido/inacessível; PDF e caminhos ambíguos; header de bypass falsificado; erros/timeouts; conteúdo público otimizado diferente do original com dimensões/formato reais; header final no-store em 200/304/4xx/503; a prévia e variantes antigas continuam sob as garantias A1. Não aceitar somente um teste unitário de matcher/headers.
+
+Se o coordenador considerar o protocolo interno adicional excessivo para E2, a alternativa é registrar esse bloqueio concreto antes de mudar o contrato de cache ou a intenção explícita sobre otimização. Usar `unoptimized`, apenas colocar a tag `Image` ou um custom loader que escolhe derivados existentes não resolve a exigência de otimização pelo Next padrão. Nenhuma dessas alternativas foi implementada no app nesta investigação.
+
+## Limites
+
+Não foram executados o banco real, upload real, concorrência editorial/root da aplicação, R2, browser cache/CDN, deploy ou suíte completa do app. O wrapper sintético não foi auditado como protocolo de produção. As provas demonstram cache/headers e viabilidade do encapsulamento no Next 16.4.3 atual, não aprovação A2/A3. A extensão de contratos e os testes integrados pertencem ao coordenador da etapa 2.

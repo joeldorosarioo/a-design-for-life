@@ -1,0 +1,5 @@
+{
+  "command": "pnpm exec vitest run --project unit src/features/cases/server/case-route-response.editorial.test.ts src/features/cases/server/select-case-state-presentation.test.ts src/features/cases/server/case-route-response.test.ts",
+  "exitCode": 1,
+  "recordedAt": "2026-10-30T23:32:40.4007768Z"
+}

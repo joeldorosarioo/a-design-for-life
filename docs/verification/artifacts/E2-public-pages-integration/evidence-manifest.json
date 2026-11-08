@@ -1,0 +1,1047 @@
+{
+  "capturedAt": "2026-10-30T20:30:27.136Z",
+  "stage2Percent": 16.7,
+  "environment": {
+    "os": "Windows",
+    "node": "24.22.2",
+    "pnpm": "12.10.1",
+    "next": "16.4.3",
+    "payload": "3.92.1",
+    "react": "19.3.1",
+    "postgres": "17.11 real isolated tmpfs port55433, cleaned after each run"
+  },
+  "results": [
+    {
+      "command": "pnpm test:e2e public-pages.e2e.test.ts",
+      "exitCode": 0,
+      "passed": 6
+    },
+    {
+      "command": "pnpm test:e2e src/config/public-image.e2e.test.ts",
+      "before": {
+        "exitCode": 1,
+        "expected": 200,
+        "actual": 404
+      },
+      "after": {
+        "exitCode": 0,
+        "passed": 1
+      }
+    },
+    {
+      "command": "pnpm test:e2e reading-position.e2e.test.ts",
+      "exitCode": 1,
+      "failed": 1,
+      "reason": "Both public locales200, but English button absent: genuine initial E2.5 behavior RED. Reading implementation not started."
+    }
+  ],
+  "limitations": [
+    "No whole-tree pnpm verify after these additions yet.",
+    "Focused unit totals and Native gates belong to their source snapshots/reports, not an aggregate full-suite count.",
+    "First public-page typecheck failed on stale generated route types and a partial observer fixture; Next typegen and a typed fixture corrected those. Repeat found FullProject.fullyParallel test-property error; FullConfig property corrected. Production builds in the successful HTTP gates passed current TypeScript.",
+    "Initial page-view unit GREEN attempt had three selector errors; corrected contextual header role limitation using W3C HTML-ARIA, and CTA accessible name; final6/6. No browser banner defect claimed.",
+    "Authenticated full visual preview, Figma acceptance, reading UI, negative-state editorial presentation, sitemap/robots, comprehensive a11y/visual/SEO and current CI still pending.",
+    "Sticky header approved by user but not implemented in this snapshot."
+  ],
+  "exports": [
+    {
+      "source": "stage2-briefs/E2-cases-contents-green.log",
+      "file": "E2-cases-contents-green.log",
+      "originalBytes": 205,
+      "originalSha256": "94cce5ae1d7e9abf8657f6e46c951cb32f737b7d56259d5db0073085f656094f",
+      "exportedBytes": 205,
+      "exportedSha256": "94cce5ae1d7e9abf8657f6e46c951cb32f737b7d56259d5db0073085f656094f",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-contents-red.log",
+      "file": "E2-cases-contents-red.log",
+      "originalBytes": 3369,
+      "originalSha256": "0e445ae4abcd523d52a31c11c47115d58bbe18e139e6e14058bfec23c2e0387c",
+      "exportedBytes": 3369,
+      "exportedSha256": "0e445ae4abcd523d52a31c11c47115d58bbe18e139e6e14058bfec23c2e0387c",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-detail-green.log",
+      "file": "E2-cases-detail-green.log",
+      "originalBytes": 206,
+      "originalSha256": "8497a9267e8cd2a8e209c26e517a78d8ccee24b1c457346625cc27fba9e35c3b",
+      "exportedBytes": 206,
+      "exportedSha256": "8497a9267e8cd2a8e209c26e517a78d8ccee24b1c457346625cc27fba9e35c3b",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-detail-red.log",
+      "file": "E2-cases-detail-red.log",
+      "originalBytes": 3201,
+      "originalSha256": "7fbdb2622c3d717d226640acad239b3af55660a2436ae6d669e9ace91d13b26d",
+      "exportedBytes": 3201,
+      "exportedSha256": "7fbdb2622c3d717d226640acad239b3af55660a2436ae6d669e9ace91d13b26d",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-format-check-final.log",
+      "file": "E2-cases-format-check-final.log",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-format-delivery.log",
+      "file": "E2-cases-format-delivery.log",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-format.log",
+      "file": "E2-cases-format.log",
+      "originalBytes": 922,
+      "originalSha256": "4380bea1ae0c80468789e72165f8abad9df2ae16db921e198ab0fd12669467d2",
+      "exportedBytes": 922,
+      "exportedSha256": "4380bea1ae0c80468789e72165f8abad9df2ae16db921e198ab0fd12669467d2",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-image-container-red.log",
+      "file": "E2-cases-image-container-red.log",
+      "originalBytes": 1408,
+      "originalSha256": "223fe5ce7e806d91b054182de710f3a6ffa4c77e766511d863eba794138f562d",
+      "exportedBytes": 1408,
+      "exportedSha256": "223fe5ce7e806d91b054182de710f3a6ffa4c77e766511d863eba794138f562d",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-image-green.log",
+      "file": "E2-cases-image-green.log",
+      "originalBytes": 204,
+      "originalSha256": "2fb37650bd4042e8f17146c39abbeaed4570a6aa72cd43c035f72321217ba5e2",
+      "exportedBytes": 204,
+      "exportedSha256": "2fb37650bd4042e8f17146c39abbeaed4570a6aa72cd43c035f72321217ba5e2",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-image-red.log",
+      "file": "E2-cases-image-red.log",
+      "originalBytes": 2865,
+      "originalSha256": "880b6d6fb1866dec7af4f4e1ca7193e8bee743e586c813ae81355652de6669b6",
+      "exportedBytes": 2865,
+      "exportedSha256": "880b6d6fb1866dec7af4f4e1ca7193e8bee743e586c813ae81355652de6669b6",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-lint.log",
+      "file": "E2-cases-lint.log",
+      "originalBytes": 766,
+      "originalSha256": "ce1e4e245e6030aea982c2cc50000720ed3c4977adf3a12af9fd71302a14f551",
+      "exportedBytes": 766,
+      "exportedSha256": "ce1e4e245e6030aea982c2cc50000720ed3c4977adf3a12af9fd71302a14f551",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-list-banner-red.log",
+      "file": "E2-cases-list-banner-red.log",
+      "originalBytes": 1233,
+      "originalSha256": "4696140b8964fbd045b9312c152aa324192c07a9aad680f1b3c2ba7342cf70ec",
+      "exportedBytes": 1233,
+      "exportedSha256": "4696140b8964fbd045b9312c152aa324192c07a9aad680f1b3c2ba7342cf70ec",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-list-green.log",
+      "file": "E2-cases-list-green.log",
+      "originalBytes": 205,
+      "originalSha256": "6838def11b5eaab733601303cefa9625cf0c39ae4f985124c2a1ec765c702112",
+      "exportedBytes": 205,
+      "exportedSha256": "6838def11b5eaab733601303cefa9625cf0c39ae4f985124c2a1ec765c702112",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-list-legacy-red.log",
+      "file": "E2-cases-list-legacy-red.log",
+      "originalBytes": 2271,
+      "originalSha256": "4723a5db3bb97fde6c89276a9dc8d73cb2a3ed6f36627b2e8a9a45c70f7b7525",
+      "exportedBytes": 2271,
+      "exportedSha256": "4723a5db3bb97fde6c89276a9dc8d73cb2a3ed6f36627b2e8a9a45c70f7b7525",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-list-red.log",
+      "file": "E2-cases-list-red.log",
+      "originalBytes": 3380,
+      "originalSha256": "8b495308008954352c51aa3d83da53eafd85832cb35e82dd7b406fea71ddfbdc",
+      "exportedBytes": 3380,
+      "exportedSha256": "8b495308008954352c51aa3d83da53eafd85832cb35e82dd7b406fea71ddfbdc",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-text-green-final.log",
+      "file": "E2-cases-text-green-final.log",
+      "originalBytes": 205,
+      "originalSha256": "60e9ddcefe23aadaceab7bd0c4c57d771b47ad21016e76285998ec2e12245992",
+      "exportedBytes": 205,
+      "exportedSha256": "60e9ddcefe23aadaceab7bd0c4c57d771b47ad21016e76285998ec2e12245992",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-text-green.log",
+      "file": "E2-cases-text-green.log",
+      "originalBytes": 1235,
+      "originalSha256": "5b1c460d57545c000ed03b43fa1e1f4ebb6862e759613fef9c33feb15be02223",
+      "exportedBytes": 1235,
+      "exportedSha256": "5b1c460d57545c000ed03b43fa1e1f4ebb6862e759613fef9c33feb15be02223",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-text-red.log",
+      "file": "E2-cases-text-red.log",
+      "originalBytes": 3821,
+      "originalSha256": "ddccf364693388ac3f7f9a1fb3ae2a660513c01d9471b2411cafc75b3258917b",
+      "exportedBytes": 3821,
+      "exportedSha256": "ddccf364693388ac3f7f9a1fb3ae2a660513c01d9471b2411cafc75b3258917b",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-ui-plan.md",
+      "file": "E2-cases-ui-plan.md",
+      "originalBytes": 8132,
+      "originalSha256": "f670d964eb97fb101c772796e6d76417fdf728c3dec171a37ee8ea9e378b4cc8",
+      "exportedBytes": 8132,
+      "exportedSha256": "f670d964eb97fb101c772796e6d76417fdf728c3dec171a37ee8ea9e378b4cc8",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-ui-report.md",
+      "file": "E2-cases-ui-report.md",
+      "originalBytes": 7825,
+      "originalSha256": "6bd978cd4061f61b68a8520060850d543a2467c84db43570932676c891c5434b",
+      "exportedBytes": 7825,
+      "exportedSha256": "6bd978cd4061f61b68a8520060850d543a2467c84db43570932676c891c5434b",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-ui-source-hashes.json",
+      "file": "E2-cases-ui-source-hashes.json",
+      "originalBytes": 3035,
+      "originalSha256": "f950ddaedd45c351d4f982349fe83a954137c72f850da475bd6f02d5d82c4521",
+      "exportedBytes": 3035,
+      "exportedSha256": "f950ddaedd45c351d4f982349fe83a954137c72f850da475bd6f02d5d82c4521",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-unit-delivery-banner-fixed.log",
+      "file": "E2-cases-unit-delivery-banner-fixed.log",
+      "originalBytes": 1113,
+      "originalSha256": "3243181aefe4fe1ac72216f7cd3c0e6d75f2631c9494962abfa6fefb9d3fb242",
+      "exportedBytes": 1113,
+      "exportedSha256": "3243181aefe4fe1ac72216f7cd3c0e6d75f2631c9494962abfa6fefb9d3fb242",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-unit-delivery.log",
+      "file": "E2-cases-unit-delivery.log",
+      "originalBytes": 207,
+      "originalSha256": "a213acb13ec7b65c434f712839f8b267984429edc4d4c6bd2dfdfb4f7dbee440",
+      "exportedBytes": 207,
+      "exportedSha256": "a213acb13ec7b65c434f712839f8b267984429edc4d4c6bd2dfdfb4f7dbee440",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-unit-final-authoritative.log",
+      "file": "E2-cases-unit-final-authoritative.log",
+      "originalBytes": 207,
+      "originalSha256": "69e48b20c3799103b211f64c10ccadd4ffa69d6e4b38b5e342650cd78496a60f",
+      "exportedBytes": 207,
+      "exportedSha256": "69e48b20c3799103b211f64c10ccadd4ffa69d6e4b38b5e342650cd78496a60f",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-unit-green-final.log",
+      "file": "E2-cases-unit-green-final.log",
+      "originalBytes": 207,
+      "originalSha256": "2a474ab69a6a6f673c6ab69157e97426c4574d3541409711d093ab2b0f7cb7c7",
+      "exportedBytes": 207,
+      "exportedSha256": "2a474ab69a6a6f673c6ab69157e97426c4574d3541409711d093ab2b0f7cb7c7",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-unit-green.log",
+      "file": "E2-cases-unit-green.log",
+      "originalBytes": 295,
+      "originalSha256": "d1985f8aa3a6b91b0a53e82042caa48f41cda4a4af5b5b244bd623bd1eb6ef07",
+      "exportedBytes": 295,
+      "exportedSha256": "d1985f8aa3a6b91b0a53e82042caa48f41cda4a4af5b5b244bd623bd1eb6ef07",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-cases-unit-observer-fixture-green.log",
+      "file": "E2-cases-unit-observer-fixture-green.log",
+      "originalBytes": 207,
+      "originalSha256": "587f742a495af366492955452e46b6a37e95219c6746e86695cdae819a203088",
+      "exportedBytes": 207,
+      "exportedSha256": "587f742a495af366492955452e46b6a37e95219c6746e86695cdae819a203088",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-profile-preview-route-format.log",
+      "file": "E2-profile-preview-route-format.log",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-profile-preview-route-green.log",
+      "file": "E2-profile-preview-route-green.log",
+      "originalBytes": 204,
+      "originalSha256": "b8acde46a979bed3b8e83d0ca0be57c78d0939d9d465768d9c8c372a57430708",
+      "exportedBytes": 204,
+      "exportedSha256": "b8acde46a979bed3b8e83d0ca0be57c78d0939d9d465768d9c8c372a57430708",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-profile-preview-route-lint.log",
+      "file": "E2-profile-preview-route-lint.log",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-profile-preview-route-red.log",
+      "file": "E2-profile-preview-route-red.log",
+      "originalBytes": 1560,
+      "originalSha256": "3a8aba928d9b3bc207dbd46c3414a691ffd0c5ee2fdda1bdfbd541cb70e6a15d",
+      "exportedBytes": 1560,
+      "exportedSha256": "3a8aba928d9b3bc207dbd46c3414a691ffd0c5ee2fdda1bdfbd541cb70e6a15d",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-pages-e2e-format-final.log",
+      "file": "E2-public-pages-e2e-format-final.log",
+      "originalBytes": 115,
+      "originalSha256": "717d27b94de6aa3ff652aadc8354ba96d7358e1dce914697d62dccab083c0abd",
+      "exportedBytes": 115,
+      "exportedSha256": "717d27b94de6aa3ff652aadc8354ba96d7358e1dce914697d62dccab083c0abd",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-pages-e2e-format.log",
+      "file": "E2-public-pages-e2e-format.log",
+      "originalBytes": 292,
+      "originalSha256": "b18737ca72ccc55ef81e022aed3320c8c121ac4aab554632ed94868040664f02",
+      "exportedBytes": 292,
+      "exportedSha256": "b18737ca72ccc55ef81e022aed3320c8c121ac4aab554632ed94868040664f02",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-pages-e2e-report.md",
+      "file": "E2-public-pages-e2e-report.md",
+      "originalBytes": 7483,
+      "originalSha256": "531b8b1b65322b6dd519a60c1e5f7ba375563d44e2188c32cf1784a4e4ab9772",
+      "exportedBytes": 7483,
+      "exportedSha256": "531b8b1b65322b6dd519a60c1e5f7ba375563d44e2188c32cf1784a4e4ab9772",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-pages-e2e-source-hashes.json",
+      "file": "E2-public-pages-e2e-source-hashes.json",
+      "originalBytes": 407,
+      "originalSha256": "61f1aa5549edfaf05d0db93efb613b413dd4b861d2049b00d84e1edeeed69e23",
+      "exportedBytes": 407,
+      "exportedSha256": "61f1aa5549edfaf05d0db93efb613b413dd4b861d2049b00d84e1edeeed69e23",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-portfolio-teardown.patch",
+      "file": "E2-public-portfolio-teardown.patch",
+      "originalBytes": 3375,
+      "originalSha256": "836673fc87c4e5975b9d55bdff4859f526835900857061b65845bba3becfe0bf",
+      "exportedBytes": 3375,
+      "exportedSha256": "836673fc87c4e5975b9d55bdff4859f526835900857061b65845bba3becfe0bf",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-request-transport-plan.md",
+      "file": "E2-public-request-transport-plan.md",
+      "originalBytes": 17975,
+      "originalSha256": "66990d69f1588fdfaf4766a2510d538f05495a3a9035f8097eee565e55493b8a",
+      "exportedBytes": 17975,
+      "exportedSha256": "66990d69f1588fdfaf4766a2510d538f05495a3a9035f8097eee565e55493b8a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-public-request-transport-report.md",
+      "file": "E2-public-request-transport-report.md",
+      "originalBytes": 6877,
+      "originalSha256": "9100ec09f4af27eb6de489a4ace257dce7617abd725bc6ac1fa607094ad3b4e7",
+      "exportedBytes": 6877,
+      "exportedSha256": "9100ec09f4af27eb6de489a4ace257dce7617abd725bc6ac1fa607094ad3b4e7",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-format-final.log",
+      "file": "E2-reading-prerequisites-format-final.log",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-format.log",
+      "file": "E2-reading-prerequisites-format.log",
+      "originalBytes": 1250,
+      "originalSha256": "26895a4d0cd451dc4f6fe14a1516f3169c68dffe7f14b2d62b51c7e661b55311",
+      "exportedBytes": 1250,
+      "exportedSha256": "26895a4d0cd451dc4f6fe14a1516f3169c68dffe7f14b2d62b51c7e661b55311",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-generate-migration.log",
+      "file": "E2-reading-prerequisites-generate-migration.log",
+      "originalBytes": 449,
+      "originalSha256": "4bae12db87d07adf248d75822bf0d38265008709d1b044eaff81a1d746fa01a7",
+      "exportedBytes": 349,
+      "exportedSha256": "7bc01833e742ded634f1701244b55b7e5a413d915cd8de73ffeb892a6ea0a776",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-generate-types.log",
+      "file": "E2-reading-prerequisites-generate-types.log",
+      "originalBytes": 185,
+      "originalSha256": "4ab810fcfda4325305c98225f31b237808f5e9effdb62c7da8244286ca236835",
+      "exportedBytes": 145,
+      "exportedSha256": "86ea9486712584f451511f8eda1661b6537d549f6cf105d73bd6d024e92fa777",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-hook-green-final.log",
+      "file": "E2-reading-prerequisites-hook-green-final.log",
+      "originalBytes": 188,
+      "originalSha256": "dc18b6498d98e5282ae8daa466955dc3bb6cd06ed8f2ac18c335c3edd4b19ad3",
+      "exportedBytes": 188,
+      "exportedSha256": "dc18b6498d98e5282ae8daa466955dc3bb6cd06ed8f2ac18c335c3edd4b19ad3",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-implementation.md",
+      "file": "E2-reading-prerequisites-implementation.md",
+      "originalBytes": 9519,
+      "originalSha256": "1d429788dd2ea4863b24753c928400168d26a7a32b4e6ecb759211c55aeb1bed",
+      "exportedBytes": 9519,
+      "exportedSha256": "1d429788dd2ea4863b24753c928400168d26a7a32b4e6ecb759211c55aeb1bed",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-lint-final.log",
+      "file": "E2-reading-prerequisites-lint-final.log",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-lint.log",
+      "file": "E2-reading-prerequisites-lint.log",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-native-green.log",
+      "file": "E2-reading-prerequisites-native-green.log",
+      "originalBytes": 3436,
+      "originalSha256": "e955a5a502d93d1f0d67f0d5cb2f0852d595862c7cd6a65a6a8ae80dc21b8710",
+      "exportedBytes": 2876,
+      "exportedSha256": "2a68b328a870a9979357ca0b1125e1c78c21d91acbfbf65a4ab6bff3f854380a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-native-red.log",
+      "file": "E2-reading-prerequisites-native-red.log",
+      "originalBytes": 12269,
+      "originalSha256": "e2d45ca30293ca1b22aba27092921ef4754509a3eb3aa2c797db033b31a3fa80",
+      "exportedBytes": 11749,
+      "exportedSha256": "c2592a73181646521cd39c65fd225190343a3bef4d5519dd551512ffb19df957",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-related-unit-green.log",
+      "file": "E2-reading-prerequisites-related-unit-green.log",
+      "originalBytes": 414,
+      "originalSha256": "9675bf22de8b6827131257e344e2194a4f31d8022a18719a82563122c6d841b6",
+      "exportedBytes": 414,
+      "exportedSha256": "9675bf22de8b6827131257e344e2194a4f31d8022a18719a82563122c6d841b6",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-schema-diff.log",
+      "file": "E2-reading-prerequisites-schema-diff.log",
+      "originalBytes": 670,
+      "originalSha256": "7eb4aefba018b8c13996e12e3e5da8c5cae5da2fd9929f0e1c0eae5d9543407c",
+      "exportedBytes": 670,
+      "exportedSha256": "7eb4aefba018b8c13996e12e3e5da8c5cae5da2fd9929f0e1c0eae5d9543407c",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-source-hashes.json",
+      "file": "E2-reading-prerequisites-source-hashes.json",
+      "originalBytes": 3186,
+      "originalSha256": "554f154a9d36e97fbd9b069088a4741af15f874abb6c415fd86db6607dbc02a6",
+      "exportedBytes": 3186,
+      "exportedSha256": "554f154a9d36e97fbd9b069088a4741af15f874abb6c415fd86db6607dbc02a6",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-tsconfig.json",
+      "file": "E2-reading-prerequisites-tsconfig.json",
+      "originalBytes": 1010,
+      "originalSha256": "1fa966cbb94da994f60285a7d3be95e8e202069793d9db949cee63c3d065f474",
+      "exportedBytes": 1010,
+      "exportedSha256": "1fa966cbb94da994f60285a7d3be95e8e202069793d9db949cee63c3d065f474",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-typecheck-final.log",
+      "file": "E2-reading-prerequisites-typecheck-final.log",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-typecheck.log",
+      "file": "E2-reading-prerequisites-typecheck.log",
+      "originalBytes": 487,
+      "originalSha256": "29ecc12aefd4e9fbe5ad695362654303bba68e1be13941a3dabda3fae1750a56",
+      "exportedBytes": 487,
+      "exportedSha256": "29ecc12aefd4e9fbe5ad695362654303bba68e1be13941a3dabda3fae1750a56",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-unit-green.log",
+      "file": "E2-reading-prerequisites-unit-green.log",
+      "originalBytes": 201,
+      "originalSha256": "889c789a084fd018f6a00cc55768d9bcb8bae7454e06b70407e5b48959d3bd7b",
+      "exportedBytes": 201,
+      "exportedSha256": "889c789a084fd018f6a00cc55768d9bcb8bae7454e06b70407e5b48959d3bd7b",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-unit-red.log",
+      "file": "E2-reading-prerequisites-unit-red.log",
+      "originalBytes": 11222,
+      "originalSha256": "d581ed7066391917abaf8fd57eba428d4d79e2c82e3482c45906fffff2afff69",
+      "exportedBytes": 11222,
+      "exportedSha256": "d581ed7066391917abaf8fd57eba428d4d79e2c82e3482c45906fffff2afff69",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-unregistered-unit-green-final.log",
+      "file": "E2-reading-prerequisites-unregistered-unit-green-final.log",
+      "originalBytes": 201,
+      "originalSha256": "b3b1368cd2b06d881364afdfaca9fb3fac2559394846dc68c2da17579a2ce96a",
+      "exportedBytes": 201,
+      "exportedSha256": "b3b1368cd2b06d881364afdfaca9fb3fac2559394846dc68c2da17579a2ce96a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-reading-prerequisites-unregistered-unit-green.log",
+      "file": "E2-reading-prerequisites-unregistered-unit-green.log",
+      "originalBytes": 2857,
+      "originalSha256": "a129b1e0c609071d86d6850a9f8cdf484abe96cc164bf7d2094f918033a1c842",
+      "exportedBytes": 2857,
+      "exportedSha256": "a129b1e0c609071d86d6850a9f8cdf484abe96cc164bf7d2094f918033a1c842",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-format.txt",
+      "file": "E2-seo-helper-format.txt",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-green-final.txt",
+      "file": "E2-seo-helper-green-final.txt",
+      "originalBytes": 202,
+      "originalSha256": "b86ede6593a527665025929e30ec2225450e67f52d2438f4d69a9eac76badb0e",
+      "exportedBytes": 202,
+      "exportedSha256": "b86ede6593a527665025929e30ec2225450e67f52d2438f4d69a9eac76badb0e",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-green.txt",
+      "file": "E2-seo-helper-green.txt",
+      "originalBytes": 202,
+      "originalSha256": "ca7cbf80797dea58ca9272ec2070c3257e243c1e69c468920361287f3fd7958a",
+      "exportedBytes": 202,
+      "exportedSha256": "ca7cbf80797dea58ca9272ec2070c3257e243c1e69c468920361287f3fd7958a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-lint.txt",
+      "file": "E2-seo-helper-lint.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-red-assertion.txt",
+      "file": "E2-seo-helper-red-assertion.txt",
+      "originalBytes": 10228,
+      "originalSha256": "8db2f7d1e62947843f6abaaa2ca80fdeb5da04e78a5d3aee07536af3937066ea",
+      "exportedBytes": 10228,
+      "exportedSha256": "8db2f7d1e62947843f6abaaa2ca80fdeb5da04e78a5d3aee07536af3937066ea",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-red.txt",
+      "file": "E2-seo-helper-red.txt",
+      "originalBytes": 10335,
+      "originalSha256": "ce034399bdbb827822999407cc17f60e7490ab81bd0f4587c81f0b03db829692",
+      "exportedBytes": 10335,
+      "exportedSha256": "ce034399bdbb827822999407cc17f60e7490ab81bd0f4587c81f0b03db829692",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-report.md",
+      "file": "E2-seo-helper-report.md",
+      "originalBytes": 4944,
+      "originalSha256": "f751ef3ef0c2fd28cd5fc2b60a9410087c284d4013fa5f628a3fac12de0f5da8",
+      "exportedBytes": 4944,
+      "exportedSha256": "f751ef3ef0c2fd28cd5fc2b60a9410087c284d4013fa5f628a3fac12de0f5da8",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-tsconfig.json",
+      "file": "E2-seo-helper-tsconfig.json",
+      "originalBytes": 286,
+      "originalSha256": "98593b86c815bf5623dd7d8aad6446f583d15418bf9ec838270184374b90f489",
+      "exportedBytes": 286,
+      "exportedSha256": "98593b86c815bf5623dd7d8aad6446f583d15418bf9ec838270184374b90f489",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-seo-helper-typecheck.txt",
+      "file": "E2-seo-helper-typecheck.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-shell-profile-review.md",
+      "file": "E2-shell-profile-review.md",
+      "originalBytes": 7500,
+      "originalSha256": "b85c203ee64efa49d904a0d54d65af553b2d3dfe37a5bcac088aa759b454236a",
+      "exportedBytes": 7500,
+      "exportedSha256": "b85c203ee64efa49d904a0d54d65af553b2d3dfe37a5bcac088aa759b454236a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-case-isolation-red.txt",
+      "file": "E2-transport-case-isolation-red.txt",
+      "originalBytes": 864,
+      "originalSha256": "120c97c1fe9aa39f6ff964861f13fdc040c833ef4881d22527914b885d15ecd4",
+      "exportedBytes": 864,
+      "exportedSha256": "120c97c1fe9aa39f6ff964861f13fdc040c833ef4881d22527914b885d15ecd4",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-context-green-corrected.txt",
+      "file": "E2-transport-context-green-corrected.txt",
+      "originalBytes": 191,
+      "originalSha256": "524241f3b716b238e311eabcfdf3442a6632c20fd48a8d6a01f235a36905d701",
+      "exportedBytes": 191,
+      "exportedSha256": "524241f3b716b238e311eabcfdf3442a6632c20fd48a8d6a01f235a36905d701",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-context-green.txt",
+      "file": "E2-transport-context-green.txt",
+      "originalBytes": 3239,
+      "originalSha256": "c3525d4911af3c24e7ec768ccd981020841d94a0942ca3d594fe79172df356df",
+      "exportedBytes": 3239,
+      "exportedSha256": "c3525d4911af3c24e7ec768ccd981020841d94a0942ca3d594fe79172df356df",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-context-red.txt",
+      "file": "E2-transport-context-red.txt",
+      "originalBytes": 11053,
+      "originalSha256": "79b68873cf28a440d9f0d3794a16518d0499cc0d637fedb6011987848cf9e2b3",
+      "exportedBytes": 11053,
+      "exportedSha256": "79b68873cf28a440d9f0d3794a16518d0499cc0d637fedb6011987848cf9e2b3",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-env-status-green.txt",
+      "file": "E2-transport-env-status-green.txt",
+      "originalBytes": 201,
+      "originalSha256": "f6b2977754530ddfca5edfae3c638b5e495654a936e7369d5c0dcb00c74f1ec3",
+      "exportedBytes": 201,
+      "exportedSha256": "f6b2977754530ddfca5edfae3c638b5e495654a936e7369d5c0dcb00c74f1ec3",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-env-status-red.txt",
+      "file": "E2-transport-env-status-red.txt",
+      "originalBytes": 5442,
+      "originalSha256": "bfa21865c9e5a3395dfb459ce9d8d1a88ba700d45ce8a82a366cc6e057d659e1",
+      "exportedBytes": 5413,
+      "exportedSha256": "b32589e5dd030b9759ffeaa4c4164daa117718ccf7707a4e6e00c7419b68044f",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-format-final.txt",
+      "file": "E2-transport-format-final.txt",
+      "originalBytes": 68,
+      "originalSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exportedBytes": 68,
+      "exportedSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-helpers-review.md",
+      "file": "E2-transport-helpers-review.md",
+      "originalBytes": 16222,
+      "originalSha256": "ffc180883f6d390699df9038c0d2d5f98a83d3050a46e437451e767e65c753f9",
+      "exportedBytes": 16222,
+      "exportedSha256": "ffc180883f6d390699df9038c0d2d5f98a83d3050a46e437451e767e65c753f9",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-lint-final.txt",
+      "file": "E2-transport-lint-final.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-negative-case-green.txt",
+      "file": "E2-transport-negative-case-green.txt",
+      "originalBytes": 191,
+      "originalSha256": "d3cc04c0aa1833836c71a07d5cc733d6a516119763772e3afcfbd3238f944a4e",
+      "exportedBytes": 191,
+      "exportedSha256": "d3cc04c0aa1833836c71a07d5cc733d6a516119763772e3afcfbd3238f944a4e",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-negative-case-red.txt",
+      "file": "E2-transport-negative-case-red.txt",
+      "originalBytes": 2459,
+      "originalSha256": "17bc5b403e7d018beb08d80cfffff8586f1365f9b70d1cc512b2bc63c73e88a3",
+      "exportedBytes": 2459,
+      "exportedSha256": "17bc5b403e7d018beb08d80cfffff8586f1365f9b70d1cc512b2bc63c73e88a3",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-proxy-red.txt",
+      "file": "E2-transport-proxy-red.txt",
+      "originalBytes": 4643,
+      "originalSha256": "27d854d59771c75702074b9567e4b29a2b0454a8e18da51b65716401d07d8ffa",
+      "exportedBytes": 4643,
+      "exportedSha256": "27d854d59771c75702074b9567e4b29a2b0454a8e18da51b65716401d07d8ffa",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-shell-guard-green.txt",
+      "file": "E2-transport-shell-guard-green.txt",
+      "originalBytes": 191,
+      "originalSha256": "79641060c823dbf2cd5f4ca644248b1a4e249e123ad8cdf2d5fcb2018ca17c31",
+      "exportedBytes": 191,
+      "exportedSha256": "79641060c823dbf2cd5f4ca644248b1a4e249e123ad8cdf2d5fcb2018ca17c31",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-shell-guard-red.txt",
+      "file": "E2-transport-shell-guard-red.txt",
+      "originalBytes": 1132,
+      "originalSha256": "bf016dcfdf99baea8e5bd5f831bcf09ec71e324ed2af1c88955e37a81630989f",
+      "exportedBytes": 1132,
+      "exportedSha256": "bf016dcfdf99baea8e5bd5f831bcf09ec71e324ed2af1c88955e37a81630989f",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-tsconfig.json",
+      "file": "E2-transport-tsconfig.json",
+      "originalBytes": 982,
+      "originalSha256": "134e5ce102db3028d9dcdaff883e698e54bb17415983a26210cc67ccd4fead1a",
+      "exportedBytes": 982,
+      "exportedSha256": "134e5ce102db3028d9dcdaff883e698e54bb17415983a26210cc67ccd4fead1a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-typecheck-final.txt",
+      "file": "E2-transport-typecheck-final.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exportedBytes": 0,
+      "exportedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-typecheck.txt",
+      "file": "E2-transport-typecheck.txt",
+      "originalBytes": 771,
+      "originalSha256": "21d824cc8306bdd41833f0bed32b856f49814f1b723977574a03c8fd50e283e5",
+      "exportedBytes": 771,
+      "exportedSha256": "21d824cc8306bdd41833f0bed32b856f49814f1b723977574a03c8fd50e283e5",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-unit-final.txt",
+      "file": "E2-transport-unit-final.txt",
+      "originalBytes": 201,
+      "originalSha256": "4fc3e0b53e0b1468123afc2c743c973e774daf53805b92f3f1bf3cdc92cc9890",
+      "exportedBytes": 201,
+      "exportedSha256": "4fc3e0b53e0b1468123afc2c743c973e774daf53805b92f3f1bf3cdc92cc9890",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": "stage2-briefs/E2-transport-unit-green-initial.txt",
+      "file": "E2-transport-unit-green-initial.txt",
+      "originalBytes": 190,
+      "originalSha256": "ebc6b8d4415f8fde2b8aedbc81380f02fdf774b93f2364c8e190327476eea581",
+      "exportedBytes": 190,
+      "exportedSha256": "ebc6b8d4415f8fde2b8aedbc81380f02fdf774b93f2364c8e190327476eea581",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-image-http-red.txt",
+      "file": "E2-public-image-http-red.txt",
+      "originalBytes": 6879,
+      "originalSha256": "0f18fa6fd0ee6a72808618267fae418d059ff145b58cbfa3fc605c112aa50ef3",
+      "exportedBytes": 6319,
+      "exportedSha256": "db59bc1364d4b285e6d75f662ec6cbee7d26d483c59d1475d9806bbec2786316",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-image-http-red-result.json",
+      "file": "E2-public-image-http-red-result.json",
+      "originalBytes": 139,
+      "originalSha256": "92a2efd7588dac861615fb7f2fc153b4620531c7cd8eca10b5128c3091484360",
+      "exportedBytes": 139,
+      "exportedSha256": "92a2efd7588dac861615fb7f2fc153b4620531c7cd8eca10b5128c3091484360",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-image-http-green.txt",
+      "file": "E2-public-image-http-green.txt",
+      "originalBytes": 4921,
+      "originalSha256": "0f97affbac47f546f66b2991f071f3489850fcfa57b62e682a3965e75bb46121",
+      "exportedBytes": 4361,
+      "exportedSha256": "abdbabcfc3cfbd6ff12045c0b8b3de9b9f96e5e0fca445047f6cf293396d597d",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-image-http-green-result.json",
+      "file": "E2-public-image-http-green-result.json",
+      "originalBytes": 139,
+      "originalSha256": "19d29c8ba47fa6fcffd98d0b34f0f183a4b881342e9dcc8981067bf348e9620f",
+      "exportedBytes": 139,
+      "exportedSha256": "19d29c8ba47fa6fcffd98d0b34f0f183a4b881342e9dcc8981067bf348e9620f",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-pages-http-first.txt",
+      "file": "E2-public-pages-http-first.txt",
+      "originalBytes": 5993,
+      "originalSha256": "29118855f38c86d9f228b40499ad291aaad6a92078a5eb1631ef1f9ac6a86055",
+      "exportedBytes": 5433,
+      "exportedSha256": "d8cda0fb43483ac97b4dd8dca202c5ccde65dc2dd4814f0206bda9014ff59806",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-pages-http-first-result.json",
+      "file": "E2-public-pages-http-first-result.json",
+      "originalBytes": 128,
+      "originalSha256": "1c1600cc06dbe3aa355e89545f2cb876901c00db50ca1721d9f3d6b8e9cc1a2c",
+      "exportedBytes": 128,
+      "exportedSha256": "1c1600cc06dbe3aa355e89545f2cb876901c00db50ca1721d9f3d6b8e9cc1a2c",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-reading-position-first-red.txt",
+      "file": "E2-reading-position-first-red.txt",
+      "originalBytes": 7514,
+      "originalSha256": "1c0e019c18b011084898a7f88bd769790fed8607e2966633bb0b1eede3853920",
+      "exportedBytes": 6954,
+      "exportedSha256": "6d5a5993ce235cc9df74b37566de2339ff87fad6fda77ea0e73fd0c06e0ab93c",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-reading-position-first-red-result.json",
+      "file": "E2-reading-position-first-red-result.json",
+      "originalBytes": 132,
+      "originalSha256": "aaf8a7180d6e32fba8a898355c960917713971127b44805ecf6eaffd1a4663ff",
+      "exportedBytes": 132,
+      "exportedSha256": "aaf8a7180d6e32fba8a898355c960917713971127b44805ecf6eaffd1a4663ff",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-render-captured-null-red.txt",
+      "file": "E2-render-captured-null-red.txt",
+      "originalBytes": 4790,
+      "originalSha256": "e614c9b4957663f08ee840d8fe6409c69749e512ba783e433057bab1da8ff5b6",
+      "exportedBytes": 4270,
+      "exportedSha256": "441d12795578317466eada846f889e89c65a8366a45612e90d3478176677930f",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-render-captured-null-red-result.json",
+      "file": "E2-render-captured-null-red-result.json",
+      "originalBytes": 197,
+      "originalSha256": "d99a513ace6d40ea0b37bbcfd0e706c0c4a5ca2449c79921bfb5d1c0613a3af2",
+      "exportedBytes": 197,
+      "exportedSha256": "d99a513ace6d40ea0b37bbcfd0e706c0c4a5ca2449c79921bfb5d1c0613a3af2",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-render-captured-null-green.txt",
+      "file": "E2-render-captured-null-green.txt",
+      "originalBytes": 3239,
+      "originalSha256": "4ef9a33957c8e0e3a302260bb2c1e1b3b88f307b57403d05c2728de605da6fb3",
+      "exportedBytes": 2719,
+      "exportedSha256": "e5c63b791137ce02564d0245395105abfa8019d337ff67872ecfbe717a826e63",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-render-captured-null-green-result.json",
+      "file": "E2-render-captured-null-green-result.json",
+      "originalBytes": 197,
+      "originalSha256": "431c0be0fe1bfbd8d9bb6924028a8eb18b77f5cb649a8e823d54f65873e3b73d",
+      "exportedBytes": 197,
+      "exportedSha256": "431c0be0fe1bfbd8d9bb6924028a8eb18b77f5cb649a8e823d54f65873e3b73d",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-render-native-green.txt",
+      "file": "E2-public-render-native-green.txt",
+      "originalBytes": 3242,
+      "originalSha256": "e1335c4e7e5857d3a202653d86aa13a8680b13f6b1f51cea2f1e18d71e19a82f",
+      "exportedBytes": 2722,
+      "exportedSha256": "b5d6b1c01827b352274f7e89616dc48ea307aac0986d64fd9c704f41465dff0a",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-render-native-green-result.json",
+      "file": "E2-public-render-native-green-result.json",
+      "originalBytes": 72,
+      "originalSha256": "e683fc7b5e3c737fddcb3e21388ab4ec82b0b4b8368ceb50b988325bcdfc3937",
+      "exportedBytes": 72,
+      "exportedSha256": "e683fc7b5e3c737fddcb3e21388ab4ec82b0b4b8368ceb50b988325bcdfc3937",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-reading-prerequisites-native-red.txt",
+      "file": "E2-reading-prerequisites-native-red.txt",
+      "originalBytes": 12269,
+      "originalSha256": "e2d45ca30293ca1b22aba27092921ef4754509a3eb3aa2c797db033b31a3fa80",
+      "exportedBytes": 11749,
+      "exportedSha256": "c2592a73181646521cd39c65fd225190343a3bef4d5519dd551512ffb19df957",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-reading-prerequisites-native-red-result.json",
+      "file": "E2-reading-prerequisites-native-red-result.json",
+      "originalBytes": 72,
+      "originalSha256": "297135518b3a6012bc67b3ae0d927d587dbb847519772f9dc14967e33e6cd817",
+      "exportedBytes": 72,
+      "exportedSha256": "297135518b3a6012bc67b3ae0d927d587dbb847519772f9dc14967e33e6cd817",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-pages-first-typecheck.txt",
+      "file": "E2-pages-first-typecheck.txt",
+      "originalBytes": 814,
+      "originalSha256": "a6a449739626e6b1cfb217551df8194744e5c89280c86d913385f33ea63c9d0c",
+      "exportedBytes": 814,
+      "exportedSha256": "a6a449739626e6b1cfb217551df8194744e5c89280c86d913385f33ea63c9d0c",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-pages-typegen.txt",
+      "file": "E2-public-pages-typegen.txt",
+      "originalBytes": 61,
+      "originalSha256": "8b0db89a1e25137a4cb79143a4ea63ae347e6f5f2247f026d984e133255d3084",
+      "exportedBytes": 61,
+      "exportedSha256": "8b0db89a1e25137a4cb79143a4ea63ae347e6f5f2247f026d984e133255d3084",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-pages-typecheck-repeat.txt",
+      "file": "E2-public-pages-typecheck-repeat.txt",
+      "originalBytes": 211,
+      "originalSha256": "81117c2918d25d5e16121183092ad9473c9baf8cb0e995e7c5c81d49af6c12e6",
+      "exportedBytes": 211,
+      "exportedSha256": "81117c2918d25d5e16121183092ad9473c9baf8cb0e995e7c5c81d49af6c12e6",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-contextual-links-red.txt",
+      "file": "E2-contextual-links-red.txt",
+      "originalBytes": 5279,
+      "originalSha256": "7c21f587a36d5e3cfea5d4bb6f0f0f53256611ebb3d7add2a84a404039edde9c",
+      "exportedBytes": 5279,
+      "exportedSha256": "7c21f587a36d5e3cfea5d4bb6f0f0f53256611ebb3d7add2a84a404039edde9c",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-contextual-links-green.txt",
+      "file": "E2-contextual-links-green.txt",
+      "originalBytes": 201,
+      "originalSha256": "d9766159e098b86f77232c1d14189b501c3cbabc6d0133cf05c18482578c52ed",
+      "exportedBytes": 201,
+      "exportedSha256": "d9766159e098b86f77232c1d14189b501c3cbabc6d0133cf05c18482578c52ed",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-page-view-red.txt",
+      "file": "E2-public-page-view-red.txt",
+      "originalBytes": 9532,
+      "originalSha256": "de601a3c5c7b3629c2368fdb174a695467f5b79b35a7c9c86d9af9d27816d164",
+      "exportedBytes": 9532,
+      "exportedSha256": "de601a3c5c7b3629c2368fdb174a695467f5b79b35a7c9c86d9af9d27816d164",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-page-view-green.txt",
+      "file": "E2-public-page-view-green.txt",
+      "originalBytes": 35031,
+      "originalSha256": "4fa7dc2bc17b7dc3b4cbbf549cc565c2fb499eec046dde30520e156bf5f3a6df",
+      "exportedBytes": 35023,
+      "exportedSha256": "e78f394ae2e78feef865f1e091dbbdd22166a11af9a6b78cfe64c9a2a0883e62",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    },
+    {
+      "source": ".work/E2-public-page-view-green-final.txt",
+      "file": "E2-public-page-view-green-final.txt",
+      "originalBytes": 204,
+      "originalSha256": "772f5319880bf666b4010d0a3433f938384e0e9bca779daccd27fae21e53a555",
+      "exportedBytes": 204,
+      "exportedSha256": "772f5319880bf666b4010d0a3433f938384e0e9bca779daccd27fae21e53a555",
+      "transformation": "ANSI removed and JWT/database URLs/emails redacted when present; private original retained."
+    }
+  ]
+}

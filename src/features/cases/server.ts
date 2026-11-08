@@ -25,3 +25,6 @@ export { getPreviewCases } from './server/get-preview-cases';
 export type { PreviewCaseSelection } from './server/get-preview-cases';
 export { resolvePreviewContextualLink } from './server/resolve-preview-contextual-link';
 export type { PreviewContextualLinkInput } from './server/resolve-preview-contextual-link';
+export type { CaseStatePresentation } from './contracts/case-state-presentation.schema';
+export { selectCaseStatePresentation } from './server/select-case-state-presentation';
+export type { CaseStatePresentationInput } from './server/select-case-state-presentation';

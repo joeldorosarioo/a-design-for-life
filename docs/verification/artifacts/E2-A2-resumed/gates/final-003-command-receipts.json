@@ -1,0 +1,14 @@
+[
+  {
+    "command": "pnpm verify",
+    "exitCode": 0,
+    "startedAt": "2026-11-03T14:02:31.7828113Z",
+    "finishedAt": "2026-11-03T14:06:51.4877909Z"
+  },
+  {
+    "command": "pnpm test:e2e",
+    "exitCode": 0,
+    "startedAt": "2026-11-03T14:06:51.4906476Z",
+    "finishedAt": "2026-11-03T14:09:09.5806530Z"
+  }
+]

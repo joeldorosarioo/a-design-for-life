@@ -1,0 +1,8 @@
+{
+  "exitCode": 0,
+  "startedAt": "2026-10-30T22:46:46.9186015Z",
+  "recordedAt": "2026-10-30T22:47:28.7227306Z",
+  "node": "24.22.2",
+  "command": "pnpm test:e2e reading-position-expanded.e2e.test.ts --grep '@resource actual delayed Next|@resource user scroll while' --repeat-each=3 --max-failures=1",
+  "buildId": "xmxI9njBKSKP_IyVNkV16"
+}

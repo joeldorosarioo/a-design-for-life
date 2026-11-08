@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import type { LanguageToggleProps } from '../contracts/language-control.schema';
 import { useReadingPosition } from './reading-position-provider';
 import styles from '../stylesheets/language-switcher.module.css';
+import { LanguageFlag } from './language-flag';
 
 export function LanguageToggle(props: LanguageToggleProps) {
   const { pending, begin, register } = useReadingPosition();
@@ -32,13 +33,7 @@ export function LanguageToggle(props: LanguageToggleProps) {
         void begin(props);
       }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element -- exact approved static Figma language vector */}
-      <img
-        src={locale === 'pt' ? '/figma/language-en.svg' : '/figma/language-br.svg'}
-        width={32}
-        height={32}
-        alt=""
-      />
+      <LanguageFlag locale={locale} />
     </Button>
   );
 }

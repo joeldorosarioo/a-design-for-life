@@ -1,0 +1,12 @@
+
+Running 3 tests using 1 worker
+
+(node:10136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\config\editorial-multiline.e2e.test.ts:98:1 › Native Profile controls preserve authored line breaks through Save Draft and Home/About preview (4.0s)
+  ok 2 [chromium] › src\config\editorial-multiline.e2e.test.ts:132:1 › Native Navigation footer title retains authored line breaks through Save Draft and preview (1.4s)
+  ok 3 [chromium] › src\config\editorial-multiline.e2e.test.ts:152:1 › Native Case section heading retains authored line breaks through Save Draft and preview (1.9s)
+
+  3 passed (12.9s)

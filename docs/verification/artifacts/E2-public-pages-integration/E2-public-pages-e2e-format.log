@@ -1,0 +1,4 @@
+src/app/(portfolio)/[locale]/public-pages.e2e.test.ts 105ms (unchanged)
+testing/fixtures/public-portfolio.ts 44ms
+[error] Unable to write file "testing/fixtures/public-portfolio.ts":
+[error] EPERM: operation not permitted, open 'E:\a-design-for-life\testing\fixtures\public-portfolio.ts'

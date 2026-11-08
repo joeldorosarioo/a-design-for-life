@@ -1,0 +1,63 @@
+# E2.2 Home/Sobre presentation handoff
+
+30/10/2026. Stage 2 remains **16.7% (1/6 completed)**; E2.2 is in progress. This is a source handoff, not HTTP/visual/a11y acceptance.
+
+## Scope and public props
+
+- `src/features/professional-profile/ui.ts` exports `HomeContent`, `HomeContentProps`, `AboutContent`, `AboutContentProps`. The contracts `index.ts` stays free of UI/CSS imports.
+- `HomeContent({ profile: ProfileDTO, projectsHref: string, aboutHref: string, featuredProjects: ReactNode, mediaMode?: 'published' | 'preview' })`.
+- `AboutContent({ profile: ProfileDTO, projectsHref: string, mediaMode?: 'published' | 'preview' })`.
+- Composition supplies validated localized navigation hrefs and the Cases-owned featuredProjects slot. These presenters do not resolve URLs, query the CMS, duplicate Case data or invent an empty-state message.
+- `ProfileImage` is an internal helper with four closed slots: portrait (Home), about-portrait, desk, architecture. No style/size/CSS fields are exposed to editors.
+- Default mediaMode is published; only preview sets Next Image unoptimized, preserving the authenticated original route rather than asking an anonymous optimizer to fetch a private image. Both presenters forward this mode.
+- All image sources are `/media/{mediaId}/original` through real Next Image. Only image-use alt/caption are rendered. A decorative use emits alt="". Extra storage metadata is not spread into the DOM.
+- Plain text is React-escaped; blank lines separate paragraphs and single newlines are retained with pre-line. Structured groups, semantic headings, supplied CTA labels and locale-independent section reading keys are preserved.
+- Row data-reading-key uses the supplied readingKey; ordinals are display only. Missing legacy/draft row keys do not invent reading correspondences.
+- Method keywords and three About section eyebrows consume the field-agent DTO changes with nullable legacy defaults. About introduction/closing headings retain accessible semantics but are visually hidden, matching the baseline's visible composition.
+
+## Source and design constraints
+
+Read AGENTS, stage authorization/progress, approved inventory/contracts/spec relevant Home/About/media/navigation passages, approved E2.2 task and local reference FINAL-REFERENCE/home-about-layout/button/image-fill/canonical manifests. Applied TDD + writing-good-tests, verification-before-completion, Figma design-to-code (explicit authorized normal-UI fallback), React, accessibility and frontend-design instructions. Approved design/copy takes precedence over creative exploration.
+
+Visually inspected all eight existing full PNG baselines (Home/Sobre, PT/EN, desktop/mobile) and all three relevant original photographs before layout code. No browser was opened, no image downloaded/exported/cropped/resized or copied into application assets. No image-file transformation was performed.
+
+Exact desktop Section heading uses measured eyebrow12/16 semibold, title48/48 semibold, description18/28. Remaining hero/editorial/card typography and spacing are provisional adaptations from the visible baselines and approved token scale; the partial brief explicitly leaves exact panel measurements unknown. The CSS comment records this limitation.
+
+Photo geometry:
+- Home portrait: desktop480×528, mobile342×384, object-fit cover centered.
+- About portrait: desktop480×600, mobile342×427.5, ratio4:5, object-fit cover centered.
+- Desk:1280×720 /342×192.375, ratio16:9.
+- Architecture:480×640 /342×456, ratio3:4.
+
+About portrait override was proved by reading existing PNG pixel buffers with Sharp.raw only; no output image/file was written. Samples at x165 and1110 in the2×desktop PNGs found PT y1016..2216 and EN1072..2272:600 CSS px each. Samples x55/725 in mobile2×PNGs found PT1936..2791 and EN1880..2735:427.5 CSS px each. Home desktop sample x1765/2710 found y352..1408:528 CSS px; mobile x55/725 found PT1368..2136 and EN1272..2040:384 CSS px. Coordinates are raster-derived CSS values after division by2, not newly claimed Figma panel metadata.
+
+Primary CVA variant and its globals rules were explicitly authorized by root: Cherry700 background, white text, hover900, border0; common radius/padding/type and focus ring reused. Secondary behavior/rules were preserved. No additional Button variant or custom asset was added.
+
+## TDD and checks
+
+Initial callable null stubs imported successfully. RED:12 tests executed,9 failed because headings/groups/links/reading identities/images were absent;3 null-input tests already passed. Raw output: E2-home-about-ui-red.log. Minimal implementation then passed the focused27-test Home/About/media/Button/navigation run.
+
+Additional approved eyebrow fields: new RED test failed (1/4); implementation then passed28 focused tests in7 files (13 presenter/image tests plus Button/navigation coverage). Raw eyebrow RED: E2-home-about-ui-eyebrows-red.log.
+
+Expanded final focused unit command:
+`pnpm exec vitest run --project unit src/features/professional-profile src/features/site-navigation src/components/ui/button.test.tsx`
+Exit0, **116 passed in16 files**, no failed/skipped tests reported. Raw output: E2-home-about-ui-unit-green.log. This includes tests owned by other agents in those features; it is not the whole-project suite.
+
+Final ESLint:
+`pnpm exec eslint src/features/professional-profile/components src/features/professional-profile/index.ts src/features/professional-profile/ui.ts src/components/ui/button.tsx`
+Exit0, no output. E2-home-about-ui-lint.log.
+
+Final format:
+`pnpm exec prettier --check src/features/professional-profile/components src/features/professional-profile/stylesheets src/features/professional-profile/index.ts src/features/professional-profile/ui.ts src/components/ui/button.tsx src/stylesheets/globals.css`
+Exit0, all matched files use Prettier style. E2-home-about-ui-format.log.
+
+Native CLI integration found eager CSS evaluation when UI was re-exported from the shared contracts barrel. Root chose separate public ui.ts entries with explicit architectural boundary changes owned by root. Removed the interim index UI exports immediately and notified the fields agent before its Native retry. No bypass through another feature's private modules was introduced. Final index contains only original safe contract exports.
+
+## Freeze and remaining verification
+
+Owned source frozen after the final format/lint checks. SHA256 for all owned source, styles, tests, public entries and coordinated Button/global files is in E2-home-about-ui-source-hashes.json. No subsequent source edit planned by this agent.
+
+Root still owns public UI boundary support, typed route/page composition, protected media optimizer/config, validation, actual published/authenticated HTTP journeys, browser screenshot comparison to all eight baselines, keyboard/zoom/intermediate widths/contrast/a11y and final integrated gate. Current component tests do not prove global image optimization; global unoptimized/config may still be undergoing root changes.
+
+No pnpm verify, full suite, build, DB/Docker, E2E, Native generation, migrations, package changes, new downloads or Git operations were run by this agent. **Do not mark E2.2 complete from this handoff.**
+

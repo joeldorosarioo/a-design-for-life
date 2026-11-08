@@ -100,6 +100,18 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
     { name: 'eyebrow', label: 'Identificação editorial do estudo', type: 'text' },
     { name: 'title', label: 'Título público', type: 'text' },
     ...casePresentationFields(),
+    {
+      name: 'cardTitle',
+      label: 'Título do card (opcional)',
+      type: 'text',
+      admin: { description: 'Se vazio, o card usa o título completo do estudo.' },
+    },
+    {
+      name: 'cardEyebrow',
+      label: 'Identificação editorial do card (opcional)',
+      type: 'text',
+      admin: { description: 'Se vazio, o card usa a identificação editorial do estudo.' },
+    },
 
     { name: 'summary', label: 'Resumo', type: 'textarea' },
 
@@ -115,6 +127,19 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
     },
 
     imageUseField('cover', 'Capa'),
+    {
+      name: 'coverPresentation',
+      label: 'Apresentação da capa (opcional)',
+      type: 'select',
+      options: [
+        { label: 'Contida em cereja', value: 'contained-cherry' },
+        { label: 'Contida em rosa suave', value: 'contained-soft' },
+      ],
+      admin: {
+        description:
+          'Duas composições fixas da referência. Se vazio, mantém a capa contida em cereja.',
+      },
+    },
 
     { name: 'role', label: 'Papel profissional', type: 'text' },
 
@@ -132,7 +157,7 @@ export const CaseContent: CollectionConfig = protectEditorialCollection({
       fields: [
         { name: 'readingKey', label: 'Chave estável da seção', type: 'text' },
 
-        { name: 'heading', label: 'Título da seção', type: 'text' },
+        { name: 'heading', label: 'Título da seção', type: 'textarea' },
         ...sectionPresentationFields(),
 
         { name: 'blocks', label: 'Blocos', type: 'blocks', blocks: caseBlocks },

@@ -1,0 +1,142 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/app/(portfolio)/_components/public-page-view.test.tsx (6 tests | 6 failed) 94ms
+   × composes the confirmed home page with the four destinations and current resume 80ms
+   × composes the confirmed cases page with the four destinations and current resume 4ms
+   × composes the confirmed about page with the four destinations and current resume 3ms
+   × passes only the received featured cards to Home and derives actual list count 2ms
+   × keeps a confirmed case readable before structural content has ever been published 2ms
+   × renders safe state copy without case content and retains the current footer contact 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > composes the confirmed home page with the four destinations and current resume
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Synthetic Home heading"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:45:17
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > composes the confirmed cases page with the four destinations and current resume
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Synthetic list heading"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:45:17
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > composes the confirmed about page with the four destinations and current resume
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Synthetic About heading"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:45:17
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > passes only the received featured cards to Home and derives actual list count
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Synthetic empty title"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:57:17
+     55| it('passes only the received featured cards to Home and derives actual…
+     56|   const { unmount } = render(<PublicPageView kind="home" locale="pt" p…
+     57|   expect(screen.getByRole('heading', { name: 'Synthetic empty title' }…
+       |                 ^
+     58|   expect(screen.queryByText('Synthetic confirmed case')).toBeNull();
+     59|   unmount();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > keeps a confirmed case readable before structural content has ever been published
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Synthetic confirmed case"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:66:17
+     64| it('keeps a confirmed case readable before structural content has ever…
+     65|   render(<PublicPageView kind="case" locale="pt" portfolio={null} deta…
+     66|   expect(screen.getByRole('heading', { level: 1, name: detail.title! }…
+       |                 ^
+     67|   expect(screen.getByText('Synthetic confirmed summary')).toBeVisible(…
+     68|   expect(screen.queryByText('Synthetic identity')).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  |unit| src/app/(portfolio)/_components/public-page-view.test.tsx > renders safe state copy without case content and retains the current footer contact
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Synthetic published not-found"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/.pnpm/@testing-library+dom@10.4.2/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/(portfolio)/_components/public-page-view.test.tsx:72:17
+     70| it('renders safe state copy without case content and retains the curre…
+     71|   render(<PublicPageView kind="about" locale="pt" portfolio={portfolio…
+     72|   expect(screen.getByRole('heading', { level: 1, name: 'Synthetic publ…
+       |                 ^
+     73|   expect(screen.queryByText(detail.title!)).toBeNull();
+     74|   expect(document.getElementById('contact')).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  17:04:20
+   Duration  1.57s (environment 56%, import 15%, setup 15%, transform 8%, tests 7%)
+

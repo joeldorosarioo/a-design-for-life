@@ -1,0 +1,84 @@
+{
+  "native": {
+    "red": {
+      "passed": 1,
+      "failed": 5,
+      "exit": 1
+    },
+    "leaseReturned": true,
+    "port": 55433,
+    "green": {
+      "failed": 0,
+      "passed": 6,
+      "exit": 0
+    }
+  },
+  "checks": {
+    "typescript": 0,
+    "prettierFourFiles": 0,
+    "eslintFourFiles": 0
+  },
+  "files": [
+    {
+      "sha256": "D7BB132E033773307EEB953A2D185D3E75A77F88ADE3040E249E0909DFE799E5",
+      "bytes": 8693,
+      "name": "native-first-assertion-red.log"
+    },
+    {
+      "sha256": "49AABE841C958B9C5F62D180894BB2ED13C7934F59E900CD5E2F2D46D1C434B7",
+      "bytes": 8668,
+      "name": "native-red.log"
+    },
+    {
+      "sha256": "5E7ED5837CA5ACA04FCC64544C906A9C226B5E4E24EFCCE3BBBCF27BD986F38C",
+      "bytes": 3433,
+      "name": "native-green.log"
+    },
+    {
+      "sha256": "168BB281C9077D47F9A7D6C506C7309C08E2BC6376CE4C0641CE67998378A469",
+      "bytes": 2319,
+      "name": "native-setup-permission-failure.log"
+    },
+    {
+      "sha256": "FE65576859F2B1C6ADE64DD39A0375A4B1526709CF3A0EB8D11975D0E29379D3",
+      "bytes": 4186,
+      "name": "native-setup-vitest-api-failure.log"
+    },
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "name": "installed-typecheck.log"
+    },
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "bytes": 0,
+      "name": "installed-lint.log"
+    },
+    {
+      "sha256": "B651870825FE15A8A775A84D2E2C66073FAE3D52B2705C380528773DB7056333",
+      "bytes": 164,
+      "name": "installed-format.log"
+    },
+    {
+      "sha256": "8739B6933A998B6F4FEB102C5F667559899B6AC851F57495481C45F2DEE829FF",
+      "bytes": 765,
+      "name": "installed-source-hashes.json"
+    },
+    {
+      "sha256": "1C557E47FD97DFC80AD5FC254D9E6322EFEC1D39E375932B2F6DF11A55BCD6D4",
+      "bytes": 5773,
+      "name": "native-execution-report.md"
+    },
+    {
+      "sha256": "47AA2227F8989388CA2E0FB06DBF4BECA1FF6AE5BDA656B5A3B686E46B3D9429",
+      "bytes": 9055,
+      "name": "README.md"
+    }
+  ],
+  "limits": [
+    "HTTP/Next/build not run",
+    "No E2.6 closure",
+    "Other setup failures excluded from RED"
+  ],
+  "node": "24.22.2"
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Safe projection of actual post-gates003 restore/Native verification; no auth, dump, SQL, storage contents or private namespace exported",
+  "verifiedAt": "2026-11-03T14:10:39.8816389Z",
+  "restored": true,
+  "nativeDocuments": 10,
+  "nativeMedia": 7,
+  "publicRoot": null,
+  "publicationOperations": 0,
+  "preservedStorageObjects": 28,
+  "wholeDataNormalizedExact": true,
+  "normalizedCharacters": 197522,
+  "isolatedService": {
+    "service": "postgres-test",
+    "project": "a-design-for-life-local",
+    "port": 55433,
+    "otherDatabaseServicesTouched": false
+  },
+  "nativeVerification": {
+    "ok": true,
+    "documents": 10,
+    "media": 7,
+    "idempotentReadback": true,
+    "allRevisionsUnchanged": true,
+    "rootUnchanged": true,
+    "noPublicationOperations": true
+  },
+  "sourceReceiptSha256": "e6b7c5ef29719e2f4c87f1db5c5b98e4723ee2486480d1c5716cb5c093fea70f",
+  "nativeVerificationSha256": "9f11843655b3ff20466e13cbe6538d82b323bb61a265b334a8c76b15fdd29dad",
+  "timingLimit": "Original restore result contains verifiedAt but not a command start/end receipt. Preview HTTP was still pending at restore time; current capture/manual receipts verify the later running preview separately.",
+  "evidence": [
+    {
+      "label": "restoration003-v9.json",
+      "sha256": "038e6f9e80468ef02a1c209b554f056ad869bfbdf71f4fd66e391518268ae364"
+    }
+  ]
+}

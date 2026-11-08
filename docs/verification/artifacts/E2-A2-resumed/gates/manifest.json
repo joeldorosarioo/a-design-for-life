@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Explicit reviewed sanitized evidence staging; no tests/services/application/Git/CI run by this exporter.",
+  "generatedAt": "2026-11-03T14:14:54.438Z",
+  "snapshot": {
+    "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+    "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+  },
+  "exportsCount": 19,
+  "exports": [
+    {
+      "id": "final-001-verify",
+      "kind": "log",
+      "file": "final-001-verify.txt",
+      "sourceLabel": "final-001 pnpm verify — actual log",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-001: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "0fb8e6c30758c1aa1c7b7e050ef07c59925e5758b7adaf880641fba7b38083a2",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "executed-command",
+        "command": "pnpm verify",
+        "exitCode": 1,
+        "startedAt": "2026-11-03T13:31:13.7222250Z",
+        "completedAt": "2026-11-03T13:36:04.0987036Z"
+      },
+      "originalBytes": 260759,
+      "exportedBytes": 259499,
+      "originalSha256": "dcff4ae6b352f31461170f8c1b9efcf61a02773c525d45450f9c58cddd93b92b",
+      "exportedSha256": "314d2c336dba9938de2611284229125686c4b4f322b1e7db5092e4960f8fb1d1",
+      "redactions": {
+        "ansi-csi": 252
+      },
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-001-command-receipts",
+      "kind": "json",
+      "file": "final-001-command-receipts.json",
+      "sourceLabel": "final-001: Actual command exits and times",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-001: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "0fb8e6c30758c1aa1c7b7e050ef07c59925e5758b7adaf880641fba7b38083a2",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 149,
+      "exportedBytes": 143,
+      "originalSha256": "7b1a1641673232c26998387705851578c90495351c8956b2f6cbfb3a0833c99d",
+      "exportedSha256": "24b093b1e08bf91e9d9cdfa3f789ab9ffd456b22977b12f7613d08540fd04664",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-001-gate-integrity",
+      "kind": "json",
+      "file": "final-001-gate-integrity.json",
+      "sourceLabel": "final-001: Source and preserved A1 screenshot integrity",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-001: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "0fb8e6c30758c1aa1c7b7e050ef07c59925e5758b7adaf880641fba7b38083a2",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 253,
+      "exportedBytes": 246,
+      "originalSha256": "d606f683c7702f4b2f1475bf82a5a854cee330ab2777dd7e6cdfa89277a650ca",
+      "exportedSha256": "8d8139e92a8640600e13bd2fa64b5b7d6c7f1cb36f7d8e7e5efb4a05fb7710a9",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-001-source-before",
+      "kind": "json",
+      "file": "final-001-source-before.json",
+      "sourceLabel": "final-001: Full source inventory before gate",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-001: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "0fb8e6c30758c1aa1c7b7e050ef07c59925e5758b7adaf880641fba7b38083a2",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 92839,
+      "exportedBytes": 92839,
+      "originalSha256": "2e5b6e47d30dfa189829918d16e2f70ef1e3135d5603176b06e3e06aed9be7c7",
+      "exportedSha256": "2e5b6e47d30dfa189829918d16e2f70ef1e3135d5603176b06e3e06aed9be7c7",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-001-source-after",
+      "kind": "json",
+      "file": "final-001-source-after.json",
+      "sourceLabel": "final-001: Full source inventory after gate",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-001: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "0fb8e6c30758c1aa1c7b7e050ef07c59925e5758b7adaf880641fba7b38083a2",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 92839,
+      "exportedBytes": 92839,
+      "originalSha256": "b6eb38e8d917e4264cb47ef0103d461e86a617924a944cdd29115d197847b9a4",
+      "exportedSha256": "b6eb38e8d917e4264cb47ef0103d461e86a617924a944cdd29115d197847b9a4",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-002-verify",
+      "kind": "log",
+      "file": "final-002-verify.txt",
+      "sourceLabel": "final-002 pnpm verify — actual log",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-002: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "681456c033e705181c7cc7452fb4bca9124b7c5dfaf030ec5e2ce638d5ce3388",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "executed-command",
+        "command": "pnpm verify",
+        "exitCode": 0,
+        "startedAt": "2026-11-03T13:43:08.5748138Z",
+        "completedAt": "2026-11-03T13:47:29.0729563Z"
+      },
+      "originalBytes": 45344,
+      "exportedBytes": 44084,
+      "originalSha256": "8b7f03e78e085885475d4f4dd0a48c9540e9336785798749127aa2639eccb867",
+      "exportedSha256": "29508e9b318761313b98b840260d217b476fc7f0a11b9914264e2af26d48b565",
+      "redactions": {
+        "ansi-csi": 252
+      },
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-002-e2e",
+      "kind": "log",
+      "file": "final-002-e2e.txt",
+      "sourceLabel": "final-002 pnpm test:e2e — actual log",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-002: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "681456c033e705181c7cc7452fb4bca9124b7c5dfaf030ec5e2ce638d5ce3388",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "executed-command",
+        "command": "pnpm test:e2e",
+        "exitCode": 1,
+        "startedAt": "2026-11-03T13:47:29.0763273Z",
+        "completedAt": "2026-11-03T13:50:05.6914927Z"
+      },
+      "originalBytes": 164597,
+      "exportedBytes": 162317,
+      "originalSha256": "e937f9a86b08922e0f0da3e1b996f64bf45a091491f39789556733a28f2cc1d1",
+      "exportedSha256": "f26aad8f60a87da861558975bf320d9f6d68555f4ff6f136342fee0baa8f9cb5",
+      "redactions": {
+        "ansi-csi": 456
+      },
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-002-command-receipts",
+      "kind": "json",
+      "file": "final-002-command-receipts.json",
+      "sourceLabel": "final-002: Actual command exits and times",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-002: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "681456c033e705181c7cc7452fb4bca9124b7c5dfaf030ec5e2ce638d5ce3388",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 331,
+      "exportedBytes": 317,
+      "originalSha256": "833a6b5ede1146b140035d9027529c876e83ad9414cbe6f07683c1e5ef6629ab",
+      "exportedSha256": "1179f46b29ed19ebb827a7dd684f6b00ffa22abddd8d06e65eb5674b4ef62d48",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-002-gate-integrity",
+      "kind": "json",
+      "file": "final-002-gate-integrity.json",
+      "sourceLabel": "final-002: Source and preserved A1 screenshot integrity",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-002: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "681456c033e705181c7cc7452fb4bca9124b7c5dfaf030ec5e2ce638d5ce3388",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 253,
+      "exportedBytes": 246,
+      "originalSha256": "1278d444742852076864500bbe2ecc6ac8f7aba5f342a6480df6004e9a6f7ca4",
+      "exportedSha256": "5fc62ba7e32a6d94579c177fa480504031698ab9fa969b9eb0fc70dbd0294608",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-002-source-before",
+      "kind": "json",
+      "file": "final-002-source-before.json",
+      "sourceLabel": "final-002: Full source inventory before gate",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-002: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "681456c033e705181c7cc7452fb4bca9124b7c5dfaf030ec5e2ce638d5ce3388",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 92839,
+      "exportedBytes": 92839,
+      "originalSha256": "c61e94e0ac5cc96cdaf90db0c4d75494571c2c61c1c92d5744ea0744a1d02aa2",
+      "exportedSha256": "c61e94e0ac5cc96cdaf90db0c4d75494571c2c61c1c92d5744ea0744a1d02aa2",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-002-source-after",
+      "kind": "json",
+      "file": "final-002-source-after.json",
+      "sourceLabel": "final-002: Full source inventory after gate",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "final-002: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "681456c033e705181c7cc7452fb4bca9124b7c5dfaf030ec5e2ce638d5ce3388",
+        "limit": "Earlier frozen attempt, including any recorded failures; does not certify the final source. BuildID was not captured by that earlier gate wrapper."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 92839,
+      "exportedBytes": 92839,
+      "originalSha256": "456323b4db33c427fd04f105d61d0d76f92d89fe6f10508b82c648dbd54942ca",
+      "exportedSha256": "456323b4db33c427fd04f105d61d0d76f92d89fe6f10508b82c648dbd54942ca",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-003-verify",
+      "kind": "log",
+      "file": "final-003-verify.txt",
+      "sourceLabel": "final-003 pnpm verify — actual log",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "final-003: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "executed-command",
+        "command": "pnpm verify",
+        "exitCode": 0,
+        "startedAt": "2026-11-03T14:02:31.7828113Z",
+        "completedAt": "2026-11-03T14:06:51.4877909Z"
+      },
+      "originalBytes": 45342,
+      "exportedBytes": 44082,
+      "originalSha256": "bcc00bd08d87d839ba0d688163019e18c8417f9fcc992aba8884c6f4e072ae34",
+      "exportedSha256": "3e49c455ae9f60807bce7fb2fb86fce0fa961b5e0de681a3b403641b25ad2770",
+      "redactions": {
+        "ansi-csi": 252
+      },
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-003-e2e",
+      "kind": "log",
+      "file": "final-003-e2e.txt",
+      "sourceLabel": "final-003 pnpm test:e2e — actual log",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "final-003: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "executed-command",
+        "command": "pnpm test:e2e",
+        "exitCode": 0,
+        "startedAt": "2026-11-03T14:06:51.4906476Z",
+        "completedAt": "2026-11-03T14:09:09.5806530Z"
+      },
+      "originalBytes": 158234,
+      "exportedBytes": 155874,
+      "originalSha256": "9853ece0bf3acb7933b4cbe0d5003f544e794f745c8f2168cf0b5dd68c775cd3",
+      "exportedSha256": "0c5826038b81c211583d30e5720bda69e64309e86767c5abf7903977a2d7f2e5",
+      "redactions": {
+        "ansi-csi": 472
+      },
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-003-command-receipts",
+      "kind": "json",
+      "file": "final-003-command-receipts.json",
+      "sourceLabel": "final-003: Actual command exits and times",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "final-003: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 331,
+      "exportedBytes": 317,
+      "originalSha256": "e9abd910d938992c67edcb5789f5068ebd0ae9f2fa52eb17deb61db66e2a61ad",
+      "exportedSha256": "ba216395ff177571e909b851ea301da3b68237cf86997b16b095d141ac853284",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-003-gate-integrity",
+      "kind": "json",
+      "file": "final-003-gate-integrity.json",
+      "sourceLabel": "final-003: Source and preserved A1 screenshot integrity",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "final-003: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 253,
+      "exportedBytes": 246,
+      "originalSha256": "aed87ecddb05590764660e2ba5471a1784e924efd0c17898d7dc441cd7c88fba",
+      "exportedSha256": "4c059ea45cc497dd12c72445fd376e9cfa838f4f219a60ce22a6f03d24f80df2",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-003-source-before",
+      "kind": "json",
+      "file": "final-003-source-before.json",
+      "sourceLabel": "final-003: Full source inventory before gate",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "final-003: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 92839,
+      "exportedBytes": 92839,
+      "originalSha256": "0bd74326c01cfdb2c8475565bc5cda72eb15899fa6aa9e79680f52ffac2c3a40",
+      "exportedSha256": "0bd74326c01cfdb2c8475565bc5cda72eb15899fa6aa9e79680f52ffac2c3a40",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-003-source-after",
+      "kind": "json",
+      "file": "final-003-source-after.json",
+      "sourceLabel": "final-003: Full source inventory after gate",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "final-003: actual aggregate gate receipt/source inventory",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded metadata tied to the command receipts; this JSON is not a separate test command."
+      },
+      "originalBytes": 92839,
+      "exportedBytes": 92839,
+      "originalSha256": "a2e928d6760f469936576330c639d6945ef99bcee46d5ad07e5fb8ccc7da3211",
+      "exportedSha256": "a2e928d6760f469936576330c639d6945ef99bcee46d5ad07e5fb8ccc7da3211",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "proxy-tdd-recorded-evidence",
+      "kind": "json",
+      "file": "proxy-tdd-recorded-evidence.json",
+      "sourceLabel": "Proxy 308 — actual scoped RED/GREEN records and logs",
+      "sourceVersion": {
+        "relation": "historical",
+        "scope": "Real NextURL GET/HEAD RED2 then full proxy GREEN41",
+        "sourceDigest": "Scoped source file hashes are in the receipt; no aggregate digest was recorded for this focused run",
+        "limit": "Focused milestone before the final aggregate gate; only its exact source file hashes and observed outcomes are claimed."
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Full command wall-clock start/end were not recorded; original Vitest local start clock/duration and receipt recordedAt remain visible. No ISO start/end inferred."
+      },
+      "originalBytes": 5311,
+      "exportedBytes": 5311,
+      "originalSha256": "99d81a83049bfec167a42ed7c98e07adb6d0fde877f6772b2d0824eedcbad3da",
+      "exportedSha256": "99d81a83049bfec167a42ed7c98e07adb6d0fde877f6772b2d0824eedcbad3da",
+      "redactions": {},
+      "metadataRedactions": {}
+    },
+    {
+      "id": "final-font-prerequisite",
+      "kind": "json",
+      "file": "final-font-prerequisite.json",
+      "sourceLabel": "FontFace real test prerequisite",
+      "sourceVersion": {
+        "relation": "final",
+        "scope": "Existing local TrueType fixture, not product typography",
+        "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784"
+      },
+      "execution": {
+        "type": "non-command-data",
+        "limit": "Recorded file metadata only; font bytes are not exported."
+      },
+      "originalBytes": 300,
+      "exportedBytes": 293,
+      "originalSha256": "e4d083ac88e66a13411ee43ae5e998215a4f73fa5df4c70997fb1daa053d2e59",
+      "exportedSha256": "c18ec31b8e5ab87d529deae2f31c1e86a046a7375a86df51a13d945fdc435866",
+      "redactions": {},
+      "metadataRedactions": {}
+    }
+  ],
+  "limits": [
+    "Original command outcomes, timestamps and snapshot limits remain actual; export does not imply gate success.",
+    "Secret redaction counts are recorded; coordinator must review these projections before repository/package copy.",
+    "No photos/assets/private plans/receipts/authenticated state/DPAPI files/dumps/SQL/storage/rawLHR/trace/HAR/NetLog are copied."
+  ]
+}

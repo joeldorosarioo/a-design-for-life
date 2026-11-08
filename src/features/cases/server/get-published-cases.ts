@@ -45,6 +45,15 @@ export async function readConfirmedCaseEntries(generation?: PublicRoot | null) {
           item.detail.path !== `/${item.locale}/cases/${item.slug}`)
       )
         throw new Error('Case body identity mismatch.');
+      if (
+        (item.card === null && item.detail !== null) ||
+        (item.card &&
+          (!item.detail ||
+            item.card.caseId !== item.caseId ||
+            item.card.locale !== item.locale ||
+            item.card.path !== item.detail.path))
+      )
+        throw new Error('Case card identity mismatch.');
       cases.push(item);
     }
   }
@@ -74,7 +83,7 @@ export async function getPublishedCases(
       ok: true,
       value: cases
         .filter((item) => item.locale === language && item.detail)
-        .map((item) => caseCardDTOSchema.parse(item.detail)),
+        .map((item) => caseCardDTOSchema.parse(item.card ?? item.detail)),
     };
   } catch {
     return { ok: false, error: { code: 'unavailable', message: 'Confirmed cases unavailable.' } };

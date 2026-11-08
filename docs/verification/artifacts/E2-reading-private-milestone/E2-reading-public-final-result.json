@@ -1,0 +1,9 @@
+{
+  "sourceManifest": "C48148B97963E89197487B9ED21C91BBED820F0C5948395E930926DAF8A5B545",
+  "recordedAt": "2026-10-30T22:49:37.8792455Z",
+  "startedAt": "2026-10-30T22:48:31.5904075Z",
+  "exitCode": 0,
+  "buildId": "eW1hAx7oCWrO98E-xBAyT",
+  "node": "24.22.2",
+  "command": "pnpm test:e2e reading-position.e2e.test.ts reading-position-expanded.e2e.test.ts public-pages.e2e.test.ts page.e2e.test.ts not-found.e2e.test.ts public-image.e2e.test.ts"
+}

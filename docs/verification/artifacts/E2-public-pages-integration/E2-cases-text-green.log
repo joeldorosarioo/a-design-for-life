@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-text.test.tsx (4 tests | 1 failed) 147ms
+   × uses the supplied resolved link and indicates its new-tab behavior 89ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-text.test.tsx > uses the supplied resolved link and indicates its new-tab behavior
+Error: expect(received).toHaveAttribute()
+
+received value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: null
+ ❯ src/features/cases/components/case-text.test.tsx:38:16
+     36|   ])])} />);
+     37|   const link = screen.queryByRole('link', { name: 'Read resume opens a…
+     38|   expect(link).toHaveAttribute('href', '/media/00000000-0000-4000-8000…
+       |                ^
+     39|   expect(link).toHaveAttribute('target', '_blank');
+     40|   expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  16:53:30
+   Duration  1.46s (environment 58%, setup 16%, tests 11%, import 11%, transform 3%)
+

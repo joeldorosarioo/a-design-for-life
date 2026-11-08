@@ -1,0 +1,25 @@
+[
+  {
+    "path": "tables/public.site_navigation/columns/messages_reading_position_adjusted",
+    "after": {
+      "name": "messages_reading_position_adjusted",
+      "type": "varchar",
+      "primaryKey": false,
+      "notNull": false
+    }
+  },
+  {
+    "path": "tables/public._site_navigation_v/columns/version_messages_reading_position_adjusted",
+    "after": {
+      "name": "version_messages_reading_position_adjusted",
+      "type": "varchar",
+      "primaryKey": false,
+      "notNull": false
+    }
+  },
+  {
+    "path": "id",
+    "before": "f5ce8f22-8095-417b-83f0-de7890affdb6",
+    "after": "2b57caab-6bfb-4755-a538-c4e690b10091"
+  }
+]

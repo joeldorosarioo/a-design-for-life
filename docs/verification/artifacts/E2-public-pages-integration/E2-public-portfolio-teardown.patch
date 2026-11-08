@@ -1,0 +1,88 @@
+*** Begin Patch
+*** Update File: E:/a-design-for-life/testing/fixtures/public-portfolio.ts
+@@
+   const copy = { pt: localeCopy('pt'), en: localeCopy('en') };
+   const cases = {} as Record<CaseName, PublicCaseFixture>;
++  const ownedEnvironment = {
++    database: process.env.DATABASE_URI,
++    origin: process.env.SITE_ORIGIN,
++  };
++  const ownedStructuralIds: {
++    collection: 'professional-profiles' | 'site-navigation';
++    id: string;
++  }[] = [];
++  let disposed = false;
++
++  async function destroy() {
++    if (disposed) return;
++    try {
++      assertOwnedSerialEnvironment(options.serialRunner);
++      if (
++        process.env.DATABASE_URI !== ownedEnvironment.database ||
++        process.env.SITE_ORIGIN !== ownedEnvironment.origin ||
++        ownedStructuralIds.length !== 4
++      ) throw new Error('Refusing teardown outside the four owned structural fixtures.');
++      for (const collection of ['professional-profiles', 'site-navigation'] as const) {
++        const current = await editor.payload.find({
++          collection,
++          draft: true,
++          limit: 3,
++          depth: 0,
++          req: await editor.request(),
++          overrideAccess: false,
++        });
++        const expected = ownedStructuralIds
++          .filter((item) => item.collection === collection)
++          .map((item) => item.id)
++          .sort();
++        const actual = current.docs.map((item) => item.id).sort();
++        if (
++          current.totalDocs !== 2 ||
++          expected.length !== 2 ||
++          actual.length !== expected.length ||
++          actual.some((id, index) => id !== expected[index])
++        ) throw new Error('Refusing to clear structural documents owned by another fixture.');
++      }
++      // The serial runner and exact four IDs establish ownership before the
++      // existing writer-protected cleanup. It preserves every case subject.
++      await clearStructuralFixture(editor.payload);
++    } finally {
++      disposed = true;
++      await editor.payload.destroy();
++    }
++  }
+@@
+     await clearStructuralFixture(editor.payload);
+     await ensureProfileDrafts(await editor.request());
+     await ensureNavigationDrafts(await editor.request());
++    for (const collection of ['professional-profiles', 'site-navigation'] as const) {
++      const created = await editor.payload.find({
++        collection,
++        draft: true,
++        limit: 3,
++        depth: 0,
++        req: await editor.request(),
++        overrideAccess: false,
++      });
++      if (
++        created.totalDocs !== 2 ||
++        created.docs.length !== 2 ||
++        new Set(created.docs.map((item) => item.locale)).size !== 2
++      ) throw new Error('Expected exactly the two provisioned locale fixtures.');
++      for (const item of created.docs) ownedStructuralIds.push({ collection, id: item.id });
++    }
+     const image = await mediaMetadataFixture(editor.payload);
+@@
+-    return { ...editor, namespace, readingKeys, locales, cases, destroy: () => editor.payload.destroy() };
++    return { ...editor, namespace, readingKeys, locales, cases, destroy };
+   } catch (error) {
+-    await editor.payload.destroy();
++    try {
++      await destroy();
++    } catch (cleanupError) {
++      throw new AggregateError([error, cleanupError], 'Portfolio fixture setup and guarded cleanup failed.');
++    }
+     throw error;
+   }
+ }
+*** End Patch

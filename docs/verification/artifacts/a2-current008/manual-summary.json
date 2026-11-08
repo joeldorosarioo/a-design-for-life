@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "candidate": "008",
+  "buildId": "XCwWNaSVVZ2kr6jeLy4Aa",
+  "sourceDigest": "f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784",
+  "sourceFiles": 500,
+  "fixtureVersion": 5,
+  "sourceLocalExportManifestSha256": "2245aa73a31d03fa06968a3be5bac0ae55b34f6320217e6b11c81f2bc7f9c76b",
+  "scope": "Limited actual native Chrome keyboard and zoom sample, Portuguese routes",
+  "startedAt": "2026-11-03T14:21:51.2459856Z",
+  "finishedAt": "2026-11-03T14:25:34.9228560Z",
+  "launcherExitCode": 0,
+  "observationsRecorded": 8,
+  "actualChromeZoomPercent": [
+    200,
+    100
+  ],
+  "observed": {
+    "menuKeyboardFocus": true,
+    "escapeReturnedToTrigger": true,
+    "samePathContactAnchor": true,
+    "shiftTabToPrecedingCTA": true,
+    "nativeWindowClosed": true
+  },
+  "screenshotLimit": "Screenshots were visually inspected inline; no standalone manual PNG saved.",
+  "nativeSnapshotLimit": "Stale native AX fields were not accepted as focus/navigation proof; visible screenshots were used.",
+  "scopeLimit": "Does not cover every control, language, browser or assistive technology.",
+  "screenReaderExecuted": false,
+  "wcagConformanceClaim": false,
+  "receipt": {
+    "startedAt": "2026-11-03T14:21:51.2459856Z",
+    "finishedAt": "2026-11-03T14:25:34.9228560Z",
+    "exitCode": 0
+  },
+  "evidence": [
+    {
+      "label": "manual-observations-v9.json",
+      "sha256": "8ff02175cb135d4497ad12986d02cec04f6c91330cb8f08a6bdc904dc7caabc7"
+    },
+    {
+      "label": "receipt-manual-v9.json",
+      "sha256": "fed2fc75b4de99246d847d70a3abbf63d8ecacf06c195987cbc3784ef67e6ca9"
+    }
+  ]
+}

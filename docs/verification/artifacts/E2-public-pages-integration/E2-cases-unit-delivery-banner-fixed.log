@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/cases/components/case-list.test.tsx (5 tests | 1 failed) 215ms
+   × keeps the listing opening out of the global banner landmarks 144ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/cases/components/case-list.test.tsx > keeps the listing opening out of the global banner landmarks
+AssertionError: expected [ <header></header>, …(1) ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/features/cases/components/case-list.test.tsx:52:43
+     50|     </>,
+     51|   );
+     52|   expect(screen.queryAllByRole('banner')).toHaveLength(1);
+       |                                           ^
+     53|   expect(screen.getByRole('heading', { level: 1, name: 'All studies' }…
+     54| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 17 passed (18)
+   Start at  17:06:13
+   Duration  1.93s (environment 61%, setup 17%, tests 12%, import 8%, transform 1%)
+

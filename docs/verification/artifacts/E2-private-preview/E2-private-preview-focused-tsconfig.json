@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "include": [
+    "../src/features/cases/server/get-preview-case.integration.test.ts",
+    "../src/config/prepare-private-preview-request.ts",
+    "../src/config/prepare-private-preview-request.integration.test.ts",
+    "../src/helpers/payload/preview-session.ts",
+    "../src/helpers/payload/preview-session.visual-url.test.ts",
+    "../src/helpers/payload/preview-visual-upgrade.integration.test.ts",
+    "../src/app/(portfolio)/preview/route.ts",
+    "../src/config/read-private-page-model.ts",
+    "../src/config/read-private-page-model.integration.test.ts"
+  ],
+  "exclude": [
+    "../node_modules"
+  ]
+}
