@@ -42,6 +42,18 @@
     cursor: pointer;
   }
 
+  /* Figma Primary 123:268/270/272; shared ring preserves geometry on focus. */
+  .ui-button-primary {
+    border: 0;
+    background: var(--action-background);
+    color: var(--action-on-background);
+  }
+
+  @media (hover: hover) {
+    .ui-button-primary:hover:not(:disabled) {
+      background: var(--action-hover);
+    }
+  }
   .ui-button-secondary {
     border-color: var(--border-default);
     background: var(--bg-surface);

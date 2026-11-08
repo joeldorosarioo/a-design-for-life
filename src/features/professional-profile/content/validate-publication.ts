@@ -1,4 +1,5 @@
 import 'server-only';
+import { z } from 'zod';
 import {
   publicationGuard,
   requireImage,
@@ -51,6 +52,7 @@ export const validateProfilePublication = publicationGuard((data) => {
     typeof data.resume === 'object' ? (data.resume as { id?: unknown })?.id : data.resume,
     'resume',
   );
+  const readingKeys = new Set<string>();
   for (const [group, key] of [
     ['homeAbout', 'trajectory'],
     ['approach', 'methods'],
@@ -63,6 +65,13 @@ export const validateProfilePublication = publicationGuard((data) => {
       });
     else
       rows.forEach((row, index) => {
+        const readingKey = z.uuid().safeParse(row.readingKey);
+        if (!readingKey.success || readingKeys.has(readingKey.data))
+          errors.push({
+            path: `${group}.${key}.${index}.readingKey`,
+            message: 'Use uma chave de leitura válida e única neste documento.',
+          });
+        else readingKeys.add(readingKey.data);
         for (const field of key === 'methods'
           ? ['title', 'description']
           : ['period', 'title', 'description'])

@@ -399,6 +399,7 @@ export interface SiteNavigation {
   };
   messages?: {
     translationUnavailable?: string | null;
+    readingPositionAdjusted?: string | null;
     emptyCasesTitle?: string | null;
     emptyCasesDescription?: string | null;
     caseUnavailableTitle?: string | null;
@@ -900,6 +901,7 @@ export interface SiteNavigationSelect<T extends boolean = true> {
     | T
     | {
         translationUnavailable?: T;
+        readingPositionAdjusted?: T;
         emptyCasesTitle?: T;
         emptyCasesDescription?: T;
         caseUnavailableTitle?: T;

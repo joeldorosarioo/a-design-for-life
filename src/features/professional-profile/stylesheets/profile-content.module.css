@@ -1,0 +1,372 @@
+/* Exact image slots and Section heading desktop variant are measured in the approved
+   reference. Remaining typography/spacing uses its documented token scale and is
+   provisional until the rendered-page visual comparison. */
+.home,
+.about {
+  overflow-wrap: anywhere;
+}
+
+.hero,
+.projects,
+.homeAboutInner,
+.approach {
+  padding-block: var(--space-16);
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.heroCopy,
+.sectionHeading,
+.homeAboutCopy {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--action-default);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-xs--line-height);
+}
+
+.heroTitle {
+  margin: var(--space-8) 0;
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-5xl--line-height);
+  white-space: pre-line;
+}
+
+.heroEmphasis {
+  display: block;
+  margin-block-start: var(--space-4);
+  color: var(--action-default);
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-normal);
+}
+
+.prose {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+}
+
+.prose p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.prose p + p {
+  margin-block-start: var(--space-6);
+}
+
+.heroDescription {
+  margin-block-end: var(--space-6);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+}
+
+.sectionHeading {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.sectionHeading > .prose {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+}
+
+.sectionTitle,
+.editorialTitle {
+  margin: 0;
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
+  white-space: pre-line;
+}
+
+.sectionTitle {
+  font-weight: var(--font-weight-semibold);
+}
+
+.editorialTitle {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-normal);
+}
+
+.projects,
+.approach {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.homeAbout {
+  background: var(--bg-subtle);
+}
+
+.homeAboutInner {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.homeAboutCopy > .textLink {
+  display: inline-block;
+  margin-block-start: var(--space-6);
+}
+
+.trajectory,
+.methods {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trajectory {
+  gap: var(--space-8);
+}
+
+.itemTitle {
+  margin: 0;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-2xl--line-height);
+}
+
+.trajectory .itemTitle {
+  margin-block: var(--space-2);
+}
+
+.methods {
+  gap: var(--space-6);
+}
+
+.method {
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+  min-width: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.ordinal {
+  color: var(--action-default);
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+}
+
+.keywords {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  white-space: pre-line;
+}
+
+.textLink {
+  color: var(--action-default);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-sm--line-height);
+  text-decoration: none;
+}
+
+.textLink:hover {
+  color: var(--action-hover);
+  text-decoration: underline;
+}
+
+.about {
+  display: grid;
+  gap: var(--space-16);
+  padding-block: var(--space-16) var(--space-24);
+}
+
+.aboutOpening {
+  display: grid;
+  gap: var(--space-6);
+  padding-block-end: var(--space-6);
+  border-block-end: 1px solid var(--border-default);
+}
+
+.aboutTitle {
+  max-width: 36rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--text-4xl--line-height);
+  white-space: pre-line;
+}
+
+.aboutDescription {
+  max-width: 52rem;
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+}
+
+.introduction,
+.editorialRow {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.introductionCopy,
+.editorialBody {
+  min-width: 0;
+}
+
+.introductionProse p:first-child {
+  color: var(--text-primary);
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+}
+
+.articleHeading {
+  margin: 0 0 var(--space-6);
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--text-3xl--line-height);
+  white-space: pre-line;
+}
+
+.editorialEmphasis {
+  color: var(--action-default);
+}
+
+.editorialEmphasis::before {
+  display: block;
+  width: var(--space-8);
+  height: 2px;
+  margin-block-end: var(--space-6);
+  background: var(--action-default);
+  content: '';
+}
+
+.editorialEmphasis > .prose {
+  color: inherit;
+  font-family: var(--font-serif);
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
+}
+
+.closingHeading {
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid var(--border-default);
+}
+
+.closing .textLink {
+  display: inline-block;
+  margin-block-start: var(--space-8);
+}
+
+@media (min-width: 64rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+    gap: var(--space-16);
+    padding-block: var(--space-20) var(--space-24);
+  }
+
+  .heroTitle {
+    font-size: var(--text-7xl);
+    line-height: var(--text-7xl--line-height);
+  }
+
+  .sectionTitle,
+  .editorialTitle {
+    font-size: var(--text-5xl);
+    line-height: var(--text-5xl--line-height);
+  }
+
+  .homeAboutInner {
+    grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+    gap: var(--space-16);
+    padding-block: var(--space-20);
+  }
+
+  .homeAboutCopy .prose {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+  }
+
+  .trajectory {
+    gap: var(--space-10, 2.5rem);
+  }
+
+  .methods {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  .approach {
+    padding-block: var(--space-20);
+  }
+
+  .about {
+    gap: var(--space-24);
+    padding-block: var(--space-20) var(--space-24);
+  }
+
+  .aboutTitle {
+    font-size: var(--text-6xl);
+    line-height: var(--text-6xl--line-height);
+  }
+
+  .introduction,
+  .editorialRow {
+    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
+    column-gap: clamp(2rem, 8.9vw, 8rem);
+  }
+
+  .introduction {
+    align-items: center;
+  }
+
+  .introductionCopy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .introductionPortrait {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .articleHeading {
+    font-size: var(--text-4xl);
+    line-height: var(--text-4xl--line-height);
+  }
+
+  .editorialBody {
+    grid-column: 2;
+  }
+
+  .editorialEmphasis {
+    width: min(100%, 56rem);
+    justify-self: center;
+  }
+}
+
+/* Introduction and closing carry accessible editorial headings; the reference
+   keeps these two labels visually quiet. */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.about .eyebrow + .articleHeading {
+  margin-block-start: var(--space-4);
+}
