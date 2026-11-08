@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { readServerEnv } from './server-env';
 
@@ -66,4 +67,17 @@ it('protege recursos no build de produção local usado pelo Playwright', () => 
     }),
   ).toThrow(/DATABASE_URI/);
   expect(readServerEnv({ ...validInput, NODE_ENV: 'production' }).APP_ENV).toBe('test');
+});
+
+it('confines an explicit test media root to its isolated bucket and database namespace', () => {
+  for (const root of [
+    path.resolve('.work/private-media/production'),
+    path.resolve('.work/private-media/adfl-test-other/adfl_test_base'),
+  ]) {
+    expect(() => readServerEnv({ ...validInput, MEDIA_STORAGE_ROOT: root })).toThrow(
+      /MEDIA_STORAGE_ROOT/,
+    );
+  }
+  const root = path.resolve('.work/private-media/adfl-test-files/adfl_test_base');
+  expect(readServerEnv({ ...validInput, MEDIA_STORAGE_ROOT: root }).MEDIA_STORAGE_ROOT).toBe(root);
 });

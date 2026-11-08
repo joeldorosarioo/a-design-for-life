@@ -1,0 +1,108 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[06:31:04] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[06:31:04] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[06:31:04] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (38ms)[39m
+[06:31:04] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (92ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (7ms)[39m
+[06:31:05] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[06:31:05] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[06:31:05] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/content/collections/native-upload.integration.test.ts (7 tests | 6 failed) 248ms
+   × accepts a genuine static jpeg through native Local upload and stores real immutable bytes 7ms
+   × accepts a genuine static png through native Local upload and stores real immutable bytes 3ms
+   × accepts a genuine static webp through native Local upload and stores real immutable bytes 3ms
+   × accepts a genuine static avif through native Local upload and stores real immutable bytes 7ms
+   × accepts an actual PDF through native upload 1ms
+   × rejects fake bytes and unsupported native reprocessing paths with an authenticated editor 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static jpeg through native Local upload and stores real immutable bytes
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static png through native Local upload and stores real immutable bytes
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static webp through native Local upload and stores real immutable bytes
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static avif through native Local upload and stores real immutable bytes
+APIError: Uploads ainda bloqueados: validação e privacidade pertencem a E1.6.
+ ❯ Media.hooks.beforeOperation src/features/media-library/content/collections/media.ts:14:17
+     12|       ({ operation }) => {
+     13|         if (operation === 'create' || operation === 'update' || operat…
+     14|           throw new APIError(
+       |                 ^
+     15|             'Uploads ainda bloqueados: validação e privacidade pertenc…
+     16|             403,
+ ❯ hook node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:32
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:18
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:13:12
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts an actual PDF through native upload
+APIError: Uploads ainda bloqueados: validação e privacidade pertencem a E1.6.
+ ❯ Media.hooks.beforeOperation src/features/media-library/content/collections/media.ts:14:17
+     12|       ({ operation }) => {
+     13|         if (operation === 'create' || operation === 'update' || operat…
+     14|           throw new APIError(
+       |                 ^
+     15|             'Uploads ainda bloqueados: validação e privacidade pertenc…
+     16|             403,
+ ❯ hook node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:32
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:18
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:24:12
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > rejects fake bytes and unsupported native reprocessing paths with an authenticated editor
+AssertionError: expected APIError: Uploads ainda bloqueados: valid… { …(4) } to match object { status: 400 }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "status": 400,
++ APIError {
++   "status": 403,
+  }
+
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:36:108
+     34| });
+     35| it('rejects fake bytes and unsupported native reprocessing paths with …
+     36|  await expect(upload(Buffer.from('<svg xmlns="http://www.w3.org/2000/s…
+       |                                                                                                            ^
+     37|  await expect(fixture.payload.create({collection:'media',data:{},req:a…
+     38| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 1 passed (7)
+   Start at  06:31:00
+   Duration  6.98s (import 79%, tests 12%, transform 5%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

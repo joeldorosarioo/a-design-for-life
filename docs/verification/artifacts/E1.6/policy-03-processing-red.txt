@@ -1,0 +1,188 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/process-image.test.ts (12 tests | 10 failed) 634ms
+   × preserves all frames, timing and loop=0 at every responsive width 87ms
+   × preserves all frames, timing and loop=3 at every responsive width 81ms
+   × orients each frame for EXIF=2 without flattening or reordering frames 16ms
+   × orients each frame for EXIF=3 without flattening or reordering frames 17ms
+   × orients each frame for EXIF=4 without flattening or reordering frames 16ms
+   × orients each frame for EXIF=5 without flattening or reordering frames 16ms
+   × orients each frame for EXIF=6 without flattening or reordering frames 14ms
+   × orients each frame for EXIF=7 without flattening or reordering frames 15ms
+   × orients each frame for EXIF=8 without flattening or reordering frames 15ms
+   × preserves animated transparency in every frame 15ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > preserves all frames, timing and loop=0 at every responsive width
+AssertionError: expected { format: 'webp', …(12) } to match object { width: 342, height: 513, …(4) }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delay": [
+-     100,
+-     200,
+-     300,
+-   ],
+-   "height": 513,
+-   "loop": 0,
+-   "pageHeight": 171,
+-   "pages": 3,
++   "height": 171,
+    "width": 342,
+  }
+
+ ❯ expectThreeDistinctFrames src/features/media-library/server/process-image.test.ts:53:69
+     51|
+     52| async function expectThreeDistinctFrames(variant: ProcessedVariant, lo…
+     53|   expect(await sharp(variant.bytes, { animated: true }).metadata()).to…
+       |                                                                     ^
+     54|     width: variant.width, height: variant.height * 3, pageHeight: vari…
+     55|     pages: 3, delay: [100, 200, 300], loop,
+ ❯ src/features/media-library/server/process-image.test.ts:73:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > preserves all frames, timing and loop=3 at every responsive width
+AssertionError: expected { format: 'webp', …(12) } to match object { width: 342, height: 513, …(4) }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delay": [
+-     100,
+-     200,
+-     300,
+-   ],
+-   "height": 513,
+-   "loop": 3,
+-   "pageHeight": 171,
+-   "pages": 3,
++   "height": 171,
+    "width": 342,
+  }
+
+ ❯ expectThreeDistinctFrames src/features/media-library/server/process-image.test.ts:53:69
+     51|
+     52| async function expectThreeDistinctFrames(variant: ProcessedVariant, lo…
+     53|   expect(await sharp(variant.bytes, { animated: true }).metadata()).to…
+       |                                                                     ^
+     54|     width: variant.width, height: variant.height * 3, pageHeight: vari…
+     55|     pages: 3, delay: [100, 200, 300], loop,
+ ❯ src/features/media-library/server/process-image.test.ts:73:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=2 without flattening or reordering frames
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=3 without flattening or reordering frames
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=4 without flattening or reordering frames
+AssertionError: expected { format: 'webp', …(12) } to match object { width: 80, height: 180, …(4) }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delay": [
+-     100,
+-     200,
+-     300,
+-   ],
+-   "height": 180,
+-   "loop": 3,
+-   "pageHeight": 60,
+-   "pages": 3,
++   "height": 60,
+    "width": 80,
+  }
+
+ ❯ expectThreeDistinctFrames src/features/media-library/server/process-image.test.ts:53:69
+     51|
+     52| async function expectThreeDistinctFrames(variant: ProcessedVariant, lo…
+     53|   expect(await sharp(variant.bytes, { animated: true }).metadata()).to…
+       |                                                                     ^
+     54|     width: variant.width, height: variant.height * 3, pageHeight: vari…
+     55|     pages: 3, delay: [100, 200, 300], loop,
+ ❯ src/features/media-library/server/process-image.test.ts:79:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=5 without flattening or reordering frames
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=6 without flattening or reordering frames
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=7 without flattening or reordering frames
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > orients each frame for EXIF=8 without flattening or reordering frames
+AssertionError: expected { format: 'webp', …(12) } to match object { width: 60, height: 240, …(4) }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delay": [
+-     100,
+-     200,
+-     300,
+-   ],
+-   "height": 240,
+-   "loop": 3,
+-   "pageHeight": 80,
+-   "pages": 3,
++   "height": 80,
+    "width": 60,
+  }
+
+ ❯ expectThreeDistinctFrames src/features/media-library/server/process-image.test.ts:53:69
+     51|
+     52| async function expectThreeDistinctFrames(variant: ProcessedVariant, lo…
+     53|   expect(await sharp(variant.bytes, { animated: true }).metadata()).to…
+       |                                                                     ^
+     54|     width: variant.width, height: variant.height * 3, pageHeight: vari…
+     55|     pages: 3, delay: [100, 200, 300], loop,
+ ❯ src/features/media-library/server/process-image.test.ts:79:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  |unit| src/features/media-library/server/process-image.test.ts > preserves animated transparency in every frame
+AssertionError: expected { format: 'webp', …(12) } to match object { width: 80, height: 180, …(4) }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delay": [
+-     100,
+-     200,
+-     300,
+-   ],
+-   "height": 180,
+-   "loop": 3,
+-   "pageHeight": 60,
+-   "pages": 3,
++   "height": 60,
+    "width": 80,
+  }
+
+ ❯ expectThreeDistinctFrames src/features/media-library/server/process-image.test.ts:53:69
+     51|
+     52| async function expectThreeDistinctFrames(variant: ProcessedVariant, lo…
+     53|   expect(await sharp(variant.bytes, { animated: true }).metadata()).to…
+       |                                                                     ^
+     54|     width: variant.width, height: variant.height * 3, pageHeight: vari…
+     55|     pages: 3, delay: [100, 200, 300], loop,
+ ❯ src/features/media-library/server/process-image.test.ts:85:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  10 failed | 2 passed (12)
+   Start at  08:30:58
+   Duration  1.15s (tests 63%, setup 19%, import 14%, transform 4%)
+

@@ -1,0 +1,43 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/media-library/server/media-runtime.test.ts (7 tests | 6 failed) 8ms
+   × rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\public 5ms
+   × rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\public\private-assets 0ms
+   × rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\.next\static 0ms
+   × rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\.next\static\private-assets 0ms
+   × rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\public\adfl_test_base 0ms
+   × rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\.next\static\adfl_test_base 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\public
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\public\private-assets
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\.next\static
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\.next\static\private-assets
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\public\adfl_test_base
+ FAIL  |unit| src/features/media-library/server/media-runtime.test.ts > rejects an effective media root served by Next before creating its storage capability: E:\a-design-for-life\.next\static\adfl_test_base
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/media-library/server/media-runtime.test.ts:16:35
+     14|   'rejects an effective media root served by Next before creating its …
+     15|   (root) => {
+     16|     expect(() => configure(root)).toThrow(/public|static/i);
+       |                                   ^
+     17|   },
+     18| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 1 passed (7)
+   Start at  08:46:56
+   Duration  409ms (setup 79%, transform 9%, import 7%, tests 3%, worker 2%)
+

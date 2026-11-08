@@ -1,0 +1,149 @@
+$ vitest run --project unit src/features/cases/content/hooks/extract-case-media.test.ts src/features/professional-profile/content/extract-profile-media.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/content/extract-profile-media.test.ts (4 tests | 2 failed) 9ms
+   × canonicalizes and deduplicates images while preserving a conflicting PDF use for validation 6ms
+   × does not invent references for incomplete profile draft slots 1ms
+ ❯ |unit| src/features/cases/content/hooks/extract-case-media.test.ts (4 tests | 2 failed) 9ms
+   × canonicalizes populated and direct UUIDs before deduplicating repeated image references 5ms
+   × leaves incomplete draft slots without references and accepts native empty array sentinels 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > canonicalizes and deduplicates images while preserving a conflicting PDF use for validation
+AssertionError: expected [ { …(2) }, { …(2) }, { …(2) }, …(2) ] to deeply equal [ { …(2) }, { …(2) }, { …(2) } ]
+
+- Expected
++ Received
+
+@@ -1,13 +1,21 @@
+  [
+    {
+      "kind": "image",
++     "mediaId": "BA53E178-456A-437B-A2C1-771CE6B6B0AF",
++   },
++   {
++     "kind": "image",
+      "mediaId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
+    },
+    {
+      "kind": "image",
+      "mediaId": "2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
++   },
++   {
++     "kind": "image",
++     "mediaId": "2CAD5DCB-15BA-4F2E-B210-40DF0B8723FE",
+    },
+    {
+      "kind": "pdf",
+      "mediaId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
+    },
+
+ ❯ src/features/professional-profile/content/extract-profile-media.test.ts:41:5
+     39|       resume: homeId,
+     40|     }),
+     41|   ).toEqual([
+       |     ^
+     42|     { mediaId: homeId, kind: 'image' },
+     43|     { mediaId: deskId, kind: 'image' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > does not invent references for incomplete profile draft slots
+AssertionError: expected [ Array(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "kind": "image",
++     "mediaId": "",
++   },
++   {
++     "kind": "pdf",
++     "mediaId": "",
++   },
++ ]
+
+ ❯ src/features/professional-profile/content/extract-profile-media.test.ts:56:5
+     54|       resume: '',
+     55|     }),
+     56|   ).toEqual([]);
+       |     ^
+     57|   expect(extractProfileMedia({})).toEqual([]);
+     58|   expect(extractProfileMedia(null)).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > canonicalizes populated and direct UUIDs before deduplicating repeated image references
+AssertionError: expected [ { …(2) }, { …(2) }, { …(2) }, …(2) ] to deeply equal [ { …(2) }, { …(2) } ]
+
+- Expected
++ Received
+
+@@ -1,8 +1,20 @@
+  [
+    {
+      "kind": "image",
++     "mediaId": "BA53E178-456A-437B-A2C1-771CE6B6B0AF",
++   },
++   {
++     "kind": "image",
++     "mediaId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
++   },
++   {
++     "kind": "image",
++     "mediaId": "2CAD5DCB-15BA-4F2E-B210-40DF0B8723FE",
++   },
++   {
++     "kind": "image",
+      "mediaId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
+    },
+    {
+      "kind": "image",
+      "mediaId": "2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
+
+ ❯ src/features/cases/content/hooks/extract-case-media.test.ts:47:5
+     45|       ],
+     46|     }),
+     47|   ).toEqual([
+       |     ^
+     48|     { mediaId: coverId, kind: 'image' },
+     49|     { mediaId: singleId, kind: 'image' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > leaves incomplete draft slots without references and accepts native empty array sentinels
+AssertionError: expected [ { mediaId: '', kind: 'image' } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "kind": "image",
++     "mediaId": "",
++   },
++ ]
+
+ ❯ src/features/cases/content/hooks/extract-case-media.test.ts:63:5
+     61|       ],
+     62|     }),
+     63|   ).toEqual([]);
+       |     ^
+     64|   expect(extractCaseMedia({ sections: 0 })).toEqual([]);
+     65|   expect(extractCaseMedia({})).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 4 passed (8)
+   Start at  06:44:07
+   Duration  389ms (setup 80%, transform 10%, import 5%, tests 4%, worker 2%)
+
+[ELIFECYCLE] Command failed with exit code 1.

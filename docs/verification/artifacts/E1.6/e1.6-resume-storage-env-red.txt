@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/config/server-env.test.ts (16 tests | 1 failed) 13ms
+   × confines an explicit test media root to its isolated bucket and database namespace 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/config/server-env.test.ts > confines an explicit test media root to its isolated bucket and database namespace
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/config/server-env.test.ts:77:78
+     75|     path.resolve('.work/private-media/adfl-test-other/adfl_test_base'),
+     76|   ]) {
+     77|     expect(() => readServerEnv({ ...validInput, MEDIA_STORAGE_ROOT: ro…
+       |                                                                              ^
+     78|       /MEDIA_STORAGE_ROOT/,
+     79|     );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  08:29:49
+   Duration  431ms (setup 61%, import 26%, transform 8%, tests 4%, worker 1%)
+

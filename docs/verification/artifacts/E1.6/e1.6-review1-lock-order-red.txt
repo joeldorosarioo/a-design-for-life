@@ -1,0 +1,152 @@
+$ vitest run --project integration src/features/media-library/server/media-usage-races.integration.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[09:15:23] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (49ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (88ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (5ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (6ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (5ms)[39m
+[09:15:23] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[09:15:23] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[09:15:23] [32mINFO[39m: [36mDone.[39m
+stdout | src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent case/case drafts swapping media without a PostgreSQL lock cycle
+Actual PostgreSQL cross-swap barrier: {
+  firstKind: 'case',
+  secondKind: 'case',
+  secondAcquired: true,
+  blocked: false
+}
+
+stdout | src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent case/case drafts swapping media without a PostgreSQL lock cycle
+Actual PostgreSQL cross-swap outcomes: [
+  { status: 'rejected', databaseCode: '40P01' },
+  { status: 'fulfilled', publication: 'published' }
+]
+
+stdout | src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent profile/profile drafts swapping media without a PostgreSQL lock cycle
+Actual PostgreSQL cross-swap barrier: {
+  firstKind: 'profile',
+  secondKind: 'profile',
+  secondAcquired: true,
+  blocked: false
+}
+
+stdout | src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent profile/profile drafts swapping media without a PostgreSQL lock cycle
+Actual PostgreSQL cross-swap outcomes: [
+  { status: 'fulfilled', publication: 'published' },
+  { status: 'rejected', databaseCode: '40P01' }
+]
+
+stdout | src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent case/profile drafts swapping media without a PostgreSQL lock cycle
+Actual PostgreSQL cross-swap barrier: {
+  firstKind: 'case',
+  secondKind: 'profile',
+  secondAcquired: true,
+  blocked: false
+}
+
+stdout | src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent case/profile drafts swapping media without a PostgreSQL lock cycle
+Actual PostgreSQL cross-swap outcomes: [
+  { status: 'fulfilled', publication: 'published' },
+  { status: 'rejected', databaseCode: '40P01' }
+]
+
+ ❯ |integration| src/features/media-library/server/media-usage-races.integration.test.ts (7 tests | 3 failed) 5414ms
+   × publishes concurrent case/case drafts swapping media without a PostgreSQL lock cycle 1271ms
+   × publishes concurrent profile/profile drafts swapping media without a PostgreSQL lock cycle 1663ms
+   × publishes concurrent case/profile drafts swapping media without a PostgreSQL lock cycle 1420ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent case/case drafts swapping media without a PostgreSQL lock cycle
+AssertionError: expected [ { status: 'rejected', …(1) }, …(1) ] to deeply equal [ { status: 'fulfilled', …(1) }, …(1) ]
+
+- Expected
++ Received
+
+@@ -1,9 +1,9 @@
+  [
+    {
+-     "publication": "published",
+-     "status": "fulfilled",
++     "databaseCode": "40P01",
++     "status": "rejected",
+    },
+    {
+      "publication": "published",
+      "status": "fulfilled",
+    },
+
+ ❯ src/features/media-library/server/media-usage-races.integration.test.ts:372:23
+    370|       const results = await Promise.all(publications);
+    371|       console.info('Actual PostgreSQL cross-swap outcomes:', results);
+    372|       expect(results).toEqual([
+       |                       ^
+    373|         { status: 'fulfilled', publication: 'published' },
+    374|         { status: 'fulfilled', publication: 'published' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent profile/profile drafts swapping media without a PostgreSQL lock cycle
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > publishes concurrent case/profile drafts swapping media without a PostgreSQL lock cycle
+AssertionError: expected [ { status: 'fulfilled', …(1) }, …(1) ] to deeply equal [ { status: 'fulfilled', …(1) }, …(1) ]
+
+- Expected
++ Received
+
+@@ -2,9 +2,9 @@
+    {
+      "publication": "published",
+      "status": "fulfilled",
+    },
+    {
+-     "publication": "published",
+-     "status": "fulfilled",
++     "databaseCode": "40P01",
++     "status": "rejected",
+    },
+  ]
+
+ ❯ src/features/media-library/server/media-usage-races.integration.test.ts:372:23
+    370|       const results = await Promise.all(publications);
+    371|       console.info('Actual PostgreSQL cross-swap outcomes:', results);
+    372|       expect(results).toEqual([
+       |                       ^
+    373|         { status: 'fulfilled', publication: 'published' },
+    374|         { status: 'fulfilled', publication: 'published' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 4 passed (7)
+   Start at  09:15:18
+   Duration  12.28s (tests 74%, import 23%, transform 2%, setup 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+[ELIFECYCLE] Command failed with exit code 1.

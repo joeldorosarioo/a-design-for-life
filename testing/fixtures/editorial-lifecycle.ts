@@ -1,3 +1,5 @@
+import sharp from 'sharp';
+import { pdfUploadFixture } from './media-uploads';
 import type { CollectionSlug, PayloadRequest } from 'payload';
 import { createLocalReq } from 'payload';
 import { acquireEditorialLease, editorialHead } from '../../src/helpers/payload/editorial-revision';
@@ -29,17 +31,27 @@ export async function mediaMetadataFixture(payload: Payload, kind: 'image' | 'pd
     !new URL(process.env.DATABASE_URI ?? '').pathname.startsWith('/adfl_test_')
   )
     throw new Error('Metadata fixture requires isolated test DB');
-  // E1.4 tests only editorial relationships. Official adapter fixture does NOT upload or validate bytes.
-  return payload.db.create({
+  const editor = (
+    await payload.find({ collection: 'users', limit: 1, overrideAccess: true, depth: 0 })
+  ).docs[0];
+  if (!editor) throw new Error('Real media fixture requires an existing native editor');
+  const bytes =
+    kind === 'image'
+      ? await sharp({ create: { width: 16, height: 16, channels: 3, background: '#28506a' } })
+          .png()
+          .toBuffer()
+      : Buffer.from(pdfUploadFixture());
+  return payload.create({
     collection: 'media',
-    data: {
-      filename: `synthetic-${crypto.randomUUID()}.${kind === 'image' ? 'png' : 'pdf'}`,
-      mimeType: kind === 'image' ? 'image/png' : 'application/pdf',
-      filesize: 128,
-      width: kind === 'image' ? 16 : undefined,
-      height: kind === 'image' ? 16 : undefined,
+    data: {},
+    file: {
+      data: bytes,
+      size: bytes.length,
+      name: `synthetic.${kind === 'image' ? 'png' : 'pdf'}`,
+      mimetype: kind === 'image' ? 'image/png' : 'application/pdf',
     },
-    req: await createLocalReq({}, payload),
+    req: await createLocalReq({ user: { ...editor, collection: 'users' } }, payload),
+    overrideAccess: false,
   });
 }
 export function casePublicationFixture(mediaId: string) {

@@ -1,0 +1,65 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[08:14:27] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (44ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (89ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (6ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (7ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[08:14:27] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[08:14:27] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[08:14:27] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/server/media-usage-races.integration.test.ts (4 tests | 1 failed | 3 skipped) 427ms
+   × allows a draft to remove a trashed prior reference while retaining its recoverable usage history 208ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/server/media-usage-races.integration.test.ts > allows a draft to remove a trashed prior reference while retaining its recoverable usage history
+APIError: A referenced media asset is unavailable. Restore it or choose another file.
+ ❯ trackMediaUsage src/features/media-library/server/track-media-usage.ts:50:15
+     48|       })) as Media | null;
+     49|       if (!current || current.deletedAt || current.state !== 'ready')
+     50|         throw new APIError(
+       |               ^
+     51|           'A referenced media asset is unavailable. Restore it or choo…
+     52|           400,
+ ❯ change src/features/cases/content/hooks/case-media-usage.ts:8:2
+ ❯ synchronizeCaseMedia src/features/cases/content/hooks/case-media-usage.ts:17:3
+ ❯ updateDocument node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/update.ts:544:9
+ ❯ updateByIDOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/updateByID.ts:297:18
+ ❯ src/features/media-library/server/media-usage-races.integration.test.ts:217:19
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 skipped (4)
+   Start at  08:14:23
+   Duration  7.23s (import 73%, tests 18%, transform 5%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

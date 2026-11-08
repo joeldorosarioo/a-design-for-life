@@ -1,0 +1,19 @@
+$ tsc --noEmit
+src/features/media-library/server/media-response.ts(19,34): error TS2322: Type 'User | null' is not assignable to type 'User | undefined'.
+  Type 'null' is not assignable to type 'User | undefined'.
+src/features/media-library/server/media-response.ts(26,24): error TS2322: Type 'string | number' is not assignable to type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/features/media-library/server/resolve-media-access.integration.test.ts(43,19): error TS2339: Property 'usages' does not exist on type 'TypeWithID'.
+src/features/media-library/server/resolve-media-access.ts(13,24): error TS2339: Property 'deletedAt' does not exist on type 'TypeWithID'.
+src/features/media-library/server/resolve-media-access.ts(13,43): error TS2339: Property 'state' does not exist on type 'TypeWithID'.
+src/features/media-library/server/resolve-media-access.ts(14,55): error TS2339: Property 'usages' does not exist on type 'TypeWithID'.
+src/features/media-library/server/resolve-media-access.ts(16,52): error TS2339: Property 'manifest' does not exist on type 'TypeWithID'.
+src/features/media-library/server/track-media-usage.ts(17,79): error TS2339: Property 'usages' does not exist on type 'TypeWithID'.
+src/features/media-library/server/track-media-usage.ts(17,247): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/features/media-library/server/track-media-usage.ts(22,25): error TS2339: Property 'deletedAt' does not exist on type 'TypeWithID'.
+src/features/media-library/server/track-media-usage.ts(22,44): error TS2339: Property 'state' does not exist on type 'TypeWithID'.
+src/features/media-library/server/track-media-usage.ts(23,53): error TS2339: Property 'manifest' does not exist on type 'TypeWithID'.
+src/features/media-library/server/track-media-usage.ts(26,54): error TS2339: Property 'usages' does not exist on type 'TypeWithID'.
+src/features/media-library/server/track-media-usage.ts(28,155): error TS2339: Property 'guardRevision' does not exist on type 'TypeWithID'.
+[ELIFECYCLE] Command failed with exit code 2.

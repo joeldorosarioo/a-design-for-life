@@ -1,0 +1,316 @@
+{
+  "parent": "833bcd54e56e6a562614f470c253177ab04df5e5",
+  "branch": "develop",
+  "subject": "fix: order media locks across publication transitions",
+  "scope": "Review round 1, important P2 global lock order only; task E1.6 still unchecked, no push, stage 1 remains 75%. Previous source-provenance.json remains the 833bcd5 snapshot.",
+  "environment": "Windows;Node24.22.2;pnpm12.10.1;Payload3.92.1;PostgreSQL17.11 isolated55433;Next16.4.3;Chromium Playwright1.64.1",
+  "verification": [
+    {
+      "command": "pnpm test:integration src/features/media-library/server/media-usage-races.integration.test.ts",
+      "phase": "RED",
+      "exitCode": 1,
+      "passed": 4,
+      "failed": 3,
+      "expectedFailure": "actual PostgreSQL 40P01 for case/case, profile/profile and case/profile cross-swaps",
+      "log": "e1.6-review1-lock-order-red.txt"
+    },
+    {
+      "command": "pnpm test:integration src/features/media-library/server/media-usage-races.integration.test.ts",
+      "phase": "GREEN",
+      "exitCode": 0,
+      "tests": 7,
+      "files": 1,
+      "log": "e1.6-review1-lock-order-green.txt",
+      "qualification": "Final assertion then strengthened to exclude both draft and confirmed old-owner states; final 350-test gate executes that strengthened assertion."
+    },
+    {
+      "command": "pnpm verify",
+      "phase": "current full gate",
+      "exitCode": 0,
+      "tests": 350,
+      "files": 49,
+      "includes": [
+        "typecheck",
+        "ESLint",
+        "Prettier",
+        "architecture",
+        "real isolated PostgreSQL integrations",
+        "production Next build"
+      ],
+      "log": "e1.6-review1-verify-current.txt"
+    },
+    {
+      "command": "TEST_SITE_ORIGIN=http://127.0.0.1:3101 pnpm test:e2e",
+      "phase": "current full production HTTP/browser gate",
+      "exitCode": 0,
+      "tests": 22,
+      "log": "e1.6-review1-e2e-current.txt"
+    },
+    {
+      "command": "pnpm exec prettier --check docs/verification/E1.6.md docs/architecture/midias-privadas.md",
+      "exitCode": 0,
+      "log": "e1.6-review1-doc-check.txt"
+    },
+    {
+      "command": "git diff --cached --check -- . ':(exclude)docs/verification/artifacts/**'",
+      "exitCode": 0,
+      "qualification": "Executed after staging; raw artifacts explicitly excluded and hashed separately."
+    }
+  ],
+  "resourceMeasurements": "Not repeated: this round changes usage transaction ordering only, no image/PDF processing, storage byte algorithm, decoder, limits, manifest or dependencies.",
+  "services": "Owned test PostgreSQL container removed after each run; no listener remained on 3101/55433 after final E2E; unrelated service5432 untouched.",
+  "externalVerification": "833bcd5 CI passed but was not promoted because P2; new fix SHA still requires independent review and exact-SHA Linux CI by coordinator.",
+  "changedSourcePaths": [
+    "src/features/cases/content/hooks/case-media-usage.ts",
+    "src/features/media-library/server/media-usage-races.integration.test.ts",
+    "src/features/media-library/server/track-media-usage.ts",
+    "src/features/professional-profile/content/profile-media-usage.ts"
+  ],
+  "sources": [
+    {
+      "path": "next.config.ts",
+      "sha256": "134e150c924c0ed6018be06b3e973ac5ca285a5b882bacc7f617e0d5da2fe226",
+      "bytes": 1046
+    },
+    {
+      "path": "src/app/(portfolio)/media/[id]/[variant]/route.ts",
+      "sha256": "da8e89cc1965b82bd855bbc9587c8616d0e6b3a7cd4a6cf2e839bb63ee4b4a8b",
+      "bytes": 365
+    },
+    {
+      "path": "src/app/(portfolio)/preview-media/[id]/[variant]/route.ts",
+      "sha256": "151f6f25129532df903c878097f90cd3bad3b18f6bde3f693cd15352df2f70df",
+      "bytes": 364
+    },
+    {
+      "path": "src/config/server-env.test.ts",
+      "sha256": "e5d12262233d8b565492c04acbfd0d3ac4b0f66c51a86e8d09a4ef43490e91fd",
+      "bytes": 3316
+    },
+    {
+      "path": "src/config/server-env.ts",
+      "sha256": "e55d0cc9f4dcbd4cde5ba53dbc1ae23ebd3d23887406b418ccb7f16848146404",
+      "bytes": 3335
+    },
+    {
+      "path": "src/features/cases/content/collections/case-content.ts",
+      "sha256": "a494a335a3e15422a5b592c7db8d1649aa45239ad72cf8c59aae744bf5af7572",
+      "bytes": 4085
+    },
+    {
+      "path": "src/features/cases/content/hooks/case-media-usage.ts",
+      "sha256": "dd51502b8f2deb8fdee26490bc3543b2a0942e89c4d3ee95e5190f1b12444fb7",
+      "bytes": 2192
+    },
+    {
+      "path": "src/features/cases/content/hooks/extract-case-media.test.ts",
+      "sha256": "a986d2acfab94199ae8b0a9451d9885ec33620886238b7d4deb2153c08c4f8c8",
+      "bytes": 4735
+    },
+    {
+      "path": "src/features/cases/content/hooks/extract-case-media.ts",
+      "sha256": "cc918fbd66ad37d3bced3c51e65e8acded922b32fe3951e7bf0f05d7ae6cdbf8",
+      "bytes": 2358
+    },
+    {
+      "path": "src/features/media-library/content/collections/media.integration.test.ts",
+      "sha256": "ebf6924bc473913a0575ade61fe682291d71fd283c4e7dfdfc9aca643c05751a",
+      "bytes": 1237
+    },
+    {
+      "path": "src/features/media-library/content/collections/media.ts",
+      "sha256": "34feb7fee0ed649e3a1eb09b80cf054e81b7b0753aeb57c33275e4986644e5d1",
+      "bytes": 1877
+    },
+    {
+      "path": "src/features/media-library/content/collections/native-upload.integration.test.ts",
+      "sha256": "345eb8f6c5c355c0b374857f3707df0e42051d4e92a3c2e009ead2d01a306ccd",
+      "bytes": 9492
+    },
+    {
+      "path": "src/features/media-library/content/hooks/native-intake.ts",
+      "sha256": "fd68bd3b47045319984ffc12adb5b78d9e16dc5da1754d6ce2a3db79891cd749",
+      "bytes": 7471
+    },
+    {
+      "path": "src/features/media-library/contracts/media-access.schema.ts",
+      "sha256": "b34a315f4a288767a81233fab3694c47ef855fdb78412e95e11db71cce0392de",
+      "bytes": 526
+    },
+    {
+      "path": "src/features/media-library/contracts/media-manifest.schema.ts",
+      "sha256": "aa3e4d526113a4ffd6b2c511972d58aca7842f0f2c5481d74cdfe887ca6d7a6f",
+      "bytes": 732
+    },
+    {
+      "path": "src/features/media-library/contracts/media-usage.schema.ts",
+      "sha256": "606316d689a91c3570baa534fb54d76a97574332e39ece8a585feec4c7d928d8",
+      "bytes": 983
+    },
+    {
+      "path": "src/features/media-library/contracts/upload.schema.ts",
+      "sha256": "c41a04c54c66965173228c595044fd0554efabedb1683aa18052e8ebbd41818b",
+      "bytes": 1022
+    },
+    {
+      "path": "src/features/media-library/contracts/validated-upload.schema.ts",
+      "sha256": "49de57552a9de2135ab4b6fa48b553d3e698d63062feae143560f575bcef9181",
+      "bytes": 1538
+    },
+    {
+      "path": "src/features/media-library/server.ts",
+      "sha256": "db015ba97e5982d2d5b9d3e4234cfe2fc987a64732f9c172364579e5ef70e1b3",
+      "bytes": 327
+    },
+    {
+      "path": "src/features/media-library/server/inspect-pdf.ts",
+      "sha256": "7f935b8351d46bce73a4686a4a8048e2461e3a4e6827a39ea545986aadf358e3",
+      "bytes": 3439
+    },
+    {
+      "path": "src/features/media-library/server/media-delivery.e2e.test.ts",
+      "sha256": "a7fcdc51b9b72a95a3eba71d736c64f33ba1d3a95483b1e9ec1d1dc9e3862348",
+      "bytes": 19918
+    },
+    {
+      "path": "src/features/media-library/server/media-response.test.ts",
+      "sha256": "d03fa363946b27be7d9e330a7678e98bd628d881f82f14421bc495e9a2d8a4ae",
+      "bytes": 4382
+    },
+    {
+      "path": "src/features/media-library/server/media-response.ts",
+      "sha256": "57e0099d32e733a81c55b382a1a230f71ba5325b6a004bd3590e4d1b7965c865",
+      "bytes": 2861
+    },
+    {
+      "path": "src/features/media-library/server/media-runtime.test.ts",
+      "sha256": "7a2e16d439a2115d2f9b829c2a4051139f1739c5945fab02bb3b00c5e726c66b",
+      "bytes": 1054
+    },
+    {
+      "path": "src/features/media-library/server/media-runtime.ts",
+      "sha256": "40880571ad5194428c4174bd0bc8d84947f7efd5415474ed6987f3236b4f6f39",
+      "bytes": 1171
+    },
+    {
+      "path": "src/features/media-library/server/media-usage-races.integration.test.ts",
+      "sha256": "490371603f8f8a2d56919c8630a37ed409fe8d8f0cc785af9ff0ba89c45b6a9a",
+      "bytes": 15283
+    },
+    {
+      "path": "src/features/media-library/server/process-image.test.ts",
+      "sha256": "2bbff58fa16d1ee89574a4dec0584c63f937010010df4969663ee2192d622f9e",
+      "bytes": 5351
+    },
+    {
+      "path": "src/features/media-library/server/process-image.ts",
+      "sha256": "fe31a02721fbb605ea2463c62517ecb68f3e909ce706d3201d91a9312499c29a",
+      "bytes": 2515
+    },
+    {
+      "path": "src/features/media-library/server/resolve-media-access.integration.test.ts",
+      "sha256": "faab163bb689f68b67a8e303bd9bd12fc243e8acf31a049b5f739136053d87fc",
+      "bytes": 6158
+    },
+    {
+      "path": "src/features/media-library/server/resolve-media-access.ts",
+      "sha256": "ed12e77d20c72787556a46d5c9710739cdce95fe73fbbf24f76e57d4ec16771e",
+      "bytes": 1960
+    },
+    {
+      "path": "src/features/media-library/server/track-media-usage.ts",
+      "sha256": "f11751cb267815b7813867f72655448db6af43d8eeca24635749074c8c3d62f8",
+      "bytes": 4077
+    },
+    {
+      "path": "src/features/media-library/server/validate-upload.test.ts",
+      "sha256": "795fb6dc11b739fb770dbcf8c75bea1ffb75717fceaf8774c326d97e13ec4898",
+      "bytes": 5809
+    },
+    {
+      "path": "src/features/media-library/server/validate-upload.ts",
+      "sha256": "d1f52691a3a5a11bc8a5db40f878376278e57ab04d931c62dd64a266ac03833d",
+      "bytes": 4497
+    },
+    {
+      "path": "src/features/professional-profile/content/collections/professional-profiles.ts",
+      "sha256": "591d2ed4f5ce37b5671ba880228249d494b38d953328598c5f8ff256793ee81c",
+      "bytes": 9108
+    },
+    {
+      "path": "src/features/professional-profile/content/extract-profile-media.test.ts",
+      "sha256": "504b77edb5c3bd6193e10398d105fddf8ac820dc4178cdfb98264d2755a4098d",
+      "bytes": 3998
+    },
+    {
+      "path": "src/features/professional-profile/content/extract-profile-media.ts",
+      "sha256": "86bc25f17a694751699f1d36d094a840eafc442bd45a5b29a731a1a30e96516b",
+      "bytes": 1861
+    },
+    {
+      "path": "src/features/professional-profile/content/profile-media-usage.ts",
+      "sha256": "e35ba1bb84e52ae387253e5a73ed511c425b4394f8e22e0f340118bd32646fca",
+      "bytes": 1720
+    },
+    {
+      "path": "src/migrations/20261030_093430_private_media_manifests.json",
+      "sha256": "8b03b2286be686612585fda4af72b28e0cd8fa605be238f5a6d58bf1ec010d02",
+      "bytes": 175123
+    },
+    {
+      "path": "src/migrations/20261030_093430_private_media_manifests.ts",
+      "sha256": "c1822a6291b7d1074cf634a706d3b91bdb16967b2ed268ed2ad30eb7bd8aea53",
+      "bytes": 1150
+    },
+    {
+      "path": "src/migrations/index.ts",
+      "sha256": "a364c7ff815f236ac7354ae7a7b775f6ddf1b6690066800994ee1ec9e91bbb47",
+      "bytes": 3057
+    },
+    {
+      "path": "src/payload-types.ts",
+      "sha256": "6f2bc6a2918264205596a0ac9f394d639da94a894cf7f445bdba03e060c040b2",
+      "bytes": 26002
+    },
+    {
+      "path": "src/payload.config.ts",
+      "sha256": "e7d5607c1248e8a4606689c4978418d1642517ad449c0cc7e09f8e167caaf28d",
+      "bytes": 4043
+    },
+    {
+      "path": "testing/fixtures/editorial-lifecycle.ts",
+      "sha256": "bdc0601d7b2b386bf68a2a8903f47e0dbb52381396eac987a1884c79f093074a",
+      "bytes": 4887
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/apng-hidden-frame.png",
+      "sha256": "5bd93be180977db214559e896c77077cc13eba8aa2120667ca1d8ca5422d20d3",
+      "bytes": 232
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/cogs-apng.png",
+      "sha256": "728c47dd0f1901e050308852d18800f3a42dd658f04ea2eadf98b24cac7164eb",
+      "bytes": 2706
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/colors-animated-8bpc.avif",
+      "sha256": "2f8683d21725261f37f86e115f0c212cc52d0fefd3a2ddfcc4fa648c1859906d",
+      "bytes": 1235
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/libavif-LICENSE.txt",
+      "sha256": "165abf92cc04b39e80d29cadea7a6a7e8fddf59407d4ad2616507a7ebe8216f9",
+      "bytes": 20415
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/libvips-LICENSE.txt",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+      "bytes": 26530
+    },
+    {
+      "path": "testing/fixtures/media-animation.ts",
+      "sha256": "c5dbba04bb6894db88803128ee3a35b4b6464d2f16702f2de9766357d2816bd4",
+      "bytes": 1754
+    }
+  ]
+}

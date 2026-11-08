@@ -1,0 +1,212 @@
+{
+  "date": "2026-10-30",
+  "stage": "E1.6 media policy partial implementation; stage1 remains75%",
+  "authorization": "User approved four static formats plus animatedWebP; rejectAPNG/animatedAVIF/opening-passwordPDF; root decision record2026-10-30-media-policy.md",
+  "environment": {
+    "pdfjs": "6.4.299",
+    "pnpm": "12.10.1",
+    "sharp": "0.35.5",
+    "vitest": "5.0.5",
+    "qpdf": "12.4.2",
+    "node": "24.22.2 portable Windows x64"
+  },
+  "commands": [
+    "pnpm exec vitest run --project unit src/features/media-library/server/validate-upload.test.ts",
+    "pnpm exec vitest run --project unit src/features/media-library/server/process-image.test.ts",
+    "pnpm exec vitest run --project unit src/features/media-library/server/validate-upload.test.ts src/features/media-library/server/process-image.test.ts",
+    "pnpm exec prettier --write src/features/media-library/server/validate-upload.ts src/features/media-library/server/process-image.ts src/features/media-library/contracts/validated-upload.schema.ts src/features/media-library/server/validate-upload.test.ts src/features/media-library/server/process-image.test.ts testing/fixtures/media-animation.ts testing/fixtures/media-animation-assets/README.md",
+    "pnpm exec eslint src/features/media-library/server/validate-upload.ts src/features/media-library/server/process-image.ts src/features/media-library/contracts/validated-upload.schema.ts src/features/media-library/server/validate-upload.test.ts src/features/media-library/server/process-image.test.ts testing/fixtures/media-animation.ts",
+    "pnpm exec tsc --noEmit --project .work/E1.6/policy-tsconfig.json",
+    "pnpm exec prettier --check src/features/media-library/server/validate-upload.ts src/features/media-library/server/process-image.ts src/features/media-library/contracts/validated-upload.schema.ts src/features/media-library/server/validate-upload.test.ts src/features/media-library/server/process-image.test.ts testing/fixtures/media-animation.ts testing/fixtures/media-animation-assets/README.md"
+  ],
+  "focusedTypeConfig": {
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+      "incremental": false
+    },
+    "include": [
+      "../../src/features/media-library/server/validate-upload.ts",
+      "../../src/features/media-library/server/process-image.ts",
+      "../../src/features/media-library/contracts/validated-upload.schema.ts",
+      "../../src/features/media-library/server/validate-upload.test.ts",
+      "../../src/features/media-library/server/process-image.test.ts",
+      "../../testing/fixtures/media-animation.ts"
+    ]
+  },
+  "contract": "Optional ValidatedImage.animation={pages,delay,loop}; width/height always oriented per-frame. Originals byte-preserved. Derivative width/height use output pageHeight.",
+  "resourceLimit": "Serial widths and serial oriented frames, no new frame/pixel/page/size caps. EXIF2..8 fallback holds one resized RGBA frame-strip buffer plus current decoded frame; Sharp/native allocations and encoded variants add memory. No VPS capacity or integrated RSS claim.",
+  "scopeLimit": "No DB, NativeHTTP, build, full suite, native intake, manifest, configuration, PDF inspector, staging, commit or push by this worker. Main owns real integration and current full gate.",
+  "fixtureLimit": "Official original APNG/AVIF binaries and complete upstream licenses preserved with provenance. Generated WebP controls use actual encoded100/200/300ms delays; very short requested delays normalized by fixture encoder are not claimed preserved.",
+  "sources": [
+    {
+      "file": "src/features/media-library/server/validate-upload.ts",
+      "bytes": 4497,
+      "sha256": "d1f52691a3a5a11bc8a5db40f878376278e57ab04d931c62dd64a266ac03833d"
+    },
+    {
+      "file": "src/features/media-library/server/process-image.ts",
+      "bytes": 2515,
+      "sha256": "fe31a02721fbb605ea2463c62517ecb68f3e909ce706d3201d91a9312499c29a"
+    },
+    {
+      "file": "src/features/media-library/contracts/validated-upload.schema.ts",
+      "bytes": 1538,
+      "sha256": "49de57552a9de2135ab4b6fa48b553d3e698d63062feae143560f575bcef9181"
+    },
+    {
+      "file": "src/features/media-library/server/validate-upload.test.ts",
+      "bytes": 5809,
+      "sha256": "795fb6dc11b739fb770dbcf8c75bea1ffb75717fceaf8774c326d97e13ec4898"
+    },
+    {
+      "file": "src/features/media-library/server/process-image.test.ts",
+      "bytes": 5351,
+      "sha256": "2bbff58fa16d1ee89574a4dec0584c63f937010010df4969663ee2192d622f9e"
+    },
+    {
+      "file": "testing/fixtures/media-animation.ts",
+      "bytes": 1754,
+      "sha256": "c5dbba04bb6894db88803128ee3a35b4b6464d2f16702f2de9766357d2816bd4"
+    },
+    {
+      "file": "testing/fixtures/media-animation-assets/README.md",
+      "bytes": 2608,
+      "sha256": "622b46c83f07b7b7b646352e25f87b8e9a231b1f38a42306315128b58d714276"
+    },
+    {
+      "file": "testing/fixtures/media-animation-assets/colors-animated-8bpc.avif",
+      "bytes": 1235,
+      "sha256": "2f8683d21725261f37f86e115f0c212cc52d0fefd3a2ddfcc4fa648c1859906d"
+    },
+    {
+      "file": "testing/fixtures/media-animation-assets/cogs-apng.png",
+      "bytes": 2706,
+      "sha256": "728c47dd0f1901e050308852d18800f3a42dd658f04ea2eadf98b24cac7164eb"
+    },
+    {
+      "file": "testing/fixtures/media-animation-assets/apng-hidden-frame.png",
+      "bytes": 232,
+      "sha256": "5bd93be180977db214559e896c77077cc13eba8aa2120667ca1d8ca5422d20d3"
+    },
+    {
+      "file": "testing/fixtures/media-animation-assets/libavif-LICENSE.txt",
+      "bytes": 20415,
+      "sha256": "165abf92cc04b39e80d29cadea7a6a7e8fddf59407d4ad2616507a7ebe8216f9"
+    },
+    {
+      "file": "testing/fixtures/media-animation-assets/libvips-LICENSE.txt",
+      "bytes": 26530,
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    }
+  ],
+  "logs": [
+    {
+      "file": "policy-probe.txt",
+      "original": ".work/E1.6/policy-probe.txt",
+      "bytes": 1142,
+      "sha256": "3dcd5b6ed89dddd83327377ad6d99ead406b949b6c3c45902a0503f1d131927b",
+      "exitCode": 0,
+      "classification": "Exploratory realSharp: multipage EXIF6 rotate failure and encoded delay normalization; not TDD RED",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-corrupt-frame-probe.txt",
+      "original": ".work/E1.6/policy-corrupt-frame-probe.txt",
+      "bytes": 690,
+      "sha256": "30fdcd0821b51c8654502d9b7b94fd18ae1c27e0bdc10b15d0d539fde6c0a576",
+      "exitCode": 0,
+      "classification": "RealSharp control: later damaged frame passes metadata/first-frame decode and fails full-frame stats",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-01-validation-red.txt",
+      "original": ".work/E1.6/policy-01-validation-red.txt",
+      "bytes": 7568,
+      "sha256": "9c84cf5a2c341ab07c2e91bb63352c7e9ab120d2e76d6be76503d6873e1636a0",
+      "exitCode": 1,
+      "classification": "Behavioral RED: seven policy assertions failed, seven prior cases passed. Initial APNG support generated complete synthetic APNG, later replaced with official preserved controls.",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-02-validation-green.txt",
+      "original": ".work/E1.6/policy-02-validation-green.txt",
+      "bytes": 190,
+      "sha256": "2faf5945b627d94302c109df9dee0904d2cd86b0bd21f2047cefac3eb8f89cb7",
+      "exitCode": 0,
+      "classification": "GREEN: fourteen validation unit tests with actual Sharp/QPDF/PDF.js",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-03-processing-red.txt",
+      "original": ".work/E1.6/policy-03-processing-red.txt",
+      "bytes": 7585,
+      "sha256": "b3ac102ed3a6c9a765f6b4755261b83514a24a6340ff99f90bbcbffefef5a13c",
+      "exitCode": 1,
+      "classification": "Behavioral RED: ten animation cases flattened, two previous static tests passed",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-04-processing-green.txt",
+      "original": ".work/E1.6/policy-04-processing-green.txt",
+      "bytes": 191,
+      "sha256": "430799c650b34076376b3030e2ca1e77857f79e9bc96572279be88225be78e44",
+      "exitCode": 0,
+      "classification": "GREEN: twelve processing unit tests",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-05-official-fixtures-spatial-green.txt",
+      "original": ".work/E1.6/policy-05-official-fixtures-spatial-green.txt",
+      "bytes": 191,
+      "sha256": "7ca7582192b892e0ea72938cff8f17783dd1bbade2c781e2735dd87b6f152651",
+      "exitCode": 0,
+      "classification": "GREEN: twenty-seven tests with official APNG/AVIF fixtures plus actual spatial EXIF6 frame control",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-06-format.txt",
+      "original": ".work/E1.6/policy-06-format.txt",
+      "bytes": 409,
+      "sha256": "183db2c21fda9796359bafc1186a881275caa9d864d948b59e14eb9af59c4d86",
+      "exitCode": 0,
+      "classification": "Prettier write: six TS files and fixture README",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-07-final-focused-green.txt",
+      "original": ".work/E1.6/policy-07-final-focused-green.txt",
+      "bytes": 191,
+      "sha256": "200db1fde1e64485b2c218f7e73b9e38813616a44bab566bcb76b2cd5ff964ef",
+      "exitCode": 0,
+      "classification": "Current post-format GREEN: twenty-seven tests in two files",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-08-eslint.txt",
+      "original": ".work/E1.6/policy-08-eslint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0,
+      "classification": "Own six-file ESLint passed without output",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-09-focused-typecheck.txt",
+      "original": ".work/E1.6/policy-09-focused-typecheck.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0,
+      "classification": "Own strict focused TypeScript passed without output",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    },
+    {
+      "file": "policy-10-format-check.txt",
+      "original": ".work/E1.6/policy-10-format-check.txt",
+      "bytes": 68,
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "exitCode": 0,
+      "classification": "Current explicit seven-file format check passed",
+      "export": "Byte-identical; no redaction; generated diagnostic fixtures only, no environment credentials"
+    }
+  ]
+}

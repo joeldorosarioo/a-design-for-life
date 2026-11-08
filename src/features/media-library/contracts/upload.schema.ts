@@ -20,7 +20,7 @@ export const uploadCandidateSchema = uploadInputSchema.extend({
 });
 export type UploadCandidate = z.infer<typeof uploadCandidateSchema>;
 export const uploadFailureSchema = z.object({
-  code: z.enum(['invalid-input', 'busy']),
+  code: z.enum(['invalid-input', 'busy', 'unavailable']),
   message: z.string(),
 });
 export type UploadFailure = z.infer<typeof uploadFailureSchema>;

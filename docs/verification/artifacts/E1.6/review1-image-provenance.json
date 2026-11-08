@@ -1,0 +1,113 @@
+{
+  "scope": "Round 1 full22 production journeys: 17 clean pre-run tracked PNGs checked and restored byte-for-byte; changed captures preserved separately.",
+  "images": [
+    {
+      "path": "docs/verification/artifacts/E1.4/native-owner.png",
+      "headSHA256": "8e252957a6f85c8f397ed9188bdccf71fd2c1b7e2bf62781d460699a5f712159",
+      "currentCaptureSHA256": "46833d966074e8089ec1977592ab69eb2d44877311c1d1446e3b7030fff16ca2",
+      "currentCapture": "review1-captures/E1.4/native-owner.png",
+      "restoredSHA256": "8e252957a6f85c8f397ed9188bdccf71fd2c1b7e2bf62781d460699a5f712159"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.4/native-reader.png",
+      "headSHA256": "aabb290ac8ebf3d086ca68b17959ff62ed7ca1e0d28a5218d3b888ff81402005",
+      "currentCaptureSHA256": "de59894694dc51907533ff2cc3e731c3767d39887f1fce1356e72737016bcd72",
+      "currentCapture": "review1-captures/E1.4/native-reader.png",
+      "restoredSHA256": "aabb290ac8ebf3d086ca68b17959ff62ed7ca1e0d28a5218d3b888ff81402005"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.4/native-stale-conflict.png",
+      "headSHA256": "4d444acd9f1b38cd861ef5779c49a1c18c9f6b4e3dae817481b278a71f1d8789",
+      "currentCaptureSHA256": "a6fa53c86b6068268c879445f4bf65802cda6e5d260362e8b7eede60f920db6a",
+      "currentCapture": "review1-captures/E1.4/native-stale-conflict.png",
+      "restoredSHA256": "4d444acd9f1b38cd861ef5779c49a1c18c9f6b4e3dae817481b278a71f1d8789"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.4/native-version-diff.png",
+      "headSHA256": "43202318f137f0430c706795061f617005ec3e9f0c28603fb3a7244652591807",
+      "currentCaptureSHA256": "41b5ee088b6bf1a4fd6d8eb4b56ca25bc45b5be6559de0a5d1f252affe5e1437",
+      "currentCapture": "review1-captures/E1.4/native-version-diff.png",
+      "restoredSHA256": "43202318f137f0430c706795061f617005ec3e9f0c28603fb3a7244652591807"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.5/editorial-regressions/native-owner.png",
+      "headSHA256": "2f360e2a18c6deb69f37ce86ff8666ab1121b82f6ee6dda122a55e31dfa94309",
+      "currentCaptureSHA256": "2f360e2a18c6deb69f37ce86ff8666ab1121b82f6ee6dda122a55e31dfa94309",
+      "restoredSHA256": "2f360e2a18c6deb69f37ce86ff8666ab1121b82f6ee6dda122a55e31dfa94309"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.5/editorial-regressions/native-reader.png",
+      "headSHA256": "0a240efe764066efb31636b99e827e74e1046c53578be1eb8a52cadfe968f904",
+      "currentCaptureSHA256": "0a240efe764066efb31636b99e827e74e1046c53578be1eb8a52cadfe968f904",
+      "restoredSHA256": "0a240efe764066efb31636b99e827e74e1046c53578be1eb8a52cadfe968f904"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.5/editorial-regressions/native-stale-conflict.png",
+      "headSHA256": "66c3b86f5f1ca718b59ab2aa9b282ca7c46f1e0456d7f15e6cc576e1443fb310",
+      "currentCaptureSHA256": "66c3b86f5f1ca718b59ab2aa9b282ca7c46f1e0456d7f15e6cc576e1443fb310",
+      "restoredSHA256": "66c3b86f5f1ca718b59ab2aa9b282ca7c46f1e0456d7f15e6cc576e1443fb310"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.5/editorial-regressions/native-version-diff.png",
+      "headSHA256": "30172b99b40451979986d6d9b0d213f328a9fe2214ff74593a4f3edc8eb83f4c",
+      "currentCaptureSHA256": "30172b99b40451979986d6d9b0d213f328a9fe2214ff74593a4f3edc8eb83f4c",
+      "restoredSHA256": "30172b99b40451979986d6d9b0d213f328a9fe2214ff74593a4f3edc8eb83f4c"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.5/native-slug-suggestion.png",
+      "headSHA256": "f1d26898a26f97ff90c20058d6298f722b140f4659d78f76e16320a5dd08dd0c",
+      "currentCaptureSHA256": "9cad3b812d8189b633e71f24c40d72791442fc1cff626ecc15a66be3524b1a5e",
+      "currentCapture": "review1-captures/E1.5/native-slug-suggestion.png",
+      "restoredSHA256": "f1d26898a26f97ff90c20058d6298f722b140f4659d78f76e16320a5dd08dd0c"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/editorial-regressions/E1.4/native-owner.png",
+      "headSHA256": "33c0c571dcafebeb39ac4743491284813521f1401f80aa86609479ee7c9e88cf",
+      "currentCaptureSHA256": "33c0c571dcafebeb39ac4743491284813521f1401f80aa86609479ee7c9e88cf",
+      "restoredSHA256": "33c0c571dcafebeb39ac4743491284813521f1401f80aa86609479ee7c9e88cf"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/editorial-regressions/E1.4/native-reader.png",
+      "headSHA256": "3eb32f2539d5787291fdbdcc1406efe4cefe71f046f4eba979383fc28c06e113",
+      "currentCaptureSHA256": "3eb32f2539d5787291fdbdcc1406efe4cefe71f046f4eba979383fc28c06e113",
+      "restoredSHA256": "3eb32f2539d5787291fdbdcc1406efe4cefe71f046f4eba979383fc28c06e113"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/editorial-regressions/E1.4/native-stale-conflict.png",
+      "headSHA256": "090b5d4bdb44ee39c8e6dfe8b9eceba917cf068c2834710d491f2d0002c2de4f",
+      "currentCaptureSHA256": "090b5d4bdb44ee39c8e6dfe8b9eceba917cf068c2834710d491f2d0002c2de4f",
+      "restoredSHA256": "090b5d4bdb44ee39c8e6dfe8b9eceba917cf068c2834710d491f2d0002c2de4f"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/editorial-regressions/E1.4/native-version-diff.png",
+      "headSHA256": "18d46ad44a18e4e98e60403651be9fbd6383afb7589dd738a5b63188f4ebdbaa",
+      "currentCaptureSHA256": "18d46ad44a18e4e98e60403651be9fbd6383afb7589dd738a5b63188f4ebdbaa",
+      "restoredSHA256": "18d46ad44a18e4e98e60403651be9fbd6383afb7589dd738a5b63188f4ebdbaa"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/editorial-regressions/E1.5/native-slug-suggestion.png",
+      "headSHA256": "995d002c5d1695288c4cd3ea394554bd8e6f7fc3a53a25c814991cada3dc1649",
+      "currentCaptureSHA256": "995d002c5d1695288c4cd3ea394554bd8e6f7fc3a53a25c814991cada3dc1649",
+      "restoredSHA256": "995d002c5d1695288c4cd3ea394554bd8e6f7fc3a53a25c814991cada3dc1649"
+    },
+    {
+      "path": "docs/verification/artifacts/E1.6/native-media-ui.png",
+      "headSHA256": "ce768b0765db3b4e848f8e15219ff00ba6fad8b49ec92bc038c229a2c9fc8124",
+      "currentCaptureSHA256": "dfb49d349c81a337cbf6281ef8a89d93f2164f3bc8ffdfc32d93d890ad77ae76",
+      "currentCapture": "review1-captures/E1.6/native-media-ui.png",
+      "restoredSHA256": "ce768b0765db3b4e848f8e15219ff00ba6fad8b49ec92bc038c229a2c9fc8124"
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/apng-hidden-frame.png",
+      "headSHA256": "5bd93be180977db214559e896c77077cc13eba8aa2120667ca1d8ca5422d20d3",
+      "currentCaptureSHA256": "5bd93be180977db214559e896c77077cc13eba8aa2120667ca1d8ca5422d20d3",
+      "restoredSHA256": "5bd93be180977db214559e896c77077cc13eba8aa2120667ca1d8ca5422d20d3"
+    },
+    {
+      "path": "testing/fixtures/media-animation-assets/cogs-apng.png",
+      "headSHA256": "728c47dd0f1901e050308852d18800f3a42dd658f04ea2eadf98b24cac7164eb",
+      "currentCaptureSHA256": "728c47dd0f1901e050308852d18800f3a42dd658f04ea2eadf98b24cac7164eb",
+      "restoredSHA256": "728c47dd0f1901e050308852d18800f3a42dd658f04ea2eadf98b24cac7164eb"
+    }
+  ]
+}

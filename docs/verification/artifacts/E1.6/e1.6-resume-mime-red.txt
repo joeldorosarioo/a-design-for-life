@@ -1,0 +1,190 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[08:11:21] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (163ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (87ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (6ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (7ms)[39m
+[08:11:22] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[08:11:22] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[08:11:22] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/server/resolve-media-access.integration.test.ts (4 tests | 1 failed | 3 skipped) 1493ms
+   × checks every usage kind when the same PDF is submitted as both portrait and resume 1272ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/server/resolve-media-access.integration.test.ts > checks every usage kind when the same PDF is submitted as both portrait and resume
+AssertionError: promise resolved "{ …(17) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "about": {
++     "approach": null,
++     "approachHeading": null,
++     "architecturePhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "closing": null,
++     "closingHeading": null,
++     "description": null,
++     "deskPhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "editorialEmphasis": null,
++     "eyebrow": null,
++     "inMotion": null,
++     "inMotionHeading": null,
++     "introduction": null,
++     "introductionHeading": null,
++     "journey": null,
++     "journeyHeading": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++   },
++   "approach": {
++     "description": null,
++     "eyebrow": null,
++     "methods": [],
++     "title": null,
++   },
++   "contacts": {
++     "email": null,
++     "linkedin": null,
++   },
++   "createdAt": "2026-10-30T11:11:26.888Z",
++   "editorialRevision": "605431bb-1fa2-452f-bd2e-2c3f848a1134",
++   "home": {
++     "description": null,
++     "eyebrow": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": {
++         "createdAt": "2026-10-30T11:11:26.877Z",
++         "deletedAt": null,
++         "filename": "c6535580-145e-4b78-8d0e-1e233cc0812e.pdf",
++         "filesize": 710,
++         "height": null,
++         "id": "b82ee05b-e366-47b9-a6e7-0fb75621d709",
++         "label": null,
++         "mimeType": "application/pdf",
++         "thumbnailURL": null,
++         "updatedAt": "2026-10-30T11:11:26.877Z",
++         "url": "/preview-media/b82ee05b-e366-47b9-a6e7-0fb75621d709/original",
++         "width": null,
++       },
++     },
++     "projectsLabel": null,
++     "title": null,
++     "titleEmphasis": null,
++   },
++   "homeAbout": {
++     "aboutLabel": null,
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++     "trajectory": [],
++   },
++   "homeProjects": {
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++   },
++   "id": "f7353369-4bd7-4597-a295-47ca26ecf0df",
++   "identity": {
++     "name": null,
++     "role": null,
++   },
++   "leaseToken": "[redacted ephemeral synthetic lease]",
++   "listing": {
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++   },
++   "locale": "en",
++   "resume": {
++     "createdAt": "2026-10-30T11:11:26.877Z",
++     "deletedAt": null,
++     "filename": "c6535580-145e-4b78-8d0e-1e233cc0812e.pdf",
++     "filesize": 710,
++     "height": null,
++     "id": "b82ee05b-e366-47b9-a6e7-0fb75621d709",
++     "label": null,
++     "mimeType": "application/pdf",
++     "thumbnailURL": null,
++     "updatedAt": "2026-10-30T11:11:26.877Z",
++     "url": "/preview-media/b82ee05b-e366-47b9-a6e7-0fb75621d709/original",
++     "width": null,
++   },
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "listingDescription": null,
++     "listingTitle": null,
++   },
++   "updatedAt": "2026-10-30T11:11:26.889Z",
+  }
+
+ ❯ src/features/media-library/server/resolve-media-access.integration.test.ts:152:216
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 skipped (4)
+   Start at  08:10:56
+   Duration  30.57s (import 42%, tests 36%, transform 19%, setup 2%, worker 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

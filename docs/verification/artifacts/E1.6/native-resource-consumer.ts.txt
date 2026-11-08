@@ -1,0 +1,186 @@
+// Instrumentation only. Run one preserved input per fresh, already-provisioned
+// isolated-test process through Payload's native CLI (see the companion report).
+// This script does not start, migrate, truncate, or drop a database.
+import { createHash, randomUUID } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const controls = {
+  'noise-near10mb.png': {
+    bytes: 9_745_121,
+    width: 2050,
+    height: 1500,
+    type: 'image/png',
+    sha256: '45ae3821744f1598f0da636403823f8e4137112c2d56bd68b99443e17ae2d59d',
+  },
+  'noise-near10mb.jpg': {
+    bytes: 9_876_792,
+    width: 3600,
+    height: 2700,
+    type: 'image/jpeg',
+    sha256: '218de90aa474774cbc40157267496be66026b9950431add571b368cf228a2ec5',
+  },
+  'compressible-12mp.png': {
+    bytes: 353_304,
+    width: 4000,
+    height: 3000,
+    type: 'image/png',
+    sha256: '78ebf4dd83fccf5a77d4a0de354ede053d940f15ac0ffb5f96eafc62d23995a3',
+  },
+} as const;
+
+const digest = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
+const directory = path.dirname(fileURLToPath(import.meta.url));
+const repository = path.resolve(directory, '..', '..');
+const samePath = (left: string, right: string) =>
+  process.platform === 'win32'
+    ? path.resolve(left).toLowerCase() === path.resolve(right).toLowerCase()
+    : path.resolve(left) === path.resolve(right);
+const isChildPath = (parent: string, candidate: string) => {
+  const relative = path.relative(parent, candidate);
+  return relative !== '' && !relative.startsWith(`..${path.sep}`) && relative !== '..' && !path.isAbsolute(relative);
+};
+
+let stage = 'guard';
+let failed = false;
+let fixture: Awaited<
+  ReturnType<typeof import('../../testing/fixtures/editorial-payload')['createEditorialPayloadFixture']>
+> | undefined;
+let result: Record<string, unknown> | undefined;
+const totalStarted = performance.now();
+
+try {
+  // Payload's `run` command rewrites argv to [node, payload-bin, ...scriptArgs].
+  const name = process.argv[2];
+  if (!name || process.argv.length !== 3 || !Object.hasOwn(controls, name))
+    throw new Error('Select exactly one preserved control.');
+  if (!samePath(process.cwd(), repository)) throw new Error('Run from the repository root.');
+  if (process.env.APP_ENV !== 'test' || process.env.NODE_ENV !== 'test')
+    throw new Error('An explicit isolated-test environment is required.');
+  const database = new URL(process.env.DATABASE_URI ?? '');
+  if (
+    !['postgres:', 'postgresql:'].includes(database.protocol) ||
+    !['localhost', '127.0.0.1', '[::1]'].includes(database.hostname) ||
+    database.port !== '55433' ||
+    !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname)
+  ) throw new Error('Only the already-provisioned owned test database is allowed.');
+  if (!/^adfl-test-[a-z0-9-]+$/.test(process.env.MEDIA_BUCKET ?? ''))
+    throw new Error('An explicit test storage namespace is required.');
+  if (process.env.MEDIA_STORAGE_ROOT) {
+    if (
+      !path.isAbsolute(process.env.MEDIA_STORAGE_ROOT) ||
+      !isChildPath(path.join(repository, '.work', 'private-media'), process.env.MEDIA_STORAGE_ROOT)
+    ) throw new Error('The optional storage override must remain in the owned private test tree.');
+  }
+
+  stage = 'input-integrity';
+  const control = controls[name as keyof typeof controls];
+  const beforeInput = process.memoryUsage();
+  const bytes = await readFile(path.join(directory, name));
+  if (bytes.length !== control.bytes || digest(bytes) !== control.sha256)
+    throw new Error('The preserved control has changed.');
+  const afterInput = process.memoryUsage();
+
+  stage = 'fixture';
+  const { readServerEnv } = await import('../../src/config/server-env');
+  readServerEnv(process.env); // Validate without serializing env or validation errors.
+  const { default: config } = await import('../../src/payload.config');
+  const resolvedConfig = await config;
+  // Public Payload logger option, affecting only this instrumentation child.
+  // Do not emit account identifiers or database diagnostics into the measurement.
+  resolvedConfig.logger = { options: { level: 'silent' } };
+  const { createEditorialPayloadFixture } = await import('../../testing/fixtures/editorial-payload');
+  const { mediaManifestSchema } = await import('../../src/features/media-library/contracts/media-manifest.schema');
+  const { mediaRuntime } = await import('../../src/features/media-library/server/media-runtime');
+  const { default: sharp } = await import('sharp');
+  fixture = await createEditorialPayloadFixture(`media-resource-${randomUUID()}`);
+  const baselineAfterFixtureAndInput = process.memoryUsage();
+  const usageBeforeNativeUpload = process.resourceUsage();
+  const fixtureReadyMs = performance.now() - totalStarted;
+
+  stage = 'native-upload';
+  const uploadStarted = performance.now();
+  const uploaded = await fixture.payload.create({
+    collection: 'media',
+    data: { label: 'Synthetic Native Local resource probe' },
+    file: { data: bytes, size: bytes.length, name, mimetype: control.type },
+    req: await fixture.request(),
+    overrideAccess: false,
+  });
+  const nativeUploadMs = performance.now() - uploadStarted;
+  const afterNativeUpload = process.memoryUsage();
+  const usageAfterNativeUpload = process.resourceUsage();
+
+  stage = 'manifest-and-storage-integrity';
+  if (uploaded.filesize !== bytes.length || uploaded.mimeType !== control.type)
+    throw new Error('The native upload returned different input metadata.');
+  const raw = await fixture.payload.db.findOne({
+    collection: 'media',
+    where: { id: { equals: uploaded.id } },
+    req: await fixture.request(),
+  });
+  const manifest = mediaManifestSchema.parse(
+    (raw as unknown as Record<string, unknown> | null)?.manifest,
+  );
+  if (
+    manifest.kind !== 'image' ||
+    manifest.original.type !== control.type ||
+    manifest.original.width !== control.width ||
+    manifest.original.height !== control.height
+  ) throw new Error('The manifest does not describe the preserved control.');
+  const storedOriginal = await mediaRuntime().storage.read(manifest.original.object);
+  if (storedOriginal.byteLength !== control.bytes || digest(storedOriginal) !== control.sha256)
+    throw new Error('The stored original differs from the preserved input.');
+  const expectedWidths = [...new Set([342, 640, 960, 1280, 2560].map((width) => Math.min(width, control.width)))];
+  if (JSON.stringify(manifest.variants.map((variant) => variant.width)) !== JSON.stringify(expectedWidths))
+    throw new Error('The native manifest has unexpected responsive widths.');
+  const variants: Array<Record<string, unknown>> = [];
+  for (const variant of manifest.variants) {
+    const stored = await mediaRuntime().storage.read(variant.object);
+    if (
+      variant.type !== 'image/webp' || !variant.width || !variant.height ||
+      stored.byteLength !== variant.object.byteLength || digest(stored) !== variant.object.sha256
+    ) throw new Error('A stored derivative failed manifest integrity.');
+    variants.push({
+      variant: variant.variant,
+      type: variant.type,
+      width: variant.width,
+      height: variant.height,
+      bytes: variant.object.byteLength,
+      sha256: variant.object.sha256,
+    });
+  }
+
+  result = {
+    kind: 'native-local-media-resource-measurement',
+    outcome: 'measured',
+    input: { name, bytes: bytes.length, sha256: control.sha256, width: control.width, height: control.height },
+    environment: { node: process.version, platform: process.platform, arch: process.arch, sharp: sharp.versions },
+    memoryBytes: { beforeInput, afterInput, baselineAfterFixtureAndInput, afterNativeUpload },
+    timingMs: { fixtureReadyMs, nativeUploadMs, totalBeforeDestroyMs: performance.now() - totalStarted },
+    cumulativeProcessUsageBeforeNativeUpload: usageBeforeNativeUpload,
+    cumulativeProcessUsageAfterNativeUpload: usageAfterNativeUpload,
+    maxRSSUnit: 'KiB; cumulative since child start, includes fixture/input; not an incremental allocation',
+    integrityCheckedAfterUploadMeasurement: true,
+    variants,
+    scope: 'Real Native Local create + transaction + original/derivative storage; not Next HTTP, PostgreSQL-server RSS, or VPS capacity',
+  };
+} catch {
+  failed = true;
+  result = { kind: 'native-local-media-resource-measurement', outcome: 'failed', stage };
+} finally {
+  if (fixture) {
+    try {
+      await fixture.payload.destroy();
+    } catch {
+      failed = true;
+      result = { kind: 'native-local-media-resource-measurement', outcome: 'failed', stage: 'payload-destroy' };
+    }
+  }
+}
+
+console.info(JSON.stringify(result));
+// Native Payload's CLI otherwise calls process.exit(0) after importing a run
+// script. Explicitly preserve this child's failure only after finally/cleanup.
+if (failed) process.exit(1);

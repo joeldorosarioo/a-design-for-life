@@ -1,0 +1,126 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[06:42:29] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (45ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (93ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[06:42:29] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[06:42:29] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (3ms)[39m
+[06:42:29] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/content/collections/native-upload.integration.test.ts (7 tests | 4 failed) 555ms
+   × accepts a genuine static jpeg through native Local upload and stores real immutable bytes 30ms
+   × accepts a genuine static png through native Local upload and stores real immutable bytes 19ms
+   × accepts a genuine static webp through native Local upload and stores real immutable bytes 20ms
+   × accepts a genuine static avif through native Local upload and stores real immutable bytes 23ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static jpeg through native Local upload and stores real immutable bytes
+AssertionError: expected null to be '/preview-media/e82c99ee-9f76-4ac1-825…' // Object.is equality
+
+- Expected:
+"/preview-media/e82c99ee-9f76-4ac1-8257-434890c92643/w80"
+
++ Received:
+null
+
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:15:27
+     13|  const doc=await upload(bytes,`image/${format}`,`synthetic.${format}`);
+     14|  expect(doc).toMatchObject({filesize:bytes.length,mimeType:`image/${fo…
+     15|  expect(doc.thumbnailURL).toBe(`/preview-media/${doc.id}/w80`);
+       |                           ^
+     16|  const raw=await fixture.payload.db.findOne({collection:'media',req:aw…
+     17|  const manifest=mediaManifestSchema.parse((raw as unknown as Record<st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static png through native Local upload and stores real immutable bytes
+AssertionError: expected null to be '/preview-media/5ee222c7-6894-4560-a57…' // Object.is equality
+
+- Expected:
+"/preview-media/5ee222c7-6894-4560-a579-26018186a421/w80"
+
++ Received:
+null
+
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:15:27
+     13|  const doc=await upload(bytes,`image/${format}`,`synthetic.${format}`);
+     14|  expect(doc).toMatchObject({filesize:bytes.length,mimeType:`image/${fo…
+     15|  expect(doc.thumbnailURL).toBe(`/preview-media/${doc.id}/w80`);
+       |                           ^
+     16|  const raw=await fixture.payload.db.findOne({collection:'media',req:aw…
+     17|  const manifest=mediaManifestSchema.parse((raw as unknown as Record<st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static webp through native Local upload and stores real immutable bytes
+AssertionError: expected null to be '/preview-media/9235b1d7-6b90-48df-90f…' // Object.is equality
+
+- Expected:
+"/preview-media/9235b1d7-6b90-48df-90fb-945883849418/w80"
+
++ Received:
+null
+
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:15:27
+     13|  const doc=await upload(bytes,`image/${format}`,`synthetic.${format}`);
+     14|  expect(doc).toMatchObject({filesize:bytes.length,mimeType:`image/${fo…
+     15|  expect(doc.thumbnailURL).toBe(`/preview-media/${doc.id}/w80`);
+       |                           ^
+     16|  const raw=await fixture.payload.db.findOne({collection:'media',req:aw…
+     17|  const manifest=mediaManifestSchema.parse((raw as unknown as Record<st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > accepts a genuine static avif through native Local upload and stores real immutable bytes
+AssertionError: expected null to be '/preview-media/6a634407-ac50-4f02-b6a…' // Object.is equality
+
+- Expected:
+"/preview-media/6a634407-ac50-4f02-b6ad-4caa23a75103/w80"
+
++ Received:
+null
+
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:15:27
+     13|  const doc=await upload(bytes,`image/${format}`,`synthetic.${format}`);
+     14|  expect(doc).toMatchObject({filesize:bytes.length,mimeType:`image/${fo…
+     15|  expect(doc.thumbnailURL).toBe(`/preview-media/${doc.id}/w80`);
+       |                           ^
+     16|  const raw=await fixture.payload.db.findOne({collection:'media',req:aw…
+     17|  const manifest=mediaManifestSchema.parse((raw as unknown as Record<st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 3 passed (7)
+   Start at  06:42:24
+   Duration  7.45s (import 69%, tests 22%, transform 6%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

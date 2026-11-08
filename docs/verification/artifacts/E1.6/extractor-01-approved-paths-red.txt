@@ -1,0 +1,102 @@
+$ vitest run --project unit src/features/cases/content/hooks/extract-case-media.test.ts src/features/professional-profile/content/extract-profile-media.test.ts
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ ❯ |unit| src/features/professional-profile/content/extract-profile-media.test.ts (1 test | 1 failed) 7ms
+   × extracts the approved profile image slots and localized PDF resume 6ms
+ ❯ |unit| src/features/cases/content/hooks/extract-case-media.test.ts (1 test | 1 failed) 7ms
+   × extracts each approved case image slot in deterministic document order 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| src/features/professional-profile/content/extract-profile-media.test.ts > extracts the approved profile image slots and localized PDF resume
+AssertionError: expected [] to deeply equal [ { …(2) }, { …(2) }, { …(2) }, …(3) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "kind": "image",
+-     "mediaId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "e7fda410-76ba-466a-910f-01662e4a840c",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "0555b54d-a759-46a1-b82e-f3caee35534b",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "3a7f8848-b305-47dd-8781-368c8ee21e3a",
+-   },
+-   {
+-     "kind": "pdf",
+-     "mediaId": "ddab1d65-bbe3-4a7c-b59a-e43806913d8f",
+-   },
+- ]
++ []
+
+ ❯ src/features/professional-profile/content/extract-profile-media.test.ts:23:5
+     21|       resume: { id: resumeId, filename: 'synthetic.pdf' },
+     22|     }),
+     23|   ).toEqual([
+       |     ^
+     24|     { mediaId: homeId, kind: 'image' },
+     25|     { mediaId: portraitId, kind: 'image' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| src/features/cases/content/hooks/extract-case-media.test.ts > extracts each approved case image slot in deterministic document order
+AssertionError: expected [] to deeply equal [ { …(2) }, { …(2) }, { …(2) }, …(2) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "kind": "image",
+-     "mediaId": "ba53e178-456a-437b-a2c1-771ce6b6b0af",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "e7fda410-76ba-466a-910f-01662e4a840c",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "2cad5dcb-15ba-4f2e-b210-40df0b8723fe",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "0555b54d-a759-46a1-b82e-f3caee35534b",
+-   },
+-   {
+-     "kind": "image",
+-     "mediaId": "3a7f8848-b305-47dd-8781-368c8ee21e3a",
+-   },
+- ]
++ []
+
+ ❯ src/features/cases/content/hooks/extract-case-media.test.ts:24:5
+     22|       ],
+     23|     }),
+     24|   ).toEqual([
+       |     ^
+     25|     { mediaId: coverId, kind: 'image' },
+     26|     { mediaId: seoId, kind: 'image' },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed (2)
+   Start at  06:43:02
+   Duration  364ms (setup 91%, tests 3%, transform 3%, worker 2%, import 1%)
+
+[ELIFECYCLE] Command failed with exit code 1.

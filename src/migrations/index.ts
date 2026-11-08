@@ -7,6 +7,7 @@ import * as migration_20261030_030036_global_editorial_copy from './20261030_030
 import * as migration_20261030_035306_protect_case_identity_references from './20261030_035306_protect_case_identity_references';
 import * as migration_20261030_040829_editorial_revision_and_leases from './20261030_040829_editorial_revision_and_leases';
 import * as migration_20261030_042607_editorial_snapshot_revision from './20261030_042607_editorial_snapshot_revision';
+import * as migration_20261030_093430_private_media_manifests from './20261030_093430_private_media_manifests';
 
 export const migrations = [
   {
@@ -53,5 +54,10 @@ export const migrations = [
     up: migration_20261030_042607_editorial_snapshot_revision.up,
     down: migration_20261030_042607_editorial_snapshot_revision.down,
     name: '20261030_042607_editorial_snapshot_revision',
+  },
+  {
+    up: migration_20261030_093430_private_media_manifests.up,
+    down: migration_20261030_093430_private_media_manifests.down,
+    name: '20261030_093430_private_media_manifests',
   },
 ];

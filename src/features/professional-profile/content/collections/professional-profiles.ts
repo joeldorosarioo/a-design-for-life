@@ -1,3 +1,4 @@
+import { synchronizeProfileMedia } from '../profile-media-usage';
 import { getPublishedProfile } from '../../server/get-published-profile';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { isDraftOperation, protectEditorialCollection } from '@/helpers/payload/editorial-revision';
@@ -42,6 +43,7 @@ export const ProfessionalProfiles: CollectionConfig = protectEditorialCollection
     },
   ],
   hooks: {
+    afterChange: [synchronizeProfileMedia],
     beforeOperation: [validatedWrite(profileInputSchema)],
     beforeChange: [
       async ({ data, originalDoc, req, collection }) => {

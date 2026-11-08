@@ -1,0 +1,9 @@
+frames [
+  { at: 44, length: 46 },
+  { at: 98, length: 46 },
+  { at: 152, length: 46 }
+] bytes 206
+nested VP8L payload 184 frameend 206
+{"skip":0,"meta":"Input buffer has corrupt header: webp: unable to parse image","first":"Input buffer has corrupt header: webp: unable to parse image","all":"Input buffer has corrupt header: webp: unable to parse image"}
+{"skip":1,"meta":"Input buffer has corrupt header: webp: unable to parse image","first":"Input buffer has corrupt header: webp: unable to parse image","all":"Input buffer has corrupt header: webp: unable to parse image"}
+{"skip":5,"meta":3,"first":"ok","all":"webp2vips: unable to read pixels\nwebpload_buffer: load error"}

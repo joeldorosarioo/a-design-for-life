@@ -1,0 +1,165 @@
+{
+  "exitCode": 0,
+  "signal": null,
+  "kind": "native-local-media-resource-measurement",
+  "outcome": "measured",
+  "input": {
+    "name": "compressible-12mp.png",
+    "bytes": 353304,
+    "sha256": "78ebf4dd83fccf5a77d4a0de354ede053d940f15ac0ffb5f96eafc62d23995a3",
+    "width": 4000,
+    "height": 3000
+  },
+  "environment": {
+    "node": "v24.22.2",
+    "platform": "win32",
+    "arch": "x64",
+    "sharp": {
+      "aom": "3.15.1",
+      "archive": "3.8.9",
+      "cairo": "1.18.6",
+      "cgif": "0.5.4",
+      "exif": "0.6.26",
+      "expat": "2.8.5",
+      "ffi": "3.8.0",
+      "fontconfig": "2.18.3",
+      "freetype": "2.14.3",
+      "fribidi": "1.0.17",
+      "glib": "2.90.0",
+      "harfbuzz": "14.5.0",
+      "heif": "1.23.5",
+      "highway": "1.4.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.19.1",
+      "mozjpeg": "0826579",
+      "pango": "1.58.2",
+      "pixman": "0.46.4",
+      "png": "1.6.58",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.63.2",
+      "tiff": "4.7.2",
+      "uhdr": "2.0.2",
+      "vips": "8.18.7",
+      "webp": "1.6.0",
+      "xml2": "2.15.4",
+      "zlib-ng": "2.3.3",
+      "sharp": "0.35.5"
+    }
+  },
+  "memoryBytes": {
+    "beforeInput": {
+      "rss": 118472704,
+      "heapTotal": 64884736,
+      "heapUsed": 46110360,
+      "external": 6419863,
+      "arrayBuffers": 2029258
+    },
+    "afterInput": {
+      "rss": 123609088,
+      "heapTotal": 102371328,
+      "heapUsed": 37698344,
+      "external": 6136692,
+      "arrayBuffers": 1680511
+    },
+    "baselineAfterFixtureAndInput": {
+      "rss": 322170880,
+      "heapTotal": 230539264,
+      "heapUsed": 102105696,
+      "external": 9548480,
+      "arrayBuffers": 1822596
+    },
+    "afterNativeUpload": {
+      "rss": 364441600,
+      "heapTotal": 230539264,
+      "heapUsed": 104241672,
+      "external": 11000256,
+      "arrayBuffers": 3261206
+    }
+  },
+  "timingMs": {
+    "fixtureReadyMs": 1360.4735999999998,
+    "nativeUploadMs": 587.8245000000002,
+    "totalBeforeDestroyMs": 1952.0271000000002
+  },
+  "cumulativeProcessUsageBeforeNativeUpload": {
+    "userCPUTime": 1937000,
+    "systemCPUTime": 937000,
+    "maxRSS": 366476,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 0,
+    "majorPageFault": 119584,
+    "swappedOut": 0,
+    "fsRead": 3648,
+    "fsWrite": 0,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 0,
+    "involuntaryContextSwitches": 0
+  },
+  "cumulativeProcessUsageAfterNativeUpload": {
+    "userCPUTime": 2453000,
+    "systemCPUTime": 1046000,
+    "maxRSS": 385048,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 0,
+    "majorPageFault": 165677,
+    "swappedOut": 0,
+    "fsRead": 3648,
+    "fsWrite": 6,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 0,
+    "involuntaryContextSwitches": 0
+  },
+  "maxRSSUnit": "KiB; cumulative since child start, includes fixture/input; not an incremental allocation",
+  "integrityCheckedAfterUploadMeasurement": true,
+  "variants": [
+    {
+      "variant": "w342",
+      "type": "image/webp",
+      "width": 342,
+      "height": 257,
+      "bytes": 230,
+      "sha256": "35a469e060c319e156afaaa8adcb987cc2bac6df8cf5dde5c5276b38de5dae25"
+    },
+    {
+      "variant": "w640",
+      "type": "image/webp",
+      "width": 640,
+      "height": 480,
+      "bytes": 606,
+      "sha256": "72bade4917ded6557c50c8ff2ce9b24213ddca6852f0efc5cfd6a2ac82982a1f"
+    },
+    {
+      "variant": "w960",
+      "type": "image/webp",
+      "width": 960,
+      "height": 720,
+      "bytes": 1288,
+      "sha256": "7fbc1376b6571c1150d9385dd4f28f00c97c135b6e0acaf65fd506bd50b2690c"
+    },
+    {
+      "variant": "w1280",
+      "type": "image/webp",
+      "width": 1280,
+      "height": 960,
+      "bytes": 2244,
+      "sha256": "baefcda57548498aef94e46cdd5481b17f3b3c0b76efded774481d456ed2eeba"
+    },
+    {
+      "variant": "w2560",
+      "type": "image/webp",
+      "width": 2560,
+      "height": 1920,
+      "bytes": 8798,
+      "sha256": "7a0007a193585baae4b9b8cda9e39c718086ca010374db3c9f579eae2429af45"
+    }
+  ],
+  "scope": "Real Native Local create + transaction + original/derivative storage; not Next HTTP, PostgreSQL-server RSS, or VPS capacity"
+}

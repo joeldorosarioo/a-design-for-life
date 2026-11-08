@@ -1,0 +1,6 @@
+$ node --conditions=react-server ./node_modules/payload/bin.js migrate:create private_media_manifests
+[06:34:30] [32mINFO[39m: [36mStarting migration: generating UP statements...[39m
+[06:34:30] [32mINFO[39m: [36mMigration UP complete. Generating DOWN statements...[39m
+[06:34:30] [32mINFO[39m: [36mMigration DOWN statements generation complete.[39m
+[06:34:30] [32mINFO[39m: [36mMigration created at E:\a-design-for-life\src\migrations/20261030_093430_private_media_manifests.ts[39m
+[06:34:30] [32mINFO[39m: [36mDone.[39m

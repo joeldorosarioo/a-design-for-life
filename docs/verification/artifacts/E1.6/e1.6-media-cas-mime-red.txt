@@ -1,0 +1,286 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[06:58:59] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (40ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (86ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[06:58:59] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[06:58:59] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (2ms)[39m
+[06:58:59] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/content/collections/native-upload.integration.test.ts (11 tests | 4 failed) 30598ms
+   × holds one full native job through real storage, bounds its queue, and recovers after error 30004ms
+   × does not run a second native encode for WebP 10ms
+   × keeps technical fields server-owned and prevents duplicate/crop/url-only bypasses 7ms
+   × does not persist partial media on storage failure or leak storage diagnostics and releases the native slot 10ms
+ ❯ |integration| src/features/media-library/server/resolve-media-access.integration.test.ts (4 tests | 1 failed) 1022ms
+   × checks every usage kind when the same PDF is submitted as both portrait and resume 267ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/features/media-library/server/resolve-media-access.integration.test.ts > checks every usage kind when the same PDF is submitted as both portrait and resume
+AssertionError: promise resolved "{ …(17) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "_status": "draft",
++   "about": {
++     "approach": null,
++     "approachHeading": null,
++     "architecturePhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "closing": null,
++     "closingHeading": null,
++     "description": null,
++     "deskPhotograph": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "editorialEmphasis": null,
++     "eyebrow": null,
++     "inMotion": null,
++     "inMotionHeading": null,
++     "introduction": null,
++     "introductionHeading": null,
++     "journey": null,
++     "journeyHeading": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "projectsLabel": null,
++     "title": null,
++   },
++   "approach": {
++     "description": null,
++     "eyebrow": null,
++     "methods": [],
++     "title": null,
++   },
++   "contacts": {
++     "email": null,
++     "linkedin": null,
++   },
++   "createdAt": "2026-10-30T09:59:37.591Z",
++   "editorialRevision": "49d61150-1f10-4c6f-8f73-ff2550324ffb",
++   "home": {
++     "description": null,
++     "eyebrow": null,
++     "portrait": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": {
++         "createdAt": "2026-10-30T09:59:37.585Z",
++         "deletedAt": null,
++         "filename": "55dc4c7d-471c-442a-8081-979a6fb34f37.pdf",
++         "filesize": 710,
++         "height": null,
++         "id": "5a010e47-2ff8-4eea-a9c3-f051cf746eb8",
++         "label": null,
++         "mimeType": "application/pdf",
++         "thumbnailURL": null,
++         "updatedAt": "2026-10-30T09:59:37.585Z",
++         "url": "/preview-media/5a010e47-2ff8-4eea-a9c3-f051cf746eb8/original",
++         "width": null,
++       },
++     },
++     "projectsLabel": null,
++     "title": null,
++     "titleEmphasis": null,
++   },
++   "homeAbout": {
++     "aboutLabel": null,
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++     "trajectory": [],
++   },
++   "homeProjects": {
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++   },
++   "id": "3829abb7-0220-49c5-8d8e-de15858bb834",
++   "identity": {
++     "name": null,
++     "role": null,
++   },
++   "leaseToken": "[redacted ephemeral synthetic lease]",
++   "listing": {
++     "description": null,
++     "eyebrow": null,
++     "title": null,
++   },
++   "locale": "en",
++   "resume": {
++     "createdAt": "2026-10-30T09:59:37.585Z",
++     "deletedAt": null,
++     "filename": "55dc4c7d-471c-442a-8081-979a6fb34f37.pdf",
++     "filesize": 710,
++     "height": null,
++     "id": "5a010e47-2ff8-4eea-a9c3-f051cf746eb8",
++     "label": null,
++     "mimeType": "application/pdf",
++     "thumbnailURL": null,
++     "updatedAt": "2026-10-30T09:59:37.585Z",
++     "url": "/preview-media/5a010e47-2ff8-4eea-a9c3-f051cf746eb8/original",
++     "width": null,
++   },
++   "seo": {
++     "aboutDescription": null,
++     "aboutTitle": null,
++     "homeDescription": null,
++     "homeTitle": null,
++     "image": {
++       "alt": null,
++       "caption": null,
++       "decorative": false,
++       "media": null,
++     },
++     "listingDescription": null,
++     "listingTitle": null,
++   },
++   "updatedAt": "2026-10-30T09:59:37.592Z",
+  }
+
+ ❯ src/features/media-library/server/resolve-media-access.integration.test.ts:152:216
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > holds one full native job through real storage, bounds its queue, and recovers after error
+Error: Test timed out in 30000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:103:1
+    101|
+    102| function barrier(){let resolve!:()=>void;const promise=new Promise<voi…
+    103| it('holds one full native job through real storage, bounds its queue, …
+       | ^
+    104|  const bytes=await sharp({create:{width:80,height:60,channels:3,backgr…
+    105|  const storage=mediaRuntime().storage;const original=storage.put.bind(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > does not run a second native encode for WebP
+APIError: O processamento está ocupado. Tente novamente.
+ ❯ guardMediaOperation src/features/media-library/content/hooks/native-intake.ts:144:13
+    142|   } catch (error) {
+    143|     if (error instanceof ProcessingBusy)
+    144|       throw new APIError(error.message, 503, { code: 'busy' }, true);
+       |             ^
+    145|     if (error instanceof APIError) throw error;
+    146|     console.error('Media upload unavailable', { correlationId: randomU…
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:26
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:12
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:120:6
+
+{ code: 'busy', name: 'Caused by', stacks: [] }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'busy' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > keeps technical fields server-owned and prevents duplicate/crop/url-only bypasses
+APIError: O processamento está ocupado. Tente novamente.
+ ❯ guardMediaOperation src/features/media-library/content/hooks/native-intake.ts:144:13
+    142|   } catch (error) {
+    143|     if (error instanceof ProcessingBusy)
+    144|       throw new APIError(error.message, 503, { code: 'busy' }, true);
+       |             ^
+    145|     if (error instanceof APIError) throw error;
+    146|     console.error('Media upload unavailable', { correlationId: randomU…
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:26
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:12
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:127:12
+
+{ code: 'busy', name: 'Caused by', stacks: [] }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'busy' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  |integration| src/features/media-library/content/collections/native-upload.integration.test.ts > does not persist partial media on storage failure or leak storage diagnostics and releases the native slot
+APIError: O processamento está ocupado. Tente novamente.
+ ❯ guardMediaOperation src/features/media-library/content/hooks/native-intake.ts:144:13
+    142|   } catch (error) {
+    143|     if (error instanceof ProcessingBusy)
+    144|       throw new APIError(error.message, 503, { code: 'busy' }, true);
+       |             ^
+    145|     if (error instanceof APIError) throw error;
+    146|     console.error('Media upload unavailable', { correlationId: randomU…
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:26
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:12
+ ❯ src/features/media-library/content/collections/native-upload.integration.test.ts:139:10
+
+{ code: 'busy', name: 'Caused by', stacks: [] }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'busy' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+APIError: O processamento está ocupado. Tente novamente.
+ ❯ guardMediaOperation src/features/media-library/content/hooks/native-intake.ts:144:13
+ ❯ process.processTicksAndRejections node:internal/process/task_queues:104:5
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/utilities/buildBeforeOperation.js:11:32
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/dist/collections/operations/create.js:75:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { data: { code: 'busy' }, isOperational: true, isPublic: true, status: 503 }
+This error originated in "src/features/media-library/content/collections/native-upload.integration.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "holds one full native job through real storage, bounds its queue, and recovers after error". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+{ code: 'busy', name: 'Caused by', stacks: [] }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'busy' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  5 failed | 13 passed (18)
+     Errors  1 error
+   Start at  06:58:54
+   Duration  43.14s (tests 85%, import 13%, setup 1%, transform 1%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
