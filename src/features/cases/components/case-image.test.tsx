@@ -74,3 +74,17 @@ it('keeps paired images and labels in editorial order with stable reading identi
     '00000000-0000-4000-8000-000000000003',
   );
 });
+
+it('advertises the painted width of a contained portrait without changing the reserved cover slot', () => {
+  render(
+    <CaseImage image={image} kind="cover" intrinsicSize={{ width: 1048, height: 1280 }} priority />,
+  );
+  const cover = screen.getByRole('img', { name: 'Localized first image' });
+  expect(cover).toHaveAttribute(
+    'sizes',
+    '(min-width: 1328px) 393px, (min-width: 1024px) calc((100vw - 48px) * 0.30703), calc((100vw - 48px) * 0.45965)',
+  );
+  expect(cover).toHaveAttribute('width', '1280');
+  expect(cover).toHaveAttribute('height', '480');
+  expect(cover).toHaveAttribute('fetchpriority', 'high');
+});

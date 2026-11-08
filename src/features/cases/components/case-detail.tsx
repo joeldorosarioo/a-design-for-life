@@ -80,6 +80,7 @@ export function CaseDetail({
           image={caseDetail.cover}
           kind="cover"
           coverPresentation={caseDetail.coverPresentation}
+          intrinsicSize={caseDetail.coverIntrinsicSize}
           mediaMode={mediaMode}
           priority
         />

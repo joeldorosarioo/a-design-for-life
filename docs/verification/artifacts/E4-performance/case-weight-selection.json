@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-11-07T01:49:35.371Z",
+  "kind": "staging-case-weight-selection-before-performance",
+  "browser": "156.0.8078.4",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "relay": "GET-only loopback; original compressed upstream bytes preserved",
+  "rows": [
+    {
+      "route": "/pt/cases/modelo-de-financiamento",
+      "profile": "mobile",
+      "textCharacters": 1259,
+      "imageCount": 7,
+      "encodedResourceBytes": 730133,
+      "decodedResourceBytes": 1260355,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "textCharacters": 1216,
+      "imageCount": 7,
+      "encodedResourceBytes": 827702,
+      "decodedResourceBytes": 1357899,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/en/cases/financing-model",
+      "profile": "mobile",
+      "textCharacters": 1272,
+      "imageCount": 7,
+      "encodedResourceBytes": 730928,
+      "decodedResourceBytes": 1264881,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "textCharacters": 1201,
+      "imageCount": 7,
+      "encodedResourceBytes": 828502,
+      "decodedResourceBytes": 1362425,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/pt/cases/modelo-de-financiamento",
+      "profile": "desktop",
+      "textCharacters": 1259,
+      "imageCount": 7,
+      "encodedResourceBytes": 780252,
+      "decodedResourceBytes": 1310469,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "textCharacters": 1216,
+      "imageCount": 7,
+      "encodedResourceBytes": 827702,
+      "decodedResourceBytes": 1357899,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/en/cases/financing-model",
+      "profile": "desktop",
+      "textCharacters": 1272,
+      "imageCount": 7,
+      "encodedResourceBytes": 781052,
+      "decodedResourceBytes": 1314995,
+      "encodedImageBytes": 482
+    },
+    {
+      "route": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "textCharacters": 1201,
+      "imageCount": 7,
+      "encodedResourceBytes": 828497,
+      "decodedResourceBytes": 1362425,
+      "encodedImageBytes": 482
+    }
+  ]
+}

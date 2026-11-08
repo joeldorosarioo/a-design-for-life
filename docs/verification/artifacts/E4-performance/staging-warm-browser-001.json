@@ -1,0 +1,47 @@
+{
+  "kind": "separate-warm-browser-cache-diagnostic",
+  "checkedAt": "2026-11-08T18:17:22.679Z",
+  "candidate": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+  "path": "/pt/cases/flexibilidade-de-pagamento",
+  "browser": "156.0.8078.4",
+  "profile": {
+    "id": "mobile",
+    "formFactor": "mobile",
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 3,
+    "rttMs": 150,
+    "downloadKbps": 1600,
+    "uploadKbps": 750,
+    "cpuSlowdownMultiplier": 4,
+    "budgets": {
+      "lcpMs": 2500,
+      "cls": 0.1,
+      "tbtMs": 200
+    }
+  },
+  "rows": [
+    {
+      "state": "cold-context",
+      "lcpMs": 2988,
+      "staticResources": 12,
+      "staticTransferBytes": 214931,
+      "staticCachedResponses": 0,
+      "coverRequestedWidth": "1080",
+      "coverTransferBytes": 144606,
+      "coverDecodedBytes": 144236
+    },
+    {
+      "state": "same-context-reload",
+      "lcpMs": 1828,
+      "staticResources": 12,
+      "staticTransferBytes": 0,
+      "staticCachedResponses": 12,
+      "coverRequestedWidth": "1080",
+      "coverTransferBytes": 144606,
+      "coverDecodedBytes": 144236
+    }
+  ],
+  "disposition": "Supplemental PerformanceObserver/resource-timing observations only; no samples included in the 36 Lighthouse medians. Same-context reload can revalidate static files; image remains under private no-store authorization.",
+  "externalRequests": 0
+}

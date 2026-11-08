@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "frozenAt": "2026-11-07T01:53:45.271185+00:00",
+  "environment": "staging",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sourceSha": "bf47f2829a4e133f7ba8a809c2fb749e84858609",
+  "imageDigest": "sha256:42574c553cb3b8cfaa4530b5cdb98fa85e63cf686890adc397e0b5c096127189",
+  "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+  "selection": "The payment-flexibility case has more encoded resource bytes in PT/EN and both viewports before the performance round. See case-weight-selection.json.",
+  "targets": [
+    {
+      "id": "home-pt",
+      "kind": "home",
+      "locale": "pt",
+      "path": "/pt"
+    },
+    {
+      "id": "home-en",
+      "kind": "home",
+      "locale": "en",
+      "path": "/en"
+    },
+    {
+      "id": "cases-pt",
+      "kind": "cases",
+      "locale": "pt",
+      "path": "/pt/cases"
+    },
+    {
+      "id": "cases-en",
+      "kind": "cases",
+      "locale": "en",
+      "path": "/en/cases"
+    },
+    {
+      "id": "case-pt",
+      "kind": "case",
+      "locale": "pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento"
+    },
+    {
+      "id": "case-en",
+      "kind": "case",
+      "locale": "en",
+      "path": "/en/cases/payment-flexibility"
+    }
+  ]
+}

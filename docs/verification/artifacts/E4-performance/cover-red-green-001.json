@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "kind": "contained-cover-responsive-width-red-green",
+  "scope": "Existing confirmed media manifest -> case detail -> SSR sizes; no new schema migration or republishing.",
+  "steps": [
+    {
+      "commandLog": ".work/stage4-2026-11-06/cover-dimensions-red-001.log",
+      "sha256": "03447c237c74440c89821c3d4e9dbebee1d72089bcb130f411e4f0e8b4631c2b",
+      "exitCode": 1,
+      "observation": "The current public case and cover were available, but the confirmed 1048x1280 dimensions were missing from the detail."
+    },
+    {
+      "commandLog": ".work/stage4-2026-11-06/cover-sizes-red-001.log",
+      "sha256": "d73125eb864260df37b88d5642dba4d04109f999db71bf5cf52b0991a2effcac",
+      "exitCode": 1,
+      "observation": "Next Image announced the full 342px mobile slot instead of the painted width of a contained portrait."
+    },
+    {
+      "commandLog": ".work/stage4-2026-11-06/cover-green-001.log",
+      "sha256": "735b5fd13592f8c9b7143fae321749cf29c97bf87f529aaa6b7e2a4b3f7fcef4",
+      "exitCode": 0,
+      "observation": "The selected case reads the cover dimensions from the same generation and Next Image emits the contained size while retaining dimensions and high priority."
+    }
+  ],
+  "deployValidation": "pending"
+}
