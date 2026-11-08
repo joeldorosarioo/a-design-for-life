@@ -69,6 +69,14 @@ it('provisiona sem conta humana somente os quatro drafts pelo contexto interno r
   ).rejects.toMatchObject({ status: 403 });
   await expect(
     fixture.payload.create({
+      collection: 'cases',
+      data: { internalTitle: 'Denied privileged bootstrap' },
+      req: await request(),
+      overrideAccess: true,
+    }),
+  ).rejects.toMatchObject({ status: 403 });
+  await expect(
+    fixture.payload.create({
       collection: 'users',
       data: { email: 'denied@example.invalid', password: 'Synthetic-denied-password-123!' },
       req: await request(),

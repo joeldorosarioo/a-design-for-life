@@ -1,8 +1,9 @@
+import { protectEditorialCollection } from '@/helpers/payload/editorial-revision';
 import 'server-only';
 import type { CollectionConfig } from 'payload';
 import { protectCaseDeletion } from '../hooks/protect-case-deletion';
 
-export const Cases: CollectionConfig = {
+export const Cases: CollectionConfig = protectEditorialCollection({
   slug: 'cases',
   labels: { singular: 'Case', plural: 'Cases' },
   admin: {
@@ -21,4 +22,4 @@ export const Cases: CollectionConfig = {
     { name: 'sortOrder', label: 'Ordem', type: 'number', defaultValue: 0 },
     { name: 'featured', label: 'Destaque na Home', type: 'checkbox', defaultValue: false },
   ],
-};
+});

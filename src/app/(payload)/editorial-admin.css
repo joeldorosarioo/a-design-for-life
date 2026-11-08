@@ -1,0 +1,9 @@
+/* Payload 3.92.1 legacy actions have no public replacement slots. Server hooks enforce both paths. */
+html:has([data-editorial-revision]) #action-delete,
+html:has([data-editorial-version-action]) .restore-version {
+  display: none;
+}
+html:has([data-editorial-revision]) #document-locked-take-over,
+html:has([data-editorial-revision]) #take-over {
+  display: none;
+}

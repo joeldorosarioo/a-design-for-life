@@ -1,3 +1,4 @@
+import { observedRequest } from '../../../../../testing/fixtures/editorial-lifecycle';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import {
@@ -53,7 +54,11 @@ describe('identidade estrutural: site-navigation', () => {
 
         id: docs.docs[0].id,
 
-        req: await fixture.request(),
+        req: await observedRequest(
+          'site-navigation',
+          String(docs.docs[0].id),
+          await fixture.request(),
+        ),
 
         overrideAccess: true,
       }),
@@ -109,7 +114,11 @@ describe('identidade estrutural: site-navigation', () => {
 
         draft: true,
 
-        req: await fixture.request(),
+        req: await observedRequest(
+          'site-navigation',
+          String(docs.docs[0].id),
+          await fixture.request(),
+        ),
 
         overrideAccess: true,
       }),
@@ -169,7 +178,11 @@ it('rejeita finalidade, URL livre ou currículo duplicado no header em vez de ig
         data: { header } as never,
         draft: true,
         overrideAccess: true,
-        req: await fixture.request(),
+        req: await observedRequest(
+          'site-navigation',
+          String(current.docs[0].id),
+          await fixture.request(),
+        ),
       }),
     ).rejects.toMatchObject({ status: 400 });
   }

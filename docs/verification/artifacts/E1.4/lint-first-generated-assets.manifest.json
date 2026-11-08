@@ -1,0 +1,10 @@
+{
+  "rawPath": ".work/E1.4/lint-first-generated-assets-raw.txt",
+  "rawBytes": 253353030,
+  "rawSHA256": "68ed62345bc489db9e139177bf5cf370b7547b09b2263eb0510b74cd527297e6",
+  "gzipPath": "docs/verification/artifacts/E1.4/lint-first-generated-assets.txt.gz",
+  "gzipBytes": 551562,
+  "gzipSHA256": "22fd8638ca4c7a2e67d6401c99f18569a0b48cd9bfd380ecab6152414bd90d6d",
+  "decompressedSHA256": "68ed62345bc489db9e139177bf5cf370b7547b09b2263eb0510b74cd527297e6",
+  "note": "Raw first lint output scanned generated playwright-report trace assets. Authored source checks are separately green in final-static-checks.txt; raw bytes are preserved losslessly."
+}

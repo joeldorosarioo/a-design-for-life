@@ -13,7 +13,7 @@ Autorização explícita recebida em 29/10/2026: plano aprovado; somente E1.1–
 - [x] E1.1 Base executável e ambiente de testes — concluída; evidências e riscos em E1.1.md.
 - [x] E1.2 Limites arquiteturais e configuração por ambiente — concluída localmente; proteção remota bloqueada por acesso, ver E1.2.md.
 - [x] E1.3 Modelos editoriais e provisionamento idempotente — concluída após revisão e gate independente.
-- [ ] E1.4 Rascunho, publicação, restauração e concorrência.
+- [x] E1.4 Rascunho, publicação, restauração e concorrência — revisão e CI atual aprovados.
 - [ ] E1.5 Slugs, reservas e resolução pública.
 - [ ] E1.6 Upload, processamento e privacidade.
 - [ ] E1.7 Contas, prévias e recuperação nativa.
@@ -91,3 +91,11 @@ Snapshot de código 27f0b98: gate independente pnpm verify exit0, 21 arquivos/11
 Playwright 2/2 foi executado no snapshot f1e6063 antes das três correções de servidor; não foi repetido após 27f0b98. O gate atual cobre a suíte completa e build; essa distinção é mantida, sem representar a execução anterior como atual. As jornadas editoriais serão ampliadas em E1.4 e o gate integrado será repetido para A1.
 
 Permanecem os riscos de dependências documentados em E1.1 e BLOCK-GITHUB-BRANCH-PROTECTION. A consulta sobre imagens animadas segue sem resposta e não impôs restrição aos modelos. Nenhuma tarefa posterior foi contabilizada como pronta.
+
+## E1.4 concluída — 50% da etapa 1
+
+Em 30/10/2026, E1.1–E1.4 concluídas: quatro de oito tarefas, 50%. E1.5 é a próxima tarefa. A1 permanece pendente e não autoriza etapa 2.
+
+Snapshot de código d43891e4a07f96ac23ec4b4bf013f014bb440142: revisão final e três re-reviews aprovadas, com regressões reais de imagens SEO, draft=true/publicação efetiva e blocos de texto vazios. O gate final independente executado pelo GitHub Actions em ubuntu-24.04 terminou success: pnpm verify com 28 arquivos/149 testes, tipagem, lint, formatação, arquitetura e build; pnpm test:e2e com seis jornadas reais. Run41011551929/job123918342074, logs completos e configuração em artifacts/E1.4/github-*. Os testes usam PostgreSQL17.11 real isolado e Node24.22.2/pnpm12.10.1. O marco passou pelo check protegido e develop remota avançou normalmente para o mesmo SHA, sem force ou implantação.
+
+BLOCK-GITHUB-BRANCH-PROTECTION está resolvido; E1.2-remote.md contém CI inicial, configuração administrativa relida e rejeição GH006 de commit sem check. Os avisos anteriores de ausência de remoto são históricos. Mantêm-se riscos de dependências E1.1 e limites PAYLOAD-LEGACY-ACTION-SELECTORS, LEASE-UNLOAD-BEST-EFFORT, MEDIA-METADATA-FIXTURE-ONLY e PUBLICATION-COORDINATION-E1.8. A consulta de mídia foi refinada por prova real: WebP animado funciona; APNG e AVIF animados têm limitações demonstradas. A política proposta ainda aguarda resposta; nenhuma restrição foi aplicada ao stub fechado.

@@ -1,0 +1,191 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/app
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:52:04] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:52:04] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (71ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (113ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (4ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (7ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (5ms)[39m
+[01:52:04] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[01:52:04] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[01:52:04] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 42ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.9s
+  Running TypeScript ...
+  Finished TypeScript in 4.7s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/2) ...
+✓ Generating static pages using 5 workers (2/2) in 391ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /admin/[[...segments]]
+└ ƒ /api/[...slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 157ms
+✓ Running next.config.ts took 42ms
+[01:52:16] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Running 6 tests using 1 worker
+
+(node:32132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (551ms)
+[01:52:19] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (26ms)
+[01:52:21] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+[01:52:25] [31mERROR[39m: [36mThis document changed. Refresh before saving your changes.[39m
+    err: {
+      "type": "i",
+      "message": "This document changed. Refresh before saving your changes.",
+      "stack":
+          APIError: This document changed. Refresh before saving your changes.
+              at r (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:48067)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async hooks.beforeChange (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:53511)
+              at async cv (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:185941)
+              at async cx (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:196273)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:280953)
+              at async includes.d.handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:249068)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 409,
+      "name": "APIError",
+      "code": "stale-revision"
+    }
+[01:52:25] [31mERROR[39m: [36mThis document is being edited by another person. Open it read-only or refresh after the lease is released.[39m
+    err: {
+      "type": "i",
+      "message": "This document is being edited by another person. Open it read-only or refresh after the lease is released.",
+      "stack":
+          APIError: This document is being edited by another person. Open it read-only or refresh after the lease is released.
+              at hooks.beforeOperation (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:52298)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async aa (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:233779)
+              at async cx (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:194589)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:280953)
+              at async includes.d.handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:249068)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 409,
+      "name": "APIError",
+      "code": "locked"
+    }
+  ok 3 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:29:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases (5.6s)
+[01:52:27] [31mERROR[39m: [36mPublicado: este documento estrutural não pode ser retirado de publicação.[39m
+    err: {
+      "type": "",
+      "message": "Publicado: este documento estrutural não pode ser retirado de publicação.",
+      "stack":
+          APIError: Publicado: este documento estrutural não pode ser retirado de publicação.
+              at E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:39123
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async cv (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:185941)
+              at async cx (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:196273)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:280953)
+              at async includes.d.handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:249068)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[01:52:28] [31mERROR[39m: [36mAn observed revision is required to restore a draft.[39m
+    err: {
+      "type": "",
+      "message": "An observed revision is required to restore a draft.",
+      "stack":
+          APIError: An observed revision is required to restore a draft.
+              at v (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:48979)
+              at handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:51745)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async q (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:114:1713)
+              at async r0.handleResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:1:134324)
+              at async Y (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:114:2704)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+  ok 4 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:171:1 › anonymous HTTP sees only each independently published locale/group and protected native restore stays draft (763ms)
+  ok 5 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:362:1 › native version comparison restores a draft; native Save Draft and Publish send the observed revision (1.7s)
+[01:52:31] [31mERROR[39m: [36mThis document changed. Refresh before saving your changes.[39m
+    err: {
+      "type": "i",
+      "message": "This document changed. Refresh before saving your changes.",
+      "stack":
+          APIError: This document changed. Refresh before saving your changes.
+              at r (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:48067)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async hooks.beforeChange (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:465:53511)
+              at async cv (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:185941)
+              at async cx (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:196273)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:280953)
+              at async includes.d.handler (E:\a-design-for-life\.next\server\chunks\ssr\_01phzz5wlv-4w._.js:169:249068)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1skooei4b0-sr._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 409,
+      "name": "APIError",
+      "code": "stale-revision"
+    }
+  ok 6 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:442:1 › an old native tab keeps its observed revision through focus and reacquisition and shows a save conflict (1.7s)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+  6 passed (33.2s)

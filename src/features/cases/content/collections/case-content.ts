@@ -1,3 +1,5 @@
+import { protectEditorialCollection } from '@/helpers/payload/editorial-revision';
+import { validateCasePublication } from '../hooks/validate-publication';
 import 'server-only';
 
 import { immutableFields } from '@/helpers/payload/immutable-fields';
@@ -15,12 +17,18 @@ import { stableReadingKeys } from '../hooks/stable-reading-keys';
 import { rejectSameOriginExternalLinks } from '../hooks/reject-same-origin-external-links';
 import { caseBlocks } from '../blocks/case-blocks';
 
-export const CaseContent: CollectionConfig = {
+export const CaseContent: CollectionConfig = protectEditorialCollection({
   slug: 'case-content',
 
   labels: { singular: 'Conteúdo de case', plural: 'Conteúdos de cases' },
 
-  admin: { useAsTitle: 'title', defaultColumns: ['title', 'case', 'locale', '_status'] },
+  admin: {
+    components: {
+      edit: { UnpublishButton: '/helpers/payload/editorial-actions#EditorialUnpublishAction' },
+    },
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'case', 'locale', '_status'],
+  },
 
   versions: { drafts: true },
 
@@ -29,6 +37,7 @@ export const CaseContent: CollectionConfig = {
   hooks: {
     beforeOperation: [validatedWrite(caseInputSchema)],
     beforeChange: [
+      validateCasePublication,
       rejectSameOriginExternalLinks,
       stableReadingKeys,
       requiredIdentity(caseIdentitySchema),
@@ -129,4 +138,4 @@ export const CaseContent: CollectionConfig = {
       ],
     },
   ],
-};
+});

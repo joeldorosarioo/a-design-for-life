@@ -1,0 +1,231 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test src/app
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:32:34] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:32:34] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (41ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (88ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (7ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (4ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (8ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (8ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[01:32:34] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[01:32:34] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[01:32:34] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.9s
+  Running TypeScript ...
+  Finished TypeScript in 4.9s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/2) ...
+✓ Generating static pages using 5 workers (2/2) in 377ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /admin/[[...segments]]
+└ ƒ /api/[...slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 155ms
+✓ Running next.config.ts took 44ms
+[01:32:45] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Running 5 tests using 1 worker
+
+(node:2728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:3:1 › o painel nativo é renderizado pelo build de produção local (570ms)
+[01:32:49] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+  ok 2 [chromium] › src\app\(payload)\admin\admin.e2e.test.ts:9:1 › cadastro inicial anônimo não cria conta pela API HTTP nativa (26ms)
+[01:32:51] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+[01:32:55] [31mERROR[39m: [36mThis document changed. Refresh before saving your changes.[39m
+    err: {
+      "type": "i",
+      "message": "This document changed. Refresh before saving your changes.",
+      "stack":
+          APIError: This document changed. Refresh before saving your changes.
+              at r (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:48802)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async hooks.beforeChange (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:53799)
+              at async cv (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:185389)
+              at async cx (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:195721)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:269866)
+              at async includes.d.handler (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:237981)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 409,
+      "name": "APIError",
+      "code": "stale-revision"
+    }
+[01:32:55] [32mINFO[39m: [36mYou are not allowed to perform this action.[39m
+[01:32:56] [31mERROR[39m: [36mDocument unavailable.[39m
+    err: {
+      "type": "",
+      "message": "Document unavailable.",
+      "stack":
+          APIError: Document unavailable.
+              at l (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:46126)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:48260
+              at async k (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:45708)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:51986)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+              at async q (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:114:1713)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 404,
+      "name": "APIError"
+    }
+  x  3 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:29:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases (10.1s)
+(node:32328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[01:33:04] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+[01:33:04] [31mERROR[39m: [36mPublicado: este documento estrutural não pode ser retirado de publicação.[39m
+    err: {
+      "type": "",
+      "message": "Publicado: este documento estrutural não pode ser retirado de publicação.",
+      "stack":
+          APIError: Publicado: este documento estrutural não pode ser retirado de publicação.
+              at E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:465:39924
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async cv (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:185389)
+              at async cx (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:195721)
+              at async handler (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:269866)
+              at async includes.d.handler (E:\a-design-for-life\.next\server\chunks\ssr\_1upehnmgm-hee._.js:169:237981)
+              at async en (E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:92:17253)
+              at async E:\a-design-for-life\.next\server\chunks\[root-of-the-server]__1zh3qhsur5fk1._.js:92:36909
+              at async r0.renderToResponse (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:14399)
+              at async r0.executeRequest (E:\a-design-for-life\node_modules\.pnpm\next@16.4.3_@babel+core@7.2_06227ae029a8786cc980da60eedcb155\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.prod.js:5:17556)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+  ok 4 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:125:1 › anonymous HTTP sees only each independently published locale/group and protected native restore stays draft (888ms)
+  x  5 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:291:1 › native version comparison restores a draft; native Save Draft and Publish send the observed revision (1.5m)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:29:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases 
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /\/admin\/collections\/cases$/
+    Received string:  "http://127.0.0.1:3101/admin/collections/cases?depth=1&limit=10"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        - locator resolved to <html dir="LTR" lang="en" data-theme="light">…</html>
+        - unexpected value "http://127.0.0.1:3101/admin/collections/cases/c1cda855-e6b5-4d74-8f96-4c6a142ddbef"
+        13 × locator resolved to <html dir="LTR" lang="en" data-theme="light">…</html>
+           - unexpected value "http://127.0.0.1:3101/admin/collections/cases?depth=1&limit=10"
+
+
+      109 |   await reader.getByRole('button', { name: 'Confirm', exact: true }).click();
+      110 |   expect((await deleted).status()).toBe(200);
+    > 111 |   await expect(reader).toHaveURL(/\/admin\/collections\/cases$/);
+          |                        ^
+      112 |   const released = owner.waitForResponse(
+      113 |     (response) =>
+      114 |       response.url().includes(`/${doc.id}/editorial-lease`) &&
+        at E:\a-design-for-life\src\app\(payload)\admin\editorial.e2e.test.ts:111:24
+
+    Error Context: test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\error-context.md
+
+    Error Context: test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\app-(payload)-admin-editor-077e7-ents-save-and-exit-releases-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:291:1 › native version comparison restores a draft; native Save Draft and Publish send the observed revision 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: page.waitForResponse: Test timeout of 90000ms exceeded.
+
+      353 |     (await (await request.get(`/api/site-navigation/${doc.id}?depth=0`)).json()).header.brandLabel,
+      354 |   ).toBe('Latest public navigation');
+    > 355 |   const published = page.waitForResponse(
+          |                          ^
+      356 |     (response) =>
+      357 |       response.url().includes(`/api/site-navigation/${doc.id}`) &&
+      358 |       response.request().method() === 'PATCH',
+        at E:\a-design-for-life\src\app\(payload)\admin\editorial.e2e.test.ts:355:26
+
+    Error: locator.click: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: /^Publish( Changes)?$/ })
+
+
+      358 |       response.request().method() === 'PATCH',
+      359 |   );
+    > 360 |   await page.getByRole('button', { name: /^Publish( Changes)?$/, exact: true }).click();
+          |                                                                                 ^
+      361 |   expect((await published).status()).toBe(200);
+      362 |   expect(
+      363 |     (await (await request.get(`/api/site-navigation/${doc.id}?depth=0`)).json()).header.brandLabel,
+        at E:\a-design-for-life\src\app\(payload)\admin\editorial.e2e.test.ts:360:81
+
+    Error Context: test-results\app-(payload)-admin-editor-e6f4e--send-the-observed-revision-chromium\error-context.md
+
+    Error Context: test-results\app-(payload)-admin-editor-e6f4e--send-the-observed-revision-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\app-(payload)-admin-editor-e6f4e--send-the-observed-revision-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\app-(payload)-admin-editor-e6f4e--send-the-observed-revision-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:29:1 › two real native editors: owner saves, other reads, distinct documents save and exit releases 
+    [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:291:1 › native version comparison restores a draft; native Save Draft and Publish send the observed revision 
+  3 passed (2.1m)
+[ELIFECYCLE] Command failed with exit code 1.

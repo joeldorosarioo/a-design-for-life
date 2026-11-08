@@ -1,3 +1,4 @@
+import { editorialError } from './helpers/payload/editorial-revision';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config as loadEnv } from 'dotenv';
@@ -11,7 +12,8 @@ import {
   UnorderedListFeature,
   FixedToolbarFeature,
 } from '@payloadcms/richtext-lexical';
-import { buildConfig } from 'payload';
+import { installPayloadProvider } from './helpers/payload/runtime';
+import { getPayload, buildConfig } from 'payload';
 import sharp from 'sharp';
 import { readServerEnv } from './config/server-env';
 import { Users } from './helpers/payload/users.collection';
@@ -29,9 +31,9 @@ loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 
-export default buildConfig({
+const config = buildConfig({
   secret: env.PAYLOAD_SECRET,
-  hooks: { afterError: [caseEditorialError] },
+  hooks: { afterError: [editorialError, caseEditorialError] },
   serverURL: env.SITE_ORIGIN,
   admin: {
     user: Users.slug,
@@ -64,3 +66,6 @@ export default buildConfig({
   telemetry: false,
   typescript: { outputFile: path.resolve(sourceDirectory, 'payload-types.ts') },
 });
+
+installPayloadProvider(() => getPayload({ config }));
+export default config;

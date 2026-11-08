@@ -1,0 +1,117 @@
+$ node --conditions=react-server ./node_modules/@playwright/test/cli.js test --grep 'an old native tab'
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[01:59:49] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[01:59:49] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (42ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (97ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (3ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (7ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[01:59:49] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[01:59:49] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[01:59:49] [32mINFO[39m: [36mDone.[39m
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.5s
+  Running TypeScript ...
+  Finished TypeScript in 4.2s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/2) ...
+✓ Generating static pages using 5 workers (2/2) in 390ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /admin/[[...segments]]
+└ ƒ /api/[...slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3101
+- Network:       http://127.0.0.1:3101
+✓ Ready in 156ms
+✓ Running next.config.ts took 43ms
+[02:00:00] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+Running 1 test using 1 worker
+
+(node:31692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[02:00:05] WARN: No email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.
+  x  1 [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:442:1 › an old native tab keeps its observed revision through focus and reacquisition and shows a save conflict (45.2s)
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 
+
+
+  1) [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:442:1 › an old native tab keeps its observed revision through focus and reacquisition and shows a save conflict 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for locator('[data-sonner-toast] [data-close-button]').first()
+        - locator resolved to <button data-disabled="false" aria-label="Close toast" data-close-button="true" class="payload-toast-close-button">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      498 |   );
+      499 |   const previousToasts = page.locator('[data-sonner-toast] [data-close-button]');
+    > 500 |   if (await previousToasts.count()) await previousToasts.first().click();
+          |                                                                     ^
+      501 |   await expect(page.getByText('Updated successfully.', { exact: true })).toHaveCount(0,{timeout:10_000});
+      502 |   await page.locator('#field-internalTitle').fill('Old native form must not overwrite');
+      503 |   const conflict = page.waitForResponse(
+        at E:\a-design-for-life\src\app\(payload)\admin\editorial.e2e.test.ts:500:69
+
+    Error Context: test-results\app-(payload)-admin-editor-b312c-n-and-shows-a-save-conflict-chromium\error-context.md
+
+    Error Context: test-results\app-(payload)-admin-editor-b312c-n-and-shows-a-save-conflict-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\app-(payload)-admin-editor-b312c-n-and-shows-a-save-conflict-chromium\trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results\app-(payload)-admin-editor-b312c-n-and-shows-a-save-conflict-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › src\app\(payload)\admin\editorial.e2e.test.ts:442:1 › an old native tab keeps its observed revision through focus and reacquisition and shows a save conflict 
+[ELIFECYCLE] Command failed with exit code 1.

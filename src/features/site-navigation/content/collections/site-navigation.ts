@@ -1,18 +1,68 @@
+import { getPublishedNavigation } from '../../server/get-published-navigation';
+import { localeSchema } from '@/helpers/i18n/locale.schema';
+import { isDraftOperation, protectEditorialCollection } from '@/helpers/payload/editorial-revision';
+import { validateNavigationPublication } from '../validate-publication';
 import 'server-only';
 import { APIError, type CollectionConfig } from 'payload';
 import { navigationInputSchema } from '../../contracts/navigation.schema';
 import { requiredIdentity, validatedWrite } from '@/helpers/payload/validate-input';
 import { structuralIdentitySchema } from '../../contracts/identity.schema';
 import { immutableFields } from '@/helpers/payload/immutable-fields';
-
-export const SiteNavigation: CollectionConfig = {
+export const SiteNavigation: CollectionConfig = protectEditorialCollection({
   slug: 'site-navigation',
   labels: { singular: 'Navegação', plural: 'Navegação' },
-  admin: { useAsTitle: 'locale', defaultColumns: ['locale', '_status'] },
+  admin: {
+    components: {
+      edit: { UnpublishButton: '/helpers/payload/editorial-actions#NoUnpublishAction' },
+    },
+    useAsTitle: 'locale',
+    defaultColumns: ['locale', '_status'],
+  },
+  custom: { editorialBootstrap: true },
   versions: { drafts: true },
+  endpoints: [
+    {
+      path: '/published/:locale',
+      method: 'get',
+      handler: async (req) => {
+        const parsed = localeSchema.safeParse(req.routeParams?.locale);
+        if (!parsed.success)
+          return Response.json(
+            {
+              ok: false,
+              error: { code: 'unavailable', message: 'Published content unavailable.' },
+            },
+            { status: 404 },
+          );
+        const result = await getPublishedNavigation(parsed.data);
+        return Response.json(result, { status: result.ok ? 200 : 404 });
+      },
+    },
+  ],
   hooks: {
     beforeOperation: [validatedWrite(navigationInputSchema)],
     beforeChange: [
+      async ({ data, originalDoc, req, collection }) => {
+        if (
+          data._status === 'draft' &&
+          !isDraftOperation(req) &&
+          !req.context.isRestoringVersion &&
+          originalDoc?.id
+        ) {
+          const current = await req.payload.db.findOne({
+            collection: collection.slug,
+            req,
+            where: { id: { equals: originalDoc.id } },
+          });
+          if ((current as { _status?: string } | null)?._status === 'published')
+            throw new APIError(
+              'Publicado: este documento estrutural não pode ser retirado de publicação.',
+              400,
+            );
+        }
+        return data;
+      },
+      validateNavigationPublication,
       requiredIdentity(structuralIdentitySchema),
       immutableFields({ locale: 'Idioma não pode ser alterado.' }),
     ],
@@ -103,4 +153,4 @@ export const SiteNavigation: CollectionConfig = {
       ],
     },
   ],
-};
+});
