@@ -1,0 +1,16 @@
+Error running script: E:\a-design-for-life\.work\e2-editorial-fields-upgrade-0fa4958-20261030\verify.ts
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '7310d071-0fb7-4d25-8e5e-7f08d8abfc16'
+- '379199c3-2b5c-44f7-a26a-c0c85e992ef1'
+
+    at <anonymous> (E:\a-design-for-life\.work\e2-editorial-fields-upgrade-0fa4958-20261030\verify.ts:30:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '7310d071-0fb7-4d25-8e5e-7f08d8abfc16',
+  expected: '379199c3-2b5c-44f7-a26a-c0c85e992ef1',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

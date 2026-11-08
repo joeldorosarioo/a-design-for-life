@@ -1,0 +1,1100 @@
+{
+  "baseline": "0fa495864cfefcf3489856d66444b81fdf1f730e",
+  "fingerprint": "bced0cc4e53dfe420b1311ea585824d9fdda6bbdd8c35184d7e71f2879ee6b21",
+  "editorId": "af8633b6-af02-41da-8d10-3c06f4590092",
+  "profiles": [
+    {
+      "document": {
+        "id": "a7ca3d59-f475-4136-808d-e88c35795c36",
+        "locale": "pt",
+        "identity": {
+          "name": "Legacy pt profile",
+          "role": "Legacy synthetic role"
+        },
+        "home": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "titleEmphasis": "Synthetic titleEmphasis",
+          "description": "Synthetic description",
+          "portrait": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:39.873Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic portrait",
+            "caption": null
+          },
+          "projectsLabel": "Synthetic projectsLabel"
+        },
+        "homeProjects": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description"
+        },
+        "listing": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description"
+        },
+        "homeAbout": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "trajectory": [
+            {
+              "id": "6ae4eca0d0bd8e560c143a73",
+              "readingKey": null,
+              "period": "Synthetic period",
+              "title": "Synthetic trajectory",
+              "description": "Synthetic description"
+            }
+          ],
+          "aboutLabel": "Synthetic aboutLabel"
+        },
+        "approach": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "methods": [
+            {
+              "id": "6ae4eca0d0bd8e560c143a74",
+              "readingKey": null,
+              "title": "Synthetic method",
+              "description": "Synthetic description"
+            }
+          ]
+        },
+        "about": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "introductionHeading": "Synthetic introductionHeading",
+          "introduction": "Synthetic introduction",
+          "portrait": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:39.873Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic portrait",
+            "caption": null
+          },
+          "journeyHeading": "Synthetic journeyHeading",
+          "journey": "Synthetic journey",
+          "deskPhotograph": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:39.873Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic deskPhotograph",
+            "caption": null
+          },
+          "editorialEmphasis": "Synthetic editorialEmphasis",
+          "approachHeading": "Synthetic approachHeading",
+          "approach": "Synthetic approach",
+          "architecturePhotograph": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:39.873Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic architecturePhotograph",
+            "caption": null
+          },
+          "inMotionHeading": "Synthetic inMotionHeading",
+          "inMotion": "Synthetic inMotion",
+          "closingHeading": "Synthetic closingHeading",
+          "closing": "Synthetic closing",
+          "projectsLabel": "Synthetic projectsLabel"
+        },
+        "contacts": {
+          "email": "synthetic@example.invalid",
+          "linkedin": "https://www.linkedin.com/in/synthetic"
+        },
+        "resume": {
+          "id": "6fa67ebb-2108-48d8-952a-cdad287670d5",
+          "label": null,
+          "updatedAt": "2026-10-30T19:14:40.201Z",
+          "createdAt": "2026-10-30T19:14:40.201Z",
+          "deletedAt": null,
+          "url": "/preview-media/6fa67ebb-2108-48d8-952a-cdad287670d5/original",
+          "thumbnailURL": null,
+          "filename": "987d1251-bfea-4976-9e9c-0fd9d60a0ac4.pdf",
+          "mimeType": "application/pdf",
+          "filesize": 710,
+          "width": null,
+          "height": null
+        },
+        "seo": {
+          "homeTitle": null,
+          "homeDescription": null,
+          "listingTitle": null,
+          "listingDescription": null,
+          "aboutTitle": null,
+          "aboutDescription": null,
+          "image": {
+            "media": null,
+            "decorative": false,
+            "alt": null,
+            "caption": null
+          }
+        },
+        "editorialRevision": "8ceb392f-577f-4d2f-804f-0037ad32df62",
+        "leaseToken": "a061b1bc-95c3-4eb1-ba75-e5dcbcafe5b6",
+        "updatedAt": "2026-10-30T19:14:40.227Z",
+        "createdAt": "2026-10-30T19:14:40.226Z",
+        "_status": "published"
+      },
+      "versions": [
+        {
+          "id": "be1d6937-2e14-4b3a-b019-d55593281b95",
+          "version": {
+            "locale": "pt",
+            "identity": {
+              "name": "PRIVATE newer profile draft",
+              "role": "Legacy synthetic role"
+            },
+            "home": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "titleEmphasis": "Synthetic titleEmphasis",
+              "description": "Synthetic description",
+              "portrait": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic portrait",
+                "caption": null
+              },
+              "projectsLabel": "Synthetic projectsLabel"
+            },
+            "homeProjects": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description"
+            },
+            "listing": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description"
+            },
+            "homeAbout": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "trajectory": [
+                {
+                  "id": "6ae4eca0d0bd8e560c143a73",
+                  "readingKey": null,
+                  "period": "Synthetic period",
+                  "title": "Synthetic trajectory",
+                  "description": "Synthetic description"
+                }
+              ],
+              "aboutLabel": "Synthetic aboutLabel"
+            },
+            "approach": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "methods": [
+                {
+                  "id": "6ae4eca0d0bd8e560c143a74",
+                  "readingKey": null,
+                  "title": "Synthetic method",
+                  "description": "Synthetic description"
+                }
+              ]
+            },
+            "about": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "introductionHeading": "Synthetic introductionHeading",
+              "introduction": "Synthetic introduction",
+              "portrait": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic portrait",
+                "caption": null
+              },
+              "journeyHeading": "Synthetic journeyHeading",
+              "journey": "Synthetic journey",
+              "deskPhotograph": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic deskPhotograph",
+                "caption": null
+              },
+              "editorialEmphasis": "Synthetic editorialEmphasis",
+              "approachHeading": "Synthetic approachHeading",
+              "approach": "Synthetic approach",
+              "architecturePhotograph": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic architecturePhotograph",
+                "caption": null
+              },
+              "inMotionHeading": "Synthetic inMotionHeading",
+              "inMotion": "Synthetic inMotion",
+              "closingHeading": "Synthetic closingHeading",
+              "closing": "Synthetic closing",
+              "projectsLabel": "Synthetic projectsLabel"
+            },
+            "contacts": {
+              "email": "synthetic@example.invalid",
+              "linkedin": "https://www.linkedin.com/in/synthetic"
+            },
+            "resume": "6fa67ebb-2108-48d8-952a-cdad287670d5",
+            "seo": {
+              "homeTitle": null,
+              "homeDescription": null,
+              "listingTitle": null,
+              "listingDescription": null,
+              "aboutTitle": null,
+              "aboutDescription": null,
+              "image": {
+                "media": null,
+                "decorative": false,
+                "alt": null,
+                "caption": null
+              }
+            },
+            "updatedAt": "2026-10-30T19:14:40.394Z",
+            "createdAt": "2026-10-30T19:14:40.226Z",
+            "_status": "draft"
+          }
+        },
+        {
+          "id": "d34c0815-93df-4370-bfc0-db53747fc805",
+          "version": {
+            "locale": "pt",
+            "identity": {
+              "name": "Legacy pt profile",
+              "role": "Legacy synthetic role"
+            },
+            "home": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "titleEmphasis": "Synthetic titleEmphasis",
+              "description": "Synthetic description",
+              "portrait": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic portrait",
+                "caption": null
+              },
+              "projectsLabel": "Synthetic projectsLabel"
+            },
+            "homeProjects": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description"
+            },
+            "listing": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description"
+            },
+            "homeAbout": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "trajectory": [
+                {
+                  "id": "6ae4eca0d0bd8e560c143a73",
+                  "readingKey": null,
+                  "period": "Synthetic period",
+                  "title": "Synthetic trajectory",
+                  "description": "Synthetic description"
+                }
+              ],
+              "aboutLabel": "Synthetic aboutLabel"
+            },
+            "approach": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "methods": [
+                {
+                  "id": "6ae4eca0d0bd8e560c143a74",
+                  "readingKey": null,
+                  "title": "Synthetic method",
+                  "description": "Synthetic description"
+                }
+              ]
+            },
+            "about": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "introductionHeading": "Synthetic introductionHeading",
+              "introduction": "Synthetic introduction",
+              "portrait": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic portrait",
+                "caption": null
+              },
+              "journeyHeading": "Synthetic journeyHeading",
+              "journey": "Synthetic journey",
+              "deskPhotograph": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic deskPhotograph",
+                "caption": null
+              },
+              "editorialEmphasis": "Synthetic editorialEmphasis",
+              "approachHeading": "Synthetic approachHeading",
+              "approach": "Synthetic approach",
+              "architecturePhotograph": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic architecturePhotograph",
+                "caption": null
+              },
+              "inMotionHeading": "Synthetic inMotionHeading",
+              "inMotion": "Synthetic inMotion",
+              "closingHeading": "Synthetic closingHeading",
+              "closing": "Synthetic closing",
+              "projectsLabel": "Synthetic projectsLabel"
+            },
+            "contacts": {
+              "email": "synthetic@example.invalid",
+              "linkedin": "https://www.linkedin.com/in/synthetic"
+            },
+            "resume": "6fa67ebb-2108-48d8-952a-cdad287670d5",
+            "seo": {
+              "homeTitle": null,
+              "homeDescription": null,
+              "listingTitle": null,
+              "listingDescription": null,
+              "aboutTitle": null,
+              "aboutDescription": null,
+              "image": {
+                "media": null,
+                "decorative": false,
+                "alt": null,
+                "caption": null
+              }
+            },
+            "updatedAt": "2026-10-30T19:14:40.227Z",
+            "createdAt": "2026-10-30T19:14:40.226Z",
+            "_status": "published"
+          }
+        }
+      ]
+    },
+    {
+      "document": {
+        "id": "e0b6ad78-e38c-4c0c-bb36-2c690cf913a3",
+        "locale": "en",
+        "identity": {
+          "name": "Legacy en profile",
+          "role": "Legacy synthetic role"
+        },
+        "home": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "titleEmphasis": "Synthetic titleEmphasis",
+          "description": "Synthetic description",
+          "portrait": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:40.428Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic portrait",
+            "caption": null
+          },
+          "projectsLabel": "Synthetic projectsLabel"
+        },
+        "homeProjects": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description"
+        },
+        "listing": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description"
+        },
+        "homeAbout": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "trajectory": [
+            {
+              "id": "6ae4eca0d0bd8e560c143a75",
+              "readingKey": null,
+              "period": "Synthetic period",
+              "title": "Synthetic trajectory",
+              "description": "Synthetic description"
+            }
+          ],
+          "aboutLabel": "Synthetic aboutLabel"
+        },
+        "approach": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "methods": [
+            {
+              "id": "6ae4eca0d0bd8e560c143a76",
+              "readingKey": null,
+              "title": "Synthetic method",
+              "description": "Synthetic description"
+            }
+          ]
+        },
+        "about": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "introductionHeading": "Synthetic introductionHeading",
+          "introduction": "Synthetic introduction",
+          "portrait": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:40.428Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic portrait",
+            "caption": null
+          },
+          "journeyHeading": "Synthetic journeyHeading",
+          "journey": "Synthetic journey",
+          "deskPhotograph": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:40.428Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic deskPhotograph",
+            "caption": null
+          },
+          "editorialEmphasis": "Synthetic editorialEmphasis",
+          "approachHeading": "Synthetic approachHeading",
+          "approach": "Synthetic approach",
+          "architecturePhotograph": {
+            "media": {
+              "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+              "label": null,
+              "updatedAt": "2026-10-30T19:14:40.428Z",
+              "createdAt": "2026-10-30T19:14:39.872Z",
+              "deletedAt": null,
+              "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+              "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+              "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+              "mimeType": "image/png",
+              "filesize": 102,
+              "width": 16,
+              "height": 16
+            },
+            "decorative": false,
+            "alt": "Synthetic architecturePhotograph",
+            "caption": null
+          },
+          "inMotionHeading": "Synthetic inMotionHeading",
+          "inMotion": "Synthetic inMotion",
+          "closingHeading": "Synthetic closingHeading",
+          "closing": "Synthetic closing",
+          "projectsLabel": "Synthetic projectsLabel"
+        },
+        "contacts": {
+          "email": "synthetic@example.invalid",
+          "linkedin": "https://www.linkedin.com/in/synthetic"
+        },
+        "resume": {
+          "id": "6fa67ebb-2108-48d8-952a-cdad287670d5",
+          "label": null,
+          "updatedAt": "2026-10-30T19:14:40.430Z",
+          "createdAt": "2026-10-30T19:14:40.201Z",
+          "deletedAt": null,
+          "url": "/preview-media/6fa67ebb-2108-48d8-952a-cdad287670d5/original",
+          "thumbnailURL": null,
+          "filename": "987d1251-bfea-4976-9e9c-0fd9d60a0ac4.pdf",
+          "mimeType": "application/pdf",
+          "filesize": 710,
+          "width": null,
+          "height": null
+        },
+        "seo": {
+          "homeTitle": null,
+          "homeDescription": null,
+          "listingTitle": null,
+          "listingDescription": null,
+          "aboutTitle": null,
+          "aboutDescription": null,
+          "image": {
+            "media": null,
+            "decorative": false,
+            "alt": null,
+            "caption": null
+          }
+        },
+        "editorialRevision": "a25ac11b-a648-4414-a700-5195b7b76e31",
+        "leaseToken": "f71b4d58-0e3d-4dad-a057-15c88a568142",
+        "updatedAt": "2026-10-30T19:14:40.495Z",
+        "createdAt": "2026-10-30T19:14:40.495Z",
+        "_status": "published"
+      },
+      "versions": [
+        {
+          "id": "b20a97e0-6bac-4cbd-a9b4-f37eaa550939",
+          "version": {
+            "locale": "en",
+            "identity": {
+              "name": "Legacy en profile",
+              "role": "Legacy synthetic role"
+            },
+            "home": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "titleEmphasis": "Synthetic titleEmphasis",
+              "description": "Synthetic description",
+              "portrait": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic portrait",
+                "caption": null
+              },
+              "projectsLabel": "Synthetic projectsLabel"
+            },
+            "homeProjects": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description"
+            },
+            "listing": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description"
+            },
+            "homeAbout": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "trajectory": [
+                {
+                  "id": "6ae4eca0d0bd8e560c143a75",
+                  "readingKey": null,
+                  "period": "Synthetic period",
+                  "title": "Synthetic trajectory",
+                  "description": "Synthetic description"
+                }
+              ],
+              "aboutLabel": "Synthetic aboutLabel"
+            },
+            "approach": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "methods": [
+                {
+                  "id": "6ae4eca0d0bd8e560c143a76",
+                  "readingKey": null,
+                  "title": "Synthetic method",
+                  "description": "Synthetic description"
+                }
+              ]
+            },
+            "about": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "introductionHeading": "Synthetic introductionHeading",
+              "introduction": "Synthetic introduction",
+              "portrait": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic portrait",
+                "caption": null
+              },
+              "journeyHeading": "Synthetic journeyHeading",
+              "journey": "Synthetic journey",
+              "deskPhotograph": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic deskPhotograph",
+                "caption": null
+              },
+              "editorialEmphasis": "Synthetic editorialEmphasis",
+              "approachHeading": "Synthetic approachHeading",
+              "approach": "Synthetic approach",
+              "architecturePhotograph": {
+                "media": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+                "decorative": false,
+                "alt": "Synthetic architecturePhotograph",
+                "caption": null
+              },
+              "inMotionHeading": "Synthetic inMotionHeading",
+              "inMotion": "Synthetic inMotion",
+              "closingHeading": "Synthetic closingHeading",
+              "closing": "Synthetic closing",
+              "projectsLabel": "Synthetic projectsLabel"
+            },
+            "contacts": {
+              "email": "synthetic@example.invalid",
+              "linkedin": "https://www.linkedin.com/in/synthetic"
+            },
+            "resume": "6fa67ebb-2108-48d8-952a-cdad287670d5",
+            "seo": {
+              "homeTitle": null,
+              "homeDescription": null,
+              "listingTitle": null,
+              "listingDescription": null,
+              "aboutTitle": null,
+              "aboutDescription": null,
+              "image": {
+                "media": null,
+                "decorative": false,
+                "alt": null,
+                "caption": null
+              }
+            },
+            "updatedAt": "2026-10-30T19:14:40.495Z",
+            "createdAt": "2026-10-30T19:14:40.495Z",
+            "_status": "published"
+          }
+        }
+      ]
+    }
+  ],
+  "navigations": [
+    {
+      "document": {
+        "id": "a413344f-8e47-488b-8213-735624b1f198",
+        "locale": "pt",
+        "header": {
+          "brandLabel": "Legacy pt brand",
+          "projectsLabel": "Legacy projects",
+          "aboutLabel": "Legacy about",
+          "resumeLabel": "Legacy resume",
+          "contactLabel": "Legacy contact"
+        },
+        "footer": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "emailLabel": "Synthetic emailLabel",
+          "linkedinLabel": "Synthetic linkedinLabel",
+          "resumeLabel": "Synthetic resumeLabel",
+          "copyright": "Synthetic copyright"
+        },
+        "controls": {
+          "homeLabel": "Synthetic homeLabel",
+          "casesLabel": "Synthetic casesLabel",
+          "contentsLabel": "Synthetic contentsLabel",
+          "previousSectionLabel": "Synthetic previousSectionLabel",
+          "nextSectionLabel": "Synthetic nextSectionLabel",
+          "openMenuLabel": "Synthetic openMenuLabel",
+          "closeMenuLabel": "Synthetic closeMenuLabel",
+          "languageLabel": "Synthetic languageLabel",
+          "newTabLabel": "Synthetic newTabLabel",
+          "roleLabel": "Synthetic roleLabel",
+          "scopeLabel": "Synthetic scopeLabel"
+        },
+        "messages": {
+          "translationUnavailable": "Synthetic translationUnavailable",
+          "emptyCasesTitle": "Synthetic emptyCasesTitle",
+          "emptyCasesDescription": "Synthetic emptyCasesDescription",
+          "caseUnavailableTitle": "Synthetic caseUnavailableTitle",
+          "caseUnavailableDescription": "Synthetic caseUnavailableDescription",
+          "temporaryFailureTitle": "Synthetic temporaryFailureTitle",
+          "temporaryFailureDescription": "Synthetic temporaryFailureDescription",
+          "retryLabel": "Synthetic retryLabel",
+          "notFoundTitle": "Synthetic notFoundTitle",
+          "notFoundDescription": "Synthetic notFoundDescription"
+        },
+        "editorialRevision": "333ecdea-f76d-4f72-aa4b-15f85e74e7d5",
+        "leaseToken": "7cdc9a67-c134-4c65-8ecc-2dc27443e489",
+        "updatedAt": "2026-10-30T19:14:40.320Z",
+        "createdAt": "2026-10-30T19:14:40.320Z",
+        "_status": "published"
+      },
+      "versions": [
+        {
+          "id": "523c6dd2-75fa-41be-9ae8-d4b4f6ceb26c",
+          "version": {
+            "locale": "pt",
+            "header": {
+              "brandLabel": "PRIVATE newer navigation draft",
+              "projectsLabel": "Legacy projects",
+              "aboutLabel": "Legacy about",
+              "resumeLabel": "Legacy resume",
+              "contactLabel": "Legacy contact"
+            },
+            "footer": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "emailLabel": "Synthetic emailLabel",
+              "linkedinLabel": "Synthetic linkedinLabel",
+              "resumeLabel": "Synthetic resumeLabel",
+              "copyright": "Synthetic copyright"
+            },
+            "controls": {
+              "homeLabel": "Synthetic homeLabel",
+              "casesLabel": "Synthetic casesLabel",
+              "contentsLabel": "Synthetic contentsLabel",
+              "previousSectionLabel": "Synthetic previousSectionLabel",
+              "nextSectionLabel": "Synthetic nextSectionLabel",
+              "openMenuLabel": "Synthetic openMenuLabel",
+              "closeMenuLabel": "Synthetic closeMenuLabel",
+              "languageLabel": "Synthetic languageLabel",
+              "newTabLabel": "Synthetic newTabLabel",
+              "roleLabel": "Synthetic roleLabel",
+              "scopeLabel": "Synthetic scopeLabel"
+            },
+            "messages": {
+              "translationUnavailable": "Synthetic translationUnavailable",
+              "emptyCasesTitle": "Synthetic emptyCasesTitle",
+              "emptyCasesDescription": "Synthetic emptyCasesDescription",
+              "caseUnavailableTitle": "Synthetic caseUnavailableTitle",
+              "caseUnavailableDescription": "Synthetic caseUnavailableDescription",
+              "temporaryFailureTitle": "Synthetic temporaryFailureTitle",
+              "temporaryFailureDescription": "Synthetic temporaryFailureDescription",
+              "retryLabel": "Synthetic retryLabel",
+              "notFoundTitle": "Synthetic notFoundTitle",
+              "notFoundDescription": "Synthetic notFoundDescription"
+            },
+            "updatedAt": "2026-10-30T19:14:40.466Z",
+            "createdAt": "2026-10-30T19:14:40.320Z",
+            "_status": "draft"
+          }
+        },
+        {
+          "id": "17f7efb4-a06f-4fd3-aebc-19140b0aec27",
+          "version": {
+            "locale": "pt",
+            "header": {
+              "brandLabel": "Legacy pt brand",
+              "projectsLabel": "Legacy projects",
+              "aboutLabel": "Legacy about",
+              "resumeLabel": "Legacy resume",
+              "contactLabel": "Legacy contact"
+            },
+            "footer": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "emailLabel": "Synthetic emailLabel",
+              "linkedinLabel": "Synthetic linkedinLabel",
+              "resumeLabel": "Synthetic resumeLabel",
+              "copyright": "Synthetic copyright"
+            },
+            "controls": {
+              "homeLabel": "Synthetic homeLabel",
+              "casesLabel": "Synthetic casesLabel",
+              "contentsLabel": "Synthetic contentsLabel",
+              "previousSectionLabel": "Synthetic previousSectionLabel",
+              "nextSectionLabel": "Synthetic nextSectionLabel",
+              "openMenuLabel": "Synthetic openMenuLabel",
+              "closeMenuLabel": "Synthetic closeMenuLabel",
+              "languageLabel": "Synthetic languageLabel",
+              "newTabLabel": "Synthetic newTabLabel",
+              "roleLabel": "Synthetic roleLabel",
+              "scopeLabel": "Synthetic scopeLabel"
+            },
+            "messages": {
+              "translationUnavailable": "Synthetic translationUnavailable",
+              "emptyCasesTitle": "Synthetic emptyCasesTitle",
+              "emptyCasesDescription": "Synthetic emptyCasesDescription",
+              "caseUnavailableTitle": "Synthetic caseUnavailableTitle",
+              "caseUnavailableDescription": "Synthetic caseUnavailableDescription",
+              "temporaryFailureTitle": "Synthetic temporaryFailureTitle",
+              "temporaryFailureDescription": "Synthetic temporaryFailureDescription",
+              "retryLabel": "Synthetic retryLabel",
+              "notFoundTitle": "Synthetic notFoundTitle",
+              "notFoundDescription": "Synthetic notFoundDescription"
+            },
+            "updatedAt": "2026-10-30T19:14:40.320Z",
+            "createdAt": "2026-10-30T19:14:40.320Z",
+            "_status": "published"
+          }
+        }
+      ]
+    },
+    {
+      "document": {
+        "id": "e16c75de-fd71-4ed5-85ef-4327ecb09a3f",
+        "locale": "en",
+        "header": {
+          "brandLabel": "Legacy en brand",
+          "projectsLabel": "Legacy projects",
+          "aboutLabel": "Legacy about",
+          "resumeLabel": "Legacy resume",
+          "contactLabel": "Legacy contact"
+        },
+        "footer": {
+          "eyebrow": "Synthetic eyebrow",
+          "title": "Synthetic title",
+          "description": "Synthetic description",
+          "emailLabel": "Synthetic emailLabel",
+          "linkedinLabel": "Synthetic linkedinLabel",
+          "resumeLabel": "Synthetic resumeLabel",
+          "copyright": "Synthetic copyright"
+        },
+        "controls": {
+          "homeLabel": "Synthetic homeLabel",
+          "casesLabel": "Synthetic casesLabel",
+          "contentsLabel": "Synthetic contentsLabel",
+          "previousSectionLabel": "Synthetic previousSectionLabel",
+          "nextSectionLabel": "Synthetic nextSectionLabel",
+          "openMenuLabel": "Synthetic openMenuLabel",
+          "closeMenuLabel": "Synthetic closeMenuLabel",
+          "languageLabel": "Synthetic languageLabel",
+          "newTabLabel": "Synthetic newTabLabel",
+          "roleLabel": "Synthetic roleLabel",
+          "scopeLabel": "Synthetic scopeLabel"
+        },
+        "messages": {
+          "translationUnavailable": "Synthetic translationUnavailable",
+          "emptyCasesTitle": "Synthetic emptyCasesTitle",
+          "emptyCasesDescription": "Synthetic emptyCasesDescription",
+          "caseUnavailableTitle": "Synthetic caseUnavailableTitle",
+          "caseUnavailableDescription": "Synthetic caseUnavailableDescription",
+          "temporaryFailureTitle": "Synthetic temporaryFailureTitle",
+          "temporaryFailureDescription": "Synthetic temporaryFailureDescription",
+          "retryLabel": "Synthetic retryLabel",
+          "notFoundTitle": "Synthetic notFoundTitle",
+          "notFoundDescription": "Synthetic notFoundDescription"
+        },
+        "editorialRevision": "ac3418c2-6ebc-46e7-b4c8-8c36f9ccffc4",
+        "leaseToken": "6290cafb-fe8a-4859-ab6b-5e704dbc3bd8",
+        "updatedAt": "2026-10-30T19:14:40.545Z",
+        "createdAt": "2026-10-30T19:14:40.545Z",
+        "_status": "published"
+      },
+      "versions": [
+        {
+          "id": "c9be25d7-ec1c-493a-a1e4-a3cfd9655485",
+          "version": {
+            "locale": "en",
+            "header": {
+              "brandLabel": "Legacy en brand",
+              "projectsLabel": "Legacy projects",
+              "aboutLabel": "Legacy about",
+              "resumeLabel": "Legacy resume",
+              "contactLabel": "Legacy contact"
+            },
+            "footer": {
+              "eyebrow": "Synthetic eyebrow",
+              "title": "Synthetic title",
+              "description": "Synthetic description",
+              "emailLabel": "Synthetic emailLabel",
+              "linkedinLabel": "Synthetic linkedinLabel",
+              "resumeLabel": "Synthetic resumeLabel",
+              "copyright": "Synthetic copyright"
+            },
+            "controls": {
+              "homeLabel": "Synthetic homeLabel",
+              "casesLabel": "Synthetic casesLabel",
+              "contentsLabel": "Synthetic contentsLabel",
+              "previousSectionLabel": "Synthetic previousSectionLabel",
+              "nextSectionLabel": "Synthetic nextSectionLabel",
+              "openMenuLabel": "Synthetic openMenuLabel",
+              "closeMenuLabel": "Synthetic closeMenuLabel",
+              "languageLabel": "Synthetic languageLabel",
+              "newTabLabel": "Synthetic newTabLabel",
+              "roleLabel": "Synthetic roleLabel",
+              "scopeLabel": "Synthetic scopeLabel"
+            },
+            "messages": {
+              "translationUnavailable": "Synthetic translationUnavailable",
+              "emptyCasesTitle": "Synthetic emptyCasesTitle",
+              "emptyCasesDescription": "Synthetic emptyCasesDescription",
+              "caseUnavailableTitle": "Synthetic caseUnavailableTitle",
+              "caseUnavailableDescription": "Synthetic caseUnavailableDescription",
+              "temporaryFailureTitle": "Synthetic temporaryFailureTitle",
+              "temporaryFailureDescription": "Synthetic temporaryFailureDescription",
+              "retryLabel": "Synthetic retryLabel",
+              "notFoundTitle": "Synthetic notFoundTitle",
+              "notFoundDescription": "Synthetic notFoundDescription"
+            },
+            "updatedAt": "2026-10-30T19:14:40.545Z",
+            "createdAt": "2026-10-30T19:14:40.545Z",
+            "_status": "published"
+          }
+        }
+      ]
+    }
+  ],
+  "case": {
+    "document": {
+      "id": "9944e581-bd3f-4f5f-9a40-28aaf57ed316",
+      "case": {
+        "id": "c7530be8-1f50-4354-8b41-f691bc87d7fe",
+        "internalTitle": "Legacy editorial fields case",
+        "sortOrder": 0,
+        "featured": true,
+        "editorialRevision": "278ca6e3-990f-4106-97f7-d8bd236cb581",
+        "leaseToken": "16db7dbb-f6fa-4432-8939-fb6d67a2fa15",
+        "updatedAt": "2026-10-30T19:14:40.567Z",
+        "createdAt": "2026-10-30T19:14:40.567Z"
+      },
+      "locale": "pt",
+      "eyebrow": "Legacy existing case eyebrow",
+      "title": "Synthetic title",
+      "summary": "Synthetic summary",
+      "introduction": null,
+      "slug": "synthetic-3d4b4ded-8cac-4d1d-92cd-92cfd50454d5",
+      "cover": {
+        "media": {
+          "id": "525c9326-32c7-44c2-a09a-d1dc4012d654",
+          "label": null,
+          "updatedAt": "2026-10-30T19:14:40.530Z",
+          "createdAt": "2026-10-30T19:14:39.872Z",
+          "deletedAt": null,
+          "url": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/original",
+          "thumbnailURL": "/preview-media/525c9326-32c7-44c2-a09a-d1dc4012d654/w16",
+          "filename": "971b79c2-d879-4c5d-9921-04e3a76ad5d2.png",
+          "mimeType": "image/png",
+          "filesize": 102,
+          "width": 16,
+          "height": 16
+        },
+        "decorative": false,
+        "alt": "Synthetic cover",
+        "caption": null
+      },
+      "role": "Synthetic role",
+      "scope": null,
+      "contextNote": null,
+      "sections": [
+        {
+          "id": "6ae4eca0d0bd8e560c143a78",
+          "readingKey": "b5b7618e-6bd5-4061-919e-94fcff3e1e60",
+          "heading": "Synthetic section",
+          "blocks": [
+            {
+              "id": "6ae4eca0d0bd8e560c143a77",
+              "readingKey": "8914fb62-23ab-48ac-8fac-ffb83f74d8ad",
+              "content": {
+                "root": {
+                  "type": "root",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "format": "",
+                      "indent": 0,
+                      "version": 1,
+                      "children": [
+                        {
+                          "mode": "normal",
+                          "text": "Synthetic narrative",
+                          "type": "text",
+                          "style": "",
+                          "detail": 0,
+                          "format": 0,
+                          "version": 1
+                        }
+                      ],
+                      "direction": null
+                    }
+                  ],
+                  "direction": null
+                }
+              },
+              "blockName": null,
+              "blockType": "text"
+            }
+          ]
+        }
+      ],
+      "seo": {
+        "title": null,
+        "description": null,
+        "image": {
+          "media": null,
+          "decorative": false,
+          "alt": null,
+          "caption": null
+        }
+      },
+      "editorialRevision": "44644f64-4e23-4016-b10f-8c7d5d426628",
+      "leaseToken": "fe7ca6f6-361a-457f-88e2-df7f45d3c14e",
+      "updatedAt": "2026-10-30T19:14:40.587Z",
+      "createdAt": "2026-10-30T19:14:40.587Z",
+      "_status": "published"
+    },
+    "versionIds": [
+      "82d74528-f9ee-4ea9-8fb4-8a7d09a5c9d9"
+    ]
+  }
+}

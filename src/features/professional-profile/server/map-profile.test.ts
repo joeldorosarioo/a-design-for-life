@@ -103,6 +103,7 @@ it('preserves published Home and About groups, row order and public image uses',
           readingKey: firstKey,
           title: 'Synthetic method',
           description: 'Method body',
+          keywords: 'Research · flows · testing',
         },
       ],
     },
@@ -114,13 +115,16 @@ it('preserves published Home and About groups, row order and public image uses',
       introduction: 'Introduction body',
       portrait: image,
       journeyHeading: 'Journey',
+      journeyEyebrow: 'Synthetic journey eyebrow',
       journey: 'Journey body',
       deskPhotograph: image,
       editorialEmphasis: 'Editorial pause',
       approachHeading: 'Approach',
+      approachEyebrow: 'Synthetic approach eyebrow',
       approach: 'Approach body',
       architecturePhotograph: image,
       inMotionHeading: 'In motion',
+      inMotionEyebrow: 'Synthetic motion eyebrow',
       inMotion: 'In motion body',
       closingHeading: 'Closing',
       closing: 'Closing body',
@@ -159,10 +163,20 @@ it('preserves published Home and About groups, row order and public image uses',
       ],
     },
     approach: {
-      methods: [{ readingKey: firstKey, title: 'Synthetic method', description: 'Method body' }],
+      methods: [
+        {
+          readingKey: firstKey,
+          title: 'Synthetic method',
+          description: 'Method body',
+          keywords: 'Research · flows · testing',
+        },
+      ],
     },
     about: {
       title: 'Synthetic About',
+      journeyEyebrow: 'Synthetic journey eyebrow',
+      approachEyebrow: 'Synthetic approach eyebrow',
+      inMotionEyebrow: 'Synthetic motion eyebrow',
       portrait: publicImage,
       deskPhotograph: publicImage,
       architecturePhotograph: publicImage,
@@ -183,6 +197,13 @@ it('preserves published Home and About groups, row order and public image uses',
     expect(JSON.stringify(dto)).not.toContain(forbidden);
 });
 
+it('maps absent legacy method keywords to null', () => {
+  expect(
+    mapProfile({ ...document, approach: { methods: [{ title: 'Legacy', description: 'Body' }] } })
+      ?.approach.methods,
+  ).toEqual([{ readingKey: null, title: 'Legacy', description: 'Body', keywords: null }]);
+});
+
 it('represents missing presentation values explicitly without inventing professional content', () => {
   const dto = mapProfile(document);
   expect(dto).toMatchObject({
@@ -192,6 +213,9 @@ it('represents missing presentation values explicitly without inventing professi
     approach: { eyebrow: null, title: null, description: null, methods: [] },
     about: {
       title: null,
+      journeyEyebrow: null,
+      approachEyebrow: null,
+      inMotionEyebrow: null,
       introduction: null,
       portrait: null,
       deskPhotograph: null,

@@ -9,7 +9,7 @@ const importBoundaries = {
     type: 'problem',
     schema: [],
     messages: {
-      privateFeature: 'Importe outra feature somente por index.ts ou server.ts.',
+      privateFeature: 'Importe outra feature somente por index.ts, ui.ts ou server.ts.',
       genericFeature: 'Helpers e componentes genéricos não dependem de features.',
     },
   },
@@ -30,7 +30,12 @@ const importBoundaries = {
         return;
       }
       if (!sourceFeature || targetFeature[1] === sourceFeature) return;
-      if (['', 'index', 'index.ts', 'server', 'server.ts'].includes(targetFeature[2] ?? '')) return;
+      if (
+        ['', 'index', 'index.ts', 'ui', 'ui.ts', 'server', 'server.ts'].includes(
+          targetFeature[2] ?? '',
+        )
+      )
+        return;
       context.report({ node, messageId: 'privateFeature' });
     }
     return {

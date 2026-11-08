@@ -23,6 +23,9 @@ export const validateProfilePublication = publicationGuard((data) => {
       if (
         [
           'titleEmphasis',
+          'journeyEyebrow',
+          'approachEyebrow',
+          'inMotionEyebrow',
           'portrait',
           'deskPhotograph',
           'architecturePhotograph',

@@ -4,7 +4,7 @@ module.exports = {
       name: 'portfolio-public-entry-only',
       severity: 'error',
       from: { path: '^src/app/\\(portfolio\\)/' },
-      to: { path: '^src/features/[^/]+/(?!index\\.ts$|server\\.ts$)' },
+      to: { path: '^src/features/[^/]+/(?!index\\.ts$|server\\.ts$|ui\\.ts$)' },
     },
     {
       name: 'generic-does-not-reach-features',
@@ -18,7 +18,7 @@ module.exports = {
       severity: 'error',
       from: { path: '^src/features/([^/]+)/' },
       to: {
-        path: '^src/features/[^/]+/(?!index\\.ts$|server\\.ts$)',
+        path: '^src/features/[^/]+/(?!index\\.ts$|server\\.ts$|ui\\.ts$)',
         pathNot: '^src/features/$1/',
       },
     },

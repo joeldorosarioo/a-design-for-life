@@ -52,13 +52,16 @@ export const caseDetailDTOSchema = z.object({
   contents: z.array(z.object({ readingKey, label: text, anchor: z.string() })),
   seo: z.object({ title: text, description: text, image: imageUseDTOSchema.nullable() }),
 });
-export const caseCardDTOSchema = caseDetailDTOSchema.pick({
-  caseId: true,
-  locale: true,
-  title: true,
-  summary: true,
-  path: true,
-  cover: true,
-});
+export const caseCardDTOSchema = caseDetailDTOSchema
+  .pick({
+    caseId: true,
+    locale: true,
+    eyebrow: true,
+    title: true,
+    summary: true,
+    path: true,
+    cover: true,
+  })
+  .extend({ eyebrow: text.default(null) });
 export type CaseDetailDTO = z.infer<typeof caseDetailDTOSchema>;
 export type CaseCardDTO = z.infer<typeof caseCardDTOSchema>;

@@ -79,3 +79,21 @@ it('mantém About em inglês e Sobre em português conforme rotas aprovadas', ()
     items: [{}, { destination: { href: '/pt/sobre' } }, {}, {}],
   });
 });
+
+it('preserves the editable case card action label in the public projection', () => {
+  expect(
+    mapNavigation(
+      { ...navigation, controls: { caseLinkLabel: 'Explore synthetic case' } },
+      profile,
+    ),
+  ).toMatchObject({ controls: { caseLinkLabel: 'Explore synthetic case' } });
+});
+
+it.each([undefined, null, {}])(
+  'keeps confirmed legacy navigation readable with absent case action label (%s)',
+  (controls) => {
+    expect(
+      mapNavigation({ ...navigation, controls: controls ?? undefined }, profile),
+    ).toMatchObject({ locale: 'pt' });
+  },
+);

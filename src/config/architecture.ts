@@ -86,7 +86,8 @@ export function analyzeArchitecture(rootDirectory: string): ArchitectureViolatio
       if (!ts.isExpressionStatement(statement) || !ts.isStringLiteral(statement.expression)) break;
       if (statement.expression.text === 'use client') client = true;
     }
-    const sharedEntry = /^src\/features\/[^/]+\/index\.ts$/.test(entry.source);
+    const contractEntry = /^src\/features\/[^/]+\/index\.ts$/.test(entry.source);
+    const sharedEntry = /^src\/features\/[^/]+\/(?:index|ui)\.ts$/.test(entry.source);
     if (!client && !sharedEntry) continue;
     const rule = sharedEntry ? 'shared-entry-cannot-reach-server' : 'client-cannot-reach-server';
     const seen = new Set<string>();
@@ -95,6 +96,17 @@ export function analyzeArchitecture(rootDirectory: string): ArchitectureViolatio
       const current = pending.pop()!;
       if (seen.has(current)) continue;
       seen.add(current);
+      if (
+        contractEntry &&
+        (/^src\/features\/[^/]+\/(?:components|stylesheets)\//.test(current) ||
+          /\.(?:css|scss|sass|less)$/.test(current))
+      ) {
+        violations.push({
+          rule: 'contract-entry-cannot-reach-presentation',
+          from: entry.source,
+          to: current,
+        });
+      }
       if (serverModules.has(current)) {
         violations.push({ rule, from: entry.source, to: current });
       }

@@ -1,0 +1,138 @@
+{
+  "stage": "2:16.7% (1/6), E2.2/E2.3 in progress",
+  "node": "24.22.2",
+  "finalUnit": "79/79 in 11 files exit0",
+  "finalNative": "25/25 in 7 files exit0",
+  "files": [
+    {
+      "path": "src/features/professional-profile/contracts/profile.schema.ts",
+      "sha256": "8D038460C9D17471BE0910A8C4378FE0B982B5A8D077207D7DA627A9E8AE7F94",
+      "bytes": 2667
+    },
+    {
+      "path": "src/features/professional-profile/contracts/profile.schema.test.ts",
+      "sha256": "4F52F35DFC85F178806299187BA30693234C1CC83A422AF434F4630BF6CE9797",
+      "bytes": 1140
+    },
+    {
+      "path": "src/features/professional-profile/contracts/profile-dto.schema.ts",
+      "sha256": "1C6E48C25463D0E2D0C94EBCEBB8F7F828B34C968D47995A0E2DE2119190EDFE",
+      "bytes": 2720
+    },
+    {
+      "path": "src/features/professional-profile/contracts/profile-dto.schema.test.ts",
+      "sha256": "4205C221651032DCE7FF1581418400CC7CE24217C44622749BD6C8CA929473DD",
+      "bytes": 3193
+    },
+    {
+      "path": "src/features/professional-profile/server/map-profile.ts",
+      "sha256": "87B1B701B3E404D4461FFD1817619B15419DB5F5C0A6248C1415AE70E53EDC75",
+      "bytes": 4127
+    },
+    {
+      "path": "src/features/professional-profile/server/map-profile.test.ts",
+      "sha256": "1F49D1745EBFE81134F932DFFEB7AD55251426F44127519D8DA22B11667E7F45",
+      "bytes": 6815
+    },
+    {
+      "path": "src/features/professional-profile/server/get-published-profile.integration.test.ts",
+      "sha256": "78A88A2869C341D3BCB1EE5B65BC492BCE9F4EF1A89BCFA8D4578BF218F77FBC",
+      "bytes": 4720
+    },
+    {
+      "path": "src/features/professional-profile/content/collections/professional-profiles.ts",
+      "sha256": "72556B7756E185556D3346D875C083FEB17221885EF2A75A026E859E76C52326",
+      "bytes": 9680
+    },
+    {
+      "path": "src/features/professional-profile/content/collections/professional-profiles.integration.test.ts",
+      "sha256": "CF49FB305FFC3E06AF48B5301C404B67C6171011B8E6DF5A97E49AB217FB5FBC",
+      "bytes": 10369
+    },
+    {
+      "path": "src/features/professional-profile/content/validate-publication.ts",
+      "sha256": "D966295FB138622B65FA043ACCC32B2D30E7025F1EFF7800F90ACBFF2E45F71F",
+      "bytes": 2353
+    },
+    {
+      "path": "src/features/site-navigation/contracts/navigation.schema.ts",
+      "sha256": "343CC824B0F87B4204B538007A3B90E7053ACC3F906F0EBA46302F7A437EFBFA",
+      "bytes": 1537
+    },
+    {
+      "path": "src/features/site-navigation/contracts/navigation.schema.test.ts",
+      "sha256": "BA97020DA4B11374548344D225C097DEE4022CA025413163EA3E9B88A58F38AF",
+      "bytes": 639
+    },
+    {
+      "path": "src/features/site-navigation/server/map-navigation.test.ts",
+      "sha256": "5DC0D90273DECE7D5AF4F76946D8795687404D95FA6622635CFFF51B0A8EFD98",
+      "bytes": 3412
+    },
+    {
+      "path": "src/features/site-navigation/content/collections/site-navigation.ts",
+      "sha256": "45F9C1BD6C61BED2472B4A45A9CA96320CC9786E3280A2780B6BA1CC290C2627",
+      "bytes": 6070
+    },
+    {
+      "path": "src/features/site-navigation/content/collections/site-navigation.integration.test.ts",
+      "sha256": "569E106EF625884D45A00193768DD6C39E514763D6B206DA4926B827E1E8158E",
+      "bytes": 7024
+    },
+    {
+      "path": "src/features/cases/contracts/case-dto.schema.ts",
+      "sha256": "52C108D6CCAEB373D6F5699A815982899C5695769887B49E8F497EDA902129C4",
+      "bytes": 1972
+    },
+    {
+      "path": "src/features/cases/server/map-case-detail.test.ts",
+      "sha256": "8676D32C3ACA12904F0EFBAFCDA3B7314A728BADEA50B2751C7269A7A638264B",
+      "bytes": 8254
+    },
+    {
+      "path": "src/features/cases/server/get-published-cases.test.ts",
+      "sha256": "B85DC25E142F0D8A38AC40EB4C355786ED3A4505A1CD900AA302C72373B70DBD",
+      "bytes": 3689
+    },
+    {
+      "path": "src/config/capture-legacy-publications.ts",
+      "sha256": "B42DE423755E969FD6C90116087C9D6EA40E7CDFD3690D0C5A59596A26A0D409",
+      "bytes": 7370
+    },
+    {
+      "path": "src/config/capture-legacy-publications.integration.test.ts",
+      "sha256": "E8935820AFFF921CF7F4B366D4EEC661DB0FF1EE6FD13C8591EBCC9840992737",
+      "bytes": 10003
+    },
+    {
+      "path": "src/helpers/payload/publication-updates.ts",
+      "sha256": "10C0763853D5EFC10E5A55392CE6403F3E1472896F90D48879CC315EE3D6D006",
+      "bytes": 5224
+    },
+    {
+      "path": "src/helpers/payload/publication-enqueue.integration.test.ts",
+      "sha256": "A19173FE75906BE6CCAA98CC6039678821C13AD25D199D9B0D33BB1F2FD80582",
+      "bytes": 3725
+    },
+    {
+      "path": "src/migrations/20261030_190345_e2_editorial_presentation_fields.ts",
+      "sha256": "CCA9475731B55712AE3DFE4F5952CFD682354B0742F0F2D920E2533012322CEF",
+      "bytes": 1763
+    },
+    {
+      "path": "src/migrations/20261030_190345_e2_editorial_presentation_fields.json",
+      "sha256": "82BAF7E3895B355335C08ED7A135C60C1F5CE95105CD7CC2353E077757FA7F99",
+      "bytes": 191749
+    },
+    {
+      "path": "src/migrations/index.ts",
+      "sha256": "F6D0BFC2CAA68B20FF5D06AE3131136250CB301C048A80A270EC3785D890B202",
+      "bytes": 3711
+    },
+    {
+      "path": "src/payload-types.ts",
+      "sha256": "76F3A05EB1561102A2D6CE6B20243BD88D202CF263F623457E5C9AEE4512E498",
+      "bytes": 28985
+    }
+  ]
+}

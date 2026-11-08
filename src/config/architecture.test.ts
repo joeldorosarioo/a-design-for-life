@@ -267,3 +267,63 @@ describe('fronteiras do grafo real', () => {
     expect(analyzeArchitecture(directory)).toEqual([]);
   });
 });
+
+it('permits a public ui.ts presentation entry from pages and other features', () => {
+  const directory = graphFixture({
+    'src/features/professional-profile/index.ts': 'export const profileSchema = {};',
+    'src/features/professional-profile/ui.ts': "export { Home } from './components/home';",
+    'src/features/professional-profile/components/home.ts':
+      'export function Home() { return null; }',
+    'src/features/cases/components/page.ts': "import '@/features/professional-profile/ui';",
+    'src/app/(portfolio)/[locale]/page.ts': "import '@/features/professional-profile/ui';",
+  });
+  expect(analyzeArchitecture(directory)).toEqual([]);
+});
+
+it('rejects ui.ts transitively reaching a server operation', () => {
+  const directory = graphFixture({
+    'src/features/cases/ui.ts': "export { query } from './server/query';",
+    'src/features/cases/server/query.ts': "import 'server-only'; export const query = () => 1;",
+  });
+  expect(analyzeArchitecture(directory)).toContainEqual({
+    rule: 'shared-entry-cannot-reach-server',
+    from: 'src/features/cases/ui.ts',
+    to: 'src/features/cases/server/query.ts',
+  });
+});
+
+it.each(['payload', '@payloadcms/db-postgres'])(
+  'rejects ui.ts runtime capability %s',
+  (capability) => {
+    const directory = graphFixture({
+      'src/features/cases/ui.ts': `export * from '${capability}';`,
+    });
+    expect(analyzeArchitecture(directory)).toContainEqual({
+      rule: 'shared-entry-cannot-reach-server',
+      from: 'src/features/cases/ui.ts',
+      to: 'src/features/cases/ui.ts',
+    });
+  },
+);
+
+it('keeps the contract entry independent of presentation modules required by Native CLI', () => {
+  const directory = graphFixture({
+    'src/features/cases/index.ts': "export { Card } from './components/card';",
+    'src/features/cases/components/card.ts': 'export function Card() { return null; }',
+  });
+  expect(analyzeArchitecture(directory)).toContainEqual({
+    rule: 'contract-entry-cannot-reach-presentation',
+    from: 'src/features/cases/index.ts',
+    to: 'src/features/cases/components/card.ts',
+  });
+});
+
+it('ESLint permits another feature public ui.ts entry', async () => {
+  const eslint = new ESLint({ cwd: path.resolve('.') });
+  const [result] = await eslint.lintText("import '@/features/professional-profile/ui';", {
+    filePath: 'src/features/cases/components/card.ts',
+  });
+  expect(
+    result.messages.filter((message) => message.ruleId === 'architecture/import-boundaries'),
+  ).toEqual([]);
+});

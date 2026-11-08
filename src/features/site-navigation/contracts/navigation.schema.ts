@@ -19,6 +19,7 @@ export const footerLabelsSchema = z.strictObject({
   copyright: text,
 });
 const controlsSchema = z.strictObject({
+  caseLinkLabel: text,
   homeLabel: text,
   casesLabel: text,
   contentsLabel: text,

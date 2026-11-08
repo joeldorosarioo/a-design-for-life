@@ -9,3 +9,4 @@ export {
   confirmedMedia,
   publicMediaSnapshotSchema,
 } from './server/public-media';
+export { handleNextImage } from './server/next-image-proxy';

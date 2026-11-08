@@ -68,13 +68,16 @@ export async function enqueuePublicationUpdate(
       attempts: 0,
     },
   });
-  await req.payload.db.updateOne({
+  const head = await req.payload.db.updateOne({
     collection: subject.collection,
     req,
-    options: { atomic: true },
-    where: { id: { equals: subject.id } },
-    data: { latestPublicationIntent: operationId, publicConfirmed: false },
+    id: subject.id,
+    select: { id: true },
+    // Native id-based update returns only the existing primary key; historical
+    // migrations must not RETURNING fields introduced by later migrations.
+    data: { latestPublicationIntent: operationId, publicConfirmed: false, updatedAt: null },
   });
+  if (!head) throw new APIError('Publication subject unavailable.', 503);
   return { operationId };
 }
 

@@ -1,0 +1,122 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Creating 
+ Container a-design-for-life-local-postgres-test-1 Created 
+ Container a-design-for-life-local-postgres-test-1 Starting 
+ Container a-design-for-life-local-postgres-test-1 Started 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[16:11:41] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_003022_initial_base[39m
+[16:11:41] [32mINFO[39m: [36mMigrated:  20261030_003022_initial_base (38ms)[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_020021_editorial_models[39m
+[16:11:41] [32mINFO[39m: [36mMigrated:  20261030_020021_editorial_models (86ms)[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_020521_structural_uniqueness[39m
+[16:11:41] [32mINFO[39m: [36mMigrated:  20261030_020521_structural_uniqueness (6ms)[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_024431_case_locale_uniqueness[39m
+[16:11:41] [32mINFO[39m: [36mMigrated:  20261030_024431_case_locale_uniqueness (3ms)[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_024640_route_locale_slug_uniqueness[39m
+[16:11:41] [32mINFO[39m: [36mMigrated:  20261030_024640_route_locale_slug_uniqueness (2ms)[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_030036_global_editorial_copy[39m
+[16:11:41] [32mINFO[39m: [36mMigrated:  20261030_030036_global_editorial_copy (6ms)[39m
+[16:11:41] [32mINFO[39m: [36mMigrating: 20261030_035306_protect_case_identity_references[39m
+[16:11:42] [32mINFO[39m: [36mMigrated:  20261030_035306_protect_case_identity_references (6ms)[39m
+[16:11:42] [32mINFO[39m: [36mMigrating: 20261030_040829_editorial_revision_and_leases[39m
+[16:11:42] [32mINFO[39m: [36mMigrated:  20261030_040829_editorial_revision_and_leases (6ms)[39m
+[16:11:42] [32mINFO[39m: [36mMigrating: 20261030_042607_editorial_snapshot_revision[39m
+[16:11:42] [32mINFO[39m: [36mMigrated:  20261030_042607_editorial_snapshot_revision (6ms)[39m
+[16:11:42] [32mINFO[39m: [36mMigrating: 20261030_093430_private_media_manifests[39m
+[16:11:42] [32mINFO[39m: [36mMigrated:  20261030_093430_private_media_manifests (2ms)[39m
+[16:11:42] [32mINFO[39m: [36mMigrating: 20261030_124550_publication_coordination[39m
+[16:11:42] [32mINFO[39m: [36mMigrated:  20261030_124550_publication_coordination (38ms)[39m
+[16:11:42] [32mINFO[39m: [36mMigrating: 20261030_190345_e2_editorial_presentation_fields[39m
+[16:11:42] [32mINFO[39m: [36mMigrated:  20261030_190345_e2_editorial_presentation_fields (3ms)[39m
+[16:11:42] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/server/next-image-proxy.integration.test.ts (2 tests | 1 failed) 508ms
+   × uses the same captured root to classify real confirmed Native usages missing owner coverage as503 234ms
+ ❯ |integration| src/helpers/payload/publication-enqueue.integration.test.ts (2 tests | 2 failed) 311ms
+   × updates only publication metadata within the same transaction as its intent 61ms
+   × fails closed without creating a publication head for an absent subject 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/publication-enqueue.integration.test.ts > updates only publication metadata within the same transaction as its intent
+AssertionError: expected { …(16) } to deeply equal { …(16) }
+
+- Expected
++ Received
+
+@@ -50,7 +50,7 @@
+      "temporaryFailureDescription": null,
+      "temporaryFailureTitle": null,
+      "translationUnavailable": null,
+    },
+    "publicConfirmed": false,
+-   "updatedAt": "2026-10-30T19:11:46.811Z",
++   "updatedAt": "2026-10-30T19:11:46.855Z",
+  }
+
+ ❯ src/helpers/payload/publication-enqueue.integration.test.ts:51:18
+     49|       req,
+     50|     });
+     51|     expect(head).toEqual({
+       |                  ^
+     52|       ...before,
+     53|       latestPublicationIntent: receipt.operationId,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |integration| src/helpers/payload/publication-enqueue.integration.test.ts > fails closed without creating a publication head for an absent subject
+AssertionError: promise resolved "{ operationId: '1130bbf1-0fbb-4813-9…' }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "operationId": "1130bbf1-0fbb-4813-9311-9b759d925395",
+  }
+
+ ❯ src/helpers/payload/publication-enqueue.integration.test.ts:96:6
+     94|         req,
+     95|       ),
+     96|     ).rejects.toThrow(/subject.*unavailable/i);
+       |      ^
+     97|     expect(
+     98|       await fixture.payload.db.findOne({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |integration| src/features/media-library/server/next-image-proxy.integration.test.ts > uses the same captured root to classify real confirmed Native usages missing owner coverage as503
+AssertionError: expected 404 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 404
+
+ ❯ expectBoth src/features/media-library/server/next-image-proxy.integration.test.ts:71:30
+     69|     });
+     70|     expect(response).not.toBeNull();
+     71|     expect(response!.status).toBe(status);
+       |                              ^
+     72|     expect(response!.headers.get('cache-control')).toBe('private, no-s…
+     73|     expect(await response!.text()).toBe('');
+ ❯ src/features/media-library/server/next-image-proxy.integration.test.ts:123:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 1 passed (4)
+   Start at  16:11:37
+   Duration  9.54s (import 75%, tests 18%, transform 3%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removing 
+ Container a-design-for-life-local-postgres-test-1 Removed 

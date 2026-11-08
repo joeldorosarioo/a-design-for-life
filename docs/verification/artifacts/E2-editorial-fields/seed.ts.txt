@@ -1,0 +1,35 @@
+import guardModule from './guard.cjs';
+import assert from 'node:assert/strict';
+import { existsSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const { fingerprint } = guardModule.guard();
+const output = fileURLToPath(new URL('./expected.json', import.meta.url));
+if (existsSync(output)) throw new Error('Preserve prior seed evidence');
+const { createEditorialPayloadFixture } = await import('./source/testing/fixtures/editorial-payload');
+const { mediaMetadataFixture, profilePublicationFixture, navigationFixture, casePublicationFixture, observedRequest } = await import('./source/testing/fixtures/editorial-lifecycle');
+const fixture = await createEditorialPayloadFixture('e2-editorial-old0fa-upgrade');
+const { payload } = fixture;
+try {
+  const columns = await payload.db.pool.query("SELECT table_name,column_name FROM information_schema.columns WHERE column_name IN ('keywords','controls_case_link_label','about_journey_eyebrow','about_approach_eyebrow','about_in_motion_eyebrow')");
+  assert.deepEqual(columns.rows, []);
+  const image = await mediaMetadataFixture(payload);
+  const pdf = await mediaMetadataFixture(payload, 'pdf');
+  const profiles = []; const navigations = [];
+  for (const locale of ['pt', 'en'] as const) {
+    const profile = await payload.create({ collection: 'professional-profiles', data: { ...profilePublicationFixture(image.id, pdf.id), locale, identity: { name: `Legacy ${locale} profile`, role: 'Legacy synthetic role' }, _status: 'published' } as never, req: await fixture.request(), overrideAccess: false });
+    const navigation = await payload.create({ collection: 'site-navigation', data: { ...navigationFixture(), locale, header: { brandLabel: `Legacy ${locale} brand`, projectsLabel: 'Legacy projects', aboutLabel: 'Legacy about', resumeLabel: 'Legacy resume', contactLabel: 'Legacy contact' }, _status: 'published' } as never, req: await fixture.request(), overrideAccess: false });
+    if (locale === 'pt') {
+      await payload.update({ collection: 'professional-profiles', id: profile.id, draft: true, data: { identity: { name: 'PRIVATE newer profile draft' }, _status: 'draft' }, req: await observedRequest('professional-profiles', profile.id, await fixture.request()), overrideAccess: false });
+      await payload.update({ collection: 'site-navigation', id: navigation.id, draft: true, data: { header: { brandLabel: 'PRIVATE newer navigation draft' }, _status: 'draft' }, req: await observedRequest('site-navigation', navigation.id, await fixture.request()), overrideAccess: false });
+    }
+    const profileVersions = await payload.findVersions({ collection: 'professional-profiles', where: { parent: { equals: profile.id } }, pagination: false, limit: 0, depth: 0, req: await fixture.request(), overrideAccess: false });
+    const navigationVersions = await payload.findVersions({ collection: 'site-navigation', where: { parent: { equals: navigation.id } }, pagination: false, limit: 0, depth: 0, req: await fixture.request(), overrideAccess: false });
+    profiles.push({ document: profile, versions: profileVersions.docs.map((version) => ({ id: version.id, version: version.version })) });
+    navigations.push({ document: navigation, versions: navigationVersions.docs.map((version) => ({ id: version.id, version: version.version })) });
+  }
+  const parent = await payload.create({ collection: 'cases', data: { internalTitle: 'Legacy editorial fields case', featured: true }, req: await fixture.request(), overrideAccess: false });
+  const content = await payload.create({ collection: 'case-content', data: { ...casePublicationFixture(image.id), case: parent.id, locale: 'pt', eyebrow: 'Legacy existing case eyebrow', _status: 'published' }, req: await fixture.request(), overrideAccess: false });
+  const versions = await payload.findVersions({ collection: 'case-content', where: { parent: { equals: content.id } }, pagination: false, limit: 0, depth: 0, req: await fixture.request(), overrideAccess: false });
+  writeFileSync(output, JSON.stringify({ baseline: '0fa495864cfefcf3489856d66444b81fdf1f730e', fingerprint, editorId: fixture.user.id, profiles, navigations, case: { document: content, versionIds: versions.docs.map((version) => version.id) } }, null, 2), { flag: 'wx' });
+  console.log(JSON.stringify({ stage: 'OLD_NATIVE_SEED', profileIds: profiles.map((item) => item.document.id), navigationIds: navigations.map((item) => item.document.id), oldColumnsAbsent: true, privatePtDrafts: true }));
+} finally { await payload.destroy(); }

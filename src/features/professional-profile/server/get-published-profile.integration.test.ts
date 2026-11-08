@@ -26,6 +26,18 @@ it('lê exclusivamente a geração confirmada explícita enquanto o Native cont�
     collection: 'professional-profiles',
     data: {
       ...profilePublicationFixture(image.id, pdf.id),
+      approach: {
+        eyebrow: 'Synthetic approach',
+        title: 'Synthetic method heading',
+        description: 'Synthetic method introduction',
+        methods: [
+          {
+            title: 'Synthetic method',
+            description: 'Synthetic method body',
+            keywords: 'Research · flows · testing',
+          },
+        ],
+      },
       locale: 'pt',
       _status: 'published',
     } as never,
@@ -44,13 +56,23 @@ it('lê exclusivamente a geração confirmada explícita enquanto o Native cont�
     data: {
       _status: 'published',
       identity: { name: 'PRIVATE pending profile', role: 'Pending role' },
+      approach: {
+        ...saved.approach,
+        methods: saved.approach?.methods?.map((method) => ({
+          ...method,
+          keywords: 'PRIVATE pending keywords',
+        })),
+      },
     },
     overrideAccess: false,
     req: await observedRequest('professional-profiles', saved.id, await fixture.request()),
   });
   expect(await getPublishedProfile('pt', fixture.payload, generation)).toMatchObject({
     ok: true,
-    value: { identity: { name: 'Synthetic name' } },
+    value: {
+      identity: { name: 'Synthetic name' },
+      approach: { methods: [{ keywords: 'Research · flows · testing' }] },
+    },
   });
 });
 
@@ -82,6 +104,7 @@ it('compõe navegação e currículo somente da mesma geração confirmada enqua
     data: {
       _status: 'published',
       header: { ...saved.header, brandLabel: 'PRIVATE pending brand' },
+      controls: { ...saved.controls, caseLinkLabel: 'PRIVATE pending case action' },
     },
     overrideAccess: false,
     req: await observedRequest('site-navigation', saved.id, await fixture.request()),
@@ -90,6 +113,7 @@ it('compõe navegação e currículo somente da mesma geração confirmada enqua
     ok: true,
     value: {
       brand: { label: 'Synthetic brandLabel' },
+      controls: { caseLinkLabel: 'Synthetic caseLinkLabel' },
       contacts: { email: 'synthetic@example.invalid' },
     },
   });

@@ -1,0 +1,81 @@
+
+ RUN  v5.0.5 E:/a-design-for-life
+
+ Container a-design-for-life-local-postgres-test-1 Running 
+ Container a-design-for-life-local-postgres-test-1 Waiting 
+ Container a-design-for-life-local-postgres-test-1 Healthy 
+[16:11:22] [32mINFO[39m: [36mReading migration files from E:\a-design-for-life\src\migrations[39m
+[16:11:22] [32mINFO[39m: [36mDone.[39m
+ ❯ |integration| src/features/media-library/server/next-image-proxy.integration.test.ts (2 tests | 1 failed) 319ms
+   × uses the same captured root to classify real confirmed Native usages missing owner coverage as503 41ms
+ ❯ |integration| src/helpers/payload/publication-enqueue.integration.test.ts (2 tests | 2 failed) 266ms
+   × updates only publication metadata within the same transaction as its intent 7ms
+   × fails closed without creating a publication head for an absent subject 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| src/helpers/payload/publication-enqueue.integration.test.ts > updates only publication metadata within the same transaction as its intent
+APIError: A publicação anterior precisa concluir a migração antes de novas alterações editoriais.
+ ❯ requireLegacyBootstrap src/helpers/payload/require-legacy-bootstrap.ts:23:11
+     21|     )
+     22|   )
+     23|     throw new APIError(
+       |           ^
+     24|       'A publicação anterior precisa concluir a migração antes de nova…
+     25|       503,
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:26
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:12
+ ❯ src/helpers/payload/publication-enqueue.integration.test.ts:19:17
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |integration| src/helpers/payload/publication-enqueue.integration.test.ts > fails closed without creating a publication head for an absent subject
+AssertionError: promise resolved "{ operationId: '84a38af6-c68a-4d2a-b…' }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "operationId": "84a38af6-c68a-4d2a-b96d-ad010d009663",
+  }
+
+ ❯ src/helpers/payload/publication-enqueue.integration.test.ts:96:6
+     94|         req,
+     95|       ),
+     96|     ).rejects.toThrow(/subject.*unavailable/i);
+       |      ^
+     97|     expect(
+     98|       await fixture.payload.db.findOne({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |integration| src/features/media-library/server/next-image-proxy.integration.test.ts > uses the same captured root to classify real confirmed Native usages missing owner coverage as503
+APIError: A publicação anterior precisa concluir a migração antes de novas alterações editoriais.
+ ❯ requireLegacyBootstrap src/helpers/payload/require-legacy-bootstrap.ts:23:11
+     21|     )
+     22|   )
+     23|     throw new APIError(
+       |           ^
+     24|       'A publicação anterior precisa concluir a migração antes de nova…
+     25|       503,
+ ❯ buildBeforeOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/utilities/buildBeforeOperation.ts:93:26
+ ❯ createOperation node_modules/.pnpm/payload@3.92.1_graphql@16.1_00e3e90d5d794f09d8f7e3123ddcc5e0/node_modules/payload/src/collections/operations/create.ts:136:12
+ ❯ src/features/media-library/server/next-image-proxy.integration.test.ts:79:18
+
+Caused by: null
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 1 passed (4)
+   Start at  16:11:19
+   Duration  8.40s (import 72%, transform 13%, tests 12%, setup 3%)
+
+ Container a-design-for-life-local-postgres-test-1 Stopping 
+ Container a-design-for-life-local-postgres-test-1 Stopped 
+ Container a-design-for-life-local-postgres-test-1 Removing 
+Going to remove a-design-for-life-local-postgres-test-1
+ Container a-design-for-life-local-postgres-test-1 Removed 

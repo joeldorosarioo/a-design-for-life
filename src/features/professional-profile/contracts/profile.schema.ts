@@ -38,7 +38,9 @@ export const profileInputSchema = z.strictObject({
       eyebrow: text,
       title: text,
       description: text,
-      methods: nativeArray(z.strictObject({ ...row, title: text, description: text })).nullish(),
+      methods: nativeArray(
+        z.strictObject({ ...row, title: text, description: text, keywords: text }),
+      ).nullish(),
     })
     .nullish(),
   about: z
@@ -50,13 +52,16 @@ export const profileInputSchema = z.strictObject({
       introduction: text,
       portrait: imageUseInputSchema.nullish(),
       journeyHeading: text,
+      journeyEyebrow: text,
       journey: text,
       deskPhotograph: imageUseInputSchema.nullish(),
       editorialEmphasis: text,
       approachHeading: text,
+      approachEyebrow: text,
       approach: text,
       architecturePhotograph: imageUseInputSchema.nullish(),
       inMotionHeading: text,
+      inMotionEyebrow: text,
       inMotion: text,
       closingHeading: text,
       closing: text,

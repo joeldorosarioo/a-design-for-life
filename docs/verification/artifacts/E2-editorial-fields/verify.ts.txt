@@ -1,0 +1,72 @@
+import guardModule from './guard.cjs';
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const { fingerprint } = guardModule.guard();
+const expected = JSON.parse(readFileSync(fileURLToPath(new URL('./expected.json', import.meta.url)), 'utf8'));
+const relationIds = (value: any, key = ''): any => {
+  if ((key === 'media' || key === 'resume') && value && typeof value === 'object' && 'id' in value) return value.id;
+  if (Array.isArray(value)) return value.map((item) => relationIds(item));
+  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([field, item]) => [field, relationIds(item, field)]));
+  return value;
+};
+assert.equal(fingerprint, expected.fingerprint);
+const { createLocalReq, getPayload } = await import('payload');
+const { default: config } = await import('@payload-config');
+const payload = await getPayload({ config });
+try {
+  const editor = await payload.findByID({ collection: 'users', id: expected.editorId, overrideAccess: true });
+  const req = await createLocalReq({ user: { ...editor, collection: 'users' } }, payload);
+  const operations = await payload.find({ collection: 'publication-updates', pagination: false, limit: 0, overrideAccess: true });
+  for (const [collection, entries] of [['professional-profiles', expected.profiles], ['site-navigation', expected.navigations]] as const) {
+    for (const entry of entries) {
+      const canonical = await payload.findByID({ collection, id: entry.document.id, depth: 0, draft: false, overrideAccess: true, req });
+      const versions = await payload.findVersions({ collection, where: { parent: { equals: entry.document.id } }, pagination: false, limit: 0, depth: 0, overrideAccess: true, req });
+      assert.deepEqual(versions.docs.map((item) => item.id).sort(), entry.versions.map((item: any) => item.id).sort());
+      const fields = collection === 'professional-profiles' ? ['identity','home','homeProjects','listing','homeAbout','contacts','resume','seo'] : ['header','footer','messages'];
+      for (const field of fields) assert.deepEqual(canonical[field], relationIds(entry.document[field], field), `Canonical ${collection}.${field} must survive upgrade`);
+      const operation: any = operations.docs.find((item) => item.subjectId === entry.document.id);
+      assert.ok(operation);
+      assert.equal(operation.targetRevision, entry.document.editorialRevision);
+      assert.equal(JSON.stringify(operation.target).includes('PRIVATE'), false);
+      if (collection === 'professional-profiles') {
+        assert.deepEqual(canonical.approach.methods.map(({ keywords, ...row }: any) => row), entry.document.approach.methods);
+        for (const key of ['journeyEyebrow', 'approachEyebrow', 'inMotionEyebrow']) assert.equal(canonical.about[key], null);
+        for (const key of Object.keys(entry.document.about)) assert.deepEqual(canonical.about[key], relationIds(entry.document.about[key], key));
+        assert.equal(operation.target.profile.approach.methods[0].keywords, null);
+        assert.equal(operation.target.profile.about.journeyEyebrow, null);
+      } else {
+        assert.deepEqual(Object.fromEntries(Object.entries(canonical.controls).filter(([key]) => key !== 'caseLinkLabel')), entry.document.controls);
+        assert.equal(canonical.controls.caseLinkLabel, null);
+      }
+    }
+  }
+  const caseOp: any = operations.docs.find((item) => item.subjectId === expected.case.document.id);
+  assert.equal(caseOp.target.detail.eyebrow, 'Legacy existing case eyebrow');
+  assert.equal(caseOp.target.detail.sections[0].blocks[0].content.root.children[0].children[0].text, 'Synthetic narrative');
+  const caseVersions = await payload.findVersions({ collection: 'case-content', where: { parent: { equals: expected.case.document.id } }, pagination: false, limit: 0, overrideAccess: true, req });
+  for (const id of expected.case.versionIds) assert.ok(caseVersions.docs.some((item) => item.id === id));
+  if (process.argv[2] === 'verify') {
+    const { getPublishedProfile } = await import('@/features/professional-profile/server/get-published-profile');
+    const { getPublishedNavigation } = await import('@/features/site-navigation/server/get-published-navigation');
+    const { getFeaturedCases } = await import('@/features/cases/server/get-featured-cases');
+    for (const locale of ['pt','en'] as const) {
+      const profile = await getPublishedProfile(locale); const nav = await getPublishedNavigation(locale);
+      assert.ok(profile.ok); assert.ok(nav.ok);
+      assert.equal(profile.value.identity.name, `Legacy ${locale} profile`);
+      assert.equal(profile.value.approach.methods[0].keywords, null);
+      assert.equal(profile.value.about.journeyEyebrow, null);
+      assert.equal(nav.value.brand.label, `Legacy ${locale} brand`);
+      assert.equal(nav.value.controls.caseLinkLabel ?? null, null);
+    }
+    const featured = await getFeaturedCases('pt'); assert.ok(featured.ok);
+    assert.equal(featured.value[0].eyebrow, 'Legacy existing case eyebrow');
+    const profile = await payload.findByID({ collection: 'professional-profiles', id: expected.profiles[0].document.id, draft: true, depth: 0, overrideAccess: true, req });
+    const nav = await payload.findByID({ collection: 'site-navigation', id: expected.navigations[0].document.id, draft: true, depth: 0, overrideAccess: true, req });
+    assert.equal(profile.identity.name, 'PRIVATE newer profile draft');
+    assert.equal(nav.header.brandLabel, 'PRIVATE newer navigation draft');
+  }
+  const result = { stage: process.argv[2], historicalIdsAndVersionsPreserved: true, canonicalContentPreserved: true, newNullableValuesOnly: true, privateDraftsNotCaptured: true, publicGetters: process.argv[2] === 'verify', operationCount: operations.docs.length };
+  writeFileSync(fileURLToPath(new URL(`./${process.argv[2]}.json`, import.meta.url)), JSON.stringify(result, null, 2), { flag: 'wx' });
+  console.log(JSON.stringify(result));
+} finally { await payload.destroy(); }
