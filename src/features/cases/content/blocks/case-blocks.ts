@@ -4,11 +4,11 @@ import { imageUseField } from '@/features/media-library/server';
 
 const readingKey = {
   name: 'readingKey',
-  label: 'Correspondência do bloco entre idiomas',
+  label: 'Código do bloco na tradução',
   type: 'text' as const,
   admin: {
     description:
-      'Identificador gerado ao salvar para manter a posição de leitura na troca de idioma. Para um bloco equivalente na tradução, copie o identificador do bloco original. Não altere o identificador de um bloco já salvo.',
+      'Copie o código do bloco original ao criar a tradução. O painel gera o código ao salvar, e ele permanece fixo.',
   },
 };
 export const caseBlocks: Block[] = [
@@ -19,38 +19,31 @@ export const caseBlocks: Block[] = [
       readingKey,
       {
         name: 'eyebrow',
-        label: 'Texto curto acima do título do bloco',
+        label: 'Linha acima do título',
         type: 'text',
         admin: {
-          description:
-            'Pequena identificação exibida antes do título deste texto. Exemplo: Pesquisa ou Cenário inicial.',
+          description: 'Use uma indicação curta, como Pesquisa ou Cenário inicial.',
         },
       },
       {
         name: 'heading',
-        label: 'Título do bloco de texto',
+        label: 'Título do bloco',
         type: 'text',
-        admin: {
-          description:
-            'Título deste trecho dentro da seção. Use para introduzir o assunto do texto abaixo.',
-        },
       },
       {
         name: 'note',
-        label: 'Observação do bloco de texto',
+        label: 'Observação',
         type: 'textarea',
         admin: {
-          description:
-            'Informação complementar apresentada junto deste bloco, como uma ressalva ou explicação curta.',
+          description: 'Use para uma ressalva ou uma explicação breve.',
         },
       },
       {
         name: 'content',
-        label: 'Texto do bloco',
+        label: 'Texto',
         type: 'richText',
         admin: {
-          description:
-            'Escreva o conteúdo deste trecho. Use os controles do editor para parágrafos, listas, destaques e links. O texto não pode ficar vazio ao publicar.',
+          description: 'Preencha este campo para publicar o bloco.',
         },
       },
     ],
@@ -62,20 +55,20 @@ export const caseBlocks: Block[] = [
   },
   {
     slug: 'image-pair',
-    labels: { singular: 'Duas imagens lado a lado', plural: 'Pares de imagens' },
+    labels: { singular: 'Par de imagens', plural: 'Pares de imagens' },
     fields: [
       readingKey,
       {
         name: 'presentation',
-        label: 'Como apresentar as duas imagens',
+        label: 'Apresentação das imagens',
         type: 'select',
         defaultValue: 'pair',
         admin: {
           description:
-            'Escolha entre duas imagens relacionadas ou uma comparação de antes e depois. Na comparação, a primeira imagem representa o antes e a segunda representa o depois.',
+            'Em Antes e depois, coloque a imagem anterior primeiro e o resultado em seguida.',
         },
         options: [
-          { label: 'Duas imagens relacionadas', value: 'pair' },
+          { label: 'Imagens relacionadas', value: 'pair' },
           { label: 'Antes e depois', value: 'comparison' },
         ],
       },
@@ -83,20 +76,18 @@ export const caseBlocks: Block[] = [
       imageUseField('second', 'Segunda imagem'),
       {
         name: 'firstLabel',
-        label: 'Texto de identificação da primeira imagem',
+        label: 'Identificação da primeira imagem',
         type: 'text',
         admin: {
-          description:
-            'Texto curto mostrado junto à primeira imagem. Exemplo: Antes ou Versão inicial.',
+          description: 'Use um texto curto, como Antes ou Versão inicial.',
         },
       },
       {
         name: 'secondLabel',
-        label: 'Texto de identificação da segunda imagem',
+        label: 'Identificação da segunda imagem',
         type: 'text',
         admin: {
-          description:
-            'Texto curto mostrado junto à segunda imagem. Exemplo: Depois ou Proposta final.',
+          description: 'Use um texto curto, como Depois ou Proposta final.',
         },
       },
     ],

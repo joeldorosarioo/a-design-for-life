@@ -13,9 +13,7 @@ Save a draft and use the signed-in preview to review it. After publishing, check
 
 ## Your CMS account
 
-Under **Minha conta**, set **Nome de exibição** and **Foto de perfil da conta**. The photo accepts JPEG, PNG, WebP or AVIF up to 10 MB. The dashboard loads it through a private authenticated route and falls back to initials or an icon when the image is unavailable. Edit **Perfil profissional** separately to change the public name or portrait.
-
-The account fields were added to staging through a one-time migration that preserved the existing account and sessions. See the [migration record](../verification/artifacts/E3-operations/cms-editorial-staging-upgrade-001.json).
+Use **Minha conta** to manage sign-in details and the dashboard language. Edit **Perfil profissional** to change the public name or portrait.
 
 ## Release status
 

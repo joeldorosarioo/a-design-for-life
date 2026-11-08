@@ -17,7 +17,7 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
   labels: { singular: 'Navegação', plural: 'Navegação' },
   admin: {
     description:
-      'Textos do menu, do rodapé, dos botões e dos avisos do site. Há um documento por idioma: preencha os textos em português no documento pt e em inglês no documento en.',
+      'Edite os textos do cabeçalho, do rodapé, dos botões e dos avisos. Há um documento para português e outro para inglês.',
     components: {
       edit: { UnpublishButton: '/helpers/payload/editorial-actions#NoUnpublishAction' },
     },
@@ -98,7 +98,7 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
     {
       name: 'locale',
       unique: true,
-      label: 'Idioma dos textos do site',
+      label: 'Idioma do conteúdo',
       type: 'select',
       required: true,
       options: [
@@ -107,245 +107,235 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
       ],
       admin: {
         description:
-          'pt corresponde a português e en a inglês. Preencha todos os textos abaixo nesse idioma. O idioma deste documento não pode ser alterado.',
+          'Escreva os textos no idioma deste documento. O idioma fica fixo após a criação.',
       },
     },
     {
       name: 'header',
-      label: 'Menu no topo do site',
+      label: 'Menu do cabeçalho',
       type: 'group',
       admin: {
         description:
-          'Textos dos links no cabeçalho. Os destinos já estão definidos: altere apenas o texto que o visitante vê.',
+          'Edite o texto dos links no topo do site. Os destinos são definidos pelo site.',
       },
       fields: [
         {
           name: 'brandLabel',
-          label: 'Nome ou marca que leva à página inicial',
+          label: 'Nome ou marca',
           type: 'text',
           admin: {
             description:
-              'Texto no canto superior do site e na assinatura do rodapé. Ao clicar, o visitante volta à página inicial. Ex.: Eliana.',
+              'Aparece no cabeçalho e na assinatura do rodapé. O link leva à página inicial.',
           },
         },
         {
           name: 'projectsLabel',
-          label: 'Texto do link de projetos',
+          label: 'Link de projetos',
           type: 'text',
           admin: {
-            description:
-              'Link do menu que abre a lista de projetos no idioma atual. Ex.: Projetos.',
+            description: 'Abre a lista de projetos no idioma atual. Exemplo: Projetos.',
           },
         },
         {
           name: 'aboutLabel',
-          label: 'Texto do link sobre a profissional',
+          label: 'Link da página Sobre',
           type: 'text',
           admin: {
-            description:
-              'Link do menu que abre a página de apresentação e trajetória. Ex.: Sobre mim.',
+            description: 'Abre a página de apresentação e trajetória. Exemplo: Sobre mim.',
           },
         },
         {
           name: 'resumeLabel',
-          label: 'Texto do link para o currículo',
+          label: 'Link do currículo',
           type: 'text',
           admin: {
             description:
-              'Link do menu que abre o currículo em PDF em uma nova aba. Ex.: Currículo. O arquivo é escolhido em Perfil profissional.',
+              'Abre em outra aba o PDF escolhido em Perfil profissional. Exemplo: Currículo.',
           },
         },
         {
           name: 'contactLabel',
-          label: 'Texto do link para contato',
+          label: 'Link de contato',
           type: 'text',
           admin: {
-            description:
-              'Link do menu que leva aos contatos no rodapé da página atual. Ex.: Vamos conversar.',
+            description: 'Leva ao rodapé da página atual. Exemplo: Vamos conversar.',
           },
         },
       ],
     },
     {
       name: 'footer',
-      label: 'Rodapé e convite para contato',
+      label: 'Rodapé e contatos',
       type: 'group',
       admin: {
         description:
-          'Conteúdo exibido no fim das páginas. O e-mail, o endereço do LinkedIn e o PDF do currículo vêm de Perfil profissional.',
+          'Edite o convite para contato no fim das páginas. O e-mail, o LinkedIn e o arquivo do currículo vêm de Perfil profissional.',
       },
       fields: [
         {
           name: 'eyebrow',
-          label: 'Texto curto acima do título do rodapé',
+          label: 'Chamada do rodapé',
           type: 'text',
           admin: {
             description:
-              'Pequena chamada que apresenta a área de contato. Ex.: Vamos criar algo juntos.',
+              'Frase curta acima do título de contato. Exemplo: Vamos criar algo juntos.',
           },
         },
         {
           name: 'title',
-          label: 'Título do convite para contato',
+          label: 'Título de contato',
           type: 'textarea',
           admin: {
-            description:
-              'Frase em destaque no rodapé que convida o visitante a conversar. Ex.: Tem um projeto em mente?',
+            description: 'Convite em destaque no rodapé. Exemplo: Tem um projeto em mente?',
           },
         },
         {
           name: 'description',
-          label: 'Texto de apoio do convite para contato',
+          label: 'Texto de apoio do rodapé',
           type: 'textarea',
           admin: {
             description:
-              'Complemento exibido abaixo do título do rodapé. Explique brevemente como entrar em contato ou que tipo de colaboração procura.',
+              'Aparece abaixo do título. Explique como entrar em contato ou que tipo de colaboração você procura.',
           },
         },
         {
           name: 'emailLabel',
-          label: 'Texto do botão de e-mail',
+          label: 'Botão de e-mail',
           type: 'text',
           admin: {
             description:
-              'Texto clicável que abre uma mensagem para o e-mail do Perfil profissional. Ex.: Enviar e-mail. Preencha o texto do botão, não o endereço de e-mail.',
+              'Use um rótulo como “Enviar e-mail”. O endereço é editado em Perfil profissional.',
           },
         },
         {
           name: 'linkedinLabel',
-          label: 'Texto do botão do LinkedIn',
+          label: 'Botão do LinkedIn',
           type: 'text',
           admin: {
             description:
-              'Texto clicável que abre o LinkedIn informado em Perfil profissional. Ex.: Meu LinkedIn. O endereço do perfil é preenchido naquela coleção.',
+              'Use um rótulo como “Meu LinkedIn”. O endereço é editado em Perfil profissional.',
           },
         },
         {
           name: 'resumeLabel',
-          label: 'Texto do botão de currículo no rodapé',
+          label: 'Botão de currículo',
           type: 'text',
           admin: {
-            description:
-              'Texto clicável que abre o PDF do currículo em uma nova aba. Ex.: Ver currículo. O arquivo é escolhido em Perfil profissional.',
+            description: 'Abre o mesmo PDF do menu em outra aba. Exemplo: Ver currículo.',
           },
         },
         {
           name: 'copyright',
-          label: 'Texto final do rodapé',
+          label: 'Assinatura do rodapé',
           type: 'text',
           admin: {
             description:
-              'Linha de assinatura ou direitos autorais exibida no fim do site. Ex.: © 2026 Eliana.',
+              'Última linha do rodapé. Pode incluir os direitos autorais, como “© 2026 Eliana”.',
           },
         },
       ],
     },
     {
       name: 'controls',
-      label: 'Textos dos botões e da navegação dos projetos',
+      label: 'Botões e navegação dos projetos',
       type: 'group',
       admin: {
         description:
-          'Nomes das ações e dos elementos de apoio do site. Use frases curtas no idioma deste documento; estes campos não recebem endereços de links.',
+          'Edite os rótulos das ações do site no idioma deste documento. Use frases curtas.',
       },
       fields: [
         {
           name: 'caseLinkLabel',
-          label: 'Texto para abrir um projeto',
+          label: 'Link dos cartões de projeto',
           type: 'text',
           admin: {
             description:
-              'Ação exibida nos cartões de projetos da página inicial e da listagem. Ex.: Ver projeto.',
+              'Aparece nos cartões da página inicial e da listagem. Exemplo: Ver projeto.',
           },
         },
         {
           name: 'homeLabel',
-          label: 'Texto para voltar à página inicial',
+          label: 'Link de volta à página inicial',
           type: 'text',
           admin: {
             description:
-              'Link de retorno à página inicial, usado na listagem e quando o menu completo não está disponível. Ex.: Início.',
+              'Usado na lista de projetos e quando o menu completo está indisponível. Exemplo: Início.',
           },
         },
         {
           name: 'casesLabel',
-          label: 'Nome dos projetos na contagem e nos links',
+          label: 'Nome da lista de projetos',
           type: 'text',
           admin: {
             description:
-              'Palavra que acompanha a quantidade na listagem e identifica o link para projetos nas mensagens do site. Ex.: Projetos.',
+              'Use o plural, como “Projetos”. O nome aparece na contagem e nos links da lista nas páginas de aviso.',
           },
         },
         {
           name: 'backToProjectsLabel',
-          label: 'Texto para voltar à lista de projetos (opcional)',
+          label: 'Link de volta aos projetos',
           type: 'text',
           admin: {
             description:
-              'Link no início da página de um projeto. Ex.: Voltar aos projetos. Se ficar vazio, o site usa o texto padrão do idioma.',
+              'Aparece no início de cada projeto. Se ficar vazio, o site usa o rótulo padrão do idioma.',
           },
         },
         {
           name: 'contentsLabel',
-          label: 'Título do sumário do projeto',
+          label: 'Título do sumário',
           type: 'text',
           admin: {
             description:
-              'Título acima da lista de seções que permite navegar pelo projeto. Ex.: Neste projeto.',
+              'Aparece acima dos links para as seções do projeto. Exemplo: Neste projeto.',
           },
         },
         {
           name: 'previousSectionLabel',
-          label: 'Texto da ação de seção anterior',
+          label: 'Link para a seção anterior',
           type: 'text',
           admin: {
-            description:
-              'Rótulo reservado para voltar à seção anterior de um projeto. Ex.: Seção anterior. Não aparece no layout atual.',
+            description: 'Reservado para um controle que ainda não aparece no site.',
           },
         },
         {
           name: 'nextSectionLabel',
-          label: 'Texto da ação de próxima seção',
+          label: 'Link para a próxima seção',
           type: 'text',
           admin: {
-            description:
-              'Rótulo reservado para avançar à próxima seção de um projeto. Ex.: Próxima seção. Não aparece no layout atual.',
+            description: 'Reservado para um controle que ainda não aparece no site.',
           },
         },
         {
           name: 'openMenuLabel',
-          label: 'Texto do botão de abrir o menu',
+          label: 'Botão de abrir o menu',
           type: 'text',
           admin: {
-            description:
-              'Botão que abre a navegação em telas menores, como celulares. Ex.: Abrir menu.',
+            description: 'Aparece no cabeçalho em telas pequenas. Exemplo: Abrir menu.',
           },
         },
         {
           name: 'closeMenuLabel',
-          label: 'Texto do botão de fechar o menu',
+          label: 'Botão de fechar o menu',
           type: 'text',
           admin: {
-            description:
-              'Botão exibido dentro do menu para fechá-lo em telas menores. Ex.: Fechar menu.',
+            description: 'Aparece dentro do menu em telas pequenas. Exemplo: Fechar menu.',
           },
         },
         {
           name: 'languageLabel',
-          label: 'Nome acessível do seletor de idioma',
+          label: 'Nome do seletor de idioma',
           type: 'text',
           admin: {
-            description:
-              'Nome do controle de troca de idioma, usado também por leitores de tela. Ex.: Idioma do site.',
+            description: 'Identifica o controle de troca de idioma. Exemplo: Idioma do site.',
           },
         },
         {
           name: 'newTabLabel',
-          label: 'Aviso de link que abre em outra aba',
+          label: 'Aviso de nova aba',
           type: 'text',
           admin: {
             description:
-              'Complemento acessível dos links que abrem outra aba, como o currículo. Ex.: abre em nova aba.',
+              'Complementa o nome acessível de links como o currículo. Use uma frase curta, como “abre em nova aba”.',
           },
         },
         {
@@ -354,7 +344,7 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
           type: 'text',
           admin: {
             description:
-              'Título que acompanha a contribuição profissional na abertura de cada projeto. Ex.: Minha atuação. A atuação de cada projeto é preenchida em Conteúdo dos projetos.',
+              'Identifica a contribuição da profissional na abertura do projeto. Edite a contribuição em Conteúdo dos projetos.',
           },
         },
         {
@@ -363,117 +353,115 @@ export const SiteNavigation: CollectionConfig = protectEditorialCollection({
           type: 'text',
           admin: {
             description:
-              'Título que acompanha as áreas ou entregas na abertura de cada projeto. Ex.: Escopo. Os detalhes de cada projeto são preenchidos em Conteúdo dos projetos.',
+              'Identifica as áreas ou entregas na abertura do projeto. Edite os detalhes em Conteúdo dos projetos.',
           },
         },
       ],
     },
     {
       name: 'messages',
-      label: 'Mensagens de aviso, lista vazia e páginas indisponíveis',
+      label: 'Avisos e estados das páginas',
       type: 'group',
       admin: {
         description:
-          'Textos exibidos quando uma tradução, página ou lista não está disponível. Oriente o visitante com mensagens claras no idioma deste documento.',
+          'Escreva mensagens para quando faltar uma tradução, uma página ou projetos publicados. Diga ao visitante como continuar.',
       },
       fields: [
         {
           name: 'translationUnavailable',
-          label: 'Aviso de projeto sem tradução publicada',
+          label: 'Aviso de tradução indisponível',
           type: 'text',
           admin: {
             description:
-              'Aviso ao trocar para um idioma em que o projeto ainda não está publicado. O visitante é levado à lista nesse idioma. Ex.: Este projeto ainda não está disponível em português.',
+              'Aparece ao trocar para um idioma em que o projeto ainda não foi publicado. O site abre a lista de projetos nesse idioma.',
           },
         },
         {
           name: 'readingPositionAdjusted',
-          label: 'Aviso de posição de leitura ajustada',
+          label: 'Aviso de ajuste na posição de leitura',
           type: 'text',
           admin: {
             description:
-              'Aviso após a troca de idioma quando o site precisa ajustar a posição de leitura por falta de uma seção correspondente. Ex.: Ajustamos sua posição de leitura nesta tradução.',
+              'Aparece após a troca de idioma quando a tradução não tem uma seção correspondente.',
           },
         },
         {
           name: 'emptyCasesTitle',
-          label: 'Lista sem projetos: título',
+          label: 'Título da lista vazia',
           type: 'text',
           admin: {
             description:
-              'Título mostrado quando não há projetos publicados para a lista ou área de destaques no idioma atual. Ex.: Novos projetos em breve.',
+              'Aparece na lista ou nos destaques quando não há projetos publicados no idioma atual. Exemplo: Novos projetos em breve.',
           },
         },
         {
           name: 'emptyCasesDescription',
-          label: 'Lista sem projetos: explicação',
+          label: 'Texto de apoio da lista vazia',
           type: 'text',
           admin: {
             description:
-              'Texto de apoio exibido abaixo do título de lista vazia. Ex.: Estou preparando os próximos projetos para compartilhar aqui.',
+              'Aparece abaixo do título. Use uma frase para apresentar o que virá a seguir.',
           },
         },
         {
           name: 'caseUnavailableTitle',
-          label: 'Projeto retirado de publicação: título',
+          label: 'Título de projeto retirado do ar',
           type: 'text',
           admin: {
             description:
-              'Título mostrado ao acessar um projeto que deixou de estar publicado. Ex.: Projeto indisponível.',
+              'Aparece ao abrir um projeto que deixou de estar publicado. Exemplo: Projeto indisponível.',
           },
         },
         {
           name: 'caseUnavailableDescription',
-          label: 'Projeto retirado de publicação: explicação',
+          label: 'Texto de apoio de projeto retirado do ar',
           type: 'text',
           admin: {
             description:
-              'Texto que orienta o visitante quando um projeto foi retirado de publicação. Ex.: Este projeto não está mais disponível. Conheça os outros trabalhos.',
+              'Explique que o projeto foi retirado e convide o visitante a explorar os outros trabalhos.',
           },
         },
         {
           name: 'temporaryFailureTitle',
-          label: 'Falha temporária: título',
+          label: 'Título de falha temporária',
           type: 'text',
           admin: {
             description:
-              'Título mostrado quando o site não consegue carregar o conteúdo naquele momento. Ex.: Conteúdo temporariamente indisponível.',
+              'Aparece quando o conteúdo não carrega. Exemplo: Conteúdo temporariamente indisponível.',
           },
         },
         {
           name: 'temporaryFailureDescription',
-          label: 'Falha temporária: orientação ao visitante',
+          label: 'Texto de apoio de falha temporária',
           type: 'text',
           admin: {
             description:
-              'Explicação para uma falha temporária de carregamento ou de troca de idioma. Ex.: Não foi possível carregar o conteúdo. Tente novamente em instantes.',
+              'Orienta o visitante se o conteúdo ou a troca de idioma falhar. Exemplo: Tente novamente em instantes.',
           },
         },
         {
           name: 'retryLabel',
-          label: 'Texto da ação de tentar novamente',
+          label: 'Botão de tentar novamente',
           type: 'text',
           admin: {
-            description:
-              'Rótulo reservado para repetir uma ação após falha. Ex.: Tentar novamente. Não aparece no layout atual.',
+            description: 'Reservado para um controle que ainda não aparece no site.',
           },
         },
         {
           name: 'notFoundTitle',
-          label: 'Página não encontrada: título',
+          label: 'Título de página não encontrada',
           type: 'text',
           admin: {
             description:
-              'Título mostrado para um endereço que não corresponde a uma página disponível. Ex.: Página não encontrada.',
+              'Aparece quando o endereço não corresponde a uma página disponível. Exemplo: Página não encontrada.',
           },
         },
         {
           name: 'notFoundDescription',
-          label: 'Página não encontrada: orientação ao visitante',
+          label: 'Texto de apoio de página não encontrada',
           type: 'text',
           admin: {
-            description:
-              'Texto que orienta o visitante a continuar navegando após acessar um endereço inexistente. Ex.: Confira os projetos ou volte à página inicial.',
+            description: 'Oriente o visitante a voltar à página inicial ou explorar os projetos.',
           },
         },
       ],

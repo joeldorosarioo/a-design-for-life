@@ -8,45 +8,44 @@ export function imageUseField(name: string, label: string): GroupField {
     type: 'group',
     admin: {
       description:
-        'Selecione a imagem e descreva este uso no idioma do documento. A mesma imagem pode ser reutilizada com descrições diferentes.',
+        'A mesma imagem pode ter texto alternativo e legenda diferentes em cada página ou idioma.',
     },
     fields: [
       {
         name: 'media',
-        label: 'Arquivo da imagem',
+        label: 'Arquivo',
         type: 'upload',
         relationTo: 'media',
         admin: {
           description:
-            'Selecione uma imagem da biblioteca ou envie um arquivo JPEG, PNG, WebP ou AVIF de até 10 MB. Não selecione um PDF neste campo.',
+            'Escolha uma imagem da biblioteca ou envie JPEG, PNG, WebP ou AVIF de até 10 MB.',
         },
       },
       {
         name: 'decorative',
-        label: 'Esta imagem é apenas decorativa',
+        label: 'Imagem decorativa',
         type: 'checkbox',
         defaultValue: false,
         admin: {
-          description:
-            'Marque somente se a imagem não acrescenta informação ao conteúdo. Nesse caso, ela será ignorada pelos leitores de tela.',
+          description: 'Marque se a imagem só enfeita a página. Leitores de tela vão ignorá-la.',
         },
       },
       {
         name: 'alt',
-        label: 'Descrição da imagem para leitores de tela',
+        label: 'Texto alternativo',
         type: 'text',
         admin: {
           description:
-            'Descreva de forma breve a informação da imagem neste idioma. Obrigatória para publicar uma imagem que não seja decorativa; deixe vazia se ela for apenas decorativa.',
+            'Descreva o que a imagem comunica, no idioma da página. Preencha para publicar uma imagem informativa. Se for decorativa, deixe em branco.',
         },
       },
       {
         name: 'caption',
-        label: 'Legenda da imagem',
+        label: 'Legenda',
         type: 'textarea',
         admin: {
           description:
-            'Texto associado a este uso da imagem, no idioma do documento. Aparece junto da imagem quando a seção prevê legenda; pode incluir contexto ou crédito.',
+            'Pode incluir contexto ou crédito. Aparece junto da imagem nos layouts que exibem legenda.',
         },
       },
     ],

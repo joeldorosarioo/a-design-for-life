@@ -141,26 +141,8 @@ native(
       revision: '434ee5c92dc71f1c8147831bd38dea7c244af386',
       schemaSha256: schema.digest('hex'),
     };
-    async function initialize(
-      databaseUri = uri.href,
-      schema: 'predecessor' | 'current' = 'current',
-    ) {
+    async function initialize(databaseUri = uri.href) {
       const config = await (await import('../payload.config')).default;
-      const collections = config.collections
-        .filter(({ slug }) => slug !== 'publication-retries')
-        .map((collection) => {
-          if (schema !== 'predecessor' || collection.slug !== 'users') return collection;
-          // Before schema17, Native account reads/writes must not select its new
-          // columns. Drizzle builds tables from flattenedFields, while Native
-          // document operations also consume the original sanitized fields.
-          const existedBefore = (field: { name?: string; type: string }) =>
-            !['name', 'avatar'].includes(field.name ?? '');
-          return {
-            ...collection,
-            fields: collection.fields.filter(existedBefore),
-            flattenedFields: collection.flattenedFields.filter(existedBefore),
-          };
-        });
       const payload = await getPayload({
         config: {
           ...config,
@@ -174,7 +156,7 @@ native(
               disableCreateDatabase: true,
             }),
           },
-          collections,
+          collections: config.collections.filter(({ slug }) => slug !== 'publication-retries'),
           typescript: { ...config.typescript, autoGenerate: false },
         },
         disableDBConnect: true,
@@ -195,7 +177,7 @@ native(
           throw new Error('Controlled migration requested a different owned database.');
         assertOwned();
       },
-      initialize: () => initialize(uri.href, 'predecessor'),
+      initialize: () => initialize(),
       backup: {
         application,
         recipient: tools.recipient,
@@ -222,7 +204,7 @@ native(
       vi.stubEnv('PUBLICATION_RETRIES_ENABLED', 'false');
       await invoke({ tool: 'createdb', args: ['--username=adfl_test', database] });
       created = true;
-      const old = await initialize(uri.href, 'predecessor');
+      const old = await initialize();
       await old.db.connect!();
       // Payload's generic type uses unknown arguments. This owned test invokes
       // the real Postgres adapter with the preceding Native Postgres catalog.
@@ -283,9 +265,12 @@ native(
       ).toMatchObject({
         id: record.id,
         email: record.email,
-        name: null,
-        avatar: null,
       });
+      const profile = await upgraded.db.pool.query(
+        'SELECT name, avatar_id FROM users WHERE id = $1',
+        [record.id],
+      );
+      expect(profile.rows).toEqual([{ name: null, avatar_id: null }]);
       expect(
         (
           await upgraded.login({
@@ -348,7 +333,7 @@ native(
           ],
           inputFile: dump.path,
         });
-        const recovery = await initialize(recoveryUri.href, 'predecessor');
+        const recovery = await initialize(recoveryUri.href);
         await recovery.db.connect!();
         expect(planControlledMigration(await history(recovery))).toBe('pending');
         expect(

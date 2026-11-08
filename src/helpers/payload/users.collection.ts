@@ -23,8 +23,7 @@ export function usersCollection(
     },
     admin: {
       useAsTitle: 'email',
-      description:
-        'Contas de acesso ao painel. O nome e a foto identificam quem edita o conteúdo; são separados do perfil profissional público da Eliana.',
+      description: 'Gerencie as contas que podem entrar no painel.',
     },
     access: {
       create: ({ req }) => req.user?.collection === 'users',
@@ -70,29 +69,6 @@ export function usersCollection(
       beforeChange: [firstAccess.beforeChange],
       afterChange: [firstAccess.afterChange],
     },
-    fields: [
-      {
-        name: 'name',
-        label: 'Nome de exibição',
-        type: 'text',
-        admin: {
-          description:
-            'Como você quer ser identificado no painel. Este é o nome da sua conta e não altera o nome público da Eliana no portfólio.',
-        },
-      },
-      {
-        name: 'avatar',
-        label: 'Foto de perfil da conta',
-        type: 'upload',
-        relationTo: 'media',
-        filterOptions: {
-          mimeType: { in: ['image/jpeg', 'image/png', 'image/webp', 'image/avif'] },
-        },
-        admin: {
-          description:
-            'Selecione ou envie uma imagem JPEG, PNG, WebP ou AVIF de até 10 MB. A foto aparece na sua conta do painel e não altera o retrato público da Eliana. Sem foto, o painel usa suas iniciais.',
-        },
-      },
-    ],
+    fields: [],
   };
 }

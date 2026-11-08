@@ -8,7 +8,7 @@ export const Media: CollectionConfig = {
   admin: {
     useAsTitle: 'filename',
     description:
-      'Biblioteca de imagens e currículos: JPEG, PNG, WebP ou AVIF até 10 MB e PDF até 5 MB. Para trocar um arquivo, envie uma nova mídia. As descrições das imagens são preenchidas nos campos do conteúdo em que forem usadas.',
+      'Envie imagens JPEG, PNG, WebP ou AVIF de até 10 MB e PDFs de até 5 MB. Para substituir um arquivo, envie outro e selecione-o no conteúdo.',
   },
   trash: true,
   disableDuplicate: true,
@@ -41,11 +41,11 @@ export const Media: CollectionConfig = {
   fields: [
     {
       name: 'label',
-      label: 'Nome para encontrar o arquivo na biblioteca',
+      label: 'Nome na biblioteca',
       type: 'text',
       admin: {
         description:
-          'Identificação de uso interno, sem alterar o nome do arquivo nem o texto exibido no site. Exemplo: Retrato da Eliana ou Currículo em português.',
+          'Dê um nome que identifique o arquivo, como Retrato da Eliana ou Currículo em português. Ele aparece apenas no painel.',
       },
     },
     ...(['manifest', 'usages'] as const).map((name) => ({

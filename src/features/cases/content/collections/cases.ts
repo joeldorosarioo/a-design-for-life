@@ -8,7 +8,7 @@ export const Cases: CollectionConfig = protectEditorialCollection({
   labels: { singular: 'Projeto', plural: 'Projetos' },
   admin: {
     description:
-      'Cadastre cada projeto uma vez. Aqui você define a identificação, a ordem e o destaque; os textos em português e inglês ficam em Conteúdo dos projetos.',
+      'Cadastre o projeto uma vez. Em Conteúdo dos projetos, crie uma versão em português e outra em inglês.',
     useAsTitle: 'internalTitle',
     defaultColumns: ['internalTitle', 'sortOrder', 'featured'],
   },
@@ -22,12 +22,12 @@ export const Cases: CollectionConfig = protectEditorialCollection({
   fields: [
     {
       name: 'internalTitle',
-      label: 'Nome do projeto no painel',
+      label: 'Nome interno',
       type: 'text',
       required: true,
       admin: {
         description:
-          'Nome para encontrar este projeto no CMS. Exemplo: Redesenho do aplicativo. O título exibido no site é preenchido em Conteúdo dos projetos.',
+          'Use um nome que facilite encontrar o projeto no painel. O título público fica em Conteúdo dos projetos.',
       },
     },
     {
@@ -36,18 +36,16 @@ export const Cases: CollectionConfig = protectEditorialCollection({
       type: 'number',
       defaultValue: 0,
       admin: {
-        description:
-          'Projetos com números menores aparecem primeiro. Esta ordem é compartilhada pelas versões em português e inglês.',
+        description: 'Números menores aparecem primeiro nos dois idiomas.',
       },
     },
     {
       name: 'featured',
-      label: 'Destacar na página inicial',
+      label: 'Mostrar na página inicial',
       type: 'checkbox',
       defaultValue: false,
       admin: {
-        description:
-          'Inclui este projeto entre os destaques da página inicial quando houver conteúdo publicado no idioma visitado.',
+        description: 'O destaque aparece apenas nos idiomas em que o projeto estiver publicado.',
       },
     },
   ],
