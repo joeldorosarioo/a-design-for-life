@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory';
 import { selectBackupJob } from './job-settings';
-import { embeddedStagingBackupEnvironment } from './runtime-entry';
+import {
+  embeddedBuildRevision,
+  embeddedOperationalCommand,
+  embeddedStagingBackupEnvironment,
+} from './runtime-entry';
 
 const env = {
   NODE_ENV: 'production',
@@ -21,6 +25,7 @@ const input = {
   platform: 'linux' as const,
   uid: 70,
   alpineRelease: '3.24.0\n',
+  buildRevision: 'a'.repeat(40),
   addresses: ['172.16.1.9'],
 };
 
@@ -31,6 +36,32 @@ function select(overrides: Overrides = {}) {
 }
 
 describe('embedded Alpine staging backup boundary', () => {
+  it('derives the source revision from the image when no operational revision is configured', () => {
+    const withoutRevision = { ...env, OPS_SOURCE_REVISION: undefined };
+    const derived = select({ env: withoutRevision });
+    expect(derived.OPS_SOURCE_REVISION).toBe(input.buildRevision);
+    expect(
+      selectBackupJob({ ...withoutRevision, ...derived }, ['backup']).application('b'.repeat(64))
+        .revision,
+    ).toBe(input.buildRevision);
+  });
+
+  it('reads exactly the immutable build identity shape', () => {
+    expect(embeddedBuildRevision({ revision: input.buildRevision })).toBe(input.buildRevision);
+    for (const value of [
+      null,
+      [],
+      'a'.repeat(40),
+      {},
+      { revision: 42 },
+      { revision: 'draft-uncommitted' },
+      { revision: input.buildRevision, environment: 'staging' },
+    ])
+      expect(() => embeddedBuildRevision(value)).toThrow(
+        'Embedded staging build identity refused.',
+      );
+  });
+
   it('selects this container database without changing the publication namespace or credentials', () => {
     const derived = select();
     const mapped = { ...env, ...derived };
@@ -42,6 +73,7 @@ describe('embedded Alpine staging backup boundary', () => {
     expect(after.password).toBe(before.password);
     expect(after.pathname).toBe(before.pathname);
     expect(derived.OPS_STAGING_DATABASE_TARGET).toBe('172.16.1.9:5432/a_design_for_life_staging');
+    expect(derived.OPS_SOURCE_REVISION).toBe(input.buildRevision);
     expect(publicRootDirectory(mapped)).toBe(publicRootDirectory(env));
     expect(selectBackupJob(mapped, ['backup']).namespace).toEqual({
       project: 'a-design-for-life',
@@ -51,6 +83,12 @@ describe('embedded Alpine staging backup boundary', () => {
   });
 
   it.each<[string, Overrides]>([
+    ['an unknown image revision', { buildRevision: 'draft-uncommitted' }],
+    ['an abbreviated image revision', { buildRevision: 'a'.repeat(7) }],
+    [
+      'a mismatching environment revision',
+      { env: { ...env, OPS_SOURCE_REVISION: 'b'.repeat(40) } },
+    ],
     ['root', { uid: 0 }],
     ['another user', { uid: 1000 }],
     ['Windows', { platform: 'win32' as const }],
@@ -91,5 +129,24 @@ describe('embedded Alpine staging backup boundary', () => {
         'Invalid operational backup job configuration.',
       );
     }
+  });
+});
+
+describe('explicit operational commands in the same image', () => {
+  it('keeps routine backup available and refuses an unapproved migration', () => {
+    expect(embeddedOperationalCommand(['backup'], env)).toBe('backup');
+    expect(() => embeddedOperationalCommand(['migrate'], env)).toThrow();
+    expect(() =>
+      embeddedOperationalCommand(['migrate'], { ...env, OPS_ALLOW_REVIEWED_MIGRATION: 'false' }),
+    ).toThrow();
+  });
+
+  it('allows only the reviewed migration path with its explicit opt-in', () => {
+    const approved = { ...env, OPS_ALLOW_REVIEWED_MIGRATION: 'true' };
+    const command = embeddedOperationalCommand(['migrate'], approved);
+    expect(command).toBe('migrate');
+    expect(selectBackupJob({ ...approved, ...select() }, [command]).command).toBe('migrate');
+    for (const args of [[], ['restore'], ['migrate', 'another-migration'], ['backup', '--drop']])
+      expect(() => embeddedOperationalCommand(args, approved)).toThrow();
   });
 });

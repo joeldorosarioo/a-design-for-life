@@ -15,12 +15,28 @@ function privateAddress(address: string) {
   );
 }
 
+/** Read build provenance from the image file, never from image environment metadata. */
+export function embeddedBuildRevision(identity: unknown): string {
+  if (
+    !identity ||
+    typeof identity !== 'object' ||
+    Array.isArray(identity) ||
+    Object.keys(identity).length !== 1 ||
+    !('revision' in identity) ||
+    typeof identity.revision !== 'string' ||
+    !/^[a-f0-9]{40}$/.test(identity.revision)
+  )
+    throw new Error('Embedded staging build identity refused.');
+  return identity.revision;
+}
+
 /** Only translate the embedded PostgreSQL loopback into this same container's private address. */
 export function embeddedStagingBackupEnvironment(input: {
   env: Partial<NodeJS.ProcessEnv>;
   platform: NodeJS.Platform;
   uid: number | undefined;
   alpineRelease: string;
+  buildRevision: string;
   addresses: readonly string[];
 }) {
   const invalid = () => new Error('Embedded staging backup configuration refused.');
@@ -29,6 +45,8 @@ export function embeddedStagingBackupEnvironment(input: {
     input.platform !== 'linux' ||
     input.uid !== 70 ||
     !/^3\.24\.\d+\s*$/.test(input.alpineRelease) ||
+    !/^[a-f0-9]{40}$/.test(input.buildRevision) ||
+    (env.OPS_SOURCE_REVISION !== undefined && env.OPS_SOURCE_REVISION !== input.buildRevision) ||
     env.APP_ENV !== 'staging' ||
     env.NODE_ENV !== 'production' ||
     !env.DATABASE_URI
@@ -54,12 +72,30 @@ export function embeddedStagingBackupEnvironment(input: {
   const target = `${database.hostname}:5432/${database.pathname.slice(1)}`;
   if (env.OPS_STAGING_DATABASE_TARGET && env.OPS_STAGING_DATABASE_TARGET !== target)
     throw invalid();
-  return { DATABASE_URI: database.href, OPS_STAGING_DATABASE_TARGET: target };
+  return {
+    DATABASE_URI: database.href,
+    OPS_STAGING_DATABASE_TARGET: target,
+    OPS_SOURCE_REVISION: input.buildRevision,
+  };
+}
+
+/** Migrations remain explicit operator actions; the reviewed runner backs up before DDL. */
+export function embeddedOperationalCommand(
+  args: readonly string[],
+  env: Partial<NodeJS.ProcessEnv>,
+) {
+  const [command] = args;
+  if (
+    args.length !== 1 ||
+    (command !== 'backup' && command !== 'migrate') ||
+    (command === 'migrate' && env.OPS_ALLOW_REVIEWED_MIGRATION !== 'true')
+  )
+    throw new Error('Embedded staging operation requires an explicit reviewed command.');
+  return command;
 }
 
 async function main() {
-  if (process.argv.length !== 3 || process.argv[2] !== 'backup')
-    throw new Error('Embedded staging entrypoint supports backup only.');
+  const command = embeddedOperationalCommand(process.argv.slice(2), process.env);
   Object.assign(
     process.env,
     embeddedStagingBackupEnvironment({
@@ -67,6 +103,9 @@ async function main() {
       platform: process.platform,
       uid: process.getuid?.(),
       alpineRelease: readFileSync('/etc/alpine-release', 'utf8'),
+      buildRevision: embeddedBuildRevision(
+        JSON.parse(readFileSync('/app/ops/image/build-identity.json', 'utf8')),
+      ),
       addresses: Object.values(networkInterfaces())
         .flatMap((items) => items ?? [])
         .filter((item) => item.family === 'IPv4' && !item.internal)
@@ -74,7 +113,7 @@ async function main() {
     }),
   );
   return runOperationalBackupJob({
-    args: ['backup'],
+    args: [command],
     tools: { ageBinary: '/opt/adfl-age/age', tarBinary: '/usr/bin/tar' },
     pgDumpBinary: '/usr/local/bin/pg_dump',
   });

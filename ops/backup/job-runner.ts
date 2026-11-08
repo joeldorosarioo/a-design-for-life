@@ -1,4 +1,4 @@
-import { getPayload, type Payload } from 'payload';
+import { getPayload } from 'payload';
 import { readIntegrationEnv } from '../../src/config/integration-env';
 import { readServerEnv } from '../../src/config/server-env';
 import { mediaRuntime } from '../../src/features/media-library/server/media-runtime';
@@ -10,44 +10,17 @@ import {
 } from '../migrations/controlled';
 import { selectBackupJob } from './job-settings';
 import { createNativeBackupSource } from './native-source';
-import { dumpPostgresSnapshot, postgresDumpConnection } from './postgres-dump';
+import { dumpPostgresSnapshot } from './postgres-dump';
+import { withOperationalBackupLock, type OperationalBackupLockPermit } from './r2-retention-lock';
 import { createR2BackupRepository } from './r2-repository';
 import { createLocalBackupRepository } from './repository';
 import { runBackup } from './run';
 import { runBackupTool } from './tools';
 
-async function withOperationalLock<T>(
-  payload: Payload,
-  databaseUri: string,
-  operation: () => Promise<T>,
-) {
-  // Session-scoped PostgreSQL lock is shared by jobs even across network namespaces.
-  // PostgreSQL releases it when the dedicated client disconnects after process failure.
-  const client = await payload.db.pool.connect();
-  try {
-    const actual = await client.query<{ database: string; version: number }>(
-      "SELECT current_database() AS database, current_setting('server_version_num')::int AS version",
-    );
-    if (
-      actual.rows[0]?.database !== postgresDumpConnection(databaseUri).PGDATABASE ||
-      actual.rows[0].version < 170000 ||
-      actual.rows[0].version >= 180000
-    )
-      throw new Error('Operational job PostgreSQL target mismatch.');
-    const lock = await client.query<{ acquired: boolean }>(
-      "SELECT pg_try_advisory_lock(hashtextextended('adfl:operational-backup-job', 0)) AS acquired",
-    );
-    if (lock.rows[0]?.acquired !== true) throw new Error('Operational job already active.');
-    return await operation();
-  } finally {
-    // Destroy the client so an advisory lock can never return to the pool.
-    client.release(true);
-  }
-}
-
 function stagingBackupRepository(
   settings: ReturnType<typeof selectBackupJob>,
   env: ReturnType<typeof readServerEnv>,
+  retentionLock: OperationalBackupLockPermit,
 ) {
   const { storage } = readIntegrationEnv(process.env, env);
   if (storage.driver !== 'r2') throw new Error('Remote source storage configuration is required.');
@@ -67,6 +40,7 @@ function stagingBackupRepository(
     sourceMediaBucket: storage.bucket,
     accessKeyId: OPS_BACKUP_ACCESS_KEY_ID,
     secretAccessKey: OPS_BACKUP_SECRET_ACCESS_KEY,
+    retentionLock,
   });
 }
 
@@ -102,39 +76,61 @@ export async function runOperationalBackupJob(options: OperationalBackupJobOptio
   try {
     assertUnconnectedMigrationAdapter(payload, settings.databaseUri);
     await payload.db.connect!();
-    return await withOperationalLock(payload, settings.databaseUri, async () => {
-      const source = createNativeBackupSource({
-        payload,
-        directory: publicRootDirectory(env),
-        storage: mediaRuntime().storage,
-        dump: (input) =>
-          dumpPostgresSnapshot({
-            ...input,
-            databaseUri: settings.databaseUri,
-            binary: pgDumpBinary,
-          }),
-      });
-      const createVerifiedBackup = async () => {
-        const { schemaSha256 } = await inspectReviewedMigration(payload);
-        const options = {
-          namespace: settings.namespace,
-          application: settings.application(schemaSha256),
-          recipient: settings.recipient,
-          source,
-          tools,
-        };
-        if (settings.namespace.environment === 'local' || settings.namespace.environment === 'test')
+    const integration = readIntegrationEnv(process.env, env);
+    if (env.APP_ENV === 'staging' && integration.storage.driver !== 'r2')
+      throw new Error('Remote backup storage configuration is required.');
+    const backupStorage =
+      env.APP_ENV === 'staging' && integration.storage.driver === 'r2'
+        ? { endpoint: integration.storage.endpoint, bucket: process.env.OPS_BACKUP_BUCKET ?? '' }
+        : undefined;
+    return await withOperationalBackupLock(
+      { payload, databaseUri: settings.databaseUri, namespace: settings.namespace, backupStorage },
+      async (retentionLock) => {
+        const source = createNativeBackupSource({
+          payload,
+          directory: publicRootDirectory(env),
+          storage: mediaRuntime().storage,
+          dump: (input) =>
+            dumpPostgresSnapshot({
+              ...input,
+              databaseUri: settings.databaseUri,
+              binary: pgDumpBinary,
+            }),
+        });
+        const createVerifiedBackup = async () => {
+          const { schemaSha256 } = await inspectReviewedMigration(payload);
+          const options = {
+            namespace: settings.namespace,
+            application: settings.application(schemaSha256),
+            recipient: settings.recipient,
+            source,
+            tools,
+          };
+          if (
+            settings.namespace.environment === 'local' ||
+            settings.namespace.environment === 'test'
+          )
+            return runBackup({
+              ...options,
+              repository: await createLocalBackupRepository({ namespace: settings.namespace }),
+            });
           return runBackup({
             ...options,
-            repository: await createLocalBackupRepository({ namespace: settings.namespace }),
+            repository: stagingBackupRepository(settings, env, retentionLock),
           });
-        return runBackup({ ...options, repository: stagingBackupRepository(settings, env) });
-      };
-      if (settings.command === 'migrate')
-        return applyReviewedMigration(payload, async () => (await createVerifiedBackup()).marker);
-      const { marker, durationMs } = await createVerifiedBackup();
-      return { status: 'backed-up', marker, durationMs };
-    });
+        };
+        if (settings.command === 'migrate')
+          return applyReviewedMigration(payload, async () => (await createVerifiedBackup()).marker);
+        const result = await createVerifiedBackup();
+        return {
+          status: 'backed-up',
+          marker: result.marker,
+          durationMs: result.durationMs,
+          retention: 'retention' in result ? result.retention : 'filesystem',
+          removedBackupCount: result.removedBackupIds.length,
+        };
+      },
+    );
   } finally {
     await payload.destroy();
   }

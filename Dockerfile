@@ -46,8 +46,7 @@ ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=3000 \
     HOSTNAME=0.0.0.0 \
-    MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf \
-    OPS_SOURCE_REVISION=$SOURCE_REVISION
+    MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf
 # Keep UID/GID 70 so existing PostgreSQL and application volumes retain access.
 RUN apk add --no-cache ca-certificates libjpeg-turbo libstdc++ libcrypto3 zlib tar \
     && apk add --no-cache --virtual .account-tools shadow \
@@ -68,7 +67,8 @@ COPY --from=builder --chown=70:70 /app/.work/next-build/static ./.work/next-buil
 COPY --from=builder --chown=70:70 /app/public ./public
 COPY --chown=70:70 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ops/image/start-local-stack.mjs ops/image/staging-mode.mjs ./ops/image/
 USER appuser
-RUN node ops/image/runtime-smoke.mjs
+RUN node --input-type=module -e 'import { writeFileSync } from "node:fs"; const revision = process.argv[1]; if (!/^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/.test(revision)) process.exit(1); writeFileSync("ops/image/build-identity.json", JSON.stringify({ revision }) + "\n", { flag: "wx" });' "$SOURCE_REVISION" \
+    && node ops/image/runtime-smoke.mjs
 COPY --from=qpdf /tmp/qpdf-source/LICENSE.txt /opt/qpdf/LICENSE.txt
 EXPOSE 3000 5432
 STOPSIGNAL SIGTERM

@@ -36,6 +36,7 @@ import { payloadRuntimeLoggerOptions } from './helpers/logger';
 import { readIntegrationEnv } from './config/integration-env';
 import { dependencyDiagnostics } from './config/dependency-diagnostics';
 import { createR2ObjectStorage } from './helpers/storage/r2-storage';
+import { restoreReadOnlyMedia } from './helpers/storage/restore-read-only';
 import { usersCollection } from './helpers/payload/users.collection';
 import { editorialEmailAdapter } from './helpers/payload/editorial-email';
 import { nativePreviewURL } from './helpers/payload/preview-session';
@@ -52,8 +53,11 @@ import { Media } from './features/media-library/content/collections/media';
 loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
 const integrations = readIntegrationEnv(process.env, env);
-const r2Storage =
-  integrations.storage.driver === 'r2' ? createR2ObjectStorage(integrations.storage) : undefined;
+const r2Storage = restoreReadOnlyMedia(
+  integrations.storage.driver === 'r2' ? createR2ObjectStorage(integrations.storage) : undefined,
+  env,
+  process.env.RESTORE_READ_ONLY_MEDIA,
+);
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const Users = usersCollection(env.SITE_ORIGIN, {
   enabled: env.EDITORIAL_FIRST_ACCESS_ENABLED === 'true',
