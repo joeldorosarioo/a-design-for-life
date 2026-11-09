@@ -1,0 +1,32 @@
+html:not(:active-view-transition-type(case-open))::view-transition {
+  display: none;
+}
+
+html:active-view-transition-type(case-open)::view-transition {
+  pointer-events: none;
+}
+
+html:active-view-transition-type(case-open)::view-transition-old(root) {
+  display: none;
+}
+
+html:active-view-transition-type(case-open)::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-image-pair(.case-cover) {
+  overflow: clip;
+  border-radius: var(--radius-xl);
+}
+
+::view-transition-old(.case-cover),
+::view-transition-new(.case-cover) {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html::view-transition {
+    display: none;
+  }
+}

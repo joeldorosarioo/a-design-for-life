@@ -1,10 +1,11 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import type { ReactNode } from 'react';
 import type { Locale } from '@/helpers/i18n/locale.schema';
 import type { PortfolioPresentation } from '@/config/portfolio-presentation';
 import type { NavigationPresentation } from '@/features/site-navigation';
 import type { CaseLinkResolver } from '@/features/cases/ui';
 import type { CaseDetailDTO } from '@/features/cases';
-import { CaseDetail, CaseGrid, CaseList, CaseState } from '@/features/cases/ui';
+import { CaseDetail, CaseEntryContent, CaseGrid, CaseList, CaseState } from '@/features/cases/ui';
 import { resolveContextualLink } from '@/features/cases/server';
 import { HomeContent, AboutContent } from '@/features/professional-profile/ui';
 import { SiteHeader, SiteFooter } from '@/features/site-navigation/ui';
@@ -13,6 +14,7 @@ export type PublicPageViewProps = {
   locale: Locale;
   kind: 'home' | 'cases' | 'about' | 'case';
   portfolio: PortfolioPresentation | null;
+  pathname?: string;
   detail?: CaseDetailDTO;
   status?: 200 | 404 | 410 | 503;
   languageControl?: ReactNode;
@@ -26,6 +28,7 @@ export function PublicPageView({
   locale,
   kind,
   portfolio,
+  pathname,
   detail,
   status = 200,
   languageControl,
@@ -154,6 +157,16 @@ export function PublicPageView({
   } else {
     throw new Error('Verified public page content is unavailable.');
   }
+  const published = status === 200 && mediaMode === 'published';
+  const main = (
+    <main
+      id="main-content"
+      tabIndex={-1}
+      data-page-transition={published && kind !== 'case' ? pathname : undefined}
+    >
+      {content}
+    </main>
+  );
   return (
     <>
       <a
@@ -166,18 +179,16 @@ export function PublicPageView({
         <SiteHeader navigation={navigation} languageControl={languageControl} />
       ) : (
         <header className="portfolio-container py-8">
-          <a href={home}>{controls?.homeLabel ?? 'Home'}</a>
+          <PortfolioLink href={home}>{controls?.homeLabel ?? 'Home'}</PortfolioLink>
           {languageControl}
         </header>
       )}
-      <main id="main-content" tabIndex={-1}>
-        {content}
-      </main>
+      {kind === 'case' && published ? <CaseEntryContent>{main}</CaseEntryContent> : main}
       {navigation ? (
         <SiteFooter navigation={navigation} />
       ) : (
         <footer id="contact" tabIndex={-1} className="portfolio-container py-8">
-          <a href={projects}>{english ? 'Projects' : 'Projetos'}</a>
+          <PortfolioLink href={projects}>{english ? 'Projects' : 'Projetos'}</PortfolioLink>
           <p>
             {english
               ? 'Contact information is temporarily unavailable.'

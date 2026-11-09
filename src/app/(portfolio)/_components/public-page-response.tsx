@@ -74,6 +74,7 @@ export async function renderPublicPage(kind: Kind, locale: string, pathname: str
     <PublicPageView
       kind={kind}
       locale={snapshot.context.locale}
+      pathname={snapshot.context.pathname}
       portfolio={snapshot.portfolio}
       detail={snapshot.detail}
       status={snapshot.context.status}

@@ -1,3 +1,4 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { Button } from '@/components/ui/button';
 
@@ -65,12 +66,12 @@ export function SiteFooter({ navigation }: { navigation: NavigationPresentation 
           alt=""
         />
         <div className="flex flex-wrap justify-between gap-4 self-stretch">
-          <a
+          <PortfolioLink
             className="text-sm font-semibold text-[color:var(--text-inverse)] no-underline wrap-anywhere hover:underline hover:underline-offset-[0.25em]"
             href={brand.href}
           >
             {brand.label}
-          </a>
+          </PortfolioLink>
           {footer.copyright && (
             <p className="m-0 w-[11rem] max-w-full text-left text-xs text-cherry-cola-100 wrap-anywhere lg:w-64">
               {footer.copyright}

@@ -1,3 +1,4 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import type { ReactNode } from 'react';
 import { cn } from 'cn';
 import type { ProfileDTO } from '../contracts/profile-dto.schema';
@@ -111,10 +112,10 @@ export function HomeContent({
           <ProfileProse text={home.description} className="mb-6 text-lg" />
           {home.projectsLabel ? (
             <Button asChild variant="primary" className="min-w-[min(13rem,100%)] justify-start">
-              <a href={projectsHref}>
+              <PortfolioLink href={projectsHref}>
                 {home.projectsLabel}
                 <span aria-hidden="true">→</span>
-              </a>
+              </PortfolioLink>
             </Button>
           ) : null}
         </div>
@@ -134,10 +135,10 @@ export function HomeContent({
           <div className="min-w-0">
             <SectionHeading {...homeAbout} editorial />
             {homeAbout.aboutLabel ? (
-              <a href={aboutHref} className={cn(profileLinkClass, 'mt-6 inline-block')}>
+              <PortfolioLink href={aboutHref} className={cn(profileLinkClass, 'mt-6 inline-block')}>
                 {homeAbout.aboutLabel}
                 <span aria-hidden="true"> →</span>
-              </a>
+              </PortfolioLink>
             ) : null}
           </div>
           {trajectory.length > 0 ? (

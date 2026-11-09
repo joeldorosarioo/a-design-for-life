@@ -1,5 +1,6 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { createPublicPortfolioFixture } from '../../../../testing/fixtures/public-portfolio';
+import { responseGate } from '../../../features/language-switcher/components/reading-position.browser-support';
 
 type Portfolio = Awaited<ReturnType<typeof createPublicPortfolioFixture>>;
 type LocaleCopy = Portfolio['locales']['pt'] | Portfolio['locales']['en'];
@@ -53,7 +54,203 @@ async function tabTo(page: Page, target: Locator) {
   await expect(target).toBeFocused();
 }
 
+test('public fragment scrolling respects the motion preference', async ({ page }) => {
+  const copy = portfolio.locales.en;
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto(copy.aboutPath);
+  const root = page.locator('html');
+  await expect(root).toHaveCSS('scroll-behavior', 'smooth');
+  await siteHeader(page, copy).getByRole('link', { name: copy.contact, exact: true }).click();
+  await expect(page).toHaveURL(`${copy.aboutPath}#contact`);
+  await expect(page.locator('footer #contact')).toBeInViewport();
+
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(root).toHaveCSS('scroll-behavior', 'auto');
+});
+
+test('a slow case opening shows a skeleton only in the selected card', async ({ page }) => {
+  const copy = portfolio.locales.pt;
+  const first = portfolio.cases.first.locales.pt;
+  const second = portfolio.cases.second.locales.pt;
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(copy.listingPath);
+  await page.waitForFunction(() =>
+    document.documentElement.style.getPropertyValue('--portfolio-header-height'),
+  );
+  const timeOrigin = await page.evaluate(() => performance.timeOrigin);
+  const listing = page.getByRole('main');
+  const firstCard = listing.getByRole('article').filter({
+    has: page.getByRole('link', { name: first.title, exact: true }),
+  });
+  const secondCard = listing.getByRole('article').filter({
+    has: page.getByRole('link', { name: second.title, exact: true }),
+  });
+  const pending = '[data-case-opening-pending]';
+  const gate = await responseGate(
+    page,
+    (url) => url.pathname === first.path,
+    (request) => request.headers().rsc === '1',
+  );
+
+  try {
+    await expect(listing.locator(pending)).toHaveCount(0);
+    await firstCard.getByRole('link', { name: first.title, exact: true }).click();
+    expect((await gate.held).status).toBe(200);
+    await expect(listing.getByRole('heading', { level: 1, name: copy.listingTitle })).toBeVisible();
+    await expect(firstCard.getByRole('img', { name: 'Synthetic cover' })).toBeVisible();
+    await expect(firstCard.locator(pending)).toBeVisible();
+    await expect(firstCard.locator(pending).locator('[data-slot="skeleton"]').first()).toHaveCSS(
+      'animation-name',
+      'none',
+    );
+    await expect(
+      firstCard.locator('[aria-live="polite"]').filter({ hasText: /abrindo/i }),
+    ).toHaveCount(1);
+    await expect(secondCard).toBeVisible();
+    await expect(secondCard.locator(pending)).toHaveCount(0);
+    await expect(
+      secondCard.locator('[aria-live="polite"]').filter({ hasText: /abrindo/i }),
+    ).toHaveCount(0);
+    await expect(listing.locator(pending)).toHaveCount(1);
+
+    gate.release();
+    await expect(page).toHaveURL(first.path);
+    await expect(listing.getByRole('heading', { level: 1, name: first.title })).toBeVisible();
+    await expect(listing.locator(pending)).toHaveCount(0);
+    expect(await page.evaluate(() => performance.timeOrigin)).toBe(timeOrigin);
+  } finally {
+    await gate.close();
+  }
+});
+
+test('clicking a project cover expands that cover into the case detail', async ({ page }) => {
+  const { caseId, locales } = portfolio.cases.first;
+  const first = locales.en;
+  await page.setViewportSize({ width: 1440, height: 1200 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto(portfolio.locales.en.listingPath);
+  await page.waitForFunction(() =>
+    document.documentElement.style.getPropertyValue('--portfolio-header-height'),
+  );
+  const main = page.getByRole('main');
+  const card = main.getByRole('article').filter({
+    has: page.getByRole('link', { name: first.title, exact: true }),
+  });
+  const cover = card.getByRole('img', { name: 'Synthetic cover' });
+  await cover.scrollIntoViewIfNeeded();
+  await cover.evaluate((image) => (image as HTMLImageElement).decode());
+  const source = await cover.boundingBox();
+  if (!source) throw new Error('Expected a visible source cover.');
+
+  const gate = await responseGate(
+    page,
+    (url) => url.pathname === first.path,
+    (request) => request.headers().rsc === '1',
+  );
+  try {
+    const navigation = page.waitForRequest(
+      (request) => new URL(request.url()).pathname === first.path && request.headers().rsc === '1',
+      { timeout: 5_000 },
+    );
+    await page.mouse.click(source.x + source.width / 2, source.y + source.height / 2);
+    await navigation;
+    expect((await gate.held).status).toBe(200);
+
+    gate.release();
+    const observed = await page.waitForFunction((prefix) => {
+      const effects = document
+        .getAnimations()
+        .flatMap(({ effect }) => (effect instanceof KeyframeEffect ? [effect] : []));
+      const groupSelector = '::view-transition-group(';
+      const group = effects.find(({ pseudoElement }) =>
+        pseudoElement?.startsWith(`${groupSelector}${prefix}`),
+      );
+      const name = group?.pseudoElement?.slice(groupSelector.length, -1);
+      const duration = group?.getTiming().duration;
+      if (!group || !name || typeof duration !== 'number' || duration <= 360) return null;
+
+      const entrance = effects.find(
+        (effect) =>
+          effect.pseudoElement?.startsWith('::view-transition-new(') &&
+          effect.pseudoElement !== `::view-transition-new(${name})` &&
+          (effect.getTiming().delay ?? 0) > 0,
+      );
+      if (!entrance) return null;
+
+      return {
+        old: effects.some(
+          ({ pseudoElement }) => pseudoElement === `::view-transition-old(${name})`,
+        ),
+        next: effects.some(
+          ({ pseudoElement }) => pseudoElement === `::view-transition-new(${name})`,
+        ),
+        widths: group
+          .getKeyframes()
+          .map(({ width }) => Number.parseFloat(String(width)))
+          .filter(Number.isFinite),
+      };
+    }, `case-cover-en-${caseId}-`);
+
+    await expect(page).toHaveURL(first.path);
+    await expect(main.getByRole('heading', { name: first.title, level: 1 })).toBeVisible();
+    const detailCover = main.getByRole('img', { name: 'Synthetic cover' });
+    const destination = await detailCover.boundingBox();
+    if (!destination) throw new Error('Expected a visible destination cover.');
+    const expansion = await observed.jsonValue();
+    if (!expansion) throw new Error('Expected an animated case cover.');
+    expect(expansion).toMatchObject({ old: true, next: true });
+    expect(expansion.widths.length).toBeGreaterThanOrEqual(2);
+    expect(expansion.widths[0]).toBeCloseTo(source.width, 0);
+    const expandedWidth = expansion.widths.at(-1)!;
+    expect(expandedWidth).toBeGreaterThan(source.width);
+    expect(expandedWidth).toBeCloseTo(destination.width, 0);
+  } finally {
+    await gate.close();
+  }
+});
+
 for (const locale of ['pt', 'en'] as const) {
+  test(`${locale}: public links navigate without replacing the document`, async ({ page }) => {
+    const copy = portfolio.locales[locale];
+    const first = portfolio.cases.first.locales[locale];
+    await page.goto(copy.homePath);
+    await page.waitForFunction(() =>
+      document.documentElement.style.getPropertyValue('--portfolio-header-height'),
+    );
+    const timeOrigin = await page.evaluate(() => performance.timeOrigin);
+    const expectSameDocument = async () => {
+      expect(await page.evaluate(() => performance.timeOrigin)).toBe(timeOrigin);
+    };
+
+    await test.step('Navigate from the desktop header to the project list', async () => {
+      await siteHeader(page, copy).getByRole('link', { name: copy.projects, exact: true }).click();
+      await expect(page).toHaveURL(copy.listingPath);
+      await expect(page.getByRole('heading', { level: 1, name: copy.listingTitle })).toBeVisible();
+      await expectSameDocument();
+    });
+
+    await test.step('Open a case and return with browser history', async () => {
+      await page.getByRole('link', { name: first.title, exact: true }).click();
+      await expect(page).toHaveURL(first.path);
+      await expect(page.getByRole('heading', { level: 1, name: first.title })).toBeVisible();
+      await expectSameDocument();
+      await page.goBack();
+      await expect(page).toHaveURL(copy.listingPath);
+      await expectSameDocument();
+    });
+
+    await test.step('Navigate from the mobile menu to About', async () => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await siteHeader(page, copy)
+        .getByRole('button', { name: copy.openMenu, exact: true })
+        .click();
+      await page.getByRole('dialog').getByRole('link', { name: copy.about, exact: true }).click();
+      await expect(page).toHaveURL(copy.aboutPath);
+      await expect(page.getByRole('heading', { level: 1, name: copy.aboutTitle })).toBeVisible();
+      await expectSameDocument();
+    });
+  });
+
   test(`${locale}: published Home, About, listing and case are complete in SSR without JavaScript`, async ({
     browser,
     baseURL,

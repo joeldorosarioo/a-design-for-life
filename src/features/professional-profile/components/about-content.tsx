@@ -1,3 +1,4 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import type { ProfileDTO } from '../contracts/profile-dto.schema';
 import { cn } from 'cn';
 import { ProfileProse, profileEyebrowClass, profileLinkClass } from './home-content';
@@ -113,13 +114,13 @@ export function AboutContent({
         <div className={editorialBodyClass}>
           <ProfileProse text={about.closing} className="text-lg" />
           {about.projectsLabel ? (
-            <a
+            <PortfolioLink
               className={cn(profileLinkClass, 'mt-6 inline-block py-3 text-base')}
               href={projectsHref}
             >
               {about.projectsLabel}
               <span aria-hidden="true"> →</span>
-            </a>
+            </PortfolioLink>
           ) : null}
         </div>
       </section>

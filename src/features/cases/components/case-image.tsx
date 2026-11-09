@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { cva } from 'class-variance-authority';
 import type { ImageUseDTO } from '@/features/media-library';
 import type { CaseDetailDTO } from '../contracts/case-dto.schema';
+import { CaseCoverMotion } from './case-view-motion';
 export type CaseMediaMode = 'published' | 'preview';
 const dimensions = {
   cover: { width: 1280, height: 480 },
@@ -53,6 +54,7 @@ export function CaseImage({
   priority = false,
   coverPresentation,
   intrinsicSize,
+  transitionName,
 }: {
   image: ImageUseDTO | null;
   kind?: keyof typeof dimensions;
@@ -60,23 +62,32 @@ export function CaseImage({
   priority?: boolean;
   coverPresentation?: CaseDetailDTO['coverPresentation'] | null;
   intrinsicSize?: CaseDetailDTO['coverIntrinsicSize'];
+  transitionName?: string;
 }) {
   if (!image) return null;
+  const picture = (
+    <Image
+      className={imageVariants({
+        kind,
+        coverPresentation: coverPresentation ?? 'contained-cherry',
+        className: transitionName ? '[view-transition-class:case-cover]' : undefined,
+      })}
+      src={`/${mediaMode === 'preview' ? 'preview-media' : 'media'}/${image.mediaId}/original`}
+      alt={image.decorative ? '' : image.alt}
+      {...dimensions[kind]}
+      sizes={kind === 'cover' && intrinsicSize ? containedCoverSizes(intrinsicSize) : sizes[kind]}
+      unoptimized={mediaMode === 'preview'}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : undefined}
+    />
+  );
   return (
     <figure className="m-0 min-w-0">
-      <Image
-        className={imageVariants({
-          kind,
-          coverPresentation: coverPresentation ?? 'contained-cherry',
-        })}
-        src={`/${mediaMode === 'preview' ? 'preview-media' : 'media'}/${image.mediaId}/original`}
-        alt={image.decorative ? '' : image.alt}
-        {...dimensions[kind]}
-        sizes={kind === 'cover' && intrinsicSize ? containedCoverSizes(intrinsicSize) : sizes[kind]}
-        unoptimized={mediaMode === 'preview'}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : undefined}
-      />
+      {transitionName ? (
+        <CaseCoverMotion name={transitionName}>{picture}</CaseCoverMotion>
+      ) : (
+        picture
+      )}
       {image.caption ? (
         <figcaption className="mt-3 text-sm whitespace-pre-line text-muted-foreground">
           {image.caption}

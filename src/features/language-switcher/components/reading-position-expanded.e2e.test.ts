@@ -318,7 +318,7 @@ test('@lifecycle direct entry and refresh do not invent a missing-translation no
   const response = await page.goto('/en/cases?translation=missing#contact');
   expect(response?.status()).toBe(200);
   expect((await response!.allHeaders())['set-cookie']).toBeUndefined();
-  expect(await response!.text()).toContain('<html lang="en">');
+  expect(await response!.text()).toMatch(/<html\b[^>]*\slang="en"(?=[\s>])/);
   await titleFor(page, 'list', 'en');
   await expect(page.getByRole('status')).toBeEmpty();
   const storage = await browserStorage(page);

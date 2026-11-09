@@ -1,6 +1,7 @@
 export { CaseCard } from './components/case-card';
 export { CaseGrid, CaseList, CaseState } from './components/case-list';
 export type { CaseGridProps, CaseListProps } from './components/case-list';
+export { CaseEntryContent, discardUnmatchedCaseOpening } from './components/case-view-motion';
 export { CaseDetail } from './components/case-detail';
 export type { CaseDetailProps } from './components/case-detail';
 export { CaseContents } from './components/case-contents';

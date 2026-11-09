@@ -70,7 +70,7 @@ for (const locale of ['pt', 'en'] as const) {
             expect(body).not.toContain(otherTitle);
             expect(body).not.toContain('FORGED');
             if (!flight) {
-              expect(body).toContain(`<html lang="${locale}">`);
+              expect(body).toMatch(new RegExp(String.raw`<html\b[^>]*\slang="${locale}"(?=[\s>])`));
               expect(body).toContain(`<title>${title}</title>`);
               expect(body).toContain('name="robots" content="noindex, nofollow"');
             }

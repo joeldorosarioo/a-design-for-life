@@ -1,3 +1,4 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import { Fragment, type ReactNode } from 'react';
 import { cn } from 'cn';
 import type { RichText } from '../contracts/rich-text.schema';
@@ -51,7 +52,7 @@ export function CaseText({
         const target = resolveLink(node.fields);
         if (!target) return children;
         return (
-          <a
+          <PortfolioLink
             href={target.href}
             className="text-primary underline underline-offset-[0.2em] [&:hover]:text-[color:var(--action-hover)]"
             target={target.newTab ? '_blank' : undefined}
@@ -64,7 +65,7 @@ export function CaseText({
                 <span className="sr-only">{newTabLabel}</span>
               </>
             ) : null}
-          </a>
+          </PortfolioLink>
         );
       }
     }

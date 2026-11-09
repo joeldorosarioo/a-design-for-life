@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import '@/stylesheets/globals.css';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import { ReadingPositionProvider } from '@/features/language-switcher/ui';
+import { PublicPageMotion } from '../_components/public-page-motion';
 
 // This root contains document framing only. Per-page navigation never persists
 // across a client transition while the body moves to another confirmed generation.
@@ -15,9 +16,14 @@ export default async function PublicLayout({
 }) {
   const locale = localeSchema.safeParse((await params).locale);
   return (
-    <html lang={locale.success ? locale.data : 'en'}>
+    <html
+      lang={locale.success ? locale.data : 'en'}
+      className="motion-safe:scroll-smooth"
+      data-scroll-behavior="smooth"
+    >
       <body className="portfolio-body portfolio-focus">
         <ReadingPositionProvider>{children}</ReadingPositionProvider>
+        <PublicPageMotion />
       </body>
     </html>
   );

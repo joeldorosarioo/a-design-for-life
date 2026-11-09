@@ -1,3 +1,4 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import type { CaseCardDTO } from '../contracts/case-dto.schema';
 import type { CaseMediaMode } from './case-image';
 import { CaseCard } from './case-card';
@@ -52,10 +53,10 @@ export function CaseList({ opening, homeHref, homeLabel, countLabel, ...grid }: 
   return (
     <div className="portfolio-container grid min-w-0 gap-12 py-6 wrap-anywhere lg:gap-28 lg:py-20">
       <header className="grid gap-6" data-reading-key="cases-opening">
-        <a href={homeHref} className={`${caseTextLinkClass} -my-3`}>
+        <PortfolioLink href={homeHref} className={`${caseTextLinkClass} -my-3`}>
           <span aria-hidden="true">← </span>
           {homeLabel}
-        </a>
+        </PortfolioLink>
         <div className="grid min-w-0 gap-6">
           {opening.eyebrow ? <p className={caseEyebrowClass}>{opening.eyebrow}</p> : null}
           {opening.title ? (
@@ -94,7 +95,7 @@ export function CaseState({
           {links.map((link) => (
             <li key={`${link.href}-${link.label}`}>
               <Button asChild>
-                <a href={link.href}>{link.label}</a>
+                <PortfolioLink href={link.href}>{link.label}</PortfolioLink>
               </Button>
             </li>
           ))}

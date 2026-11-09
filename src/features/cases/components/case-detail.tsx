@@ -1,5 +1,7 @@
+import { PortfolioLink } from '@/components/portfolio-link';
 import type { CaseDetailDTO } from '../contracts/case-dto.schema';
 import { CaseProse, caseEyebrowClass, caseTextLinkClass, type CaseLinkResolver } from './case-text';
+import { caseCoverTransitionName } from './case-entry-motion';
 import { CaseImage, type CaseMediaMode } from './case-image';
 import { CaseContents } from './case-contents';
 import { CaseSection } from './case-section';
@@ -57,16 +59,17 @@ export function CaseDetail({
       </dl>
     ) : null;
   const { normal, emphasis } = caseDetail.titleParts;
+  const published = mediaMode !== 'preview';
   return (
     <article className="min-w-0 wrap-anywhere">
       <header
         className="portfolio-container grid gap-8 py-6 lg:gap-12 lg:py-20"
         data-reading-key="case-opening"
       >
-        <a href={projectsHref} className={`${caseTextLinkClass} -my-3`}>
+        <PortfolioLink href={projectsHref} className={`${caseTextLinkClass} -my-3`}>
           <span aria-hidden="true">← </span>
           {labels.back}
-        </a>
+        </PortfolioLink>
         {caseDetail.eyebrow ? <p className={caseEyebrowClass}>{caseDetail.eyebrow}</p> : null}
         <h1 className="m-0 grid gap-8 text-5xl font-semibold whitespace-pre-line lg:gap-12 lg:text-7xl">
           {normal || emphasis ? (
@@ -88,6 +91,7 @@ export function CaseDetail({
           coverPresentation={caseDetail.coverPresentation}
           intrinsicSize={caseDetail.coverIntrinsicSize}
           mediaMode={mediaMode}
+          transitionName={published ? caseCoverTransitionName(caseDetail) : undefined}
           priority
         />
         <CaseProse text={caseDetail.contextNote} className="text-sm" />

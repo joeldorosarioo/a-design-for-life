@@ -1,5 +1,7 @@
 'use client';
 
+import { PortfolioLink } from '@/components/portfolio-link';
+
 import type { NavigationPresentation } from '../contracts/navigation-presentation';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -49,8 +51,8 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
             const target = document.getElementById('contact');
             if (target) {
               event.preventDefault();
-              target.focus();
-              target.scrollIntoView?.({ block: 'start', behavior: 'instant' });
+              target.focus({ preventScroll: true });
+              target.scrollIntoView?.({ block: 'start' });
             }
           }}
         >
@@ -65,7 +67,7 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
               {items.map((item) => (
                 <li key={item.purpose}>
                   <SheetClose asChild>
-                    <a
+                    <PortfolioLink
                       className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground no-underline wrap-anywhere hover:underline hover:underline-offset-[0.25em]"
                       href={item.destination.href}
                       data-analytics-purpose={item.purpose === 'resume' ? 'resume' : undefined}
@@ -85,7 +87,7 @@ export function MobileMenu({ items, controls, navigationLabel }: MobileMenuProps
                       {item.destination.kind === 'resume' && (
                         <span className="sr-only"> ({controls.newTabLabel})</span>
                       )}
-                    </a>
+                    </PortfolioLink>
                   </SheetClose>
                 </li>
               ))}
