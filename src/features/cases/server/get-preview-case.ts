@@ -38,7 +38,7 @@ export async function getPreviewCase(
       collection: 'case-content',
       id: contentId,
       draft: true,
-      depth: 0,
+      depth: 1,
       overrideAccess: false,
       req,
       select,

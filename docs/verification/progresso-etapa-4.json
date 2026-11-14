@@ -18,7 +18,7 @@
       "id": "E4.1.2",
       "done": true,
       "summary": "Para cada falha encontrada, escrever primeiro um teste que reproduza o comportamento e observe RED, corrigir o mínimo, observar GREEN e refatorar. Não ajustar uma expectativa para aprovar uma regressão contra a spec.",
-      "evidence": "A matriz E4.1 não reproduziu regressão da aplicação. O achado de seleção da capa em E4.2 tem RED de dimensões e sizes e GREEN local 11/11, preservados em artifacts/E4-performance/cover-red-green-001.json; prova de performance do sucessor em E4.2.4."
+      "evidence": "2026-11-14-audit-fixes.md: behavioral RED/GREEN observed for canonical browser origins, repository/set/marker/retention interruption handling and delayed article/pair image proportions. Streaming verifier refactor preserved 26 existing tests. Full gate exposed an unrelated R2 fixture leak; a native exact-ID absence assertion failed before cleanup and passed after it. Fresh aggregate and candidate evidence remain open in E4.1.5/E4.3.5."
     },
     {
       "id": "E4.1.3",
@@ -34,9 +34,9 @@
     },
     {
       "id": "E4.1.5",
-      "done": true,
+      "done": false,
       "summary": "Rodar `pnpm verify`, `pnpm test:e2e` e revisão de diff contra a spec. Se houver correção, gerar nova imagem candidata e validá-la em homologação; depois promover esse mesmo digest. Não reconstruir a imagem já validada durante promoção.",
-      "evidence": "pnpm verify e 123 jornadas locais passaram; revisão de padrões e spec em docs/verification/E4-review.md. O pipeline 42512917835 no merge protegido passou 2335 testes Linux e 123 Chromium, implantou a sucessora saudável e confirmou o manifesto privado. Recibos artifacts/E4-gates/final-local-001.json e artifacts/E4-operations/stage4-staging-release-001.json."
+      "evidence": "Reopened for corrective source on 2026-11-14: fresh local pnpm verify and pnpm test:e2e passed (2347 tests/3 platform skips,125 script checks,140 E2E,build); a separately validated candidate and Linux CI remain required; no deployment is authorized by this repair request. See 2026-11-14-audit-fixes.md. Historical evidence: pnpm verify e 123 jornadas locais passaram; revisão de padrões e spec em docs/verification/E4-review.md. O pipeline 42512917835 no merge protegido passou 2335 testes Linux e 123 Chromium, implantou a sucessora saudável e confirmou o manifesto privado. Recibos artifacts/E4-gates/final-local-001.json e artifacts/E4-operations/stage4-staging-release-001.json."
     },
     {
       "id": "E4.2.1",
@@ -100,15 +100,15 @@
     },
     {
       "id": "E4.3.5",
-      "done": true,
+      "done": false,
       "summary": "Registrar evidências frescas de `pnpm verify`, E2E, auditorias e digest. Entregar pacote final com procedimento de rollback da imagem e recuperação de dados; encerrar como **aguardando aprovação A4 e autorização explícita para lançar**.",
-      "evidence": "Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 aprovada em 08/11/2026. Lançamento adiado até autorização explícita."
+      "evidence": "Reopened for corrective source on 2026-11-14: local source verification is recorded in artifacts/audit-fixes/2026-11-14.json; candidate/digest and Linux CI evidence remain pending. The historical A4 approval still identifies its original image and does not validate these changes. See 2026-11-14-audit-fixes.md. Historical evidence: Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 aprovada em 08/11/2026. Lançamento adiado até autorização explícita."
     }
   ],
-  "completedItems": 14,
+  "completedItems": 12,
   "totalItems": 16,
-  "percentage": 87.5,
-  "closedTasks": ["E4.3"],
+  "percentage": 75,
+  "closedTasks": [],
   "totalTasks": 3,
-  "recalculatedAt": "2026-11-08T21:19:18.225Z"
+  "recalculatedAt": "2026-11-14T16:26:31.933Z"
 }

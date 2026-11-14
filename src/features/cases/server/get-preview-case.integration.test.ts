@@ -262,7 +262,11 @@ it('renders a saved case draft without a public slug and refuses a selected fore
   const result = await getPreviewCase('pt', contentNoSlug, await actorRequest());
   expect(result).toMatchObject({
     ok: true,
-    value: { title: 'PRIVATE SECOND', path: `/preview-ui/pt/case-content/${contentNoSlug}/case` },
+    value: {
+      title: 'PRIVATE SECOND',
+      path: `/preview-ui/pt/case-content/${contentNoSlug}/case`,
+      cover: { intrinsicSize: { width: 16, height: 16 } },
+    },
   });
   await expect(getPreviewCase('pt', contentEn, await actorRequest())).resolves.toMatchObject({
     ok: false,

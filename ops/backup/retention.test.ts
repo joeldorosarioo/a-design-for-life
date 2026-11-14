@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
-import { expect, it } from 'vitest';
+import { beforeEach, expect, it } from 'vitest';
 import {
   selectExpiredBackups,
-  verifyCompletedBackup,
+  type VerifiedBackupCompletion,
   verifyCompletedBackupStream,
 } from './retention';
 
@@ -48,11 +48,23 @@ function set(id: string, completedAt: string) {
 }
 const replacement = set(newId, '2026-11-30T23:59:50.000Z');
 const old = set('22222222-2222-4222-8222-222222222222', '2026-10-05T23:59:59.999Z');
-function proof() {
-  return verifyCompletedBackup({ ...replacement, ciphertext, now });
+async function* chunks(bytes: Uint8Array) {
+  yield bytes;
 }
+let verifiedReplacement: VerifiedBackupCompletion;
+beforeEach(async () => {
+  verifiedReplacement = await verifyCompletedBackupStream({
+    ...replacement,
+    ciphertext: chunks(ciphertext),
+    now,
+  });
+});
 function select(markers: unknown, extra: Record<string, unknown> = {}, at = now) {
-  return selectExpiredBackups(markers, at, { namespace, replacement: proof(), ...extra });
+  return selectExpiredBackups(markers, at, {
+    namespace,
+    replacement: verifiedReplacement,
+    ...extra,
+  });
 }
 
 // A changed cutoff or accepting a marker without verified bytes can destroy recoverability.
@@ -83,13 +95,15 @@ it.each([
   expect(() => select([old.marker, replacement.marker], { replacement: invalidProof })).toThrow();
 });
 it('refuses a proof copied into a new object', () => {
-  expect(() => select([old.marker, replacement.marker], { replacement: { ...proof() } })).toThrow();
+  expect(() =>
+    select([old.marker, replacement.marker], { replacement: { ...verifiedReplacement } }),
+  ).toThrow();
 });
 it('refuses a replacement absent from the current listing', () => {
   expect(() => select([old.marker])).toThrow();
 });
 it('refuses a stale integrity proof before selecting any set', () => {
-  const receipt = proof();
+  const receipt = verifiedReplacement;
   expect(() =>
     select(
       [old.marker, replacement.marker],
@@ -98,9 +112,11 @@ it('refuses a stale integrity proof before selecting any set', () => {
     ),
   ).toThrow();
 });
-it('refuses a replacement that completed too long ago', () => {
+it('refuses a replacement that completed too long ago', async () => {
   const stale = set(newId, '2026-11-30T23:49:00.000Z');
-  expect(() => verifyCompletedBackup({ ...stale, ciphertext, now })).toThrow();
+  await expect(
+    verifyCompletedBackupStream({ ...stale, ciphertext: chunks(ciphertext), now }),
+  ).rejects.toThrow();
 });
 it.each([
   ['duplicate identity', () => [old.marker, old.marker, replacement.marker]],
@@ -144,45 +160,50 @@ it('refuses a verified replacement older than another complete set', () => {
   const newer = set('66666666-6666-4666-8666-666666666666', '2026-11-30T23:59:59.000Z');
   expect(() => select([old.marker, replacement.marker, newer.marker])).toThrow();
 });
-it.each(['ciphertext', 'manifest'] as const)('refuses corrupted %s bytes', (field) => {
-  expect(() =>
-    verifyCompletedBackup({ ...replacement, ciphertext, now, [field]: Buffer.from('corrupted') }),
-  ).toThrow();
+it.each(['ciphertext', 'manifest'] as const)('refuses corrupted %s bytes', async (field) => {
+  const corrupted = { ...replacement, ciphertext, [field]: Buffer.from('corrupted') };
+  await expect(
+    verifyCompletedBackupStream({ ...corrupted, ciphertext: chunks(corrupted.ciphertext), now }),
+  ).rejects.toThrow();
 });
-it('refuses an invalid manifest even when its hash matches', () => {
+it('refuses an invalid manifest even when its hash matches', async () => {
   const manifest = Buffer.from(
     JSON.stringify({
       ...JSON.parse(replacement.manifest.toString()),
       objects: [{ key: '../file', byteLength: 1, sha256: 'e'.repeat(64) }],
     }),
   );
-  expect(() =>
-    verifyCompletedBackup({
+  await expect(
+    verifyCompletedBackupStream({
       ...replacement,
       marker: { ...replacement.marker, manifestSha256: hash(manifest) },
       manifest,
-      ciphertext,
+      ciphertext: chunks(ciphertext),
       now,
     }),
-  ).toThrow();
+  ).rejects.toThrow();
 });
-it('refuses conflicting duplicate object references inside the encrypted manifest', () => {
+it('refuses conflicting duplicate object references inside the encrypted manifest', async () => {
   const parsed = JSON.parse(replacement.manifest.toString());
   parsed.objects.push({ ...parsed.objects[0], sha256: 'f'.repeat(64) });
   const manifest = Buffer.from(JSON.stringify(parsed));
-  expect(() =>
-    verifyCompletedBackup({
+  await expect(
+    verifyCompletedBackupStream({
       ...replacement,
       marker: { ...replacement.marker, manifestSha256: hash(manifest) },
       manifest,
-      ciphertext,
+      ciphertext: chunks(ciphertext),
       now,
     }),
-  ).toThrow();
+  ).rejects.toThrow();
 });
-it('does not trust mutations to original input after verification', () => {
+it('does not trust mutations to original input after verification', async () => {
   const current = set(newId, '2026-11-30T23:59:50.000Z');
-  const receipt = verifyCompletedBackup({ ...current, ciphertext, now });
+  const receipt = await verifyCompletedBackupStream({
+    ...current,
+    ciphertext: chunks(ciphertext),
+    now,
+  });
   current.marker.namespace.source = 'changed-source';
   expect(() =>
     selectExpiredBackups([old.marker, current.marker], now, { namespace, replacement: receipt }),
@@ -192,7 +213,7 @@ it('refuses an invalid clock', () => {
   expect(() => select([old.marker, replacement.marker], {}, new Date(NaN))).toThrow();
 });
 
-it('binds both completion verification paths to the application identity in the encrypted manifest', async () => {
+it('binds completion verification to the application identity in the encrypted manifest', async () => {
   const application = {
     imageId: 'sha256:' + '9'.repeat(64),
     revision: 'draft-local-alpine3.24',
@@ -202,19 +223,14 @@ it('binds both completion verification paths to the application identity in the 
     JSON.stringify({ ...JSON.parse(replacement.manifest.toString()), application }),
   );
   const marker = { ...replacement.marker, application, manifestSha256: hash(manifest) };
-  const chunks = async function* () {
-    yield ciphertext;
-  };
-  expect(() => verifyCompletedBackup({ marker, manifest, ciphertext, now })).not.toThrow();
   await expect(
-    verifyCompletedBackupStream({ marker, manifest, ciphertext: chunks(), now }),
+    verifyCompletedBackupStream({ marker, manifest, ciphertext: chunks(ciphertext), now }),
   ).resolves.toBeTruthy();
   const changed = {
     ...marker,
     application: { ...application, imageId: 'sha256:' + '8'.repeat(64) },
   };
-  expect(() => verifyCompletedBackup({ marker: changed, manifest, ciphertext, now })).toThrow();
   await expect(
-    verifyCompletedBackupStream({ marker: changed, manifest, ciphertext: chunks(), now }),
+    verifyCompletedBackupStream({ marker: changed, manifest, ciphertext: chunks(ciphertext), now }),
   ).rejects.toThrow();
 });

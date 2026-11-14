@@ -65,16 +65,24 @@ export function CaseImage({
   transitionName?: string;
 }) {
   if (!image) return null;
+  // shortcut: legacy images keep a contained fixed slot until their intrinsic dimensions are available.
+  const naturalSize = kind === 'article' || kind === 'pair' ? image.intrinsicSize : undefined;
   const picture = (
     <Image
       className={imageVariants({
         kind,
         coverPresentation: coverPresentation ?? 'contained-cherry',
-        className: transitionName ? '[view-transition-class:case-cover]' : undefined,
+        className: transitionName
+          ? '[view-transition-class:case-cover]'
+          : !naturalSize && kind === 'article'
+            ? 'aspect-[1008/567]'
+            : !naturalSize && kind === 'pair'
+              ? 'aspect-[488/275]'
+              : undefined,
       })}
       src={`/${mediaMode === 'preview' ? 'preview-media' : 'media'}/${image.mediaId}/original`}
       alt={image.decorative ? '' : image.alt}
-      {...dimensions[kind]}
+      {...(naturalSize ?? dimensions[kind])}
       sizes={kind === 'cover' && intrinsicSize ? containedCoverSizes(intrinsicSize) : sizes[kind]}
       unoptimized={mediaMode === 'preview'}
       loading={priority ? 'eager' : 'lazy'}

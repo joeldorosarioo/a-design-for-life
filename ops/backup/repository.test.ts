@@ -1,23 +1,36 @@
 import { createHash, randomUUID } from 'node:crypto';
+import * as fs from 'node:fs/promises';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { afterEach, expect, it } from 'vitest';
+import { afterEach, expect, it, vi } from 'vitest';
 import {
   createLocalBackupRepository,
   localBackupRepositoryDirectory,
   localBackupRepositoryScope,
 } from './repository';
+vi.mock('node:fs/promises', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('node:fs/promises')>()),
+}));
 const roots: string[] = [];
 const scratch: string[] = [];
 const now = new Date('2026-12-01T00:00:00.000Z');
 const sha = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 afterEach(async () => {
+  vi.restoreAllMocks();
   for (const root of roots.splice(0)) {
     if (
       path.dirname(root) !== path.resolve('.work/backup-sets') ||
       !/^[a-f0-9]{64}$/.test(path.basename(root))
     )
       throw new Error('Unsafe repo test cleanup');
+    for (const name of await readdir(path.dirname(root))) {
+      if (!name.startsWith(`begin-${path.basename(root)}-`)) continue;
+      const staged = path.join(path.dirname(root), name);
+      const info = await fs.lstat(staged);
+      if (!info.isDirectory() || info.isSymbolicLink())
+        throw new Error('Unsafe staged repo cleanup');
+      await rm(staged, { recursive: true });
+    }
     await rm(root, { recursive: true, force: true });
   }
   for (const root of scratch.splice(0)) {
@@ -26,6 +39,14 @@ afterEach(async () => {
       !path.basename(root).startsWith('repo-unit-')
     )
       throw new Error('Unsafe private test cleanup');
+    for (const name of await readdir(path.dirname(root))) {
+      if (!name.startsWith(`begin-${path.basename(root)}-`)) continue;
+      const staged = path.join(path.dirname(root), name);
+      const info = await fs.lstat(staged);
+      if (!info.isDirectory() || info.isSymbolicLink())
+        throw new Error('Unsafe staged repo cleanup');
+      await rm(staged, { recursive: true });
+    }
     await rm(root, { recursive: true, force: true });
   }
 });
@@ -97,6 +118,143 @@ it('can reopen the same persisted namespace without overwriting completed histor
   await data.repo.complete(set.marker, set.manifest, now);
   const reopened = await createLocalBackupRepository({ namespace: data.namespace });
   expect(await reopened.list()).toEqual([set.marker]);
+});
+function interruptTemporaryWrite() {
+  const original = fs.open;
+  return vi.spyOn(fs, 'open').mockImplementation(async (...args) => {
+    const file = await original(...args);
+    if (String(args[0]).endsWith('.tmp')) {
+      await file.close();
+      throw new Error('Interrupted marker write');
+    }
+    return file;
+  });
+}
+it('can initialize after an interrupted first namespace write without adopting a partial repository', async () => {
+  const namespace = {
+    project: 'a-design-for-life' as const,
+    environment: 'test' as const,
+    source: `unit-${randomUUID()}`,
+  };
+  const root = localBackupRepositoryDirectory(namespace);
+  roots.push(root);
+  const interrupted = interruptTemporaryWrite();
+  await expect(createLocalBackupRepository({ namespace })).rejects.toThrow('Interrupted');
+  interrupted.mockRestore();
+  await expect(fs.lstat(root)).rejects.toMatchObject({ code: 'ENOENT' });
+  const repo = await createLocalBackupRepository({ namespace });
+  expect(await repo.list()).toEqual([]);
+});
+it('holds the same repository mutex while a new namespace is still being staged', async () => {
+  const namespace = {
+    project: 'a-design-for-life' as const,
+    environment: 'test' as const,
+    source: `unit-${randomUUID()}`,
+  };
+  roots.push(localBackupRepositoryDirectory(namespace));
+  let markEntered!: () => void;
+  const entered = new Promise<void>((resolve) => {
+    markEntered = resolve;
+  });
+  let resumeWrite!: () => void;
+  const resumed = new Promise<void>((resolve) => {
+    resumeWrite = resolve;
+  });
+  const original = fs.open;
+  const pause = vi.spyOn(fs, 'open').mockImplementation(async (...args) => {
+    const file = await original(...args);
+    if (String(args[0]).endsWith('.tmp')) {
+      markEntered();
+      await resumed;
+    }
+    return file;
+  });
+  const first = createLocalBackupRepository({ namespace });
+  try {
+    await Promise.race([
+      entered,
+      first.then(() => {
+        throw new Error('Expected namespace write to pause');
+      }),
+    ]);
+    await expect(createLocalBackupRepository({ namespace })).rejects.toThrow(/busy/);
+  } finally {
+    resumeWrite();
+    pause.mockRestore();
+  }
+  const repo = await first;
+  expect(await repo.list()).toEqual([]);
+});
+it('preserves an existing partial or foreign repository instead of initializing over it', async () => {
+  const namespace = {
+    project: 'a-design-for-life' as const,
+    environment: 'test' as const,
+    source: `unit-${randomUUID()}`,
+  };
+  const root = localBackupRepositoryDirectory(namespace);
+  roots.push(root);
+  await mkdir(root, { recursive: true });
+  await writeFile(path.join(root, 'unknown'), 'preserve existing data');
+  await expect(createLocalBackupRepository({ namespace })).rejects.toThrow();
+  expect(await readdir(root)).toEqual(['unknown']);
+  expect(await readFile(path.join(root, 'unknown'), 'utf8')).toBe('preserve existing data');
+});
+it('can create and retain a new backup after an interrupted set initialization and restart', async () => {
+  const data = await setup();
+  const interrupted = interruptTemporaryWrite();
+  await expect(data.repo.begin(randomUUID(), now.toISOString())).rejects.toThrow('Interrupted');
+  interrupted.mockRestore();
+  const repo = await createLocalBackupRepository({ namespace: data.namespace });
+  expect(await repo.list()).toEqual([]);
+  const latest = await upload({ ...data, repo });
+  const completion = await repo.complete(latest.marker, latest.manifest, now);
+  expect(await repo.applyRetention(completion.proof, now)).toEqual([]);
+  expect(await repo.list()).toEqual([latest.marker]);
+});
+it('can retry a completion after an interrupted marker temporary and restart', async () => {
+  const data = await setup();
+  const set = await upload(data);
+  const interrupted = interruptTemporaryWrite();
+  await expect(data.repo.complete(set.marker, set.manifest, now)).rejects.toThrow('Interrupted');
+  interrupted.mockRestore();
+  const repo = await createLocalBackupRepository({ namespace: data.namespace });
+  expect(await repo.list()).toEqual([expect.objectContaining({ id: set.id, complete: false })]);
+  const completion = await repo.complete(set.marker, set.manifest, now);
+  expect(await repo.applyRetention(completion.proof, now)).toEqual([]);
+  expect(await repo.list()).toEqual([set.marker]);
+  expect((await fs.lstat(path.join(repo.root, 'sets', set.id, 'complete.json'))).nlink).toBe(1);
+});
+it('can create and retain a new backup after interrupted expired-set cleanup and restart', async () => {
+  const data = await setup();
+  const old = await upload(data, '2026-01-01T00:00:00.000Z');
+  await data.repo.complete(old.marker, old.manifest, new Date(old.marker.completedAt));
+  const latest = await upload(data);
+  const completion = await data.repo.complete(latest.marker, latest.manifest, now);
+  const interrupted = vi.spyOn(fs, 'rmdir').mockRejectedValueOnce(new Error('Interrupted cleanup'));
+  await expect(data.repo.applyRetention(completion.proof, now)).rejects.toThrow('Interrupted');
+  interrupted.mockRestore();
+  const repo = await createLocalBackupRepository({ namespace: data.namespace });
+  expect(await repo.list()).toEqual([latest.marker]);
+  const next = await upload({ ...data, repo });
+  const nextCompletion = await repo.complete(next.marker, next.manifest, now);
+  expect(await repo.applyRetention(nextCompletion.proof, now)).toEqual([]);
+  expect(await readFile(path.join(repo.root, 'sets', latest.id, 'payload.age'))).toEqual(
+    latest.bytes,
+  );
+});
+it('still refuses unexpected entries in an active set instead of hiding them as interruptions', async () => {
+  const data = await setup();
+  const set = await upload(data);
+  await writeFile(path.join(data.repo.root, 'sets', set.id, 'unknown.tmp'), 'unexpected');
+  await expect(data.repo.list()).rejects.toThrow('Unexpected backup set entry');
+});
+it('refuses to replace an existing empty active-set directory', async () => {
+  const data = await setup();
+  const id = randomUUID();
+  const directory = path.join(data.repo.root, 'sets', id);
+  await mkdir(directory);
+  await expect(data.repo.begin(id, now.toISOString())).rejects.toThrow();
+  expect(await readdir(directory)).toEqual([]);
 });
 it('never overwrites a set or ciphertext even with the same identity', async () => {
   const data = await setup();

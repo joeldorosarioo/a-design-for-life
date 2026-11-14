@@ -2,11 +2,11 @@
 
 # Progresso verificável — etapa 2
 
-**96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
+**93,3%: 28/30 itens; 4/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
-A métrica conta as trinta caixas do plano original, cinco por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis. Aprovação do usuário é independente da contagem.
+A métrica conta as 30 caixas do plano original, distribuídas em 5/5/5/5/5/5 por tarefa, com peso igual e sem crédito parcial. Mede entregas, não esforço, horas ou percentual de testes. Evidência invalidada por mudança torna o item pendente novamente. Os originais e logs históricos permanecem imutáveis. Aprovação do usuário é independente da contagem.
 
 A caixa de preparação do primeiro RED pode estar concluída com a implementação ainda aberta nas seguintes (E2.5.1).
 
@@ -14,7 +14,7 @@ A caixa de preparação do primeiro RED pode estar concluída com a implementaç
 | ------ | ----- | ------------ |
 | E2.1   | 5/5   | Encerrada    |
 | E2.2   | 5/5   | Encerrada    |
-| E2.3   | 5/5   | Encerrada    |
+| E2.3   | 4/5   | Em andamento |
 | E2.4   | 5/5   | Encerrada    |
 | E2.5   | 5/5   | Encerrada    |
 | E2.6   | 4/5   | Em andamento |
@@ -33,9 +33,9 @@ A caixa de preparação do primeiro RED pode estar concluída com a implementaç
 - [x] **E2.2.5** Gate integral e comparação visual Home/Sobre. Evidência/pendência: Candidata008/XCwWNaSVVZ2kr6jeLy4Aa/fonte500f49bfee19601d9bb2924d606961f520c11e2aa2610b308f23b539bb9c6c2e784:18capturasV9 atuais/982checks/81cenários, revisões Home/Sobre completas. GatesWindows003 verify1164pass/2skips+2CSS/E2E113; CI Ubuntu24.04 no SHA c9be4dc23c12f45fadd27cafc05a599b8b3a0c44 SUCCESS,run41655739795,1166/1166sem skips+2CSS/113E2E. E2.2 integralmente encerrada.
 - [x] **E2.3.1** Ordem/destaques por idioma, contagem e falha sem lista vazia. Evidência/pendência: artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt; artifacts/E2-preparation/evidence-manifest.json
 - [x] **E2.3.2** Texto permitido, dupla imagem em ordem e sumário derivado. Evidência/pendência: artifacts/E2-public-pages-integration/E2-cases-unit-final-authoritative.log; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt
-- [x] **E2.3.3** Comparação tipada, dimensões/sizes e prioridade de imagens. Evidência/pendência: artifacts/E2-public-pages-integration/E2-cases-ui-report.md; artifacts/E2-public-pages-integration/E2-public-image-http-green.txt
+- [x] **E2.3.3** Comparação tipada, dimensões/sizes e prioridade de imagens. Evidência/pendência: 2026-11-14-audit-fixes.md; artifacts/audit-fixes/2026-11-14.json: image RED/GREEN, 12 delayed-image Chromium scenarios, real native preview dimensions and final full gates (238 files; 2347 passed/3 platform skips; 125 script checks; 140 E2E; build exit0). Pinned manifests enrich legacy public snapshots; cards/covers retain existing geometry. Visual acceptance stays in E2.3.5.
 - [x] **E2.3.4** Todos os estados públicos com apresentação editorial aprovada. Evidência/pendência: artifacts/E2-negative-editorial/evidence-manifest.json;5/5HTTP exit0:404 desconhecido/privado indistinguíveis em PT/EN,HEAD/condicionais/RSC,retiradaPT410 mantendoEN200,cobertura Native ausente503/Retry60,CSS200,contatos/PDF e header sticky1440/390/texto200%. Mesma raiz capturada; fallback A1 sem estrutura preservado. Gate agregado e aceite visual seguem nas caixas próprias.
-- [x] **E2.3.5** Gate e comparações de listagem/detalhes PT/EN e segundo EN. Evidência/pendência: Build008/source500f49:18capturasV9 atuais/982checks/81responsivos, listagens/case01PTEN/case02EN completos. Gates003 Windows1164pass/2skips+2CSS/E2E113; CI c9be4dc run41655739795 SUCCESS:Linux1166sem skips+2CSS/113E2E. Smoke pós-restauração008/004 exit0:18páginas/5originais/9menus/2capasclaras,500hashes estáveis;sha cad81fe7825081aed0c6892dea70aee4f70eff33699cdcbec2c12a32889a255a.
+- [ ] **E2.3.5** Gate e comparações de listagem/detalhes PT/EN e segundo EN. Evidência/pendência: Reopened for the 2026-11-14 corrective source: fresh aggregate gates passed (2347 tests/3 platform skips,125 script checks,140 E2E,build); affected Figma frame acceptance and candidate validation pending; see 2026-11-14-audit-fixes.md. Historical evidence: Build008/source500f49:18capturasV9 atuais/982checks/81responsivos, listagens/case01PTEN/case02EN completos. Gates003 Windows1164pass/2skips+2CSS/E2E113; CI c9be4dc run41655739795 SUCCESS:Linux1166sem skips+2CSS/113E2E. Smoke pós-restauração008/004 exit0:18páginas/5originais/9menus/2capasclaras,500hashes estáveis;sha cad81fe7825081aed0c6892dea70aee4f70eff33699cdcbec2c12a32889a255a.
 - [x] **E2.4.1** Negociação/prioridade/pesos/variantes com RED/GREEN. Evidência/pendência: E2.4.md; artifacts/E2.4/evidence-manifest.json
 - [x] **E2.4.2** Entrada307 privada e URLs explícitas sem negociação. Evidência/pendência: artifacts/E2-ui-transport-preparation/e2e-final.txt; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt
 - [x] **E2.4.3** Cookie funcional com prazo/atributos e gravação manual. Evidência/pendência: artifacts/E2-ui-transport-preparation/language-http-green.txt; artifacts/E2-ui-transport-preparation/e2e-final.txt

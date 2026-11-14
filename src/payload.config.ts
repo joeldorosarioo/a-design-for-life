@@ -52,6 +52,7 @@ import { Media } from './features/media-library/content/collections/media';
 
 loadEnv({ quiet: true });
 const env = readServerEnv(process.env);
+const siteOrigin = new URL(env.SITE_ORIGIN).origin;
 const integrations = readIntegrationEnv(process.env, env);
 const r2Storage = restoreReadOnlyMedia(
   integrations.storage.driver === 'r2' ? createR2ObjectStorage(integrations.storage) : undefined,
@@ -59,7 +60,7 @@ const r2Storage = restoreReadOnlyMedia(
   process.env.RESTORE_READ_ONLY_MEDIA,
 );
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
-const Users = usersCollection(env.SITE_ORIGIN, {
+const Users = usersCollection(siteOrigin, {
   enabled: env.EDITORIAL_FIRST_ACCESS_ENABLED === 'true',
   appEnv: env.APP_ENV,
   publicSiteEnabled: env.PUBLIC_SITE_ENABLED === 'true',
@@ -103,7 +104,7 @@ const config = buildConfig({
   logger: payloadRuntimeLoggerOptions(env.APP_ENV),
   email: editorialEmailAdapter(env.APP_ENV, env.DATABASE_URI, integrations.resend),
   hooks: { afterError: [editorialError, caseEditorialError] },
-  serverURL: env.SITE_ORIGIN,
+  serverURL: siteOrigin,
   admin: {
     avatar: 'default',
     user: Users.slug,
@@ -170,8 +171,8 @@ const config = buildConfig({
     ],
   }),
   upload: { limits: { fileSize: 10_000_000 }, abortOnLimit: true },
-  cors: [env.SITE_ORIGIN],
-  csrf: [env.SITE_ORIGIN],
+  cors: [siteOrigin],
+  csrf: [siteOrigin],
   graphQL: { disable: true },
   telemetry: false,
   typescript: { outputFile: path.resolve(sourceDirectory, 'payload-types.ts') },

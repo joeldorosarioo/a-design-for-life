@@ -2,7 +2,7 @@
 
 # Execução autorizada — etapa 2
 
-**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
+**Etapa 2: 93,3% do checklist (28/30 itens); 4/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 

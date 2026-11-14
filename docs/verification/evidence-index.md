@@ -2,6 +2,8 @@
 
 The approval records and release receipts identify the reviewed revisions. Checks from those records belong to those revisions. A later code change needs a new candidate and validation through `develop → staging`.
 
+[Corrective source ? 14 November 2026](2026-11-14-audit-fixes.md) records the four audit fixes and their regression checks. The updated source requires fresh candidate validation; the historical A4 approval remains tied to its recorded image.
+
 ## Approvals and progress
 
 | Stage | Approval    | Execution and checklist                                             |

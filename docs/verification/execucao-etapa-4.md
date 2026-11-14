@@ -2,7 +2,7 @@
 
 Autorização explícita recebida em 06/11/2026: A3 aprovada e execução integral de E4.1–E4.3. A aprovação A4 e a autorização de lançamento permanecem pendentes.
 
-**Etapa 4: 87,5% do checklist (14/16 itens); 1/3 tarefas inteiramente encerradas. Aprovação registrada: A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização.**
+**Etapa 4: 75,0% do checklist (12/16 itens); 0/3 tarefas inteiramente encerradas. Aprovação registrada: A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização.**
 
 Estado inicial conferido: develop, HEAD 7331e34c7ed52e9be44fa1e4fa3247f4820d64b3; alteração preexistente em next-env.d.ts preservada.
 

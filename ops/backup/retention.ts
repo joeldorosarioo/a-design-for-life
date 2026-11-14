@@ -15,42 +15,6 @@ declare const completionBrand: unique symbol;
 export type VerifiedBackupCompletion = { readonly [completionBrand]: true };
 const completions = new WeakMap<object, { marker: CompleteBackupMarker; verifiedAt: number }>();
 const digest = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
-const completionInput = z.strictObject({
-  marker: completeBackupMarkerSchema,
-  manifest: z.instanceof(Uint8Array),
-  ciphertext: z.instanceof(Uint8Array),
-  now: z.date(),
-});
-
-// Verifies bytes already read back from the destination. The job must separately
-// prove pg_dump/age, archive contents and source-reference coverage before upload.
-export function verifyCompletedBackup(input: unknown): VerifiedBackupCompletion {
-  const parsed = completionInput.parse(input);
-  const now = checkedClock(parsed.now);
-  const marker = parsed.marker;
-  const completedAt = Date.parse(marker.completedAt);
-  if (
-    completedAt > now ||
-    now - completedAt > 300_000 ||
-    parsed.ciphertext.byteLength !== marker.ciphertext.byteLength ||
-    digest(parsed.ciphertext) !== marker.ciphertext.sha256 ||
-    digest(parsed.manifest) !== marker.manifestSha256
-  )
-    throw new Error('Backup completion integrity was not verified');
-  const manifest = backupManifestSchema.parse(
-    JSON.parse(Buffer.from(parsed.manifest).toString('utf8')),
-  );
-  if (
-    manifest.id !== marker.id ||
-    manifest.createdAt !== marker.createdAt ||
-    !sameNamespace(manifest.namespace, marker.namespace) ||
-    !sameBackupApplication(marker.application, manifest.application)
-  )
-    throw new Error('Backup completion identity differs from its manifest');
-  const receipt = Object.freeze({}) as VerifiedBackupCompletion;
-  completions.set(receipt, { marker, verifiedAt: now });
-  return receipt;
-}
 
 // The repository supplies an actual destination read stream; no supplied hash
 // or verification flag can replace consuming every ciphertext byte.
