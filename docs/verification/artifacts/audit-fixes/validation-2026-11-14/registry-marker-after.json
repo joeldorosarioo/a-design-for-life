@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "kind": "read-only-tested-image-marker-resolution",
+  "checkedAt": "2026-11-14T17:18:17.292Z",
+  "sourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+  "marker": "staging-tested-tree-281c6a19d4a77230479eba7cba0d594677b71a14",
+  "result": {
+    "digest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "revision": "1640d9729d1bddaac2059b850e8124112aa9507a",
+    "imageid": "sha256:9ae154f0743ec294b5f7b4aa7c4b998a698a45bf1501309df3dfdfe530456733"
+  },
+  "requests": 5,
+  "allRegistryOperationsReadOnly": true,
+  "branchContextSimulatedForResolver": true,
+  "actualMainBranchChanged": false,
+  "productionResourcesAccessed": false,
+  "productionDeployed": false
+}

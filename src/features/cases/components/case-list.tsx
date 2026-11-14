@@ -11,6 +11,7 @@ export type CaseGridProps = {
   emptyState: { title: string; description: string };
   headingLevel?: 2 | 3;
   mediaMode?: CaseMediaMode;
+  prioritizeFirstCover?: boolean;
 };
 export type CaseListProps = CaseGridProps & {
   opening: { eyebrow: string | null; title: string | null; description: string | null };
@@ -24,6 +25,7 @@ export function CaseGrid({
   emptyState,
   headingLevel = 2,
   mediaMode,
+  prioritizeFirstCover = false,
 }: CaseGridProps) {
   if (!cases.length) {
     const Heading = headingLevel === 2 ? 'h2' : 'h3';
@@ -36,13 +38,14 @@ export function CaseGrid({
   }
   return (
     <ul className="m-0 grid list-none gap-8 p-0 md:grid-cols-2">
-      {cases.map((caseCard) => (
+      {cases.map((caseCard, index) => (
         <li key={caseCard.caseId} className="min-w-0">
           <CaseCard
             caseCard={caseCard}
             caseLinkLabel={caseLinkLabel}
             headingLevel={headingLevel}
             mediaMode={mediaMode}
+            priority={prioritizeFirstCover && index === 0}
           />
         </li>
       ))}
@@ -71,7 +74,7 @@ export function CaseList({ opening, homeHref, homeLabel, countLabel, ...grid }: 
         </div>
       </header>
       <div data-reading-key="cases-list">
-        <CaseGrid {...grid} />
+        <CaseGrid {...grid} prioritizeFirstCover />
       </div>
     </div>
   );

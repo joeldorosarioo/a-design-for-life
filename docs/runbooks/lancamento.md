@@ -2,6 +2,32 @@
 
 A4 was approved on 8 November 2026. Launch is deferred and requires explicit authorization for the release, target, and window. The [A4 record](../verification/A4.md) tracks the outstanding gates.
 
+## Corrective private staging candidate - 14 November 2026
+
+The current healthy staging revision is `1640d9729d1bddaac2059b850e8124112aa9507a`,
+manifest `sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d`,
+config `sha256:9ae154f0743ec294b5f7b4aa7c4b998a698a45bf1501309df3dfdfe530456733`,
+whole Git tree `281c6a19d4a77230479eba7cba0d594677b71a14`. Its migration tree is
+unchanged: `863d5c13d017c3435b43a2e4e9cc36d68b06f89a`. Linux CI and current visual
+acceptance passed. The fresh performance round failed mobile-listing LCP in two
+scenarios, so this image has not passed complete technical acceptance. A bounded
+source correction passed its local checks and requires a replacement candidate.
+Complementary A4 approval and explicit launch authorization remain pending.
+[Current dossier](../verification/2026-11-14-audit-validation.md) and
+[independent release binding](../verification/artifacts/audit-fixes/validation-2026-11-14/release-binding-43618818421.json).
+
+Its immediate compatible staging rollback is revision
+`36f0ea65bbc2dca0de0f9ca8d7c45407fdbbdd00`, manifest
+`sha256:04f6c20894a28d1803c0d408a0c20f2c89fbc219e606b2e6ee0283d4e74afaf6`.
+The fresh predeploy recovery point is encrypted set
+`95707314-d495-4500-9b2c-cc7e7fedf834`, completed `2026-11-14T17:14:44.627Z`.
+Retain the same volumes when rolling back the image. The backup and isolated
+restore procedures below apply; a real-data connection switch requires its own
+authorization.
+
+The following approved-image table preserves the 8 November A4 record. This
+later dossier commit is separate from the exact deployed tree and tested marker.
+
 ## Approved staging image
 
 | Identity       | Value                                                                                                              |
@@ -40,7 +66,7 @@ Check the deployed revision and digest against the workflow receipt. Verify auth
 
 ## Rollback and recovery
 
-- **Image failure.** Restore private access. Record the time, target, observed digest, and safe correlation ID. If the previous image is compatible with the current catalog, redeploy its exact digest with the same volumes. Verify health, PT/EN, the admin, media, access, and the running digest. The [staging predecessor receipt](../verification/artifacts/E3-operations/stage3-final-staging-release-001.json) identifies the staging rollback image. Record a separate point for production. [Rollback](lancamento.md#rollback-and-recovery)
+- **Image failure.** Restore private access. Record the time, target, observed digest, and safe correlation ID. If the previous image is compatible with the current catalog, redeploy its exact digest with the same volumes. Verify health, PT/EN, the admin, media, access, and the running digest. The [current release binding](../verification/artifacts/audit-fixes/validation-2026-11-14/release-binding-43618818421.json) identifies the corrective candidate's immediate staging predecessor. The [A3 predecessor receipt](../verification/artifacts/E3-operations/stage3-final-staging-release-001.json) remains historical. Record a separate point for production. [Rollback](lancamento.md#rollback-and-recovery)
 - **Data loss or corruption.** Suspend writes and preserve the original data, volumes, logs, and latest backup. Verify the selected complete backup before decrypting and restoring to an isolated copy database. The approved staging procedure uses the existing media read-only. Compare catalog, publication roots, media hashes, PT/EN routes, login, and recovery mail with isolated capture. A connection switch or write to the real target requires separate authorization. [Backup and recovery](lancamento.md#backups-and-recovery)
 
 ## Backups and recovery

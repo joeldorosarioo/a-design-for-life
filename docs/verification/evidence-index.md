@@ -2,7 +2,7 @@
 
 The approval records and release receipts identify the reviewed revisions. Checks from those records belong to those revisions. A later code change needs a new candidate and validation through `develop → staging`.
 
-[Corrective source ? 14 November 2026](2026-11-14-audit-fixes.md) records the four audit fixes and their regression checks. The updated source requires fresh candidate validation; the historical A4 approval remains tied to its recorded image.
+[Corrective source - 14 November 2026](2026-11-14-audit-fixes.md) records the four audit fixes and their regression checks. The [candidate validation follow-up](2026-11-14-audit-validation.md) identifies the new healthy private staging image, current Linux and visual gates, fresh backup and performance work. The historical A4 approval remains tied to its recorded image.
 
 ## Approvals and progress
 
@@ -15,7 +15,9 @@ The approval records and release receipts identify the reviewed revisions. Check
 
 ## Stage 4 checks
 
-The staged candidate passed CI with 2,335 tests, 123 browser journeys, and 48 deployed browser checks. The receipts tie each result to its revision and environment. [Local gates](artifacts/E4-gates/final-local-001.json) · [Staging release](artifacts/E4-operations/stage4-staging-release-001.json) · [Browser policy checks](artifacts/E4-operations/staging-device-policy-browser-001.json)
+The corrective candidate `1640d972` passed 2,350 Linux tests without skips and 140 browser journeys. Its private deployment used a fresh verified encrypted backup, preserved volumes and publication data, and matched independent SSH/GHCR reads. [Current pipeline](artifacts/audit-fixes/validation-2026-11-14/pipeline-43618818421.json) · [Release binding](artifacts/audit-fixes/validation-2026-11-14/release-binding-43618818421.json) · [Current dossier](2026-11-14-audit-validation.md)
+
+The earlier A4 candidate passed 2,335 tests, 123 browser journeys and 48 deployed browser checks. Those results remain historical and belong to that revision. [Historical local gates](artifacts/E4-gates/final-local-001.json) · [Historical staging release](artifacts/E4-operations/stage4-staging-release-001.json) · [Historical browser policy checks](artifacts/E4-operations/staging-device-policy-browser-001.json)
 
 ### Integrated journeys
 
@@ -27,11 +29,15 @@ The staging audit checked authorization, private previews, upload boundaries, ed
 
 ### Visual accessibility and SEO
 
-The final candidate passed browser and SSR comparisons against the staging baseline, including case cover geometry, layouts, SEO metadata, zoom, keyboard, focus, and HTTP error states. The formal screen-reader review remains open. [Candidate visual and accessibility checks](artifacts/E4-quality/candidate-quality-003.json) · [SSR and HTTP](artifacts/E4-quality/candidate-ssr-003.json) · [Zoom](artifacts/E4-quality/zoom-002.json)
+The corrective candidate passed 30 deployed layouts, 50 axe states, keyboard/focus, real 200% zoom, ten SSR pages and nine HTTP states. All 30 captures have identical pixels and media geometry to the actual predecessor. Eighteen exact-source original-content Figma views were separately reviewed with explicit projection limits. [Current visual receipt](artifacts/audit-fixes/validation-2026-11-14/visual-validation.json) · [Original-content frame review](artifacts/audit-fixes/validation-2026-11-14/figma-visual-review.json)
+
+The earlier A4 candidate's browser/SSR comparisons remain available. The formal screen-reader review stays open. [Historical visual checks](artifacts/E4-quality/candidate-quality-003.json) · [Historical SSR/HTTP](artifacts/E4-quality/candidate-ssr-003.json) · [Historical zoom](artifacts/E4-quality/zoom-002.json)
 
 ### Performance
 
-The final cold-browser run passed 12 of 12 scenarios across 36 measurements. Mobile PT case median LCP fell from 2,803.06 ms to 1,867.62 ms after correcting responsive cover selection. These are lab results for the candidate. [Pinned protocol](E4.2-performance-protocol.md) · [Final measurements](artifacts/E4-performance/staging-cold-browser-002.json) · [Cover regression](artifacts/E4-performance/cover-red-green-001.json)
+The first corrective candidate's fresh 36-measurement round passed 10/12 scenarios and failed LCP in the PT/EN mobile listings. All samples remain intact. A three-file image-priority correction passed 20 focused tests and local checks; new candidate validation is pending. Current resource measurements select payment flexibility as the heaviest case, unlike the older financing case. [Current protocol and status](2026-11-14-audit-validation.md#fresh-performance-validation) · [All 36 measurements](artifacts/audit-fixes/validation-2026-11-14/performance-candidate-001.json) · [RED/GREEN](artifacts/audit-fixes/validation-2026-11-14/listing-priority-verification.json)
+
+The earlier A4 cold-browser run passed 12 of 12 scenarios across 36 measurements. Mobile PT financing-case median LCP fell from 2,803.06 ms to 1,867.62 ms after correcting responsive cover selection. These historical lab results belong to that image and route. [Pinned protocol](E4.2-performance-protocol.md) · [Historical measurements](artifacts/E4-performance/staging-cold-browser-002.json) · [Cover regression](artifacts/E4-performance/cover-red-green-001.json)
 
 ### Final editorial content
 
@@ -39,7 +45,7 @@ The ten localized staging routes were inspected. Both résumé links opened PDFs
 
 ### Release review and traceability
 
-The original plan maps acceptance criteria to the test and release gates. The recorded staging candidate is the only image covered by A4. [Plan](../specs/2026-10-29-portfolio-plano-implementacao.md#9-rastreabilidade-e-matriz-de-aceite) · [Progress](progresso-etapa-4.md) · [A4](A4.md) · [Operations](../runbooks/lancamento.md)
+The original plan maps acceptance criteria to the test and release gates. The 8 November approval covers its recorded historical image. The corrective candidate has its own [validation dossier](2026-11-14-audit-validation.md) and awaits complementary A4 approval and explicit launch authorization. [Plan](../specs/2026-10-29-portfolio-plano-implementacao.md#9-rastreabilidade-e-matriz-de-aceite) · [Progress](progresso-etapa-4.md) · [A4](A4.md) · [Operations](../runbooks/lancamento.md)
 
 ## Backup and recovery
 

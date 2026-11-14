@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T15:27:25.574Z",
+  "updatedAt": "2026-11-14T17:39:01.570Z",
   "stage": 2,
   "method": "Unweighted completion of the original thirty implementation-plan checklist items; five per task. A partial item earns no fraction. This is delivery-checklist progress, not elapsed effort, current whole-suite certification or user approval.",
   "completedItems": 28,
@@ -98,7 +98,7 @@
       "id": "E2.3.5",
       "done": false,
       "summary": "Gate e comparações de listagem/detalhes PT/EN e segundo EN",
-      "evidence": "Reopened for the 2026-11-14 corrective source: fresh aggregate gates passed (2347 tests/3 platform skips,125 script checks,140 E2E,build); affected Figma frame acceptance and candidate validation pending; see 2026-11-14-audit-fixes.md. Historical evidence: Build008/source500f49:18capturasV9 atuais/982checks/81responsivos, listagens/case01PTEN/case02EN completos. Gates003 Windows1164pass/2skips+2CSS/E2E113; CI c9be4dc run41655739795 SUCCESS:Linux1166sem skips+2CSS/113E2E. Smoke pós-restauração008/004 exit0:18páginas/5originais/9menus/2capasclaras,500hashes estáveis;sha cad81fe7825081aed0c6892dea70aee4f70eff33699cdcbec2c12a32889a255a."
+      "evidence": "Reopened for the new first-listing-cover performance correction: exact-source1640 frame/deployed acceptance passed, but the replacement source now requires matching full gates and visual/candidate confirmation. The20 focused real-image tests passed after observedRED; see2026-11-14-audit-validation.md. Historical accepted1640 visual evidence remains in artifacts/audit-fixes/validation-2026-11-14/."
     },
     {
       "id": "E2.4.1",
@@ -191,7 +191,7 @@
       "evidence": "Pacote privado A2-review-c9be4dc-v2 concreto/revisado:181artefatos,18PNG,2WEBM,manifestSHA3adc29d0e5b3809da96f52f1da5ef0418865a2a5d6267cbe4168f92aaf47df15. QAreal15:26:01–15:26:10UTC exit0:181hashes/108filtros/204links/18imagensporviewport/2vídeospausados,0overflow1440e390/0redeexterna/0erros;duascapturasrevistaspelo coordenador. RED390overflow236 efixmínimo wrap preservados. artifacts/a2-current008/package-review-summary.json. Entrega final outputs/A2 e reciboexterno vinculam commitdocumental/CI exatos; A2 segue aguardando aprovação,etapa3 não iniciada."
     }
   ],
-  "recalculatedAt": "2026-11-14T16:26:31.119Z",
+  "recalculatedAt": "2026-11-14T17:39:01.697Z",
   "notes": [
     "Atualização atual03/11/2026: E3 retomada explicitamente após a pausa histórica; decisão Resend e limites em retomada-etapa-3.md. A2 aprovada com pendência formal do leitor:29/30 critérios,5/6 tarefas; evidências originais preservadas.",
     "Histórico da pausa — Atualização03/11/2026: usuário aprovou A2 com a pendência E2.6.2 preservada, autorizou E3 e depois pausou até consolidar informações. Contagens não mudam:29/30;E2.1–E2.5 encerradas. Registros anteriores de A2 pendente são históricos. Ver retomada-etapa-3.md.",

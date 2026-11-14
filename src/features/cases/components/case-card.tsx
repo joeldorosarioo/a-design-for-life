@@ -11,11 +11,13 @@ export function CaseCard({
   caseLinkLabel,
   headingLevel = 2,
   mediaMode,
+  priority = false,
 }: {
   caseCard: CaseCardDTO;
   caseLinkLabel: string | null;
   headingLevel?: 2 | 3;
   mediaMode?: CaseMediaMode;
+  priority?: boolean;
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
   const published = mediaMode !== 'preview';
@@ -34,6 +36,7 @@ export function CaseCard({
         image={caseCard.cover}
         kind="card"
         mediaMode={mediaMode}
+        priority={priority}
         transitionName={coverName}
       />
       <CardContent>

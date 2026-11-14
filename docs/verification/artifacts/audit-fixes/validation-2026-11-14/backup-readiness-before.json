@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "kind": "read-only-staging-backup-readiness",
+  "checkedAt": "2026-11-14T16:41:42.301Z",
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+  "executionCount": 7,
+  "activeOrUnfinishedCount": 0,
+  "allExistingExecutionsTerminal": true,
+  "latest": {
+    "uuid": "yubywc4x1eigyuhpl8r1lyzp",
+    "status": "success",
+    "createdAt": "2026-11-09T02:14:43.000000Z",
+    "startedAt": "2026-11-09T02:14:43.000000Z",
+    "finishedAt": "2026-11-09T02:15:03.000000Z",
+    "completedBackup": {
+      "id": "c918e791-3db0-4bc8-815f-a7050524e725",
+      "createdAt": "2026-11-09T02:14:46.705Z",
+      "completedAt": "2026-11-09T02:14:57.032Z",
+      "ciphertextByteLength": 2898824,
+      "ciphertextSha256": "fbf4dea1076ddd8a89c27157cfbd09ec93e9161bb5763414aa7fcd143f79001d"
+    }
+  },
+  "remoteWrites": false,
+  "productionAccessed": false
+}

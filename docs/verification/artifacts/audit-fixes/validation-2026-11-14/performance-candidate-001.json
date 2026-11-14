@@ -1,0 +1,1857 @@
+{
+  "version": 1,
+  "kind": "audit-fixes-candidate-001-preserved-failing-performance-round",
+  "assembledAt": "2026-11-14T17:36:44.667Z",
+  "verdict": {
+    "complete": true,
+    "measurements": 36,
+    "scenarios": 12,
+    "passingScenarios": 10,
+    "failingScenarios": [
+      "cases-pt/mobile",
+      "cases-en/mobile"
+    ],
+    "allBudgetsPass": false,
+    "criteriaClosureAuthorizedByThisRound": false,
+    "samplesDiscarded": 0,
+    "samplesRetried": 0,
+    "thresholdsChanged": false
+  },
+  "candidate": {
+    "version": 1,
+    "frozenAt": "2026-11-14T17:21:22.319Z",
+    "environment": "staging",
+    "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+    "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+    "imageDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "selection": "Fresh candidate capture confirms Payment flexibility is the heaviest case in PT/EN at both390px and1440px by all same-origin encoded resource bytes after full image decode. These weight checks are not cold Lighthouse samples.",
+    "targets": [
+      {
+        "id": "home-pt",
+        "kind": "home",
+        "locale": "pt",
+        "path": "/pt"
+      },
+      {
+        "id": "home-en",
+        "kind": "home",
+        "locale": "en",
+        "path": "/en"
+      },
+      {
+        "id": "cases-pt",
+        "kind": "cases",
+        "locale": "pt",
+        "path": "/pt/cases"
+      },
+      {
+        "id": "cases-en",
+        "kind": "cases",
+        "locale": "en",
+        "path": "/en/cases"
+      },
+      {
+        "id": "case-pt",
+        "kind": "case",
+        "locale": "pt",
+        "path": "/pt/cases/flexibilidade-de-pagamento"
+      },
+      {
+        "id": "case-en",
+        "kind": "case",
+        "locale": "en",
+        "path": "/en/cases/payment-flexibility"
+      }
+    ],
+    "sourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+    "pipelineRunId": 43618818421,
+    "selectionEvidence": {
+      "path": ".work/audit-follow-up/visual-candidate-001/resource-weights.json",
+      "sha256": "38f9024c807b28eb0e8f420a2cd4817fe0bc6dbcaff99fe1416c4b96fdf9374f"
+    },
+    "premeasurementBinding": {
+      "path": ".work/audit-follow-up/performance-staging-before.json",
+      "sha256": "df6b93811c64def7f67eaffbc6f5151410bee8bfa51bee4127a12cccfd1a2db8"
+    }
+  },
+  "configEvidence": {
+    "path": ".work/audit-fixes/performance-prepared-2026-11-14/candidate-config.json",
+    "sha256": "567ee2fbfa11c58140a3913463fcf970b0efe6f83d2b3681b11e4c81df14c5d2"
+  },
+  "sourceHashes": {
+    "ops/performance/profiles.json": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "ops/performance/run-staging-audit.mjs": "5e5c871e0d735c26877d5128cbfd3e94911d3a1baf6df0da143e23a160041f11",
+    "ops/performance/run-local-audit.mjs": "6858ec96c0b4cd89283f18e5005081d0d099486d90d485db28c70fac2bb285c1",
+    "ops/performance/staging-relay.mjs": "246e5b0269fff31f25074af351403a0862f0d97097c89c28002bea0c91266d53",
+    "docs/verification/E4.2-performance-protocol.md": "24c5433a7c35dcbb63bd2c43f65d20db58c6f007c6fda71c123f4c189b111375"
+  },
+  "calibration": {
+    "nodeVersion": "24.22.2",
+    "lighthouseVersion": "13.6.0",
+    "playwrightVersion": "1.64.1",
+    "browserVersion": "156.0.8078.4",
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor             ",
+      "logicalProcessors": 12,
+      "memoryBytes": 17077932032
+    },
+    "profiles": {
+      "schemaVersion": 1,
+      "purpose": "Repeatable local laboratory measurements of the public portfolio",
+      "repetitions": 3,
+      "performanceKinds": [
+        "home",
+        "cases",
+        "case"
+      ],
+      "locales": [
+        "pt",
+        "en"
+      ],
+      "browserWidths": [
+        390,
+        820,
+        1440
+      ],
+      "browserHeight": 900,
+      "cache": "cold browser profile for each measurement, warm server",
+      "throttlingMethod": "devtools",
+      "networkMapping": "DevTools requestLatencyMs uses the proposed RTT value. Download and upload throughput use the proposed Kbit/s values directly.",
+      "profiles": [
+        {
+          "id": "mobile",
+          "formFactor": "mobile",
+          "width": 390,
+          "height": 844,
+          "deviceScaleFactor": 3,
+          "rttMs": 150,
+          "downloadKbps": 1600,
+          "uploadKbps": 750,
+          "cpuSlowdownMultiplier": 4,
+          "budgets": {
+            "lcpMs": 2500,
+            "cls": 0.1,
+            "tbtMs": 200
+          }
+        },
+        {
+          "id": "desktop",
+          "formFactor": "desktop",
+          "width": 1440,
+          "height": 900,
+          "deviceScaleFactor": 1,
+          "rttMs": 40,
+          "downloadKbps": 10000,
+          "uploadKbps": 5000,
+          "cpuSlowdownMultiplier": 1,
+          "budgets": {
+            "lcpMs": 2500,
+            "cls": 0.1,
+            "tbtMs": 150
+          }
+        }
+      ]
+    },
+    "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "unchangedFromExistingProtocol": true
+  },
+  "measurement": {
+    "startedAt": "2026-11-14T17:22:00.001Z",
+    "completedAt": "2026-11-14T17:33:35.201Z",
+    "process": {
+      "startedAt": "2026-11-14T17:21:59.889Z",
+      "completedAt": "2026-11-14T17:34:05.148Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "ops/performance/run-staging-audit.mjs",
+        ".work/audit-fixes/performance-prepared-2026-11-14/candidate-config.json",
+        ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001",
+        "--run"
+      ],
+      "exitCode": 0,
+      "signal": null
+    },
+    "preflight": {
+      "checkedAt": "2026-11-14T17:21:22.420Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "ops/performance/run-staging-audit.mjs",
+        ".work/audit-fixes/performance-prepared-2026-11-14/candidate-config.json",
+        ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001",
+        "--preflight"
+      ],
+      "exitCode": 0,
+      "result": {
+        "ready": true,
+        "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+        "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+        "imageDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+        "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+        "runs": 36,
+        "scenarios": 12,
+        "cache": "cold browser profile for each measurement, warm server",
+        "configurationSha256": "567ee2fbfa11c58140a3913463fcf970b0efe6f83d2b3681b11e4c81df14c5d2"
+      }
+    },
+    "relay": {
+      "browserOrigin": "http://127.0.0.1:64077",
+      "upstreamOrigin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+      "requests": 1117,
+      "methods": [
+        "GET"
+      ],
+      "credentialExposedToBrowser": false,
+      "compressedUpstreamBytesPreserved": true
+    },
+    "analytics": {
+      "loadScript": null,
+      "googleRequestsForwarded": 0
+    }
+  },
+  "binding": {
+    "before": {
+      "path": ".work/audit-follow-up/performance-staging-before.json",
+      "sha256": "df6b93811c64def7f67eaffbc6f5151410bee8bfa51bee4127a12cccfd1a2db8",
+      "checkedAt": "2026-11-14T17:20:32.933Z"
+    },
+    "after": {
+      "path": ".work/audit-follow-up/performance-staging-after.json",
+      "sha256": "5ce080116d5d71fc9cb5cd3063d5d1bc01ba78017b10be2b2032d07f476b8afc",
+      "checkedAt": "2026-11-14T17:34:27.635Z"
+    },
+    "unchangedFields": [
+      "containerId",
+      "imageReference",
+      "imageId",
+      "imageRevision",
+      "imageSourceTree",
+      "startedAt",
+      "limits",
+      "volumes",
+      "confirmedPublicRoots",
+      "logConfig"
+    ],
+    "imageRevision": "1640d9729d1bddaac2059b850e8124112aa9507a",
+    "imageSourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+    "imageDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "containerId": "b43f41da5c611c1f89544c8b943225e1155882d8a5cb9a158610e7ae5225ad4b",
+    "publicRoots": [
+      {
+        "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+        "bytes": 52668,
+        "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+      }
+    ],
+    "volumes": [
+      {
+        "destination": "/app/.work/publication",
+        "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+      },
+      {
+        "destination": "/app/.work/next-build/cache",
+        "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+      },
+      {
+        "destination": "/var/lib/postgresql/data",
+        "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+      }
+    ],
+    "limits": {
+      "nanoCpus": 1000000000,
+      "memory": 2147483648,
+      "memorySwap": 2147483648
+    },
+    "bothHealthy": true,
+    "productionAccessed": false,
+    "remoteWrites": false
+  },
+  "selectionEvidence": {
+    "path": ".work/audit-follow-up/visual-candidate-001/resource-weights.json",
+    "sha256": "38f9024c807b28eb0e8f420a2cd4817fe0bc6dbcaff99fe1416c4b96fdf9374f",
+    "method": "Fresh all-resource encoded-size capture, not a cold Lighthouse sample",
+    "ranking": [
+      {
+        "locale": "pt",
+        "width": 390,
+        "rows": [
+          {
+            "target": "case-pt",
+            "path": "/pt/cases/flexibilidade-de-pagamento",
+            "encoded": 764870,
+            "decoded": 1276474
+          },
+          {
+            "target": "case-2-pt",
+            "path": "/pt/cases/modelo-de-financiamento",
+            "encoded": 744970,
+            "decoded": 1256584
+          }
+        ]
+      },
+      {
+        "locale": "pt",
+        "width": 1440,
+        "rows": [
+          {
+            "target": "case-pt",
+            "path": "/pt/cases/flexibilidade-de-pagamento",
+            "encoded": 764870,
+            "decoded": 1276474
+          },
+          {
+            "target": "case-2-pt",
+            "path": "/pt/cases/modelo-de-financiamento",
+            "encoded": 744970,
+            "decoded": 1256584
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "width": 390,
+        "rows": [
+          {
+            "target": "case-en",
+            "path": "/en/cases/payment-flexibility",
+            "encoded": 765665,
+            "decoded": 1281000
+          },
+          {
+            "target": "case-2-en",
+            "path": "/en/cases/financing-model",
+            "encoded": 745765,
+            "decoded": 1261110
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "width": 1440,
+        "rows": [
+          {
+            "target": "case-en",
+            "path": "/en/cases/payment-flexibility",
+            "encoded": 765665,
+            "decoded": 1281000
+          },
+          {
+            "target": "case-2-en",
+            "path": "/en/cases/financing-model",
+            "encoded": 745765,
+            "decoded": 1261110
+          }
+        ]
+      }
+    ]
+  },
+  "samples": [
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:22:29.681Z",
+      "lcpMs": 921.463,
+      "cls": 0,
+      "tbtMs": 109.66999999999962,
+      "fcpMs": 921.463,
+      "speedIndexMs": 2608,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-mobile-1-lighthouse.json",
+        "sha256": "20e229cb72d017ba6101b3abc72a06daa1ddb1231e35c9383d4b4c1c9430ab0f"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-mobile-1-lhr.private.json",
+        "sha256": "de36359fb1c290de059c0d0abeb1e2cae328ec3e6abdbd5438428b9fd082cde8"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:22:51.476Z",
+      "lcpMs": 865.43,
+      "cls": 0,
+      "tbtMs": 84.6560000000004,
+      "fcpMs": 865.43,
+      "speedIndexMs": 2556,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-mobile-2-lighthouse.json",
+        "sha256": "8f40083b038ab6660d2e412f2e3a4f3d6fec7d76fd21e43404a0decb0c902c89"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-mobile-2-lhr.private.json",
+        "sha256": "f892c5235c357b7c870639e51673e373d32f458a387248330e5a339cd9d7106c"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:23:13.379Z",
+      "lcpMs": 917.089,
+      "cls": 0,
+      "tbtMs": 174.58799999999974,
+      "fcpMs": 917.089,
+      "speedIndexMs": 2614,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-mobile-3-lighthouse.json",
+        "sha256": "b9f87b70dfb3502328c728ce90c939a51fcbf8250388b713d732497d2d32a802"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-mobile-3-lhr.private.json",
+        "sha256": "8b2efbc131bbac89cf509ce843605696337b2854b26995878183a8c415798a6e"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:23:36.336Z",
+      "lcpMs": 742.385,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 448.304,
+      "speedIndexMs": 779,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-desktop-1-lighthouse.json",
+        "sha256": "699be7a715cf6ddf1c34e853d2a46b7eee5d8cf9aac23a4c33f8fedcf513e0f2"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-desktop-1-lhr.private.json",
+        "sha256": "527e1669aeb7d020d064bb0ef1160745f8cd300353fd491cc9ef5a5e0672728f"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:23:52.706Z",
+      "lcpMs": 714.053,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 433.348,
+      "speedIndexMs": 772,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-desktop-2-lighthouse.json",
+        "sha256": "b0fd8f98e045d510efd0898ebefcda4f664b5dfde56ac1dd6a2061d46e452c21"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-desktop-2-lhr.private.json",
+        "sha256": "49de7e6f9fbd616a0de0d37dea8cccd634f1caed063ccda55ea4575847928e54"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:24:08.752Z",
+      "lcpMs": 382.834,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 382.834,
+      "speedIndexMs": 740,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-desktop-3-lighthouse.json",
+        "sha256": "c1c2ee780f4d63816c6b4871ab21aa6d815f0613a31783c94e7dbc90fd28526a"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-pt-desktop-3-lhr.private.json",
+        "sha256": "ee79203b70afbdca32e3094194e75aa483491d39d4ac2c408f323fd3fc6037b8"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:24:24.745Z",
+      "lcpMs": 868.809,
+      "cls": 0,
+      "tbtMs": 151.94200000000046,
+      "fcpMs": 868.809,
+      "speedIndexMs": 2625,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-mobile-1-lighthouse.json",
+        "sha256": "055d0f36d1ad04ee3f83f7701a62ced451ace78756cada5159c76f0c65782877"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-mobile-1-lhr.private.json",
+        "sha256": "d1f78201de283bda632f42d5c69f25c4f2b7ef80461e989c3994bc557b0ec491"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:24:46.278Z",
+      "lcpMs": 860.21,
+      "cls": 0,
+      "tbtMs": 171.90899999999965,
+      "fcpMs": 860.21,
+      "speedIndexMs": 2631,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-mobile-2-lighthouse.json",
+        "sha256": "fa3a223fe80785db66ded870dffc9b5d32c40ce67aaba3ed9e908ae1b2b55db5"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-mobile-2-lhr.private.json",
+        "sha256": "0f18df1095d4b24b9e49f0d2fdd5ec96498a2f538e89ecb2531729814b59b5a8"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:25:07.723Z",
+      "lcpMs": 905.792,
+      "cls": 0,
+      "tbtMs": 202.23899999999958,
+      "fcpMs": 905.792,
+      "speedIndexMs": 2650,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-mobile-3-lighthouse.json",
+        "sha256": "a07b74059f546856279e83261e74dcf4a8eb576a879bc298d5f005d2120f7abf"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-mobile-3-lhr.private.json",
+        "sha256": "719c7c4bc1c1880b97ff56cfb797c233400c4e436e6ac879335304c92e5f174a"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:25:29.045Z",
+      "lcpMs": 423.111,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 423.111,
+      "speedIndexMs": 809,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-desktop-1-lighthouse.json",
+        "sha256": "b8fdf4c32d77e1aece3ad40d8bd1c60c7bcca06062d71f15adf47932a72c827e"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-desktop-1-lhr.private.json",
+        "sha256": "86aaa46e82540c93808956009b06ee23fa7d66cc9d1723364570bf438ec878b3"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:25:45.035Z",
+      "lcpMs": 760.636,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 404.483,
+      "speedIndexMs": 800,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-desktop-2-lighthouse.json",
+        "sha256": "25f9b9ab0e8a92881d45d7607c68e65114a74da048a7c89ce5a3203805b8fc36"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-desktop-2-lhr.private.json",
+        "sha256": "6d875e38bb8e8bf051ef223191fc92cc5d4e675324030227f3e5650e9c6f6c7d"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:26:01.224Z",
+      "lcpMs": 465.268,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 465.268,
+      "speedIndexMs": 871,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-desktop-3-lighthouse.json",
+        "sha256": "7f8178afea58aa94f6eb1d590880e5ccc58ce55377cf8276dc14d6eb425289af"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/home-en-desktop-3-lhr.private.json",
+        "sha256": "3d2b49617e567051c2de0e4421c8f7adee48c8ca3f684f917440ec4d2cc3ed4d"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:26:17.448Z",
+      "lcpMs": 2462.46,
+      "cls": 0,
+      "tbtMs": 156.08599999999933,
+      "fcpMs": 827.242,
+      "speedIndexMs": 2875,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-1-lighthouse.json",
+        "sha256": "32e38014f2cf352369c9402f7a62fd38307099c364352a62f3f2fddd7d0529d8"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-1-lhr.private.json",
+        "sha256": "9beea9d7670ad49610a6bc1b0dc200010c844286b9d6797057658edf1e833bc0"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:26:38.446Z",
+      "lcpMs": 2517.776,
+      "cls": 0,
+      "tbtMs": 214.69700000000012,
+      "fcpMs": 812.124,
+      "speedIndexMs": 2869,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-2-lighthouse.json",
+        "sha256": "420bf1dcbab3c9c01dd0f5125c2bce13f35aa6323d6c586ba1f205211c71377b"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-2-lhr.private.json",
+        "sha256": "61e23767326aae2ed84bf88891605284d2aa3b287c3e40b5bb55fb7a9d2e7152"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:26:59.510Z",
+      "lcpMs": 2584.848,
+      "cls": 0,
+      "tbtMs": 162.1230000000005,
+      "fcpMs": 794.661,
+      "speedIndexMs": 2882,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-3-lighthouse.json",
+        "sha256": "2c2a412d49b273f38b0e3b5d692f0e34ea5a2ee24e70d7fe996cb23e8a034fcf"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-3-lhr.private.json",
+        "sha256": "c434695aa3529b08461d909842690cb2cce9513b4eeefa8dc5e3b32374a12bd0"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:27:20.118Z",
+      "lcpMs": 689.317,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 384.35,
+      "speedIndexMs": 785,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-desktop-1-lighthouse.json",
+        "sha256": "8ab1f3451c5c772673c672e776ce54482fee81442a1af37c77fcb9e91aea95a4"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-desktop-1-lhr.private.json",
+        "sha256": "02c9d6f212e323c264bebff01c6e42e3a768dcc4e2017d92149f23276d5cca62"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:27:35.787Z",
+      "lcpMs": 661.763,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 351.989,
+      "speedIndexMs": 762,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-desktop-2-lighthouse.json",
+        "sha256": "c16b333c6cc56285cf48f2c1991e50fc6367f0a292517670b223c42dc1115831"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-desktop-2-lhr.private.json",
+        "sha256": "0607872f76bfb55838d2177dc2745397dc48a66582342fda509da34248e5b878"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:27:51.352Z",
+      "lcpMs": 684.093,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 366.215,
+      "speedIndexMs": 785,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-desktop-3-lighthouse.json",
+        "sha256": "dc2da25c92945936efa1ad96edf8dbb8e36c00b7cf110898a971c579490bdca0"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-desktop-3-lhr.private.json",
+        "sha256": "bde249cf2ba643d7f407ed86f8967a50af0e8d8ca71d24a17d0835dd7db8389d"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:28:07.030Z",
+      "lcpMs": 2530.442,
+      "cls": 0,
+      "tbtMs": 189.94900000000007,
+      "fcpMs": 825.713,
+      "speedIndexMs": 2957,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-1-lighthouse.json",
+        "sha256": "82a7749f5872d18cb86b3f850971d51002060b554c3e7bac2dbfe5beb9b20dab"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-1-lhr.private.json",
+        "sha256": "015aba3f2d87179032a1d4cbe51fde6640982d8dbea3467ab99e967f41de54bb"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:28:27.894Z",
+      "lcpMs": 2569.746,
+      "cls": 0,
+      "tbtMs": 148.95599999999968,
+      "fcpMs": 804.718,
+      "speedIndexMs": 2949,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-2-lighthouse.json",
+        "sha256": "6fd04f7ea9e4c9caf3f2d335ced7e56aa73b241277e673bb5dde4d031f58af74"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-2-lhr.private.json",
+        "sha256": "89e5f14c81cfe00390009aa20d05135a7dcd372860439ad324f1e6377b9fe44d"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:28:48.706Z",
+      "lcpMs": 2574.554,
+      "cls": 0,
+      "tbtMs": 141.7529999999997,
+      "fcpMs": 823.644,
+      "speedIndexMs": 2955,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-3-lighthouse.json",
+        "sha256": "efed76107d1f1c8fe1ba647f9d31102f5d11ff07e6f343c6893e69432bb0775c"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-3-lhr.private.json",
+        "sha256": "2296fead3fbdfb5348c1756f786ffadc0902e14a7e582b5eed1533c951f1b66d"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:29:10.205Z",
+      "lcpMs": 708.157,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 403.451,
+      "speedIndexMs": 800,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-desktop-1-lighthouse.json",
+        "sha256": "586822f44e804be203b5271d0d6b0f0933e03d9815589cd3c28069a5a5b36ab1"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-desktop-1-lhr.private.json",
+        "sha256": "d8676c772e44ca5982b9299c28eebea527f1629de92370cd3d623cb62d89037c"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:29:26.179Z",
+      "lcpMs": 690.887,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 375.263,
+      "speedIndexMs": 794,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-desktop-2-lighthouse.json",
+        "sha256": "3271d75f0c8ece324749562128ac65fa7828d7c959f2af565b3a4d55ba04965f"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-desktop-2-lhr.private.json",
+        "sha256": "ceaf6002a378e75257448af7eafcb4146423a2a03f8ac6048dbc92d60e4ba483"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:29:42.328Z",
+      "lcpMs": 690.941,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 392.232,
+      "speedIndexMs": 787,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-desktop-3-lighthouse.json",
+        "sha256": "2a350ca01b8fb90cc8096e822bc4fc1972ebb88c4125f83ab0076df60a2c9552"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-desktop-3-lhr.private.json",
+        "sha256": "26d08739a8ee651a9d4754b96a64ed0c8cf06c03b05a4c9b1275aed49761fd9d"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:29:58.153Z",
+      "lcpMs": 1964.831,
+      "cls": 0,
+      "tbtMs": 164.57900000000018,
+      "fcpMs": 871.067,
+      "speedIndexMs": 2458,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-mobile-1-lighthouse.json",
+        "sha256": "a04aadc727f8d27aacbfc0bc122eb9f3cf9ac0dcf8dc547c65db7c19a1fcf882"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-mobile-1-lhr.private.json",
+        "sha256": "1f48375142f5ce012d23d0eda42a436b1c6f414c38f3ed4bd41b4895296f9661"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:30:18.577Z",
+      "lcpMs": 1970.022,
+      "cls": 0,
+      "tbtMs": 178.19799999999987,
+      "fcpMs": 846.954,
+      "speedIndexMs": 2443,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-mobile-2-lighthouse.json",
+        "sha256": "7c8dde310b49e59fa8840012e0301184b09625c79841009968d142f8bd400a67"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-mobile-2-lhr.private.json",
+        "sha256": "0547cdfc3b14b63308f1567786343d112e3ddb55520428754c43ff210d07fc77"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:30:38.995Z",
+      "lcpMs": 1935.481,
+      "cls": 0,
+      "tbtMs": 185.76699999999983,
+      "fcpMs": 866.336,
+      "speedIndexMs": 2457,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-mobile-3-lighthouse.json",
+        "sha256": "edfd12c24407394eddf8c746aa124ef1e017a1ed101b066db0328d1e38cff7da"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-mobile-3-lhr.private.json",
+        "sha256": "b6007175b7b82de08511a7d6358c3459af577f1c266242833c3fa2afc1559989"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:30:59.732Z",
+      "lcpMs": 476.894,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 423.862,
+      "speedIndexMs": 817,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-desktop-1-lighthouse.json",
+        "sha256": "806d0fb045c47be9ec5a8d7eda4008b8189beeda4a9c633e6e362bc51f1b62be"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-desktop-1-lhr.private.json",
+        "sha256": "12e39ac67bc4273b429ddc091f01b561261168fff114fc3b4bfb7ad7f37010a1"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:31:15.403Z",
+      "lcpMs": 422.715,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 385.197,
+      "speedIndexMs": 778,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-desktop-2-lighthouse.json",
+        "sha256": "90b4ff6b3d79e471533cb18ac0578df50a6ab916ca11abb78d087621cac0b63c"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-desktop-2-lhr.private.json",
+        "sha256": "892a2e72ec74da677a0ed304440b79d515d9a7d39522b98adfb2588895346752"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:31:31.263Z",
+      "lcpMs": 414.078,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 367.804,
+      "speedIndexMs": 754,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-desktop-3-lighthouse.json",
+        "sha256": "8399a91c3e335329a5ce40033e88ca0e6ba9cd4e6aae0efe7898a2356913ca3c"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-pt-desktop-3-lhr.private.json",
+        "sha256": "c6d5f09243ec8827c8ea41bcfbb87e77af252981248f4cf7bfdc524bdf7c43d7"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:31:47.323Z",
+      "lcpMs": 848.269,
+      "cls": 0,
+      "tbtMs": 173.10699999999997,
+      "fcpMs": 848.269,
+      "speedIndexMs": 2458,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-mobile-1-lighthouse.json",
+        "sha256": "104899391b2da4e01a1978c7b0eeba81324cd37e9c7c22a7b182ef48949f0b29"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-mobile-1-lhr.private.json",
+        "sha256": "b766b4d709d566e5587d08d95a140242aa497a97cfa3dab40ad8f3ab42e35fbb"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:32:08.069Z",
+      "lcpMs": 911.141,
+      "cls": 0,
+      "tbtMs": 292.4199999999996,
+      "fcpMs": 911.141,
+      "speedIndexMs": 2485,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-mobile-2-lighthouse.json",
+        "sha256": "e8ed18e556d4206b928f9dce539a888f9cb2e961260a64e31e1b2d72472c8ff4"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-mobile-2-lhr.private.json",
+        "sha256": "a6b487ce7e48d69cf579182379a8b69d9c34f02ed27112e08e7c13b2a8a835ac"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:32:28.816Z",
+      "lcpMs": 903.24,
+      "cls": 0,
+      "tbtMs": 161.3769999980923,
+      "fcpMs": 903.24,
+      "speedIndexMs": 2459,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-mobile-3-lighthouse.json",
+        "sha256": "ef57f853cabaff0b47020bfc159895bc62ab1591ac1e39a68cb65597c0fd04a7"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-mobile-3-lhr.private.json",
+        "sha256": "44c1de2ae770611333ee2b1d129ae433be2f6f003371ce71b03b9ab461274406"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T17:32:49.504Z",
+      "lcpMs": 391.352,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 365.237,
+      "speedIndexMs": 742,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-desktop-1-lighthouse.json",
+        "sha256": "15f1513bd605857f3c87a5021e615c3306a5457def1d14128dd218f412e2f7a1"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-desktop-1-lhr.private.json",
+        "sha256": "e8fed4ded5c285bc62291a4e697da2756361b8cb5468116c4b1b7d38d9cfe5d3"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T17:33:05.335Z",
+      "lcpMs": 353.966,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 353.966,
+      "speedIndexMs": 755,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-desktop-2-lighthouse.json",
+        "sha256": "735666bcd873bb36b2324b3df8e2110b1cd64d8fba5b4e96ca93e91bdea25b24"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-desktop-2-lhr.private.json",
+        "sha256": "40ae4ff6b1ee850fe58d925afa79ee4c5b5308956fc83d125b06ac51945227c8"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T17:33:20.982Z",
+      "lcpMs": 410.091,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 384.067,
+      "speedIndexMs": 767,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-desktop-3-lighthouse.json",
+        "sha256": "cc7f5f7d52e218a760679f10e974838ae528304161b9ae87d22dbcd946a48416"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/case-en-desktop-3-lhr.private.json",
+        "sha256": "49a89286c0586a14208d2a3ca4970f3ac93fb3613970cc833d8319b575c81574"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "target": "home-pt",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 917.089,
+          "min": 865.43,
+          "max": 921.463,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 109.66999999999962,
+          "min": 84.6560000000004,
+          "max": 174.58799999999974,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 917.089,
+          "min": 865.43,
+          "max": 921.463,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2608,
+          "min": 2556,
+          "max": 2614,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "home-pt",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 714.053,
+          "min": 382.834,
+          "max": 742.385,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 433.348,
+          "min": 382.834,
+          "max": 448.304,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 772,
+          "min": 740,
+          "max": 779,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "home-en",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 868.809,
+          "min": 860.21,
+          "max": 905.792,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 171.90899999999965,
+          "min": 151.94200000000046,
+          "max": 202.23899999999958,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 868.809,
+          "min": 860.21,
+          "max": 905.792,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2631,
+          "min": 2625,
+          "max": 2650,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "home-en",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 465.268,
+          "min": 423.111,
+          "max": 760.636,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 423.111,
+          "min": 404.483,
+          "max": 465.268,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 809,
+          "min": 800,
+          "max": 871,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "cases-pt",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 2517.776,
+          "min": 2462.46,
+          "max": 2584.848,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 162.1230000000005,
+          "min": 156.08599999999933,
+          "max": 214.69700000000012,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 812.124,
+          "min": 794.661,
+          "max": 827.242,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2875,
+          "min": 2869,
+          "max": 2882,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": false
+    },
+    {
+      "target": "cases-pt",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 684.093,
+          "min": 661.763,
+          "max": 689.317,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 366.215,
+          "min": 351.989,
+          "max": 384.35,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 785,
+          "min": 762,
+          "max": 785,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "cases-en",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 2569.746,
+          "min": 2530.442,
+          "max": 2574.554,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 148.95599999999968,
+          "min": 141.7529999999997,
+          "max": 189.94900000000007,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 823.644,
+          "min": 804.718,
+          "max": 825.713,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2955,
+          "min": 2949,
+          "max": 2957,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": false
+    },
+    {
+      "target": "cases-en",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 690.941,
+          "min": 690.887,
+          "max": 708.157,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 392.232,
+          "min": 375.263,
+          "max": 403.451,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 794,
+          "min": 787,
+          "max": 800,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-pt",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 1964.831,
+          "min": 1935.481,
+          "max": 1970.022,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 178.19799999999987,
+          "min": 164.57900000000018,
+          "max": 185.76699999999983,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 866.336,
+          "min": 846.954,
+          "max": 871.067,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2457,
+          "min": 2443,
+          "max": 2458,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-pt",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 422.715,
+          "min": 414.078,
+          "max": 476.894,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 385.197,
+          "min": 367.804,
+          "max": 423.862,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 778,
+          "min": 754,
+          "max": 817,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-en",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 903.24,
+          "min": 848.269,
+          "max": 911.141,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 173.10699999999997,
+          "min": 161.3769999980923,
+          "max": 292.4199999999996,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 903.24,
+          "min": 848.269,
+          "max": 911.141,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2459,
+          "min": 2458,
+          "max": 2485,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-en",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 391.352,
+          "min": 353.966,
+          "max": 410.091,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 365.237,
+          "min": 353.966,
+          "max": 384.067,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 755,
+          "min": 742,
+          "max": 767,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    }
+  ],
+  "listingMobileLcpDiagnosis": {
+    "evidence": [
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "repeat": 1,
+        "lcpMs": 2530.442,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark of financing models in Mexico.",
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "loadingLazy": true,
+        "discovery": {
+          "priorityHinted": false,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": false
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 263.547,
+          "resourceLoadDelay": 553.039,
+          "resourceLoadDuration": 1690.751,
+          "elementRenderDelay": 23.105
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 816.4350000005215,
+          "networkRequestTimeMs": 1602.5679999999702,
+          "networkEndTimeMs": 2507.1860000006855,
+          "transferSizeBytes": 47511,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "repeat": 2,
+        "lcpMs": 2569.746,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark of financing models in Mexico.",
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "loadingLazy": true,
+        "discovery": {
+          "priorityHinted": false,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": false
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 272.40299999809264,
+          "resourceLoadDelay": 524.6060000019073,
+          "resourceLoadDuration": 1750.626,
+          "elementRenderDelay": 22.111
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 796.8839999977499,
+          "networkRequestTimeMs": 1614.8070000000298,
+          "networkEndTimeMs": 2547.5099999997765,
+          "transferSizeBytes": 47511,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "repeat": 3,
+        "lcpMs": 2574.554,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark of financing models in Mexico.",
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "loadingLazy": true,
+        "discovery": {
+          "priorityHinted": false,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": false
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 265.421,
+          "resourceLoadDelay": 548.083,
+          "resourceLoadDuration": 1685.381,
+          "elementRenderDelay": 75.669
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 813.2200000006706,
+          "networkRequestTimeMs": 1593.7140000015497,
+          "networkEndTimeMs": 2498.601000001654,
+          "transferSizeBytes": 47521,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "repeat": 1,
+        "lcpMs": 2462.46,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark de modelos de financiamento no México.",
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "loadingLazy": true,
+        "discovery": {
+          "priorityHinted": false,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": false
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 271.445,
+          "resourceLoadDelay": 543.382,
+          "resourceLoadDuration": 1626.24,
+          "elementRenderDelay": 21.393
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 814.6239999979734,
+          "networkRequestTimeMs": 1474.397999998182,
+          "networkEndTimeMs": 2440.8640000000596,
+          "transferSizeBytes": 47511,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "repeat": 2,
+        "lcpMs": 2517.776,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark de modelos de financiamento no México.",
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "loadingLazy": true,
+        "discovery": {
+          "priorityHinted": false,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": false
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 270.92500000190734,
+          "resourceLoadDelay": 531.5489999980927,
+          "resourceLoadDuration": 1688.689,
+          "elementRenderDelay": 26.613
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 802.2989999987185,
+          "networkRequestTimeMs": 1573.3359999991953,
+          "networkEndTimeMs": 2490.9879999998957,
+          "transferSizeBytes": 47511,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "repeat": 3,
+        "lcpMs": 2584.848,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark de modelos de financiamento no México.",
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "loadingLazy": true,
+        "discovery": {
+          "priorityHinted": false,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": false
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 258.31300000190737,
+          "resourceLoadDelay": 525.9729999980926,
+          "resourceLoadDuration": 1720.821,
+          "elementRenderDelay": 79.741
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 784.1640000008047,
+          "networkRequestTimeMs": 1555.1659999992698,
+          "networkEndTimeMs": 2504.9850000012666,
+          "transferSizeBytes": 47511,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      }
+    ],
+    "finding": "The first listing cover is the LCP image in all six PT/EN mobile samples. It is discoverable in the initial HTML but loading=lazy with no initial fetchpriority=high hint. Resource load delay and duration dominate; render delay is small.",
+    "followup": "Preserve this failed round; prioritize only the first listing cover through existing CaseImage support, validate with RED/GREEN, then measure a newly deployed candidate using the unchanged protocol."
+  },
+  "limitations": [
+    "Browser uses loopback relay; each request traverses real staging network and TLS upstream plus local forwarding overhead.",
+    "Browser-side Lighthouse throttling is applied to relay traffic, not to the shared VPS.",
+    "Staging has Basic Auth, private noindex policy and disabled Analytics; production is not measured.",
+    "Bind the run to independent SSH receipts for candidate digest and publication root before and after measurement.",
+    "Individual sample budget excursions remain in this receipt; acceptance uses the frozen median of three.",
+    "No production, field INP, NVDA, or final editorial-content approval is established by this laboratory run."
+  ],
+  "fieldInp": "unavailable-no-public-production-traffic",
+  "privateEvidencePolicy": "Raw LHR files remain under .work. Export only this compact receipt, sanitized config/calibration, and hashes; no authentication data or private raw HTML."
+}

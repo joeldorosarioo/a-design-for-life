@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-11-14T17:15:04.639Z",
+  "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "mode": "Supplemental diagnostic of already captured source PNGs; no source screenshot overwrite or new page render.",
+  "observation": "Both phone illustrations visibly exist in the source PNGs at desktop/mobile. Root independently reopened both source PNGs and withdrew the contact-sheet display ambiguity. Dark pixel counts/bounds only demonstrate actual painted content inside the cover; they are not a visual-acceptance threshold.",
+  "rows": [
+    {
+      "viewport": 1440,
+      "source": {
+        "file": "case02-en-desktop-126-8101.png",
+        "sha256": "f9d8e7a17b61dddca91bdce15e059c6ea07e8f7d8d980f0af42cc888b6603eed"
+      },
+      "diagnosticCropRectangle": {
+        "left": 80,
+        "top": 624,
+        "width": 1280,
+        "height": 480
+      },
+      "darkIllustrationPixels": 20322,
+      "darkIllustrationPaintedBoundsWithinCrop": [
+        416,
+        38,
+        852,
+        441
+      ],
+      "cropSha256": "4d462eeb17d839479a351608a2613f54f36337228553f604d96aed4deb533cc0"
+    },
+    {
+      "viewport": 390,
+      "source": {
+        "file": "case02-en-mobile-126-8293.png",
+        "sha256": "86041fcbd1c298ea241a0e1596b676d407f12b81964816bf60fa5a2d55ac058e"
+      },
+      "diagnosticCropRectangle": {
+        "left": 24,
+        "top": 604,
+        "width": 342,
+        "height": 192
+      },
+      "darkIllustrationPixels": 2329,
+      "darkIllustrationPaintedBoundsWithinCrop": [
+        82,
+        16,
+        255,
+        175
+      ],
+      "cropSha256": "9f96d8dbeb30f625a47c38ddde514e64641c10fa5209abdc615dda0ac0da176d"
+    }
+  ]
+}

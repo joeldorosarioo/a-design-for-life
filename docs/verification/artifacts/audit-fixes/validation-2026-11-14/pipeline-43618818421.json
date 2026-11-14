@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "kind": "audit-follow-up-successful-develop-staging-pipeline",
+  "checkedAt": "2026-11-14T17:19:24.095Z",
+  "run": 43618818421,
+  "revision": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "sourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+  "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+  "previousMigrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+  "digest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+  "configDigest": "sha256:9ae154f0743ec294b5f7b4aa7c4b998a698a45bf1501309df3dfdfe530456733",
+  "deploymentUuid": "ct0arpgdkdlfzp8ayngknuge",
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "applicationStatus": "running:healthy",
+  "pipeline": {
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/joeldorosarioo/a-design-for-life/actions/runs/43618818421",
+    "jobs": [
+      {
+        "name": "type-lint-test-architecture-build",
+        "databaseId": 132519657006,
+        "conclusion": "success",
+        "startedAt": "2026-11-14T17:01:43Z",
+        "completedAt": "2026-11-14T17:11:07Z"
+      },
+      {
+        "name": "Build private staging image / image-preflight",
+        "databaseId": 132522389947,
+        "conclusion": "success",
+        "startedAt": "2026-11-14T17:11:10Z",
+        "completedAt": "2026-11-14T17:14:13Z"
+      },
+      {
+        "name": "Resolve the image already tested in staging",
+        "databaseId": 132522391527,
+        "conclusion": "skipped",
+        "startedAt": "2026-11-14T17:11:07Z",
+        "completedAt": "2026-11-14T17:11:07Z"
+      },
+      {
+        "name": "Promote the tested image to production",
+        "databaseId": 132522392468,
+        "conclusion": "skipped",
+        "startedAt": "2026-11-14T17:11:08Z",
+        "completedAt": "2026-11-14T17:11:07Z"
+      },
+      {
+        "name": "Deploy staging and wait for health",
+        "databaseId": 132523292482,
+        "conclusion": "success",
+        "startedAt": "2026-11-14T17:14:18Z",
+        "completedAt": "2026-11-14T17:16:23Z"
+      },
+      {
+        "name": "Record the healthy staging image",
+        "databaseId": 132523919001,
+        "conclusion": "success",
+        "startedAt": "2026-11-14T17:16:26Z",
+        "completedAt": "2026-11-14T17:16:35Z"
+      }
+    ]
+  },
+  "tests": {
+    "vitestFiles": {
+      "passed": 238,
+      "skipped": 0,
+      "total": 238
+    },
+    "vitest": {
+      "passed": 2350,
+      "skipped": 0,
+      "total": 2350
+    },
+    "chromiumPassed": 140
+  },
+  "backup": {
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "4hpzykmyxrp4jcchd88qumbx",
+    "sourceImageDigest": "sha256:04f6c20894a28d1803c0d408a0c20f2c89fbc219e606b2e6ee0283d4e74afaf6",
+    "marker": {
+      "version": 1,
+      "id": "95707314-d495-4500-9b2c-cc7e7fedf834",
+      "namespace": {
+        "project": "a-design-for-life",
+        "environment": "staging",
+        "source": "staging-app"
+      },
+      "createdAt": "2026-11-14T17:14:28.899Z",
+      "complete": true,
+      "completedAt": "2026-11-14T17:14:44.627Z",
+      "manifestSha256": "9f45eb9a29d0d91c1ecad4460383270bce5f04f7056f2977010eef94317d2ec8",
+      "ciphertext": {
+        "key": "sets/95707314-d495-4500-9b2c-cc7e7fedf834/payload.age",
+        "byteLength": 2898824,
+        "sha256": "7db35f7ddcbfba3e0f10eedde8ee76ba1467e0fadb3153a74a0825be00de9649"
+      }
+    },
+    "freshAfterBaseline": true
+  },
+  "marker": {
+    "name": "staging-tested-tree-281c6a19d4a77230479eba7cba0d594677b71a14",
+    "digest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "revision": "1640d9729d1bddaac2059b850e8124112aa9507a",
+    "configDigest": "sha256:9ae154f0743ec294b5f7b4aa7c4b998a698a45bf1501309df3dfdfe530456733"
+  },
+  "rawLogs": [
+    {
+      "path": ".work/audit-follow-up/ci-43618818421-132519657006-verification.log",
+      "sha256": "fe24bc26c7b4a80d6ed704994220a7e21424d955ec75fc4e33eb4df45bbddb0a"
+    },
+    {
+      "path": ".work/audit-follow-up/ci-43618818421-132522389947-build.log",
+      "sha256": "f12b38f61fb4f031ad0ff0923fce2d17b3703126fe89039364faf044df045e03"
+    },
+    {
+      "path": ".work/audit-follow-up/ci-43618818421-132523292482-deploy.log",
+      "sha256": "4d06757a0ef4e4129eb05f43d38f423a67d993a1573dd4f95b487df2eca2b11e"
+    },
+    {
+      "path": ".work/audit-follow-up/ci-43618818421-132523919001-marker.log",
+      "sha256": "e7469ba14d3c608a1b0b3db0a0275a98cebf40c8d4580e45fedfc3111f13958e"
+    }
+  ],
+  "productionJobsSkipped": true,
+  "migrationTreeUnchanged": true,
+  "remoteWrites": false,
+  "panelOrigin": "https://panel.joeldorosarioo.dev"
+}

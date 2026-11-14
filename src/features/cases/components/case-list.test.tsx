@@ -56,6 +56,32 @@ const listProps = {
   homeLabel: 'Return home',
   countLabel: 'cases',
 };
+const casesWithCovers = cases.map((caseCard) => ({
+  ...caseCard,
+  cover: {
+    mediaId: caseCard.caseId,
+    alt: caseCard.title ?? 'Synthetic card cover',
+    decorative: false,
+    caption: null,
+  },
+}));
+
+it('loads the first listing cover eagerly with high priority while later covers remain lazy', () => {
+  render(<CaseList {...listProps} cases={casesWithCovers} />);
+  const [first, later] = screen.getAllByRole('img');
+  expect(first).toHaveAttribute('loading', 'eager');
+  expect(first).toHaveAttribute('fetchpriority', 'high');
+  expect(later).toHaveAttribute('loading', 'lazy');
+  expect(later).not.toHaveAttribute('fetchpriority');
+});
+
+it('keeps Home featured-grid covers lazy', () => {
+  render(<CaseGrid {...gridProps} cases={casesWithCovers} headingLevel={3} />);
+  for (const cover of screen.getAllByRole('img')) {
+    expect(cover).toHaveAttribute('loading', 'lazy');
+    expect(cover).not.toHaveAttribute('fetchpriority');
+  }
+});
 
 // Sorting by title or rebuilding a slug would diverge from the confirmed generation.
 it('reuses cards in received order without adding listing opening or count', () => {

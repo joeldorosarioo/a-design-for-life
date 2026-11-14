@@ -1,0 +1,1473 @@
+{
+  "reviewedAt": "2026-11-14T17:12:56.257Z",
+  "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "sourceBinding": {
+    "checkedAt": "2026-11-14T17:10:47.782Z",
+    "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+    "wholeTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+    "sourceTree": "8729d4cfb3ae460c9fff605bee6c3209f10cf158",
+    "publicTree": "4235321bd60601ac8d282840c7fbcd9af0d30316",
+    "packageJsonObject": "8c8b316e1d84b03b5997237f90ae869ac66bf8ca",
+    "lockfileObject": "ec3c8de1e4e1488f71ef597b1de66f243b22990d",
+    "cssSha256": "5b3eeef4097b82a2256d71c30e2e0580ce5ed85c58cf081848d2b34048213986",
+    "tokenSha256": "c9fc82f3e874f0aa216e713c0a151f85163a6f15573d8ec8b8eaf747a1f94b60",
+    "rendererSha256": "368f6c728760ad26b8c6263ce6fbcb50e489596be7e2f0fde4d4a35c3df29ca2",
+    "binding": "Exact merged candidate application source; isolated presentation only, no deployed runtime/digest claim."
+  },
+  "mode": "Isolated original-content presentation fixture; technical visual review, not deployed content or editorial release approval.",
+  "references": {
+    "product": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50",
+    "menu": "docs/specs/2026-10-29-portfolio-plano-implementacao.md:399",
+    "toc": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44",
+    "priorVisual": {
+      "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+      "file": "docs/verification/visual.md",
+      "sections": [
+        "Preserved decisions and corrections",
+        "Two named minor differences"
+      ]
+    },
+    "priorStaging": {
+      "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+      "file": "docs/verification/E4.2-quality.md",
+      "sections": [
+        "Comparison with Figma"
+      ]
+    }
+  },
+  "projection": {
+    "coverPresentation": "Existing typed metadata: Case01 contained-cherry; Case02 contained-soft, as accepted in archived A2 visual evidence.",
+    "authoredLineRecovery": {
+      "source": "official-case-pt-desktop-context.txt",
+      "sha256": "b47894bf14c64be532c2259506220f38fd86a094238d50a6729d35a161627462",
+      "nodes": [
+        "I123:944;123:535",
+        "123:882",
+        "123:889"
+      ]
+    },
+    "remainingLineLimit": "Other Home/About/EN transcriptions explicitly normalize responsive wraps to spaces. No original text-layer hard breaks are recoverable from those exports; none were invented."
+  },
+  "technicalBindings": "Previously authorized technical contacts, labels and test-PDF identifiers; no professional content invented.",
+  "cardCopy": "Exact independently supplied editorial.shared[locale].cards values populate existing cardTitle/cardEyebrow fields.",
+  "scope": "Isolated presentation fixture: original approved Figma data through current production DTO mappers, PublicLayout and PublicPageView. No database, CMS, server requests or publication; Next router contexts are inert SSR adapters.",
+  "limits": [
+    "No Native CMS, database, authorization, runtime hydration or router behavior is proven by isolated SSR captures. Those require the separately recorded real integration/browser gates.",
+    "Home/About/EN raster exports do not expose original authored hard breaks; remaining wrap differences are explicit projection limits, not a Figma pixel-match claim.",
+    "All raw screenshots and contact sheets remain private under ignored .work.",
+    "Current staging contains cover/card/profile media but no article/pair media. New intrinsic article/pair geometry is covered by12isolated browser scenarios plus Native integration, not by pretending live content contains it."
+  ],
+  "unchangedSourceObjects": [
+    {
+      "file": "src/stylesheets/globals.css",
+      "beforeObject": "c0d2aaba2adb94a46b771f55abee07f7b5a0af2c",
+      "candidateObject": "c0d2aaba2adb94a46b771f55abee07f7b5a0af2c",
+      "identical": true
+    },
+    {
+      "file": "src/stylesheets/tokens.css",
+      "beforeObject": "87d93677dc6c3042e97fd3a521f722024084cadd",
+      "candidateObject": "87d93677dc6c3042e97fd3a521f722024084cadd",
+      "identical": true
+    },
+    {
+      "file": "src/features/professional-profile/components/home-content.tsx",
+      "beforeObject": "ea2474ead03b8de54de7159c64791e69dc50a53f",
+      "candidateObject": "ea2474ead03b8de54de7159c64791e69dc50a53f",
+      "identical": true
+    },
+    {
+      "file": "src/features/professional-profile/components/about-content.tsx",
+      "beforeObject": "554506264332846f27eb78240d8d087ead0c209e",
+      "candidateObject": "554506264332846f27eb78240d8d087ead0c209e",
+      "identical": true
+    },
+    {
+      "file": "src/features/site-navigation/components/site-header.tsx",
+      "beforeObject": "aaa2823724a3b7bb41de60d29fb705cc8115dd7a",
+      "candidateObject": "aaa2823724a3b7bb41de60d29fb705cc8115dd7a",
+      "identical": true
+    },
+    {
+      "file": "src/features/site-navigation/components/site-footer.tsx",
+      "beforeObject": "2ee449ce91fd0d7c944996ddcec7ce114615b457",
+      "candidateObject": "2ee449ce91fd0d7c944996ddcec7ce114615b457",
+      "identical": true
+    },
+    {
+      "file": "src/features/site-navigation/components/mobile-menu.tsx",
+      "beforeObject": "1a1a7338b9e3001bf35a67f97c220bee37842afd",
+      "candidateObject": "1a1a7338b9e3001bf35a67f97c220bee37842afd",
+      "identical": true
+    },
+    {
+      "file": "src/features/cases/components/case-detail.tsx",
+      "beforeObject": "0a59134f5bb034edf0c89a057098b9151d4ab172",
+      "candidateObject": "0a59134f5bb034edf0c89a057098b9151d4ab172",
+      "identical": true
+    },
+    {
+      "file": "src/features/cases/components/case-image-pair.tsx",
+      "beforeObject": "8a63362f65b1b70b60945d7543d3d774709f7d97",
+      "candidateObject": "8a63362f65b1b70b60945d7543d3d774709f7d97",
+      "identical": true
+    }
+  ],
+  "frames": [
+    {
+      "target": "home-pt",
+      "path": "isolated-presentation/home-pt",
+      "device": "desktop",
+      "frameId": "123:574",
+      "originalFile": "home-pt-desktop-123-574.png",
+      "originalSha256": "e02474e4cb20bf58f8f8f2ab96403f7328b3a25388920b14d19ff32de76b8162",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        3244
+      ],
+      "capture": "home-pt-desktop-123-574.png",
+      "captureSha256": "5fa5fdcfdfc2dfc6b73c6f8cf336f6702e431ab63ca1dd01d479ff1d4583ec53",
+      "captureCssDimensions": [
+        1440,
+        3278
+      ],
+      "referencePath": "private reference baselines/home-pt-desktop-123-574.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/home-pt-desktop-123-574.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/home-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.256Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, hero type hierarchy, two case cards, pink trajectory band, three approach cards and dark footer retain order and responsive composition.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Hero emphasis wrapping differs from the raster reference because normalized plain strings omit unavailable original authored line boundaries. Typography, widths and component source are unchanged.",
+            "authority": "editorial-text-2026-10-30.json:method; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "isolated-presentation/home-pt",
+      "device": "mobile",
+      "frameId": "123:705",
+      "originalFile": "home-pt-mobile-123-705.png",
+      "originalSha256": "3d0da0cadaf5fdfc6d3bc1039dee209154b17d43d44b81d2db6797d3a6e8f0f2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        4524
+      ],
+      "capture": "home-pt-mobile-123-705.png",
+      "captureSha256": "de7b9561f997dd4ae1518eb81c10933237ef649306fab603dcb5faa029658e4b",
+      "captureCssDimensions": [
+        390,
+        4624
+      ],
+      "referencePath": "private reference baselines/home-pt-mobile-123-705.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/home-pt-mobile-123-705.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/home-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, hero type hierarchy, two case cards, pink trajectory band, three approach cards and dark footer retain order and responsive composition.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "isolated-presentation/home-en",
+      "device": "desktop",
+      "frameId": "125:3765",
+      "originalFile": "home-en-desktop-125-3765.png",
+      "originalSha256": "1dbb77748cd8755f09c4dd0462d23da2edcc70488708b32f14b7f9cf486ca017",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        3244
+      ],
+      "capture": "home-en-desktop-125-3765.png",
+      "captureSha256": "52f0063fa7d0a0a889d9b91013d62b219658ba6e929050aca2a29e78802cd207",
+      "captureCssDimensions": [
+        1440,
+        3218
+      ],
+      "referencePath": "private reference baselines/home-en-desktop-125-3765.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/home-en-desktop-125-3765.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/home-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, hero type hierarchy, two case cards, pink trajectory band, three approach cards and dark footer retain order and responsive composition."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Footer title is one desktop line because the old raster transcription normalized wraps. EN original hard-break data is unavailable; no manual LF was invented. Actual footer CSS/component are byte-identical to the deployed predecessor.",
+            "authority": "editorial-text-2026-10-30.json:method + confidence; unchangedSourceObjects"
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Hero emphasis wrapping differs from the raster reference because normalized plain strings omit unavailable original authored line boundaries. Typography, widths and component source are unchanged.",
+            "authority": "editorial-text-2026-10-30.json:method; unchangedSourceObjects"
+          },
+          {
+            "classification": "historically-accepted-metric-wrap",
+            "observation": "One word in the hero description wraps at a different metric threshold; prior A2 review keeps736px width and approved font stack.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "isolated-presentation/home-en",
+      "device": "mobile",
+      "frameId": "125:4026",
+      "originalFile": "home-en-mobile-125-4026.png",
+      "originalSha256": "fb2d18a75a7f4236eb3f0e73cf3c0d2fd5bcf83d1271dde04a57156724f46b07",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        4388
+      ],
+      "capture": "home-en-mobile-125-4026.png",
+      "captureSha256": "8d66aaa7a05ccff5786cb643f4c095e6317930407503157148a5e5c44a025dbc",
+      "captureCssDimensions": [
+        390,
+        4488
+      ],
+      "referencePath": "private reference baselines/home-en-mobile-125-4026.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/home-en-mobile-125-4026.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/home-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, hero type hierarchy, two case cards, pink trajectory band, three approach cards and dark footer retain order and responsive composition."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "about-pt",
+      "path": "isolated-presentation/about-pt",
+      "device": "desktop",
+      "frameId": "134:13116",
+      "originalFile": "about-pt-desktop-134-13116.png",
+      "originalSha256": "4e9a6f051f765f625bb9008153ccce7add81f9d0b1c7921414217dcd08470e43",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4528
+      ],
+      "capture": "about-pt-desktop-134-13116.png",
+      "captureSha256": "b60c94edc9caf3ac89bc117909dcdaff00a8b32647fbdf590a56f8419e4e641b",
+      "captureCssDimensions": [
+        1440,
+        4503
+      ],
+      "referencePath": "private reference baselines/about-pt-desktop-134-13116.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/about-pt-desktop-134-13116.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/about-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, journey text, wide desk photograph, pullquote, vertical architectural photograph, closing text and project CTA retain order and responsive composition.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Opening title becomes one desktop line because original Home/About transcriptions normalize wraps. The larger text width changes opening/section vertical positions. No app or typography change was made.",
+            "authority": "editorial-text-2026-10-30.json:method; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "about-pt",
+      "path": "isolated-presentation/about-pt",
+      "device": "mobile",
+      "frameId": "134:13205",
+      "originalFile": "about-pt-mobile-134-13205.png",
+      "originalSha256": "06d36f7ddee471fe67b1d239e5a4dbbf31f37555958522e01f7056cc5fd55ef6",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5651.88
+      ],
+      "capture": "about-pt-mobile-134-13205.png",
+      "captureSha256": "c8fc23214a8fd090273b5c0f87983a4cd7735410afe0ce5bcb2209d1747e8bef",
+      "captureCssDimensions": [
+        390,
+        5758
+      ],
+      "referencePath": "private reference baselines/about-pt-mobile-134-13205.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/about-pt-mobile-134-13205.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/about-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, journey text, wide desk photograph, pullquote, vertical architectural photograph, closing text and project CTA retain order and responsive composition.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "historically-accepted-metric-wrap",
+            "observation": "First journey paragraph has eight lines rather than nine in Figma; approved18/28 font and342px column remain. The prior A2 review explicitly names this residue.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "about-en",
+      "path": "isolated-presentation/about-en",
+      "device": "desktop",
+      "frameId": "134:13298",
+      "originalFile": "about-en-desktop-134-13298.png",
+      "originalSha256": "6d35ae12188c5312649906892670d810ab5a92ddb1a5366d737688ae346678b1",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4544
+      ],
+      "capture": "about-en-desktop-134-13298.png",
+      "captureSha256": "ca08f1a4e819ae1c7b2ae81c184c76028cf2e238d68dfaf0a56ae47642ad031c",
+      "captureCssDimensions": [
+        1440,
+        4459
+      ],
+      "referencePath": "private reference baselines/about-en-desktop-134-13298.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/about-en-desktop-134-13298.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/about-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, journey text, wide desk photograph, pullquote, vertical architectural photograph, closing text and project CTA retain order and responsive composition."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Footer title is one desktop line because the old raster transcription normalized wraps. EN original hard-break data is unavailable; no manual LF was invented. Actual footer CSS/component are byte-identical to the deployed predecessor.",
+            "authority": "editorial-text-2026-10-30.json:method + confidence; unchangedSourceObjects"
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Opening title becomes one desktop line because original Home/About transcriptions normalize wraps. The larger text width changes opening/section vertical positions. No app or typography change was made.",
+            "authority": "editorial-text-2026-10-30.json:method; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "about-en",
+      "path": "isolated-presentation/about-en",
+      "device": "mobile",
+      "frameId": "134:13435",
+      "originalFile": "about-en-mobile-134-13435.png",
+      "originalSha256": "23377bc774046d610f5cc822bda869df4087654f8e4d24ceda8341f4b650cb97",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5435.88
+      ],
+      "capture": "about-en-mobile-134-13435.png",
+      "captureSha256": "5918ac5ee1ded4c69d7a10ef3719a1c4731bf1c84b2e04bbb0f5bce967842751",
+      "captureCssDimensions": [
+        390,
+        5570
+      ],
+      "referencePath": "private reference baselines/about-en-mobile-134-13435.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/about-en-mobile-134-13435.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/about-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original portrait, journey text, wide desk photograph, pullquote, vertical architectural photograph, closing text and project CTA retain order and responsive composition."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "isolated-presentation/cases-en",
+      "device": "desktop",
+      "frameId": "125:4291",
+      "originalFile": "cases-en-desktop-125-4291.png",
+      "originalSha256": "f78b859d869a6f897d56ca7e16c081273d141adc3daf69cfb74fa39258059436",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        1638
+      ],
+      "capture": "cases-en-desktop-125-4291.png",
+      "captureSha256": "ae4dee764aa7d6d1d98476b829e526d9cdd0991b9162c4369915c302de6b6d74",
+      "captureCssDimensions": [
+        1440,
+        1612
+      ],
+      "referencePath": "private reference baselines/cases-en-desktop-125-4291.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/cases-en-desktop-125-4291.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/cases-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Back link, opening/count, exact independent card copy and original two card assets retain two-column desktop and stacked mobile composition."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Footer title is one desktop line because the old raster transcription normalized wraps. EN original hard-break data is unavailable; no manual LF was invented. Actual footer CSS/component are byte-identical to the deployed predecessor.",
+            "authority": "editorial-text-2026-10-30.json:method + confidence; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "isolated-presentation/cases-en",
+      "device": "mobile",
+      "frameId": "125:4490",
+      "originalFile": "cases-en-mobile-125-4490.png",
+      "originalSha256": "c918978ece513526c251404cf7906c536c0161ef139f37035edf94548ed80172",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        1730
+      ],
+      "capture": "cases-en-mobile-125-4490.png",
+      "captureSha256": "ac9d957484b974c026b2e7571a5d2af3132f57533e9dfb3911693d0c1eb30c8d",
+      "captureCssDimensions": [
+        390,
+        1830
+      ],
+      "referencePath": "private reference baselines/cases-en-mobile-125-4490.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/cases-en-mobile-125-4490.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/cases-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Back link, opening/count, exact independent card copy and original two card assets retain two-column desktop and stacked mobile composition."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "isolated-presentation/cases-pt",
+      "device": "desktop",
+      "frameId": "125:2472",
+      "originalFile": "cases-pt-desktop-125-2472.png",
+      "originalSha256": "3e83e24ce40a346b81a805b2235d545af47ac5443f9b6555edffb6f1e4ba5584",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        1638
+      ],
+      "capture": "cases-pt-desktop-125-2472.png",
+      "captureSha256": "a1018f5b7286ce98bea55b461c7813039726e9ce597b23864af002b11665b66c",
+      "captureCssDimensions": [
+        1440,
+        1672
+      ],
+      "referencePath": "private reference baselines/cases-pt-desktop-125-2472.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/cases-pt-desktop-125-2472.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/cases-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Back link, opening/count, exact independent card copy and original two card assets retain two-column desktop and stacked mobile composition.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "isolated-presentation/cases-pt",
+      "device": "mobile",
+      "frameId": "125:2595",
+      "originalFile": "cases-pt-mobile-125-2595.png",
+      "originalSha256": "58c4b2f422d1bbf232e084ff2b47c0658c042f5b3ab8e428e6468a62e735a888",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        1770
+      ],
+      "capture": "cases-pt-mobile-125-2595.png",
+      "captureSha256": "e12ab4b9a6946176148ebfcedf58438f1ee3ce9c7c46908cf2088af760160c6f",
+      "captureCssDimensions": [
+        390,
+        1870
+      ],
+      "referencePath": "private reference baselines/cases-pt-mobile-125-2595.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/cases-pt-mobile-125-2595.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/cases-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Back link, opening/count, exact independent card copy and original two card assets retain two-column desktop and stacked mobile composition.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "isolated-presentation/case-pt",
+      "device": "desktop",
+      "frameId": "123:838",
+      "originalFile": "case-pt-desktop-123-838.png",
+      "originalSha256": "09da573eb201cd1da34d56d15a7ca81f1d7bdf87560b336da9d71d818f9bf3e2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4654
+      ],
+      "capture": "case-pt-desktop-123-838.png",
+      "captureSha256": "ebe37cedec38ac4732468b66d00a86a45a9148ad534a2c032db8891a4529ff44",
+      "captureCssDimensions": [
+        1440,
+        4688
+      ],
+      "referencePath": "private reference baselines/case-pt-desktop-123-838.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/case-pt-desktop-123-838.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/case-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original cover composition, opening and context note, context facts, challenge, process, comparison pair and three learning cards retain editorial order.",
+          "TOC remains beside desktop article and before mobile article; actual headings replace archived short captions by approved contract.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words.",
+          "Challenge/process authored LF recovered from archived official JSX nodes123:882 and123:889 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "approved-contract",
+            "observation": "TOC titles derive from actual section headings, so longer labels and wrapping differ from the short Figma captions.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "isolated-presentation/case-pt",
+      "device": "mobile",
+      "frameId": "123:954",
+      "originalFile": "case-pt-mobile-123-954.png",
+      "originalSha256": "19a3a6cd1fca6208ce2a43611147f039748289e913f1a7cf1d37a4f771ed1629",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5848
+      ],
+      "capture": "case-pt-mobile-123-954.png",
+      "captureSha256": "2a44bf809123d5ac55bed61c49981fc747fe297286f123e2221b3751f4b886da",
+      "captureCssDimensions": [
+        390,
+        5948
+      ],
+      "referencePath": "private reference baselines/case-pt-mobile-123-954.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/case-pt-mobile-123-954.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/case-pt.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original cover composition, opening and context note, context facts, challenge, process, comparison pair and three learning cards retain editorial order.",
+          "TOC remains beside desktop article and before mobile article; actual headings replace archived short captions by approved contract.",
+          "Footer authored LF recovered from archived official JSX node I123:944;123:535 without changing words.",
+          "Challenge/process authored LF recovered from archived official JSX nodes123:882 and123:889 without changing words."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "approved-contract",
+            "observation": "TOC titles derive from actual section headings, so longer labels and wrapping differ from the short Figma captions.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "isolated-presentation/case-en",
+      "device": "desktop",
+      "frameId": "125:4693",
+      "originalFile": "case-en-desktop-125-4693.png",
+      "originalSha256": "816832dff588834a28f692b67b4743b54b919426182b16fd7614adb5b76cfdff",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-en-desktop-125-4693.png",
+      "captureSha256": "3725ae60a2a8df68dfe0f1f25733c6b49a44a5a2c1d9fc96133cb1a15f7214a5",
+      "captureCssDimensions": [
+        1440,
+        4516
+      ],
+      "referencePath": "private reference baselines/case-en-desktop-125-4693.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/case-en-desktop-125-4693.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/case-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original cover composition, opening and context note, context facts, challenge, process, comparison pair and three learning cards retain editorial order.",
+          "TOC remains beside desktop article and before mobile article; actual headings replace archived short captions by approved contract."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Footer title is one desktop line because the old raster transcription normalized wraps. EN original hard-break data is unavailable; no manual LF was invented. Actual footer CSS/component are byte-identical to the deployed predecessor.",
+            "authority": "editorial-text-2026-10-30.json:method + confidence; unchangedSourceObjects"
+          },
+          {
+            "classification": "approved-contract",
+            "observation": "TOC titles derive from actual section headings, so longer labels and wrapping differ from the short Figma captions.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44"
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "The EN challenge/process heading and paragraph wraps alter section heights; raster transcription normalizes whitespace and cannot establish original hard breaks. Rendering uses unchanged production typography and exact supplied words.",
+            "authority": "editorial-cases-verified-2026-10-30.json:confidence; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "isolated-presentation/case-en",
+      "device": "mobile",
+      "frameId": "125:4961",
+      "originalFile": "case-en-mobile-125-4961.png",
+      "originalSha256": "5973ae8ef45373e55d84d6f6e7f555d4095d9f77871e24814b9681cb859a50be",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5912
+      ],
+      "capture": "case-en-mobile-125-4961.png",
+      "captureSha256": "d9483d7bfdb49cfb56b0aad0551a3031aa6a27ef39f40d74bf224566df2c40ca",
+      "captureCssDimensions": [
+        390,
+        6028
+      ],
+      "referencePath": "private reference baselines/case-en-mobile-125-4961.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/case-en-mobile-125-4961.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/case-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original cover composition, opening and context note, context facts, challenge, process, comparison pair and three learning cards retain editorial order.",
+          "TOC remains beside desktop article and before mobile article; actual headings replace archived short captions by approved contract."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "approved-contract",
+            "observation": "TOC titles derive from actual section headings, so longer labels and wrapping differ from the short Figma captions.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44"
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "The EN challenge/process heading and paragraph wraps alter section heights; raster transcription normalizes whitespace and cannot establish original hard breaks. Rendering uses unchanged production typography and exact supplied words.",
+            "authority": "editorial-cases-verified-2026-10-30.json:confidence; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "case-2-en",
+      "path": "isolated-presentation/case-2-en",
+      "device": "desktop",
+      "frameId": "126:8101",
+      "originalFile": "case02-en-desktop-126-8101.png",
+      "originalSha256": "98a623ea64083f06e3b9145c707831e6ef9d34d4883f1720ef7c1c85270e5b45",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case02-en-desktop-126-8101.png",
+      "captureSha256": "f9d8e7a17b61dddca91bdce15e059c6ea07e8f7d8d980f0af42cc888b6603eed",
+      "captureCssDimensions": [
+        1440,
+        4516
+      ],
+      "referencePath": "private reference baselines/case02-en-desktop-126-8101.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/case02-en-desktop-126-8101.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/case-2-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original cover composition, opening and context note, context facts, challenge, process, comparison pair and three learning cards retain editorial order.",
+          "TOC remains beside desktop article and before mobile article; actual headings replace archived short captions by approved contract.",
+          "Soft pink Case02 cover now uses the existing contained-soft metadata accepted in A2; original-001 missing-field wine-bar output is preserved as superseded fixture preparation, not candidate visual evidence."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Header uses the approved Projects/About/Resume/Contact destinations; Approach remains in Home content.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "Footer title is one desktop line because the old raster transcription normalized wraps. EN original hard-break data is unavailable; no manual LF was invented. Actual footer CSS/component are byte-identical to the deployed predecessor.",
+            "authority": "editorial-text-2026-10-30.json:method + confidence; unchangedSourceObjects"
+          },
+          {
+            "classification": "approved-contract",
+            "observation": "TOC titles derive from actual section headings, so longer labels and wrapping differ from the short Figma captions.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44"
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "The EN challenge/process heading and paragraph wraps alter section heights; raster transcription normalizes whitespace and cannot establish original hard breaks. Rendering uses unchanged production typography and exact supplied words.",
+            "authority": "editorial-cases-verified-2026-10-30.json:confidence; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    },
+    {
+      "target": "case-2-en",
+      "path": "isolated-presentation/case-2-en",
+      "device": "mobile",
+      "frameId": "126:8293",
+      "originalFile": "case02-en-mobile-126-8293.png",
+      "originalSha256": "5d0903d705cac5723664d98866b09164fbb6740ffb505d9fd5096fc27a3005f8",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5960
+      ],
+      "capture": "case02-en-mobile-126-8293.png",
+      "captureSha256": "86041fcbd1c298ea241a0e1596b676d407f12b81964816bf60fa5a2d55ac058e",
+      "captureCssDimensions": [
+        390,
+        6076
+      ],
+      "referencePath": "private reference baselines/case02-en-mobile-126-8293.png",
+      "capturePath": ".work/audit-follow-up/fixture-original-002/case02-en-mobile-126-8293.png",
+      "contactSheetPath": ".work/audit-follow-up/fixture-comparison-original-002/case-2-en.jpg",
+      "review": {
+        "reviewer": "Codex frontend auditor, full-page contact sheets inspected via view_image",
+        "reviewedAt": "2026-11-14T17:12:56.257Z",
+        "result": "Structurally faithful within approved product changes and explicit fixture projection limits; no new layout defect observed.",
+        "observations": [
+          "Original cover composition, opening and context note, context facts, challenge, process, comparison pair and three learning cards retain editorial order.",
+          "TOC remains beside desktop article and before mobile article; actual headings replace archived short captions by approved contract.",
+          "Soft pink Case02 cover now uses the existing contained-soft metadata accepted in A2; original-001 missing-field wine-bar output is preserved as superseded fixture preparation, not candidate visual evidence."
+        ],
+        "differences": [
+          {
+            "classification": "approved-product",
+            "observation": "Compact native menu replaces the reference inline three-link navigation. Four approved destinations, language control and header spacing remain.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:50"
+          },
+          {
+            "classification": "approved-product",
+            "observation": "Footer contains email, LinkedIn and resume actions rather than the single reference CTA; action wrapping changes the footer height.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/visual.md",
+              "sections": [
+                "Preserved decisions and corrections",
+                "Two named minor differences"
+              ]
+            }
+          },
+          {
+            "classification": "pre-existing-presentation",
+            "observation": "Subtle background texture and editorial navigation labels predate this candidate.",
+            "authority": {
+              "commit": "bee7667e911fc6ec117087ad981475b322f27ae2",
+              "file": "docs/verification/E4.2-quality.md",
+              "sections": [
+                "Comparison with Figma"
+              ]
+            }
+          },
+          {
+            "classification": "approved-contract",
+            "observation": "TOC titles derive from actual section headings, so longer labels and wrapping differ from the short Figma captions.",
+            "authority": "docs/specs/2026-10-29-portfolio-inventario-figma.md:44"
+          },
+          {
+            "classification": "fixture-projection-limit",
+            "observation": "The EN challenge/process heading and paragraph wraps alter section heights; raster transcription normalizes whitespace and cannot establish original hard breaks. Rendering uses unchanged production typography and exact supplied words.",
+            "authority": "editorial-cases-verified-2026-10-30.json:confidence; unchangedSourceObjects"
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": 0,
+        "pixelIdentityClaim": false
+      }
+    }
+  ],
+  "sheets": [
+    {
+      "target": "home-pt",
+      "file": "home-pt.jpg",
+      "sha256": "b2f02107f7a3fb1c35a070fbee945111c7d28141ef1e5ba285ea977690bff1ca",
+      "dimensions": [
+        1138,
+        1603
+      ]
+    },
+    {
+      "target": "home-en",
+      "file": "home-en.jpg",
+      "sha256": "8a21ccca9eaeab6b4b779ddbe5eef93157a666eb570787f0013d9428f40de8ed",
+      "dimensions": [
+        1138,
+        1558
+      ]
+    },
+    {
+      "target": "about-pt",
+      "file": "about-pt.jpg",
+      "sha256": "f04344c3f442de7bcd0f159986e75b06e88e8865788c8ce40732984096a1da95",
+      "dimensions": [
+        1138,
+        1984
+      ]
+    },
+    {
+      "target": "about-en",
+      "file": "about-en.jpg",
+      "sha256": "bd935321fb53267c750235dc83548dd89399f39e2213c3783eb63f161fa9633d",
+      "dimensions": [
+        1138,
+        1921
+      ]
+    },
+    {
+      "target": "cases-en",
+      "file": "cases-en.jpg",
+      "sha256": "3e811734efcee0e934dbf27f06cd96ccfd10f0a3ddfe4b85eadb1f67e4456176",
+      "dimensions": [
+        1138,
+        665
+      ]
+    },
+    {
+      "target": "cases-pt",
+      "file": "cases-pt.jpg",
+      "sha256": "02030b28fb170711368993bee2998587ddb8c6c8e6d09dadf4fccd38f2acefdb",
+      "dimensions": [
+        1138,
+        678
+      ]
+    },
+    {
+      "target": "case-pt",
+      "file": "case-pt.jpg",
+      "sha256": "0ae597d47725e549f072112a8ece90be6f3328220dcbcd96a62b914b11104d17",
+      "dimensions": [
+        1138,
+        2048
+      ]
+    },
+    {
+      "target": "case-en",
+      "file": "case-en.jpg",
+      "sha256": "bb5066edd190e576c4ae40583c2fdfa38232ba14fbe6becd927dcc27de230d21",
+      "dimensions": [
+        1138,
+        2075
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "file": "case-2-en.jpg",
+      "sha256": "f2c9deded406c7bdfea1702cd012262ed5245b0ded3828741fc5b6977f0ad031",
+      "dimensions": [
+        1138,
+        2091
+      ]
+    }
+  ],
+  "supplementalPaintDiagnostic": ".work/audit-follow-up/fixture-original-002/cover-paint-diagnostic/receipt.json"
+}

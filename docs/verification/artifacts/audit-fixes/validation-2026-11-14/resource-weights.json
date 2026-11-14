@@ -1,0 +1,1958 @@
+{
+  "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "imageDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+  "startedAt": "2026-11-14T17:18:44.083Z",
+  "finishedAt": "2026-11-14T17:19:42.971Z",
+  "measuredAt": "2026-11-14T17:20:02.852Z",
+  "method": "Comparative page weight only. All same-origin resource encodedBodySize entries after all document images become eager and finish decode; includes preload links, scripts, CSS, texture and SVG. Fresh browser contexts, no editorial writes; this is not a Lighthouse cold-load performance sample.",
+  "ranking": [
+    {
+      "locale": "pt",
+      "width": 390,
+      "rows": [
+        {
+          "target": "case-pt",
+          "path": "/pt/cases/flexibilidade-de-pagamento",
+          "encoded": 764870,
+          "decoded": 1276474
+        },
+        {
+          "target": "case-2-pt",
+          "path": "/pt/cases/modelo-de-financiamento",
+          "encoded": 744970,
+          "decoded": 1256584
+        }
+      ]
+    },
+    {
+      "locale": "pt",
+      "width": 1440,
+      "rows": [
+        {
+          "target": "case-pt",
+          "path": "/pt/cases/flexibilidade-de-pagamento",
+          "encoded": 764870,
+          "decoded": 1276474
+        },
+        {
+          "target": "case-2-pt",
+          "path": "/pt/cases/modelo-de-financiamento",
+          "encoded": 744970,
+          "decoded": 1256584
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "rows": [
+        {
+          "target": "case-en",
+          "path": "/en/cases/payment-flexibility",
+          "encoded": 765665,
+          "decoded": 1281000
+        },
+        {
+          "target": "case-2-en",
+          "path": "/en/cases/financing-model",
+          "encoded": 745765,
+          "decoded": 1261110
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "rows": [
+        {
+          "target": "case-en",
+          "path": "/en/cases/payment-flexibility",
+          "encoded": 765665,
+          "decoded": 1281000
+        },
+        {
+          "target": "case-2-en",
+          "path": "/en/cases/financing-model",
+          "encoded": 745765,
+          "decoded": 1261110
+        }
+      ]
+    }
+  ],
+  "selectionRows": [
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "locale": "pt",
+      "width": 390,
+      "height": 844,
+      "encoded": 764870,
+      "decoded": 1276474,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-br.svg",
+          "query": "",
+          "encoded": 918,
+          "decoded": 2326,
+          "transfer": 1218,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F5069274d-9985-417f-a83d-629a677da825%2Foriginal&w=640&q=75",
+          "encoded": 66632,
+          "decoded": 66582,
+          "transfer": 66932,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "locale": "pt",
+      "width": 1440,
+      "height": 900,
+      "encoded": 764870,
+      "decoded": 1276474,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-br.svg",
+          "query": "",
+          "encoded": 918,
+          "decoded": 2326,
+          "transfer": 1218,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F5069274d-9985-417f-a83d-629a677da825%2Foriginal&w=640&q=75",
+          "encoded": 66632,
+          "decoded": 66582,
+          "transfer": 66932,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "locale": "en",
+      "width": 390,
+      "height": 844,
+      "encoded": 765665,
+      "decoded": 1281000,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-en.svg",
+          "query": "",
+          "encoded": 1713,
+          "decoded": 6852,
+          "transfer": 2013,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F5069274d-9985-417f-a83d-629a677da825%2Foriginal&w=640&q=75",
+          "encoded": 66632,
+          "decoded": 66582,
+          "transfer": 66932,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "locale": "en",
+      "width": 1440,
+      "height": 900,
+      "encoded": 765665,
+      "decoded": 1281000,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-en.svg",
+          "query": "",
+          "encoded": 1713,
+          "decoded": 6852,
+          "transfer": 2013,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F5069274d-9985-417f-a83d-629a677da825%2Foriginal&w=640&q=75",
+          "encoded": 66632,
+          "decoded": 66582,
+          "transfer": 66932,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "locale": "pt",
+      "width": 390,
+      "height": 844,
+      "encoded": 744970,
+      "decoded": 1256584,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-br.svg",
+          "query": "",
+          "encoded": 918,
+          "decoded": 2326,
+          "transfer": 1218,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "encoded": 46732,
+          "decoded": 46692,
+          "transfer": 47032,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "locale": "pt",
+      "width": 1440,
+      "height": 900,
+      "encoded": 744970,
+      "decoded": 1256584,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-br.svg",
+          "query": "",
+          "encoded": 918,
+          "decoded": 2326,
+          "transfer": 1218,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "encoded": 46732,
+          "decoded": 46692,
+          "transfer": 47032,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "locale": "en",
+      "width": 390,
+      "height": 844,
+      "encoded": 745765,
+      "decoded": 1261110,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-en.svg",
+          "query": "",
+          "encoded": 1713,
+          "decoded": 6852,
+          "transfer": 2013,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "encoded": 46732,
+          "decoded": 46692,
+          "transfer": 47032,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "locale": "en",
+      "width": 1440,
+      "height": 900,
+      "encoded": 745765,
+      "decoded": 1261110,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-en.svg",
+          "query": "",
+          "encoded": 1713,
+          "decoded": 6852,
+          "transfer": 2013,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "encoded": 46732,
+          "decoded": 46692,
+          "transfer": 47032,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    }
+  ],
+  "supplementalTabletRows": [
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "locale": "pt",
+      "width": 820,
+      "height": 900,
+      "encoded": 727536,
+      "decoded": 1239160,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-br.svg",
+          "query": "",
+          "encoded": 918,
+          "decoded": 2326,
+          "transfer": 1218,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F5069274d-9985-417f-a83d-629a677da825%2Foriginal&w=384&q=75",
+          "encoded": 29298,
+          "decoded": 29268,
+          "transfer": 29598,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "locale": "en",
+      "width": 820,
+      "height": 900,
+      "encoded": 728331,
+      "decoded": 1243686,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-en.svg",
+          "query": "",
+          "encoded": 1713,
+          "decoded": 6852,
+          "transfer": 2013,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F5069274d-9985-417f-a83d-629a677da825%2Foriginal&w=384&q=75",
+          "encoded": 29298,
+          "decoded": 29268,
+          "transfer": 29598,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-2-pt",
+      "path": "/pt/cases/modelo-de-financiamento",
+      "locale": "pt",
+      "width": 820,
+      "height": 900,
+      "encoded": 726998,
+      "decoded": 1238622,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-br.svg",
+          "query": "",
+          "encoded": 918,
+          "decoded": 2326,
+          "transfer": 1218,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=828&q=75",
+          "encoded": 28760,
+          "decoded": 28730,
+          "transfer": 29060,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "locale": "en",
+      "width": 820,
+      "height": 900,
+      "encoded": 727793,
+      "decoded": 1243148,
+      "zeroEncodedResources": 0,
+      "resources": [
+        {
+          "path": "/_next/static/chunks/263aqldb78afs.css",
+          "query": "",
+          "encoded": 6367,
+          "decoded": 27176,
+          "transfer": 6667,
+          "type": "link"
+        },
+        {
+          "path": "/figma/language-en.svg",
+          "query": "",
+          "encoded": 1713,
+          "decoded": 6852,
+          "transfer": 2013,
+          "type": "link"
+        },
+        {
+          "path": "/_next/image",
+          "query": "?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=828&q=75",
+          "encoded": 28760,
+          "decoded": 28730,
+          "transfer": 29060,
+          "type": "link"
+        },
+        {
+          "path": "/figma/footer-divider.svg",
+          "query": "",
+          "encoded": 238,
+          "decoded": 238,
+          "transfer": 538,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/3g-sw8j6_6mi8.js",
+          "query": "",
+          "encoded": 3765,
+          "decoded": 13542,
+          "transfer": 4065,
+          "type": "link"
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+          "query": "",
+          "encoded": 4390,
+          "decoded": 11255,
+          "transfer": 4690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0u1g_7b8324j2.js",
+          "query": "",
+          "encoded": 8271,
+          "decoded": 30192,
+          "transfer": 8571,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/04npk54cy48p6.js",
+          "query": "",
+          "encoded": 44390,
+          "decoded": 159567,
+          "transfer": 44690,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/40ak0lmdtm-p3.js",
+          "query": "",
+          "encoded": 71982,
+          "decoded": 229724,
+          "transfer": 72282,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/29v-7qnjj62h1.js",
+          "query": "",
+          "encoded": 3541,
+          "decoded": 13885,
+          "transfer": 3841,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2spa96_j7q7cf.js",
+          "query": "",
+          "encoded": 2439,
+          "decoded": 5637,
+          "transfer": 2739,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3q08-j6su7u-g.js",
+          "query": "",
+          "encoded": 7456,
+          "decoded": 18869,
+          "transfer": 7756,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/0-mfai8w98h0b.js",
+          "query": "",
+          "encoded": 18999,
+          "decoded": 48002,
+          "transfer": 19299,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/2qafaj4md7r27.js",
+          "query": "",
+          "encoded": 30298,
+          "decoded": 105599,
+          "transfer": 30598,
+          "type": "script"
+        },
+        {
+          "path": "/_next/static/chunks/3aisy75xhs-0z.js",
+          "query": "",
+          "encoded": 24275,
+          "decoded": 73031,
+          "transfer": 24575,
+          "type": "script"
+        },
+        {
+          "path": "/textures/paper-grain-texture.png",
+          "query": "",
+          "encoded": 470427,
+          "decoded": 470367,
+          "transfer": 470727,
+          "type": "css"
+        },
+        {
+          "path": "/figma/case-divider.svg",
+          "query": "",
+          "encoded": 235,
+          "decoded": 235,
+          "transfer": 535,
+          "type": "img"
+        },
+        {
+          "path": "/figma/learning-divider.svg",
+          "query": "",
+          "encoded": 247,
+          "decoded": 247,
+          "transfer": 547,
+          "type": "img"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "kind": "audit-follow-up-staging-release-binding",
+  "checkedAt": "2026-11-14T17:19:29.097Z",
+  "run": 43618818421,
+  "revision": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "sourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+  "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+  "digest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+  "configDigest": "sha256:9ae154f0743ec294b5f7b4aa7c4b998a698a45bf1501309df3dfdfe530456733",
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "containerId": "b43f41da5c611c1f89544c8b943225e1155882d8a5cb9a158610e7ae5225ad4b",
+  "previousContainerId": "e9f1d2c3e88bf0b0e66b7684439f901e807ac70d9b65815c6349bee01a1434ef",
+  "previousDigest": "sha256:04f6c20894a28d1803c0d408a0c20f2c89fbc219e606b2e6ee0283d4e74afaf6",
+  "backup": {
+    "id": "95707314-d495-4500-9b2c-cc7e7fedf834",
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "4hpzykmyxrp4jcchd88qumbx",
+    "completedAt": "2026-11-14T17:14:44.627Z",
+    "ciphertextByteLength": 2898824,
+    "ciphertextSha256": "7db35f7ddcbfba3e0f10eedde8ee76ba1467e0fadb3153a74a0825be00de9649",
+    "freshBeforeNewContainer": true,
+    "observedGapMs": 47813
+  },
+  "tests": {
+    "vitestFiles": {
+      "passed": 238,
+      "skipped": 0,
+      "total": 238
+    },
+    "vitest": {
+      "passed": 2350,
+      "skipped": 0,
+      "total": 2350
+    },
+    "chromiumPassed": 140
+  },
+  "preserved": {
+    "volumeIdentities": true,
+    "confirmedPublicRoot": true,
+    "userAndLimits": true,
+    "logRotation": true,
+    "runningContainerCount": true,
+    "migrationTree": true
+  },
+  "access": {
+    "authenticatedRoutesPassed": 6,
+    "anonymousStatus": 401,
+    "noindex": true,
+    "googleScriptsPresent": false,
+    "publicSiteEnabled": false
+  },
+  "registryMarkerIndependentlyResolved": true,
+  "productionJobsSkipped": true,
+  "productionAccessed": false,
+  "sources": [
+    {
+      "path": ".work/audit-follow-up/pipeline-43618818421.json",
+      "sha256": "89d564e1afadddfe1607c009d4b688fcbd4ec5089975bc40ef4c1b2949d99978"
+    },
+    {
+      "path": ".work/audit-follow-up/staging-before.json",
+      "sha256": "db205e4a24edcdf539bc5e49504390bde59e4ca4a9856990f1f353d1670d05af"
+    },
+    {
+      "path": ".work/audit-follow-up/staging-after.json",
+      "sha256": "eabf4788140c6839c777eeee99200e85442646ef5461731bdea61a960bbd8367"
+    },
+    {
+      "path": ".work/audit-follow-up/registry-marker-after.json",
+      "sha256": "48cdf7d1323338bac4c083eecbd457a2a4be82dc59139d0835edd182e4a115f9"
+    }
+  ]
+}
