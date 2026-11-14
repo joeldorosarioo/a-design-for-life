@@ -1,11 +1,12 @@
 {
   "stage": 4,
-  "approval": "A3 aprovada em 06/11/2026. A4 aprovada em 08/11/2026. Lançamento sem autorização",
-  "remainingEstimate": "Os dois critérios restantes dependem de currículos e revisão editorial finais e da autorização para a inspeção formal com leitor de tela. O lançamento tem pré-requisitos próprios em A4.md.",
+  "approval": "A3 approved on 2026-11-06; historical A4 approved on 2026-11-08. The 2026-11-14 corrective candidate awaits complementary A4 approval; production launch remains unauthorized.",
+  "remainingEstimate": "The corrective candidate has a measured PT mobile-listing LCP budget failure requiring diagnosis, correction and revalidation. Complete fresh performance and the final dossier; final editorial content and suspended formal screen-reader inspection remain separate open criteria.",
   "notes": [
     "A3 aprovada explicitamente pelo usuário em 06/11/2026; E4.1–E4.3 autorizadas, sem lançamento de produção nem serviços pagos.",
     "Pendências preservadas: PDFs PT/EN em branco temporários; domínio/configuração de produção; BLOCK-GA4-REPORT-LIMITATION; leitor de tela E2.6.2 sem reativar NVDA; navegação Next Link adiada.",
-    "Candidata befe22bc saudável no staging, pipeline 42512917835, 2335 testes Linux, 123 jornadas e 48 verificações Chromium implantadas. Rodada final com 36 medições em 12 cenários, todos na meta."
+    "Historical A4 image befe22bc: pipeline 42512917835, 2335 Linux tests, 123 journeys and 48 deployed browser checks; its 36 measurements passed 12 scenarios. This evidence belongs to that image.",
+    "Corrective candidate 1640d972 is healthy in private staging with exact manifest d78eca0a, protected CI 43618818421 (2350 tests/no skips,140 E2E), a fresh verified backup and current 30-layout/18-original-frame visual acceptance. Fresh performance is in progress; see 2026-11-14-audit-validation.md."
   ],
   "criteria": [
     {
@@ -36,7 +37,7 @@
       "id": "E4.1.5",
       "done": false,
       "summary": "Rodar `pnpm verify`, `pnpm test:e2e` e revisão de diff contra a spec. Se houver correção, gerar nova imagem candidata e validá-la em homologação; depois promover esse mesmo digest. Não reconstruir a imagem já validada durante promoção.",
-      "evidence": "Reopened for corrective source on 2026-11-14: fresh local pnpm verify and pnpm test:e2e passed (2347 tests/3 platform skips,125 script checks,140 E2E,build); a separately validated candidate and Linux CI remain required; no deployment is authorized by this repair request. See 2026-11-14-audit-fixes.md. Historical evidence: pnpm verify e 123 jornadas locais passaram; revisão de padrões e spec em docs/verification/E4-review.md. O pipeline 42512917835 no merge protegido passou 2335 testes Linux e 123 Chromium, implantou a sucessora saudável e confirmou o manifesto privado. Recibos artifacts/E4-gates/final-local-001.json e artifacts/E4-operations/stage4-staging-release-001.json."
+      "evidence": "Replacement source prioritizes only the first listing cover using existing eager/high support. Focused20 tests, affected lint, typecheck and formatting passed after observedRED. New protected CI/image/staging/visual/performance gates remain required. Candidate1640 passed2350 Linux tests/140 E2E and operational checks, but failed mobile listing LCP in2/12 fresh scenarios. See2026-11-14-audit-validation.md."
     },
     {
       "id": "E4.2.1",
@@ -58,9 +59,9 @@
     },
     {
       "id": "E4.2.4",
-      "done": true,
+      "done": false,
       "summary": "Comparar medianas às metas aprovadas: LCP ≤ 2,5 s e CLS ≤ 0,1 em ambos; TBT ≤ 200 ms no celular e ≤ 150 ms no desktop. Diagnosticar JavaScript, imagens, Motion e Analytics; corrigir gargalos concretos e repetir os cenários afetados, além da suíte necessária. Não exigir nota 100 ou cobertura de 100%.",
-      "evidence": "A sucessora passou 12/12 cenários nos perfis fixados. Case PT celular LCP 2803,06 → 1867,62 ms, CLS 0 e TBT 64,57 ms. Capa 1080w/144236 → 640w/66582 bytes, RED/GREEN e comparação visual vinculados ao digest em artifacts/E4-performance/staging-cold-browser-002.json."
+      "evidence": "Current fresh candidate1640:36/36 measurements complete,10/12 scenarios pass; PT/EN mobile listings fail LCP medians2517.8/2569.7ms. Their first LCP cover is lazy without priority. Minimal three-file correction has observedRED/GREEN20 focused tests, lint/typecheck/format success; new immutable candidate and fresh measurements remain required. See performance-candidate-001.json and listing-priority-verification.json under artifacts/audit-fixes/validation-2026-11-14/. Historical prior-image metrics remain in the A4 dossier."
     },
     {
       "id": "E4.2.5",
@@ -102,13 +103,13 @@
       "id": "E4.3.5",
       "done": false,
       "summary": "Registrar evidências frescas de `pnpm verify`, E2E, auditorias e digest. Entregar pacote final com procedimento de rollback da imagem e recuperação de dados; encerrar como **aguardando aprovação A4 e autorização explícita para lançar**.",
-      "evidence": "Reopened for corrective source on 2026-11-14: local source verification is recorded in artifacts/audit-fixes/2026-11-14.json; candidate/digest and Linux CI evidence remain pending. The historical A4 approval still identifies its original image and does not validate these changes. See 2026-11-14-audit-fixes.md. Historical evidence: Dossiê A4.md e runbook lancamento.md completos com gates locais e Linux, auditorias e digest da imagem homologada, rollback por manifesto e recuperação isolada. A4 aprovada em 08/11/2026. Lançamento adiado até autorização explícita."
+      "evidence": "First corrective candidate1640 has complete source/CI/backup/operational/visual evidence and36 fresh measurements, with2 LCP scenario failures preserved. Replacement source/digest/full acceptance and final dossier remain pending. Historical A4 approval identifies its original image; production remains unauthorized. See2026-11-14-audit-validation.md."
     }
   ],
-  "completedItems": 12,
+  "completedItems": 11,
   "totalItems": 16,
-  "percentage": 75,
+  "percentage": 68.8,
   "closedTasks": [],
   "totalTasks": 3,
-  "recalculatedAt": "2026-11-14T16:26:31.933Z"
+  "recalculatedAt": "2026-11-14T17:39:02.057Z"
 }

@@ -1,0 +1,1363 @@
+{
+  "reviewedAt": "2026-11-14T17:21:59.118Z",
+  "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "imageDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+  "sourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+  "operationalBinding": {
+    "before": ".work/audit-follow-up/staging-before.json",
+    "candidate": ".work/audit-follow-up/staging-after.json",
+    "registry": ".work/audit-follow-up/registry-marker-after.json",
+    "predecessor": {
+      "sourceSha": "36f0ea65bbc2dca0de0f9ca8d7c45407fdbbdd00",
+      "imageDigest": "sha256:04f6c20894a28d1803c0d408a0c20f2c89fbc219e606b2e6ee0283d4e74afaf6",
+      "startedAt": "2026-11-14T16:51:53.384Z",
+      "finishedAt": "2026-11-14T16:52:50.620Z"
+    }
+  },
+  "captureWindow": {
+    "startedAt": "2026-11-14T17:18:44.083Z",
+    "finishedAt": "2026-11-14T17:19:42.971Z",
+    "nativeZoomFinishedAt": "2026-11-14T17:19:54.164Z"
+  },
+  "privacy": "All raw staging captures, contact sheets, traces and recordings remain private in ignored .work. This receipt contains metadata, hashes and technical dispositions only; no credentials or professional body copy.",
+  "browser": {
+    "name": "156.0.8078.4",
+    "playwright": "1.64.1",
+    "axe": "4.14.0",
+    "node": "24.22.2"
+  },
+  "summary": {
+    "layouts": 30,
+    "referenceFrames": 18,
+    "isolatedOriginalContentFrames": 18,
+    "axeStates": 50,
+    "axeViolations": 0,
+    "menus": 20,
+    "keyboardSamples": 240,
+    "skipLinks": 30,
+    "escapeFocusReturns": 20,
+    "tocContactFlows": 2,
+    "ssrPages": 10,
+    "httpStates": 9,
+    "findings": 0,
+    "browserErrors": 0,
+    "externalAttempts": 0,
+    "pixelComparison": {
+      "layouts": 30,
+      "identicalDimensions": 30,
+      "identicalPixels": 30,
+      "identicalMediaGeometry": 30
+    }
+  },
+  "accessibilityReview": {
+    "incompleteRuleCounts": {
+      "color-contrast": 100,
+      "aria-hidden-focus": 124
+    },
+    "minimumObservedIncompleteContrast": 5.421983103795719,
+    "disposition": "Incomplete color-contrast observations were inspected for computed color/background (all observed ratios meet4.5:1); decorative arrows are aria-hidden within named actions. Open-dialog aria-hidden-focus observations refer to inert outside content and Radix guards; all240 actual Tab/Shift+Tab samples stayed inside the dialog with visible unobscured focus. Automated results and these keyboard/zoom observations do not substitute for the pending formal screen-reader inspection."
+  },
+  "nativeZoom": {
+    "protocol": "Default page zoom via Chrome settingsPrivate on the browser-owned settings page of an isolated profile, headless full Chrome; observed CSS viewport and DPR. No CSS zoom or pinch emulation.",
+    "before": {
+      "chromeZoom": 1,
+      "innerWidth": 1424,
+      "innerHeight": 805,
+      "dpr": 1,
+      "visualViewportScale": 1,
+      "overflow": 0,
+      "scrollHeight": 3132
+    },
+    "at200": {
+      "chromeZoom": 2,
+      "innerWidth": 712,
+      "innerHeight": 402,
+      "dpr": 2,
+      "visualViewportScale": 1,
+      "overflow": 0,
+      "scrollHeight": 2975
+    },
+    "restored": {
+      "chromeZoom": 1,
+      "innerWidth": 1424,
+      "innerHeight": 805,
+      "dpr": 1,
+      "visualViewportScale": 1,
+      "overflow": 0,
+      "scrollHeight": 3132
+    },
+    "inDialog": true,
+    "escapeReturnedVisibleFocus": true,
+    "contactUnobscured": true,
+    "evidence": [
+      {
+        "file": "menu-zoom200.png",
+        "sha256": "9f2a99350bae6a4c73e72563029501b07e8c9bf1cea0d9ec8869268f9d3f61db",
+        "dimensions": [
+          1424,
+          805
+        ]
+      },
+      {
+        "file": "contact-zoom200.png",
+        "sha256": "e7a5f184b3c84d5c4c0c3d8163452aaf3747694199f77373d19911584423b6da",
+        "dimensions": [
+          1424,
+          805
+        ]
+      }
+    ]
+  },
+  "coverage": {
+    "deployedMediaRoles": [
+      "profile",
+      "card",
+      "cover"
+    ],
+    "newArticlePairBehavior": "Live staging cases contain no article/pair images. The changed intrinsic-ratio behavior is proven by12 delayed-image scenarios using actual CaseImage SSR/CSS and by real Native depth1 integration assertions in the local/Linux full gate. The isolated18-frame original-content fixture proves original composition but has no new article/pair blocks.",
+    "layoutRegression": "All30 complete current candidate screenshots have identical RGB pixels, dimensions and media geometry to independently verified36f predecessor captures. No masks, thresholds, resizing or changed-pixel exclusions were applied.",
+    "originalComposition": "The current-source isolated original-content fixture covers all18 approved frames through actual production DTO mappers and page/layout components. Exact authored PT footer/challenge/process lines were recovered from archived official JSX; unavailable Home/About/EN hard breaks remain an explicit fixture projection limit."
+  },
+  "limits": [
+    "No Figma pixel-identity claim; observed approved product differences and staging editorial differences are dispositioned per frame.",
+    "Original-content fixture is isolated SSR presentation and does not prove runtime hydration, Native editing or authorization; full integration/browser gates are separate evidence.",
+    "Formal screen-reader inspection remains pending by user direction.",
+    "No editorial CMS writes, content publication or browser requests beyond GET/HEAD were performed."
+  ],
+  "frames": [
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "device": "desktop",
+      "frameId": "123:574",
+      "originalFile": "home-pt-desktop-123-574.png",
+      "originalSha256": "e02474e4cb20bf58f8f8f2ab96403f7328b3a25388920b14d19ff32de76b8162",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        3244
+      ],
+      "capture": "home-pt-1440.png",
+      "captureSha256": "176119bb5b5cc3199f1ac9111ac897490dcf1b2c6b765a88f0ec7d7da96f77b9",
+      "captureCssDimensions": [
+        1440,
+        3215
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-pt-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/home-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Portrait, two-treatment hero typography, project cards, pink trajectory section, approach cards and dark footer retain desktop/mobile hierarchy and order.",
+        "difference": "Published editorial title/body, card assets and order, trajectory entries and contact copy differ from the template; resulting line wraps and section heights are content-dependent.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "device": "mobile",
+      "frameId": "123:705",
+      "originalFile": "home-pt-mobile-123-705.png",
+      "originalSha256": "3d0da0cadaf5fdfc6d3bc1039dee209154b17d43d44b81d2db6797d3a6e8f0f2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        4524
+      ],
+      "capture": "home-pt-390.png",
+      "captureSha256": "ffaff94695590936e3aa69d408933a360df49339448eb7504de54d3d51f6bcce",
+      "captureCssDimensions": [
+        390,
+        4657
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-pt-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/home-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Portrait, two-treatment hero typography, project cards, pink trajectory section, approach cards and dark footer retain desktop/mobile hierarchy and order.",
+        "difference": "Published editorial title/body, card assets and order, trajectory entries and contact copy differ from the template; resulting line wraps and section heights are content-dependent.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "device": "desktop",
+      "frameId": "125:3765",
+      "originalFile": "home-en-desktop-125-3765.png",
+      "originalSha256": "1dbb77748cd8755f09c4dd0462d23da2edcc70488708b32f14b7f9cf486ca017",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        3244
+      ],
+      "capture": "home-en-1440.png",
+      "captureSha256": "c2ac702b5d45cc0408f4f1dc3c75f62ff22eb4c302b16fe79104f1e78090c2bb",
+      "captureCssDimensions": [
+        1440,
+        3215
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-en-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/home-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Portrait, two-treatment hero typography, project cards, pink trajectory section, approach cards and dark footer retain desktop/mobile hierarchy and order.",
+        "difference": "Published editorial title/body, card assets and order, trajectory entries and contact copy differ from the template; resulting line wraps and section heights are content-dependent.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "device": "mobile",
+      "frameId": "125:4026",
+      "originalFile": "home-en-mobile-125-4026.png",
+      "originalSha256": "fb2d18a75a7f4236eb3f0e73cf3c0d2fd5bcf83d1271dde04a57156724f46b07",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        4388
+      ],
+      "capture": "home-en-390.png",
+      "captureSha256": "7af8093719c46b9806088c591ee3008ec8d5c2a0d8b901979d7d58e682bc7d45",
+      "captureCssDimensions": [
+        390,
+        4573
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-en-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/home-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Portrait, two-treatment hero typography, project cards, pink trajectory section, approach cards and dark footer retain desktop/mobile hierarchy and order.",
+        "difference": "Published editorial title/body, card assets and order, trajectory entries and contact copy differ from the template; resulting line wraps and section heights are content-dependent.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "device": "desktop",
+      "frameId": "134:13116",
+      "originalFile": "about-pt-desktop-134-13116.png",
+      "originalSha256": "4e9a6f051f765f625bb9008153ccce7add81f9d0b1c7921414217dcd08470e43",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4528
+      ],
+      "capture": "about-pt-1440.png",
+      "captureSha256": "089df204e0e8672fdf9bd38ce163e985a20c71b9bb5aa3d7629c87fbf740fec9",
+      "captureCssDimensions": [
+        1440,
+        4083
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-pt-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/about-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, portrait, journey, wide editorial image, pullquote, vertical image, closing narrative and project CTA retain the approved sequence and responsive columns.",
+        "difference": "Current staging uses its own shorter editorial text, portrait and photographs; heights and wraps differ from the longer neutral Figma example.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "about-pt",
+      "path": "/pt/sobre",
+      "device": "mobile",
+      "frameId": "134:13205",
+      "originalFile": "about-pt-mobile-134-13205.png",
+      "originalSha256": "06d36f7ddee471fe67b1d239e5a4dbbf31f37555958522e01f7056cc5fd55ef6",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5651.88
+      ],
+      "capture": "about-pt-390.png",
+      "captureSha256": "bb363595ba0e04cba5e1f18aa04628ab2e43df27a65904c07acdb237a8d5a5bd",
+      "captureCssDimensions": [
+        390,
+        3954
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-pt-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/about-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, portrait, journey, wide editorial image, pullquote, vertical image, closing narrative and project CTA retain the approved sequence and responsive columns.",
+        "difference": "Current staging uses its own shorter editorial text, portrait and photographs; heights and wraps differ from the longer neutral Figma example.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "device": "desktop",
+      "frameId": "134:13298",
+      "originalFile": "about-en-desktop-134-13298.png",
+      "originalSha256": "6d35ae12188c5312649906892670d810ab5a92ddb1a5366d737688ae346678b1",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4544
+      ],
+      "capture": "about-en-1440.png",
+      "captureSha256": "8c4faf356dca2a16584e122fe6e3f71357a279e8199fd442e1a346751cd674d1",
+      "captureCssDimensions": [
+        1440,
+        4023
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-en-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/about-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, portrait, journey, wide editorial image, pullquote, vertical image, closing narrative and project CTA retain the approved sequence and responsive columns.",
+        "difference": "Current staging uses its own shorter editorial text, portrait and photographs; heights and wraps differ from the longer neutral Figma example.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "about-en",
+      "path": "/en/about",
+      "device": "mobile",
+      "frameId": "134:13435",
+      "originalFile": "about-en-mobile-134-13435.png",
+      "originalSha256": "23377bc774046d610f5cc822bda869df4087654f8e4d24ceda8341f4b650cb97",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5435.88
+      ],
+      "capture": "about-en-390.png",
+      "captureSha256": "2b296c154564cd9ae4e7bea87b68519fdbc9c9838bb4ab914d9ca59c6404d26e",
+      "captureCssDimensions": [
+        390,
+        3886
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-en-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/about-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, portrait, journey, wide editorial image, pullquote, vertical image, closing narrative and project CTA retain the approved sequence and responsive columns.",
+        "difference": "Current staging uses its own shorter editorial text, portrait and photographs; heights and wraps differ from the longer neutral Figma example.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "device": "desktop",
+      "frameId": "125:4291",
+      "originalFile": "cases-en-desktop-125-4291.png",
+      "originalSha256": "f78b859d869a6f897d56ca7e16c081273d141adc3daf69cfb74fa39258059436",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        1638
+      ],
+      "capture": "cases-en-1440.png",
+      "captureSha256": "81e5e8a27fc80f895fe5650f3a1ec693fcb320662f44ef84e557b5b80e92a1c7",
+      "captureCssDimensions": [
+        1440,
+        1636
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-en-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/cases-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Return link, opening/count, two-column desktop cards and stacked mobile cards retain the approved composition.",
+        "difference": "Actual published cards and their intentional cover crops replace the neutral example copy/assets; no current-source crop or geometry changed versus the verified predecessor.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "device": "mobile",
+      "frameId": "125:4490",
+      "originalFile": "cases-en-mobile-125-4490.png",
+      "originalSha256": "c918978ece513526c251404cf7906c536c0161ef139f37035edf94548ed80172",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        1730
+      ],
+      "capture": "cases-en-390.png",
+      "captureSha256": "aa48fe9d0e575bd7efc3f0afcd4f97c2a91dfd3818abf8e45a94a10364b69364",
+      "captureCssDimensions": [
+        390,
+        1878
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-en-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/cases-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Return link, opening/count, two-column desktop cards and stacked mobile cards retain the approved composition.",
+        "difference": "Actual published cards and their intentional cover crops replace the neutral example copy/assets; no current-source crop or geometry changed versus the verified predecessor.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "device": "desktop",
+      "frameId": "125:2472",
+      "originalFile": "cases-pt-desktop-125-2472.png",
+      "originalSha256": "3e83e24ce40a346b81a805b2235d545af47ac5443f9b6555edffb6f1e4ba5584",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        1638
+      ],
+      "capture": "cases-pt-1440.png",
+      "captureSha256": "5573db1222d743723ec8fbab5e4d9ef9d58bc2424f83b5a40f233a1f6d4913df",
+      "captureCssDimensions": [
+        1440,
+        1636
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-pt-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/cases-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Return link, opening/count, two-column desktop cards and stacked mobile cards retain the approved composition.",
+        "difference": "Actual published cards and their intentional cover crops replace the neutral example copy/assets; no current-source crop or geometry changed versus the verified predecessor.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "device": "mobile",
+      "frameId": "125:2595",
+      "originalFile": "cases-pt-mobile-125-2595.png",
+      "originalSha256": "58c4b2f422d1bbf232e084ff2b47c0658c042f5b3ab8e428e6468a62e735a888",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        1770
+      ],
+      "capture": "cases-pt-390.png",
+      "captureSha256": "895744974c396a3377e8bbbff271f06e7c1a2322c48516510b0eaba4b46b3815",
+      "captureCssDimensions": [
+        390,
+        1910
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-pt-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/cases-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Return link, opening/count, two-column desktop cards and stacked mobile cards retain the approved composition.",
+        "difference": "Actual published cards and their intentional cover crops replace the neutral example copy/assets; no current-source crop or geometry changed versus the verified predecessor.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "device": "desktop",
+      "frameId": "123:838",
+      "originalFile": "case-pt-desktop-123-838.png",
+      "originalSha256": "09da573eb201cd1da34d56d15a7ca81f1d7bdf87560b336da9d71d818f9bf3e2",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4654
+      ],
+      "capture": "case-pt-1440.png",
+      "captureSha256": "27e5e41a74ead65addab11b39d68717969d4c45bc984a13517898f1ff78e423d",
+      "captureCssDimensions": [
+        1440,
+        3132
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-pt-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/case-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, contained cover slot, note, desktop side TOC/mobile preceding TOC, role/scope facts, article sections and footer retain the approved composition.",
+        "difference": "Actual case copy, cover images/background choice, real section headings and shorter narratives differ from the neutral example. Live cases omit comparison/process-card sections; isolated original-content proof separately covers those original structures.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "device": "mobile",
+      "frameId": "123:954",
+      "originalFile": "case-pt-mobile-123-954.png",
+      "originalSha256": "19a3a6cd1fca6208ce2a43611147f039748289e913f1a7cf1d37a4f771ed1629",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5848
+      ],
+      "capture": "case-pt-390.png",
+      "captureSha256": "86bcf85570b0eeb198413d0b6b0e649ec1ccf3dddbb944c8377fa6545e2b2deb",
+      "captureCssDimensions": [
+        390,
+        3256
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-pt-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/case-pt.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, contained cover slot, note, desktop side TOC/mobile preceding TOC, role/scope facts, article sections and footer retain the approved composition.",
+        "difference": "Actual case copy, cover images/background choice, real section headings and shorter narratives differ from the neutral example. Live cases omit comparison/process-card sections; isolated original-content proof separately covers those original structures.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "device": "desktop",
+      "frameId": "125:4693",
+      "originalFile": "case-en-desktop-125-4693.png",
+      "originalSha256": "816832dff588834a28f692b67b4743b54b919426182b16fd7614adb5b76cfdff",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-en-1440.png",
+      "captureSha256": "70e50cbae42280594e69040712cd11a8bfdfb0ea77c543b247553054a586cf57",
+      "captureCssDimensions": [
+        1440,
+        3108
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-en-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/case-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, contained cover slot, note, desktop side TOC/mobile preceding TOC, role/scope facts, article sections and footer retain the approved composition.",
+        "difference": "Actual case copy, cover images/background choice, real section headings and shorter narratives differ from the neutral example. Live cases omit comparison/process-card sections; isolated original-content proof separately covers those original structures.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "device": "mobile",
+      "frameId": "125:4961",
+      "originalFile": "case-en-mobile-125-4961.png",
+      "originalSha256": "5973ae8ef45373e55d84d6f6e7f555d4095d9f77871e24814b9681cb859a50be",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5912
+      ],
+      "capture": "case-en-390.png",
+      "captureSha256": "c4e3e1c66df995078b927e944d5e8b37f9daf02b7d10ef3d8020797cd5edc58d",
+      "captureCssDimensions": [
+        390,
+        3188
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-en-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/case-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, contained cover slot, note, desktop side TOC/mobile preceding TOC, role/scope facts, article sections and footer retain the approved composition.",
+        "difference": "Actual case copy, cover images/background choice, real section headings and shorter narratives differ from the neutral example. Live cases omit comparison/process-card sections; isolated original-content proof separately covers those original structures.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "device": "desktop",
+      "frameId": "126:8101",
+      "originalFile": "case02-en-desktop-126-8101.png",
+      "originalSha256": "98a623ea64083f06e3b9145c707831e6ef9d34d4883f1720ef7c1c85270e5b45",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        1440,
+        4582
+      ],
+      "capture": "case-2-en-1440.png",
+      "captureSha256": "1f540a9d95e27e9c150bd0abf9d070c935a272e9523a9b4f3875dbe595c08c29",
+      "captureCssDimensions": [
+        1440,
+        3108
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-en-1440.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/case-2-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, contained cover slot, note, desktop side TOC/mobile preceding TOC, role/scope facts, article sections and footer retain the approved composition.",
+        "difference": "Actual case copy, cover images/background choice, real section headings and shorter narratives differ from the neutral example. Live cases omit comparison/process-card sections; isolated original-content proof separately covers those original structures.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    },
+    {
+      "target": "case-2-en",
+      "path": "/en/cases/financing-model",
+      "device": "mobile",
+      "frameId": "126:8293",
+      "originalFile": "case02-en-mobile-126-8293.png",
+      "originalSha256": "5d0903d705cac5723664d98866b09164fbb6740ffb505d9fd5096fc27a3005f8",
+      "priorOriginalHashMatched": true,
+      "originalCssDimensions": [
+        390,
+        5960
+      ],
+      "capture": "case-2-en-390.png",
+      "captureSha256": "e78068f65249596f4886385ec0cd7da146e3a2733978f00c80bebbcc2b74851e",
+      "captureCssDimensions": [
+        390,
+        3364
+      ],
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-en-390.png",
+      "privateContactSheet": ".work/audit-follow-up/comparison-candidate-001/case-2-en.jpg",
+      "reviewed": true,
+      "review": {
+        "method": "Full-page candidate contact sheet inspected with view_image; original-content fixture inspected separately.",
+        "preserved": "Opening, contained cover slot, note, desktop side TOC/mobile preceding TOC, role/scope facts, article sections and footer retain the approved composition.",
+        "difference": "Actual case copy, cover images/background choice, real section headings and shorter narratives differ from the neutral example. Live cases omit comparison/process-card sections; isolated original-content proof separately covers those original structures.",
+        "globalDispositions": [
+          "Approved four-destination header and compact native mobile menu supersede the original three inline links.",
+          "Approved three footer actions, editorial brand/labels and pre-existing subtle background texture remain.",
+          "Current editorial content is staging material; this technical layout review does not approve final professional claims or release copy."
+        ],
+        "result": "No new candidate visual regression observed; source-vs-predecessor pixels are independently identical. This is structural comparison with Figma, not a claim of Figma pixel identity."
+      }
+    }
+  ],
+  "layouts": [
+    {
+      "target": "home-pt",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "home-pt-390.png",
+        "sha256": "ffaff94695590936e3aa69d408933a360df49339448eb7504de54d3d51f6bcce",
+        "bytes": 725378
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-pt-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "home-pt",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "home-pt-820.png",
+        "sha256": "80fb4e288bffc6db60dd68cc514358a8a6b8f0f77ab6fb18f7f18518e0d94a72",
+        "bytes": 985443
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-pt-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "home-pt",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "home-pt-1440.png",
+        "sha256": "176119bb5b5cc3199f1ac9111ac897490dcf1b2c6b765a88f0ec7d7da96f77b9",
+        "bytes": 1381218
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-pt-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "home-en",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "home-en-390.png",
+        "sha256": "7af8093719c46b9806088c591ee3008ec8d5c2a0d8b901979d7d58e682bc7d45",
+        "bytes": 689109
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-en-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "home-en",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "home-en-820.png",
+        "sha256": "cbbf1a1b1aa89ac0a5d9d1a98c187571b14abe8da5047da3caa917125341fcbc",
+        "bytes": 961191
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-en-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "home-en",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "home-en-1440.png",
+        "sha256": "c2ac702b5d45cc0408f4f1dc3c75f62ff22eb4c302b16fe79104f1e78090c2bb",
+        "bytes": 1349550
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/home-en-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "cases-pt",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "cases-pt-390.png",
+        "sha256": "895744974c396a3377e8bbbff271f06e7c1a2322c48516510b0eaba4b46b3815",
+        "bytes": 380400
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-pt-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "cases-pt",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "cases-pt-820.png",
+        "sha256": "e752d303960392b13548670257975eb365e34994e1a09042e228a2b8bb7c8ea2",
+        "bytes": 484802
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-pt-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "cases-pt",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "cases-pt-1440.png",
+        "sha256": "5573db1222d743723ec8fbab5e4d9ef9d58bc2424f83b5a40f233a1f6d4913df",
+        "bytes": 811525
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-pt-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "cases-en",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "cases-en-390.png",
+        "sha256": "aa48fe9d0e575bd7efc3f0afcd4f97c2a91dfd3818abf8e45a94a10364b69364",
+        "bytes": 372932
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-en-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "cases-en",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "cases-en-820.png",
+        "sha256": "7b8b9bcd94d9e5e014b108de714d36860bc2df8aaaf263760d468b5c8b57328e",
+        "bytes": 471987
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-en-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "cases-en",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "cases-en-1440.png",
+        "sha256": "81e5e8a27fc80f895fe5650f3a1ec693fcb320662f44ef84e557b5b80e92a1c7",
+        "bytes": 798330
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/cases-en-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "card",
+        "card"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-pt",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "case-pt-390.png",
+        "sha256": "86bcf85570b0eeb198413d0b6b0e649ec1ccf3dddbb944c8377fa6545e2b2deb",
+        "bytes": 355477
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-pt-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-pt",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "case-pt-820.png",
+        "sha256": "492c88e28ccdf63c367f9c65ae56c76829ad5d8d2d02c042f37233382f3a2b33",
+        "bytes": 654370
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-pt-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-pt",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "case-pt-1440.png",
+        "sha256": "27e5e41a74ead65addab11b39d68717969d4c45bc984a13517898f1ff78e423d",
+        "bytes": 834458
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-pt-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-en",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "case-en-390.png",
+        "sha256": "c4e3e1c66df995078b927e944d5e8b37f9daf02b7d10ef3d8020797cd5edc58d",
+        "bytes": 347348
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-en-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-en",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "case-en-820.png",
+        "sha256": "f7618db8f31e0508125ac745f53dfd83c3f0a753b7410732ea5904c00ea0fcba",
+        "bytes": 646462
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-en-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-en",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "case-en-1440.png",
+        "sha256": "70e50cbae42280594e69040712cd11a8bfdfb0ea77c543b247553054a586cf57",
+        "bytes": 826740
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-en-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "about-pt",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "about-pt-390.png",
+        "sha256": "bb363595ba0e04cba5e1f18aa04628ab2e43df27a65904c07acdb237a8d5a5bd",
+        "bytes": 654199
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-pt-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "profile",
+        "profile"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "about-pt",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "about-pt-820.png",
+        "sha256": "efa5ff84a5cd057c011131ff2d7cbfe58cbeea62770af13446469c9f77b7ee30",
+        "bytes": 1184400
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-pt-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "profile",
+        "profile"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "about-pt",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "about-pt-1440.png",
+        "sha256": "089df204e0e8672fdf9bd38ce163e985a20c71b9bb5aa3d7629c87fbf740fec9",
+        "bytes": 1695075
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-pt-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "profile",
+        "profile"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "about-en",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "about-en-390.png",
+        "sha256": "2b296c154564cd9ae4e7bea87b68519fdbc9c9838bb4ab914d9ca59c6404d26e",
+        "bytes": 639743
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-en-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "profile",
+        "profile"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "about-en",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "about-en-820.png",
+        "sha256": "ec00b04b311f266a5029ca07db8259bce9c2d6f3cbb65dd997ce56cc1db1d15c",
+        "bytes": 1176316
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-en-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "profile",
+        "profile"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "about-en",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "about-en-1440.png",
+        "sha256": "8c4faf356dca2a16584e122fe6e3f71357a279e8199fd442e1a346751cd674d1",
+        "bytes": 1680612
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/about-en-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "profile",
+        "profile",
+        "profile"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-2-pt",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "case-2-pt-390.png",
+        "sha256": "4b69db3e6183d4fd467ff23827e15d49491b1d66b8cf2bdbf6047178593e834c",
+        "bytes": 324276
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-pt-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-2-pt",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "case-2-pt-820.png",
+        "sha256": "f38bdcc0e2bd0f38fc4a8ede8830b3a1982f6c18207257e53fb1f20f27e3ab07",
+        "bytes": 500495
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-pt-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-2-pt",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "case-2-pt-1440.png",
+        "sha256": "e276be4c049d69ae5a997b3e42ae28e92bf4a2fef2033ed1dbe00c50d7004a30",
+        "bytes": 732660
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-pt-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-2-en",
+      "width": 390,
+      "height": 844,
+      "screenshot": {
+        "file": "case-2-en-390.png",
+        "sha256": "e78068f65249596f4886385ec0cd7da146e3a2733978f00c80bebbcc2b74851e",
+        "bytes": 322505
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-en-390.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-2-en",
+      "width": 820,
+      "height": 900,
+      "screenshot": {
+        "file": "case-2-en-820.png",
+        "sha256": "6feb7af3db2aecb2708b9b824e00be15b1530f9c4117d02c2a30a3936cf3134b",
+        "bytes": 501830
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-en-820.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    },
+    {
+      "target": "case-2-en",
+      "width": 1440,
+      "height": 900,
+      "screenshot": {
+        "file": "case-2-en-1440.png",
+        "sha256": "1f540a9d95e27e9c150bd0abf9d070c935a272e9523a9b4f3875dbe595c08c29",
+        "bytes": 740221
+      },
+      "privateCapturePath": ".work/audit-follow-up/visual-candidate-001/case-2-en-1440.png",
+      "overflow": 0,
+      "duplicateIdCount": 0,
+      "brokenImageCount": 0,
+      "mediaRoles": [
+        "cover"
+      ],
+      "reducedMotion": true,
+      "analyticsPresent": false
+    }
+  ],
+  "evidence": [
+    {
+      "privateLocalPath": ".work/audit-follow-up/visual-candidate-001/browser-summary.json",
+      "sha256": "5b05842acdb6b6f5a462aaed0983f52ac9b39c73267b5b93240ef9e28be140a9"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/visual-candidate-001/ssr.json",
+      "sha256": "cfe5ad793b3334ae76727787c6e88292e7530577ffc9df8246b4001eba64796c"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/comparison-candidate-001/comparison.json",
+      "sha256": "ac0ff0d0c2a59fd770a1ea506bfc55589b53f2e02c1b7c776079d4c280b6928c"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/visual-candidate-001/pixel-differences.json",
+      "sha256": "16d78d462bbadaf961afc3d3ea17c01a53b7e9b32c76183bb20292b2e6f69e62"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/zoom-candidate-001/zoom.json",
+      "sha256": "9e11b13b69ae2973c75846b80056e9748f7fb090896c2419b2230b2f302c2997"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/figma-visual-review-original-002.json",
+      "sha256": "a75f2ab35520bfa082ce1e10e67bd64c5add42ee02ccb888dba930f16f04d7b3"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/visual-candidate-001/resource-weights.json",
+      "sha256": "38f9024c807b28eb0e8f420a2cd4817fe0bc6dbcaff99fe1416c4b96fdf9374f"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/candidate-visual-runner-used.mjs",
+      "sha256": "cc9222319a0b6fc8836762e75c6de5d91aee0fffb16f80d3d8a56b9a75962c86"
+    },
+    {
+      "privateLocalPath": ".work/audit-follow-up/candidate-zoom-runner-used.mjs",
+      "sha256": "674c1acbb52ac11162249e74aaf09f51dc55d945e922c4f298d8e65e7f485745"
+    }
+  ]
+}

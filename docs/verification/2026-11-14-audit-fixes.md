@@ -1,4 +1,8 @@
-# Audit fixes ? 14 November 2026
+# Audit fixes - 14 November 2026
+
+The [candidate validation follow-up](2026-11-14-audit-validation.md) records
+subsequent Linux CI, staging and acceptance evidence. This report preserves the
+original corrective-source verification.
 
 The user authorized the four repository-audit fixes. Work stays on `develop`.
 The existing `next-env.d.ts` changes and two backup evidence files are preserved.
@@ -73,7 +77,10 @@ The run used synthetic local storage, captured email, ephemeral PostgreSQL on
 run fresh Linux CI, perform formal Figma/screen-reader acceptance or deploy.
 No dependencies or migrations changed.
 
-## Gates
+## Gates at the corrective-source handoff
+
+Current checklist states are recorded in the
+[candidate validation follow-up](2026-11-14-audit-validation.md).
 
 E2.3.3 is closed by the corrected dimensions and regression evidence. E2.3.5
 remains open until affected visual and aggregate acceptance is refreshed;

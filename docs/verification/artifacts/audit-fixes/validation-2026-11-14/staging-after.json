@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "kind": "audit-follow-up-staging-operational-inspection",
+  "mode": "after",
+  "checkedAt": "2026-11-14T17:18:17.697Z",
+  "host": {
+    "version": 1,
+    "checkedAtEpoch": 1794676694.4260995,
+    "containerId": "b43f41da5c611c1f89544c8b943225e1155882d8a5cb9a158610e7ae5225ad4b",
+    "imageReference": "ghcr.io/joeldorosarioo/a-design-for-life@sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "imageId": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "imageRevision": "1640d9729d1bddaac2059b850e8124112aa9507a",
+    "user": "appuser",
+    "status": "running",
+    "health": "healthy",
+    "startedAt": "2026-11-14T17:15:32.44017744Z",
+    "limits": {
+      "nanoCpus": 1000000000,
+      "memory": 2147483648,
+      "memorySwap": 2147483648
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "volumes": [
+      {
+        "destination": "/app/.work/publication",
+        "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+      },
+      {
+        "destination": "/app/.work/next-build/cache",
+        "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+      },
+      {
+        "destination": "/var/lib/postgresql/data",
+        "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+      }
+    ],
+    "runtimeFlags": {
+      "APP_ENV": "staging",
+      "NODE_ENV": "production",
+      "PUBLIC_SITE_ENABLED": "false",
+      "PUBLICATION_RETRIES_ENABLED": "false",
+      "PUBLICATION_RETRY_WORKER_ENABLED": "false",
+      "PUBLICATION_HTTP_VERIFICATION_ENABLED": "false",
+      "OPS_BACKUP_SOURCE": "staging-app"
+    },
+    "imageSourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+    "repositoryDigests": [
+      "ghcr.io/joeldorosarioo/a-design-for-life@sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d"
+    ],
+    "confirmedCoverDimensions": [
+      {
+        "locale": "pt",
+        "slug": "modelo-de-financiamento",
+        "width": 1691,
+        "height": 807,
+        "type": "image/png"
+      },
+      {
+        "locale": "en",
+        "slug": "financing-model",
+        "width": 1691,
+        "height": 807,
+        "type": "image/png"
+      },
+      {
+        "locale": "pt",
+        "slug": "flexibilidade-de-pagamento",
+        "width": 1048,
+        "height": 1280,
+        "type": "image/jpeg"
+      },
+      {
+        "locale": "en",
+        "slug": "payment-flexibility",
+        "width": 1048,
+        "height": 1280,
+        "type": "image/jpeg"
+      }
+    ],
+    "confirmedPublicRoots": [
+      {
+        "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+        "bytes": 52668,
+        "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+      }
+    ],
+    "runningContainers": 8
+  },
+  "http": [
+    {
+      "route": "/pt",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "googleScriptPresent": false,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()"
+    },
+    {
+      "route": "/en",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "googleScriptPresent": false,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()"
+    },
+    {
+      "route": "/pt/cases",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "googleScriptPresent": false,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()"
+    },
+    {
+      "route": "/en/cases",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "googleScriptPresent": false,
+      "permissionsPolicy": "ch-ua-high-entropy-values=()"
+    },
+    {
+      "route": "/admin/login",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "googleScriptPresent": false,
+      "permissionsPolicy": null
+    },
+    {
+      "route": "/health",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "googleScriptPresent": false,
+      "permissionsPolicy": null
+    }
+  ],
+  "anonymousStatus": 401,
+  "api": {
+    "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+    "status": "running:healthy",
+    "imageTag": "sha256-d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+    "backupTaskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "backupTaskEnabled": true,
+    "backupCommandMatchesReviewed": true,
+    "backupTimeoutSeconds": 1800
+  },
+  "productionAccessed": false,
+  "remoteWrites": false,
+  "volumesAndConfirmedRootsPreserved": true
+}

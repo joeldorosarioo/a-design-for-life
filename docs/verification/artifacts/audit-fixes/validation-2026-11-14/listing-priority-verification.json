@@ -1,0 +1,559 @@
+{
+  "checkedAt": "2026-11-14T17:37:48.411Z",
+  "correctiveParent": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "scope": "Only the first CaseList cover forwards the existing CaseImage eager/high priority. Default CaseGrid used on Home and later listing covers stay lazy. No CSS, dimensions, sizes, assets, DTO, migration or dependency change.",
+  "quietWindow": "Implementation/tests began only after server36/36 finished, Chrome/relay closed and independent AFTER PASS at2026-11-14T17:34:27.635Z.",
+  "behavioralRed": "New CaseList test using actual Next.Image output expected first listing cover loading=eager and receivedlazy. One test failed, six passed; no image/component mock.",
+  "green": "All20tests in actual CaseList/CaseImage/CaseDetail suites passed, including first listing eager/high, later listing lazy and default Home grid lazy.",
+  "changedFiles": [
+    "src/features/cases/components/case-card.tsx",
+    "src/features/cases/components/case-list.test.tsx",
+    "src/features/cases/components/case-list.tsx"
+  ],
+  "checks": [
+    {
+      "label": "red",
+      "startedAt": "2026-11-14T17:35:04.282Z",
+      "finishedAt": "2026-11-14T17:35:36.264Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--project",
+        "unit",
+        "src/features/cases/components/case-list.test.tsx"
+      ],
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "sourceFiles": [
+        {
+          "file": "src/features/cases/components/case-list.test.tsx",
+          "sha256": "55e5f930bba952bf4718ee5f3c929230ad9080ac356de16e6236d377c9157fc0"
+        },
+        {
+          "file": "src/features/cases/components/case-list.tsx",
+          "sha256": "9d7984c47b96df06bfd1a5db559008f7b11ded87323d221fe9de6bd4726ff3fc"
+        },
+        {
+          "file": "src/features/cases/components/case-card.tsx",
+          "sha256": "571c6edab121586412015a65e1b1ebb0c4d9aecb2127d2e3b117bfb9217ff4a6"
+        },
+        {
+          "file": "src/features/cases/components/case-image.tsx",
+          "sha256": "5947b4a4b008ef30535faa0d5f6231c96cd000134c5786ce8dc1fb28e2110a8a"
+        }
+      ],
+      "logSha256": "7d10de964a6b1892cc91989f53862f96f0191cabfcb9fa9f8f5a03a6fa92f203"
+    },
+    {
+      "label": "green",
+      "startedAt": "2026-11-14T17:35:48.760Z",
+      "finishedAt": "2026-11-14T17:35:53.609Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--project",
+        "unit",
+        "src/features/cases/components/case-list.test.tsx",
+        "src/features/cases/components/case-image.test.tsx",
+        "src/features/cases/components/case-detail.test.tsx"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sourceFiles": [
+        {
+          "file": "src/features/cases/components/case-list.test.tsx",
+          "sha256": "55e5f930bba952bf4718ee5f3c929230ad9080ac356de16e6236d377c9157fc0"
+        },
+        {
+          "file": "src/features/cases/components/case-list.tsx",
+          "sha256": "7a740171d3c4d5e585d343b928d8ef85a81afd1fe46c6c85ae9002d9755c758c"
+        },
+        {
+          "file": "src/features/cases/components/case-card.tsx",
+          "sha256": "675cb0946aeeba147b25d76d59d53b35b8b194b73b82bae2473dc69c07987155"
+        },
+        {
+          "file": "src/features/cases/components/case-image.tsx",
+          "sha256": "5947b4a4b008ef30535faa0d5f6231c96cd000134c5786ce8dc1fb28e2110a8a"
+        }
+      ],
+      "logSha256": "37cbf0cb289bbf34972b7f47928ce9a1bcfce70a8c3d72a1573f88bd6ab1ad0a"
+    },
+    {
+      "label": "format",
+      "startedAt": "2026-11-14T17:36:14.122Z",
+      "finishedAt": "2026-11-14T17:36:14.487Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--write",
+        "src/features/cases/components/case-list.tsx",
+        "src/features/cases/components/case-card.tsx",
+        "src/features/cases/components/case-list.test.tsx"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sourceFiles": [
+        {
+          "file": "src/features/cases/components/case-list.test.tsx",
+          "sha256": "55e5f930bba952bf4718ee5f3c929230ad9080ac356de16e6236d377c9157fc0"
+        },
+        {
+          "file": "src/features/cases/components/case-list.tsx",
+          "sha256": "7a740171d3c4d5e585d343b928d8ef85a81afd1fe46c6c85ae9002d9755c758c"
+        },
+        {
+          "file": "src/features/cases/components/case-card.tsx",
+          "sha256": "675cb0946aeeba147b25d76d59d53b35b8b194b73b82bae2473dc69c07987155"
+        },
+        {
+          "file": "src/features/cases/components/case-image.tsx",
+          "sha256": "5947b4a4b008ef30535faa0d5f6231c96cd000134c5786ce8dc1fb28e2110a8a"
+        }
+      ],
+      "logSha256": "e4a0a1e90bda550b6af587afb0d6a3514aa07d30f0ac00abadb917b4dc192d5d"
+    },
+    {
+      "label": "lint",
+      "startedAt": "2026-11-14T17:36:16.854Z",
+      "finishedAt": "2026-11-14T17:37:05.444Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "src/features/cases/components/case-list.tsx",
+        "src/features/cases/components/case-card.tsx",
+        "src/features/cases/components/case-list.test.tsx"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sourceFiles": [
+        {
+          "file": "src/features/cases/components/case-list.test.tsx",
+          "sha256": "55e5f930bba952bf4718ee5f3c929230ad9080ac356de16e6236d377c9157fc0"
+        },
+        {
+          "file": "src/features/cases/components/case-list.tsx",
+          "sha256": "7a740171d3c4d5e585d343b928d8ef85a81afd1fe46c6c85ae9002d9755c758c"
+        },
+        {
+          "file": "src/features/cases/components/case-card.tsx",
+          "sha256": "675cb0946aeeba147b25d76d59d53b35b8b194b73b82bae2473dc69c07987155"
+        },
+        {
+          "file": "src/features/cases/components/case-image.tsx",
+          "sha256": "5947b4a4b008ef30535faa0d5f6231c96cd000134c5786ce8dc1fb28e2110a8a"
+        }
+      ],
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "typecheck",
+      "startedAt": "2026-11-14T17:36:15.822Z",
+      "finishedAt": "2026-11-14T17:36:58.528Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sourceFiles": [
+        {
+          "file": "src/features/cases/components/case-list.test.tsx",
+          "sha256": "55e5f930bba952bf4718ee5f3c929230ad9080ac356de16e6236d377c9157fc0"
+        },
+        {
+          "file": "src/features/cases/components/case-list.tsx",
+          "sha256": "7a740171d3c4d5e585d343b928d8ef85a81afd1fe46c6c85ae9002d9755c758c"
+        },
+        {
+          "file": "src/features/cases/components/case-card.tsx",
+          "sha256": "675cb0946aeeba147b25d76d59d53b35b8b194b73b82bae2473dc69c07987155"
+        },
+        {
+          "file": "src/features/cases/components/case-image.tsx",
+          "sha256": "5947b4a4b008ef30535faa0d5f6231c96cd000134c5786ce8dc1fb28e2110a8a"
+        }
+      ],
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "preservedUserFiles": [
+    {
+      "path": "next-env.d.ts",
+      "sha256": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/native-foundations-proof-3ba32440-7bf1-46bb-8dde-c7735589a493.jsonl",
+      "sha256": "0033f9ab4f8e599a9e8285a1ad8d951574f3be9575c12e19bf77f59852ccf349"
+    },
+    {
+      "path": "docs/verification/artifacts/E3-backup/native-snapshot-restore-fb642a01-476f-486b-857f-50d4dfdf7dfe.json",
+      "sha256": "565291b99c90b7e47132b63822b43f01e65c28f0d008c5d90add59fb7f6db9e1"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": "src/features/cases/components/case-card.tsx",
+      "sha256": "675cb0946aeeba147b25d76d59d53b35b8b194b73b82bae2473dc69c07987155"
+    },
+    {
+      "file": "src/features/cases/components/case-list.test.tsx",
+      "sha256": "55e5f930bba952bf4718ee5f3c929230ad9080ac356de16e6236d377c9157fc0"
+    },
+    {
+      "file": "src/features/cases/components/case-list.tsx",
+      "sha256": "7a740171d3c4d5e585d343b928d8ef85a81afd1fe46c6c85ae9002d9755c758c"
+    }
+  ],
+  "sourceDiagnosis": "CaseList and CaseGrid did not identify the visible first listing cover, so CaseCard omitted existing CaseImage.priority and every card defaulted to loading=lazy without a high priority hint. All6 mobile PT/EN LHRs identify firstcard as LCP, initial-document discoverable but lazy and not priority hinted. The component fix addresses that exact discovery/scheduling delay; performance acceptance requires the next immutable candidate measurements.",
+  "baselineSamples": [
+    {
+      "locale": "pt",
+      "repeat": 1,
+      "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+      "manifest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+      "lcpMs": 2462.46,
+      "cls": 0,
+      "tbtMs": 156.08599999999933,
+      "lcpElementPath": "1,HTML,1,BODY,3,MAIN,0,DIV,1,DIV,0,UL,0,LI,0,ARTICLE,0,FIGURE,0,IMG",
+      "lcpElementRectangle": {
+        "top": 512,
+        "bottom": 704,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "breakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 271.445
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 543.382
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 1626.24
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 21.393
+        }
+      ],
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "privateEvidencePath": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-1-lhr.private.json",
+      "sha256": "9beea9d7670ad49610a6bc1b0dc200010c844286b9d6797057658edf1e833bc0"
+    },
+    {
+      "locale": "pt",
+      "repeat": 2,
+      "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+      "manifest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+      "lcpMs": 2517.776,
+      "cls": 0,
+      "tbtMs": 214.69700000000012,
+      "lcpElementPath": "1,HTML,1,BODY,3,MAIN,0,DIV,1,DIV,0,UL,0,LI,0,ARTICLE,0,FIGURE,0,IMG",
+      "lcpElementRectangle": {
+        "top": 512,
+        "bottom": 704,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "breakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 270.92500000190734
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 531.5489999980927
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 1688.689
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 26.613
+        }
+      ],
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "privateEvidencePath": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-2-lhr.private.json",
+      "sha256": "61e23767326aae2ed84bf88891605284d2aa3b287c3e40b5bb55fb7a9d2e7152"
+    },
+    {
+      "locale": "pt",
+      "repeat": 3,
+      "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+      "manifest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+      "lcpMs": 2584.848,
+      "cls": 0,
+      "tbtMs": 162.1230000000005,
+      "lcpElementPath": "1,HTML,1,BODY,3,MAIN,0,DIV,1,DIV,0,UL,0,LI,0,ARTICLE,0,FIGURE,0,IMG",
+      "lcpElementRectangle": {
+        "top": 512,
+        "bottom": 704,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "breakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 258.31300000190737
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 525.9729999980926
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 1720.821
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 79.741
+        }
+      ],
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "privateEvidencePath": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-pt-mobile-3-lhr.private.json",
+      "sha256": "c434695aa3529b08461d909842690cb2cce9513b4eeefa8dc5e3b32374a12bd0"
+    },
+    {
+      "locale": "en",
+      "repeat": 1,
+      "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+      "manifest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+      "lcpMs": 2530.442,
+      "cls": 0,
+      "tbtMs": 189.94900000000007,
+      "lcpElementPath": "1,HTML,1,BODY,3,MAIN,0,DIV,1,DIV,0,UL,0,LI,0,ARTICLE,0,FIGURE,0,IMG",
+      "lcpElementRectangle": {
+        "top": 484,
+        "bottom": 676,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "breakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 263.547
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 553.039
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 1690.751
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 23.105
+        }
+      ],
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "privateEvidencePath": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-1-lhr.private.json",
+      "sha256": "015aba3f2d87179032a1d4cbe51fde6640982d8dbea3467ab99e967f41de54bb"
+    },
+    {
+      "locale": "en",
+      "repeat": 2,
+      "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+      "manifest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+      "lcpMs": 2569.746,
+      "cls": 0,
+      "tbtMs": 148.95599999999968,
+      "lcpElementPath": "1,HTML,1,BODY,3,MAIN,0,DIV,1,DIV,0,UL,0,LI,0,ARTICLE,0,FIGURE,0,IMG",
+      "lcpElementRectangle": {
+        "top": 484,
+        "bottom": 676,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "breakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 272.40299999809264
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 524.6060000019073
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 1750.626
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 22.111
+        }
+      ],
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "privateEvidencePath": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-2-lhr.private.json",
+      "sha256": "89e5f14c81cfe00390009aa20d05135a7dcd372860439ad324f1e6377b9fe44d"
+    },
+    {
+      "locale": "en",
+      "repeat": 3,
+      "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+      "manifest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+      "lcpMs": 2574.554,
+      "cls": 0,
+      "tbtMs": 141.7529999999997,
+      "lcpElementPath": "1,HTML,1,BODY,3,MAIN,0,DIV,1,DIV,0,UL,0,LI,0,ARTICLE,0,FIGURE,0,IMG",
+      "lcpElementRectangle": {
+        "top": 484,
+        "bottom": 676,
+        "left": 24,
+        "right": 366,
+        "width": 342,
+        "height": 192
+      },
+      "breakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 265.421
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 548.083
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 1685.381
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 75.669
+        }
+      ],
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "privateEvidencePath": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-001/cases-en-mobile-3-lhr.private.json",
+      "sha256": "2296fead3fbdfb5348c1756f786ffadc0902e14a7e582b5eed1533c951f1b66d"
+    }
+  ],
+  "limits": [
+    "Unit GREEN verifies browser HTML loading semantics, not achieved LCP. The original2failed36-run scenarios remain failures for1640/d78ec.",
+    "New candidate requires full protected CI, deployment binding,30layout/18frame refresh and equivalent frozen performance measurements before acceptance."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "frozenAt": "2026-11-14T17:21:22.319Z",
+  "environment": "staging",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sourceSha": "1640d9729d1bddaac2059b850e8124112aa9507a",
+  "imageDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+  "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+  "selection": "Fresh candidate capture confirms Payment flexibility is the heaviest case in PT/EN at both390px and1440px by all same-origin encoded resource bytes after full image decode. These weight checks are not cold Lighthouse samples.",
+  "targets": [
+    {
+      "id": "home-pt",
+      "kind": "home",
+      "locale": "pt",
+      "path": "/pt"
+    },
+    {
+      "id": "home-en",
+      "kind": "home",
+      "locale": "en",
+      "path": "/en"
+    },
+    {
+      "id": "cases-pt",
+      "kind": "cases",
+      "locale": "pt",
+      "path": "/pt/cases"
+    },
+    {
+      "id": "cases-en",
+      "kind": "cases",
+      "locale": "en",
+      "path": "/en/cases"
+    },
+    {
+      "id": "case-pt",
+      "kind": "case",
+      "locale": "pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento"
+    },
+    {
+      "id": "case-en",
+      "kind": "case",
+      "locale": "en",
+      "path": "/en/cases/payment-flexibility"
+    }
+  ],
+  "sourceTree": "281c6a19d4a77230479eba7cba0d594677b71a14",
+  "pipelineRunId": 43618818421,
+  "selectionEvidence": {
+    "path": ".work/audit-follow-up/visual-candidate-001/resource-weights.json",
+    "sha256": "38f9024c807b28eb0e8f420a2cd4817fe0bc6dbcaff99fe1416c4b96fdf9374f"
+  },
+  "premeasurementBinding": {
+    "path": ".work/audit-follow-up/performance-staging-before.json",
+    "sha256": "df6b93811c64def7f67eaffbc6f5151410bee8bfa51bee4127a12cccfd1a2db8"
+  }
+}

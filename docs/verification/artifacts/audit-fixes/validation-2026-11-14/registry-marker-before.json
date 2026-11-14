@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "kind": "read-only-tested-image-marker-resolution",
+  "checkedAt": "2026-11-14T16:40:58.007Z",
+  "sourceTree": "782fa48efc42c8872e4e5be0219398e11a3e10cd",
+  "marker": "staging-tested-tree-782fa48efc42c8872e4e5be0219398e11a3e10cd",
+  "result": {
+    "digest": "sha256:04f6c20894a28d1803c0d408a0c20f2c89fbc219e606b2e6ee0283d4e74afaf6",
+    "revision": "36f0ea65bbc2dca0de0f9ca8d7c45407fdbbdd00",
+    "imageid": "sha256:85d6fd209a57c8ffbd40f1f91ca2ccbb6fc8ccc1f369bd4cb37f2649e5a5e9a7"
+  },
+  "requests": 5,
+  "allRegistryOperationsReadOnly": true,
+  "branchContextSimulatedForResolver": true,
+  "actualMainBranchChanged": false,
+  "productionResourcesAccessed": false,
+  "productionDeployed": false
+}
