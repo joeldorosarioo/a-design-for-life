@@ -5,10 +5,16 @@ import { imageUseDTOSchema, type ImageUseDTO } from '../contracts/image-use-dto.
 type StoredImageUse = Omit<ImageUseInput, 'media'> & { media?: string | Media | null };
 export function mapImageUse(input?: StoredImageUse | null): ImageUseDTO | undefined {
   if (!input?.media) return;
+  const size = imageUseDTOSchema.shape.intrinsicSize.safeParse(
+    typeof input.media === 'object'
+      ? { width: input.media.width, height: input.media.height }
+      : null,
+  );
   return imageUseDTOSchema.parse({
     mediaId: typeof input.media === 'object' ? input.media.id : input.media,
     decorative: input.decorative ?? false,
     alt: input.alt ?? '',
     caption: input.caption ?? null,
+    ...(size.success ? { intrinsicSize: size.data } : {}),
   });
 }

@@ -20,6 +20,7 @@ it('rejects incomplete remote uploads and delivers only editorially authorized r
   const accepted = new Map<string, { bytes: Buffer; sha256: string }>();
   const received: string[] = [];
   let failOnThirdPut = true;
+  let remoteMediaId: string | undefined;
   const server = createServer(async (request, response) => {
     const path = new URL(request.url ?? '/', 'http://127.0.0.1').pathname;
     const key = path.slice(bucket.length + 2);
@@ -107,6 +108,7 @@ it('rejects incomplete remote uploads and delivers only editorially authorized r
 
     failOnThirdPut = false;
     const media = await upload();
+    remoteMediaId = media.id;
     expect((await countMedia()).totalDocs).toBe(before.totalDocs + 1);
     const anonymous = await createLocalReq({}, fixture.payload);
     const deliver = (variant: 'original' | 'w640') =>
@@ -161,13 +163,32 @@ it('rejects incomplete remote uploads and delivers only editorially authorized r
     expect(await deliver('w640')).toEqual({ ok: false, status: 404 });
     expect(new Set(received).size).toBe(received.length);
   } finally {
-    installMediaRuntime(previous);
-    if (server.listening) {
-      const closed = once(server, 'close');
-      server.close();
-      server.closeAllConnections();
-      await closed;
+    try {
+      if (remoteMediaId) {
+        // This synthetic remote stops here; its manifest must not enter later local backups.
+        await fixture.payload.db.deleteMany({
+          collection: 'media',
+          where: { id: { equals: remoteMediaId } },
+        });
+        expect(
+          await fixture.payload.db.findOne({
+            collection: 'media',
+            where: { id: { equals: remoteMediaId } },
+          }),
+        ).toBeNull();
+      }
+    } finally {
+      installMediaRuntime(previous);
+      try {
+        if (server.listening) {
+          const closed = once(server, 'close');
+          server.close();
+          server.closeAllConnections();
+          await closed;
+        }
+      } finally {
+        await fixture.payload.destroy();
+      }
     }
-    await fixture.payload.destroy();
   }
 });

@@ -3,7 +3,7 @@ import { createWriteStream } from 'node:fs';
 import { Readable } from 'node:stream';
 import { backupFileChunks, openBackupInput } from './tools';
 import {
-  link,
+  rename,
   lstat,
   mkdir,
   mkdtemp,
@@ -121,8 +121,25 @@ async function syncDirectory(directory: string) {
     await handle.close();
   }
 }
-async function atomicExclusive(file: string, bytes: Uint8Array) {
-  const temporary = path.join(path.dirname(file), `${randomUUID()}.tmp`);
+// All repository renames run under its writer mutex; existing destinations are never adopted.
+async function renameNew(source: string, destination: string) {
+  assertUnlinkedWorkspacePath(source);
+  assertUnlinkedWorkspacePath(destination);
+  const existing = await lstat(destination).catch((error: NodeJS.ErrnoException) => {
+    if (error.code === 'ENOENT') return null;
+    throw error;
+  });
+  if (existing) throw new Error('Existing backup destination refused');
+  await rename(source, destination);
+  await syncDirectory(path.dirname(destination));
+  if (path.dirname(source) !== path.dirname(destination)) await syncDirectory(path.dirname(source));
+}
+async function atomicExclusive(
+  file: string,
+  bytes: Uint8Array,
+  temporaryDirectory = path.dirname(file),
+) {
+  const temporary = path.join(temporaryDirectory, `${randomUUID()}.tmp`);
   const handle = await open(temporary, 'wx', 0o600);
   try {
     try {
@@ -131,10 +148,11 @@ async function atomicExclusive(file: string, bytes: Uint8Array) {
     } finally {
       await handle.close();
     }
-    await link(temporary, file);
-    await syncDirectory(path.dirname(file));
+    await renameNew(temporary, file);
   } finally {
-    await unlink(temporary);
+    await unlink(temporary).catch((error: NodeJS.ErrnoException) => {
+      if (error.code !== 'ENOENT') throw error;
+    });
   }
 }
 async function json(file: string) {
@@ -165,18 +183,33 @@ export async function createLocalBackupRepository(options: {
     throw new Error('Backup repository must use its distinct private namespace');
   assertUnlinkedWorkspacePath(root);
   await mkdir(path.dirname(root), { recursive: true, mode: 0o700 });
-  let created = false;
-  try {
-    await mkdir(root, { mode: 0o700 });
-    created = true;
-  } catch (error) {
-    if (!(error instanceof Error) || !('code' in error) || error.code !== 'EEXIST') throw error;
-  }
-  assertUnlinkedWorkspacePath(root);
+  const identity = `backup-repository:${normalize(
+    path.join(await realpath(path.dirname(root)), path.basename(root)),
+  )}`;
+  await withPublicationWriter(identity, async () => {
+    assertUnlinkedWorkspacePath(root);
+    const existing = await lstat(root).catch((error: NodeJS.ErrnoException) => {
+      if (error.code === 'ENOENT') return null;
+      throw error;
+    });
+    if (existing) {
+      if (!existing.isDirectory()) throw new Error('Backup repository directory required');
+      return;
+    }
+    const staged = await mkdtemp(
+      path.join(path.dirname(root), `begin-${path.basename(expected)}-`),
+    );
+    await atomicExclusive(
+      path.join(staged, 'namespace.json'),
+      Buffer.from(JSON.stringify(namespace)),
+    );
+    await mkdir(path.join(staged, 'sets'), { mode: 0o700 });
+    await mkdir(path.join(staged, 'working'), { mode: 0o700 });
+    await syncDirectory(staged);
+    await renameNew(staged, root);
+  });
   const acquired = await lstat(root);
-  if (!acquired.isDirectory()) throw new Error('Backup repository directory required');
   const canonical = await realpath(root);
-  const identity = `backup-repository:${normalize(canonical)}`;
   async function ensureOwned() {
     assertUnlinkedWorkspacePath(root);
     const current = await lstat(root);
@@ -194,17 +227,20 @@ export async function createLocalBackupRepository(options: {
       await ensureOwned();
       return operation();
     });
+  const working = path.join(root, 'working');
   await fence(async () => {
     const metadata = path.join(root, 'namespace.json');
-    if (created) {
-      if ((await readdir(root)).length !== 0) throw new Error('New backup namespace is not empty');
-      await atomicExclusive(metadata, Buffer.from(JSON.stringify(namespace)));
-    } else if (!sameNamespace(backupNamespaceSchema.parse(await json(metadata)), namespace))
+    if (!sameNamespace(backupNamespaceSchema.parse(await json(metadata)), namespace))
       throw new Error('Foreign backup repository namespace');
     await mkdir(path.join(root, 'sets'), { mode: 0o700 }).catch((error: NodeJS.ErrnoException) => {
       if (error.code !== 'EEXIST') throw error;
     });
     assertUnlinkedWorkspacePath(path.join(root, 'sets'));
+    assertUnlinkedWorkspacePath(working);
+    await mkdir(working, { mode: 0o700 }).catch((error: NodeJS.ErrnoException) => {
+      if (error.code !== 'EEXIST') throw error;
+    });
+    if (!(await lstat(working)).isDirectory()) throw new Error('Backup working directory required');
   });
   function setDirectory(id: string) {
     if (
@@ -267,12 +303,12 @@ export async function createLocalBackupRepository(options: {
           createdAt,
           complete: false,
         });
-        const directory = setDirectory(id);
-        await mkdir(directory, { mode: 0o700 });
+        const directory = await mkdtemp(path.join(working, 'begin-'));
         await atomicExclusive(
           path.join(directory, 'pending.json'),
           Buffer.from(JSON.stringify(marker)),
         );
+        await renameNew(directory, setDirectory(id));
       });
     },
     async upload(id, sourcePath) {
@@ -307,6 +343,7 @@ export async function createLocalBackupRepository(options: {
         await atomicExclusive(
           path.join(setDirectory(marker.id), 'complete.json'),
           Buffer.from(JSON.stringify(marker)),
+          working,
         );
         const actual = await readSet(marker.id);
         if (!actual.complete || JSON.stringify(actual) !== JSON.stringify(marker))
@@ -341,13 +378,17 @@ export async function createLocalBackupRepository(options: {
           if (!current.complete || JSON.stringify(current) !== JSON.stringify(marker))
             throw new Error('Expired backup identity changed');
           const directory = setDirectory(marker.id);
-          for (const name of ['complete.json', 'payload.age', 'pending.json']) {
-            const file = path.join(directory, name);
+          const names = ['complete.json', 'payload.age', 'pending.json'];
+          for (const name of names) await regularFile(path.join(directory, name));
+          const retired = path.join(working, `retired-${randomUUID()}`);
+          await renameNew(directory, retired);
+          for (const name of names) {
+            const file = path.join(retired, name);
             await regularFile(file);
             await unlink(file);
           }
-          await rmdir(directory);
-          await syncDirectory(path.dirname(directory));
+          await rmdir(retired);
+          await syncDirectory(working);
           removed.push(marker.id);
         }
         return removed;

@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-11-14T16:26:31.025Z",
+  "platform": "win32",
+  "node": "v24.22.2",
+  "pnpm": "12.10.1",
+  "branch": "develop",
+  "verify": {
+    "command": "pnpm verify",
+    "exitCode": 0,
+    "testFilesPassed": 238,
+    "testsPassed": 2347,
+    "platformSkipped": 3,
+    "scriptTestsPassed": 125,
+    "existingLintWarnings": 8,
+    "buildPassed": true,
+    "log": ".work/audit-fixes/verify-9deaab48-ccc3-4798-a802-9daafa1e1fc0.log",
+    "logSha256": "730754b8c51a6f0076145bdba0b4d56c27a5f848c788f2989e8e94434b23eb86"
+  },
+  "browser": {
+    "command": "pnpm test:e2e",
+    "exitCode": 0,
+    "passed": 140,
+    "log": ".work/audit-fixes/test-e2e-9deaab48-ccc3-4798-a802-9daafa1e1fc0.log",
+    "logSha256": "2bf40c20d4c6731795d3ed014d614787947bf72692409007833086a01fae3543"
+  },
+  "nativeBackup": {
+    "evidence": "docs/verification/artifacts/E3-backup/encrypted-native-events-abb55804-873d-41ff-9972-e020320c2989.jsonl",
+    "sourceSha256": "7b4f009cc1cc9bb16b995308fa04280f78ceb1f47745316981ccbd92fa9c3aea",
+    "schemaSha256": "0150b1d20908b2057dd8dc94fd481351840a0614fd8d3c92542895911a500a95",
+    "restoredAAfterConcurrentB": true,
+    "originalSourcePreserved": true,
+    "actualAgeExecuted": true,
+    "realR2Executed": false
+  },
+  "generatedFiles": [
+    {
+      "file": "next-env.d.ts",
+      "sha256": "2c9197c87068b170ff6d2c916023e40dff93e8e24df9eaa1f2c90afbdadfeb66",
+      "restored": true
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "64f3c9d6863fee9d3fd8707e5543bba29487d389b2e17117e8ec2cd451eb70ce",
+      "restored": true
+    }
+  ],
+  "independentReview": "No concrete regressions found in origin handling, pinned image metadata, backup namespace lifecycle or test-only R2 fixture cleanup.",
+  "stage2": {
+    "completed": 28,
+    "total": 30,
+    "percentage": 93.3,
+    "closedTasks": 4,
+    "totalTasks": 6,
+    "pending": [
+      "E2.3.5",
+      "E2.6.2"
+    ]
+  },
+  "stage4": {
+    "completed": 12,
+    "total": 16,
+    "percentage": 75,
+    "closedTasks": 0,
+    "totalTasks": 3
+  },
+  "deployed": false,
+  "limits": [
+    "Windows run; three platform tests skipped.",
+    "No fresh Linux CI, Figma frame acceptance, formal screen-reader review or candidate deployment.",
+    "Existing malformed backup data and interrupted private working files are preserved for inspection."
+  ]
+}

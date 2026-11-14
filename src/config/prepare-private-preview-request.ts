@@ -21,7 +21,15 @@ function failure(status: 400 | 401 | 403 | 404 | 405 | 503): PrivatePreviewAutho
 }
 function trustedOrigin(value: string): string {
   const url = new URL(value);
-  if (!['http:', 'https:'].includes(url.protocol) || url.origin !== value)
+  if (
+    !['http:', 'https:'].includes(url.protocol) ||
+    url.username ||
+    url.password ||
+    url.pathname !== '/' ||
+    value.includes('?') ||
+    value.includes('#') ||
+    value !== value.trim()
+  )
     throw new TypeError('Invalid configured preview origin.');
   return url.origin;
 }

@@ -88,3 +88,30 @@ it('advertises the painted width of a contained portrait without changing the re
   expect(cover).toHaveAttribute('height', '480');
   expect(cover).toHaveAttribute('fetchpriority', 'high');
 });
+
+it.each(['article', 'pair'] as const)(
+  'reserves the original aspect ratio for %s images',
+  (kind) => {
+    render(
+      <CaseImage image={{ ...image, intrinsicSize: { width: 600, height: 900 } }} kind={kind} />,
+    );
+    const picture = screen.getByRole('img', { name: image.alt });
+    expect(picture).toHaveAttribute('width', '600');
+    expect(picture).toHaveAttribute('height', '900');
+  },
+);
+
+it.each([
+  { kind: 'cover', width: 1280, height: 480 },
+  { kind: 'card', width: 624, height: 352 },
+] as const)(
+  'preserves the existing $kind slot when original dimensions are supplied',
+  ({ kind, width, height }) => {
+    render(
+      <CaseImage image={{ ...image, intrinsicSize: { width: 600, height: 900 } }} kind={kind} />,
+    );
+    const picture = screen.getByRole('img', { name: image.alt });
+    expect(picture).toHaveAttribute('width', String(width));
+    expect(picture).toHaveAttribute('height', String(height));
+  },
+);
