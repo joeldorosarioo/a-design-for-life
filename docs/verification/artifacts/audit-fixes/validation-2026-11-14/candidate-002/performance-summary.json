@@ -1,0 +1,2322 @@
+{
+  "version": 1,
+  "kind": "audit-fixes-candidate-002-fresh-performance-round",
+  "assembledAt": "2026-11-14T18:31:15.866Z",
+  "verdict": {
+    "complete": true,
+    "measurements": 36,
+    "scenarios": 12,
+    "passingScenarios": 12,
+    "failingScenarios": [],
+    "allBudgetsPass": true,
+    "formalReaderOrContentApprovalEstablished": false,
+    "samplesDiscarded": 0,
+    "samplesRetried": 0,
+    "thresholdsChanged": false
+  },
+  "candidate": {
+    "version": 1,
+    "frozenAt": "2026-11-14T18:18:58.083Z",
+    "environment": "staging",
+    "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+    "sourceSha": "6788e7a9d4813bbda9128fb6df39cc2f69717cca",
+    "imageDigest": "sha256:eb0af8fcd4ecda691c4826cbb5400b984174f6bb8ecf5f1fbde653ec20fb9d24",
+    "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "selection": "Fresh candidate-002 capture confirms Payment flexibility is the heaviest case in PT/EN at both 390 px and 1440 px by all same-origin encoded resource bytes after full image decode. These weight checks are not cold Lighthouse samples.",
+    "targets": [
+      {
+        "id": "home-pt",
+        "kind": "home",
+        "locale": "pt",
+        "path": "/pt"
+      },
+      {
+        "id": "home-en",
+        "kind": "home",
+        "locale": "en",
+        "path": "/en"
+      },
+      {
+        "id": "cases-pt",
+        "kind": "cases",
+        "locale": "pt",
+        "path": "/pt/cases"
+      },
+      {
+        "id": "cases-en",
+        "kind": "cases",
+        "locale": "en",
+        "path": "/en/cases"
+      },
+      {
+        "id": "case-pt",
+        "kind": "case",
+        "locale": "pt",
+        "path": "/pt/cases/flexibilidade-de-pagamento"
+      },
+      {
+        "id": "case-en",
+        "kind": "case",
+        "locale": "en",
+        "path": "/en/cases/payment-flexibility"
+      }
+    ],
+    "sourceTree": "98e0fe5af219c5c4ffd0febb8caee5c06f82b054",
+    "pipelineRunId": 43623742431,
+    "selectionEvidence": {
+      "path": ".work/audit-follow-up/visual-candidate-002/resource-weights.json",
+      "sha256": "c4edc72227974dde47c93e646320d6c6b5d433bedd0c95e71f56162cc20691f8"
+    },
+    "premeasurementBinding": {
+      "path": ".work/audit-follow-up/candidate-002/performance-staging-before.json",
+      "sha256": "5ee0d39465657d01f8c9f84417240e2fdef6db64d4d202058faa3089410e6e92"
+    },
+    "sourceAppTree": "83c5b71576d1c20ede051ceadaf25ef51043c25f",
+    "imageConfigDigest": "sha256:75924c70aa7eae13a1f182377c7a0acdb69f017d36116593c0ebbad31db2a86d"
+  },
+  "previousRoundEvidence": {
+    "path": ".work/audit-fixes/performance-prepared-2026-11-14/candidate-001-receipt.json",
+    "sha256": "d4fee1b4a9699152162adf9be43b81ca8036d96746e5586ea5568908ac483d83",
+    "verdict": {
+      "complete": true,
+      "measurements": 36,
+      "scenarios": 12,
+      "passingScenarios": 10,
+      "failingScenarios": [
+        "cases-pt/mobile",
+        "cases-en/mobile"
+      ],
+      "allBudgetsPass": false,
+      "criteriaClosureAuthorizedByThisRound": false,
+      "samplesDiscarded": 0,
+      "samplesRetried": 0,
+      "thresholdsChanged": false
+    },
+    "reusedMeasurements": 0
+  },
+  "configEvidence": {
+    "path": ".work/audit-fixes/performance-prepared-2026-11-14-candidate-002/candidate-config.json",
+    "sha256": "2b6bb5ec1182426ce227ef3098a83e83c0341c31acb79170f4279bc6c46c6670"
+  },
+  "sourceHashes": {
+    "ops/performance/profiles.json": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "ops/performance/run-staging-audit.mjs": "5e5c871e0d735c26877d5128cbfd3e94911d3a1baf6df0da143e23a160041f11",
+    "ops/performance/run-local-audit.mjs": "6858ec96c0b4cd89283f18e5005081d0d099486d90d485db28c70fac2bb285c1",
+    "ops/performance/staging-relay.mjs": "246e5b0269fff31f25074af351403a0862f0d97097c89c28002bea0c91266d53",
+    "docs/verification/E4.2-performance-protocol.md": "24c5433a7c35dcbb63bd2c43f65d20db58c6f007c6fda71c123f4c189b111375"
+  },
+  "calibration": {
+    "nodeVersion": "24.22.2",
+    "lighthouseVersion": "13.6.0",
+    "playwrightVersion": "1.64.1",
+    "browserVersion": "156.0.8078.4",
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor             ",
+      "logicalProcessors": 12,
+      "memoryBytes": 17077932032
+    },
+    "profiles": {
+      "schemaVersion": 1,
+      "purpose": "Repeatable local laboratory measurements of the public portfolio",
+      "repetitions": 3,
+      "performanceKinds": [
+        "home",
+        "cases",
+        "case"
+      ],
+      "locales": [
+        "pt",
+        "en"
+      ],
+      "browserWidths": [
+        390,
+        820,
+        1440
+      ],
+      "browserHeight": 900,
+      "cache": "cold browser profile for each measurement, warm server",
+      "throttlingMethod": "devtools",
+      "networkMapping": "DevTools requestLatencyMs uses the proposed RTT value. Download and upload throughput use the proposed Kbit/s values directly.",
+      "profiles": [
+        {
+          "id": "mobile",
+          "formFactor": "mobile",
+          "width": 390,
+          "height": 844,
+          "deviceScaleFactor": 3,
+          "rttMs": 150,
+          "downloadKbps": 1600,
+          "uploadKbps": 750,
+          "cpuSlowdownMultiplier": 4,
+          "budgets": {
+            "lcpMs": 2500,
+            "cls": 0.1,
+            "tbtMs": 200
+          }
+        },
+        {
+          "id": "desktop",
+          "formFactor": "desktop",
+          "width": 1440,
+          "height": 900,
+          "deviceScaleFactor": 1,
+          "rttMs": 40,
+          "downloadKbps": 10000,
+          "uploadKbps": 5000,
+          "cpuSlowdownMultiplier": 1,
+          "budgets": {
+            "lcpMs": 2500,
+            "cls": 0.1,
+            "tbtMs": 150
+          }
+        }
+      ]
+    },
+    "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+    "unchangedFromExistingProtocol": true
+  },
+  "measurement": {
+    "startedAt": "2026-11-14T18:19:20.567Z",
+    "completedAt": "2026-11-14T18:30:27.276Z",
+    "process": {
+      "startedAt": "2026-11-14T18:19:20.467Z",
+      "completedAt": "2026-11-14T18:30:27.313Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "ops/performance/run-staging-audit.mjs",
+        ".work/audit-fixes/performance-prepared-2026-11-14-candidate-002/candidate-config.json",
+        ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002",
+        "--run"
+      ],
+      "exitCode": 0,
+      "signal": null
+    },
+    "preflight": {
+      "checkedAt": "2026-11-14T18:18:58.085Z",
+      "command": [
+        "E:\\a-design-for-life\\.toolchain\\node-v24.22.2-win-x64\\node.exe",
+        "ops/performance/run-staging-audit.mjs",
+        ".work/audit-fixes/performance-prepared-2026-11-14-candidate-002/candidate-config.json",
+        ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002",
+        "--preflight"
+      ],
+      "exitCode": 0,
+      "result": {
+        "ready": true,
+        "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+        "sourceSha": "6788e7a9d4813bbda9128fb6df39cc2f69717cca",
+        "imageDigest": "sha256:eb0af8fcd4ecda691c4826cbb5400b984174f6bb8ecf5f1fbde653ec20fb9d24",
+        "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+        "runs": 36,
+        "scenarios": 12,
+        "cache": "cold browser profile for each measurement, warm server",
+        "configurationSha256": "2b6bb5ec1182426ce227ef3098a83e83c0341c31acb79170f4279bc6c46c6670"
+      }
+    },
+    "relay": {
+      "browserOrigin": "http://127.0.0.1:57337",
+      "upstreamOrigin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+      "requests": 1120,
+      "methods": [
+        "GET"
+      ],
+      "credentialExposedToBrowser": false,
+      "compressedUpstreamBytesPreserved": true
+    },
+    "analytics": {
+      "loadScript": null,
+      "googleRequestsForwarded": 0
+    }
+  },
+  "binding": {
+    "before": {
+      "path": ".work/audit-follow-up/candidate-002/performance-staging-before.json",
+      "sha256": "5ee0d39465657d01f8c9f84417240e2fdef6db64d4d202058faa3089410e6e92",
+      "checkedAt": "2026-11-14T18:18:20.174Z"
+    },
+    "after": {
+      "path": ".work/audit-follow-up/candidate-002/performance-staging-after.json",
+      "sha256": "a6a7fe07e33c51abe79046e129f829acd5e057e27e36886cf01474956e33d89a",
+      "checkedAt": "2026-11-14T18:30:53.314Z"
+    },
+    "unchangedFields": [
+      "containerId",
+      "imageReference",
+      "imageId",
+      "imageRevision",
+      "imageSourceTree",
+      "startedAt",
+      "limits",
+      "volumes",
+      "confirmedPublicRoots",
+      "logConfig"
+    ],
+    "imageRevision": "6788e7a9d4813bbda9128fb6df39cc2f69717cca",
+    "imageSourceTree": "98e0fe5af219c5c4ffd0febb8caee5c06f82b054",
+    "imageDigest": "sha256:eb0af8fcd4ecda691c4826cbb5400b984174f6bb8ecf5f1fbde653ec20fb9d24",
+    "containerId": "34306bee6fd5252146edf0fff2ed438118b7ac5fb87e80560f519c462f85d636",
+    "publicRoots": [
+      {
+        "relativePathHash": "a5d53b096a47c5a0b7ba26720c4aef5f9cf2a2311ef7d42b3438b827cb338847",
+        "bytes": 52668,
+        "sha256": "b8351855a2f5a3f964d65f5c3ff2cadcc9cd84936c1026b8d3dafefe162c32a3"
+      }
+    ],
+    "volumes": [
+      {
+        "destination": "/app/.work/publication",
+        "identitySha256": "4daea4727e0678a06c045a2fee580b1a6b6cb77d0a7d5f9fbba8c840aa6dc8af"
+      },
+      {
+        "destination": "/app/.work/next-build/cache",
+        "identitySha256": "f648fd095bd00187f19541a9a71e89e013225d4eac74971131ab492dd535764f"
+      },
+      {
+        "destination": "/var/lib/postgresql/data",
+        "identitySha256": "f723e6c575e3d0a2433793977a6d710bbf463c512a78b1edfeb00cfa74b02d83"
+      }
+    ],
+    "limits": {
+      "nanoCpus": 1000000000,
+      "memory": 2147483648,
+      "memorySwap": 2147483648
+    },
+    "bothHealthy": true,
+    "productionAccessed": false,
+    "remoteWrites": false
+  },
+  "selectionEvidence": {
+    "path": ".work/audit-follow-up/visual-candidate-002/resource-weights.json",
+    "sha256": "c4edc72227974dde47c93e646320d6c6b5d433bedd0c95e71f56162cc20691f8",
+    "method": "Fresh all-resource encoded-size capture, not a cold Lighthouse sample",
+    "ranking": [
+      {
+        "locale": "pt",
+        "width": 390,
+        "rows": [
+          {
+            "target": "case-pt",
+            "path": "/pt/cases/flexibilidade-de-pagamento",
+            "encoded": 764870,
+            "decoded": 1276474
+          },
+          {
+            "target": "case-2-pt",
+            "path": "/pt/cases/modelo-de-financiamento",
+            "encoded": 744975,
+            "decoded": 1256584
+          }
+        ]
+      },
+      {
+        "locale": "pt",
+        "width": 1440,
+        "rows": [
+          {
+            "target": "case-pt",
+            "path": "/pt/cases/flexibilidade-de-pagamento",
+            "encoded": 764870,
+            "decoded": 1276474
+          },
+          {
+            "target": "case-2-pt",
+            "path": "/pt/cases/modelo-de-financiamento",
+            "encoded": 744970,
+            "decoded": 1256584
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "width": 390,
+        "rows": [
+          {
+            "target": "case-en",
+            "path": "/en/cases/payment-flexibility",
+            "encoded": 765665,
+            "decoded": 1281000
+          },
+          {
+            "target": "case-2-en",
+            "path": "/en/cases/financing-model",
+            "encoded": 745765,
+            "decoded": 1261110
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "width": 1440,
+        "rows": [
+          {
+            "target": "case-en",
+            "path": "/en/cases/payment-flexibility",
+            "encoded": 765665,
+            "decoded": 1281000
+          },
+          {
+            "target": "case-2-en",
+            "path": "/en/cases/financing-model",
+            "encoded": 745765,
+            "decoded": 1261110
+          }
+        ]
+      }
+    ]
+  },
+  "samples": [
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:19:44.595Z",
+      "lcpMs": 798.645,
+      "cls": 0,
+      "tbtMs": 96.42699999999968,
+      "fcpMs": 798.645,
+      "speedIndexMs": 2512,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-mobile-1-lighthouse.json",
+        "sha256": "2de8b0c511fc534acd73a20c44ac61d4126fe63c1f3947cd36a5ba806e078be3"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-mobile-1-lhr.private.json",
+        "sha256": "6f4d4061261cf4c1b4c60cf346ccacfb32fb68e9bf9d1cbfd3758fb2abc25339"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:20:05.784Z",
+      "lcpMs": 843.549,
+      "cls": 0,
+      "tbtMs": 84.27799999999979,
+      "fcpMs": 843.549,
+      "speedIndexMs": 2542,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-mobile-2-lighthouse.json",
+        "sha256": "e8073c2ce5ec4fa0bb41b50c796acfae5045b105ef237aac0d609d6bcc505674"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-mobile-2-lhr.private.json",
+        "sha256": "308175becbd3099a9b48b78d72866b0a7b43f62074821c8f4f6189a775ce613d"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:20:26.900Z",
+      "lcpMs": 828.956,
+      "cls": 0,
+      "tbtMs": 67.44900000000007,
+      "fcpMs": 828.956,
+      "speedIndexMs": 2529,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-mobile-3-lighthouse.json",
+        "sha256": "6ec912d5c1d6c42cc3df3562a129f2b400533f7cb67112c2e4f4b939ddca064c"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-mobile-3-lhr.private.json",
+        "sha256": "925317d352fc3c87a3c0674eedb7f165ddcefd09ef9b79fb7aff8857aa09fd14"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:20:47.760Z",
+      "lcpMs": 404.258,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 404.258,
+      "speedIndexMs": 783,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-desktop-1-lighthouse.json",
+        "sha256": "cdd63329514ae8b0367b52159f66c242910e6956fd8832202cdaa0f6b41693cf"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-desktop-1-lhr.private.json",
+        "sha256": "45ac84341563a32d64d9f57f46ed2cb3a160ca9dea07156f924cc1db5cfe9c49"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:21:03.540Z",
+      "lcpMs": 710.527,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 380.064,
+      "speedIndexMs": 750,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-desktop-2-lighthouse.json",
+        "sha256": "35e5490d0d1beecbb7f64abf37f982ce57f5d66a137c185d6898d8f247653049"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-desktop-2-lhr.private.json",
+        "sha256": "760ea09c87e346e64fce56468d2e20584b612e09c0c78781e5d1e4d88c89ee55"
+      }
+    },
+    {
+      "target": "home-pt",
+      "path": "/pt",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:21:19.340Z",
+      "lcpMs": 749.546,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 374.436,
+      "speedIndexMs": 756,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-desktop-3-lighthouse.json",
+        "sha256": "3df5a89ec083563c21bdb3b195111055978a87f62f7e9bd7f8955a4ef57d7750"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-pt-desktop-3-lhr.private.json",
+        "sha256": "43687d748d315c7026294a1421b473173b3b64be6c2d9779b73f03b0ee88fff6"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:21:34.758Z",
+      "lcpMs": 815.822,
+      "cls": 0,
+      "tbtMs": 63.67599999999993,
+      "fcpMs": 815.821,
+      "speedIndexMs": 2604,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-mobile-1-lighthouse.json",
+        "sha256": "70769f69c85a65f80757adad22ee666a70529930606051a242254218d4bb0941"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-mobile-1-lhr.private.json",
+        "sha256": "7562145d9b87b3b3c319f42daa04ba6027971ddf4d1b9f830011c00d34713210"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:21:55.378Z",
+      "lcpMs": 813.828,
+      "cls": 0,
+      "tbtMs": 64.15299999999979,
+      "fcpMs": 813.828,
+      "speedIndexMs": 2601,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-mobile-2-lighthouse.json",
+        "sha256": "7bc499cebd6a107cead2af912b75a1eedb7fca82c3114cc76847b87191f80500"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-mobile-2-lhr.private.json",
+        "sha256": "211a65bdf32d0744781a07a65efea476c964a2c55a3afe260d2ed267dfee12a4"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:22:16.529Z",
+      "lcpMs": 804.592,
+      "cls": 0,
+      "tbtMs": 66.03800000000001,
+      "fcpMs": 804.592,
+      "speedIndexMs": 2580,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-mobile-3-lighthouse.json",
+        "sha256": "6c17cc385e7ffb96d80102793bb68b2e2d6480314fa2fa405cbee559f6dc5173"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-mobile-3-lhr.private.json",
+        "sha256": "3dd6d748ebd209943fc2949dc90599426ee6eb7b986c896080f7c30f74571040"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:22:37.273Z",
+      "lcpMs": 378.05,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 378.049,
+      "speedIndexMs": 769,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-desktop-1-lighthouse.json",
+        "sha256": "e0f66ce1c29900ed2a76873fb84ae405f58e90d45ba333bec7df87a3cdaa4950"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-desktop-1-lhr.private.json",
+        "sha256": "59777444931c82134abd05350012898d4806c346a2b8b2b20ba6a4bff810f758"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:22:52.558Z",
+      "lcpMs": 372.352,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 372.352,
+      "speedIndexMs": 755,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-desktop-2-lighthouse.json",
+        "sha256": "d0fde5e521eaf590be1246efc5fbb07c206dc4de7a27729d983faa864ab59166"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-desktop-2-lhr.private.json",
+        "sha256": "0a0f393ea2a0896e01d35585b1d1c0e0ce24cd4d4e75ac52685617389e246358"
+      }
+    },
+    {
+      "target": "home-en",
+      "path": "/en",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:23:07.857Z",
+      "lcpMs": 699.927,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 356.537,
+      "speedIndexMs": 753,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-desktop-3-lighthouse.json",
+        "sha256": "30861e942fa1f492d2d8417f86fabd2284f807f1860cce5550d8e5a476a762cb"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/home-en-desktop-3-lhr.private.json",
+        "sha256": "129cd917e11c20c1848e3d70eec9585a6b37dc3375e8d7f714d9fd269d4db809"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:23:23.149Z",
+      "lcpMs": 1379.147,
+      "cls": 0,
+      "tbtMs": 64.10500000000002,
+      "fcpMs": 744.966,
+      "speedIndexMs": 2653,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-mobile-1-lighthouse.json",
+        "sha256": "460bfe3e674dbc9cf8e20ad80e49ef7a1b238eb96b11c41ee3587de354699f1b"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-mobile-1-lhr.private.json",
+        "sha256": "36d041ee95af56d734b86f14172aa186bc7e3ba14afb97cc80e66f6eb8602d55"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:23:43.518Z",
+      "lcpMs": 1399.262,
+      "cls": 0,
+      "tbtMs": 63.87099999999964,
+      "fcpMs": 765.352,
+      "speedIndexMs": 2671,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-mobile-2-lighthouse.json",
+        "sha256": "abb455c402ee5684890f1a7629821ac3c8836ebda0cfd0397715fc3c856bb35a"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-mobile-2-lhr.private.json",
+        "sha256": "1ee1b3525a4b70d61c25a5b33d99d044b1d96c9d27f5e660c5950cf2c7adff85"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:24:04.002Z",
+      "lcpMs": 1383.442,
+      "cls": 0,
+      "tbtMs": 64.98500000000013,
+      "fcpMs": 765.528,
+      "speedIndexMs": 2649,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-mobile-3-lighthouse.json",
+        "sha256": "713cd48757dc07f5ba1f5d13748567a7ab225a0ee83c6fadcce39a2517ed3934"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-mobile-3-lhr.private.json",
+        "sha256": "edeb086dde177beecbc85414f7e723a9cc472fdef52a4e3eb9fb6c69b509522c"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:24:24.296Z",
+      "lcpMs": 658.366,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 309.561,
+      "speedIndexMs": 707,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-desktop-1-lighthouse.json",
+        "sha256": "a2e1ea18d348a6bb72bcca4555138a72b708b82aea8102cfd892364726297db3"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-desktop-1-lhr.private.json",
+        "sha256": "bbcb373b3f152d03e9b509719852cd458080e3e16de00135205c834bc4cb51bf"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:24:39.642Z",
+      "lcpMs": 678.952,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 334.443,
+      "speedIndexMs": 732,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-desktop-2-lighthouse.json",
+        "sha256": "6359acd99e2157ad71acb571cb9b8408cea5360cbeda2db73688290de1c6d16c"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-desktop-2-lhr.private.json",
+        "sha256": "f86f7f087f48db42e761e0f6317aaeefc6d0e2cdbd36ab316b1bfb9e8d90a1de"
+      }
+    },
+    {
+      "target": "cases-pt",
+      "path": "/pt/cases",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:24:54.929Z",
+      "lcpMs": 667.183,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 348.13,
+      "speedIndexMs": 742,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-desktop-3-lighthouse.json",
+        "sha256": "ab0e3f2d94c2e262772c5341eca0dc24614f4633d4f5994590995096eda6a7dc"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-pt-desktop-3-lhr.private.json",
+        "sha256": "7473c92f35735e3afc4155883958db0bbceaa28777989bfd284fb2af3a01fc19"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:25:10.225Z",
+      "lcpMs": 1326.295,
+      "cls": 0,
+      "tbtMs": 66.44100000000026,
+      "fcpMs": 768.736,
+      "speedIndexMs": 2681,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-mobile-1-lighthouse.json",
+        "sha256": "e9733cf497321a835ef147e2c9786d5723b990b824dd87526a46881eccbbe768"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-mobile-1-lhr.private.json",
+        "sha256": "18b7457d5334772eab7606686a8e8310bdfa7fa0a1217dc7319a4cad0f070e0a"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:25:30.864Z",
+      "lcpMs": 1442.725,
+      "cls": 0,
+      "tbtMs": 65.50999999809255,
+      "fcpMs": 771.003,
+      "speedIndexMs": 2687,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-mobile-2-lighthouse.json",
+        "sha256": "c5a2602c13c061866ca3abca67f8a8ee84ec8e1e139e703f9cd4b19288f262b2"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-mobile-2-lhr.private.json",
+        "sha256": "513b9d19f1cbaaba3dcae3b72f5600e283c9073660a12abcdfafc264d4d1a623"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:25:51.352Z",
+      "lcpMs": 1348,
+      "cls": 0,
+      "tbtMs": 67.91100000000006,
+      "fcpMs": 788.624,
+      "speedIndexMs": 2689,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-mobile-3-lighthouse.json",
+        "sha256": "b3606c4ddb79e088724b35b9753d201b859a6264b334af22026b30fce2784ca0"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-mobile-3-lhr.private.json",
+        "sha256": "2c3190a4bdae3d1bcbc064d856ea8c012b0b77a42b6405b04265dccc885e29f4"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:26:12.045Z",
+      "lcpMs": 675.357,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 340.158,
+      "speedIndexMs": 731,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-desktop-1-lighthouse.json",
+        "sha256": "d778f7fe39ae56f5da5fe1ad366126488aec0f0365ad8c0f9c2152f93a1e1fc8"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-desktop-1-lhr.private.json",
+        "sha256": "293dbd3a194edb263a69091efb5b4de58ac85a3a9225742ddd4d0fdc3eef8da2"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:26:27.412Z",
+      "lcpMs": 631.739,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 369.064,
+      "speedIndexMs": 740,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-desktop-2-lighthouse.json",
+        "sha256": "18053ac5f70856663bddcde6f9a20db18105451650723d211817e0cc52e5f584"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-desktop-2-lhr.private.json",
+        "sha256": "5cee3061e6c326bad311c6a47a3a01b1c7ca869daddaea2ceb8d1afdb8a0dc6a"
+      }
+    },
+    {
+      "target": "cases-en",
+      "path": "/en/cases",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:26:42.716Z",
+      "lcpMs": 695.036,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 327.694,
+      "speedIndexMs": 736,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-desktop-3-lighthouse.json",
+        "sha256": "2dad3e75a481cee7c13a988c55d9b10dce54512a84cec81823435e29c848ca50"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/cases-en-desktop-3-lhr.private.json",
+        "sha256": "d3f362cdae4366fb7ee8144bf6447cf626331ddd1db0f784bd7e3019b40ff506"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:26:57.912Z",
+      "lcpMs": 1862.15,
+      "cls": 0,
+      "tbtMs": 65.06399999999985,
+      "fcpMs": 830.737,
+      "speedIndexMs": 2418,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-mobile-1-lighthouse.json",
+        "sha256": "ace99333e33bcd039c7ec28ed42b7baa125af0bc1d5a4ebc8cc11f0c1c644a09"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-mobile-1-lhr.private.json",
+        "sha256": "b8b6851f07f0ce9dfe2c7ac44e07e2a90e9de74d6516088263d160eb867cb4de"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:27:17.551Z",
+      "lcpMs": 1880.847,
+      "cls": 0,
+      "tbtMs": 69.38299999999981,
+      "fcpMs": 803.4,
+      "speedIndexMs": 2411,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-mobile-2-lighthouse.json",
+        "sha256": "dc80b24f5dd521ae0bc6a96d78ebe12d4a1486bca55c3cc7dd08bbb135656cd8"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-mobile-2-lhr.private.json",
+        "sha256": "9840b3a541c221f57819582585ceb2e8774bc72d96c62bdedef06fd080cb9e79"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:27:37.493Z",
+      "lcpMs": 1893.756,
+      "cls": 0,
+      "tbtMs": 66.52100000000019,
+      "fcpMs": 789.826,
+      "speedIndexMs": 2400,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-mobile-3-lighthouse.json",
+        "sha256": "030313e854492fb1e90845cb97b31685c57f395535b221e72c8d5492a7ad69c4"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-mobile-3-lhr.private.json",
+        "sha256": "f6a97c23341e585ba8707daee448ea3e1978f21c32851aab48f625eb22904d22"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:27:57.372Z",
+      "lcpMs": 314.018,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 314.018,
+      "speedIndexMs": 726,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-desktop-1-lighthouse.json",
+        "sha256": "0d4537bd0dfb1d094aee199e3d5a0709d500b28e293324e7f3633d671707ee63"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-desktop-1-lhr.private.json",
+        "sha256": "43da78d33978e1858ebe59fdf5eccf994058daa37690e1be5303401a991bc196"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:28:12.762Z",
+      "lcpMs": 392.954,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 335.537,
+      "speedIndexMs": 728,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-desktop-2-lighthouse.json",
+        "sha256": "5a13d7001b9006f956b3d05078c977333c904b02cddb02b15f9b857e1f606462"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-desktop-2-lhr.private.json",
+        "sha256": "51a48fa7bcf87de07ad2ef1267db79484075d9544b237f3c6cb4463817077f9f"
+      }
+    },
+    {
+      "target": "case-pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:28:27.996Z",
+      "lcpMs": 343.961,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 343.961,
+      "speedIndexMs": 739,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-desktop-3-lighthouse.json",
+        "sha256": "6808ef4e2ba0dd931d5fbd6d27825d1e31d87df54a94cb128ca5d1e1b930d587"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-pt-desktop-3-lhr.private.json",
+        "sha256": "2689b0d9762a63a43d25b4cc1aa16f33eb8c21fa7c1f843634bf118fa9fa6440"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:28:43.317Z",
+      "lcpMs": 838.422,
+      "cls": 0,
+      "tbtMs": 71.721,
+      "fcpMs": 838.422,
+      "speedIndexMs": 2447,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-mobile-1-lighthouse.json",
+        "sha256": "3d09aca03b862c58a35b4d5d529b0b2751bf025d68579733fa4c7f0d5a9ade3d"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-mobile-1-lhr.private.json",
+        "sha256": "6f906461871dcc79ce6b831c79a8503fa1ceeec014a929b83381cad96d8388f4"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:29:03.397Z",
+      "lcpMs": 793.735,
+      "cls": 0,
+      "tbtMs": 66.36799999809273,
+      "fcpMs": 793.735,
+      "speedIndexMs": 2424,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-mobile-2-lighthouse.json",
+        "sha256": "16f65de4649aaa4d998b0f149cf91a102d4ee3963a491a5db9d19ba9da2697a6"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-mobile-2-lhr.private.json",
+        "sha256": "138e4fffb6305f03432a19b7cbe5fb1c58d57d9e22b573a750f457665d549fad"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "mobile",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:29:23.314Z",
+      "lcpMs": 802.265,
+      "cls": 0,
+      "tbtMs": 86.42799999999988,
+      "fcpMs": 802.264,
+      "speedIndexMs": 2419,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-mobile-3-lighthouse.json",
+        "sha256": "aa611ba44df494bd559e981292646fad4a775dd2bb767f7b74440a1157a90912"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-mobile-3-lhr.private.json",
+        "sha256": "153e5e911ad395f914796144dfd27d4f37a388a1c436dd642db3516fb6323705"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 1,
+      "fetchTime": "2026-11-14T18:29:42.926Z",
+      "lcpMs": 403.036,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 403.036,
+      "speedIndexMs": 805,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-desktop-1-lighthouse.json",
+        "sha256": "889c93dfd988c2f235f41a9a08747a76a4c76774eff79215d830f8cce7a91424"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-desktop-1-lhr.private.json",
+        "sha256": "32fe8ff7605fce454700695d5eb1f69271e5d919d19a3b999cd3c5fdbe42b0f6"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 2,
+      "fetchTime": "2026-11-14T18:29:58.215Z",
+      "lcpMs": 397.353,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 338.039,
+      "speedIndexMs": 740,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-desktop-2-lighthouse.json",
+        "sha256": "6b6f13c0a12086dcf2c607ec0f7bf295fb609640464a2c65d5691c99cac38c6d"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-desktop-2-lhr.private.json",
+        "sha256": "6e52ad7e4116ef3705fc97bfd8a8f9f453122f5c390bcf815f8eb2b8f5dafe43"
+      }
+    },
+    {
+      "target": "case-en",
+      "path": "/en/cases/payment-flexibility",
+      "profile": "desktop",
+      "repeat": 3,
+      "fetchTime": "2026-11-14T18:30:13.533Z",
+      "lcpMs": 420.72,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 345.703,
+      "speedIndexMs": 745,
+      "lighthouseVersion": "13.6.0",
+      "compact": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-desktop-3-lighthouse.json",
+        "sha256": "fa8ba00601e608623cdd81586cb723633a827e49cb0396e3477d10a3a3354efb"
+      },
+      "privateRaw": {
+        "path": ".work/local-audits/e4-audit-fixes-2026-11-14-candidate-002/case-en-desktop-3-lhr.private.json",
+        "sha256": "632d591912f266c3c275f27ce7ee418e81fe45d40d796879e1a486a3a1dcb720"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "target": "home-pt",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 828.956,
+          "min": 798.645,
+          "max": 843.549,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 84.27799999999979,
+          "min": 67.44900000000007,
+          "max": 96.42699999999968,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 828.956,
+          "min": 798.645,
+          "max": 843.549,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2529,
+          "min": 2512,
+          "max": 2542,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "home-pt",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 710.527,
+          "min": 404.258,
+          "max": 749.546,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 380.064,
+          "min": 374.436,
+          "max": 404.258,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 756,
+          "min": 750,
+          "max": 783,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "home-en",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 813.828,
+          "min": 804.592,
+          "max": 815.822,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 64.15299999999979,
+          "min": 63.67599999999993,
+          "max": 66.03800000000001,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 813.828,
+          "min": 804.592,
+          "max": 815.821,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2601,
+          "min": 2580,
+          "max": 2604,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "home-en",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 378.05,
+          "min": 372.352,
+          "max": 699.927,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 372.352,
+          "min": 356.537,
+          "max": 378.049,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 755,
+          "min": 753,
+          "max": 769,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "cases-pt",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 1383.442,
+          "min": 1379.147,
+          "max": 1399.262,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 64.10500000000002,
+          "min": 63.87099999999964,
+          "max": 64.98500000000013,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 765.352,
+          "min": 744.966,
+          "max": 765.528,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2653,
+          "min": 2649,
+          "max": 2671,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "cases-pt",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 667.183,
+          "min": 658.366,
+          "max": 678.952,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 334.443,
+          "min": 309.561,
+          "max": 348.13,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 732,
+          "min": 707,
+          "max": 742,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "cases-en",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 1348,
+          "min": 1326.295,
+          "max": 1442.725,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 66.44100000000026,
+          "min": 65.50999999809255,
+          "max": 67.91100000000006,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 771.003,
+          "min": 768.736,
+          "max": 788.624,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2687,
+          "min": 2681,
+          "max": 2689,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "cases-en",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 675.357,
+          "min": 631.739,
+          "max": 695.036,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 340.158,
+          "min": 327.694,
+          "max": 369.064,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 736,
+          "min": 731,
+          "max": 740,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-pt",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 1880.847,
+          "min": 1862.15,
+          "max": 1893.756,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 66.52100000000019,
+          "min": 65.06399999999985,
+          "max": 69.38299999999981,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 803.4,
+          "min": 789.826,
+          "max": 830.737,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2411,
+          "min": 2400,
+          "max": 2418,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-pt",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 343.961,
+          "min": 314.018,
+          "max": 392.954,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 335.537,
+          "min": 314.018,
+          "max": 343.961,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 728,
+          "min": 726,
+          "max": 739,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-en",
+      "profile": "mobile",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 802.265,
+          "min": 793.735,
+          "max": 838.422,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 71.721,
+          "min": 66.36799999809273,
+          "max": 86.42799999999988,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 802.264,
+          "min": 793.735,
+          "max": 838.422,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 2424,
+          "min": 2419,
+          "max": 2447,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 200
+      },
+      "budgetPass": true
+    },
+    {
+      "target": "case-en",
+      "profile": "desktop",
+      "metrics": {
+        "largest-contentful-paint": {
+          "median": 403.036,
+          "min": 397.353,
+          "max": 420.72,
+          "runs": 3
+        },
+        "cumulative-layout-shift": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "total-blocking-time": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "runs": 3
+        },
+        "first-contentful-paint": {
+          "median": 345.703,
+          "min": 338.039,
+          "max": 403.036,
+          "runs": 3
+        },
+        "speed-index": {
+          "median": 745,
+          "min": 740,
+          "max": 805,
+          "runs": 3
+        }
+      },
+      "budgets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "tbtMs": 150
+      },
+      "budgetPass": true
+    }
+  ],
+  "listingMobileLcpDiagnosis": {
+    "evidence": [
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "repeat": 1,
+        "lcpMs": 1326.295,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark of financing models in Mexico.",
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "lcpIsImage": true,
+        "loadingLazy": false,
+        "loadingEager": true,
+        "highFetchPriorityAttribute": true,
+        "discovery": {
+          "priorityHinted": true,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": true
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 279.27500000190736,
+          "resourceLoadDelay": 100.94199999809265,
+          "resourceLoadDuration": 920.688,
+          "elementRenderDelay": 25.39
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 380.0760000012815,
+          "networkRequestTimeMs": 380.5460000000894,
+          "networkEndTimeMs": 1300.7639999985695,
+          "transferSizeBytes": 47548,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "repeat": 2,
+        "lcpMs": 1442.725,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark of financing models in Mexico.",
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "lcpIsImage": true,
+        "loadingLazy": false,
+        "loadingEager": true,
+        "highFetchPriorityAttribute": true,
+        "discovery": {
+          "priorityHinted": true,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": true
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 273.532,
+          "resourceLoadDelay": 104.045,
+          "resourceLoadDuration": 1038.7690000019074,
+          "elementRenderDelay": 26.378999998092652
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 377.44999999925494,
+          "networkRequestTimeMs": 377.9859999977052,
+          "networkEndTimeMs": 1416.2190000005066,
+          "transferSizeBytes": 47558,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-en",
+        "profile": "mobile",
+        "repeat": 3,
+        "lcpMs": 1348,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark of financing models in Mexico.",
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "lcpIsImage": true,
+        "loadingLazy": false,
+        "loadingEager": true,
+        "highFetchPriorityAttribute": true,
+        "discovery": {
+          "priorityHinted": true,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": true
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 305.32500000190737,
+          "resourceLoadDelay": 70.26999999809266,
+          "resourceLoadDuration": 947.163,
+          "elementRenderDelay": 25.242
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 375.4759999960661,
+          "networkRequestTimeMs": 376.00199999660254,
+          "networkEndTimeMs": 1322.6389999985695,
+          "transferSizeBytes": 47558,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "repeat": 1,
+        "lcpMs": 1379.147,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark de modelos de financiamento no México.",
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "lcpIsImage": true,
+        "loadingLazy": false,
+        "loadingEager": true,
+        "highFetchPriorityAttribute": true,
+        "discovery": {
+          "priorityHinted": true,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": true
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 261.25299999809266,
+          "resourceLoadDelay": 109.06600000190735,
+          "resourceLoadDuration": 983.943,
+          "elementRenderDelay": 24.885
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 370.2050000000745,
+          "networkRequestTimeMs": 370.76099999807775,
+          "networkEndTimeMs": 1354.147999998182,
+          "transferSizeBytes": 47548,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "repeat": 2,
+        "lcpMs": 1399.262,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark de modelos de financiamento no México.",
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "lcpIsImage": true,
+        "loadingLazy": false,
+        "loadingEager": true,
+        "highFetchPriorityAttribute": true,
+        "discovery": {
+          "priorityHinted": true,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": true
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 263.413,
+          "resourceLoadDelay": 109.947,
+          "resourceLoadDuration": 1000.8939999980927,
+          "elementRenderDelay": 25.008000001907348
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 373.23599999956787,
+          "networkRequestTimeMs": 373.76400000043213,
+          "networkEndTimeMs": 1374.1299999970943,
+          "transferSizeBytes": 47548,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      },
+      {
+        "target": "cases-pt",
+        "profile": "mobile",
+        "repeat": 3,
+        "lcpMs": 1383.442,
+        "lcpSelector": "li.min-w-0 > article.grid > figure.m-0 > img.block",
+        "lcpLabel": "Benchmark de modelos de financiamento no México.",
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "lcpIsImage": true,
+        "loadingLazy": false,
+        "loadingEager": true,
+        "highFetchPriorityAttribute": true,
+        "discovery": {
+          "priorityHinted": true,
+          "requestDiscoverable": true,
+          "eagerlyLoaded": true
+        },
+        "breakdownMs": {
+          "timeToFirstByte": 257.14599999809263,
+          "resourceLoadDelay": 113.77500000190734,
+          "resourceLoadDuration": 987.4430000019073,
+          "elementRenderDelay": 25.07799999809265
+        },
+        "request": {
+          "path": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+          "rendererStartTimeMs": 370.7749999985099,
+          "networkRequestTimeMs": 371.4539999999106,
+          "networkEndTimeMs": 1358.2180000003427,
+          "transferSizeBytes": 47548,
+          "resourceSizeBytes": 46692,
+          "mimeType": "image/webp",
+          "eventualNetworkPriority": "High"
+        }
+      }
+    ],
+    "comparisonToPreservedRound001": [
+      {
+        "target": "cases-en",
+        "repeat": 1,
+        "sameLcpElement": true,
+        "sameImageRequestPath": true,
+        "sameResourceSizeAndMimeType": true,
+        "sameVisualSlot": true,
+        "imageRequestPath": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+        "resourceSizeBytes": 46692,
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "before": {
+          "lcpMs": 2530.442,
+          "loading": "lazy",
+          "discovery": {
+            "priorityHinted": false,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": false
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 263.547,
+            "resourceLoadDelay": 553.039,
+            "resourceLoadDuration": 1690.751,
+            "elementRenderDelay": 23.105
+          }
+        },
+        "after": {
+          "lcpMs": 1326.295,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "discovery": {
+            "priorityHinted": true,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": true
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 279.27500000190736,
+            "resourceLoadDelay": 100.94199999809265,
+            "resourceLoadDuration": 920.688,
+            "elementRenderDelay": 25.39
+          }
+        }
+      },
+      {
+        "target": "cases-en",
+        "repeat": 2,
+        "sameLcpElement": true,
+        "sameImageRequestPath": true,
+        "sameResourceSizeAndMimeType": true,
+        "sameVisualSlot": true,
+        "imageRequestPath": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+        "resourceSizeBytes": 46692,
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "before": {
+          "lcpMs": 2569.746,
+          "loading": "lazy",
+          "discovery": {
+            "priorityHinted": false,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": false
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 272.40299999809264,
+            "resourceLoadDelay": 524.6060000019073,
+            "resourceLoadDuration": 1750.626,
+            "elementRenderDelay": 22.111
+          }
+        },
+        "after": {
+          "lcpMs": 1442.725,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "discovery": {
+            "priorityHinted": true,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": true
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 273.532,
+            "resourceLoadDelay": 104.045,
+            "resourceLoadDuration": 1038.7690000019074,
+            "elementRenderDelay": 26.378999998092652
+          }
+        }
+      },
+      {
+        "target": "cases-en",
+        "repeat": 3,
+        "sameLcpElement": true,
+        "sameImageRequestPath": true,
+        "sameResourceSizeAndMimeType": true,
+        "sameVisualSlot": true,
+        "imageRequestPath": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+        "resourceSizeBytes": 46692,
+        "boundingRect": {
+          "top": 484,
+          "bottom": 676,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "before": {
+          "lcpMs": 2574.554,
+          "loading": "lazy",
+          "discovery": {
+            "priorityHinted": false,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": false
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 265.421,
+            "resourceLoadDelay": 548.083,
+            "resourceLoadDuration": 1685.381,
+            "elementRenderDelay": 75.669
+          }
+        },
+        "after": {
+          "lcpMs": 1348,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "discovery": {
+            "priorityHinted": true,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": true
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 305.32500000190737,
+            "resourceLoadDelay": 70.26999999809266,
+            "resourceLoadDuration": 947.163,
+            "elementRenderDelay": 25.242
+          }
+        }
+      },
+      {
+        "target": "cases-pt",
+        "repeat": 1,
+        "sameLcpElement": true,
+        "sameImageRequestPath": true,
+        "sameResourceSizeAndMimeType": true,
+        "sameVisualSlot": true,
+        "imageRequestPath": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+        "resourceSizeBytes": 46692,
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "before": {
+          "lcpMs": 2462.46,
+          "loading": "lazy",
+          "discovery": {
+            "priorityHinted": false,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": false
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 271.445,
+            "resourceLoadDelay": 543.382,
+            "resourceLoadDuration": 1626.24,
+            "elementRenderDelay": 21.393
+          }
+        },
+        "after": {
+          "lcpMs": 1379.147,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "discovery": {
+            "priorityHinted": true,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": true
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 261.25299999809266,
+            "resourceLoadDelay": 109.06600000190735,
+            "resourceLoadDuration": 983.943,
+            "elementRenderDelay": 24.885
+          }
+        }
+      },
+      {
+        "target": "cases-pt",
+        "repeat": 2,
+        "sameLcpElement": true,
+        "sameImageRequestPath": true,
+        "sameResourceSizeAndMimeType": true,
+        "sameVisualSlot": true,
+        "imageRequestPath": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+        "resourceSizeBytes": 46692,
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "before": {
+          "lcpMs": 2517.776,
+          "loading": "lazy",
+          "discovery": {
+            "priorityHinted": false,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": false
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 270.92500000190734,
+            "resourceLoadDelay": 531.5489999980927,
+            "resourceLoadDuration": 1688.689,
+            "elementRenderDelay": 26.613
+          }
+        },
+        "after": {
+          "lcpMs": 1399.262,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "discovery": {
+            "priorityHinted": true,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": true
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 263.413,
+            "resourceLoadDelay": 109.947,
+            "resourceLoadDuration": 1000.8939999980927,
+            "elementRenderDelay": 25.008000001907348
+          }
+        }
+      },
+      {
+        "target": "cases-pt",
+        "repeat": 3,
+        "sameLcpElement": true,
+        "sameImageRequestPath": true,
+        "sameResourceSizeAndMimeType": true,
+        "sameVisualSlot": true,
+        "imageRequestPath": "/_next/image?url=%2Fmedia%2F116672d7-083c-44ea-938a-d97a3d92c195%2Foriginal&w=1080&q=75",
+        "resourceSizeBytes": 46692,
+        "boundingRect": {
+          "top": 512,
+          "bottom": 704,
+          "left": 24,
+          "right": 366,
+          "width": 342,
+          "height": 192
+        },
+        "before": {
+          "lcpMs": 2584.848,
+          "loading": "lazy",
+          "discovery": {
+            "priorityHinted": false,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": false
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 258.31300000190737,
+            "resourceLoadDelay": 525.9729999980926,
+            "resourceLoadDuration": 1720.821,
+            "elementRenderDelay": 79.741
+          }
+        },
+        "after": {
+          "lcpMs": 1383.442,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "discovery": {
+            "priorityHinted": true,
+            "requestDiscoverable": true,
+            "eagerlyLoaded": true
+          },
+          "breakdownMs": {
+            "timeToFirstByte": 257.14599999809263,
+            "resourceLoadDelay": 113.77500000190734,
+            "resourceLoadDuration": 987.4430000019073,
+            "elementRenderDelay": 25.07799999809265
+          }
+        }
+      }
+    ],
+    "phaseComparisonToPreservedRound001": [
+      {
+        "target": "cases-pt",
+        "lcpMs": {
+          "before": {
+            "median": 2517.776,
+            "min": 2462.46,
+            "max": 2584.848
+          },
+          "after": {
+            "median": 1383.442,
+            "min": 1379.147,
+            "max": 1399.262
+          }
+        },
+        "phasesMs": {
+          "timeToFirstByte": {
+            "before": {
+              "median": 270.92500000190734,
+              "min": 258.31300000190737,
+              "max": 271.445
+            },
+            "after": {
+              "median": 261.25299999809266,
+              "min": 257.14599999809263,
+              "max": 263.413
+            }
+          },
+          "resourceLoadDelay": {
+            "before": {
+              "median": 531.5489999980927,
+              "min": 525.9729999980926,
+              "max": 543.382
+            },
+            "after": {
+              "median": 109.947,
+              "min": 109.06600000190735,
+              "max": 113.77500000190734
+            }
+          },
+          "resourceLoadDuration": {
+            "before": {
+              "median": 1688.689,
+              "min": 1626.24,
+              "max": 1720.821
+            },
+            "after": {
+              "median": 987.4430000019073,
+              "min": 983.943,
+              "max": 1000.8939999980927
+            }
+          },
+          "elementRenderDelay": {
+            "before": {
+              "median": 26.613,
+              "min": 21.393,
+              "max": 79.741
+            },
+            "after": {
+              "median": 25.008000001907348,
+              "min": 24.885,
+              "max": 25.07799999809265
+            }
+          }
+        }
+      },
+      {
+        "target": "cases-en",
+        "lcpMs": {
+          "before": {
+            "median": 2569.746,
+            "min": 2530.442,
+            "max": 2574.554
+          },
+          "after": {
+            "median": 1348,
+            "min": 1326.295,
+            "max": 1442.725
+          }
+        },
+        "phasesMs": {
+          "timeToFirstByte": {
+            "before": {
+              "median": 265.421,
+              "min": 263.547,
+              "max": 272.40299999809264
+            },
+            "after": {
+              "median": 279.27500000190736,
+              "min": 273.532,
+              "max": 305.32500000190737
+            }
+          },
+          "resourceLoadDelay": {
+            "before": {
+              "median": 548.083,
+              "min": 524.6060000019073,
+              "max": 553.039
+            },
+            "after": {
+              "median": 100.94199999809265,
+              "min": 70.26999999809266,
+              "max": 104.045
+            }
+          },
+          "resourceLoadDuration": {
+            "before": {
+              "median": 1690.751,
+              "min": 1685.381,
+              "max": 1750.626
+            },
+            "after": {
+              "median": 947.163,
+              "min": 920.688,
+              "max": 1038.7690000019074
+            }
+          },
+          "elementRenderDelay": {
+            "before": {
+              "median": 23.105,
+              "min": 22.111,
+              "max": 75.669
+            },
+            "after": {
+              "median": 25.39,
+              "min": 25.242,
+              "max": 26.378999998092652
+            }
+          }
+        }
+      }
+    ],
+    "finding": "All six fresh mobile listing LHRs identify the same LCP image, request path, 46,692-byte WebP resource, and visual slot as round001. Initial HTML discovery remains available; eager loading and high fetch priority are now confirmed. The observed LCP improvement occurs primarily in image load delay and duration, consistent with the loading-priority correction.",
+    "followup": "Retain all 36 samples. Technical budget acceptance uses the unchanged median-of-three protocol for all twelve scenarios. Field INP and formal reader/content approvals remain separate."
+  },
+  "limitations": [
+    "Browser uses loopback relay; each request traverses real staging network and TLS upstream plus local forwarding overhead.",
+    "Browser-side Lighthouse throttling is applied to relay traffic, not to the shared VPS.",
+    "Staging has Basic Auth, private noindex policy and disabled Analytics; production is not measured.",
+    "Bind the run to independent SSH receipts for candidate digest and publication root before and after measurement.",
+    "Individual sample budget excursions remain in this receipt; acceptance uses the frozen median of three.",
+    "No production, field INP, NVDA, or final editorial-content approval is established by this laboratory run."
+  ],
+  "fieldInp": "unavailable-no-public-production-traffic",
+  "privateEvidencePolicy": "Raw LHR files remain under .work. Export only this compact receipt, sanitized config/calibration, and hashes; no authentication data or private raw HTML."
+}

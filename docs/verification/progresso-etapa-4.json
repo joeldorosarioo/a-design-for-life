@@ -1,12 +1,13 @@
 {
   "stage": 4,
   "approval": "A3 approved on 2026-11-06; historical A4 approved on 2026-11-08. The 2026-11-14 corrective candidate awaits complementary A4 approval; production launch remains unauthorized.",
-  "remainingEstimate": "The corrective candidate has a measured PT mobile-listing LCP budget failure requiring diagnosis, correction and revalidation. Complete fresh performance and the final dossier; final editorial content and suspended formal screen-reader inspection remain separate open criteria.",
+  "remainingEstimate": "The two remaining checklist criteria require final editorial content/PT-EN resumes and resumption of the suspended formal screen-reader inspection. Technical candidate validation and the dossier are complete. Complementary A4 approval and production prerequisites remain separate in A4.md.",
   "notes": [
     "A3 aprovada explicitamente pelo usuário em 06/11/2026; E4.1–E4.3 autorizadas, sem lançamento de produção nem serviços pagos.",
     "Pendências preservadas: PDFs PT/EN em branco temporários; domínio/configuração de produção; BLOCK-GA4-REPORT-LIMITATION; leitor de tela E2.6.2 sem reativar NVDA; navegação Next Link adiada.",
     "Historical A4 image befe22bc: pipeline 42512917835, 2335 Linux tests, 123 journeys and 48 deployed browser checks; its 36 measurements passed 12 scenarios. This evidence belongs to that image.",
-    "Corrective candidate 1640d972 is healthy in private staging with exact manifest d78eca0a, protected CI 43618818421 (2350 tests/no skips,140 E2E), a fresh verified backup and current 30-layout/18-original-frame visual acceptance. Fresh performance is in progress; see 2026-11-14-audit-validation.md."
+    "First corrective candidate 1640d972 passed operational/CI/visual checks but failed mobile-listing LCP in 2/12 scenarios across 36 retained measurements. Its evidence remains intact; the priority correction is deployed as 6788e7a.",
+    "Current candidate 6788e7a / manifest eb0af8fc passed 2352 Linux tests, 140 Chromium journeys, fresh backup/private deployment, 30-layout/18-frame visual acceptance and all 12 performance scenarios across 36 fresh samples. Independent BEFORE/AFTER preserved image/data/volumes/access; final dossier reviewed and delivered awaiting complementary A4 approval and explicit launch authorization."
   ],
   "criteria": [
     {
@@ -35,15 +36,15 @@
     },
     {
       "id": "E4.1.5",
-      "done": false,
+      "done": true,
       "summary": "Rodar `pnpm verify`, `pnpm test:e2e` e revisão de diff contra a spec. Se houver correção, gerar nova imagem candidata e validá-la em homologação; depois promover esse mesmo digest. Não reconstruir a imagem já validada durante promoção.",
-      "evidence": "Replacement source prioritizes only the first listing cover using existing eager/high support. Focused20 tests, affected lint, typecheck and formatting passed after observedRED. New protected CI/image/staging/visual/performance gates remain required. Candidate1640 passed2350 Linux tests/140 E2E and operational checks, but failed mobile listing LCP in2/12 fresh scenarios. See2026-11-14-audit-validation.md."
+      "evidence": "Candidate 6788e7a / manifest eb0af8fc passed protected CI 43623742431 (2352 Linux tests without skips, 140 Chromium journeys and build), verified fresh backup f0ea5c46, immutable private deployment and independent SSH/GHCR checks. Fresh 30-layout/18-original-frame visual acceptance and all 12 performance scenarios across 36 retained measurements passed. The same image/container/data/volumes remained across the measurement BEFORE/AFTER window. See 2026-11-14-audit-validation.md and candidate-002 receipts."
     },
     {
       "id": "E4.2.1",
       "done": false,
       "summary": "Ler `web-quality-audit`, `seo`, `performance` e `accessibility` nos respectivos gatilhos. Reexecutar comparação visual dos frames aprovados e estados relevantes; testar teclado/leitor de tela, foco, contraste, zoom, movimento reduzido e tablet. Conferir HTML SSR, canonical, alternates, sitemap, robots e `404`/`410`/`503`.",
-      "evidence": "Frames, 30 layouts iniciais, 12 layouts do sucessor, axe, teclado, contraste, foco, zoom e SEO/HTTP verificados em docs/verification/E4.2-quality.md. A inspeção formal com leitor de tela E2.6.2 segue pendente; NVDA permanece desativado."
+      "evidence": "Candidate 6788e7a: 18 original-content frames, 30 deployed layouts, 50 axe states, 240 keyboard samples, visible focus/contacts at real 200% zoom, 10 SSR pages and 9 HTTP states passed. Initial HTML first listing eager/high and Home/later lazy confirmed; 30/30 pixels/media geometry match predecessor. Formal screen-reader inspection E2.6.2 remains suspended by the user; NVDA was not resumed and this criterion stays open. See candidate-002/visual-validation.json and 2026-11-14-audit-validation.md."
     },
     {
       "id": "E4.2.2",
@@ -59,9 +60,9 @@
     },
     {
       "id": "E4.2.4",
-      "done": false,
+      "done": true,
       "summary": "Comparar medianas às metas aprovadas: LCP ≤ 2,5 s e CLS ≤ 0,1 em ambos; TBT ≤ 200 ms no celular e ≤ 150 ms no desktop. Diagnosticar JavaScript, imagens, Motion e Analytics; corrigir gargalos concretos e repetir os cenários afetados, além da suíte necessária. Não exigir nota 100 ou cobertura de 100%.",
-      "evidence": "Current fresh candidate1640:36/36 measurements complete,10/12 scenarios pass; PT/EN mobile listings fail LCP medians2517.8/2569.7ms. Their first LCP cover is lazy without priority. Minimal three-file correction has observedRED/GREEN20 focused tests, lint/typecheck/format success; new immutable candidate and fresh measurements remain required. See performance-candidate-001.json and listing-priority-verification.json under artifacts/audit-fixes/validation-2026-11-14/. Historical prior-image metrics remain in the A4 dossier."
+      "evidence": "Successor 6788e7a passed all 12 scenarios across 36 fresh measurements with original profiles and budgets unchanged. First listing-cover eager/high priority was reproduced RED then GREEN with real image tests and verified in deployed initial HTML. PT listing/mobile median LCP 2517.8 to 1383.4 ms; EN 2569.7 to 1348.0 ms, same image URL/WebP bytes/slot across all 6 comparisons. Initial failed 36 samples retained; no discard/retry. See candidate-002/performance-summary.json and listing-lcp-comparison.json under artifacts/audit-fixes/validation-2026-11-14/."
     },
     {
       "id": "E4.2.5",
@@ -101,15 +102,15 @@
     },
     {
       "id": "E4.3.5",
-      "done": false,
+      "done": true,
       "summary": "Registrar evidências frescas de `pnpm verify`, E2E, auditorias e digest. Entregar pacote final com procedimento de rollback da imagem e recuperação de dados; encerrar como **aguardando aprovação A4 e autorização explícita para lançar**.",
-      "evidence": "First corrective candidate1640 has complete source/CI/backup/operational/visual evidence and36 fresh measurements, with2 LCP scenario failures preserved. Replacement source/digest/full acceptance and final dossier remain pending. Historical A4 approval identifies its original image; production remains unauthorized. See2026-11-14-audit-validation.md."
+      "evidence": "Final corrective dossier 2026-11-14-audit-validation.md, A4 notice, evidence index and launch/recovery runbook identify exact candidate 6788e7a / manifest eb0af8fc. Protected CI 43623742431 passed 2352 Linux tests and 140 Chromium journeys; fresh backup/private deployment, independent registry/SSH, 30 deployed layouts, 18 original-content frames and all 12 scenarios across 36 fresh measurements passed. Original failed round retained. Dossier independently reviewed without outstanding findings; 34 sanitized JSON receipts, 72 metric/raw hashes, unchanged profile budgets and preserved user files independently checked. Awaiting complementary A4 approval and explicit launch authorization; reader/content criteria remain open."
     }
   ],
-  "completedItems": 11,
+  "completedItems": 14,
   "totalItems": 16,
-  "percentage": 68.8,
-  "closedTasks": [],
+  "percentage": 87.5,
+  "closedTasks": ["E4.3"],
   "totalTasks": 3,
-  "recalculatedAt": "2026-11-14T17:39:02.057Z"
+  "recalculatedAt": "2026-11-14T18:37:03.722Z"
 }

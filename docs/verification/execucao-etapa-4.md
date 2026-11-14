@@ -2,7 +2,7 @@
 
 Autorização explícita recebida em 06/11/2026: A3 aprovada e execução integral de E4.1–E4.3. A aprovação A4 e a autorização de lançamento permanecem pendentes.
 
-**Etapa 4: 68,8% do checklist (11/16 itens); 0/3 tarefas inteiramente encerradas. Aprovação registrada: A3 approved on 2026-11-06; historical A4 approved on 2026-11-08. The 2026-11-14 corrective candidate awaits complementary A4 approval; production launch remains unauthorized..**
+**Etapa 4: 87,5% do checklist (14/16 itens); 1/3 tarefas inteiramente encerradas. Aprovação registrada: A3 approved on 2026-11-06; historical A4 approved on 2026-11-08. The 2026-11-14 corrective candidate awaits complementary A4 approval; production launch remains unauthorized..**
 
 Estado inicial conferido: develop, HEAD 7331e34c7ed52e9be44fa1e4fa3247f4820d64b3; alteração preexistente em next-env.d.ts preservada.
 
@@ -32,3 +32,9 @@ A auditoria visual comparou as 18 referências na imagem inicial e repetiu os de
 Os critérios E4.1.3 e E4.2.1 continuam abertos pelo material editorial final e pela inspeção formal com leitor de tela. Os currículos PT/EN em branco são temporários, e NVDA permanece desativado. Domínio, configuração de produção, backup do alvo de produção, atualização de avisos e `BLOCK-GA4-REPORT-LIMITATION` estão no dossiê. O dossiê local é posterior à imagem e não é o identificador da promoção. [A4](A4.md) · [Runbook de lançamento](../runbooks/lancamento.md)
 
 Em 08/11/2026, o usuário aprovou A4 e adiou o lançamento. A aprovação se refere ao dossiê e ao manifesto homologado no [A4](A4.md). A autorização explícita de lançamento permanece pendente.
+
+## Corrective private staging validation - 14 November 2026
+
+The user authorized completing the missing technical checks. PR #7 resolved the four repository audit findings. Its private candidate passed CI and visual checks, but fresh measurements exposed two mobile-listing LCP failures. A real-image RED/GREEN test preceded the three-file priority correction in PR #8. The final successor `6788e7a9d4813bbda9128fb6df39cc2f69717cca`, manifest `sha256:eb0af8fcd4ecda691c4826cbb5400b984174f6bb8ecf5f1fbde653ec20fb9d24`, passed 2,352 Linux tests, 140 Chromium journeys, current visual acceptance and all 12 scenarios across 36 fresh measurements. Both rounds remain recorded; no sample or threshold was changed to gain acceptance.
+
+The reviewed workflow verified fresh encrypted backup `f0ea5c46-e830-404b-825b-5400d0d1a4a0` before deployment. Independent SSH/GHCR and the measurement BEFORE/AFTER preserved the image, container, publication root, three volumes, quotas and access guards. The dossier and runbook identify the exact compatible rollback and isolated data-recovery procedure. Final content/PDFs and the suspended formal screen-reader review remain open. The historical A4 approval keeps its original image; the successor awaits complementary A4 approval and explicit production-launch authorization. [Current dossier](2026-11-14-audit-validation.md)

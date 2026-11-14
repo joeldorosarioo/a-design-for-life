@@ -40,7 +40,7 @@ This retains the data volumes. After an interrupted test run, check the port lea
 
 ## Release status
 
-A4 was approved on 8 November 2026 for revision `befe22b`. The first corrective revision `1640d972` is healthy in private staging and passed Linux CI and visual checks, but failed mobile-listing LCP in two scenarios. A focused correction passed its local checks and awaits a new candidate. The [validation dossier](docs/verification/2026-11-14-audit-validation.md) records both the evidence and remaining gates. Launch requires explicit authorization. See the [A4 record](docs/verification/A4.md) and [launch runbook](docs/runbooks/lancamento.md).
+A4 was approved on 8 November 2026 for revision `befe22b`. The current corrective revision `6788e7a` is healthy in private staging and passed 2,352 Linux tests, 140 Chromium journeys, fresh visual acceptance and all 12 performance scenarios across 36 measurements. The [validation dossier](docs/verification/2026-11-14-audit-validation.md) preserves the earlier failed measurements and identifies the current digest and remaining gates. The successor awaits complementary A4 approval and explicit launch authorization. See the [A4 record](docs/verification/A4.md) and [launch runbook](docs/runbooks/lancamento.md).
 
 Final PT/EN content and résumés, the formal screen-reader review, and production configuration are pending. Analytics remains disabled. The A4 record lists all outstanding release gates.
 

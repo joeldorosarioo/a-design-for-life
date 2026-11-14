@@ -2,7 +2,7 @@
 
 # Execução autorizada — etapa 2
 
-**Etapa 2: 93,3% do checklist (28/30 itens); 4/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
+**Etapa 2: 96,7% do checklist (29/30 itens); 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Indicador atual e evidências: [progresso-etapa-2.md](progresso-etapa-2.md). As porcentagens16,7% nos registros anteriores identificam a métrica histórica por tarefas fechadas; não são o indicador principal atual.
 
@@ -108,3 +108,7 @@ Pacote concreto `A2-review-c9be4dc-v2` revisado e entregue no chat: 181 artefato
 ## Aprovação A2 e pausa posterior de E3
 
 Em03/11/2026 o usuário aprovou A2 com o leitor de tela pendente e autorizou E3. Depois pediu pausa até reunir as informações necessárias. A aprovação não altera29/30 nem converte E2.6.2 em concluída. Preparação E3 limitada a inventário/pesquisa; nenhuma implementação ou contratação. Diretriz local-first, conta R2 existente e decisão de e-mail ainda aberta em [retomada-etapa-3.md](evidence-index.md#archived-records 'bee7667:docs/verification/retomada-etapa-3.md').
+
+## Corrective validation - 14 November 2026
+
+The audit image-dimension correction and subsequent first-listing-cover priority fix are validated in successor `6788e7a9d4813bbda9128fb6df39cc2f69717cca`. Its protected Linux pipeline passed 2,352 tests and 140 Chromium journeys. Fresh original-content frames, all 30 deployed layouts, initial HTML priorities, keyboard/focus and native 200% zoom passed; the new capture pixels and media geometry match the predecessor. E2.3.5 is closed again. The formal screen-reader criterion E2.6.2 remains suspended by the prior user instruction. [Current dossier](2026-11-14-audit-validation.md)

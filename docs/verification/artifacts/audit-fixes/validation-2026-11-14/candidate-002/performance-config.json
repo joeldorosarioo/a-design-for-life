@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "frozenAt": "2026-11-14T18:18:58.083Z",
+  "environment": "staging",
+  "origin": "https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io",
+  "sourceSha": "6788e7a9d4813bbda9128fb6df39cc2f69717cca",
+  "imageDigest": "sha256:eb0af8fcd4ecda691c4826cbb5400b984174f6bb8ecf5f1fbde653ec20fb9d24",
+  "profileSha256": "245647c292ffed8f667eba825731f66dbabc1f539dfde2f2ed83afb45fa0b25c",
+  "selection": "Fresh candidate-002 capture confirms Payment flexibility is the heaviest case in PT/EN at both 390 px and 1440 px by all same-origin encoded resource bytes after full image decode. These weight checks are not cold Lighthouse samples.",
+  "targets": [
+    {
+      "id": "home-pt",
+      "kind": "home",
+      "locale": "pt",
+      "path": "/pt"
+    },
+    {
+      "id": "home-en",
+      "kind": "home",
+      "locale": "en",
+      "path": "/en"
+    },
+    {
+      "id": "cases-pt",
+      "kind": "cases",
+      "locale": "pt",
+      "path": "/pt/cases"
+    },
+    {
+      "id": "cases-en",
+      "kind": "cases",
+      "locale": "en",
+      "path": "/en/cases"
+    },
+    {
+      "id": "case-pt",
+      "kind": "case",
+      "locale": "pt",
+      "path": "/pt/cases/flexibilidade-de-pagamento"
+    },
+    {
+      "id": "case-en",
+      "kind": "case",
+      "locale": "en",
+      "path": "/en/cases/payment-flexibility"
+    }
+  ],
+  "sourceTree": "98e0fe5af219c5c4ffd0febb8caee5c06f82b054",
+  "pipelineRunId": 43623742431,
+  "selectionEvidence": {
+    "path": ".work/audit-follow-up/visual-candidate-002/resource-weights.json",
+    "sha256": "c4edc72227974dde47c93e646320d6c6b5d433bedd0c95e71f56162cc20691f8"
+  },
+  "premeasurementBinding": {
+    "path": ".work/audit-follow-up/candidate-002/performance-staging-before.json",
+    "sha256": "5ee0d39465657d01f8c9f84417240e2fdef6db64d4d202058faa3089410e6e92"
+  },
+  "sourceAppTree": "83c5b71576d1c20ede051ceadaf25ef51043c25f",
+  "imageConfigDigest": "sha256:75924c70aa7eae13a1f182377c7a0acdb69f017d36116593c0ebbad31db2a86d"
+}

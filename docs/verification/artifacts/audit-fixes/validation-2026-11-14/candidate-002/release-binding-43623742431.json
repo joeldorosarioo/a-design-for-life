@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "kind": "audit-follow-up-staging-release-binding",
+  "checkedAt": "2026-11-14T18:16:00.916Z",
+  "run": 43623742431,
+  "revision": "6788e7a9d4813bbda9128fb6df39cc2f69717cca",
+  "sourceTree": "98e0fe5af219c5c4ffd0febb8caee5c06f82b054",
+  "migrationTree": "863d5c13d017c3435b43a2e4e9cc36d68b06f89a",
+  "digest": "sha256:eb0af8fcd4ecda691c4826cbb5400b984174f6bb8ecf5f1fbde653ec20fb9d24",
+  "configDigest": "sha256:75924c70aa7eae13a1f182377c7a0acdb69f017d36116593c0ebbad31db2a86d",
+  "resourceUuid": "1tiveqtdwa1kxsjfhtugcjdp",
+  "containerId": "34306bee6fd5252146edf0fff2ed438118b7ac5fb87e80560f519c462f85d636",
+  "previousContainerId": "b43f41da5c611c1f89544c8b943225e1155882d8a5cb9a158610e7ae5225ad4b",
+  "previousDigest": "sha256:d78eca0ad14ec38f99acae014f548c4d717cee415daf34e019a89821cf06bd5d",
+  "backup": {
+    "id": "f0ea5c46-e830-404b-825b-5400d0d1a4a0",
+    "taskUuid": "lqtmrgwvbnnmd1oyodjisrhx",
+    "executionUuid": "aztove2glvfjjabwkf1ejynw",
+    "completedAt": "2026-11-14T18:12:45.815Z",
+    "ciphertextByteLength": 2898824,
+    "ciphertextSha256": "bde4376582dc7beb3ea2e466caf19b214dbb899f8b6f34684a97b620c00d294a",
+    "freshBeforeNewContainer": true,
+    "observedGapMs": 23956
+  },
+  "tests": {
+    "vitestFiles": {
+      "passed": 238,
+      "skipped": 0,
+      "total": 238
+    },
+    "vitest": {
+      "passed": 2352,
+      "skipped": 0,
+      "total": 2352
+    },
+    "chromiumPassed": 140
+  },
+  "preserved": {
+    "volumeIdentities": true,
+    "confirmedPublicRoot": true,
+    "userAndLimits": true,
+    "logRotation": true,
+    "runningContainerCount": true,
+    "migrationTree": true
+  },
+  "access": {
+    "authenticatedRoutesPassed": 6,
+    "anonymousStatus": 401,
+    "noindex": true,
+    "googleScriptsPresent": false,
+    "publicSiteEnabled": false
+  },
+  "registryMarkerIndependentlyResolved": true,
+  "productionJobsSkipped": true,
+  "productionAccessed": false,
+  "sources": [
+    {
+      "path": ".work/audit-follow-up/candidate-002/pipeline-43623742431.json",
+      "sha256": "5587aa798a30808766ed194b147225a46ecb5c62f7c94730f19a01c5c545a922"
+    },
+    {
+      "path": ".work/audit-follow-up/candidate-002/staging-before.json",
+      "sha256": "6743849647794ebe1bd5645028e44f6e6fbdad7cfb43cb4014afb1792dfb6f9f"
+    },
+    {
+      "path": ".work/audit-follow-up/candidate-002/staging-after.json",
+      "sha256": "2215f412d11ac59f9c9888bae9f3a1193710f0b40b91806af66b6d9cb6bb23dc"
+    },
+    {
+      "path": ".work/audit-follow-up/candidate-002/registry-marker-after.json",
+      "sha256": "d1bd6de1761e9b1c7dd8cfbc107bbeb21ab2950961070d483f64178cbd77f701"
+    }
+  ]
+}

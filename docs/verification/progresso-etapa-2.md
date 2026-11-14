@@ -2,7 +2,7 @@
 
 # Progresso verificável — etapa 2
 
-**93,3%: 28/30 itens; 4/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
+**96,7%: 29/30 itens; 5/6 tarefas inteiramente encerradas. Aprovação registrada: A2 approved with screen-reader work outstanding; stage3 explicitly resumed on 2026-11-03.**
 
 Antes de cada atualização, revisar novas evidências e itens afetados, atualizar os estados e executar `node scripts/recalculate-stage-progress.mjs`. O comando recalcula as contagens e deriva as tarefas fechadas; não decide sozinho se um critério foi atendido. `--check` confere sem escrever.
 
@@ -14,7 +14,7 @@ A caixa de preparação do primeiro RED pode estar concluída com a implementaç
 | ------ | ----- | ------------ |
 | E2.1   | 5/5   | Encerrada    |
 | E2.2   | 5/5   | Encerrada    |
-| E2.3   | 4/5   | Em andamento |
+| E2.3   | 5/5   | Encerrada    |
 | E2.4   | 5/5   | Encerrada    |
 | E2.5   | 5/5   | Encerrada    |
 | E2.6   | 4/5   | Em andamento |
@@ -35,7 +35,7 @@ A caixa de preparação do primeiro RED pode estar concluída com a implementaç
 - [x] **E2.3.2** Texto permitido, dupla imagem em ordem e sumário derivado. Evidência/pendência: artifacts/E2-public-pages-integration/E2-cases-unit-final-authoritative.log; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt
 - [x] **E2.3.3** Comparação tipada, dimensões/sizes e prioridade de imagens. Evidência/pendência: 2026-11-14-audit-fixes.md; artifacts/audit-fixes/2026-11-14.json: image RED/GREEN, 12 delayed-image Chromium scenarios, real native preview dimensions and final full gates (238 files; 2347 passed/3 platform skips; 125 script checks; 140 E2E; build exit0). Pinned manifests enrich legacy public snapshots; cards/covers retain existing geometry. Visual acceptance stays in E2.3.5.
 - [x] **E2.3.4** Todos os estados públicos com apresentação editorial aprovada. Evidência/pendência: artifacts/E2-negative-editorial/evidence-manifest.json;5/5HTTP exit0:404 desconhecido/privado indistinguíveis em PT/EN,HEAD/condicionais/RSC,retiradaPT410 mantendoEN200,cobertura Native ausente503/Retry60,CSS200,contatos/PDF e header sticky1440/390/texto200%. Mesma raiz capturada; fallback A1 sem estrutura preservado. Gate agregado e aceite visual seguem nas caixas próprias.
-- [ ] **E2.3.5** Gate e comparações de listagem/detalhes PT/EN e segundo EN. Evidência/pendência: Reopened for the new first-listing-cover performance correction: exact-source1640 frame/deployed acceptance passed, but the replacement source now requires matching full gates and visual/candidate confirmation. The20 focused real-image tests passed after observedRED; see2026-11-14-audit-validation.md. Historical accepted1640 visual evidence remains in artifacts/audit-fixes/validation-2026-11-14/.
+- [x] **E2.3.5** Gate e comparações de listagem/detalhes PT/EN e segundo EN. Evidência/pendência: Candidate 6788e7a: protected PR #8 and CI 43623742431 passed 2352 Linux tests without skips and 140 Chromium journeys. Fresh 18 original-content frames are byte-identical to the reviewed captures, with all reference hashes and source/merge objects verified. All 30 deployed layouts and media geometry are pixel-identical to predecessor 1640; 50 axe states, initial HTML priority guards, keyboard/focus, real 200% zoom, 10 SSR pages and 9 HTTP states passed. Explicit original-content projection and live article/pair limits remain documented. See 2026-11-14-audit-validation.md and artifacts/audit-fixes/validation-2026-11-14/candidate-002/.
 - [x] **E2.4.1** Negociação/prioridade/pesos/variantes com RED/GREEN. Evidência/pendência: E2.4.md; artifacts/E2.4/evidence-manifest.json
 - [x] **E2.4.2** Entrada307 privada e URLs explícitas sem negociação. Evidência/pendência: artifacts/E2-ui-transport-preparation/e2e-final.txt; artifacts/E2-public-pages-integration/E2-public-pages-http-first.txt
 - [x] **E2.4.3** Cookie funcional com prazo/atributos e gravação manual. Evidência/pendência: artifacts/E2-ui-transport-preparation/language-http-green.txt; artifacts/E2-ui-transport-preparation/e2e-final.txt
