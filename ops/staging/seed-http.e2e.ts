@@ -163,7 +163,7 @@ test('seeds a fresh owned target through Native HTTP, confirms ten routes and re
     }
     const settings: ReturnType<typeof stagingSeedSettings> = {
       origin: target,
-      database: 'adfl_test_runner',
+      database: new URL(process.env.DATABASE_URI!).pathname.slice(1),
       editorId: fixture.user.id,
       baselines,
       freshProvisioning: true,

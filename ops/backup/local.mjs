@@ -1,10 +1,17 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { spawnSync } from 'node:child_process';
+import { execFile, spawnSync } from 'node:child_process';
 import { createReadStream } from 'node:fs';
 import { lstat, mkdir, readFile, realpath, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { promisify } from 'node:util';
 import { parse } from 'dotenv';
+import { assertLocalDatabase } from '../../src/config/local-database.ts';
+import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory.ts';
+import {
+  acquireSharedDatabaseRuntime,
+  inspectOwnedTestDatabase,
+} from '../../testing/setup/owned-test-database.ts';
 
 const root = path.resolve(fileURLToPath(new URL('../../', import.meta.url)));
 const dockerBinary = process.platform === 'win32' ? 'docker.exe' : 'docker';
@@ -29,10 +36,22 @@ function docker(args, env = process.env) {
 }
 
 async function privateDirectory(directory) {
+  let ancestor = directory;
+  while (
+    !(await lstat(ancestor).catch((error) => {
+      if (error.code === 'ENOENT') return null;
+      throw error;
+    }))
+  )
+    ancestor = path.dirname(ancestor);
+  const normalize = (value) => (process.platform === 'win32' ? value.toLowerCase() : value);
+  requireCondition(
+    normalize(await realpath(ancestor)) === normalize(ancestor),
+    'The local backup directory must be an unlinked private directory.',
+  );
   await mkdir(directory, { recursive: true, mode: 0o700 });
   const info = await lstat(directory);
   const actual = await realpath(directory);
-  const normalize = (value) => (process.platform === 'win32' ? value.toLowerCase() : value);
   requireCondition(
     info.isDirectory() && !info.isSymbolicLink() && normalize(actual) === normalize(directory),
     'The local backup directory must be an unlinked private directory.',
@@ -110,60 +129,90 @@ function readEnvironment(entries) {
 
 export function localMediaStorageRoot(value) {
   if (value === undefined) return undefined;
-  const base = '/app/.work/private-media';
-  const selected =
-    typeof value === 'string' && path.posix.isAbsolute(value)
-      ? path.posix.normalize(value)
-      : undefined;
+  const base = path.join(root, '.work/private-media');
+  const relative =
+    typeof value === 'string' ? path.relative(base, path.resolve(root, value)) : '..';
   requireCondition(
-    selected !== undefined && (selected === base || selected.startsWith(base + '/')),
-    'The local media storage root must stay within its mounted volume.',
+    relative !== '..' && !relative.startsWith('..' + path.sep) && !path.isAbsolute(relative),
+    'The local media storage root must stay within its mounted directory.',
   );
-  return selected;
+  return path.posix.join('/app/.work/private-media', relative.replaceAll('\\', '/'));
 }
 
-async function main() {
-  requireCondition(process.argv.length === 2, 'The local backup command takes no arguments.');
-  const settings = parse(await readFile(path.join(root, '.env')));
-  const appId = docker([
-    'compose',
-    '--project-name',
-    'a-design-for-life-local',
-    '-f',
-    'compose.local.yaml',
-    'ps',
-    '--quiet',
-    'portfolio',
-  ]);
-  requireCondition(
-    /^[a-f0-9]{64}$/.test(appId),
-    'Start the local portfolio Compose service before creating a backup.',
+export async function localBackupSourceIdentity(workspace = root) {
+  const listing = spawnSync(
+    'git',
+    [
+      '-c',
+      `safe.directory=${workspace}`,
+      'ls-files',
+      '--cached',
+      '--others',
+      '--exclude-standard',
+      '-z',
+    ],
+    {
+      cwd: workspace,
+      encoding: 'utf8',
+      windowsHide: true,
+      maxBuffer: 4 * 1024 * 1024,
+    },
   );
-  const app = JSON.parse(docker(['inspect', appId]))[0];
-  const runtime = readEnvironment(app.Config.Env);
   requireCondition(
-    app.Id === appId &&
-      app.State.Running &&
-      app.Config.User === '70:70' &&
-      runtime.APP_ENV === 'local',
-    'The local portfolio runtime identity is unexpected.',
+    !listing.error && listing.status === 0,
+    'The local application source identity could not be verified.',
   );
-  for (const key of ['DATABASE_URI', 'PAYLOAD_SECRET', 'SITE_ORIGIN', 'MEDIA_BUCKET']) {
-    requireCondition(
-      settings[key] && settings[key] === runtime[key],
-      'The local portfolio must be restarted with the current private environment configuration.',
-    );
+  const files = [...new Set(listing.stdout.split('\0'))]
+    .filter((file) => file && !file.startsWith('docs/') && !file.endsWith('.md'))
+    .sort();
+  const entries = await Promise.all(
+    files.map(async (file) => {
+      const bytes = await readFile(path.resolve(workspace, file)).catch((error) => {
+        if (error.code === 'ENOENT') return null;
+        throw error;
+      });
+      return {
+        path: file,
+        sha256: bytes === null ? null : createHash('sha256').update(bytes).digest('hex'),
+      };
+    }),
+  );
+  return {
+    revision: 'draft-uncommitted',
+    sourceSha256: createHash('sha256').update(JSON.stringify(entries)).digest('hex'),
+  };
+}
+
+/** @param {(binary: string, args: string[], options: import('node:child_process').ExecFileOptionsWithStringEncoding) => Promise<{ stdout: string }>} [execute] */
+export async function runLocalBackupContainer(
+  containerId,
+  leaseLost,
+  execute = promisify(execFile),
+) {
+  const controller = new AbortController();
+  leaseLost.then(() => controller.abort());
+  try {
+    const output = await execute(dockerBinary, ['start', '--attach', containerId], {
+      cwd: root,
+      encoding: 'utf8',
+      windowsHide: true,
+      maxBuffer: 2 * 1024 * 1024,
+      signal: controller.signal,
+    });
+    controller.signal.throwIfAborted();
+    return output.stdout.trim();
+  } catch {
+    throw new Error('The local backup job failed or its database reservation was lost.');
   }
-  const database = new URL(settings.DATABASE_URI);
+}
+
+async function backupLocalApplication(settings, leaseLost) {
+  const database = assertLocalDatabase(settings.DATABASE_URI);
+  const { containerId: databaseContainerId, container } = inspectOwnedTestDatabase();
+  const runtime = readEnvironment(container.Config.Env);
   requireCondition(
-    ['postgres:', 'postgresql:'].includes(database.protocol) &&
-      ['127.0.0.1', 'localhost', '[::1]'].includes(database.hostname),
-    'The local backup requires the explicit loopback PostgreSQL connection.',
-  );
-  const publication = app.Mounts.find((mount) => mount.Destination === '/app/.work/publication');
-  requireCondition(
-    publication?.Type === 'volume' && /^[a-zA-Z0-9_.-]+$/.test(publication.Name),
-    'The local publication volume could not be identified.',
+    runtime.DATABASE_URI === settings.DATABASE_URI,
+    'The local PostgreSQL service must use the current private database configuration.',
   );
   const image = JSON.parse(docker(['image', 'inspect', 'adfl:backup-local']))[0];
   requireCondition(
@@ -172,15 +221,20 @@ async function main() {
         'A Design for Life operational backup',
     'Build the local operational backup image before creating a backup.',
   );
-  const applicationImage = JSON.parse(docker(['image', 'inspect', app.Image]))[0];
-  const applicationRevision = applicationImage.Config.Labels?.['org.opencontainers.image.revision'];
-  requireCondition(
-    applicationImage.Id === app.Image &&
-      /^sha256:[a-f0-9]{64}$/.test(app.Image) &&
-      typeof applicationRevision === 'string' &&
-      /^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/.test(applicationRevision),
-    'The local application image needs its immutable identity and source revision label.',
+  const source = await localBackupSourceIdentity();
+  const { dependencies, devDependencies, engines, packageManager, type } = JSON.parse(
+    await readFile(path.join(root, 'package.json'), 'utf8'),
   );
+  const dependencyManifest = {
+    dependencies,
+    devDependencies,
+    engines,
+    packageManager,
+    type,
+    lockSha256: createHash('sha256')
+      .update(await readFile(path.join(root, 'pnpm-lock.yaml')))
+      .digest('hex'),
+  };
   const recipient = await recipientForLocalKey();
   const store = path.join(root, '.work/backup-sets');
   await privateDirectory(store);
@@ -191,12 +245,13 @@ async function main() {
     PAYLOAD_SECRET: settings.PAYLOAD_SECRET,
     SITE_ORIGIN: settings.SITE_ORIGIN,
     MEDIA_BUCKET: settings.MEDIA_BUCKET,
-    MEDIA_STORAGE_DRIVER: runtime.MEDIA_STORAGE_DRIVER ?? 'local',
+    MEDIA_STORAGE_DRIVER: settings.MEDIA_STORAGE_DRIVER ?? 'local',
     OPS_LOCAL_DATABASE_TARGET: `${database.hostname}:${database.port || '5432'}${database.pathname}`,
     OPS_BACKUP_SOURCE: 'portfolio-local',
     OPS_BACKUP_RECIPIENT: recipient,
-    OPS_APPLICATION_IMAGE_ID: app.Image,
-    OPS_APPLICATION_REVISION: applicationRevision,
+    OPS_SOURCE_REVISION: source.revision,
+    OPS_SOURCE_SHA256: source.sourceSha256,
+    OPS_BACKUP_DEPENDENCIES: JSON.stringify(dependencyManifest),
     PUBLIC_SITE_ENABLED: 'false',
     PUBLICATION_RETRIES_ENABLED: 'false',
     PUBLICATION_RETRY_WORKER_ENABLED: 'false',
@@ -213,8 +268,9 @@ async function main() {
     'OPS_LOCAL_DATABASE_TARGET',
     'OPS_BACKUP_SOURCE',
     'OPS_BACKUP_RECIPIENT',
-    'OPS_APPLICATION_IMAGE_ID',
-    'OPS_APPLICATION_REVISION',
+    'OPS_SOURCE_REVISION',
+    'OPS_SOURCE_SHA256',
+    'OPS_BACKUP_DEPENDENCIES',
     'PUBLIC_SITE_ENABLED',
     'PUBLICATION_RETRIES_ENABLED',
     'PUBLICATION_RETRY_WORKER_ENABLED',
@@ -229,17 +285,13 @@ async function main() {
       'R2_ACCESS_KEY_ID',
       'R2_SECRET_ACCESS_KEY',
     ]) {
-      if (runtime[key] === undefined) continue;
-      requireCondition(
-        settings[key] === runtime[key],
-        'The current R2 source configuration differs from the local runtime.',
-      );
-      env[key] = runtime[key];
+      if (settings[key] === undefined) continue;
+      env[key] = settings[key];
       forwarded.push(key);
     }
   }
   if (env.MEDIA_STORAGE_DRIVER === 'local') {
-    const mediaRoot = localMediaStorageRoot(runtime.MEDIA_STORAGE_ROOT);
+    const mediaRoot = localMediaStorageRoot(settings.MEDIA_STORAGE_ROOT);
     if (mediaRoot !== undefined) {
       env.MEDIA_STORAGE_ROOT = mediaRoot;
       forwarded.push('MEDIA_STORAGE_ROOT');
@@ -254,7 +306,7 @@ async function main() {
     '--label',
     `life.adfl.local-backup-run=${runId}`,
     '--network',
-    `container:${appId}`,
+    `container:${databaseContainerId}`,
     '--user',
     '70:70',
     '--cap-drop',
@@ -264,23 +316,62 @@ async function main() {
     '--tmpfs',
     '/app/.work/backup-private:rw,noexec,nosuid,nodev,uid=70,gid=70,mode=0700',
     '--mount',
-    `type=volume,source=${publication.Name},target=/app/.work/publication,readonly,volume-nocopy`,
-    '--mount',
     `type=bind,source=${store.replaceAll('\\', '/')},target=/app/.work/backup-sets`,
   ];
+  await privateDirectory(publicRootDirectory(env));
+  const publication = path.join(root, '.work/publication');
+  const sources = [
+    ['src', '/app/src'],
+    ['ops/backup', '/app/ops/backup'],
+    ['ops/migrations', '/app/ops/migrations'],
+    ['tsconfig.json', '/app/tsconfig.json'],
+    [publication, '/app/.work/publication'],
+  ];
+  for (const [selected, destination] of sources) {
+    const file = path.resolve(root, selected);
+    requireCondition((await realpath(file)) === file, 'Linked local backup sources are refused.');
+    args.push(
+      '--mount',
+      `type=bind,source=${file.replaceAll('\\', '/')},target=${destination},readonly`,
+    );
+  }
   if (env.MEDIA_STORAGE_DRIVER === 'local') {
-    const media = app.Mounts.find((mount) => mount.Destination === '/app/.work/private-media');
-    requireCondition(
-      media?.Type === 'volume' && /^[a-zA-Z0-9_.-]+$/.test(media.Name),
-      'The local private media volume could not be identified.',
+    const media = path.join(root, '.work/private-media');
+    await privateDirectory(
+      settings.MEDIA_STORAGE_ROOT
+        ? path.resolve(root, settings.MEDIA_STORAGE_ROOT)
+        : path.join(media, env.MEDIA_BUCKET, database.pathname.slice(1)),
     );
     args.push(
       '--mount',
-      `type=volume,source=${media.Name},target=/app/.work/private-media,readonly,volume-nocopy`,
+      `type=bind,source=${media.replaceAll('\\', '/')},target=/app/.work/private-media,readonly`,
     );
   }
   for (const name of forwarded) args.push('--env', name);
-  args.push(image.Id, 'backup');
+  args.push(
+    '--entrypoint',
+    'node',
+    image.Id,
+    '--conditions=react-server',
+    '--import',
+    'tsx',
+    '--input-type=module',
+    '--eval',
+    `
+    import { createHash } from 'node:crypto';
+    import { readFile } from 'node:fs/promises';
+    const expected = JSON.parse(process.env.OPS_BACKUP_DEPENDENCIES);
+    const actual = JSON.parse(await readFile('package.json', 'utf8'));
+    for (const field of ['dependencies', 'devDependencies', 'engines', 'packageManager', 'type']) {
+      if (JSON.stringify(actual[field]) !== JSON.stringify(expected[field]))
+        throw new Error('Rebuild the local backup image for the current dependencies.');
+    }
+    if (createHash('sha256').update(await readFile('pnpm-lock.yaml')).digest('hex') !== expected.lockSha256)
+      throw new Error('Rebuild the local backup image for the current lockfile.');
+    process.argv = [process.execPath, 'ops/backup/job.ts', 'backup'];
+    await import('./ops/backup/job.ts');
+  `,
+  );
   const containerId = docker(args, env);
   requireCondition(
     /^[a-f0-9]{64}$/.test(containerId),
@@ -293,14 +384,14 @@ async function main() {
         job.Image === image.Id &&
         job.Config.Labels?.['life.adfl.local-backup-run'] === runId &&
         job.Config.User === '70:70' &&
-        job.HostConfig.NetworkMode === `container:${appId}`,
+        job.HostConfig.NetworkMode === `container:${databaseContainerId}`,
       'The acquired local backup container identity changed.',
     );
     return job;
   };
   try {
     inspect();
-    const output = docker(['start', '--attach', containerId]);
+    const output = await runLocalBackupContainer(containerId, leaseLost);
     requireCondition(inspect().State.ExitCode === 0, 'The local backup job failed.');
     const result = JSON.parse(output.split(/\r?\n/).at(-1));
     requireCondition(
@@ -311,9 +402,14 @@ async function main() {
       'The local backup completion marker could not be verified.',
     );
     requireCondition(
-      result.marker.application?.imageId === app.Image &&
-        result.marker.application?.revision === applicationRevision,
-      'The persisted backup must identify the inspected source application image and revision.',
+      result.marker.application?.revision === source.revision &&
+        result.marker.application?.sourceSha256 === source.sourceSha256 &&
+        (await localBackupSourceIdentity()).sourceSha256 === source.sourceSha256,
+      'The persisted backup must identify the unchanged host application source.',
+    );
+    requireCondition(
+      /^\d+$/.test(process.env.ADFL_SHARED_DATABASE_LEASE_PID ?? ''),
+      'The local database reservation was lost before the backup completed.',
     );
     const namespaceHash = createHash('sha256')
       .update(JSON.stringify(result.marker.namespace))
@@ -332,7 +428,7 @@ async function main() {
     console.log(
       JSON.stringify({
         ...result,
-        applicationImage: app.Image,
+        applicationSource: source,
         backupImage: image.Id,
         persistedFile: payload,
         recoveryIdentityStoredSeparately: true,
@@ -342,6 +438,21 @@ async function main() {
     const job = inspect();
     if (job.State.Running) docker(['stop', '--time', '30', containerId]);
     docker(['rm', '--volumes', containerId]);
+  }
+}
+
+async function main() {
+  requireCondition(process.argv.length === 2, 'The local backup command takes no arguments.');
+  process.chdir(root);
+  const settings = parse(await readFile(path.join(root, '.env')));
+  requireCondition(settings.APP_ENV === 'local', 'The local backup requires APP_ENV=local.');
+  assertLocalDatabase(settings.DATABASE_URI);
+  Object.assign(process.env, { APP_ENV: 'local', DATABASE_URI: settings.DATABASE_URI });
+  const release = await acquireSharedDatabaseRuntime();
+  try {
+    await backupLocalApplication(settings, release.lost);
+  } finally {
+    await release();
   }
 }
 

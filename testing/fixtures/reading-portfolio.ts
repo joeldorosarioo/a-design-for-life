@@ -32,29 +32,6 @@ export async function createReadingPortfolioFixture(key: string, serialRunner: b
     const imageEn = await mediaMetadataFixture(portfolio.payload);
     const tailKeys = Array.from({ length: 3 }, () => randomUUID());
 
-    async function publishStructural(
-      collection: 'professional-profiles' | 'site-navigation',
-      id: string,
-      data: Record<string, unknown>,
-    ) {
-      const req = await observedRequest(collection, id, await portfolio.request());
-      const token = req.headers.get('x-editorial-lease');
-      try {
-        const saved = await portfolio.payload.update({
-          collection,
-          id,
-          data: { ...data, _status: 'published' },
-          draft: false,
-          depth: 0,
-          req,
-          overrideAccess: false,
-        });
-        await confirmTestPublication(saved, await portfolio.request());
-      } finally {
-        if (token) await releaseEditorialLease(collection, id, token, await portfolio.request());
-      }
-    }
-
     // Obtain the exact singleton IDs created by the base fixture and verify their
     // namespace before updating. Never assume this worker's DB has no other cases.
     for (const locale of ['pt', 'en'] as const) {
@@ -75,7 +52,7 @@ export async function createReadingPortfolioFixture(key: string, serialRunner: b
         (_, index) =>
           `Synthetic ${locale.toUpperCase()} ${portfolio.namespace} list introduction paragraph ${index + 1}. This is test material only.`,
       ).join('\n\n');
-      await publishStructural('professional-profiles', profile.id, {
+      await portfolio.publishStructural('professional-profiles', profile.id, {
         // Spread every existing group so publication remains valid and old row
         // IDs/keys retain their identity. Tail rows leave room below the target.
         identity: profile.identity,
@@ -133,7 +110,7 @@ export async function createReadingPortfolioFixture(key: string, serialRunner: b
         !navigation?.header?.brandLabel?.includes(portfolio.namespace)
       )
         throw new Error('Reading fixture does not own this navigation singleton.');
-      await publishStructural('site-navigation', navigation.id, {
+      await portfolio.publishStructural('site-navigation', navigation.id, {
         header: navigation.header,
         footer: navigation.footer,
         controls: navigation.controls,

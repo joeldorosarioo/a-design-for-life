@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { appendFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
@@ -47,6 +48,59 @@ function settings(operation, sourceTree, env) {
   );
   if (operation === 'mark') requireValue(sha.test(env.GITHUB_SHA ?? ''), 'revision');
   return { operation, sourceTree, env };
+}
+function documentationSourceTree(selected, cwd) {
+  const approvedRevision = selected.env.APPROVED_STAGING_REVISION;
+  requireValue(sha.test(selected.env.GITHUB_SHA ?? ''), 'source-comparison');
+  const git = (...args) => {
+    try {
+      return execFileSync('git', args, {
+        cwd,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+      });
+    } catch {
+      throw new RegistryError('source-comparison');
+    }
+  };
+  requireValue(
+    git('rev-parse', 'HEAD').trim() === selected.env.GITHUB_SHA &&
+      git('rev-parse', 'HEAD^{tree}').trim() === selected.sourceTree &&
+      git('cat-file', '-t', approvedRevision).trim() === 'commit',
+    'source-comparison',
+  );
+  // Disable rename detection so moving executable input under docs cannot hide its removal.
+  const changes = git(
+    'diff',
+    '--raw',
+    '-z',
+    '--no-abbrev',
+    '--no-renames',
+    '--no-ext-diff',
+    '--no-textconv',
+    '--ignore-submodules=none',
+    approvedRevision,
+    'HEAD',
+    '--',
+  ).split('\0');
+  requireValue(changes.pop() === '' && changes.length % 2 === 0, 'source-comparison');
+  for (let index = 0; index < changes.length; index += 2) {
+    const file = changes[index + 1];
+    requireValue(
+      /^:(?:000000|100644) (?:000000|100644) [a-f0-9]{40} [a-f0-9]{40} [AMD]$/.test(
+        changes[index],
+      ) &&
+        (file === 'README.md' || file === 'AGENTS.md' || file.startsWith('docs/')),
+      'documentation-only',
+    );
+  }
+  requireValue(
+    git('status', '--porcelain=v1', '--untracked-files=all').trim() === '',
+    'source-comparison',
+  );
+  const tree = git('rev-parse', `${approvedRevision}^{tree}`).trim();
+  requireValue(sha.test(tree), 'source-comparison');
+  return tree;
 }
 async function request(
   fetchImpl,
@@ -250,11 +304,29 @@ export async function resolveTestedImage({
   sourceTree,
   env = process.env,
   fetchImpl = globalThis.fetch,
+  cwd = process.cwd(),
 }) {
   const selected = settings('resolve', sourceTree, env);
+  const approvedRevision = env.APPROVED_STAGING_REVISION;
+  const approvedDigest = env.APPROVED_IMAGE_DIGEST;
+  const documentationOnly = Boolean(approvedRevision || approvedDigest);
+  if (documentationOnly) {
+    requireValue(
+      sha.test(approvedRevision ?? '') && digestPattern.test(approvedDigest ?? ''),
+      'approval',
+    );
+    selected.sourceTree = documentationSourceTree(selected, cwd);
+  }
   const headers = await authorize(selected, fetchImpl);
-  const image = await manifest(fetchImpl, headers, `staging-tested-tree-${sourceTree}`);
-  return identity(fetchImpl, headers, selected, image);
+  const image = await manifest(
+    fetchImpl,
+    headers,
+    `staging-tested-tree-${selected.sourceTree}`,
+    documentationOnly ? approvedDigest : undefined,
+  );
+  const result = await identity(fetchImpl, headers, selected, image);
+  if (documentationOnly) requireValue(result.revision === approvedRevision, 'image-revision');
+  return result;
 }
 export async function markTestedImage({
   sourceTree,

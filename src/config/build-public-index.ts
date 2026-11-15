@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { slugSchema } from '@/features/cases';
 import { localeSchema } from '@/helpers/i18n/locale.schema';
 import type { Locale } from '@/helpers/i18n/locale.schema';
+import { staticPagePath } from '@/helpers/i18n/static-page-path';
 
 export type PublicIndexInput = {
   origin: string;
@@ -31,13 +32,6 @@ function configuredOrigin(value: string): string {
   )
     throw new TypeError('Index metadata requires a configured HTTP(S) origin.');
   return parsed.origin;
-}
-function staticPath(locale: Locale, page: 'home' | 'cases' | 'about') {
-  return page === 'home'
-    ? `/${locale}`
-    : page === 'cases'
-      ? `/${locale}/cases`
-      : `/${locale}/${locale === 'pt' ? 'sobre' : 'about'}`;
 }
 type SitemapEntry = { url: string; alternates: { languages: Record<string, string> } };
 
@@ -68,12 +62,12 @@ export function buildPublicSitemap(input: PublicIndexInput): SitemapEntry[] {
     if (!source.pages[locale]) continue;
     for (const page of ['home', 'cases', 'about'] as const) {
       entries.push({
-        url: absolute(staticPath(locale, page)),
+        url: absolute(staticPagePath(locale, page)),
         alternates: {
           languages: Object.fromEntries(
             locales
               .filter((language) => source.pages[language])
-              .map((language) => [language, absolute(staticPath(language, page))]),
+              .map((language) => [language, absolute(staticPagePath(language, page))]),
           ),
         },
       });

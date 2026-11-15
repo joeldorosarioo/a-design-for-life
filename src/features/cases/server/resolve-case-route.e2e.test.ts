@@ -8,6 +8,7 @@ import {
   observedRequest,
 } from '../../../../testing/fixtures/editorial-lifecycle';
 import { releaseEditorialLease } from '@/helpers/payload/editorial-revision';
+import { assertIsolatedTestEnvironment } from '../../../../testing/setup/test-environment';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 const password = 'Synthetic-editorial-test-password-123!';
@@ -325,11 +326,7 @@ test('confirmed routes survive a real PostgreSQL outage while unknown routes ret
   const confirmedBody = await known.text();
   const unknown = slug();
   expect((await request.get(`/pt/cases/${unknown}`)).status()).toBe(404);
-  if (
-    process.env.APP_ENV !== 'test' ||
-    !new URL(process.env.DATABASE_URI!).pathname.startsWith('/adfl_test_')
-  )
-    throw new Error('Fault injection requires isolated test database');
+  assertIsolatedTestEnvironment(process.env);
   await fixture.payload.db.execute({
     db: fixture.payload.db.drizzle,
     sql: sql`ALTER TABLE "case_routes" RENAME TO "e1_5_unavailable_case_routes"`,

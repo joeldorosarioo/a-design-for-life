@@ -1,11 +1,4 @@
-/** Interaction feedback only; no entrance, scroll or layout animation. */
-export const motionTokens = {
-  duration: { feedback: 0.18, reduced: 0.15 },
-  easing: { standard: [0.4, 0, 0.2, 1] as const },
-  distance: { feedback: 4, dismiss: 8 },
-} as const;
-
-const caseEase = motionTokens.easing.standard;
+const caseEase = [0.4, 0, 0.2, 1] as const;
 
 export const caseMotion = {
   cover: { duration: 0.72, ease: caseEase },
@@ -16,5 +9,5 @@ export const caseMotion = {
 
 export const pageMotion = {
   duration: 0.56,
-  ease: motionTokens.easing.standard,
+  ease: caseEase,
 } as const;

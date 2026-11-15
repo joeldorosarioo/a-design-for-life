@@ -10,9 +10,11 @@ import {
   mediaMetadataFixture,
   observedRequest,
 } from '../../testing/fixtures/editorial-lifecycle';
-import { publishCase } from '../features/cases/server';
-import { publishProfile } from '../features/professional-profile/server';
-import { publishNavigation } from '../features/site-navigation/server';
+import {
+  publishCase,
+  publishProfile,
+  publishNavigation,
+} from '../../testing/fixtures/editorial-commands';
 import { retryPublicationUpdate } from '../helpers/payload/publication-updates';
 import { readPublicRoot, withPublicRootWriter } from '../helpers/payload/public-root';
 import { runtimePublication } from '../helpers/payload/publication-runtime';

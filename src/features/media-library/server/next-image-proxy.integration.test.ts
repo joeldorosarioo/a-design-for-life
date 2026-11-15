@@ -22,7 +22,7 @@ import {
 } from '../../../../testing/fixtures/editorial-lifecycle';
 import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-publication';
 import { handleNextImage } from './next-image-proxy';
-import { resolveMediaAccess } from './resolve-media-access';
+import { resolveMediaDelivery } from './resolve-media-access';
 import { classifyMissingPublicMedia } from './classify-missing-public-media';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
@@ -57,10 +57,12 @@ function request(id: string, internal = false) {
 }
 async function expectBoth(id: string, status: 404 | 503) {
   expect(
-    await resolveMediaAccess(
-      { mediaId: id, variant: 'original', preview: false },
-      await createLocalReq({}, fixture.payload),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: id, variant: 'original', preview: false },
+        await createLocalReq({}, fixture.payload),
+      )
+    ).access,
   ).toEqual({ ok: false, status });
   for (const internal of [false, true]) {
     const response = await handleNextImage(request(id, internal), {

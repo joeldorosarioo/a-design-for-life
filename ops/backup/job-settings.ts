@@ -6,6 +6,7 @@ import {
   backupNamespaceSchema,
 } from './contracts';
 import { postgresDumpConnection } from './postgres-dump';
+import { matchesLocalDatabase } from '../../src/config/local-database';
 
 const stagedMigration = z.literal('true');
 const runId = z.uuid().regex(/^[a-f0-9-]+$/);
@@ -57,18 +58,19 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
   const revision = env.OPS_SOURCE_REVISION ?? '';
   const fingerprint = env.OPS_SOURCE_SHA256 || undefined;
   const applicationImage =
-    environment === 'local'
+    environment === 'local' &&
+    (env.OPS_APPLICATION_IMAGE_ID !== undefined || env.OPS_APPLICATION_REVISION !== undefined)
       ? backupImageIdentitySchema.safeParse({
           imageId: env.OPS_APPLICATION_IMAGE_ID,
           revision: env.OPS_APPLICATION_REVISION,
         })
       : undefined;
-  if (environment === 'local') {
-    if (!applicationImage?.success) throw invalid();
+  if (applicationImage) {
+    if (!applicationImage.success) throw invalid();
   } else if (
     !(sourceRevision.test(revision) && fingerprint === undefined) &&
     !(
-      environment === 'test' &&
+      (environment === 'test' || environment === 'local') &&
       revision === 'draft-uncommitted' &&
       sourceSha256.test(fingerprint ?? '')
     )
@@ -78,14 +80,7 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
   let source = env.OPS_BACKUP_SOURCE;
   if (environment === 'test') {
     const ownership = runId.safeParse(env.OPS_TEST_RUN_ID);
-    if (
-      !ownership.success ||
-      connection.PGHOST !== '127.0.0.1' ||
-      connection.PGPORT !== '25434' ||
-      connection.PGDATABASE !== 'adfl_test_ops_' + ownership.data.replaceAll('-', '') ||
-      connection.PGUSER !== 'adfl_test'
-    )
-      throw invalid();
+    if (!ownership.success || !matchesLocalDatabase(databaseUri)) throw invalid();
     source = 'ops-' + ownership.data;
   } else if (environment === 'local') {
     if (

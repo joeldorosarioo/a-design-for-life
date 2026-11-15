@@ -4,7 +4,7 @@ import path from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { promisify } from 'node:util';
-import { embeddedDatabaseTarget, stagingDatabaseOnly } from './staging-mode.mjs';
+import { embeddedDatabaseTarget, databaseOnly } from './staging-mode.mjs';
 
 const databasePort = '5432';
 const run = promisify(execFile);
@@ -80,7 +80,7 @@ export async function startLocalStack({
   waitForDatabase = probeDatabase,
 } = {}) {
   if (signal.aborted) return 0;
-  const databaseOnly = stagingDatabaseOnly(env);
+  const databaseService = databaseOnly(env);
   const { postgresEnv, user, database } = databaseSettings(env);
   const requestStop = Promise.withResolvers();
   const abort = () => requestStop.resolve('stopping');
@@ -107,7 +107,7 @@ export async function startLocalStack({
     if (opening !== 'ready') return opening === 'stopping' ? 0 : 1;
     if (signal.aborted) return 0;
 
-    if (databaseOnly) {
+    if (databaseService) {
       const closing = await Promise.race([requestStop.promise, postgres.exited]);
       return closing === 'stopping' ? 0 : 1;
     }

@@ -5,6 +5,7 @@ import { createLocalReq } from 'payload';
 import { acquireEditorialLease, editorialHead } from '../../src/helpers/payload/editorial-revision';
 import { navigationInputSchema } from '../../src/features/site-navigation/contracts/navigation.schema';
 import type { Payload } from 'payload';
+import { assertIsolatedTestEnvironment } from '../setup/test-environment';
 export function navigationFixture() {
   const data: Record<string, unknown> = {};
   for (const group of ['header', 'footer', 'controls', 'messages'] as const)
@@ -26,11 +27,7 @@ export async function observedRequest(collection: CollectionSlug, id: string, re
   return req;
 }
 export async function mediaMetadataFixture(payload: Payload, kind: 'image' | 'pdf' = 'image') {
-  if (
-    process.env.APP_ENV !== 'test' ||
-    !new URL(process.env.DATABASE_URI ?? '').pathname.startsWith('/adfl_test_')
-  )
-    throw new Error('Metadata fixture requires isolated test DB');
+  assertIsolatedTestEnvironment(process.env);
   const editor = (
     await payload.find({ collection: 'users', limit: 1, overrideAccess: true, depth: 0 })
   ).docs[0];

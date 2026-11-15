@@ -6,10 +6,3 @@ export const slugSchema = z
   .max(80, SLUG_MESSAGE)
   .regex(/^[a-z0-9-]+$/, SLUG_MESSAGE);
 export const draftSlugSchema = z.union([z.literal(''), slugSchema]).nullish();
-export const reserveCaseRouteSchema = z.object({
-  caseId: z.uuid(),
-  contentId: z.uuid(),
-  locale: z.enum(['pt', 'en']),
-  slug: slugSchema,
-});
-export type ReserveCaseRouteInput = z.infer<typeof reserveCaseRouteSchema>;

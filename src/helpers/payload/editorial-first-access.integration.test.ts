@@ -18,12 +18,14 @@ import { protectNativeFirstUserResponse } from './first-user-response';
 import { closeStagingPayload } from '../../../ops/staging/initialize';
 import { inspectOwnedTestDatabase } from '../../../testing/setup/owned-test-database';
 import { isolatedTestDatabaseUri } from '../../../testing/setup/test-environment';
+import {
+  checkpointSharedDatabase,
+  resetSharedDatabase,
+} from '../../../testing/setup/shared-database-state';
 
-type NativeClient = InstanceType<NonNullable<Payload['db']['pg']>['Client']>;
-let administrator: NativeClient;
 let makeClient: NonNullable<Payload['db']['pg']>['Client'];
 let acquired: ReturnType<typeof inspectOwnedTestDatabase>;
-const databases = new Set<string>();
+let restoreBaseline: (() => Promise<void>) | undefined;
 const payloads = new Set<Payload>();
 const password = 'Synthetic-browser-first-access-password-123!';
 const siteOrigin = 'https://native-first-access.example.invalid';
@@ -42,10 +44,8 @@ function assertOwned() {
 }
 function assertDatabase(database: string) {
   assertOwned();
-  if (!/^adfl_test_first_access_[a-f0-9]{32}$/.test(database) || !databases.has(database))
-    throw new Error(
-      'Native first-access proof refuses a database outside its own creation receipt.',
-    );
+  if (database !== decodeURIComponent(new URL(isolatedTestDatabaseUri).pathname.slice(1)))
+    throw new Error('Native first-access proof requires the shared local database.');
 }
 async function target(
   hooks: {
@@ -54,9 +54,10 @@ async function target(
   } = {},
 ): Promise<Target> {
   assertOwned();
-  const database = `adfl_test_first_access_${randomUUID().replaceAll('-', '')}`;
-  await administrator.query(`CREATE DATABASE "${database}"`);
-  databases.add(database);
+  for (const payload of payloads) await closeStagingPayload(payload);
+  payloads.clear();
+  await resetSharedDatabase();
+  const database = decodeURIComponent(new URL(isolatedTestDatabaseUri).pathname.slice(1));
   assertDatabase(database);
   const connection = new URL(isolatedTestDatabaseUri);
   connection.pathname = `/${database}`;
@@ -188,6 +189,7 @@ async function waitFor(promise: Promise<void>) {
 
 beforeAll(async () => {
   acquired = inspectOwnedTestDatabase();
+  restoreBaseline = await checkpointSharedDatabase();
   const nativeConfig = await config;
   const base = await getPayload({
     config: {
@@ -201,19 +203,11 @@ beforeAll(async () => {
   });
   makeClient = base.db.pg!.Client;
   await base.destroy();
-  administrator = new makeClient({ connectionString: isolatedTestDatabaseUri });
-  await administrator.connect();
 });
 afterAll(async () => {
   if (acquired) assertOwned();
   for (const payload of payloads) await closeStagingPayload(payload);
-  if (administrator) {
-    for (const database of databases) {
-      assertDatabase(database);
-      await administrator.query(`DROP DATABASE "${database}"`);
-    }
-    await administrator.end();
-  }
+  if (restoreBaseline) await restoreBaseline();
 });
 
 it('uses Native first registration, commits one editor/four drafts and a cookie session, then closes public account creation', async () => {

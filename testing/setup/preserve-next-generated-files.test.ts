@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { lstat, mkdir, mkdtemp, readFile, rename, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { expect, it } from 'vitest';
@@ -90,3 +90,94 @@ it('refuses a public output namespace before changing source files', async () =>
     expect(await readFile(path.join(root, 'tsconfig.json'), 'utf8')).toBe(configBefore);
   });
 });
+
+it('removes only its reserved test build after restoring sources and leaves internal link targets intact', async () => {
+  await workspace(async (root) => {
+    const saved = await preserveNextGeneratedFiles({ root, distDir });
+    expect(saved).toHaveProperty('reserveTestBuild', expect.any(Function));
+    const cleanup = await saved.reserveTestBuild();
+    const directory = path.join(root, distDir);
+    const privateDirectory = path.join(root, 'private-data');
+    await mkdir(privateDirectory);
+    await writeFile(path.join(privateDirectory, 'keep.txt'), 'private fixture');
+    await mkdir(path.join(directory, 'standalone'));
+    await writeFile(path.join(directory, 'BUILD_ID'), 'synthetic-owned-build');
+    await symlink(
+      privateDirectory,
+      path.join(directory, 'standalone/private-link'),
+      process.platform === 'win32' ? 'junction' : 'dir',
+    );
+    await emulateNext(root);
+    await saved.restore();
+    await cleanup();
+    await expect(lstat(directory)).rejects.toMatchObject({ code: 'ENOENT' });
+    expect(await readFile(path.join(privateDirectory, 'keep.txt'), 'utf8')).toBe('private fixture');
+    expect(await readFile(path.join(root, 'next-env.d.ts'), 'utf8')).toBe(envBefore);
+    expect(await readFile(saved.checkpoint, 'utf8')).toContain('base64');
+  });
+});
+
+it('does not adopt or remove an already existing test build', async () => {
+  await workspace(async (root) => {
+    const directory = path.join(root, distDir);
+    await mkdir(directory, { recursive: true });
+    await writeFile(path.join(directory, 'keep.txt'), 'pre-existing build');
+    const saved = await preserveNextGeneratedFiles({ root, distDir });
+    await expect(saved.reserveTestBuild()).rejects.toMatchObject({ code: 'EEXIST' });
+    expect(await readFile(path.join(directory, 'keep.txt'), 'utf8')).toBe('pre-existing build');
+  });
+});
+
+it('never reserves the persistent development build for cleanup', async () => {
+  await workspace(async (root) => {
+    const directory = path.join(root, '.work/next-build');
+    await mkdir(directory, { recursive: true });
+    await writeFile(path.join(directory, 'keep.txt'), 'development build');
+    const saved = await preserveNextGeneratedFiles({ root, distDir: '.work/next-build' });
+    await expect(saved.reserveTestBuild()).rejects.toThrow('test build');
+    expect(await readFile(path.join(directory, 'keep.txt'), 'utf8')).toBe('development build');
+  });
+});
+
+it.each(['Next type paths', 'concurrent user edit'])(
+  'keeps the owned build when %s have not been restored',
+  async (kind) => {
+    await workspace(async (root) => {
+      const saved = await preserveNextGeneratedFiles({ root, distDir });
+      const cleanup = await saved.reserveTestBuild();
+      const artifact = path.join(root, distDir, 'keep.txt');
+      await writeFile(artifact, 'owned build');
+      if (kind === 'Next type paths') await emulateNext(root);
+      else await writeFile(path.join(root, 'next-env.d.ts'), '// concurrent user edit\n');
+      await expect(cleanup()).rejects.toThrow('restored');
+      expect(await readFile(artifact, 'utf8')).toBe('owned build');
+    });
+  },
+);
+
+it.each(['replacement directory', 'linked directory'])(
+  'refuses cleanup after the owned directory becomes a %s',
+  async (kind) => {
+    await workspace(async (root) => {
+      const saved = await preserveNextGeneratedFiles({ root, distDir });
+      const cleanup = await saved.reserveTestBuild();
+      const directory = path.join(root, distDir);
+      const original = directory + '-original';
+      await writeFile(path.join(directory, 'keep.txt'), 'original owned build');
+      await rename(directory, original);
+      const replacement = path.join(root, 'replacement-data');
+      await mkdir(replacement);
+      await writeFile(path.join(replacement, 'keep.txt'), 'unowned data');
+      if (kind === 'linked directory')
+        await symlink(replacement, directory, process.platform === 'win32' ? 'junction' : 'dir');
+      else {
+        await mkdir(directory);
+        await writeFile(path.join(directory, 'keep.txt'), 'unowned data');
+      }
+      await expect(cleanup()).rejects.toThrow(/linked|identity/);
+      expect(await readFile(path.join(original, 'keep.txt'), 'utf8')).toBe('original owned build');
+      expect(await readFile(path.join(directory, 'keep.txt'), 'utf8')).toBe('unowned data');
+      expect(await readFile(path.join(replacement, 'keep.txt'), 'utf8')).toBe('unowned data');
+    });
+  },
+);

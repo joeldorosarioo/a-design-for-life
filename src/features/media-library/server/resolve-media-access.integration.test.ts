@@ -11,7 +11,7 @@ import {
   casePublicationFixture,
   observedRequest,
 } from '../../../../testing/fixtures/editorial-lifecycle';
-import { resolveMediaAccess } from './resolve-media-access';
+import { resolveMediaDelivery } from './resolve-media-access';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
   fixture = await createEditorialPayloadFixture('e1.6-media-delivery');
@@ -20,10 +20,10 @@ afterAll(async () => {
   await fixture?.payload.destroy();
 });
 const delivery = async (id: string, preview = false, variant = 'original') =>
-  resolveMediaAccess(
+  resolveMediaDelivery(
     { mediaId: id, variant, preview },
     preview ? await fixture.request() : await createLocalReq({}, fixture.payload),
-  );
+  ).then(({ access }) => access);
 it('keeps unapproved originals/variants private and permits authenticated preview of real bytes', async () => {
   const media = await mediaMetadataFixture(fixture.payload);
   expect(await delivery(media.id)).toEqual({ ok: false, status: 404 });
@@ -32,10 +32,12 @@ it('keeps unapproved originals/variants private and permits authenticated previe
   expect(preview.ok).toBe(true);
   if (preview.ok) expect(preview.value.bytes.byteLength).toBeGreaterThan(50);
   expect(
-    await resolveMediaAccess(
-      { mediaId: media.id, variant: 'original', preview: true },
-      await createLocalReq({}, fixture.payload),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: media.id, variant: 'original', preview: true },
+        await createLocalReq({}, fixture.payload),
+      )
+    ).access,
   ).toEqual({ ok: false, status: 401 });
 });
 it('publishing PT grants only its approved media, shares an asset with private EN, and protects trash/delete', async () => {

@@ -1,9 +1,9 @@
-import { existsSync, constants } from 'node:fs';
+import { constants } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, readdir, rm, writeFile, lstat, copyFile } from 'node:fs/promises';
 import path from 'node:path';
 import { afterAll, beforeAll, expect, it } from 'vitest';
-import { getPayload, type Payload } from 'payload';
+import { createLocalReq, getPayload, type Payload } from 'payload';
 import { postgresAdapter, type PostgresAdapter } from '@payloadcms/db-postgres';
 import config from '@payload-config';
 import type { Media } from '@/payload-types';
@@ -21,17 +21,18 @@ import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-p
 import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { readPublicRoot, type PublicRoot } from '@/helpers/payload/public-root';
 import { withNativeBackupSnapshot } from '@/helpers/payload/backup-snapshot';
+import {
+  checkpointSharedDatabase,
+  resetSharedDatabase,
+  runSharedDatabaseTool,
+} from '../../../../testing/setup/shared-database-state';
 import { runBackup, type BackupSource } from '../../../../ops/backup/run';
 import { restoreBackup } from '../../../../ops/backup/restore';
 import {
   createLocalBackupRepository,
   localBackupRepositoryDirectory,
 } from '../../../../ops/backup/repository';
-import {
-  assertPrivateBackupOutput,
-  hashBackupFile,
-  runBackupTool,
-} from '../../../../ops/backup/tools';
+import { assertPrivateBackupOutput, hashBackupFile } from '../../../../ops/backup/tools';
 import type { StoredObject } from '@/helpers/storage/object-storage';
 import type {
   LocalRestoreContext,
@@ -59,7 +60,7 @@ async function persistProofMetadata(value: unknown) {
   const runId = process.env.ADFL_TEST_RUN_ID;
   if (!/^[a-f0-9-]{36}$/.test(runId ?? ''))
     throw new Error('Owned encrypted proof run unavailable');
-  const directory = path.resolve('docs/verification/artifacts/E3-backup');
+  const directory = path.resolve('.work/verification/E3-backup');
   await mkdir(directory, { recursive: true });
   const file = path.join(directory, `encrypted-native-events-${runId}.jsonl`);
   const { appendFile } = await import('node:fs/promises');
@@ -134,7 +135,7 @@ async function closeOwnedPayload(payload: Payload) {
   });
 }
 afterAll(async () => {
-  if (fixture) await closeOwnedPayload(fixture.payload);
+  if (fixture && ownedPools.has(fixture.payload)) await closeOwnedPayload(fixture.payload);
 });
 
 async function sourceFingerprint(roots: string[]) {
@@ -157,21 +158,11 @@ async function sourceFingerprint(roots: string[]) {
     );
   return fingerprint.digest('hex');
 }
-function dockerExecutable() {
-  const name = process.platform === 'win32' ? 'docker.exe' : 'docker';
-  const resolved = (process.env.PATH ?? '')
-    .split(path.delimiter)
-    .map((directory) => path.resolve(directory, name))
-    .find((selected) => existsSync(selected));
-  if (!resolved) throw new Error('Docker tool setup unavailable; not a feature RED');
-  return resolved;
-}
 nativeProof(
-  'creates and restores a real encrypted native snapshot A after source B without changing original files',
+  'restores a real encrypted native snapshot A in the shared local database and recovers source B afterward',
   async () => {
     const tools = toolConfig!;
     const owned = inspectOwnedTestDatabase();
-    const binary = dockerExecutable();
     const id = randomUUID();
     const namespace = {
       project: 'a-design-for-life' as const,
@@ -181,7 +172,7 @@ nativeProof(
     const repository = await createLocalBackupRepository({ namespace });
     const repositoryRoot = localBackupRepositoryDirectory(namespace);
     async function execOwned(input: {
-      tool: string;
+      tool: 'psql' | 'pg_dump' | 'pg_restore';
       args: readonly string[];
       inputFile?: string;
       outputFile?: string;
@@ -189,17 +180,9 @@ nativeProof(
       const current = inspectOwnedTestDatabase();
       if (current.containerId !== owned.containerId || current.networkId !== owned.networkId)
         throw new Error('Encrypted proof owned PostgreSQL changed');
-      const result = await runBackupTool({
-        binary,
-        args: [
-          'exec',
-          ...(input.inputFile ? ['--interactive'] : []),
-          owned.containerId,
-          input.tool,
-          ...input.args,
-        ],
-        ...(input.inputFile ? { inputFile: input.inputFile } : {}),
-        ...(input.outputFile ? { outputFile: input.outputFile } : {}),
+      const stdout = await runSharedDatabaseTool(input.tool, [...input.args], {
+        inputFile: input.inputFile,
+        outputFile: input.outputFile,
       });
       await persistProofMetadata({
         event: 'encrypted-proof-tool',
@@ -209,12 +192,20 @@ nativeProof(
         args: input.args,
         streamedInput: Boolean(input.inputFile),
         streamedOutput: Boolean(input.outputFile),
-        stdout: result.stdout,
-        exitCode: result.exitCode,
+        stdout,
+        exitCode: 0,
       });
-      return result.stdout;
+      return stdout;
     }
     const postgres: OwnedPostgresBoundary = {
+      async checkpoint() {
+        const restore = await checkpointSharedDatabase();
+        return async () => {
+          await restore();
+          sourceRecovered = true;
+        };
+      },
+      reset: resetSharedDatabase,
       async assertOwned() {
         const current = inspectOwnedTestDatabase();
         if (current.containerId !== owned.containerId || current.networkId !== owned.networkId)
@@ -231,6 +222,15 @@ nativeProof(
     let expectedRoot: PublicRoot | null = null;
     let lateMedia = '';
     let captures = 0;
+    let sourceClosed = false;
+    let sourceRecovered = false;
+    async function reopenSource() {
+      fixture.payload = await getPayload({ config, key: `encrypted-source-recovered-${id}` });
+      fixture.request = () =>
+        createLocalReq({ user: { ...fixture.user, collection: 'users' } }, fixture.payload);
+      await registerOwnedPayload(fixture.payload);
+      sourceClosed = false;
+    }
     let targetSummary:
       { databaseName: string; mediaBucket: string; publicationNamespace: string } | undefined;
     try {
@@ -328,8 +328,8 @@ nativeProof(
                   await execOwned({
                     tool: 'pg_dump',
                     args: [
-                      '--username=adfl_test',
-                      '--dbname=adfl_test_runner',
+                      `--username=${decodeURIComponent(new URL(process.env.DATABASE_URI!).username)}`,
+                      `--dbname=${decodeURIComponent(new URL(process.env.DATABASE_URI!).pathname.slice(1))}`,
                       '--format=custom',
                       `--snapshot=${snapshot.snapshotId}`,
                       '--no-owner',
@@ -355,6 +355,8 @@ nativeProof(
       expect(backup.marker.complete).toBe(true);
       expect(expectedObjects.length).toBeGreaterThanOrEqual(3);
       let verified = false;
+      await closeOwnedPayload(fixture.payload);
+      sourceClosed = true;
       const restored = await restoreBackup({
         backupId: backup.marker.id,
         repository,
@@ -453,6 +455,7 @@ nativeProof(
           }
         },
       });
+      await reopenSource();
       expect(verified).toBe(true);
       expect(restored.restoredObjectCount).toBe(expectedObjects.length);
       expect(await storage.get(imageReference)).toEqual(originalBytes);
@@ -511,7 +514,7 @@ nativeProof(
         restoreDurationMs: restored.durationMs,
         restoredObjectCount: restored.restoredObjectCount,
         target: targetSummary,
-        originalSourcePreserved: true,
+        sourceStateRecoveredAfterRestore: sourceRecovered,
         restoredAAfterConcurrentB: true,
         ptEnVersionsRoutesTrashObjectsRootVerified: true,
         actualAgeExecuted: true,
@@ -520,6 +523,7 @@ nativeProof(
         httpAuthRestoreExecuted: false,
       });
     } finally {
+      if (sourceClosed && sourceRecovered) await reopenSource();
       if (
         path.dirname(repositoryRoot) !== path.resolve('.work/backup-sets') ||
         !/^[a-f0-9]{64}$/.test(path.basename(repositoryRoot))

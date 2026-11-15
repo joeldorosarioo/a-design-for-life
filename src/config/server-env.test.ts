@@ -4,7 +4,7 @@ import { readServerEnv } from './server-env';
 
 const validInput = {
   PAYLOAD_SECRET: 'synthetic-test-secret-at-least-thirty-two-characters',
-  DATABASE_URI: 'postgres://adfl:local@127.0.0.1:55433/adfl_test_base',
+  DATABASE_URI: 'postgres://adfl:local@127.0.0.1:5432/a_design_for_life_rebuild',
   NODE_ENV: 'test',
   APP_ENV: 'test',
   SITE_ORIGIN: 'http://127.0.0.1:3000',
@@ -103,7 +103,7 @@ it('confines an explicit test media root to its isolated bucket and database nam
       /MEDIA_STORAGE_ROOT/,
     );
   }
-  const root = path.resolve('.work/private-media/adfl-test-files/adfl_test_base');
+  const root = path.resolve('.work/private-media/adfl-test-files/a_design_for_life_rebuild');
   expect(readServerEnv({ ...validInput, MEDIA_STORAGE_ROOT: root }).MEDIA_STORAGE_ROOT).toBe(root);
 });
 
@@ -177,7 +177,7 @@ it('allows public HTTP receipt verification only in an explicit isolated test ru
       ...validInput,
       [selected]: 'true',
       INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
-      DATABASE_URI: 'postgres://adfl:local@127.0.0.1:55434/adfl_test_runner',
+      DATABASE_URI: validInput.DATABASE_URI,
       MEDIA_BUCKET: 'adfl-test-runner',
     }),
   ).toHaveProperty(selected, 'true');
@@ -186,7 +186,7 @@ it('allows public HTTP receipt verification only in an explicit isolated test ru
 describe('explicit browser first access', () => {
   const firstAccess = {
     ...validInput,
-    DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+    DATABASE_URI: validInput.DATABASE_URI,
     MEDIA_BUCKET: 'adfl-test-runner',
     PUBLIC_SITE_ENABLED: 'false',
     EDITORIAL_FIRST_ACCESS_ENABLED: 'true',

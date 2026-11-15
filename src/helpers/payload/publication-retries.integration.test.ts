@@ -16,15 +16,15 @@ import { inspectOwnedTestDatabase } from '../../../testing/setup/owned-test-data
 import * as retryMigration from '../../migrations/20261104_012603_publication_retry_metadata';
 import * as coordinationMigration from '../../migrations/20261030_124550_publication_coordination';
 import { readPublicRoot } from './public-root';
+import { readPublicationRetry } from '../../../testing/fixtures/editorial-commands';
 import {
   claimPublicationRetry,
-  readPublicationRetry,
   recordPublicationRetryOutcome,
   schedulePublicationRetry,
   type PublicationRetryClaim,
 } from './publication-retries';
 
-// This suite is prepared for a separately coordinated owned PostgreSQL55434 run.
+// The serial runner holds the shared local database lease for this suite.
 // No inline schema creation: the first RED must observe missing Native persistence.
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 const retryCollection = 'publication-retries' as CollectionSlug;
@@ -43,7 +43,7 @@ beforeAll(async () => {
     postgres: version.rows[0]?.server_version,
     node: process.versions.node,
     enabled: process.env.PUBLICATION_RETRIES_ENABLED,
-    databasePort: '55434',
+    databasePort: new URL(process.env.DATABASE_URI!).port,
   });
 });
 afterAll(async () => {

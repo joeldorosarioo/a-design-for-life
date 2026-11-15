@@ -1,5 +1,4 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { existsSync } from 'node:fs';
 import { lstat, readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { postgresAdapter } from '@payloadcms/db-postgres';
@@ -15,7 +14,12 @@ import {
 import { publicRootDirectory } from '../helpers/payload/public-root-directory';
 import { inspectOwnedTestDatabase } from '../../testing/setup/owned-test-database';
 import { isolatedTestDatabaseUri } from '../../testing/setup/test-environment';
-import { runBackupTool } from '../../ops/backup/tools';
+import {
+  checkpointSharedDatabase,
+  resetSharedDatabase,
+  restoreSharedDatabase,
+  runSharedDatabaseTool,
+} from '../../testing/setup/shared-database-state';
 import {
   createLocalBackupRepository,
   localBackupRepositoryDirectory,
@@ -30,8 +34,10 @@ const native = toolsConfigPath ? it : it.skip;
 type ToolConfig = { ageBinary: string; tarBinary: string; identityPath: string; recipient: string };
 type Client = { release: () => void };
 type Pool = Payload['db']['pool'] & { _clients: Client[]; _idle: { client: Client }[] };
+const closedPayloads = new WeakSet<Payload>();
 
 async function closeOwnPayload(payload: Payload) {
+  if (closedPayloads.has(payload)) return;
   const pool = payload.db.pool as Pool | undefined;
   if (!pool) return payload.destroy();
   const checkout = () =>
@@ -55,6 +61,7 @@ async function closeOwnPayload(payload: Payload) {
     throw new Error('The owned Payload pool changed before its bootstrap checkout release.');
   bootstrap.release();
   await pool.end();
+  closedPayloads.add(payload);
 }
 
 native(
@@ -63,23 +70,14 @@ native(
     const tools = JSON.parse(await readFile(toolsConfigPath!, 'utf8')) as ToolConfig;
     const owned = inspectOwnedTestDatabase();
     const runId = process.env.ADFL_TEST_RUN_ID!;
-    const id = randomUUID().replaceAll('-', '');
-    const database = `adfl_test_migration_${id}`;
-    const recoveryDatabase = `adfl_test_migration_restore_${id}`;
+    const id = runId.replaceAll('-', '');
     const uri = new URL(isolatedTestDatabaseUri);
-    uri.pathname = `/${database}`;
+    const database = decodeURIComponent(uri.pathname.slice(1));
     const siteOrigin = 'http://127.0.0.1:3106';
     const publication = publicRootDirectory({
       APP_ENV: 'test',
       SITE_ORIGIN: siteOrigin,
       DATABASE_URI: uri.href,
-    });
-    const recoveryUri = new URL(uri.href);
-    recoveryUri.pathname = `/${recoveryDatabase}`;
-    const recoveryPublication = publicRootDirectory({
-      APP_ENV: 'test',
-      SITE_ORIGIN: siteOrigin,
-      DATABASE_URI: recoveryUri.href,
     });
     const namespace = {
       project: 'a-design-for-life',
@@ -87,13 +85,6 @@ native(
       source: `migration-${id}`,
     } as const;
     const source = path.resolve('.work/private-media', `adfl-test-migration-${id}`);
-    const docker = (process.env.PATH ?? '')
-      .split(path.delimiter)
-      .map((directory) =>
-        path.resolve(directory, process.platform === 'win32' ? 'docker.exe' : 'docker'),
-      )
-      .find((candidate) => existsSync(candidate));
-    if (!docker) throw new Error('Missing Docker tool for the isolated Native proof.');
     const assertOwned = () => {
       const current = inspectOwnedTestDatabase();
       if (
@@ -105,27 +96,19 @@ native(
       return { containerId: current.containerId, networkId: current.networkId, runId };
     };
     async function invoke(input: {
-      tool: 'createdb' | 'dropdb' | 'pg_dump' | 'pg_restore' | 'psql';
+      tool: 'pg_dump';
       args: readonly string[];
       inputFile?: string;
       outputFile?: string;
     }) {
       assertOwned();
-      const result = await runBackupTool({
-        binary: docker!,
-        args: [
-          'exec',
-          ...(input.inputFile ? ['--interactive'] : []),
-          owned.containerId,
-          input.tool,
-          ...input.args,
-        ],
+      return runSharedDatabaseTool(input.tool, [...input.args], {
         inputFile: input.inputFile,
         outputFile: input.outputFile,
       });
-      return result.stdout;
     }
     const payloads: Payload[] = [];
+    let nextPayload = 0;
     const previous = migrations.slice(0, -1);
     const schema = createHash('sha256');
     for (const { name } of previous) {
@@ -161,7 +144,7 @@ native(
         },
         disableDBConnect: true,
         disableOnInit: true,
-        key: `controlled-proof-${id}-${payloads.length}`,
+        key: `controlled-proof-${id}-${nextPayload++}`,
       });
       payloads.push(payload);
       return payload;
@@ -186,7 +169,7 @@ native(
           await invoke({
             tool: 'pg_dump',
             args: [
-              '--username=adfl_test',
+              `--username=${decodeURIComponent(uri.username)}`,
               `--dbname=${database}`,
               '--format=custom',
               `--snapshot=${snapshotId}`,
@@ -198,12 +181,11 @@ native(
         },
       },
     };
-    let created = false;
-    let recoveryCreated = false;
+    let restoreBaseline: (() => Promise<void>) | undefined;
     try {
       vi.stubEnv('PUBLICATION_RETRIES_ENABLED', 'false');
-      await invoke({ tool: 'createdb', args: ['--username=adfl_test', database] });
-      created = true;
+      restoreBaseline = await checkpointSharedDatabase();
+      await resetSharedDatabase();
       const old = await initialize();
       await old.db.connect!();
       // Payload's generic type uses unknown arguments. This owned test invokes
@@ -320,20 +302,9 @@ native(
         const restoredRoot = publicRootSchema.parse(
           JSON.parse(await readFile(publicRoot.path, 'utf8')),
         );
-        await invoke({ tool: 'createdb', args: ['--username=adfl_test', recoveryDatabase] });
-        recoveryCreated = true;
-        await invoke({
-          tool: 'pg_restore',
-          args: [
-            '--username=adfl_test',
-            `--dbname=${recoveryDatabase}`,
-            '--single-transaction',
-            '--no-owner',
-            '--no-acl',
-          ],
-          inputFile: dump.path,
-        });
-        const recovery = await initialize(recoveryUri.href);
+        for (const payload of payloads.splice(0).reverse()) await closeOwnPayload(payload);
+        await restoreSharedDatabase(dump.path);
+        const recovery = await initialize();
         await recovery.db.connect!();
         expect(planControlledMigration(await history(recovery))).toBe('pending');
         expect(
@@ -350,8 +321,11 @@ native(
             })
           ).user,
         ).toMatchObject({ id: record.id });
-        await withPublicRootWriter(recoveryPublication, (_current, commit) => commit(restoredRoot));
-        expect(await readPublicRoot(recoveryPublication)).toEqual(root);
+        assertUnlinkedWorkspacePath(publication);
+        await rm(publication, { recursive: true, force: true });
+        expect(await readPublicRoot(publication)).toBeNull();
+        await withPublicRootWriter(publication, (_current, commit) => commit(restoredRoot));
+        expect(await readPublicRoot(publication)).toEqual(root);
       });
       process.stdout.write(
         JSON.stringify({
@@ -374,15 +348,8 @@ native(
       vi.unstubAllEnvs();
       assertOwned();
       for (const payload of payloads.reverse()) await closeOwnPayload(payload);
-      if (recoveryCreated)
-        await invoke({ tool: 'dropdb', args: ['--username=adfl_test', recoveryDatabase] });
-      if (created) await invoke({ tool: 'dropdb', args: ['--username=adfl_test', database] });
-      for (const directory of [
-        source,
-        publication,
-        recoveryPublication,
-        localBackupRepositoryDirectory(namespace),
-      ]) {
+      if (restoreBaseline) await restoreBaseline();
+      for (const directory of [source, publication, localBackupRepositoryDirectory(namespace)]) {
         if (
           !(await lstat(directory).catch((error: NodeJS.ErrnoException) => {
             if (error.code !== 'ENOENT') throw error;

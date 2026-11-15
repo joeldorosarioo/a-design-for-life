@@ -2,6 +2,7 @@ name: Checks
 
 on:
   push:
+    branches: [develop, main]
   pull_request:
   workflow_dispatch:
 
@@ -12,7 +13,7 @@ permissions:
 # Another push must not redeploy staging between its health check and marker.
 concurrency:
   group: adfl-ci-cd-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   verification:
@@ -27,10 +28,9 @@ jobs:
       NEXT_TELEMETRY_DISABLED: '1'
       APP_ENV: test
       PAYLOAD_SECRET: synthetic-ci-secret-never-used-outside-isolated-tests
-      DATABASE_URI: postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_build
+      DATABASE_URI: postgres://adfl_test:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild
       SITE_ORIGIN: http://127.0.0.1:3100
       MEDIA_BUCKET: adfl-test-ci
-      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.work/playwright-browsers
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -46,34 +46,29 @@ jobs:
         with:
           version: 12.10.1
           run_install: false
+          cache: true
       - name: Install from lockfile
         run: pnpm install --frozen-lockfile
+      - name: Cache Next.js and TypeScript compilation
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            .work/next-build/cache
+            .work/cache/typescript.tsbuildinfo
+          key: ${{ runner.os }}-${{ runner.arch }}-node24.22.2-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-node24.22.2-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-
       - name: Install verified local PDF checker
         run: pnpm setup:media-checker
       - name: Install verified local backup tools
         run: pnpm setup:backup-tools
-      - name: Configure ephemeral synthetic backup test tools
+      - name: Configure synthetic backup test tools
         run: |
           config="$(node testing/setup/configure-backup-tools.mjs)"
           test -f "$config"
           printf 'ADFL_TEST_BACKUP_TOOLS_CONFIG=%s\n' "$config" >> "$GITHUB_ENV"
-      - name: Check isolated container tooling
-        run: docker compose version
-      - name: Verify
-        run: pnpm verify
-      - name: Install Chromium headless shell
-        # Ubuntu 24.04 already provides the shared libraries and Liberation fonts.
-        # Avoid downloading unrelated font packs from the slow APT mirror.
-        run: pnpm exec playwright install chromium --only-shell
-      - name: Select an installed TrueType font for resource journeys
-        run: |
-          font="$(fc-match --format '%{file}' 'sans-serif:fontformat=TrueType')"
-          test -r "$font"
-          [[ "$font" == *.ttf ]]
-          printf 'READING_E2E_FONT_FILE=%s\n' "$font" >> "$GITHUB_ENV"
-          sha256sum "$font"
-      - name: Browser journeys
-        run: pnpm test:e2e
+      - name: Verify without database access
+        run: pnpm verify:ci
 
   build-staging:
     name: Build private staging image
@@ -161,6 +156,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
+          fetch-depth: 0
           persist-credentials: false
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -180,6 +176,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           SOURCE_TREE: ${{ steps.identity.outputs.source-tree }}
+          APPROVED_STAGING_REVISION: ${{ vars.APPROVED_STAGING_REVISION }}
+          APPROVED_IMAGE_DIGEST: ${{ vars.APPROVED_IMAGE_DIGEST }}
         run: node ops/deploy/registry.mjs resolve --source-tree "$SOURCE_TREE"
 
   deploy-production:

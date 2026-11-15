@@ -13,17 +13,17 @@ function currentUserLeaseDirectory() {
   return path.join(tmpdir(), `adfl-test-runner-${identity}`);
 }
 
-// One local OS-user lease serializes the fixed port/storage namespace across checkouts and UUIDs.
-// It does not coordinate different hosts or OS users sharing a Docker daemon.
+// The same lease covers development and tests across this OS user's checkouts.
+// A PostgreSQL session lock also excludes other users of the local Docker service.
 export function acquireTestLifecycleLock(
   runId: string,
   checkoutRoot = process.cwd(),
   leaseDirectory = currentUserLeaseDirectory(),
 ) {
   if (!/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(runId))
-    throw new Error('Invalid isolated test lifecycle identity.');
+    throw new Error('Invalid shared local database lifecycle identity.');
   const directory = path.resolve(leaseDirectory);
-  const file = path.join(directory, 'postgres-55434.lock');
+  const file = path.join(directory, 'postgres-5432.lock');
   assertUnlinkedWorkspacePath(file, directory);
   mkdirSync(directory, { recursive: true, mode: 0o700 });
   const ownership = JSON.stringify({
@@ -34,7 +34,7 @@ export function acquireTestLifecycleLock(
   try {
     writeFileSync(file, ownership, { flag: 'wx', mode: 0o600 });
   } catch {
-    throw new Error('Existing current-user port55434 lifecycle lock; resource adoption refused.');
+    throw new Error('The shared local database is already reserved by development or tests.');
   }
   let held = true;
   return () => {

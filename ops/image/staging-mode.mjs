@@ -1,11 +1,15 @@
 import path from 'node:path';
 
-export function stagingDatabaseOnly(env) {
-  const selected = env.STAGING_DATABASE_ONLY;
-  if (selected === undefined || selected === 'false') return false;
+export function databaseOnly(env) {
+  const staging = env.STAGING_DATABASE_ONLY;
+  const local = env.LOCAL_DATABASE_ONLY;
+  if ([staging, local].every((value) => value === undefined || value === 'false')) return false;
+  const localMode =
+    local === 'true' && env.APP_ENV === 'local' && (staging === undefined || staging === 'false');
+  const stagingMode =
+    staging === 'true' && env.APP_ENV === 'staging' && (local === undefined || local === 'false');
   if (
-    selected !== 'true' ||
-    env.APP_ENV !== 'staging' ||
+    !(localMode || stagingMode) ||
     env.PUBLIC_SITE_ENABLED !== 'false' ||
     [
       env.PUBLICATION_RETRIES_ENABLED,
@@ -14,7 +18,7 @@ export function stagingDatabaseOnly(env) {
     ].some((value) => value !== undefined && value !== 'false')
   ) {
     throw new Error(
-      'Database-only startup requires private staging with publication workers disabled.',
+      'Database-only startup requires private staging or local mode with publication workers disabled.',
     );
   }
   return true;

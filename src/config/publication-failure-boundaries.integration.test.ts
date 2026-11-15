@@ -21,7 +21,8 @@ import {
 } from '../helpers/payload/publication-runtime';
 import { readPublicRoot, withPublicRootWriter } from '../helpers/payload/public-root';
 import { portfolioPublicationCoordinator } from './publication';
-import { publishCase, resolveCaseRoute } from '../features/cases/server';
+import { publishCase } from '../../testing/fixtures/editorial-commands';
+import { resolveCaseRoute } from '../features/cases/server';
 import { editorialHead } from '../helpers/payload/editorial-revision';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let directory: string;
@@ -444,7 +445,7 @@ it('returns a safe Local command Result when SQL becomes unavailable immediately
   await recovered(stored.latestPublicationIntent);
 });
 
-import { resolveMediaAccess } from '../features/media-library/server';
+import { resolveMediaDelivery } from '../features/media-library/server';
 it.each(['missing', 'incomplete'] as const)(
   'classifies SQL-confirmed media without %s root coverage as503, while a covered withdrawal revokes despite an unacked SQL grant',
   async (mode) => {
@@ -462,7 +463,9 @@ it.each(['missing', 'incomplete'] as const)(
         : withdrawn.cover!.media!.id;
     const privateMedia = await mediaMetadataFixture(fixture.payload);
     const access = (id: string) =>
-      resolveMediaAccess({ mediaId: id, variant: 'original', preview: false });
+      resolveMediaDelivery({ mediaId: id, variant: 'original', preview: false }).then(
+        ({ access }) => access,
+      );
     await fixture.payload.db.drizzle.execute(
       sql`ALTER TABLE publication_updates ADD CONSTRAINT e18_review_media_ack CHECK (state<>'public') NOT VALID`,
     );

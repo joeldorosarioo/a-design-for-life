@@ -30,16 +30,16 @@ afterEach(() => {
   rmSync(root, { recursive: true, force: true });
 });
 it.each([runId, otherRunId])(
-  'serializes distinct checkout roots on shared port55434 even for run %s',
+  'serializes development and tests across checkout roots on shared port5432 for run %s',
   (secondRunId) => {
     const firstRelease = acquireTestLifecycleLock(runId, firstCheckout, sharedLease);
-    const before = readFileSync(path.join(sharedLease, 'postgres-55434.lock'), 'utf8');
+    const before = readFileSync(path.join(sharedLease, 'postgres-5432.lock'), 'utf8');
     let secondRelease: (() => void) | undefined;
     try {
       expect(() => {
         secondRelease = acquireTestLifecycleLock(secondRunId, secondCheckout, sharedLease);
-      }).toThrow(/lock/i);
-      expect(readFileSync(path.join(sharedLease, 'postgres-55434.lock'), 'utf8')).toBe(before);
+      }).toThrow(/reserved/i);
+      expect(readFileSync(path.join(sharedLease, 'postgres-5432.lock'), 'utf8')).toBe(before);
     } finally {
       secondRelease?.();
       firstRelease();
@@ -55,7 +55,7 @@ it('releases only its own lease and lets a different checkout and UUID acquire i
 });
 it('refuses a changed ownership token without deleting the replacement lease', () => {
   const release = acquireTestLifecycleLock(runId, firstCheckout, sharedLease);
-  const file = path.join(sharedLease, 'postgres-55434.lock');
+  const file = path.join(sharedLease, 'postgres-5432.lock');
   writeFileSync(file, 'different-owner-token');
   expect(() => release()).toThrow(/lock changed/i);
   expect(readFileSync(file, 'utf8')).toBe('different-owner-token');
@@ -92,7 +92,7 @@ it('refuses the second checkout before its Docker/preflight boundary and permits
         secondCheckout,
         sharedLease,
       ),
-    ).rejects.toThrow(/lock/i);
+    ).rejects.toThrow(/reserved/i);
     expect(existsSync(marker)).toBe(false);
   } finally {
     first.releaseLock();

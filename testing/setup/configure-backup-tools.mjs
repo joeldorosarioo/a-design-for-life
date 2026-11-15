@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { chmod, lstat, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { matchesLocalDatabase } from '../../src/config/local-database.ts';
 import {
   assertUnlinkedProjectPath,
   resolveBackupTarBinary,
@@ -15,11 +16,7 @@ function syntheticEnvironment(env) {
       site = new URL(env.SITE_ORIGIN);
     if (
       env.APP_ENV !== 'test' ||
-      !['postgres:', 'postgresql:'].includes(database.protocol) ||
-      !['127.0.0.1', 'localhost', '[::1]'].includes(database.hostname) ||
-      database.username !== 'adfl_test' ||
-      database.password !== 'synthetic-local-test-only' ||
-      !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname) ||
+      !matchesLocalDatabase(database.href) ||
       database.search ||
       database.hash ||
       !/^adfl-test-[a-z0-9-]+$/.test(env.MEDIA_BUCKET ?? '') ||

@@ -4,8 +4,10 @@ import { createServer } from 'node:net';
 import setupDatabase from './integration-global';
 import { configureTestEnvironment } from './test-environment';
 import { preserveNextGeneratedFiles } from './preserve-next-generated-files';
+import { configureSharedDatabaseUri } from './local-database-environment';
 
 export default async function setup() {
+  configureSharedDatabaseUri();
   const env = configureTestEnvironment();
   const productionEnv = {
     ...process.env,
@@ -30,11 +32,29 @@ export default async function setup() {
   await new Promise<void>((resolve) => probe.close(() => resolve()));
 
   const stopDatabase = await setupDatabase();
+  let cleanupBuild: (() => Promise<void>) | undefined;
+  const releaseResources = async () => {
+    const errors: unknown[] = [];
+    // Keep the fixed-port lease while checking and removing this run's build.
+    try {
+      await cleanupBuild?.();
+    } catch (error) {
+      errors.push(error);
+    }
+    try {
+      await stopDatabase();
+    } catch (error) {
+      errors.push(error);
+    }
+    if (errors.length === 1) throw errors[0];
+    if (errors.length) throw new AggregateError(errors, 'Owned test resource cleanup failed');
+  };
   try {
     const sourceFiles = await preserveNextGeneratedFiles({
       root: process.cwd(),
       distDir: process.env.NEXT_TEST_DIST_DIR!,
     });
+    cleanupBuild = await sourceFiles.reserveTestBuild();
     let build: ReturnType<typeof spawnSync>;
     try {
       build = spawnSync(process.execPath, ['./node_modules/next/dist/bin/next', 'build'], {
@@ -48,7 +68,11 @@ export default async function setup() {
     if (build.error || build.status !== 0)
       throw build.error ?? new Error('Build local falhou: ' + build.status);
   } catch (error) {
-    stopDatabase();
+    try {
+      await releaseResources();
+    } catch (cleanupError) {
+      throw new AggregateError([error, cleanupError], 'Test setup and owned cleanup failed');
+    }
     throw error;
   }
 
@@ -65,7 +89,7 @@ export default async function setup() {
   const close = async () => {
     if (server.exitCode === null && !server.killed) server.kill('SIGTERM');
     await exited;
-    stopDatabase();
+    await releaseResources();
   };
   try {
     const deadline = Date.now() + 30_000;

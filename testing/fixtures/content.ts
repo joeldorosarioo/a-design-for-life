@@ -5,7 +5,7 @@ export function validServerEnv(overrides: Partial<NodeJS.ProcessEnv> = {}): Serv
     NODE_ENV: 'test',
     APP_ENV: 'test',
     PAYLOAD_SECRET: 'synthetic-private-payload-secret-for-tests-only',
-    DATABASE_URI: 'postgres://synthetic:local-only@127.0.0.1:55433/adfl_test_fixture',
+    DATABASE_URI: 'postgres://synthetic:local-only@127.0.0.1:5432/a_design_for_life_rebuild',
     SITE_ORIGIN: 'http://127.0.0.1:3100',
     MEDIA_BUCKET: 'adfl-test-fixture',
     ...overrides,

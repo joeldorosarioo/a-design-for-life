@@ -41,29 +41,19 @@ export async function readPublishedPortfolio(
     const root =
       generation === undefined ? await readPublicRoot(runtimePublication().directory) : generation;
     if (!root) throw new Error('Confirmed portfolio unavailable.');
-    const [
-      profile,
-      navigation,
-      cases,
-      featured,
-      ptRoutes,
-      enRoutes,
-      ptProfile,
-      enProfile,
-      ptNavigation,
-      enNavigation,
-    ] = await Promise.all([
-      getPublishedProfile(language, undefined, root),
-      getPublishedNavigation(language, undefined, root),
-      getPublishedCases(language, root),
-      getFeaturedCases(language, root),
-      getPublishedCaseRoutes('pt', root),
-      getPublishedCaseRoutes('en', root),
-      getPublishedProfile('pt', undefined, root),
-      getPublishedProfile('en', undefined, root),
-      getPublishedNavigation('pt', undefined, root),
-      getPublishedNavigation('en', undefined, root),
-    ]);
+    const [cases, featured, ptRoutes, enRoutes, ptProfile, enProfile, ptNavigation, enNavigation] =
+      await Promise.all([
+        getPublishedCases(language, root),
+        getFeaturedCases(language, root),
+        getPublishedCaseRoutes('pt', root),
+        getPublishedCaseRoutes('en', root),
+        getPublishedProfile('pt', undefined, root),
+        getPublishedProfile('en', undefined, root),
+        getPublishedNavigation('pt', undefined, root),
+        getPublishedNavigation('en', undefined, root),
+      ]);
+    const profile = language === 'pt' ? ptProfile : enProfile;
+    const navigation = language === 'pt' ? ptNavigation : enNavigation;
     if (!profile.ok || !navigation.ok || !cases.ok || !featured.ok || !ptRoutes.ok || !enRoutes.ok)
       throw new Error('Confirmed dependencies unavailable.');
     const allRoutes = [...ptRoutes.value, ...enRoutes.value];

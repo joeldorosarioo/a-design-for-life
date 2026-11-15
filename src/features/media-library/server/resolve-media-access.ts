@@ -13,13 +13,6 @@ import { confirmedMedia } from './public-media';
 import { readPublicRoot } from '@/helpers/payload/public-root';
 import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { classifyMissingPublicMedia } from './classify-missing-public-media';
-export async function resolveMediaAccess(
-  input: MediaAccessInput,
-  req?: PayloadRequest,
-): Promise<MediaAccessResult> {
-  return (await resolveMediaDelivery(input, req)).access;
-}
-
 export async function resolveMediaDelivery(
   input: MediaAccessInput,
   req?: PayloadRequest,

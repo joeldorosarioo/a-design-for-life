@@ -1,5 +1,4 @@
 import { hasRestrictedDevicePolicy } from './device-policy';
-import { wasAnalyticsContactHandled } from './contact-event-ownership';
 import { canMeasure } from '../analytics-policy';
 import { analyticsTransportConfigSchema, type AnalyticsRuntime } from '../analytics-session';
 import { createGtagSession } from '../gtag-session';
@@ -135,13 +134,7 @@ function createController(
     const completion = active;
     // Run after propagation so later native/React handlers can cancel the default action.
     queueMicrotask(() => {
-      if (
-        failed ||
-        active !== completion ||
-        event.defaultPrevented ||
-        wasAnalyticsContactHandled(event)
-      )
-        return;
+      if (failed || active !== completion || event.defaultPrevented) return;
       session.trackContact(purpose as AnalyticsContactPurpose, completion.context);
     });
   }

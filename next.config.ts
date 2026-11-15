@@ -3,6 +3,7 @@ import { resolveNextDistDir } from './src/config/next-dist';
 import { withPayload } from '@payloadcms/next/withPayload';
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   distDir: resolveNextDistDir(process.env),
   output: 'standalone',
   poweredByHeader: false,

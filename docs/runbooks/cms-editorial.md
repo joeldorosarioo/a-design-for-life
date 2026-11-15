@@ -17,4 +17,4 @@ Use **Minha conta** to manage sign-in details and the dashboard language. Edit *
 
 ## Release status
 
-A4 approved the staging candidate. Launch is deferred. Replace the temporary blank PT and EN résumé PDFs and verify the localized contacts before release. See [A4](../verification/A4.md) and the [release runbook](lancamento.md).
+Launch remains unauthorized. Follow the [current status](../current-status.md) for editorial review and final PT/EN materials. The [release runbook](release.md) covers deployment and recovery.

@@ -275,8 +275,12 @@ it('case PT publishes independently, draft and invalid publication preserve publ
   ).toBe('published');
 });
 
-import { restoreCaseDraft } from '../../server/restore-case-draft';
-import { publishCase } from '../../server/publish-case';
+import {
+  restoreCaseDraft,
+  publishCase,
+  publishProfile,
+  restoreProfileDraft,
+} from '../../../../../testing/fixtures/editorial-commands';
 it('restores old published and draft versions only as new drafts without changing identity or the other locale', async () => {
   const shared = await fixture.payload.create({
     collection: 'cases',
@@ -603,11 +607,7 @@ it('the publication command respects its expected revision and never fetches a m
 });
 
 import { profilePublicationFixture } from '../../../../../testing/fixtures/editorial-lifecycle';
-import {
-  publishProfile,
-  restoreProfileDraft,
-  getPublishedProfile,
-} from '@/features/professional-profile/server';
+import { getPublishedProfile } from '@/features/professional-profile/server';
 it('profile publications, drafts, permanent structural publication and recovery remain local to the chosen locale', async () => {
   await clearStructuralFixture(fixture.payload);
   const image = await mediaMetadataFixture(fixture.payload);
@@ -771,7 +771,7 @@ it('normalizes only the native empty row count for arrays while draft/publicatio
 import { createLocalReq } from 'payload';
 import { readPublicRoot } from '@/helpers/payload/public-root';
 import { runtimePublication } from '@/helpers/payload/publication-runtime';
-import { resolveMediaAccess } from '@/features/media-library/server';
+import { resolveMediaDelivery } from '@/features/media-library/server';
 it('test structural cleanup pairs SQL and confirmed subjects while preserving unrelated owners and revoking old profile grants', async () => {
   await clearStructuralFixture(fixture.payload);
   const image = await mediaMetadataFixture(fixture.payload);
@@ -784,10 +784,10 @@ it('test structural cleanup pairs SQL and confirmed subjects while preserving un
   });
   await confirmTestPublication(saved, await fixture.request());
   const media = async () =>
-    resolveMediaAccess(
+    resolveMediaDelivery(
       { mediaId: image.id, variant: 'original', preview: false },
       await createLocalReq({}, fixture.payload),
-    );
+    ).then(({ access }) => access);
   expect((await media()).ok).toBe(true);
   const before = (await readPublicRoot(runtimePublication().directory))!;
   const unrelated = Object.fromEntries(

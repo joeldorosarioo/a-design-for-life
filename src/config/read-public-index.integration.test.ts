@@ -24,6 +24,7 @@ import { readServerEnv } from './server-env';
 import { portfolioPublicationCoordinator } from './publication';
 import { buildPublicSitemap } from './build-public-index';
 import { readPublicIndex } from './read-public-index';
+import { assertIsolatedTestEnvironment } from '../../testing/setup/test-environment';
 
 // The integration project's existing fileParallelism:false and this sequential
 // suite own one isolated fixture, preserving other cases and their order.
@@ -51,14 +52,7 @@ describe('confirmed public index from real Native publication', { concurrent: fa
   }[] = [];
 
   function assertIsolated() {
-    const database = new URL(process.env.DATABASE_URI ?? 'file:///invalid');
-    if (
-      process.env.APP_ENV !== 'test' ||
-      !['127.0.0.1', 'localhost', '[::1]'].includes(database.hostname) ||
-      !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname) ||
-      ['5432', '55432'].includes(database.port)
-    )
-      throw new Error('Index Native fixture requires the owned isolated test environment.');
+    assertIsolatedTestEnvironment(process.env);
   }
   const id = (collection: 'professional-profiles' | 'site-navigation', locale: 'pt' | 'en') => {
     const found = structuralIds.find(

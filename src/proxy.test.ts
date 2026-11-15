@@ -32,8 +32,8 @@ function configure(overrides: Record<string, string> = {}) {
     NODE_ENV: 'test',
     APP_ENV: 'test',
     PAYLOAD_SECRET: secret,
-    DATABASE_URI: `postgres://synthetic:local@127.0.0.1:55433/adfl_test_proxy_${randomUUID().replaceAll('-', '')}`,
-    SITE_ORIGIN: 'http://127.0.0.1:3100',
+    DATABASE_URI: 'postgres://synthetic:local@127.0.0.1:5432/a_design_for_life_rebuild',
+    SITE_ORIGIN: `http://127.0.0.1:${40000 + (parseInt(randomUUID().slice(0, 8), 16) % 20000)}`,
     MEDIA_BUCKET: 'adfl-test-proxy',
     ...overrides,
   };

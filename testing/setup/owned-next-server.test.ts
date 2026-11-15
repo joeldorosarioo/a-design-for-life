@@ -17,7 +17,9 @@ function environment(): NodeJS.ProcessEnv {
     NODE_ENV: 'test',
     DATABASE_URI: isolatedTestDatabaseUri,
     MEDIA_BUCKET: isolatedTestBucket,
-    MEDIA_STORAGE_ROOT: path.resolve('.work/private-media/adfl-test-runner/adfl_test_runner'),
+    MEDIA_STORAGE_ROOT: path.resolve(
+      '.work/private-media/adfl-test-runner/a_design_for_life_rebuild',
+    ),
     PAYLOAD_SECRET: 'synthetic-local-test-secret-for-isolated-payload-only',
     SITE_ORIGIN: 'http://127.0.0.1:3101',
     INTERNAL_HTTP_ORIGIN: 'http://127.0.0.1:3101',
@@ -82,8 +84,8 @@ function controlledRuntime() {
 it('refuses the preserved visual database before probing or launching any process', async () => {
   const control = controlledRuntime();
   const env = environment();
-  env.DATABASE_URI = env.DATABASE_URI!.replace(':55434/', ':55433/');
-  await expect(startOwnedNextServer({ env }, control.runtime)).rejects.toThrow(/isolated/i);
+  env.DATABASE_URI = env.DATABASE_URI!.replace(':5432/', ':55433/');
+  await expect(startOwnedNextServer({ env }, control.runtime)).rejects.toThrow(/shared local/i);
   expect(control.probes).toEqual([]);
   expect(control.children).toEqual([]);
 });

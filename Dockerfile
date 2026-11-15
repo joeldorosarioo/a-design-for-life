@@ -31,7 +31,7 @@ COPY . .
 RUN APP_ENV=test \
     SITE_ORIGIN=http://127.0.0.1:3000 \
     PAYLOAD_SECRET=synthetic-image-build-only-not-a-runtime-secret \
-    DATABASE_URI=postgres://synthetic:synthetic@127.0.0.1:9/adfl_test_image_build \
+    DATABASE_URI=postgres://synthetic:synthetic@127.0.0.1:5432/a_design_for_life_rebuild \
     MEDIA_BUCKET=adfl-test-image-build \
     pnpm build \
     && node ops/image/assemble-standalone.mjs . .work/next-build/standalone \

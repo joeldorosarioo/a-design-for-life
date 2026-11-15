@@ -5,14 +5,9 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { inspectOwnedTestDatabase, setOwnedTestDatabaseNetwork } from './owned-test-database';
 import { finishOwnedDatabaseOutage, observeOwnedDatabasePool } from './owned-database-outage';
 import { isolatedTestBucket, isolatedTestDatabaseUri } from './test-environment';
-import {
-  testImage,
-  testResourceNames,
-  type Inspection,
-  type NetworkInspection,
-} from './test-ownership';
+import { localDatabaseResources } from '../fixtures/local-database-resources';
 
-vi.mock('node:child_process', () => ({ spawnSync: vi.fn() }));
+vi.mock('node:child_process', () => ({ spawnSync: vi.fn(), spawn: vi.fn() }));
 
 const runId = '443f2f55-41c5-499a-9c24-a038128133f7';
 const containerId = 'c'.repeat(64);
@@ -20,6 +15,8 @@ const networkId = 'd'.repeat(64);
 const failure = 'Isolated test Docker lifecycle command failed; resources were not assumed owned.';
 type CommandMode =
   | 'normal'
+  | 'replaced-container'
+  | 'replaced-network'
   | 'connect-attached-failure'
   | 'connect-detached-failure'
   | 'disconnect-attached-failure';
@@ -37,42 +34,17 @@ function result(status = 0, stdout = '') {
   } as unknown as ReturnType<typeof spawnSync>;
 }
 function resources() {
-  const names = testResourceNames(process.env);
-  const labels = {
-    'com.docker.compose.project': names.project,
-    'life.adfl.test-run': runId,
-    'life.adfl.purpose': 'disposable-test',
-    'com.docker.compose.project.working_dir': process.cwd(),
-    'com.docker.compose.project.config_files': path.resolve('compose.test.yaml'),
-  };
-  const container: Inspection = {
-    Id: containerId,
-    Name: `/${names.container}`,
-    Config: {
-      Image: testImage,
-      Labels: { ...labels, 'com.docker.compose.service': names.service },
-      Env: [
-        'POSTGRES_DB=adfl_test_runner',
-        'POSTGRES_USER=adfl_test',
-        'POSTGRES_PASSWORD=synthetic-local-test-only',
-      ],
-    },
-    HostConfig: {
-      PortBindings: { '5432/tcp': [{ HostIp: '127.0.0.1', HostPort: '55434' }] },
-      Tmpfs: { '/var/lib/postgresql/data': '' },
-    },
-    NetworkSettings: {
-      Networks: attached ? { [names.network]: { NetworkID: networkId } } : {},
-    },
-  };
-  const network: NetworkInspection = {
-    Id: networkId,
-    Name: names.network,
-    Driver: 'bridge',
-    Labels: { ...labels, 'com.docker.compose.network': 'default' },
-    Containers: attached ? { [containerId]: {} } : {},
-  };
-  return { container, network };
+  const value = localDatabaseResources(process.env, attached);
+  if (mode === 'replaced-container') {
+    value.container.Id = 'a'.repeat(64);
+    value.network.Containers = attached ? { [value.container.Id]: {} } : {};
+  }
+  if (mode === 'replaced-network') {
+    value.network.Id = 'b'.repeat(64);
+    for (const network of Object.values(value.container.NetworkSettings.Networks))
+      network.NetworkID = value.network.Id;
+  }
+  return value;
 }
 function observedPool() {
   const pool = Object.assign(new EventEmitter(), {
@@ -91,7 +63,11 @@ beforeEach(() => {
     APP_ENV: 'test',
     DATABASE_URI: isolatedTestDatabaseUri,
     MEDIA_BUCKET: isolatedTestBucket,
-    MEDIA_STORAGE_ROOT: path.resolve('.work/private-media', isolatedTestBucket, 'adfl_test_runner'),
+    MEDIA_STORAGE_ROOT: path.resolve(
+      '.work/private-media',
+      isolatedTestBucket,
+      'a_design_for_life_rebuild',
+    ),
     ADFL_TEST_RUN_ID: runId,
     ADFL_TEST_CONTAINER_ID: containerId,
     ADFL_TEST_NETWORK_ID: networkId,
@@ -161,3 +137,22 @@ it('closes the outage after failed disconnect left the same acquired resources a
   const unexpectedWithoutOutage = dropped();
   expect(() => pool.emit('error', unexpectedWithoutOutage)).toThrow(unexpectedWithoutOutage);
 });
+
+it.each(['replaced-container', 'replaced-network'] as const)(
+  'refuses a replacement of the already acquired resource before any network mutation: %s',
+  (replacement) => {
+    mode = replacement;
+    expect(() => setOwnedTestDatabaseNetwork('disconnect')).toThrow(/immutable identity changed/i);
+    expect(
+      vi
+        .mocked(spawnSync)
+        .mock.calls.some(
+          ([, args]) =>
+            Array.isArray(args) &&
+            args[0] === 'network' &&
+            ['connect', 'disconnect'].includes(args[1]),
+        ),
+    ).toBe(false);
+    mode = 'normal';
+  },
+);

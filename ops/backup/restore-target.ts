@@ -1,11 +1,12 @@
 import { z } from 'zod';
 import { checkedClock } from './contracts';
+import { localDatabaseName } from '../../src/config/local-database';
 
 const identity = z.string().regex(/^[a-f0-9]{64}$/);
 const destination = z.strictObject({ identity, namespace: z.string() });
 const targetSchema = z
   .strictObject({
-    environment: z.enum(['test', 'staging']),
+    environment: z.literal('test'),
     ownerId: z.uuid(),
     database: destination,
     media: destination,
@@ -13,7 +14,7 @@ const targetSchema = z
   })
   .superRefine((target, context) => {
     if (
-      target.database.namespace !== `adfl_test_restore_${target.ownerId.replaceAll('-', '')}` ||
+      target.database.namespace !== localDatabaseName ||
       target.media.namespace !== `adfl-test-restore-${target.ownerId}` ||
       target.publication.namespace !== `adfl-restore-${target.ownerId}` ||
       new Set([target.database.identity, target.media.identity, target.publication.identity])
@@ -21,17 +22,17 @@ const targetSchema = z
     )
       context.addIssue({
         code: 'custom',
-        message: 'Restore requires distinct acquired isolated destinations',
+        message: 'Restore requires the shared local database and private filesystem destinations',
       });
   });
 const timestamp = z.iso.datetime({ precision: 3 });
 const observationSchema = z.strictObject({
   target: targetSchema,
-  preflightAbsentAt: timestamp,
+  checkpointedAt: timestamp,
   acquiredAt: timestamp,
   observedAt: timestamp,
   expiresAt: timestamp,
-  createdByOwner: z.literal(true),
+  preparedByOwner: z.literal(true),
   leaseActive: z.literal(true),
   databaseEmpty: z.literal(true),
   mediaEmpty: z.literal(true),
@@ -43,7 +44,7 @@ declare const restorePermitBrand: unique symbol;
 export type RestoreTargetPermit = { readonly [restorePermitBrand]: true };
 
 // The composition supplies the trusted resource-lifecycle inspector. It must
-// inspect acquired immutable identities, creation preflight, emptiness and lease;
+// inspect immutable identities, a recoverable checkpoint, emptiness and lease;
 // never construct this observation from user-supplied names or verified flags.
 export function createRestoreTargetBoundary(
   inspect: (target: IsolatedRestoreTarget) => Promise<unknown>,
@@ -55,13 +56,13 @@ export function createRestoreTargetBoundary(
   async function observe(target: IsolatedRestoreTarget, now: number) {
     const observation = observationSchema.parse(await inspect(structuredClone(target)));
     const acquired = Date.parse(observation.acquiredAt);
-    const absent = Date.parse(observation.preflightAbsentAt);
+    const checkpointed = Date.parse(observation.checkpointedAt);
     const checked = Date.parse(observation.observedAt);
     const expires = Date.parse(observation.expiresAt);
     if (
       JSON.stringify(observation.target) !== JSON.stringify(target) ||
-      absent > acquired ||
-      acquired - absent > 60_000 ||
+      checkpointed > acquired ||
+      acquired - checkpointed > 60_000 ||
       checked < acquired ||
       acquired > now ||
       now - acquired > 60_000 ||
@@ -95,7 +96,7 @@ export function createRestoreTargetBoundary(
       const observed = await observe(acquired.observation.target, time);
       if (
         observed.acquiredAt !== acquired.observation.acquiredAt ||
-        observed.preflightAbsentAt !== acquired.observation.preflightAbsentAt ||
+        observed.checkpointedAt !== acquired.observation.checkpointedAt ||
         observed.expiresAt !== acquired.observation.expiresAt
       )
         throw new Error('The acquired restore target was replaced');

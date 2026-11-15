@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -10,7 +11,6 @@ const sourceTree = 'a'.repeat(40);
 const revision = 'b'.repeat(40);
 const mergeRevision = 'c'.repeat(40);
 const repository = 'joeldorosarioo/a-design-for-life';
-const marker = `staging-tested-tree-${sourceTree}`;
 const registryPath = `/v2/${repository}`;
 const hash = (bytes) => `sha256:${createHash('sha256').update(bytes).digest('hex')}`;
 const asBytes = (value) => Buffer.from(JSON.stringify(value));
@@ -63,6 +63,7 @@ function image(options = {}) {
 }
 function fixture(options = {}) {
   const selected = options.image ?? image();
+  const marker = `staging-tested-tree-${options.sourceTree ?? sourceTree}`;
   const calls = [];
   let written = false;
   const fetchImpl = async (url, init) => {
@@ -142,6 +143,259 @@ function fixture(options = {}) {
   };
   return { selected, calls, fetchImpl };
 }
+
+async function productionRepository(operation) {
+  const root = mkdtempSync(path.join(tmpdir(), 'adfl-production-source-'));
+  const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+  try {
+    git('init', '--quiet', '--initial-branch=main');
+    git('config', 'core.autocrlf', 'false');
+    git('config', 'core.filemode', 'true');
+    mkdirSync(path.join(root, 'docs'));
+    mkdirSync(path.join(root, 'src'));
+    writeFileSync(path.join(root, 'README.md'), 'Original documentation\n');
+    writeFileSync(path.join(root, 'docs/old.md'), 'Historical note\n');
+    writeFileSync(path.join(root, 'src/app.js'), 'export const version = 1;\n');
+    const commit = (stage = true) => {
+      if (stage) git('add', '--all');
+      git(
+        '-c',
+        'user.name=Deployment test',
+        '-c',
+        'user.email=deployment@example.invalid',
+        '-c',
+        'commit.gpgsign=false',
+        'commit',
+        '--quiet',
+        '-m',
+        'test: record source',
+      );
+      return git('rev-parse', 'HEAD');
+    };
+    const approvedRevision = commit();
+    const approvedTree = git('rev-parse', 'HEAD^{tree}');
+    const f = fixture({
+      sourceTree: approvedTree,
+      image: image({
+        labels: {
+          'life.adfl.source-tree': approvedTree,
+          'org.opencontainers.image.revision': approvedRevision,
+        },
+      }),
+    });
+    await operation({ root, git, commit, approvedRevision, approvedTree, f });
+  } finally {
+    const prefix = path.resolve(tmpdir()) + path.sep + 'adfl-production-source-';
+    if (!path.resolve(root).startsWith(prefix)) throw new Error('Unsafe source fixture cleanup.');
+    rmSync(root, { recursive: true });
+  }
+}
+
+test('explicit approved revision and digest reuse the tested image after documentation-only changes', async () => {
+  await productionRepository(async ({ root, git, commit, approvedRevision, approvedTree, f }) => {
+    writeFileSync(path.join(root, 'README.md'), 'Updated documentation\n');
+    writeFileSync(path.join(root, 'AGENTS.md'), 'Repository instructions\n');
+    writeFileSync(path.join(root, 'docs/current checks.json'), '{"status":"documented"}\n');
+    rmSync(path.join(root, 'docs/old.md'));
+    const currentRevision = commit();
+    const currentTree = git('rev-parse', 'HEAD^{tree}');
+    assert.notEqual(currentTree, approvedTree);
+    const resolution = await resolveTestedImage({
+      sourceTree: currentTree,
+      cwd: root,
+      env: env('resolve', {
+        GITHUB_SHA: currentRevision,
+        APPROVED_STAGING_REVISION: approvedRevision,
+        APPROVED_IMAGE_DIGEST: f.selected.digest,
+      }),
+      fetchImpl: f.fetchImpl,
+    }).then(
+      (value) => ({ value }),
+      (error) => ({ error }),
+    );
+    assert.equal(
+      new URL(f.calls.find(({ url }) => new URL(url).pathname.includes('/manifests/')).url)
+        .pathname,
+      `${registryPath}/manifests/staging-tested-tree-${approvedTree}`,
+    );
+    assert.ifError(resolution.error);
+    assert.deepEqual(resolution.value, {
+      digest: f.selected.digest,
+      revision: approvedRevision,
+      imageid: f.selected.imageid,
+    });
+    assert.equal(
+      f.calls.some(({ init }) => init.method === 'PUT'),
+      false,
+    );
+  });
+});
+
+for (const changedPath of [
+  'src/app.js',
+  'public/app.js',
+  'ops/deploy/runtime.mjs',
+  '.github/workflows/checks.yml',
+  'package.json',
+  'pnpm-lock.yaml',
+  'next.config.ts',
+  '.dockerignore',
+])
+  test(`documentation exception refuses changes to ${changedPath} before registry access`, async () => {
+    await productionRepository(async ({ root, git, commit, approvedRevision, f }) => {
+      mkdirSync(path.dirname(path.join(root, changedPath)), { recursive: true });
+      writeFileSync(path.join(root, changedPath), 'Changed executable or configuration input\n');
+      const currentRevision = commit();
+      await assert.rejects(
+        resolveTestedImage({
+          sourceTree: git('rev-parse', 'HEAD^{tree}'),
+          cwd: root,
+          fetchImpl: f.fetchImpl,
+          env: env('resolve', {
+            GITHUB_SHA: currentRevision,
+            APPROVED_STAGING_REVISION: approvedRevision,
+            APPROVED_IMAGE_DIGEST: f.selected.digest,
+          }),
+        }),
+        /documentation-only/,
+      );
+      assert.equal(f.calls.length, 0);
+    });
+  });
+
+for (const [description, mode, file] of [
+  ['executable documentation', '100755', 'README.md'],
+  ['documentation symlink', '120000', 'docs/old.md'],
+  ['documentation gitlink', '160000', 'docs/vendor'],
+])
+  test(`documentation exception refuses ${description} before registry access`, async () => {
+    await productionRepository(async ({ root, git, commit, approvedRevision, f }) => {
+      const object = mode === '160000' ? approvedRevision : git('rev-parse', `HEAD:${file}`);
+      git('update-index', '--add', '--cacheinfo', `${mode},${object},${file}`);
+      const currentRevision = commit(false);
+      await assert.rejects(
+        resolveTestedImage({
+          sourceTree: git('rev-parse', 'HEAD^{tree}'),
+          cwd: root,
+          fetchImpl: f.fetchImpl,
+          env: env('resolve', {
+            GITHUB_SHA: currentRevision,
+            APPROVED_STAGING_REVISION: approvedRevision,
+            APPROVED_IMAGE_DIGEST: f.selected.digest,
+          }),
+        }),
+        /documentation-only/,
+      );
+      assert.equal(f.calls.length, 0);
+    });
+  });
+
+test('documentation exception refuses moving source code into the documentation directory', async () => {
+  await productionRepository(async ({ root, git, commit, approvedRevision, f }) => {
+    git('mv', 'src/app.js', 'docs/app.js');
+    const currentRevision = commit();
+    await assert.rejects(
+      resolveTestedImage({
+        sourceTree: git('rev-parse', 'HEAD^{tree}'),
+        cwd: root,
+        fetchImpl: f.fetchImpl,
+        env: env('resolve', {
+          GITHUB_SHA: currentRevision,
+          APPROVED_STAGING_REVISION: approvedRevision,
+          APPROVED_IMAGE_DIGEST: f.selected.digest,
+        }),
+      }),
+      /documentation-only/,
+    );
+    assert.equal(f.calls.length, 0);
+  });
+});
+
+for (const approvals of [
+  { APPROVED_STAGING_REVISION: revision },
+  { APPROVED_IMAGE_DIGEST: `sha256:${'f'.repeat(64)}` },
+  { APPROVED_STAGING_REVISION: 'main', APPROVED_IMAGE_DIGEST: `sha256:${'f'.repeat(64)}` },
+  { APPROVED_STAGING_REVISION: revision, APPROVED_IMAGE_DIGEST: 'latest' },
+])
+  test(`documentation exception requires a complete immutable approval: ${JSON.stringify(approvals)}`, async () => {
+    const f = fixture();
+    await assert.rejects(
+      resolveTestedImage({
+        sourceTree,
+        env: env('resolve', approvals),
+        fetchImpl: f.fetchImpl,
+      }),
+      /approval/,
+    );
+    assert.equal(f.calls.length, 0);
+  });
+
+for (const mismatch of ['revision', 'digest'])
+  test(`documentation exception refuses an image with a different approved ${mismatch}`, async () => {
+    await productionRepository(async ({ root, git, approvedRevision, approvedTree }) => {
+      const f = fixture({
+        sourceTree: approvedTree,
+        image: image({
+          labels: {
+            'life.adfl.source-tree': approvedTree,
+            'org.opencontainers.image.revision':
+              mismatch === 'revision' ? revision : approvedRevision,
+          },
+        }),
+      });
+      await assert.rejects(
+        resolveTestedImage({
+          sourceTree: approvedTree,
+          cwd: root,
+          fetchImpl: f.fetchImpl,
+          env: env('resolve', {
+            GITHUB_SHA: git('rev-parse', 'HEAD'),
+            APPROVED_STAGING_REVISION: approvedRevision,
+            APPROVED_IMAGE_DIGEST:
+              mismatch === 'digest' ? `sha256:${'f'.repeat(64)}` : f.selected.digest,
+          }),
+        }),
+        mismatch === 'digest' ? /manifest-digest/ : /image-revision/,
+      );
+      assert.equal(
+        f.calls.some(({ init }) => init.method === 'PUT'),
+        false,
+      );
+    });
+  });
+
+for (const mismatch of [
+  'current-revision',
+  'current-tree',
+  'dirty-worktree',
+  'unknown-candidate',
+  'noncommit-candidate',
+])
+  test(`documentation exception refuses an ineligible snapshot: ${mismatch}`, async () => {
+    await productionRepository(async ({ root, git, approvedRevision, approvedTree, f }) => {
+      if (mismatch === 'dirty-worktree')
+        writeFileSync(path.join(root, 'README.md'), 'Uncommitted\n');
+      await assert.rejects(
+        resolveTestedImage({
+          sourceTree: mismatch === 'current-tree' ? sourceTree : approvedTree,
+          cwd: root,
+          fetchImpl: f.fetchImpl,
+          env: env('resolve', {
+            GITHUB_SHA: mismatch === 'current-revision' ? revision : git('rev-parse', 'HEAD'),
+            APPROVED_STAGING_REVISION:
+              mismatch === 'unknown-candidate'
+                ? revision
+                : mismatch === 'noncommit-candidate'
+                  ? approvedTree
+                  : approvedRevision,
+            APPROVED_IMAGE_DIGEST: f.selected.digest,
+          }),
+        }),
+        /source-comparison/,
+      );
+      assert.equal(f.calls.length, 0);
+    });
+  });
 
 test('resolve reuses the tested digest when main has the same tree and a different merge commit', async () => {
   const f = fixture();

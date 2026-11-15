@@ -53,33 +53,15 @@ jobs:
           repository="ghcr.io/${GITHUB_REPOSITORY,,}"
           image="$repository:commit-$revision"
           printf 'revision=%s\nsource-tree=%s\nmigration-tree=%s\nimage=%s\n' "$revision" "$source_tree" "$migration_tree" "$image" >> "$GITHUB_OUTPUT"
-      - name: Build and inspect the single Linux image
-        env:
-          SOURCE_REVISION: ${{ steps.identity.outputs.revision }}
-          SOURCE_TREE: ${{ steps.identity.outputs.source-tree }}
-          IMAGE_REFERENCE: ${{ steps.identity.outputs.image }}
-        run: |
-          set -euo pipefail
-          # The Docker CLI publishes one linux/amd64 manifest, without an attestation index.
-          docker build --platform linux/amd64 \
-            --provenance=false --sbom=false \
-            --build-arg "SOURCE_REVISION=$SOURCE_REVISION" \
-            --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
-            --label "life.adfl.source-tree=$SOURCE_TREE" \
-            --tag "$IMAGE_REFERENCE" --progress plain .
-          image_id="$(docker image inspect --format '{{.Id}}' "$IMAGE_REFERENCE")"
-          node ops/image/inspect-local-image.mjs "$IMAGE_REFERENCE" "$image_id" "$SOURCE_REVISION"
-          [[ "$(docker image inspect --format '{{index .Config.Labels "life.adfl.source-tree"}}' "$image_id")" == "$SOURCE_TREE" ]]
-          docker run --rm --network none --read-only \
-            --tmpfs /tmp:rw,noexec,nosuid,nodev,uid=70,gid=70,mode=0700,size=64m \
-            --cpus 1 --memory 2g --memory-swap 2g --pids-limit 128 \
-            --cap-drop ALL --security-opt no-new-privileges \
-            --entrypoint node "$image_id" ops/image/runtime-smoke.mjs
-      - name: Publish only to the existing private package
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Build, inspect and publish the single private Linux image
         id: publish
         env:
           GH_TOKEN: ${{ github.token }}
           PACKAGE_OWNER_TYPE: ${{ github.event.repository.owner.type }}
+          SOURCE_REVISION: ${{ steps.identity.outputs.revision }}
+          SOURCE_TREE: ${{ steps.identity.outputs.source-tree }}
           IMAGE_REFERENCE: ${{ steps.identity.outputs.image }}
         run: |
           set -euo pipefail
@@ -107,9 +89,27 @@ jobs:
           }
           assert_private_package
           printf '%s' "$GH_TOKEN" | docker login ghcr.io --username "$GITHUB_ACTOR" --password-stdin
+          repository="ghcr.io/${GITHUB_REPOSITORY,,}"
+          cache_reference="$repository:build-cache"
+          docker buildx build --load --platform linux/amd64 \
+            --provenance=false --sbom=false \
+            --build-arg "SOURCE_REVISION=$SOURCE_REVISION" \
+            --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
+            --label "life.adfl.source-tree=$SOURCE_TREE" \
+            --cache-from "type=registry,ref=$cache_reference" \
+            --cache-to "type=registry,ref=$cache_reference,mode=max,image-manifest=true,ignore-error=true" \
+            --tag "$IMAGE_REFERENCE" --progress plain .
+          image_id="$(docker image inspect --format '{{.Id}}' "$IMAGE_REFERENCE")"
+          node ops/image/inspect-local-image.mjs "$IMAGE_REFERENCE" "$image_id" "$SOURCE_REVISION"
+          [[ "$(docker image inspect --format '{{index .Config.Labels "life.adfl.source-tree"}}' "$image_id")" == "$SOURCE_TREE" ]]
+          docker run --rm --network none --read-only \
+            --tmpfs /tmp:rw,noexec,nosuid,nodev,uid=70,gid=70,mode=0700,size=64m \
+            --cpus 1 --memory 2g --memory-swap 2g --pids-limit 128 \
+            --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint node "$image_id" ops/image/runtime-smoke.mjs
+          assert_private_package
           docker push "$IMAGE_REFERENCE"
           assert_private_package
-          repository="ghcr.io/${GITHUB_REPOSITORY,,}"
           reference="$(docker image inspect --format '{{index .RepoDigests 0}}' "$IMAGE_REFERENCE")"
           [[ "$reference" == "$repository@sha256:"* ]]
           digest="${reference#"$repository@"}"

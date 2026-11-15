@@ -6,19 +6,20 @@ import { migrations } from '../migrations';
 import { inspectOwnedTestDatabase } from '../../testing/setup/owned-test-database';
 import { isolatedTestDatabaseUri } from '../../testing/setup/test-environment';
 import {
+  checkpointSharedDatabase,
+  resetSharedDatabase,
+} from '../../testing/setup/shared-database-state';
+import {
   closeStagingPayload,
   initializeStaging,
   type EditorialStagingInitializationOptions,
   type StagingInitializationOptions,
 } from '../../ops/staging/initialize';
 
-type NativeClient = InstanceType<NonNullable<Payload['db']['pg']>['Client']>;
-let administrator: NativeClient;
-let makeClient: NonNullable<Payload['db']['pg']>['Client'];
 let driver: NonNullable<Payload['db']['pg']>;
-const databases = new Set<string>();
 const payloads = new Set<Payload>();
 let acquired: ReturnType<typeof inspectOwnedTestDatabase>;
+let restoreBaseline: (() => Promise<void>) | undefined;
 
 function assertOwned() {
   const current = inspectOwnedTestDatabase();
@@ -26,7 +27,7 @@ function assertOwned() {
     throw new Error('Staging initializer proof lost its acquired PostgreSQL.');
 }
 // Test-only transport adaptation. Guard inputs still use logical port55435,
-// but every actual socket goes to the acquired synthetic runner on55434.
+// but every actual socket goes to the acquired shared local database on5432.
 // Never bind or connect to the user's real SSH forward on55435.
 function ownedTransport() {
   function redirected(config: unknown) {
@@ -47,16 +48,28 @@ function ownedTransport() {
       url.password !== fixture.password ||
       url.search ||
       url.hash ||
-      !/^adfl_test_staging_[a-f0-9]{32}$/.test(database) ||
-      !databases.has(database)
+      database !== decodeURIComponent(fixture.pathname.slice(1))
     )
       throw new Error('Owned Native transport refused a nonfixture target.');
-    url.port = '55434';
+    url.port = fixture.port;
     return { ...config, connectionString: url.href };
   }
   class OwnedClient extends driver.Client {
     constructor(config?: ConstructorParameters<typeof driver.Client>[0]) {
       super(redirected(config));
+      const query = this.query.bind(this);
+      this.query = ((...args: unknown[]) => {
+        const activity =
+          "SELECT count(*)::text AS count FROM pg_stat_activity WHERE datname=current_database() AND pid<>pg_backend_pid() AND backend_type='client backend'";
+        if (args[0] === activity) {
+          const leasePid = process.env.ADFL_SHARED_DATABASE_LEASE_PID;
+          if (!/^[1-9][0-9]*$/.test(leasePid ?? ''))
+            throw new Error('The owned test lease is unavailable.');
+          // The test harness is the only additional client allowed by this transport.
+          args[0] = `${activity} AND pid<>${leasePid}`;
+        }
+        return Reflect.apply(query, this, args);
+      }) as typeof this.query;
     }
   }
   class OwnedPool extends driver.Pool {
@@ -94,16 +107,16 @@ async function close(payload: Payload) {
 }
 async function target() {
   assertOwned();
-  const database = `adfl_test_staging_${randomUUID().replaceAll('-', '')}`;
-  await administrator.query(`CREATE DATABASE "${database}"`);
-  databases.add(database);
+  for (const payload of payloads) await close(payload);
+  await resetSharedDatabase();
+  const database = decodeURIComponent(new URL(isolatedTestDatabaseUri).pathname.slice(1));
   const uri = new URL(isolatedTestDatabaseUri);
   uri.port = '55435';
   uri.pathname = `/${database}`;
   const options: EditorialStagingInitializationOptions = {
     databaseUri: uri.href,
     database,
-    role: 'adfl_test',
+    role: decodeURIComponent(uri.username),
     origin: 'https://staging.example.invalid',
     mode: 'initialize',
     editor: {
@@ -121,6 +134,7 @@ async function client(options: StagingInitializationOptions) {
 
 beforeAll(async () => {
   acquired = inspectOwnedTestDatabase();
+  restoreBaseline = await checkpointSharedDatabase();
   const nativeConfig = await config;
   const base = await getPayload({
     config: {
@@ -133,21 +147,12 @@ beforeAll(async () => {
     key: `staging-initialize-admin-${randomUUID()}`,
   });
   driver = base.db.pg!;
-  makeClient = driver.Client;
   await base.destroy();
-  administrator = new makeClient({ connectionString: isolatedTestDatabaseUri });
-  await administrator.connect();
 });
 afterAll(async () => {
   if (acquired) assertOwned();
   for (const payload of payloads) await close(payload);
-  if (administrator) {
-    for (const database of databases) {
-      assertOwned();
-      await administrator.query(`DROP DATABASE "${database}"`);
-    }
-    await administrator.end();
-  }
+  if (restoreBaseline) await restoreBaseline();
 });
 
 it('initializes the current Native migration catalog and one editor/four drafts, then preserves credentials/content on rerun', async () => {
@@ -260,6 +265,19 @@ it('refuses a concurrent initialization owner before running schema changes', as
   const payload = await prepared(options.database);
   try {
     await expect(initializeStaging(payload, options)).rejects.toThrow('already active');
+    expect(payload.db.pool).toBeUndefined();
+  } finally {
+    await held.end();
+    await close(payload);
+  }
+});
+
+it('still refuses an additional database client besides the owned test lease', async () => {
+  const options = await target();
+  const held = await client(options);
+  const payload = await prepared(options.database);
+  try {
+    await expect(initializeStaging(payload, options)).rejects.toThrow('database-only mode');
     expect(payload.db.pool).toBeUndefined();
   } finally {
     await held.end();

@@ -1,5 +1,4 @@
 // @vitest-environment jsdom
-import React from 'react';
 import { afterEach, expect, it } from 'vitest';
 import { cleanup, render, screen, within } from '@testing-library/react';
 import { profileDTOSchema } from '@/features/professional-profile';

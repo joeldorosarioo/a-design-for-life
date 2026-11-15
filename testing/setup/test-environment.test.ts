@@ -13,14 +13,14 @@ afterEach(() => {
   Object.assign(process.env, original);
 });
 
-it('allocates the dedicated runner namespace rather than the preserved visual database', () => {
+it('uses the fixed shared local database with synthetic test storage', () => {
   process.env.COMPOSE_PROJECT_NAME = 'a-design-for-life-local';
   const env = configureTestEnvironment();
-  expect(new URL(env.DATABASE_URI).port).toBe('55434');
-  expect(new URL(env.DATABASE_URI).pathname).toBe('/adfl_test_runner');
+  expect(new URL(env.DATABASE_URI).port).toBe('5432');
+  expect(new URL(env.DATABASE_URI).pathname).toBe('/a_design_for_life_rebuild');
   expect(env.MEDIA_BUCKET).toBe('adfl-test-runner');
   expect(env.MEDIA_STORAGE_ROOT).toBe(
-    path.resolve('.work/private-media/adfl-test-runner/adfl_test_runner'),
+    path.resolve('.work/private-media/adfl-test-runner/a_design_for_life_rebuild'),
   );
 });
 
@@ -29,8 +29,8 @@ it('opts retry metadata into only the exact owned Native test namespace', () => 
   const env = configureTestEnvironment();
   expect(env.PUBLICATION_RETRIES_ENABLED).toBe('true');
   expect(process.env.PUBLICATION_RETRIES_ENABLED).toBe('true');
-  expect(new URL(env.DATABASE_URI).port).toBe('55434');
-  expect(new URL(env.DATABASE_URI).pathname).toBe('/adfl_test_runner');
+  expect(new URL(env.DATABASE_URI).port).toBe('5432');
+  expect(new URL(env.DATABASE_URI).pathname).toBe('/a_design_for_life_rebuild');
 });
 it('keeps the ordinary owned test runtime worker off despite an inherited opt-in', () => {
   process.env.PUBLICATION_RETRY_WORKER_ENABLED = 'true';
@@ -41,7 +41,7 @@ it('keeps the ordinary owned test runtime worker off despite an inherited opt-in
 
 it.each([
   'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55433/adfl_test_base',
-  'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:5432/adfl_test_runner',
+  'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:5432/other',
   'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_other',
 ])('rejects an inherited database outside the exact owned runner namespace', (uri) => {
   process.env.TEST_DATABASE_URI = uri;
@@ -113,7 +113,8 @@ it('opens first access only for the explicit private owned test runner and keeps
     APP_ENV: 'test',
     EDITORIAL_FIRST_ACCESS_ENABLED: 'true',
     PUBLIC_SITE_ENABLED: 'false',
-    DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+    DATABASE_URI:
+      'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
     MEDIA_BUCKET: 'adfl-test-runner',
   });
   expect(process.env.EDITORIAL_FIRST_ACCESS_ENABLED).toBe('true');
