@@ -1,8 +1,10 @@
 # A Design for Life
 
+O nome do repositório vem de **A Design for Life**, música da banda **Manic Street Preachers**. [Ouça no Spotify](https://open.spotify.com/track/4Hb2XO4Jt5W9RIO6Zka0kK).
+
 Portfólio bilíngue de Product Design e UX. Next.js serve as páginas, Payload gerencia o conteúdo e PostgreSQL guarda os dados. A interface usa Tailwind CSS, CVA, shadcn e Motion, com o Figma como referência visual.
 
-O lançamento ainda não está autorizado; veja o [estado atual e as pendências](docs/current-status.md).
+O lançamento ainda não está autorizado; veja o [estado atual e as pendências](documentation/current-status.md).
 
 ## Uso local
 
@@ -24,7 +26,7 @@ O Compose expõe somente a porta 5432 em loopback. Preserve o volume externo do 
 docker compose -f compose.local.yaml stop postgres
 ```
 
-Antes de alterar dados, pare a aplicação e use `pnpm backup:local` conforme o [guia de backup e recuperação](docs/runbooks/release.md#backups-and-recovery). O comando compartilha o bloqueio exclusivo do banco. O guia inclui a preparação da imagem de ferramentas do backup. Instale age com `pnpm setup:backup-tools` se necessário. Mantenha `.env`, `.work`, `.toolchain` e a identidade de recuperação privados; guarde essa identidade separada dos backups.
+Antes de alterar dados, pare a aplicação e use `pnpm backup:local` conforme o [guia de backup e recuperação](documentation/operations.md#backup-e-recuperação). O comando compartilha o bloqueio exclusivo do banco. O guia inclui a preparação da imagem de ferramentas do backup. Instale age com `pnpm setup:backup-tools` se necessário. Mantenha `.env`, `.work`, `.toolchain` e a identidade de recuperação privados; guarde essa identidade separada dos backups.
 
 ## Verificação
 
@@ -46,28 +48,20 @@ Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG
 
 Os relatórios do navegador ficam em `.work/playwright/report`, os traces e resultados em `.work/playwright/results` e o cache do TypeScript em `.work/cache`. São saídas geradas, fora do Git.
 
-| Caminho                              | Função e decisão                                                                                                                                          |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.toolchain`                         | Node, qpdf e age nas versões exigidas. Mantida porque os comandos locais usam essas ferramentas. Instaladores e cópias redundantes foram removidos.       |
-| `.work`                              | Área privada de trabalho: caches, builds, mídia, publicações, e-mails e backups. Mantida; apagar tudo também apagaria dados e identidades de recuperação. |
-| `ops`                                | Código de deploy, migrações, backup, recuperação e medição. Mantido porque há consumidores ativos; o clone que criava outro banco foi retirado.           |
-| `scripts`                            | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado. O recálculo de etapas foi retirado.                                 |
-| `playwright-report` e `test-results` | Saídas automáticas do navegador. Retiradas da raiz; agora ficam em `.work/playwright`.                                                                    |
-| `dependency-cruiser.config.cjs`      | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                       |
-| `compose.local.yaml`                 | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                            |
-| `compose.test.yaml`                  | Criava o banco descartável. Excluído; os testes reutilizam o serviço local.                                                                               |
-| `tsconfig.tsbuildinfo`               | Cache incremental gerado pelo TypeScript. Retirado da raiz; o compilador agora usa `.work/cache/typescript.tsbuildinfo`.                                  |
+| Caminho                         | Função e decisão                                                                                                                                 |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.toolchain`                    | Node, qpdf e age nas versões exigidas pelos comandos locais.                                                                                     |
+| `.work`                         | Área privada de trabalho: caches, builds, mídia, publicações, e-mails e backups. Apagar tudo também apagaria dados e identidades de recuperação. |
+| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                      |
+| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                            |
+| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                              |
+| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                   |
 
 ## Documentação
 
-| Assunto                                 | Referência                                                                       |
-| --------------------------------------- | -------------------------------------------------------------------------------- |
-| Estado, evidências e decisões pendentes | [Estado atual](docs/current-status.md)                                           |
-| Implementação e fluxos                  | [Arquitetura](docs/architecture.md)                                              |
-| Edição do conteúdo                      | [Guia do CMS](docs/runbooks/cms-editorial.md)                                    |
-| Implantação, backup e recuperação       | [Guia de operação](docs/runbooks/release.md)                                     |
-| Produto e comportamento                 | [Spec aprovada](docs/specs/2026-10-29-portfolio-spec-v1.md)                      |
-| Modelo de conteúdo                      | [Contratos do CMS](docs/specs/2026-10-29-portfolio-cms-contracts.md)             |
-| Referência visual                       | [Inventário do Figma](docs/specs/2026-10-29-portfolio-figma-inventory.md)        |
-| Critérios originais                     | [Plano de implementação](docs/specs/2026-10-29-portfolio-implementation-plan.md) |
-| Condições de medição                    | [Protocolo de performance](docs/verification/E4.2-performance-protocol.md)       |
+| Assunto                                           | Referência                                      |
+| ------------------------------------------------- | ----------------------------------------------- |
+| Produto, contratos do CMS e referência visual     | [Especificação](documentation/specification.md) |
+| Implementação e fluxos                            | [Arquitetura](documentation/architecture.md)    |
+| Edição, deploy, backup, recuperação e performance | [Operação](documentation/operations.md)         |
+| Entregas, verificações e gates pendentes          | [Estado atual](documentation/current-status.md) |

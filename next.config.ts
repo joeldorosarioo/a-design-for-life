@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
       './.toolchain/**/*',
       './testing/**/*',
       './artifacts/**/*',
-      './docs/**/*',
+      './documentation/**/*',
     ],
   },
   // Proxy reauthorizes every outer/inner request before any optimizer cache hit.

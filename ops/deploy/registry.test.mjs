@@ -151,10 +151,10 @@ async function productionRepository(operation) {
     git('init', '--quiet', '--initial-branch=main');
     git('config', 'core.autocrlf', 'false');
     git('config', 'core.filemode', 'true');
-    mkdirSync(path.join(root, 'docs'));
+    mkdirSync(path.join(root, 'documentation'));
     mkdirSync(path.join(root, 'src'));
     writeFileSync(path.join(root, 'README.md'), 'Original documentation\n');
-    writeFileSync(path.join(root, 'docs/old.md'), 'Historical note\n');
+    writeFileSync(path.join(root, 'documentation/old.md'), 'Historical note\n');
     writeFileSync(path.join(root, 'src/app.js'), 'export const version = 1;\n');
     const commit = (stage = true) => {
       if (stage) git('add', '--all');
@@ -195,8 +195,11 @@ test('explicit approved revision and digest reuse the tested image after documen
   await productionRepository(async ({ root, git, commit, approvedRevision, approvedTree, f }) => {
     writeFileSync(path.join(root, 'README.md'), 'Updated documentation\n');
     writeFileSync(path.join(root, 'AGENTS.md'), 'Repository instructions\n');
-    writeFileSync(path.join(root, 'docs/current checks.json'), '{"status":"documented"}\n');
-    rmSync(path.join(root, 'docs/old.md'));
+    writeFileSync(
+      path.join(root, 'documentation/current checks.json'),
+      '{"status":"documented"}\n',
+    );
+    rmSync(path.join(root, 'documentation/old.md'));
     const currentRevision = commit();
     const currentTree = git('rev-parse', 'HEAD^{tree}');
     assert.notEqual(currentTree, approvedTree);
@@ -232,6 +235,7 @@ test('explicit approved revision and digest reuse the tested image after documen
 });
 
 for (const changedPath of [
+  'docs/old.md',
   'src/app.js',
   'public/app.js',
   'ops/deploy/runtime.mjs',
@@ -265,8 +269,8 @@ for (const changedPath of [
 
 for (const [description, mode, file] of [
   ['executable documentation', '100755', 'README.md'],
-  ['documentation symlink', '120000', 'docs/old.md'],
-  ['documentation gitlink', '160000', 'docs/vendor'],
+  ['documentation symlink', '120000', 'documentation/old.md'],
+  ['documentation gitlink', '160000', 'documentation/vendor'],
 ])
   test(`documentation exception refuses ${description} before registry access`, async () => {
     await productionRepository(async ({ root, git, commit, approvedRevision, f }) => {
@@ -292,7 +296,7 @@ for (const [description, mode, file] of [
 
 test('documentation exception refuses moving source code into the documentation directory', async () => {
   await productionRepository(async ({ root, git, commit, approvedRevision, f }) => {
-    git('mv', 'src/app.js', 'docs/app.js');
+    git('mv', 'src/app.js', 'documentation/app.js');
     const currentRevision = commit();
     await assert.rejects(
       resolveTestedImage({
