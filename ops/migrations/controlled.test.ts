@@ -1,5 +1,7 @@
-import { expect, it } from 'vitest';
-import { planControlledMigration } from './controlled';
+import { afterEach, expect, it, vi } from 'vitest';
+import { planControlledMigration, runControlledMigration } from './controlled';
+
+afterEach(() => vi.unstubAllEnvs());
 
 const predecessor = [
   '20261030_003022_initial_base',
@@ -39,4 +41,30 @@ it.each([
   ['development', [...predecessor, { name: 'dev', batch: -1 }]],
 ])('refuses %s history before operational effects', (_name, ledger) => {
   expect(() => planControlledMigration(ledger)).toThrow(/history/i);
+});
+
+it.each([
+  'postgres://synthetic:synthetic@127.0.0.1:5432/other_database',
+  'postgres://synthetic:synthetic@127.0.0.1:55434/a_design_for_life_rebuild',
+  'postgres://synthetic:synthetic@remote.invalid:5432/a_design_for_life_rebuild',
+])('refuses a migration outside the shared local database: %s', async (databaseUri) => {
+  vi.stubEnv('APP_ENV', 'test');
+  vi.stubEnv('ADFL_TEST_RUN_ID', '11111111-1111-4111-8111-111111111111');
+  vi.stubEnv('PAYLOAD_DROP_DATABASE', 'false');
+  vi.stubEnv('PUBLICATION_RETRIES_ENABLED', 'false');
+  vi.stubEnv('PUBLICATION_RETRY_WORKER_ENABLED', 'false');
+  vi.stubEnv('PUBLICATION_HTTP_VERIFICATION_ENABLED', 'false');
+  const initialize = vi.fn();
+  const assertOwned = vi.fn();
+  await expect(
+    runControlledMigration({
+      databaseUri,
+      siteOrigin: 'http://127.0.0.1:3106',
+      initialize,
+      assertOwned,
+      backup: {} as never,
+    }),
+  ).rejects.toThrow(/local/i);
+  expect(initialize).not.toHaveBeenCalled();
+  expect(assertOwned).not.toHaveBeenCalled();
 });

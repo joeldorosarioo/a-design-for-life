@@ -1,6 +1,7 @@
 import 'server-only';
 import path from 'node:path';
 import { z } from 'zod';
+import { matchesLocalDatabase } from './local-database';
 
 const serverEnvSchema = z
   .object({
@@ -66,16 +67,11 @@ const serverEnvSchema = z
   })
   .superRefine((env, context) => {
     if (env.EDITORIAL_FIRST_ACCESS_ENABLED === 'true') {
-      const database = URL.parse(env.DATABASE_URI);
       const staging =
         env.APP_ENV === 'staging' && URL.parse(env.SITE_ORIGIN)?.protocol === 'https:';
       const isolatedTest =
         env.APP_ENV === 'test' &&
-        database?.hostname === '127.0.0.1' &&
-        database.port === '55434' &&
-        database.pathname === '/adfl_test_runner' &&
-        database.username === 'adfl_test' &&
-        database.password === 'synthetic-local-test-only' &&
+        matchesLocalDatabase(env.DATABASE_URI) &&
         env.MEDIA_BUCKET === 'adfl-test-runner';
       if (env.PUBLIC_SITE_ENABLED !== 'false' || (!staging && !isolatedTest))
         context.addIssue({
@@ -95,13 +91,10 @@ const serverEnvSchema = z
         message: 'Publication retry worker requires enabled migrated retry metadata.',
       });
     if (env.PUBLICATION_HTTP_VERIFICATION_ENABLED === 'true') {
-      const database = URL.parse(env.DATABASE_URI);
       if (
         env.APP_ENV !== 'test' ||
         !env.INTERNAL_HTTP_ORIGIN ||
-        database?.hostname !== '127.0.0.1' ||
-        database.port !== '55434' ||
-        database.pathname !== '/adfl_test_runner' ||
+        !matchesLocalDatabase(env.DATABASE_URI) ||
         env.MEDIA_BUCKET !== 'adfl-test-runner'
       )
         context.addIssue({
@@ -154,14 +147,11 @@ const serverEnvSchema = z
           });
       }
 
-      if (
-        !['localhost', '127.0.0.1', '[::1]'].includes(database.hostname) ||
-        !/^\/adfl_test_[a-z0-9_]+$/.test(database.pathname)
-      ) {
+      if (!matchesLocalDatabase(env.DATABASE_URI)) {
         context.addIssue({
           code: 'custom',
           path: ['DATABASE_URI'],
-          message: 'Testes exigem PostgreSQL local com banco adfl_test_*',
+          message: 'Testes exigem o banco local fixo em 127.0.0.1:5432/a_design_for_life_rebuild',
         });
       }
     }

@@ -10,7 +10,7 @@ function fresh() {
   const ownerId = randomUUID();
   const parent = path.resolve('.work/private-media', `adfl-test-restore-${ownerId}`);
   parents.push(parent);
-  return { ownerId, root: path.join(parent, `adfl_test_restore_${ownerId.replaceAll('-', '')}`) };
+  return { ownerId, root: path.join(parent, 'a_design_for_life_rebuild') };
 }
 const bytes = Buffer.from('original immutable backup bytes');
 function reference(input = bytes) {

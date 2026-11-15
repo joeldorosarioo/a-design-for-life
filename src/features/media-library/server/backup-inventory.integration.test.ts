@@ -1,11 +1,10 @@
 import { appendFileSync, mkdirSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
-import { spawnSync } from 'node:child_process';
 import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { afterAll, beforeAll, expect, it } from 'vitest';
-import { getPayload, type Payload } from 'payload';
+import { createLocalReq, getPayload, type Payload } from 'payload';
 import { postgresAdapter, type PostgresAdapter } from '@payloadcms/db-postgres';
 import config from '@payload-config';
 import type { Media } from '@/payload-types';
@@ -24,6 +23,12 @@ import { confirmTestPublication } from '../../../../testing/fixtures/confirmed-p
 import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { readPublicRoot, withPublicRootWriter } from '@/helpers/payload/public-root';
 import { withNativeBackupSnapshot } from '@/helpers/payload/backup-snapshot';
+import {
+  checkpointSharedDatabase,
+  restoreSharedDatabase,
+  runSharedDatabaseTool,
+} from '../../../../testing/setup/shared-database-state';
+import { assertUnlinkedWorkspacePath } from '@/config/next-dist';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
@@ -31,7 +36,7 @@ beforeAll(async () => {
   registerOwnedPayload(fixture.payload);
 });
 function persistProofMetadata(value: unknown) {
-  const directory = path.resolve('docs/verification/artifacts/E3-backup');
+  const directory = path.resolve('.work/verification/E3-backup');
   mkdirSync(directory, { recursive: true });
   const runId = process.env.ADFL_TEST_RUN_ID;
   if (!/^[a-f0-9-]{36}$/.test(runId ?? '')) throw new Error('Owned proof run identity unavailable');
@@ -109,28 +114,25 @@ async function closeOwnedPayload(payload: Payload) {
   });
 }
 afterAll(async () => {
-  if (fixture) await closeOwnedPayload(fixture.payload);
+  if (fixture && ownedPools.has(fixture.payload)) await closeOwnedPayload(fixture.payload);
 });
 
 it('exports the same native read-only snapshot as the complete media inventory and restores A after concurrent B', async () => {
   const started = performance.now();
   const owned = inspectOwnedTestDatabase();
   const ownerId = randomUUID();
-  const restoreName = `adfl_test_restore_${ownerId.replaceAll('-', '')}`;
-  const dumpPath = `/tmp/adfl-backup-${ownerId}.dump`;
+  const database = new URL(process.env.DATABASE_URI!);
+  const restoreName = decodeURIComponent(database.pathname.slice(1));
+  const dumpPath = path.resolve('.work/test-database-state', `inventory-${ownerId}.dump`);
+  assertUnlinkedWorkspacePath(dumpPath);
+  await mkdir(path.dirname(dumpPath), { recursive: true, mode: 0o700 });
   const mediaParent = path.resolve('.work/private-media', `adfl-test-restore-${ownerId}`);
   const mediaRoot = path.join(mediaParent, restoreName);
-  let databaseCreated = false;
+  let restoreCheckpoint: (() => Promise<void>) | undefined;
+  let sourceClosed = false;
   let restored: Payload | undefined;
-  function postgresTool(tool: string, args: string[]) {
-    const current = inspectOwnedTestDatabase();
-    if (current.containerId !== owned.containerId || current.networkId !== owned.networkId)
-      throw new Error('Owned backup proof database changed');
-    const result = spawnSync('docker', ['exec', owned.containerId, tool, ...args], {
-      encoding: 'utf8',
-      windowsHide: true,
-      timeout: 30_000,
-    });
+  async function postgresTool(tool: 'pg_dump' | 'pg_restore', args: string[], outputFile?: string) {
+    const stdout = await runSharedDatabaseTool(tool, args, { outputFile });
     persistProofMetadata({
       event: 'backup-proof-tool',
       containerId: owned.containerId,
@@ -138,15 +140,19 @@ it('exports the same native read-only snapshot as the complete media inventory a
       runId: process.env.ADFL_TEST_RUN_ID,
       tool,
       args,
-      exitCode: result.status,
-      stdout: result.stdout,
-      stderr: result.stderr,
-      spawnError: result.error?.message,
+      exitCode: 0,
+      stdout,
     });
-    if (result.error || result.status !== 0)
-      throw new Error(`Owned ${tool} proof failed (exit ${result.status})`);
-    return result.stdout.trim();
+    return stdout;
   }
+  async function reopenSource() {
+    fixture.payload = await getPayload({ config, key: `backup-source-recovered-${ownerId}` });
+    fixture.request = () =>
+      createLocalReq({ user: { ...fixture.user, collection: 'users' } }, fixture.payload);
+    registerOwnedPayload(fixture.payload);
+    sourceClosed = false;
+  }
+
   try {
     const image = await mediaMetadataFixture(fixture.payload);
     const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');
@@ -203,7 +209,7 @@ it('exports the same native read-only snapshot as the complete media inventory a
     const confirmedA = await readPublicRoot(directory);
     const sessionsBefore = Object.keys(fixture.payload.db.sessions ?? {});
     let lateId = '';
-    await withNativeBackupSnapshot(
+    const snapshotA = await withNativeBackupSnapshot(
       {
         payload: fixture.payload,
         directory,
@@ -232,84 +238,21 @@ it('exports the same native read-only snapshot as the complete media inventory a
           await commit({ ...root, generation: randomUUID() });
         });
         expect((await readPublicRoot(directory))?.generation).not.toBe(snapshot.root?.generation);
-        postgresTool('pg_dump', ['--version']);
-        postgresTool('pg_restore', ['--version']);
-        postgresTool('pg_dump', [
-          '--username=adfl_test',
-          '--dbname=adfl_test_runner',
-          '--format=custom',
-          `--snapshot=${snapshot.snapshotId}`,
-          '--no-owner',
-          '--no-acl',
-          `--file=${dumpPath}`,
-        ]);
-        postgresTool('createdb', ['--username=adfl_test', '--template=template0', restoreName]);
-        databaseCreated = true;
-        postgresTool('pg_restore', [
-          '--username=adfl_test',
-          `--dbname=${restoreName}`,
-          '--single-transaction',
-          '--no-owner',
-          '--no-acl',
+        await postgresTool('pg_dump', ['--version']);
+        await postgresTool('pg_restore', ['--version']);
+        await postgresTool(
+          'pg_dump',
+          [
+            `--username=${decodeURIComponent(database.username)}`,
+            `--dbname=${restoreName}`,
+            '--format=custom',
+            `--snapshot=${snapshot.snapshotId}`,
+            '--no-owner',
+            '--no-acl',
+          ],
           dumpPath,
-        ]);
-        const restoredURI = new URL(process.env.DATABASE_URI!);
-        restoredURI.pathname = `/${restoreName}`;
-        const prepared = await config;
-        restored = await getPayload({
-          key: `backup-restored-${ownerId}`,
-          config: {
-            ...prepared,
-            db: {
-              name: 'postgres',
-              allowIDOnCreate: false,
-              ...postgresAdapter({
-                pool: { connectionString: restoredURI.toString() },
-                idType: 'uuid',
-                push: false,
-                disableCreateDatabase: true,
-              }),
-            },
-          },
-        });
-        registerOwnedPayload(restored);
-        const restoredIdentity = await restored.db.findOne({
-          collection: 'cases',
-          where: { id: { equals: identity.id } },
-        });
-        expect(restoredIdentity).toMatchObject({ internalTitle: 'Synthetic snapshot A' });
-        const translations = await restored.db.find({
-          collection: 'case-content',
-          where: { case: { equals: identity.id } },
-          pagination: false,
-          limit: 0,
-        });
-        expect(translations.docs).toEqual(
-          expect.arrayContaining([
-            expect.objectContaining({ locale: 'pt', title: 'Synthetic snapshot pt A' }),
-            expect.objectContaining({ locale: 'en', title: 'Synthetic snapshot en A' }),
-          ]),
         );
-        expect(
-          await restored.db.findOne({ collection: 'media', where: { id: { equals: lateId } } }),
-        ).toBeNull();
-        expect(
-          await restored.db.findOne({ collection: 'media', where: { id: { equals: pdf.id } } }),
-        ).toMatchObject({ state: 'deleted', deletedAt: expect.any(String) });
-        const writer = await createLocalRestoreObjectWriter({ root: mediaRoot, ownerId });
-        const source = createLocalObjectStorage(
-          process.env.MEDIA_STORAGE_ROOT ??
-            path.resolve(
-              '.work/private-media',
-              process.env.MEDIA_BUCKET!,
-              new URL(process.env.DATABASE_URI!).pathname.slice(1),
-            ),
-        );
-        for (const object of snapshot.captured.objects)
-          await writer.restore(object, await source.get(object));
-        const target = createLocalObjectStorage(mediaRoot);
-        for (const object of snapshot.captured.objects)
-          expect(await target.get(object)).toEqual(await source.get(object));
+        return snapshot;
       },
     );
     expect(Object.keys(fixture.payload.db.sessions ?? {})).toEqual(sessionsBefore);
@@ -319,19 +262,90 @@ it('exports the same native read-only snapshot as the complete media inventory a
         where: { id: { equals: identity.id } },
       }),
     ).toMatchObject({ internalTitle: 'Synthetic snapshot B' });
-    const receiptDirectory = path.resolve('docs/verification/artifacts/E3-backup');
+    await closeOwnedPayload(fixture.payload);
+    sourceClosed = true;
+    restoreCheckpoint = await checkpointSharedDatabase();
+    await restoreSharedDatabase(dumpPath);
+    const restoredURI = new URL(process.env.DATABASE_URI!);
+    const prepared = await config;
+    restored = await getPayload({
+      key: `backup-restored-${ownerId}`,
+      config: {
+        ...prepared,
+        db: {
+          name: 'postgres',
+          allowIDOnCreate: false,
+          ...postgresAdapter({
+            pool: { connectionString: restoredURI.toString() },
+            idType: 'uuid',
+            push: false,
+            disableCreateDatabase: true,
+          }),
+        },
+      },
+    });
+    registerOwnedPayload(restored);
+    const restoredIdentity = await restored.db.findOne({
+      collection: 'cases',
+      where: { id: { equals: identity.id } },
+    });
+    expect(restoredIdentity).toMatchObject({ internalTitle: 'Synthetic snapshot A' });
+    const translations = await restored.db.find({
+      collection: 'case-content',
+      where: { case: { equals: identity.id } },
+      pagination: false,
+      limit: 0,
+    });
+    expect(translations.docs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ locale: 'pt', title: 'Synthetic snapshot pt A' }),
+        expect.objectContaining({ locale: 'en', title: 'Synthetic snapshot en A' }),
+      ]),
+    );
+    expect(
+      await restored.db.findOne({ collection: 'media', where: { id: { equals: lateId } } }),
+    ).toBeNull();
+    expect(
+      await restored.db.findOne({ collection: 'media', where: { id: { equals: pdf.id } } }),
+    ).toMatchObject({ state: 'deleted', deletedAt: expect.any(String) });
+    const writer = await createLocalRestoreObjectWriter({ root: mediaRoot, ownerId });
+    const source = createLocalObjectStorage(
+      process.env.MEDIA_STORAGE_ROOT ??
+        path.resolve(
+          '.work/private-media',
+          process.env.MEDIA_BUCKET!,
+          new URL(process.env.DATABASE_URI!).pathname.slice(1),
+        ),
+    );
+    for (const object of snapshotA.captured.objects)
+      await writer.restore(object, await source.get(object));
+    const target = createLocalObjectStorage(mediaRoot);
+    for (const object of snapshotA.captured.objects)
+      expect(await target.get(object)).toEqual(await source.get(object));
+    await closeOwnedPayload(restored);
+    restored = undefined;
+    await restoreCheckpoint();
+    restoreCheckpoint = undefined;
+    await reopenSource();
+    expect(
+      await fixture.payload.db.findOne({
+        collection: 'cases',
+        where: { id: { equals: identity.id } },
+      }),
+    ).toMatchObject({ internalTitle: 'Synthetic snapshot B' });
+    const receiptDirectory = path.resolve('.work/verification/E3-backup');
     await mkdir(receiptDirectory, { recursive: true });
     await writeFile(
       path.join(receiptDirectory, `native-snapshot-restore-${ownerId}.json`),
       JSON.stringify(
         {
-          source: 'owned disposable runner',
+          source: 'shared local database under exclusive test lease',
           database: restoreName,
           containerId: owned.containerId,
           networkId: owned.networkId,
           runId: process.env.ADFL_TEST_RUN_ID,
           observation:
-            'dump+inventory A; source changed to B; restored A; PT/EN, trashed PDF, immutable object bytes and >100 media records verified',
+            'dump+inventory A; concurrent B; real restore A; PT/EN, trash, immutable bytes and >100 records verified; B recovered afterward',
           durationMs: Math.round(performance.now() - started),
           ageExecuted: false,
           remoteR2Executed: false,
@@ -343,8 +357,10 @@ it('exports the same native read-only snapshot as the complete media inventory a
     );
   } finally {
     if (restored) await closeOwnedPayload(restored);
-    if (databaseCreated) postgresTool('dropdb', ['--username=adfl_test', restoreName]);
-    postgresTool('rm', ['-f', dumpPath]);
+    if (restoreCheckpoint) await restoreCheckpoint();
+    if (sourceClosed) await reopenSource();
+    assertUnlinkedWorkspacePath(dumpPath);
+    await rm(dumpPath, { force: true });
     if (
       path.dirname(mediaParent) !== path.resolve('.work/private-media') ||
       path.basename(mediaParent) !== `adfl-test-restore-${ownerId}`

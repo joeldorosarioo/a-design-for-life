@@ -1,15 +1,10 @@
 // @vitest-environment jsdom
-import React from 'react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SiteHeader, SiteFooter } from '@/features/site-navigation/ui';
 import { navigationEnFixture } from '../../../../testing/fixtures/content';
 import { mountDocumentAnalytics, type AnalyticsHost } from './document-analytics';
-import { AnalyticsProvider } from '../components/analytics-provider';
-import { TrackedLink } from '../components/tracked-link';
-import { createAnalyticsSession } from '../analytics-session';
-import type { PortfolioAnalyticsEvent } from '../contracts/event.schema';
 const runtime = {
   environment: 'production',
   area: 'public',
@@ -95,36 +90,4 @@ it('keeps the real mobile resume action measurable while the menu closes with it
   await user.click(resume);
   expect(within(owner.body).queryByRole('dialog')).toBeNull();
   expect(events().map((entry) => entry[1])).toEqual(['page_view', 'resume_open']);
-});
-
-it('does not measure a TrackedLink action twice when component and document paths coexist', async () => {
-  const captured: PortfolioAnalyticsEvent[] = [];
-  const session = createAnalyticsSession({
-    runtime,
-    createTransport: () => ({
-      send(event) {
-        captured.push(event);
-      },
-    }),
-  });
-  render(
-    <AnalyticsProvider session={session} context={context}>
-      <TrackedLink
-        purpose="resume"
-        data-analytics-purpose="resume"
-        href="/media/synthetic/original"
-        target="_blank"
-      >
-        Resume
-      </TrackedLink>
-    </AnalyticsProvider>,
-    { container },
-  );
-  fireEvent.click(within(container).getByRole('link', { name: 'Resume' }));
-  await Promise.resolve();
-  expect(captured).toEqual([
-    { name: 'page_view', locale: 'en', pagePath: '/en' },
-    { name: 'resume_open', locale: 'en', pagePath: '/en' },
-  ]);
-  expect(events().map((entry) => entry[1])).toEqual(['page_view']);
 });

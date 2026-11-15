@@ -224,8 +224,10 @@ it('denies raw privileged Local API registry creation without an internal transa
   ).rejects.toMatchObject({ status: 403 });
 });
 
-import { reserveCaseRoute } from '../../server/reserve-case-route';
-import { restoreCaseDraft } from '../../server/restore-case-draft';
+import {
+  reserveCaseRoute,
+  restoreCaseDraft,
+} from '../../../../../testing/fixtures/editorial-commands';
 import { resolveCaseRoute } from '../../server/resolve-case-route';
 it('explicit reservation command verifies identity and caller revision/lease, without inventing suffixes', async () => {
   const doc = await draft();

@@ -14,7 +14,11 @@ const env = {
   APP_ENV: 'test',
   DATABASE_URI: isolatedTestDatabaseUri,
   MEDIA_BUCKET: isolatedTestBucket,
-  MEDIA_STORAGE_ROOT: path.resolve('.work/private-media', isolatedTestBucket, 'adfl_test_runner'),
+  MEDIA_STORAGE_ROOT: path.resolve(
+    '.work/private-media',
+    isolatedTestBucket,
+    'a_design_for_life_rebuild',
+  ),
   ADFL_TEST_RUN_ID: '443f2f55-41c5-499a-9c24-a038128133f7',
   ADFL_TEST_CONTAINER_ID: 'c'.repeat(64),
   ADFL_TEST_NETWORK_ID: 'd'.repeat(64),
@@ -123,7 +127,7 @@ it('rejects a different runtime namespace or pool URI before attaching any liste
       ...env,
       DATABASE_URI: 'postgres://synthetic:synthetic@127.0.0.1:5432/adfl_test_foreign',
     }),
-  ).toThrow('Exact isolated test runtime namespace');
+  ).toThrow('Expected the configured shared local PostgreSQL database');
   fixture.options.connectionString =
     'postgres://synthetic:synthetic@127.0.0.1:5432/adfl_test_foreign';
   expect(() => observeOwnedDatabasePool(fixture, env)).toThrow('exact owned pool namespace');

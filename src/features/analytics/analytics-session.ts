@@ -89,4 +89,3 @@ export function createAnalyticsSession({
   }
   return { track, completeNavigation, trackContact };
 }
-export type AnalyticsSession = ReturnType<typeof createAnalyticsSession>;

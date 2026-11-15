@@ -8,6 +8,7 @@ import { withPublicRootWriter } from '../../src/helpers/payload/public-root';
 import { createLocalReq, getPayload, type Payload } from 'payload';
 import config from '@payload-config';
 import { observeOwnedDatabasePool } from '../setup/owned-database-outage';
+import { assertIsolatedTestEnvironment } from '../setup/test-environment';
 
 export async function createEditorialPayloadFixture(key: string) {
   const payload = await getPayload({ config, key });
@@ -30,12 +31,7 @@ export async function createEditorialPayloadFixture(key: string) {
 }
 
 export async function clearStructuralFixture(payload: Payload) {
-  if (
-    process.env.APP_ENV !== 'test' ||
-    !new URL(process.env.DATABASE_URI ?? '').pathname.startsWith('/adfl_test_')
-  ) {
-    throw new Error('A limpeza de fixture exige banco isolado de teste');
-  }
+  assertIsolatedTestEnvironment(process.env);
   const directory = path.resolve(runtimePublication().directory);
   const within = (base: string) => {
     const relative = path.relative(base, directory);

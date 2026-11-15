@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import React, { StrictMode, Suspense } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { BrowserAnalyticsBoundary } from './browser-analytics-boundary';

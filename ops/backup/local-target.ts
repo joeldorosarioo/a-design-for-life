@@ -5,7 +5,6 @@ import { lstat, mkdir, readFile, readdir, realpath, rm } from 'node:fs/promises'
 import path from 'node:path';
 import { z } from 'zod';
 import { assertUnlinkedWorkspacePath } from '../../src/config/next-dist';
-import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory';
 import { publicRootSchema, withPublicRootWriter } from '../../src/helpers/payload/public-root';
 import { withPublicationWriter } from '../../src/helpers/payload/publication-writer';
 import { createLocalRestoreObjectWriter } from '../../src/helpers/storage/restore-object';
@@ -15,11 +14,14 @@ import {
   type RestoreTargetObservation,
 } from './restore-target';
 import { checkedClock } from './contracts';
+import { assertLocalDatabase } from '../../src/config/local-database';
 import { assertPrivateBackupWorkPath, inspectPrivateBackupFile } from './repository';
 export type OwnedPostgresBoundary = {
   assertOwned: () => Promise<{ containerId: string; networkId: string; runId: string }>;
+  checkpoint: () => Promise<() => Promise<void>>;
+  reset: () => Promise<void>;
   invoke: (input: {
-    tool: 'psql' | 'createdb' | 'dropdb' | 'pg_restore';
+    tool: 'psql' | 'pg_restore';
     args: readonly string[];
     inputFile?: string;
   }) => Promise<string>;
@@ -100,14 +102,8 @@ export function validateLocalRestoreTargetOptions(options: LocalRestoreTargetOpt
     throw new Error('Only an unambiguous local test restore is available');
   const database = new URL(options.sourceDatabaseUri);
   const origin = new URL(options.siteOrigin);
+  assertLocalDatabase(options.sourceDatabaseUri);
   if (
-    !['postgres:', 'postgresql:'].includes(database.protocol) ||
-    database.hostname !== '127.0.0.1' ||
-    database.port !== '55434' ||
-    database.pathname !== '/adfl_test_runner' ||
-    database.username !== 'adfl_test' ||
-    database.search ||
-    database.hash ||
     origin.protocol !== 'http:' ||
     !['127.0.0.1', '[::1]'].includes(origin.hostname) ||
     origin.pathname !== '/' ||
@@ -128,26 +124,20 @@ export async function withOwnedLocalRestoreTarget<T>(
   return withPublicationWriter(`backup-local-restore:${host.containerId}`, async () => {
     let active = true;
     const ownerId = randomUUID();
-    const name = `adfl_test_restore_${ownerId.replaceAll('-', '')}`;
+    const name = decodeURIComponent(database.pathname.slice(1));
     const bucket = `adfl-test-restore-${ownerId}`;
-    const targetUri = new URL(database);
-    targetUri.pathname = '/' + name;
     const context: LocalRestoreContext = {
       databaseName: name,
-      databaseUri: targetUri.toString(),
+      databaseUri: database.toString(),
       mediaBucket: bucket,
       mediaRoot: path.resolve('.work/private-media', bucket, name),
-      publicationDirectory: publicRootDirectory({
-        APP_ENV: 'test',
-        SITE_ORIGIN: origin.origin,
-        DATABASE_URI: targetUri.toString(),
-      }),
+      publicationDirectory: path.resolve('.work/publication', `adfl-restore-${ownerId}`),
       siteOrigin: origin.origin,
       ownerId,
     };
     const clock = options.now ?? (() => new Date());
     const iso = () => new Date(checkedClock(clock())).toISOString();
-    let created = false;
+    let restoreCheckpoint: (() => Promise<void>) | undefined;
     let oid: string | undefined;
     let mediaIdentity: string | undefined;
     let publicationIdentity: string | undefined;
@@ -165,8 +155,8 @@ export async function withOwnedLocalRestoreTarget<T>(
       return invoke({
         tool: 'psql',
         args: [
-          '--username=adfl_test',
-          '--dbname=postgres',
+          `--username=${decodeURIComponent(database.username)}`,
+          `--dbname=${name}`,
           '--no-align',
           '--tuples-only',
           '--set=ON_ERROR_STOP=1',
@@ -179,16 +169,12 @@ export async function withOwnedLocalRestoreTarget<T>(
       await ownership();
       await absent(path.dirname(context.mediaRoot));
       await absent(context.publicationDirectory);
-      if ((await catalogOid()) !== '') throw new Error('Restore refuses a pre-existing database');
-      const preflightAbsentAt = iso();
-      await invoke({
-        tool: 'createdb',
-        args: ['--username=adfl_test', '--template=template0', name],
-      });
-      created = true;
       oid = await catalogOid();
       if (!/^[1-9][0-9]*$/.test(oid))
-        throw new Error('Created database catalog identity unavailable');
+        throw new Error('Shared local database catalog identity unavailable');
+      restoreCheckpoint = await options.postgres.checkpoint();
+      const checkpointedAt = iso();
+      await options.postgres.reset();
       const writer = await createLocalRestoreObjectWriter({ root: context.mediaRoot, ownerId });
       mediaIdentity = await directoryIdentity(context.mediaRoot);
       assertUnlinkedWorkspacePath(context.publicationDirectory);
@@ -210,7 +196,7 @@ export async function withOwnedLocalRestoreTarget<T>(
       async function assertTargetOwned(): Promise<void> {
         await ownership();
         if (
-          !created ||
+          !restoreCheckpoint ||
           !oid ||
           (await catalogOid()) !== oid ||
           (await directoryIdentity(context.mediaRoot)) !== mediaIdentity ||
@@ -223,7 +209,7 @@ export async function withOwnedLocalRestoreTarget<T>(
         const count = await invoke({
           tool: 'psql',
           args: [
-            '--username=adfl_test',
+            `--username=${decodeURIComponent(database.username)}`,
             '--dbname=' + name,
             '--no-align',
             '--tuples-only',
@@ -234,11 +220,11 @@ export async function withOwnedLocalRestoreTarget<T>(
         });
         return {
           target: structuredClone(descriptor),
-          preflightAbsentAt,
+          checkpointedAt,
           acquiredAt,
           observedAt: iso(),
           expiresAt,
-          createdByOwner: true,
+          preparedByOwner: true,
           leaseActive: active,
           databaseEmpty: count === '0',
           mediaEmpty: (await readdir(context.mediaRoot)).length === 0,
@@ -268,7 +254,7 @@ export async function withOwnedLocalRestoreTarget<T>(
     } finally {
       if (token) targets.delete(token);
       try {
-        if (created) {
+        if (restoreCheckpoint) {
           await ownership();
           if (!oid || (await catalogOid()) !== oid)
             throw new Error('Restore database identity changed; cleanup refused');
@@ -278,7 +264,7 @@ export async function withOwnedLocalRestoreTarget<T>(
               (await directoryIdentity(context.publicationDirectory)) !== publicationIdentity)
           )
             throw new Error('Restore directory identity changed; cleanup refused');
-          await invoke({ tool: 'dropdb', args: ['--username=adfl_test', name] });
+          await restoreCheckpoint();
           if (mediaIdentity) {
             const parent = path.dirname(context.mediaRoot);
             if (
@@ -347,9 +333,11 @@ export async function restoreIntoOwnedLocalTarget(
     await acquired.invoke({
       tool: 'pg_restore',
       args: [
-        '--username=adfl_test',
+        `--username=${decodeURIComponent(new URL(acquired.context.databaseUri).username)}`,
         `--dbname=${acquired.context.databaseName}`,
         '--single-transaction',
+        '--clean',
+        '--if-exists',
         '--no-owner',
         '--no-acl',
       ],

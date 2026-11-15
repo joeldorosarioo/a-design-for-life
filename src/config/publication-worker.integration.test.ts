@@ -6,7 +6,10 @@ import path from 'node:path';
 import type { PublicationUpdate } from '../payload-types';
 import { createEditorialPayloadFixture } from '../../testing/fixtures/editorial-payload';
 import { inspectOwnedTestDatabase } from '../../testing/setup/owned-test-database';
-import { readPublicationRetry } from '../helpers/payload/publication-retries';
+import {
+  readPublicationRetry,
+  confirmPublicationWrite,
+} from '../../testing/fixtures/editorial-commands';
 import {
   installPublicationProvider,
   runtimePublication,
@@ -15,7 +18,6 @@ import { portfolioPublicationCoordinator } from './publication';
 import { createPublicationRetryDrain } from './publication-worker';
 import { observedRequest } from '../../testing/fixtures/editorial-lifecycle';
 import { withPublicRootWriter } from '../helpers/payload/public-root';
-import { confirmPublicationWrite } from '../helpers/payload/confirm-publication-write';
 import { retryPublicationUpdate } from '../helpers/payload/publication-updates';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
@@ -73,7 +75,7 @@ beforeAll(async () => {
     networkId: owned.networkId,
     node: process.versions.node,
     workerEnabled: process.env.PUBLICATION_RETRY_WORKER_ENABLED,
-    databasePort: '55434',
+    databasePort: new URL(process.env.DATABASE_URI!).port,
   });
 });
 

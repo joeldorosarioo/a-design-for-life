@@ -2,6 +2,7 @@ import 'server-only';
 import type { Metadata } from 'next';
 import { z } from 'zod';
 import { localeSchema, type Locale } from '@/helpers/i18n/locale.schema';
+import { staticPagePath } from '@/helpers/i18n/static-page-path';
 import { profileDTOSchema, type ProfileDTO } from '@/features/professional-profile';
 import { caseDetailDTOSchema, slugSchema, type CaseDetailDTO } from '@/features/cases';
 import type { ImageUseDTO } from '@/features/media-library';
@@ -38,13 +39,6 @@ function validatedOrigin(value: string) {
     throw new TypeError('Metadata requires an HTTP(S) origin without extra data.');
   return new URL(origin.origin);
 }
-function staticPath(locale: Locale, kind: 'home' | 'cases' | 'about') {
-  return kind === 'home'
-    ? `/${locale}`
-    : kind === 'cases'
-      ? `/${locale}/cases`
-      : `/${locale}/${locale === 'pt' ? 'sobre' : 'about'}`;
-}
 function casePath(path: string, locale: Locale) {
   const match = /^\/(pt|en)\/cases\/([^/]+)$/.exec(path);
   if (!match || match[1] !== locale || !slugSchema.safeParse(match[2]).success)
@@ -78,13 +72,14 @@ export function buildLocalizedMetadata(input: LocalizedMetadataInput): Metadata 
   const page = pageSchema.parse(input.page);
   const origin = validatedOrigin(input.origin);
   const pathname =
-    page.kind === 'case' ? casePath(page.path, locale) : staticPath(locale, page.kind);
+    page.kind === 'case' ? casePath(page.path, locale) : staticPagePath(locale, page.kind);
   const alternates = alternativesSchema.parse(input.publishedAlternates);
   const languages: Partial<Record<Locale, string>> = {};
   for (const language of ['pt', 'en'] as const) {
     const path = alternates[language];
     if (path === undefined) continue;
-    const valid = page.kind === 'case' ? casePath(path, language) : staticPath(language, page.kind);
+    const valid =
+      page.kind === 'case' ? casePath(path, language) : staticPagePath(language, page.kind);
     if (path !== valid || (language === locale && path !== pathname))
       throw new TypeError('Metadata alternate does not match its published page and locale.');
     languages[language] = new URL(path, origin).toString();

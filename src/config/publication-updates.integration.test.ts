@@ -5,7 +5,7 @@ import { handleEndpoints, getPayload } from 'payload';
 import config from '@payload-config';
 import { retryPublicationUpdate } from '../helpers/payload/publication-updates';
 import { z } from 'zod';
-import { resolveMediaAccess } from '@/features/media-library/server';
+import { resolveMediaDelivery } from '@/features/media-library/server';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import { createEditorialPayloadFixture } from '../../testing/fixtures/editorial-payload';
@@ -68,10 +68,12 @@ it('keeps a committed native target private until public publication is confirme
     targetRevision: doc.editorialRevision,
   });
   expect(
-    await resolveMediaAccess(
-      { mediaId: media.id, variant: 'original', preview: false },
-      await fixture.request(),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: media.id, variant: 'original', preview: false },
+        await fixture.request(),
+      )
+    ).access,
   ).toMatchObject({ ok: false, status: 404 });
   expect(
     await retryPublicationUpdate(operations.docs[0]!.operationId, await fixture.request()),
@@ -86,10 +88,12 @@ it('keeps a committed native target private until public publication is confirme
     ).totalDocs,
   ).toBe(1);
   expect(
-    await resolveMediaAccess(
-      { mediaId: media.id, variant: 'original', preview: false },
-      await fixture.request(),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: media.id, variant: 'original', preview: false },
+        await fixture.request(),
+      )
+    ).access,
   ).toMatchObject({ ok: true });
 });
 
@@ -219,20 +223,24 @@ it('retains confirmed bytes through pending withdrawal and releases publication 
     overrideAccess: false,
   });
   expect(
-    await resolveMediaAccess(
-      { mediaId: media.id, variant: 'original', preview: false },
-      await fixture.request(),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: media.id, variant: 'original', preview: false },
+        await fixture.request(),
+      )
+    ).access,
   ).toMatchObject({ ok: true });
   expect(await resolveCaseRoute('pt', slug, fixture.payload)).toMatchObject({ status: 200 });
   expect(
     await retryPublicationUpdate(withdrawn.latestPublicationIntent!, await fixture.request()),
   ).toMatchObject({ ok: true, value: { state: 'public' } });
   expect(
-    await resolveMediaAccess(
-      { mediaId: media.id, variant: 'original', preview: false },
-      await fixture.request(),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: media.id, variant: 'original', preview: false },
+        await fixture.request(),
+      )
+    ).access,
   ).toMatchObject({ ok: false, status: 404 });
   expect(await resolveCaseRoute('pt', slug, fixture.payload)).toMatchObject({ status: 410 });
   await expect(
@@ -550,10 +558,12 @@ it('preserves media and route ownership across a real SQL acknowledgement reject
       case: { title: 'Root committed without SQL ack' },
     });
     expect(
-      await resolveMediaAccess(
-        { mediaId: media.id, variant: 'original', preview: false },
-        await fixture.request(),
-      ),
+      (
+        await resolveMediaDelivery(
+          { mediaId: media.id, variant: 'original', preview: false },
+          await fixture.request(),
+        )
+      ).access,
     ).toMatchObject({ ok: true });
     const routes = await fixture.payload.find({
       collection: 'case-routes',
@@ -707,7 +717,7 @@ it('does not retire root route ownership when a failed acknowledgement is supers
   }
 });
 
-import { publishCase } from '@/features/cases/server/publish-case';
+import { publishCase } from '../../testing/fixtures/editorial-commands';
 import { withPublicRootWriter } from '../helpers/payload/public-root';
 import { runtimePublication } from '../helpers/payload/publication-runtime';
 it('reports feature publication pending while the global writer is busy, then confirms only after real promotion', async () => {
@@ -931,10 +941,12 @@ it('ignores forged Native public metadata and hides a committed pending target f
   expect(count.status).toBe(200);
   expect(await count.json()).toMatchObject({ totalDocs: 0 });
   expect(
-    await resolveMediaAccess(
-      { mediaId: media.id, variant: 'original', preview: false },
-      await fixture.request(),
-    ),
+    (
+      await resolveMediaDelivery(
+        { mediaId: media.id, variant: 'original', preview: false },
+        await fixture.request(),
+      )
+    ).access,
   ).toMatchObject({ ok: false, status: 404 });
 });
 it('acknowledges the durable root only after the observer proves the revision and retries that same root', async () => {

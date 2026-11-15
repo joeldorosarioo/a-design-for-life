@@ -482,15 +482,19 @@ it('does not treat a copy of a registered writer as an authorized backup reposit
 });
 
 function restoreTarget() {
-  let oid = '';
+  const oid = '12345';
   let invocations = 0;
   let restores = 0;
   const target: LocalRestoreTargetOptions = {
     environment: 'test',
     sourceDatabaseUri:
-      'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+      'postgres://synthetic:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
     siteOrigin: 'http://127.0.0.1:3101',
     postgres: {
+      async checkpoint() {
+        return async () => {};
+      },
+      async reset() {},
       async assertOwned() {
         invocations++;
         return {
@@ -501,8 +505,6 @@ function restoreTarget() {
       },
       async invoke(input) {
         invocations++;
-        if (input.tool === 'createdb') oid = '12345';
-        if (input.tool === 'dropdb') oid = '';
         if (input.tool === 'pg_restore') {
           expect(input.args).toContain('--single-transaction');
           expect((await readFile(input.inputFile!)).subarray(0, 5).toString()).toBe('PGDMP');

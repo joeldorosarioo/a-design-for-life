@@ -27,7 +27,7 @@ import type { PublicationUpdate } from '@/payload-types';
 import { publicGenerationHeader } from '@/helpers/payload/public-generation-header';
 import { readPublicRoot } from '@/helpers/payload/public-root';
 import { publicRootDirectory } from '@/helpers/payload/public-root-directory';
-import { readPublicationRetry } from '@/helpers/payload/publication-retries';
+import { readPublicationRetry } from '../../testing/fixtures/editorial-commands';
 import { readServerEnv } from './server-env';
 
 type RelayedRead = {

@@ -1,13 +1,13 @@
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { embeddedDatabaseTarget, stagingDatabaseOnly } from './staging-mode.mjs';
+import { embeddedDatabaseTarget, databaseOnly } from './staging-mode.mjs';
 import { get } from 'node:http';
 
 const maximumBodyBytes = 512;
 
 // Readiness is local even when the app uses an ambient proxy for external traffic.
 try {
-  if (stagingDatabaseOnly(process.env)) {
+  if (databaseOnly(process.env)) {
     const { user, database } = embeddedDatabaseTarget(process.env);
     await promisify(execFile)(
       'pg_isready',

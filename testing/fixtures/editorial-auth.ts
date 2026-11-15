@@ -3,6 +3,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { handleEndpoints } from 'payload';
 import config from '@payload-config';
+import { assertIsolatedTestEnvironment } from '../setup/test-environment';
 
 export const authPassword = 'Synthetic-editorial-auth-password-123!';
 export function authHTTP(
@@ -63,11 +64,7 @@ export async function disposeCapturedMessages(emails: string[]) {
 import { mkdir, rename, writeFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 export async function withUnavailableCapturedDelivery<T>(operation: () => Promise<T>): Promise<T> {
-  if (
-    process.env.APP_ENV !== 'test' ||
-    !new URL(process.env.DATABASE_URI!).pathname.startsWith('/adfl_test_')
-  )
-    throw new Error('Capture fault fixture requires isolated test DB');
+  assertIsolatedTestEnvironment(process.env);
   const root = path.resolve('.work/editorial-mail');
   const directory = path.join(
     root,

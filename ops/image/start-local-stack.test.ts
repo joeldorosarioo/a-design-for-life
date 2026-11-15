@@ -109,18 +109,20 @@ it('refuses a PostgreSQL data directory from a different major version', async (
   expect(launch).not.toHaveBeenCalled();
 });
 
-it('keeps only PostgreSQL running during explicit private staging initialization', async () => {
+it.each([
+  { APP_ENV: 'staging', STAGING_DATABASE_ONLY: 'true' },
+  { APP_ENV: 'local', LOCAL_DATABASE_ONLY: 'true' },
+])('keeps the fixed PostgreSQL service running without Next (%#)', async (mode) => {
   const { database, app, launch, env } = await fixture(true);
   const controller = new AbortController();
   const result = startLocalStack({
     env: {
       ...env,
-      APP_ENV: 'staging',
+      ...mode,
       PUBLIC_SITE_ENABLED: 'false',
       PUBLICATION_RETRIES_ENABLED: 'false',
       PUBLICATION_RETRY_WORKER_ENABLED: 'false',
       PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false',
-      STAGING_DATABASE_ONLY: 'true',
     },
     signal: controller.signal,
     launch,
@@ -133,6 +135,32 @@ it('keeps only PostgreSQL running during explicit private staging initialization
   expect(app.kill).not.toHaveBeenCalled();
   expect(database.kill).toHaveBeenCalledWith('SIGINT');
 });
+
+it.each([
+  { APP_ENV: 'production' },
+  { APP_ENV: 'staging' },
+  { LOCAL_DATABASE_ONLY: 'yes' },
+  { STAGING_DATABASE_ONLY: 'true' },
+])(
+  'refuses an unsafe local database-only mode before launching a process (%#)',
+  async (overrides) => {
+    const { launch, env } = await fixture(true);
+    await expect(
+      startLocalStack({
+        env: {
+          ...env,
+          APP_ENV: 'local',
+          PUBLIC_SITE_ENABLED: 'false',
+          LOCAL_DATABASE_ONLY: 'true',
+          ...overrides,
+        },
+        launch,
+        waitForDatabase: async () => {},
+      }),
+    ).rejects.toThrow('Database-only startup');
+    expect(launch).not.toHaveBeenCalled();
+  },
+);
 
 it.each([
   { APP_ENV: 'production' },

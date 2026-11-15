@@ -1,7 +1,9 @@
 import { spawnSync } from 'node:child_process';
 import { configureTestEnvironment } from './test-environment';
 import { inspectOwnedTestDatabase, startOwnedTestDatabase } from './owned-test-database';
+import { configureSharedDatabaseUri } from './local-database-environment';
 
+configureSharedDatabaseUri();
 configureTestEnvironment();
 const stop = await startOwnedTestDatabase();
 try {
@@ -24,5 +26,5 @@ try {
       throw result.error ?? new Error(`Native roundtrip command failed: ${args[0]}`);
   }
 } finally {
-  stop();
+  await stop();
 }

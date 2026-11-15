@@ -174,7 +174,7 @@ describe('Native editorial first access', () => {
       ...policy(),
       appEnv: 'test',
       databaseUri:
-        'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+        'postgres://local_role:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
       mediaBucket: 'adfl-test-runner',
     };
     const collection = usersCollection(testOrigin, options);
@@ -195,7 +195,7 @@ describe('Native editorial first access', () => {
       ...policy(),
       appEnv: 'test',
       databaseUri:
-        'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+        'postgres://local_role:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
       mediaBucket: 'adfl-test-runner',
       ...invalid,
     };

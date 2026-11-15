@@ -47,16 +47,13 @@ export async function serveMedia(
   try {
     if (!input.preview) return await mediaResponse(input, undefined, request.method === 'HEAD');
     const payload = await runtimePayload();
-    let user: PayloadRequest['user'] = null;
-    if (input.preview) {
-      const origin = request.headers.get('origin');
-      if (
-        (origin && origin !== payload.config.serverURL) ||
-        request.headers.get('sec-fetch-site') === 'cross-site'
-      )
-        return new Response(null, { status: 401, headers: privateHeaders });
-      user = (await payload.auth({ headers: request.headers })).user;
-    }
+    const origin = request.headers.get('origin');
+    if (
+      (origin && origin !== payload.config.serverURL) ||
+      request.headers.get('sec-fetch-site') === 'cross-site'
+    )
+      return new Response(null, { status: 401, headers: privateHeaders });
+    const { user } = await payload.auth({ headers: request.headers });
     const req = await createLocalReq(
       { user: user ?? undefined, req: { headers: request.headers } },
       payload,

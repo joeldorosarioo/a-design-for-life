@@ -38,7 +38,7 @@ beforeEach(() => {
     GA4_MEASUREMENT_ID: 'G-TESTONLY1',
     SITE_ORIGIN: 'https://portfolio.example.invalid',
     PAYLOAD_SECRET: 'synthetic-secret-only-for-composition-tests',
-    DATABASE_URI: 'postgres://synthetic:local-only@127.0.0.1:55433/adfl_test_fixture',
+    DATABASE_URI: 'postgres://synthetic:local-only@127.0.0.1:5432/a_design_for_life_rebuild',
     MEDIA_BUCKET: 'adfl-test-fixture',
   }))
     vi.stubEnv(key, value);

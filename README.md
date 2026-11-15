@@ -1,26 +1,34 @@
 # A Design for Life
 
-A bilingual Product Design and UX portfolio. Next.js serves the public site. Payload manages content and PostgreSQL stores it. The public UI uses Tailwind CSS, CVA, and seven components installed from the [official shadcn registry](https://ui.shadcn.com/docs/components). Figma defines the visual reference.
+Portfólio bilíngue de Product Design e UX. Next.js serve as páginas, Payload gerencia o conteúdo e PostgreSQL guarda os dados. A interface usa Tailwind CSS, CVA, shadcn e Motion, com o Figma como referência visual.
 
-## Develop locally
+O lançamento ainda não está autorizado; veja o [estado atual e as pendências](docs/current-status.md).
 
-Use Node 24.22.2, pnpm 12.10.1, and Docker with Linux containers. Run commands from the repository root.
+## Uso local
 
-1. Run `pnpm install --frozen-lockfile`.
-2. If `.env` is absent, copy `.env.example`. Set a private `PAYLOAD_SECRET` of at least 32 characters and a `DATABASE_URI` for the local database on port 5432. Use local storage and captured email for isolated work.
-3. On a fresh machine only, create the external PostgreSQL volume with `docker volume create a-design-for-life-rebuild-postgres-data`. Reuse the existing volume on this checkout.
-4. Start the existing image with `docker compose -f compose.local.yaml up -d --no-build --wait`. For the first image build, replace `--no-build` with `--build`.
-5. For a fresh database, run `pnpm migrate` and `pnpm provision:structural` from the host. The latter creates draft profiles and navigation. Publish both for the public pages to resolve.
+Use Node 24.22.2, pnpm 12.10.1 e Docker com contêineres Linux. Execute os comandos na raiz do repositório.
 
-Open [Portuguese](http://localhost:3000/pt), [English](http://localhost:3000/en), or the [Payload admin](http://localhost:3000/admin). With a local database available and port 3000 free, run `pnpm dev` to develop outside the application container.
+1. Instale as dependências com `pnpm install --frozen-lockfile`.
+2. Se `.env` não existir, copie `.env.example`. Defina um `PAYLOAD_SECRET` privado com pelo menos 32 caracteres e a `DATABASE_URI` do banco local na porta 5432. Mantenha `MEDIA_STORAGE_DRIVER=local`; o e-mail local usa captura privada.
+3. Somente em uma máquina nova, crie o volume externo com `docker volume create a-design-for-life-rebuild-postgres-data`. Neste checkout, reutilize o volume existente.
+4. Na primeira configuração, suba o PostgreSQL com `docker compose -f compose.local.yaml up -d --build --wait postgres`. Nas seguintes, use `--no-build` no lugar de `--build`. O volume existente é reutilizado.
+5. Para um banco novo, com desenvolvimento e testes parados, execute `pnpm migrate` e `pnpm provision:structural` no host. O provisionamento cria perfis e navegação como rascunhos; preencha e publique ambos nos dois idiomas para abrir as páginas públicas.
 
-Use the existing editor account where available. To provision an editor locally, set `APP_ENV=local`, `LOCAL_EDITOR_EMAIL`, and `LOCAL_EDITOR_PASSWORD` in the private environment, then run `pnpm provision:editor`. This command preserves an existing account with the same email.
+Execute `pnpm dev` no host. Abra o site em [português](http://localhost:3000/pt), em [inglês](http://localhost:3000/en) ou o [painel do Payload](http://localhost:3000/admin). O Compose mantém somente o banco; a porta 3000 fica disponível para a aplicação.
 
-The Compose stack binds both ports to loopback. It uses `appuser` (UID/GID 70), 1 CPU, and 2 GiB by default. Keep existing volumes attached. See [backup and recovery](docs/runbooks/lancamento.md#backups-and-recovery) for local backups.
+Com desenvolvimento e testes parados, use `pnpm provision:editor` para criar ou recriar a conta local. Defina `APP_ENV=local`, `LOCAL_EDITOR_EMAIL` e `LOCAL_EDITOR_PASSWORD` no ambiente privado. Uma conta com o mesmo e-mail é preservada. Após a limpeza dos testes, `pnpm provision:structural` prepara novamente os rascunhos de perfil e navegação.
 
-## Verify
+O Compose expõe somente a porta 5432 em loopback. Preserve o volume externo do banco e os arquivos privados em `.work`. Para parar sem remover dados:
 
-Use `pnpm setup:media-checker` if the PDF checker is missing. Set `READING_E2E_FONT_FILE` to a readable TrueType font, for example `C:\Windows\Fonts\arial.ttf` on Windows. Leave `VITEST_MAX_WORKERS` unset for the full suite.
+```sh
+docker compose -f compose.local.yaml stop postgres
+```
+
+Antes de alterar dados, pare a aplicação e use `pnpm backup:local` conforme o [guia de backup e recuperação](docs/runbooks/release.md#backups-and-recovery). O comando compartilha o bloqueio exclusivo do banco. O guia inclui a preparação da imagem de ferramentas do backup. Instale age com `pnpm setup:backup-tools` se necessário. Mantenha `.env`, `.work`, `.toolchain` e a identidade de recuperação privados; guarde essa identidade separada dos backups.
+
+## Verificação
+
+Se faltar o verificador de PDF, execute `pnpm setup:media-checker`. Defina `READING_E2E_FONT_FILE` com uma fonte TrueType legível, como `C:\Windows\Fonts\arial.ttf` no Windows. Para a suíte completa, deixe `VITEST_MAX_WORKERS` sem valor.
 
 ```sh
 pnpm verify
@@ -28,24 +36,38 @@ pnpm exec playwright install chromium --only-shell
 pnpm test:e2e
 ```
 
-Integration and browser tests use a disposable PostgreSQL instance on `127.0.0.1:55434` with synthetic storage and email. Keep that port free and leave the local database on 5432 and the historical visual database on 55433 intact. The test runner creates a separate Next.js build under `.work/next-tests`. See the [isolation evidence](docs/verification/artifacts/E3-isolation/) for the resource ownership and cleanup checks.
+O projeto usa três bancos de aplicação fixos: produção, staging e local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, configurado no `.env`. Os testes limpam os dados locais entre rodadas; faça backup antes de guardar ali qualquer conteúdo que queira preservar. Pare `pnpm dev` ou `pnpm start` antes dos testes: esses comandos compartilham um bloqueio exclusivo com o runner. O contêiner, o volume e o banco permanecem após a rodada.
 
-### Stop the local stack
+Os testes usam mídia sintética local, captura de e-mail e Analytics desligado. Provas de migração e recuperação reconstroem o schema no mesmo banco. O build dos testes fica em `.work/next-tests`. O CI do GitHub executa `pnpm verify:ci`, sem banco; integração e E2E precisam da verificação local antes do aceite da candidata.
 
-```sh
-docker compose -f compose.local.yaml stop portfolio
-```
+O Actions roda nos PRs, nos pushes para `develop`/`main` e por acionamento manual. Branches de trabalho passam pelo PR, evitando repetir o mesmo check no push. Um novo commit cancela a verificação anterior daquele PR; deploys mantêm a fila por branch. pnpm, Next.js e TypeScript reaproveitam cache, mas todas as verificações continuam executando. O Docker guarda suas camadas na tag `build-cache` do mesmo package privado no GHCR. A primeira rodada preenche esses caches; o ganho deve ser conferido nas seguintes.
 
-This retains the data volumes. After an interrupted test run, check the port lease and resource ownership before removing anything. Keep `.env`, `.work`, and `.toolchain` private.
+Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG` apontando para um JSON privado com `ageBinary`, `tarBinary`, `recipient` e `identityPath` de teste; sem essa configuração, são ignorados. Depois de uma execução interrompida, confira o bloqueio e a identidade dos recursos antes de liberar uma reserva. Nunca exclua o volume para resolver um bloqueio.
 
-## Release status
+Os relatórios do navegador ficam em `.work/playwright/report`, os traces e resultados em `.work/playwright/results` e o cache do TypeScript em `.work/cache`. São saídas geradas, fora do Git.
 
-A4 was approved on 8 November 2026 for revision `befe22b`. The current corrective revision `6788e7a` is healthy in private staging and passed 2,352 Linux tests, 140 Chromium journeys, fresh visual acceptance and all 12 performance scenarios across 36 measurements. The [validation dossier](docs/verification/2026-11-14-audit-validation.md) preserves the earlier failed measurements and identifies the current digest and remaining gates. The successor awaits complementary A4 approval and explicit launch authorization. See the [A4 record](docs/verification/A4.md) and [launch runbook](docs/runbooks/lancamento.md).
+| Caminho                              | Função e decisão                                                                                                                                          |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.toolchain`                         | Node, qpdf e age nas versões exigidas. Mantida porque os comandos locais usam essas ferramentas. Instaladores e cópias redundantes foram removidos.       |
+| `.work`                              | Área privada de trabalho: caches, builds, mídia, publicações, e-mails e backups. Mantida; apagar tudo também apagaria dados e identidades de recuperação. |
+| `ops`                                | Código de deploy, migrações, backup, recuperação e medição. Mantido porque há consumidores ativos; o clone que criava outro banco foi retirado.           |
+| `scripts`                            | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado. O recálculo de etapas foi retirado.                                 |
+| `playwright-report` e `test-results` | Saídas automáticas do navegador. Retiradas da raiz; agora ficam em `.work/playwright`.                                                                    |
+| `dependency-cruiser.config.cjs`      | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                       |
+| `compose.local.yaml`                 | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                            |
+| `compose.test.yaml`                  | Criava o banco descartável. Excluído; os testes reutilizam o serviço local.                                                                               |
+| `tsconfig.tsbuildinfo`               | Cache incremental gerado pelo TypeScript. Retirado da raiz; o compilador agora usa `.work/cache/typescript.tsbuildinfo`.                                  |
 
-Final PT/EN content and résumés, the formal screen-reader review, and production configuration are pending. Analytics remains disabled. The A4 record lists all outstanding release gates.
+## Documentação
 
-## Project guides
-
-- [Architecture and behavior](docs/architecture.md) · [Editing the portfolio](docs/runbooks/cms-editorial.md)
-- [Approved product spec](docs/specs/2026-10-29-portfolio-spec-v1.md) · [CMS contracts](docs/specs/2026-10-29-portfolio-contratos-cms.md) · [Figma inventory](docs/specs/2026-10-29-portfolio-inventario-figma.md) · [Implementation plan](docs/specs/2026-10-29-portfolio-plano-implementacao.md)
-- [Verification evidence and archive](docs/verification/evidence-index.md)
+| Assunto                                 | Referência                                                                       |
+| --------------------------------------- | -------------------------------------------------------------------------------- |
+| Estado, evidências e decisões pendentes | [Estado atual](docs/current-status.md)                                           |
+| Implementação e fluxos                  | [Arquitetura](docs/architecture.md)                                              |
+| Edição do conteúdo                      | [Guia do CMS](docs/runbooks/cms-editorial.md)                                    |
+| Implantação, backup e recuperação       | [Guia de operação](docs/runbooks/release.md)                                     |
+| Produto e comportamento                 | [Spec aprovada](docs/specs/2026-10-29-portfolio-spec-v1.md)                      |
+| Modelo de conteúdo                      | [Contratos do CMS](docs/specs/2026-10-29-portfolio-cms-contracts.md)             |
+| Referência visual                       | [Inventário do Figma](docs/specs/2026-10-29-portfolio-figma-inventory.md)        |
+| Critérios originais                     | [Plano de implementação](docs/specs/2026-10-29-portfolio-implementation-plan.md) |
+| Condições de medição                    | [Protocolo de performance](docs/verification/E4.2-performance-protocol.md)       |

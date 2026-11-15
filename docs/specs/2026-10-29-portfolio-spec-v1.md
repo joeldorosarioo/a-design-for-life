@@ -6,8 +6,8 @@ Status: spec consolidada para revisão, com as decisões da entrevista, inventá
 
 Documentos complementares que integram esta spec:
 
-- [Inventário do Figma e tokens visuais](2026-10-29-portfolio-inventario-figma.md).
-- [Contratos de conteúdo e integração do CMS](2026-10-29-portfolio-contratos-cms.md).
+- [Inventário do Figma e tokens visuais](2026-10-29-portfolio-figma-inventory.md).
+- [Contratos de conteúdo e integração do CMS](2026-10-29-portfolio-cms-contracts.md).
 
 Os complementos detalham a referência e os contratos aprovados; não autorizam ampliar o escopo. A spec principal prevalece em caso de conflito, e instruções posteriores explícitas do usuário continuam tendo precedência.
 

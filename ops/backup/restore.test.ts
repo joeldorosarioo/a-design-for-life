@@ -84,15 +84,19 @@ async function setup() {
   return { namespace, repository, source, reference, bytes, root };
 }
 function targetBoundary() {
-  let oid = '';
+  const oid = '12345';
   let calls = 0,
     restores = 0;
   const target: LocalRestoreTargetOptions = {
     environment: 'test',
     sourceDatabaseUri:
-      'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+      'postgres://synthetic:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
     siteOrigin: 'http://127.0.0.1:3101',
     postgres: {
+      async checkpoint() {
+        return async () => {};
+      },
+      async reset() {},
       async assertOwned() {
         calls++;
         return {
@@ -103,14 +107,6 @@ function targetBoundary() {
       },
       async invoke(input) {
         calls++;
-        if (input.tool === 'createdb') {
-          oid = '12345';
-          return '';
-        }
-        if (input.tool === 'dropdb') {
-          oid = '';
-          return '';
-        }
         if (input.tool === 'pg_restore') {
           expect(input.inputFile).toBeTruthy();
           expect(input.args).toContain('--single-transaction');

@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { lstat, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { lstat, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { resolveNextDistDir, assertUnlinkedWorkspacePath } from '../../src/config/next-dist';
 
@@ -55,6 +55,30 @@ export async function preserveNextGeneratedFiles(input: { root: string; distDir:
   const normalize = (text: string) => text.replaceAll('\r\n', '\n');
   return {
     checkpoint,
+    async reserveTestBuild() {
+      if (!distDir.startsWith('.work/next-tests/'))
+        throw new Error('Only an isolated test build can be reserved for cleanup');
+      const buildDirectory = path.join(root, distDir);
+      assertUnlinkedWorkspacePath(buildDirectory, root);
+      await mkdir(path.dirname(buildDirectory), { recursive: true, mode: 0o700 });
+      assertUnlinkedWorkspacePath(buildDirectory, root);
+      await mkdir(buildDirectory, { mode: 0o700 });
+      const owned = await lstat(buildDirectory);
+      return async () => {
+        assertUnlinkedWorkspacePath(buildDirectory, root);
+        const current = await lstat(buildDirectory);
+        if (
+          !current.isDirectory() ||
+          current.isSymbolicLink() ||
+          current.dev !== owned.dev ||
+          current.ino !== owned.ino
+        )
+          throw new Error('Owned test build identity changed; cleanup refused');
+        if ((await readSources()).some((bytes, index) => !bytes.equals(before[index])))
+          throw new Error('Original Next source files must be restored before build cleanup');
+        await rm(buildDirectory, { recursive: true, maxRetries: 3 });
+      };
+    },
     async restore(): Promise<'unchanged' | 'restored'> {
       const current = await readSources();
       const expected = [expectedEnv, expectedConfig];

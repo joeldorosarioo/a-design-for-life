@@ -13,17 +13,13 @@ import { getPublishedProfile } from '@/features/professional-profile/server';
 import { getPublishedNavigation } from '@/features/site-navigation/server';
 import { planPublicMediaObservations } from '@/features/media-library/server/publication-media-observation';
 import type { Locale } from '@/helpers/i18n/locale.schema';
+import { staticPagePath } from '@/helpers/i18n/static-page-path';
 import { readPublishedPortfolio } from './read-published-portfolio';
 import { readPublicSitemap } from './read-public-index';
 import { matchesPublicPage, type PublicPageObservation } from './publication-page-observation';
 
 const locales = ['pt', 'en'] as const;
 const pages = ['home', 'cases', 'about'] as const;
-
-function pagePath(locale: Locale, kind: (typeof pages)[number]): string {
-  if (kind === 'home') return '/' + locale;
-  return '/' + locale + '/' + (kind === 'cases' ? 'cases' : locale === 'pt' ? 'sobre' : 'about');
-}
 
 function absolute(origin: string, path: string): string {
   return new URL(path, origin).href;
@@ -148,9 +144,9 @@ export async function planPublicationObservations({
     if (!portfolio.ok) continue;
     const { profile, cases, featured, sitemap } = portfolio.value;
     for (const kind of pages) {
-      const path = pagePath(locale, kind);
+      const path = staticPagePath(locale, kind);
       const alternatives = locales.flatMap((language) => {
-        const candidate = pagePath(language, kind);
+        const candidate = staticPagePath(language, kind);
         return sitemap.includes(candidate) ? [{ locale: language, path: candidate }] : [];
       });
       const heading =

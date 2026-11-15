@@ -13,7 +13,7 @@ import {
   profilePublicationFixture,
   observedRequest,
 } from '../../../../testing/fixtures/editorial-lifecycle';
-import { resolveMediaAccess } from './resolve-media-access';
+import { resolveMediaDelivery } from './resolve-media-access';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
   fixture = await createEditorialPayloadFixture('e1.6-media-row-races');
@@ -59,10 +59,10 @@ async function publish(id: string) {
   return saved;
 }
 async function publicMedia(id: string) {
-  return resolveMediaAccess(
+  return resolveMediaDelivery(
     { mediaId: id, variant: 'original', preview: false },
     await createLocalReq({}, fixture.payload),
-  );
+  ).then(({ access }) => access);
 }
 it('publication holding the actual Media row makes concurrent trash lose without exposing a deleted asset', async () => {
   const media = await mediaMetadataFixture(fixture.payload);
@@ -170,11 +170,11 @@ it('trash holding the actual Media row makes publication roll back and preserves
     });
     expect(
       (
-        await resolveMediaAccess(
+        await resolveMediaDelivery(
           { mediaId: media.id, variant: 'original', preview: true },
           await fixture.request(),
         )
-      ).ok,
+      ).access.ok,
     ).toBe(true);
   } finally {
     release.resolve();

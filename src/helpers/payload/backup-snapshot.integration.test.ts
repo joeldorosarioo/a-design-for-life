@@ -19,7 +19,7 @@ function nativeSessionIds() {
   return Object.keys(sessions).sort();
 }
 function persistProofMetadata(value: unknown) {
-  const directory = path.resolve('docs/verification/artifacts/E3-backup');
+  const directory = path.resolve('.work/verification/E3-backup');
   mkdirSync(directory, { recursive: true });
   const runId = process.env.ADFL_TEST_RUN_ID;
   if (!/^[a-f0-9-]{36}$/.test(runId ?? '')) throw new Error('Owned proof run identity unavailable');

@@ -173,13 +173,6 @@ export async function schedulePublicationRetry(
   })) as PublicationRetry;
   return project(row);
 }
-export async function readPublicationRetry(
-  operationId: string,
-  req: PayloadRequest,
-): Promise<PersistedPublicationRetry | null> {
-  requireEditor(req);
-  return metadata(publicReceiptSchema.shape.operationId.parse(operationId), req);
-}
 export async function claimPublicationRetry(
   operationId: string,
   command: { mode: 'immediate' | 'automatic' | 'manual' },

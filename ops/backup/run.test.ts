@@ -139,8 +139,10 @@ toolProof(
       await expect(data.source.storage.delete(data.object)).rejects.toThrow(/busy/i);
       return capture(consume);
     };
-    const receipt = await runBackup(options(data));
+    const input = options(data);
+    const receipt = await runBackup(input);
     expect(receipt.marker.complete).toBe(true);
+    expect(receipt.marker.application).toEqual(input.application);
     expect(receipt.removedBackupIds).toEqual([]);
     expect(data.calls).toEqual({ capture: 1, dump: 1 });
     const directory = path.join(data.repository.root, 'sets', receipt.marker.id);

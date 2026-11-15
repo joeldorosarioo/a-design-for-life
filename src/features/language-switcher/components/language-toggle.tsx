@@ -10,15 +10,9 @@ import { LanguageFlag, flagRingClass, languageButtonClass } from './language-fla
 export function LanguageToggle(props: LanguageToggleProps) {
   const { pending, begin, register } = useReadingPosition();
   const { locale, pathname, sourcePage, status = 200 } = props;
-  const caseId = sourcePage.kind === 'case' ? sourcePage.caseId : null;
   useLayoutEffect(() => {
-    register({
-      locale,
-      pathname,
-      status,
-      sourcePage: caseId ? { kind: 'case', caseId } : sourcePage,
-    });
-  }, [register, locale, pathname, sourcePage, caseId, status]);
+    register({ locale, pathname, status, sourcePage });
+  }, [register, locale, pathname, sourcePage, status]);
   const label = locale === 'pt' ? 'English' : 'Português';
   return (
     <Button

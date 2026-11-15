@@ -1,13 +1,29 @@
 import { spawnSync } from 'node:child_process';
-import { randomUUID } from 'node:crypto';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash, randomUUID } from 'node:crypto';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, it } from 'vitest';
-import config from './staging-audit.json';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
+const config = {
+  environment: 'staging',
+  origin: 'https://1tiveqtdwa1kxsjfhtugcjdp.200.141.19.143.sslip.io',
+  sourceSha: 'a'.repeat(40),
+  imageDigest: `sha256:${'b'.repeat(64)}`,
+  profileSha256: createHash('sha256')
+    .update(readFileSync(new URL('./profiles.json', import.meta.url)))
+    .digest('hex'),
+  targets: [
+    { id: 'home-pt', kind: 'home', locale: 'pt', path: '/pt' },
+    { id: 'home-en', kind: 'home', locale: 'en', path: '/en' },
+    { id: 'cases-pt', kind: 'cases', locale: 'pt', path: '/pt/cases' },
+    { id: 'cases-en', kind: 'cases', locale: 'en', path: '/en/cases' },
+    { id: 'case-pt', kind: 'case', locale: 'pt', path: '/pt/cases/synthetic-case' },
+    { id: 'case-en', kind: 'case', locale: 'en', path: '/en/cases/synthetic-case' },
+  ],
+};
 
 function preflight(input: typeof config) {
   const directory = mkdtempSync(path.join(tmpdir(), 'adfl-audit-preflight-'));
@@ -29,7 +45,7 @@ function preflight(input: typeof config) {
   }
 }
 
-it('accepts the frozen staging matrix without authenticating or opening a browser', () => {
+it('accepts a synthetic staging matrix without authenticating or opening a browser', () => {
   const result = preflight(config);
   expect(result.status).toBe(0);
   expect(JSON.parse(result.stdout)).toMatchObject({ ready: true, runs: 36, scenarios: 12 });

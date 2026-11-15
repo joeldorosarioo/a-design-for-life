@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { createWriteStream } from 'node:fs';
 import { Readable } from 'node:stream';
-import { backupFileChunks, openBackupInput } from './tools';
+import { backupFileChunks, hashBackupFile, openBackupInput } from './tools';
 import {
   rename,
   lstat,
@@ -95,14 +95,9 @@ export async function inspectPrivateBackupFile(
   )
     throw new Error('Private backup file required');
   const info = await regularFile(file);
-  let byteLength = 0;
-  const hash = createHash('sha256');
-  for await (const chunk of ciphertextChunks(file)) {
-    byteLength += chunk.length;
-    hash.update(chunk);
-  }
-  if (byteLength !== info.size) throw new Error('Backup file changed while reading');
-  return { byteLength, sha256: hash.digest('hex') };
+  const result = await hashBackupFile(file);
+  if (result.byteLength !== info.size) throw new Error('Backup file changed while reading');
+  return result;
 }
 async function* ciphertextChunks(file: string) {
   const handle = await openBackupInput(file);

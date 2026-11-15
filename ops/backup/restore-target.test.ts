@@ -12,7 +12,7 @@ const target = {
   ownerId,
   database: {
     identity: 'a'.repeat(64),
-    namespace: 'adfl_test_restore_11111111111141118111111111111111',
+    namespace: 'a_design_for_life_rebuild',
   },
   media: { identity: 'b'.repeat(64), namespace: `adfl-test-restore-${ownerId}` },
   publication: { identity: 'c'.repeat(64), namespace: `adfl-restore-${ownerId}` },
@@ -20,11 +20,11 @@ const target = {
 function observed() {
   return {
     target: structuredClone(target),
-    preflightAbsentAt: '2026-11-30T23:59:40.000Z',
+    checkpointedAt: '2026-11-30T23:59:40.000Z',
     acquiredAt: '2026-11-30T23:59:45.000Z',
     observedAt: now.toISOString(),
     expiresAt: '2026-12-01T00:04:45.000Z',
-    createdByOwner: true,
+    preparedByOwner: true,
     leaseActive: true,
     databaseEmpty: true,
     mediaEmpty: true,
@@ -57,12 +57,13 @@ it('runs a restore effect only after acquiring and rechecking owned empty resour
     await boundary.run(permit, now, async (selected) => {
       await writeFile(file, selected.database.namespace, { flag: 'wx' });
     });
-    expect(await readFile(file, 'utf8')).toBe('adfl_test_restore_11111111111141118111111111111111');
+    expect(await readFile(file, 'utf8')).toBe('a_design_for_life_rebuild');
   });
   expect(observations).toBe(2);
 });
 it.each([
   ['production', { ...target, environment: 'production' }],
+  ['staging', { ...target, environment: 'staging' }],
   ['ambiguous environment', { ...target, environment: 'local' }],
   ['name-only database', { ...target, database: { namespace: target.database.namespace } }],
   ['foreign namespace', { ...target, media: { ...target.media, namespace: 'existing-bucket' } }],
@@ -77,7 +78,7 @@ it.each([
   await expect(boundary.acquire(candidate, now)).rejects.not.toThrow('Inspection should not run');
 });
 it.each([
-  ['pre-existing resources', { createdByOwner: false }],
+  ['schema not prepared', { preparedByOwner: false }],
   ['lost ownership lease', { leaseActive: false }],
   ['nonempty database', { databaseEmpty: false }],
   ['nonempty media', { mediaEmpty: false }],
@@ -86,9 +87,9 @@ it.each([
   ['expired ownership', { expiresAt: '2026-11-30T23:59:59.000Z' }],
   [
     'old acquisition',
-    { acquiredAt: '2026-11-30T23:00:00.000Z', preflightAbsentAt: '2026-11-30T22:59:59.000Z' },
+    { acquiredAt: '2026-11-30T23:00:00.000Z', checkpointedAt: '2026-11-30T22:59:59.000Z' },
   ],
-  ['absence checked after acquisition', { preflightAbsentAt: '2026-11-30T23:59:46.000Z' }],
+  ['checkpoint captured after acquisition', { checkpointedAt: '2026-11-30T23:59:46.000Z' }],
   ['future observation', { observedAt: '2026-12-01T00:00:01.000Z' }],
   ['extra bypass field', { bypass: true }],
 ])('refuses %s without issuing a permit', async (_name, changed) => {
@@ -164,14 +165,14 @@ it('accepts a fresh owned restore target compatible with the validated test serv
   const { readServerEnv } = await import('../../src/config/server-env');
   const compatible = {
     ...structuredClone(target),
-    database: { ...target.database, namespace: `adfl_test_restore_${ownerId.replaceAll('-', '')}` },
+    database: { ...target.database, namespace: 'a_design_for_life_rebuild' },
     media: { ...target.media, namespace: `adfl-test-restore-${ownerId}` },
   };
   const env = readServerEnv({
     NODE_ENV: 'test',
     APP_ENV: 'test',
     PAYLOAD_SECRET: 'synthetic-restore-namespace-contract-only-secret',
-    DATABASE_URI: `postgres://synthetic:synthetic@127.0.0.1:55434/${compatible.database.namespace}`,
+    DATABASE_URI: `postgres://synthetic:synthetic@127.0.0.1:5432/${compatible.database.namespace}`,
     SITE_ORIGIN: 'http://127.0.0.1:3101',
     MEDIA_BUCKET: compatible.media.namespace,
   });
@@ -182,7 +183,7 @@ it('accepts a fresh owned restore target compatible with the validated test serv
 it('refuses an ownership observation that predates resource acquisition before any restore effect', async () => {
   const boundary = createRestoreTargetBoundary(async () => ({
     ...observed(),
-    preflightAbsentAt: '2026-11-30T23:59:55.000Z',
+    checkpointedAt: '2026-11-30T23:59:55.000Z',
     acquiredAt: '2026-11-30T23:59:59.000Z',
     observedAt: '2026-11-30T23:59:58.000Z',
     expiresAt: '2026-12-01T00:04:59.000Z',

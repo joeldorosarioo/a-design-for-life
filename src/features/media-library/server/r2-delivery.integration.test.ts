@@ -11,7 +11,7 @@ import {
 import { createEditorialPayloadFixture } from '../../../../testing/fixtures/editorial-payload';
 import { createR2ObjectStorage } from '@/helpers/storage/r2-storage';
 import { installMediaRuntime, mediaRuntime } from './media-runtime';
-import { resolveMediaAccess } from './resolve-media-access';
+import { resolveMediaDelivery } from './resolve-media-access';
 
 it('rejects incomplete remote uploads and delivers only editorially authorized remote bytes', async () => {
   const fixture = await createEditorialPayloadFixture('e3-private-s3-delivery');
@@ -112,13 +112,17 @@ it('rejects incomplete remote uploads and delivers only editorially authorized r
     expect((await countMedia()).totalDocs).toBe(before.totalDocs + 1);
     const anonymous = await createLocalReq({}, fixture.payload);
     const deliver = (variant: 'original' | 'w640') =>
-      resolveMediaAccess({ mediaId: media.id, preview: false, variant }, anonymous);
+      resolveMediaDelivery({ mediaId: media.id, preview: false, variant }, anonymous).then(
+        ({ access }) => access,
+      );
     expect(await deliver('original')).toEqual({ ok: false, status: 404 });
     expect(await deliver('w640')).toEqual({ ok: false, status: 404 });
-    const preview = await resolveMediaAccess(
-      { mediaId: media.id, preview: true, variant: 'original' },
-      await fixture.request(),
-    );
+    const preview = (
+      await resolveMediaDelivery(
+        { mediaId: media.id, preview: true, variant: 'original' },
+        await fixture.request(),
+      )
+    ).access;
     expect(preview).toEqual({
       ok: true,
       value: { bytes: new Uint8Array(bytes), type: 'image/png' },

@@ -9,6 +9,7 @@ import { migrations } from '../../src/migrations';
 import { createLocalBackupRepository } from '../backup/repository';
 import { createNativeBackupSource } from '../backup/native-source';
 import { runBackup, type RunBackupOptions } from '../backup/run';
+import { assertLocalDatabase } from '../../src/config/local-database';
 
 type MigrationRecord = { name?: string | null; batch?: number | null };
 const migrationName = '20261106_035830_cms_user_profile';
@@ -83,21 +84,18 @@ function localTarget(databaseUri: string, siteOrigin: string) {
     throw new Error('Controlled migration requires the owned local test target.');
   const database = new URL(databaseUri);
   const site = new URL(siteOrigin);
-  const id = /^\/adfl_test_migration_([a-f0-9]{32})$/.exec(database.pathname)?.[1];
+  assertLocalDatabase(databaseUri);
+  const runId = process.env.ADFL_TEST_RUN_ID;
   if (
-    !id ||
-    !['postgres:', 'postgresql:'].includes(database.protocol) ||
-    database.host !== '127.0.0.1:55434' ||
-    database.username !== 'adfl_test' ||
-    database.search ||
-    database.hash ||
+    !runId ||
+    !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(runId) ||
     site.protocol !== 'http:' ||
     site.hostname !== '127.0.0.1' ||
     !site.port ||
     siteOrigin !== site.origin
   )
     throw new Error('Controlled migration requires the owned local test target.');
-  return { id, name: database.pathname.slice(1) };
+  return { id: runId.replaceAll('-', ''), name: decodeURIComponent(database.pathname.slice(1)) };
 }
 
 export function assertUnconnectedMigrationAdapter(payload: Payload, databaseUri: string) {
@@ -203,7 +201,7 @@ export async function runControlledMigration(
   assertLocalRuntime();
   const target = localTarget(options.databaseUri, options.siteOrigin);
   reviewedMigration();
-  return withPublicationWriter('a-design-for-life:controlled-local-migration:55434', async () => {
+  return withPublicationWriter('a-design-for-life:controlled-local-migration:5432', async () => {
     options.assertOwned(target.name);
     const payload = await options.initialize();
     assertLocalRuntime();

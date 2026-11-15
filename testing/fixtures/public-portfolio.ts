@@ -13,6 +13,7 @@ import { releaseEditorialLease } from '../../src/helpers/payload/editorial-revis
 import { publicRootDirectory } from '../../src/helpers/payload/public-root-directory';
 import { ensureProfileDrafts } from '../../src/features/professional-profile/server';
 import { ensureNavigationDrafts } from '../../src/features/site-navigation/server';
+import { assertIsolatedTestEnvironment } from '../setup/test-environment';
 
 type Locale = 'pt' | 'en';
 type CaseName = 'first' | 'second' | 'ptOnly';
@@ -25,20 +26,10 @@ type PublicCaseFixture = {
 };
 
 function assertOwnedSerialEnvironment(serialRunner: boolean) {
-  const database = new URL(process.env.DATABASE_URI ?? 'file:///invalid');
-  const local = ['127.0.0.1', 'localhost', '[::1]'].includes(database.hostname);
-  if (
-    !serialRunner ||
-    !local ||
-    process.env.APP_ENV !== 'test' ||
-    !database.pathname.startsWith('/adfl_test_') ||
-    ['5432', '55432'].includes(database.port)
-  )
-    throw new Error(
-      'Public portfolio fixtures require one serial worker and an owned isolated test DB.',
-    );
+  assertIsolatedTestEnvironment(process.env);
+  if (!serialRunner) throw new Error('Public portfolio fixtures require one serial worker.');
   const directory = publicRootDirectory({
-    APP_ENV: process.env.APP_ENV,
+    APP_ENV: process.env.APP_ENV!,
     DATABASE_URI: process.env.DATABASE_URI!,
     SITE_ORIGIN: process.env.SITE_ORIGIN!,
   });
@@ -444,6 +435,7 @@ export async function createPublicPortfolioFixture(
       readingKeys,
       locales,
       cases,
+      publishStructural,
       destroy,
     };
   } catch (error) {

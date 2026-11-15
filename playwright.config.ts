@@ -12,7 +12,11 @@ export default defineConfig({
   workers: 1,
   forbidOnly: Boolean(process.env.CI),
   retries: 0,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  outputDir: path.resolve('.work/playwright/results'),
+  reporter: [
+    ['list'],
+    ['html', { open: 'never', outputFolder: path.resolve('.work/playwright/report') }],
+  ],
   globalSetup: './testing/setup/playwright.ts',
   use: { baseURL: env.SITE_ORIGIN, trace: 'retain-on-failure' },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],

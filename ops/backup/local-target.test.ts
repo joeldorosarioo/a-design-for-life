@@ -13,7 +13,7 @@ import {
 const contexts: LocalRestoreContext[] = [];
 function record(context: LocalRestoreContext) {
   expect(context).toMatchObject({
-    databaseName: expect.stringMatching(/^adfl_test_restore_[a-f0-9]{32}$/),
+    databaseName: 'a_design_for_life_rebuild',
     ownerId: expect.stringMatching(/^[a-f0-9-]{36}$/),
     mediaRoot: expect.any(String),
     publicationDirectory: expect.any(String),
@@ -34,19 +34,26 @@ afterEach(async () => {
   }
 });
 function boundary() {
-  let oid: string | undefined;
-  let created = 0,
+  const oid = '12345';
+  let checkpoints = 0,
     restored = 0,
-    dropped = 0;
+    recovered = 0;
   const calls: { tool: string; args: readonly string[]; inputFile?: string }[] = [];
-  let forceExisting = false;
+  let missing = false;
   let replaceOid = false;
   const options: LocalRestoreTargetOptions = {
     environment: 'test',
     sourceDatabaseUri:
-      'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner',
+      'postgres://synthetic:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
     siteOrigin: 'http://127.0.0.1:3101',
     postgres: {
+      async checkpoint() {
+        checkpoints++;
+        return async () => {
+          recovered++;
+        };
+      },
+      async reset() {},
       async assertOwned() {
         return {
           containerId: 'a'.repeat(64),
@@ -56,26 +63,13 @@ function boundary() {
       },
       async invoke(input) {
         calls.push(input);
-        if (input.tool === 'createdb') {
-          expect(input.args).toEqual([
-            '--username=adfl_test',
-            '--template=template0',
-            expect.stringMatching(/^adfl_test_restore_[a-f0-9]{32}$/),
-          ]);
-          created++;
-          oid = '12345';
-          return '';
-        }
-        if (input.tool === 'dropdb') {
-          dropped++;
-          oid = undefined;
-          return '';
-        }
         if (input.tool === 'pg_restore') {
           expect(input.args).toEqual([
-            '--username=adfl_test',
-            expect.stringMatching(/^--dbname=adfl_test_restore_[a-f0-9]{32}$/),
+            '--username=synthetic',
+            '--dbname=a_design_for_life_rebuild',
             '--single-transaction',
+            '--clean',
+            '--if-exists',
             '--no-owner',
             '--no-acl',
           ]);
@@ -86,7 +80,7 @@ function boundary() {
         if (input.tool === 'psql') {
           const query = input.args.at(-1)!;
           if (query.includes('FROM pg_database'))
-            return forceExisting ? '900' : oid ? (replaceOid ? '54321' : oid) : '';
+            return missing ? '' : oid ? (replaceOid ? '54321' : oid) : '';
           if (query.includes('information_schema.tables')) return '0';
           throw new Error('Unexpected technical catalog query');
         }
@@ -97,17 +91,17 @@ function boundary() {
   return {
     options,
     calls,
-    get created() {
-      return created;
+    get checkpoints() {
+      return checkpoints;
     },
     get restored() {
       return restored;
     },
-    get dropped() {
-      return dropped;
+    get recovered() {
+      return recovered;
     },
-    existing() {
-      forceExisting = true;
+    missing() {
+      missing = true;
     },
     replace() {
       replaceOid = true;
@@ -127,16 +121,16 @@ it.each(['production', 'staging', 'local'])(
     expect(fixture.calls).toEqual([]);
   },
 );
-it('refuses a pre-existing database instead of adopting it', async () => {
+it('refuses a missing fixed database before acquiring a checkpoint', async () => {
   const fixture = boundary();
-  fixture.existing();
+  fixture.missing();
   await expect(
     withOwnedLocalRestoreTarget(fixture.options, async () => undefined),
   ).rejects.toThrow();
-  expect(fixture.created).toBe(0);
-  expect(fixture.dropped).toBe(0);
+  expect(fixture.checkpoints).toBe(0);
+  expect(fixture.recovered).toBe(0);
 });
-it('performs restore effects only under the actual fresh filesystem/lease guard and cleans only its new targets', async () => {
+it('restores under the prepared schema/filesystem guard and recovers the shared database afterward', async () => {
   const fixture = boundary();
   let observed: LocalRestoreContext | undefined;
   await withPrivateBackupWorkspace('restore', async (directory) => {
@@ -170,9 +164,9 @@ it('performs restore effects only under the actual fresh filesystem/lease guard 
       });
     });
   });
-  expect(fixture.created).toBe(1);
+  expect(fixture.checkpoints).toBe(1);
   expect(fixture.restored).toBe(1);
-  expect(fixture.dropped).toBe(1);
+  expect(fixture.recovered).toBe(1);
   expect(observed).toBeTruthy();
   await expect(
     readFile(path.join(observed!.publicationDirectory, 'current.json')),
@@ -189,6 +183,15 @@ it('refuses a forged target token before any restore effect', async () => {
       },
     }),
   ).rejects.toThrow();
+});
+it('recovers the shared database checkpoint even when verification fails', async () => {
+  const fixture = boundary();
+  await expect(
+    withOwnedLocalRestoreTarget(fixture.options, async () => {
+      throw new Error('Synthetic restore verification failure');
+    }),
+  ).rejects.toThrow('Synthetic restore verification failure');
+  expect(fixture.recovered).toBe(1);
 });
 it('rechecks actual media emptiness before invoking the database restore process', async () => {
   const fixture = boundary();
@@ -207,7 +210,7 @@ it('rechecks actual media emptiness before invoking the database restore process
   });
   expect(fixture.restored).toBe(0);
 });
-it('refuses catalog identity replacement and leaves targets for review instead of dropping a different database', async () => {
+it('refuses catalog identity replacement and leaves targets for review instead of writing to another database', async () => {
   const fixture = boundary();
   let prepared = false;
   await expect(
@@ -225,7 +228,7 @@ it('refuses catalog identity replacement and leaves targets for review instead o
     }),
   ).rejects.toThrow();
   expect(prepared).toBe(true);
-  expect(fixture.dropped).toBe(0);
+  expect(fixture.recovered).toBe(0);
 });
 it('keeps a concrete target lease exclusive without TTL takeover', async () => {
   const fixture = boundary();

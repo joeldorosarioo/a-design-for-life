@@ -12,7 +12,6 @@ export type {
 export { createAnalyticsSession } from './analytics-session';
 export type {
   AnalyticsRuntime,
-  AnalyticsSession,
   AnalyticsTransport,
   AnalyticsTransportConfig,
 } from './analytics-session';

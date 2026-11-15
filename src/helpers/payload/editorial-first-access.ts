@@ -1,5 +1,6 @@
 import 'server-only';
 import { sql, type PostgresAdapter } from '@payloadcms/db-postgres';
+import { matchesLocalDatabase } from '../../config/local-database';
 import {
   Forbidden,
   type CollectionAfterChangeHook,
@@ -39,17 +40,10 @@ function permittedEnvironment(site: URL, options?: EditorialFirstAccessOptions):
   if (options.appEnv === 'staging') return site.protocol === 'https:';
   if (options.appEnv !== 'test') return false;
   try {
-    const database = new URL(options.databaseUri);
     return (
       site.protocol === 'http:' &&
       ['127.0.0.1', 'localhost', '[::1]'].includes(site.hostname) &&
-      ['postgres:', 'postgresql:'].includes(database.protocol) &&
-      database.hostname === '127.0.0.1' &&
-      database.port === '55434' &&
-      database.username === 'adfl_test' &&
-      database.pathname === '/adfl_test_runner' &&
-      !database.search &&
-      !database.hash &&
+      matchesLocalDatabase(options.databaseUri) &&
       options.mediaBucket === 'adfl-test-runner'
     );
   } catch {

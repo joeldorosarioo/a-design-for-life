@@ -4,6 +4,7 @@ import { link, lstat, mkdir, open, realpath, unlink } from 'node:fs/promises';
 import { createHash, randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { assertObjectReference, type StoredObject } from './object-storage';
+import { localDatabaseName } from '../../config/local-database';
 
 async function unlinked(selected: string) {
   for (let current = selected; ; current = path.dirname(current)) {
@@ -24,7 +25,7 @@ export async function createLocalRestoreObjectWriter(options: { root: string; ow
   )
     throw new Error('Restore requires a fresh owned namespace');
   const parent = path.resolve('.work/private-media', `adfl-test-restore-${options.ownerId}`);
-  const expected = path.join(parent, `adfl_test_restore_${options.ownerId.replaceAll('-', '')}`);
+  const expected = path.join(parent, localDatabaseName);
   const normalize = (value: string) => (process.platform === 'win32' ? value.toLowerCase() : value);
   if (
     !path.isAbsolute(options.root) ||

@@ -79,11 +79,3 @@ export async function authorizePrivatePreviewRequest(
     return failure(503);
   }
 }
-/** Proxy-facing adapter: no Native context, document or account leaves this function. */
-export async function preparePrivatePreviewRequest(
-  request: Request,
-  options: PrivatePreviewRequestOptions,
-): Promise<Response | null> {
-  const authorization = await authorizePrivatePreviewRequest(request, options);
-  return authorization.ok ? null : authorization.response;
-}

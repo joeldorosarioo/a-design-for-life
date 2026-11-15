@@ -1,52 +1,38 @@
-import { prepareTestLifecycle } from './test-lifecycle-lock';
+import { spawn, spawnSync } from 'node:child_process';
+import { randomUUID } from 'node:crypto';
+import { assertLocalDatabase } from '../../src/config/local-database';
+import { acquireTestLifecycleLock } from './test-lifecycle-lock';
 import { beginOwnedDatabaseOutage, finishOwnedDatabaseOutage } from './owned-database-outage';
-import { spawnSync } from 'node:child_process';
-import { createServer } from 'node:net';
-import { fileURLToPath } from 'node:url';
 import { assertIsolatedTestEnvironment, configureTestEnvironment } from './test-environment';
+import { configureSharedDatabaseUri } from './local-database-environment';
+import { clearSharedDatabaseFiles } from './shared-database-files';
 import {
-  planOwnedCleanup,
   testResourceNames,
-  verifyOwnedTestNetwork,
   verifyOwnedTestResources,
   type Inspection,
   type NetworkInspection,
 } from './test-ownership';
 
-function docker(args: string[], env: NodeJS.ProcessEnv) {
-  assertIsolatedTestEnvironment(env);
-  const result = spawnSync('docker', args, {
-    encoding: 'utf8',
-    windowsHide: true,
-    env: {
-      ...env,
-      COMPOSE_PROJECT_NAME: testResourceNames(env).project,
-      COMPOSE_DISABLE_ENV_FILE: 'true',
-      COMPOSE_PROFILES: '',
-    },
-  });
+export const sharedDatabaseLock = 'adfl:shared-local-database-runtime';
+
+export function localDatabaseDocker(args: string[], env = process.env) {
+  assertLocalDatabase(env.DATABASE_URI);
+  const result = spawnSync('docker', args, { encoding: 'utf8', windowsHide: true, env });
   if (result.error || result.status !== 0)
     throw new Error(
       'Isolated test Docker lifecycle command failed; resources were not assumed owned.',
     );
   return result.stdout.trim();
 }
+
 function inspection<T>(kind: 'container' | 'network', id: string, env: NodeJS.ProcessEnv): T {
-  const values = JSON.parse(docker([kind, 'inspect', id], env)) as T[];
-  if (values.length !== 1) throw new Error('Expected exactly one owned test resource.');
+  const values = JSON.parse(localDatabaseDocker([kind, 'inspect', id], env)) as T[];
+  if (values.length !== 1) throw new Error('Expected exactly one shared local database resource.');
   return values[0]!;
-}
-function matchingIds(kind: 'container' | 'network', filter: string, env: NodeJS.ProcessEnv) {
-  return docker(
-    kind === 'container'
-      ? ['ps', '--all', '--quiet', '--no-trunc', '--filter', filter]
-      : ['network', 'ls', '--quiet', '--no-trunc', '--filter', filter],
-    env,
-  );
 }
 
 export function inspectOwnedTestDatabase(attached: boolean | 'cleanup' = true, env = process.env) {
-  assertIsolatedTestEnvironment(env);
+  assertLocalDatabase(env.DATABASE_URI);
   if (
     !/^[a-f0-9]{64}$/.test(env.ADFL_TEST_CONTAINER_ID ?? '') ||
     !/^[a-f0-9]{64}$/.test(env.ADFL_TEST_NETWORK_ID ?? '')
@@ -64,170 +50,215 @@ export function inspectOwnedTestDatabase(attached: boolean | 'cleanup' = true, e
 }
 
 export function setOwnedTestDatabaseNetwork(action: 'disconnect' | 'connect') {
+  assertIsolatedTestEnvironment(process.env);
   const owned = inspectOwnedTestDatabase(action === 'disconnect');
   if (action === 'disconnect') beginOwnedDatabaseOutage(owned);
   try {
-    docker(['network', action, owned.networkId, owned.containerId], process.env);
+    localDatabaseDocker(['network', action, owned.networkId, owned.containerId]);
     const verified = inspectOwnedTestDatabase(action === 'connect');
     if (action === 'connect') finishOwnedDatabaseOutage(verified);
   } catch (error) {
-    // Either command may fail after restoring the attachment. Close only
-    // after verifying that exact connection; uncertain recovery keeps scope.
     try {
-      const attached = inspectOwnedTestDatabase();
-      finishOwnedDatabaseOutage(attached);
+      finishOwnedDatabaseOutage(inspectOwnedTestDatabase());
     } catch {
-      // Keep the scoped outage until a verified reconnect succeeds.
+      // An uncertain attachment retains the expected outage scope.
+    }
+    throw error;
+  }
+}
+
+export async function acquireSharedDatabaseRuntime() {
+  const uri = assertLocalDatabase(process.env.DATABASE_URI);
+  const releaseFile = acquireTestLifecycleLock(process.env.ADFL_TEST_RUN_ID ?? randomUUID());
+  const applicationName = `adfl-local-lease-${randomUUID()}`;
+  const sqlArguments = [
+    'psql',
+    '--no-psqlrc',
+    '--quiet',
+    '--no-align',
+    '--tuples-only',
+    '--set=ON_ERROR_STOP=1',
+    '--host=/var/run/postgresql',
+    `--username=${decodeURIComponent(uri.username)}`,
+    `--dbname=${uri.pathname.slice(1)}`,
+  ];
+  let child: ReturnType<typeof spawn> | undefined;
+  let closing = false;
+  let exited: Promise<void> | undefined;
+  let acquired: NodeJS.ProcessEnv | undefined;
+  const closeSession = async () => {
+    closing = true;
+    child?.stdin?.end('\\q\n');
+    if (child && exited) {
+      const timer = setTimeout(() => child?.kill('SIGTERM'), 5_000);
+      try {
+        await exited;
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+    if (acquired) {
+      const owned = inspectOwnedTestDatabase('cleanup', acquired);
+      // Killing the Docker client need not kill its exec; retire only this named session.
+      const result = localDatabaseDocker(
+        [
+          'exec',
+          '-i',
+          owned.containerId,
+          ...sqlArguments,
+          '--command',
+          `SELECT pg_terminate_backend(pid,5000) FROM pg_stat_activity
+          WHERE application_name='${applicationName}' AND datname=current_database()
+            AND pid<>pg_backend_pid();`,
+        ],
+        acquired,
+      );
+      if (result && result.split(/\s+/).some((value) => value !== 't'))
+        throw new Error('The acquired local database session could not be released.');
+      const remaining = localDatabaseDocker(
+        [
+          'exec',
+          '-i',
+          owned.containerId,
+          ...sqlArguments,
+          '--command',
+          `SELECT count(*) FROM pg_stat_activity
+          WHERE application_name='${applicationName}' AND datname=current_database();`,
+        ],
+        acquired,
+      );
+      if (remaining !== '0')
+        throw new Error('The acquired local database session is still active.');
+    }
+    delete process.env.ADFL_SHARED_DATABASE_LEASE_PID;
+    releaseFile();
+  };
+  try {
+    const names = testResourceNames(process.env);
+    const container = inspection<Inspection>('container', names.container, process.env);
+    const network = inspection<NetworkInspection>('network', names.network, process.env);
+    const owned = verifyOwnedTestResources(process.env, container, network);
+    Object.assign(process.env, {
+      ADFL_TEST_CONTAINER_ID: owned.containerId,
+      ADFL_TEST_NETWORK_ID: owned.networkId,
+    });
+    acquired = { ...process.env };
+    const identity = localDatabaseDocker(
+      [
+        'exec',
+        '--env',
+        'PGPASSWORD',
+        owned.containerId,
+        ...sqlArguments.filter((arg) => !arg.startsWith('--host=')),
+        '--host=127.0.0.1',
+        '--command',
+        `SELECT current_database()='${uri.pathname.slice(1)}'
+        AND current_user='${decodeURIComponent(uri.username)}'
+        AND current_setting('server_version_num')::int BETWEEN 170000 AND 179999;`,
+      ],
+      { ...acquired, PGPASSWORD: decodeURIComponent(uri.password) },
+    );
+    if (identity !== 't')
+      throw new Error('The shared local database connection identity is unexpected.');
+    // Unix-socket psql remains connected during the suite's intentional bridge outages.
+    child = spawn('docker', ['exec', '-i', owned.containerId, ...sqlArguments], {
+      stdio: ['pipe', 'pipe', 'pipe'],
+      windowsHide: true,
+    });
+    const lease = child;
+    exited = new Promise<void>((resolve) => {
+      lease.once('exit', () => resolve());
+      lease.once('error', () => resolve());
+    });
+    await new Promise<void>((resolve, reject) => {
+      let output = '';
+      const timer = setTimeout(
+        () => reject(new Error('Shared local database reservation timed out.')),
+        10_000,
+      );
+      const fail = () => {
+        clearTimeout(timer);
+        reject(new Error('The local database is busy or its identity could not be verified.'));
+      };
+      lease.once('error', fail);
+      lease.once('exit', fail);
+      lease.stdin!.once('error', fail);
+      lease.stderr!.resume();
+      lease.stdout!.on('data', (chunk) => {
+        output += String(chunk);
+        const pid = /^ADFL_LEASE:(\d+)$/m.exec(output)?.[1];
+        if (!pid) return;
+        clearTimeout(timer);
+        lease.off('error', fail);
+        lease.off('exit', fail);
+        lease.stdin!.off('error', fail);
+        lease.stdin!.on('error', () => {
+          delete process.env.ADFL_SHARED_DATABASE_LEASE_PID;
+        });
+        process.env.ADFL_SHARED_DATABASE_LEASE_PID = pid;
+        resolve();
+      });
+      lease.stdin!.write(`SET application_name='${applicationName}';
+      DO $$ BEGIN
+        IF current_database() <> '${uri.pathname.slice(1)}'
+          OR current_setting('server_version_num')::int NOT BETWEEN 170000 AND 179999
+          OR NOT pg_try_advisory_lock(hashtextextended('${sharedDatabaseLock}',0))
+        THEN RAISE EXCEPTION 'Shared local database reservation refused'; END IF;
+        IF EXISTS (SELECT 1 FROM pg_stat_activity WHERE datname=current_database()
+          AND pid<>pg_backend_pid() AND backend_type='client backend')
+        THEN RAISE EXCEPTION 'Close other local database clients before continuing'; END IF;
+      END $$;
+      SELECT 'ADFL_LEASE:' || pg_backend_pid();\n`);
+    });
+    exited.then(() => {
+      if (!closing) delete process.env.ADFL_SHARED_DATABASE_LEASE_PID;
+    });
+    const release = async () => {
+      if (closing) return;
+      await closeSession();
+    };
+    return Object.assign(release, { lost: exited });
+  } catch (error) {
+    try {
+      await closeSession();
+    } catch (cleanupError) {
+      throw new AggregateError(
+        [error, cleanupError],
+        'Local database reservation failed; its lease was retained for review.',
+      );
     }
     throw error;
   }
 }
 
 export async function startOwnedTestDatabase() {
+  configureSharedDatabaseUri();
   configureTestEnvironment();
-  const env = { ...process.env };
-  const names = testResourceNames(env);
-  // The current-user fixed-port lease is held before any Docker query and through teardown.
-  const { releaseLock, preflightReceipt } = await prepareTestLifecycle(
-    env.ADFL_TEST_RUN_ID!,
-    async () => {
-      if (
-        matchingIds('container', `label=com.docker.compose.project=${names.project}`, env) ||
-        matchingIds('container', `name=^/${names.container}$`, env) ||
-        matchingIds('network', `label=com.docker.compose.project=${names.project}`, env) ||
-        matchingIds('network', `name=^${names.network}$`, env)
-      )
-        throw new Error(
-          'Existing resources collide with the isolated test lifecycle; nothing changed.',
-        );
-      await new Promise<void>((resolve, reject) => {
-        const probe = createServer();
-        probe.once('error', () =>
-          reject(new Error('Isolated test PostgreSQL port 55434 is unavailable.')),
-        );
-        probe.listen(55434, '127.0.0.1', () =>
-          probe.close((error) => (error ? reject(error) : resolve())),
-        );
-      });
-      return {
-        resourcesAbsent: true as const,
-        project: names.project,
-        container: names.container,
-        network: names.network,
-        runId: env.ADFL_TEST_RUN_ID!,
-        checkedAt: new Date().toISOString(),
-      };
-    },
-  );
-  const compose = [
-    'compose',
-    '--project-name',
-    names.project,
-    '-f',
-    fileURLToPath(new URL('../../compose.test.yaml', import.meta.url)),
-  ];
-  let attempted = false;
-  let captured: { containerId?: string; networkId: string } | undefined;
-  const captureAttemptResources = () => {
-    if (
-      !attempted ||
-      !preflightReceipt.resourcesAbsent ||
-      preflightReceipt.project !== names.project ||
-      preflightReceipt.runId !== env.ADFL_TEST_RUN_ID
-    )
-      throw new Error('No held-lease absence receipt for this owned test creation attempt.');
-    // This is the only post-attempt discovery. The shared lease excludes other supported runners.
-    // Validate the newly appeared pair before recording immutable IDs, including after failed up.
-    const containerId = matchingIds('container', `name=^/${preflightReceipt.container}$`, env);
-    const networkId = matchingIds('network', `name=^${preflightReceipt.network}$`, env);
-    if (!containerId) {
-      if (!networkId) return;
-      const network = inspection<NetworkInspection>('network', networkId, env);
-      verifyOwnedTestNetwork(env, network);
-      captured = { networkId: network.Id };
-      return;
+  const release = await acquireSharedDatabaseRuntime();
+  const { assertSharedDatabaseLease, resetSharedDatabase, migrateSharedDatabase } =
+    await import('./shared-database-state');
+  const reset = async () => {
+    const owned = inspectOwnedTestDatabase('cleanup');
+    if (!Object.keys(owned.container.NetworkSettings.Networks).length) {
+      localDatabaseDocker(['network', 'connect', owned.networkId, owned.containerId]);
+      inspectOwnedTestDatabase();
     }
-    if (!networkId) throw new Error('Owned test creation is missing its expected network.');
-    const container = inspection<Inspection>('container', containerId, env);
-    const network = inspection<NetworkInspection>('network', networkId, env);
-    const owned = verifyOwnedTestResources(env, container, network, 'cleanup');
-    captured = { containerId: owned.containerId, networkId: owned.networkId };
-  };
-  const cleanup = () => {
-    if (!captured) return;
-    // Cleanup never discovers/adopts resources by name. It uses only the verified attempt receipt.
-    const network = inspection<NetworkInspection>('network', captured.networkId, env);
-    if (!captured.containerId) {
-      verifyOwnedTestNetwork(env, network);
-      docker(['network', 'rm', captured.networkId], env);
-      captured = undefined;
-      return;
-    }
-    const expected = { containerId: captured.containerId, networkId: captured.networkId };
-    const container = inspection<Inspection>('container', expected.containerId, env);
-    const plan = planOwnedCleanup(
-      env,
-      preflightReceipt.resourcesAbsent && attempted,
-      container,
-      network,
-      expected,
-    );
-    const acquired = {
-      ...env,
-      ADFL_TEST_CONTAINER_ID: expected.containerId,
-      ADFL_TEST_NETWORK_ID: expected.networkId,
-    };
-    for (const args of plan) {
-      if (args[0] === 'container') inspectOwnedTestDatabase('cleanup', acquired);
-      else
-        verifyOwnedTestNetwork(
-          env,
-          inspection<NetworkInspection>('network', expected.networkId, env),
-        );
-      docker(args, env);
-    }
-    captured = undefined;
-  };
-  const stop = () => {
-    try {
-      cleanup();
-    } finally {
-      releaseLock();
-    }
+    await assertSharedDatabaseLease(true);
+    await clearSharedDatabaseFiles();
+    await resetSharedDatabase();
+    await migrateSharedDatabase();
   };
   try {
-    attempted = true;
-    let startFailure: unknown;
-    try {
-      docker([...compose, 'up', '-d', '--wait', names.service], env);
-    } catch (error) {
-      startFailure = error;
-    }
-    // Capture while the lease is still held even when compose only created a partial fixture.
-    captureAttemptResources();
-    if (startFailure) throw startFailure;
-    if (!captured?.containerId)
-      throw new Error('Owned test creation did not produce its complete fixture.');
-    const acquired = {
-      ...env,
-      ADFL_TEST_CONTAINER_ID: captured.containerId,
-      ADFL_TEST_NETWORK_ID: captured.networkId,
-    };
-    const owned = inspectOwnedTestDatabase(true, acquired);
-    Object.assign(process.env, {
-      ADFL_TEST_CONTAINER_ID: owned.containerId,
-      ADFL_TEST_NETWORK_ID: owned.networkId,
-    });
-    return stop;
+    await reset();
   } catch (error) {
-    try {
-      stop();
-    } catch (cleanupError) {
-      throw new AggregateError(
-        [error, cleanupError],
-        'Isolated test start failed; unsafe cleanup was refused.',
-      );
-    }
+    await release();
     throw error;
   }
+  return async () => {
+    try {
+      await reset();
+    } finally {
+      await release();
+    }
+  };
 }

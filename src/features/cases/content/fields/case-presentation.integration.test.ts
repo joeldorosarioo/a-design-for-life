@@ -84,7 +84,7 @@ it('persiste título e cartões textuais distintos da comparação também no hi
 import { illustrativeCaseDraft, editorialText } from './case-presentation.fixture';
 import { caseInputSchema } from '../../contracts/case.schema';
 import { mapCaseDetail } from '../../server/map-case-detail';
-import { restoreCaseDraft } from '../../server/restore-case-draft';
+import { restoreCaseDraft } from '../../../../../testing/fixtures/editorial-commands';
 import {
   casePublicationFixture,
   mediaMetadataFixture,

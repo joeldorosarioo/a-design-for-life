@@ -23,7 +23,8 @@ async function project(name = 'a-design-for-life') {
 }
 const synthetic = () => ({
   APP_ENV: 'test',
-  DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_tools',
+  DATABASE_URI:
+    'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:5432/a_design_for_life_rebuild',
   MEDIA_BUCKET: 'adfl-test-tools',
   SITE_ORIGIN: 'http://127.0.0.1:3100',
 });
@@ -42,7 +43,7 @@ it.each([
     DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@database.invalid/adfl_test_tools',
   },
   { DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/production' },
-  { DATABASE_URI: 'postgres://adfl_test:real-credential@127.0.0.1:55434/adfl_test_tools' },
+  { DATABASE_URI: 'postgres://adfl_test:@127.0.0.1:5432/a_design_for_life_rebuild' },
   { MEDIA_BUCKET: 'production-media' },
   { SITE_ORIGIN: 'https://public.invalid' },
 ])('refuses a non-synthetic namespace before creating files', async (override) => {

@@ -2,18 +2,20 @@ import { assertUnlinkedWorkspacePath } from '../../src/config/next-dist';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { readServerEnv } from '../../src/config/server-env';
+import { assertLocalDatabase, localDatabaseName } from '../../src/config/local-database';
+import { readLocalDatabaseUri } from './local-database-environment';
 
-export const isolatedTestDatabaseUri =
-  'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/adfl_test_runner';
+export let isolatedTestDatabaseUri = readLocalDatabaseUri();
 export const isolatedTestBucket = 'adfl-test-runner';
 
 export function assertIsolatedTestEnvironment(input: NodeJS.ProcessEnv) {
+  assertLocalDatabase(input.DATABASE_URI);
   if (
     input.APP_ENV !== 'test' ||
-    input.DATABASE_URI !== isolatedTestDatabaseUri ||
+    input.DATABASE_URI !== readLocalDatabaseUri() ||
     input.MEDIA_BUCKET !== isolatedTestBucket ||
     input.MEDIA_STORAGE_ROOT !==
-      path.resolve('.work/private-media', isolatedTestBucket, 'adfl_test_runner') ||
+      path.resolve('.work/private-media', isolatedTestBucket, localDatabaseName) ||
     !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(
       input.ADFL_TEST_RUN_ID ?? '',
     )
@@ -23,6 +25,7 @@ export function assertIsolatedTestEnvironment(input: NodeJS.ProcessEnv) {
 }
 
 export function configureTestEnvironment() {
+  isolatedTestDatabaseUri = readLocalDatabaseUri();
   if (
     (process.env.TEST_DATABASE_URI && process.env.TEST_DATABASE_URI !== isolatedTestDatabaseUri) ||
     (process.env.TEST_MEDIA_BUCKET && process.env.TEST_MEDIA_BUCKET !== isolatedTestBucket)
@@ -51,7 +54,7 @@ export function configureTestEnvironment() {
     SITE_ORIGIN: siteOrigin,
     INTERNAL_HTTP_ORIGIN: internalOrigin.origin,
     MEDIA_BUCKET: isolatedTestBucket,
-    MEDIA_STORAGE_ROOT: path.resolve('.work/private-media', isolatedTestBucket, 'adfl_test_runner'),
+    MEDIA_STORAGE_ROOT: path.resolve('.work/private-media', isolatedTestBucket, localDatabaseName),
     MEDIA_CHECKER_BINARY: process.env.MEDIA_CHECKER_BINARY,
   });
   // Tests never inherit future external storage, e-mail or analytics integrations.

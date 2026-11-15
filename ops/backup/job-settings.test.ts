@@ -2,10 +2,9 @@ import { expect, it } from 'vitest';
 import { selectBackupJob } from './job-settings';
 
 const id = '60aaee76-4e6f-4231-bb7e-1169e651d560';
-const database = 'adfl_test_ops_' + id.replaceAll('-', '');
 const local = {
   APP_ENV: 'test',
-  DATABASE_URI: 'postgresql://adfl_test:synthetic@127.0.0.1:25434/' + database,
+  DATABASE_URI: 'postgresql://adfl_test:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
   OPS_TEST_RUN_ID: id,
   OPS_BACKUP_RECIPIENT: 'age1' + 'q'.repeat(58),
   OPS_SOURCE_REVISION: 'draft-uncommitted',
@@ -56,6 +55,36 @@ it('keeps the local application identity independent of the operational image fi
   });
 });
 
+it('records the host source fingerprint when the local application runs outside Docker', () => {
+  const job = selectBackupJob(
+    {
+      ...localPortfolio,
+      OPS_APPLICATION_IMAGE_ID: undefined,
+      OPS_APPLICATION_REVISION: undefined,
+    },
+    ['backup'],
+  );
+  expect(job.application('3'.repeat(64))).toEqual({
+    revision: 'draft-uncommitted',
+    sourceSha256: '1'.repeat(64),
+    schemaSha256: '3'.repeat(64),
+  });
+});
+
+it('refuses a local host source without its fingerprint', () => {
+  expect(() =>
+    selectBackupJob(
+      {
+        ...localPortfolio,
+        OPS_APPLICATION_IMAGE_ID: undefined,
+        OPS_APPLICATION_REVISION: undefined,
+        OPS_SOURCE_SHA256: undefined,
+      },
+      ['backup'],
+    ),
+  ).toThrow('Invalid operational backup job configuration.');
+});
+
 it.each([
   [{ ...localPortfolio, OPS_LOCAL_DATABASE_TARGET: undefined }, ['backup']],
   [{ ...localPortfolio, OPS_LOCAL_DATABASE_TARGET: '127.0.0.1:5432/another_database' }, ['backup']],
@@ -85,7 +114,7 @@ it.each([
   },
 );
 
-it('binds local backup to the exact disposable test database and source revision', () => {
+it('binds a test backup to the fixed local database and source revision', () => {
   const job = selectBackupJob(local, ['backup']);
   expect(job).toMatchObject({
     command: 'backup',
@@ -118,9 +147,9 @@ it('binds the explicit staging migration to the checked database and a committed
 
 it.each([
   [{ ...local, APP_ENV: 'production' }, ['backup']],
-  [{ ...local, DATABASE_URI: local.DATABASE_URI.replace(':25434', ':55433') }, ['backup']],
-  [{ ...local, DATABASE_URI: local.DATABASE_URI.replace(':25434', ':55434') }, ['backup']],
-  [{ ...local, OPS_TEST_RUN_ID: id.replace('60a', '70a') }, ['backup']],
+  [{ ...local, DATABASE_URI: local.DATABASE_URI.replace(':5432', ':55433') }, ['backup']],
+  [{ ...local, DATABASE_URI: local.DATABASE_URI.replace(':5432', ':55434') }, ['backup']],
+  [{ ...local, OPS_TEST_RUN_ID: undefined }, ['backup']],
   [{ ...local, PAYLOAD_DROP_DATABASE: 'true' }, ['backup']],
   [{ ...local, PUBLIC_SITE_ENABLED: 'true' }, ['backup']],
   [{ ...local, PUBLICATION_RETRY_WORKER_ENABLED: 'true' }, ['backup']],

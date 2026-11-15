@@ -23,7 +23,7 @@ import { getPublishedCases } from './get-published-cases';
 import { getPublishedCase } from './get-published-case';
 import { getFeaturedCases } from './get-featured-cases';
 import { getPreviewCases } from './get-preview-cases';
-import { restoreCaseDraft } from './restore-case-draft';
+import { restoreCaseDraft } from '../../../../testing/fixtures/editorial-commands';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let directory: string;

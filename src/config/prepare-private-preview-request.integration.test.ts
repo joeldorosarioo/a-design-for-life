@@ -6,7 +6,7 @@ import { authorizePreview } from '@/helpers/payload/preview-session';
 import { installPayloadProvider } from '@/helpers/payload/runtime';
 import {
   authorizePrivatePreviewRequest,
-  preparePrivatePreviewRequest,
+  type PrivatePreviewAuthorization,
 } from './prepare-private-preview-request';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
@@ -34,17 +34,20 @@ function request(
   // URL host is deliberately untrusted. The helper receives its logical origin separately.
   return new Request(`https://untrusted-host.invalid${path}`, { method, headers: actual });
 }
-async function denied(response: Response | null, status: number) {
-  expect(response).not.toBeNull();
-  expect(response!.status).toBe(status);
-  expect(response!.headers.get('cache-control')).toContain('private');
-  expect(response!.headers.get('cache-control')).toContain('no-store');
-  expect(response!.headers.get('x-robots-tag')).toBe('noindex, nofollow');
-  expect(response!.headers.get('x-content-type-options')).toBe('nosniff');
-  expect(response!.headers.get('referrer-policy')).toBe('no-referrer');
-  expect(response!.headers.has('location')).toBe(false);
-  expect(response!.headers.has('set-cookie')).toBe(false);
-  expect(await response!.text()).toBe('');
+async function denied(result: PrivatePreviewAuthorization, status: number) {
+  expect(result.ok).toBe(false);
+  if (result.ok) throw new Error('Expected private preview authorization to fail.');
+  const { response } = result;
+  expect(response.status).toBe(status);
+  expect(response.headers.get('cache-control')).toContain('private');
+  expect(response.headers.get('cache-control')).toContain('no-store');
+  expect(response.headers.get('x-robots-tag')).toBe('noindex, nofollow');
+  expect(response.headers.get('x-content-type-options')).toBe('nosniff');
+  expect(response.headers.get('referrer-policy')).toBe('no-referrer');
+  expect(response.headers.has('location')).toBe(false);
+  expect(response.headers.has('set-cookie')).toBe(false);
+  expect(await response.text()).toBe('');
+  return response;
 }
 async function observeCaseReads<T>(operation: () => Promise<T>) {
   const config = fixture.payload.collections['case-content'].config;
@@ -117,33 +120,35 @@ it.each(['GET', 'HEAD'])(
   'passes only an authenticated authorized direct %s to the private App Page',
   async (method) => {
     await expect(
-      preparePrivatePreviewRequest(request(privatePath(), { method }), options()),
-    ).resolves.toBeNull();
+      authorizePrivatePreviewRequest(request(privatePath(), { method }), options()),
+    ).resolves.toMatchObject({ ok: true });
   },
 );
 it('accepts a direct browser navigation without Origin when Native Sec-Fetch-Site is none', async () => {
   const incoming = request();
   incoming.headers.delete('origin');
   incoming.headers.set('sec-fetch-site', 'none');
-  await expect(preparePrivatePreviewRequest(incoming, options())).resolves.toBeNull();
+  await expect(authorizePrivatePreviewRequest(incoming, options())).resolves.toMatchObject({
+    ok: true,
+  });
 });
 it('does not accept a non-browser cookie without Origin or Fetch Metadata', async () => {
   const incoming = request();
   incoming.headers.delete('origin');
   incoming.headers.delete('sec-fetch-site');
-  await denied(await preparePrivatePreviewRequest(incoming, options()), 401);
+  await denied(await authorizePrivatePreviewRequest(incoming, options()), 401);
 });
 it('denies anonymous valid, malformed and duplicated scopes before revealing scope errors', async () => {
   for (const path of [privatePath(), '/preview-ui/invalid', `${privatePath()}?id=x&id=y`]) {
     await denied(
-      await preparePrivatePreviewRequest(request(path, { authenticated: false }), options()),
+      await authorizePrivatePreviewRequest(request(path, { authenticated: false }), options()),
       401,
     );
   }
 });
 it('keeps foreign-Origin cookie rejection and authenticated cross-site rejection separate', async () => {
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(privatePath(), {
         headers: { origin: 'https://outside.invalid' },
       }),
@@ -152,7 +157,7 @@ it('keeps foreign-Origin cookie rejection and authenticated cross-site rejection
     401,
   );
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(privatePath(), {
         headers: { 'sec-fetch-site': 'cross-site' },
       }),
@@ -163,7 +168,7 @@ it('keeps foreign-Origin cookie rejection and authenticated cross-site rejection
 });
 it('does not use Host or forwarded origin headers to authorize a foreign origin', async () => {
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(privatePath(), {
         headers: {
           origin: 'https://outside.invalid',
@@ -177,22 +182,22 @@ it('does not use Host or forwarded origin headers to authorize a foreign origin'
     401,
   );
 });
-it('validates source collection/page/locale and never returns a Native document to the caller', async () => {
+it('validates source collection/page/locale before returning authorized Native context', async () => {
   for (const path of [
     `/preview-ui/pt/users/${fixture.user.id}/home`,
     `/preview-ui/pt/case-content/${id}/home`,
     `/preview-ui/pt/case-content/not-a-uuid/case`,
   ])
-    await denied(await preparePrivatePreviewRequest(request(path), options()), 400);
+    await denied(await authorizePrivatePreviewRequest(request(path), options()), 400);
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(`/preview-ui/en/case-content/${id}/case`),
       options(),
     ),
     403,
   );
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request('/preview-ui/pt/case-content/00000000-0000-4000-8000-000000000007/case'),
       options(),
     ),
@@ -209,21 +214,21 @@ it('rejects duplicate returnTo and query attempts to override a path scope after
     'view=1',
   ])
     await denied(
-      await preparePrivatePreviewRequest(request(`${privatePath()}?${query}`), options()),
+      await authorizePrivatePreviewRequest(request(`${privatePath()}?${query}`), options()),
       400,
     );
 });
 it('allows a safe return path and framework RSC marker without making either an authority selector', async () => {
   await expect(
-    preparePrivatePreviewRequest(
+    authorizePrivatePreviewRequest(
       request(`${privatePath()}?returnTo=%2Fpt%2Fcases&_rsc=synthetic`, {
         headers: { rsc: '1' },
       }),
       options(),
     ),
-  ).resolves.toBeNull();
+  ).resolves.toMatchObject({ ok: true });
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(`${privatePath()}?returnTo=https%3A%2F%2Foutside.invalid`),
       options(),
     ),
@@ -232,28 +237,30 @@ it('allows a safe return path and framework RSC marker without making either an 
 });
 it('denies unsupported methods before Next and does not parse a request body as preview scope', async () => {
   for (const method of ['POST', 'PUT', 'DELETE', 'OPTIONS']) {
-    const response = await preparePrivatePreviewRequest(
-      request(privatePath(), { method }),
-      options(),
+    const response = await denied(
+      await authorizePrivatePreviewRequest(request(privatePath(), { method }), options()),
+      405,
     );
-    expect(response?.headers.get('allow')).toBe('GET, HEAD');
-    await denied(response, 405);
+    expect(response.headers.get('allow')).toBe('GET, HEAD');
   }
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(privatePath(), { method: 'POST', authenticated: false }),
       options(),
     ),
     401,
   );
 });
-it('never returns null for a path outside its owned private surface', async () => {
-  await denied(await preparePrivatePreviewRequest(request('/pt'), options()), 404);
+it('rejects a path outside its owned private surface', async () => {
+  await denied(await authorizePrivatePreviewRequest(request('/pt'), options()), 404);
 });
 
 it('does not read a document for a duplicated authenticated query or trust a forged public context', async () => {
   const result = await observeCaseReads(() =>
-    preparePrivatePreviewRequest(request(`${privatePath()}?returnTo=/pt&returnTo=/en`), options()),
+    authorizePrivatePreviewRequest(
+      request(`${privatePath()}?returnTo=/pt&returnTo=/en`),
+      options(),
+    ),
   );
   await denied(result.value, 400);
   expect(result.reads).toBe(0);
@@ -262,10 +269,10 @@ it('does not read a document for a duplicated authenticated query or trust a for
     'x-middleware-request-x-portfolio-render-context': 'FORGED',
   };
   await expect(
-    preparePrivatePreviewRequest(request(privatePath(), { headers }), options()),
-  ).resolves.toBeNull();
+    authorizePrivatePreviewRequest(request(privatePath(), { headers }), options()),
+  ).resolves.toMatchObject({ ok: true });
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(privatePath(), { authenticated: false, headers }),
       options(),
     ),
@@ -275,20 +282,20 @@ it('does not read a document for a duplicated authenticated query or trust a for
 
 it('keeps anonymous HEAD empty and fails closed for an invalid configured logical origin', async () => {
   await denied(
-    await preparePrivatePreviewRequest(
+    await authorizePrivatePreviewRequest(
       request(privatePath(), { method: 'HEAD', authenticated: false }),
       options(),
     ),
     401,
   );
   await denied(
-    await preparePrivatePreviewRequest(request(), {
+    await authorizePrivatePreviewRequest(request(), {
       origin: 'https://user:secret@outside.invalid/nested?query=1',
     }),
     503,
   );
 });
-it('returns Native context only through the server-only Page reauthorization API', async () => {
+it('returns the authorized Native context through the server-only Page API', async () => {
   const result = await authorizePrivatePreviewRequest(request(), options());
   expect(result.ok).toBe(true);
   if (!result.ok) throw new Error('Expected independently authorized private Page context.');
@@ -309,8 +316,5 @@ it('rejects the same Native session after revocation before the private Page run
     id: fixture.user.id,
     data: { sessions: [] },
   });
-  await denied(await preparePrivatePreviewRequest(request(), options()), 401);
-  const page = await authorizePrivatePreviewRequest(request(), options());
-  expect(page.ok).toBe(false);
-  if (!page.ok) await denied(page.response, 401);
+  await denied(await authorizePrivatePreviewRequest(request(), options()), 401);
 });
