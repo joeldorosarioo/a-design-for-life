@@ -14,6 +14,7 @@
 !public/
 !public/**
 !scripts/emit-case-state-css.mjs
+!scripts/local-runtime.ts
 # Adjacent source tests participate in Next TypeScript validation. Only code support,
 # never binary fixtures, is sent; no repository typecheck exclusions are weakened.
 !testing/fixtures/**/*.ts

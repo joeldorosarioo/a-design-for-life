@@ -163,7 +163,7 @@ export async function localBackupSourceIdentity(workspace = root) {
     'The local application source identity could not be verified.',
   );
   const files = [...new Set(listing.stdout.split('\0'))]
-    .filter((file) => file && !file.startsWith('docs/') && !file.endsWith('.md'))
+    .filter((file) => file && !file.startsWith('documentation/') && !file.endsWith('.md'))
     .sort();
   const entries = await Promise.all(
     files.map(async (file) => {

@@ -43,7 +43,7 @@ for (const target of targets) {
 const directory = path.resolve(outputDirectory);
 assert(directory.startsWith(path.resolve('.work/local-audits') + path.sep));
 await assert.rejects(fs.access(directory), { code: 'ENOENT' });
-await fs.access('docs/verification/E4.2-performance-protocol.md');
+await fs.access('documentation/operations.md');
 if (mode === '--preflight') {
   console.log(
     JSON.stringify({

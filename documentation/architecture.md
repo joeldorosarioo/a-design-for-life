@@ -18,7 +18,7 @@ As rotas em `src/app` compõem as features de cases, perfil profissional, navega
 
 Salvar, publicar, retirar e restaurar usam operações nativas do Payload, protegidas por revisão e bloqueio temporário de edição. O PostgreSQL garante a unicidade das identidades e rotas. Revisão desatualizada e disputa de slug geram conflito explícito; restaurar uma versão cria um rascunho. Navegação e perfis já publicados são protegidos contra retirada.
 
-A prévia exige autenticação e lê rascunhos e mídias privadas sem cache compartilhado. O painel usa a autenticação e a recuperação de senha do Payload. Veja os [contratos do CMS](specs/2026-10-29-portfolio-cms-contracts.md) e o [guia de edição](runbooks/cms-editorial.md).
+A prévia exige autenticação e lê rascunhos e mídias privadas sem cache compartilhado. O painel usa a autenticação e a recuperação de senha do Payload. Veja os [contratos do CMS](specification.md#modelo-editorial) e o [guia de operação](operations.md).
 
 ## Publicação e leitura
 
@@ -30,7 +30,7 @@ Cada reserva de rota pertence a um projeto e idioma. Gravações explícitas res
 
 ## Mídia e privacidade
 
-O servidor valida os bytes do upload e gera as versões responsivas. Aceita JPEG, PNG, WebP e AVIF estáticos até 10.000.000 bytes, além de WebP animado preservando sua animação. Rejeita SVG, PNG animado e AVIF animado. PDFs têm limite de 5.000.000 bytes e precisam abrir sem senha.
+O servidor valida os bytes do upload, aplica os limites da [especificação](specification.md) e gera versões responsivas. O processamento acontece na aplicação.
 
 Originais e derivados só são públicos quando há referência em uma geração confirmada. A retirada da última referência pública revoga o acesso. Credenciais do R2, diretórios de armazenamento e snapshots de publicação ficam fora dos caminhos públicos; logs ocultam dados sensíveis.
 
@@ -38,6 +38,6 @@ Originais e derivados só são públicos quando há referência em uma geração
 
 O Figma define layout, tokens e ativos; Tailwind, CVA, shadcn e Motion implementam a interface. Cada idioma tem conteúdo e URLs canônicas próprios. Na raiz, a escolha manual prevalece sobre a preferência do navegador; o fallback é inglês. URLs com idioma explícito prevalecem sobre essa negociação. A preferência manual usa um cookie funcional de 180 dias, sem renovação nas visitas.
 
-A troca de idioma preserva trecho e posição quando há seção equivalente. Sem tradução do case, leva à listagem de destino no topo e informa o visitante com um aviso acessível. Veja a [spec](specs/2026-10-29-portfolio-spec-v1.md) e o [inventário do Figma](specs/2026-10-29-portfolio-figma-inventory.md).
+A troca de idioma preserva trecho e posição quando há seção equivalente. Sem tradução do case, leva à listagem de destino no topo e informa o visitante com um aviso acessível. A [especificação](specification.md) reúne os contratos e a referência do Figma.
 
 A configuração é lida no servidor; o navegador recebe apenas os campos públicos permitidos. Analytics fica restrito a respostas públicas válidas de produção, sem medir prévias, navegação editorial ou testes. A política mantém `analytics_storage: denied`, sem cookies analíticos ou identificadores persistentes alternativos.

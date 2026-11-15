@@ -69,7 +69,7 @@ function documentationSourceTree(selected, cwd) {
       git('cat-file', '-t', approvedRevision).trim() === 'commit',
     'source-comparison',
   );
-  // Disable rename detection so moving executable input under docs cannot hide its removal.
+  // Disable rename detection so moving executable input under documentation cannot hide its removal.
   const changes = git(
     'diff',
     '--raw',
@@ -90,7 +90,7 @@ function documentationSourceTree(selected, cwd) {
       /^:(?:000000|100644) (?:000000|100644) [a-f0-9]{40} [a-f0-9]{40} [AMD]$/.test(
         changes[index],
       ) &&
-        (file === 'README.md' || file === 'AGENTS.md' || file.startsWith('docs/')),
+        (file === 'README.md' || file === 'AGENTS.md' || file.startsWith('documentation/')),
       'documentation-only',
     );
   }

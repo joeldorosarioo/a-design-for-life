@@ -1,7 +1,4 @@
 * text=auto eol=lf
-docs/specs/** -text
-# Captured output is data; preserve terminal whitespace and line endings.
-docs/verification/artifacts/** -text
 
 # Exact exported design vectors are source data.
 public/figma/*.svg -text
