@@ -26,6 +26,8 @@ Otimização aplicada no checkout: checks automáticos em PRs e pushes para `dev
 
 Em 15/11/2026, o usuário autorizou o commit, o envio e a sincronização com o remoto. A publicação segue a proteção da `develop` e o check Linux obrigatório. O push nessa branch aciona o fluxo existente de staging quando habilitado; não autoriza lançamento público nem declara aceite de uma candidata. A fonte validada após a otimização de CI tem SHA-256 `6931df208514eb8ec22437edc1760a8e71ed894253e49fde764c2aac9bb7d1b4`; somente os dois workflows diferem da fonte local registrada abaixo. `.env`, ferramentas, dados, chaves e evidências privadas em `.work` ficam fora do Git.
 
+O [check Linux do PR #9](https://github.com/joeldorosarioo/a-design-for-life/actions/runs/43769686783), no commit `aa9654eaf4844d41713602beee9c841c203d7b36`, passou em 3min10s com os caches inicialmente vazios: 1.998 testes unitários, 34 checks de arquitetura, 109 checks de scripts, tipos, lint, formato e build. Não houve skips. A etapa de verificação consumiu 2min41s; os caches pnpm e de compilação foram gravados. É uma medição de PR, sem imagem ou deploy, e não deve ser comparada ao total de staging. O check do PR anterior levou 12min52s incluindo integração/E2E; a redução observada foi de aproximadamente 75%. Ainda falta medir o build Docker e uma rodada com cache preenchido.
+
 Validação local em 15/11/2026, no Windows, com Node 24.22.2, pnpm 12.10.1 e ferramentas nativas de backup configuradas. O projeto usa três bancos de aplicação fixos: produção, staging e local. Desenvolvimento e testes compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, com reserva exclusiva e limpeza autorizada dos dados entre rodadas. O CI hospedado executa `verify:ci` sem banco; integração e E2E são locais.
 
 | Verificação           | Resultado e limite                                                                                                                                                                                                                                                                           |
@@ -47,7 +49,7 @@ A imagem do serviço PostgreSQL local é `sha256:8957635b83dffea5d3071a3bd91cd06
 
 Recibos, inventário e logs privados em `.work/shared-local-database-d5798ddc-66b2-4ea2-b828-1ddbcfbafb95`. Verify SHA-256 `5ed98436fd31559cee99b1711beb920844ce0a9a66906e10b6212f7b293422fa`; E2E SHA-256 `b5ab478fd5c18057c63b585df12cbdb7eaab42a73c8b79522ad7d28f7afd5450`. As fontes preexistentes do Next, o `.env`, o lockfile, as migrações e os tipos gerados foram preservados. Os resultados anteriores da limpeza de 40.289.179.815 bytes estão em `.work/workspace-cleanup-aa33f2ea-1804-4aa7-8722-faabee8e4641`.
 
-Os três skips de Linux cobrem links de objetos, permissões dos snapshots e exclusão do escritor com SIGSTOP/SIGCONT. Continuam no CI de unidades Linux, ainda não executado remotamente para esta fonte. Produção e staging não foram operados nesta revisão; os gates abaixo continuam abertos.
+Os três casos ignorados no Windows cobrem links de objetos, permissões dos snapshots e exclusão do escritor com SIGSTOP/SIGCONT. Passaram no check Linux do PR #9, sem skips. Os ensaios locais descritos acima não operaram produção ou staging; o fluxo remoto de staging exige seu próprio resultado. Os gates abaixo continuam abertos.
 
 ## O que ainda falta
 
