@@ -186,7 +186,7 @@ test('rejects incomplete, duplicate, hidden or malformed completion messages', (
     `${output()}\n${output()}`,
   ])
     assert.throws(() => parse(message), rejected('backup-marker-unavailable'));
-  const wrapped = `Unrelated operational log\n${output()}\n`;
+  const wrapped = `Unrelated operational log\n{malformed JSON}\nnull\n  ${output()}  \n`;
   assert.deepEqual(parse(wrapped).marker, marker());
 });
 
@@ -402,7 +402,15 @@ test('binds staging to its configured task and refuses malformed or mutable sour
 });
 
 test('requires a new backup set id as well as a new execution id and rejects replayed completion output', async () => {
-  const data = client({ previous: [{ ...execution(), uuid: oldExecutionUuid }] });
+  const data = client({
+    previous: [
+      {
+        ...execution(),
+        uuid: oldExecutionUuid,
+        message: `Unrelated log\n{malformed JSON}\nnull\n  ${output()}  \n`,
+      },
+    ],
+  });
   await assert.rejects(
     runPreDeploymentBackup(input(), data.dependencies),
     rejected('backup-marker-reused'),

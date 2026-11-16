@@ -1,6 +1,10 @@
 import { createHash } from 'node:crypto';
+import { writeSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { sql, type MigrateUpArgs } from '@payloadcms/db-postgres';
-import { createLocalReq, type Migration, type Payload } from 'payload';
+import { createLocalReq, getPayload, type Migration, type Payload } from 'payload';
+import { readServerEnv } from '../../src/config/server-env';
+import { readIntegrationEnv } from '../../src/config/integration-env';
 import { migrations } from '../../src/migrations';
 import { provisionStructuralDocuments } from '../../src/config/provision-structural-documents';
 import { planStagingCatalog } from './initialize-config.mjs';
@@ -303,16 +307,19 @@ export async function initializeStaging(
       'current'
     )
       throw refused();
+    const receipt = {
+      version: 1,
+      environment: 'staging',
+      database: options.database,
+      origin: options.origin,
+      migrations: migrationNames.length,
+      migrationLedgerSha256: createHash('sha256').update(migrationNames.join('\n')).digest('hex'),
+    } as const;
     if (options.mode === 'prepare-first-access') {
       await assertEmptyApplicationData(client, expectedTables);
       return {
-        version: 1,
-        environment: 'staging',
-        database: options.database,
-        origin: options.origin,
+        ...receipt,
         editorId: null,
-        migrations: migrationNames.length,
-        migrationLedgerSha256: createHash('sha256').update(migrationNames.join('\n')).digest('hex'),
         structuralDocuments: 0,
         structural: [],
         freshProvisioning: false,
@@ -322,13 +329,8 @@ export async function initializeStaging(
     }
     const result = await provision(payload, client, options, expectedTables);
     return {
-      version: 1,
-      environment: 'staging',
-      database: options.database,
-      origin: options.origin,
+      ...receipt,
       editorId: result.user.id,
-      migrations: migrationNames.length,
-      migrationLedgerSha256: createHash('sha256').update(migrationNames.join('\n')).digest('hex'),
       structuralDocuments: result.structural.length,
       structural: result.structural,
       freshProvisioning: result.freshProvisioning,
@@ -355,4 +357,73 @@ export async function closeStagingPayload(payload: Payload) {
   await payload.destroy();
   for (const client of borrowed) client.release();
   await pool.end();
+}
+
+async function main() {
+  const env = readServerEnv(process.env);
+  // Validate imported integrations before config's normal development dotenv loader.
+  if (
+    env.APP_ENV !== 'staging' ||
+    process.env.STAGING_DATABASE_ONLY !== 'true' ||
+    process.env.PAYLOAD_DROP_DATABASE !== 'false'
+  )
+    throw new Error('Invalid operator phase.');
+  readIntegrationEnv(process.env, env);
+  if (
+    !process.env.STAGING_OPERATOR_WORKDIR ||
+    !process.env.STAGING_INITIALIZATION_DATABASE ||
+    !['initialize', 'verify', 'prepare-first-access'].includes(
+      process.env.STAGING_INITIALIZATION_MODE ?? '',
+    ) ||
+    (process.env.STAGING_INITIALIZATION_MODE !== 'prepare-first-access' &&
+      (!process.env.STAGING_EDITOR_EMAIL || !process.env.STAGING_EDITOR_PASSWORD))
+  )
+    throw new Error('Missing private operator inputs.');
+  // The owned directory has no .env; keep unrelated local settings out of this child.
+  process.chdir(process.env.STAGING_OPERATOR_WORKDIR);
+  const { default: configured } = await import('../../src/payload.config');
+  const config = await configured;
+  const payload = await getPayload({
+    config: {
+      ...config,
+      logger: { options: { level: 'silent' } } as typeof config.logger,
+      typescript: { ...config.typescript, autoGenerate: false },
+    },
+    disableDBConnect: true,
+    disableOnInit: true,
+    key: `staging-initialize-${crypto.randomUUID()}`,
+  });
+  try {
+    const target = {
+      databaseUri: env.DATABASE_URI,
+      database: process.env.STAGING_INITIALIZATION_DATABASE,
+      role: decodeURIComponent(new URL(env.DATABASE_URI).username),
+      origin: env.SITE_ORIGIN,
+    };
+    const result =
+      process.env.STAGING_INITIALIZATION_MODE === 'prepare-first-access'
+        ? await initializeStaging(payload, { ...target, mode: 'prepare-first-access' })
+        : await initializeStaging(payload, {
+            ...target,
+            mode: process.env.STAGING_INITIALIZATION_MODE as 'initialize' | 'verify',
+            editor: {
+              email: process.env.STAGING_EDITOR_EMAIL!,
+              password: process.env.STAGING_EDITOR_PASSWORD!,
+            },
+          });
+    writeSync(1, JSON.stringify(result));
+  } finally {
+    await closeStagingPayload(payload);
+  }
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  void main().then(
+    () => process.exit(0),
+    () => {
+      // Upstream errors can contain SQL values or credentials.
+      writeSync(2, 'Staging initialization refused or incomplete.\n');
+      process.exit(1);
+    },
+  );
 }

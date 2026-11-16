@@ -8,7 +8,6 @@ import {
 import { postgresDumpConnection } from './postgres-dump';
 import { matchesLocalDatabase } from '../../src/config/local-database';
 
-const stagedMigration = z.literal('true');
 const runId = z.uuid().regex(/^[a-f0-9-]+$/);
 const sourceRevision = /^[a-f0-9]{40}$/;
 const sourceSha256 = /^[a-f0-9]{64}$/;
@@ -94,7 +93,7 @@ export function selectBackupJob(env: Partial<NodeJS.ProcessEnv>, args: readonly 
     !stagingDatabaseHost(connection.PGHOST) ||
     env.OPS_STAGING_DATABASE_TARGET !==
       new URL(databaseUri).hostname + ':' + connection.PGPORT + '/' + connection.PGDATABASE ||
-    (command === 'migrate' && !stagedMigration.safeParse(env.OPS_ALLOW_REVIEWED_MIGRATION).success)
+    (command === 'migrate' && env.OPS_ALLOW_REVIEWED_MIGRATION !== 'true')
   )
     throw invalid();
 

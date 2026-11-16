@@ -143,7 +143,7 @@ async function main() {
         '--conditions=react-server',
         '--import',
         'tsx',
-        path.join(root, 'ops/staging/initialize.native.ts'),
+        path.join(root, 'ops/staging/initialize.ts'),
       ],
       {
         cwd: root,
