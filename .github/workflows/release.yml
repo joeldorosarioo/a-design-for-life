@@ -38,7 +38,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.22.2
+          node-version: 26.13.1
           package-manager-cache: false
       - name: Identify the exact source
         id: identity
@@ -145,7 +145,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.22.2
+          node-version: 26.13.1
           package-manager-cache: false
       - name: Deploy the immutable image to staging
         env:
@@ -178,7 +178,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.22.2
+          node-version: 26.13.1
           package-manager-cache: false
       - name: Mark the exact image after staging is healthy
         env:
@@ -208,7 +208,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.22.2
+          node-version: 26.13.1
           package-manager-cache: false
       - name: Resolve exact source and migration trees
         id: identity
@@ -245,7 +245,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.22.2
+          node-version: 26.13.1
           package-manager-cache: false
       - name: Deploy the same immutable image to production
         env:

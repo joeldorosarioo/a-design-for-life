@@ -35,7 +35,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.22.2
+          node-version: 26.13.1
           package-manager-cache: false
       - name: pnpm
         uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
@@ -51,9 +51,9 @@ jobs:
           path: |
             .work/next-build/cache
             .work/cache/typescript.tsbuildinfo
-          key: ${{ runner.os }}-${{ runner.arch }}-node24.22.2-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-${{ github.sha }}
+          key: ${{ runner.os }}-${{ runner.arch }}-node26.13.1-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-${{ runner.arch }}-node24.22.2-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-
+            ${{ runner.os }}-${{ runner.arch }}-node26.13.1-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-
       - name: Install verified local PDF checker
         run: pnpm setup:media-checker
       - name: Install verified local backup tools

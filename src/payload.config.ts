@@ -108,6 +108,7 @@ const config = buildConfig({
   admin: {
     avatar: 'default',
     user: Users.slug,
+    meta: { defaultOGImageType: 'off' },
     importMap: { baseDir: sourceDirectory },
   },
   db: withConfirmedTransactions(

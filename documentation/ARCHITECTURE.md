@@ -17,7 +17,9 @@ O [README](../README.md#verificação) define os três bancos fixos e a conexão
 
 Desenvolvimento e testes disputam uma reserva exclusiva. O ciclo de testes limpa dados entre rodadas e usa checkpoint nos ensaios de recuperação, sem criar bancos.
 
-No contêiner, a aplicação usa `appuser`, UID/GID `70:70`, e as ferramentas de backup usam `10001:10001`. Os arquivos locais privados pertencem à identidade que os cria; no Windows, as ACLs usam o SID atual. Esses papéis não exigem um login Windows específico.
+Os dados locais são descartáveis; não há rotina de backup local nem necessidade de guardar originais editoriais no checkout. A recuperação dos ambientes remotos pertence à operação da VPS.
+
+No contêiner, a aplicação e seu executor de backup usam `appuser`, UID/GID `70:70`. Os arquivos locais privados pertencem à identidade que os cria; no Windows, as ACLs usam o SID atual. Esses papéis não exigem um login Windows específico.
 
 Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. A configuração entra na execução da mesma imagem. Os fluxos de verificação e promoção estão no [guia operacional](OPERATIONS.md#ci-e-staging).
 
@@ -37,11 +39,15 @@ As reservas de rota pertencem a um case e idioma. O histórico aponta diretament
 
 O servidor valida os bytes dos uploads e gera os derivados na aplicação. O desenvolvimento pode usar armazenamento local e os alvos remotos usam R2. Originais, derivados e otimizador consultam a mesma autorização. Retirar a última referência pública revoga o acesso.
 
+O PDF compartilha um único prazo entre a inspeção no worker e o qpdf. O vencimento encerra os dois e aguarda a limpeza antes de liberar a fila de uploads.
+
 A última geração confirmada pode atender durante uma falha temporária da origem. Sem conteúdo confirmado suficiente, a resposta indica indisponibilidade. Falhas não viram listas vazias nem conteúdo inexistente.
 
 ## Configuração
 
 A configuração é lida no servidor. O navegador recebe apenas os campos públicos permitidos.
+
+A geração nativa de imagens Open Graph do painel fica desativada.
 
 A escolha de idioma, a preservação da leitura e o fallback seguem a especificação. O Figma orienta a interface e os tokens ficam no código. Analytics mede somente respostas públicas válidas de produção quando ativado, sob a política de privacidade aprovada.
 

@@ -227,7 +227,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     configFile && outputDirectory && ['--preflight', '--run'].includes(mode) && extra.length === 0,
     'Usage: node ops/performance/run-staging-audit.mjs <config.json> <new-output-directory> --preflight|--run',
   );
-  assert.equal(process.versions.node, '24.22.2');
+  assert.equal(process.versions.node, '26.13.1');
   const configBytes = await fs.readFile(configFile);
   const config = JSON.parse(configBytes.toString());
   assert.equal(config.origin, stagingOrigin);

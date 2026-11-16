@@ -30,7 +30,7 @@ Prepare a nova cópia conforme o [uso local](../README.md#uso-local). Os usuári
 
 Use credenciais locais novas e mantenha as permissões restritas ao usuário responsável. Resolva falhas de acesso conferindo dono e ACL do arquivo. Copiar chaves privadas antigas ou conceder acesso a `Everyone` para fazer um comando funcionar compromete essa proteção.
 
-Caches, builds, relatórios e fixtures concluídas podem ser removidos com os consumidores parados. Preserve somente o Chromium exigido pelos testes, dados atuais, originais editoriais, backups recuperáveis, chaves configuradas e checkpoints pendentes. Antes de limpar, confira os consumidores e a identidade de cada caminho. Os comprovantes ainda usados ficam no índice privado; logs antigos, cópias de fonte e resultados substituídos podem sair.
+Caches, builds, relatórios, originais editoriais e backups locais podem ser removidos com os consumidores parados. Preserve o Chromium exigido pelos testes e checkpoints pendentes. Backups recuperáveis da VPS e chaves configuradas exigem guarda própria; não os trate como dados locais descartáveis. Antes de limpar, confira os consumidores e a identidade de cada caminho. Os comprovantes ainda usados ficam no índice privado; logs antigos, cópias de fonte e resultados substituídos podem sair.
 
 Registre os recibos no índice privado `.work/verification/evidence/index.json`.
 
@@ -65,19 +65,9 @@ Mantenha Analytics com `loadScript=null` até concluir a condição específica 
 
 ## Backup e recuperação
 
-O [README](../README.md#verificação) define os três bancos fixos e seu uso. Antes de testar ou recuperar no banco local, faça backup do que quiser guardar e preserve o volume e as identidades do banco e contêiner.
+O [README](../README.md#verificação) define os três bancos fixos e seu uso. Os dados de desenvolvimento e testes são descartáveis; o banco local não tem rotina de backup. Preserve o volume e as identidades do banco e contêiner.
 
-### Backup local
-
-Mantenha PostgreSQL disponível e pare desenvolvimento, testes e outros clientes. Prepare as ferramentas na primeira execução.
-
-```sh
-docker build -f ops/backup/Dockerfile -t adfl:backup-local .
-pnpm setup:backup-tools
-pnpm backup:local
-```
-
-Refaça o build quando a verificação de dependências solicitar. `backup:local` adquire a reserva, monta fontes e dados somente para leitura e registra sua identidade. Lê publicação e mídia local ou R2 da fonte. Os conjuntos criptografados ficam em `.work/backup-sets`. Guarde a identidade age separada dos conjuntos.
+Guarde backups de staging e produção, identidades de recuperação e chaves de operação fora do código. Os ensaios locais usam checkpoints temporários e restauram o estado anterior antes de liberar o banco.
 
 ### Backup de staging
 

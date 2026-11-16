@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM docker.io/library/node:24.22.2-alpine3.24@sha256:4eefa1bfce4197942661ef9148247d779ddf1bb0ee006d3294a467609de60724 AS node-base
+FROM docker.io/library/node:26.13.1-alpine3.24@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS node-base
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 
@@ -21,7 +21,7 @@ RUN tar -xzf /tmp/age.tar.gz -C /tmp && /tmp/age/age --version
 FROM node-base AS dependencies
 ARG TARGETARCH
 RUN test "$TARGETARCH" = "amd64"
-RUN corepack enable && corepack prepare pnpm@12.10.1 --activate && test "$(pnpm --version)" = "12.10.1"
+RUN npm install --global pnpm@12.10.1 && test "$(pnpm --version)" = "12.10.1"
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
@@ -48,7 +48,7 @@ ENV NODE_ENV=production \
     HOSTNAME=0.0.0.0 \
     MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf
 # Keep UID/GID 70 so existing PostgreSQL and application volumes retain access.
-RUN apk add --no-cache ca-certificates libjpeg-turbo libstdc++ libcrypto3 zlib tar \
+RUN apk add --no-cache ca-certificates libatomic libjpeg-turbo libstdc++ libcrypto3 zlib tar \
     && apk add --no-cache --virtual .account-tools shadow \
     && test "$(id -u postgres):$(id -g postgres)" = "70:70" \
     && usermod --login appuser --shell /sbin/nologin postgres \

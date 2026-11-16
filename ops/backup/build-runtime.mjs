@@ -64,7 +64,7 @@ export async function buildBackupRuntime(workspace, standalone) {
       bundle: true,
       packages: 'external',
       platform: 'node',
-      target: 'node24',
+      target: 'node26',
       format: 'esm',
       conditions: ['react-server'],
       tsconfig: path.join(sourceRoot, 'tsconfig.json'),

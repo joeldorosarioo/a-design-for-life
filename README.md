@@ -8,7 +8,7 @@ O lançamento ainda depende das [condições em aberto](documentation/PENDING.md
 
 ## Uso local
 
-Use Node 24.22.2, pnpm 12.10.1 e Docker com contêineres Linux. Execute os comandos na raiz do repositório.
+Use Node 26.13.1, pnpm 12.10.1 e Docker com contêineres Linux. Se usa NVM, selecione a versão já instalada com `nvm use 26.13.1`. Execute os comandos na raiz do repositório.
 
 O projeto usa a configuração da máquina e a identidade que executa os comandos. Em outro computador ou conta, use um clone próprio e prepare seu `.env`; `.work` será criada durante o uso. No contêiner, a aplicação roda como `appuser`, sem depender do login Windows. Credenciais de serviços entram pela configuração do ambiente.
 
@@ -22,13 +22,13 @@ Execute `pnpm dev` no host. Abra o site em [português](http://localhost:3000/pt
 
 Com desenvolvimento e testes parados, use `pnpm provision:editor` para criar ou recriar a conta local. Defina `APP_ENV=local`, `LOCAL_EDITOR_EMAIL` e `LOCAL_EDITOR_PASSWORD` no ambiente privado. Uma conta com o mesmo e-mail é preservada. Após a limpeza dos testes, `pnpm provision:structural` prepara novamente os rascunhos de perfil e navegação.
 
-O Compose expõe somente a porta 5432 em loopback. Preserve o volume externo do banco e os arquivos privados em `.work`. Para parar sem remover dados:
+O Compose expõe somente a porta 5432 em loopback. Preserve o volume externo do banco. Para parar sem remover dados:
 
 ```sh
 docker compose -f compose.local.yaml stop postgres
 ```
 
-Antes de alterar dados, pare a aplicação e use `pnpm backup:local` conforme o [guia de backup e recuperação](documentation/OPERATIONS.md#backup-e-recuperação). O comando compartilha o bloqueio exclusivo do banco. O guia inclui a preparação da imagem de ferramentas do backup. Instale age com `pnpm setup:backup-tools` se necessário. Mantenha `.env`, `.work`, `.toolchain` e a identidade de recuperação privados; guarde essa identidade separada dos backups.
+Os dados locais são descartáveis e podem ser recriados para desenvolvimento e testes. Não há rotina de backup local nem necessidade de manter originais editoriais no checkout. Os backups de staging e produção seguem o [guia de backup e recuperação](documentation/OPERATIONS.md#backup-e-recuperação). Guarde suas chaves e arquivos de operação fora do código.
 
 ## Verificação
 
@@ -40,7 +40,7 @@ pnpm exec playwright install chromium --only-shell
 pnpm test:e2e
 ```
 
-Há três bancos de aplicação fixos: produção, staging e local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, configurado no `.env`. Os testes limpam seus dados locais entre rodadas; faça backup antes de guardar ali qualquer conteúdo que queira preservar. Pare `pnpm dev` ou `pnpm start` antes dos testes: esses comandos compartilham um bloqueio exclusivo com o runner. O contêiner, o volume e o banco permanecem após a rodada.
+Há três bancos de aplicação fixos: produção, staging e local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, configurado no `.env`. Os testes limpam os dados locais entre rodadas. Pare `pnpm dev` ou `pnpm start` antes dos testes: esses comandos compartilham um bloqueio exclusivo com o runner. O contêiner, o volume e o banco permanecem após a rodada.
 
 Os testes usam mídia sintética local, captura de e-mail e Analytics desligado. Provas de migração e recuperação reconstroem o schema no mesmo banco. O build dos testes fica em `.work/next-tests`. O CI do GitHub executa `pnpm verify:ci`, sem banco; integração e E2E precisam da verificação local antes do aceite da candidata.
 
@@ -50,16 +50,16 @@ Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG
 
 Os relatórios do navegador ficam em `.work/playwright/report`, os traces e resultados em `.work/playwright/results` e o cache do TypeScript em `.work/cache`. São saídas geradas, fora do Git.
 
-Os comprovantes ainda usados ficam em `.work/verification/evidence/index.json`: a referência de performance, a última verificação local e o recibo da limpeza. Os dados editoriais originais ficam em `.work/editorial`. Caches, builds e relatórios podem ser recriados; remova-os com aplicação e testes parados. Preserve dados atuais de mídia/publicação, backups recuperáveis, chaves configuradas e checkpoints pendentes. Permissões privadas protegem esses arquivos para a identidade que os criou. Um clone novo gera seus próprios arquivos; copiar chaves privadas de outra conta não faz parte da instalação.
+Os comprovantes ainda usados ficam em `.work/verification/evidence/index.json`: a referência de performance, a última verificação local e o recibo da limpeza. Caches, builds e relatórios podem ser recriados; remova-os com aplicação e testes parados. Preserve checkpoints pendentes até concluir o ensaio de recuperação. Permissões privadas protegem os arquivos para a identidade que os criou. Um clone novo gera seus próprios arquivos; copiar chaves privadas de outra conta não faz parte da instalação.
 
-| Caminho                         | Função e decisão                                                                                                                                                                                     |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.toolchain`                    | Ferramentas locais nas versões exigidas: Node executa os comandos, qpdf verifica PDFs e age criptografa backups. Mantém executáveis, bibliotecas necessárias, comprovantes de instalação e licenças. |
-| `.work`                         | Dados privados de recuperação e operação, originais editoriais, comprovantes atuais e o Chromium dos testes. Ferramentas também podem recriar caches e saídas temporárias aqui.                      |
-| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                                          |
-| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                                                |
-| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                                                  |
-| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                                                       |
+| Caminho                         | Função e decisão                                                                                                                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.toolchain`                    | qpdf verifica os PDFs enviados; age atende aos testes de backup. Node vem da instalação do computador. Mantém executáveis, bibliotecas necessárias, comprovantes de instalação e licenças. |
+| `.work`                         | Comprovantes atuais, Chromium e saídas temporárias. Neste checkout, ainda contém arquivos privados da operação da VPS; preserve suas chaves, cópias de staging e checkpoints pendentes.    |
+| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                                |
+| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                                      |
+| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                                        |
+| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                                             |
 
 ## Documentação
 

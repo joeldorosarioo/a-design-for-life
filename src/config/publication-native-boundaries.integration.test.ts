@@ -1,5 +1,6 @@
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { handleEndpoints, getPayload } from 'payload';
+import { REST_GET, REST_POST } from '@payloadcms/next/routes';
 import { installPayloadProvider } from '../helpers/payload/runtime';
 import config from '@payload-config';
 import { randomUUID } from 'node:crypto';
@@ -92,6 +93,37 @@ async function structural() {
   await confirm(nav.latestPublicationIntent!);
   return { image, profile, nav };
 }
+it.each(['GET', 'POST'] as const)(
+  'disables anonymous native Open Graph rendering through %s',
+  async (method) => {
+    const description = 'Synthetic-untrusted-Open-Graph-description';
+    const query = new URLSearchParams({ description });
+    const request = new Request(
+      `${process.env.SITE_ORIGIN}/api/og${method === 'GET' ? `?${query}` : ''}`,
+      {
+        method,
+        ...(method === 'POST'
+          ? {
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Payload-HTTP-Method-Override': 'GET',
+              },
+              body: query.toString(),
+            }
+          : {}),
+      },
+    );
+    const response = await (method === 'GET' ? REST_GET : REST_POST)(config)(request, {
+      params: Promise.resolve({ slug: ['og'] }),
+    });
+    const body = await response.text();
+    expect(response.status).toBe(400);
+    expect(response.headers.get('content-type')).toContain('application/json');
+    expect(response.headers.get('set-cookie')).toBeNull();
+    expect(JSON.parse(body)).toEqual({ error: expect.any(String) });
+    expect(body).not.toContain(description);
+  },
+);
 it.each(['case-content', 'professional-profiles', 'site-navigation'] as const)(
   '%s pending republication cannot leak through anonymous Native draft list, ID, filter, sort or count',
   async (collection) => {

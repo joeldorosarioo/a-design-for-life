@@ -60,7 +60,7 @@ export async function configureBackupTools({ root = process.cwd(), env = process
     project.name !== 'a-design-for-life' ||
     project.private !== true ||
     project.packageManager !== 'pnpm@12.10.1' ||
-    project.engines?.node !== '>=24.22.2 <25' ||
+    project.engines?.node !== '>=26.13.1 <27' ||
     project.engines?.pnpm !== '12.10.1'
   )
     throw new Error('Backup test identities require the exact pinned project');
