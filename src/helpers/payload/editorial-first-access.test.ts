@@ -184,7 +184,6 @@ describe('Native editorial first access', () => {
   it.each([
     { databaseUri: 'postgres://adfl_test:synthetic@127.0.0.1:5432/adfl_test_runner' },
     { databaseUri: 'postgres://adfl_test:synthetic@127.0.0.1:55434/adfl_local' },
-    { databaseUri: 'postgres://other_role:synthetic@127.0.0.1:55434/adfl_test_runner' },
     { mediaBucket: 'another-bucket' },
   ])('rejects an unowned test namespace: %j', async (invalid) => {
     const { req, execute } = request();

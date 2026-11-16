@@ -94,7 +94,6 @@ it('refuses a public output namespace before changing source files', async () =>
 it('removes only its reserved test build after restoring sources and leaves internal link targets intact', async () => {
   await workspace(async (root) => {
     const saved = await preserveNextGeneratedFiles({ root, distDir });
-    expect(saved).toHaveProperty('reserveTestBuild', expect.any(Function));
     const cleanup = await saved.reserveTestBuild();
     const directory = path.join(root, distDir);
     const privateDirectory = path.join(root, 'private-data');

@@ -6,5 +6,4 @@ it('suggests without accents, silently deciding no conflicts', () => {
   expect(suggestSlug('  UX & Pesquisa — 2026!  ')).toBe('ux-pesquisa-2026');
   expect(suggestSlug('A'.repeat(100))).toBe('a'.repeat(80));
   expect(suggestSlug('!!!')).toBe('');
-  expect(suggestSlug('Aplicativo de Finanças')).toBe(suggestSlug('Aplicativo de Finanças'));
 });

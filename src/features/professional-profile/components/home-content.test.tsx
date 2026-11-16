@@ -200,5 +200,4 @@ it('omits unavailable editorial content without invented fallbacks', () => {
   render(<HomeContent {...props} profile={empty} featuredProjects={null} />);
   expect(screen.queryByRole('heading')).not.toBeInTheDocument();
   expect(screen.queryByRole('link')).not.toBeInTheDocument();
-  expect(document.body).toHaveTextContent('');
 });

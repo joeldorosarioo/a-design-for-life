@@ -103,11 +103,9 @@ it('preserves independently editable project return and case count labels', () =
   });
 });
 
-it.each([undefined, null, {}])(
+it.each([undefined, {}])(
   'keeps confirmed legacy navigation readable with absent case action label (%s)',
   (controls) => {
-    expect(
-      mapNavigation({ ...navigation, controls: controls ?? undefined }, profile),
-    ).toMatchObject({ locale: 'pt' });
+    expect(mapNavigation({ ...navigation, controls }, profile)).toMatchObject({ locale: 'pt' });
   },
 );

@@ -315,7 +315,6 @@ it('kills only the owned process and waits for its abrupt exit before returning'
   const control = controlledRuntime();
   const server = await startOwnedNextServer({ env: environment() }, control.runtime);
   const child = control.children[0]!;
-  expect(server.crash).toEqual(expect.any(Function));
   const exit = once(child, 'exit');
   const finishKill = child.kill;
   let recordSignal!: (signal: NodeJS.Signals | number | undefined) => void;

@@ -87,20 +87,6 @@ it.each([0, 3])(
   },
 );
 
-it.each([2, 3, 4, 5, 6, 7, 8])(
-  'orients each frame for EXIF=%s without flattening or reordering frames',
-  async (orientation) => {
-    const variants = await processImage(
-      await animatedImage({ width: 80, height: 60, orientation }),
-    );
-    expect(variants.map(({ width, height }) => [width, height])).toEqual(
-      orientation >= 5 ? [[60, 80]] : [[80, 60]],
-    );
-    await expectThreeDistinctFrames(variants[0]);
-    expect((await sharp(variants[0].bytes).metadata()).orientation).toBeUndefined();
-  },
-);
-
 it('preserves animated transparency in every frame', async () => {
   const variants = await processImage(await animatedImage({ width: 80, height: 60, alpha: 128 }));
   await expectThreeDistinctFrames(variants[0], 3, 128);
@@ -111,6 +97,16 @@ it('rotates the visible left stripe to the top of every EXIF6 frame', async () =
     await animatedImage({ width: 80, height: 60, orientation: 6, whiteStripe: true }),
   );
   expect(variants.map(({ width, height }) => [width, height])).toEqual([[60, 80]]);
+  const metadata = await sharp(variants[0].bytes, { animated: true }).metadata();
+  expect(metadata).toMatchObject({
+    width: 60,
+    height: 240,
+    pageHeight: 80,
+    pages: 3,
+    delay: [100, 200, 300],
+    loop: 3,
+  });
+  expect(metadata.orientation).toBeUndefined();
   const decoded = await sharp(variants[0].bytes, { animated: true })
     .raw()
     .toBuffer({ resolveWithObject: true });

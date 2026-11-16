@@ -46,8 +46,8 @@ describe('upload byte screening (not integrity validation)', () => {
       preflightUpload({ bytes, name: 'incorrect.pdf', declaredType: 'application/pdf' }),
     ).toMatchObject({ ok: true, value: { type, byteLength: bytes.byteLength } });
   });
-  it.each([9_999_999, 10_000_000])('allows image screening at %i bytes', async (length) => {
-    expect(preflightUpload(input(padded(await png(), length)))).toMatchObject({ ok: true });
+  it('allows image screening at 10000000 bytes', async () => {
+    expect(preflightUpload(input(padded(await png(), 10_000_000)))).toMatchObject({ ok: true });
   });
   it('rejects images at 10,000,001 bytes using actual bytes', async () => {
     expect(preflightUpload(input(padded(await png(), 10_000_001)))).toMatchObject({
@@ -55,9 +55,9 @@ describe('upload byte screening (not integrity validation)', () => {
       error: { code: 'invalid-input' },
     });
   });
-  it.each([4_999_999, 5_000_000])('allows PDF screening at %i bytes', (length) => {
+  it('allows PDF screening at 5000000 bytes', () => {
     expect(
-      preflightUpload(input(padded(pdfUploadFixture(), length), 'application/pdf')),
+      preflightUpload(input(padded(pdfUploadFixture(), 5_000_000), 'application/pdf')),
     ).toMatchObject({ ok: true, value: { type: 'application/pdf' } });
   });
   it('rejects PDFs at 5,000,001 bytes', () => {

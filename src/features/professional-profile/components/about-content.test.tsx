@@ -138,13 +138,12 @@ it('keeps semantic reading keys in both locales', () => {
 
 // A sparse authenticated draft must not substitute a stock professional biography.
 it('renders sparse draft data without headings, photographs or actions for missing content', () => {
-  const { container } = render(
+  render(
     <AboutContent
       profile={profileDTOSchema.parse({ ...profile, about: undefined })}
       projectsHref="/en/cases"
     />,
   );
-  expect(container).toHaveTextContent('');
   expect(screen.queryByRole('heading')).not.toBeInTheDocument();
   expect(screen.queryByRole('img')).not.toBeInTheDocument();
   expect(screen.queryByRole('link')).not.toBeInTheDocument();

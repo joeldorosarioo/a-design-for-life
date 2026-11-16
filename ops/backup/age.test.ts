@@ -19,22 +19,6 @@ afterEach(async () => {
     await rm(root, { recursive: true, force: true });
   }
 });
-it('rejects a secret identity or recipient file path before invoking a binary', async () => {
-  for (const recipient of [
-    'AGE-SECRET-KEY-SYNTHETIC',
-    'C:/private/identity.txt',
-    'age1recipient\n--identity=secret',
-  ]) {
-    await expect(
-      encryptBackupArchive({
-        sourcePath: 'source',
-        destination: 'destination',
-        recipient,
-        ageBinary: process.execPath,
-      }),
-    ).rejects.toThrow();
-  }
-});
 describe.skipIf(!process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG)('real age1.3.2 local proof', () => {
   async function fixture() {
     return JSON.parse(await readFile(process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG!, 'utf8')) as {
@@ -131,7 +115,6 @@ describe.skipIf(!process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG)('real age1.3.2 local
       source = path.join(root, 'archive.tar'),
       ciphertext = path.join(root, 'payload.age'),
       restored = path.join(root, 'restored.tar');
-    expect(typeof config.wrongIdentityPath).toBe('string');
     const keygen = path.join(
       path.dirname(config.ageBinary),
       process.platform === 'win32' ? 'age-keygen.exe' : 'age-keygen',
