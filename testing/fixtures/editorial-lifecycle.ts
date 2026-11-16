@@ -1,10 +1,8 @@
 import sharp from 'sharp';
 import { pdfUploadFixture } from './media-uploads';
-import type { CollectionSlug, PayloadRequest } from 'payload';
-import { createLocalReq } from 'payload';
+import { createLocalReq, type CollectionSlug, type PayloadRequest, type Payload } from 'payload';
 import { acquireEditorialLease, editorialHead } from '../../src/helpers/payload/editorial-revision';
 import { navigationInputSchema } from '../../src/features/site-navigation/contracts/navigation.schema';
-import type { Payload } from 'payload';
 import { assertIsolatedTestEnvironment } from '../setup/test-environment';
 export function navigationFixture() {
   const data: Record<string, unknown> = {};

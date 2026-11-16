@@ -218,36 +218,41 @@ export async function startOwnedNextServer(
     if (current === state) current = undefined;
   }
   async function start() {
-    await runtime.probe(port);
-    const child = runtime.launch({ ...env }, port);
-    let resolveExit!: () => void;
-    const state: OwnedChild = {
-      child,
-      terminal: false,
-      exited: new Promise((resolve) => (resolveExit = resolve)),
-    };
-    current = state;
-    child.once('error', (error) => {
-      state.failure = error;
-      state.terminal = true;
-      resolveExit();
-    });
-    child.once('exit', () => {
-      state.terminal = true;
-      resolveExit();
-    });
-    child.stdout?.on('data', record);
-    child.stderr?.on('data', record);
-    const deadline = runtime.now() + 30_000;
-    while (true) {
-      if (state.failure) throw state.failure;
-      if (state.terminal) throw new Error('Owned Next child exited before readiness.');
-      const healthy = await runtime.healthy(origin);
-      if (state.failure) throw state.failure;
-      if (state.terminal) throw new Error('Owned Next child exited before readiness.');
-      if (healthy) return;
-      if (runtime.now() >= deadline) throw new Error('Owned Next readiness timed out.');
-      await runtime.wait();
+    try {
+      await runtime.probe(port);
+      const child = runtime.launch({ ...env }, port);
+      let resolveExit!: () => void;
+      const state: OwnedChild = {
+        child,
+        terminal: false,
+        exited: new Promise((resolve) => (resolveExit = resolve)),
+      };
+      current = state;
+      child.once('error', (error) => {
+        state.failure = error;
+        state.terminal = true;
+        resolveExit();
+      });
+      child.once('exit', () => {
+        state.terminal = true;
+        resolveExit();
+      });
+      child.stdout?.on('data', record);
+      child.stderr?.on('data', record);
+      const deadline = runtime.now() + 30_000;
+      while (true) {
+        if (state.failure) throw state.failure;
+        if (state.terminal) throw new Error('Owned Next child exited before readiness.');
+        const healthy = await runtime.healthy(origin);
+        if (state.failure) throw state.failure;
+        if (state.terminal) throw new Error('Owned Next child exited before readiness.');
+        if (healthy) return;
+        if (runtime.now() >= deadline) throw new Error('Owned Next readiness timed out.');
+        await runtime.wait();
+      }
+    } catch (error) {
+      await stopCurrent();
+      throw error;
     }
   }
   function sequential<T>(operation: () => Promise<T>) {
@@ -258,12 +263,7 @@ export async function startOwnedNextServer(
     );
     return result;
   }
-  try {
-    await start();
-  } catch (error) {
-    await stopCurrent();
-    throw error;
-  }
+  await start();
   return {
     origin,
     siteOrigin: env.SITE_ORIGIN!,
@@ -276,12 +276,7 @@ export async function startOwnedNextServer(
         if ((await runtime.readBuildId(distDirectory)).trim() !== buildId)
           throw new Error('Owned Next build changed; restart requires the same build.');
         await stopCurrent();
-        try {
-          await start();
-        } catch (error) {
-          await stopCurrent();
-          throw error;
-        }
+        await start();
       }),
     crash: () =>
       sequential(async () => {

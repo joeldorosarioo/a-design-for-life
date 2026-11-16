@@ -29,7 +29,7 @@ export default defineConfig({
         resolve: { alias: aliases },
         test: {
           name: 'integration',
-          globalSetup: ['./testing/setup/integration-global.ts'],
+          globalSetup: ['./testing/setup/owned-test-database.ts'],
           include: ['src/**/*.integration.test.ts'],
           setupFiles: ['./testing/setup/integration.ts'],
           environment: 'node',

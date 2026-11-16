@@ -44,6 +44,8 @@ it.each([
   },
   { DATABASE_URI: 'postgres://adfl_test:synthetic-local-test-only@127.0.0.1:55434/production' },
   { DATABASE_URI: 'postgres://adfl_test:@127.0.0.1:5432/a_design_for_life_rebuild' },
+  { DATABASE_URI: synthetic().DATABASE_URI + '?sslmode=require' },
+  { DATABASE_URI: synthetic().DATABASE_URI + '#other-target' },
   { MEDIA_BUCKET: 'production-media' },
   { SITE_ORIGIN: 'https://public.invalid' },
 ])('refuses a non-synthetic namespace before creating files', async (override) => {

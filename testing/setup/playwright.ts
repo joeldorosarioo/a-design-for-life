@@ -1,7 +1,7 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { once } from 'node:events';
 import { createServer } from 'node:net';
-import setupDatabase from './integration-global';
+import { startOwnedTestDatabase } from './owned-test-database';
 import { configureTestEnvironment } from './test-environment';
 import { preserveNextGeneratedFiles } from './preserve-next-generated-files';
 import { configureSharedDatabaseUri } from './local-database-environment';
@@ -31,7 +31,7 @@ export default async function setup() {
   await once(probe, 'listening');
   await new Promise<void>((resolve) => probe.close(() => resolve()));
 
-  const stopDatabase = await setupDatabase();
+  const stopDatabase = await startOwnedTestDatabase();
   let cleanupBuild: (() => Promise<void>) | undefined;
   const releaseResources = async () => {
     const errors: unknown[] = [];

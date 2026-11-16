@@ -61,11 +61,10 @@ export async function runLocalRuntime(
     await release();
     throw error;
   }
-  let requestStop!: () => void;
+  let stop!: () => void;
   const requested = new Promise<void>((resolve) => {
-    requestStop = resolve;
+    stop = resolve;
   });
-  const stop = () => requestStop();
   process.on('SIGINT', stop);
   process.on('SIGTERM', stop);
   let stopped = false;

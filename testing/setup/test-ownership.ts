@@ -38,7 +38,7 @@ function localLabels(env: NodeJS.ProcessEnv, labels: Record<string, string>) {
   );
 }
 
-export function verifyOwnedTestNetwork(
+function verifyOwnedTestNetwork(
   env: NodeJS.ProcessEnv,
   network: NetworkInspection,
   containerId?: string,
@@ -54,7 +54,6 @@ export function verifyOwnedTestNetwork(
     Object.keys(network.Containers ?? {}).some((id) => id !== containerId)
   )
     throw new Error('Unexpected owned test network identity.');
-  return network.Id;
 }
 
 function samePath(value: string | undefined, expected: string) {

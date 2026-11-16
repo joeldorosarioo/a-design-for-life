@@ -251,15 +251,22 @@ it('refuses a different build on restart while preserving the running owned chil
   }
 });
 
-it('cleans up its own child when readiness never succeeds', async () => {
-  const control = controlledRuntime();
-  control.setReady(false);
-  await expect(startOwnedNextServer({ env: environment() }, control.runtime)).rejects.toThrow(
-    /ready|readiness/i,
-  );
-  expect(control.killed).toEqual(control.children);
-  expect(control.children).toHaveLength(1);
-});
+it.each([false, true])(
+  'cleans up its own child when readiness fails; restart=%s',
+  async (restart) => {
+    const control = controlledRuntime();
+    const server = restart
+      ? await startOwnedNextServer({ env: environment() }, control.runtime)
+      : undefined;
+    control.setReady(false);
+    await expect(
+      server ? server.restart() : startOwnedNextServer({ env: environment() }, control.runtime),
+    ).rejects.toThrow(/ready|readiness/i);
+    expect(control.killed).toEqual(control.children);
+    expect(control.children).toHaveLength(restart ? 2 : 1);
+    await server?.stop();
+  },
+);
 
 it('propagates a child launch error instead of mistaking another HTTP response for readiness', async () => {
   const control = controlledRuntime();

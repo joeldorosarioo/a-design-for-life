@@ -1,11 +1,17 @@
-import { createHash } from 'node:crypto';
-import { readFile, readdir } from 'node:fs/promises';
+import { createHash, randomUUID } from 'node:crypto';
+import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { handleEndpoints } from 'payload';
 import config from '@payload-config';
 import { assertIsolatedTestEnvironment } from '../setup/test-environment';
 
 export const authPassword = 'Synthetic-editorial-auth-password-123!';
+function capturedMailDirectory() {
+  return path.resolve(
+    '.work/editorial-mail',
+    createHash('sha256').update(process.env.DATABASE_URI!).digest('hex').slice(0, 16),
+  );
+}
 export function authHTTP(
   endpoint: string,
   body: unknown,
@@ -23,10 +29,7 @@ export function authHTTP(
   });
 }
 export async function capturedMessages(email: string) {
-  const directory = path.resolve(
-    '.work/editorial-mail',
-    createHash('sha256').update(process.env.DATABASE_URI!).digest('hex').slice(0, 16),
-  );
+  const directory = capturedMailDirectory();
   const files = await readdir(directory).catch(() => [] as string[]);
   const messages: { to: string; html: string; createdAt: number }[] = [];
   for (const file of files) {
@@ -41,12 +44,8 @@ export function capturedResetToken(html: string) {
   if (!match) throw new Error('Captured native reset link is missing');
   return match[1];
 }
-import { unlink } from 'node:fs/promises';
 export async function disposeCapturedMessages(emails: string[]) {
-  const directory = path.resolve(
-    '.work/editorial-mail',
-    createHash('sha256').update(process.env.DATABASE_URI!).digest('hex').slice(0, 16),
-  );
+  const directory = capturedMailDirectory();
   const files = await readdir(directory).catch(() => [] as string[]);
   for (const file of files) {
     if (!/^[a-f0-9-]{36}\.json$/.test(file)) continue;
@@ -61,15 +60,10 @@ export async function disposeCapturedMessages(emails: string[]) {
   }
 }
 
-import { mkdir, rename, writeFile } from 'node:fs/promises';
-import { randomUUID } from 'node:crypto';
 export async function withUnavailableCapturedDelivery<T>(operation: () => Promise<T>): Promise<T> {
   assertIsolatedTestEnvironment(process.env);
   const root = path.resolve('.work/editorial-mail');
-  const directory = path.join(
-    root,
-    createHash('sha256').update(process.env.DATABASE_URI!).digest('hex').slice(0, 16),
-  );
+  const directory = capturedMailDirectory();
   const backup = `${directory}-fixture-${randomUUID()}`;
   if (!directory.startsWith(root + path.sep) || !backup.startsWith(root + path.sep))
     throw new Error('Capture fixture path rejected');
@@ -93,10 +87,7 @@ export async function withUnavailableCapturedDelivery<T>(operation: () => Promis
 }
 
 export async function ageCapturedMessages(email: string) {
-  const directory = path.resolve(
-    '.work/editorial-mail',
-    createHash('sha256').update(process.env.DATABASE_URI!).digest('hex').slice(0, 16),
-  );
+  const directory = capturedMailDirectory();
   for (const file of await readdir(directory)) {
     if (!/^[a-f0-9-]{36}\.json$/.test(file)) continue;
     const target = path.join(directory, file);
