@@ -17,8 +17,6 @@ function syntheticEnvironment(env) {
     if (
       env.APP_ENV !== 'test' ||
       !matchesLocalDatabase(database.href) ||
-      database.search ||
-      database.hash ||
       !/^adfl-test-[a-z0-9-]+$/.test(env.MEDIA_BUCKET ?? '') ||
       site.protocol !== 'http:' ||
       !['127.0.0.1', 'localhost', '[::1]'].includes(site.hostname) ||

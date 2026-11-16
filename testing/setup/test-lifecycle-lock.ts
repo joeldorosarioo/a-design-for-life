@@ -46,18 +46,3 @@ export function acquireTestLifecycleLock(
     held = false;
   };
 }
-
-export async function prepareTestLifecycle<T>(
-  runId: string,
-  preflight: () => T | Promise<T>,
-  checkoutRoot = process.cwd(),
-  leaseDirectory = currentUserLeaseDirectory(),
-) {
-  const releaseLock = acquireTestLifecycleLock(runId, checkoutRoot, leaseDirectory);
-  try {
-    return { releaseLock, preflightReceipt: await preflight() };
-  } catch (error) {
-    releaseLock();
-    throw error;
-  }
-}
