@@ -12,8 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "incremental": true,
-    "tsBuildInfoFile": "./.work/cache/typescript.tsbuildinfo",
+    "incremental": false,
     "plugins": [
       {
         "name": "next"
@@ -33,5 +32,5 @@
     ".work/next-build/types/**/*.ts",
     ".work/next-build/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", ".toolchain", ".work"]
+  "exclude": ["node_modules", ".work"]
 }

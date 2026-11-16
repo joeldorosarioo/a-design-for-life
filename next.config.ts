@@ -24,7 +24,6 @@ const nextConfig: NextConfig = {
       './.work/private-media/**/*',
       './.work/publication/**/*',
       './.work/editorial-mail/**/*',
-      './.toolchain/**/*',
       './testing/**/*',
       './artifacts/**/*',
       './documentation/**/*',

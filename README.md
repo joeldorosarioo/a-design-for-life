@@ -32,11 +32,10 @@ Os dados locais são descartáveis e podem ser recriados para desenvolvimento e 
 
 ## Verificação
 
-Defina `READING_E2E_FONT_FILE` com uma fonte TrueType legível, como `C:\Windows\Fonts\arial.ttf` no Windows. Para a suíte completa, deixe `VITEST_MAX_WORKERS` sem valor.
+Os testes de navegador usam o Google Chrome já instalado na máquina. O projeto não baixa nem mantém uma cópia de navegador. Defina `READING_E2E_FONT_FILE` com uma fonte TrueType legível, como `C:\Windows\Fonts\arial.ttf` no Windows. Para a suíte completa, deixe `VITEST_MAX_WORKERS` sem valor.
 
 ```sh
 pnpm verify
-pnpm exec playwright install chromium --only-shell
 pnpm test:e2e
 ```
 
@@ -46,20 +45,19 @@ Os testes usam mídia sintética local, captura de e-mail e Analytics desligado.
 
 O funcionamento do Actions, dos caches e da fila de deploy está no [guia de CI e staging](documentation/OPERATIONS.md#ci-e-staging).
 
-Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG` apontando para um JSON privado com `ageBinary`, `tarBinary`, `recipient` e `identityPath` de teste; sem essa configuração, são ignorados. Depois de uma execução interrompida, confira o bloqueio e a identidade dos recursos antes de liberar uma reserva. Nunca exclua o volume para resolver um bloqueio.
+Os testes nativos de backup executam o age real da imagem Docker `backup-crypto`, sem instalá-lo no computador. `pnpm setup:backup-tools` prepara identidades sintéticas temporárias e informa o JSON para `ADFL_TEST_BACKUP_TOOLS_CONFIG`; sem essa configuração, os casos nativos são ignorados. O CI faz essa preparação automaticamente. Depois de uma execução interrompida, confira o bloqueio e a identidade dos recursos antes de liberar uma reserva. Nunca exclua o volume para resolver um bloqueio.
 
-Os relatórios do navegador ficam em `.work/playwright/report`, os traces e resultados em `.work/playwright/results` e o cache do TypeScript em `.work/cache`. São saídas geradas, fora do Git.
+Os relatórios do navegador ficam em `.work/playwright/report` e os traces e resultados em `.work/playwright/results`. São saídas geradas, fora do Git. O TypeScript não mantém cache incremental próprio; o pnpm gerencia seu armazenamento e cache padrão.
 
 Os comprovantes ainda usados ficam em `.work/verification/evidence/index.json`: a referência de performance, a última verificação local e o recibo da limpeza. Caches, builds e relatórios podem ser recriados; remova-os com aplicação e testes parados. Preserve checkpoints pendentes até concluir o ensaio de recuperação. Permissões privadas protegem os arquivos para a identidade que os criou. Um clone novo gera seus próprios arquivos; copiar chaves privadas de outra conta não faz parte da instalação.
 
-| Caminho                         | Função e decisão                                                                                                                                                                        |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.toolchain`                    | age atende aos testes de backup. Node vem da instalação do computador. Mantém os executáveis, o comprovante de instalação e a licença do age.                                           |
-| `.work`                         | Comprovantes atuais, Chromium e saídas temporárias. Neste checkout, ainda contém arquivos privados da operação da VPS; preserve suas chaves, cópias de staging e checkpoints pendentes. |
-| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                             |
-| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                                   |
-| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                                     |
-| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                                          |
+| Caminho                         | Função e decisão                                                                                                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.work`                         | Publicações persistidas, mídias e e-mails locais, comprovantes e saídas de execução. Neste checkout, também contém chaves e cópias de staging que precisam ser preservadas. |
+| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                 |
+| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                       |
+| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                         |
+| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                              |
 
 ## Documentação
 

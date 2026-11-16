@@ -66,7 +66,6 @@ export default defineConfig([
   },
   globalIgnores([
     '.next/**',
-    '.toolchain/**',
     '.work/**',
     'playwright-report/**',
     'test-results/**',

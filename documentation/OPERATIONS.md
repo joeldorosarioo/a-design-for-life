@@ -30,7 +30,7 @@ Prepare a nova cópia conforme o [uso local](../README.md#uso-local). Os usuári
 
 Use credenciais locais novas e mantenha as permissões restritas ao usuário responsável. Resolva falhas de acesso conferindo dono e ACL do arquivo. Copiar chaves privadas antigas ou conceder acesso a `Everyone` para fazer um comando funcionar compromete essa proteção.
 
-Caches, builds, relatórios, originais editoriais e backups locais podem ser removidos com os consumidores parados. Preserve o Chromium exigido pelos testes e checkpoints pendentes. Backups recuperáveis da VPS e chaves configuradas exigem guarda própria; não os trate como dados locais descartáveis. Antes de limpar, confira os consumidores e a identidade de cada caminho. Os comprovantes ainda usados ficam no índice privado; logs antigos, cópias de fonte e resultados substituídos podem sair.
+Caches, builds, relatórios, originais editoriais e backups locais podem ser removidos com os consumidores parados. Preserve checkpoints pendentes. Os testes usam o Chrome instalado na máquina. Backups recuperáveis da VPS e chaves configuradas exigem guarda própria; não os trate como dados locais descartáveis. Antes de limpar, confira os consumidores e a identidade de cada caminho. Os comprovantes ainda usados ficam no índice privado; logs antigos, cópias de fonte e resultados substituídos podem sair.
 
 Registre os recibos no índice privado `.work/verification/evidence/index.json`.
 
@@ -128,7 +128,7 @@ Antes da rodada, fixe candidata, origem de staging, máquina, versões, hash dos
 | CPU / RTT          | 4× / 150 ms        | 1× / 40 ms            |
 | Download / upload  | 1.600 / 750 Kbit/s | 10.000 / 5.000 Kbit/s |
 
-Use os mesmos perfis nas repetições. Lighthouse recebe `throttlingMethod=devtools`, `requestLatencyMs=RTT` e os valores de download/upload em Kbit/s. Registre sistema, CPU/RAM e versões efetivas de Node, Lighthouse, Playwright e Chromium. Identifique a emulação utilizada e registre a variação de carga da VPS. Mantenha outras jornadas intensivas fora da janela.
+Use os mesmos perfis nas repetições. Lighthouse recebe `throttlingMethod=devtools`, `requestLatencyMs=RTT` e os valores de download/upload em Kbit/s. Registre sistema, CPU/RAM e versões efetivas de Node, Lighthouse, Playwright e Chrome. O navegador acompanha a instalação da máquina; considere mudanças de versão ao comparar referências. Identifique a emulação utilizada e registre a variação de carga da VPS. Mantenha outras jornadas intensivas fora da janela.
 
 Cada navegação medida usa processo e perfil novos, sem sessão editorial, cookies ou storage persistido. Aqueça o servidor com uma visita anterior a cada alvo/perfil, preservando a autoridade publicada. Mantenha o diagnóstico de navegador aquecido separado das medianas principais.
 

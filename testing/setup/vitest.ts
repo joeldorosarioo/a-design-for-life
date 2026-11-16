@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest';
+import './docker-backup-tools';
 
 // Unit fixtures select their own bucket/database and internal HTTP behavior.
 // Integration workers apply their exact namespace in a separate setup file.

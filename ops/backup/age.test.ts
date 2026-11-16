@@ -28,119 +28,155 @@ describe.skipIf(!process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG)('real age1.3.2 local
       ageBinary: string;
     };
   }
-  it('encrypts with only a public recipient and decrypts with the separate private identity', async () => {
-    const config = await fixture(),
-      root = await scratch(),
-      source = path.join(root, 'archive.tar'),
-      ciphertext = path.join(root, 'payload.age'),
-      restored = path.join(root, 'restored.tar');
-    const bytes = Buffer.from('synthetic private dump and media marker');
-    await writeFile(source, bytes);
-    const encrypted = await encryptBackupArchive({
-      sourcePath: source,
-      destination: ciphertext,
-      recipient: config.recipient,
-      ageBinary: config.ageBinary,
-    });
-    const cipher = await readFile(ciphertext);
-    expect(cipher.includes(bytes)).toBe(false);
-    expect(cipher.subarray(0, 22).toString()).toBe('age-encryption.org/v1\n');
-    expect(encrypted.sha256).toBe(createHash('sha256').update(cipher).digest('hex'));
-    expect(encrypted.toolVersion).toBe('v1.3.2');
-    await decryptBackupArchive({
-      sourcePath: ciphertext,
-      destination: restored,
-      identityPath: config.identityPath,
-      ageBinary: config.ageBinary,
-    });
-    expect(await readFile(restored)).toEqual(bytes);
-  });
-  it('rejects adulterated ciphertext and never publishes plaintext destination', async () => {
-    const config = await fixture(),
-      root = await scratch(),
-      source = path.join(root, 'archive.tar'),
-      ciphertext = path.join(root, 'payload.age'),
-      restored = path.join(root, 'restored.tar');
-    await writeFile(source, 'synthetic plaintext');
-    await encryptBackupArchive({
-      sourcePath: source,
-      destination: ciphertext,
-      recipient: config.recipient,
-      ageBinary: config.ageBinary,
-    });
-    const bytes = await readFile(ciphertext);
-    bytes[bytes.length - 1] ^= 1;
-    await writeFile(ciphertext, bytes);
-    await expect(
-      decryptBackupArchive({
+  it(
+    'encrypts with only a public recipient and decrypts with the separate private identity',
+    { timeout: 30_000 },
+    async () => {
+      const config = await fixture(),
+        root = await scratch(),
+        source = path.join(root, 'archive.tar'),
+        ciphertext = path.join(root, 'payload.age'),
+        restored = path.join(root, 'restored.tar');
+      const bytes = Buffer.from('synthetic private dump and media marker');
+      await writeFile(source, bytes);
+      const encrypted = await encryptBackupArchive({
+        sourcePath: source,
+        destination: ciphertext,
+        recipient: config.recipient,
+        ageBinary: config.ageBinary,
+      });
+      const cipher = await readFile(ciphertext);
+      expect(cipher.includes(bytes)).toBe(false);
+      expect(cipher.subarray(0, 22).toString()).toBe('age-encryption.org/v1\n');
+      expect(encrypted.sha256).toBe(createHash('sha256').update(cipher).digest('hex'));
+      expect(encrypted.toolVersion).toBe('v1.3.2');
+      await decryptBackupArchive({
         sourcePath: ciphertext,
         destination: restored,
         identityPath: config.identityPath,
         ageBinary: config.ageBinary,
-      }),
-    ).rejects.toThrow();
-    await expect(readFile(restored)).rejects.toMatchObject({ code: 'ENOENT' });
-  });
-  it('rejects an invalid identity without leaking its contents or publishing plaintext', async () => {
-    const config = await fixture(),
-      root = await scratch(),
-      source = path.join(root, 'archive.tar'),
-      ciphertext = path.join(root, 'payload.age'),
-      restored = path.join(root, 'restored.tar'),
-      wrong = path.join(root, 'wrong-identity.txt');
-    await writeFile(source, 'synthetic plaintext');
-    await writeFile(wrong, 'AGE-SECRET-KEY-SYNTHETIC-INVALID');
-    await encryptBackupArchive({
-      sourcePath: source,
-      destination: ciphertext,
-      recipient: config.recipient,
-      ageBinary: config.ageBinary,
-    });
-    const failure = await decryptBackupArchive({
-      sourcePath: ciphertext,
-      destination: restored,
-      identityPath: wrong,
-      ageBinary: config.ageBinary,
-    }).then(
-      () => null,
-      (error) => error,
-    );
-    expect(failure).toBeInstanceOf(Error);
-    expect(String(failure)).not.toContain('AGE-SECRET');
-    await expect(readFile(restored)).rejects.toMatchObject({ code: 'ENOENT' });
-  });
-  it('rejects a different valid upstream test identity without publishing plaintext', async () => {
-    const config = await fixture(),
-      root = await scratch(),
-      source = path.join(root, 'archive.tar'),
-      ciphertext = path.join(root, 'payload.age'),
-      restored = path.join(root, 'restored.tar');
-    const keygen = path.join(
-      path.dirname(config.ageBinary),
-      process.platform === 'win32' ? 'age-keygen.exe' : 'age-keygen',
-    );
-    const wrongRecipient = (
-      await runBackupTool({ binary: keygen, args: ['-y', config.wrongIdentityPath] })
-    ).stdout.trim();
-    expect(wrongRecipient).toMatch(/^age1/);
-    expect(wrongRecipient).not.toBe(config.recipient);
-    await writeFile(source, 'synthetic private plaintext');
-    await encryptBackupArchive({
-      sourcePath: source,
-      destination: ciphertext,
-      recipient: config.recipient,
-      ageBinary: config.ageBinary,
-    });
-    await expect(
-      decryptBackupArchive({
+      });
+      expect(await readFile(restored)).toEqual(bytes);
+    },
+  );
+  it(
+    'rejects adulterated ciphertext and never publishes plaintext destination',
+    { timeout: 30_000 },
+    async () => {
+      const config = await fixture(),
+        root = await scratch(),
+        source = path.join(root, 'archive.tar'),
+        ciphertext = path.join(root, 'payload.age'),
+        restored = path.join(root, 'restored.tar');
+      await writeFile(source, 'synthetic plaintext');
+      await encryptBackupArchive({
+        sourcePath: source,
+        destination: ciphertext,
+        recipient: config.recipient,
+        ageBinary: config.ageBinary,
+      });
+      const bytes = await readFile(ciphertext);
+      bytes[bytes.length - 1] ^= 1;
+      await writeFile(ciphertext, bytes);
+      await expect(
+        decryptBackupArchive({
+          sourcePath: ciphertext,
+          destination: restored,
+          identityPath: config.identityPath,
+          ageBinary: config.ageBinary,
+        }),
+      ).rejects.toThrow();
+      await expect(readFile(restored)).rejects.toMatchObject({ code: 'ENOENT' });
+    },
+  );
+  it(
+    'rejects an invalid identity without leaking its contents or publishing plaintext',
+    { timeout: 30_000 },
+    async () => {
+      const config = await fixture(),
+        root = await scratch(),
+        source = path.join(root, 'archive.tar'),
+        ciphertext = path.join(root, 'payload.age'),
+        restored = path.join(root, 'restored.tar'),
+        wrong = path.join(root, 'wrong-identity.txt');
+      await writeFile(source, 'synthetic plaintext');
+      await writeFile(wrong, 'AGE-SECRET-KEY-SYNTHETIC-INVALID');
+      await encryptBackupArchive({
+        sourcePath: source,
+        destination: ciphertext,
+        recipient: config.recipient,
+        ageBinary: config.ageBinary,
+      });
+      const failure = await decryptBackupArchive({
         sourcePath: ciphertext,
         destination: restored,
-        identityPath: config.wrongIdentityPath,
+        identityPath: wrong,
         ageBinary: config.ageBinary,
-      }),
-    ).rejects.toThrow();
-    await expect(readFile(restored)).rejects.toMatchObject({ code: 'ENOENT' });
-  });
+      }).then(
+        () => null,
+        (error) => error,
+      );
+      expect(failure).toBeInstanceOf(Error);
+      expect(String(failure)).not.toContain('AGE-SECRET');
+      await expect(readFile(restored)).rejects.toMatchObject({ code: 'ENOENT' });
+    },
+  );
+  it(
+    'rejects a different valid upstream test identity without publishing plaintext',
+    { timeout: 30_000 },
+    async () => {
+      const config = await fixture(),
+        root = await scratch(),
+        source = path.join(root, 'archive.tar'),
+        ciphertext = path.join(root, 'payload.age'),
+        restored = path.join(root, 'restored.tar');
+      const keygen = path.join(
+        path.dirname(config.ageBinary),
+        process.platform === 'win32' ? 'age-keygen.exe' : 'age-keygen',
+      );
+      const wrongRecipient = (
+        await runBackupTool({ binary: keygen, args: ['-y', config.wrongIdentityPath] })
+      ).stdout.trim();
+      expect(wrongRecipient).toMatch(/^age1/);
+      expect(wrongRecipient).not.toBe(config.recipient);
+      await writeFile(source, 'synthetic private plaintext');
+      await encryptBackupArchive({
+        sourcePath: source,
+        destination: ciphertext,
+        recipient: config.recipient,
+        ageBinary: config.ageBinary,
+      });
+      await expect(
+        decryptBackupArchive({
+          sourcePath: ciphertext,
+          destination: restored,
+          identityPath: config.wrongIdentityPath,
+          ageBinary: config.ageBinary,
+        }),
+      ).rejects.toThrow();
+      await expect(readFile(restored)).rejects.toMatchObject({ code: 'ENOENT' });
+    },
+  );
+  it(
+    'refuses a timed-out native tool without publishing a partial output',
+    { timeout: 30_000 },
+    async () => {
+      const config = await fixture(),
+        root = await scratch();
+      const source = path.join(root, 'archive.tar'),
+        destination = path.join(root, 'payload.age');
+      await writeFile(source, 'synthetic plaintext');
+      await expect(
+        runBackupTool({
+          binary: config.ageBinary,
+          args: ['--encrypt', '--recipient', config.recipient, source],
+          outputFile: destination,
+          timeoutMs: 1,
+        }),
+      ).rejects.toMatchObject({ name: 'BackupToolError', timedOut: true });
+      await expect(readFile(destination)).rejects.toMatchObject({ code: 'ENOENT' });
+    },
+  );
   it('refuses a private identity option even with otherwise valid encryption inputs', async () => {
     const config = await fixture(),
       root = await scratch(),

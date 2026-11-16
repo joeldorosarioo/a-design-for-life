@@ -566,6 +566,7 @@ it('admits only a registered R2 reader and stages before checking a restore targ
 
 it.skipIf(!tools)(
   'backs up a fenced R2 media source and recovers the encrypted set through the existing isolated target',
+  { timeout: 30_000 },
   async () => {
     await withBoundary(async ({ options, requests, mediaRequests, objects }) => {
       const storage = mediaStorage(options);
@@ -920,6 +921,7 @@ it('does not grant remote retention after its operational callback closes', asyn
 
 it.runIf(tools)(
   'applies enabled remote retention only after the actual runBackup encryption and completion readback',
+  { timeout: 30_000 },
   async () => {
     await withBoundary(async ({ options, objects, requests }) => {
       await withLockedRepository(options, async (repository) => {
@@ -961,6 +963,7 @@ it.runIf(tools)(
 
 it.runIf(tools)(
   'preserves the previous complete set when runBackup loses the encrypted upload response',
+  { timeout: 30_000 },
   async () => {
     await withBoundary(async ({ options, objects, requests, state }) => {
       await withLockedRepository(options, async (repository) => {

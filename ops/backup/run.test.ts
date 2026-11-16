@@ -98,8 +98,8 @@ function options(data: Awaited<ReturnType<typeof setup>>) {
     },
     recipient: config?.recipient ?? 'age1invalid',
     tools: {
-      ageBinary: config?.ageBinary ?? path.resolve('.toolchain/missing-age'),
-      tarBinary: config?.tarBinary ?? path.resolve('.toolchain/missing-tar'),
+      ageBinary: config?.ageBinary ?? path.resolve('missing-age'),
+      tarBinary: config?.tarBinary ?? path.resolve('missing-tar'),
     },
     now: () => fixed,
   };
@@ -132,6 +132,7 @@ it('refuses a draft without source fingerprint before a source operation', async
 });
 toolProof(
   'creates an actual age encrypted complete set from exact captured bytes under a source deletion fence',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const capture = data.source.capture;
@@ -160,6 +161,7 @@ toolProof(
 );
 toolProof(
   'does not delete the previous valid set when a later ciphertext upload fails',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     let clock = new Date('2026-01-01T00:00:00.000Z');
@@ -184,6 +186,7 @@ toolProof(
 );
 toolProof(
   'retains recent history and removes old encrypted sets only after the new complete set is verified',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const old = await runBackup({
@@ -195,41 +198,45 @@ toolProof(
     expect(await data.repository.list()).toEqual([latest.marker]);
   },
 );
-toolProof('recovers archived media after physically deleting its source object', async () => {
-  const data = await setup();
-  const original = await data.source.storage.get(data.object);
-  const { marker } = await runBackup(options(data));
-  expect(await data.repository.list()).toEqual([marker]);
+toolProof(
+  'recovers archived media after physically deleting its source object',
+  { timeout: 30_000 },
+  async () => {
+    const data = await setup();
+    const original = await data.source.storage.get(data.object);
+    const { marker } = await runBackup(options(data));
+    expect(await data.repository.list()).toEqual([marker]);
 
-  await data.source.storage.delete(data.object);
-  expect(await data.source.storage.head(data.object)).toBeNull();
-  expect(await data.repository.list()).toEqual([marker]);
+    await data.source.storage.delete(data.object);
+    expect(await data.source.storage.head(data.object)).toBeNull();
+    expect(await data.repository.list()).toEqual([marker]);
 
-  await withPrivateBackupWorkspace('restore', async (directory) => {
-    const ciphertext = path.join(directory, 'payload.age');
-    expect(await data.repository.stageCompletedSet(marker.id, ciphertext)).toEqual(marker);
-    const decrypted = await decryptBackupArchive({
-      sourcePath: ciphertext,
-      destination: path.join(directory, 'payload.tar'),
-      identityPath: config!.identityPath,
-      ageBinary: config!.ageBinary,
+    await withPrivateBackupWorkspace('restore', async (directory) => {
+      const ciphertext = path.join(directory, 'payload.age');
+      expect(await data.repository.stageCompletedSet(marker.id, ciphertext)).toEqual(marker);
+      const decrypted = await decryptBackupArchive({
+        sourcePath: ciphertext,
+        destination: path.join(directory, 'payload.tar'),
+        identityPath: config!.identityPath,
+        ageBinary: config!.ageBinary,
+      });
+      const destination = path.join(directory, 'validated');
+      const archive = await extractValidatedBackupArchive({
+        archivePath: decrypted.path,
+        destination,
+      });
+      const objectName = `objects/${data.object.key}`;
+      expect(archive.entries).toContainEqual(
+        expect.objectContaining({
+          name: objectName,
+          byteLength: data.object.byteLength,
+          sha256: data.object.sha256,
+        }),
+      );
+      expect(await readFile(path.join(destination, objectName))).toEqual(Buffer.from(original));
     });
-    const destination = path.join(directory, 'validated');
-    const archive = await extractValidatedBackupArchive({
-      archivePath: decrypted.path,
-      destination,
-    });
-    const objectName = `objects/${data.object.key}`;
-    expect(archive.entries).toContainEqual(
-      expect.objectContaining({
-        name: objectName,
-        byteLength: data.object.byteLength,
-        sha256: data.object.sha256,
-      }),
-    );
-    expect(await readFile(path.join(destination, objectName))).toEqual(Buffer.from(original));
-  });
-});
+  },
+);
 it('rejects a non-custom database dump before any completion marker', async () => {
   const data = await setup();
   data.source.capture = async (consume) =>
