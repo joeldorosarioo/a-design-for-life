@@ -18,6 +18,7 @@ import {
   seedStagingContent,
   sha256,
   StagingSeedError,
+  stagingSeedPaths,
   stagingSeedSettings,
   validateApprovedPlan,
 } from './seed-http.mjs';
@@ -94,7 +95,7 @@ try {
   const args = options(process.argv.slice(2));
   if (args.help)
     console.log(
-      'pnpm seed:staging --database <exact-database-name> [--runtime-file <owned-.work-file>] [--editor-file <project-.env-or-owned-.work-file>]',
+      'pnpm seed:staging --database <exact-database-name> [--runtime-file <owned-.work-file>] [--editor-file <project-.env-or-owned-.work-file>]\nSet STAGING_SEED_PLAN and STAGING_SEED_ASSETS_ROOT in the selected editor file.',
     );
   else {
     const runtimeFile = path.resolve(
@@ -102,27 +103,20 @@ try {
       args['--runtime-file'] ?? '.work/coolify-staging/staging-variables.txt',
     );
     const editorFile = path.resolve(root, args['--editor-file'] ?? '.env');
-    underWork(runtimeFile);
     if (editorFile === path.join(root, '.env')) unlinkedFile(editorFile);
     else underWork(editorFile);
+    const source = parse(readFileSync(editorFile));
+    const paths = stagingSeedPaths(source);
+    underWork(runtimeFile);
     const directory = path.dirname(runtimeFile);
     privateDirectory(directory);
     const receiptFile = path.join(directory, 'initialization-receipt.json');
     unlinkedFile(receiptFile);
     const runtime = parse(readFileSync(runtimeFile));
-    const source = parse(readFileSync(editorFile));
     const receipt = JSON.parse(readFileSync(receiptFile, 'utf8'));
     const settings = stagingSeedSettings(runtime, source, receipt, args['--database']);
-    const planFile = path.resolve(
-      source.STAGING_SEED_PLAN ??
-        'C:/Users/joeld/Documents/Codex/2026-11-03/quero-retomar-e-concluir-a-etapa/work/visual-fixture-resume-20261103/plan.v5.private.json',
-    );
-    const assetsRoot = realpathSync(
-      path.resolve(
-        source.STAGING_SEED_ASSETS_ROOT ??
-          'C:/Users/joeld/Documents/Codex/2026-10-29/quero-iniciar-a-implementa-o-do/work/stage2-reference',
-      ),
-    );
+    const planFile = path.resolve(root, paths.planFile);
+    const assetsRoot = realpathSync(path.resolve(root, paths.assetsRoot));
     unlinkedFile(planFile);
     const planBytes = readFileSync(planFile);
     const plan = JSON.parse(planBytes.toString('utf8'));

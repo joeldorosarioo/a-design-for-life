@@ -1,3 +1,6 @@
+import { spawnSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
 import {
   NativeSeedClient,
@@ -8,6 +11,7 @@ import {
   newSeedState,
   seedStagingContent,
   sha256,
+  stagingSeedPaths,
   stagingSeedSettings,
   validateApprovedPlan,
 } from './seed-http.mjs';
@@ -77,6 +81,67 @@ const response = (body: unknown, headers = {}, status = 200) => ({
 });
 
 describe('staging seed preflight', () => {
+  it.each([
+    {},
+    { STAGING_SEED_PLAN: 'reviewed-plan.json' },
+    { STAGING_SEED_ASSETS_ROOT: 'reviewed-assets' },
+    { STAGING_SEED_PLAN: '', STAGING_SEED_ASSETS_ROOT: 'reviewed-assets' },
+    { STAGING_SEED_PLAN: 'reviewed-plan.json', STAGING_SEED_ASSETS_ROOT: 'bad\0path' },
+  ])('requires both explicit, usable source paths', (source) => {
+    expect(() => stagingSeedPaths(source)).toThrow('seed-source-paths-required');
+  });
+  it.each([
+    ['D:/Profiles/editor-two/Portfolio files/plan.json', 'D:/Profiles/editor-two/Portfolio files'],
+    ['/home/editor-two/portfolio/plan.json', '/home/editor-two/portfolio/assets'],
+  ])('accepts configured paths independent of the operator account', (planFile, assetsRoot) => {
+    expect(
+      stagingSeedPaths({ STAGING_SEED_PLAN: planFile, STAGING_SEED_ASSETS_ROOT: assetsRoot }),
+    ).toEqual({ planFile, assetsRoot });
+  });
+  it('requires source paths before reading the runtime or contacting staging', () => {
+    const parent = path.resolve('.work');
+    mkdirSync(parent, { recursive: true });
+    const directory = mkdtempSync(path.join(parent, 'seed-paths-test-'));
+    try {
+      const editorFile = path.join(directory, 'editor.env');
+      writeFileSync(editorFile, 'LOCAL_EDITOR_EMAIL=synthetic@example.invalid\n');
+      const result = spawnSync(
+        process.execPath,
+        [
+          'ops/staging/seed-http.cli.mjs',
+          '--database',
+          'seed_stage',
+          '--editor-file',
+          editorFile,
+          '--runtime-file',
+          path.join(directory, 'missing-runtime.env'),
+        ],
+        { encoding: 'utf8', windowsHide: true },
+      );
+      expect(result.status).toBe(1);
+      expect(result.stdout).toBe('');
+      expect(JSON.parse(result.stderr)).toEqual({
+        status: 'stopped',
+        stage: 'seed-source-paths-required',
+      });
+    } finally {
+      if (
+        path.dirname(directory) !== parent ||
+        !path.basename(directory).startsWith('seed-paths-test-')
+      )
+        throw new Error('Unsafe seed source fixture cleanup');
+      rmSync(directory, { recursive: true });
+    }
+  });
+  it('documents the explicit source settings in the command help', () => {
+    const result = spawnSync(process.execPath, ['ops/staging/seed-http.cli.mjs', '--help'], {
+      encoding: 'utf8',
+      windowsHide: true,
+    });
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain('STAGING_SEED_PLAN');
+    expect(result.stdout).toContain('STAGING_SEED_ASSETS_ROOT');
+  });
   it('binds the exact origin, database, editor and media namespace without exporting runtime secrets', () => {
     const value = settings();
     expect(value).toMatchObject({ origin, database: 'seed_stage', editorId });
