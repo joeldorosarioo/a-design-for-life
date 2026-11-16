@@ -37,7 +37,7 @@ test('malformed reset requests consume the outer transport abuse budget', async 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let documentID: string;
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.7-preview-http');
+  fixture = await createEditorialPayloadFixture('preview-http');
   const parent = await fixture.payload.create({
     collection: 'cases',
     data: { internalTitle: 'Synthetic preview' },

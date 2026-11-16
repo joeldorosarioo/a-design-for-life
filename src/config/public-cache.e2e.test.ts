@@ -97,7 +97,7 @@ test('serves confirmed PT/EN data and shared media across full origin outage and
     const env = readServerEnv(process.env);
     const owned = inspectOwnedTestDatabase();
     const serialRunner = info.config.workers === 1 && !info.config.fullyParallel;
-    portfolio = await createPublicPortfolioFixture('e3-production-cache-proof', { serialRunner });
+    portfolio = await createPublicPortfolioFixture('production-cache-proof', { serialRunner });
     const fixture = portfolio;
     const directory = publicRootDirectory(env);
     const sharedMedia = await mediaMetadataFixture(fixture.payload);
@@ -111,7 +111,7 @@ test('serves confirmed PT/EN data and shared media across full origin outage and
     await confirmTestPublication(parent, await fixture.request());
     const sharedContents: { id: string; path: string; locale: 'pt' | 'en' }[] = [];
     for (const locale of ['pt', 'en'] as const) {
-      const slug = `e3-shared-${locale}-${randomUUID()}`;
+      const slug = `shared-${locale}-${randomUUID()}`;
       const saved = await fixture.payload.create({
         collection: 'case-content',
         data: {
@@ -341,7 +341,7 @@ test('serves confirmed PT/EN data and shared media across full origin outage and
       expect((await readPublicRoot(directory))?.generation).toBe(confirmed!.generation);
     }
 
-    const uncovered = `/pt/cases/no-confirmed-e3-snapshot-${randomUUID()}`;
+    const uncovered = `/pt/cases/no-confirmed-snapshot-${randomUUID()}`;
     const privateTranslation = fixture.cases.ptOnly.locales.en.path;
     const privateOriginal = `/media/${privateMedia.id}/original`;
     async function expectUncovered(phase: Phase, status: 404 | 503) {

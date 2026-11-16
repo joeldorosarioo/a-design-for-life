@@ -7,7 +7,7 @@ process.env.PLAYWRIGHT_NO_COPY_PROMPT = '1';
 test.use({ trace: 'off', screenshot: 'off', video: 'off' });
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.7-reset-ui');
+  fixture = await createEditorialPayloadFixture('reset-ui');
 });
 test.afterAll(async () => {
   if (fixture) {

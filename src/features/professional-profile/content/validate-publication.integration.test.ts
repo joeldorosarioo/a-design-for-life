@@ -13,7 +13,7 @@ import { editorialHead } from '@/helpers/payload/editorial-revision';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-profile-seo-alt');
+  fixture = await createEditorialPayloadFixture('profile-seo-alt');
 });
 beforeEach(async () => {
   await clearStructuralFixture(fixture.payload);

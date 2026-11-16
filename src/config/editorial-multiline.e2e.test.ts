@@ -17,7 +17,7 @@ let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let profileId: string, navigationId: string, contentId: string;
 const password = 'Synthetic-editorial-test-password-123!';
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-native-multiline');
+  fixture = await createEditorialPayloadFixture('native-multiline');
   await clearStructuralFixture(fixture.payload);
   const image = await mediaMetadataFixture(fixture.payload);
   const pdf = await mediaMetadataFixture(fixture.payload, 'pdf');

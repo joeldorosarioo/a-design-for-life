@@ -74,7 +74,7 @@ function assertTarget(payload: Payload, options: StagingInitializationOptions) {
     target.search ||
     target.hash ||
     !/^[a-z_][a-z0-9_]{0,62}$/i.test(options.database) ||
-    ['postgres', 'template0', 'template1', 'adfl_local'].includes(options.database.toLowerCase()) ||
+    ['postgres', 'template0', 'template1'].includes(options.database.toLowerCase()) ||
     !['initialize', 'verify', 'prepare-first-access'].includes(options.mode) ||
     (options.mode === 'prepare-first-access' ? options.editor !== undefined : !options.editor) ||
     new URL(options.origin).protocol !== 'https:' ||

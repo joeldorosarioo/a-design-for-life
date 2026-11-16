@@ -61,7 +61,7 @@ export function readInitializationArguments(args) {
   const mode = values.get('--mode');
   if (
     !databaseName.test(database ?? '') ||
-    ['postgres', 'template0', 'template1', 'adfl_local'].includes(database.toLowerCase()) ||
+    ['postgres', 'template0', 'template1'].includes(database.toLowerCase()) ||
     !['initialize', 'verify', 'prepare-first-access'].includes(mode)
   )
     throw invalid();

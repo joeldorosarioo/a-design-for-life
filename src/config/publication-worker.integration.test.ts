@@ -57,7 +57,7 @@ async function pendingOrder() {
   return subject;
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e3-native-publication-worker');
+  fixture = await createEditorialPayloadFixture('native-publication-worker');
   const alreadyDue = await fixture.payload.db.find({
     collection: 'publication-retries',
     where: { nextAttemptAt: { less_than_equal: queueClock().toISOString() } },

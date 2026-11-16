@@ -37,7 +37,7 @@ function incoming(
   });
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-private-language-target');
+  fixture = await createEditorialPayloadFixture('private-language-target');
   installPayloadProvider(async () => fixture.payload);
   await clearStructuralFixture(fixture.payload);
   originalRoot = await readPublicRoot(runtimePublication().directory);
@@ -106,7 +106,7 @@ beforeAll(async () => {
     'login',
     { email: fixture.user.email, password: 'Synthetic-editorial-test-password-123!' },
     undefined,
-    'e2-private-language-target',
+    'private-language-target',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];

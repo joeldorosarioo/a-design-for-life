@@ -10,7 +10,7 @@ import { confirmTestPublication } from '../../testing/fixtures/confirmed-publica
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-public-image-http');
+  fixture = await createEditorialPayloadFixture('public-image-http');
 });
 test.afterAll(async () => {
   await fixture?.payload.destroy();

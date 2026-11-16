@@ -4,7 +4,7 @@ import { createPublicPortfolioFixture } from '../../../../testing/fixtures/publi
 let portfolio: Awaited<ReturnType<typeof createPublicPortfolioFixture>>;
 test.beforeAll(async ({}, info) => {
   test.setTimeout(120_000);
-  portfolio = await createPublicPortfolioFixture('e2-seo-http', {
+  portfolio = await createPublicPortfolioFixture('seo-http', {
     serialRunner: info.config.workers === 1 && !info.config.fullyParallel,
   });
 });

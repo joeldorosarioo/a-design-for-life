@@ -8,7 +8,7 @@ import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/e
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-case-content');
+  fixture = await createEditorialPayloadFixture('case-content');
 });
 
 afterAll(async () => {

@@ -8,7 +8,7 @@ import { pdfUploadFixture } from '../../../../../testing/fixtures/media-uploads'
 import { mediaManifestSchema } from '../../contracts/media-manifest.schema';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.6-native-common-intake');
+  fixture = await createEditorialPayloadFixture('native-common-intake');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

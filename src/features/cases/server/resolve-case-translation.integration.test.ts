@@ -12,7 +12,7 @@ import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { resolveCaseTranslation } from './resolve-case-translation';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-case-translation-availability');
+  fixture = await createEditorialPayloadFixture('case-translation-availability');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

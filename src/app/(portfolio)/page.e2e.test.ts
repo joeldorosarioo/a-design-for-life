@@ -146,7 +146,6 @@ test.describe('language entry and manual preference over production HTTP', () =>
         headers: { 'Accept-Language': item.accepted },
         maxRedirects: 0,
       });
-      // Content/status correctness is covered by E2.2's published-page journeys.
       expect(response.headers().location).toBeUndefined();
       expect(response.headers()['set-cookie']).toBeUndefined();
       expect(response.status()).not.toBe(307);

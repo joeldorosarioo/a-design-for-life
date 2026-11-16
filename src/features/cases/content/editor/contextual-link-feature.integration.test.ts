@@ -11,7 +11,7 @@ const require = createRequire(import.meta.url);
 const lexicalRequire = createRequire(require.resolve('@payloadcms/richtext-lexical'));
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-native-link-form');
+  fixture = await createEditorialPayloadFixture('native-link-form');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

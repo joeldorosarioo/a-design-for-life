@@ -34,7 +34,7 @@ let previousDirectory: string;
 let mediaId: string;
 
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-cover-presentation-' + randomUUID());
+  fixture = await createEditorialPayloadFixture('cover-presentation-' + randomUUID());
   previousDirectory = runtimePublication().directory;
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-cover-presentation-'));
   installPublicationProvider(() => portfolioPublicationCoordinator(directory));

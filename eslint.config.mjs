@@ -1,3 +1,4 @@
+// Import boundaries: documentation/architecture.md#módulos.
 import path from 'node:path';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';

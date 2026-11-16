@@ -6,7 +6,7 @@ import {
 } from '../../testing/fixtures/editorial-payload';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-cli-consumer');
+  fixture = await createEditorialPayloadFixture('cli-consumer');
   await clearStructuralFixture(fixture.payload);
 });
 afterAll(async () => {
@@ -53,10 +53,8 @@ it('o consumidor CLI nativo repete sem alterar drafts nem criar contas', async (
   expect(await snapshot()).toEqual(before);
   expect((await fixture.payload.find({ collection: 'users' })).totalDocs).toBe(usersBefore);
 });
-it('o CLI recusa ambiente fora da autorização da etapa com saída não zero', () => {
+it('o CLI recusa provisionamento fora do ambiente local ou de teste com saída não zero', () => {
   const result = cli({ ...process.env, APP_ENV: 'staging', NODE_ENV: 'development' });
   expect(result.status).toBe(1);
-  expect(result.stderr).toContain(
-    'This stage only authorizes local or isolated-test provisioning.',
-  );
+  expect(result.stderr).toContain('Structural provisioning requires local or isolated-test mode.');
 });

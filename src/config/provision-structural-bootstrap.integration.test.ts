@@ -9,7 +9,7 @@ import {
 import { provisionStructuralDocuments } from './provision-structural-documents';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-trusted-provision');
+  fixture = await createEditorialPayloadFixture('trusted-provision');
   await clearStructuralFixture(fixture.payload);
 });
 afterAll(async () => {

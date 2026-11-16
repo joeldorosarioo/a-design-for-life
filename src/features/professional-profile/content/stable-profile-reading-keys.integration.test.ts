@@ -10,7 +10,7 @@ let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 const first = '11111111-1111-4111-8111-111111111111';
 const second = '22222222-2222-4222-8222-222222222222';
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-profile-reading-keys');
+  fixture = await createEditorialPayloadFixture('profile-reading-keys');
 });
 beforeEach(async () => {
   await clearStructuralFixture(fixture.payload);

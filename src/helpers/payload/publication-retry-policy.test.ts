@@ -33,7 +33,7 @@ it('arms a committed intention for recovery even when its immediate caller never
   });
 });
 
-it('starts the immediate attempt with a durable version and pre-arms the first proposed retry', () => {
+it('starts the immediate attempt with a durable version and pre-arms the first retry', () => {
   const input = Object.freeze(state());
   expect(
     planPublicationRetryAttempt(
@@ -65,7 +65,7 @@ it('does not spend a retry before its persisted due time', () => {
   ).toEqual({ kind: 'skip', reason: 'not-due' });
 });
 
-it('pre-arms the proposed 1/5/15-second stages and leaves a fourth failure pending for manual recovery', () => {
+it('pre-arms the 1/5/15-second retries and leaves a fourth failure pending for manual recovery', () => {
   let current = state({ attempts: 1 });
   for (const entry of [
     {
@@ -93,7 +93,7 @@ it('pre-arms the proposed 1/5/15-second stages and leaves a fourth failure pendi
       () => new Date(entry.time),
     );
     expect(planned.kind).toBe('start');
-    if (planned.kind !== 'start') throw new Error('Expected a proposed automatic stage.');
+    if (planned.kind !== 'start') throw new Error('Expected an automatic retry.');
     expect(planned.attempt).toEqual({ operationId, version: entry.version });
     expect(planned.state).toEqual({
       operationId,
@@ -136,7 +136,7 @@ it('can recover a due intention whose process died before the immediate post-wri
   });
 });
 
-it('manual recovery resets the proposed budget while preserving the same immutable operation', () => {
+it('manual recovery resets the retry budget while preserving the same immutable operation', () => {
   const planned = planPublicationRetryAttempt(
     state({ attempts: 4, automaticAttempts: 3, nextAttemptAt: null }),
     { mode: 'manual', latestPublicationIntent: operationId },

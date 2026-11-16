@@ -17,6 +17,11 @@ it('keeps retry registration off unless the server explicitly opts in', () => {
     PUBLICATION_RETRIES_ENABLED: 'true',
   });
 });
+it('validates a measurement ID whenever one is explicitly configured', () => {
+  expect(() =>
+    readServerEnv({ ...validInput, GA4_MEASUREMENT_ID: 'invalid-measurement-id' }),
+  ).toThrow(/GA4_MEASUREMENT_ID/);
+});
 it('rejects an ambiguous retry opt-in instead of enabling a partially migrated runtime', () => {
   expect(() => readServerEnv({ ...validInput, PUBLICATION_RETRIES_ENABLED: '1' })).toThrow(
     /PUBLICATION_RETRIES_ENABLED/,

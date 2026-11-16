@@ -15,7 +15,7 @@ import { editorialHead, releaseEditorialLease } from '@/helpers/payload/editoria
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 const password = 'Synthetic-editorial-test-password-123!';
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-browser');
+  fixture = await createEditorialPayloadFixture('browser');
 });
 test.afterAll(async () => {
   await fixture?.payload.destroy();

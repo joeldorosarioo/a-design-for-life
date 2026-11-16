@@ -1,9 +1,21 @@
-# Repository conventions
+# Agent instructions
 
-- Work on `develop` unless the user explicitly requests another branch.
-- Write branch names and commit subjects in English. Use Conventional Commits.
-- Make cohesive commits for one complete, reviewable change, including its related tests, contracts, migrations and evidence. Prefer coherence over an arbitrary file or line count; avoid artificial fragmentation. Keep generated lockfiles and migrations intact.
-- Use English filenames. Keep exactly four files in `documentation`: `specification.md`, `architecture.md`, `operations.md` and `pending.md`. Update them in place; use Git for history and `.work/verification/evidence` for private receipts.
-- Before implementation, read the relevant contracts in `documentation/specification.md` and open conditions in `documentation/pending.md`. Consult `documentation/architecture.md` for module boundaries and `documentation/operations.md` for editorial, deployment, recovery or performance procedures. Follow the latest explicit user authorization for scope and release approvals.
+## Load the relevant context
 
-- Before reporting progress, review the evidence and affected entries in `documentation/pending.md`. Close an item only when its full condition has evidence, then remove completed tasks from the list. Keep accepted exceptions and conditional actions distinct. Record source/image and check scope in the evidence; avoid parallel progress logs or stage percentages.
+- [README.md](README.md): setup, local commands, verification and documentation index.
+- [specification.md](documentation/specification.md): product behavior, content, accessibility and Analytics contracts.
+- [architecture.md](documentation/architecture.md): module boundaries, publication flow and runtime identity.
+- [operations.md](documentation/operations.md): editorial operations, deployment, backup, recovery and performance.
+- [pending.md](documentation/pending.md): unmet launch conditions and accepted exceptions.
+
+## Work and commits
+
+- Work on `develop` unless the user requests another branch.
+- Use English names for files, folders and branches. Write English commit subjects with Conventional Commits.
+- Make cohesive commits, including affected consumers, tests and migrations. Generate lockfiles and migrations through project commands.
+- Keep exactly four files in `documentation`: `specification.md`, `architecture.md`, `operations.md` and `pending.md`. Update them in place; use Git for history and `.work/verification/evidence` for private receipts.
+- Before reporting progress, review the evidence and affected conditions in [pending.md](documentation/pending.md). Follow the user's latest scope and release authorization.
+
+## Verification
+
+Use `pnpm verify:ci` for types, lint, formatting, units, architecture, scripts and build. Run `pnpm test:integration` for affected server/database flows and `pnpm test:e2e` for affected browser journeys. Prepare the local environment as described in the [README](README.md#verificação).

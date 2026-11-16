@@ -134,7 +134,7 @@ export async function startOwnedNextServer(
     !Number.isSafeInteger(port) ||
     port < 1024 ||
     port > 65535 ||
-    [3100, 3101, 5432, 55432, 55433, 55434, Number(canonical.port || 80)].includes(port)
+    [3100, 3101, 5432, Number(canonical.port || 80)].includes(port)
   )
     throw new Error('Owned Next requires a distinct safe loopback listener port.');
   const origin = `http://127.0.0.1:${port}`;
@@ -149,9 +149,7 @@ export async function startOwnedNextServer(
       typeof address === 'string' ||
       address.address !== '127.0.0.1' ||
       address.port < 1024 ||
-      [port, 3100, 3101, 5432, 55432, 55433, 55434, Number(canonical.port || 80)].includes(
-        address.port,
-      )
+      [port, 3100, 3101, 5432, Number(canonical.port || 80)].includes(address.port)
     )
       throw new Error('Publication observer requires a distinct owned loopback test listener.');
     internalOrigin = `http://${address.address}:${address.port}`;

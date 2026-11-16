@@ -7,19 +7,19 @@ Next.js e Payload rodam na mesma aplicação. O Payload concentra a edição e o
 - `src/app` compõe as rotas e as features de cases, perfil, navegação, idioma, mídia e Analytics.
 - `src/config` prepara o contexto das requisições e conecta as features.
 - `src/helpers` fornece infraestrutura compartilhada. `src/components/ui` reúne as primitivas visuais.
-- As features expõem contratos, UI e operações de servidor pelas entradas públicas que precisam. As regras de arquitetura impedem ciclos e acesso ao banco ou armazenamento pelo navegador.
+- As rotas do portfólio e as outras features usam as entradas públicas `index.ts`, `ui.ts` ou `server.ts`. Imports internos da própria feature permanecem locais. Helpers e componentes genéricos não dependem de features, nem por dependências transitivas. O grafo de módulos não admite ciclos.
 
-Zod valida as fronteiras. Os tipos gerados do Payload representam o conteúdo persistido.
+Zod valida as fronteiras. Os tipos gerados do Payload representam o conteúdo persistido. Banco, armazenamento e segredos ficam nos módulos de servidor.
 
 ## Ambientes e identidade
 
-Há três bancos de aplicação fixos, um de produção, um de staging e um local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, com o usuário e a senha configurados no `.env`.
+O [README](../README.md#verificação) define os três bancos fixos e a conexão local. No Compose, PostgreSQL usa o volume externo e Next.js roda no host.
 
-No ambiente local, Next.js roda no host e o Compose mantém somente PostgreSQL no volume externo. Desenvolvimento e testes disputam uma reserva exclusiva. Os testes limpam dados entre rodadas e usam checkpoint nos ensaios de recuperação, sem criar bancos descartáveis.
+Desenvolvimento e testes disputam uma reserva exclusiva. O ciclo de testes limpa dados entre rodadas e usa checkpoint nos ensaios de recuperação, sem criar bancos.
 
-No contêiner, a aplicação usa `appuser`, UID/GID `70:70`. As ferramentas de backup usam UID `10001`. Os arquivos locais privados pertencem à identidade que os cria. Esses papéis não exigem um login Windows específico.
+No contêiner, a aplicação usa `appuser`, UID/GID `70:70`, e as ferramentas de backup usam `10001:10001`. Os arquivos locais privados pertencem à identidade que os cria; no Windows, as ACLs usam o SID atual. Esses papéis não exigem um login Windows específico.
 
-Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. O CI verifica tipos, lint, formato, unidades, arquitetura, scripts e build sem banco. Integração, E2E e recuperação usam o banco local antes do aceite da candidata.
+Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. A configuração entra na execução da mesma imagem. Os fluxos de verificação e promoção estão no [guia operacional](operations.md#ci-e-staging).
 
 ## Edição e publicação
 
@@ -41,6 +41,22 @@ A última geração confirmada pode atender durante uma falha temporária da ori
 
 ## Configuração
 
-A configuração é lida no servidor. O navegador recebe apenas os campos públicos permitidos. A mesma imagem recebe a configuração de cada ambiente na execução.
+A configuração é lida no servidor. O navegador recebe apenas os campos públicos permitidos.
 
 A escolha de idioma, a preservação da leitura e o fallback seguem a especificação. O Figma orienta a interface e os tokens ficam no código. Analytics mede somente respostas públicas válidas de produção quando ativado, sob a política de privacidade aprovada.
+
+## Fixtures de mídia
+
+Os controles de animação em `testing/fixtures/media-animation-assets` servem aos testes dos [contratos de upload](specification.md#mídias-e-privacidade). O AVIF é cópia sem alteração do [libavif `9b07a9d7a874b159bb4e14b80a6f08bb469d06f7`](https://github.com/AOMediaCodec/libavif/tree/9b07a9d7a874b159bb4e14b80a6f08bb469d06f7/tests/data); os APNGs vêm do [libvips `b04300c241934a895d826054e906f3e238e23924`](https://github.com/libvips/libvips/tree/b04300c241934a895d826054e906f3e238e23924/test/test-suite/images).
+
+| Arquivo                                                                                           | Bytes | SHA256                                                             |
+| ------------------------------------------------------------------------------------------------- | ----: | ------------------------------------------------------------------ |
+| [colors-animated-8bpc.avif](../testing/fixtures/media-animation-assets/colors-animated-8bpc.avif) | 1.235 | `2f8683d21725261f37f86e115f0c212cc52d0fefd3a2ddfcc4fa648c1859906d` |
+| [cogs-apng.png](../testing/fixtures/media-animation-assets/cogs-apng.png)                         | 2.706 | `728c47dd0f1901e050308852d18800f3a42dd658f04ea2eadf98b24cac7164eb` |
+| [apng-hidden-frame.png](../testing/fixtures/media-animation-assets/apng-hidden-frame.png)         |   232 | `5bd93be180977db214559e896c77077cc13eba8aa2120667ca1d8ca5422d20d3` |
+
+O AVIF segue a [licença BSD-2-Clause do libavif](../testing/fixtures/media-animation-assets/libavif-LICENSE.txt); os APNGs preservam a [licença LGPL-2.1 do libvips](../testing/fixtures/media-animation-assets/libvips-LICENSE.txt).
+
+`cogs-apng.png` tem cinco quadros. `apng-hidden-frame.png` tem dois e apresenta uma imagem padrão branca diferente do primeiro quadro vermelho. Decodificar apenas a imagem estática não comprova ausência de animação.
+
+[media-animation.ts](../testing/fixtures/media-animation.ts) gera os controles WebP com Sharp a partir de quadros sintéticos coloridos, delays e loop explícitos, incluindo variações de transparência e orientação EXIF. O encoder normaliza delays solicitados de até 10 ms para 100 ms; os testes usam delays efetivamente codificados de 100/200/300 ms.

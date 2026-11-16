@@ -370,7 +370,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       assert([...methods].every((method) => method === 'GET' || method === 'HEAD'));
       const summary = {
         version: 1,
-        kind: 'stage4-staging-laboratory-through-authenticated-read-only-relay',
+        kind: 'staging-laboratory-through-authenticated-read-only-relay',
         startedAt,
         completedAt: new Date().toISOString(),
         config,

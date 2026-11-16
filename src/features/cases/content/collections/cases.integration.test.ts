@@ -4,7 +4,7 @@ import { sql } from '@payloadcms/db-postgres';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-case-deletion');
+  fixture = await createEditorialPayloadFixture('case-deletion');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

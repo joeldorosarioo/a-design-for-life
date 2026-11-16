@@ -67,7 +67,7 @@ test('creates the first account through Native UI once, with four private drafts
   });
   let phase = 'Native create-first-user form';
   try {
-    // Dedicated global setup owns a fresh empty DB and applies migrations only;
+    // Setup resets the fixed local database and applies migrations only;
     // no fixture provisions an account or structural document before this UI.
     const response = await page.goto('/admin/create-first-user');
     expect(response?.status()).toBe(200);

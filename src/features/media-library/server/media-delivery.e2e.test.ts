@@ -29,7 +29,7 @@ test.use({
 });
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.6-native-http');
+  fixture = await createEditorialPayloadFixture('native-http');
 });
 test.afterAll(async () => {
   await fixture?.payload.destroy();
@@ -280,7 +280,7 @@ test('real storage loss stays503 while SQL loss preserves confirmed public bytes
         path.join('.work/private-media', process.env.MEDIA_BUCKET!, database.pathname.slice(1)),
     );
     const objectPath = path.resolve(root, manifest.original.object.key);
-    const unavailable = objectPath + '.e1-6-unavailable';
+    const unavailable = objectPath + '.unavailable';
     if (path.dirname(objectPath) !== root || path.dirname(unavailable) !== root)
       throw new Error('Object fault target must stay inside its owned test storage root');
     await lstat(unavailable).then(

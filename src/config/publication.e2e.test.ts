@@ -41,7 +41,7 @@ test('Native CMS persists pending shared and localized updates through reload an
   test.setTimeout(90_000);
   const parent = await fixture.payload.create({
     collection: 'cases',
-    data: { internalTitle: 'Native E1.8 ordering', sortOrder: 1 },
+    data: { internalTitle: 'Native ordering', sortOrder: 1 },
     req: await fixture.request(),
     overrideAccess: false,
   });

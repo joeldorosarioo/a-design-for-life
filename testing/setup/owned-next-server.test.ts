@@ -1,6 +1,6 @@
 import { ChildProcess } from 'node:child_process';
 import { once } from 'node:events';
-import { createServer } from 'node:net';
+import { createServer, type Server } from 'node:net';
 import path from 'node:path';
 import { expect, it } from 'vitest';
 import {
@@ -81,7 +81,7 @@ function controlledRuntime() {
   };
 }
 
-it('refuses the preserved visual database before probing or launching any process', async () => {
+it('refuses a database outside the fixed local target before probing or launching', async () => {
   const control = controlledRuntime();
   const env = environment();
   env.DATABASE_URI = env.DATABASE_URI!.replace(':5432/', ':55433/');
@@ -123,14 +123,43 @@ it.each(['.work/next-build', '.next', '.work/next-tests/aaaaaaaa-aaaa-4aaa-8aaa-
   },
 );
 
-it.each([3100, 3101, 5432, 55432, 55433, 55434])(
-  'refuses a primary, visual or database listener port: %s',
+it.each([3100, 3101, 5432])('refuses a primary or database listener port: %s', async (port) => {
+  const control = controlledRuntime();
+  await expect(startOwnedNextServer({ env: environment(), port }, control.runtime)).rejects.toThrow(
+    /port/i,
+  );
+  expect(control.probes).toEqual([]);
+});
+
+it.each([55432, 55433, 55434])('accepts an available secondary listener port: %s', async (port) => {
+  const control = controlledRuntime();
+  const server = await startOwnedNextServer({ env: environment(), port }, control.runtime);
+  try {
+    expect(server.origin).toBe(`http://127.0.0.1:${port}`);
+    expect(control.probes).toEqual([port]);
+    expect(control.children).toHaveLength(1);
+  } finally {
+    await server.stop();
+  }
+});
+
+it.each([55432, 55433, 55434])(
+  'accepts its owned observer on an available port: %s',
   async (port) => {
     const control = controlledRuntime();
-    await expect(
-      startOwnedNextServer({ env: environment(), port }, control.runtime),
-    ).rejects.toThrow(/port/i);
-    expect(control.probes).toEqual([]);
+    const listener = { listening: true, address: () => ({ address: '127.0.0.1', port }) } as Server;
+    const server = await startOwnedNextServer(
+      {
+        env: { ...environment(), PUBLICATION_HTTP_VERIFICATION_ENABLED: 'true' },
+        publicationObserverListener: listener,
+      },
+      control.runtime,
+    );
+    try {
+      expect(control.launchedEnvironments[0].INTERNAL_HTTP_ORIGIN).toBe(`http://127.0.0.1:${port}`);
+    } finally {
+      await server.stop();
+    }
   },
 );
 

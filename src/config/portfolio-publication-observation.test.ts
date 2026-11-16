@@ -325,7 +325,7 @@ it('does not treat historical missing provenance on a promoted pending case as p
   await expect(planPublicationObservations(historical)).rejects.toThrow(
     'Public media observation provenance unavailable.',
   );
-  // Terminal public A1 roots remain readable and can recheck the known current projections.
+  // Terminal roots remain readable and can recheck the current projections.
   await expect(
     planPublicationObservations({
       ...historical,

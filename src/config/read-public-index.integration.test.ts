@@ -108,7 +108,7 @@ describe('confirmed public index from real Native publication', { concurrent: fa
   beforeAll(async () => {
     assertIsolated();
     defaultDirectory = publicRootDirectory(readServerEnv(process.env));
-    fixture = await createEditorialPayloadFixture(`e2-public-index-${suffix}`);
+    fixture = await createEditorialPayloadFixture(`public-index-${suffix}`);
     installPayloadProvider(async () => fixture.payload);
     directory = await mkdtemp(path.join(tmpdir(), 'portfolio-index-native-'));
     installPublicationProvider(() => portfolioPublicationCoordinator(directory));

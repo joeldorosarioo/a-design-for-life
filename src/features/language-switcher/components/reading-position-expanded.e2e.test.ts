@@ -32,7 +32,7 @@ test.beforeAll(async ({}, testInfo) => {
   test.setTimeout(120_000);
   const serialRunner = testInfo.config.workers === 1 && !testInfo.config.fullyParallel;
   if (!serialRunner) throw new Error('Expanded reading tests require one serial owned worker.');
-  portfolio = await createReadingPortfolioFixture('e2-reading-expanded', serialRunner);
+  portfolio = await createReadingPortfolioFixture('reading-expanded', serialRunner);
 });
 test.afterAll(async () => {
   await portfolio?.destroy();

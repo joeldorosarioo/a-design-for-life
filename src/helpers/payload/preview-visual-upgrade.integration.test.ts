@@ -54,7 +54,7 @@ async function observeNativeDocumentReads<T>(operation: () => Promise<T>) {
   }
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-preview-visual-upgrade');
+  fixture = await createEditorialPayloadFixture('preview-visual-upgrade');
   installPayloadProvider(async () => fixture.payload);
   await clearStructuralFixture(fixture.payload);
   const parent = await fixture.payload.create({
@@ -100,7 +100,7 @@ beforeAll(async () => {
       password: 'Synthetic-editorial-test-password-123!',
     },
     undefined,
-    'e2-preview-visual-upgrade',
+    'preview-visual-upgrade',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];

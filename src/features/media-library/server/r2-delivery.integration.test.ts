@@ -14,7 +14,7 @@ import { installMediaRuntime, mediaRuntime } from './media-runtime';
 import { resolveMediaDelivery } from './resolve-media-access';
 
 it('rejects incomplete remote uploads and delivers only editorially authorized remote bytes', async () => {
-  const fixture = await createEditorialPayloadFixture('e3-private-s3-delivery');
+  const fixture = await createEditorialPayloadFixture('private-s3-delivery');
   const previous = mediaRuntime();
   const bucket = 'synthetic-private-media';
   const accepted = new Map<string, { bytes: Buffer; sha256: string }>();

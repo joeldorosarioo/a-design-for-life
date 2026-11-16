@@ -7,7 +7,7 @@ import { provisionStructuralDocuments } from './provision-structural-documents';
 // Explicit post-migration operation. Never imported by config or application startup.
 const env = readServerEnv(process.env);
 if (!['local', 'test'].includes(env.APP_ENV)) {
-  throw new Error('This stage only authorizes local or isolated-test provisioning.');
+  throw new Error('Structural provisioning requires local or isolated-test mode.');
 }
 const { default: config } = await import('@payload-config');
 const payload = await getPayload({ config, disableOnInit: true });

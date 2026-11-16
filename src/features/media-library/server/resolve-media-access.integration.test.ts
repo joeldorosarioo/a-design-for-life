@@ -14,7 +14,7 @@ import {
 import { resolveMediaDelivery } from './resolve-media-access';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.6-media-delivery');
+  fixture = await createEditorialPayloadFixture('media-delivery');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

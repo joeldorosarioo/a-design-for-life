@@ -12,7 +12,7 @@ test.beforeAll(async ({}, testInfo) => {
   test.setTimeout(120_000);
   // Shared structural singletons can only be reset within the owned serial runner.
   const serialRunner = testInfo.config.workers === 1 && !testInfo.config.fullyParallel;
-  portfolio = await createPublicPortfolioFixture('e2-public-pages', { serialRunner });
+  portfolio = await createPublicPortfolioFixture('public-pages', { serialRunner });
 });
 
 test.afterAll(async () => {

@@ -16,7 +16,7 @@ test('protects dependency diagnostics with the Native session and keeps public r
   expect(await anonymous.text()).toBe('');
 
   const origin = new URL(baseURL!).origin;
-  const fixture = await createEditorialPayloadFixture('e3-dependency-diagnostics');
+  const fixture = await createEditorialPayloadFixture('dependency-diagnostics');
   try {
     const login = await request.post('/api/users/login', {
       headers: { origin },

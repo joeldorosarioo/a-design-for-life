@@ -7,7 +7,7 @@ import { provisionStructuralDocuments } from './provision-structural-documents';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-provision');
+  fixture = await createEditorialPayloadFixture('provision');
 });
 beforeEach(async () => {
   await clearStructuralFixture(fixture.payload);

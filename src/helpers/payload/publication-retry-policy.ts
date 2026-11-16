@@ -1,9 +1,8 @@
 import { z } from 'zod';
 import { publicReceiptSchema } from './publication-receipt.schema';
 
-// Initial operational proposal for A3, not an approved propagation guarantee.
 // Each delay is anchored when the preceding attempt is durably started.
-export const PUBLICATION_RETRY_PROPOSAL_DELAYS_MS = Object.freeze([1_000, 5_000, 15_000] as const);
+const retryDelaysMs = Object.freeze([1_000, 5_000, 15_000] as const);
 
 const instantSchema = z.iso
   .datetime({ offset: true })
@@ -16,15 +15,14 @@ export const publicationRetryStateSchema = z
     operationId: publicReceiptSchema.shape.operationId,
     state: publicReceiptSchema.shape.state,
     attempts: versionSchema,
-    automaticAttempts: z.number().int().min(0).max(PUBLICATION_RETRY_PROPOSAL_DELAYS_MS.length),
+    automaticAttempts: z.number().int().min(0).max(retryDelaysMs.length),
     nextAttemptAt: instantSchema.nullable(),
   })
   .refine((value) => value.automaticAttempts <= value.attempts)
   .refine(
     (value) =>
       value.nextAttemptAt === null ||
-      (value.state === 'update-pending' &&
-        value.automaticAttempts < PUBLICATION_RETRY_PROPOSAL_DELAYS_MS.length),
+      (value.state === 'update-pending' && value.automaticAttempts < retryDelaysMs.length),
   );
 export type PublicationRetryState = z.infer<typeof publicationRetryStateSchema>;
 
@@ -83,7 +81,7 @@ export function initializePublicationRetry(
   if (!parsed.success) return { kind: 'invalid', reason: 'invalid-input' };
   const now = readClock(clock);
   if (now === null) return { kind: 'invalid', reason: 'invalid-clock' };
-  const nextAttemptAt = dueAfter(now, PUBLICATION_RETRY_PROPOSAL_DELAYS_MS[0]);
+  const nextAttemptAt = dueAfter(now, retryDelaysMs[0]);
   if (!nextAttemptAt) return { kind: 'invalid', reason: 'time-overflow' };
   return {
     kind: 'initialized',
@@ -121,7 +119,7 @@ export function planPublicationRetryAttempt(
   if (mode === 'immediate' && current.attempts !== 0)
     return { kind: 'skip', reason: 'already-attempted' };
   if (mode === 'automatic') {
-    if (current.automaticAttempts === PUBLICATION_RETRY_PROPOSAL_DELAYS_MS.length)
+    if (current.automaticAttempts === retryDelaysMs.length)
       return { kind: 'skip', reason: 'exhausted' };
     if (current.nextAttemptAt === null) return { kind: 'skip', reason: 'unscheduled' };
   }
@@ -136,7 +134,7 @@ export function planPublicationRetryAttempt(
   if (current.attempts === Number.MAX_SAFE_INTEGER)
     return { kind: 'invalid', reason: 'attempt-overflow' };
   const automaticAttempts = mode === 'automatic' ? current.automaticAttempts + 1 : 0;
-  const delay = PUBLICATION_RETRY_PROPOSAL_DELAYS_MS[automaticAttempts];
+  const delay = retryDelaysMs[automaticAttempts];
   const nextAttemptAt = delay === undefined ? null : dueAfter(now, delay);
   if (delay !== undefined && nextAttemptAt === null)
     return { kind: 'invalid', reason: 'time-overflow' };

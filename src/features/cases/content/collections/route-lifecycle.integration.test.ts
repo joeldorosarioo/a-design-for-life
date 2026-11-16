@@ -15,7 +15,7 @@ import { editorialHead } from '@/helpers/payload/editorial-revision';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.5-routes');
+  fixture = await createEditorialPayloadFixture('routes');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

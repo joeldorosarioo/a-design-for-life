@@ -14,7 +14,7 @@ let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 const password = 'Synthetic-editorial-test-password-123!';
 const slug = () => `http-${crypto.randomUUID()}`;
 test.beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.5-http');
+  fixture = await createEditorialPayloadFixture('http');
 });
 test.afterAll(async () => {
   await fixture?.payload.destroy();
@@ -190,7 +190,7 @@ test('real HTTP statuses, private404 equivalence, native REST conflict/guards an
     ).status(),
   ).toBe(403);
   console.info(
-    'E1.5 HTTP: 200/308/404/410, HEAD, conditional headers, private equivalence, native409 and registry403 verified',
+    'Case routes: 200/308/404/410, HEAD, conditional headers, private equivalence, native409 and registry403 verified',
   );
 });
 test('one real browser can reverse a previous permanent redirect by reusing owned history without a cached loop', async ({
@@ -269,10 +269,10 @@ test('one real browser can reverse a previous permanent redirect by reusing owne
   await expect(page.getByRole('heading', { level: 1 })).not.toHaveText('Real public route title');
   expect(rawDocuments.length).toBeLessThan(12);
   console.info(
-    'E1.5 browser raw document sequence including Critical-CH:',
+    'Browser raw document sequence including Critical-CH:',
     JSON.stringify(rawDocuments),
   );
-  console.info('E1.5 browser application sequence:', JSON.stringify(documents()));
+  console.info('Browser application sequence:', JSON.stringify(documents()));
 });
 test('native Payload suggestion is explicit and title edits preserve manual slug', async ({
   page,

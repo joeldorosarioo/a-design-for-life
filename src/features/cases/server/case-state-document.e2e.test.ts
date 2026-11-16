@@ -26,7 +26,7 @@ test.beforeAll(async () => {
   const response = renderCaseRouteResponse({ status: 404 }, 'pt', presentation);
   const html = await response.text();
   if (!html.includes('class="case-state-document"') || !html.includes(title))
-    throw new Error('Precondition: actual editorial renderer must be selected, never A1 fallback.');
+    throw new Error('Precondition: the editorial renderer must be selected.');
   const css = await readFile(path.resolve('public/_portfolio/case-state.css'));
   const divider = await readFile(path.resolve('public/figma/footer-divider.svg'));
   server = createServer((request, outgoing) => {

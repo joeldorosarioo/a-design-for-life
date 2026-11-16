@@ -22,7 +22,7 @@ import { readPublishedPortfolio } from './read-published-portfolio';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let directory: string;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.8-native-portfolio-read');
+  fixture = await createEditorialPayloadFixture('native-portfolio-read');
   await clearStructuralFixture(fixture.payload);
   directory = await mkdtemp(path.join(tmpdir(), 'e18-native-reader-'));
   installPublicationProvider(() => portfolioPublicationCoordinator(directory));

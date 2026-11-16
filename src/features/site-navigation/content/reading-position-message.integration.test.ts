@@ -10,7 +10,7 @@ import {
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-reading-adjustment-message');
+  fixture = await createEditorialPayloadFixture('reading-adjustment-message');
 });
 beforeEach(async () => {
   await clearStructuralFixture(fixture.payload);

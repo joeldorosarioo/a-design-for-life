@@ -28,7 +28,7 @@ test('serves the indexable sitemap from the selected generation and defers ackno
   const owned = inspectOwnedTestDatabase();
   const env = readServerEnv(process.env);
   const sourceDirectory = publicRootDirectory(env);
-  const fixture = await createPublicPortfolioFixture('e3-indexable-publication-sitemap', {
+  const fixture = await createPublicPortfolioFixture('indexable-publication-sitemap', {
     serialRunner: info.config.workers === 1 && !info.config.fullyParallel,
   });
   let reader: Awaited<ReturnType<typeof startOwnedNextServer>> | undefined;

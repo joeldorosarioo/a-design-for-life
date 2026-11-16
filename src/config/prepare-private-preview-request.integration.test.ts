@@ -66,7 +66,7 @@ async function observeCaseReads<T>(operation: () => Promise<T>) {
   }
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-preview-transport');
+  fixture = await createEditorialPayloadFixture('preview-transport');
   installPayloadProvider(async () => fixture.payload);
   const parent = await fixture.payload.create({
     collection: 'cases',
@@ -89,7 +89,7 @@ beforeAll(async () => {
       password: 'Synthetic-editorial-test-password-123!',
     },
     undefined,
-    'e2-preview-transport',
+    'preview-transport',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];
