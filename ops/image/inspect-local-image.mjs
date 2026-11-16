@@ -17,7 +17,6 @@ const allowedEnvironment = new Set([
   'NEXT_TELEMETRY_DISABLED=1',
   'PORT=3000',
   'HOSTNAME=0.0.0.0',
-  'MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf',
 ]);
 
 export function inspectLocalImage(record, expected) {

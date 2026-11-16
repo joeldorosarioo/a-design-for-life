@@ -17,7 +17,6 @@ beforeEach(() => {
   vi.stubEnv('MEDIA_BUCKET', 'adfl-test-admin-avatar');
   vi.stubEnv('MEDIA_STORAGE_DRIVER', 'local');
   vi.stubEnv('MEDIA_STORAGE_ROOT', undefined);
-  vi.stubEnv('MEDIA_CHECKER_BINARY', undefined);
   vi.stubEnv('INTERNAL_HTTP_ORIGIN', undefined);
   vi.stubEnv('PUBLICATION_RETRIES_ENABLED', 'false');
   vi.stubEnv('PUBLICATION_RETRY_WORKER_ENABLED', 'false');

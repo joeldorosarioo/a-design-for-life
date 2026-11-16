@@ -30,8 +30,7 @@ async function existingParentInside(root, selected) {
   }
 }
 
-// NFT traces the canvas files explicitly but cannot infer the dependency edge
-// used inside the PDF parser's dynamically constructed worker source.
+// NFT traces canvas files explicitly, but PDF.js resolves this optional dependency dynamically.
 export async function assembleOptionalCanvas(workspace, standalone) {
   const sourceRoot = await realpath(path.resolve(workspace));
   const targetRoot = await realpath(path.resolve(standalone));

@@ -32,7 +32,7 @@ const invalid = (message: string): UploadResult<never> => ({
 
 export async function validateUpload(
   file: UploadInput,
-  options: { checkerBinary: string; signal?: AbortSignal },
+  signal?: AbortSignal,
 ): Promise<UploadResult<ValidatedUpload>> {
   const candidate = preflightUpload(file);
   if (!candidate.ok) return candidate;
@@ -41,7 +41,7 @@ export async function validateUpload(
   const unsupported = unsupportedAnimation(bytes, type);
   if (unsupported) return invalid(unsupported);
   if (type === 'application/pdf') {
-    const pdf = await inspectPdf(bytes, options);
+    const pdf = await inspectPdf(bytes, signal);
     if (pdf.kind === 'password-required')
       return invalid('PDF com senha de abertura não é permitido. Envie um PDF que abra sem senha.');
     if (pdf.kind === 'valid')
@@ -52,7 +52,7 @@ export async function validateUpload(
       error: {
         code: 'unavailable',
         message:
-          'A verificação completa do PDF está temporariamente indisponível. Nenhum arquivo foi salvo.',
+          'A verificação do PDF está temporariamente indisponível. Nenhum arquivo foi salvo.',
       },
     };
   }

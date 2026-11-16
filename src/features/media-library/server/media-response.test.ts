@@ -138,7 +138,6 @@ it('keeps the generation captured for public bytes even when the root changes du
     await writeFile(rootFile, JSON.stringify(selected));
     installPublicationProvider(() => ({ directory, retry: async () => null }));
     installMediaRuntime({
-      checkerBinary: 'unused-unit-checker',
       storage: {
         ...storage,
         async read(reference) {

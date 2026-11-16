@@ -3,8 +3,7 @@ import { mkdir, mkdtemp, readdir, rm } from 'node:fs/promises';
 import { createLocalObjectStorage } from '@/helpers/storage/object-storage';
 import { afterEach, expect, it, vi } from 'vitest';
 import { installMediaRuntime, mediaRuntime } from './media-runtime';
-const configure = (root: string) =>
-  installMediaRuntime({ root, checkerBinary: path.resolve('.toolchain/test-checker') });
+const configure = (root: string) => installMediaRuntime({ root });
 it.each([
   path.resolve('public'),
   path.resolve('public/private-assets'),
@@ -43,14 +42,13 @@ it('uses an explicitly injected byte transport while preserving the legacy root 
     await mkdir(injectedRoot);
     const options = {
       root: path.join(root, 'fallback'),
-      checkerBinary: path.resolve('.toolchain/test-checker'),
       storage: createLocalObjectStorage(injectedRoot),
     };
     installMediaRuntime(options);
     const object = await mediaRuntime().storage.put(new Uint8Array([3, 1, 4]));
     expect(await readdir(injectedRoot)).toEqual([object.key]);
     expect(await mediaRuntime().storage.read(object)).toEqual(new Uint8Array([3, 1, 4]));
-    installMediaRuntime({ storage: options.storage, checkerBinary: options.checkerBinary });
+    installMediaRuntime({ storage: options.storage });
     expect(await mediaRuntime().storage.get(object)).toEqual(new Uint8Array([3, 1, 4]));
   } finally {
     await rm(root, { recursive: true, force: true });

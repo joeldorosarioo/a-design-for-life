@@ -23,7 +23,6 @@ it('configures private media when workspace traversal is unavailable', () => {
   expect(() =>
     installMediaRuntime({
       root: path.resolve('.work/private-media/runtime-boundary'),
-      checkerBinary: '/synthetic/qpdf',
     }),
   ).not.toThrow();
   expect(lstatSync).not.toHaveBeenCalled();
@@ -36,7 +35,6 @@ it('still refuses media inside the isolated static output without filesystem tra
   expect(() =>
     installMediaRuntime({
       root: path.resolve(selected, 'static/private'),
-      checkerBinary: '/synthetic/qpdf',
     }),
   ).toThrow(/public|static/i);
   expect(lstatSync).not.toHaveBeenCalled();

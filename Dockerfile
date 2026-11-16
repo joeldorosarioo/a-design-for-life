@@ -3,17 +3,6 @@ FROM docker.io/library/node:26.13.1-alpine3.24@sha256:6bd9ab43c0ec0190ca7b2d1939
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 
-FROM node-base AS qpdf
-# Build the approved QPDF release for musl with the upstream tarball checksum.
-RUN apk add --no-cache build-base cmake ninja pkgconf libjpeg-turbo-dev openssl-dev zlib-dev
-ADD --checksum=sha256:8a58af5b6141319287c1883bec8bd1bd545b7567b7fc5e6ce5d25a1c85f36397 https://github.com/qpdf/qpdf/releases/download/v12.4.2/qpdf-12.4.2.tar.gz /tmp/qpdf.tar.gz
-RUN mkdir /tmp/qpdf-source && tar -xzf /tmp/qpdf.tar.gz -C /tmp/qpdf-source --strip-components=1 \
-    && cmake -G Ninja -S /tmp/qpdf-source -B /tmp/qpdf-build \
-        -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DBUILD_STATIC_LIBS=ON \
-        -DUSE_IMPLICIT_CRYPTO=OFF -DREQUIRE_CRYPTO_OPENSSL=ON \
-    && cmake --build /tmp/qpdf-build --target qpdf --parallel 3 \
-    && install -D -s /tmp/qpdf-build/qpdf/qpdf /opt/qpdf/bin/qpdf
-
 FROM node-base AS backup-crypto
 ADD --checksum=sha256:cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10 https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-linux-amd64.tar.gz /tmp/age.tar.gz
 RUN tar -xzf /tmp/age.tar.gz -C /tmp && /tmp/age/age --version
@@ -45,10 +34,9 @@ LABEL org.opencontainers.image.title="A Design for Life" \
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=3000 \
-    HOSTNAME=0.0.0.0 \
-    MEDIA_CHECKER_BINARY=/opt/qpdf/bin/qpdf
+    HOSTNAME=0.0.0.0
 # Keep UID/GID 70 so existing PostgreSQL and application volumes retain access.
-RUN apk add --no-cache ca-certificates libatomic libjpeg-turbo libstdc++ libcrypto3 zlib tar \
+RUN apk add --no-cache ca-certificates libatomic libstdc++ tar \
     && apk add --no-cache --virtual .account-tools shadow \
     && test "$(id -u postgres):$(id -g postgres)" = "70:70" \
     && usermod --login appuser --shell /sbin/nologin postgres \
@@ -60,7 +48,6 @@ RUN apk add --no-cache ca-certificates libatomic libjpeg-turbo libstdc++ libcryp
     && chown -R 70:70 .work \
     && chmod 0700 .work/backup-private .work/backup-sets
 COPY --from=node-base /usr/local/bin/node /usr/local/bin/node
-COPY --from=qpdf /opt/qpdf/bin/qpdf /opt/qpdf/bin/qpdf
 COPY --from=backup-crypto /tmp/age/age /opt/adfl-age/age
 COPY --from=builder --chown=70:70 /app/.work/next-build/standalone ./
 COPY --from=builder --chown=70:70 /app/.work/next-build/static ./.work/next-build/static
@@ -69,7 +56,6 @@ COPY --chown=70:70 ops/image/health-probe.mjs ops/image/runtime-smoke.mjs ops/im
 USER appuser
 RUN node --input-type=module -e 'import { writeFileSync } from "node:fs"; const revision = process.argv[1]; if (!/^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/.test(revision)) process.exit(1); writeFileSync("ops/image/build-identity.json", JSON.stringify({ revision }) + "\n", { flag: "wx" });' "$SOURCE_REVISION" \
     && node ops/image/runtime-smoke.mjs
-COPY --from=qpdf /tmp/qpdf-source/LICENSE.txt /opt/qpdf/LICENSE.txt
 EXPOSE 3000 5432
 STOPSIGNAL SIGTERM
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 CMD ["node", "ops/image/health-probe.mjs"]

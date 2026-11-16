@@ -54,8 +54,6 @@ jobs:
           key: ${{ runner.os }}-${{ runner.arch }}-node26.13.1-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-node26.13.1-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-
-      - name: Install verified local PDF checker
-        run: pnpm setup:media-checker
       - name: Install verified local backup tools
         run: pnpm setup:backup-tools
       - name: Configure synthetic backup test tools

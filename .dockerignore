@@ -19,7 +19,6 @@
 # never binary fixtures, is sent; no repository typecheck exclusions are weakened.
 !testing/fixtures/**/*.ts
 !testing/setup/**/*.ts
-!testing/setup/install-qpdf.mjs
 !testing/setup/install-age.mjs
 !testing/setup/configure-backup-tools.mjs
 # Native backup integration tests import these modules during type checking.

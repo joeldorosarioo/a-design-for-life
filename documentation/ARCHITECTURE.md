@@ -39,7 +39,7 @@ As reservas de rota pertencem a um case e idioma. O histórico aponta diretament
 
 O servidor valida os bytes dos uploads e gera os derivados na aplicação. O desenvolvimento pode usar armazenamento local e os alvos remotos usam R2. Originais, derivados e otimizador consultam a mesma autorização. Retirar a última referência pública revoga o acesso.
 
-O PDF compartilha um único prazo entre a inspeção no worker e o qpdf. O vencimento encerra os dois e aguarda a limpeza antes de liberar a fila de uploads.
+PDF.js apenas carrega o documento na própria requisição de upload, sem percorrer ou renderizar páginas. Após a validação, o fluxo salva o arquivo e disponibiliza o link sob as permissões de mídia.
 
 A última geração confirmada pode atender durante uma falha temporária da origem. Sem conteúdo confirmado suficiente, a resposta indica indisponibilidade. Falhas não viram listas vazias nem conteúdo inexistente.
 

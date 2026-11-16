@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ['pdfjs-dist'],
   outputFileTracingIncludes: {
     '/api/*': [
-      './node_modules/pdfjs-dist/**/*',
+      './node_modules/pdfjs-dist/package.json',
+      './node_modules/pdfjs-dist/LICENSE',
+      './node_modules/pdfjs-dist/legacy/build/pdf.mjs',
+      './node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs',
       './node_modules/.pnpm/@napi-rs+canvas*/node_modules/@napi-rs/**/*',
     ],
   },
@@ -21,7 +24,6 @@ const nextConfig: NextConfig = {
       './.work/private-media/**/*',
       './.work/publication/**/*',
       './.work/editorial-mail/**/*',
-      './.work/qpdf-downloads/**/*',
       './.toolchain/**/*',
       './testing/**/*',
       './artifacts/**/*',

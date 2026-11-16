@@ -74,20 +74,6 @@ it('rejects inherited bucket mismatches before configuring the runtime', () => {
   process.env.TEST_MEDIA_BUCKET = 'adfl-test-visual';
   expect(() => configureTestEnvironment()).toThrow(/isolated test/i);
 });
-it('keeps an absent optional checker absent across repeated configuration and child process environment', () => {
-  delete process.env.MEDIA_CHECKER_BINARY;
-  configureTestEnvironment();
-  expect(process.env.MEDIA_CHECKER_BINARY).toBeUndefined();
-  configureTestEnvironment();
-  expect(process.env.MEDIA_CHECKER_BINARY).toBeUndefined();
-});
-it('preserves an explicitly configured PDF checker executable', () => {
-  const checker = path.resolve('.toolchain/synthetic-checker/qpdf.exe');
-  process.env.MEDIA_CHECKER_BINARY = checker;
-  const env = configureTestEnvironment();
-  expect(env.MEDIA_CHECKER_BINARY).toBe(checker);
-  expect(process.env.MEDIA_CHECKER_BINARY).toBe(checker);
-});
 it('normalizes a supported localhost test origin only for the literal internal HTTP transport', () => {
   process.env.TEST_SITE_ORIGIN = 'http://localhost:3101';
   const env = configureTestEnvironment();

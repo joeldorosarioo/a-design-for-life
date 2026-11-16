@@ -55,12 +55,10 @@ export function configureTestEnvironment() {
     INTERNAL_HTTP_ORIGIN: internalOrigin.origin,
     MEDIA_BUCKET: isolatedTestBucket,
     MEDIA_STORAGE_ROOT: path.resolve('.work/private-media', isolatedTestBucket, localDatabaseName),
-    MEDIA_CHECKER_BINARY: process.env.MEDIA_CHECKER_BINARY,
   });
   // Tests never inherit future external storage, e-mail or analytics integrations.
   for (const key of Object.keys(process.env))
     if (
-      key !== 'MEDIA_CHECKER_BINARY' &&
       /^(?:MEDIA_|R2_|CLOUDFLARE_|AWS_|S3_|OBJECT_STORAGE_|SMTP_|MAIL_|EMAIL_|RESEND_|POSTMARK_|SENDGRID_|ANALYTICS_|GA_|GA4_|PUBLIC_SITE_ENABLED$|GOOGLE_ANALYTICS_|NEXT_PUBLIC_(?:GA_|ANALYTICS_|GOOGLE_ANALYTICS_))/i.test(
         key,
       )
