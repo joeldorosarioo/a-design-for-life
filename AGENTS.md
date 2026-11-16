@@ -13,7 +13,7 @@
 - Work on `develop` unless the user requests another branch.
 - Use English names for files, folders and branches. Write English commit subjects with Conventional Commits.
 - Make cohesive commits, including affected consumers, tests and migrations. Generate lockfiles and migrations through project commands.
-- Keep exactly four files in `documentation`, with uppercase English names: `SPECIFICATION.md`, `ARCHITECTURE.md`, `OPERATIONS.md` and `PENDING.md`. Update them in place; use Git for history and `.work/verification/evidence` for private receipts.
+- Keep exactly four files in `documentation`, with uppercase English names: `SPECIFICATION.md`, `ARCHITECTURE.md`, `OPERATIONS.md` and `PENDING.md`. Update them in place; use Git for history and `.work/verification/evidence` only for necessary current receipts.
 - Before reporting progress, review the evidence and affected conditions in [PENDING.md](documentation/PENDING.md). Follow the user's latest scope and release authorization.
 
 ## Verification

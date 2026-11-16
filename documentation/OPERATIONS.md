@@ -30,7 +30,7 @@ Prepare a nova cópia conforme o [uso local](../README.md#uso-local). Os usuári
 
 Use credenciais locais novas e mantenha as permissões restritas ao usuário responsável. Resolva falhas de acesso conferindo dono e ACL do arquivo. Copiar chaves privadas antigas ou conceder acesso a `Everyone` para fazer um comando funcionar compromete essa proteção.
 
-Cópias de dependências, caches e builds podem ser regeneradas. Preserve o Chromium em uso, dados de mídia/publicação, e-mails privados, backups, chaves e checkpoints de recuperação. Antes de limpar, confira os consumidores e a identidade de cada caminho.
+Caches, builds, relatórios e fixtures concluídas podem ser removidos com os consumidores parados. Preserve somente o Chromium exigido pelos testes, dados atuais, originais editoriais, backups recuperáveis, chaves configuradas e checkpoints pendentes. Antes de limpar, confira os consumidores e a identidade de cada caminho. Os comprovantes ainda usados ficam no índice privado; logs antigos, cópias de fonte e resultados substituídos podem sair.
 
 Registre os recibos no índice privado `.work/verification/evidence/index.json`.
 
