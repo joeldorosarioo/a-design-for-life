@@ -36,7 +36,7 @@ Registre os recibos no índice privado `.work/verification/evidence/index.json`.
 
 ## CI e staging
 
-O CI roda `pnpm verify:ci` sem banco nos PRs, nos pushes para `develop`/`main` e por acionamento manual. Um novo commit cancela o check anterior do mesmo PR. Deploys mantêm a fila por branch até a saúde e o marcador. [Workflow](../.github/workflows/checks.yml).
+O [Checks](../.github/workflows/checks.yml) roda `pnpm verify:ci` sem banco nos PRs e por acionamento manual. As branches protegidas exigem o check aprovado e atualizado antes do merge. Depois do merge em `develop`/`main`, o [Deploy](../.github/workflows/release.yml) executa somente a publicação configurada, sem repetir o CI. Um novo commit cancela o check anterior do mesmo PR. Deploys mantêm uma fila separada por branch até a saúde e o marcador, sem cancelamento.
 
 Tipos, lint, formato, unidades, arquitetura, scripts e build são verificados em cada execução. Integração, E2E e recuperação usam o banco local fixo e exigem evidência vinculada à fonte da candidata.
 
