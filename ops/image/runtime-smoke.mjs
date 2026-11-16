@@ -10,7 +10,7 @@ import sharp from 'sharp';
 assert.equal(process.platform, 'linux');
 assert.equal(process.arch, 'x64');
 assert.match(await readFile('/etc/alpine-release', 'utf8'), /^3\.24\./);
-assert.equal(process.version, 'v24.22.2');
+assert.equal(process.version, 'v26.13.1');
 assert.match(execFileSync('postgres', ['--version'], { encoding: 'utf8' }), / 17\.11\s*$/);
 assert.equal(process.getuid(), 70);
 assert.equal(process.getgid(), 70);
@@ -90,5 +90,5 @@ try {
   await rm(directory, { recursive: true, force: true });
 }
 console.log(
-  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 24.22.2, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas, PDF.js resources, age 1.3.2, GNU tar 1.35 and backup entrypoint.',
+  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 26.13.1, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas, PDF.js resources, age 1.3.2, GNU tar 1.35 and backup entrypoint.',
 );

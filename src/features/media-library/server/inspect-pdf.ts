@@ -79,13 +79,24 @@ export async function inspectPdf(
   bytes: Uint8Array,
   options: { checkerBinary: string; signal?: AbortSignal },
 ): Promise<PdfInspection> {
-  const captured = Uint8Array.from(bytes);
-  const pages = await inspectPdfPages(captured, options.signal);
-  if (pages.kind !== 'valid') return pages;
-  const streams = await checkPdfStreams(captured, options.checkerBinary, options.signal);
-  return streams === 'valid'
-    ? pages
-    : streams === 'warnings'
-      ? { kind: 'warnings', pages: pages.pages }
-      : { kind: streams };
+  const deadline = new AbortController();
+  const timer = setTimeout(() => deadline.abort(), 30_000);
+  timer.unref();
+  const signal = options.signal
+    ? AbortSignal.any([options.signal, deadline.signal])
+    : deadline.signal;
+  try {
+    const captured = Uint8Array.from(bytes);
+    let result = await inspectPdfPages(captured, signal);
+    if (result.kind === 'valid') {
+      const streams = await checkPdfStreams(captured, options.checkerBinary, signal);
+      if (streams === 'warnings') result = { kind: 'warnings', pages: result.pages };
+      else if (streams !== 'valid') result = { kind: streams };
+    }
+    return signal.aborted
+      ? { kind: options.signal?.aborted ? 'cancelled' : 'unavailable' }
+      : result;
+  } finally {
+    clearTimeout(timer);
+  }
 }

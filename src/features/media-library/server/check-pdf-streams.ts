@@ -17,12 +17,14 @@ export async function checkPdfStreams(
   try {
     const file = path.join(directory, 'input.pdf');
     await writeFile(file, bytes, { flag: 'wx', mode: 0o600 });
+    if (signal?.aborted) return 'cancelled';
     return await new Promise((resolve) => {
       let failed = false;
       const child = spawn(binary, ['--password=', '--check', file], {
         stdio: 'ignore',
         windowsHide: true,
         signal,
+        killSignal: 'SIGKILL',
       });
       child.once('error', () => {
         failed = true;

@@ -16,7 +16,7 @@ async function project(name = 'a-design-for-life') {
       name,
       private: true,
       packageManager: 'pnpm@12.10.1',
-      engines: { node: '>=24.22.2 <25', pnpm: '12.10.1' },
+      engines: { node: '>=26.13.1 <27', pnpm: '12.10.1' },
     }),
   );
   return root;
