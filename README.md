@@ -50,16 +50,16 @@ Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG
 
 Os relatórios do navegador ficam em `.work/playwright/report`, os traces e resultados em `.work/playwright/results` e o cache do TypeScript em `.work/cache`. São saídas geradas, fora do Git.
 
-As provas finais ficam em `.work/verification/evidence/index.json`. Os registros antigos foram agrupados em `.work/verification/history`, com os caminhos originais registrados para recuperação. Caches podem ser recriados; preserve mídia, publicação, backups, chaves e checkpoints pendentes. Permissões privadas protegem esses arquivos para a identidade que os criou. Um clone novo gera seus próprios arquivos; copiar chaves privadas de outra conta não faz parte da instalação.
+Os comprovantes ainda usados ficam em `.work/verification/evidence/index.json`: a referência de performance, a última verificação local e o recibo da limpeza. Os dados editoriais originais ficam em `.work/editorial`. Caches, builds e relatórios podem ser recriados; remova-os com aplicação e testes parados. Preserve dados atuais de mídia/publicação, backups recuperáveis, chaves configuradas e checkpoints pendentes. Permissões privadas protegem esses arquivos para a identidade que os criou. Um clone novo gera seus próprios arquivos; copiar chaves privadas de outra conta não faz parte da instalação.
 
-| Caminho                         | Função e decisão                                                                                                                                 |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.toolchain`                    | Node, qpdf e age nas versões exigidas pelos comandos locais.                                                                                     |
-| `.work`                         | Área privada de trabalho: caches, builds, mídia, publicações, e-mails e backups. Apagar tudo também apagaria dados e identidades de recuperação. |
-| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                      |
-| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                            |
-| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                              |
-| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                   |
+| Caminho                         | Função e decisão                                                                                                                                                                                     |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.toolchain`                    | Ferramentas locais nas versões exigidas: Node executa os comandos, qpdf verifica PDFs e age criptografa backups. Mantém executáveis, bibliotecas necessárias, comprovantes de instalação e licenças. |
+| `.work`                         | Dados privados de recuperação e operação, originais editoriais, comprovantes atuais e o Chromium dos testes. Ferramentas também podem recriar caches e saídas temporárias aqui.                      |
+| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                                          |
+| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                                                |
+| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                                                  |
+| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                                                       |
 
 ## Documentação
 
