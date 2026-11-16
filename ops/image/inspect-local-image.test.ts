@@ -102,7 +102,6 @@ describe('baked environment defaults', () => {
   it.each([
     ['HOSTNAME', 'staging-origin.example.invalid'],
     ['PORT', 'synthetic-private-marker'],
-    ['MEDIA_CHECKER_BINARY', '/private/synthetic-root'],
     ['PATH', '/synthetic/build-tools'],
   ])('refuses unauthorized values even under the expected %s name', (key, value) => {
     const record = valid();

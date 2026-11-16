@@ -63,7 +63,6 @@ const serverEnvSchema = z
       .optional(),
     MEDIA_BUCKET: z.string().min(1),
     MEDIA_STORAGE_ROOT: z.string().min(1).optional(),
-    MEDIA_CHECKER_BINARY: z.string().min(1).optional(),
   })
   .superRefine((env, context) => {
     if (env.EDITORIAL_FIRST_ACCESS_ENABLED === 'true') {

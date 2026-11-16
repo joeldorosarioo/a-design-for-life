@@ -77,7 +77,6 @@ it('rejects incomplete remote uploads and delivers only editorially authorized r
         accessKeyId: 'synthetic-s3-access',
         secretAccessKey: 'synthetic-s3-secret',
       }),
-      checkerBinary: previous.checkerBinary,
     });
 
     const bytes = await sharp({

@@ -30,26 +30,25 @@ function candidateType(bytes: Uint8Array): UploadType | undefined {
       if (brands.includes('avif') || brands.includes('avis')) return 'image/avif';
     }
   }
-  if (bytes.length >= 8 && /^%PDF-[12]\.\d/.test(ascii(bytes, 0, 8))) return 'application/pdf';
+  if (Buffer.from(bytes.subarray(0, 5)).equals(Buffer.from('%PDF-'))) return 'application/pdf';
 }
+const invalid = (message: string): UploadResult<never> => ({
+  ok: false,
+  error: { code: 'invalid-input', message },
+});
 export function preflightUpload(file: UploadInput): UploadResult<UploadCandidate> {
+  if (file.bytes.byteLength === 0) return invalid('O arquivo está vazio. Escolha outro arquivo.');
   const type = candidateType(file.bytes);
-  if (!type)
-    return {
-      ok: false,
-      error: {
-        code: 'invalid-input',
-        message: 'Use JPEG, PNG, WebP, AVIF ou PDF. SVG não é permitido.',
-      },
-    };
+  const pdfName = /\.pdf$/i.test(file.name);
+  const pdfMime = file.declaredType.toLowerCase() === 'application/pdf';
+  if (
+    (type === 'application/pdf' || pdfName || pdfMime) &&
+    (type !== 'application/pdf' || !pdfName || !pdfMime)
+  )
+    return invalid('Envie um PDF válido com extensão .pdf.');
+  if (!type) return invalid('Use JPEG, PNG, WebP, AVIF ou PDF. SVG não é permitido.');
   const maximum = type === 'application/pdf' ? PDF_BYTES : IMAGE_BYTES;
   if (file.bytes.byteLength > maximum)
-    return {
-      ok: false,
-      error: {
-        code: 'invalid-input',
-        message: `O arquivo excede ${maximum.toLocaleString('pt-BR')} bytes.`,
-      },
-    };
+    return invalid(`O arquivo excede ${maximum.toLocaleString('pt-BR')} bytes.`);
   return { ok: true, value: { ...file, type, byteLength: file.bytes.byteLength } };
 }

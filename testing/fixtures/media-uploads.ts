@@ -1,45 +1,19 @@
-import { execFileSync } from 'node:child_process';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-
-export function mediaCheckerFixturePath() {
-  return path.resolve(
-    `.toolchain/qpdf-12.4.2-${process.platform}-${process.arch}/bin/${process.platform === 'win32' ? 'qpdf.exe' : 'qpdf'}`,
-  );
+// Fixed synthetic documents keep encrypted-PDF tests independent of native tools.
+const encryptedPdfs = {
+  open: 'JVBERi0xLjcKJb/3ov4KMSAwIG9iago8PCAvRXh0ZW5zaW9ucyA8PCAvQURCRSA8PCAvQmFzZVZlcnNpb24gLzEuNyAvRXh0ZW5zaW9uTGV2ZWwgOCA+PiA+PiAvUGFnZXMgMiAwIFIgL1R5cGUgL0NhdGFsb2cgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL0NvdW50IDMgL0tpZHMgWyAzIDAgUiA0IDAgUiA1IDAgUiBdIC9UeXBlIC9QYWdlcyA+PgplbmRvYmoKMyAwIG9iago8PCAvQ29udGVudHMgNiAwIFIgL01lZGlhQm94IFsgMCAwIDEwMCAxMDAgXSAvUGFyZW50IDIgMCBSIC9SZXNvdXJjZXMgPDwgPj4gL1R5cGUgL1BhZ2UgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0NvbnRlbnRzIDYgMCBSIC9NZWRpYUJveCBbIDAgMCAxMDAgMTAwIF0gL1BhcmVudCAyIDAgUiAvUmVzb3VyY2VzIDw8ID4+IC9UeXBlIC9QYWdlID4+CmVuZG9iago1IDAgb2JqCjw8IC9Db250ZW50cyA2IDAgUiAvTWVkaWFCb3ggWyAwIDAgMTAwIDEwMCBdIC9QYXJlbnQgMiAwIFIgL1Jlc291cmNlcyA8PCA+PiAvVHlwZSAvUGFnZSA+PgplbmRvYmoKNiAwIG9iago8PCAvTGVuZ3RoIDQ4IC9GaWx0ZXIgL0ZsYXRlRGVjb2RlID4+CnN0cmVhbQpMIzCEbbVnOflEo7hA8NYXDydRGEdBkwD5wTPYtKPlIapqDYJcpsdhU/IrraVRpXJlbmRzdHJlYW0KZW5kb2JqCjcgMCBvYmoKPDwgL0NGIDw8IC9TdGRDRiA8PCAvQXV0aEV2ZW50IC9Eb2NPcGVuIC9DRk0gL0FFU1YzIC9MZW5ndGggMzIgPj4gPj4gL0ZpbHRlciAvU3RhbmRhcmQgL0xlbmd0aCAyNTYgL08gPGNlYjZkYjgwYTNkNDk3NjMxYTVhNjJmZTgzNjFlMDRjM2MzOTQ2YTNkMWJhMTk0NmU2ZTNhZTBmODljOTk0YjcyZjdhNjc1ZmE5MDYzOWEzMjJjYmY4MmQ3MGEwMzUwND4gL09FIDwxMWJiNzY3NzNmMDJkZTk4N2MxMjk3ZDViYzM4ODMyYTY4NThiN2M0NzkzZDZlMDdmMjcwM2VjN2YxNTVkYzhjPiAvUCAtNCAvUGVybXMgPGJiMmNiOWJlZTI3YWFkNzQzYWMwNjI4Yzg2Mjk0MTFkPiAvUiA2IC9TdG1GIC9TdGRDRiAvU3RyRiAvU3RkQ0YgL1UgPGViZDJlODQ1MjNjYmYyNDY2ODQyNDEzMTMzMDZmOGRiZmMwMjFiZGU4ZDQzNGVhMjY3YjIxZWM1YzM3YWRiMzNlZmE2NTRhOWY1ZmVhOGQ5MmE3NzYwNmE1MGFjMzM5Zj4gL1VFIDw4MjFhNjc3OGFkYTQ4ZjhhM2EzMGZjOTdiYjI0ZGU5OWNhZjg2NTRjNDNkNzk4NTk1MDZhZWVkYTk4OTdkNTIxPiAvViA1ID4+CmVuZG9iagp4cmVmCjAgOAowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDEzMCAwMDAwMCBuIAowMDAwMDAwMjAxIDAwMDAwIG4gCjAwMDAwMDAzMDcgMDAwMDAgbiAKMDAwMDAwMDQxMyAwMDAwMCBuIAowMDAwMDAwNTE5IDAwMDAwIG4gCjAwMDAwMDA2MzcgMDAwMDAgbiAKdHJhaWxlciA8PCAvUm9vdCAxIDAgUiAvU2l6ZSA4IC9JRCBbPGU1MWZmY2JlN2ZhZTU0YjM3NmFhMTk1YTA3NjgxMDAzPjxlNTFmZmNiZTdmYWU1NGIzNzZhYTE5NWEwNzY4MTAwMz5dIC9FbmNyeXB0IDcgMCBSID4+CnN0YXJ0eHJlZgoxMTg0CiUlRU9GCg==',
+  locked:
+    'JVBERi0xLjcKJb/3ov4KMSAwIG9iago8PCAvRXh0ZW5zaW9ucyA8PCAvQURCRSA8PCAvQmFzZVZlcnNpb24gLzEuNyAvRXh0ZW5zaW9uTGV2ZWwgOCA+PiA+PiAvUGFnZXMgMiAwIFIgL1R5cGUgL0NhdGFsb2cgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL0NvdW50IDMgL0tpZHMgWyAzIDAgUiA0IDAgUiA1IDAgUiBdIC9UeXBlIC9QYWdlcyA+PgplbmRvYmoKMyAwIG9iago8PCAvQ29udGVudHMgNiAwIFIgL01lZGlhQm94IFsgMCAwIDEwMCAxMDAgXSAvUGFyZW50IDIgMCBSIC9SZXNvdXJjZXMgPDwgPj4gL1R5cGUgL1BhZ2UgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0NvbnRlbnRzIDYgMCBSIC9NZWRpYUJveCBbIDAgMCAxMDAgMTAwIF0gL1BhcmVudCAyIDAgUiAvUmVzb3VyY2VzIDw8ID4+IC9UeXBlIC9QYWdlID4+CmVuZG9iago1IDAgb2JqCjw8IC9Db250ZW50cyA2IDAgUiAvTWVkaWFCb3ggWyAwIDAgMTAwIDEwMCBdIC9QYXJlbnQgMiAwIFIgL1Jlc291cmNlcyA8PCA+PiAvVHlwZSAvUGFnZSA+PgplbmRvYmoKNiAwIG9iago8PCAvTGVuZ3RoIDQ4IC9GaWx0ZXIgL0ZsYXRlRGVjb2RlID4+CnN0cmVhbQrsyC93NxxNyUVPTTBFgqEuGxh+PFYsjRp6HN4A2d+YixXzm/bIsa/yvsEhGVVWeSplbmRzdHJlYW0KZW5kb2JqCjcgMCBvYmoKPDwgL0NGIDw8IC9TdGRDRiA8PCAvQXV0aEV2ZW50IC9Eb2NPcGVuIC9DRk0gL0FFU1YzIC9MZW5ndGggMzIgPj4gPj4gL0ZpbHRlciAvU3RhbmRhcmQgL0xlbmd0aCAyNTYgL08gPGU4ZDVkMTlkNmFkMmVhMmRmYTI4MzBlNjk1MDg4ZTBmYmEyMTI2M2RkMTc1YTc3YThhZmE2MWM1YWI5MmE1NDJjNjdlODRlOWVjMTJiYzg0NjRlNzZjZWI2MzljZmUzMj4gL09FIDw5ZDA4YjM2N2MyM2JiODhiMWJlYjgyOTZkZjVhNzQ3MzJkYzcwNGY2OTU5Mzg5NzQ2YTZhYjA3NThhZjQ0ZWQ3PiAvUCAtNCAvUGVybXMgPDFkNGJjNzhlNGQzZmExZjA3Zjg0NDA1N2E0NzdhODUyPiAvUiA2IC9TdG1GIC9TdGRDRiAvU3RyRiAvU3RkQ0YgL1UgPDY0OWE2NTUzMGU0MzFkZGVlODYzMThkY2IwMzA1MDMxNjNkNjFjYzFkNzI3MmQ2ODE0NTc0MjZmYWJmZjMxMTJlNDBlZGI3ZDFjMjQwODgwMzkwZjI3MzVjYTZhMDM2MD4gL1VFIDw1YTRkNDI0NmQwNDQ3OGRhODkwZDcxYzE4N2E3ODVjOWJjYzljYWQ5ZjlmZTEzN2VjOTE4NDdlMmI0ODdlNmFjPiAvViA1ID4+CmVuZG9iagp4cmVmCjAgOAowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDEzMCAwMDAwMCBuIAowMDAwMDAwMjAxIDAwMDAwIG4gCjAwMDAwMDAzMDcgMDAwMDAgbiAKMDAwMDAwMDQxMyAwMDAwMCBuIAowMDAwMDAwNTE5IDAwMDAwIG4gCjAwMDAwMDA2MzcgMDAwMDAgbiAKdHJhaWxlciA8PCAvUm9vdCAxIDAgUiAvU2l6ZSA4IC9JRCBbPDRjNzkyNDQ2MjY5ZDc5MzViOWExOTdjNDMyM2U5NjcwPjw0Yzc5MjQ0NjI2OWQ3OTM1YjlhMTk3YzQzMjNlOTY3MD5dIC9FbmNyeXB0IDcgMCBSID4+CnN0YXJ0eHJlZgoxMTg0CiUlRU9GCg==',
+};
+export function encryptedPdfUploadFixture(passwordRequired: boolean) {
+  return new Uint8Array(Buffer.from(encryptedPdfs[passwordRequired ? 'locked' : 'open'], 'base64'));
 }
-export async function encryptedPdfUploadFixture(password: string) {
-  const parent = path.resolve('.work');
-  const directory = await mkdtemp(path.join(parent, 'encrypted-media-fixture-'));
-  try {
-    const input = path.join(directory, 'input.pdf');
-    const output = path.join(directory, 'encrypted.pdf');
-    await writeFile(input, pdfUploadFixture(), { mode: 0o600 });
-    execFileSync(
-      mediaCheckerFixturePath(),
-      ['--encrypt', password, 'synthetic-owner-password', '256', '--', input, output],
-      { stdio: 'ignore', windowsHide: true },
-    );
-    return new Uint8Array(await readFile(output));
-  } finally {
-    if (
-      path.dirname(path.resolve(directory)) !== parent ||
-      !path.basename(directory).startsWith('encrypted-media-fixture-')
-    )
-      throw new Error('Invalid encrypted fixture cleanup target');
-    await rm(directory, { recursive: true, force: true });
-  }
-}
-export function pdfUploadFixture(
-  options: { middleInvalid?: boolean; brokenStream?: boolean } = {},
-) {
+export function pdfUploadFixture(options: { brokenStream?: boolean } = {}) {
   const stream = options.brokenStream ? 'not a deflate stream' : 'q 0 0 10 10 re f Q';
   const objects = [
     '<< /Type /Catalog /Pages 2 0 R >>',
     '<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R] /Count 3 >>',
     '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Resources << >> /Contents 6 0 R >>',
-    options.middleInvalid
-      ? 'false'
-      : '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Resources << >> /Contents 6 0 R >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Resources << >> /Contents 6 0 R >>',
     '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Resources << >> /Contents 6 0 R >>',
     `<< /Length ${stream.length}${options.brokenStream ? ' /Filter /FlateDecode' : ''} >>\nstream\n${stream}\nendstream`,
   ];

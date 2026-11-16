@@ -32,7 +32,7 @@ Os dados locais são descartáveis e podem ser recriados para desenvolvimento e 
 
 ## Verificação
 
-Se faltar o verificador de PDF, execute `pnpm setup:media-checker`. Defina `READING_E2E_FONT_FILE` com uma fonte TrueType legível, como `C:\Windows\Fonts\arial.ttf` no Windows. Para a suíte completa, deixe `VITEST_MAX_WORKERS` sem valor.
+Defina `READING_E2E_FONT_FILE` com uma fonte TrueType legível, como `C:\Windows\Fonts\arial.ttf` no Windows. Para a suíte completa, deixe `VITEST_MAX_WORKERS` sem valor.
 
 ```sh
 pnpm verify
@@ -52,14 +52,14 @@ Os relatórios do navegador ficam em `.work/playwright/report`, os traces e resu
 
 Os comprovantes ainda usados ficam em `.work/verification/evidence/index.json`: a referência de performance, a última verificação local e o recibo da limpeza. Caches, builds e relatórios podem ser recriados; remova-os com aplicação e testes parados. Preserve checkpoints pendentes até concluir o ensaio de recuperação. Permissões privadas protegem os arquivos para a identidade que os criou. Um clone novo gera seus próprios arquivos; copiar chaves privadas de outra conta não faz parte da instalação.
 
-| Caminho                         | Função e decisão                                                                                                                                                                           |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.toolchain`                    | qpdf verifica os PDFs enviados; age atende aos testes de backup. Node vem da instalação do computador. Mantém executáveis, bibliotecas necessárias, comprovantes de instalação e licenças. |
-| `.work`                         | Comprovantes atuais, Chromium e saídas temporárias. Neste checkout, ainda contém arquivos privados da operação da VPS; preserve suas chaves, cópias de staging e checkpoints pendentes.    |
-| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                                |
-| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                                      |
-| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                                        |
-| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                                             |
+| Caminho                         | Função e decisão                                                                                                                                                                        |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.toolchain`                    | age atende aos testes de backup. Node vem da instalação do computador. Mantém os executáveis, o comprovante de instalação e a licença do age.                                           |
+| `.work`                         | Comprovantes atuais, Chromium e saídas temporárias. Neste checkout, ainda contém arquivos privados da operação da VPS; preserve suas chaves, cópias de staging e checkpoints pendentes. |
+| `ops`                           | Código de deploy, migrações, backup, recuperação e medição.                                                                                                                             |
+| `scripts`                       | Gera o CSS de estados e supervisiona `dev`/`start`, protegendo o banco compartilhado.                                                                                                   |
+| `dependency-cruiser.config.cjs` | Regras de importação e dependências entre módulos, usadas pela verificação de arquitetura. Mantido.                                                                                     |
+| `compose.local.yaml`            | Sobe o único PostgreSQL local com volume persistente. Mantido.                                                                                                                          |
 
 ## Documentação
 

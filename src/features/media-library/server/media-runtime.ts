@@ -3,11 +3,10 @@ import path from 'node:path';
 import { createLocalObjectStorage, type ObjectStorage } from '@/helpers/storage/object-storage';
 import { selectNextDistDir } from '@/config/next-dist-value';
 const key = Symbol.for('adfl.media-library.runtime');
-type Runtime = { storage: ObjectStorage; checkerBinary: string };
+type Runtime = { storage: ObjectStorage };
 const state = globalThis as typeof globalThis & { [key]?: Runtime };
-type Options = { checkerBinary: string } & (
-  { root: string; storage?: ObjectStorage } | { storage: ObjectStorage; root?: string }
-);
+type Options =
+  { root: string; storage?: ObjectStorage } | { storage: ObjectStorage; root?: string };
 export function installMediaRuntime(options: Options) {
   if (options.root !== undefined) {
     const selected = path.resolve(options.root);
@@ -31,7 +30,7 @@ export function installMediaRuntime(options: Options) {
     if (options.root === undefined) throw new Error('Media storage capability is required');
     storage = createLocalObjectStorage(options.root);
   }
-  state[key] = { storage, checkerBinary: options.checkerBinary };
+  state[key] = { storage };
 }
 export function mediaRuntime() {
   const runtime = state[key];

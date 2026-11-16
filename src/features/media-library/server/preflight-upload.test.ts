@@ -9,7 +9,7 @@ const png = () =>
     .toBuffer();
 const input = (bytes: Uint8Array, declaredType = 'image/png') => ({
   bytes,
-  name: 'synthetic.png',
+  name: declaredType === 'application/pdf' ? 'synthetic.pdf' : 'synthetic.png',
   declaredType,
 });
 function padded(bytes: Uint8Array, length: number) {
@@ -24,26 +24,53 @@ describe('upload byte screening (not integrity validation)', () => {
       preflightUpload(input(new TextEncoder().encode('<svg xmlns="http://www.w3.org/2000/svg"/>'))),
     ).toMatchObject({ ok: false, error: { code: 'invalid-input' } });
   });
-  it('rejects a fabricated PDF and empty input', () => {
-    for (const bytes of [new Uint8Array(), new TextEncoder().encode('pretend pdf')])
-      expect(preflightUpload(input(bytes, 'application/pdf'))).toMatchObject({
-        ok: false,
-        error: { code: 'invalid-input' },
-      });
+  it('rejects empty input with a clear message', () => {
+    expect(preflightUpload(input(new Uint8Array(), 'application/pdf'))).toMatchObject({
+      ok: false,
+      error: { code: 'invalid-input', message: expect.stringMatching(/vazio/i) },
+    });
+  });
+  it.each([
+    { name: 'resume.txt', declaredType: 'application/pdf', bytes: pdfUploadFixture() },
+    { name: 'resume.pdf', declaredType: 'application/octet-stream', bytes: pdfUploadFixture() },
+    {
+      name: 'resume.pdf',
+      declaredType: 'application/pdf',
+      bytes: new TextEncoder().encode('pretend pdf'),
+    },
+    {
+      name: 'resume.pdf',
+      declaredType: 'application/pdf',
+      bytes: Uint8Array.from([37, 208, 68, 70, 45, 49, 46, 55]),
+    },
+  ])('rejects inconsistent PDF filename, MIME or signature: $name / $declaredType', (file) => {
+    expect(preflightUpload(file)).toMatchObject({
+      ok: false,
+      error: { code: 'invalid-input', message: expect.stringMatching(/PDF/i) },
+    });
+  });
+  it('accepts PDF extension and MIME casing without changing its bytes', () => {
+    const bytes = pdfUploadFixture();
+    expect(
+      preflightUpload({ bytes, name: 'resume.PDF', declaredType: 'Application/PDF' }),
+    ).toMatchObject({
+      ok: true,
+      value: { type: 'application/pdf', byteLength: bytes.byteLength },
+    });
   });
   it.each([
     ['jpeg', 'image/jpeg'],
     ['png', 'image/png'],
     ['webp', 'image/webp'],
     ['avif', 'image/avif'],
-  ] as const)('uses the real %s signature despite an incorrect name/type', async (format, type) => {
+  ] as const)('uses the real %s signature despite a generic name/type', async (format, type) => {
     const bytes = await sharp({
       create: { width: 2, height: 3, channels: 3, background: '#336699' },
     })
       .toFormat(format)
       .toBuffer();
     expect(
-      preflightUpload({ bytes, name: 'incorrect.pdf', declaredType: 'application/pdf' }),
+      preflightUpload({ bytes, name: 'incorrect.bin', declaredType: 'application/octet-stream' }),
     ).toMatchObject({ ok: true, value: { type, byteLength: bytes.byteLength } });
   });
   it('allows image screening at 10000000 bytes', async () => {

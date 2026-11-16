@@ -105,7 +105,7 @@ export const guardMediaOperation: CollectionBeforeOperationHook = async ({
       const runtime = mediaRuntime();
       const validated = await validateUpload(
         { bytes: req.file!.data, name: req.file!.name, declaredType: req.file!.mimetype },
-        { checkerBinary: runtime.checkerBinary, signal: req.signal },
+        req.signal,
       );
       if (!validated.ok)
         throw new APIError(

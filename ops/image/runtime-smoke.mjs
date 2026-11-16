@@ -1,9 +1,8 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { access, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import { tmpdir, userInfo } from 'node:os';
-import path from 'node:path';
+import { userInfo } from 'node:os';
 import { pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 
@@ -27,13 +26,8 @@ await access('/app/src/backup-runtime.mjs');
 const buildIdentity = JSON.parse(await readFile('/app/ops/image/build-identity.json', 'utf8'));
 assert.deepEqual(Object.keys(buildIdentity), ['revision']);
 assert.match(buildIdentity.revision, /^(?:[a-f0-9]{40}|draft-[a-z0-9][a-z0-9.-]{0,100})$/);
-const checker = process.env.MEDIA_CHECKER_BINARY ?? '/opt/qpdf/bin/qpdf';
-assert.match(execFileSync(checker, ['--version'], { encoding: 'utf8' }), /^qpdf version 12\.4\.2/);
 const require = createRequire(import.meta.url);
 const pdfPackage = require.resolve('pdfjs-dist/package.json');
-const resources = path.dirname(pdfPackage);
-for (const directory of ['cmaps', 'standard_fonts', 'wasm'])
-  await access(path.join(resources, directory));
 const pdfRequire = createRequire(pdfPackage);
 const { createCanvas } = pdfRequire('@napi-rs/canvas');
 const canvas = createCanvas(32, 24);
@@ -60,35 +54,21 @@ pdf += offsets
   .map((offset) => String(offset).padStart(10, '0') + ' 00000 n \n')
   .join('');
 pdf += `trailer\n<< /Size 5 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
-const directory = await mkdtemp(path.join(tmpdir(), 'adfl-image-smoke-'));
+const { getDocument } = await import(
+  pathToFileURL(require.resolve('pdfjs-dist/legacy/build/pdf.mjs')).href
+);
+const task = getDocument({
+  data: new Uint8Array(Buffer.from(pdf)),
+  enableXfa: false,
+  disableFontFace: true,
+  useSystemFonts: false,
+});
 try {
-  const input = path.join(directory, 'synthetic.pdf');
-  await writeFile(input, pdf);
-  execFileSync(checker, ['--check', input], { stdio: 'pipe' });
-  const { getDocument } = await import(
-    pathToFileURL(require.resolve('pdfjs-dist/legacy/build/pdf.mjs')).href
-  );
-  const task = getDocument({
-    data: new Uint8Array(Buffer.from(pdf)),
-    cMapUrl: resources + '/cmaps/',
-    standardFontDataUrl: resources + '/standard_fonts/',
-    wasmUrl: resources + '/wasm/',
-    useSystemFonts: false,
-  });
   const document = await task.promise;
-  try {
-    const page = await document.getPage(1);
-    await page.render({
-      canvasContext: canvas.getContext('2d'),
-      viewport: page.getViewport({ scale: 1 }),
-    }).promise;
-    assert.equal(document.numPages, 1);
-  } finally {
-    await task.destroy();
-  }
+  assert.equal(document.numPages, 1);
 } finally {
-  await rm(directory, { recursive: true, force: true });
+  await task.destroy();
 }
 console.log(
-  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 26.13.1, PostgreSQL 17.11, QPDF 12.4.2, sharp, native canvas, PDF.js resources, age 1.3.2, GNU tar 1.35 and backup entrypoint.',
+  'Verified Alpine 3.24, linux/amd64, UID/GID 70, Node 26.13.1, PostgreSQL 17.11, sharp, native canvas, PDF.js document loading, age 1.3.2, GNU tar 1.35 and backup entrypoint.',
 );

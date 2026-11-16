@@ -79,8 +79,8 @@ installPublicationProvider(() =>
       : undefined,
   ),
 );
-installMediaRuntime({
-  ...(r2Storage
+installMediaRuntime(
+  r2Storage
     ? { storage: r2Storage }
     : {
         root:
@@ -90,13 +90,8 @@ installMediaRuntime({
             env.MEDIA_BUCKET,
             new URL(env.DATABASE_URI).pathname.slice(1),
           ),
-      }),
-  checkerBinary:
-    env.MEDIA_CHECKER_BINARY ??
-    path.resolve(
-      ` .toolchain/qpdf-12.4.2-${process.platform}-${process.arch}/bin/${process.platform === 'win32' ? 'qpdf.exe' : 'qpdf'}`.trim(),
-    ),
-});
+      },
+);
 
 const config = buildConfig({
   secret: env.PAYLOAD_SECRET,

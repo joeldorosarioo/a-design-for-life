@@ -175,42 +175,54 @@ test('approved public original and derivative revoke immediately after withdrawa
   }
 });
 
-test('native media UI creates an immutable asset and shows its private thumbnail after reload', async ({
-  page,
-}) => {
-  await login(page.request);
-  await page.goto('/admin/collections/media/create');
-  await expect(page.getByRole('button', { name: 'Select a file', exact: true })).toBeVisible();
-  const bytes = await sharp({
-    create: { width: 80, height: 60, channels: 3, background: '#28506a' },
-  })
-    .png()
-    .toBuffer();
-  await page
-    .locator('input[type=file]')
-    .setInputFiles({ name: 'synthetic-ui.png', mimeType: 'image/png', buffer: bytes });
-  await page.getByLabel('Nome na biblioteca', { exact: true }).fill('Synthetic native media UI');
-  const created = page.waitForResponse(
-    (response) =>
-      new URL(response.url()).pathname === '/api/media' && response.request().method() === 'POST',
-  );
-  await page.getByRole('button', { name: 'Save', exact: true }).click();
-  const response = await created;
-  expect(response.status()).toBe(201);
-  const doc = (await response.json()).doc as Media;
-  expect(doc.label).toBe('Synthetic native media UI');
-  await expect(page).toHaveURL(new RegExp('/admin/collections/media/' + doc.id + '(?:[?].*)?$'));
-  await page.reload();
-  await expect(page.getByLabel('Nome na biblioteca', { exact: true })).toHaveValue(
-    'Synthetic native media UI',
-  );
-  const thumbnail = await page.request.get(`/preview-media/${doc.id}/w80`);
-  expect(thumbnail.status()).toBe(200);
-  await page.screenshot({
-    path: test.info().outputPath('native-media-ui.png'),
-    fullPage: true,
+for (const format of ['png', 'pdf'] as const)
+  test(`native media UI saves ${format} and exposes its saved file after reload`, async ({
+    page,
+  }) => {
+    await login(page.request);
+    await page.goto('/admin/collections/media/create');
+    await expect(page.getByRole('button', { name: 'Select a file', exact: true })).toBeVisible();
+    const bytes =
+      format === 'pdf'
+        ? Buffer.from(pdfUploadFixture())
+        : await sharp({
+            create: { width: 80, height: 60, channels: 3, background: '#28506a' },
+          })
+            .png()
+            .toBuffer();
+    await page.locator('input[type=file]').setInputFiles({
+      name: `synthetic-ui.${format}`,
+      mimeType: format === 'pdf' ? 'application/pdf' : 'image/png',
+      buffer: bytes,
+    });
+    await page.getByLabel('Nome na biblioteca', { exact: true }).fill('Synthetic native media UI');
+    const created = page.waitForResponse(
+      (response) =>
+        new URL(response.url()).pathname === '/api/media' && response.request().method() === 'POST',
+    );
+    await page.getByRole('button', { name: 'Save', exact: true }).click();
+    const response = await created;
+    expect(response.status()).toBe(201);
+    const doc = (await response.json()).doc as Media;
+    expect(doc.label).toBe('Synthetic native media UI');
+    await expect(page).toHaveURL(new RegExp('/admin/collections/media/' + doc.id + '(?:[?].*)?$'));
+    await page.reload();
+    await expect(page.getByLabel('Nome na biblioteca', { exact: true })).toHaveValue(
+      'Synthetic native media UI',
+    );
+    expect(doc.url).toBe(`/preview-media/${doc.id}/original`);
+    const saved = await page.request.get(doc.url!);
+    expect(saved.status()).toBe(200);
+    expect(await saved.body()).toEqual(bytes);
+    if (format === 'png') {
+      const thumbnail = await page.request.get(`/preview-media/${doc.id}/w80`);
+      expect(thumbnail.status()).toBe(200);
+    } else expect(doc.thumbnailURL).toBeNull();
+    await page.screenshot({
+      path: test.info().outputPath('native-media-ui.png'),
+      fullPage: true,
+    });
   });
-});
 
 test('real storage loss stays503 while SQL loss preserves confirmed public bytes and returns503 for private or uncached paths', async ({
   request,
@@ -399,6 +411,26 @@ test('native HTTP applies approved animation/password policy and rejects disguis
   const pdfTooLarge = Buffer.alloc(5_000_001, 32);
   Buffer.from(pdfUploadFixture()).copy(pdfTooLarge);
   const rejected = [
+    { name: 'empty.pdf', type: 'application/pdf', bytes: Buffer.alloc(0), statuses: [400] },
+    {
+      name: 'missing-header.pdf',
+      type: 'application/pdf',
+      bytes: Buffer.from('pretend pdf'),
+      statuses: [400],
+    },
+    {
+      name: 'wrong-extension.txt',
+      type: 'application/pdf',
+      bytes: Buffer.from(pdfUploadFixture()),
+      statuses: [400],
+    },
+    {
+      name: 'wrong-mime.pdf',
+      type: 'image/png',
+      bytes: Buffer.from(pdfUploadFixture()),
+      statuses: [400],
+    },
+    { name: 'disguised-image.pdf', type: 'application/pdf', bytes: image, statuses: [400] },
     {
       name: 'disguised-svg.png',
       type: 'image/png',
@@ -438,7 +470,7 @@ test('native HTTP applies approved animation/password policy and rejects disguis
     {
       name: 'opening-password.pdf',
       type: 'application/pdf',
-      bytes: Buffer.from(await encryptedPdfUploadFixture('synthetic-opening-password')),
+      bytes: Buffer.from(encryptedPdfUploadFixture(true)),
       statuses: [400],
     },
     { name: 'too-large.png', type: 'image/png', bytes: imageTooLarge, statuses: [400, 413] },
@@ -462,7 +494,7 @@ test('native HTTP applies approved animation/password policy and rejects disguis
       })
     ).totalDocs,
   ).toBe(before.totalDocs);
-  const encrypted = Buffer.from(await encryptedPdfUploadFixture(''));
+  const encrypted = Buffer.from(encryptedPdfUploadFixture(false));
   const accepted = await request.post('/api/media', {
     multipart: {
       _payload: '{}',

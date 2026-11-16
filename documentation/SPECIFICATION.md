@@ -147,7 +147,7 @@ Uma reserva que já foi pública continua protegida quando o conteúdo volta a r
 
 O servidor valida os bytes e o tipo real do arquivo. A aplicação processa as imagens e gera derivados com proporções e dimensões que reservam espaço no layout. Aceita WebP animado e rejeita PNG e AVIF animados. Imagens fora da área inicial carregam sob demanda. Arquivos e derivados usam o armazenamento do ambiente, com R2 nos alvos remotos.
 
-A validação de PDFs tem prazo de 30 segundos. Se a análise não terminar, o envio retorna indisponibilidade e nenhum arquivo é salvo.
+A validação de PDFs rejeita arquivos vazios e respeita o limite de tamanho acima. Confere extensão `.pdf`, MIME `application/pdf` e assinatura `%PDF-`, e usa PDF.js apenas para carregar o documento. A checagem ocorre durante a requisição; o arquivo é salvo antes de disponibilizar seu link.
 
 Imagens informativas exigem texto alternativo no idioma e contexto de uso. Imagens decorativas têm classificação explícita e alternativa vazia. Legendas são opcionais. A mesma mídia pode ter descrições diferentes em PT e EN.
 

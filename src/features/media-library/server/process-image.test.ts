@@ -1,6 +1,5 @@
 import sharp from 'sharp';
 import { expect, it } from 'vitest';
-import { mediaCheckerFixturePath } from '../../../../testing/fixtures/media-uploads';
 import { animatedWebpUploadFixture } from '../../../../testing/fixtures/media-animation';
 import type { ProcessedVariant } from '../contracts/validated-upload.schema';
 import { validateUpload } from './validate-upload';
@@ -9,10 +8,7 @@ async function image(width: number, height: number, orientation?: number) {
   let source = sharp({ create: { width, height, channels: 3, background: '#28506a' } }).jpeg();
   if (orientation) source = source.withMetadata({ orientation });
   const bytes = await source.toBuffer();
-  const valid = await validateUpload(
-    { bytes, name: 'synthetic.jpg', declaredType: 'image/jpeg' },
-    { checkerBinary: mediaCheckerFixturePath() },
-  );
+  const valid = await validateUpload({ bytes, name: 'synthetic.jpg', declaredType: 'image/jpeg' });
   if (!valid.ok || valid.value.kind !== 'image')
     throw new Error('Genuine image control must validate');
   return valid.value;
@@ -41,10 +37,11 @@ it('does not upscale or generate repeated copies for a small oriented source', a
 
 async function animatedImage(options: Parameters<typeof animatedWebpUploadFixture>[0] = {}) {
   const bytes = await animatedWebpUploadFixture(options);
-  const result = await validateUpload(
-    { bytes, name: 'synthetic.webp', declaredType: 'image/webp' },
-    { checkerBinary: mediaCheckerFixturePath() },
-  );
+  const result = await validateUpload({
+    bytes,
+    name: 'synthetic.webp',
+    declaredType: 'image/webp',
+  });
   if (!result.ok || result.value.kind !== 'image') throw new Error('Genuine WebP must validate');
   return result.value;
 }

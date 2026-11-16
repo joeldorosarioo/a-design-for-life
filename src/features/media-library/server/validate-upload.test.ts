@@ -1,7 +1,6 @@
 import sharp from 'sharp';
 import { expect, it } from 'vitest';
 import {
-  mediaCheckerFixturePath,
   pdfUploadFixture,
   encryptedPdfUploadFixture,
 } from '../../../../testing/fixtures/media-uploads';
@@ -11,8 +10,12 @@ import {
   apngUploadFixture,
 } from '../../../../testing/fixtures/media-animation';
 import { validateUpload } from './validate-upload';
-const options = { checkerBinary: mediaCheckerFixturePath() };
 const file = (bytes: Uint8Array) => ({ bytes, name: 'synthetic.png', declaredType: 'image/png' });
+const pdfFile = (bytes: Uint8Array) => ({
+  bytes,
+  name: 'synthetic.pdf',
+  declaredType: 'application/pdf',
+});
 it.each(['jpeg', 'png', 'webp', 'avif'] as const)(
   'fully decodes genuine static %s and uses its actual type',
   async (format) => {
@@ -21,7 +24,7 @@ it.each(['jpeg', 'png', 'webp', 'avif'] as const)(
     })
       .toFormat(format)
       .toBuffer();
-    const result = await validateUpload(file(bytes), options);
+    const result = await validateUpload(file(bytes));
     expect(result).toMatchObject({
       ok: true,
       value: {
@@ -41,7 +44,7 @@ it('accounts for EXIF orientation before deriving consumption dimensions', async
     .jpeg()
     .withMetadata({ orientation: 6 })
     .toBuffer();
-  expect(await validateUpload(file(bytes), options)).toMatchObject({
+  expect(await validateUpload(file(bytes))).toMatchObject({
     ok: true,
     value: { width: 60, height: 80 },
   });
@@ -54,31 +57,30 @@ it('rejects damaged pixels even when metadata can read image dimensions', async 
     .toBuffer();
   const bytes = original.subarray(0, original.length - 20);
   expect(await sharp(bytes).metadata()).toMatchObject({ width: 80, height: 60 });
-  expect(await validateUpload(file(bytes), options)).toMatchObject({
+  expect(await validateUpload(file(bytes))).toMatchObject({
     ok: false,
     error: { code: 'invalid-input' },
   });
 });
-it('accepts actual PDF bytes and rejects fabricated and corrupt-stream PDFs', async () => {
-  expect(await validateUpload(file(pdfUploadFixture()), options)).toMatchObject({
+it('accepts loadable PDF documents and rejects fabricated documents', async () => {
+  expect(await validateUpload(pdfFile(pdfUploadFixture()))).toMatchObject({
     ok: true,
     value: { kind: 'pdf', type: 'application/pdf', pages: 3 },
   });
-  expect(
-    await validateUpload(file(pdfUploadFixture({ brokenStream: true })), options),
-  ).toMatchObject({ ok: false, error: { code: 'invalid-input' } });
-  expect(
-    await validateUpload(file(new TextEncoder().encode('%PDF-1.7\nxref\n%%EOF')), options),
-  ).toMatchObject({ ok: false, error: { code: 'invalid-input' } });
-});
-it('rejects a PDF requiring an opening password and accepts permission-only encryption', async () => {
-  expect(await validateUpload(file(await encryptedPdfUploadFixture('')), options)).toMatchObject({
+  expect(await validateUpload(pdfFile(pdfUploadFixture({ brokenStream: true })))).toMatchObject({
     ok: true,
     value: { kind: 'pdf', pages: 3 },
   });
   expect(
-    await validateUpload(file(await encryptedPdfUploadFixture('synthetic')), options),
-  ).toMatchObject({
+    await validateUpload(pdfFile(new TextEncoder().encode('%PDF-1.7\nxref\n%%EOF'))),
+  ).toMatchObject({ ok: false, error: { code: 'invalid-input' } });
+});
+it('rejects a PDF requiring an opening password and accepts permission-only encryption', async () => {
+  expect(await validateUpload(pdfFile(encryptedPdfUploadFixture(false)))).toMatchObject({
+    ok: true,
+    value: { kind: 'pdf', pages: 3 },
+  });
+  expect(await validateUpload(pdfFile(encryptedPdfUploadFixture(true)))).toMatchObject({
     ok: false,
     error: { code: 'invalid-input', message: expect.stringMatching(/senha/i) },
   });
@@ -86,7 +88,7 @@ it('rejects a PDF requiring an opening password and accepts permission-only encr
 
 it('accepts every genuine animated WebP frame with per-frame dimensions and unchanged original bytes', async () => {
   const bytes = await animatedWebpUploadFixture();
-  const result = await validateUpload(file(bytes), options);
+  const result = await validateUpload(file(bytes));
   expect(result).toMatchObject({
     ok: true,
     value: {
@@ -103,7 +105,7 @@ it('accepts every genuine animated WebP frame with per-frame dimensions and unch
 
 it('uses the oriented dimensions of one animated frame instead of the stacked strip', async () => {
   const bytes = await animatedWebpUploadFixture({ orientation: 6 });
-  expect(await validateUpload(file(bytes), options)).toMatchObject({
+  expect(await validateUpload(file(bytes))).toMatchObject({
     ok: true,
     value: { width: 285, height: 370, animation: { pages: 3 } },
   });
@@ -118,7 +120,7 @@ it.each([false, true])(
     expect(await sharp(bytes).metadata()).toMatchObject(
       hiddenDefault ? { width: 4, height: 4 } : { width: 85, height: 77 },
     );
-    expect(await validateUpload(file(bytes), options)).toMatchObject({
+    expect(await validateUpload(file(bytes))).toMatchObject({
       ok: false,
       error: { code: 'invalid-input', message: expect.stringMatching(/APNG/i) },
     });
@@ -126,7 +128,7 @@ it.each([false, true])(
 );
 
 it('rejects the genuine animated AVIF sequence explicitly', async () => {
-  expect(await validateUpload(file(await animatedAvifUploadFixture()), options)).toMatchObject({
+  expect(await validateUpload(file(await animatedAvifUploadFixture()))).toMatchObject({
     ok: false,
     error: { code: 'invalid-input', message: expect.stringMatching(/AVIF.*animad/i) },
   });
@@ -144,7 +146,7 @@ it('rejects corruption in a later WebP frame even when metadata and the first fr
   bytes.fill(255, lastFrame + 8 + 16 + 8 + 5, frameEnd);
   expect(await sharp(bytes, { animated: true }).metadata()).toMatchObject({ pages: 3 });
   await expect(sharp(bytes).stats()).resolves.toMatchObject({ isOpaque: true });
-  expect(await validateUpload(file(bytes), options)).toMatchObject({
+  expect(await validateUpload(file(bytes))).toMatchObject({
     ok: false,
     error: { code: 'invalid-input' },
   });
