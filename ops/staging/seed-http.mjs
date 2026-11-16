@@ -70,6 +70,18 @@ function structuralKey(collection, locale) {
   return `${collection}:${locale}`;
 }
 
+export function stagingSeedPaths(source) {
+  const planFile = source.STAGING_SEED_PLAN;
+  const assetsRoot = source.STAGING_SEED_ASSETS_ROOT;
+  requireSeed(
+    [planFile, assetsRoot].every(
+      (value) => typeof value === 'string' && value.trim().length > 0 && !/[\r\n\0]/.test(value),
+    ),
+    'seed-source-paths-required',
+  );
+  return { planFile, assetsRoot };
+}
+
 export function stagingSeedSettings(runtime, editorSource, receipt, expectedDatabase) {
   requireSeed(
     runtime.APP_ENV === 'staging' && runtime.NODE_ENV === 'production',

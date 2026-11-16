@@ -5,8 +5,7 @@ const env = {
   APP_ENV: 'local' as const,
   PUBLIC_SITE_ENABLED: 'false' as const,
   SITE_ORIGIN: 'http://127.0.0.1:3087',
-  DATABASE_URI:
-    'postgres://joeldorosarioo_local:synthetic@host.docker.internal:55435/a_design_for_life_restore_0123456789abcdef0123456789abcdef',
+  DATABASE_URI: 'postgres://adfl_local:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
 };
 const object = { key: 'a'.repeat(64), sha256: 'b'.repeat(64), byteLength: 1 };
 function fixture(): ObjectStorage & { checkBucket: () => Promise<void> } {
@@ -23,6 +22,18 @@ it('preserves normal media storage when the optional proof flag is absent or fal
   const storage = fixture();
   expect(restoreReadOnlyMedia(storage, { ...env, APP_ENV: 'staging' }, undefined)).toBe(storage);
   expect(restoreReadOnlyMedia(storage, env, 'false')).toBe(storage);
+});
+it.each([
+  'postgres://adfl_local:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
+  'postgres://restore_worker:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
+  'postgres://joeldorosarioo_local:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
+  'postgresql://restore_worker:synthetic@host.docker.internal:5432/a_design_for_life_rebuild',
+])('accepts the configured role for the fixed local database %s', (databaseUri) => {
+  const storage = fixture();
+  const proof = restoreReadOnlyMedia(storage, { ...env, DATABASE_URI: databaseUri }, 'true')!;
+  expect(proof.get).toBe(storage.get);
+  expect(proof.put).not.toBe(storage.put);
+  expect(proof.delete).not.toBe(storage.delete);
 });
 it('blocks put and delete before invoking either SDK-facing operation', async () => {
   const storage = fixture();
@@ -45,10 +56,19 @@ describe.each([
   { PUBLIC_SITE_ENABLED: undefined },
   { SITE_ORIGIN: 'https://example.test' },
   { SITE_ORIGIN: 'http://localhost:3087' },
-  { DATABASE_URI: env.DATABASE_URI.replace('restore_0123456789abcdef0123456789abcdef', 'rebuild') },
-  { DATABASE_URI: env.DATABASE_URI.replace('host.docker.internal', 'remote.test') },
-  { DATABASE_URI: env.DATABASE_URI.replace('55435', '5432') },
+  { DATABASE_URI: env.DATABASE_URI.replace('rebuild', 'production') },
+  { DATABASE_URI: env.DATABASE_URI.replace('rebuild', 'staging') },
+  { DATABASE_URI: env.DATABASE_URI.replace('127.0.0.1', 'remote.test') },
+  { DATABASE_URI: env.DATABASE_URI.replace('127.0.0.1', 'host.docker.internal.attacker.test') },
+  { DATABASE_URI: env.DATABASE_URI.replace('5432', '55435') },
+  { DATABASE_URI: env.DATABASE_URI.replace(':synthetic@', '@') },
+  {
+    DATABASE_URI:
+      'postgres://joeldorosarioo_local:synthetic@host.docker.internal:55435/a_design_for_life_restore_0123456789abcdef0123456789abcdef',
+  },
+  { DATABASE_URI: 'not-a-database-url' },
   { DATABASE_URI: env.DATABASE_URI + '?application_name=unexpected' },
+  { DATABASE_URI: env.DATABASE_URI + '#unexpected' },
 ])('refuses an ambiguous or deployed restore environment %j', (invalid) => {
   it('rejects before allowing the wrapper', () => {
     expect(() => restoreReadOnlyMedia(fixture(), { ...env, ...invalid }, 'true')).toThrow(
