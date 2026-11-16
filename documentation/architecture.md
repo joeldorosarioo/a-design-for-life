@@ -1,43 +1,46 @@
 # Arquitetura
 
-Next.js e Payload rodam na mesma aplicação. O Payload concentra o acesso editorial ao PostgreSQL. As mídias ficam em armazenamento local no desenvolvimento ou no R2; as gerações públicas confirmadas usam armazenamento privado persistente.
+Next.js e Payload rodam na mesma aplicação. O Payload concentra a edição e o acesso ao PostgreSQL. A [especificação](specification.md) define os contratos e o [guia operacional](operations.md) explica como executar os fluxos.
 
-## Organização
+## Módulos
 
-Há três bancos de aplicação fixos: produção, staging e local. O Compose local mantém apenas PostgreSQL, com o volume externo existente; Next.js roda no host. Desenvolvimento e testes compartilham o banco local em `127.0.0.1:5432/a_design_for_life_rebuild` e usam execução exclusiva. Integração e E2E limpam os dados e aplicam as migrações no mesmo banco, sem criar bancos por rodada. Mídia, e-mail e publicação dos testes ficam em namespaces privados de `.work`, separados dos recursos remotos.
+- `src/app` compõe as rotas e as features de cases, perfil, navegação, idioma, mídia e Analytics.
+- `src/config` prepara o contexto das requisições e conecta as features.
+- `src/helpers` fornece infraestrutura compartilhada. `src/components/ui` reúne as primitivas visuais.
+- As features expõem contratos, UI e operações de servidor pelas entradas públicas que precisam. As regras de arquitetura impedem ciclos e acesso ao banco ou armazenamento pelo navegador.
 
-O CI hospedado verifica tipos, lint, formato, unidades, arquitetura, scripts e build sem banco. Integração, E2E e provas de recuperação são executados no banco local antes do aceite da candidata; o resultado do CI sozinho não comprova essas jornadas.
+Zod valida as fronteiras. Os tipos gerados do Payload representam o conteúdo persistido.
 
-As rotas em `src/app` compõem as features de cases, perfil profissional, navegação, idioma, mídia e Analytics. Cada feature expõe contratos em `index.ts`, apresentação em `ui.ts` e operações de servidor em `server.ts`, conforme sua necessidade. Importações entre features passam por essas entradas.
+## Ambientes e identidade
 
-`src/config` compõe as features e prepara o contexto das requisições. `src/helpers` fornece infraestrutura compartilhada; `src/components/ui` reúne as primitivas visuais. As regras de arquitetura impedem ciclos e acesso ao Payload, banco ou armazenamento a partir do navegador. Os contratos usam Zod nas fronteiras e os modelos persistidos usam os tipos gerados do Payload.
+Há três bancos de aplicação fixos, um de produção, um de staging e um local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, com o usuário e a senha configurados no `.env`.
 
-## Conteúdo e edição
+No ambiente local, Next.js roda no host e o Compose mantém somente PostgreSQL no volume externo. Desenvolvimento e testes disputam uma reserva exclusiva. Os testes limpam dados entre rodadas e usam checkpoint nos ensaios de recuperação, sem criar bancos descartáveis.
 
-`cases` guarda identidade, ordem e destaque compartilhados do projeto. `case-content` guarda uma tradução por projeto e idioma. Navegação e perfil profissional têm publicação independente em português e inglês. O CMS oferece estruturas e variantes fechadas, sem edição livre de estilos.
+No contêiner, a aplicação usa `appuser`, UID/GID `70:70`. As ferramentas de backup usam UID `10001`. Os arquivos locais privados pertencem à identidade que os cria. Esses papéis não exigem um login Windows específico.
 
-Salvar, publicar, retirar e restaurar usam operações nativas do Payload, protegidas por revisão e bloqueio temporário de edição. O PostgreSQL garante a unicidade das identidades e rotas. Revisão desatualizada e disputa de slug geram conflito explícito; restaurar uma versão cria um rascunho. Navegação e perfis já publicados são protegidos contra retirada.
+Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. O CI verifica tipos, lint, formato, unidades, arquitetura, scripts e build sem banco. Integração, E2E e recuperação usam o banco local antes do aceite da candidata.
 
-A prévia exige autenticação e lê rascunhos e mídias privadas sem cache compartilhado. O painel usa a autenticação e a recuperação de senha do Payload. Veja os [contratos do CMS](specification.md#modelo-editorial) e o [guia de operação](operations.md).
+## Edição e publicação
 
-## Publicação e leitura
+`cases` mantém a identidade, ordem e destaque do projeto. `case-content` guarda as traduções com publicação independente. Navegação e Perfil também publicam por idioma. Revisão e bloqueio de edição protegem as operações nativas do Payload, incluindo a API. Recuperar uma versão cria um rascunho.
 
-A gravação editorial registra a intenção de publicação na mesma transação. Depois do commit, um coordenador serializado confirma a geração pública completa e reconcilia o recibo. A requisição captura `current.json` uma vez: conteúdo, metadados, histórico de rotas e mídias usam a mesma geração. Snapshots privados preservam essa referência entre as partes da renderização.
+A gravação editorial registra a intenção de publicação na mesma transação. Após o commit, um coordenador serializado confirma uma geração pública completa e reconcilia o recibo.
 
-Enquanto a atualização está pendente, o visitante continua vendo a última geração confirmada disponível. Se a raiz avançar antes da confirmação no banco, a repetição reconcilia a mesma intenção. Uma tentativa antiga não substitui uma geração mais nova. O armazenamento de publicação precisa persistir entre reinícios e fazer parte do backup.
+Cada requisição captura `current.json` uma vez. Conteúdo, metadados, rotas e autorização de mídias leem a mesma geração. Snapshots privados mantêm essa referência durante a renderização. Enquanto uma atualização está pendente, a geração anterior continua disponível.
 
-Cada reserva de rota pertence a um projeto e idioma. Gravações explícitas reservam slugs; endereços públicos antigos redirecionam em um salto para o slug atual. Uma rota retirada responde `410`; uma rota desconhecida ou somente privada responde `404`. A indisponibilidade de uma dependência necessária pode produzir `503`.
+Uma repetição reconcilia a intenção sem substituir uma publicação mais nova. O armazenamento das gerações precisa persistir entre reinícios e fazer parte do backup. A prévia autenticada lê rascunhos e mídias privadas fora do cache público.
 
-## Mídia e privacidade
+## Leitura e mídia
 
-O servidor valida os bytes do upload, aplica os limites da [especificação](specification.md) e gera versões responsivas. O processamento acontece na aplicação.
+As reservas de rota pertencem a um case e idioma. O histórico aponta diretamente para o slug atual. Os contratos de redirecionamento, retirada e indisponibilidade estão na [especificação](specification.md#slugs-e-histórico-de-endereços).
 
-Originais e derivados só são públicos quando há referência em uma geração confirmada. A retirada da última referência pública revoga o acesso. Credenciais do R2, diretórios de armazenamento e snapshots de publicação ficam fora dos caminhos públicos; logs ocultam dados sensíveis.
+O servidor valida os bytes dos uploads e gera os derivados na aplicação. O desenvolvimento pode usar armazenamento local e os alvos remotos usam R2. Originais, derivados e otimizador consultam a mesma autorização. Retirar a última referência pública revoga o acesso.
 
-## Interface, idioma e configuração
+A última geração confirmada pode atender durante uma falha temporária da origem. Sem conteúdo confirmado suficiente, a resposta indica indisponibilidade. Falhas não viram listas vazias nem conteúdo inexistente.
 
-O Figma define layout, tokens e ativos; Tailwind, CVA, shadcn e Motion implementam a interface. Cada idioma tem conteúdo e URLs canônicas próprios. Na raiz, a escolha manual prevalece sobre a preferência do navegador; o fallback é inglês. URLs com idioma explícito prevalecem sobre essa negociação. A preferência manual usa um cookie funcional de 180 dias, sem renovação nas visitas.
+## Configuração
 
-A troca de idioma preserva trecho e posição quando há seção equivalente. Sem tradução do case, leva à listagem de destino no topo e informa o visitante com um aviso acessível. A [especificação](specification.md) reúne os contratos e a referência do Figma.
+A configuração é lida no servidor. O navegador recebe apenas os campos públicos permitidos. A mesma imagem recebe a configuração de cada ambiente na execução.
 
-A configuração é lida no servidor; o navegador recebe apenas os campos públicos permitidos. Analytics fica restrito a respostas públicas válidas de produção, sem medir prévias, navegação editorial ou testes. A política mantém `analytics_storage: denied`, sem cookies analíticos ou identificadores persistentes alternativos.
+A escolha de idioma, a preservação da leitura e o fallback seguem a especificação. O Figma orienta a interface e os tokens ficam no código. Analytics mede somente respostas públicas válidas de produção quando ativado, sob a política de privacidade aprovada.
