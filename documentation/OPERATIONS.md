@@ -1,6 +1,6 @@
 # Operação
 
-Confira as [condições de lançamento](pending.md#condições-de-lançamento) antes de operar e vincule os recibos à fonte e à imagem escolhidas.
+Confira as [condições de lançamento](PENDING.md#condições-de-lançamento) antes de operar e vincule os recibos à fonte e à imagem escolhidas.
 
 Migrações e operações em produção/staging precisam de escopo e autorização específicos. A limpeza de dados locais entre testes está autorizada. Compras, contratação, aumento de recursos e novos serviços exigem aprovação quando forem necessários. Rollback de imagem não reverte dados.
 
@@ -26,7 +26,7 @@ A importação editorial de staging valida o conteúdo e os ativos aprovados. De
 
 ## Outra máquina e arquivos privados
 
-Prepare a nova cópia conforme o [uso local](../README.md#uso-local). Os usuários de execução e a proteção dos arquivos privados estão descritos na [arquitetura](architecture.md#ambientes-e-identidade).
+Prepare a nova cópia conforme o [uso local](../README.md#uso-local). Os usuários de execução e a proteção dos arquivos privados estão descritos na [arquitetura](ARCHITECTURE.md#ambientes-e-identidade).
 
 Use credenciais locais novas e mantenha as permissões restritas ao usuário responsável. Resolva falhas de acesso conferindo dono e ACL do arquivo. Copiar chaves privadas antigas ou conceder acesso a `Everyone` para fazer um comando funcionar compromete essa proteção.
 
@@ -61,7 +61,7 @@ O resolver admite arquivos regulares de `README.md`, `AGENTS.md` e `documentatio
 5. Ainda em privado, confira TLS, SSR PT/EN, canonical/alternates, mídias/PDFs, login e negativas de rascunhos, prévias e bytes privados. Teste e-mail na janela autorizada. Suítes e injeções de falha usam os recursos locais/de staging previstos para testes.
 6. Abra na janela aprovada. Registre horário e digest, retire as restrições temporárias e confira HTTP, sitemap, robots e URLs na origem final. Use HEAD/GET pontuais e bloqueie Google nas inspeções sintéticas e manuais.
 
-Mantenha Analytics com `loadScript=null` até concluir a condição específica nas [pendências](pending.md#decisões-e-ações-condicionais). A [política de Analytics](specification.md#seo-e-analytics) rege a ativação e a exclusão de tráfego sintético/editorial.
+Mantenha Analytics com `loadScript=null` até concluir a condição específica nas [pendências](PENDING.md#decisões-e-ações-condicionais). A [política de Analytics](SPECIFICATION.md#seo-e-analytics) rege a ativação e a exclusão de tráfego sintético/editorial.
 
 ## Backup e recuperação
 
@@ -128,7 +128,7 @@ Centralize os logs no helper de logger, com data, nível, operação, resultado 
 
 ## Performance
 
-As [pendências](pending.md#condições-de-lançamento) definem quando medir novamente ou reaproveitar uma referência. As metas de LCP, CLS, TBT e INP ficam na [especificação](specification.md#qualidade-e-operação).
+As [pendências](PENDING.md#condições-de-lançamento) definem quando medir novamente ou reaproveitar uma referência. As metas de LCP, CLS, TBT e INP ficam na [especificação](SPECIFICATION.md#qualidade-e-operação).
 
 Antes da rodada, fixe candidata, origem de staging, máquina, versões, hash dos perfis, conteúdo e seis alvos. Use Home, listagem e case representativo de maior transferência em PT/EN. Escolha o case antes de analisar LCP/CLS/TBT. Com celular, desktop e três repetições por combinação, são **12 cenários e 36 medições**. [Perfis](../ops/performance/profiles.json).
 

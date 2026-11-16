@@ -1,6 +1,6 @@
 # Arquitetura
 
-Next.js e Payload rodam na mesma aplicação. O Payload concentra a edição e o acesso ao PostgreSQL. A [especificação](specification.md) define os contratos e o [guia operacional](operations.md) explica como executar os fluxos.
+Next.js e Payload rodam na mesma aplicação. O Payload concentra a edição e o acesso ao PostgreSQL. A [especificação](SPECIFICATION.md) define os contratos e o [guia operacional](OPERATIONS.md) explica como executar os fluxos.
 
 ## Módulos
 
@@ -19,7 +19,7 @@ Desenvolvimento e testes disputam uma reserva exclusiva. O ciclo de testes limpa
 
 No contêiner, a aplicação usa `appuser`, UID/GID `70:70`, e as ferramentas de backup usam `10001:10001`. Os arquivos locais privados pertencem à identidade que os cria; no Windows, as ACLs usam o SID atual. Esses papéis não exigem um login Windows específico.
 
-Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. A configuração entra na execução da mesma imagem. Os fluxos de verificação e promoção estão no [guia operacional](operations.md#ci-e-staging).
+Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. A configuração entra na execução da mesma imagem. Os fluxos de verificação e promoção estão no [guia operacional](OPERATIONS.md#ci-e-staging).
 
 ## Edição e publicação
 
@@ -33,7 +33,7 @@ Uma repetição reconcilia a intenção sem substituir uma publicação mais nov
 
 ## Leitura e mídia
 
-As reservas de rota pertencem a um case e idioma. O histórico aponta diretamente para o slug atual. Os contratos de redirecionamento, retirada e indisponibilidade estão na [especificação](specification.md#slugs-e-histórico-de-endereços).
+As reservas de rota pertencem a um case e idioma. O histórico aponta diretamente para o slug atual. Os contratos de redirecionamento, retirada e indisponibilidade estão na [especificação](SPECIFICATION.md#slugs-e-histórico-de-endereços).
 
 O servidor valida os bytes dos uploads e gera os derivados na aplicação. O desenvolvimento pode usar armazenamento local e os alvos remotos usam R2. Originais, derivados e otimizador consultam a mesma autorização. Retirar a última referência pública revoga o acesso.
 
@@ -47,7 +47,7 @@ A escolha de idioma, a preservação da leitura e o fallback seguem a especifica
 
 ## Fixtures de mídia
 
-Os controles de animação em `testing/fixtures/media-animation-assets` servem aos testes dos [contratos de upload](specification.md#mídias-e-privacidade). O AVIF é cópia sem alteração do [libavif `9b07a9d7a874b159bb4e14b80a6f08bb469d06f7`](https://github.com/AOMediaCodec/libavif/tree/9b07a9d7a874b159bb4e14b80a6f08bb469d06f7/tests/data); os APNGs vêm do [libvips `b04300c241934a895d826054e906f3e238e23924`](https://github.com/libvips/libvips/tree/b04300c241934a895d826054e906f3e238e23924/test/test-suite/images).
+Os controles de animação em `testing/fixtures/media-animation-assets` servem aos testes dos [contratos de upload](SPECIFICATION.md#mídias-e-privacidade). O AVIF é cópia sem alteração do [libavif `9b07a9d7a874b159bb4e14b80a6f08bb469d06f7`](https://github.com/AOMediaCodec/libavif/tree/9b07a9d7a874b159bb4e14b80a6f08bb469d06f7/tests/data); os APNGs vêm do [libvips `b04300c241934a895d826054e906f3e238e23924`](https://github.com/libvips/libvips/tree/b04300c241934a895d826054e906f3e238e23924/test/test-suite/images).
 
 | Arquivo                                                                                           | Bytes | SHA256                                                             |
 | ------------------------------------------------------------------------------------------------- | ----: | ------------------------------------------------------------------ |

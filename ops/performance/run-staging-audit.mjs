@@ -255,7 +255,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const directory = path.resolve(outputDirectory);
   assert(directory.startsWith(path.resolve('.work/local-audits') + path.sep));
   await assert.rejects(fs.access(directory), { code: 'ENOENT' });
-  await fs.access('documentation/operations.md');
+  await fs.access('documentation/OPERATIONS.md');
   if (mode === '--preflight') {
     console.log(
       JSON.stringify({

@@ -1,6 +1,6 @@
 # Especificação do portfólio
 
-Esta é a referência de comportamento e conteúdo do portfólio. As decisões mais recentes do usuário prevalecem. Consulte a [arquitetura](architecture.md) para entender o código, o [guia de operação](operations.md) para os procedimentos e as [pendências](pending.md) para verificações, exceções e lançamento.
+Esta é a referência de comportamento e conteúdo do portfólio. As decisões mais recentes do usuário prevalecem. Consulte a [arquitetura](ARCHITECTURE.md) para entender o código, o [guia de operação](OPERATIONS.md) para os procedimentos e as [pendências](PENDING.md) para verificações, exceções e lançamento.
 
 ## Objetivo e escopo
 
@@ -118,7 +118,7 @@ Cada documento permite uma pessoa editando por vez. A outra pode consultá-lo em
 
 O servidor confere sessão, permissão, bloqueio, revisão, identidade, entradas e referências de mídia, inclusive nas chamadas diretas à API e ao Payload. Transações protegem conteúdo, estado e rotas. A gravação, a mídia e a atualização pública podem falhar em momentos diferentes. Operações internas privilegiadas têm contexto e finalidade definidos.
 
-A atualização pública inclui detalhes, listagens, destaques, rotas, metadados e destinos de idioma afetados. Reordenar ou mudar um destaque atualiza a listagem e a Home. Se o conteúdo for salvo e a confirmação pública falhar, o CMS informa a pendência e permite tentar novamente com segurança. Uma tentativa antiga preserva a publicação mais recente. A [arquitetura](architecture.md) explica a geração pública confirmada e sua recuperação.
+A atualização pública inclui detalhes, listagens, destaques, rotas, metadados e destinos de idioma afetados. Reordenar ou mudar um destaque atualiza a listagem e a Home. Se o conteúdo for salvo e a confirmação pública falhar, o CMS informa a pendência e permite tentar novamente com segurança. Uma tentativa antiga preserva a publicação mais recente. A [arquitetura](ARCHITECTURE.md) explica a geração pública confirmada e sua recuperação.
 
 ## Slugs e histórico de endereços
 
@@ -151,7 +151,7 @@ Imagens informativas exigem texto alternativo no idioma e contexto de uso. Image
 
 Originais, thumbnails, derivados e otimização seguem o mesmo controle de acesso. A prévia autenticada pode entregar mídia privada, fora do cache público. A publicação libera apenas arquivos aprovados e referenciados na geração confirmada. Retirar a última referência pública revoga o acesso. Arquivos publicados em uso têm exclusão bloqueada.
 
-Uma mídia pública reutilizada em rascunho continua acessível pela referência publicada. Os demais arquivos privados ficam protegidos, inclusive quando alguém conhece a URL. Backups e retenção seguem o [guia de operação](operations.md).
+Uma mídia pública reutilizada em rascunho continua acessível pela referência publicada. Os demais arquivos privados ficam protegidos, inclusive quando alguém conhece a URL. Backups e retenção seguem o [guia de operação](OPERATIONS.md).
 
 ## Acesso, renderização e erros
 
@@ -171,11 +171,11 @@ A medição usa GA4 e começa automaticamente no site público de produção qua
 
 Os eventos cobrem visitas às páginas, idioma, cliques em e-mail, cliques em LinkedIn e abertura do currículo do idioma atual. O evento de currículo registra o acionamento para abrir o PDF. Painel, prévias, rascunhos, navegação editorial, testes e staging ficam excluídos. URLs, parâmetros e rótulos são tratados para impedir o envio de nomes, e-mails, credenciais e conteúdo privado.
 
-A ativação depende de conferir o SDK, o ambiente e as métricas disponíveis sob essas restrições. Sua condição de conclusão está nas [pendências](pending.md). Testes sintéticos bloqueiam o tráfego de medição para o Google.
+A ativação depende de conferir o SDK, o ambiente e as métricas disponíveis sob essas restrições. Sua condição de conclusão está nas [pendências](PENDING.md). Testes sintéticos bloqueiam o tráfego de medição para o Google.
 
 ## Qualidade e operação
 
-Os fluxos devem atender à WCAG 2.2 AA, com teclado, foco visível e previsível, contraste, semântica, descrições de imagens, estados e mensagens acessíveis. A adaptação inclui tablet e permite ler sem rolagem horizontal indevida. Menus, botões, avisos e navegação respeitam movimento reduzido. A exceção aceita para revisão formal com leitor de tela está nas [pendências](pending.md).
+Os fluxos devem atender à WCAG 2.2 AA, com teclado, foco visível e previsível, contraste, semântica, descrições de imagens, estados e mensagens acessíveis. A adaptação inclui tablet e permite ler sem rolagem horizontal indevida. Menus, botões, avisos e navegação respeitam movimento reduzido. A exceção aceita para revisão formal com leitor de tela está nas [pendências](PENDING.md).
 
 | Meta de laboratório | Celular | Desktop |
 | ------------------- | ------- | ------- |
@@ -183,10 +183,10 @@ Os fluxos devem atender à WCAG 2.2 AA, com teclado, foco visível e previsível
 | CLS                 | ≤0,1    | ≤0,1    |
 | TBT                 | ≤200 ms | ≤150 ms |
 
-A referência de INP é p75 ≤200 ms por perfil de dispositivo, quando houver amostra real suficiente. Cenários, repetições e registro das medições seguem o [protocolo de performance](operations.md#performance). A condição para medir novamente ou reaproveitar uma referência fica nas [pendências](pending.md#condições-de-lançamento).
+A referência de INP é p75 ≤200 ms por perfil de dispositivo, quando houver amostra real suficiente. Cenários, repetições e registro das medições seguem o [protocolo de performance](OPERATIONS.md#performance). A condição para medir novamente ou reaproveitar uma referência fica nas [pendências](PENDING.md#condições-de-lançamento).
 
 Next.js, React, Payload e Node usam versões estáveis compatíveis, fixadas no manifesto e lockfile. Avisos de segurança são revistos antes de produção. Novas dependências precisam de uma necessidade concreta. Atualizações principais têm escopo explícito.
 
 Comportamentos e correções seguem TDD. Primeiro, o teste falha pelo motivo esperado. A implementação mínima faz o teste passar, e a refatoração mantém o resultado. Os testes ficam junto do código responsável e verificam os contratos e jornadas pertinentes.
 
-Os comandos e ambientes de verificação estão no [README](../README.md#verificação). Backup, migrações, recuperação e promoção de imagem seguem o [guia operacional](operations.md). As [pendências](pending.md) concentram o que falta para o lançamento e a ativação de Analytics.
+Os comandos e ambientes de verificação estão no [README](../README.md#verificação). Backup, migrações, recuperação e promoção de imagem seguem o [guia operacional](OPERATIONS.md). As [pendências](PENDING.md) concentram o que falta para o lançamento e a ativação de Analytics.
