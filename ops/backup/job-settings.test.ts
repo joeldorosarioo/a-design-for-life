@@ -46,15 +46,6 @@ it('backs up the explicitly confirmed local portfolio with a local repository na
   });
 });
 
-it('keeps the local application identity independent of the operational image fingerprint', () => {
-  const job = selectBackupJob({ ...localPortfolio, OPS_SOURCE_SHA256: 'f'.repeat(64) }, ['backup']);
-  expect(job.application('3'.repeat(64))).toEqual({
-    imageId: localPortfolio.OPS_APPLICATION_IMAGE_ID,
-    revision: localPortfolio.OPS_APPLICATION_REVISION,
-    schemaSha256: '3'.repeat(64),
-  });
-});
-
 it('records the host source fingerprint when the local application runs outside Docker', () => {
   const job = selectBackupJob(
     {

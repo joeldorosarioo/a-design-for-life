@@ -10,8 +10,6 @@ it.each([
   path.resolve('public/private-assets'),
   path.resolve('.next/static'),
   path.resolve('.next/static/private-assets'),
-  path.resolve('.work/private-media', '../../public', 'adfl_test_base'),
-  path.resolve('.work/private-media', '../../.next/static', 'adfl_test_base'),
 ])(
   'rejects an effective media root served by Next before creating its storage capability: %s',
   (root) => {

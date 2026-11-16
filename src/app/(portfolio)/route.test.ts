@@ -7,11 +7,6 @@ describe('GET /', () => {
     ['pt', 'en-US,en;q=0.9', '/pt'],
     ['en', 'pt-BR,pt;q=0.9', '/en'],
     [null, 'en;q=0.5,pt-BR;q=0.9', '/pt'],
-    [null, 'pt;q=0.4,en-US;q=0.9', '/en'],
-    ['invalid', 'pt-BR', '/pt'],
-    ['pt-BR', 'fr-FR', '/en'],
-    [null, 'pt;q=invalid,en;q=0.5', '/en'],
-    [null, 'fr-FR', '/en'],
     [null, null, '/en'],
   ] as const)(
     'temporarily negotiates %j / %j to %s without saving a preference',

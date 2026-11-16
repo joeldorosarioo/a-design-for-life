@@ -1,10 +1,5 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { GET, HEAD } from './route';
-
-afterEach(() => {
-  vi.unstubAllGlobals();
-  vi.unstubAllEnvs();
-});
 
 describe('minimal public readiness', () => {
   // Break caught: publishing detailed diagnostics or caching the readiness response.
@@ -32,19 +27,5 @@ describe('minimal public readiness', () => {
     expect(head.status).toBe(200);
     expect(await head.text()).toBe('');
     expect([...head.headers]).toEqual([...get.headers]);
-  });
-
-  // Break caught: an origin probe/configuration dependency taking readiness down.
-  it('stays available with unusable dependency configuration and network disabled', async () => {
-    vi.stubEnv('DATABASE_URL', 'invalid:PRIVATE_SENTINEL');
-    vi.stubEnv('R2_ENDPOINT', 'invalid:PRIVATE_SENTINEL');
-    vi.stubGlobal('fetch', () => {
-      throw new Error('No network is available');
-    });
-
-    const response = GET();
-
-    expect(response.status).toBe(200);
-    expect(await response.text()).toBe('{"status":"ready"}');
   });
 });

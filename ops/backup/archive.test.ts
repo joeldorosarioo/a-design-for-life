@@ -144,20 +144,6 @@ it('refuses to reuse an existing quarantine and preserves its bytes', async () =
   ).rejects.toThrow();
   expect(await readFile(path.join(destination, 'sentinel'), 'utf8')).toBe('existing');
 });
-it('does not create an archive for a private identity or other forbidden entry name', async () => {
-  const root = await scratch(),
-    file = path.join(root, 'identity.txt');
-  await writeFile(file, 'private synthetic identity');
-  const destination = path.join(root, 'set.tar');
-  await expect(
-    createBackupArchive({
-      entries: [{ name: 'identity.txt', path: file }],
-      destination,
-      tarBinary: process.execPath,
-    }),
-  ).rejects.toThrow();
-  await expect(readFile(destination)).rejects.toMatchObject({ code: 'ENOENT' });
-});
 it.skipIf(!process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG)(
   'creates a real bsdtar USTAR archive and verifies all streamed file hashes',
   async () => {

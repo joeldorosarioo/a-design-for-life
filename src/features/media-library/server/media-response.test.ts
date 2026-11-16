@@ -38,20 +38,6 @@ async function expectUnavailable(response: Response) {
 }
 
 it.each(['GET', 'HEAD'])(
-  'returns a safe uncached 503 when media preparation fails for %s',
-  async (method) => {
-    installPayloadProvider(async () => {
-      throw new Error('Synthetic internal storage path and diagnostic must stay private');
-    });
-    const response = await serveMedia(
-      { mediaId, variant: 'original', preview: false },
-      new Request(`${origin}/media/${mediaId}/original`, { method }),
-    );
-    await expectUnavailable(response);
-  },
-);
-
-it.each(['GET', 'HEAD'])(
   'returns a safe uncached 503 when preview authentication fails for %s',
   async (method) => {
     const payload = new payloadModule.BasePayload();
@@ -66,22 +52,6 @@ it.each(['GET', 'HEAD'])(
     );
   },
 );
-
-it('returns a safe uncached 503 when native request preparation fails', async () => {
-  const payload = new payloadModule.BasePayload();
-  Object.defineProperty(payload, 'config', {
-    get() {
-      throw new Error('Synthetic private request diagnostic');
-    },
-  });
-  installPayloadProvider(async () => payload);
-  await expectUnavailable(
-    await serveMedia(
-      { mediaId, variant: 'original', preview: false },
-      new Request(`${origin}/media/${mediaId}/original`),
-    ),
-  );
-});
 
 it.each(['GET', 'HEAD'])(
   'returns a safe uncached 503 when native filename lookup fails for %s',

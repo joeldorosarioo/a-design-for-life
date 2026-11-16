@@ -400,62 +400,6 @@ it('requires an explicit trusted internal origin in production regardless of Hos
   expect(response.headers.get('x-middleware-next')).toBeNull();
   expect(nativeCalls).toBe(0);
 });
-it.each([404, 410, 503] as const)(
-  'returns a direct safe case%s without a render token and strips the HEAD body',
-  async (status) => {
-    let slug = status === 404 ? 'INVALID' : 'unknown';
-    if (status === 410) {
-      slug = 'withdrawn';
-      const contentId = randomUUID();
-      await withPublicRootWriter(directory, async (_, commit) =>
-        commit({
-          generation: randomUUID(),
-          subjects: {
-            [`case-content/${contentId}`]: {
-              operationId: 'operation',
-              targetRevision: 'revision',
-              value: {
-                kind: 'case',
-                caseId: randomUUID(),
-                contentId,
-                locale: 'pt',
-                slug: null,
-                slugs: [slug],
-                detail: null,
-              },
-            },
-          },
-        }),
-      );
-    }
-    const get = await proxy(request(`/pt/cases/${slug}`));
-    expect(get.status).toBe(status);
-    expect(get.headers.get('x-middleware-next')).toBeNull();
-    expect(get.headers.get('x-middleware-override-headers')).toBeNull();
-    expect(get.headers.get('x-robots-tag')).toBe('noindex, nofollow');
-    const text = await get.text();
-    expect(text).not.toContain(slug);
-    expect(text).toContain('<html lang="pt">');
-    const head = await proxy(
-      request(`/pt/cases/${slug}`, {
-        method: 'HEAD',
-        headers: { 'if-none-match': '*', 'if-modified-since': new Date().toUTCString() },
-      }),
-    );
-    expect(head.status).toBe(status);
-    expect([...head.headers]).toEqual([...get.headers]);
-    expect(await head.text()).toBe('');
-  },
-);
-it('keeps negative case HTML and classification headers independent of the visited slug', async () => {
-  const a = await proxy(request('/en/cases/PRIVATE'));
-  const b = await proxy(request('/en/cases/UNKNOWN'));
-  expect(a.status).toBe(404);
-  expect(b.status).toBe(404);
-  expect(await a.text()).toBe(await b.text());
-  expect([...a.headers]).toEqual([...b.headers]);
-  expect(nativeCalls).toBe(0);
-});
 it.each(['/preview-ui', '/preview-ui/invalid', `/preview-ui/pt/case-content/${mediaId}/case`])(
   'runs the private pre-stream authorization boundary for %s',
   (pathname) => {

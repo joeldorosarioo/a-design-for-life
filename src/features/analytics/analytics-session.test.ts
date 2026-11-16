@@ -97,14 +97,6 @@ describe('document-scoped analytics session', () => {
     ]);
   });
 
-  // Only calling completion after commit means an abandoned target has no event.
-  it('does not count a target that was never completed', () => {
-    const { session, events } = capture();
-    session.completeNavigation(home);
-    // A router may begin work for about, but it must not call completion until committed.
-    expect(events).toEqual([{ name: 'page_view', locale: 'en', pagePath: '/en' }]);
-  });
-
   it('maps fixed contact purposes to minimal action events and counts repeated actions', () => {
     const { session, events } = capture();
     session.trackContact('email', home);

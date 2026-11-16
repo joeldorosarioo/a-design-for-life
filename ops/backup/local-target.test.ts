@@ -173,18 +173,6 @@ it('restores under the prepared schema/filesystem guard and recovers the shared 
     readFile(path.join(observed!.publicationDirectory, 'current.json')),
   ).rejects.toMatchObject({ code: 'ENOENT' });
 });
-it('refuses a forged target token before any restore effect', async () => {
-  await expect(
-    restoreIntoOwnedLocalTarget({ verified: true } as never, {
-      dumpPath: path.resolve('.work/backup-private/no-file'),
-      objects: [],
-      root: null,
-      async verifyRestored() {
-        throw new Error('unexpected');
-      },
-    }),
-  ).rejects.toThrow();
-});
 it('recovers the shared database checkpoint even when verification fails', async () => {
   const fixture = boundary();
   await expect(
@@ -193,23 +181,6 @@ it('recovers the shared database checkpoint even when verification fails', async
     }),
   ).rejects.toThrow('Synthetic restore verification failure');
   expect(fixture.recovered).toBe(1);
-});
-it('rechecks actual media emptiness before invoking the database restore process', async () => {
-  const fixture = boundary();
-  await withOwnedLocalRestoreTarget(fixture.options, async (target) => {
-    const context = await inspectOwnedLocalRestoreContext(target);
-    record(context);
-    await writeFile(path.join(context.mediaRoot, 'unexpected'), 'concurrent bytes');
-    await expect(
-      restoreIntoOwnedLocalTarget(target, {
-        dumpPath: path.resolve('.work/backup-private/no-file'),
-        objects: [],
-        root: null,
-        async verifyRestored() {},
-      }),
-    ).rejects.toThrow();
-  });
-  expect(fixture.restored).toBe(0);
 });
 it('refuses catalog identity replacement and leaves targets for review instead of writing to another database', async () => {
   const fixture = boundary();

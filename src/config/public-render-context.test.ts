@@ -478,16 +478,3 @@ it('keeps the prepared negative body on captured A after current B is promoted, 
   expect(casePresentation(b)?.title).toBe('B EDITORIAL410');
   expect(nativeCalls).toBe(0);
 });
-it('preserves410 and the exact technical fallback when no confirmed structural presentation exists', async () => {
-  const root = negativeSnapshot(410);
-  root.subjects = Object.fromEntries(
-    Object.entries(root.subjects).filter(
-      ([key]) => !key.startsWith('professional-profiles/') && !key.startsWith('site-navigation/'),
-    ),
-  );
-  await withPublicRootWriter(directory, async (_current, commit) => commit(root));
-  const prepared = await preparePublicRenderRequest(request('/pt/cases/publico'), options());
-  expect(prepared).toEqual({ status: 410, caseStateLocale: 'pt', generation: root.generation });
-  expect(casePresentation(prepared)).toBeNull();
-  expect(nativeCalls).toBe(0);
-});

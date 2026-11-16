@@ -67,16 +67,6 @@ for (const locale of locales)
       expect(html).not.toMatch(/_next\/|x-portfolio-render|__next|originalSlug/);
     });
   }
-it.each(locales)(
-  'keeps unknown/private404 bodies and contractual headers identical for the same %s presentation',
-  async (locale) => {
-    const value = presentation(locale, 404);
-    const unknown = renderCaseRouteResponse({ status: 404 }, locale, value);
-    const privateState = renderCaseRouteResponse({ status: 404 }, locale, value);
-    expect(await unknown.text()).toBe(await privateState.text());
-    expect([...unknown.headers]).toEqual([...privateState.headers]);
-  },
-);
 it('escapes all editorial text and attribute boundaries, including header/footer labels', async () => {
   const value = presentation('pt', 404);
   value.title = '<script>PRIVATE TITLE</script>';

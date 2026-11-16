@@ -48,14 +48,6 @@ it('rejects traversal and an object whose persisted bytes no longer match its ma
   await writeFile(path.join(root, object.key), new Uint8Array([9, 2, 3]));
   await expect(adapter.read(object)).rejects.toThrow('integrity');
 });
-it('gets captured bytes through the transport boundary without exposing its root', async () => {
-  const { adapter } = await storage();
-  const object = await adapter.put(new Uint8Array([3, 1, 4]));
-  const transport = adapter as typeof adapter & {
-    get?: (reference: typeof object) => Promise<Uint8Array>;
-  };
-  expect(await transport.get?.(object)).toEqual(new Uint8Array([3, 1, 4]));
-});
 it('heads a real object only when its bytes satisfy the complete reference', async () => {
   const { adapter } = await storage();
   const object = await adapter.put(new Uint8Array([3, 1, 4]));

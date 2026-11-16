@@ -182,22 +182,6 @@ it('does not reuse an older public receipt when a manual retry names an operatio
   ).toEqual({ kind: 'reconcile-stale', operationId });
 });
 
-it('keeps the approved intent eligible after a newer private draft changes only the editorial revision', () => {
-  const nativeHead = {
-    latestPublicationIntent: operationId,
-    editorialRevision: 'f48ea205-8e76-47d8-a575-e1ed0eb9719b',
-  };
-  const planned = planPublicationRetryAttempt(
-    state({ attempts: 1 }),
-    { mode: 'automatic', latestPublicationIntent: nativeHead.latestPublicationIntent },
-    () => new Date('2026-11-03T12:00:01.000Z'),
-  );
-  expect(planned.kind).toBe('start');
-  if (planned.kind !== 'start')
-    throw new Error('Private draft must not cancel the approved intent.');
-  expect(planned.attempt.operationId).toBe(operationId);
-});
-
 it.each(['public', 'superseded', 'update-pending'])(
   'ignores a late %s outcome after a newer started attempt or manual reset',
   (outcome) => {

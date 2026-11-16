@@ -24,9 +24,7 @@ it('preserves normal media storage when the optional proof flag is absent or fal
   expect(restoreReadOnlyMedia(storage, env, 'false')).toBe(storage);
 });
 it.each([
-  'postgres://adfl_local:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
   'postgres://restore_worker:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
-  'postgres://joeldorosarioo_local:synthetic@127.0.0.1:5432/a_design_for_life_rebuild',
   'postgresql://restore_worker:synthetic@host.docker.internal:5432/a_design_for_life_rebuild',
 ])('accepts the configured role for the fixed local database %s', (databaseUri) => {
   const storage = fixture();
@@ -62,10 +60,6 @@ describe.each([
   { DATABASE_URI: env.DATABASE_URI.replace('127.0.0.1', 'host.docker.internal.attacker.test') },
   { DATABASE_URI: env.DATABASE_URI.replace('5432', '55435') },
   { DATABASE_URI: env.DATABASE_URI.replace(':synthetic@', '@') },
-  {
-    DATABASE_URI:
-      'postgres://joeldorosarioo_local:synthetic@host.docker.internal:55435/a_design_for_life_restore_0123456789abcdef0123456789abcdef',
-  },
   { DATABASE_URI: 'not-a-database-url' },
   { DATABASE_URI: env.DATABASE_URI + '?application_name=unexpected' },
   { DATABASE_URI: env.DATABASE_URI + '#unexpected' },

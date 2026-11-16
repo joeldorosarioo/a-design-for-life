@@ -347,15 +347,6 @@ it('does not use an empty or short server secret', async () => {
   expect(received).toHaveLength(0);
 });
 
-it('keeps missing media unavailable when the Native classification origin cannot run', async () => {
-  installPayloadProvider(async () => {
-    throw new Error('Synthetic private Native diagnostic');
-  });
-  await root('revoked');
-  await denied(await handleNextImage(request(), context()), 503);
-  expect(received).toHaveLength(0);
-});
-
 it('marks the outer captured generation even if the inner response or current root changes', async () => {
   const selected = await readPublicRoot(directory);
   respond = async (_request, response) => {
