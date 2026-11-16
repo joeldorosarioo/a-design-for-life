@@ -1,4 +1,4 @@
-// Contract: documentation/architecture.md#módulos.
+// Contract: documentation/ARCHITECTURE.md#módulos.
 module.exports = {
   forbidden: [
     {

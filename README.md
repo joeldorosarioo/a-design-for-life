@@ -4,7 +4,7 @@ O nome do repositório vem de **A Design for Life**, música da banda **Manic St
 
 Portfólio bilíngue de Product Design e UX. Next.js serve as páginas, Payload gerencia o conteúdo e PostgreSQL guarda os dados. A interface usa Tailwind CSS, CVA, shadcn e Motion, com o Figma como referência visual.
 
-O lançamento ainda depende das [condições em aberto](documentation/pending.md).
+O lançamento ainda depende das [condições em aberto](documentation/PENDING.md).
 
 ## Uso local
 
@@ -28,7 +28,7 @@ O Compose expõe somente a porta 5432 em loopback. Preserve o volume externo do 
 docker compose -f compose.local.yaml stop postgres
 ```
 
-Antes de alterar dados, pare a aplicação e use `pnpm backup:local` conforme o [guia de backup e recuperação](documentation/operations.md#backup-e-recuperação). O comando compartilha o bloqueio exclusivo do banco. O guia inclui a preparação da imagem de ferramentas do backup. Instale age com `pnpm setup:backup-tools` se necessário. Mantenha `.env`, `.work`, `.toolchain` e a identidade de recuperação privados; guarde essa identidade separada dos backups.
+Antes de alterar dados, pare a aplicação e use `pnpm backup:local` conforme o [guia de backup e recuperação](documentation/OPERATIONS.md#backup-e-recuperação). O comando compartilha o bloqueio exclusivo do banco. O guia inclui a preparação da imagem de ferramentas do backup. Instale age com `pnpm setup:backup-tools` se necessário. Mantenha `.env`, `.work`, `.toolchain` e a identidade de recuperação privados; guarde essa identidade separada dos backups.
 
 ## Verificação
 
@@ -44,7 +44,7 @@ Há três bancos de aplicação fixos: produção, staging e local. Desenvolvime
 
 Os testes usam mídia sintética local, captura de e-mail e Analytics desligado. Provas de migração e recuperação reconstroem o schema no mesmo banco. O build dos testes fica em `.work/next-tests`. O CI do GitHub executa `pnpm verify:ci`, sem banco; integração e E2E precisam da verificação local antes do aceite da candidata.
 
-O funcionamento do Actions, dos caches e da fila de deploy está no [guia de CI e staging](documentation/operations.md#ci-e-staging).
+O funcionamento do Actions, dos caches e da fila de deploy está no [guia de CI e staging](documentation/OPERATIONS.md#ci-e-staging).
 
 Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG` apontando para um JSON privado com `ageBinary`, `tarBinary`, `recipient` e `identityPath` de teste; sem essa configuração, são ignorados. Depois de uma execução interrompida, confira o bloqueio e a identidade dos recursos antes de liberar uma reserva. Nunca exclua o volume para resolver um bloqueio.
 
@@ -67,7 +67,7 @@ Este README, [AGENTS.md](AGENTS.md) e os quatro arquivos de `documentation` são
 
 | Assunto                                           | Referência                                      |
 | ------------------------------------------------- | ----------------------------------------------- |
-| Produto, contratos do CMS e referência visual     | [Especificação](documentation/specification.md) |
-| Implementação e fluxos                            | [Arquitetura](documentation/architecture.md)    |
-| Edição, deploy, backup, recuperação e performance | [Operação](documentation/operations.md)         |
-| Condições de lançamento e decisões pendentes      | [Pendências](documentation/pending.md)          |
+| Produto, contratos do CMS e referência visual     | [Especificação](documentation/SPECIFICATION.md) |
+| Implementação e fluxos                            | [Arquitetura](documentation/ARCHITECTURE.md)    |
+| Edição, deploy, backup, recuperação e performance | [Operação](documentation/OPERATIONS.md)         |
+| Condições de lançamento e decisões pendentes      | [Pendências](documentation/PENDING.md)          |
