@@ -122,7 +122,6 @@ export function prepareStagingInitialization(importText, editorialText, args) {
     throw invalid();
   const editor =
     selection.mode === 'prepare-first-access' ? undefined : readStagingEditor(parse(editorialText));
-  const runtimeDatabaseUri = database.href;
   database.hostname = '127.0.0.1';
   database.port = '55435';
   return {
@@ -130,7 +129,6 @@ export function prepareStagingInitialization(importText, editorialText, args) {
     origin: origin.origin,
     role: decodeURIComponent(database.username),
     databaseUri: database.href,
-    runtimeDatabaseUri,
     editor,
     environment: /** @type {Record<string, string>} */ ({
       ...runtime,

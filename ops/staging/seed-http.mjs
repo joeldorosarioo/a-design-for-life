@@ -1,10 +1,8 @@
 import { createHash, randomUUID } from 'node:crypto';
 import http from 'node:http';
 
-export const approvedPlanSha256 =
-  '59a2f6d1b4e649bd616d160fd619fd292e01cc2e38bbe5dbd8e27ef3f6b88dfa';
-export const seedHttpOrigin = 'http://127.0.0.1:55436';
-export const publicSeedPaths = [
+const approvedPlanSha256 = '59a2f6d1b4e649bd616d160fd619fd292e01cc2e38bbe5dbd8e27ef3f6b88dfa';
+const publicSeedPaths = [
   '/pt',
   '/en',
   '/pt/sobre',

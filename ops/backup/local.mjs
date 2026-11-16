@@ -239,7 +239,6 @@ async function backupLocalApplication(settings, leaseLost) {
   const store = path.join(root, '.work/backup-sets');
   await privateDirectory(store);
   const env = {
-    ...process.env,
     APP_ENV: 'local',
     DATABASE_URI: settings.DATABASE_URI,
     PAYLOAD_SECRET: settings.PAYLOAD_SECRET,
@@ -258,25 +257,7 @@ async function backupLocalApplication(settings, leaseLost) {
     PUBLICATION_HTTP_VERIFICATION_ENABLED: 'false',
     PAYLOAD_DROP_DATABASE: 'false',
   };
-  const forwarded = [
-    'APP_ENV',
-    'DATABASE_URI',
-    'PAYLOAD_SECRET',
-    'SITE_ORIGIN',
-    'MEDIA_BUCKET',
-    'MEDIA_STORAGE_DRIVER',
-    'OPS_LOCAL_DATABASE_TARGET',
-    'OPS_BACKUP_SOURCE',
-    'OPS_BACKUP_RECIPIENT',
-    'OPS_SOURCE_REVISION',
-    'OPS_SOURCE_SHA256',
-    'OPS_BACKUP_DEPENDENCIES',
-    'PUBLIC_SITE_ENABLED',
-    'PUBLICATION_RETRIES_ENABLED',
-    'PUBLICATION_RETRY_WORKER_ENABLED',
-    'PUBLICATION_HTTP_VERIFICATION_ENABLED',
-    'PAYLOAD_DROP_DATABASE',
-  ];
+  const forwarded = Object.keys(env);
   if (env.MEDIA_STORAGE_DRIVER === 'r2') {
     for (const key of [
       'R2_ENDPOINT',
@@ -372,7 +353,7 @@ async function backupLocalApplication(settings, leaseLost) {
     await import('./ops/backup/job.ts');
   `,
   );
-  const containerId = docker(args, env);
+  const containerId = docker(args, { ...process.env, ...env });
   requireCondition(
     /^[a-f0-9]{64}$/.test(containerId),
     'The local backup did not return an immutable container identity.',

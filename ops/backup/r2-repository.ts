@@ -382,7 +382,6 @@ export function createR2BackupRepository(options: R2BackupRepositoryOptions) {
     const pending = await remote.pending(marker.id);
     if (pending.createdAt !== marker.createdAt)
       throw new Error('Expired R2 pending identity changed');
-    return pending;
   }
   const repository = Object.freeze({
     retention: retentionLock ? ('enabled' as const) : ('disabled' as const),
@@ -439,12 +438,10 @@ export function createR2BackupRepository(options: R2BackupRepositoryOptions) {
     },
     async complete(input: unknown, manifest: Uint8Array, now: Date) {
       // Capture caller-owned values before awaiting the operation boundary.
-      const privateManifest = Buffer.from(manifest);
-      const invocationTime = new Date(checkedClock(now));
+      const manifestBytes = Buffer.from(manifest);
+      const completed = new Date(checkedClock(now));
       const marker = completeBackupMarkerSchema.parse(input);
       return guarded(async () => {
-        const manifestBytes = privateManifest;
-        const completed = invocationTime;
         if (
           !sameNamespace(marker.namespace, remote.namespace) ||
           marker.ciphertext.byteLength > ciphertextLimit

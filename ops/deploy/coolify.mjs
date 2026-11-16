@@ -71,17 +71,6 @@ function configuration(input, env) {
     env.COOLIFY_URL === coolifyOrigin || env.COOLIFY_URL === `${coolifyOrigin}/`,
     'endpoint-not-allowed',
   );
-  const endpoint = new URL(env.COOLIFY_URL);
-  requireDeployment(
-    endpoint.protocol === 'https:' &&
-      endpoint.origin === coolifyOrigin &&
-      endpoint.pathname === '/' &&
-      !endpoint.username &&
-      !endpoint.password &&
-      !endpoint.search &&
-      !endpoint.hash,
-    'endpoint-not-allowed',
-  );
   const token = env.COOLIFY_TOKEN;
   // Preserve the existing image-configuration and deployment credentials.
   // Backups use a separate resource-scoped Read/Sensitive/Write/Deploy token.

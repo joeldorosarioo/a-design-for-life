@@ -63,6 +63,21 @@ function namespaceFor(environment) {
 function namespaceSha256(namespace) {
   return createHash('sha256').update(JSON.stringify(namespace)).digest('hex');
 }
+function completedBackupOutputs(message) {
+  const results = [];
+  for (const line of message.split(/\r?\n/)) {
+    const candidate = line.trim();
+    if (!candidate.startsWith('{')) continue;
+    let value;
+    try {
+      value = JSON.parse(candidate);
+    } catch {
+      continue;
+    }
+    if (record(value) && value.status === 'backed-up') results.push(value);
+  }
+  return results;
+}
 
 /** Read only these public values from the sensitive API response; never return other env data. */
 export function verifyBackupEnvironment(values, environment) {
@@ -91,18 +106,7 @@ export function parseCompletedBackupOutput(
     typeof message === 'string' && Buffer.byteLength(message) <= maximumMessageBytes,
     'backup-output-unavailable',
   );
-  const results = [];
-  for (const line of message.split(/\r?\n/)) {
-    const candidate = line.trim();
-    if (!candidate.startsWith('{')) continue;
-    let value;
-    try {
-      value = JSON.parse(candidate);
-    } catch {
-      continue;
-    }
-    if (record(value) && value.status === 'backed-up') results.push(value);
-  }
+  const results = completedBackupOutputs(message);
   requireBackup(results.length === 1, 'backup-marker-unavailable');
   const result = results[0];
   const marker = result.marker;
@@ -256,20 +260,8 @@ function historicalBackupIds(executions) {
       Buffer.byteLength(execution.message) > maximumMessageBytes
     )
       continue;
-    for (const line of execution.message.split(/\r?\n/)) {
-      let result;
-      try {
-        result = JSON.parse(line);
-      } catch {
-        continue;
-      }
-      if (
-        record(result) &&
-        result.status === 'backed-up' &&
-        record(result.marker) &&
-        matches(backupId, result.marker.id)
-      )
-        ids.add(result.marker.id);
+    for (const result of completedBackupOutputs(execution.message)) {
+      if (record(result.marker) && matches(backupId, result.marker.id)) ids.add(result.marker.id);
     }
   }
   return ids;

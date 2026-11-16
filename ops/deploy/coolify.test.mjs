@@ -249,6 +249,11 @@ test('refuses malformed digests, schema identifiers and environments without a r
 });
 
 test('accepts only the canonical HTTPS panel without credentials, paths, query or fragments', async () => {
+  const client = fakeApi();
+  await deployCoolify(options(), {
+    ...client.dependencies,
+    env: { ...environment(), COOLIFY_URL: `${coolifyOrigin}/` },
+  });
   for (const url of [
     'http://panel.joeldorosarioo.dev',
     'https://panel.joeldorosarioo.dev.attacker.invalid',
