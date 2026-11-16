@@ -33,7 +33,7 @@ test.use({ viewport: { width: 1440, height: 900 }, trace: 'off', screenshot: 'of
 
 test.beforeAll(async ({}, info) => {
   test.setTimeout(120_000);
-  portfolio = await createPublicPortfolioFixture('e2-negative-cases-http', {
+  portfolio = await createPublicPortfolioFixture('negative-cases-http', {
     serialRunner: info.config.workers === 1 && !info.config.fullyParallel,
   });
   for (const locale of ['pt', 'en'] as const) {

@@ -77,10 +77,23 @@ it.each([undefined, 'false'])(
     expect(runtime.analytics).toBeNull();
   },
 );
-it('refuses public release with an absent measurement ID or insecure origin', () => {
-  expect(() =>
-    validServerEnv({ NODE_ENV: 'production', APP_ENV: 'production', PUBLIC_SITE_ENABLED: 'true' }),
-  ).toThrow(/GA4_MEASUREMENT_ID/);
+it('keeps public production unmeasured when no measurement ID is configured', () => {
+  const runtime = readPublicRuntime(
+    validServerEnv({
+      NODE_ENV: 'production',
+      APP_ENV: 'production',
+      SITE_ORIGIN: 'https://portfolio.example.invalid',
+      PUBLIC_SITE_ENABLED: 'true',
+      GA4_MEASUREMENT_ID: undefined,
+    }),
+  );
+  expect(runtime).toEqual({
+    siteOrigin: 'https://portfolio.example.invalid',
+    environment: 'production',
+    analytics: null,
+  });
+});
+it('refuses an insecure origin for public production', () => {
   expect(() =>
     validServerEnv({
       NODE_ENV: 'production',

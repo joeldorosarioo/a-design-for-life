@@ -183,16 +183,10 @@ Os fluxos devem atender à WCAG 2.2 AA, com teclado, foco visível e previsível
 | CLS                 | ≤0,1    | ≤0,1    |
 | TBT                 | ≤200 ms | ≤150 ms |
 
-A medição cobre Home, listagem e case representativo mais pesado, em PT/EN e celular/desktop. São 12 cenários, com pelo menos três repetições equivalentes de cada um. Registre mediana, variação e falhas, com condições definidas antes da rodada. A referência de INP é p75 ≤200 ms por perfil de dispositivo, quando houver amostra real suficiente. O protocolo e os critérios de nova medição ficam no [guia de operação](operations.md).
+A referência de INP é p75 ≤200 ms por perfil de dispositivo, quando houver amostra real suficiente. Cenários, repetições e registro das medições seguem o [protocolo de performance](operations.md#performance). A condição para medir novamente ou reaproveitar uma referência fica nas [pendências](pending.md#condições-de-lançamento).
 
 Next.js, React, Payload e Node usam versões estáveis compatíveis, fixadas no manifesto e lockfile. Avisos de segurança são revistos antes de produção. Novas dependências precisam de uma necessidade concreta. Atualizações principais têm escopo explícito.
 
 Comportamentos e correções seguem TDD. Primeiro, o teste falha pelo motivo esperado. A implementação mínima faz o teste passar, e a refatoração mantém o resultado. Os testes ficam junto do código responsável e verificam os contratos e jornadas pertinentes.
 
-Tipos, lint, formato, testes, arquitetura e build verificam as alterações. Unidades, arquitetura e scripts rodam no CI Linux sem banco. Integração, E2E e recuperação usam o banco local fixo sob reserva exclusiva, com limpeza autorizada entre rodadas. Os três bancos são produção, staging e local. Consulte as [pendências](pending.md) para as verificações que ainda faltam.
-
-Produção e staging usam dados, mídias, namespaces e credenciais separados. A imagem validada em staging é promovida por digest para produção, com configuração de ambiente em execução. Backup criptografado, retenção de 56 dias, migrações controladas, recuperação com checkpoint no banco local e saúde seguem o guia operacional. A abertura pública e a ativação de Analytics dependem das decisões registradas.
-
-## Origem desta consolidação
-
-Esta especificação reúne os contratos aprovados em 29/10/2026 e as decisões posteriores do usuário. Os documentos completos anteriores, a entrevista e os planos das etapas entregues podem ser consultados no Git, no commit `a2d06a1ada1b1c1e6bb491776b025419c14a7401`. O trabalho restante está em `pending.md`.
+Os comandos e ambientes de verificação estão no [README](../README.md#verificação). Backup, migrações, recuperação e promoção de imagem seguem o [guia operacional](operations.md). As [pendências](pending.md) concentram o que falta para o lançamento e a ativação de Analytics.

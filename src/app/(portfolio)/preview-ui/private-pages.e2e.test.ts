@@ -37,7 +37,7 @@ test.beforeAll(async ({}, testInfo) => {
   test.setTimeout(120_000);
   if (testInfo.config.workers !== 1 || testInfo.config.fullyParallel)
     throw new Error('Private structural fixtures require the owned serial test runner.');
-  fixture = await createEditorialPayloadFixture('e2-private-pages-http');
+  fixture = await createEditorialPayloadFixture('private-pages-http');
   await clearStructuralFixture(fixture.payload);
   rootBefore = await readPublicRoot(runtimePublication().directory);
   const image = await mediaMetadataFixture(fixture.payload);

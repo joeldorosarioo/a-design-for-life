@@ -39,7 +39,7 @@ assert.equal(createHash('sha256').update(sdk).digest('hex'), manifest.sha256);
 const sdkText = sdk.toString('utf8');
 const diagnosticMode = mode;
 const origin = 'https://analytics-fixture.example.invalid';
-const canonical = 'https://portfolio-e3.example.invalid';
+const canonical = 'https://portfolio.example.invalid';
 const expectedMain = [
   { name: 'page_view', locale: 'en', pagePath: '/en' },
   { name: 'page_view', locale: 'pt', pagePath: '/pt/cases/synthetic-case' },

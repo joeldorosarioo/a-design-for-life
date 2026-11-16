@@ -29,7 +29,7 @@ import {
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 const retryCollection = 'publication-retries' as CollectionSlug;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e3-persisted-publication-retries');
+  fixture = await createEditorialPayloadFixture('persisted-publication-retries');
   const owned = inspectOwnedTestDatabase();
   // Diagnostic through the actual Native adapter pool; no business data query.
   const version = await fixture.payload.db.pool.query<{ server_version: string }>(

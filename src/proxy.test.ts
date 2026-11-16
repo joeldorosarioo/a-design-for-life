@@ -614,7 +614,7 @@ it.each([404, 410, 503] as const)(
     expect(nativeCalls).toBe(0);
   },
 );
-it('makes same-root malformed negative spellings byte-identical while preserving the raw A1 fallback without structure', async () => {
+it('makes same-root malformed negative spellings byte-identical while preserving the minimal fallback without structure', async () => {
   const root = editorialNegativeRoot(404);
   await withPublicRootWriter(directory, async (_current, commit) => commit(root));
   const a = await proxy(request('/pt/cases/UPPER-PRIVATE'));

@@ -12,7 +12,7 @@ import { runtimePublication } from '@/helpers/payload/publication-runtime';
 import { getPublishedProfile } from './get-published-profile';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.8-confirmed-profile-reader');
+  fixture = await createEditorialPayloadFixture('confirmed-profile-reader');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

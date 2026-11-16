@@ -10,7 +10,7 @@ import {
 import { retryPublicationUpdate } from './publication-updates';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.8-process-outage');
+  fixture = await createEditorialPayloadFixture('process-outage');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();
@@ -128,7 +128,7 @@ it('survives a writer-process crash before SQL ack and serves confirmed HTTP byt
           }),
       );
     }
-    fixture = await createEditorialPayloadFixture(`e1.8-after-outage-${randomUUID()}`);
+    fixture = await createEditorialPayloadFixture(`after-outage-${randomUUID()}`);
   }
   expect(
     await retryPublicationUpdate(doc.latestPublicationIntent!, await fixture.request()),

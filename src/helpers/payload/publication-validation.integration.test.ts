@@ -12,7 +12,7 @@ import {
 import { editorialHead } from './editorial-revision';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-effective-publication');
+  fixture = await createEditorialPayloadFixture('effective-publication');
 });
 beforeEach(async () => {
   await clearStructuralFixture(fixture.payload);

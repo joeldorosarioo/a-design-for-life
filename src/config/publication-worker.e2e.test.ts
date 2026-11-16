@@ -30,7 +30,7 @@ test('starts the opted-in production Next worker during origin outage and drains
   expect(env.PUBLICATION_RETRY_WORKER_ENABLED).toBe('false');
   expect((await request.get('/health')).status()).toBe(200);
   const directory = publicRootDirectory(env);
-  const fixture = await createPublicPortfolioFixture('e3-worker-production-startup', {
+  const fixture = await createPublicPortfolioFixture('worker-production-startup', {
     serialRunner: info.config.workers === 1 && !info.config.fullyParallel,
   });
   let server: Awaited<ReturnType<typeof startOwnedNextServer>> | undefined;
@@ -160,7 +160,7 @@ test('automatically acknowledges the same promoted generation after the owned Ne
   expect(env.PUBLICATION_HTTP_VERIFICATION_ENABLED).toBe('false');
   const directory = publicRootDirectory(env);
   const rootFile = path.join(directory, 'current.json');
-  const fixture = await createEditorialPayloadFixture('e3-worker-post-root-crash');
+  const fixture = await createEditorialPayloadFixture('worker-post-root-crash');
   const workerEnv = {
     ...process.env,
     PUBLICATION_RETRY_WORKER_ENABLED: 'true',

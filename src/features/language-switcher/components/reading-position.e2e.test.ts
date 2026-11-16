@@ -12,7 +12,7 @@ test.beforeAll(async ({}, testInfo) => {
   test.setTimeout(120_000);
   const serialRunner = testInfo.config.workers === 1 && !testInfo.config.fullyParallel;
   if (!serialRunner) throw new Error('The reading journey requires one serial owned test worker.');
-  portfolio = await createPublicPortfolioFixture('e2-reading-position-first', { serialRunner });
+  portfolio = await createPublicPortfolioFixture('reading-position-first', { serialRunner });
 });
 
 test.afterAll(async () => {

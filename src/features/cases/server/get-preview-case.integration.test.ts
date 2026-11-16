@@ -68,12 +68,12 @@ function profileInput(): ProfileDTO {
   });
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-private-preview');
+  fixture = await createEditorialPayloadFixture('private-preview');
   const login = await authHTTP(
     'login',
     { email: fixture.user.email, password: 'Synthetic-editorial-test-password-123!' },
     undefined,
-    'e2-private-preview',
+    'private-preview',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];

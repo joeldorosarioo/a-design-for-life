@@ -30,7 +30,7 @@ let previousDirectory: string;
 const ids: Partial<Record<'pt' | 'en', string>> = {};
 
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-return-label-' + randomUUID());
+  fixture = await createEditorialPayloadFixture('return-label-' + randomUUID());
   previousDirectory = runtimePublication().directory;
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-return-label-'));
   installPublicationProvider(() => portfolioPublicationCoordinator(directory));

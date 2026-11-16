@@ -12,7 +12,7 @@ let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let cookie: string;
 let profileId: string;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-private-proxy-native');
+  fixture = await createEditorialPayloadFixture('private-proxy-native');
   installPayloadProvider(async () => fixture.payload);
   await clearStructuralFixture(fixture.payload);
   const profile = await fixture.payload.create({
@@ -30,7 +30,7 @@ beforeAll(async () => {
       password: 'Synthetic-editorial-test-password-123!',
     },
     undefined,
-    'e2-private-proxy-native',
+    'private-proxy-native',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];

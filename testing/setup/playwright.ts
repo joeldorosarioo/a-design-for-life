@@ -99,7 +99,7 @@ export default async function setup() {
       try {
         // This is the first HTTP request of the fresh production process, before
         // any admin route can install a factory in its own server module graph.
-        response = await fetch(`${env.SITE_ORIGIN}/pt/cases/e1-5-cold-start-probe`, {
+        response = await fetch(`${env.SITE_ORIGIN}/pt/cases/cold-start-probe`, {
           signal: AbortSignal.timeout(5_000),
         });
       } catch {
@@ -107,7 +107,7 @@ export default async function setup() {
       }
       if (response) {
         console.info(
-          'Cold process first HTTP response: GET /pt/cases/e1-5-cold-start-probe',
+          'Cold process first HTTP response: GET /pt/cases/cold-start-probe',
           response.status,
         );
         if (response.status !== 404)

@@ -150,7 +150,7 @@ test('confirms an HTTP-observed generation and retries the same durable root aft
   expect(env.PUBLICATION_HTTP_VERIFICATION_ENABLED).toBe('false');
   expect(env.PUBLICATION_RETRY_WORKER_ENABLED).toBe('false');
   const directory = publicRootDirectory(env);
-  const fixture = await createEditorialPayloadFixture('e3-real-publication-observer');
+  const fixture = await createEditorialPayloadFixture('real-publication-observer');
   const childEnv = { ...process.env, PUBLICATION_HTTP_VERIFICATION_ENABLED: 'true' };
   let server: Awaited<ReturnType<typeof startOwnedNextServer>> | undefined;
   let editor: APIRequestContext | undefined;

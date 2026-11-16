@@ -15,7 +15,7 @@ import {
 } from '../../testing/fixtures/editorial-lifecycle';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.8-publication');
+  fixture = await createEditorialPayloadFixture('publication-updates');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

@@ -91,7 +91,7 @@ it('escapes all editorial text and attribute boundaries, including header/footer
   expect(document.querySelector('footer h2')?.textContent).toBe(value.navigation.footer.title);
   expect(html).toContain('&lt;script&gt;PRIVATE TITLE&lt;/script&gt;');
 });
-it('falls back byte-for-byte to A1 for malformed, mismatched or absent presentation', async () => {
+it('uses the minimal document byte-for-byte for malformed, mismatched or absent presentation', async () => {
   const legacy = await renderCaseRouteResponse({ status: 404 }, 'pt').text();
   const pt = presentation('pt', 404);
   const malformed = {

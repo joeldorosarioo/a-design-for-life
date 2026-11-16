@@ -29,7 +29,7 @@ assert.equal(createHash('sha256').update(sdk).digest('hex'), manifest.sha256);
 assert.equal(sdk.length, manifest.byteLength);
 assert.equal(manifest.httpStatus, 200);
 const origin = 'https://analytics-fixture.example.invalid';
-const canonical = 'https://portfolio-e3.example.invalid';
+const canonical = 'https://portfolio.example.invalid';
 const harness = `import {mountDocumentAnalytics} from './document-analytics';
 const runtime={environment:'production',area:'public',preview:false,publicSiteEnabled:true,measurementId:'${measurementId}',siteOrigin:'${canonical}'};
 let release=()=>{};

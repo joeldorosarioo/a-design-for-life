@@ -11,7 +11,7 @@ import {
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-professional-profile-identity');
+  fixture = await createEditorialPayloadFixture('professional-profile-identity');
 });
 
 beforeEach(async () => {

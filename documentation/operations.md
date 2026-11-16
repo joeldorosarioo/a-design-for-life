@@ -1,6 +1,8 @@
 # Operação
 
-Confira as pendências antes de operar e vincule os recibos à fonte e à imagem escolhidas. [Pendências](pending.md).
+Confira as [condições de lançamento](pending.md#condições-de-lançamento) antes de operar e vincule os recibos à fonte e à imagem escolhidas.
+
+Migrações e operações em produção/staging precisam de escopo e autorização específicos. A limpeza de dados locais entre testes está autorizada. Compras, contratação, aumento de recursos e novos serviços exigem aprovação quando forem necessários. Rollback de imagem não reverte dados.
 
 ## Edição e acesso
 
@@ -20,17 +22,17 @@ Use **Minha conta** para alterar acesso e idioma do painel. O nome e o retrato p
 
 Para testar entrega real, confira domínio, remetente e os segredos `RESEND_API_KEY`, `EDITORIAL_EMAIL_FROM_ADDRESS` e `EDITORIAL_EMAIL_FROM_NAME`. Execute na janela autorizada, com destinatário anuente. Proteja mensagens, tokens e URLs de recuperação.
 
-A importação editorial de staging usa o plano aprovado. Declare `STAGING_SEED_PLAN` e `STAGING_SEED_ASSETS_ROOT` no arquivo privado do editor. Os caminhos podem apontar para pastas autorizadas pelo responsável, respeitando as verificações de propriedade, integridade e conteúdo aprovado.
+A importação editorial de staging valida o conteúdo e os ativos aprovados. Declare `STAGING_SEED_PLAN` e `STAGING_SEED_ASSETS_ROOT` no arquivo privado do editor. Os caminhos respeitam as verificações de propriedade e integridade.
 
 ## Outra máquina e arquivos privados
 
-Em uma nova cópia, prepare seu próprio `.env`, ferramentas e arquivos de trabalho. A aplicação Docker usa `appuser`, UID/GID `70:70`. A imagem de ferramentas do backup usa `10001:10001`. Esses usuários pertencem aos contêineres. No Windows, a proteção de arquivos privados usa o SID do usuário atual.
+Prepare a nova cópia conforme o [uso local](../README.md#uso-local). Os usuários de execução e a proteção dos arquivos privados estão descritos na [arquitetura](architecture.md#ambientes-e-identidade).
 
 Use credenciais locais novas e mantenha as permissões restritas ao usuário responsável. Resolva falhas de acesso conferindo dono e ACL do arquivo. Copiar chaves privadas antigas ou conceder acesso a `Everyone` para fazer um comando funcionar compromete essa proteção.
 
 Cópias de dependências, caches e builds podem ser regeneradas. Preserve o Chromium em uso, dados de mídia/publicação, e-mails privados, backups, chaves e checkpoints de recuperação. Antes de limpar, confira os consumidores e a identidade de cada caminho.
 
-As provas finais ficam em `.work/verification/evidence`, com índice em `index.json`. Os registros anteriores ficam em `.work/verification/history`, com o mapa dos caminhos para recuperação. Consulte o índice para localizar as evidências e os comandos mantidos em `ops` para operar.
+Registre os recibos no índice privado `.work/verification/evidence/index.json`.
 
 ## CI e staging
 
@@ -59,11 +61,11 @@ O resolver admite arquivos regulares de `README.md`, `AGENTS.md` e `documentatio
 5. Ainda em privado, confira TLS, SSR PT/EN, canonical/alternates, mídias/PDFs, login e negativas de rascunhos, prévias e bytes privados. Teste e-mail na janela autorizada. Suítes e injeções de falha usam os recursos locais/de staging previstos para testes.
 6. Abra na janela aprovada. Registre horário e digest, retire as restrições temporárias e confira HTTP, sitemap, robots e URLs na origem final. Use HEAD/GET pontuais e bloqueie Google nas inspeções sintéticas e manuais.
 
-Mantenha Analytics com `loadScript=null`. A ativação depende de decisão própria, revisão do SDK e ambiente e conferência dos relatórios sob `analytics_storage: denied` permanente. A política proíbe cookies analíticos e identificadores persistentes alternativos. Tráfego sintético e editorial fica excluído da medição.
+Mantenha Analytics com `loadScript=null` até concluir a condição específica nas [pendências](pending.md#decisões-e-ações-condicionais). A [política de Analytics](specification.md#seo-e-analytics) rege a ativação e a exclusão de tráfego sintético/editorial.
 
 ## Backup e recuperação
 
-Produção, staging e local são os três bancos de aplicação fixos. Desenvolvimento, integração, E2E e recuperação compartilham o local sob reserva exclusiva. Os testes podem limpar seus dados entre rodadas. Faça backup do que quiser guardar e preserve o volume e as identidades do banco e contêiner.
+O [README](../README.md#verificação) define os três bancos fixos e seu uso. Antes de testar ou recuperar no banco local, faça backup do que quiser guardar e preserve o volume e as identidades do banco e contêiner.
 
 ### Backup local
 
@@ -126,16 +128,15 @@ Centralize os logs no helper de logger, com data, nível, operação, resultado 
 
 ## Performance
 
-Revalide mudanças em renderização, imagens, fontes, conteúdo pesado, dependências, cache ou infraestrutura. Para reaproveitar uma referência, identifique fonte, imagem e condições comparáveis e justifique a ausência de impacto. O gate **E4.2.4** mantém essa decisão nas pendências.
+As [pendências](pending.md#condições-de-lançamento) definem quando medir novamente ou reaproveitar uma referência. As metas de LCP, CLS, TBT e INP ficam na [especificação](specification.md#qualidade-e-operação).
 
 Antes da rodada, fixe candidata, origem de staging, máquina, versões, hash dos perfis, conteúdo e seis alvos. Use Home, listagem e case representativo de maior transferência em PT/EN. Escolha o case antes de analisar LCP/CLS/TBT. Com celular, desktop e três repetições por combinação, são **12 cenários e 36 medições**. [Perfis](../ops/performance/profiles.json).
 
-| Condição           | Celular                              | Desktop                              |
-| ------------------ | ------------------------------------ | ------------------------------------ |
-| Viewport CSS / DPR | 390 × 844 / 3                        | 1440 × 900 / 1                       |
-| CPU / RTT          | 4× / 150 ms                          | 1× / 40 ms                           |
-| Download / upload  | 1.600 / 750 Kbit/s                   | 10.000 / 5.000 Kbit/s                |
-| Limites            | LCP ≤2.500 ms, CLS ≤0,1, TBT ≤200 ms | LCP ≤2.500 ms, CLS ≤0,1, TBT ≤150 ms |
+| Condição           | Celular            | Desktop               |
+| ------------------ | ------------------ | --------------------- |
+| Viewport CSS / DPR | 390 × 844 / 3      | 1440 × 900 / 1        |
+| CPU / RTT          | 4× / 150 ms        | 1× / 40 ms            |
+| Download / upload  | 1.600 / 750 Kbit/s | 10.000 / 5.000 Kbit/s |
 
 Use os mesmos perfis nas repetições. Lighthouse recebe `throttlingMethod=devtools`, `requestLatencyMs=RTT` e os valores de download/upload em Kbit/s. Registre sistema, CPU/RAM e versões efetivas de Node, Lighthouse, Playwright e Chromium. Identifique a emulação utilizada e registre a variação de carga da VPS. Mantenha outras jornadas intensivas fora da janela.
 

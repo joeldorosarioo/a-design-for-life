@@ -58,13 +58,13 @@ async function denied(response: Awaited<ReturnType<typeof readPrivatePageModel>>
   expect(await response.response.text()).toBe('');
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-private-page-model');
+  fixture = await createEditorialPayloadFixture('private-page-model');
   installPayloadProvider(async () => fixture.payload);
   const login = await authHTTP(
     'login',
     { email: fixture.user.email, password: 'Synthetic-editorial-test-password-123!' },
     undefined,
-    'e2-private-page-model',
+    'private-page-model',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];

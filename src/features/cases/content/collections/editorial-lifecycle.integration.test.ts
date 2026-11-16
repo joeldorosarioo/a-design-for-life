@@ -3,7 +3,7 @@ import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-publication');
+  fixture = await createEditorialPayloadFixture('case-editorial-lifecycle');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

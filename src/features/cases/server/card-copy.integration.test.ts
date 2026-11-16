@@ -33,7 +33,7 @@ const owned: { collection: 'cases' | 'case-content'; id: string }[] = [];
 
 beforeAll(async () => {
   assertIsolatedTestEnvironment(process.env);
-  fixture = await createEditorialPayloadFixture('e2-card-copy-' + randomUUID());
+  fixture = await createEditorialPayloadFixture('card-copy-' + randomUUID());
   previousDirectory = runtimePublication().directory;
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-card-copy-'));
   installPublicationProvider(() => portfolioPublicationCoordinator(directory));

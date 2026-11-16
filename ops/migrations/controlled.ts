@@ -13,7 +13,7 @@ import { assertLocalDatabase } from '../../src/config/local-database';
 
 type MigrationRecord = { name?: string | null; batch?: number | null };
 const migrationName = '20261106_035830_cms_user_profile';
-// SHA-256 of the sixteen ordered, newline-delimited migration names in 434ee5c.
+// SHA-256 of the ordered, newline-delimited predecessor migration names.
 const predecessorSha256 = 'd2923bddb2698729ede60e37703a6deac4eae5cdcd0e5a41dab6c5ee7a787735';
 
 function reviewedMigration() {

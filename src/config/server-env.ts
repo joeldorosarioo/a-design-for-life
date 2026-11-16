@@ -104,20 +104,16 @@ const serverEnvSchema = z
             'HTTP verification requires the isolated test runner and an explicit loopback origin.',
         });
     }
-    if (env.APP_ENV === 'production' && env.PUBLIC_SITE_ENABLED === 'true') {
-      if (!env.GA4_MEASUREMENT_ID)
-        context.addIssue({
-          code: 'custom',
-          path: ['GA4_MEASUREMENT_ID'],
-          message: 'Public production requires its approved measurement configuration',
-        });
-      if (!URL.canParse(env.SITE_ORIGIN) || new URL(env.SITE_ORIGIN).protocol !== 'https:')
-        context.addIssue({
-          code: 'custom',
-          path: ['SITE_ORIGIN'],
-          message: 'Public production requires HTTPS',
-        });
-    }
+    if (
+      env.APP_ENV === 'production' &&
+      env.PUBLIC_SITE_ENABLED === 'true' &&
+      (!URL.canParse(env.SITE_ORIGIN) || new URL(env.SITE_ORIGIN).protocol !== 'https:')
+    )
+      context.addIssue({
+        code: 'custom',
+        path: ['SITE_ORIGIN'],
+        message: 'Public production requires HTTPS',
+      });
     if (env.NODE_ENV !== 'test' && env.APP_ENV !== 'test') return;
     if (env.APP_ENV !== 'test') {
       context.addIssue({

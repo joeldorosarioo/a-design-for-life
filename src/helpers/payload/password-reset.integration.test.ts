@@ -31,7 +31,7 @@ async function tokenFor(email: string) {
   return capturedResetToken(messages[0].html);
 }
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.7-auth');
+  fixture = await createEditorialPayloadFixture('editorial-auth');
 });
 afterAll(async () => {
   await disposeCapturedMessages(ownedEmails);

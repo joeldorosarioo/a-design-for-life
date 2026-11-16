@@ -18,7 +18,7 @@ import { resolveCaseRoute } from './resolve-case-route';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let directory: string;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-captured-null-route');
+  fixture = await createEditorialPayloadFixture('captured-null-route');
   const native = await getPayload({ config });
   installPayloadProvider(async () => native);
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-route-capture-'));

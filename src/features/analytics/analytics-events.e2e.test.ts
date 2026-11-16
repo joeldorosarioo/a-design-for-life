@@ -8,7 +8,7 @@ const capturePath = '/__e3_analytics_capture';
 const harnessPath = '/__e3_analytics_harness';
 const scriptPath = harnessPath + '.js';
 const measurementId = 'G-E3OFFLINE';
-const canonical = 'https://portfolio-e3.example.invalid';
+const canonical = 'https://portfolio.example.invalid';
 const consentUi =
   /consent|cookie|accept all|reject all|aceitar|recusar|preferências de privacidade/i;
 
@@ -247,7 +247,7 @@ test('the owned Next runtime excludes the analytics script, globals and controls
       await route.abort();
     }
   });
-  const fixture = await createPublicPortfolioFixture('e3-analytics-excluded-next', {
+  const fixture = await createPublicPortfolioFixture('analytics-excluded-next', {
     serialRunner: info.config.workers === 1 && !info.config.fullyParallel,
   });
   try {

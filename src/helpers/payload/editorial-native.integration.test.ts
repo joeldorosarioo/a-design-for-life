@@ -4,7 +4,7 @@ import { editorialLockState } from './editorial-lock-state';
 import { editorialHead, EDITORIAL_LEASE_SECONDS } from './editorial-revision';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-native-form');
+  fixture = await createEditorialPayloadFixture('native-form');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

@@ -5,7 +5,7 @@ import { readServerEnv } from './server-env';
 import { bootstrapLegacyPublications } from './bootstrap-publications';
 const env = readServerEnv(process.env);
 if (!['local', 'test'].includes(env.APP_ENV))
-  throw new Error('This stage authorizes only local or isolated-test publication bootstrap.');
+  throw new Error('Publication bootstrap requires local or isolated-test mode.');
 const { default: config } = await import('@payload-config');
 const payload = await getPayload({ config, disableOnInit: true });
 try {

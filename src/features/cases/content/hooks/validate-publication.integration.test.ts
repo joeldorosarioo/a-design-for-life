@@ -9,7 +9,7 @@ import {
 import { editorialHead } from '@/helpers/payload/editorial-revision';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-case-text-content');
+  fixture = await createEditorialPayloadFixture('case-text-content');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

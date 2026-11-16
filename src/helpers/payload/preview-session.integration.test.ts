@@ -11,13 +11,13 @@ const preview = (query: string, authenticated = true, extra: HeadersInit = {}) =
     headers: { origin: process.env.SITE_ORIGIN!, ...(authenticated ? { cookie } : {}), ...extra },
   });
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.7-preview-integration');
+  fixture = await createEditorialPayloadFixture('preview-integration');
   installPayloadProvider(async () => fixture.payload);
   const login = await authHTTP(
     'login',
     { email: fixture.user.email, password: 'Synthetic-editorial-test-password-123!' },
     undefined,
-    'e1.7-preview-integration',
+    'preview-integration',
   );
   expect(login.status).toBe(200);
   cookie = login.headers.get('set-cookie')!.split(';')[0];

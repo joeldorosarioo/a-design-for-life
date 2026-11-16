@@ -16,7 +16,7 @@ export function authHTTP(
   endpoint: string,
   body: unknown,
   headers?: HeadersInit,
-  payloadInstanceCacheKey = 'e1.7-auth',
+  payloadInstanceCacheKey = 'editorial-auth',
 ) {
   return handleEndpoints({
     config,

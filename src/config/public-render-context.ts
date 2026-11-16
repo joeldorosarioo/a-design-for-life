@@ -190,7 +190,7 @@ export async function preparePublicRenderRequest(
     try {
       captured = await readPublicRoot(options.publicationDirectory);
     } catch {
-      /* Preserve the closed path404 and A1 fallback. */
+      /* Preserve the private404 response when the public root cannot be read. */
     }
     return directCaseState(404, route.locale, captured);
   }

@@ -3,7 +3,7 @@ import { retryPublicationUpdate } from '@/helpers/payload/publication-updates';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.8-case-presentation');
+  fixture = await createEditorialPayloadFixture('case-presentation');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();
@@ -94,7 +94,7 @@ import {
 async function identity() {
   return fixture.payload.create({
     collection: 'cases',
-    data: { internalTitle: 'Synthetic E1.8 editorial proof' },
+    data: { internalTitle: 'Synthetic editorial proof' },
     overrideAccess: false,
     req: await fixture.request(),
   });

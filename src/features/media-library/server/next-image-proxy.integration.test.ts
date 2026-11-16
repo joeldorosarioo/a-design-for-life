@@ -29,7 +29,7 @@ let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 let directory: string;
 const secret = 'Synthetic-real-native-image-classification-secret-12345';
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-image-coverage');
+  fixture = await createEditorialPayloadFixture('image-coverage');
   const native = await getPayload({ config });
   installPayloadProvider(async () => native);
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-image-coverage-'));

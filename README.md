@@ -4,7 +4,7 @@ O nome do repositório vem de **A Design for Life**, música da banda **Manic St
 
 Portfólio bilíngue de Product Design e UX. Next.js serve as páginas, Payload gerencia o conteúdo e PostgreSQL guarda os dados. A interface usa Tailwind CSS, CVA, shadcn e Motion, com o Figma como referência visual.
 
-O lançamento ainda não está autorizado; veja as [pendências](documentation/pending.md).
+O lançamento ainda depende das [condições em aberto](documentation/pending.md).
 
 ## Uso local
 
@@ -40,11 +40,11 @@ pnpm exec playwright install chromium --only-shell
 pnpm test:e2e
 ```
 
-O projeto usa três bancos de aplicação fixos: produção, staging e local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, configurado no `.env`. Os testes limpam os dados locais entre rodadas; faça backup antes de guardar ali qualquer conteúdo que queira preservar. Pare `pnpm dev` ou `pnpm start` antes dos testes: esses comandos compartilham um bloqueio exclusivo com o runner. O contêiner, o volume e o banco permanecem após a rodada.
+Há três bancos de aplicação fixos: produção, staging e local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, configurado no `.env`. Os testes limpam seus dados locais entre rodadas; faça backup antes de guardar ali qualquer conteúdo que queira preservar. Pare `pnpm dev` ou `pnpm start` antes dos testes: esses comandos compartilham um bloqueio exclusivo com o runner. O contêiner, o volume e o banco permanecem após a rodada.
 
 Os testes usam mídia sintética local, captura de e-mail e Analytics desligado. Provas de migração e recuperação reconstroem o schema no mesmo banco. O build dos testes fica em `.work/next-tests`. O CI do GitHub executa `pnpm verify:ci`, sem banco; integração e E2E precisam da verificação local antes do aceite da candidata.
 
-O Actions roda nos PRs, nos pushes para `develop`/`main` e por acionamento manual. Branches de trabalho passam pelo PR, evitando repetir o mesmo check no push. Um novo commit cancela a verificação anterior daquele PR; deploys mantêm a fila por branch. pnpm, Next.js e TypeScript reaproveitam cache, mas todas as verificações continuam executando. O Docker guarda suas camadas na tag `build-cache` do mesmo package privado no GHCR. A primeira rodada preenche esses caches; o ganho deve ser conferido nas seguintes.
+O funcionamento do Actions, dos caches e da fila de deploy está no [guia de CI e staging](documentation/operations.md#ci-e-staging).
 
 Os casos de backup com ferramentas nativas exigem `ADFL_TEST_BACKUP_TOOLS_CONFIG` apontando para um JSON privado com `ageBinary`, `tarBinary`, `recipient` e `identityPath` de teste; sem essa configuração, são ignorados. Depois de uma execução interrompida, confira o bloqueio e a identidade dos recursos antes de liberar uma reserva. Nunca exclua o volume para resolver um bloqueio.
 
@@ -63,9 +63,11 @@ As provas finais ficam em `.work/verification/evidence/index.json`. Os registros
 
 ## Documentação
 
+Este README, [AGENTS.md](AGENTS.md) e os quatro arquivos de `documentation` são as fontes de regras, contratos e condições de lançamento do projeto. `AGENTS.md` mantém o contexto de trabalho do agente, as convenções e as instruções de verificação e commit. Código, testes e configurações implementam esses contratos; registros de execução servem como evidência.
+
 | Assunto                                           | Referência                                      |
 | ------------------------------------------------- | ----------------------------------------------- |
 | Produto, contratos do CMS e referência visual     | [Especificação](documentation/specification.md) |
 | Implementação e fluxos                            | [Arquitetura](documentation/architecture.md)    |
 | Edição, deploy, backup, recuperação e performance | [Operação](documentation/operations.md)         |
-| Gates de lançamento e decisões pendentes          | [Pendências](documentation/pending.md)          |
+| Condições de lançamento e decisões pendentes      | [Pendências](documentation/pending.md)          |

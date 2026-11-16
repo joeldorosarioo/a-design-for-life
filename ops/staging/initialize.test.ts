@@ -2,6 +2,8 @@ import { spawnSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { mergeInitializationReceipt, validInitializationReceipt } from './initialize.cli.mjs';
 import { stagingSeedSettings } from './seed-http.mjs';
+import { initializeStaging } from './initialize';
+import type { Payload } from 'payload';
 import { describe, expect, it, vi } from 'vitest';
 import {
   planStagingCatalog,
@@ -75,11 +77,60 @@ it.each(
     ['--database', 'portfolio_stage'],
     ['--database', 'portfolio_stage', '--mode', 'resume'],
     ['--database', 'postgres', '--mode', 'initialize'],
-    ['--database', 'adfl_local', '--mode', 'initialize'],
+    ['--database', 'template0', '--mode', 'initialize'],
     ['--database', 'portfolio_stage', '--database', 'portfolio_stage'],
   ].map((input) => ({ input })),
 )('refuses missing, unsafe or ambiguous confirmations %j', ({ input }) =>
   expect(() => readInitializationArguments(input)).toThrow(),
+);
+it.each(['adfl_local', 'a_design_for_life_rebuild'])(
+  'accepts the explicitly configured staging database name: %s',
+  (database) => {
+    const selected = prepareStagingInitialization(
+      source().replaceAll('portfolio_stage', database),
+      editor,
+      ['--database', database, '--mode', 'initialize'],
+    );
+    expect(selected.database).toBe(database);
+    expect(new URL(selected.databaseUri).host).toBe('127.0.0.1:55435');
+  },
+);
+it.each(['adfl_local', 'a_design_for_life_rebuild'])(
+  'validates the staging tunnel and adapter independently of its database name: %s',
+  async (database) => {
+    const databaseUri = `postgres://stage_role:synthetic@127.0.0.1:55435/${database}`;
+    const Client = vi.fn(function () {
+      throw new Error('Synthetic connection boundary');
+    });
+    const payload = {
+      db: {
+        name: 'postgres',
+        pg: { Client },
+        poolOptions: { connectionString: databaseUri },
+        push: false,
+        disableCreateDatabase: true,
+        extensions: {},
+      },
+    } as unknown as Payload;
+    const options = {
+      databaseUri,
+      database,
+      role: 'stage_role',
+      origin: 'https://staging.example.invalid',
+      mode: 'prepare-first-access' as const,
+    };
+    await expect(initializeStaging(payload, options)).rejects.toThrow(
+      'Synthetic connection boundary',
+    );
+    expect(Client).toHaveBeenCalledOnce();
+    Client.mockClear();
+    const directUri = databaseUri.replace(':55435/', ':5432/');
+    payload.db.poolOptions.connectionString = directUri;
+    await expect(
+      initializeStaging(payload, { ...options, databaseUri: directUri }),
+    ).rejects.toThrow('Staging initialization refused');
+    expect(Client).not.toHaveBeenCalled();
+  },
 );
 it.each([
   ['APP_ENV=staging', 'APP_ENV=production'],
@@ -303,7 +354,7 @@ it('refuses receipts from the previous migration catalog instead of merging them
   expect(() => mergeInitializationReceipt(outdatedPending, current, selected)).toThrow();
   expect(() => mergeInitializationReceipt(outdatedComplete, current, selected)).toThrow();
 });
-it('preserves complete legacy receipt validation and the original structural baseline', () => {
+it('preserves completed receipt validation and the original structural baseline', () => {
   const original = complete();
   const next = {
     ...original,
@@ -341,7 +392,7 @@ it('does not replace another target or migration ledger while pending', () => {
     ),
   ).toThrow();
 });
-it('keeps pending browser-first receipts out of the legacy authenticated HTTP seed', () => {
+it('keeps pending browser-first receipts out of the authenticated HTTP seed', () => {
   const runtime = {
     APP_ENV: 'staging',
     NODE_ENV: 'production',

@@ -4,7 +4,7 @@ import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/e
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-case-routes');
+  fixture = await createEditorialPayloadFixture('case-routes');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

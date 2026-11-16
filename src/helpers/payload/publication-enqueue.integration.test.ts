@@ -8,7 +8,7 @@ import { enqueuePublicationUpdate } from './publication-updates';
 
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-native-publication-head');
+  fixture = await createEditorialPayloadFixture('native-publication-head');
   await clearStructuralFixture(fixture.payload);
 });
 afterAll(async () => {

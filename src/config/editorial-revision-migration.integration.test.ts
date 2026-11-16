@@ -13,7 +13,7 @@ import * as snapshots from '../migrations/20261030_042607_editorial_snapshot_rev
 import { acquireEditorialLease, editorialHead } from '../helpers/payload/editorial-revision';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.4-migration');
+  fixture = await createEditorialPayloadFixture('migration');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

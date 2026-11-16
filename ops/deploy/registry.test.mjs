@@ -513,7 +513,7 @@ for (const [description, options, expected] of [
   ],
   ['the wrong operating system', { config: { os: 'windows' } }, /image-platform/],
   ['the wrong architecture', { config: { architecture: 'arm64' } }, /image-platform/],
-  ['a legacy manifest version', { manifest: { schemaVersion: 1 } }, /manifest-version/],
+  ['an unsupported manifest version', { manifest: { schemaVersion: 1 } }, /manifest-version/],
   ['an index instead of a single image', { manifest: { manifests: [] } }, /manifest-version/],
 ])
   test(`refuses ${description} without writing a marker`, async () => {

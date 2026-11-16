@@ -36,7 +36,7 @@ const unavailable = {
   error: { code: 'unavailable', message: 'Confirmed content unavailable.' },
 } as const;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e2-public-render-native');
+  fixture = await createEditorialPayloadFixture('public-render-native');
   const native = await getPayload({ config });
   installPayloadProvider(async () => native);
   directory = await mkdtemp(path.join(tmpdir(), 'portfolio-render-native-'));

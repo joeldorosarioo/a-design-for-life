@@ -12,7 +12,7 @@ import {
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.3-site-navigation-identity');
+  fixture = await createEditorialPayloadFixture('site-navigation-identity');
 });
 
 beforeEach(async () => {

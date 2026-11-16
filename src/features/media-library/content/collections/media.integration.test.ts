@@ -2,7 +2,7 @@ import { afterAll, beforeAll, expect, it } from 'vitest';
 import { createEditorialPayloadFixture } from '../../../../../testing/fixtures/editorial-payload';
 let fixture: Awaited<ReturnType<typeof createEditorialPayloadFixture>>;
 beforeAll(async () => {
-  fixture = await createEditorialPayloadFixture('e1.6-invalid-native-media');
+  fixture = await createEditorialPayloadFixture('invalid-native-media');
 });
 afterAll(async () => {
   await fixture?.payload.destroy();

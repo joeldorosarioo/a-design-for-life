@@ -53,7 +53,6 @@ export async function GET(request: Request): Promise<Response> {
       },
     });
   }
-  // Contract preview only. Full portfolio presentation belongs to stage 2.
   const title =
     document.title ?? (collection === 'site-navigation' ? 'Navegação' : 'Perfil profissional');
   const summary = document.summary ?? '';
