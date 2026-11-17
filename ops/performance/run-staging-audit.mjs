@@ -68,19 +68,6 @@ async function performanceAudit(input) {
   const chromeLauncher = await import(
     pathToFileURL(requireFromLighthouse.resolve('chrome-launcher'))
   );
-  const browserParent = path.join(root, '.work/playwright-browsers');
-  const shell = (await fs.readdir(browserParent)).find((name) =>
-    name.startsWith('chromium_headless_shell-'),
-  );
-  assert(shell, 'Install the project-pinned Chromium before auditing.');
-  const chromePath = path.join(
-    browserParent,
-    shell,
-    process.platform === 'win32'
-      ? 'chrome-headless-shell-win64/chrome-headless-shell.exe'
-      : 'chrome-headless-shell-linux64/chrome-headless-shell',
-  );
-  await fs.access(chromePath);
   const rows = [];
   for (const { target, profile, repeat } of input.plan) {
     const session = path.join(input.directory, `${target.id}-${profile.id}-${repeat}-profile`);
@@ -88,7 +75,7 @@ async function performanceAudit(input) {
     let chrome;
     try {
       chrome = await chromeLauncher.launch({
-        chromePath,
+        chromePath: input.chromePath,
         port: 0,
         userDataDir: session,
         logLevel: 'silent',
@@ -100,6 +87,16 @@ async function performanceAudit(input) {
           '--host-resolver-rules=MAP * ~NOTFOUND,EXCLUDE 127.0.0.1,EXCLUDE localhost',
         ],
       });
+      const versionResponse = await fetch(`http://127.0.0.1:${chrome.port}/json/version`, {
+        signal: AbortSignal.timeout(5_000),
+      });
+      assert(versionResponse.ok, 'Chrome version could not be verified; repeat the complete run.');
+      const version = await versionResponse.json();
+      assert.equal(
+        String(version.Browser).split('/').at(-1),
+        input.browserVersion,
+        'Chrome changed version during measurement; repeat the complete run.',
+      );
       const result = await lighthouse(new URL(target.path, input.origin).href, {
         port: chrome.port,
         hostname: '127.0.0.1',
@@ -293,13 +290,26 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     await fs.writeFile(path.join(directory, 'run-config.json'), configBytes, { flag: 'wx' });
     const startedAt = new Date().toISOString();
     const httpChecks = [];
-    process.env.PLAYWRIGHT_BROWSERS_PATH = path.resolve('.work/playwright-browsers');
     const { chromium } = await import('@playwright/test');
     let browser;
     try {
       // Warm the exact target/profile resources. Every measured run still uses a fresh browser profile.
-      browser = await chromium.launch({ headless: true });
+      browser = await chromium.launch({
+        channel: 'chrome',
+        headless: true,
+        args: ['--enable-automation'],
+      });
       const browserVersion = browser.version();
+      const cdp = await browser.newBrowserCDPSession();
+      const {
+        arguments: [chromePath],
+      } = await cdp.send('Browser.getBrowserCommandLine');
+      await cdp.detach();
+      assert(
+        typeof chromePath === 'string' && path.isAbsolute(chromePath),
+        'The warmed Chrome executable must have an absolute path.',
+      );
+      await fs.access(chromePath, fs.constants.X_OK);
       for (const target of targets) {
         for (const profile of settings.profiles) {
           const context = await browser.newContext({
@@ -355,6 +365,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
         { flag: 'wx' },
       );
       const result = await performanceAudit({
+        chromePath,
+        browserVersion,
         origin: localOrigin,
         targets,
         settings,

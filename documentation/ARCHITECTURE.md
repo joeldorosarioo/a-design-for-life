@@ -21,7 +21,7 @@ Os dados locais são descartáveis; não há rotina de backup local nem necessid
 
 No contêiner, a aplicação e seu executor de backup usam `appuser`, UID/GID `70:70`. Os arquivos locais privados pertencem à identidade que os cria; no Windows, as ACLs usam o SID atual. Esses papéis não exigem um login Windows específico.
 
-Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. Staging e produção usam dados, mídias e credenciais separados. A configuração entra na execução da mesma imagem. Os fluxos de verificação e promoção estão no [guia operacional](OPERATIONS.md#ci-e-staging).
+Mídia local, publicações e captura de e-mail ficam em namespaces de `.work`. A persistência das gerações públicas permanece independente do banco para manter o atendimento durante suas falhas, inclusive após reinício. Staging e produção usam dados, mídias e credenciais separados. A configuração entra na execução da mesma imagem. Os fluxos de verificação e promoção estão no [guia operacional](OPERATIONS.md#ci-e-staging).
 
 ## Edição e publicação
 

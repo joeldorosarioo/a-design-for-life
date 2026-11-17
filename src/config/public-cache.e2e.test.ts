@@ -171,7 +171,7 @@ test('serves confirmed PT/EN data and shared media across full origin outage and
       payload: JSON.parse(await readFile('node_modules/payload/package.json', 'utf8'))
         .version as string,
     };
-    expect(installedVersions).toEqual({ next: '16.4.3', payload: '3.92.1' });
+    expect(installedVersions).toEqual({ next: '16.4.5', payload: '3.92.1' });
     evidence.push({
       event: 'production-process-provenance',
       node: process.versions.node,

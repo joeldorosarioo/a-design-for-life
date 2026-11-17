@@ -45,18 +45,15 @@ jobs:
           cache: true
       - name: Install from lockfile
         run: pnpm install --frozen-lockfile
-      - name: Cache Next.js and TypeScript compilation
+      - name: Cache Next.js compilation
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             .work/next-build/cache
-            .work/cache/typescript.tsbuildinfo
           key: ${{ runner.os }}-${{ runner.arch }}-node26.13.1-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-node26.13.1-build-v1-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json', 'next.config.ts', 'tsconfig.json') }}-
-      - name: Install verified local backup tools
-        run: pnpm setup:backup-tools
-      - name: Configure synthetic backup test tools
+      - name: Configure Docker-backed synthetic backup test tools
         run: |
           config="$(node testing/setup/configure-backup-tools.mjs)"
           test -f "$config"

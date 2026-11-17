@@ -300,7 +300,13 @@ test('the owned Next runtime excludes the analytics script, globals and controls
     await inspect('home-pt', fixture.locales.pt.homePath, 200);
     await inspect('published-case', fixture.cases.first.locales.en.path, 200);
     await inspect('unpublished-case', draft.path, 404);
-    await inspect('anonymous-preview', previewPath, 401);
+    // Chrome replaces empty error responses with its own page, outside the application runtime.
+    const anonymousPreview = await context.request.get(previewPath);
+    expect(anonymousPreview.status()).toBe(401);
+    expect(await anonymousPreview.text()).toBe('');
+    expect(anonymousPreview.headers()['cache-control']).toContain('private');
+    expect(anonymousPreview.headers()['cache-control']).toContain('no-store');
+    expect(anonymousPreview.headers()['permissions-policy']).toBeUndefined();
     await inspect('admin-login', '/admin/login', 200);
     const login = await context.request.post('/api/users/login', {
       headers: { origin },

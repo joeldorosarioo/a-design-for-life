@@ -174,6 +174,7 @@ it('refuses an injected repository before any target operation', async () => {
 });
 toolProof(
   'decrypts an actual complete set and restores original keys plus the captured public root under the owned target guard',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const receipt = await backup(data);
@@ -208,6 +209,7 @@ toolProof(
 );
 toolProof(
   'does not acquire a target when a different valid age identity cannot decrypt the set',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const receipt = await backup(data);
@@ -225,28 +227,33 @@ toolProof(
     expect(boundary.calls).toBe(0);
   },
 );
-toolProof('does not acquire a target when stored ciphertext is corrupted', async () => {
-  const data = await setup();
-  const receipt = await backup(data);
-  const file = path.join(data.repository.root, 'sets', receipt.marker.id, 'payload.age');
-  const bytes = await readFile(file);
-  bytes[bytes.length - 1] ^= 1;
-  await writeFile(file, bytes);
-  const boundary = targetBoundary();
-  await expect(
-    restoreBackup({
-      backupId: receipt.marker.id,
-      repository: data.repository,
-      identityPath: config!.identityPath,
-      ageBinary: config!.ageBinary,
-      target: boundary.target,
-      async verifyRestored() {},
-    }),
-  ).rejects.toThrow();
-  expect(boundary.calls).toBe(0);
-});
+toolProof(
+  'does not acquire a target when stored ciphertext is corrupted',
+  { timeout: 30_000 },
+  async () => {
+    const data = await setup();
+    const receipt = await backup(data);
+    const file = path.join(data.repository.root, 'sets', receipt.marker.id, 'payload.age');
+    const bytes = await readFile(file);
+    bytes[bytes.length - 1] ^= 1;
+    await writeFile(file, bytes);
+    const boundary = targetBoundary();
+    await expect(
+      restoreBackup({
+        backupId: receipt.marker.id,
+        repository: data.repository,
+        identityPath: config!.identityPath,
+        ageBinary: config!.ageBinary,
+        target: boundary.target,
+        async verifyRestored() {},
+      }),
+    ).rejects.toThrow();
+    expect(boundary.calls).toBe(0);
+  },
+);
 toolProof(
   'does not acquire a target when the private manifest hash differs from its complete marker',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const receipt = await backup(data);
@@ -270,6 +277,7 @@ toolProof(
 );
 toolProof(
   'rejects an allowed but unreferenced archive object before acquiring a fresh application target',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const id = randomUUID();
@@ -344,6 +352,7 @@ toolProof(
 
 toolProof(
   'rejects marker application provenance that differs from the encrypted manifest before acquiring a target',
+  { timeout: 30_000 },
   async () => {
     const data = await setup();
     const receipt = await backup(data);

@@ -7,7 +7,6 @@ import { build } from 'esbuild';
 import { decodeGoogleCollectRequest, inspectGoogleEventSequence } from './google-wire.ts';
 
 // Explicit, offline-only diagnostic. The SDK and browser APIs keep their real behavior.
-process.env.PLAYWRIGHT_BROWSERS_PATH = path.resolve('.work/playwright-browsers');
 const { chromium } = await import('@playwright/test');
 const [manifestPath, outputPath, modeArgument, ...extra] = process.argv.slice(2);
 const mode = modeArgument ?? 'document-policy';
@@ -131,6 +130,7 @@ const requests = [];
 const labels = new WeakMap();
 try {
   browser = await chromium.launch({
+    channel: 'chrome',
     headless: true,
     proxy: { server: `http://127.0.0.1:${proxy.address().port}` },
     args: [

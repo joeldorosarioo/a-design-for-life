@@ -6,7 +6,6 @@ import { createHash } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
 import { build } from 'esbuild';
 import { decodeGoogleCollectRequest, inspectGoogleEventSequence } from './google-wire.ts';
-process.env.PLAYWRIGHT_BROWSERS_PATH = path.resolve('.work/playwright-browsers');
 const { chromium } = await import('@playwright/test');
 const [manifestPath, outputPath, ...extra] = process.argv.slice(2);
 assert(
@@ -62,6 +61,7 @@ proxy.on('connect', (req, socket) => {
 await new Promise((resolve) => proxy.listen(0, '127.0.0.1', resolve));
 const proxyPort = proxy.address().port;
 const browser = await chromium.launch({
+  channel: 'chrome',
   headless: true,
   proxy: { server: `http://127.0.0.1:${proxyPort}` },
   args: [

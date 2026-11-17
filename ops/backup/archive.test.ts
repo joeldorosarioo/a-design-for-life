@@ -146,6 +146,8 @@ it('refuses to reuse an existing quarantine and preserves its bytes', async () =
 });
 it.skipIf(!process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG)(
   'creates a real bsdtar USTAR archive and verifies all streamed file hashes',
+  // Native Docker invocations include startup and cleanup under parallel suite load.
+  { timeout: 30_000 },
   async () => {
     const fixture = JSON.parse(
       await readFile(process.env.ADFL_TEST_BACKUP_TOOLS_CONFIG!, 'utf8'),
