@@ -16,14 +16,9 @@
     "provision:editor": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/provision-local-editor.cli.ts",
     "provision:structural": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/provision-structural-documents.cli.ts",
     "bootstrap:publications": "node --conditions=react-server ./node_modules/payload/bin.js run src/config/bootstrap-publications.cli.ts",
-    "generate:types": "node --conditions=react-server ./node_modules/payload/bin.js generate:types",
-    "generate:importmap": "node --conditions=react-server ./node_modules/payload/bin.js generate:importmap",
-    "migrate:create": "node --conditions=react-server ./node_modules/payload/bin.js migrate:create",
-    "migrate": "node --conditions=react-server ./node_modules/payload/bin.js migrate",
     "setup:backup-tools": "node testing/setup/configure-backup-tools.mjs",
     "initialize:staging": "node --import tsx ops/staging/initialize.cli.mjs",
     "seed:staging": "node ops/staging/seed-http.cli.mjs",
-    "test:staging-seed:http": "node --conditions=react-server ./node_modules/@playwright/test/cli.js test --config ops/staging/seed-http.playwright.config.ts",
     "test": "pnpm test:unit && pnpm test:architecture && pnpm test:integration",
     "test:unit": "vitest run --project unit",
     "test:integration": "vitest run --project integration",
@@ -33,10 +28,9 @@
     "lint": "eslint .",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "verify:ci": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test:unit && pnpm test:architecture && pnpm test:case-state-css && pnpm test:deploy && pnpm build",
+    "verify:ci": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test:unit && pnpm test:architecture && pnpm test:scripts && pnpm build",
     "verify": "pnpm verify:ci && pnpm test:integration",
-    "test:case-state-css": "node --test scripts/emit-case-state-css.test.mjs",
-    "test:deploy": "node --test ops/deploy/*.test.mjs"
+    "test:scripts": "node --test scripts/emit-case-state-css.test.mjs ops/deploy/*.test.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1161.0",

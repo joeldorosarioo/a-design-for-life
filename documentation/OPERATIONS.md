@@ -22,7 +22,7 @@ Use **Minha conta** para alterar acesso e idioma do painel. O nome e o retrato p
 
 Para testar entrega real, confira domínio, remetente e os segredos `RESEND_API_KEY`, `EDITORIAL_EMAIL_FROM_ADDRESS` e `EDITORIAL_EMAIL_FROM_NAME`. Execute na janela autorizada, com destinatário anuente. Proteja mensagens, tokens e URLs de recuperação.
 
-A importação editorial de staging valida o conteúdo e os ativos aprovados. Declare `STAGING_SEED_PLAN` e `STAGING_SEED_ASSETS_ROOT` no arquivo privado do editor. Os caminhos respeitam as verificações de propriedade e integridade.
+A importação editorial de staging valida o conteúdo e os ativos aprovados. Declare `STAGING_SEED_PLAN` e `STAGING_SEED_ASSETS_ROOT` no arquivo privado do editor. Os caminhos respeitam as verificações de propriedade e integridade. Teste esse fluxo no banco local fixo com `pnpm test:e2e --config ops/staging/seed-http.playwright.config.ts`.
 
 ## Outra máquina e arquivos privados
 

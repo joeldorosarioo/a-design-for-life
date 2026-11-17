@@ -16,11 +16,13 @@ O projeto usa a configuração da máquina e a identidade que executa os comando
 2. Se `.env` não existir, copie `.env.example`. Defina um `PAYLOAD_SECRET` privado com pelo menos 32 caracteres e a `DATABASE_URI` do banco local na porta 5432. Mantenha `MEDIA_STORAGE_DRIVER=local`; o e-mail local usa captura privada.
 3. Somente em uma máquina nova, crie o volume externo com `docker volume create a-design-for-life-rebuild-postgres-data`. Neste checkout, reutilize o volume existente.
 4. Na primeira configuração, suba o PostgreSQL com `docker compose -f compose.local.yaml up -d --build --wait postgres`. Nas seguintes, use `--no-build` no lugar de `--build`. O volume existente é reutilizado.
-5. Para um banco novo, com desenvolvimento e testes parados, execute `pnpm migrate` e `pnpm provision:structural` no host. O provisionamento cria perfis e navegação como rascunhos; preencha e publique ambos nos dois idiomas para abrir as páginas públicas.
+5. Para um banco novo, com desenvolvimento e testes parados, execute `pnpm payload migrate` e `pnpm provision:structural` no host. O provisionamento cria perfis e navegação como rascunhos; preencha e publique ambos nos dois idiomas para abrir as páginas públicas.
 
 Execute `pnpm dev` no host. Abra o site em [português](http://localhost:3000/pt), em [inglês](http://localhost:3000/en) ou o [painel do Payload](http://localhost:3000/admin). O Compose mantém somente o banco; a porta 3000 fica disponível para a aplicação.
 
 Com desenvolvimento e testes parados, use `pnpm provision:editor` para criar ou recriar a conta local. Defina `APP_ENV=local`, `LOCAL_EDITOR_EMAIL` e `LOCAL_EDITOR_PASSWORD` no ambiente privado. Uma conta com o mesmo e-mail é preservada. Após a limpeza dos testes, `pnpm provision:structural` prepara novamente os rascunhos de perfil e navegação.
+
+Os comandos nativos do CMS usam `pnpm payload`: `generate:types`, `generate:importmap`, `migrate:create` e `migrate`. Por exemplo, `pnpm payload generate:types` atualiza os tipos.
 
 O Compose expõe somente a porta 5432 em loopback. Preserve o volume externo do banco. Para parar sem remover dados:
 
@@ -38,6 +40,8 @@ Os testes de navegador usam o Google Chrome já instalado na máquina. O projeto
 pnpm verify
 pnpm test:e2e
 ```
+
+`pnpm test` reúne unidades, arquitetura e integração. `pnpm test:scripts` verifica o gerador de CSS e os comandos de deploy.
 
 Há três bancos de aplicação fixos: produção, staging e local. Desenvolvimento, integração e E2E compartilham `127.0.0.1:5432/a_design_for_life_rebuild`, configurado no `.env`. Os testes limpam os dados locais entre rodadas. Pare `pnpm dev` ou `pnpm start` antes dos testes: esses comandos compartilham um bloqueio exclusivo com o runner. O contêiner, o volume e o banco permanecem após a rodada.
 
